@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-27T19:31:26",
+  "updated_at": "2026-04-27T20:08:45",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -141,7 +141,7 @@ const YOUTUBE = {
       "id": "d2jR-N8nVWM",
       "title": "Canon IXUS I 📸 Efsane Dijital Fotoğraf Makinesi ❤️‍🔥 #canon ",
       "date": "27 Mar 2026",
-      "views": 1221,
+      "views": 1222,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/d2jR-N8nVWM"
