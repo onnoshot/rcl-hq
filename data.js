@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-27T23:31:40",
+  "updated_at": "2026-04-28T00:08:59",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,11 +10,11 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 128224,
-      "watch_hours": 489.7,
-      "subs_gained": 94,
+      "views": 115386,
+      "watch_hours": 443.4,
+      "subs_gained": 89,
       "subs_lost": 63,
-      "avg_view_sec": 34
+      "avg_view_sec": 33
     },
     "monthly": [
       {
@@ -60,7 +60,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 666,
+      "views": 663,
       "likes": 0,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -69,7 +69,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkesin Peşinde! Y2K Dijital",
       "date": "25 Nis 2026",
-      "views": 65,
+      "views": 68,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
