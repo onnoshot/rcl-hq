@@ -26,7 +26,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100
 nav{position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:center;border-bottom:1px solid var(--border);backdrop-filter:blur(24px) saturate(180%);background:rgba(0,0,0,0.8);}
 .nw{max-width:1320px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;gap:24px;}
 .nbrand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--t1);flex-shrink:0;}
-.nmark{font-size:0.7rem;font-weight:700;letter-spacing:0.06em;padding:4px 9px;border-radius:6px;background:var(--amber);color:#000;font-family:var(--mono);}
+.nbrand img{height:28px;width:auto;display:block;}
 .ntitle{font-size:0.8rem;font-weight:500;color:var(--t3);}
 .nlinks{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
 .nlinks::-webkit-scrollbar{display:none;}
@@ -43,10 +43,8 @@ nav{position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:cente
 
 /* HERO */
 .hero{padding:80px 0 64px;border-bottom:1px solid var(--border);margin-bottom:64px;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% -10%,rgba(245,166,35,0.07) 0%,transparent 70%);pointer-events:none;}
-.hero-wordmark{font-size:clamp(2.8rem,7vw,5.2rem);font-weight:800;letter-spacing:-0.045em;line-height:1;margin-bottom:20px;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,0.65) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-wordmark span{background:linear-gradient(135deg,var(--amber),#f0c040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hero-tagline{font-size:1rem;color:var(--t3);font-weight:400;letter-spacing:0.01em;max-width:420px;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% -10%,rgba(245,166,35,0.06) 0%,transparent 70%);pointer-events:none;}
+.hero-logo{height:clamp(80px,12vw,140px);width:auto;display:block;margin-bottom:36px;}
 .hero-meta{margin-top:40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
 .hero-stat{display:flex;flex-direction:column;gap:4px;}
 .hero-stat-val{font-size:1.6rem;font-weight:700;letter-spacing:-0.04em;font-family:var(--mono);color:var(--amber);}
@@ -172,8 +170,8 @@ footer{border-top:1px solid var(--border);padding:28px 0;font-size:0.68rem;color
 <nav>
   <div class="nw">
     <a href="index.html" class="nbrand">
-      <span class="nmark">RCL</span>
-      <span class="ntitle">Headquarters</span>
+      <img src="rcl-logo.png" alt="Retrocameraland">
+      <span class="ntitle">Anasayfa</span>
     </a>
     <div class="nlinks">
       <a href="index.html" class="nl active">Dashboard</a>
@@ -191,8 +189,7 @@ footer{border-top:1px solid var(--border);padding:28px 0;font-size:0.68rem;color
 
 <!-- HERO -->
 <section class="hero fu">
-  <h1 class="hero-wordmark">Retro<span>camera</span>land</h1>
-  <p class="hero-tagline">Büyüyen bir markanın canlı verileri.</p>
+  <img src="rcl-logo.png" alt="Retrocameraland" class="hero-logo">
   <div class="hero-meta">
     <div class="hero-stat">
       <div class="hero-stat-val" id="h-rev">—</div>
