@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-27T21:31:33",
+  "updated_at": "2026-04-27T22:08:52",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,10 +10,10 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 125647,
-      "watch_hours": 481.9,
-      "subs_gained": 86,
-      "subs_lost": 55,
+      "views": 128224,
+      "watch_hours": 489.7,
+      "subs_gained": 94,
+      "subs_lost": 63,
       "avg_view_sec": 34
     },
     "monthly": [
@@ -49,9 +49,9 @@ const YOUTUBE = {
       },
       {
         "label": "Nis 26",
-        "views": 82462,
-        "watch_min": 18136,
-        "subs_gained": 64
+        "views": 85039,
+        "watch_min": 18602,
+        "subs_gained": 72
       }
     ]
   },
@@ -60,7 +60,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 664,
+      "views": 663,
       "likes": 0,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -69,7 +69,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkesin Peşinde! Y2K Dijital",
       "date": "25 Nis 2026",
-      "views": 65,
+      "views": 64,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -105,7 +105,7 @@ const YOUTUBE = {
       "id": "zvmyHAaT9cc",
       "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
       "date": "1 Nis 2026",
-      "views": 2071,
+      "views": 2072,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/zvmyHAaT9cc"
