@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-27T20:08:45",
+  "updated_at": "2026-04-27T20:31:29",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 3750,
+    "subscribers": 3760,
     "total_views": 1043862,
     "video_count": 370
   },
@@ -69,7 +69,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkesin Peşinde! Y2K Dijital",
       "date": "25 Nis 2026",
-      "views": 61,
+      "views": 64,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -141,7 +141,7 @@ const YOUTUBE = {
       "id": "d2jR-N8nVWM",
       "title": "Canon IXUS I 📸 Efsane Dijital Fotoğraf Makinesi ❤️‍🔥 #canon ",
       "date": "27 Mar 2026",
-      "views": 1222,
+      "views": 1221,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/d2jR-N8nVWM"
