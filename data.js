@@ -428,23 +428,31 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-04-27T03:29:25",
+  "updated_at": "2026-04-27T17:31:18",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 5703,
-  "media_count": 264,
-  "avg_likes": 34,
-  "total_engagement": 409,
+  "followers": 5753,
+  "media_count": 265,
+  "avg_likes": 36,
+  "total_engagement": 434,
   "type_counts": {
-    "VIDEO": 5,
-    "CAROUSEL_ALBUM": 7
+    "CAROUSEL_ALBUM": 7,
+    "VIDEO": 5
   },
   "posts": [
+    {
+      "id": "17920167630337696",
+      "date": "27 Nis 2026",
+      "type": "CAROUSEL_ALBUM",
+      "likes": 32,
+      "comments": 1,
+      "url": "https://www.instagram.com/p/DXn7XV6CJoH/"
+    },
     {
       "id": "18105347032902803",
       "date": "26 Nis 2026",
       "type": "VIDEO",
-      "likes": 27,
+      "likes": 29,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DXltdQ7IPMH/"
     },
@@ -452,7 +460,7 @@ const INSTAGRAM = {
       "id": "18089660810248856",
       "date": "25 Nis 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 24,
+      "likes": 28,
       "comments": 0,
       "url": "https://www.instagram.com/p/DXjGTiHiCAA/"
     },
@@ -460,7 +468,7 @@ const INSTAGRAM = {
       "id": "18086971511203373",
       "date": "20 Nis 2026",
       "type": "VIDEO",
-      "likes": 15,
+      "likes": 17,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DXXAHRCI7gE/"
     },
@@ -476,8 +484,8 @@ const INSTAGRAM = {
       "id": "17948676963137020",
       "date": "18 Nis 2026",
       "type": "VIDEO",
-      "likes": 103,
-      "comments": 0,
+      "likes": 110,
+      "comments": 2,
       "url": "https://www.instagram.com/reel/DXR-eNPCCkE/"
     },
     {
@@ -492,7 +500,7 @@ const INSTAGRAM = {
       "id": "18555755458064956",
       "date": "10 Nis 2026",
       "type": "VIDEO",
-      "likes": 34,
+      "likes": 35,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DW8mL3tDfxe/"
     },
@@ -508,7 +516,7 @@ const INSTAGRAM = {
       "id": "18095278277320639",
       "date": "2 Nis 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 34,
+      "likes": 35,
       "comments": 0,
       "url": "https://www.instagram.com/p/DWorCleiNkY/"
     },
@@ -527,14 +535,6 @@ const INSTAGRAM = {
       "likes": 27,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DWlWvR0Iu4Q/"
-    },
-    {
-      "id": "18097648411818660",
-      "date": "26 Mar 2026",
-      "type": "CAROUSEL_ALBUM",
-      "likes": 27,
-      "comments": 0,
-      "url": "https://www.instagram.com/p/DWW5d3fCBrx/"
     }
   ],
   "follower_goal": 10000
