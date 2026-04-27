@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-27T20:31:29",
+  "updated_at": "2026-04-27T21:08:48",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,8 +10,8 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 125871,
-      "watch_hours": 482.6,
+      "views": 125647,
+      "watch_hours": 481.9,
       "subs_gained": 86,
       "subs_lost": 55,
       "avg_view_sec": 34
@@ -132,7 +132,7 @@ const YOUTUBE = {
       "id": "p6nrJUlbC0I",
       "title": "Canon IXUS I 📸 İkonik Dijital Fotoğraf Makinesi 🥰 #canon #ix",
       "date": "28 Mar 2026",
-      "views": 2091,
+      "views": 2092,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/p6nrJUlbC0I"
