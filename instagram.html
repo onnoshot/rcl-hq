@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram — Retrocameraland HQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#000;--bg-card:rgba(255,255,255,0.04);--bg-card-h:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border-s:rgba(255,255,255,0.14);
+  --t1:#fff;--t2:rgba(255,255,255,0.55);--t3:rgba(255,255,255,0.3);
+  --amber:#F5A623;--purple:#BF5AF2;--purple-10:rgba(191,90,242,0.1);--purple-20:rgba(191,90,242,0.2);
+  --green:#30D158;--red:#FF453A;
+  --r:14px;
+  --sans:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5;}
+
+nav{position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:center;border-bottom:1px solid var(--border);backdrop-filter:blur(24px) saturate(180%);background:rgba(0,0,0,0.8);}
+.nw{max-width:1320px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;gap:24px;}
+.nbrand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--t1);flex-shrink:0;}
+.nmark{font-size:0.7rem;font-weight:700;letter-spacing:0.06em;padding:4px 9px;border-radius:6px;background:var(--amber);color:#000;font-family:var(--mono);}
+.ntitle{font-size:0.8rem;font-weight:500;color:var(--t3);}
+.nlinks{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.nlinks::-webkit-scrollbar{display:none;}
+.nl{padding:5px 13px;border-radius:8px;font-size:0.8rem;font-weight:500;color:var(--t2);text-decoration:none;transition:color .15s,background .15s;white-space:nowrap;}
+.nl:hover{color:var(--t1);background:rgba(255,255,255,0.07);}
+.nl.active{color:var(--t1);background:rgba(255,255,255,0.09);}
+.nright{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.dot-live{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+#navTime{font-size:0.65rem;color:var(--t3);font-family:var(--mono);}
+
+.wrap{max-width:1320px;margin:0 auto;padding:0 24px 100px;}
+
+.hero{padding:72px 0 56px;border-bottom:1px solid var(--border);margin-bottom:64px;}
+.eyebrow{font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--purple);margin-bottom:16px;font-family:var(--mono);}
+.hero-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;letter-spacing:-0.035em;line-height:1.05;margin-bottom:16px;}
+.hero-sub{font-size:1rem;color:var(--t2);}
+
+.section{margin-bottom:64px;}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px;gap:12px;flex-wrap:wrap;}
+.sec-title{font-size:1.05rem;font-weight:600;}
+.sec-note{font-size:0.68rem;color:var(--t3);font-family:var(--mono);}
+
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.m{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:24px 22px;transition:border-color .2s,background .2s;}
+.m:hover{border-color:var(--border-s);background:var(--bg-card-h);}
+.m-lbl{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.13em;color:var(--t3);margin-bottom:10px;font-family:var(--mono);}
+.m-val{font-size:2.1rem;font-weight:700;letter-spacing:-0.04em;line-height:1;color:var(--t1);font-family:var(--mono);}
+.m-sub{font-size:0.67rem;color:var(--t3);margin-top:8px;font-family:var(--mono);}
+.m-accent{border-color:var(--purple-20);background:linear-gradient(135deg,rgba(191,90,242,0.07),rgba(191,90,242,0.02));}
+
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);transition:border-color .2s;}
+.card:hover{border-color:var(--border-s);}
+.cp{padding:28px;}
+.ch{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--border);}
+.ctitle{font-size:0.85rem;font-weight:600;color:var(--t2);}
+
+table{width:100%;border-collapse:collapse;}
+th{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--t3);font-family:var(--mono);font-weight:500;padding:10px 20px;text-align:left;border-bottom:1px solid var(--border);}
+td{font-size:0.8rem;padding:11px 20px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--t2);font-family:var(--mono);}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,0.02);color:var(--t1);}
+.num{color:var(--amber);}
+.dim{color:var(--t3);}
+.tag{display:inline-block;padding:2px 8px;border-radius:5px;font-size:0.62rem;font-weight:500;font-family:var(--mono);}
+
+.prog-track{height:6px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:4px;width:0;transition:width 1.4s cubic-bezier(.22,1,.36,1);}
+
+.stat-row{display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--border);}
+.stat-row:last-child{border-bottom:none;}
+.stat-label{font-size:0.82rem;color:var(--t2);}
+.stat-value{font-size:0.88rem;font-weight:600;font-family:var(--mono);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+
+.fu{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.fu.on{opacity:1;transform:none;}
+
+footer{border-top:1px solid var(--border);padding:28px 0;font-size:0.68rem;color:var(--t3);font-family:var(--mono);letter-spacing:0.06em;display:flex;align-items:center;flex-wrap:wrap;gap:12px;}
+.shimmer{background:linear-gradient(90deg,var(--amber),#fff,var(--amber));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:sh 3s infinite;}
+@keyframes sh{0%{background-position:200%;}100%{background-position:-200%;}}
+
+@media(max-width:1024px){.mg{grid-template-columns:repeat(2,1fr);}.g2{grid-template-columns:1fr;}}
+@media(max-width:640px){.wrap{padding:0 16px 80px;}.nw{padding:0 16px;}.hero-title{font-size:2.2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nw">
+    <a href="index.html" class="nbrand">
+      <span class="nmark">RCL</span>
+      <span class="ntitle">Headquarters</span>
+    </a>
+    <div class="nlinks">
+      <a href="index.html" class="nl">Dashboard</a>
+      <a href="instagram.html" class="nl active">Instagram</a>
+      <a href="youtube.html" class="nl">YouTube</a>
+    </div>
+    <div class="nright">
+      <div class="dot-live"></div>
+      <span id="navTime">—</span>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section class="hero fu">
+  <div class="eyebrow">📸 @retrocameraland · Instagram</div>
+  <h1 class="hero-title">Instagram<br>Analitikleri</h1>
+  <p class="hero-sub">Meta Graph API · Son güncelleme: <span id="igUpdated">—</span></p>
+</section>
+
+<!-- KPIs -->
+<section class="section fu">
+  <div class="sec-head">
+    <span class="sec-title">Kanal Genel Bakış</span>
+    <span class="sec-note">instagram.com/retrocameraland</span>
+  </div>
+  <div class="mg">
+    <div class="m m-accent">
+      <div class="m-lbl">Takipçi</div>
+      <div class="m-val" style="color:var(--purple)" id="ig-f">—</div>
+      <div class="m-sub" id="ig-f-sub">—</div>
+    </div>
+    <div class="m">
+      <div class="m-lbl">Toplam Gönderi</div>
+      <div class="m-val" id="ig-m">—</div>
+      <div class="m-sub">yayınlanmış içerik</div>
+    </div>
+    <div class="m">
+      <div class="m-lbl">Ort. Beğeni</div>
+      <div class="m-val" id="ig-al">—</div>
+      <div class="m-sub">son 12 gönderi</div>
+    </div>
+    <div class="m">
+      <div class="m-lbl">Toplam Etkileşim</div>
+      <div class="m-val" id="ig-eng">—</div>
+      <div class="m-sub">beğeni + yorum</div>
+    </div>
+  </div>
+</section>
+
+<!-- GOAL + BREAKDOWN -->
+<section class="section fu">
+  <div class="g2">
+    <div class="card cp">
+      <div class="ctitle" style="margin-bottom:6px">10.000 Takipçi Hedefi</div>
+      <div class="sec-note" style="margin-bottom:20px">Q2 2026 hedefi</div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:10px">
+        <span style="font-size:2.5rem;font-weight:700;letter-spacing:-0.04em;font-family:var(--mono);color:var(--purple)" id="ig-goal-val">—</span>
+        <div style="text-align:right">
+          <div style="font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--t3)">10.000</div>
+          <div class="sec-note">hedef</div>
+        </div>
+      </div>
+      <div class="prog-track">
+        <div class="prog-fill" style="background:var(--purple)" id="ig-goal-bar"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:10px">
+        <span class="sec-note" id="ig-goal-pct">—</span>
+        <span class="sec-note" id="ig-goal-remain">—</span>
+      </div>
+    </div>
+
+    <div class="card cp">
+      <div class="ctitle" style="margin-bottom:20px">İçerik Dağılımı</div>
+      <div id="typeRows"></div>
+      <div style="height:1px;background:var(--border);margin:16px 0"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap" id="typePills"></div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTS TABLE -->
+<section class="section fu">
+  <div class="sec-head">
+    <span class="sec-title">Son Gönderiler</span>
+    <a href="https://www.instagram.com/retrocameraland" target="_blank" style="font-size:0.72rem;color:var(--purple);text-decoration:none;font-family:var(--mono)">Profili aç →</a>
+  </div>
+  <div class="card">
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tarih</th>
+            <th>Tür</th>
+            <th>Beğeni</th>
+            <th>Yorum</th>
+            <th>Etkileşim</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody id="igBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT INSIGHT -->
+<section class="section fu">
+  <div class="sec-head">
+    <span class="sec-title">Performans Özeti</span>
+    <span class="sec-note">son 12 gönderi</span>
+  </div>
+  <div class="g2">
+    <div class="card cp">
+      <div class="ctitle" style="margin-bottom:20px">Etkileşim Metrikleri</div>
+      <div id="engRows"></div>
+    </div>
+    <div class="card cp">
+      <div class="ctitle" style="margin-bottom:20px">En İyi Gönderi</div>
+      <div id="topPost"></div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="wrap" style="padding-top:0">
+  <img src="rcl-logo.png" alt="" style="height:22px;opacity:.35;object-fit:contain;vertical-align:middle">
+  <span>retrocameraland.com · Meta Graph API · Saatlik güncelleme</span>
+  <span style="margin-left:auto" class="shimmer">Powered by Claude AI</span>
+</footer>
+
+<script src="data.js"></script>
+<script>
+const fmt   = (n,d=0) => Number(n).toLocaleString('tr-TR',{maximumFractionDigits:d});
+const fmtTL = n => '₺'+fmt(n);
+
+function counter(el, target, pre='', ms=850) {
+  if (!el) return;
+  let t0=null;
+  const step = ts => {
+    if (!t0) t0=ts;
+    const p=Math.min((ts-t0)/ms,1), e=1-Math.pow(1-p,4);
+    el.textContent = pre+fmt(Math.round(target*e));
+    if (p<1) requestAnimationFrame(step); else el.textContent=pre+fmt(target);
+  };
+  requestAnimationFrame(step);
+}
+
+function bar(id, pct, delay=500) {
+  setTimeout(()=>{ const el=document.getElementById(id); if(el) el.style.width=Math.min(pct,100)+'%'; }, delay);
+}
+
+function render() {
+  const ig = INSTAGRAM;
+  const goal = ig.follower_goal || 10000;
+  const pct = Math.min(Math.round(ig.followers/goal*100),100);
+
+  document.getElementById('navTime').textContent = new Date(ig.updated_at).toLocaleString('tr-TR',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  document.getElementById('igUpdated').textContent = new Date(ig.updated_at).toLocaleString('tr-TR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+
+  counter(document.getElementById('ig-f'),   ig.followers);
+  counter(document.getElementById('ig-m'),   ig.media_count);
+  counter(document.getElementById('ig-al'),  ig.avg_likes);
+  counter(document.getElementById('ig-eng'), ig.total_engagement);
+  document.getElementById('ig-f-sub').textContent = '%' + pct + ' → 10K hedef';
+
+  // Goal card
+  counter(document.getElementById('ig-goal-val'), ig.followers);
+  bar('ig-goal-bar', pct);
+  document.getElementById('ig-goal-pct').textContent = '%' + pct + ' tamamlandı';
+  document.getElementById('ig-goal-remain').textContent = fmt(goal - ig.followers) + ' kaldı';
+
+  // Type breakdown
+  const types = ig.type_counts || {};
+  const typeLabels = {VIDEO:'Reels',CAROUSEL_ALBUM:'Albüm',IMAGE:'Fotoğraf'};
+  const typeColors = {VIDEO:'var(--red)',CAROUSEL_ALBUM:'var(--purple)',IMAGE:'var(--blue)'};
+  const total = Object.values(types).reduce((s,v)=>s+v,0);
+
+  document.getElementById('typeRows').innerHTML = Object.entries(types).map(([k,v]) => {
+    const pct = total ? Math.round(v/total*100) : 0;
+    return `<div style="display:flex;flex-direction:column;gap:5px;margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between">
+        <span style="font-size:0.82rem;color:var(--t2)">${typeLabels[k]||k}</span>
+        <span style="font-size:0.82rem;font-family:var(--mono);color:${typeColors[k]||'var(--t1)'}">${v} gönderi · %${pct}</span>
+      </div>
+      <div class="prog-track" style="height:3px">
+        <div class="prog-fill" data-w="${pct}" style="background:${typeColors[k]||'var(--amber)'}"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  document.getElementById('typePills').innerHTML = Object.entries(types).map(([k,v]) =>
+    `<span style="padding:4px 12px;border-radius:20px;font-size:0.68rem;font-family:var(--mono);background:${typeColors[k]||'var(--amber)'}22;color:${typeColors[k]||'var(--amber)'};border:1px solid ${typeColors[k]||'var(--amber)'}44">${typeLabels[k]||k} ${v}</span>`
+  ).join('');
+
+  setTimeout(()=>{ document.querySelectorAll('[data-w]').forEach(b=>{ b.style.width=b.dataset.w+'%'; }); }, 600);
+
+  // Posts table
+  const posts = ig.posts || [];
+  document.getElementById('igBody').innerHTML = posts.map((p,i) => {
+    const typeLabel = {VIDEO:'Reels',CAROUSEL_ALBUM:'Albüm',IMAGE:'Fotoğraf'}[p.type] || p.type;
+    const typeColor = {VIDEO:'var(--red)',CAROUSEL_ALBUM:'var(--purple)',IMAGE:'var(--blue)'}[p.type] || 'var(--amber)';
+    const eng = p.likes + p.comments;
+    return `<tr>
+      <td class="dim">${i+1}</td>
+      <td class="dim">${p.date}</td>
+      <td><span class="tag" style="background:${typeColor}22;color:${typeColor}">${typeLabel}</span></td>
+      <td class="num">${fmt(p.likes)}</td>
+      <td class="dim">${fmt(p.comments)}</td>
+      <td style="color:var(--t1);font-weight:500">${fmt(eng)}</td>
+      <td><a href="${p.url}" target="_blank" style="color:var(--t3);text-decoration:none;font-size:0.68rem">↗ Aç</a></td>
+    </tr>`;
+  }).join('');
+
+  // Engagement rows
+  const totalLikes = posts.reduce((s,p)=>s+p.likes,0);
+  const totalComm  = posts.reduce((s,p)=>s+p.comments,0);
+  const engRate    = ig.followers > 0 ? ((totalLikes+totalComm)/posts.length/ig.followers*100).toFixed(2) : '—';
+  const maxLikes   = Math.max(...posts.map(p=>p.likes));
+  const minLikes   = Math.min(...posts.map(p=>p.likes));
+
+  document.getElementById('engRows').innerHTML = [
+    ['Toplam Beğeni', fmt(totalLikes)],
+    ['Toplam Yorum', fmt(totalComm)],
+    ['Ort. Beğeni', fmt(Math.round(totalLikes/posts.length))],
+    ['Etkileşim Oranı', '%'+engRate],
+    ['En Yüksek Beğeni', fmt(maxLikes)],
+    ['En Düşük Beğeni', fmt(minLikes)],
+  ].map(([l,v]) => `<div class="stat-row"><span class="stat-label">${l}</span><span class="stat-value" style="color:var(--amber)">${v}</span></div>`).join('');
+
+  // Top post
+  const top = posts.reduce((a,b) => (a.likes+a.comments)>(b.likes+b.comments)?a:b, posts[0]);
+  if (top) {
+    const topType = {VIDEO:'Reels',CAROUSEL_ALBUM:'Albüm',IMAGE:'Fotoğraf'}[top.type]||top.type;
+    const topColor = {VIDEO:'var(--red)',CAROUSEL_ALBUM:'var(--purple)',IMAGE:'var(--blue)'}[top.type]||'var(--amber)';
+    document.getElementById('topPost').innerHTML = `
+      <div style="margin-bottom:16px">
+        <span class="tag" style="background:${topColor}22;color:${topColor};margin-bottom:12px;display:inline-block">${topType}</span>
+        <div style="font-size:0.75rem;color:var(--t3);font-family:var(--mono);margin-bottom:12px">${top.date}</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px">
+          <div><div class="m-lbl">Beğeni</div><div style="font-size:1.6rem;font-weight:700;letter-spacing:-0.04em;font-family:var(--mono);color:var(--amber)">${fmt(top.likes)}</div></div>
+          <div><div class="m-lbl">Yorum</div><div style="font-size:1.6rem;font-weight:700;letter-spacing:-0.04em;font-family:var(--mono)">${fmt(top.comments)}</div></div>
+        </div>
+        <a href="${top.url}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:8px;background:rgba(191,90,242,0.12);border:1px solid rgba(191,90,242,0.25);color:var(--purple);text-decoration:none;font-size:0.75rem;font-family:var(--mono)">
+          📸 Gönderiyi Aç →
+        </a>
+      </div>`;
+  }
+}
+
+function initFade() {
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } }),
+    {threshold:0.06}
+  );
+  document.querySelectorAll('.fu').forEach((el,i) => {
+    el.style.transitionDelay = (i*0.07)+'s';
+    obs.observe(el);
+  });
+}
+
+render();
+initFade();
+</script>
+</body>
+</html>

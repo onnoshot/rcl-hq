@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YouTube — Retrocameraland HQ</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#000;--bg-card:rgba(255,255,255,0.04);--bg-card-h:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.08);--border-s:rgba(255,255,255,0.14);
+  --t1:#fff;--t2:rgba(255,255,255,0.55);--t3:rgba(255,255,255,0.3);
+  --amber:#F5A623;--red:#FF453A;--red-10:rgba(255,69,58,0.1);--red-20:rgba(255,69,58,0.2);
+  --green:#30D158;--teal:#5AC8FA;
+  --r:14px;
+  --sans:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono','SF Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.5;}
+
+nav{position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:center;border-bottom:1px solid var(--border);backdrop-filter:blur(24px) saturate(180%);background:rgba(0,0,0,0.8);}
+.nw{max-width:1320px;margin:0 auto;padding:0 24px;width:100%;display:flex;align-items:center;gap:24px;}
+.nbrand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--t1);flex-shrink:0;}
+.nmark{font-size:0.7rem;font-weight:700;letter-spacing:0.06em;padding:4px 9px;border-radius:6px;background:var(--amber);color:#000;font-family:var(--mono);}
+.ntitle{font-size:0.8rem;font-weight:500;color:var(--t3);}
+.nlinks{display:flex;gap:2px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.nlinks::-webkit-scrollbar{display:none;}
+.nl{padding:5px 13px;border-radius:8px;font-size:0.8rem;font-weight:500;color:var(--t2);text-decoration:none;transition:color .15s,background .15s;white-space:nowrap;}
+.nl:hover{color:var(--t1);background:rgba(255,255,255,0.07);}
+.nl.active{color:var(--t1);background:rgba(255,255,255,0.09);}
+.nright{display:flex;align-items:center;gap:8px;margin-left:auto;flex-shrink:0;}
+.dot-live{width:6px;height:6px;border-radius:50%;background:var(--green);animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.7);}}
+#navTime{font-size:0.65rem;color:var(--t3);font-family:var(--mono);}
+
+.wrap{max-width:1320px;margin:0 auto;padding:0 24px 100px;}
+
+.hero{padding:72px 0 56px;border-bottom:1px solid var(--border);margin-bottom:64px;}
+.eyebrow{font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--red);margin-bottom:16px;font-family:var(--mono);}
+.hero-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;letter-spacing:-0.035em;line-height:1.05;margin-bottom:16px;}
+.hero-sub{font-size:1rem;color:var(--t2);}
+
+.section{margin-bottom:64px;}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:24px;gap:12px;flex-wrap:wrap;}
+.sec-title{font-size:1.05rem;font-weight:600;}
+.sec-note{font-size:0.68rem;color:var(--t3);font-family:var(--mono);}
+
+.mg{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+.m{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);padding:24px 22px;transition:border-color .2s,background .2s;}
+.m:hover{border-color:var(--border-s);background:var(--bg-card-h);}
+.m-lbl{font-size:0.65rem;text-transform:uppercase;letter-spacing:0.13em;color:var(--t3);margin-bottom:10px;font-family:var(--mono);}
+.m-val{font-size:2.1rem;font-weight:700;letter-spacing:-0.04em;line-height:1;color:var(--t1);font-family:var(--mono);}
+.m-sub{font-size:0.67rem;color:var(--t3);margin-top:8px;font-family:var(--mono);}
+.m-accent{border-color:var(--red-20);background:linear-gradient(135deg,rgba(255,69,58,0.07),rgba(255,69,58,0.02));}
+
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--r);transition:border-color .2s;}
+.card:hover{border-color:var(--border-s);}
+.cp{padding:28px;}
+.ch{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--border);}
+.ctitle{font-size:0.85rem;font-weight:600;color:var(--t2);}
+
+table{width:100%;border-collapse:collapse;}
+th{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--t3);font-family:var(--mono);font-weight:500;padding:10px 20px;text-align:left;border-bottom:1px solid var(--border);}
+td{font-size:0.8rem;padding:11px 20px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--t2);font-family:var(--mono);}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,0.02);color:var(--t1);}
+.num{color:var(--amber);}
+.dim{color:var(--t3);}
+
+.prog-track{height:6px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:4px;width:0;transition:width 1.4s cubic-bezier(.22,1,.36,1);}
+
+.stat-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border);}
+.stat-row:last-child{border-bottom:none;}
+.stat-label{font-size:0.82rem;color:var(--t2);}
+.stat-value{font-size:0.88rem;font-weight:600;font-family:var(--mono);}
+
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:16px;}
+
+.an-notice{display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:10px;background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.2);font-size:0.75rem;color:rgba(245,166,35,0.8);font-family:var(--mono);}
+
+.fu{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;}
+.fu.on{opacity:1;transform:none;}
+
+footer{border-top:1px solid var(--border);padding:28px 0;font-size:0.68rem;color:var(--t3);font-family:var(--mono);letter-spacing:0.06em;display:flex;align-items:center;flex-wrap:wrap;gap:12px;}
+.shimmer{background:linear-gradient(90deg,var(--amber),#fff,var(--amber));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:sh 3s infinite;}
+@keyframes sh{0%{background-position:200%;}100%{background-position:-200%;}}
+
+@media(max-width:1024px){.mg{grid-template-columns:repeat(2,1fr);}.g2,.g21{grid-template-columns:1fr;}}
+@media(max-width:640px){.wrap{padding:0 16px 80px;}.nw{padding:0 16px;}.hero-title{font-size:2.2rem;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nw">
+    <a href="index.html" class="nbrand">
+      <span class="nmark">RCL</span>
+      <span class="ntitle">Headquarters</span>
+    </a>
+    <div class="nlinks">
+      <a href="index.html" class="nl">Dashboard</a>
+      <a href="instagram.html" class="nl">Instagram</a>
+      <a href="youtube.html" class="nl active">YouTube</a>
+    </div>
+    <div class="nright">
+      <div class="dot-live"></div>
+      <span id="navTime">—</span>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section class="hero fu">
+  <div class="eyebrow">▶ Retro Camera Land · YouTube</div>
+  <h1 class="hero-title">YouTube<br>Analitikleri</h1>
+  <p class="hero-sub">YouTube Data API v3 + Analytics · Son güncelleme: <span id="ytUpdated">—</span></p>
+</section>
+
+<!-- KPIs -->
+<section class="section fu">
+  <div class="sec-head">
+    <span class="sec-title">Kanal Genel Bakış</span>
+    <span class="sec-note">youtube.com/@retrocameraland</span>
+  </div>
+  <div class="mg">
+    <div class="m m-accent">
+      <div class="m-lbl">Abone Sayısı</div>
+      <div class="m-val" style="color:var(--red)" id="yt-s">—</div>
+      <div class="m-sub" id="yt-s-sub">—</div>
+    </div>
+    <div class="m">
+      <div class="m-lbl">Toplam İzlenme</div>
+      <div class="m-val" id="yt-v">—</div>
+      <div class="m-sub">tüm zamanlar</div>
+    </div>
+    <div class="m">
+      <div class="m-lbl">Video Sayısı</div>
+      <div class="m-val" id="yt-c">—</div>
+      <div class="m-sub">yayınlanmış video</div>
+    </div>
+    <div class="m">
+      <div class="m-lbl">Son 30 Gün</div>
+      <div class="m-val" id="yt-30">—</div>
+      <div class="m-sub" id="yt-30-sub">izlenme</div>
+    </div>
+  </div>
+</section>
+
+<!-- GOAL -->
+<section class="section fu">
+  <div class="sec-head">
+    <span class="sec-title">10.000 Abone Hedefi</span>
+    <span class="sec-note">Q2 2026</span>
+  </div>
+  <div class="card cp">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:16px">
+      <div>
+        <div style="font-size:3rem;font-weight:700;letter-spacing:-0.04em;font-family:var(--mono);color:var(--red);line-height:1" id="yt-goal-val">—</div>
+        <div class="sec-note" style="margin-top:6px">mevcut abone</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:1.4rem;font-weight:700;font-family:var(--mono);color:var(--t3)">10.000</div>
+        <div class="sec-note">hedef</div>
+      </div>
+    </div>
+    <div class="prog-track" style="margin-bottom:10px">
+      <div class="prog-fill" style="background:var(--red)" id="yt-goal-bar"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between">
+      <span class="sec-note" id="yt-goal-pct">—</span>
+      <span class="sec-note" id="yt-goal-remain">—</span>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS -->
+<section class="section fu" id="analyticsSection">
+  <div class="sec-head">
+    <span class="sec-title">Analytics — Son 30 Gün</span>
+    <span class="sec-note" id="an-note">YouTube Analytics API</span>
+  </div>
+  <div id="analyticsContent"></div>
+</section>
+
+<!-- VIDEOS -->
+<section class="section fu">
+  <div class="sec-head">
+    <span class="sec-title">Son Videolar</span>
+    <a href="https://www.youtube.com/@retrocameraland" target="_blank" style="font-size:0.72rem;color:var(--red);text-decoration:none;font-family:var(--mono)">Kanala git →</a>
+  </div>
+  <div class="card">
+    <div style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Tarih</th>
+            <th>Video</th>
+            <th>İzlenme</th>
+            <th>Beğeni</th>
+            <th>Link</th>
+          </tr>
+        </thead>
+        <tbody id="ytBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="wrap" style="padding-top:0">
+  <img src="rcl-logo.png" alt="" style="height:22px;opacity:.35;object-fit:contain;vertical-align:middle">
+  <span>retrocameraland.com · YouTube Data API v3 + Analytics API · Saatlik güncelleme</span>
+  <span style="margin-left:auto" class="shimmer">Powered by Claude AI</span>
+</footer>
+
+<script src="data.js"></script>
+<script>
+const fmt   = (n,d=0) => Number(n).toLocaleString('tr-TR',{maximumFractionDigits:d});
+const fmtK  = n => n>=1000000?(n/1000000).toFixed(1)+'M':n>=1000?(n/1000).toFixed(1)+'K':String(n);
+
+function counter(el, target, pre='', ms=850) {
+  if (!el) return;
+  let t0=null;
+  const step = ts => {
+    if (!t0) t0=ts;
+    const p=Math.min((ts-t0)/ms,1), e=1-Math.pow(1-p,4);
+    el.textContent = pre+fmt(Math.round(target*e));
+    if (p<1) requestAnimationFrame(step); else el.textContent=pre+fmt(target);
+  };
+  requestAnimationFrame(step);
+}
+
+function bar(id, pct, delay=500) {
+  setTimeout(()=>{ const el=document.getElementById(id); if(el) el.style.width=Math.min(pct,100)+'%'; }, delay);
+}
+
+function render() {
+  const yt = YOUTUBE;
+  const ch = yt.channel;
+  const goal = yt.sub_goal || 10000;
+  const pct = Math.min(Math.round(ch.subscribers/goal*100),100);
+
+  document.getElementById('navTime').textContent = new Date(yt.updated_at).toLocaleString('tr-TR',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+  document.getElementById('ytUpdated').textContent = new Date(yt.updated_at).toLocaleString('tr-TR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+
+  counter(document.getElementById('yt-s'), ch.subscribers);
+  counter(document.getElementById('yt-v'), ch.total_views);
+  counter(document.getElementById('yt-c'), ch.video_count);
+  document.getElementById('yt-s-sub').textContent = '%'+pct+' → 10K hedef';
+
+  const an = yt.analytics;
+  if (an && an.last_30d) {
+    counter(document.getElementById('yt-30'), an.last_30d.views);
+  } else {
+    document.getElementById('yt-30').textContent = '—';
+    document.getElementById('yt-30-sub').textContent = 'Analytics bekleniyor';
+  }
+
+  // Goal
+  counter(document.getElementById('yt-goal-val'), ch.subscribers);
+  bar('yt-goal-bar', pct);
+  document.getElementById('yt-goal-pct').textContent = '%'+pct+' tamamlandı';
+  document.getElementById('yt-goal-remain').textContent = fmt(goal-ch.subscribers)+' abone kaldı';
+
+  // Analytics section
+  const anEl = document.getElementById('analyticsContent');
+  if (an && an.last_30d) {
+    const d = an.last_30d;
+    document.getElementById('an-note').textContent = 'Son 30 gün · YouTube Analytics';
+    anEl.innerHTML = `
+      <div class="g21" style="margin-bottom:16px">
+        <div class="card">
+          <div class="ch"><span class="ctitle">Aylık İzlenme Trendi</span><span class="sec-note">Son 6 ay</span></div>
+          <div style="padding:24px 24px 20px"><div style="height:220px"><canvas id="ytChart"></canvas></div></div>
+        </div>
+        <div class="card cp">
+          <div class="ctitle" style="margin-bottom:20px">30 Gün Özeti</div>
+          ${[
+            ['İzlenme',fmt(d.views)],
+            ['İzleme (Saat)',fmt(d.watch_hours)+' sa'],
+            ['Yeni Abone','+'+fmt(d.subs_gained)],
+            ['Kaybedilen','-'+fmt(d.subs_lost||0)],
+            ['Net Abone','+'+(d.subs_gained-(d.subs_lost||0))],
+            ['Ort. Süre',Math.floor(d.avg_view_sec/60)+'d '+((d.avg_view_sec||0)%60)+'s'],
+          ].map(([l,v])=>`<div class="stat-row"><span class="stat-label">${l}</span><span class="stat-value" style="color:var(--amber)">${v}</span></div>`).join('')}
+        </div>
+      </div>`;
+
+    if (an.monthly && an.monthly.length) {
+      setTimeout(() => {
+        const views = an.monthly.map(m=>m.views);
+        const maxV = Math.max(...views);
+        new Chart(document.getElementById('ytChart').getContext('2d'), {
+          type:'bar',
+          data:{
+            labels: an.monthly.map(m=>m.label),
+            datasets:[{
+              data: views,
+              backgroundColor: views.map(v=>v===maxV?'rgba(255,69,58,0.85)':'rgba(255,69,58,0.25)'),
+              borderColor:     views.map(v=>v===maxV?'#FF453A':'rgba(255,69,58,0.45)'),
+              borderWidth:1, borderRadius:5,
+            }]
+          },
+          options:{
+            responsive:true, maintainAspectRatio:false,
+            plugins:{
+              legend:{display:false},
+              tooltip:{callbacks:{label:ctx=>['  İzlenme: '+fmt(ctx.parsed.y),'  Yeni Abone: +'+fmt(an.monthly[ctx.dataIndex].subs_gained)]},
+                backgroundColor:'rgba(10,10,10,0.95)',borderColor:'rgba(255,69,58,0.3)',borderWidth:1,
+                titleColor:'#fff',bodyColor:'rgba(255,255,255,0.6)',padding:12,cornerRadius:8}
+            },
+            scales:{
+              x:{ticks:{font:{family:'JetBrains Mono',size:9},color:'rgba(255,255,255,0.3)'},grid:{display:false},border:{display:false}},
+              y:{ticks:{font:{family:'JetBrains Mono',size:9},color:'rgba(255,255,255,0.3)',callback:v=>v>=1000?fmt(v/1000)+'K':v},grid:{color:'rgba(255,255,255,0.05)'},border:{display:false}},
+            },
+            animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*70}
+          }
+        });
+      }, 200);
+    }
+  } else {
+    anEl.innerHTML = `<div class="an-notice">⚠ Analytics verisi henüz mevcut değil. YouTube Studio'dan Analytics API'yi etkinleştirin.</div>`;
+  }
+
+  // Videos table
+  const videos = yt.videos || [];
+  document.getElementById('ytBody').innerHTML = videos.map((v,i) => `
+    <tr>
+      <td class="dim">${i+1}</td>
+      <td class="dim" style="white-space:nowrap">${v.date}</td>
+      <td style="color:var(--t1);font-size:0.75rem;max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+        <a href="${v.url}" target="_blank" style="color:inherit;text-decoration:none">${v.title}</a>
+      </td>
+      <td class="num">${fmt(v.views)}</td>
+      <td class="dim">${fmt(v.likes)}</td>
+      <td><a href="${v.url}" target="_blank" style="color:var(--t3);font-size:0.68rem;text-decoration:none">↗ Aç</a></td>
+    </tr>`
+  ).join('');
+}
+
+function initFade() {
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); obs.unobserve(e.target); } }),
+    {threshold:0.06}
+  );
+  document.querySelectorAll('.fu').forEach((el,i) => {
+    el.style.transitionDelay = (i*0.07)+'s';
+    obs.observe(el);
+  });
+}
+
+render();
+initFade();
+</script>
+</body>
+</html>
