@@ -42,15 +42,16 @@ nav{position:sticky;top:0;z-index:100;height:52px;display:flex;align-items:cente
 .wrap{max-width:1320px;margin:0 auto;padding:0 24px 100px;}
 
 /* HERO */
-.hero{padding:72px 0 56px;border-bottom:1px solid var(--border);margin-bottom:64px;}
-.eyebrow{font-size:0.68rem;font-weight:600;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:16px;font-family:var(--mono);}
-.hero-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:700;letter-spacing:-0.035em;line-height:1.05;margin-bottom:16px;}
-.hero-sub{font-size:1rem;color:var(--t2);font-weight:400;}
-.hero-meta{margin-top:28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
-.hero-stat{display:flex;flex-direction:column;gap:3px;}
-.hero-stat-val{font-size:1.5rem;font-weight:700;letter-spacing:-0.04em;font-family:var(--mono);color:var(--amber);}
-.hero-stat-lbl{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);}
-.hero-div{width:1px;height:40px;background:var(--border);}
+.hero{padding:80px 0 64px;border-bottom:1px solid var(--border);margin-bottom:64px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% -10%,rgba(245,166,35,0.07) 0%,transparent 70%);pointer-events:none;}
+.hero-wordmark{font-size:clamp(2.8rem,7vw,5.2rem);font-weight:800;letter-spacing:-0.045em;line-height:1;margin-bottom:20px;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,0.65) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-wordmark span{background:linear-gradient(135deg,var(--amber),#f0c040);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-tagline{font-size:1rem;color:var(--t3);font-weight:400;letter-spacing:0.01em;max-width:420px;}
+.hero-meta{margin-top:40px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.hero-stat{display:flex;flex-direction:column;gap:4px;}
+.hero-stat-val{font-size:1.6rem;font-weight:700;letter-spacing:-0.04em;font-family:var(--mono);color:var(--amber);}
+.hero-stat-lbl{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--t3);font-family:var(--mono);}
+.hero-div{width:1px;height:44px;background:var(--border);}
 
 /* SECTION */
 .section{margin-bottom:64px;}
@@ -190,9 +191,8 @@ footer{border-top:1px solid var(--border);padding:28px 0;font-size:0.68rem;color
 
 <!-- HERO -->
 <section class="hero fu">
-  <div class="eyebrow">Retrocameraland · HQ Dashboard</div>
-  <h1 class="hero-title">İş Komuta<br>Merkezi</h1>
-  <p class="hero-sub">Shopify · Instagram · YouTube — saatlik güncelleme</p>
+  <h1 class="hero-wordmark">Retro<span>camera</span>land</h1>
+  <p class="hero-tagline">Büyüyen bir markanın canlı verileri.</p>
   <div class="hero-meta">
     <div class="hero-stat">
       <div class="hero-stat-val" id="h-rev">—</div>
