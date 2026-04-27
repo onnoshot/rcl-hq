@@ -428,13 +428,13 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-04-27T18:49:54",
+  "updated_at": "2026-04-27T19:31:23",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 5750,
+  "followers": 5751,
   "media_count": 265,
   "avg_likes": 36,
-  "total_engagement": 435,
+  "total_engagement": 436,
   "type_counts": {
     "CAROUSEL_ALBUM": 7,
     "VIDEO": 5
@@ -444,7 +444,7 @@ const INSTAGRAM = {
       "id": "17920167630337696",
       "date": "27 Nis 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 32,
+      "likes": 33,
       "comments": 1,
       "url": "https://www.instagram.com/p/DXn7XV6CJoH/"
     },
