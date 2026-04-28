@@ -153,7 +153,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-04-29T01:30:56",
+  "updated_at": "2026-04-29T02:08:18",
   "period_30d": {
     "revenue": 57330,
     "orders": 5,
@@ -302,6 +302,10 @@ const SHOPIFY = {
     }
   ],
   "cameras": [
+    {
+      "name": "Fujifilm Finepix Z110",
+      "price": 15490
+    },
     {
       "name": "Sony Cyber-shot DSC-TX9",
       "price": 14490
