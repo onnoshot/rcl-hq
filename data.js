@@ -1,20 +1,20 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-28T00:31:44",
+  "updated_at": "2026-04-29T01:08:11",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3760,
-    "total_views": 1043862,
+    "total_views": 1046403,
     "video_count": 370
   },
   "analytics": {
     "last_30d": {
-      "views": 115386,
-      "watch_hours": 443.4,
+      "views": 108081,
+      "watch_hours": 410.5,
       "subs_gained": 89,
-      "subs_lost": 63,
-      "avg_view_sec": 33
+      "subs_lost": 70,
+      "avg_view_sec": 32
     },
     "monthly": [
       {
@@ -43,15 +43,15 @@ const YOUTUBE = {
       },
       {
         "label": "Mar 26",
-        "views": 234232,
-        "watch_min": 39277,
+        "views": 234135,
+        "watch_min": 39266,
         "subs_gained": 337
       },
       {
         "label": "Nis 26",
-        "views": 85039,
-        "watch_min": 18602,
-        "subs_gained": 72
+        "views": 88139,
+        "watch_min": 19143,
+        "subs_gained": 81
       }
     ]
   },
@@ -60,7 +60,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 663,
+      "views": 680,
       "likes": 0,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -69,7 +69,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkesin Peşinde! Y2K Dijital",
       "date": "25 Nis 2026",
-      "views": 68,
+      "views": 91,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -78,7 +78,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2230,
+      "views": 2234,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/ie_8TBsWv-Y"
@@ -87,7 +87,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 2594,
+      "views": 2604,
       "likes": 27,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -96,7 +96,7 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2020,
+      "views": 2029,
       "likes": 23,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
@@ -105,7 +105,7 @@ const YOUTUBE = {
       "id": "zvmyHAaT9cc",
       "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
       "date": "1 Nis 2026",
-      "views": 2072,
+      "views": 2077,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/zvmyHAaT9cc"
@@ -114,16 +114,16 @@ const YOUTUBE = {
       "id": "Q3yhoMup7hg",
       "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
       "date": "1 Nis 2026",
-      "views": 587,
+      "views": 592,
       "likes": 7,
-      "comments": 0,
+      "comments": 1,
       "url": "https://youtu.be/Q3yhoMup7hg"
     },
     {
       "id": "To_AIAUFESk",
       "title": "Canon IXUS 160: Küçük Kamera, Büyük Sürpriz",
       "date": "31 Mar 2026",
-      "views": 214,
+      "views": 215,
       "likes": 11,
       "comments": 1,
       "url": "https://youtu.be/To_AIAUFESk"
@@ -132,7 +132,7 @@ const YOUTUBE = {
       "id": "p6nrJUlbC0I",
       "title": "Canon IXUS I 📸 İkonik Dijital Fotoğraf Makinesi 🥰 #canon #ix",
       "date": "28 Mar 2026",
-      "views": 2092,
+      "views": 2095,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/p6nrJUlbC0I"
@@ -141,7 +141,7 @@ const YOUTUBE = {
       "id": "d2jR-N8nVWM",
       "title": "Canon IXUS I 📸 Efsane Dijital Fotoğraf Makinesi ❤️‍🔥 #canon ",
       "date": "27 Mar 2026",
-      "views": 1222,
+      "views": 1226,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/d2jR-N8nVWM"
