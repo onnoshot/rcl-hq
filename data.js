@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-29T20:42:00",
+  "updated_at": "2026-04-29T21:04:41",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,13 +57,13 @@ const YOUTUBE = {
   },
   "videos": [
     {
-      "id": "Pj1Dki5CsjY",
+      "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 0,
-      "likes": 0,
+      "views": 208,
+      "likes": 4,
       "comments": 0,
-      "url": "https://youtu.be/Pj1Dki5CsjY"
+      "url": "https://youtu.be/UcdfytnpKEA"
     },
     {
       "id": "dFixvsNLQ_k",
@@ -94,7 +94,7 @@ const YOUTUBE = {
     },
     {
       "id": "-mrJ8maR2eo",
-      "title": "Canon PowerShot SD400: 2026'da Herkesin Peşinde! Y2K Dijital",
+      "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
       "views": 108,
       "likes": 8,
@@ -115,7 +115,7 @@ const YOUTUBE = {
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
       "views": 2612,
-      "likes": 27,
+      "likes": 28,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
     },
@@ -123,7 +123,7 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2032,
+      "views": 2033,
       "likes": 24,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
