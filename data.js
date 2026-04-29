@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-29T03:31:01",
+  "updated_at": "2026-04-29T11:26:51",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -60,8 +60,8 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 680,
-      "likes": 0,
+      "views": 684,
+      "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
     },
@@ -69,7 +69,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkesin Peşinde! Y2K Dijital",
       "date": "25 Nis 2026",
-      "views": 91,
+      "views": 102,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -78,7 +78,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2236,
+      "views": 2238,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/ie_8TBsWv-Y"
@@ -87,7 +87,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 2606,
+      "views": 2609,
       "likes": 27,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -96,16 +96,25 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2030,
-      "likes": 23,
+      "views": 2032,
+      "likes": 24,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
+    },
+    {
+      "id": "zvmyHAaT9cc",
+      "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
+      "date": "1 Nis 2026",
+      "views": 2080,
+      "likes": 8,
+      "comments": 0,
+      "url": "https://youtu.be/zvmyHAaT9cc"
     },
     {
       "id": "Q3yhoMup7hg",
       "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
       "date": "1 Nis 2026",
-      "views": 595,
+      "views": 597,
       "likes": 7,
       "comments": 1,
       "url": "https://youtu.be/Q3yhoMup7hg"
@@ -114,7 +123,7 @@ const YOUTUBE = {
       "id": "To_AIAUFESk",
       "title": "Canon IXUS 160: Küçük Kamera, Büyük Sürpriz",
       "date": "31 Mar 2026",
-      "views": 215,
+      "views": 216,
       "likes": 11,
       "comments": 1,
       "url": "https://youtu.be/To_AIAUFESk"
@@ -123,8 +132,8 @@ const YOUTUBE = {
       "id": "p6nrJUlbC0I",
       "title": "Canon IXUS I 📸 İkonik Dijital Fotoğraf Makinesi 🥰 #canon #ix",
       "date": "28 Mar 2026",
-      "views": 2096,
-      "likes": 9,
+      "views": 2098,
+      "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/p6nrJUlbC0I"
     },
@@ -132,19 +141,10 @@ const YOUTUBE = {
       "id": "d2jR-N8nVWM",
       "title": "Canon IXUS I 📸 Efsane Dijital Fotoğraf Makinesi ❤️‍🔥 #canon ",
       "date": "27 Mar 2026",
-      "views": 1227,
+      "views": 1228,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/d2jR-N8nVWM"
-    },
-    {
-      "id": "u_2gTtXlJ4g",
-      "title": "Udaipur'un Ruhu: Y2K Dijital Kamera Günlüğü | Canon PowerSho",
-      "date": "26 Mar 2026",
-      "views": 87,
-      "likes": 3,
-      "comments": 1,
-      "url": "https://youtu.be/u_2gTtXlJ4g"
     }
   ],
   "sub_goal": 10000
