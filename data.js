@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-29T21:58:28",
+  "updated_at": "2026-04-29T22:21:09",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,10 +10,10 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 108081,
-      "watch_hours": 410.5,
-      "subs_gained": 89,
-      "subs_lost": 70,
+      "views": 109859,
+      "watch_hours": 416.0,
+      "subs_gained": 95,
+      "subs_lost": 71,
       "avg_view_sec": 32
     },
     "monthly": [
@@ -49,9 +49,9 @@ const YOUTUBE = {
       },
       {
         "label": "Nis 26",
-        "views": 88139,
-        "watch_min": 19143,
-        "subs_gained": 81
+        "views": 89917,
+        "watch_min": 19473,
+        "subs_gained": 87
       }
     ]
   },
@@ -60,8 +60,8 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 562,
-      "likes": 12,
+      "views": 699,
+      "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
     },
@@ -69,8 +69,8 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 5,
-      "likes": 2,
+      "views": 6,
+      "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/dFixvsNLQ_k"
     },
@@ -78,8 +78,8 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 154,
-      "likes": 2,
+      "views": 178,
+      "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
     },
@@ -87,7 +87,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 690,
+      "views": 691,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -132,7 +132,7 @@ const YOUTUBE = {
       "id": "zvmyHAaT9cc",
       "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
       "date": "1 Nis 2026",
-      "views": 2084,
+      "views": 2086,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/zvmyHAaT9cc"
@@ -141,7 +141,7 @@ const YOUTUBE = {
       "id": "Q3yhoMup7hg",
       "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
       "date": "1 Nis 2026",
-      "views": 601,
+      "views": 602,
       "likes": 7,
       "comments": 2,
       "url": "https://youtu.be/Q3yhoMup7hg"
