@@ -153,23 +153,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-04-29T11:26:53",
+  "updated_at": "2026-04-29T17:59:07",
   "period_30d": {
-    "revenue": 57330,
-    "orders": 5,
-    "aov": 11466
+    "revenue": 65320,
+    "orders": 6,
+    "aov": 10887
   },
   "period_90d": {
-    "revenue": 143250,
-    "orders": 12,
-    "aov": 11938
+    "revenue": 151240,
+    "orders": 13,
+    "aov": 11634
   },
   "period_year": {
-    "revenue": 693145,
-    "orders": 58,
-    "aov": 11951
+    "revenue": 701135,
+    "orders": 59,
+    "aov": 11884
   },
-  "customers_total": 681,
+  "customers_total": 682,
   "monthly_labels": [
     "May 25",
     "Haz 25",
@@ -196,7 +196,7 @@ const SHOPIFY = {
     56890,
     56890,
     46450,
-    57330
+    65320
   ],
   "monthly_orders": [
     0,
@@ -210,7 +210,7 @@ const SHOPIFY = {
     6,
     6,
     4,
-    5
+    6
   ],
   "channels": [
     {
@@ -219,17 +219,17 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 23,
       "rev": 305820,
-      "order_pct": 39.7,
-      "rev_pct": 44.1
+      "order_pct": 39.0,
+      "rev_pct": 43.6
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 19,
-      "rev": 216176,
-      "order_pct": 32.8,
-      "rev_pct": 31.2
+      "orders": 20,
+      "rev": 224166,
+      "order_pct": 33.9,
+      "rev_pct": 32.0
     },
     {
       "name": "Instagram",
@@ -237,8 +237,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 14,
       "rev": 151919,
-      "order_pct": 24.1,
-      "rev_pct": 21.9
+      "order_pct": 23.7,
+      "rev_pct": 21.7
     },
     {
       "name": "YouTube",
@@ -260,6 +260,10 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "29 Nis 2026",
+      "amount": 7990
+    },
     {
       "date": "26 Nis 2026",
       "amount": 9990
@@ -295,10 +299,6 @@ const SHOPIFY = {
     {
       "date": "8 Mar 2026",
       "amount": 11490
-    },
-    {
-      "date": "27 Şub 2026",
-      "amount": 9990
     }
   ],
   "cameras": [
@@ -391,10 +391,6 @@ const SHOPIFY = {
       "price": 8490
     },
     {
-      "name": "Sony Cybershot DSC-S85",
-      "price": 7990
-    },
-    {
       "name": "Kodak ZX1 “Weather-Resistant”",
       "price": 4900
     }
@@ -426,7 +422,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 76
+  "out_of_stock": 77
 };
 /* ─── SHOPIFY DATA END ─── */
 
