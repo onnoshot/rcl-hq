@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-29T19:04:34",
+  "updated_at": "2026-04-29T19:41:56",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -60,8 +60,8 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 1,
-      "likes": 0,
+      "views": 3,
+      "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/dFixvsNLQ_k"
     },
@@ -69,8 +69,8 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 0,
-      "likes": 0,
+      "views": 148,
+      "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
     },
@@ -114,7 +114,7 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2032,
+      "views": 2033,
       "likes": 24,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
