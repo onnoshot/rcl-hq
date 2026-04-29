@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-29T03:08:20",
+  "updated_at": "2026-04-29T03:31:01",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -102,15 +102,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/mUJq-SQWXX8"
     },
     {
-      "id": "zvmyHAaT9cc",
-      "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
-      "date": "1 Nis 2026",
-      "views": 2079,
-      "likes": 8,
-      "comments": 0,
-      "url": "https://youtu.be/zvmyHAaT9cc"
-    },
-    {
       "id": "Q3yhoMup7hg",
       "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
       "date": "1 Nis 2026",
@@ -145,6 +136,15 @@ const YOUTUBE = {
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/d2jR-N8nVWM"
+    },
+    {
+      "id": "u_2gTtXlJ4g",
+      "title": "Udaipur'un Ruhu: Y2K Dijital Kamera Günlüğü | Canon PowerSho",
+      "date": "26 Mar 2026",
+      "views": 87,
+      "likes": 3,
+      "comments": 1,
+      "url": "https://youtu.be/u_2gTtXlJ4g"
     }
   ],
   "sub_goal": 10000
