@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-29T20:04:37",
+  "updated_at": "2026-04-29T20:42:00",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3760,
     "total_views": 1047895,
-    "video_count": 372
+    "video_count": 373
   },
   "analytics": {
     "last_30d": {
@@ -57,11 +57,20 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "Pj1Dki5CsjY",
+      "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
+      "date": "29 Nis 2026",
+      "views": 0,
+      "likes": 0,
+      "comments": 0,
+      "url": "https://youtu.be/Pj1Dki5CsjY"
+    },
+    {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 2,
-      "likes": 0,
+      "views": 3,
+      "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/dFixvsNLQ_k"
     },
@@ -69,8 +78,8 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 115,
-      "likes": 1,
+      "views": 154,
+      "likes": 2,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
     },
@@ -78,7 +87,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 687,
+      "views": 689,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -96,7 +105,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2243,
+      "views": 2242,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/ie_8TBsWv-Y"
@@ -105,7 +114,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 2610,
+      "views": 2612,
       "likes": 27,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -132,19 +141,10 @@ const YOUTUBE = {
       "id": "Q3yhoMup7hg",
       "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
       "date": "1 Nis 2026",
-      "views": 597,
+      "views": 598,
       "likes": 7,
       "comments": 1,
       "url": "https://youtu.be/Q3yhoMup7hg"
-    },
-    {
-      "id": "To_AIAUFESk",
-      "title": "Canon IXUS 160: Küçük Kamera, Büyük Sürpriz",
-      "date": "31 Mar 2026",
-      "views": 217,
-      "likes": 11,
-      "comments": 1,
-      "url": "https://youtu.be/To_AIAUFESk"
     }
   ],
   "sub_goal": 10000
