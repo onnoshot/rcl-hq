@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-30T09:59:06",
+  "updated_at": "2026-04-30T10:21:50",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3760,
-    "total_views": 1048121,
+    "total_views": 1048946,
     "video_count": 373
   },
   "analytics": {
@@ -60,7 +60,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 1127,
+      "views": 1131,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -70,7 +70,7 @@ const YOUTUBE = {
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
       "views": 10,
-      "likes": 3,
+      "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/dFixvsNLQ_k"
     },
