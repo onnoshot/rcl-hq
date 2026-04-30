@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-30T14:05:38",
+  "updated_at": "2026-04-30T14:28:21",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 3770,
+    "subscribers": 3760,
     "total_views": 1048946,
     "video_count": 373
   },
@@ -60,7 +60,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 1463,
+      "views": 1477,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -105,8 +105,8 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2628,
-      "likes": 21,
+      "views": 2683,
+      "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/ie_8TBsWv-Y"
     },
@@ -114,8 +114,8 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 2947,
-      "likes": 33,
+      "views": 2959,
+      "likes": 32,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
     },
