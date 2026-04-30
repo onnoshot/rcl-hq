@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-01T00:28:54",
+  "updated_at": "2026-05-01T01:06:18",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,8 +10,8 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 91667,
-      "watch_hours": 330.4,
+      "views": 91751,
+      "watch_hours": 330.6,
       "subs_gained": 94,
       "subs_lost": 69,
       "avg_view_sec": 30
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 1841,
+      "views": 2081,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 130,
+      "views": 137,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -108,8 +108,8 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2806,
-      "likes": 22,
+      "views": 2825,
+      "likes": 21,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
     },
