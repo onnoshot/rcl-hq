@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-30T23:28:51",
+  "updated_at": "2026-05-01T00:06:15",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,19 +10,13 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 101414,
-      "watch_hours": 379.6,
-      "subs_gained": 97,
-      "subs_lost": 73,
-      "avg_view_sec": 31
+      "views": 91667,
+      "watch_hours": 330.4,
+      "subs_gained": 94,
+      "subs_lost": 69,
+      "avg_view_sec": 30
     },
     "monthly": [
-      {
-        "label": "Kas 25",
-        "views": 49291,
-        "watch_min": 4313,
-        "subs_gained": 323
-      },
       {
         "label": "Ara 25",
         "views": 102641,
@@ -78,8 +72,8 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 29,
-      "likes": 5,
+      "views": 35,
+      "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/dFixvsNLQ_k"
     },
@@ -123,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 3711,
+      "views": 3806,
       "likes": 37,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
