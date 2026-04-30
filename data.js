@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-30T20:06:00",
+  "updated_at": "2026-04-30T20:28:40",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -60,8 +60,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 1895,
-      "likes": 4,
+      "views": 1911,
+      "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -69,7 +69,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 1828,
+      "views": 1820,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -87,7 +87,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 286,
+      "views": 215,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -96,7 +96,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 698,
+      "views": 697,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -123,8 +123,8 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 3545,
-      "likes": 36,
+      "views": 3584,
+      "likes": 35,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
     },
@@ -132,7 +132,7 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2047,
+      "views": 2044,
       "likes": 24,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
