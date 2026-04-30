@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-30T09:21:47",
+  "updated_at": "2026-04-30T09:59:06",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -60,8 +60,8 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 1121,
-      "likes": 14,
+      "views": 1127,
+      "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
     },
