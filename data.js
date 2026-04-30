@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-30T05:21:33",
+  "updated_at": "2026-04-30T05:58:54",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -78,7 +78,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 192,
+      "views": 194,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -114,7 +114,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 2617,
+      "views": 2616,
       "likes": 28,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -132,7 +132,7 @@ const YOUTUBE = {
       "id": "zvmyHAaT9cc",
       "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
       "date": "1 Nis 2026",
-      "views": 2089,
+      "views": 2088,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/zvmyHAaT9cc"
@@ -141,7 +141,7 @@ const YOUTUBE = {
       "id": "Q3yhoMup7hg",
       "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
       "date": "1 Nis 2026",
-      "views": 605,
+      "views": 604,
       "likes": 7,
       "comments": 2,
       "url": "https://youtu.be/Q3yhoMup7hg"
