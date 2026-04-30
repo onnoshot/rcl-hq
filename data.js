@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-30T14:28:21",
+  "updated_at": "2026-04-30T15:05:41",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3760,
     "total_views": 1048946,
-    "video_count": 373
+    "video_count": 374
   },
   "analytics": {
     "last_30d": {
@@ -57,6 +57,15 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "3qQFPZtOHf0",
+      "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
+      "date": "30 Nis 2026",
+      "views": 1467,
+      "likes": 2,
+      "comments": 0,
+      "url": "https://youtu.be/3qQFPZtOHf0"
+    },
+    {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
@@ -105,7 +114,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2683,
+      "views": 2729,
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/ie_8TBsWv-Y"
@@ -136,15 +145,6 @@ const YOUTUBE = {
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/zvmyHAaT9cc"
-    },
-    {
-      "id": "Q3yhoMup7hg",
-      "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
-      "date": "1 Nis 2026",
-      "views": 605,
-      "likes": 7,
-      "comments": 2,
-      "url": "https://youtu.be/Q3yhoMup7hg"
     }
   ],
   "sub_goal": 10000
