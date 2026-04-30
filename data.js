@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-04-30T18:05:53",
+  "updated_at": "2026-04-30T18:28:33",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -78,8 +78,8 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 16,
-      "likes": 5,
+      "views": 14,
+      "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/dFixvsNLQ_k"
     },
@@ -87,7 +87,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 210,
+      "views": 215,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -96,7 +96,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 694,
+      "views": 697,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -114,7 +114,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2789,
+      "views": 2788,
       "likes": 20,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
@@ -123,8 +123,8 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 3255,
-      "likes": 35,
+      "views": 3325,
+      "likes": 36,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
     },
