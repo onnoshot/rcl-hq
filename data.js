@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-01T04:29:06",
+  "updated_at": "2026-05-01T05:06:31",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2825,
+      "views": 2831,
       "likes": 21,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "zvmyHAaT9cc",
       "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
       "date": "1 Nis 2026",
-      "views": 2102,
+      "views": 2103,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/zvmyHAaT9cc"
