@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-01T08:29:18",
+  "updated_at": "2026-05-01T09:06:45",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 3770,
+    "subscribers": 3780,
     "total_views": 1051393,
     "video_count": 374
   },
@@ -54,7 +54,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2130,
+      "views": 2131,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -109,7 +109,7 @@ const YOUTUBE = {
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
       "views": 2834,
-      "likes": 21,
+      "likes": 22,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
     },
