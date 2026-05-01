@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-01T07:29:15",
+  "updated_at": "2026-05-01T08:06:41",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -54,8 +54,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2118,
-      "likes": 9,
+      "views": 2130,
+      "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 2321,
+      "views": 2323,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
