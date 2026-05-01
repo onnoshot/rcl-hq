@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-02T01:36:16",
+  "updated_at": "2026-05-02T02:13:42",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 3800,
+    "subscribers": 3790,
     "total_views": 1059536,
     "video_count": 374
   },
@@ -54,7 +54,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2202,
+      "views": 2218,
       "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3529,
+      "views": 3531,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 163,
+      "views": 161,
       "likes": 11,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 165,
+      "views": 164,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 5408,
+      "views": 5414,
       "likes": 42,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
