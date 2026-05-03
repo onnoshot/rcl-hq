@@ -1,20 +1,63 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-03T03:53:05",
+  "updated_at": "2026-05-03T16:42:35",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3800,
-    "total_views": 1064835,
+    "total_views": 1066457,
     "video_count": 374
   },
-  "analytics": {},
+  "analytics": {
+    "last_30d": {
+      "views": 88232,
+      "watch_hours": 275.0,
+      "subs_gained": 132,
+      "subs_lost": 91,
+      "avg_view_sec": 25
+    },
+    "watch_hours_year": 2920.2,
+    "watch_hours_year_long": 0.0,
+    "watch_hours_year_shorts": 0.0,
+    "monthly": [
+      {
+        "label": "Ara 25",
+        "views": 102641,
+        "watch_min": 16916,
+        "subs_gained": 437
+      },
+      {
+        "label": "Oca 26",
+        "views": 214842,
+        "watch_min": 45223,
+        "subs_gained": 2739
+      },
+      {
+        "label": "Şub 26",
+        "views": 119281,
+        "watch_min": 20493,
+        "subs_gained": 831
+      },
+      {
+        "label": "Mar 26",
+        "views": 234096,
+        "watch_min": 39260,
+        "subs_gained": 337
+      },
+      {
+        "label": "Nis 26",
+        "views": 103741,
+        "watch_min": 21731,
+        "subs_gained": 136
+      }
+    ]
+  },
   "videos": [
     {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2231,
+      "views": 2241,
       "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -23,7 +66,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3559,
+      "views": 3563,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -32,7 +75,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 205,
+      "views": 207,
       "likes": 11,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -41,7 +84,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 442,
+      "views": 445,
       "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -50,7 +93,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 732,
+      "views": 735,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -59,7 +102,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 170,
+      "views": 171,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -68,7 +111,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2932,
+      "views": 2940,
       "likes": 27,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
@@ -77,7 +120,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 5414,
+      "views": 5415,
       "likes": 43,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -86,7 +129,7 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2088,
+      "views": 2090,
       "likes": 24,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
@@ -95,7 +138,7 @@ const YOUTUBE = {
       "id": "zvmyHAaT9cc",
       "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
       "date": "1 Nis 2026",
-      "views": 2129,
+      "views": 2130,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/zvmyHAaT9cc"
