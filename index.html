@@ -404,18 +404,22 @@ footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:v
         <div class="prog-track"><div class="prog-fill" style="background:var(--red)" id="yt-sub-bar"></div></div>
       </div>
     </div>
+    <div class="card p" style="border-color:rgba(255,69,58,0.15)">
+      <div class="kpi-lbl">İzlenme Saati / 12 Ay</div>
+      <div class="kpi-big" style="color:var(--red)" id="yt-watch-hrs">—</div>
+      <div class="prog-wrap">
+        <div class="prog-lbl"><span id="yt-watch-pct-label">—</span><span>Hedef: 4.000 saat</span></div>
+        <div class="prog-track"><div class="prog-fill" style="background:var(--red)" id="yt-watch-bar"></div></div>
+      </div>
+      <div class="kpi-sub" style="margin-top:10px">YPP monetizasyon eşiği</div>
+    </div>
     <div class="card p">
       <div class="kpi-lbl">Toplam İzlenme</div>
       <div class="kpi-big" id="yt-views">—</div>
-      <div class="kpi-sub">tüm zamanlar</div>
+      <div class="kpi-sub" id="yt-vids-sub">— video · tüm zamanlar</div>
     </div>
     <div class="card p">
-      <div class="kpi-lbl">Video Sayısı</div>
-      <div class="kpi-big" id="yt-vids">—</div>
-      <div class="kpi-sub">yayınlanmış video</div>
-    </div>
-    <div class="card p">
-      <div class="kpi-lbl">Son 30 Gün İzlenme</div>
+      <div class="kpi-lbl">Son 30 Gün</div>
       <div class="kpi-big" id="yt-30d-views">—</div>
       <div class="kpi-sub" id="yt-30d-sub">—</div>
     </div>
@@ -1069,16 +1073,27 @@ function renderYouTube() {
   const pct=Math.min(Math.round(ch.subscribers/goal*100),100);
   counter(document.getElementById('yt-subs'),ch.subscribers);
   counter(document.getElementById('yt-views'),ch.total_views);
-  counter(document.getElementById('yt-vids'),ch.video_count);
+  document.getElementById('yt-vids-sub').textContent=fmt(ch.video_count)+' video · tüm zamanlar';
   document.getElementById('yt-sub-pct-label').textContent='%'+pct+' tamamlandı';
   setTimeout(()=>{
     document.getElementById('yt-sub-bar').style.width=pct+'%';
     document.getElementById('goalYT').style.width=pct+'%';
   },500);
   const an=YOUTUBE.analytics;
+  // Watch hours 4000 saat hedefi
+  if(an&&an.watch_hours_year!=null){
+    const wh=an.watch_hours_year,whGoal=4000;
+    const whPct=Math.min(Math.round(wh/whGoal*100),100);
+    counter(document.getElementById('yt-watch-hrs'),wh);
+    document.getElementById('yt-watch-pct-label').textContent='%'+whPct+' tamamlandı';
+    setTimeout(()=>{document.getElementById('yt-watch-bar').style.width=whPct+'%';},500);
+  } else {
+    document.getElementById('yt-watch-hrs').textContent='—';
+    document.getElementById('yt-watch-pct-label').textContent='Veri bekleniyor';
+  }
   if(an&&an.last_30d){
     counter(document.getElementById('yt-30d-views'),an.last_30d.views);
-    document.getElementById('yt-30d-sub').textContent=fmt(an.last_30d.subs_gained)+' yeni abone \xb7 '+fmt(an.last_30d.watch_hours)+' saat';
+    document.getElementById('yt-30d-sub').textContent=fmt(an.last_30d.subs_gained)+' yeni abone · '+fmt(an.last_30d.watch_hours)+' saat';
     if(an.monthly&&an.monthly.length){
       document.getElementById('yt-chart-sub').textContent='Aylık izlenme — son 6 ay';
       const views=an.monthly.map(m=>m.views),maxV=Math.max(...views);
