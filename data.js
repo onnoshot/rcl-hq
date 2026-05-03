@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-03T16:42:35",
+  "updated_at": "2026-05-03T16:43:23",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -17,8 +17,8 @@ const YOUTUBE = {
       "avg_view_sec": 25
     },
     "watch_hours_year": 2920.2,
-    "watch_hours_year_long": 0.0,
-    "watch_hours_year_shorts": 0.0,
+    "watch_hours_year_long": 1569.8,
+    "watch_hours_year_shorts": 1350.4,
     "monthly": [
       {
         "label": "Ara 25",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2241,
+      "views": 2238,
       "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -129,7 +129,7 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2090,
+      "views": 2089,
       "likes": 24,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
