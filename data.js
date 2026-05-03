@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-03T20:02:28",
+  "updated_at": "2026-05-03T20:25:02",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2241,
+      "views": 2244,
       "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -75,8 +75,8 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 207,
-      "likes": 11,
+      "views": 208,
+      "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
     },
@@ -88,15 +88,6 @@ const YOUTUBE = {
       "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
-    },
-    {
-      "id": "bY4UWZ-wEwY",
-      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
-      "date": "26 Nis 2026",
-      "views": 735,
-      "likes": 1,
-      "comments": 0,
-      "url": "https://youtu.be/bY4UWZ-wEwY"
     },
     {
       "id": "-mrJ8maR2eo",
@@ -120,7 +111,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 5415,
+      "views": 5419,
       "likes": 43,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -129,7 +120,7 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2090,
+      "views": 2093,
       "likes": 24,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
@@ -138,10 +129,19 @@ const YOUTUBE = {
       "id": "zvmyHAaT9cc",
       "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
       "date": "1 Nis 2026",
-      "views": 2130,
+      "views": 2133,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/zvmyHAaT9cc"
+    },
+    {
+      "id": "Q3yhoMup7hg",
+      "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
+      "date": "1 Nis 2026",
+      "views": 631,
+      "likes": 8,
+      "comments": 2,
+      "url": "https://youtu.be/Q3yhoMup7hg"
     }
   ],
   "sub_goal": 10000
