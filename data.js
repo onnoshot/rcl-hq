@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-03T21:25:06",
+  "updated_at": "2026-05-03T22:02:37",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 88148,
-      "watch_hours": 274.8,
-      "subs_gained": 132,
-      "subs_lost": 91,
+      "views": 93224,
+      "watch_hours": 289.4,
+      "subs_gained": 172,
+      "subs_lost": 111,
       "avg_view_sec": 25
     },
-    "watch_hours_year": 2920.2,
-    "watch_hours_year_long": 1569.8,
-    "watch_hours_year_shorts": 1350.4,
+    "watch_hours_year": 2934.6,
+    "watch_hours_year_long": 1578.0,
+    "watch_hours_year_shorts": 1356.6,
     "monthly": [
       {
         "label": "Ara 25",
@@ -40,8 +40,8 @@ const YOUTUBE = {
       },
       {
         "label": "Mar 26",
-        "views": 234096,
-        "watch_min": 39260,
+        "views": 234070,
+        "watch_min": 39252,
         "subs_gained": 337
       },
       {
@@ -49,6 +49,12 @@ const YOUTUBE = {
         "views": 103741,
         "watch_min": 21731,
         "subs_gained": 136
+      },
+      {
+        "label": "May 26",
+        "views": 4992,
+        "watch_min": 863,
+        "subs_gained": 40
       }
     ]
   },
@@ -57,7 +63,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2244,
+      "views": 2248,
       "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -66,7 +72,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3563,
+      "views": 3568,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -111,7 +117,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2941,
+      "views": 2948,
       "likes": 27,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
@@ -120,7 +126,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 5419,
+      "views": 5422,
       "likes": 43,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -129,7 +135,7 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2093,
+      "views": 2096,
       "likes": 24,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
