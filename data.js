@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-03T20:25:02",
+  "updated_at": "2026-05-03T21:02:32",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,8 +10,8 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 88232,
-      "watch_hours": 275.0,
+      "views": 88148,
+      "watch_hours": 274.8,
       "subs_gained": 132,
       "subs_lost": 91,
       "avg_view_sec": 25
@@ -84,10 +84,19 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 447,
+      "views": 451,
       "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
+    },
+    {
+      "id": "bY4UWZ-wEwY",
+      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
+      "date": "26 Nis 2026",
+      "views": 738,
+      "likes": 1,
+      "comments": 0,
+      "url": "https://youtu.be/bY4UWZ-wEwY"
     },
     {
       "id": "-mrJ8maR2eo",
@@ -124,15 +133,6 @@ const YOUTUBE = {
       "likes": 24,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
-    },
-    {
-      "id": "zvmyHAaT9cc",
-      "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
-      "date": "1 Nis 2026",
-      "views": 2133,
-      "likes": 9,
-      "comments": 0,
-      "url": "https://youtu.be/zvmyHAaT9cc"
     },
     {
       "id": "Q3yhoMup7hg",
