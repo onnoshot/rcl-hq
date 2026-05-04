@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2274,
+      "views": 2275,
       "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3589,
+      "views": 3590,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
