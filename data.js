@@ -141,13 +141,13 @@ const YOUTUBE = {
       "url": "https://youtu.be/mUJq-SQWXX8"
     },
     {
-      "id": "Q3yhoMup7hg",
-      "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
+      "id": "zvmyHAaT9cc",
+      "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
       "date": "1 Nis 2026",
-      "views": 636,
-      "likes": 8,
-      "comments": 2,
-      "url": "https://youtu.be/Q3yhoMup7hg"
+      "views": 2140,
+      "likes": 9,
+      "comments": 0,
+      "url": "https://youtu.be/zvmyHAaT9cc"
     }
   ],
   "sub_goal": 10000
