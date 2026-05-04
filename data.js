@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-04T22:38:55",
+  "updated_at": "2026-05-04T23:38:58",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,8 +10,8 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 88998,
-      "watch_hours": 256.6,
+      "views": 89056,
+      "watch_hours": 256.8,
       "subs_gained": 172,
       "subs_lost": 111,
       "avg_view_sec": 23
@@ -40,14 +40,14 @@ const YOUTUBE = {
       },
       {
         "label": "Mar 26",
-        "views": 234070,
-        "watch_min": 39252,
+        "views": 234050,
+        "watch_min": 39240,
         "subs_gained": 337
       },
       {
         "label": "Nis 26",
-        "views": 103741,
-        "watch_min": 21731,
+        "views": 103716,
+        "watch_min": 21729,
         "subs_gained": 136
       },
       {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2273,
+      "views": 2274,
       "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3586,
+      "views": 3589,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 216,
+      "views": 217,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 746,
+      "views": 747,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 177,
+      "views": 178,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -141,13 +141,13 @@ const YOUTUBE = {
       "url": "https://youtu.be/mUJq-SQWXX8"
     },
     {
-      "id": "zvmyHAaT9cc",
-      "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
+      "id": "Q3yhoMup7hg",
+      "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
       "date": "1 Nis 2026",
-      "views": 2140,
-      "likes": 9,
-      "comments": 0,
-      "url": "https://youtu.be/zvmyHAaT9cc"
+      "views": 636,
+      "likes": 8,
+      "comments": 2,
+      "url": "https://youtu.be/Q3yhoMup7hg"
     }
   ],
   "sub_goal": 10000
