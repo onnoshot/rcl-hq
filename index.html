@@ -247,6 +247,13 @@ footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:v
         <div class="delta dn" id="s-rev-delta">—</div>
         <div class="kpi-sub" id="s-rev-sub" style="margin-top:0">—</div>
       </div>
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(212,175,55,0.12)">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:0.1em">KDV %20</span>
+          <span style="font-family:var(--mono);font-size:0.88rem;font-weight:600;color:var(--warn)" id="s-kdv">—</span>
+        </div>
+        <div style="font-size:0.61rem;font-family:var(--mono);color:var(--t3);margin-top:3px" id="s-kdv-sub">gelirin 1/6'sı · devlete</div>
+      </div>
     </div>
     <div class="card p">
       <div class="kpi-lbl">Sipariş</div>
@@ -1042,6 +1049,9 @@ function renderKPIs() {
   document.getElementById('s-rev-sub').textContent=lbl[period]+' toplam';
   document.getElementById('s-ord-sub').textContent=d.orders+' sipariş tamamlandı';
   document.getElementById('s-rev-delta').textContent=lbl[period];
+  const kdv=Math.round(d.revenue/6);
+  document.getElementById('s-kdv').textContent='₺'+fmt(kdv);
+  document.getElementById('s-kdv-sub').textContent=lbl[period]+' · gelirin 1/6\'sı';
 }
 
 function renderRevenueChart() {
