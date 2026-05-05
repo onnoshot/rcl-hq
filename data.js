@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-05T23:30:13",
+  "updated_at": "2026-05-06T00:30:16",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,11 +10,11 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 83029,
-      "watch_hours": 210.7,
-      "subs_gained": 176,
+      "views": 75042,
+      "watch_hours": 168.5,
+      "subs_gained": 171,
       "subs_lost": 109,
-      "avg_view_sec": 20
+      "avg_view_sec": 18
     },
     "watch_hours_year": 2943.7,
     "watch_hours_year_long": 1580.5,
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2299,
+      "views": 2300,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -105,15 +105,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/bY4UWZ-wEwY"
     },
     {
-      "id": "-mrJ8maR2eo",
-      "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
-      "date": "25 Nis 2026",
-      "views": 179,
-      "likes": 8,
-      "comments": 3,
-      "url": "https://youtu.be/-mrJ8maR2eo"
-    },
-    {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
@@ -141,13 +132,22 @@ const YOUTUBE = {
       "url": "https://youtu.be/mUJq-SQWXX8"
     },
     {
-      "id": "zvmyHAaT9cc",
-      "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
+      "id": "Q3yhoMup7hg",
+      "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
       "date": "1 Nis 2026",
-      "views": 2145,
-      "likes": 9,
-      "comments": 0,
-      "url": "https://youtu.be/zvmyHAaT9cc"
+      "views": 640,
+      "likes": 8,
+      "comments": 2,
+      "url": "https://youtu.be/Q3yhoMup7hg"
+    },
+    {
+      "id": "To_AIAUFESk",
+      "title": "Canon IXUS 160: Küçük Kamera, Büyük Sürpriz",
+      "date": "31 Mar 2026",
+      "views": 476,
+      "likes": 11,
+      "comments": 1,
+      "url": "https://youtu.be/To_AIAUFESk"
     }
   ],
   "sub_goal": 10000
