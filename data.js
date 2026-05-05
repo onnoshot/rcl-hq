@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-05T21:30:06",
+  "updated_at": "2026-05-05T22:30:10",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 80697,
-      "watch_hours": 206.4,
-      "subs_gained": 171,
-      "subs_lost": 107,
+      "views": 83029,
+      "watch_hours": 210.7,
+      "subs_gained": 176,
+      "subs_lost": 109,
       "avg_view_sec": 20
     },
-    "watch_hours_year": 2939.3,
-    "watch_hours_year_long": 1579.4,
-    "watch_hours_year_shorts": 1360.0,
+    "watch_hours_year": 2943.7,
+    "watch_hours_year_long": 1580.5,
+    "watch_hours_year_shorts": 1363.2,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 7403,
-        "watch_min": 1150,
-        "subs_gained": 46
+        "views": 9735,
+        "watch_min": 1410,
+        "subs_gained": 51
       }
     ]
   },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3598,
+      "views": 3599,
       "likes": 20,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
