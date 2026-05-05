@@ -445,8 +445,57 @@ footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:v
   </div>
 </div>
 
-<!-- CHANNEL LINKS -->
+<!-- INSTAGRAM -->
 <div class="sec fi" style="transition-delay:.31s">
+  <div class="sec-label">Instagram</div>
+  <div class="g g4" style="margin-bottom:12px">
+    <div class="card p" style="border-color:rgba(191,90,242,0.25)">
+      <div class="kpi-lbl">Takipçi</div>
+      <div class="kpi-big" style="color:var(--purple)" id="ig-followers">—</div>
+      <div class="prog-wrap">
+        <div class="prog-lbl"><span id="ig-followers-pct">—</span><span>Hedef: 10.000</span></div>
+        <div class="prog-track"><div class="prog-fill" style="background:var(--purple)" id="ig-followers-bar"></div></div>
+      </div>
+    </div>
+    <div class="card p" style="border-color:rgba(191,90,242,0.12)">
+      <div class="kpi-lbl">Gönderi</div>
+      <div class="kpi-big" style="color:var(--purple)" id="ig-posts">—</div>
+      <div class="kpi-sub" id="ig-posts-sub">toplam gönderi</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Ort. Beğeni</div>
+      <div class="kpi-big" id="ig-avg-likes">—</div>
+      <div class="kpi-sub">gönderi başına (son 12)</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Toplam Etkileşim</div>
+      <div class="kpi-big" id="ig-engagement">—</div>
+      <div class="kpi-sub">beğeni + yorum (son 12)</div>
+    </div>
+  </div>
+  <div class="g g6-6">
+    <div class="card p">
+      <div class="chart-title">İçerik Türü Dağılımı</div>
+      <div class="chart-sub" id="ig-type-sub">Son 12 gönderi</div>
+      <div id="ig-type-bars" style="display:flex;flex-direction:column;gap:12px;margin-top:18px"></div>
+    </div>
+    <div class="card tcard">
+      <div class="thead">
+        <span class="ttitle">Son Gönderiler</span>
+        <a href="https://www.instagram.com/retrocameraland" target="_blank" style="font-size:0.62rem;font-family:var(--mono);color:var(--purple);text-decoration:none">Profile git →</a>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Tarih</th><th>Tür</th><th>Beğeni</th><th>Yorum</th></tr></thead>
+          <tbody id="igPostsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHANNEL LINKS -->
+<div class="sec fi" style="transition-delay:.35s">
   <div class="sec-label">Kanallar</div>
   <div class="card psm" style="display:flex;gap:8px;flex-wrap:wrap">
     <a href="https://retrocameraland.com" target="_blank" class="cpill" style="background:rgba(212,175,55,0.07);border-color:rgba(212,175,55,0.22);color:var(--gold)">
@@ -478,6 +527,37 @@ footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:v
 </div>
 
 <script>
+/* ─── INSTAGRAM DATA START ─── */
+const INSTAGRAM = {
+  "updated_at": "2026-05-05T17:15:46",
+  "username": "retrocameraland",
+  "name": "Retro Camera Land",
+  "followers": 6072,
+  "media_count": 269,
+  "avg_likes": 47,
+  "total_engagement": 571,
+  "type_counts": {
+    "CAROUSEL_ALBUM": 7,
+    "VIDEO": 5
+  },
+  "posts": [
+    {"id":"18026696300819171","date":"4 May 2026","type":"CAROUSEL_ALBUM","likes":98,"comments":1,"url":"https://www.instagram.com/p/DX7GlPLiAB_/"},
+    {"id":"18101736734047012","date":"2 May 2026","type":"CAROUSEL_ALBUM","likes":12,"comments":0,"url":"https://www.instagram.com/p/DX1_HlAiJdh/"},
+    {"id":"18087255242609116","date":"1 May 2026","type":"CAROUSEL_ALBUM","likes":33,"comments":0,"url":"https://www.instagram.com/p/DXzUTTwCGGw/"},
+    {"id":"17886431487378731","date":"29 Nis 2026","type":"VIDEO","likes":40,"comments":0,"url":"https://www.instagram.com/reel/DXtbzXmIYYx/"},
+    {"id":"17920167630337696","date":"27 Nis 2026","type":"CAROUSEL_ALBUM","likes":50,"comments":1,"url":"https://www.instagram.com/p/DXn7XV6CJoH/"},
+    {"id":"18105347032902803","date":"26 Nis 2026","type":"VIDEO","likes":40,"comments":0,"url":"https://www.instagram.com/reel/DXltdQ7IPMH/"},
+    {"id":"18089660810248856","date":"25 Nis 2026","type":"CAROUSEL_ALBUM","likes":37,"comments":0,"url":"https://www.instagram.com/p/DXjGTiHiCAA/"},
+    {"id":"18086971511203373","date":"20 Nis 2026","type":"VIDEO","likes":22,"comments":1,"url":"https://www.instagram.com/reel/DXXAHRCI7gE/"},
+    {"id":"18042760670777322","date":"19 Nis 2026","type":"CAROUSEL_ALBUM","likes":26,"comments":0,"url":"https://www.instagram.com/p/DXUL5lEiOjj/"},
+    {"id":"17948676963137020","date":"18 Nis 2026","type":"VIDEO","likes":133,"comments":3,"url":"https://www.instagram.com/reel/DXR-eNPCCkE/"},
+    {"id":"17965682838063532","date":"14 Nis 2026","type":"CAROUSEL_ALBUM","likes":39,"comments":0,"url":"https://www.instagram.com/p/DXHmampiN8B/"},
+    {"id":"18555755458064956","date":"10 Nis 2026","type":"VIDEO","likes":35,"comments":0,"url":"https://www.instagram.com/reel/DW8mL3tDfxe/"}
+  ],
+  "follower_goal": 10000
+};
+/* ─── INSTAGRAM DATA END ─── */
+
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
   "updated_at": "2026-05-05T17:16:21",
@@ -1121,6 +1201,49 @@ function renderYouTube() {
   ).join('');
 }
 
+function renderInstagram() {
+  const ig = INSTAGRAM;
+  const goal = ig.follower_goal || 10000;
+  const pct  = Math.min(Math.round(ig.followers / goal * 100), 100);
+  counter(document.getElementById('ig-followers'), ig.followers);
+  counter(document.getElementById('ig-posts'), ig.media_count);
+  counter(document.getElementById('ig-avg-likes'), ig.avg_likes);
+  counter(document.getElementById('ig-engagement'), ig.total_engagement);
+  document.getElementById('ig-followers-pct').textContent = '%' + pct + ' tamamlandı';
+  document.getElementById('ig-posts-sub').textContent = fmt(ig.media_count) + ' gönderi · tüm zamanlar';
+  setTimeout(() => { document.getElementById('ig-followers-bar').style.width = pct + '%'; }, 500);
+
+  const types = ig.type_counts || {};
+  const total = Object.values(types).reduce((s,v) => s + v, 0);
+  const typeNames = {'CAROUSEL_ALBUM':'Carousel / Albüm','VIDEO':'Video / Reel','IMAGE':'Fotoğraf'};
+  document.getElementById('ig-type-sub').textContent = `Son ${total} gönderi · içerik türü dağılımı`;
+  document.getElementById('ig-type-bars').innerHTML = Object.entries(types).map(([k,v]) => {
+    const p = Math.round(v / total * 100);
+    return `<div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+        <span style="font-size:0.7rem;color:var(--t2);font-family:var(--mono)">${typeNames[k]||k}</span>
+        <span style="font-size:0.7rem;color:var(--t3);font-family:var(--mono)">${v} gönderi · %${p}</span>
+      </div>
+      <div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden">
+        <div data-ig-w="${p}" style="height:100%;background:var(--purple);border-radius:2px;width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1)"></div>
+      </div>
+    </div>`;
+  }).join('');
+  setTimeout(() => {
+    document.querySelectorAll('[data-ig-w]').forEach(b => { b.style.width = b.dataset.igW + '%'; });
+  }, 600);
+
+  const typeIcon = {'CAROUSEL_ALBUM':'🖼','VIDEO':'🎬','IMAGE':'📷'};
+  document.getElementById('igPostsBody').innerHTML = ig.posts.map(p =>
+    `<tr>
+      <td class="cd" style="white-space:nowrap">${p.date}</td>
+      <td class="cd" style="font-size:0.72rem">${typeIcon[p.type]||p.type}</td>
+      <td class="cg">${fmt(p.likes)}</td>
+      <td><a href="${p.url}" target="_blank" style="color:var(--purple);text-decoration:none;font-family:var(--mono);font-size:0.72rem">${p.comments} ↗</a></td>
+    </tr>`
+  ).join('');
+}
+
 function initFade() {
   const obs=new IntersectionObserver(
     entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),
@@ -1141,6 +1264,7 @@ renderOrders();
 renderChannels();
 renderInventory();
 renderYouTube();
+renderInstagram();
 initFade();
 initTopbar();
 initParallax();
