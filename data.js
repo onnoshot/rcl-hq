@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-06T19:54:49",
+  "updated_at": "2026-05-06T20:54:51",
   "period_30d": {
     "revenue": 79430,
     "orders": 7,
@@ -382,6 +382,10 @@ const SHOPIFY = {
       "price": 8490
     },
     {
+      "name": "Sony Cybershot DSC-S85",
+      "price": 7990
+    },
+    {
       "name": "Kodak ZX1 “Weather-Resistant”",
       "price": 4900
     }
@@ -413,7 +417,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 80
+  "out_of_stock": 79
 };
 /* ─── SHOPIFY DATA END ─── */
 
