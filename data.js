@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-06T04:30:34",
+  "updated_at": "2026-05-06T05:30:36",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 491,
+      "views": 493,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -103,15 +103,6 @@ const YOUTUBE = {
       "likes": 2,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
-    },
-    {
-      "id": "-mrJ8maR2eo",
-      "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
-      "date": "25 Nis 2026",
-      "views": 179,
-      "likes": 8,
-      "comments": 3,
-      "url": "https://youtu.be/-mrJ8maR2eo"
     },
     {
       "id": "ie_8TBsWv-Y",
@@ -141,13 +132,22 @@ const YOUTUBE = {
       "url": "https://youtu.be/mUJq-SQWXX8"
     },
     {
-      "id": "zvmyHAaT9cc",
-      "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
+      "id": "Q3yhoMup7hg",
+      "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
       "date": "1 Nis 2026",
-      "views": 2145,
-      "likes": 9,
-      "comments": 0,
-      "url": "https://youtu.be/zvmyHAaT9cc"
+      "views": 641,
+      "likes": 8,
+      "comments": 2,
+      "url": "https://youtu.be/Q3yhoMup7hg"
+    },
+    {
+      "id": "To_AIAUFESk",
+      "title": "Canon IXUS 160: Küçük Kamera, Büyük Sürpriz",
+      "date": "31 Mar 2026",
+      "views": 477,
+      "likes": 11,
+      "comments": 1,
+      "url": "https://youtu.be/To_AIAUFESk"
     }
   ],
   "sub_goal": 10000
