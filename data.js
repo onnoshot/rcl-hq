@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-06T05:30:37",
+  "updated_at": "2026-05-06T10:45:09",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3800,
-    "total_views": 1071019,
+    "total_views": 1072038,
     "video_count": 374
   },
   "analytics": {
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 493,
+      "views": 495,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
