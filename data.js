@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-06T16:45:33",
+  "updated_at": "2026-05-06T17:45:35",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2317,
+      "views": 2319,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3615,
+      "views": 3616,
       "likes": 21,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 218,
+      "views": 219,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 496,
+      "views": 499,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 758,
+      "views": 760,
       "likes": 2,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2972,
+      "views": 2974,
       "likes": 27,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 5446,
+      "views": 5447,
       "likes": 43,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "mUJq-SQWXX8",
       "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
       "date": "10 Nis 2026",
-      "views": 2119,
+      "views": 2121,
       "likes": 25,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "zvmyHAaT9cc",
       "title": "Canon Ixus 160 Mirror Selfie 📸 #canon #y2k #digitalcamera #r",
       "date": "1 Nis 2026",
-      "views": 2146,
+      "views": 2148,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/zvmyHAaT9cc"
