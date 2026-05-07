@@ -160,6 +160,11 @@ tfoot td{border-top:1px solid rgba(212,175,55,0.14);color:var(--gold);font-weigh
 .cost-input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:9px;color:var(--t1);font-family:var(--mono);font-size:0.88rem;padding:8px 12px;width:100%;text-align:right;outline:none;transition:border-color .2s,background .2s;-moz-appearance:textfield;}
 .cost-input:focus{border-color:rgba(212,175,55,0.45);background:rgba(255,255,255,0.08);}
 .cost-input::-webkit-inner-spin-button,.cost-input::-webkit-outer-spin-button{opacity:.4;}
+/* INLINE COST CELL */
+.cam-cost-input{background:transparent;border:none;border-bottom:1px dashed rgba(255,255,255,0.15);color:var(--warn);font-family:var(--mono);font-size:0.76rem;width:80px;text-align:right;outline:none;padding:2px 4px;transition:border-color .2s,background .2s;-moz-appearance:textfield;}
+.cam-cost-input:focus{border-bottom-color:rgba(212,175,55,0.6);background:rgba(212,175,55,0.06);border-radius:4px;}
+.cam-cost-input::placeholder{color:var(--t3);font-size:0.68rem;}
+.cam-cost-input::-webkit-inner-spin-button,.cam-cost-input::-webkit-outer-spin-button{display:none;}
 .cost-var-lbl{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px;}
 .profit-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
 .profit-row:last-child{border-bottom:none;}
@@ -1294,29 +1299,17 @@ function renderChannels() {
   setTimeout(()=>{document.querySelectorAll('.chi-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});},400);
 }
 
-// ─── ÜRÜN MALİYETLERİ — alış fiyatını buraya girin (0 = girilmedi) ───────────
-const CAMERA_COSTS = {
-  "Sony Cyber-shot DSC-TX9": 0,
-  "Canon PowerShot SD400": 0,
-  "Lumix DMC-FT10": 0,
-  "Casio Exilim EX-Z110": 0,
-  "Fujifilm FinePix 4700 Zoom": 0,
-  "Fujifilm FinePix T200": 0,
-  "Nikon Coolpix S52c": 0,
-  "Olympus SP-700": 0,
-  "Konica Minolta DiMAGE X50": 0,
-  "Kodak EasyShare V603": 0,
-  "Kodak Slice R502": 0,
-  "Sanyo Xacti VPC-HD1": 0,
-  "Casio Exilim EX-Z4": 0,
-  "Casio Exilim EX-Z85": 0,
-  "Olympus SP-320": 0,
-  "Olympus SZ-10": 0,
-  "HP Photosmart R827": 0,
-  "Nikon Coolpix 885": 0,
-  "Traveler DC-830": 0,
-  'Kodak ZX1 “Weather-Resistant”': 0,
-};
+// ─── ÜRÜN MALİYETLERİ (localStorage'dan yüklenir, tabloda düzenlenebilir) ────
+function loadCamCosts(){
+  try{const s=localStorage.getItem('rcl_cam_costs');return s?JSON.parse(s):{};}
+  catch{return{};}
+}
+function saveCamCost(name,val){
+  const d=loadCamCosts();
+  if(val>0)d[name]=val; else delete d[name];
+  localStorage.setItem('rcl_cam_costs',JSON.stringify(d));
+}
+const CAMERA_COSTS=loadCamCosts();
 
 function renderInventory() {
   const cams=SHOPIFY.cameras,accs=SHOPIFY.accessories;
@@ -1329,24 +1322,41 @@ function renderInventory() {
   document.getElementById('inv-oos').textContent=SHOPIFY.out_of_stock;
   document.getElementById('camTitle').textContent=`Kameralar (${cams.length})`;
   document.getElementById('accTitle').textContent=`Aksesuarlar (${accQty} adet)`;
-  const camCostTotal=cams.reduce((s,c)=>s+(CAMERA_COSTS[c.name]||0),0);
+  function updateCamTotals(){
+    const costs=loadCamCosts();
+    const filled=cams.filter(c=>costs[c.name]>0);
+    const costTot=filled.reduce((s,c)=>s+costs[c.name],0);
+    const saleTot=filled.reduce((s,c)=>s+c.price,0);
+    document.getElementById('camCostTotal').textContent=costTot>0?fmtTL(costTot):'—';
+    const profEl=document.getElementById('camProfitTotal');
+    if(costTot>0){const p=saleTot-costTot;profEl.textContent=fmtTL(p);profEl.style.color=p>=0?'var(--green)':'var(--danger)';}
+    else profEl.textContent='—';
+    // update kâr cells
+    cams.forEach(c=>{
+      const el=document.getElementById('kar-'+c.name.replace(/\W/g,'_'));
+      if(!el)return;
+      const cost=costs[c.name]||0;
+      if(cost>0){const k=c.price-cost;el.textContent=fmtTL(k);el.style.color=k>=0?'var(--green)':'var(--danger)';}
+      else{el.textContent='—';el.style.color='var(--t3)';}
+    });
+  }
   document.getElementById('camBody').innerHTML=cams.map((c,i)=>{
     const cost=CAMERA_COSTS[c.name]||0;
     const kar=cost>0?c.price-cost:null;
+    const safeId=c.name.replace(/\W/g,'_');
     return `<tr>
       <td class="cd">${i+1}</td>
       <td style="color:var(--t1);font-size:0.72rem">${c.name}</td>
       <td class="cg">${fmtTL(c.price)}</td>
-      <td style="color:var(--warn);font-family:var(--mono)">${cost>0?fmtTL(cost):'<span style="color:var(--t3)">—</span>'}</td>
-      <td style="font-family:var(--mono);color:${kar===null?'var(--t3)':kar>=0?'var(--green)':'var(--danger)'}">${kar===null?'?':fmtTL(kar)}</td>
+      <td><input class="cam-cost-input" type="number" placeholder="maliyet gir" value="${cost>0?cost:''}"
+        data-name="${c.name.replace(/"/g,'&quot;')}"
+        oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);updateCamTotals()"
+      ></td>
+      <td id="kar-${safeId}" style="font-family:var(--mono);color:${kar===null?'var(--t3)':kar>=0?'var(--green)':'var(--danger)'}">${kar===null?'—':fmtTL(kar)}</td>
     </tr>`;
   }).join('');
   document.getElementById('camTotal').textContent=fmtTL(camVal);
-  document.getElementById('camCostTotal').textContent=camCostTotal>0?fmtTL(camCostTotal):'—';
-  const camProfit=camCostTotal>0?camVal-camCostTotal:null;
-  const profEl=document.getElementById('camProfitTotal');
-  profEl.textContent=camProfit===null?'—':fmtTL(camProfit);
-  if(camProfit!==null)profEl.style.color=camProfit>=0?'var(--green)':'var(--danger)';
+  updateCamTotals();
   document.getElementById('accBody').innerHTML=accs.map((a,i)=>
     `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${a.name}</td><td class="cd">${fmtTL(a.price)}</td><td class="cd" style="text-align:center">${a.qty}</td><td class="cg">${fmtTL(a.price*a.qty)}</td></tr>`
   ).join('');
