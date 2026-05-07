@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-07T22:52:44",
+  "updated_at": "2026-05-07T23:52:47",
   "period_30d": {
     "revenue": 79430,
     "orders": 7,
@@ -306,6 +306,14 @@ const SHOPIFY = {
   ],
   "cameras": [
     {
+      "name": "Fujifilm FinePix Z90",
+      "price": 18490
+    },
+    {
+      "name": "Olympus VR-310",
+      "price": 15490
+    },
+    {
       "name": "Sony Cyber-shot DSC-TX9",
       "price": 14490
     },
@@ -363,6 +371,10 @@ const SHOPIFY = {
     },
     {
       "name": "Olympus SP-320",
+      "price": 9490
+    },
+    {
+      "name": "Olympus Stylus 790 SW",
       "price": 9490
     },
     {
