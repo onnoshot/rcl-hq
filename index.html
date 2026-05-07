@@ -1352,7 +1352,7 @@ function renderInventory() {
       <td class="cg">${fmtTL(c.price)}</td>
       <td><input class="cam-cost-input" type="number" placeholder="gir" value="${cost>0?cost:''}"
         data-name="${c.name.replace(/"/g,'&quot;')}"
-        oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);updateCamTotals()"
+        oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);updateCamTotals();renderProfit()"
       ></td>
       <td id="kar-${safeId}" style="font-family:var(--mono);color:${kar===null?'var(--t3)':kar>=0?'var(--green)':'var(--danger)'}">${kar===null?'—':fmtTL(kar)}</td>
     </tr>`;
@@ -1408,7 +1408,15 @@ function renderProfit(){
   const shopifyFee = Math.round(rev*cfg.shopify_pct/100);
   const kargo      = orders*cfg.kargo_tl;
   const kutu       = orders*cfg.kutu_tl;
-  const totalCost  = kdv+iyzico+shopifyFee+kargo+kutu;
+
+  // COGS: girilen kamera maliyetlerinin ortalaması × sipariş sayısı
+  const camCosts=loadCamCosts();
+  const camEntries=Object.values(camCosts).filter(v=>v>0);
+  const avgCamCost=camEntries.length>0?Math.round(camEntries.reduce((s,v)=>s+v,0)/camEntries.length):0;
+  const cogs=avgCamCost*orders;
+  const cogsLbl=avgCamCost>0?`Ürün Maliyeti (ort. ₺${fmt(avgCamCost)} × ${orders})`:'Ürün Maliyeti (maliyet girilmedi)';
+
+  const totalCost  = kdv+iyzico+shopifyFee+kargo+kutu+cogs;
   const net        = rev-totalCost;
   const margin     = rev>0?(net/rev*100).toFixed(1):0;
 
@@ -1419,6 +1427,7 @@ function renderProfit(){
     {lbl:`Shopify %${cfg.shopify_pct}`,              val:-shopifyFee, color:'var(--warn)',   sign:'-'},
     {lbl:`Kargo (${orders} × ₺${cfg.kargo_tl})`,    val:-kargo,      color:'var(--t2)',     sign:'-'},
     {lbl:`Kutu (${orders} × ₺${cfg.kutu_tl})`,      val:-kutu,       color:'var(--t2)',     sign:'-'},
+    {lbl:cogsLbl,                                    val:-cogs,       color:avgCamCost>0?'var(--purple)':'var(--t3)', sign:'-'},
   ];
 
   document.getElementById('profit-breakdown').innerHTML=rows.map((r,i)=>
@@ -1446,6 +1455,7 @@ function renderProfit(){
     {lbl:'Shopify',val:shopifyFee,c:'var(--warn)'},
     {lbl:'Kargo',val:kargo,c:'var(--t2)'},
     {lbl:'Kutu',val:kutu,c:'var(--t2)'},
+    {lbl:'Ürün',val:cogs,c:avgCamCost>0?'var(--purple)':'var(--t3)'},
   ];
   document.getElementById('profit-cost-summary').innerHTML=pills.map(p=>
     `<div style="padding:6px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07)">
