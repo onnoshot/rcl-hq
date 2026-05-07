@@ -156,6 +156,15 @@ tfoot td{border-top:1px solid rgba(212,175,55,0.14);color:var(--gold);font-weigh
 .shimmer{background:linear-gradient(90deg,var(--gold),#fffbe6,var(--gold));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shim 3s infinite;}
 @keyframes shim{0%{background-position:200%}100%{background-position:-200%}}
 
+/* COST INPUTS */
+.cost-input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:9px;color:var(--t1);font-family:var(--mono);font-size:0.88rem;padding:8px 12px;width:100%;text-align:right;outline:none;transition:border-color .2s,background .2s;-moz-appearance:textfield;}
+.cost-input:focus{border-color:rgba(212,175,55,0.45);background:rgba(255,255,255,0.08);}
+.cost-input::-webkit-inner-spin-button,.cost-input::-webkit-outer-spin-button{opacity:.4;}
+.cost-var-lbl{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px;}
+.profit-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.profit-row:last-child{border-bottom:none;}
+.profit-total{border-top:1px solid rgba(255,255,255,0.10);margin-top:4px;padding-top:10px !important;border-bottom:none !important;}
+
 /* FOOTER */
 footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:var(--t3);font-family:var(--mono);letter-spacing:0.06em;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
 .footer-logo{height:22px;width:auto;object-fit:contain;opacity:0.3;}
@@ -352,9 +361,9 @@ footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:v
       </div>
       <div style="overflow-x:auto">
         <table>
-          <thead><tr><th>#</th><th>Ürün</th><th>Fiyat</th><th>Pay</th></tr></thead>
+          <thead><tr><th>#</th><th>Ürün</th><th>Satış</th><th>Maliyet</th><th>Kâr</th></tr></thead>
           <tbody id="camBody"></tbody>
-          <tfoot><tr><td colspan="2" style="padding:11px 20px;font-size:0.66rem;letter-spacing:0.08em">TOPLAM</td><td style="padding:11px 20px" id="camTotal">—</td><td></td></tr></tfoot>
+          <tfoot><tr><td colspan="2" style="padding:11px 20px;font-size:0.66rem;letter-spacing:0.08em">TOPLAM</td><td style="padding:11px 20px" id="camTotal">—</td><td style="padding:11px 20px" id="camCostTotal">—</td><td style="padding:11px 20px" id="camProfitTotal">—</td></tr></tfoot>
         </table>
       </div>
     </div>
@@ -401,8 +410,54 @@ footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:v
   </div>
 </div>
 
+<!-- PROFIT ANALYSIS -->
+<div class="sec fi" style="transition-delay:.26s">
+  <div class="sec-label">Kârlılık Analizi</div>
+  <div class="g g4" style="margin-bottom:12px">
+    <div class="card psm">
+      <div class="cost-var-lbl">Kargo (₺ / sipariş)</div>
+      <input class="cost-input" id="cfg-kargo" type="number" value="300" oninput="saveCostCfg();renderProfit()">
+    </div>
+    <div class="card psm">
+      <div class="cost-var-lbl">Kutu (₺ / sipariş)</div>
+      <input class="cost-input" id="cfg-kutu" type="number" value="100" oninput="saveCostCfg();renderProfit()">
+    </div>
+    <div class="card psm">
+      <div class="cost-var-lbl">Iyzico Komisyon (%)</div>
+      <input class="cost-input" id="cfg-iyzico" type="number" step="0.01" value="2.35" oninput="saveCostCfg();renderProfit()">
+    </div>
+    <div class="card psm">
+      <div class="cost-var-lbl">Shopify Komisyon (%)</div>
+      <input class="cost-input" id="cfg-shopify" type="number" step="0.01" value="2.0" oninput="saveCostCfg();renderProfit()">
+    </div>
+  </div>
+  <div class="g g6-6">
+    <div class="card p">
+      <div class="chart-title">Maliyet Dağılımı</div>
+      <div class="chart-sub" id="profit-period-lbl">Son 30 gün</div>
+      <div id="profit-breakdown" style="margin-top:16px"></div>
+    </div>
+    <div class="g" style="grid-template-columns:1fr 1fr;gap:14px">
+      <div class="card p" style="border-color:rgba(48,209,88,0.18)">
+        <div class="kpi-lbl">Tahmini Net Kâr</div>
+        <div class="kpi-big" id="profit-net" style="color:var(--green)">—</div>
+        <div class="kpi-sub" id="profit-note">—</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Kâr Marjı</div>
+        <div class="kpi-big" id="profit-margin">—</div>
+        <div class="kpi-sub">brüt gelire göre</div>
+      </div>
+      <div class="card p" style="grid-column:span 2">
+        <div class="kpi-lbl" style="margin-bottom:12px">Toplam Maliyet Kalemi</div>
+        <div id="profit-cost-summary" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- YOUTUBE -->
-<div class="sec fi" style="transition-delay:.27s">
+<div class="sec fi" style="transition-delay:.29s">
   <div class="sec-label">YouTube Kanalı</div>
   <div class="g g4" style="margin-bottom:12px">
     <div class="card p" style="border-color:rgba(255,69,58,0.2)">
@@ -1095,6 +1150,7 @@ function setPeriod(p,btn) {
   document.querySelectorAll('.period-tab').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   renderKPIs();
+  renderProfit();
 }
 
 function counter(el,target,prefix='',ms=1200) {
@@ -1238,22 +1294,59 @@ function renderChannels() {
   setTimeout(()=>{document.querySelectorAll('.chi-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});},400);
 }
 
+// ─── ÜRÜN MALİYETLERİ — alış fiyatını buraya girin (0 = girilmedi) ───────────
+const CAMERA_COSTS = {
+  "Sony Cyber-shot DSC-TX9": 0,
+  "Canon PowerShot SD400": 0,
+  "Lumix DMC-FT10": 0,
+  "Casio Exilim EX-Z110": 0,
+  "Fujifilm FinePix 4700 Zoom": 0,
+  "Fujifilm FinePix T200": 0,
+  "Nikon Coolpix S52c": 0,
+  "Olympus SP-700": 0,
+  "Konica Minolta DiMAGE X50": 0,
+  "Kodak EasyShare V603": 0,
+  "Kodak Slice R502": 0,
+  "Sanyo Xacti VPC-HD1": 0,
+  "Casio Exilim EX-Z4": 0,
+  "Casio Exilim EX-Z85": 0,
+  "Olympus SP-320": 0,
+  "Olympus SZ-10": 0,
+  "HP Photosmart R827": 0,
+  "Nikon Coolpix 885": 0,
+  "Traveler DC-830": 0,
+  'Kodak ZX1 “Weather-Resistant”': 0,
+};
+
 function renderInventory() {
   const cams=SHOPIFY.cameras,accs=SHOPIFY.accessories;
   const camVal=cams.reduce((s,c)=>s+c.price,0);
   const accVal=accs.reduce((s,a)=>s+a.price*a.qty,0);
   const accQty=accs.reduce((s,a)=>s+a.qty,0);
-  const maxP=cams[0].price;
   counter(document.getElementById('inv-val'),camVal+accVal,'₺');
   document.getElementById('inv-cam').textContent=cams.length;
   document.getElementById('inv-acc').textContent=accQty;
   document.getElementById('inv-oos').textContent=SHOPIFY.out_of_stock;
   document.getElementById('camTitle').textContent=`Kameralar (${cams.length})`;
   document.getElementById('accTitle').textContent=`Aksesuarlar (${accQty} adet)`;
-  document.getElementById('camBody').innerHTML=cams.map((c,i)=>
-    `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${c.name}</td><td class="cg">${fmtTL(c.price)}</td><td><span class="cd" style="font-size:0.62rem">%${((c.price/camVal)*100).toFixed(1)}</span><span class="ibw"><span class="ib" data-w="${Math.round(c.price/maxP*100)}"></span></span></td></tr>`
-  ).join('');
+  const camCostTotal=cams.reduce((s,c)=>s+(CAMERA_COSTS[c.name]||0),0);
+  document.getElementById('camBody').innerHTML=cams.map((c,i)=>{
+    const cost=CAMERA_COSTS[c.name]||0;
+    const kar=cost>0?c.price-cost:null;
+    return `<tr>
+      <td class="cd">${i+1}</td>
+      <td style="color:var(--t1);font-size:0.72rem">${c.name}</td>
+      <td class="cg">${fmtTL(c.price)}</td>
+      <td style="color:var(--warn);font-family:var(--mono)">${cost>0?fmtTL(cost):'<span style="color:var(--t3)">—</span>'}</td>
+      <td style="font-family:var(--mono);color:${kar===null?'var(--t3)':kar>=0?'var(--green)':'var(--danger)'}">${kar===null?'?':fmtTL(kar)}</td>
+    </tr>`;
+  }).join('');
   document.getElementById('camTotal').textContent=fmtTL(camVal);
+  document.getElementById('camCostTotal').textContent=camCostTotal>0?fmtTL(camCostTotal):'—';
+  const camProfit=camCostTotal>0?camVal-camCostTotal:null;
+  const profEl=document.getElementById('camProfitTotal');
+  profEl.textContent=camProfit===null?'—':fmtTL(camProfit);
+  if(camProfit!==null)profEl.style.color=camProfit>=0?'var(--green)':'var(--danger)';
   document.getElementById('accBody').innerHTML=accs.map((a,i)=>
     `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${a.name}</td><td class="cd">${fmtTL(a.price)}</td><td class="cd" style="text-align:center">${a.qty}</td><td class="cg">${fmtTL(a.price*a.qty)}</td></tr>`
   ).join('');
@@ -1261,7 +1354,93 @@ function renderInventory() {
   const rev=SHOPIFY.monthly_revenue,lbl=SHOPIFY.monthly_labels;
   document.getElementById('goalRevNote').textContent=fmtTL(rev[rev.length-1])+' / ₺80K — '+lbl[lbl.length-1];
   document.getElementById('goalOosNote').textContent=SHOPIFY.out_of_stock+' varyant tükendi';
-  setTimeout(()=>{document.querySelectorAll('.ib').forEach((b,i)=>{setTimeout(()=>{b.style.width=b.dataset.w+'%';},i*25);});},600);
+}
+
+// ─── KÂRLIlık YAPILANDIRMASI ─────────────────────────────────────────────────
+const COST_DEFAULTS={kargo_tl:300,kutu_tl:100,iyzico_pct:2.35,shopify_pct:2.0};
+
+function loadCostCfg(){
+  try{const s=localStorage.getItem('rcl_cost_cfg');return s?{...COST_DEFAULTS,...JSON.parse(s)}:{...COST_DEFAULTS};}
+  catch{return{...COST_DEFAULTS};}
+}
+function saveCostCfg(){
+  localStorage.setItem('rcl_cost_cfg',JSON.stringify({
+    kargo_tl:parseFloat(document.getElementById('cfg-kargo').value)||0,
+    kutu_tl:parseFloat(document.getElementById('cfg-kutu').value)||0,
+    iyzico_pct:parseFloat(document.getElementById('cfg-iyzico').value)||0,
+    shopify_pct:parseFloat(document.getElementById('cfg-shopify').value)||0,
+  }));
+}
+function initCostCfg(){
+  const c=loadCostCfg();
+  document.getElementById('cfg-kargo').value=c.kargo_tl;
+  document.getElementById('cfg-kutu').value=c.kutu_tl;
+  document.getElementById('cfg-iyzico').value=c.iyzico_pct;
+  document.getElementById('cfg-shopify').value=c.shopify_pct;
+}
+
+function renderProfit(){
+  const cfg={
+    kargo_tl:parseFloat(document.getElementById('cfg-kargo').value)||0,
+    kutu_tl:parseFloat(document.getElementById('cfg-kutu').value)||0,
+    iyzico_pct:parseFloat(document.getElementById('cfg-iyzico').value)||0,
+    shopify_pct:parseFloat(document.getElementById('cfg-shopify').value)||0,
+  };
+  const d=SHOPIFY[`period_${period}`]||SHOPIFY.period_30d;
+  const rev=d.revenue, orders=d.orders;
+  const periodLbl={'30d':'Son 30 gün','90d':'Son 90 gün','year':'Son 12 ay'};
+  document.getElementById('profit-period-lbl').textContent=periodLbl[period]+' · '+orders+' sipariş';
+
+  const kdv        = Math.round(rev/6);
+  const iyzico     = Math.round(rev*cfg.iyzico_pct/100);
+  const shopifyFee = Math.round(rev*cfg.shopify_pct/100);
+  const kargo      = orders*cfg.kargo_tl;
+  const kutu       = orders*cfg.kutu_tl;
+  const totalCost  = kdv+iyzico+shopifyFee+kargo+kutu;
+  const net        = rev-totalCost;
+  const margin     = rev>0?(net/rev*100).toFixed(1):0;
+
+  const rows=[
+    {lbl:'Brüt Gelir',                              val:rev,         color:'var(--gold)',   sign:'+'},
+    {lbl:'KDV %20 (dahil)',                          val:-kdv,        color:'var(--danger)', sign:'-'},
+    {lbl:`Iyzico %${cfg.iyzico_pct}`,                val:-iyzico,     color:'var(--warn)',   sign:'-'},
+    {lbl:`Shopify %${cfg.shopify_pct}`,              val:-shopifyFee, color:'var(--warn)',   sign:'-'},
+    {lbl:`Kargo (${orders} × ₺${cfg.kargo_tl})`,    val:-kargo,      color:'var(--t2)',     sign:'-'},
+    {lbl:`Kutu (${orders} × ₺${cfg.kutu_tl})`,      val:-kutu,       color:'var(--t2)',     sign:'-'},
+  ];
+
+  document.getElementById('profit-breakdown').innerHTML=rows.map((r,i)=>
+    `<div class="profit-row${i===rows.length-1?' profit-total':''}">
+      <span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${r.lbl}</span>
+      <span style="font-family:var(--mono);font-size:0.82rem;font-weight:600;color:${r.color}">${r.sign}₺${fmt(Math.abs(r.val))}</span>
+    </div>`
+  ).join('')+
+  `<div class="profit-row profit-total">
+    <span style="font-size:0.72rem;color:var(--t1);font-family:var(--mono);font-weight:600">Net Kâr</span>
+    <span style="font-family:var(--mono);font-size:0.9rem;font-weight:700;color:${net>=0?'var(--green)':'var(--danger)'}">${net>=0?'+':'-'}₺${fmt(Math.abs(net))}</span>
+  </div>`;
+
+  const netEl=document.getElementById('profit-net');
+  netEl.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));
+  netEl.style.color=net>=0?'var(--green)':'var(--danger)';
+  const margEl=document.getElementById('profit-margin');
+  margEl.textContent='%'+margin;
+  margEl.style.color=margin>=30?'var(--green)':margin>=15?'var(--warn)':'var(--danger)';
+  document.getElementById('profit-note').textContent='₺'+fmt(totalCost)+' toplam maliyet';
+
+  const pills=[
+    {lbl:'KDV',val:kdv,c:'var(--danger)'},
+    {lbl:'Iyzico',val:iyzico,c:'var(--warn)'},
+    {lbl:'Shopify',val:shopifyFee,c:'var(--warn)'},
+    {lbl:'Kargo',val:kargo,c:'var(--t2)'},
+    {lbl:'Kutu',val:kutu,c:'var(--t2)'},
+  ];
+  document.getElementById('profit-cost-summary').innerHTML=pills.map(p=>
+    `<div style="padding:6px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07)">
+      <div style="font-size:0.59rem;font-family:var(--mono);color:var(--t3);letter-spacing:0.1em;text-transform:uppercase">${p.lbl}</div>
+      <div style="font-size:0.82rem;font-family:var(--mono);font-weight:600;color:${p.c};margin-top:2px">₺${fmt(p.val)}</div>
+    </div>`
+  ).join('');
 }
 
 function renderYouTube() {
@@ -1377,6 +1556,8 @@ renderChannels();
 renderInventory();
 renderYouTube();
 renderInstagram();
+initCostCfg();
+renderProfit();
 initFade();
 initTopbar();
 initParallax();
