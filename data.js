@@ -5,7 +5,7 @@ const YOUTUBE = {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3800,
-    "total_views": 1072147,
+    "total_views": 1072597,
     "video_count": 375
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1193,
+      "views": 1202,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2339,
+      "views": 2343,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -114,15 +114,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/bY4UWZ-wEwY"
     },
     {
-      "id": "-mrJ8maR2eo",
-      "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
-      "date": "25 Nis 2026",
-      "views": 181,
-      "likes": 8,
-      "comments": 3,
-      "url": "https://youtu.be/-mrJ8maR2eo"
-    },
-    {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
@@ -148,6 +139,15 @@ const YOUTUBE = {
       "likes": 25,
       "comments": 1,
       "url": "https://youtu.be/mUJq-SQWXX8"
+    },
+    {
+      "id": "Q3yhoMup7hg",
+      "title": "Canon Ixus 160 | Dijital Kamera Fotoğraf ve Video İnceleme 🔻",
+      "date": "1 Nis 2026",
+      "views": 644,
+      "likes": 8,
+      "comments": 2,
+      "url": "https://youtu.be/Q3yhoMup7hg"
     }
   ],
   "sub_goal": 10000
