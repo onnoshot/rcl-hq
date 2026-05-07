@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-07T20:52:46",
+  "updated_at": "2026-05-07T21:52:49",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,9 +63,9 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 218,
-      "likes": 1,
-      "comments": 0,
+      "views": 578,
+      "likes": 13,
+      "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
     },
     {
@@ -73,7 +73,7 @@ const YOUTUBE = {
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
       "views": 1214,
-      "likes": 8,
+      "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
     },
