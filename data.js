@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-07T23:52:47",
+  "updated_at": "2026-05-08T00:52:49",
   "period_30d": {
     "revenue": 79430,
     "orders": 7,
@@ -172,7 +172,7 @@ const SHOPIFY = {
     "orders": 61,
     "aov": 11920
   },
-  "customers_total": 702,
+  "customers_total": 703,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -342,10 +342,6 @@ const SHOPIFY = {
       "price": 11490
     },
     {
-      "name": "Olympus SP-700",
-      "price": 11490
-    },
-    {
       "name": "Konica Minolta DiMAGE X50",
       "price": 10990
     },
@@ -358,8 +354,16 @@ const SHOPIFY = {
       "price": 10490
     },
     {
+      "name": "Olympus SP-700",
+      "price": 10490
+    },
+    {
       "name": "Sanyo Xacti VPC-HD1",
       "price": 10490
+    },
+    {
+      "name": "Canon IXUS i",
+      "price": 9490
     },
     {
       "name": "Casio Exilim EX-Z4",
