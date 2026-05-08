@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-08T17:37:42",
+  "updated_at": "2026-05-08T18:37:47",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1338,
-      "likes": 21,
+      "views": 1348,
+      "likes": 22,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
     },
@@ -114,15 +114,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/U0c_YNzbRHE"
     },
     {
-      "id": "bY4UWZ-wEwY",
-      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
-      "date": "26 Nis 2026",
-      "views": 767,
-      "likes": 2,
-      "comments": 0,
-      "url": "https://youtu.be/bY4UWZ-wEwY"
-    },
-    {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
@@ -144,10 +135,19 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 5458,
+      "views": 5460,
       "likes": 43,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
+    },
+    {
+      "id": "mUJq-SQWXX8",
+      "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
+      "date": "10 Nis 2026",
+      "views": 2133,
+      "likes": 25,
+      "comments": 1,
+      "url": "https://youtu.be/mUJq-SQWXX8"
     }
   ],
   "sub_goal": 10000
