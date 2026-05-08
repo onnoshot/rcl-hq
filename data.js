@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-08T11:14:31",
+  "updated_at": "2026-05-08T15:37:33",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,13 +10,13 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 73330,
-      "watch_hours": 166.2,
+      "views": 73298,
+      "watch_hours": 166.1,
       "subs_gained": 170,
       "subs_lost": 111,
       "avg_view_sec": 18
     },
-    "watch_hours_year": 2949.5,
+    "watch_hours_year": 2949.4,
     "watch_hours_year_long": 1582.2,
     "watch_hours_year_shorts": 1367.2,
     "monthly": [
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1332,
+      "views": 1338,
       "likes": 21,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1239,
+      "views": 1250,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 522,
+      "views": 523,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -135,8 +135,8 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2994,
-      "likes": 27,
+      "views": 2996,
+      "likes": 28,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
     },
