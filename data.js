@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-08T18:37:47",
+  "updated_at": "2026-05-08T19:37:50",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -73,7 +73,7 @@ const YOUTUBE = {
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
       "views": 1251,
-      "likes": 9,
+      "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
     },
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 224,
+      "views": 225,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -112,6 +112,15 @@ const YOUTUBE = {
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
+    },
+    {
+      "id": "bY4UWZ-wEwY",
+      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
+      "date": "26 Nis 2026",
+      "views": 767,
+      "likes": 2,
+      "comments": 0,
+      "url": "https://youtu.be/bY4UWZ-wEwY"
     },
     {
       "id": "-mrJ8maR2eo",
@@ -139,15 +148,6 @@ const YOUTUBE = {
       "likes": 43,
       "comments": 0,
       "url": "https://youtu.be/8oUm3q_y6rQ"
-    },
-    {
-      "id": "mUJq-SQWXX8",
-      "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
-      "date": "10 Nis 2026",
-      "views": 2133,
-      "likes": 25,
-      "comments": 1,
-      "url": "https://youtu.be/mUJq-SQWXX8"
     }
   ],
   "sub_goal": 10000
