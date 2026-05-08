@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-08T02:53:07",
+  "updated_at": "2026-05-08T03:53:10",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3800,
-    "total_views": 1074806,
+    "total_views": 1075337,
     "video_count": 376
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1300,
+      "views": 1317,
       "likes": 21,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1221,
+      "views": 1231,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2351,
+      "views": 2352,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3629,
+      "views": 3630,
       "likes": 21,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 221,
+      "views": 222,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 516,
+      "views": 518,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2987,
+      "views": 2993,
       "likes": 27,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
