@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1237,
+      "views": 1235,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
