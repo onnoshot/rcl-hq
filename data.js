@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-08T19:37:50",
+  "updated_at": "2026-05-09T06:32:56",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3800,
-    "total_views": 1075610,
-    "video_count": 376
+    "total_views": 1077707,
+    "video_count": 377
   },
   "analytics": {
     "last_30d": {
-      "views": 73298,
-      "watch_hours": 166.1,
+      "views": 74014,
+      "watch_hours": 167.2,
       "subs_gained": 170,
-      "subs_lost": 111,
+      "subs_lost": 108,
       "avg_view_sec": 18
     },
-    "watch_hours_year": 2949.4,
-    "watch_hours_year_long": 1582.2,
-    "watch_hours_year_shorts": 1367.2,
+    "watch_hours_year": 2954.4,
+    "watch_hours_year_long": 1583.5,
+    "watch_hours_year_shorts": 1370.9,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,19 +52,28 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 12367,
-        "watch_min": 1757,
-        "subs_gained": 55
+        "views": 14920,
+        "watch_min": 2054,
+        "subs_gained": 56
       }
     ]
   },
   "videos": [
     {
+      "id": "-Ig3lgUcm8c",
+      "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
+      "date": "8 May 2026",
+      "views": 1877,
+      "likes": 17,
+      "comments": 3,
+      "url": "https://youtu.be/-Ig3lgUcm8c"
+    },
+    {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1348,
-      "likes": 22,
+      "views": 1476,
+      "likes": 25,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
     },
@@ -72,7 +81,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1251,
+      "views": 1284,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -81,8 +90,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2353,
-      "likes": 24,
+      "views": 2361,
+      "likes": 25,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -90,8 +99,8 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3632,
-      "likes": 21,
+      "views": 3641,
+      "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
     },
@@ -108,8 +117,8 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 523,
-      "likes": 5,
+      "views": 537,
+      "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
     },
@@ -117,8 +126,8 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 767,
-      "likes": 2,
+      "views": 778,
+      "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
     },
@@ -126,7 +135,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 186,
+      "views": 187,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -135,19 +144,10 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 2996,
+      "views": 3005,
       "likes": 28,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
-    },
-    {
-      "id": "8oUm3q_y6rQ",
-      "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
-      "date": "18 Nis 2026",
-      "views": 5460,
-      "likes": 43,
-      "comments": 0,
-      "url": "https://youtu.be/8oUm3q_y6rQ"
     }
   ],
   "sub_goal": 10000
