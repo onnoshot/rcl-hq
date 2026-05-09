@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-08T19:36:32",
+  "updated_at": "2026-05-10T00:43:50",
   "period_30d": {
-    "revenue": 79430,
-    "orders": 7,
-    "aov": 11347
+    "revenue": 105160,
+    "orders": 9,
+    "aov": 11684
   },
   "period_90d": {
-    "revenue": 177220,
-    "orders": 15,
-    "aov": 11815
+    "revenue": 186960,
+    "orders": 16,
+    "aov": 11685
   },
   "period_year": {
-    "revenue": 727115,
-    "orders": 61,
-    "aov": 11920
+    "revenue": 752845,
+    "orders": 63,
+    "aov": 11950
   },
-  "customers_total": 705,
+  "customers_total": 708,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     56890,
     46450,
     65320,
-    25980
+    51710
   ],
   "monthly_orders": [
     0,
@@ -213,17 +213,17 @@ const SHOPIFY = {
     6,
     4,
     6,
-    2
+    4
   ],
   "channels": [
     {
       "name": "Direkt",
       "icon": "🔗",
       "color": "#F5A623",
-      "orders": 23,
-      "rev": 305820,
-      "order_pct": 37.7,
-      "rev_pct": 42.1
+      "orders": 25,
+      "rev": 331550,
+      "order_pct": 39.7,
+      "rev_pct": 44.0
     },
     {
       "name": "Google",
@@ -231,8 +231,8 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 20,
       "rev": 224166,
-      "order_pct": 32.8,
-      "rev_pct": 30.8
+      "order_pct": 31.7,
+      "rev_pct": 29.8
     },
     {
       "name": "Instagram",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 16,
       "rev": 177899,
-      "order_pct": 26.2,
-      "rev_pct": 24.5
+      "order_pct": 25.4,
+      "rev_pct": 23.6
     },
     {
       "name": "YouTube",
@@ -250,7 +250,7 @@ const SHOPIFY = {
       "orders": 1,
       "rev": 9990,
       "order_pct": 1.6,
-      "rev_pct": 1.4
+      "rev_pct": 1.3
     },
     {
       "name": "AI / Arama",
@@ -259,10 +259,18 @@ const SHOPIFY = {
       "orders": 1,
       "rev": 9240,
       "order_pct": 1.6,
-      "rev_pct": 1.3
+      "rev_pct": 1.2
     }
   ],
   "recent_orders": [
+    {
+      "date": "9 May 2026",
+      "amount": 14490
+    },
+    {
+      "date": "9 May 2026",
+      "amount": 11240
+    },
     {
       "date": "4 May 2026",
       "amount": 10490
@@ -294,14 +302,6 @@ const SHOPIFY = {
     {
       "date": "3 Nis 2026",
       "amount": 11870
-    },
-    {
-      "date": "26 Mar 2026",
-      "amount": 9990
-    },
-    {
-      "date": "20 Mar 2026",
-      "amount": 11480
     }
   ],
   "cameras": [
@@ -312,10 +312,6 @@ const SHOPIFY = {
     {
       "name": "Olympus VR-310",
       "price": 15490
-    },
-    {
-      "name": "Sony Cyber-shot DSC-TX9",
-      "price": 14490
     },
     {
       "name": "Canon PowerShot SD400",
@@ -331,10 +327,6 @@ const SHOPIFY = {
     },
     {
       "name": "Fujifilm FinePix 4700 Zoom",
-      "price": 11490
-    },
-    {
-      "name": "Fujifilm FinePix T200",
       "price": 11490
     },
     {
@@ -433,7 +425,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 79
+  "out_of_stock": 81
 };
 /* ─── SHOPIFY DATA END ─── */
 
