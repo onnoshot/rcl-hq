@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-10T01:43:51",
+  "updated_at": "2026-05-10T23:05:51",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3800,
-    "total_views": 1080629,
+    "total_views": 1082428,
     "video_count": 377
   },
   "analytics": {
     "last_30d": {
-      "views": 74826,
-      "watch_hours": 168.5,
-      "subs_gained": 170,
-      "subs_lost": 109,
-      "avg_view_sec": 18
+      "views": 78082,
+      "watch_hours": 173.7,
+      "subs_gained": 175,
+      "subs_lost": 112,
+      "avg_view_sec": 17
     },
-    "watch_hours_year": 2959.2,
-    "watch_hours_year_long": 1584.4,
-    "watch_hours_year_shorts": 1374.8,
+    "watch_hours_year": 2964.3,
+    "watch_hours_year_long": 1585.6,
+    "watch_hours_year_shorts": 1378.7,
     "monthly": [
       {
         "label": "Ara 25",
@@ -40,8 +40,8 @@ const YOUTUBE = {
       },
       {
         "label": "Mar 26",
-        "views": 234024,
-        "watch_min": 39234,
+        "views": 233957,
+        "watch_min": 39220,
         "subs_gained": 337
       },
       {
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 17522,
-        "watch_min": 2344,
-        "subs_gained": 57
+        "views": 20777,
+        "watch_min": 2651,
+        "subs_gained": 62
       }
     ]
   },
@@ -63,17 +63,17 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 1907,
-      "likes": 18,
-      "comments": 3,
+      "views": 2002,
+      "likes": 21,
+      "comments": 4,
       "url": "https://youtu.be/-Ig3lgUcm8c"
     },
     {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1589,
-      "likes": 30,
+      "views": 1663,
+      "likes": 29,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
     },
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1334,
+      "views": 1381,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2367,
+      "views": 2378,
       "likes": 25,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3648,
+      "views": 3658,
       "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 227,
+      "views": 229,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 546,
+      "views": 553,
       "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 787,
+      "views": 793,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 189,
+      "views": 191,
       "likes": 8,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 3013,
+      "views": 3022,
       "likes": 28,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
