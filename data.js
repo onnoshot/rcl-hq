@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-10T23:05:51",
+  "updated_at": "2026-05-10T23:05:52",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1663,
+      "views": 1659,
       "likes": 29,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -156,11 +156,11 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-10T01:43:53",
+  "updated_at": "2026-05-10T23:05:52",
   "period_30d": {
-    "revenue": 105160,
-    "orders": 9,
-    "aov": 11684
+    "revenue": 92670,
+    "orders": 8,
+    "aov": 11584
   },
   "period_90d": {
     "revenue": 186960,
@@ -172,7 +172,7 @@ const SHOPIFY = {
     "orders": 63,
     "aov": 11950
   },
-  "customers_total": 708,
+  "customers_total": 710,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
