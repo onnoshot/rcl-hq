@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-11T00:05:56",
+  "updated_at": "2026-05-11T22:51:33",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3800,
-    "total_views": 1082428,
+    "total_views": 1084331,
     "video_count": 377
   },
   "analytics": {
     "last_30d": {
-      "views": 74437,
-      "watch_hours": 167.5,
+      "views": 76252,
+      "watch_hours": 171.6,
       "subs_gained": 174,
-      "subs_lost": 110,
+      "subs_lost": 111,
       "avg_view_sec": 18
     },
-    "watch_hours_year": 2964.3,
-    "watch_hours_year_long": 1585.6,
-    "watch_hours_year_shorts": 1378.7,
+    "watch_hours_year": 2968.4,
+    "watch_hours_year_long": 1587.0,
+    "watch_hours_year_shorts": 1381.4,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,8 +52,8 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 20777,
-        "watch_min": 2651,
+        "views": 22592,
+        "watch_min": 2895,
         "subs_gained": 62
       }
     ]
@@ -63,17 +63,17 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2002,
-      "likes": 21,
-      "comments": 5,
+      "views": 2012,
+      "likes": 23,
+      "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
     },
     {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1663,
-      "likes": 29,
+      "views": 1690,
+      "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
     },
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1381,
+      "views": 1388,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2378,
+      "views": 2382,
       "likes": 25,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3659,
+      "views": 3664,
       "likes": 22,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 230,
+      "views": 235,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 553,
+      "views": 561,
       "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 793,
+      "views": 795,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -135,8 +135,8 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 192,
-      "likes": 8,
+      "views": 197,
+      "likes": 9,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
     },
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 3024,
+      "views": 3029,
       "likes": 28,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
