@@ -5,7 +5,7 @@ const YOUTUBE = {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3800,
-    "total_views": 1084331,
+    "total_views": 1084576,
     "video_count": 377
   },
   "analytics": {
