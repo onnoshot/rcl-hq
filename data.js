@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-12T13:06:44",
+  "updated_at": "2026-05-12T17:37:29",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2019,
+      "views": 2020,
       "likes": 23,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -132,22 +132,22 @@ const YOUTUBE = {
       "url": "https://youtu.be/bY4UWZ-wEwY"
     },
     {
-      "id": "-mrJ8maR2eo",
-      "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
-      "date": "25 Nis 2026",
-      "views": 199,
-      "likes": 9,
-      "comments": 3,
-      "url": "https://youtu.be/-mrJ8maR2eo"
-    },
-    {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 3035,
+      "views": 3037,
       "likes": 28,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
+    },
+    {
+      "id": "8oUm3q_y6rQ",
+      "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
+      "date": "18 Nis 2026",
+      "views": 5494,
+      "likes": 44,
+      "comments": 0,
+      "url": "https://youtu.be/8oUm3q_y6rQ"
     }
   ],
   "sub_goal": 10000
