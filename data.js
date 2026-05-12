@@ -156,21 +156,21 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-12T13:06:47",
+  "updated_at": "2026-05-12T17:54:41",
   "period_30d": {
-    "revenue": 92670,
-    "orders": 8,
-    "aov": 11584
+    "revenue": 108160,
+    "orders": 9,
+    "aov": 12018
   },
   "period_90d": {
-    "revenue": 186960,
-    "orders": 16,
-    "aov": 11685
+    "revenue": 202450,
+    "orders": 17,
+    "aov": 11909
   },
   "period_year": {
-    "revenue": 752845,
-    "orders": 63,
-    "aov": 11950
+    "revenue": 768335,
+    "orders": 64,
+    "aov": 12005
   },
   "customers_total": 715,
   "monthly_labels": [
@@ -199,7 +199,7 @@ const SHOPIFY = {
     56890,
     46450,
     65320,
-    51710
+    67200
   ],
   "monthly_orders": [
     0,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     6,
     4,
     6,
-    4
+    5
   ],
   "channels": [
     {
@@ -222,8 +222,8 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 25,
       "rev": 331550,
-      "order_pct": 39.7,
-      "rev_pct": 44.0
+      "order_pct": 39.1,
+      "rev_pct": 43.2
     },
     {
       "name": "Google",
@@ -231,17 +231,17 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 20,
       "rev": 224166,
-      "order_pct": 31.7,
-      "rev_pct": 29.8
+      "order_pct": 31.2,
+      "rev_pct": 29.2
     },
     {
       "name": "Instagram",
       "icon": "📸",
       "color": "#BF5AF2",
-      "orders": 16,
-      "rev": 177899,
-      "order_pct": 25.4,
-      "rev_pct": 23.6
+      "orders": 17,
+      "rev": 193389,
+      "order_pct": 26.6,
+      "rev_pct": 25.2
     },
     {
       "name": "YouTube",
@@ -263,6 +263,10 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "12 May 2026",
+      "amount": 15490
+    },
     {
       "date": "9 May 2026",
       "amount": 14490
@@ -298,20 +302,12 @@ const SHOPIFY = {
     {
       "date": "10 Nis 2026",
       "amount": 12490
-    },
-    {
-      "date": "3 Nis 2026",
-      "amount": 11870
     }
   ],
   "cameras": [
     {
       "name": "Fujifilm FinePix Z90",
       "price": 18490
-    },
-    {
-      "name": "Olympus VR-310",
-      "price": 15490
     },
     {
       "name": "Canon PowerShot SD400",
@@ -425,7 +421,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 81
+  "out_of_stock": 82
 };
 /* ─── SHOPIFY DATA END ─── */
 
