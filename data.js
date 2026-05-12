@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-13T01:50:52",
+  "updated_at": "2026-05-13T02:50:00",
   "period_30d": {
     "revenue": 108160,
     "orders": 9,
@@ -310,12 +310,20 @@ const SHOPIFY = {
       "price": 18490
     },
     {
+      "name": "Fujifilm FinePix Z700 EXR",
+      "price": 15490
+    },
+    {
       "name": "Canon PowerShot SD400",
       "price": 12490
     },
     {
       "name": "Lumix DMC-FT10",
       "price": 11990
+    },
+    {
+      "name": "Canon IXUS i",
+      "price": 11490
     },
     {
       "name": "Casio Exilim EX-Z110",
@@ -348,10 +356,6 @@ const SHOPIFY = {
     {
       "name": "Sanyo Xacti VPC-HD1",
       "price": 10490
-    },
-    {
-      "name": "Canon IXUS i",
-      "price": 9490
     },
     {
       "name": "Casio Exilim EX-Z4",
