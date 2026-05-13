@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-13T18:21:41",
+  "updated_at": "2026-05-13T19:21:45",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 3850,
+    "subscribers": 3860,
     "total_views": 1089322,
     "video_count": 377
   },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1711,
+      "views": 1712,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1398,
+      "views": 1400,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -90,8 +90,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4123,
-      "likes": 43,
+      "views": 4171,
+      "likes": 45,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -144,8 +144,8 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 5014,
-      "likes": 47,
+      "views": 5076,
+      "likes": 48,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
     }
