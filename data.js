@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-13T23:22:01",
+  "updated_at": "2026-05-14T00:22:04",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,10 +10,10 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 74163,
-      "watch_hours": 168.1,
-      "subs_gained": 173,
-      "subs_lost": 111,
+      "views": 72418,
+      "watch_hours": 164.6,
+      "subs_gained": 167,
+      "subs_lost": 107,
       "avg_view_sec": 18
     },
     "watch_hours_year": 2976.0,
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 795,
+      "views": 990,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2025,
+      "views": 2030,
       "likes": 23,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1712,
+      "views": 1716,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1400,
+      "views": 1402,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 568,
+      "views": 570,
       "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 804,
+      "views": 805,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 245,
+      "views": 263,
       "likes": 9,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
