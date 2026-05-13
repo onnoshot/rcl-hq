@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-13T08:50:13",
+  "updated_at": "2026-05-13T09:50:16",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 3820,
+    "subscribers": 3830,
     "total_views": 1086477,
     "video_count": 377
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2024,
+      "views": 2025,
       "likes": 23,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1705,
+      "views": 1706,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -90,8 +90,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2421,
-      "likes": 30,
+      "views": 2572,
+      "likes": 32,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 802,
+      "views": 803,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 202,
+      "views": 207,
       "likes": 9,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 3044,
+      "views": 3139,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
