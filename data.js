@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-13T06:50:05",
+  "updated_at": "2026-05-13T07:50:09",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -90,8 +90,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 2387,
-      "likes": 25,
+      "views": 2393,
+      "likes": 28,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 203,
+      "views": 202,
       "likes": 9,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
@@ -144,8 +144,8 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 3040,
-      "likes": 28,
+      "views": 3042,
+      "likes": 31,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
     }
