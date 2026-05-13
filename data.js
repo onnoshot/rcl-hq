@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-13T08:50:12",
+  "updated_at": "2026-05-13T08:50:13",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "ie_8TBsWv-Y",
       "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
       "date": "20 Nis 2026",
-      "views": 3045,
+      "views": 3044,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/ie_8TBsWv-Y"
