@@ -369,7 +369,7 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .stat-kpi-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
 .stat-pulse{animation:pulse-stat 2.5s ease-in-out infinite;}
 @keyframes pulse-stat{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.97)}}
-/* ── CherryGlow v4.1 ────────────────────────────────────────────────────────── */
+/* ── CherryGlow v5.0 ────────────────────────────────────────────────────────── */
 /* Layout */
 .cg-stats-ribbon{display:flex;align-items:center;padding:0 20px 14px;flex-wrap:wrap;gap:4px;}
 .cg-stat-item{flex:1;text-align:center;padding:9px 4px;min-width:80px;}
@@ -382,15 +382,15 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cg-left-col,.cg-right-col{display:flex;flex-direction:column;gap:11px;}
 
 /* Character card */
-.cg-char-card{padding:22px 14px 18px;text-align:center;position:relative;overflow:visible;}
-.cg-char-card::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:60px;background:radial-gradient(ellipse at center,rgba(212,175,55,.055) 0%,transparent 70%);pointer-events:none;}
+.cg-char-card{padding:16px 14px 14px;text-align:center;position:relative;overflow:hidden;}
+.cg-char-card::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:60px;background:radial-gradient(ellipse at center,rgba(212,175,55,.04) 0%,transparent 70%);pointer-events:none;}
 
 /* Neural pulse rings */
 .cg-pulses{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);pointer-events:none;z-index:0;}
-.cg-pulse{position:absolute;border-radius:50%;border:1.5px solid rgba(212,175,55,.14);animation:cg-neural 5.5s ease-out infinite;}
-.cg-pulse:nth-child(1){width:200px;height:200px;margin:-100px 0 0 -100px;animation-delay:0s;}
-.cg-pulse:nth-child(2){width:270px;height:270px;margin:-135px 0 0 -135px;animation-delay:1.8s;}
-.cg-pulse:nth-child(3){width:340px;height:340px;margin:-170px 0 0 -170px;animation-delay:3.6s;}
+.cg-pulse{position:absolute;border-radius:50%;border:1px solid rgba(212,175,55,.1);animation:cg-neural 6s ease-out infinite;}
+.cg-pulse:nth-child(1){width:140px;height:140px;margin:-70px 0 0 -70px;animation-delay:0s;}
+.cg-pulse:nth-child(2){width:190px;height:190px;margin:-95px 0 0 -95px;animation-delay:2s;}
+.cg-pulse:nth-child(3){width:240px;height:240px;margin:-120px 0 0 -120px;animation-delay:4s;}
 @keyframes cg-neural{0%{opacity:.36;transform:scale(.82);}100%{opacity:0;transform:scale(1.12);}}
 .cg-figure.analyzing ~ .cg-pulses .cg-pulse,.cg-figure.writing ~ .cg-pulses .cg-pulse{border-color:rgba(212,175,55,.4);animation-duration:2s;}
 .cg-figure.think ~ .cg-pulses .cg-pulse{border-color:rgba(90,200,250,.3);animation-duration:3s;}
@@ -406,10 +406,8 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 /* ── LIVING CHARACTER ANIMATIONS ────────────────────────── */
 .cg-figure.idle .cg-svg{animation:cg-idle-breath 6s ease-in-out infinite;}
 @keyframes cg-idle-breath{
-  0%{transform:translateY(0) rotate(.2deg);}
-  30%{transform:translateY(-6px) rotate(-.3deg);}
-  60%{transform:translateY(-4px) rotate(.3deg);}
-  100%{transform:translateY(0) rotate(.2deg);}
+  0%,100%{transform:translateY(0) rotate(0deg);}
+  50%{transform:translateY(-3px) rotate(.1deg);}
 }
 .cg-figure.analyzing .cg-svg{filter:drop-shadow(0 0 18px rgba(90,200,250,.55));animation:cg-think-anim 1.5s ease-in-out infinite;}
 @keyframes cg-think-anim{
@@ -487,10 +485,7 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 @keyframes cg-wb-active{0%,100%{height:4px;}50%{height:var(--h,30px);}}
 @keyframes cg-wb-quiet{0%,100%{height:2px;}50%{height:4px;}}
 
-/* Cherry blossom */
-.cg-blossom-bg{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:1;}
-.cg-blossom{position:absolute;font-size:14px;pointer-events:none;animation:cg-fall 7s linear forwards;}
-@keyframes cg-fall{0%{transform:translateY(-20px) rotate(0deg);opacity:.9;}100%{transform:translateY(100vh) rotate(720deg);opacity:0;}}
+/* Cherry blossom — disabled */
 
 /* Output */
 .cg-output-wrap{display:flex;flex-direction:column;gap:11px;}
@@ -556,6 +551,7 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cg-ai-status.running{color:rgba(212,175,55,.8);opacity:1;}
 
 /* History */
+.cg-agenda-item.done-item{opacity:.4;}
 .cg-hist-item{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);margin-bottom:6px;cursor:pointer;transition:all .2s;}
 .cg-hist-item:hover{background:rgba(255,255,255,.06);}
 .cg-hist-title{font-size:.78rem;color:rgba(255,255,255,.8);margin-bottom:4px;}
@@ -606,8 +602,8 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 
 /* ── CherryGlow Chat Interface ──────────────────────────────────────────── */
-.cg-main-grid{grid-template-columns:370px 1fr !important;}
-.cg-chat-card{display:flex;flex-direction:column;padding:16px;min-height:340px;}
+.cg-main-grid{grid-template-columns:290px 1fr !important;}
+.cg-chat-card{display:flex;flex-direction:column;padding:14px;min-height:260px;}
 .cg-chat-messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;
   padding:4px 2px;max-height:280px;scrollbar-width:thin;scrollbar-color:rgba(212,175,55,.2) transparent;}
 .cg-msg{display:flex;align-items:flex-end;gap:7px;max-width:92%;}
@@ -1951,7 +1947,6 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 <!-- ═══════════════════ CHERRYGLOW ═══════════════════ -->
 <div class="page" id="page-cherry">
-<div class="cg-blossom-bg" id="cg-blossom-bg"></div>
 <div class="page-topbar fi">
   <div class="pt-left" style="display:flex;align-items:center;gap:14px;flex:1">
     <div>
@@ -1962,32 +1957,19 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
       <div class="pt-sub" style="font-size:.68rem;opacity:.4">Scout &rarr; Brief &rarr; Yaz &rarr; Puan &mdash; Otonom AI Blog Motoru</div>
     </div>
     <!-- Siri-style waveform -->
-    <div class="cg-waveform" id="cg-waveform" style="flex:1;max-width:280px">
-      <span class="cg-wb idle-wave" style="--h:22px;--d:0.00s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:38px;--d:0.04s;--c:#FFB7C5"></span>
-          <span class="cg-wb idle-wave" style="--h:58px;--d:0.08s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:72px;--d:0.12s;--c:#BF5AF2"></span>
-          <span class="cg-wb idle-wave" style="--h:88px;--d:0.16s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:94px;--d:0.20s;--c:#FFB7C5"></span>
-          <span class="cg-wb idle-wave" style="--h:78px;--d:0.24s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:62px;--d:0.28s;--c:#FFB7C5"></span>
-          <span class="cg-wb idle-wave" style="--h:82px;--d:0.32s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:97px;--d:0.36s;--c:#BF5AF2"></span>
-          <span class="cg-wb idle-wave" style="--h:88px;--d:0.40s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:74px;--d:0.44s;--c:#FFB7C5"></span>
-          <span class="cg-wb idle-wave" style="--h:62px;--d:0.48s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:78px;--d:0.52s;--c:#FFB7C5"></span>
-          <span class="cg-wb idle-wave" style="--h:92px;--d:0.56s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:88px;--d:0.60s;--c:#BF5AF2"></span>
-          <span class="cg-wb idle-wave" style="--h:72px;--d:0.64s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:58px;--d:0.68s;--c:#FFB7C5"></span>
-          <span class="cg-wb idle-wave" style="--h:42px;--d:0.72s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:66px;--d:0.76s;--c:#FFB7C5"></span>
-          <span class="cg-wb idle-wave" style="--h:82px;--d:0.80s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:72px;--d:0.84s;--c:#BF5AF2"></span>
-          <span class="cg-wb idle-wave" style="--h:54px;--d:0.88s;--c:#D4AF37"></span>
-          <span class="cg-wb idle-wave" style="--h:34px;--d:0.92s;--c:#FFB7C5"></span>
-          
+    <div class="cg-waveform" id="cg-waveform" style="flex:1;max-width:180px">
+      <span class="cg-wb idle-wave" style="--h:18px;--d:0.00s;--c:#D4AF37"></span>
+      <span class="cg-wb idle-wave" style="--h:32px;--d:0.07s;--c:#FFB7C5"></span>
+      <span class="cg-wb idle-wave" style="--h:52px;--d:0.14s;--c:#D4AF37"></span>
+      <span class="cg-wb idle-wave" style="--h:68px;--d:0.21s;--c:#BF5AF2"></span>
+      <span class="cg-wb idle-wave" style="--h:82px;--d:0.28s;--c:#D4AF37"></span>
+      <span class="cg-wb idle-wave" style="--h:90px;--d:0.35s;--c:#FFB7C5"></span>
+      <span class="cg-wb idle-wave" style="--h:78px;--d:0.42s;--c:#D4AF37"></span>
+      <span class="cg-wb idle-wave" style="--h:62px;--d:0.49s;--c:#BF5AF2"></span>
+      <span class="cg-wb idle-wave" style="--h:88px;--d:0.56s;--c:#D4AF37"></span>
+      <span class="cg-wb idle-wave" style="--h:70px;--d:0.63s;--c:#FFB7C5"></span>
+      <span class="cg-wb idle-wave" style="--h:50px;--d:0.70s;--c:#D4AF37"></span>
+      <span class="cg-wb idle-wave" style="--h:28px;--d:0.77s;--c:#FFB7C5"></span>
     </div>
   </div>
   <div class="pt-right" style="display:flex;align-items:center;gap:12px">
@@ -2233,7 +2215,30 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
       </div>
     </div>
 
-    <!-- Thought stream + agenda -->
+    <!-- Thought log -->
+    <div class="card" style="padding:12px 14px;flex-shrink:0">
+      <div class="cg-panel-title" style="margin-bottom:6px;font-size:.6rem">Dusunce Akisi</div>
+      <div class="cg-thought-stream" style="margin-bottom:0;min-height:36px;max-height:72px;overflow:hidden;">
+        <div id="cg-ts-inner" style="font-size:.68rem;opacity:.55"></div>
+      </div>
+    </div>
+
+    <!-- Agenda card -->
+    <div class="card" style="padding:12px 14px;flex-shrink:0;max-height:280px;display:flex;flex-direction:column;">
+      <div class="cg-panel-title" style="margin-bottom:8px;flex-shrink:0">
+        Gundem
+        <span style="display:inline-flex;align-items:center;gap:6px">
+          <span id="cg-agenda-count" style="opacity:.4;font-size:.6rem;font-weight:400"></span>
+          <button class="cg-ctrl-btn" style="padding:2px 9px;font-size:.6rem;flex:none;margin:0" onclick="cherryAddAllToAgenda()">Hepsini Yaz</button>
+        </span>
+      </div>
+      <div class="cg-agenda-wrap" style="flex:1;overflow-y:auto;">
+        <div id="cg-agenda-list">
+          <div style="font-size:.7rem;opacity:.3;padding:6px 0">Konular yukleniyor...</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Chat panel (Cherry ↔ Patron) -->
     <div class="card cg-chat-card" style="flex:1">
       <div class="cg-panel-title" style="margin-bottom:10px;flex-shrink:0">
@@ -4388,9 +4393,7 @@ function setCherryState(s) {
   var bwActive = (s === 'analyzing' || s === 'writing' || s === 'think');
   bwBars.forEach(function(b) { b.classList.toggle('active', bwActive); });
 
-  // Blossom rain
-  if (s === 'writing') cgStartBlossom();
-  else cgStopBlossom();
+  // Blossom disabled
 
   // Waveform
   cgUpdateWaveform(s);
@@ -4505,29 +4508,9 @@ function cgHideHumanBadge() {
   if (badge) badge.style.display = 'none';
 }
 
-// ── Cherry blossom ────────────────────────────────────────────────────────────
-function cgStartBlossom() {
-  if (_cgBlossomTimer) return;
-  var bg = document.getElementById('cg-blossom-bg');
-  if (bg) bg.style.display = 'block';
-  _cgBlossomTimer = setInterval(function() {
-    if (!document.getElementById('cg-blossom-bg')) { cgStopBlossom(); return; }
-    var el = document.createElement('div');
-    el.className = 'cg-blossom';
-    el.textContent = ['🌸','🌹','🏵️','✨','*'][Math.floor(Math.random()*5)];
-    el.style.left = (Math.random()*100) + '%';
-    el.style.animationDuration = (5+Math.random()*5) + 's';
-    el.style.fontSize = (10+Math.random()*10) + 'px';
-    var bg2 = document.getElementById('cg-blossom-bg');
-    if (bg2) bg2.appendChild(el);
-    setTimeout(function(){ if(el.parentNode) el.parentNode.removeChild(el); }, 10000);
-  }, 380);
-}
-function cgStopBlossom() {
-  clearInterval(_cgBlossomTimer); _cgBlossomTimer = null;
-  var bg = document.getElementById('cg-blossom-bg');
-  if (bg) setTimeout(function(){bg.style.display='none';bg.innerHTML='';},6000);
-}
+// ── Cherry blossom — disabled ─────────────────────────────────────────────────
+function cgStartBlossom() {}
+function cgStopBlossom() {}
 
 // ── Celebrate sparks ──────────────────────────────────────────────────────────
 function cgCelebrate() {
@@ -4805,7 +4788,8 @@ function cgRenderAgenda() {
   el.innerHTML = visible.map(function(item, idx){
     var statusTxt = item.stage==='done' ? 'tamam' : item.stage==='running' ? 'yaziliyor' : '';
     var statusClass = item.stage==='done' ? 'done' : item.stage==='running' ? 'running' : '';
-    return '<div class="cg-agenda-item" data-idx="'+idx+'" data-stage="'+item.stage+'" onclick="cherryGenerateBlog('+idx+')">' +
+    var clickable = item.stage !== 'running';
+    return '<div class="cg-agenda-item' + (item.stage==='done'?' done-item':'') + '" data-idx="'+idx+'" data-stage="'+item.stage+'" ' + (clickable?'onclick="cherryGenerateBlog('+idx+')"':'style="opacity:.45;cursor:default"') + '>' +
       '<span class="cg-ai-cat">'+item.cat+'</span>' +
       '<span class="cg-ai-topic">'+item.topic.slice(0,60)+'</span>' +
       '<span class="cg-ai-status '+statusClass+'">'+statusTxt+'</span>' +
@@ -5239,7 +5223,7 @@ function cgUserSend(text) {
   var inp = document.getElementById('cg-chat-input');
   if (!text && inp) text = inp.value;
   if (!text || !text.trim()) return;
-  if (inp) inp.value = '';
+  if (inp) { inp.value = ''; inp.blur(); }
   cgAddMessage('user', text, '', 0);
   cgHandleUserCommand(text);
 }
