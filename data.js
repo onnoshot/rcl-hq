@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-14T20:20:57",
+  "updated_at": "2026-05-14T21:28:09",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 3950,
-    "total_views": 1102730,
+    "subscribers": 3960,
+    "total_views": 1109720,
     "video_count": 378
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1090,
+      "views": 1089,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1728,
+      "views": 1733,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -99,8 +99,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4485,
-      "likes": 65,
+      "views": 4492,
+      "likes": 69,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 245,
+      "views": 249,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
