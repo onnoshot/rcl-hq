@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1041,
+      "views": 1039,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "-mrJ8maR2eo",
       "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
       "date": "25 Nis 2026",
-      "views": 271,
+      "views": 270,
       "likes": 9,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
