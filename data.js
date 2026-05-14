@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-14T13:22:59",
+  "updated_at": "2026-05-14T14:23:02",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1057,
-      "likes": 9,
+      "views": 1062,
+      "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
     },
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2036,
-      "likes": 23,
+      "views": 2038,
+      "likes": 24,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
     },
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1723,
+      "views": 1724,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -99,8 +99,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4420,
-      "likes": 54,
+      "views": 4433,
+      "likes": 57,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
