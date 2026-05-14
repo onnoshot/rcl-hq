@@ -379,6 +379,15 @@ textarea.b-input{resize:vertical;min-height:52px;}
 .profit-val.gold{color:var(--gold);}
 .profit-result-box{background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.15);border-radius:14px;padding:16px;margin-top:4px;}
 
+/* YOUTUBE EMBED IN BLOG */
+.yt-match-card{display:flex;align-items:center;gap:10px;padding:8px 12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:10px;transition:border-color .15s;}
+.yt-match-card:hover{border-color:rgba(255,69,58,0.22);}
+.yt-match-thumb{width:76px;height:43px;border-radius:6px;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,0.04);}
+.yt-match-title{font-size:0.7rem;font-family:var(--mono);color:var(--t2);font-weight:500;line-height:1.35;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
+.yt-match-meta{font-size:0.6rem;color:var(--t3);font-family:var(--mono);margin-top:3px;}
+.yt-embed-btn{flex-shrink:0;padding:5px 12px;border-radius:8px;background:rgba(255,69,58,0.07);border:1px solid rgba(255,69,58,0.18);color:var(--danger);font-family:var(--mono);font-size:0.65rem;cursor:pointer;transition:all .15s;white-space:nowrap;}
+.yt-embed-btn:hover{background:rgba(255,69,58,0.14);}
+.yt-embed-btn.done{background:rgba(48,209,88,0.08);border-color:rgba(48,209,88,0.2);color:var(--green);cursor:default;}
 /* FOOTER */
 footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:var(--t3);font-family:var(--mono);letter-spacing:0.06em;}
 
@@ -1031,6 +1040,12 @@ footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:v
         <button onclick="mambaPrompt('Bu blog yazısı için sosyal medya gönderisi yaz: '+lastBlogMd.slice(0,300))" class="mamba-action-chip">📱 Sosyal Medya</button>
         <button onclick="mambaPrompt('Bu blog için Pinterest pin açıklaması yaz: '+lastBlogMd.slice(0,300))" class="mamba-action-chip">📌 Pinterest</button>
         <button onclick="mambaPrompt('Bu blog yazısının e-posta bülteni versiyonunu yaz: '+lastBlogMd.slice(0,400))" class="mamba-action-chip">✉️ Newsletter</button>
+      </div>
+
+      <!-- İlgili YouTube videoları -->
+      <div id="blog-yt-matches" style="display:none;flex-direction:column;gap:8px">
+        <div style="font-size:0.63rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--t3);font-family:var(--mono)">📺 Konuyla İlgili Videolarınız</div>
+        <div id="blog-yt-list" style="display:flex;flex-direction:column;gap:6px"></div>
       </div>
     </div>
   </div>
@@ -3105,6 +3120,7 @@ Yukarıdaki tüm kurallara uygun, SEO skoru 90+ hedefleyen Türkçe blog yazıs�
     if (bottomBar) bottomBar.style.display = 'flex';
     if (quickActions) quickActions.style.display = 'flex';
     renderBlogSEOScore(lastBlogMd, focusKw || topic.split(' ').slice(0,3).join(' '));
+    findRelatedYouTubeVideos(topic, focusKw);
 
   } catch(err) {
     if (outputMd) outputMd.textContent = 'Hata: ' + err.message;
@@ -3166,6 +3182,54 @@ function publishToShopify() {
   }).catch(() => window.open('https://admin.shopify.com/store/retrocameraland/articles/new','_blank'));
 }
 
+
+// ─── BLOG YT EMBED ────────────────────────────────────────
+function findRelatedYouTubeVideos(topic, focusKw) {
+  const matchesEl = document.getElementById('blog-yt-matches');
+  const listEl = document.getElementById('blog-yt-list');
+  if (!matchesEl || !listEl) return;
+
+  const searchText = ((topic || '') + ' ' + (focusKw || '')).toLowerCase();
+  const stopWords = new Set(['için','veya','olan','daha','bile','gibi','kadar','nasıl','nedir','neden','hangi','bunu','bunun','çok','bir','ile','ise','gibi','ama','fakat','ancak','yani','ama']);
+  const keywords = searchText.split(/[\s,.\-–|]+/).filter(w => w.length > 3 && !stopWords.has(w));
+
+  if (!keywords.length) { matchesEl.style.display = 'none'; return; }
+
+  const scored = (YOUTUBE.videos || []).map(v => {
+    const t = v.title.toLowerCase();
+    const score = keywords.reduce((acc, kw) => acc + (t.includes(kw) ? 2 : 0), 0);
+    return {...v, score};
+  }).filter(v => v.score > 0).sort((a,b) => b.score-a.score || b.views-a.views).slice(0,3);
+
+  if (!scored.length) { matchesEl.style.display = 'none'; return; }
+
+  listEl.innerHTML = scored.map(v => {
+    const views = v.views >= 1000 ? (v.views/1000).toFixed(1)+'B' : v.views;
+    const safeTitle = v.title.replace(/[<>"]/g,'').replace(/'/g,'&#39;');
+    return `<div class="yt-match-card">
+      <img class="yt-match-thumb" src="https://i.ytimg.com/vi/${v.id}/mqdefault.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+      <div style="flex:1;min-width:0">
+        <div class="yt-match-title">${safeTitle}</div>
+        <div class="yt-match-meta">${views} görüntülenme · ${v.date}</div>
+      </div>
+      <button id="yt-btn-${v.id}" onclick="embedYouTubeInBlog('${v.id}','${safeTitle}')" class="yt-embed-btn">+ Ekle</button>
+    </div>`;
+  }).join('');
+
+  matchesEl.style.display = 'flex';
+}
+
+function embedYouTubeInBlog(videoId, videoTitle) {
+  const embedBlock = '\n\n📺 **İlgili Video: ' + videoTitle + '**\n\n<figure><iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoId + '" title="' + videoTitle + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></figure>\n\n';
+  lastBlogMd += embedBlock;
+  const outputMd = document.getElementById('blog-output-md');
+  if (outputMd) {
+    outputMd.textContent = lastBlogMd;
+    outputMd.scrollTop = outputMd.scrollHeight;
+  }
+  const btn = document.getElementById('yt-btn-' + videoId);
+  if (btn) { btn.textContent = '✓ Eklendi'; btn.classList.add('done'); btn.disabled = true; }
+}
 
 // ─── ÜRÜN OLUŞTURUCU ──────────────────────────────────────
 let lastUrunMd = '';
