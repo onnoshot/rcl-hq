@@ -565,6 +565,16 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 /* History */
 .cg-agenda-item.done-item{opacity:.4;}
+.cg-ana-grid{display:flex;flex-direction:column;gap:4px;padding:2px 0;}
+.cg-ana-section-hdr{font-size:.54rem;text-transform:uppercase;letter-spacing:.12em;opacity:.3;font-family:var(--mono);padding:1px 0;}
+.cg-ana-row{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:4px;}
+.cg-ana-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:8px 5px;text-align:center;}
+.cg-ana-roi{background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.14);border-radius:10px;padding:10px 12px;margin-top:6px;}
+.cg-ana-roi-main{font-size:1.2rem;font-weight:700;font-family:var(--mono);color:#D4AF37;margin-bottom:3px;}
+.cg-ana-roi-sub{font-size:.57rem;opacity:.38;line-height:1.45;}
+.cg-ana-chart{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:8px 10px;margin-top:6px;}
+.cg-ana-blogs{display:flex;flex-direction:column;gap:3px;margin-top:4px;}
+.cg-ana-blog-row{display:flex;align-items:center;gap:8px;padding:5px 7px;background:rgba(255,255,255,.02);border-radius:6px;border:1px solid rgba(255,255,255,.04);}
 .cg-hist-item{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);margin-bottom:6px;cursor:pointer;transition:all .2s;}
 .cg-hist-item:hover{background:rgba(255,255,255,.06);}
 .cg-hist-title{font-size:.78rem;color:rgba(255,255,255,.8);margin-bottom:4px;}
@@ -2356,6 +2366,7 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
         <div class="cg-tab" onclick="setCherryTab('html',this)">HTML</div>
         <div class="cg-tab" onclick="setCherryTab('seo',this)">SEO Analiz</div>
         <div class="cg-tab" onclick="setCherryTab('history',this)">Gecmis</div>
+        <div class="cg-tab" data-tab="analytics" onclick="setCherryTab('analytics',this)">Analitik</div>
       </div>
       <div class="cg-output-body" id="cg-output-body">
         <div style="text-align:center;padding:40px 20px;opacity:.25;font-size:.82rem">Bir konu sec ve basla...</div>
@@ -4410,14 +4421,76 @@ function urunProfitCalc() {
 
 
 // ─── CHERRYGLOW AI AGENT v4.1 ──────────────────────────────────────────────
-const CG_VERSION = 'v5.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
+const CG_VERSION = 'v5.2.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
 
-// ── Brain memory ──────────────────────────────────────────────────────────────
+// ── Brain v5 — kalici bellek ──────────────────────────────────────────────────
+var CG_BRAIN_KEY = 'cg_brain_v5';
+var CG_USER = {name:'Onur', store:'Retrocameraland', biz:'analog kamera ve vintage fotograf', city:'Istanbul'};
+
+function cgDefaultBrain() {
+  return {
+    v:5, user:CG_USER, sessions_count:0, current_session:null,
+    topics_covered:[], seo_scores:[], history:[], keywords_used:[],
+    last_active:'', conversation_log:[], daily_stats:{},
+    research_queue:[], proactive_suggestions:[], last_suggestion_ts:0, brand:null
+  };
+}
+function cgMigrateBrainV5(old) {
+  var b = cgDefaultBrain();
+  b.topics_covered = old.topics_covered || [];
+  b.seo_scores     = old.seo_scores     || [];
+  b.history        = old.history        || [];
+  b.keywords_used  = old.keywords_used  || [];
+  b.last_active    = old.last_active    || '';
+  b.brand          = old.brand          || null;
+  b.sessions_count = 1;
+  return b;
+}
 function cgGetBrain() {
-  try { return JSON.parse(localStorage.getItem('cg_brain_v4') || '{}'); } catch(e) { return {}; }
+  try {
+    var raw = localStorage.getItem(CG_BRAIN_KEY);
+    if (!raw) {
+      var v4 = localStorage.getItem('cg_brain_v4');
+      if (v4) {
+        var migrated = cgMigrateBrainV5(JSON.parse(v4));
+        localStorage.setItem(CG_BRAIN_KEY, JSON.stringify(migrated));
+        return migrated;
+      }
+      return cgDefaultBrain();
+    }
+    return JSON.parse(raw);
+  } catch(e) { return cgDefaultBrain(); }
 }
 function cgSaveBrain(b) {
-  try { localStorage.setItem('cg_brain_v4', JSON.stringify(b)); } catch(e) {}
+  try { localStorage.setItem(CG_BRAIN_KEY, JSON.stringify(b)); } catch(e) {}
+}
+function cgSessionStart() {
+  var b = cgGetBrain();
+  b.current_session = 'sess_' + Date.now();
+  b.sessions_count  = (b.sessions_count || 0) + 1;
+  b.last_active     = new Date().toISOString();
+  var ds = new Date().toDateString();
+  if (!b.daily_stats[ds]) b.daily_stats[ds] = {blogs:0, words:0, published:0, sessions:0};
+  b.daily_stats[ds].sessions++;
+  var ks = Object.keys(b.daily_stats);
+  if (ks.length > 90) ks.sort().slice(0, ks.length-90).forEach(function(k){ delete b.daily_stats[k]; });
+  cgSaveBrain(b);
+}
+function cgLogMessage(role, msg) {
+  var b = cgGetBrain();
+  b.conversation_log = b.conversation_log || [];
+  b.conversation_log.push({ts:Date.now(), role:role, msg:msg.slice(0,400), sid:b.current_session});
+  if (b.conversation_log.length > 400) b.conversation_log = b.conversation_log.slice(-400);
+  cgSaveBrain(b);
+}
+function cgRecentlyDiscussed(days) {
+  var cutoff = Date.now() - (days||30) * 86400000;
+  var b = cgGetBrain();
+  var recent = [];
+  (b.conversation_log||[]).forEach(function(e){ if (e.ts>=cutoff) recent.push(e.msg.toLowerCase()); });
+  (b.topics_covered||[]).forEach(function(t){ if (new Date(t.date).getTime()>=cutoff) recent.push(t.topic.toLowerCase()); });
+  (b.proactive_suggestions||[]).forEach(function(s){ if (s.suggested_ts>=cutoff) recent.push(s.topic.toLowerCase()); });
+  return recent;
 }
 
 // ── State machine ─────────────────────────────────────────────────────────────
@@ -4799,6 +4872,9 @@ function setCherryTab(tab, el) {
         '<div class="cg-hist-meta">'+seo+pub+ver+'<span>'+((h.wc||0)+' kelime')+'</span></div>' +
         '</div>';
     }).join('') : '<div style="opacity:.3;font-size:.72rem;padding:20px 0">Gecmis yok</div>';
+  } else if (tab === 'analytics') {
+    body.innerHTML = '<div style="text-align:center;padding:30px;opacity:.25;font-size:.75rem">Yukluyor...</div>';
+    setTimeout(cgDailyReport, 80);
   }
 }
 
@@ -5137,6 +5213,12 @@ async function cherryGenerateBlog(agendaIdx) {
   });
   if (brain.history.length > 50) brain.history = brain.history.slice(-50);
   if (!brain.brand) brain.brand = BLOG_SEO.brand_context;
+  // Gunluk istatistikler
+  var _ds2 = new Date().toDateString();
+  brain.daily_stats = brain.daily_stats || {};
+  if (!brain.daily_stats[_ds2]) brain.daily_stats[_ds2] = {blogs:0,words:0,published:0,sessions:0};
+  brain.daily_stats[_ds2].blogs++;
+  brain.daily_stats[_ds2].words += (scoreObj.wc||0);
   cgSaveBrain(brain);
   _cgHistory = brain.history;
 
@@ -5185,6 +5267,7 @@ function cherryOpenShopify() {
 // ── Render page ───────────────────────────────────────────────────────────────
 function renderCherryPage() {
   cgUpdateVersion();
+  cgSessionStart();
   setCherryState('idle');
   cgBuildAgenda();
   cherryLog('CherryGlow ' + CG_VERSION + ' hazir.', 'ok');
@@ -5192,7 +5275,7 @@ function renderCherryPage() {
   // Greeting + ROI
   setTimeout(cgCherryGreeting, 500);
   setTimeout(cgRefreshROI, 800);
-  setTimeout(cgInsightEngine, 2000);
+  setTimeout(function(){ cgInsightEngine(); cgProactiveResearch(); }, 3500);
   // Re-sync waveform
   cgUpdateWaveform('idle');
   // Restore stats from brain
@@ -5234,6 +5317,7 @@ var _cgChatHistory = [];
 function cgAddMessage(from, text, type, delay) {
   delay = delay || 0;
   if (from === 'cherry' && delay === 0) delay = 120 + Math.min(text.length * 6, 600);
+  cgLogMessage(from === 'cherry' ? 'cherry' : 'user', text);
   setTimeout(function() {
     // Remove typing indicator if exists
     var typDot = document.getElementById('cg-typing-dot');
@@ -5282,11 +5366,10 @@ function cgSetChips(chips) {
 
 function cgResetChips() {
   cgSetChips([
-    {label:'Analiz Yap', act:'cgInsightEngine()', hot:true},
-    {label:'Hepsini Yaz', act:'cgUserSend("Hepsini yaz")'},
-    {label:'Rapor', act:'cgUserSend("Rapor ver")'},
+    {label:'Yeni Konu Oner', act:'cgProactiveResearch()', hot:true},
+    {label:'Analiz', act:'cgInsightEngine()'},
+    {label:'Gunluk Rapor', act:'cgDailyReport()'},
     {label:'Gelir?', act:'cgUserSend("Ne kadar kazandim")'},
-    {label:'En Iyi Konu', act:'cgUserSend("Hangi konu en iyi")'},
   ]);
 }
 
@@ -5311,7 +5394,25 @@ function cgHandleUserCommand(text) {
     cgAddMessage('cherry', 'Tamam, simdilik bekletiyor. "Yayinla" dediginde gonderecegim.', '', thinkDelay);
     setTimeout(cgResetChips, thinkDelay + 200);
 
-  } else if (/analiz|rapor|performans|nasil gidiyor/.test(lower)) {
+  } else if (/gunluk rapor|bugunun ozeti|ne yaptim|calistim mi/.test(lower)) {
+    setTimeout(cgDailyReport, thinkDelay);
+
+  } else if (/yeni konu|konu oner|ne yaz|arastir/.test(lower)) {
+    cgAddMessage('cherry', 'Arastiriyorum, biraz bekle...', 'think', thinkDelay);
+    setTimeout(cgProactiveResearch, thinkDelay + 400);
+
+  } else if (/rapor/.test(lower)) {
+    setTimeout(function(){
+      cgAddMessage('cherry', 'Hangi raporu istersin?', 'question');
+      cgSetChips([
+        {label:'Gunluk Rapor', act:'cgDailyReport()', hot:true},
+        {label:'Performans', act:'cgInsightEngine()'},
+        {label:'Gelir', act:'cgUserSend("Ne kadar kazandim")'},
+        {label:'Yeni Oneriler', act:'cgProactiveResearch()'},
+      ]);
+    }, thinkDelay);
+
+  } else if (/analiz|performans|nasil gidiyor/.test(lower)) {
     setTimeout(cgInsightEngine, thinkDelay);
 
   } else if (/hepsini yaz|tumunu yaz|baslat|baslayalim/.test(lower)) {
@@ -5367,43 +5468,82 @@ function cgHandleUserCommand(text) {
   }
 }
 
-// ─── GREETING ────────────────────────────────────────────────────────────────
+// ─── GREETING (baglam farkindaligi, Onur'u taniyor) ─────────────────────────
 function cgCherryGreeting() {
-  var brain = cgGetBrain();
-  var hist = brain.history || [];
+  var brain  = cgGetBrain();
+  var hist   = brain.history    || [];
   var scores = brain.seo_scores || [];
-  var h = new Date().getHours();
-  var gr = h<12?'Gunaydın Onur!':h<18?'Iyi gunler Onur!':'Iyi aksamlar Onur!';
+  var h      = new Date().getHours();
+  var gr     = h<6?'Iyi geceler':h<12?'Gunaydin':h<18?'Iyi gunler':'Iyi aksamlar';
+  var tod    = h<6?'gece':h<12?'sabah':h<18?'ogleden sonra':'aksam';
+
+  var ds     = new Date().toDateString();
+  var dsTR   = new Date().toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'});
+  var todayC = (brain.topics_covered||[]).filter(function(t){return t.date===ds;}).length;
+
+  // Bugun daha once konustuk mu?
+  var recentLog = (brain.conversation_log||[]).slice(-30).filter(function(e){return e.role==='cherry';});
+  var hadConvToday = recentLog.some(function(e){
+    return new Date(e.ts).toDateString()===ds && e.ts < (Date.now()-60000);
+  });
 
   if (hist.length === 0) {
-    cgAddMessage('cherry', gr + ' Ben CherryGlow, Retrocameraland\'in AI blog asistanim. ' + CG_VERSION + ' versiyonuyla calisiyorum. Ilk blogu birlikte yazalim mi?', 'report', 400);
+    cgAddMessage('cherry', gr + ' Onur! Ben CherryGlow, Retrocameraland'in AI blog asistanim. Analog kamera dunyasinda seninle organik trafigi birlikte buyutelim!', 'report', 400);
     setTimeout(function(){
-      cgAddMessage('cherry', 'Baslamak icin bir konu sec veya "Hepsini Yaz" de. Sana en guncel SEO stratejisiyle muhteşem icerikler yazacagim.', 'question');
-    }, 2000);
-  } else {
-    var avg = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
-    var todayC = (brain.topics_covered||[]).filter(function(t){return t.date===new Date().toDateString();}).length;
-    cgAddMessage('cherry', gr + ' Bugun ' + (todayC>0?todayC+' blog yazdim, ':' henuz baslamadik, ') + 'toplam ' + hist.length + ' blog, ortalama SEO: ' + avg + '/100.', 'report', 400);
-    if (scores.length >= 2) {
-      var best = Math.max.apply(null, scores);
-      var bi = scores.indexOf(best);
-      var bt = (brain.topics_covered||[])[bi];
-      setTimeout(function(){
-        cgAddMessage('cherry', '풠 Icgoru: "' + (bt&&bt.topic?bt.topic.slice(0,45):'En iyi konunuz') + '" ' + best + '/100 ile rekorunuz. Bu kategoriye devam etmemizi oneririm.', 'insight');
-      }, 1800);
-    }
-    var pending = _cgAgenda.filter(function(a){return a.stage==='pending';});
-    if (pending.length > 0) {
-      setTimeout(function(){
-        var preview = pending.slice(0,2).map(function(a){return '"'+a.topic.slice(0,28)+'"';}).join(', ');
-        cgAddMessage('cherry', 'Gundemde ' + pending.length + ' konu bekliyor: ' + preview + '... Hangisinden baslamami istersin?', 'question');
-        cgSetChips([
-          {label:'Hepsini Yaz', act:'cgUserSend("Hepsini yaz")', hot:true},
-          {label:'Analiz Once', act:'cgInsightEngine()'},
-          {label:'Gelir Goster', act:'cgUserSend("Ne kadar kazandim")'},
-        ]);
-      }, 3200);
-    }
+      cgAddMessage('cherry', 'Ilk blogu yazalim mi? Leica, Olympus veya Pentax — hangisiyle baslayalim?', 'question');
+      cgSetChips([
+        {label:'Leica ile Baslayalim', act:'cgUserSend("Leica konusunda blog yaz")', hot:true},
+        {label:'Gundem Listesi', act:'cherryAddAllToAgenda()'},
+        {label:'Analiz Yap', act:'cgInsightEngine()'},
+      ]);
+    }, 2200);
+    return;
+  }
+
+  if (hadConvToday) {
+    cgAddMessage('cherry', 'Tekrar merhaba Onur! ' + (todayC>0?'Bugun '+todayC+' blog yazdim.':'Hala hazir.') + ' Devam edelim mi?', '', 300);
+    cgSetChips([
+      {label:'Devam Et', act:'cgUserSend("devam et")', hot:true},
+      {label:'Gunluk Rapor', act:'cgDailyReport()'},
+      {label:'Analiz', act:'cgInsightEngine()'},
+    ]);
+    return;
+  }
+
+  var avg    = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
+  var pubCnt = hist.filter(function(h){return h.published;}).length;
+
+  // Birincil selamlama
+  var intro = gr + ' Onur! ' + dsTR + ', iyi ' + tod + 'lar.';
+  var stats = todayC > 0
+    ? 'Bugun ' + todayC + ' blog yazdim, toplam ' + hist.length + ' blog. Ort. SEO: ' + avg + '/100.'
+    : 'Toplam ' + hist.length + ' blog (' + pubCnt + ' yayinda), ort. SEO: ' + avg + '/100. Bugun henuz baslamadik.';
+  cgAddMessage('cherry', intro + ' ' + stats, 'report', 400);
+
+  // Son blog referansi
+  if (hist.length > 0) {
+    var last   = hist[hist.length-1];
+    var lastDt = last.date ? new Date(last.date).toLocaleDateString('tr-TR',{day:'numeric',month:'long'}) : '';
+    setTimeout(function(){
+      cgAddMessage('cherry',
+        'Son blog: "' + (last.title||last.topic||'').slice(0,50) + '" — ' + lastDt + ', SEO ' + (last.seo||'?') + '/100, ' + (last.wc||0) + ' kelime.' +
+        (last.published ? ' Shopify'da yayinda!' : ' Henuz yayinlanmadi.'),
+        'insight');
+    }, 1700);
+  }
+
+  // Bekleyen konular
+  var pending = _cgAgenda.filter(function(a){return a.stage==='pending';});
+  if (pending.length > 0) {
+    setTimeout(function(){
+      cgAddMessage('cherry', 'Gundemde ' + pending.length + ' konu bekliyor. Basliyorum mu?', 'question');
+      cgSetChips([
+        {label:'Evet Baslayalim', act:'cgUserSend("Hepsini yaz")', hot:true},
+        {label:'Gunluk Rapor', act:'cgDailyReport()'},
+        {label:'Analiz', act:'cgInsightEngine()'},
+        {label:'Gelir?', act:'cgUserSend("Ne kadar kazandim")'},
+      ]);
+    }, 3200);
   }
 }
 
@@ -5552,6 +5692,212 @@ function cgRewriteTopic(topicIdx) {
   cgAddMessage('cherry', '"' + (t?t.topic.slice(0,40):'Bu konu') + '" icin daha guclu bir versiyon yaziyorum!', 'task');
   cgBuildAgenda();
   setTimeout(function(){ cherryGenerateBlog(0); }, 600);
+}
+
+// ─── PROAKTIF ARASTIRMA MOTORU ────────────────────────────────────────────────
+var CG_RESEARCH_POOL = [
+  {topic:'Leica M6 vs M7: Hangisini Satin Almalisiniz?', cat:'Karsilastirma', reason:'Leica aramalari artis gosteriyor; M6/M7 karsilastirmasi TR'de eksik'},
+  {topic:'Vintage Kameranizin Degerini Dogru Nasil Ogrenirsiniz?', cat:'Satin Alma Rehberleri', reason:'Yanlis fiyatlandirma cok yaygin — bilgi boslugu buyuk'},
+  {topic:'Analog Fotografi Yeni Baslayanlar Icin 2025 Rehberi', cat:'Film Fotografi', reason:'Yeni nesil meraklilari icin TR'de kapsamli rehber yok'},
+  {topic:'Olympus OM-1 Bakim Rehberi: Kullanici Hatalari', cat:'Bakim ve Onarim', reason:'Bakim icerigi guven ve SEO icin kritik'},
+  {topic:'Neden Dijital Yerine Analog Kamera Aldim?', cat:'Yasam Tarzi', reason:'Duygusal hikaye formati en yuksek social share aliyor'},
+  {topic:'Canon AE-1 ile Baslayanlara 2025 Fiyat Rehberi', cat:'Satin Alma Rehberleri', reason:'Canon AE-1 TR'de en cok aranan giris noktasi'},
+  {topic:'Retro Kamera Koleksiyonu Nasil Baslatilir?', cat:'Koleksiyon', reason:'Koleksiyoner kitlesi yuksek AOV potansiyeli tasir'},
+  {topic:'Istanbul'da Film Banyo Hizmetleri 2025', cat:'Film ve Lab', reason:'Yerel + nis + evergreen trafik kaynagi'},
+  {topic:'Pentax K1000 ile Uygulama Fotografciligi', cat:'Kullanim Rehberleri', reason:'Pentax K1000 TR'de az icerik, yuksek arama potansiyeli'},
+  {topic:'SLR mi Rangefinder mi? Hangi Kamerayi Secmeli?', cat:'Karsilastirma', reason:'Karar asama icerigi en yuksek donusum etkisi'},
+  {topic:'Analog Fotografin Meditasyon Etkisi', cat:'Yasam Tarzi', reason:'Wellness + analog trendi — viral potansiyel yuksek'},
+  {topic:'Film Pozlama Hatalari ve Cozimleri', cat:'Teknik Rehberler', reason:'Pratik sorun cozme — aktif aramalar'},
+  {topic:'2025 En Cok Aranan Vintage Kameralar', cat:'Trendler', reason:'Yillik trend icerigi backlink ceker'},
+  {topic:'Zorlu Isikta Analog Fotograf Nasil Cekilir?', cat:'Teknik Rehberler', reason:'Teknik challenge icerigi — merakli kullanicilar'},
+  {topic:'Retrocameraland Kondisyon Sistemi Nasil Calisiyor?', cat:'Marka ve Guven', reason:'Marka guveni ve satin alma karar surecinde kritik'},
+  {topic:'120 Format Film Fotografi: Orta Format Rehberi', cat:'Film Fotografi', reason:'Orta format meraklilarinda buyume var'},
+  {topic:'Film Saklamanin Dogru Yolu: Soguk Depo mu, Oda Sicakligi mi?', cat:'Teknik Rehberler', reason:'Pratik, evergreen, dusuk rekabet'},
+  {topic:'Vintage Kamera Lens Bakim Rehberi', cat:'Bakim ve Onarim', reason:'Lens aramalarinda buyuk trafik potansiyeli'},
+];
+
+function cgProactiveResearch() {
+  var brain    = cgGetBrain();
+  var recent   = cgRecentlyDiscussed(21);
+  var covered  = (brain.topics_covered||[]).map(function(t){ return t.topic.toLowerCase(); });
+  var sugg14d  = (brain.proactive_suggestions||[])
+    .filter(function(s){ return Date.now()-s.suggested_ts < 14*86400000; })
+    .map(function(s){ return s.topic.toLowerCase(); });
+
+  var candidates = CG_RESEARCH_POOL.filter(function(rt) {
+    var tl = rt.topic.toLowerCase();
+    if (covered.indexOf(tl) >= 0) return false;
+    if (sugg14d.indexOf(tl) >= 0) return false;
+    return !recent.some(function(r){ return r.indexOf(tl.slice(0,18)) >= 0; });
+  });
+
+  if (!candidates.length) {
+    var all = [];
+    Object.keys(BLOG_TOPICS).forEach(function(cat){
+      BLOG_TOPICS[cat].forEach(function(t){
+        if (covered.indexOf(t.topic.toLowerCase()) < 0)
+          all.push({topic:t.topic, cat:cat, reason:'Henuz ele alinmamis konu'});
+      });
+    });
+    candidates = all;
+  }
+  if (!candidates.length) {
+    cgAddMessage('cherry', 'Tum standart konular tamamlandi! Yeni fikirleri birlikte uretebiliriz.', 'think');
+    return;
+  }
+
+  var picks = [], pool = candidates.slice();
+  while (picks.length < Math.min(3, pool.length)) {
+    picks.push(pool.splice(Math.floor(Math.random()*pool.length), 1)[0]);
+  }
+
+  var suggs = brain.proactive_suggestions || [];
+  picks.forEach(function(p){
+    suggs.push({topic:p.topic, reason:p.reason||'', cat:p.cat||'', suggested_ts:Date.now(), accepted:false, rejected:false});
+  });
+  brain.proactive_suggestions = suggs.slice(-50);
+  cgSaveBrain(brain);
+
+  setTimeout(function(){
+    cgAddMessage('cherry', 'Arastirdim, sana ' + picks.length + ' taze konu oneriyorum:', 'insight');
+    picks.forEach(function(p, i){
+      setTimeout(function(){
+        cgAddMessage('cherry', (i+1) + '. "' + p.topic + '" — ' + (p.reason||p.cat||''), 'question');
+      }, (i+1) * 1000);
+    });
+    setTimeout(function(){
+      cgSetChips([
+        {label:'1. Konuyu Yaz', act:'cgAcceptSuggestion(0)', hot:true},
+        {label:'2. Konuyu Yaz', act:'cgAcceptSuggestion(1)'},
+        {label:'3. Konuyu Yaz', act:'cgAcceptSuggestion(2)'},
+        {label:'Baska Oner', act:'cgProactiveResearch()'},
+      ]);
+    }, (picks.length+1)*1000);
+  }, 1000);
+}
+
+function cgAcceptSuggestion(idx) {
+  var brain = cgGetBrain();
+  var open  = (brain.proactive_suggestions||[]).filter(function(s){ return !s.accepted && !s.rejected; });
+  var pick  = open[idx];
+  if (!pick) { cgAddMessage('cherry', 'Konu bulunamadi, yeniden ariyorum...', ''); cgProactiveResearch(); return; }
+  pick.accepted = true;
+  cgSaveBrain(brain);
+  cgAddMessage('cherry', 'Harika secim! "' + pick.topic.slice(0,50) + '" icin hemen basliyorum!', 'task');
+  _cgAgenda.unshift({cat:pick.cat||'Genel', topic:pick.topic, done:false, stage:'pending'});
+  cgRenderAgenda();
+  setTimeout(function(){ cherryGenerateBlog(0); }, 800);
+}
+
+// ─── GUNLUK RAPOR ─────────────────────────────────────────────────────────────
+function cgDailyReport() {
+  var brain    = cgGetBrain();
+  var hist     = brain.history    || [];
+  var scores   = brain.seo_scores || [];
+  var ds       = new Date().toDateString();
+  var todayC   = (brain.topics_covered||[]).filter(function(t){ return t.date===ds; }).length;
+  var todayH   = hist.filter(function(h){ return new Date(h.date||'').toDateString()===ds; });
+  var todayWds = todayH.reduce(function(a,h){ return a+(h.wc||0); }, 0);
+  var todayPub = todayH.filter(function(h){ return h.published; }).length;
+  var todaySeo = todayH.length ? Math.round(todayH.reduce(function(a,h){return a+(h.seo||0);},0)/todayH.length) : 0;
+  var totalWds = hist.reduce(function(a,h){ return a+(h.wc||0); }, 0);
+  var pubTotal = hist.filter(function(h){ return h.published; }).length;
+  var avgSeo   = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
+  var roi      = cgCalcBlogROI();
+
+  cgRenderAnalyticsPanel({
+    todayBlogs:todayC, todayWords:todayWds, todaySeo:todaySeo, todayPub:todayPub,
+    totalBlogs:hist.length, totalWords:totalWds, totalPub:pubTotal, avgSeo:avgSeo,
+    roi:roi, todayHist:todayH, allHist:hist, scores:scores
+  });
+
+  var msg = 'Bugunun ozeti: ' + todayC + ' blog, ' + todayWds + ' kelime' +
+    (todayPub ? ', ' + todayPub + ' yayinlandi' : '') +
+    (todaySeo ? ', ort. SEO ' + todaySeo + '/100' : '') + '. ' +
+    'Toplam: ' + hist.length + ' blog (' + pubTotal + ' yayinda), ' + (totalWds/1000).toFixed(1) + 'K kelime.';
+  cgAddMessage('cherry', msg, 'report');
+  setTimeout(function(){
+    cgSetChips([
+      {label:'Yeni Konu Oner', act:'cgProactiveResearch()', hot:true},
+      {label:'Performans', act:'cgInsightEngine()'},
+      {label:'Gelir', act:'cgUserSend("Ne kadar kazandim")'},
+    ]);
+  }, 900);
+}
+
+function cgAnaCard(label, val, suffix, color) {
+  return '<div class="cg-ana-card">' +
+    '<div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;opacity:.38;font-family:var(--mono);margin-bottom:3px">' + label + '</div>' +
+    '<div style="font-size:1.05rem;font-weight:700;font-family:var(--mono);color:' + color + '">' + val + (suffix||'') + '</div>' +
+    '</div>';
+}
+
+function cgRenderAnalyticsPanel(d) {
+  // Switch to analytics tab first
+  var body  = document.getElementById('cg-output-body');
+  if (!body) { cgDailyReport && setTimeout(cgDailyReport, 200); return; }
+
+  // Activate analytics tab
+  document.querySelectorAll('.cg-tab').forEach(function(t){ t.classList.remove('active'); });
+  var ataEl = document.querySelector('.cg-tab[data-tab="analytics"]');
+  if (ataEl) ataEl.classList.add('active');
+
+  // SEO bar chart
+  var barHTML = '';
+  if (d.scores && d.scores.length) {
+    var last8 = d.scores.slice(-8);
+    var mx    = Math.max.apply(null, last8) || 100;
+    barHTML = '<div style="display:flex;align-items:flex-end;gap:4px;height:44px">' +
+      last8.map(function(s,i){
+        var col = s>=85?'#34C759':s>=70?'#D4AF37':'#FF9500';
+        var isL = i===last8.length-1;
+        return '<div title="SEO:'+s+'" style="flex:1;background:'+col+';height:'+(Math.round((s/mx)*100))+'%;border-radius:3px 3px 0 0;opacity:'+(isL?1:.55)+';min-height:3px"></div>';
+      }).join('') + '</div>' +
+      '<div style="font-size:.55rem;opacity:.28;margin-top:3px">Son '+last8.length+' blog SEO trendi</div>';
+  }
+
+  var pubPct = d.totalBlogs > 0 ? Math.round((d.totalPub/d.totalBlogs)*100) : 0;
+
+  body.innerHTML =
+    '<div class="cg-ana-grid">' +
+      '<div class="cg-ana-section-hdr">BUGUN — ' + new Date().toLocaleDateString('tr-TR',{weekday:'short',day:'numeric',month:'short'}) + '</div>' +
+      '<div class="cg-ana-row">' +
+        cgAnaCard('BLOG',d.todayBlogs,'','#D4AF37') +
+        cgAnaCard('KELIME',d.todayWords>999?(d.todayWords/1000).toFixed(1)+'K':d.todayWords,'','#5AC8FA') +
+        cgAnaCard('SEO ORT',d.todaySeo||'--','/100',d.todaySeo>=80?'#34C759':d.todaySeo>=60?'#D4AF37':'#FF9500') +
+        cgAnaCard('YAYINLANDI',d.todayPub,'','#34C759') +
+      '</div>' +
+      '<div class="cg-ana-section-hdr" style="margin-top:10px">TOPLAM</div>' +
+      '<div class="cg-ana-row">' +
+        cgAnaCard('BLOG',d.totalBlogs,'','#D4AF37') +
+        cgAnaCard('KELIME',(d.totalWords/1000).toFixed(1)+'K','','#5AC8FA') +
+        cgAnaCard('YAYINDA',d.totalPub+'/'+d.totalBlogs,'',pubPct>=50?'#34C759':'#FF9500') +
+        cgAnaCard('SEO ORT',d.avgSeo||'--','/100','#BF5AF2') +
+      '</div>' +
+      '<div class="cg-ana-section-hdr" style="margin-top:10px">TAHMINI ETKi</div>' +
+      '<div class="cg-ana-roi">' +
+        '<div class="cg-ana-roi-main">' + (d.roi.estimatedRevenue>0 ? d.roi.estimatedRevenue.toLocaleString('tr-TR')+'&#8201;&#8378;' : 'Veri bekleniyor') + '</div>' +
+        '<div class="cg-ana-roi-sub">Organik gelir katkisi tahmini &middot; ' + d.roi.totalTraffic + ' ziyaretci &middot; %' + d.roi.convRate + ' donusum</div>' +
+      '</div>' +
+      (barHTML ? '<div class="cg-ana-chart">' + barHTML + '</div>' : '') +
+      (d.allHist.length > 0 ?
+        '<div class="cg-ana-section-hdr" style="margin-top:10px">SON BLOGLAR</div>' +
+        '<div class="cg-ana-blogs">' +
+          d.allHist.slice(-6).reverse().map(function(h) {
+            var sc  = h.seo||0;
+            var col = sc>=80?'#34C759':sc>=65?'#D4AF37':'#FF9500';
+            var dt  = h.date ? new Date(h.date).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}) : '';
+            return '<div class="cg-ana-blog-row">' +
+              '<div style="flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:.67rem">' + (h.title||h.topic||'').slice(0,52) + '</div>' +
+              '<div style="display:flex;gap:5px;align-items:center;flex-shrink:0">' +
+                '<span style="color:'+col+';font-family:var(--mono);font-size:.6rem">' + (sc||'?') + '</span>' +
+                '<span style="opacity:.3;font-size:.57rem">' + dt + '</span>' +
+                (h.published ? '<span style="background:rgba(52,199,89,.15);color:#34C759;font-size:.54rem;padding:1px 5px;border-radius:4px">YAYINDA</span>' : '') +
+              '</div>' +
+            '</div>';
+          }).join('') +
+        '</div>' : '') +
+    '</div>';
 }
 
 // ─── ROI CALCULATION ─────────────────────────────────────────────────────────
