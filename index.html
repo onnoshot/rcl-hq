@@ -741,16 +741,40 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 <div id="rcl-auth-overlay">
   <div class="rcl-auth-card">
     <div class="rcl-auth-logo">Retrocameraland HQ</div>
-    <div class="rcl-auth-sub">ÖZEL YÖNETİM PANELİ</div>
-    <div class="rcl-auth-label">Erişim Şifresi</div>
+    <div class="rcl-auth-sub">OZEL YONETIM PANELI</div>
+    <div class="rcl-auth-label">Erisim Sifresi</div>
     <input class="rcl-auth-input" type="password" id="rcl-auth-pw"
-      placeholder="••••••••"
+      placeholder="&bull;&bull;&bull;&bull;&bull;&bull;"
       onkeydown="if(event.key==='Enter')rclAuthCheck()">
-    <button class="rcl-auth-btn" onclick="rclAuthCheck()">Giriş Yap</button>
+    <button class="rcl-auth-btn" onclick="rclAuthCheck()">Giris Yap</button>
     <div class="rcl-auth-err" id="rcl-auth-err"></div>
-    <div class="rcl-auth-footer">Bu panel yalnızca yetkili kullanıcılara özeldir.</div>
+    <div class="rcl-auth-footer">Bu panel yalnizca yetkili kullanicilara ozeldir.</div>
   </div>
 </div>
+<script>
+// Auth gate — standalone script, runs independently of page JS
+(function(){
+  var SK = 'rcl_auth_v1';
+  function unlock(){
+    var o=document.getElementById('rcl-auth-overlay');
+    if(o){o.style.transition='opacity .5s';o.style.opacity='0';
+      setTimeout(function(){o.style.display='none';},520);}
+  }
+  window.rclAuthCheck=function(){
+    var p=document.getElementById('rcl-auth-pw');
+    var e=document.getElementById('rcl-auth-err');
+    if(!p)return;
+    var ok=false;
+    try{ok=(p.value===atob('b25ubzAx'));}catch(ex){}
+    if(ok){sessionStorage.setItem(SK,'1');if(e)e.textContent='';unlock();}
+    else{if(e)e.textContent='Hatali sifre.';p.value='';p.focus();}
+  };
+  window.addEventListener('load',function(){
+    if(sessionStorage.getItem(SK)==='1')unlock();
+    else{var p=document.getElementById('rcl-auth-pw');if(p)p.focus();}
+  });
+})();
+</script>
 
 <div class="orb orb1"></div><div class="orb orb2"></div>
 
@@ -5644,52 +5668,6 @@ initRouter();
 cgInitWidget();
 window.speechSynthesis && window.speechSynthesis.getVoices();
 
-// ── RCL Auth Gate ──────────────────────────────────────────────────────────
-(function() {
-  var _K = 'MTBvbm5v';
-  var SESSION_KEY = 'rcl_auth_v1';
-
-  function _chk(v) {
-    try { return btoa(v.split('').reverse().join('')) === _K; }
-    catch(e) { return false; }
-  }
-
-  function rclAuthUnlock() {
-    var ov = document.getElementById('rcl-auth-overlay');
-    if (ov) {
-      ov.classList.add('fade-out');
-      setTimeout(function(){ ov.style.display='none'; }, 650);
-    }
-  }
-
-  window.rclAuthCheck = function() {
-    var pwEl = document.getElementById('rcl-auth-pw');
-    var err  = document.getElementById('rcl-auth-err');
-    if (!pwEl) return;
-    if (_chk(pwEl.value)) {
-      sessionStorage.setItem(SESSION_KEY, '1');
-      if (err) err.textContent = '';
-      rclAuthUnlock();
-    } else {
-      if (err) err.textContent = 'Hatali sifre. Lutfen tekrar deneyin.';
-      pwEl.value = ''; pwEl.focus();
-    }
-  };
-
-  // Check session on load — works sync, no async needed
-  (function init() {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', init);
-      return;
-    }
-    if (sessionStorage.getItem(SESSION_KEY) === '1') {
-      rclAuthUnlock();
-    } else {
-      var pw = document.getElementById('rcl-auth-pw');
-      if (pw) setTimeout(function(){ pw.focus(); }, 80);
-    }
-  })();
-})();
 
 </script>
 </body>
