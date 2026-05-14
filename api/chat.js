@@ -25,6 +25,14 @@ export default async function handler(req) {
 
   try {
     const body = await req.json();
+    const anthropicBody = {
+      model: body.model || 'claude-haiku-4-5-20251001',
+      max_tokens: body.max_tokens || 1024,
+      system: body.system,
+      messages: body.messages,
+    };
+    if (body.stream) anthropicBody.stream = true;
+
     const response = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -32,13 +40,19 @@ export default async function handler(req) {
         'x-api-key': apiKey,
         'anthropic-version': '2023-06-01',
       },
-      body: JSON.stringify({
-        model: body.model || 'claude-haiku-4-5-20251001',
-        max_tokens: body.max_tokens || 1024,
-        system: body.system,
-        messages: body.messages,
-      }),
+      body: JSON.stringify(anthropicBody),
     });
+
+    if (body.stream) {
+      return new Response(response.body, {
+        status: response.status,
+        headers: {
+          'Content-Type': 'text/event-stream',
+          'Cache-Control': 'no-cache',
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
+    }
 
     const data = await response.json();
     return new Response(JSON.stringify(data), {
