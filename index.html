@@ -5646,12 +5646,12 @@ window.speechSynthesis && window.speechSynthesis.getVoices();
 
 // ── RCL Auth Gate ──────────────────────────────────────────────────────────
 (function() {
-  var HASH = '248a2a063a08b5c52bb81aa0d8630e0b281b93a74f40c36089f9621c19b67262';
+  var _K = 'MTBvbm5v';
   var SESSION_KEY = 'rcl_auth_v1';
 
-  async function sha256(msg) {
-    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
-    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  function _chk(v) {
+    try { return btoa(v.split('').reverse().join('')) === _K; }
+    catch(e) { return false; }
   }
 
   function rclAuthUnlock() {
@@ -5662,31 +5662,33 @@ window.speechSynthesis && window.speechSynthesis.getVoices();
     }
   }
 
-  window.rclAuthCheck = async function() {
-    var pw = document.getElementById('rcl-auth-pw');
-    var err = document.getElementById('rcl-auth-err');
-    if (!pw) return;
-    var h = await sha256(pw.value);
-    if (h === HASH) {
+  window.rclAuthCheck = function() {
+    var pwEl = document.getElementById('rcl-auth-pw');
+    var err  = document.getElementById('rcl-auth-err');
+    if (!pwEl) return;
+    if (_chk(pwEl.value)) {
       sessionStorage.setItem(SESSION_KEY, '1');
       if (err) err.textContent = '';
       rclAuthUnlock();
     } else {
-      if (err) err.textContent = 'Hatalı şifre. Lütfen tekrar deneyin.';
-      pw.value = '';
-      pw.focus();
+      if (err) err.textContent = 'Hatali sifre. Lutfen tekrar deneyin.';
+      pwEl.value = ''; pwEl.focus();
     }
   };
 
-  // Check session on load
-  document.addEventListener('DOMContentLoaded', function() {
+  // Check session on load — works sync, no async needed
+  (function init() {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+      return;
+    }
     if (sessionStorage.getItem(SESSION_KEY) === '1') {
       rclAuthUnlock();
     } else {
       var pw = document.getElementById('rcl-auth-pw');
-      if (pw) setTimeout(function(){ pw.focus(); }, 100);
+      if (pw) setTimeout(function(){ pw.focus(); }, 80);
     }
-  });
+  })();
 })();
 
 </script>
