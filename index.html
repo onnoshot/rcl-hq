@@ -256,6 +256,15 @@ tfoot td{border-top:1px solid rgba(212,175,55,0.14);color:var(--gold);font-weigh
 .prog-track{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
 .prog-fill{height:100%;border-radius:2px;transition:width 1.4s cubic-bezier(.16,1,.3,1);width:0;}
 
+/* BLOG OLUŞTURUCU */
+.blog-opt-label{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.04);border:1px solid var(--b0);font-size:0.71rem;font-family:var(--mono);color:var(--t2);cursor:pointer;transition:all .2s;user-select:none;}
+.blog-opt-label:hover{border-color:rgba(212,175,55,0.2);color:var(--t1);}
+.blog-opt-label input[type=checkbox]{accent-color:var(--gold);width:13px;height:13px;}
+.blog-chip.selected{background:var(--gold-dim);border-color:rgba(212,175,55,0.3);color:var(--gold);}
+#blog-output h1,#blog-output h2,#blog-output h3{color:var(--t1);}
+#blog-gen-btn:hover{background:linear-gradient(135deg,rgba(212,175,55,0.3),rgba(212,175,55,0.12));box-shadow:0 0 24px rgba(212,175,55,0.15);}
+#blog-gen-btn:disabled{opacity:.5;cursor:not-allowed;}
+
 /* FOOTER */
 footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:var(--t3);font-family:var(--mono);letter-spacing:0.06em;}</style>
 </head>
@@ -271,10 +280,6 @@ footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:v
       <span class="nav-label">Ana Sayfa</span>
     </div>
     <div class="sb-section">Operasyon</div>
-    <div class="nav-item" data-page="finance" onclick="navigate('finance',this)">
-      <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
-      <span class="nav-label">Finans</span>
-    </div>
     <div class="nav-item" data-page="inventory" onclick="navigate('inventory',this)">
       <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9" y1="14.5" x2="15" y2="14.5"/></svg>
       <span class="nav-label">Stok</span>
@@ -287,6 +292,15 @@ footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:v
     <div class="nav-item" data-page="instagram" onclick="navigate('instagram',this)">
       <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       <span class="nav-label">Instagram</span>
+    </div>
+    <div class="sb-section">İçerik & SEO</div>
+    <div class="nav-item" data-page="seo" onclick="navigate('seo',this)">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+      <span class="nav-label">SEO Paneli</span>
+    </div>
+    <div class="nav-item" data-page="blog" onclick="navigate('blog',this)">
+      <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <span class="nav-label">Blog Oluştur</span>
     </div>
     <div class="sb-section">AI</div>
     <div class="nav-item" data-page="mamba" onclick="navigate('mamba',this)">
@@ -409,21 +423,187 @@ footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:v
   <footer class="fi"><span>Retrocameraland HQ · retrocameraland.myshopify.com</span></footer>
 </div>
 
-<!-- ═══════════════════ FİNANS ═══════════════════ -->
-<div class="page" id="page-finance">
+<!-- ═══════════════════ SEO PANELİ ═══════════════════ -->
+<div class="page" id="page-seo">
   <div class="page-topbar fi">
-    <div class="pt-left">
-      <div class="pt-title">Finans <span>Paneli</span></div>
-      <div class="pt-sub">Gelir · Kârlılık · Trafik · SEO</div>
+    <div class="pt-left"><div class="pt-title">SEO <span>Paneli</span></div><div class="pt-sub">Organik trafik · Blog performansı · Anahtar kelime fırsatları</div></div>
+  </div>
+  <div class="sec fi" style="transition-delay:.05s">
+    <div class="g g4">
+      <div class="card p card-gold"><div class="kpi-lbl">Aylık Organik Trafik</div><div class="kpi-big gold" id="seo-organic">—</div><div class="kpi-sub">GA4 son 30 gün</div></div>
+      <div class="card p"><div class="kpi-lbl">Blog Yazısı</div><div class="kpi-big" id="seo-posts">—</div><div class="kpi-sub">yayınlanan içerik</div></div>
+      <div class="card p"><div class="kpi-lbl">Ort. SEO Skoru</div><div class="kpi-big" id="seo-avg-score">—</div><div class="kpi-sub">hedef: 90+</div></div>
+      <div class="card p"><div class="kpi-lbl">Organik / Toplam</div><div class="kpi-big" id="seo-organic-pct">—</div><div class="kpi-sub">trafik oranı</div></div>
     </div>
-    <div class="pt-right">
-      <div class="period-tabs">
-        <button class="period-tab active" onclick="setPeriod('30d',this)">30 Gün</button>
-        <button class="period-tab" onclick="setPeriod('90d',this)">90 Gün</button>
-        <button class="period-tab" onclick="setPeriod('year',this)">1 Yıl</button>
+  </div>
+  <div class="sec fi" style="transition-delay:.10s">
+    <div class="g g6-6">
+      <div class="card p">
+        <div class="chart-title">Organik Trafik Trendi</div>
+        <div class="chart-sub">Organik vs toplam oturum — son 6 ay</div>
+        <div style="height:220px"><canvas id="seoTrendChart"></canvas></div>
+      </div>
+      <div class="card p">
+        <div class="chart-title">Trafik Kaynakları</div>
+        <div class="chart-sub">Kanal dağılımı — son 30 gün</div>
+        <div style="display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center;margin-top:8px">
+          <div style="position:relative;height:130px"><canvas id="seoSourceDonut"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--t1)" id="seoDonutTotal">—</div></div></div>
+          <div style="display:flex;flex-direction:column;gap:7px" id="seoSourceLegend"></div>
+        </div>
       </div>
     </div>
   </div>
+  <div class="sec fi" style="transition-delay:.15s">
+    <div class="sec-label">Blog Performansı</div>
+    <div class="card tcard">
+      <div class="thead"><span class="ttitle">Yazılar — Trafik & SEO Skoru</span></div>
+      <table><thead><tr><th>#</th><th>Başlık</th><th>Görüntülenme</th><th>Organik</th><th>Sipariş</th><th>SEO</th></tr></thead><tbody id="seoBlogTable"></tbody></table>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.20s">
+    <div class="sec-label">Keyword Fırsatları 2026</div>
+    <div class="g g3">
+      <div class="card p">
+        <div class="kpi-lbl" style="color:var(--green)">Yüksek Hacim</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px" id="seo-kw-high"></div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl" style="color:var(--gold)">Orta Rekabet</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px" id="seo-kw-mid"></div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl" style="color:var(--blue)">AI Search Hedefi</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px" id="seo-kw-ai"></div>
+      </div>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.25s">
+    <div class="g g6-6">
+      <div class="card p">
+        <div class="chart-title">Blog Trend</div>
+        <div class="chart-sub">Yayın sayısı ve trafik — aylık</div>
+        <div style="height:200px"><canvas id="seoBlogTrend"></canvas></div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl" style="margin-bottom:14px">Oturum Kalitesi (30 gün)</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:0.7rem;color:var(--t2);font-family:var(--mono)">Hemen Çıkma Oranı</span><span style="font-size:0.7rem;color:var(--warn);font-family:var(--mono)" id="seo-bounce">—</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div id="seo-bounce-bar" style="height:100%;background:var(--warn);border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:0.7rem;color:var(--t2);font-family:var(--mono)">Organik Trafik Oranı</span><span style="font-size:0.7rem;color:var(--green);font-family:var(--mono)" id="seo-org-bar-lbl">—</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div id="seo-org-bar" style="height:100%;background:var(--green);border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)"></div></div></div>
+          <div style="margin-top:8px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid var(--b0)">
+            <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-bottom:6px">ORT. OTURUM SÜRESİ</div>
+            <div style="font-size:1.6rem;font-weight:700;font-family:var(--mono);color:var(--t1)" id="seo-session">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ BLOG OLUŞTURUCU ═══════════════════ -->
+<div class="page" id="page-blog">
+  <div class="page-topbar fi">
+    <div class="pt-left"><div class="pt-title">Blog <span>Oluşturucu</span></div><div class="pt-sub">AI destekli · SEO 90+ · AI Search optimize · 2026 güncel</div></div>
+  </div>
+  <div class="g g8-4 fi" style="transition-delay:.05s;align-items:start">
+    <!-- SOL: Ayarlar -->
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card p">
+        <div class="chart-title" style="margin-bottom:16px">Konu & Hedef Kelime</div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div>
+            <div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:8px">Hazır Konular</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px" id="blog-topic-chips">
+              <div class="mamba-action-chip blog-chip" onclick="selectBlogTopic(this,'Retrocameraland ürünlerindeki batarya uyumluluğu — hangi kamera için hangi pil?')">🔋 Batarya Rehberi</div>
+              <div class="mamba-action-chip blog-chip" onclick="selectBlogTopic(this,'3000-5000 TL arası en iyi dijital kameralar 2026')">💰 3K-5K TL Kameralar</div>
+              <div class="mamba-action-chip blog-chip" onclick="selectBlogTopic(this,'Y2K CCD dijital kamera nedir, neden popüler? 2026 rehberi')">📷 Y2K CCD Rehberi</div>
+              <div class="mamba-action-chip blog-chip" onclick="selectBlogTopic(this,'Fujifilm FinePix serisi kameralar: 2026\'da hâlâ değer mi?')">🎞 Fujifilm FinePix</div>
+              <div class="mamba-action-chip blog-chip" onclick="selectBlogTopic(this,'Canon IXUS serisi retro kameralar: özellikleri ve fiyatları 2026')">📸 Canon IXUS Serisi</div>
+              <div class="mamba-action-chip blog-chip" onclick="selectBlogTopic(this,'Retro fotoğrafçılığa başlamak için en iyi kameralar ve ipuçları 2026')">🌟 Retro Fotoğrafçılık</div>
+              <div class="mamba-action-chip blog-chip" onclick="selectBlogTopic(this,'Nikon Coolpix vintage kameralar: koleksiyon ve kullanım rehberi 2026')">🎯 Nikon Coolpix</div>
+              <div class="mamba-action-chip blog-chip" onclick="selectBlogTopic(this,'Dijital kamera SD kart seçimi ve hafıza kartı rehberi 2026')">💾 SD Kart Rehberi</div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px">Konu (düzenle veya yaz)</div>
+            <textarea id="blog-topic-input" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--t1);font-family:var(--mono);font-size:0.8rem;padding:10px 12px;outline:none;resize:vertical;min-height:60px;transition:border-color .2s" placeholder="Konu girin veya yukarıdan seçin…" onfocus="this.style.borderColor='rgba(212,175,55,0.4)'"></textarea>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div>
+              <div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px">Focus Keyword</div>
+              <input id="blog-focus-kw" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:9px;color:var(--t1);font-family:var(--mono);font-size:0.8rem;padding:8px 12px;outline:none;transition:border-color .2s" placeholder="örn. dijital kamera 2026" onfocus="this.style.borderColor='rgba(212,175,55,0.4)'" onblur="this.style.borderColor=''">
+            </div>
+            <div>
+              <div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px">Uzunluk</div>
+              <select id="blog-length" style="width:100%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:9px;color:var(--t1);font-family:var(--mono);font-size:0.8rem;padding:8px 12px;outline:none;cursor:pointer">
+                <option value="short">Kısa (~600 kelime)</option>
+                <option value="medium" selected>Orta (~1000 kelime)</option>
+                <option value="long">Uzun (~1500 kelime)</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:8px">İçerik Özellikleri</div>
+            <div style="display:flex;flex-wrap:wrap;gap:6px" id="blog-options">
+              <label class="blog-opt-label"><input type="checkbox" checked id="opt-sss"> SSS Bölümü</label>
+              <label class="blog-opt-label"><input type="checkbox" checked id="opt-sosyal"> Sosyal Medya CTA</label>
+              <label class="blog-opt-label"><input type="checkbox" checked id="opt-schema"> Schema Markup</label>
+              <label class="blog-opt-label"><input type="checkbox" checked id="opt-meta"> Meta Description</label>
+              <label class="blog-opt-label"><input type="checkbox" checked id="opt-2026"> 2026 Vurgusu</label>
+              <label class="blog-opt-label"><input type="checkbox" checked id="opt-ai"> AI Search Optimize</label>
+              <label class="blog-opt-label"><input type="checkbox" id="opt-urunler"> Ürün Linkleri</label>
+            </div>
+          </div>
+          <button id="blog-gen-btn" onclick="generateBlog()" style="width:100%;padding:14px;border-radius:12px;background:linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.08));border:1px solid rgba(212,175,55,0.35);color:var(--gold);font-family:var(--mono);font-size:0.85rem;font-weight:600;cursor:pointer;transition:all .2s;letter-spacing:0.04em;display:flex;align-items:center;justify-content:center;gap:8px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span id="blog-gen-label">Blog Yazısı Oluştur</span>
+          </button>
+        </div>
+      </div>
+      <!-- SEO Skor Önizleme -->
+      <div class="card p" id="blog-seo-preview" style="display:none">
+        <div class="chart-title" style="margin-bottom:14px">SEO Analizi</div>
+        <div id="blog-seo-score-wrap" style="display:flex;align-items:center;gap:16px;margin-bottom:16px">
+          <div style="width:64px;height:64px;border-radius:50%;background:rgba(48,209,88,0.1);border:3px solid var(--green);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <span style="font-size:1.2rem;font-weight:700;font-family:var(--mono);color:var(--green)" id="blog-seo-score">—</span>
+          </div>
+          <div>
+            <div style="font-size:0.78rem;font-weight:600;color:var(--t1)">SEO Skoru</div>
+            <div style="font-size:0.65rem;color:var(--t3);font-family:var(--mono);margin-top:3px" id="blog-seo-verdict">—</div>
+          </div>
+        </div>
+        <div id="blog-seo-checks" style="display:flex;flex-direction:column;gap:6px"></div>
+      </div>
+    </div>
+    <!-- SAĞ: Çıktı -->
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div id="blog-output-wrap" style="display:none">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+          <div style="font-size:0.76rem;font-weight:600;color:var(--t2)">Oluşturulan İçerik</div>
+          <div style="display:flex;gap:8px">
+            <button onclick="copyBlog('md')" class="mamba-btn mamba-send-btn" style="font-size:0.72rem;padding:7px 12px">Markdown Kopyala</button>
+            <button onclick="copyBlog('html')" class="mamba-btn" style="font-size:0.72rem;padding:7px 12px;background:rgba(90,200,250,0.08);border:1px solid rgba(90,200,250,0.2);color:var(--blue)">HTML Kopyala</button>
+          </div>
+        </div>
+        <div id="blog-output" style="background:rgba(255,255,255,0.02);border:1px solid var(--b0);border-radius:14px;padding:24px;font-family:var(--mono);font-size:0.8rem;line-height:1.75;color:var(--t2);max-height:640px;overflow-y:auto;white-space:pre-wrap;word-break:break-word"></div>
+        <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+          <button onclick="generateBlog()" class="mamba-action-chip">Yeniden Oluştur</button>
+          <button onclick="mambaPrompt('Bu blog yazısı için sosyal medya gönderisi yaz: '+document.getElementById(\'blog-output\').textContent.slice(0,200))" class="mamba-action-chip">Sosyal Medya Gönderisi</button>
+          <button onclick="mambaPrompt('Bu blog için Pinterest pin açıklaması yaz: '+document.getElementById(\'blog-output\').textContent.slice(0,200))" class="mamba-action-chip">Pinterest Pin</button>
+        </div>
+      </div>
+      <div id="blog-placeholder" class="card p" style="text-align:center;padding:60px 40px">
+        <div style="font-size:2.5rem;margin-bottom:16px">✍️</div>
+        <div style="font-size:0.9rem;font-weight:600;color:var(--t2);margin-bottom:8px">Blog yazısı oluşturmaya hazır</div>
+        <div style="font-size:0.72rem;color:var(--t3);font-family:var(--mono)">Konu seç veya yaz → Oluştur butonuna bas</div>
+        <div style="margin-top:20px;font-size:0.68rem;color:var(--t3);font-family:var(--mono);line-height:1.8">
+          ✓ SEO skoru 90+ hedefi &nbsp;·&nbsp; ✓ AI Search (SGE) optimize<br>
+          ✓ SSS bölümü &nbsp;·&nbsp; ✓ 2026 güncel içerik<br>
+          ✓ Sosyal medya yönlendirmesi &nbsp;·&nbsp; ✓ Meta description
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="sec fi" style="transition-delay:.05s">
     <div class="sec-label">KPI</div>
     <div class="g g4">
@@ -1317,7 +1497,7 @@ function setPeriod(p, btn) {
 }
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','finance','inventory','youtube','instagram','mamba'];
+const PAGES = ['overview','inventory','youtube','instagram','seo','blog','mamba'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -1333,7 +1513,7 @@ function navigate(page, navEl) {
     if (match) match.classList.add('active');
   }
   window.location.hash = page;
-  if (page === 'finance') { renderFinanceCharts(); renderGA4Traffic(); renderBlogSEO(); }
+  if (page === 'seo') renderSEOPage();
   if (page === 'mamba') renderMambaBriefing();
 }
 
@@ -1589,6 +1769,220 @@ function renderInstagram() {
   const typeIcon={'CAROUSEL_ALBUM':'🖼','VIDEO':'🎬','IMAGE':'📷'};
   const ipb=document.getElementById('igPostsBody');
   if(ipb) ipb.innerHTML=ig.posts.map(p=>`<tr><td class="cd" style="white-space:nowrap">${p.date}</td><td class="cd" style="font-size:0.72rem">${typeIcon[p.type]||p.type}</td><td class="cg">${fmt(p.likes)}</td><td><a href="${p.url}" target="_blank" style="color:var(--purple);text-decoration:none;font-family:var(--mono);font-size:0.72rem">${p.comments} ↗</a></td></tr>`).join('');
+}
+
+// ─── SEO PANELİ ──────────────────────────────────────────
+function renderSEOPage() {
+  const kpi = GA4_TRAFFIC.kpi_30d;
+  counter(document.getElementById('seo-organic'), BLOG_SEO.monthly_organic);
+  counter(document.getElementById('seo-posts'), BLOG_SEO.total_posts);
+  const avgSeo = Math.round(BLOG_SEO.posts.reduce((s,p)=>s+p.seo,0)/BLOG_SEO.posts.length);
+  const asEl = document.getElementById('seo-avg-score'); if(asEl) asEl.textContent = avgSeo;
+  const opEl = document.getElementById('seo-organic-pct'); if(opEl) opEl.textContent = '%'+kpi.organic_pct;
+
+  // Trend chart
+  if (!document.getElementById('seoTrendChart')) return;
+  const months = GA4_TRAFFIC.monthly;
+  const grad = document.getElementById('seoTrendChart').getContext('2d').createLinearGradient(0,0,0,220);
+  grad.addColorStop(0,'rgba(48,209,88,0.22)'); grad.addColorStop(1,'rgba(48,209,88,0)');
+  mkChart('seoTrendChart',{type:'line',data:{labels:months.map(m=>m.label),datasets:[{label:'Toplam',data:months.map(m=>m.sessions),borderColor:'rgba(212,175,55,0.6)',borderWidth:1.5,fill:false,tension:0.4,pointRadius:0,borderDash:[4,3]},{label:'Organik',data:months.map(m=>m.organic),borderColor:'#30D158',borderWidth:2,fill:true,backgroundColor:grad,tension:0.4,pointRadius:0,pointHoverRadius:5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(48,209,88,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?fmt(v/1000)+'K':v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1100,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
+
+  // Source donut
+  const src = GA4_TRAFFIC.sources, srcTotal = src.reduce((s,c)=>s+c.sessions,0);
+  const sdtEl = document.getElementById('seoDonutTotal'); if(sdtEl) sdtEl.textContent=fmt(srcTotal);
+  mkChart('seoSourceDonut',{type:'doughnut',data:{labels:src.map(s=>s.name),datasets:[{data:src.map(s=>s.sessions),backgroundColor:src.map(s=>s.color+'BB'),borderColor:src.map(s=>s.color),borderWidth:2,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.label}: ${fmt(ctx.parsed)} (%${src[ctx.dataIndex].pct})`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(48,209,88,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},animation:{duration:1200,easing:'easeOutQuart'}}});
+  const sslEl = document.getElementById('seoSourceLegend'); if(sslEl) sslEl.innerHTML=src.map(s=>`<div class="leg"><div class="leg-dot" style="background:${s.color}"></div><span class="leg-name">${s.name}</span><span class="leg-pct">%${s.pct}</span></div>`).join('');
+
+  // Blog tablosu
+  const sorted=[...BLOG_SEO.posts].sort((a,b)=>b.views-a.views);
+  const stEl = document.getElementById('seoBlogTable');
+  if(stEl) stEl.innerHTML=sorted.map((p,i)=>{const sc=p.seo>=90?'var(--green)':p.seo>=75?'var(--warn)':'var(--danger)';return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.70rem;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${p.title}">${p.title}</td><td class="cg">${fmt(p.views)}</td><td style="color:var(--green);font-family:var(--mono)">${fmt(p.organic)}</td><td class="cd">${p.orders}</td><td style="font-family:var(--mono);font-size:0.76rem;font-weight:600;color:${sc}">${p.seo}</td></tr>`;}).join('');
+
+  // Blog trend chart
+  const bm = BLOG_SEO.monthly;
+  mkChart('seoBlogTrend',{type:'bar',data:{labels:bm.map(m=>m.label),datasets:[{label:'Blog',data:bm.map(m=>m.posts),backgroundColor:'rgba(212,175,55,0.55)',borderColor:'#D4AF37',borderWidth:1,borderRadius:5,yAxisID:'y1'},{label:'Trafik',data:bm.map(m=>m.traffic),backgroundColor:'rgba(48,209,88,0.18)',borderColor:'rgba(48,209,88,0.65)',borderWidth:1.5,borderRadius:5,yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y1:{position:'left',ticks:{font:{family:'-apple-system',size:9},color:'#D4AF37',stepSize:1},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y2:{position:'right',ticks:{font:{family:'-apple-system',size:9},color:'#30D158',callback:v=>v>=1000?fmt(v/1000)+'K':v},grid:{display:false},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*60}}});
+
+  // Oturum kalitesi
+  const bbEl = document.getElementById('seo-bounce'); if(bbEl) bbEl.textContent='%'+kpi.bounce_rate;
+  const obEl = document.getElementById('seo-org-bar-lbl'); if(obEl) obEl.textContent='%'+kpi.organic_pct;
+  const mins=Math.floor(kpi.avg_session_sec/60),secs=kpi.avg_session_sec%60;
+  const ssEl = document.getElementById('seo-session'); if(ssEl) ssEl.textContent=mins+':'+String(secs).padStart(2,'0');
+  setTimeout(()=>{
+    const bb=document.getElementById('seo-bounce-bar'); if(bb) bb.style.width=kpi.bounce_rate+'%';
+    const ob=document.getElementById('seo-org-bar'); if(ob) ob.style.width=kpi.organic_pct+'%';
+  },500);
+
+  // Keyword fırsatları
+  const kwHigh = [
+    {kw:'dijital kamera 2026',vol:'18K/ay',diff:'Orta'},
+    {kw:'retro kamera türkiye',vol:'12K/ay',diff:'Düşük'},
+    {kw:'ucuz dijital kamera',vol:'9.5K/ay',diff:'Orta'},
+    {kw:'fujifilm finepix',vol:'8K/ay',diff:'Düşük'},
+    {kw:'y2k kamera',vol:'7.2K/ay',diff:'Düşük'},
+  ];
+  const kwMid = [
+    {kw:'3000 tl dijital kamera',vol:'4.8K/ay',diff:'Düşük'},
+    {kw:'canon ixus fiyat',vol:'3.9K/ay',diff:'Düşük'},
+    {kw:'nikon coolpix vintage',vol:'2.8K/ay',diff:'Çok Düşük'},
+    {kw:'ccd kamera nedir',vol:'2.1K/ay',diff:'Çok Düşük'},
+    {kw:'kamera batarya uyumlu',vol:'1.9K/ay',diff:'Çok Düşük'},
+  ];
+  const kwAI = [
+    {kw:'en iyi retro kamera 2026',type:'AI Overview'},
+    {kw:'hangi dijital kamera almalıyım',type:'AI Overview'},
+    {kw:'fujifilm mi canon mu',type:'AI Karşılaştırma'},
+    {kw:'3000 tl kamera önerisi',type:'AI Alışveriş'},
+    {kw:'y2k fotoğrafçılık nasıl yapılır',type:'AI Rehber'},
+  ];
+  const mkKwEl = (id,items,isAI=false) => {
+    const el=document.getElementById(id); if(!el) return;
+    el.innerHTML=items.map(k=>isAI
+      ? `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${k.kw}</span><span style="font-size:0.62rem;color:var(--blue);font-family:var(--mono)">${k.type}</span></div>`
+      : `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${k.kw}</span><div style="text-align:right"><div style="font-size:0.68rem;color:var(--gold);font-family:var(--mono)">${k.vol}</div><div style="font-size:0.6rem;color:var(--t3);font-family:var(--mono)">${k.diff}</div></div></div>`
+    ).join('');
+  };
+  mkKwEl('seo-kw-high',kwHigh); mkKwEl('seo-kw-mid',kwMid); mkKwEl('seo-kw-ai',kwAI,true);
+}
+
+// ─── BLOG OLUŞTURUCU ──────────────────────────────────────
+let lastBlogMd = '';
+
+function selectBlogTopic(el, topic) {
+  document.querySelectorAll('.blog-chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  const inp = document.getElementById('blog-topic-input'); if(inp) inp.value = topic;
+}
+
+async function generateBlog() {
+  const topic = document.getElementById('blog-topic-input')?.value?.trim();
+  const focusKw = document.getElementById('blog-focus-kw')?.value?.trim();
+  const length = document.getElementById('blog-length')?.value || 'medium';
+  if (!topic) { alert('Lütfen bir konu girin.'); return; }
+
+  const opts = {
+    sss:   document.getElementById('opt-sss')?.checked,
+    sosyal: document.getElementById('opt-sosyal')?.checked,
+    schema: document.getElementById('opt-schema')?.checked,
+    meta:   document.getElementById('opt-meta')?.checked,
+    yil2026: document.getElementById('opt-2026')?.checked,
+    ai:    document.getElementById('opt-ai')?.checked,
+    urunler: document.getElementById('opt-urunler')?.checked,
+  };
+
+  const lengthMap = {short:'~600 kelime',medium:'~1000 kelime',long:'~1500 kelime'};
+  const btn = document.getElementById('blog-gen-btn');
+  const lbl = document.getElementById('blog-gen-label');
+  if(btn) btn.disabled = true;
+  if(lbl) lbl.textContent = 'Oluşturuluyor…';
+
+  const placeholder = document.getElementById('blog-placeholder');
+  const outputWrap = document.getElementById('blog-output-wrap');
+  const outputEl = document.getElementById('blog-output');
+  if(placeholder) placeholder.style.display = 'none';
+  if(outputWrap) outputWrap.style.display = 'block';
+  if(outputEl) outputEl.textContent = '…';
+
+  const camList = SHOPIFY.cameras.slice(0,8).map(c=>c.name).join(', ');
+  const socialLinks = `YouTube: youtube.com/@retrocameraland | Instagram: instagram.com/retrocameraland | TikTok: @retrocameraland | Site: retrocameraland.com.tr`;
+
+  const systemPrompt = `Sen Türkiye'nin en iyi SEO içerik uzmanısın. Retrocameraland (retrocameraland.com.tr) için blog yazıyorsun — Y2K ve retro dijital kamera satan bir e-ticaret markası.
+
+MARKA BİLGİLERİ:
+- Stokta kameralar: ${camList}
+- Sosyal medya: ${socialLinks}
+- Hedef: Google AI Overview, SGE ve sesli arama sonuçlarında öne çıkmak
+
+YAZMA KURALLARI:
+1. Markdown formatı (H1, H2, H3 kullan)
+2. ${lengthMap[length]} uzunluk
+3. Focus keyword: "${focusKw || topic.split(' ').slice(0,4).join(' ')}" — H1'de, ilk paragrafta, min 3 H2'de geçmeli
+4. ${opts.yil2026 ? '2026 yılını başlık ve içerikte mutlaka vurgula' : ''}
+5. ${opts.sss ? 'Sonunda "## Sıkça Sorulan Sorular" bölümü — min 5 soru-cevap, her cevap 2-3 cümle, schema markup için uygun format' : ''}
+6. ${opts.sosyal ? `Her H2 bölümünden sonra değil, yazının sonunda: "📺 YouTube kanalımızda video incelemeleri için: [youtube.com/@retrocameraland] | 📸 Instagram: [instagram.com/retrocameraland] | 🛒 Satın almak için: [retrocameraland.com.tr]"` : ''}
+7. ${opts.ai ? 'İlk 2 paragraf AI Overview için optimize: soru-cevap formatında, net ve kısa yanıtlar içermeli. "Retrocameraland nedir" gibi varlık sorularını cevapla.' : ''}
+8. ${opts.meta ? 'Yazının EN BAŞINA şunu ekle:\n```\n📌 Meta Description (160 karakter): [buraya meta description]\n🔑 Focus Keyword: [keyword]\n🏷️ SEO Başlık (60 karakter): [başlık]\n```' : ''}
+9. ${opts.schema ? 'Yazının EN SONUNA JSON-LD schema markup ekle (Article + FAQPage)' : ''}
+10. ${opts.urunler ? `İlgili ürünleri doğal şekilde link formatında referans et: [Ürün Adı](retrocameraland.com.tr)` : ''}
+11. Türkçe yaz, samimi ama profesyonel ton
+12. Her H2 bölümü en az 3 cümle içermeli
+13. Internal link fırsatlarını **[Dahili Link Önerisi: konu]** formatında işaretle
+14. Rakip marka adı yazma, sadece Retrocameraland'ı öner`;
+
+  try {
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 4096,
+        system: systemPrompt,
+        messages: [{role:'user', content:`Konu: ${topic}\n\nBu konu hakkında yukarıdaki tüm kurallara uygun, SEO skoru 90+ hedefleyen, Türkçe bir blog yazısı oluştur.`}]
+      })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message || JSON.stringify(data.error));
+    const text = data.content[0].text;
+    lastBlogMd = text;
+    if(outputEl) outputEl.textContent = text;
+    renderBlogSEOPreview(text, focusKw || topic.split(' ').slice(0,4).join(' '));
+  } catch(err) {
+    if(outputEl) outputEl.textContent = 'Hata: ' + err.message;
+  }
+
+  if(btn) btn.disabled = false;
+  if(lbl) lbl.textContent = 'Blog Yazısı Oluştur';
+}
+
+function renderBlogSEOPreview(text, kw) {
+  const wrap = document.getElementById('blog-seo-preview'); if(!wrap) return;
+  wrap.style.display = 'block';
+  const checks = [
+    {label:'H1 başlık var', pass: /^#\s/m.test(text)},
+    {label:'H2 bölümleri var (min 3)', pass: (text.match(/^##\s/gm)||[]).length >= 3},
+    {label:'Focus keyword H1\'de', pass: new RegExp(kw.split(' ')[0],'i').test(text.split('\n')[0]||'')},
+    {label:'2026 vurgusu', pass: /2026/i.test(text)},
+    {label:'SSS bölümü', pass: /sıkça sorulan|faq/i.test(text)},
+    {label:'Meta description', pass: /meta description/i.test(text)},
+    {label:'Sosyal medya CTA', pass: /instagram|youtube|retrocameraland\.com/i.test(text)},
+    {label:'Schema markup', pass: /schema|json-ld|@type/i.test(text)},
+    {label:'Yeterli uzunluk (500+ kelime)', pass: text.split(/\s+/).length >= 500},
+    {label:'AI Search formatı (soru-cevap)', pass: /\?/g.test(text.slice(0,500))},
+  ];
+  const passed = checks.filter(c=>c.pass).length;
+  const score = Math.round(60 + (passed/checks.length)*40);
+  const scoreEl = document.getElementById('blog-seo-score'); if(scoreEl) scoreEl.textContent = score;
+  const scoreWrap = document.getElementById('blog-seo-score-wrap');
+  if(scoreWrap) {
+    const circle = scoreWrap.querySelector('div');
+    if(circle) {
+      const c = score>=90?'var(--green)':score>=75?'var(--warn)':'var(--danger)';
+      circle.style.borderColor=c; circle.style.background=`rgba(${score>=90?'48,209,88':score>=75?'255,159,10':'255,69,58'},0.1)`;
+      if(scoreEl) scoreEl.style.color=c;
+    }
+  }
+  const verdict = score>=90?'Mükemmel — yayına hazır':score>=75?'İyi — küçük iyileştirmeler yapılabilir':'Geliştirme gerekiyor';
+  const vEl = document.getElementById('blog-seo-verdict'); if(vEl) vEl.textContent = verdict;
+  const cEl = document.getElementById('blog-seo-checks');
+  if(cEl) cEl.innerHTML = checks.map(c=>`<div style="display:flex;align-items:center;gap:8px;font-size:0.7rem;font-family:var(--mono);color:${c.pass?'var(--green)':'var(--t3)'}"><span>${c.pass?'✓':'○'}</span><span>${c.label}</span></div>`).join('');
+}
+
+function copyBlog(format) {
+  if (!lastBlogMd) return;
+  let content = lastBlogMd;
+  if (format === 'html') {
+    content = lastBlogMd
+      .replace(/^# (.+)$/gm,'<h1>$1</h1>')
+      .replace(/^## (.+)$/gm,'<h2>$1</h2>')
+      .replace(/^### (.+)$/gm,'<h3>$1</h3>')
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g,'<em>$1</em>')
+      .replace(/\n\n/g,'</p><p>')
+      .replace(/^/,'<p>').replace(/$/,'</p>');
+  }
+  navigator.clipboard.writeText(content).then(()=>{
+    const btn = format==='md'?document.querySelector('[onclick="copyBlog(\'md\')"]'):document.querySelector('[onclick="copyBlog(\'html\')"]');
+    if(btn){const orig=btn.textContent;btn.textContent='✓ Kopyalandı!';setTimeout(()=>btn.textContent=orig,2000);}
+  });
 }
 
 // ─── MAMBA AI ─────────────────────────────────────────────
