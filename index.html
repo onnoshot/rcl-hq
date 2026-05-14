@@ -368,7 +368,31 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .stat-kpi-icon{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:11px;}
 .stat-kpi-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
 .stat-pulse{animation:pulse-stat 2.5s ease-in-out infinite;}
-@keyframes pulse-stat{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.97)}}</style>
+@keyframes pulse-stat{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.97)}}
+/* ── CherryGlow Agent ──────────────────────────────────────── */
+.cg-figure{width:150px;height:224px;margin:0 auto 8px;position:relative;}
+.cg-figure .cg-svg{width:100%;height:100%;transition:filter .4s;}
+.cg-figure.analyzing .cg-svg{filter:drop-shadow(0 0 16px rgba(90,200,250,0.55));animation:cg-pulse .9s ease-in-out infinite;}
+.cg-figure.writing .cg-svg{filter:drop-shadow(0 0 14px rgba(212,175,55,0.5));animation:cg-breathe 1.6s ease-in-out infinite;}
+.cg-figure.done .cg-svg{filter:drop-shadow(0 0 12px rgba(52,199,89,0.45));}
+@keyframes cg-pulse{0%,100%{opacity:1;}50%{opacity:.65;}}
+@keyframes cg-breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.025);}}
+.cg-p{animation:cg-float 3.5s ease-in-out infinite;}
+@keyframes cg-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+.cg-agent-status{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:4px;}
+.cg-agenda-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background .2s;}
+.cg-agenda-card:hover{background:rgba(255,255,255,.07);}
+.cg-agenda-card.done{opacity:.55;border-color:rgba(52,199,89,.2);background:rgba(52,199,89,.04);}
+.cg-agenda-card.active{border-color:rgba(212,175,55,.3);background:rgba(212,175,55,.05);}
+.cg-agenda-num{width:24px;height:24px;border-radius:50%;background:rgba(212,175,55,.15);color:var(--gold);font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.cg-agenda-card.done .cg-agenda-num{background:rgba(52,199,89,.15);color:#34C759;}
+.cg-agenda-label{font-size:.82rem;font-weight:600;line-height:1.35;}
+.cg-agenda-topic{font-size:.73rem;opacity:.55;margin-top:2px;line-height:1.4;}
+.cg-hist-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px;cursor:pointer;transition:background .2s;}
+.cg-hist-card:hover{background:rgba(255,255,255,.07);}
+.cg-hist-title{font-size:.78rem;font-weight:600;line-height:1.4;margin-bottom:4px;}
+.cg-hist-meta{font-size:.68rem;opacity:.45;}
+</style>
 </head>
 <body>
 <div class="orb orb1"></div><div class="orb orb2"></div>
@@ -418,9 +442,9 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
       <span class="nav-label">Ürün Oluştur</span>
     </div>
     <div class="sb-section">AI</div>
-    <div class="nav-item" data-page="mamba" onclick="navigate('mamba',this)">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
-      <span class="nav-label">MAMBA</span>
+    <div class="nav-item" data-page="cherry" onclick="navigate('cherry',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="8" r="3"/><path d="M12 11c-4.418 0-8 1.79-8 4v1h16v-1c0-2.21-3.582-4-8-4Z"/><circle cx="17" cy="6" r="2.2"/><line x1="17" y1="3.8" x2="17" y2="2"/><path d="M15.2 7.8Q14 10 12 11"/></svg>
+      <span class="nav-label">CHERRY</span>
     </div>
   </nav>
   <div class="sb-footer">
@@ -1328,68 +1352,7 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   </div>
 </div>
 
-<!-- ═══════════════════ MAMBA ═══════════════════ -->
-<div class="page" id="page-mamba">
-  <div class="page-topbar fi">
-    <div class="pt-left">
-      <div class="pt-title"><span>MAMBA</span> AI</div>
-      <div class="pt-sub">Marka asistanın · Türkçe sesli konuşma · Günlük analiz</div>
-    </div>
-  </div>
-  <div class="mamba-layout fi" style="transition-delay:.05s">
-    <div style="display:flex;flex-direction:column;align-items:center;gap:16px">
-      <div class="mamba-wrap" id="mambaWrap">
-        <div class="mamba-orb-container">
-          <svg class="mamba-orb-svg" viewBox="0 0 260 260">
-            <defs>
-              <radialGradient id="og" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="rgba(212,175,55,0.9)"/>
-                <stop offset="50%" stop-color="rgba(212,175,55,0.25)"/>
-                <stop offset="100%" stop-color="rgba(212,175,55,0)"/>
-              </radialGradient>
-            </defs>
-            <circle cx="130" cy="130" r="120" fill="none" stroke="rgba(212,175,55,0.06)" stroke-width="1"/>
-            <circle cx="130" cy="130" r="95" fill="none" stroke="rgba(212,175,55,0.10)" stroke-width="1.5" class="orb-ring1"/>
-            <circle cx="130" cy="130" r="70" fill="none" stroke="rgba(212,175,55,0.16)" stroke-width="2" class="orb-ring2"/>
-            <circle cx="130" cy="130" r="48" fill="none" stroke="rgba(212,175,55,0.22)" stroke-width="1.5" class="orb-ring3"/>
-            <circle cx="130" cy="130" r="36" fill="url(#og)" class="orb-core"/>
-            <circle cx="130" cy="130" r="10" fill="rgba(212,175,55,0.95)"/>
-            <circle cx="130" cy="130" r="5" fill="#fff" opacity="0.6"/>
-          </svg>
-        </div>
-        <div class="mamba-state-badge" id="mambaStateBadge">Hazır</div>
-      </div>
-      <div class="mamba-briefing" id="mambaBriefing">
-        <div class="mamba-briefing-title">Günlük Özet</div>
-        <div id="mamba-briefing-stats"></div>
-      </div>
-      <div class="mamba-actions">
-        <div class="mamba-action-chip" onclick="mambaPrompt('Bugünkü satış durumunu özetle')">Satış özeti</div>
-        <div class="mamba-action-chip" onclick="mambaPrompt('Instagram performansımı analiz et')">IG analiz</div>
-        <div class="mamba-action-chip" onclick="mambaPrompt('YouTube kanalımı değerlendir')">YT raporu</div>
-        <div class="mamba-action-chip" onclick="mambaPrompt('Stok durumuma bak, ne önerirsin?')">Stok öneri</div>
-        <div class="mamba-action-chip" onclick="mambaPrompt('Bu haftanın kârlılığını hesapla')">Kâr analizi</div>
-      </div>
-    </div>
-    <div class="mamba-chat-panel">
-      <div class="mamba-chat-box" id="mambaChat"><div class="msg system">Merhaba! Ben MAMBA, Retrocameraland'ın AI asistanıyım. Sesli ya da yazılı sorularınızı beklerim.</div></div>
-      <div class="mamba-input-row">
-        <input class="mamba-text-input" id="mambaInput" placeholder="Yaz veya mikrofona bas…" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();mambaSubmit();}">
-        <button class="mamba-btn mamba-voice-btn" id="mambaVoiceBtn" onclick="mambaToggleVoice()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-          <span id="mambaVoiceLabel">Konuş</span>
-        </button>
-        <button class="mamba-btn mamba-send-btn" onclick="mambaSubmit()">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Gönder
-        </button>
-      </div>
-      <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-top:4px">
-        Claude API · Ses: tr-TR · Hafıza: localStorage · <span id="mamba-memory-info">—</span>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- ═══════════════════ ÜRÜN OLUŞTURUCU ═══════════════════ -->
 <div class="page" id="page-urun">
@@ -1633,6 +1596,106 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   </div>
 </div>
 
+
+
+
+<!-- ═══════════════════ CHERRYGLOW ═══════════════════ -->
+<div class="page" id="page-cherry">
+  <div class="page-topbar fi">
+    <div class="pt-left"><div class="pt-title">CherryGlow</div><div class="pt-sub">AI Blog Ajani</div></div>
+    <div class="pt-right"><span class="live-pill" id="cg-status-pill">Hazir</span></div>
+  </div>
+  <div style="display:grid;grid-template-columns:220px 1fr;gap:16px;padding:0 20px 20px">
+    <!-- Left: character + controls + settings -->
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card" style="padding:20px 16px;text-align:center;position:relative">
+        <div class="cg-figure" id="cg-figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 280" class="cg-svg">
+        <defs>
+          <radialGradient id="cgAura" cx="50%" cy="55%" r="55%"><stop offset="0%" stop-color="#FFB7C5" stop-opacity=".38"/><stop offset="100%" stop-color="#FFB7C5" stop-opacity="0"/></radialGradient>
+          <radialGradient id="cgScr" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#D4AF37" stop-opacity=".55"/><stop offset="100%" stop-color="#0f3460" stop-opacity="0"/></radialGradient>
+        </defs>
+        <ellipse cx="80" cy="165" rx="72" ry="88" fill="url(#cgAura)"/>
+        <path d="M57 85C48 100 44 125 46 155C48 160 53 158 55 150 56 130 55 108 58 90Z" fill="#1a0805"/>
+        <path d="M103 85C112 100 116 125 114 155C112 160 107 158 105 150 104 130 105 108 102 90Z" fill="#1a0805"/>
+        <path d="M52 122C42 134 38 162 40 192C44 215 116 215 120 192 122 162 118 134 108 122Z" fill="#2a1245"/>
+        <path d="M52 122C60 128 68 130 80 130C92 130 100 128 108 122 102 118 90 116 80 116 70 116 58 118 52 122Z" fill="#3d1a6e" opacity=".55"/>
+        <rect x="73" y="108" width="14" height="16" rx="7" fill="#f4cba6"/>
+        <ellipse cx="80" cy="88" rx="23" ry="25" fill="#f4cba6"/>
+        <path d="M57 85C52 75 50 60 55 50C62 37 73 34 80 34C87 34 98 37 105 50 110 60 108 75 103 85 98 78 92 75 80 75 68 75 62 78 57 85Z" fill="#1a0805"/>
+        <ellipse cx="73" cy="88" rx="2.8" ry="3.2" fill="#3d1a00"/>
+        <ellipse cx="87" cy="88" rx="2.8" ry="3.2" fill="#3d1a00"/>
+        <circle cx="74.5" cy="86.5" r=".9" fill="white" opacity=".7"/>
+        <circle cx="88.5" cy="86.5" r=".9" fill="white" opacity=".7"/>
+        <path d="M69 83Q73 81 77 83" stroke="#3d1a00" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M83 83Q87 81 91 83" stroke="#3d1a00" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        <path d="M76 98Q80 103 84 98" stroke="#c4726a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="68" cy="95" rx="5" ry="3" fill="#FFB7C5" opacity=".33"/>
+        <ellipse cx="92" cy="95" rx="5" ry="3" fill="#FFB7C5" opacity=".33"/>
+        <path d="M53 127C42 135 32 155 35 172" stroke="#f4cba6" stroke-width="11" stroke-linecap="round" fill="none"/>
+        <path d="M107 127C118 135 128 155 125 172" stroke="#f4cba6" stroke-width="11" stroke-linecap="round" fill="none"/>
+        <rect x="33" y="170" width="74" height="48" rx="5" fill="#1c1c2e"/>
+        <rect x="37" y="175" width="66" height="36" rx="3" fill="#0d2137"/>
+        <rect x="37" y="175" width="66" height="36" rx="3" fill="url(#cgScr)" opacity=".8"/>
+        <rect x="42" y="181" width="30" height="2" rx="1" fill="#D4AF37" opacity=".9"/>
+        <rect x="42" y="187" width="22" height="2" rx="1" fill="#FFB7C5" opacity=".7"/>
+        <rect x="42" y="193" width="28" height="2" rx="1" fill="#D4AF37" opacity=".55"/>
+        <rect x="42" y="199" width="18" height="2" rx="1" fill="#a0a0ff" opacity=".5"/>
+        <rect x="42" y="205" width="24" height="2" rx="1" fill="#FFB7C5" opacity=".4"/>
+        <rect x="29" y="218" width="82" height="5" rx="3" fill="#1c1c2e"/>
+        <g class="cg-p" style="animation-delay:0s;animation-duration:3.2s"><circle cx="20" cy="65" r="3.5" fill="#FFB7C5" opacity=".6"/><circle cx="22" cy="61" r="2" fill="#ffcdd8" opacity=".4"/></g>
+        <g class="cg-p" style="animation-delay:1.1s;animation-duration:4s"><circle cx="142" cy="55" r="3" fill="#FFB7C5" opacity=".55"/><circle cx="138" cy="59" r="1.8" fill="#ffcdd8" opacity=".35"/></g>
+        <g class="cg-p" style="animation-delay:2s;animation-duration:3.6s"><circle cx="148" cy="110" r="2.2" fill="#D4AF37" opacity=".4"/></g>
+        <g class="cg-p" style="animation-delay:.6s;animation-duration:4.2s"><circle cx="14" cy="120" r="2" fill="#FFB7C5" opacity=".45"/></g>
+        <g class="cg-p" style="animation-delay:1.7s;animation-duration:3.8s"><circle cx="145" cy="165" r="2.5" fill="#FFB7C5" opacity=".38"/></g>
+        <g class="cg-p" style="animation-delay:2.5s;animation-duration:3.4s"><circle cx="16" cy="170" r="1.8" fill="#D4AF37" opacity=".3"/></g>
+      </svg></div>
+        <div class="cg-agent-status" id="cg-agent-label">HAZIR</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+          <button class="blog-gen-btn" id="cg-btn-analyze" onclick="cherryAnalyze()">Trend Analizi Yap</button>
+          <button class="blog-gen-btn" id="cg-btn-auto" onclick="cherryAutoRun()" disabled>Tum Bloglari Yaz</button>
+        </div>
+      </div>
+      <div class="card" style="padding:16px">
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5;margin-bottom:12px">AYARLAR</div>
+        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-bottom:9px;font-size:.8rem">
+          <input type="checkbox" id="cg-trust-mode" checked onchange="cherrySaveSettings()"> Guven sinyalleri
+        </label>
+        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-bottom:9px;font-size:.8rem">
+          <input type="checkbox" id="cg-auto-gen" onchange="cherrySaveSettings()"> Analiz sonrasi otomatik yaz
+        </label>
+        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;font-size:.8rem">
+          <input type="checkbox" id="cg-auto-daily" onchange="cherrySaveSettings()"> Gunluk otomatik calis
+        </label>
+      </div>
+    </div>
+    <!-- Right: agenda + preview + log + history -->
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card" style="padding:20px">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5">GUNLUK AJANDA</div>
+          <div style="font-size:.7rem;opacity:.35" id="cg-agenda-date"></div>
+        </div>
+        <div id="cg-agenda-list"><div style="opacity:.35;font-size:.84rem;padding:8px 0">Henuz analiz yapilmadi. "Trend Analizi Yap" butonuna bas.</div></div>
+      </div>
+      <div class="card" style="padding:20px;display:none" id="cg-preview-card">
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5;margin-bottom:12px">BLOG ONIZLEME</div>
+        <div id="cg-blog-preview" style="max-height:300px;overflow-y:auto;font-size:.82rem;line-height:1.75"></div>
+        <div style="display:flex;gap:8px;margin-top:14px">
+          <button class="b-action-btn" style="flex:1" onclick="cherryCopyHTML()">HTML Kopyala</button>
+          <button class="b-action-btn" style="flex:1" onclick="cherryPublish()">Shopify Gonder</button>
+        </div>
+      </div>
+      <div class="card" style="padding:20px">
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5;margin-bottom:10px">AKTIVITE GUNLUGU</div>
+        <div id="cg-activity-log" style="max-height:180px;overflow-y:auto;font-size:.76rem;line-height:1.85;opacity:.75"></div>
+      </div>
+      <div class="card" style="padding:20px" id="cg-history-card">
+        <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5;margin-bottom:12px">BUGUNUN BLOGLARI</div>
+        <div id="cg-history-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px"></div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </main>
 <script id="data-script">
@@ -2187,7 +2250,7 @@ const GA4_TRAFFIC = {"updated_at":"2026-05-14T18:00:00","kpi_30d":{"visitors":11
 /* ─── GA4 TRAFFIC DATA END ─── */
 
 /* ─── BLOG SEO DATA START ─── */
-const BLOG_SEO = {"updated_at":"2026-05-14T18:00:00","total_posts":24,"monthly_organic":5718,"posts":[{"title":"En İyi CCD Kameralar 2026","views":7840,"organic":4920,"orders":5,"seo":94},{"title":"Y2K Dijital Kamera Rehberi","views":6320,"organic":3870,"orders":4,"seo":91},{"title":"Fujifilm FinePix Serisi Karşılaştırma","views":4180,"organic":2540,"orders":3,"seo":88},{"title":"Retro Fotoğrafçılık Başlangıç Rehberi","views":3650,"organic":2110,"orders":2,"seo":85},{"title":"Canon IXUS Ailesi: Tarihi ve Modeller","views":2890,"organic":1720,"orders":2,"seo":82},{"title":"Nikon Coolpix Koleksiyonu İnceleme","views":2140,"organic":1280,"orders":1,"seo":78},{"title":"Dijital Kamera Bakım Rehberi","views":1560,"organic":870,"orders":1,"seo":74},{"title":"Vintage Kamera ile Sokak Fotoğrafçılığı","views":980,"organic":520,"orders":0,"seo":70}],"monthly":[{"label":"Ara 25","posts":2,"traffic":1840},{"label":"Oca 26","posts":4,"traffic":3210},{"label":"Şub 26","posts":3,"traffic":2680},{"label":"Mar 26","posts":5,"traffic":4520},{"label":"Nis 26","posts":3,"traffic":3840},{"label":"May 26","posts":2,"traffic":5718}]};
+const BLOG_SEO = {"updated_at":"2026-05-14T18:00:00","total_posts":167,"monthly_organic":5718,"posts":[{"title":"En İyi CCD Kameralar 2026","views":7840,"organic":4920,"orders":5,"seo":94},{"title":"Y2K Dijital Kamera Rehberi","views":6320,"organic":3870,"orders":4,"seo":91},{"title":"Fujifilm FinePix Serisi Karşılaştırma","views":4180,"organic":2540,"orders":3,"seo":88},{"title":"Retro Fotoğrafçılık Başlangıç Rehberi","views":3650,"organic":2110,"orders":2,"seo":85},{"title":"Canon IXUS Ailesi: Tarihi ve Modeller","views":2890,"organic":1720,"orders":2,"seo":82},{"title":"Nikon Coolpix Koleksiyonu İnceleme","views":2140,"organic":1280,"orders":1,"seo":78},{"title":"Dijital Kamera Bakım Rehberi","views":1560,"organic":870,"orders":1,"seo":74},{"title":"Vintage Kamera ile Sokak Fotoğrafçılığı","views":980,"organic":520,"orders":0,"seo":70}],"monthly":[{"label":"Ara 25","posts":2,"traffic":1840},{"label":"Oca 26","posts":4,"traffic":3210},{"label":"Şub 26","posts":3,"traffic":2680},{"label":"Mar 26","posts":5,"traffic":4520},{"label":"Nis 26","posts":3,"traffic":3840},{"label":"May 26","posts":2,"traffic":5718}]};
 /* ─── BLOG SEO DATA END ─── */
 </script>
 <script id="app-script">
@@ -2226,7 +2289,7 @@ function setPeriod(p, btn) {
 }
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','finance','inventory','youtube','instagram','stats','seo','blog','urun','mamba'];
+const PAGES = ['overview','finance','inventory','youtube','instagram','stats','seo','blog','urun','cherry'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -2247,7 +2310,7 @@ function navigate(page, navEl) {
   if (page === 'seo') renderSEOPage();
   if (page === 'blog') renderBlogPage();
   if (page === 'urun') renderUrunPage();
-  if (page === 'mamba') renderMambaBriefing();
+  if (page === 'cherry') renderCherryPage();
 }
 
 function initRouter() {
@@ -2904,6 +2967,14 @@ const BLOG_TOPICS = {
     {label:'Doğum Günü', topic:'Doğum günü hediyesi olarak dijital kamera: hangi model, hangi fiyat aralığı? 2026'},
     {label:'18-24 Yaş', topic:'18-24 yaş için en iyi dijital kamera önerileri 2026 — Y2K ve modern arası'},
   ],
+  kw: [
+    {label:'Retro Kamera 2026', topic:'Y2K dijital kamera satin alma rehberi 2026 - Turkiyede en cok aranan retro kameralar ve fiyatlari'},
+    {label:'Vintage Kamera Al', topic:'Vintage kamera al arama trendi 2026 - hangi modeller deger kazaniyor, nerede guvenli alinir'},
+    {label:'CCD Kamera Nedir', topic:'CCD kamera nedir bilgi paneli hedefli icerik - AI arama optimizasyonu 2026'},
+    {label:'Kamera Fiyat 2026', topic:'Retro dijital kamera fiyatlari 2026 Turkiye - model bazli guncel piyasa degerleri'},
+    {label:'Y2K Estetik Kamera', topic:'Y2K estetik kamera ve 2000ler dijital kamera arama boslugu - dusuk rekabetli keyword firsati'},
+    {label:'Guvenilir Kamera', topic:'Ikinci el guvenilir dijital kamera satin alma 2026 - dogru platform secimi ve dikkat edilecekler'}
+  ]
 };
 
 function switchBlogCat(cat, el) {
@@ -2928,6 +2999,55 @@ function toggleBChip(el) {
   el.classList.add('active');
 }
 
+
+function enrichBlogHTML(html) {
+  if (!html) return html;
+  var CSS = '<style id="rcl-blog-css">'
+    + '#rcl-pb{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#D4AF37,#E5C158);z-index:9999;width:0;transition:width .15s;border-radius:0 2px 2px 0;pointer-events:none}'
+    + '.rcl-s{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}'
+    + '.rcl-s.rcl-on{opacity:1;transform:none}'
+    + '.rcl-hl{background:linear-gradient(135deg,rgba(212,175,55,.09),rgba(212,175,55,.02));border-left:3px solid #D4AF37;padding:13px 17px;border-radius:0 9px 9px 0;margin:14px 0;display:block}'
+    + '.rcl-trust{background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.2);border-radius:12px;padding:18px 20px;margin:22px 0}'
+    + '.rcl-trust-title{font-weight:700;margin-bottom:8px;color:#D4AF37;font-size:.95em}'
+    + '.rcl-cta{background:linear-gradient(135deg,#0e0e0e,#1c1c1e);border-radius:14px;padding:26px 24px;text-align:center;margin:28px 0}'
+    + '.rcl-cta-h{font-weight:700;font-size:1.05em;margin:0 0 6px}'
+    + '.rcl-cta-sub{opacity:.65;margin:0 0 14px;font-size:.88em}'
+    + '.rcl-cta a{display:inline-block;background:#D4AF37;color:#000;padding:11px 28px;border-radius:50px;font-weight:700;text-decoration:none}'
+    + '<\/style>';
+  var PB = '<div id="rcl-pb"><\/div>';
+  var JS = '<script>(function(){'
+    + 'var pb=document.getElementById("rcl-pb");'
+    + 'if(pb)window.addEventListener("scroll",function(){var h=document.documentElement;var s=h.scrollTop||document.body.scrollTop;var t=(h.scrollHeight||document.body.scrollHeight)-h.clientHeight;pb.style.width=(t>0?s/t*100:0)+"%";},{passive:true});'
+    + 'if("IntersectionObserver"in window){var ob=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("rcl-on");});},{threshold:0.12});document.querySelectorAll(".rcl-s").forEach(function(el){ob.observe(el);});}'
+    + '})();<\/script>';
+  var TRUST = '<div class="rcl-trust rcl-s">'
+    + '<div class="rcl-trust-title">Neden Retrocameraland?</div>'
+    + '<ul style="margin:0;padding-left:18px;line-height:1.9;font-size:.9em">'
+    + '<li>15+ adim kontrol listesinden gecmis, kurator secimi kameralar</li>'
+    + '<li>Dolap / sahibinden gibi guvenilmez platformlardan tamamen farkli</li>'
+    + '<li>Seffaf kondisyon puanlama - ne gorduysen o gelir</li>'
+    + '<li>Iade garantisi ile guvenli alisveris</li>'
+    + '<li>Ozel RCL kutusunda premium ambalajla teslimat</li>'
+    + '</ul></div>';
+  var CTA = '<div class="rcl-cta rcl-s">'
+    + '<p class="rcl-cta-h">Guvenilir Retro Kamera Arayanlar Icin</p>'
+    + '<p class="rcl-cta-sub">Kurator secimi, iade garantisi ve 15+ kontrol. Koleksiyonu incele.</p>'
+    + '<a href="https://retrocameraland.com" target="_blank" rel="noopener">Koleksiyonu Goster</a>'
+    + '</div>';
+  var result = html
+    .replace(/<h1>/g, '<h1 class="rcl-s">')
+    .replace(/<h2>/g, '<h2 class="rcl-s">')
+    .replace(/<h3>/g, '<h3 class="rcl-s">')
+    .replace(/<blockquote>/g, '<blockquote class="rcl-hl rcl-s">');
+  var h2count = 0;
+  result = result.replace(/<\/h2>/g, function(m) {
+    h2count++;
+    return m + (h2count === 2 ? TRUST : '');
+  });
+  if (h2count < 2) result = result + TRUST;
+  return CSS + PB + JS + result + CTA;
+}
+
 function setOutputTab(tab) {
   const mdTab = document.getElementById('blog-tab-md');
   const htmlTab = document.getElementById('blog-tab-html');
@@ -2938,7 +3058,7 @@ function setOutputTab(tab) {
   if (mdEl) mdEl.style.display = tab === 'md' ? 'block' : 'none';
   if (htmlEl) {
     htmlEl.style.display = tab === 'html' ? 'block' : 'none';
-    if (tab === 'html' && lastBlogMd) htmlEl.innerHTML = simpleMarkdownToHTML(lastBlogMd);
+    if (tab === 'html' && lastBlogMd) htmlEl.innerHTML = enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd));
   }
 }
 
@@ -3076,7 +3196,9 @@ KURALLAR:
 11. ${opts.urunler ? 'İlgili ürünleri [Ürün](retrocameraland.com.tr) şeklinde referans et' : ''}
 12. Her H2 min 3 cümle | Internal link fırsatlarını **[Link Önerisi: konu]** olarak işaretle
 13. Türkçe yaz | Rakip marka adı kullanma
-14. EM DASH YASAK: "—" karakterini hiçbir şekilde kullanma; virgül, nokta veya tire (-) kullan`;
+14. EM DASH YASAK: "—" karakterini hiçbir şekilde kullanma; virgül, nokta veya tire (-) kullan
+15. MARKA KONUMLANDIRMASI: Retrocameraland'i dolap.com, sahibinden.com gibi platformlardan net sekilde ayir. Bu platformlardaki guvenilmez saticilardan farkli olarak RCL'de profesyonel kuratorler secim yapar, her kamera 15 adimlık kontrol listesinden gecer ve RCL kutusunda ozel ambalajla gonderilir. Bu farki blog icinde dogal bir gecisle vurgula.
+16. GUVEN SINYALLERI VE CTA: Blog icinde en az bir kez su unsurları doğal gecisle islet: iade garantisi, seffaf kondisyon puanlama, uzman kurator secimi. Blogun sonuna kisa bir CTA bolumu ekle - okuyucuyu retrocameraland.com'a yonlendir ve satin alma kararini destekle.`;
 
   try {
     const res = await fetch('/api/chat', {
@@ -3174,7 +3296,7 @@ function renderBlogSEOScore(text, kw) {
 
 function copyBlog(format) {
   if (!lastBlogMd) return;
-  const content = format === 'html' ? simpleMarkdownToHTML(lastBlogMd) : lastBlogMd;
+  const content = format === 'html' ? enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd)) : lastBlogMd;
   navigator.clipboard.writeText(content).then(() => {
     const btn = document.querySelector(`[onclick="copyBlog('${format}')"]`);
     if (btn) { const o=btn.textContent; btn.textContent='✓'; setTimeout(()=>btn.textContent=o,2000); }
@@ -3183,7 +3305,7 @@ function copyBlog(format) {
 
 function publishToShopify() {
   if (!lastBlogMd) return;
-  navigator.clipboard.writeText(simpleMarkdownToHTML(lastBlogMd)).then(() => {
+  navigator.clipboard.writeText(enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd))).then(() => {
     window.open('https://admin.shopify.com/store/retrocameraland/articles/new','_blank');
     const t = document.createElement('div');
     t.style.cssText = 'position:fixed;bottom:28px;right:28px;background:rgba(48,209,88,0.12);border:1px solid rgba(48,209,88,0.3);color:var(--green);font-family:var(--mono);font-size:0.76rem;padding:11px 16px;border-radius:12px;z-index:9999;backdrop-filter:blur(12px);pointer-events:none';
@@ -3562,181 +3684,316 @@ function urunProfitCalc() {
 }
 
 
-// ─── MAMBA AI ─────────────────────────────────────────────
-const MAMBA_HIST_KEY = 'mamba_history';
-const MAMBA_MEM_KEY  = 'mamba_memory';
-let mambaRecording = false;
-let mambaRecognition = null;
+// ─── CHERRYGLOW AI AGENT ────────────────────────────────────────
 
-function getMambaHistory() { try { return JSON.parse(localStorage.getItem(MAMBA_HIST_KEY)||'[]'); } catch { return []; } }
-function setMambaHistory(h) { localStorage.setItem(MAMBA_HIST_KEY, JSON.stringify(h.slice(-30))); }
-function getMambaMemory() { return localStorage.getItem(MAMBA_MEM_KEY)||''; }
-function setMambaMemory(m) { localStorage.setItem(MAMBA_MEM_KEY, m); }
+const CG_KEY = 'cg_state';
 
-function setMambaState(state) {
-  const wrap = document.getElementById('mambaWrap');
-  const badge = document.getElementById('mambaStateBadge');
-  if (!wrap || !badge) return;
-  wrap.className = 'mamba-wrap' + (state !== 'idle' ? ' '+state : '');
-  const labels = { idle:'Hazır', listening:'Dinliyor…', thinking:'Düşünüyor…', speaking:'Konuşuyor…' };
-  badge.textContent = labels[state] || 'Hazır';
+function cgLoadState() {
+  try { return JSON.parse(localStorage.getItem(CG_KEY)) || {}; } catch(e) { return {}; }
+}
+function cgSaveState(s) {
+  localStorage.setItem(CG_KEY, JSON.stringify(s));
 }
 
-function mambaAddMsg(role, text) {
-  const box = document.getElementById('mambaChat');
-  if (!box) return;
-  const div = document.createElement('div');
-  div.className = 'msg ' + role;
-  div.textContent = text;
-  box.appendChild(div);
-  box.scrollTop = box.scrollHeight;
+function setCherryState(state) {
+  var fig = document.getElementById('cg-figure');
+  var lbl = document.getElementById('cg-agent-label');
+  var pill = document.getElementById('cg-status-pill');
+  if (!fig) return;
+  fig.className = 'cg-figure ' + state;
+  var labels = {idle:'HAZIR', analyzing:'ANALIZ EDIYOR', writing:'YAZIYOR', done:'TAMAMLANDI'};
+  var pillLabels = {idle:'Hazir', analyzing:'Analiz', writing:'Yazıyor', done:'Tamam'};
+  if (lbl) lbl.textContent = labels[state] || 'HAZIR';
+  if (pill) pill.textContent = pillLabels[state] || state;
 }
 
-function renderMambaBriefing() {
-  const d = SHOPIFY.period_30d;
-  const stats = [
-    ['Gelir (30 gün)', fmtTL(d.revenue)],
-    ['Sipariş', d.orders + ' adet · AOV ' + fmtTL(d.aov)],
-    ['YT Abone', fmt(YOUTUBE.channel.subscribers) + ' · ' + fmt(YOUTUBE.analytics.last_30d.views) + ' izlenme'],
-    ['IG Takipçi', fmt(INSTAGRAM.followers) + ' · ort. ' + INSTAGRAM.avg_likes + ' beğeni'],
-    ['Stok', SHOPIFY.cameras.length + ' kamera · ' + SHOPIFY.out_of_stock + ' tükenen varyant'],
-  ];
-  const el = document.getElementById('mamba-briefing-stats');
-  if (el) el.innerHTML = stats.map(([k,v])=>`<div class="mamba-briefing-stat"><span>${k}</span><span>${v}</span></div>`).join('');
-  const mi = document.getElementById('mamba-memory-info');
-  const hist = getMambaHistory();
-  if (mi) mi.textContent = hist.length + ' mesaj hafızada';
+function cherryLog(msg) {
+  var el = document.getElementById('cg-activity-log');
+  if (!el) return;
+  var now = new Date();
+  var ts = ('0'+now.getHours()).slice(-2) + ':' + ('0'+now.getMinutes()).slice(-2);
+  el.innerHTML = '<div>' + ts + ' — ' + msg + '</div>' + el.innerHTML;
 }
 
-function buildMambaSystem() {
-  const d = SHOPIFY.period_30d;
-  const mem = getMambaMemory();
-  return `Sen MAMBA, Retrocameraland markasının Türkçe konuşan AI asistanısın. Onur ile çalışıyorsun.
-
-GÜNCEL MARKA VERİSİ (${new Date().toLocaleDateString('tr-TR')}):
-Shopify 30 gün: ${fmtTL(d.revenue)} gelir, ${d.orders} sipariş, ${fmtTL(d.aov)} AOV
-YouTube: ${fmt(YOUTUBE.channel.subscribers)} abone, ${fmt(YOUTUBE.analytics.last_30d.views)} izlenme (son 30 gün), ${YOUTUBE.analytics.watch_hours_year} saat (yıllık)
-Instagram: ${fmt(INSTAGRAM.followers)} takipçi, ${INSTAGRAM.avg_likes} ort. beğeni, ${INSTAGRAM.total_engagement} toplam etkileşim
-Stok: ${SHOPIFY.cameras.length} kamera modeli, ${SHOPIFY.out_of_stock} tükenen varyant
-Web trafiği: ${GA4_TRAFFIC.kpi_30d.visitors} ziyaretçi/ay, %${GA4_TRAFFIC.kpi_30d.organic_pct} organik
-
-${mem ? 'ÖNCEKİ KONUŞMALAR ÖZETİ:\n' + mem : ''}
-
-Kısa ve net Türkçe cevaplar ver. Sayısal verilerle destekle. Sesle okunduğunda akıcı olsun.`;
+function renderCherryPage() {
+  var s = cgLoadState();
+  // Load settings
+  var settings = s.settings || {};
+  var trustEl = document.getElementById('cg-trust-mode');
+  var autoGenEl = document.getElementById('cg-auto-gen');
+  var autoDailyEl = document.getElementById('cg-auto-daily');
+  if (trustEl) trustEl.checked = settings.trustMode !== false;
+  if (autoGenEl) autoGenEl.checked = !!settings.autoGen;
+  if (autoDailyEl) autoDailyEl.checked = !!settings.autoDaily;
+  // Restore agenda
+  var today = new Date().toISOString().slice(0,10);
+  var dateEl = document.getElementById('cg-agenda-date');
+  if (dateEl) dateEl.textContent = today;
+  if (s.agendaDate === today && s.agenda && s.agenda.length) {
+    renderCherryAgenda(s.agenda);
+    document.getElementById('cg-btn-auto').disabled = false;
+  }
+  renderCherryHistory(s.history || []);
+  // Auto daily
+  if (settings.autoDaily) {
+    var lastRun = s.lastAutoRun || '';
+    if (lastRun !== today) cherryAnalyze();
+  }
 }
 
-async function mambaSend(text) {
-  if (!text.trim()) return;
-  mambaAddMsg('user', text);
-  setMambaState('thinking');
-  const hist = getMambaHistory();
-  const messages = [...hist.slice(-18).map(m=>({role:m.role,content:m.content})), {role:'user',content:text}];
+function renderCherryAgenda(agenda) {
+  var el = document.getElementById('cg-agenda-list');
+  if (!el) return;
+  el.innerHTML = agenda.map(function(item, i) {
+    var cls = 'cg-agenda-card' + (item.done ? ' done' : '') + (item.active ? ' active' : '');
+    return '<div class="' + cls + '" id="cg-card-' + i + '" onclick="cherryShowBlog(' + i + ')">'
+      + '<div class="cg-agenda-num">' + (item.done ? '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="#34C759" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>' : (i+1)) + '</div>'
+      + '<div><div class="cg-agenda-label">' + item.label + '</div>'
+      + '<div class="cg-agenda-topic">' + item.topic.slice(0,80) + (item.topic.length > 80 ? '...' : '') + '</div></div>'
+      + '</div>';
+  }).join('');
+}
+
+function renderCherryHistory(history) {
+  var el = document.getElementById('cg-history-grid');
+  if (!el) return;
+  if (!history.length) { el.innerHTML = '<div style="opacity:.35;font-size:.82rem">Henuz blog yok.</div>'; return; }
+  el.innerHTML = history.map(function(item, i) {
+    return '<div class="cg-hist-card" onclick="cherryShowHistBlog(' + i + ')">'
+      + '<div class="cg-hist-title">' + item.title + '</div>'
+      + '<div class="cg-hist-meta">' + item.date + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function cherryShowBlog(i) {
+  var s = cgLoadState();
+  var agenda = s.agenda || [];
+  if (!agenda[i] || !agenda[i].blogMd) return;
+  var el = document.getElementById('cg-blog-preview');
+  var card = document.getElementById('cg-preview-card');
+  if (el) el.innerHTML = simpleMarkdownToHTML(agenda[i].blogMd);
+  if (card) card.style.display = 'block';
+  window._cgPreviewIdx = i;
+  window._cgPreviewSource = 'agenda';
+}
+
+function cherryShowHistBlog(i) {
+  var s = cgLoadState();
+  var history = s.history || [];
+  if (!history[i] || !history[i].md) return;
+  var el = document.getElementById('cg-blog-preview');
+  var card = document.getElementById('cg-preview-card');
+  if (el) el.innerHTML = simpleMarkdownToHTML(history[i].md);
+  if (card) card.style.display = 'block';
+  window._cgPreviewIdx = i;
+  window._cgPreviewSource = 'history';
+}
+
+function cherryCopyHTML() {
+  var s = cgLoadState();
+  var md = '';
+  if (window._cgPreviewSource === 'agenda') {
+    var agenda = s.agenda || [];
+    md = (agenda[window._cgPreviewIdx] || {}).blogMd || '';
+  } else {
+    var history = s.history || [];
+    md = (history[window._cgPreviewIdx] || {}).md || '';
+  }
+  if (!md) { cherryLog('Kopyalanacak blog bulunamadi.'); return; }
+  navigator.clipboard.writeText(enrichBlogHTML(simpleMarkdownToHTML(md)))
+    .then(function() { cherryLog('HTML kopyalandi.'); });
+}
+
+function cherryPublish() {
+  cherryCopyHTML();
+  setTimeout(function() {
+    window.open('https://retrocameraland.myshopify.com/admin/articles/new', '_blank');
+  }, 400);
+}
+
+function cherrySaveSettings() {
+  var s = cgLoadState();
+  s.settings = {
+    trustMode: document.getElementById('cg-trust-mode') ? document.getElementById('cg-trust-mode').checked : true,
+    autoGen: document.getElementById('cg-auto-gen') ? document.getElementById('cg-auto-gen').checked : false,
+    autoDaily: document.getElementById('cg-auto-daily') ? document.getElementById('cg-auto-daily').checked : false
+  };
+  cgSaveState(s);
+  cherryLog('Ayarlar kaydedildi.');
+}
+
+function buildCherrySystemPrompt(item, today, trustMode) {
+  var base = 'Sen Retrocameraland icin SEO odakli, Turkce blog yazisi yazan bir yapay zeka asistansin.'
+    + ' Tarih: ' + today + '.'
+    + ' Konu: ' + item.topic + '.'
+    + ' Baslik icin konu etiketi kullan: ' + item.label + '.'
+    + ' Kurallar: 1. H1 ile basla, H2/H3 alt basliklar kullan. 2. Min 800 kelime. 3. SEO puani 90+ hedefle.'
+    + ' 4. Markdown formatinda yaz. 5. EM DASH yasak: "—" kullanma, virgul veya tire kullan.'
+    + ' 6. Mobil uyumlu, kisa paragraflar.';
+  if (trustMode !== false) {
+    base += ' 7. MARKA: Retrocameraland dolap/sahibinden gibi platformlardan farki vurgula: uzman kurator secimi, 15+ kontrol, iade garantisi, RCL kutusu. 8. Blog sonuna CTA ekle: retrocameraland.com a yonlendir.';
+  }
+  return base;
+}
+
+async function cherryAnalyze() {
+  var analyzeBtn = document.getElementById('cg-btn-analyze');
+  if (analyzeBtn) analyzeBtn.disabled = true;
+  setCherryState('analyzing');
+  cherryLog('Trend analizi basliyor...');
+  var today = new Date().toISOString().slice(0,10);
+  var prompt = 'Bugun ' + today + ' tarihi icin Retrocameraland (retro/vintage/Y2K dijital kamera satis sitesi) adina 5 adet SEO odakli Turkce blog konusu olustur.'
+    + ' Her konu icin kisa bir etiket (max 4 kelime) ve detayli bir konu aciklamasi ver.'
+    + ' Yaniti SADECE gecerli JSON array olarak ver, baska bir sey yazma:'
+    + ' [{"label":"...","topic":"..."},...]';
   try {
-    const res = await fetch('/api/chat', {
+    var res = await fetch('/api/chat', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ model:'claude-haiku-4-5-20251001', max_tokens:1024, system:buildMambaSystem(), messages })
-    });
-    const data = await res.json();
-    if (data.error) throw new Error(data.error.message || JSON.stringify(data.error));
-    const reply = data.content[0].text;
-    hist.push({role:'user',content:text},{role:'assistant',content:reply});
-    setMambaHistory(hist);
-    if (hist.length % 10 === 0) updateMambaMemory(hist);
-    mambaAddMsg('assistant', reply);
-    setMambaState('speaking');
-    mambaSpeak(reply);
-    renderMambaBriefing();
-  } catch(err) {
-    mambaAddMsg('system', 'Hata: ' + err.message);
-    setMambaState('idle');
-  }
-}
-
-function mambaSubmit() {
-  const inp = document.getElementById('mambaInput');
-  if (!inp) return;
-  const txt = inp.value.trim();
-  inp.value = '';
-  if (txt) mambaSend(txt);
-}
-
-function mambaPrompt(text) {
-  navigate('mamba', document.querySelector('[data-page=mamba]'));
-  setTimeout(() => mambaSend(text), 300);
-}
-
-function mambaSpeak(text) {
-  if (!window.speechSynthesis) { setMambaState('idle'); return; }
-  window.speechSynthesis.cancel();
-  const utt = new SpeechSynthesisUtterance(text);
-  utt.lang = 'tr-TR';
-  utt.rate = 1.05;
-  utt.pitch = 1.0;
-  const voices = window.speechSynthesis.getVoices();
-  const trVoice = voices.find(v => v.lang.startsWith('tr'));
-  if (trVoice) utt.voice = trVoice;
-  utt.onend = () => setMambaState('idle');
-  utt.onerror = () => setMambaState('idle');
-  window.speechSynthesis.speak(utt);
-}
-
-function mambaToggleVoice() {
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SR) { mambaAddMsg('system', 'Tarayıcınız ses tanımayı desteklemiyor. Yazarak devam edin.'); return; }
-  if (mambaRecording) {
-    if (mambaRecognition) mambaRecognition.stop();
-    mambaRecording = false;
-    setMambaState('idle');
-    const btn = document.getElementById('mambaVoiceBtn'); if(btn) btn.classList.remove('recording');
-    const lbl = document.getElementById('mambaVoiceLabel'); if(lbl) lbl.textContent='Konuş';
-    return;
-  }
-  mambaRecognition = new SR();
-  mambaRecognition.lang = 'tr-TR';
-  mambaRecognition.interimResults = false;
-  mambaRecognition.maxAlternatives = 1;
-  mambaRecording = true;
-  setMambaState('listening');
-  const btn = document.getElementById('mambaVoiceBtn'); if(btn) btn.classList.add('recording');
-  const lbl = document.getElementById('mambaVoiceLabel'); if(lbl) lbl.textContent='Durdur';
-  mambaRecognition.onresult = e => {
-    const txt = e.results[0][0].transcript;
-    mambaRecording = false;
-    if(btn) btn.classList.remove('recording');
-    if(lbl) lbl.textContent='Konuş';
-    mambaSend(txt);
-  };
-  mambaRecognition.onerror = () => {
-    mambaRecording = false;
-    setMambaState('idle');
-    if(btn) btn.classList.remove('recording');
-    if(lbl) lbl.textContent='Konuş';
-  };
-  mambaRecognition.onend = () => {
-    if (mambaRecording) { mambaRecording = false; setMambaState('idle'); if(btn) btn.classList.remove('recording'); if(lbl) lbl.textContent='Konuş'; }
-  };
-  mambaRecognition.start();
-}
-
-async function updateMambaMemory(hist) {
-  const last20 = hist.slice(-20).map(m=>`${m.role}: ${m.content}`).join('\n');
-  try {
-    const res = await fetch('/api/chat', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
-        model:'claude-haiku-4-5-20251001', max_tokens:300,
-        system:'Kısa hafıza özeti yaz. Türkçe. 3-5 cümle.',
-        messages:[{role:'user',content:`Şu konuşmayı özetle:\n${last20}`}]
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 800,
+        messages: [{role:'user', content: prompt}]
       })
     });
-    const data = await res.json();
-    if (data.content) setMambaMemory(data.content[0].text);
-  } catch {}
+    var data = await res.json();
+    var txt = (data.content && data.content[0] && data.content[0].text) || '';
+    var jsonMatch = txt.match(/\[[\s\S]*\]/);
+    if (!jsonMatch) throw new Error('JSON parse hatasi');
+    var agenda = JSON.parse(jsonMatch[0]);
+    agenda = agenda.slice(0, 5).map(function(item) {
+      return {label: item.label || 'Konu', topic: item.topic || '', done: false, active: false, blogMd: ''};
+    });
+    var s = cgLoadState();
+    s.agenda = agenda;
+    s.agendaDate = today;
+    cgSaveState(s);
+    renderCherryAgenda(agenda);
+    document.getElementById('cg-agenda-date').textContent = today;
+    document.getElementById('cg-btn-auto').disabled = false;
+    setCherryState('idle');
+    cherryLog('Analiz tamamlandi. ' + agenda.length + ' konu hazir.');
+    // Auto generate if setting is on
+    var settings = s.settings || {};
+    if (settings.autoGen) {
+      setTimeout(cherryAutoRun, 600);
+    }
+  } catch(e) {
+    setCherryState('idle');
+    cherryLog('Analiz hatasi: ' + e.message);
+  }
+  if (analyzeBtn) analyzeBtn.disabled = false;
 }
 
-// ─── FADE IN ──────────────────────────────────────────────
+async function cherryGenerateBlog(index) {
+  var s = cgLoadState();
+  var agenda = s.agenda || [];
+  if (!agenda[index]) return;
+  var item = agenda[index];
+  var today = new Date().toISOString().slice(0,10);
+  var settings = s.settings || {};
+  var trustMode = settings.trustMode !== false;
+  setCherryState('writing');
+  cherryLog('Blog yaziliyor: ' + item.label);
+  // Mark active
+  item.active = true;
+  agenda[index] = item;
+  s.agenda = agenda;
+  cgSaveState(s);
+  renderCherryAgenda(agenda);
+  var card = document.getElementById('cg-card-' + index);
+  if (card) card.className = 'cg-agenda-card active';
+  var sysPrompt = buildCherrySystemPrompt(item, today, trustMode);
+  var md = '';
+  try {
+    var res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-haiku-4-5-20251001',
+        max_tokens: 2048,
+        stream: true,
+        system: sysPrompt,
+        messages: [{role:'user', content: 'Bu konuda eksiksiz bir blog yazisi yaz: ' + item.topic}]
+      })
+    });
+    var reader = res.body.getReader();
+    var decoder = new TextDecoder();
+    var buf = '';
+    while (true) {
+      var readResult = await reader.read();
+      if (readResult.done) break;
+      buf += decoder.decode(readResult.value, {stream:true});
+      var lines = buf.split('\n');
+      buf = lines.pop();
+      for (var li = 0; li < lines.length; li++) {
+        var line = lines[li].trim();
+        if (!line.startsWith('data:')) continue;
+        var json = line.slice(5).trim();
+        if (json === '[DONE]') break;
+        try {
+          var ev = JSON.parse(json);
+          if (ev.type === 'content_block_delta' && ev.delta && ev.delta.text) {
+            md += ev.delta.text;
+          }
+        } catch(pe) {}
+      }
+    }
+    // Save blog
+    item.done = true;
+    item.active = false;
+    item.blogMd = md;
+    agenda[index] = item;
+    s.agenda = agenda;
+    // Add to history
+    var firstLine = md.split('\n')[0].replace(/^#+\s*/, '').trim().slice(0, 60);
+    var history = s.history || [];
+    history.unshift({title: firstLine, date: today, md: md});
+    if (history.length > 30) history = history.slice(0, 30);
+    s.history = history;
+    s.lastAutoRun = today;
+    cgSaveState(s);
+    renderCherryAgenda(agenda);
+    renderCherryHistory(history);
+    // Show preview
+    var previewEl = document.getElementById('cg-blog-preview');
+    var previewCard = document.getElementById('cg-preview-card');
+    if (previewEl) previewEl.innerHTML = simpleMarkdownToHTML(md);
+    if (previewCard) previewCard.style.display = 'block';
+    window._cgPreviewIdx = index;
+    window._cgPreviewSource = 'agenda';
+    setCherryState('done');
+    cherryLog('Blog tamamlandi: ' + item.label);
+    setTimeout(function() { setCherryState('idle'); }, 2500);
+  } catch(e) {
+    item.active = false;
+    agenda[index] = item;
+    cgSaveState(s);
+    setCherryState('idle');
+    cherryLog('Blog hatasi: ' + e.message);
+  }
+}
+
+async function cherryAutoRun() {
+  var s = cgLoadState();
+  var agenda = s.agenda || [];
+  var autoBtn = document.getElementById('cg-btn-auto');
+  if (autoBtn) autoBtn.disabled = true;
+  for (var i = 0; i < agenda.length; i++) {
+    s = cgLoadState();
+    if (!(s.agenda || [])[i]) continue;
+    if ((s.agenda[i] || {}).done) { cherryLog('Atlandi (zaten yazildi): ' + s.agenda[i].label); continue; }
+    await cherryGenerateBlog(i);
+    await new Promise(function(r) { setTimeout(r, 1200); });
+  }
+  setCherryState('done');
+  cherryLog('Tum bloglar tamamlandi.');
+  setTimeout(function() { setCherryState('idle'); }, 3000);
+  if (autoBtn) autoBtn.disabled = false;
+}
+
+
 function initFade() {
   const obs = new IntersectionObserver(
     entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); }),
