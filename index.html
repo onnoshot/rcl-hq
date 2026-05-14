@@ -369,29 +369,96 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .stat-kpi-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
 .stat-pulse{animation:pulse-stat 2.5s ease-in-out infinite;}
 @keyframes pulse-stat{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.97)}}
-/* ── CherryGlow Agent ──────────────────────────────────────── */
-.cg-figure{width:150px;height:224px;margin:0 auto 8px;position:relative;}
-.cg-figure .cg-svg{width:100%;height:100%;transition:filter .4s;}
-.cg-figure.analyzing .cg-svg{filter:drop-shadow(0 0 16px rgba(90,200,250,0.55));animation:cg-pulse .9s ease-in-out infinite;}
-.cg-figure.writing .cg-svg{filter:drop-shadow(0 0 14px rgba(212,175,55,0.5));animation:cg-breathe 1.6s ease-in-out infinite;}
-.cg-figure.done .cg-svg{filter:drop-shadow(0 0 12px rgba(52,199,89,0.45));}
-@keyframes cg-pulse{0%,100%{opacity:1;}50%{opacity:.65;}}
-@keyframes cg-breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.025);}}
+/* ── CherryGlow Agent ───────────────────────────────────────────────────────── */
+.cg-stats-ribbon{display:flex;align-items:center;padding:0 20px 14px;gap:0;}
+.cg-stat-item{flex:1;text-align:center;padding:10px 6px;}
+.cg-stat-val{font-size:1.35rem;font-weight:700;color:var(--gold);line-height:1;}
+.cg-stat-lbl{font-size:.6rem;opacity:.4;margin-top:3px;letter-spacing:.1em;text-transform:uppercase;}
+.cg-stat-sep{width:1px;height:36px;background:rgba(255,255,255,.07);flex-shrink:0;}
+.cg-mini-progress{height:3px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden;margin-bottom:4px;width:80%;margin-inline:auto;}
+.cg-mini-fill{height:100%;background:linear-gradient(90deg,#D4AF37,#FFB7C5);border-radius:100px;transition:width .6s cubic-bezier(.34,1.56,.64,1);}
+.cg-main-grid{display:grid;grid-template-columns:226px 1fr;gap:14px;padding:0 20px 20px;}
+.cg-left-col{display:flex;flex-direction:column;gap:11px;}
+.cg-right-col{display:flex;flex-direction:column;gap:11px;}
+.cg-char-card{padding:22px 14px 18px;text-align:center;position:relative;overflow:hidden;}
+.cg-char-card::after{content:'';position:absolute;bottom:0;left:20%;right:20%;height:60px;background:radial-gradient(ellipse at center bottom,rgba(212,175,55,.08) 0%,transparent 70%);pointer-events:none;}
+.cg-char-wrap{position:relative;width:148px;height:228px;margin:0 auto 0;}
+.cg-ring-svg{position:absolute;top:-14px;left:-14px;width:176px;height:176px;z-index:0;opacity:.9;}
+.cg-ring-bg{stroke:rgba(255,255,255,.06);}
+.cg-ring-fill{stroke:url(#cgRingGrad);transition:stroke-dashoffset .8s cubic-bezier(.34,1.56,.64,1);}
+.cg-figure{position:absolute;top:0;left:0;width:148px;height:224px;z-index:1;}
+.cg-figure .cg-svg{width:100%;height:100%;transition:filter .5s;}
+.cg-figure.analyzing .cg-svg{filter:drop-shadow(0 0 18px rgba(90,200,250,.6));animation:cg-pulse .85s ease-in-out infinite;}
+.cg-figure.writing .cg-svg{filter:drop-shadow(0 0 16px rgba(212,175,55,.5));animation:cg-breathe 1.7s ease-in-out infinite;}
+.cg-figure.done .cg-svg{filter:drop-shadow(0 0 14px rgba(52,199,89,.45));}
+@keyframes cg-pulse{0%,100%{opacity:1;}50%{opacity:.6;}}
+@keyframes cg-breathe{0%,100%{transform:scale(1);}50%{transform:scale(1.022);}}
 .cg-p{animation:cg-float 3.5s ease-in-out infinite;}
 @keyframes cg-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
-.cg-agent-status{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-top:4px;}
-.cg-agenda-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:12px;cursor:pointer;transition:background .2s;}
-.cg-agenda-card:hover{background:rgba(255,255,255,.07);}
-.cg-agenda-card.done{opacity:.55;border-color:rgba(52,199,89,.2);background:rgba(52,199,89,.04);}
-.cg-agenda-card.active{border-color:rgba(212,175,55,.3);background:rgba(212,175,55,.05);}
-.cg-agenda-num{width:24px;height:24px;border-radius:50%;background:rgba(212,175,55,.15);color:var(--gold);font-size:.72rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.cg-agenda-card.done .cg-agenda-num{background:rgba(52,199,89,.15);color:#34C759;}
-.cg-agenda-label{font-size:.82rem;font-weight:600;line-height:1.35;}
-.cg-agenda-topic{font-size:.73rem;opacity:.55;margin-top:2px;line-height:1.4;}
-.cg-hist-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px;cursor:pointer;transition:background .2s;}
-.cg-hist-card:hover{background:rgba(255,255,255,.07);}
-.cg-hist-title{font-size:.78rem;font-weight:600;line-height:1.4;margin-bottom:4px;}
-.cg-hist-meta{font-size:.68rem;opacity:.45;}
+.cg-state-badge{display:inline-flex;align-items:center;gap:6px;font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:5px 13px;border-radius:100px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);margin-top:9px;transition:all .3s;}
+.cg-state-badge.analyzing{background:rgba(90,200,250,.12);color:#5AC8FA;}
+.cg-state-badge.writing{background:rgba(212,175,55,.14);color:var(--gold);animation:cg-badge-pulse 1.1s ease-in-out infinite;}
+.cg-state-badge.done{background:rgba(52,199,89,.12);color:#34C759;}
+@keyframes cg-badge-pulse{0%,100%{opacity:1;}50%{opacity:.55;}}
+.cg-state-dot{width:6px;height:6px;border-radius:50%;background:currentColor;display:inline-block;animation:cg-dot-blink 1s steps(1) infinite;}
+@keyframes cg-dot-blink{50%{opacity:0;}}
+.cg-btn-group{display:flex;flex-direction:column;gap:7px;margin-top:14px;}
+.cg-section-label{font-size:.63rem;font-weight:700;letter-spacing:.13em;opacity:.38;text-transform:uppercase;margin-bottom:11px;}
+.cg-toggle-row{display:flex;align-items:center;gap:10px;cursor:pointer;padding:7px 0;font-size:.79rem;border-bottom:1px solid rgba(255,255,255,.04);}
+.cg-toggle-row:last-child{border-bottom:none;}
+.cg-toggle-row input{display:none;}
+.cg-toggle-track{position:relative;width:30px;height:17px;border-radius:100px;background:rgba(255,255,255,.1);flex-shrink:0;transition:background .2s;}
+.cg-toggle-row input:checked+.cg-toggle-track{background:var(--gold);}
+.cg-toggle-thumb{position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:white;transition:left .2s;box-shadow:0 1px 4px rgba(0,0,0,.3);}
+.cg-toggle-row input:checked+.cg-toggle-track .cg-toggle-thumb{left:15px;}
+.cg-empty{opacity:.3;font-size:.82rem;padding:10px 0;line-height:1.5;}
+.cg-agenda-item{display:flex;align-items:flex-start;gap:11px;padding:11px 13px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.065);margin-bottom:7px;cursor:pointer;transition:background .2s,border-color .2s,transform .15s;position:relative;overflow:hidden;}
+.cg-agenda-item:hover{background:rgba(255,255,255,.06);transform:translateX(2px);}
+.cg-agenda-item.done{opacity:.5;border-color:rgba(52,199,89,.14);}
+.cg-agenda-item.active{border-color:rgba(212,175,55,.35);background:rgba(212,175,55,.055);animation:cg-card-glow 2s ease-in-out infinite;}
+@keyframes cg-card-glow{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,0);}50%{box-shadow:0 0 0 6px rgba(212,175,55,.09);}}
+.cg-agenda-num{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.cg-agenda-item.done .cg-agenda-num{background:rgba(52,199,89,.14);color:#34C759;}
+.cg-agenda-item.active .cg-agenda-num{background:rgba(212,175,55,.18);color:var(--gold);}
+.cg-agenda-body{flex:1;min-width:0;}
+.cg-agenda-row{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:3px;}
+.cg-agenda-lbl{font-size:.83rem;font-weight:600;line-height:1.3;}
+.cg-agenda-bdg{font-size:.58rem;font-weight:700;padding:2px 8px;border-radius:100px;white-space:nowrap;flex-shrink:0;}
+.bdg-done{background:rgba(52,199,89,.13);color:#34C759;}
+.bdg-write{background:rgba(212,175,55,.15);color:var(--gold);animation:cg-badge-pulse 1s infinite;}
+.bdg-wait{background:rgba(255,255,255,.06);color:rgba(255,255,255,.3);}
+.cg-agenda-topic{font-size:.71rem;opacity:.45;line-height:1.45;}
+.cg-writebar-wrap{margin-top:7px;height:2px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;}
+.cg-writebar-fill{height:100%;background:linear-gradient(90deg,#D4AF37,#FFB7C5);border-radius:2px;animation:cg-wbar-shimmer 1.8s linear infinite;width:0%;transition:width .4s;}
+@keyframes cg-wbar-shimmer{0%{filter:brightness(1);}50%{filter:brightness(1.5);}100%{filter:brightness(1);}}
+.cg-stream-row{display:grid;grid-template-columns:1fr 270px;gap:11px;}
+.cg-stream-card{padding:18px 20px;display:flex;flex-direction:column;min-height:260px;}
+.cg-stream-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.cg-stream-meta{font-size:.72rem;opacity:.4;margin-bottom:7px;min-height:15px;}
+.cg-stream-body{flex:1;min-height:150px;max-height:240px;overflow-y:auto;font-size:.8rem;line-height:1.78;white-space:pre-wrap;word-break:break-word;color:rgba(255,255,255,.72);}
+.cg-stream-footer{display:flex;align-items:center;justify-content:space-between;margin-top:11px;padding-top:9px;border-top:1px solid rgba(255,255,255,.06);}
+.cg-stream-wc{font-size:.69rem;opacity:.35;font-variant-numeric:tabular-nums;}
+.cg-live-dot{width:7px;height:7px;border-radius:50%;background:#FF375F;display:inline-block;animation:cg-dot-blink 1.2s steps(1) infinite;}
+.cg-live-lbl{font-size:.62rem;font-weight:700;letter-spacing:.14em;color:#FF375F;display:flex;align-items:center;gap:5px;}
+.cg-cursor{display:inline-block;width:2px;height:.85em;background:var(--gold);border-radius:1px;vertical-align:text-bottom;margin-left:1px;animation:cg-cur-blink 1s steps(1) infinite;}
+@keyframes cg-cur-blink{50%{opacity:0;}}
+.cg-activity-card{padding:18px 18px;display:flex;flex-direction:column;}
+.cg-activity-scroll{flex:1;max-height:240px;overflow-y:auto;}
+.cg-log-entry{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.035);align-items:flex-start;}
+.cg-log-ts{font-size:.66rem;opacity:.3;flex-shrink:0;font-variant-numeric:tabular-nums;padding-top:1px;}
+.cg-log-msg{font-size:.75rem;line-height:1.5;opacity:.65;}
+.cg-log-entry.log-ok .cg-log-msg{color:#34C759;opacity:1;}
+.cg-log-entry.log-err .cg-log-msg{color:#FF375F;opacity:1;}
+.cg-log-entry.log-analysis .cg-log-msg{color:#5AC8FA;opacity:.9;}
+.cg-hist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;}
+.cg-hist-item{background:rgba(255,255,255,.038);border:1px solid rgba(255,255,255,.065);border-radius:11px;padding:13px 14px;cursor:pointer;transition:background .2s,transform .15s,border-color .2s;}
+.cg-hist-item:hover{background:rgba(255,255,255,.07);transform:translateY(-2px);border-color:rgba(212,175,55,.2);}
+.cg-hist-title{font-size:.79rem;font-weight:600;margin-bottom:5px;line-height:1.4;}
+.cg-hist-meta{font-size:.67rem;opacity:.38;}
+.cg-hist-actions{display:flex;gap:6px;margin-top:9px;}
+.cg-blossom-bg{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:1;display:none;}
+.cg-blossom{position:absolute;border-radius:50% 0;opacity:0;animation:cg-fall linear infinite;}
+@keyframes cg-fall{0%{transform:translateY(-20px) rotate(0deg);opacity:0;}10%{opacity:.55;}85%{opacity:.2;}100%{transform:translateY(108vh) rotate(780deg);opacity:0;}}
 </style>
 </head>
 <body>
@@ -1601,100 +1668,147 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 <!-- ═══════════════════ CHERRYGLOW ═══════════════════ -->
 <div class="page" id="page-cherry">
+
+  <!-- Cherry blossom rain layer -->
+  <div class="cg-blossom-bg" id="cg-blossom-bg"></div>
+
+  <!-- Top bar -->
   <div class="page-topbar fi">
-    <div class="pt-left"><div class="pt-title">CherryGlow</div><div class="pt-sub">AI Blog Ajani</div></div>
-    <div class="pt-right"><span class="live-pill" id="cg-status-pill">Hazir</span></div>
+    <div class="pt-left"><div class="pt-title">CherryGlow</div><div class="pt-sub">AI Blog Ajani — Gunluk SEO icerik motoru</div></div>
+    <div class="pt-right"><span class="cg-state-badge" id="cg-status-pill">Hazir</span></div>
   </div>
-  <div style="display:grid;grid-template-columns:220px 1fr;gap:16px;padding:0 20px 20px">
-    <!-- Left: character + controls + settings -->
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div class="card" style="padding:20px 16px;text-align:center;position:relative">
-        <div class="cg-figure" id="cg-figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 280" class="cg-svg">
-        <defs>
-          <radialGradient id="cgAura" cx="50%" cy="55%" r="55%"><stop offset="0%" stop-color="#FFB7C5" stop-opacity=".38"/><stop offset="100%" stop-color="#FFB7C5" stop-opacity="0"/></radialGradient>
-          <radialGradient id="cgScr" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#D4AF37" stop-opacity=".55"/><stop offset="100%" stop-color="#0f3460" stop-opacity="0"/></radialGradient>
-        </defs>
-        <ellipse cx="80" cy="165" rx="72" ry="88" fill="url(#cgAura)"/>
-        <path d="M57 85C48 100 44 125 46 155C48 160 53 158 55 150 56 130 55 108 58 90Z" fill="#1a0805"/>
-        <path d="M103 85C112 100 116 125 114 155C112 160 107 158 105 150 104 130 105 108 102 90Z" fill="#1a0805"/>
-        <path d="M52 122C42 134 38 162 40 192C44 215 116 215 120 192 122 162 118 134 108 122Z" fill="#2a1245"/>
-        <path d="M52 122C60 128 68 130 80 130C92 130 100 128 108 122 102 118 90 116 80 116 70 116 58 118 52 122Z" fill="#3d1a6e" opacity=".55"/>
-        <rect x="73" y="108" width="14" height="16" rx="7" fill="#f4cba6"/>
-        <ellipse cx="80" cy="88" rx="23" ry="25" fill="#f4cba6"/>
-        <path d="M57 85C52 75 50 60 55 50C62 37 73 34 80 34C87 34 98 37 105 50 110 60 108 75 103 85 98 78 92 75 80 75 68 75 62 78 57 85Z" fill="#1a0805"/>
-        <ellipse cx="73" cy="88" rx="2.8" ry="3.2" fill="#3d1a00"/>
-        <ellipse cx="87" cy="88" rx="2.8" ry="3.2" fill="#3d1a00"/>
-        <circle cx="74.5" cy="86.5" r=".9" fill="white" opacity=".7"/>
-        <circle cx="88.5" cy="86.5" r=".9" fill="white" opacity=".7"/>
-        <path d="M69 83Q73 81 77 83" stroke="#3d1a00" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <path d="M83 83Q87 81 91 83" stroke="#3d1a00" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-        <path d="M76 98Q80 103 84 98" stroke="#c4726a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        <ellipse cx="68" cy="95" rx="5" ry="3" fill="#FFB7C5" opacity=".33"/>
-        <ellipse cx="92" cy="95" rx="5" ry="3" fill="#FFB7C5" opacity=".33"/>
-        <path d="M53 127C42 135 32 155 35 172" stroke="#f4cba6" stroke-width="11" stroke-linecap="round" fill="none"/>
-        <path d="M107 127C118 135 128 155 125 172" stroke="#f4cba6" stroke-width="11" stroke-linecap="round" fill="none"/>
-        <rect x="33" y="170" width="74" height="48" rx="5" fill="#1c1c2e"/>
-        <rect x="37" y="175" width="66" height="36" rx="3" fill="#0d2137"/>
-        <rect x="37" y="175" width="66" height="36" rx="3" fill="url(#cgScr)" opacity=".8"/>
-        <rect x="42" y="181" width="30" height="2" rx="1" fill="#D4AF37" opacity=".9"/>
-        <rect x="42" y="187" width="22" height="2" rx="1" fill="#FFB7C5" opacity=".7"/>
-        <rect x="42" y="193" width="28" height="2" rx="1" fill="#D4AF37" opacity=".55"/>
-        <rect x="42" y="199" width="18" height="2" rx="1" fill="#a0a0ff" opacity=".5"/>
-        <rect x="42" y="205" width="24" height="2" rx="1" fill="#FFB7C5" opacity=".4"/>
-        <rect x="29" y="218" width="82" height="5" rx="3" fill="#1c1c2e"/>
-        <g class="cg-p" style="animation-delay:0s;animation-duration:3.2s"><circle cx="20" cy="65" r="3.5" fill="#FFB7C5" opacity=".6"/><circle cx="22" cy="61" r="2" fill="#ffcdd8" opacity=".4"/></g>
-        <g class="cg-p" style="animation-delay:1.1s;animation-duration:4s"><circle cx="142" cy="55" r="3" fill="#FFB7C5" opacity=".55"/><circle cx="138" cy="59" r="1.8" fill="#ffcdd8" opacity=".35"/></g>
-        <g class="cg-p" style="animation-delay:2s;animation-duration:3.6s"><circle cx="148" cy="110" r="2.2" fill="#D4AF37" opacity=".4"/></g>
-        <g class="cg-p" style="animation-delay:.6s;animation-duration:4.2s"><circle cx="14" cy="120" r="2" fill="#FFB7C5" opacity=".45"/></g>
-        <g class="cg-p" style="animation-delay:1.7s;animation-duration:3.8s"><circle cx="145" cy="165" r="2.5" fill="#FFB7C5" opacity=".38"/></g>
-        <g class="cg-p" style="animation-delay:2.5s;animation-duration:3.4s"><circle cx="16" cy="170" r="1.8" fill="#D4AF37" opacity=".3"/></g>
-      </svg></div>
-        <div class="cg-agent-status" id="cg-agent-label">HAZIR</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-top:14px">
+
+  <!-- Stats ribbon -->
+  <div class="cg-stats-ribbon">
+    <div class="cg-stat-item">
+      <div class="cg-stat-val" id="cg-stat-done">0</div>
+      <div class="cg-stat-lbl">Blog Yazildi</div>
+    </div>
+    <div class="cg-stat-sep"></div>
+    <div class="cg-stat-item">
+      <div class="cg-stat-val" id="cg-stat-words">0</div>
+      <div class="cg-stat-lbl">Kelime</div>
+    </div>
+    <div class="cg-stat-sep"></div>
+    <div class="cg-stat-item">
+      <div class="cg-stat-val" id="cg-stat-time">--:--</div>
+      <div class="cg-stat-lbl">Son Islem</div>
+    </div>
+    <div class="cg-stat-sep"></div>
+    <div class="cg-stat-item" style="min-width:120px">
+      <div class="cg-mini-progress"><div class="cg-mini-fill" id="cg-mini-fill" style="width:0%"></div></div>
+      <div class="cg-stat-lbl" id="cg-stat-prog">0 / 5 tamamlandi</div>
+    </div>
+  </div>
+
+  <!-- Main grid -->
+  <div class="cg-main-grid">
+
+    <!-- Left col -->
+    <div class="cg-left-col">
+
+      <!-- Character card -->
+      <div class="card cg-char-card">
+        <div class="cg-char-wrap">
+          <!-- Ring SVG overlay -->
+          <svg class="cg-ring-svg" viewBox="0 0 100 100">
+            <defs>
+              <linearGradient id="cgRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D4AF37"/>
+                <stop offset="100%" stop-color="#FFB7C5"/>
+              </linearGradient>
+            </defs>
+            <circle class="cg-ring-bg" cx="50" cy="50" r="46" fill="none" stroke-width="2.5"/>
+            <circle class="cg-ring-fill" id="cg-ring-fill" cx="50" cy="50" r="46" fill="none" stroke-width="2.5"
+              stroke-dasharray="289" stroke-dashoffset="289" transform="rotate(-90 50 50)" stroke-linecap="round"/>
+          </svg>
+          <!-- Character -->
+          <div class="cg-figure" id="cg-figure"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 280" class="cg-svg"><defs><radialGradient id="cgAura2" cx="50%" cy="55%" r="55%"><stop offset="0%" stop-color="#FFB7C5" stop-opacity=".38"/><stop offset="100%" stop-color="#FFB7C5" stop-opacity="0"/></radialGradient><radialGradient id="cgScr2" cx="50%" cy="50%" r="55%"><stop offset="0%" stop-color="#D4AF37" stop-opacity=".55"/><stop offset="100%" stop-color="#0f3460" stop-opacity="0"/></radialGradient><linearGradient id="cgRingGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/></linearGradient></defs><ellipse cx="80" cy="165" rx="72" ry="88" fill="url(#cgAura2)"/><path d="M57 85C48 100 44 125 46 155 48 160 53 158 55 150 56 130 55 108 58 90Z" fill="#1a0805"/><path d="M103 85C112 100 116 125 114 155 112 160 107 158 105 150 104 130 105 108 102 90Z" fill="#1a0805"/><path d="M52 122C42 134 38 162 40 192 44 215 116 215 120 192 122 162 118 134 108 122Z" fill="#2a1245"/><path d="M52 122C60 128 68 130 80 130 92 130 100 128 108 122 102 118 90 116 80 116 70 116 58 118 52 122Z" fill="#3d1a6e" opacity=".55"/><rect x="73" y="108" width="14" height="16" rx="7" fill="#f4cba6"/><ellipse cx="80" cy="88" rx="23" ry="25" fill="#f4cba6"/><path d="M57 85C52 75 50 60 55 50 62 37 73 34 80 34 87 34 98 37 105 50 110 60 108 75 103 85 98 78 92 75 80 75 68 75 62 78 57 85Z" fill="#1a0805"/><ellipse cx="73" cy="88" rx="2.8" ry="3.2" fill="#3d1a00"/><ellipse cx="87" cy="88" rx="2.8" ry="3.2" fill="#3d1a00"/><circle cx="74.5" cy="86.5" r=".9" fill="white" opacity=".7"/><circle cx="88.5" cy="86.5" r=".9" fill="white" opacity=".7"/><path d="M69 83Q73 81 77 83" stroke="#3d1a00" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M83 83Q87 81 91 83" stroke="#3d1a00" stroke-width="1.2" fill="none" stroke-linecap="round"/><path d="M76 98Q80 103 84 98" stroke="#c4726a" stroke-width="1.5" fill="none" stroke-linecap="round"/><ellipse cx="68" cy="95" rx="5" ry="3" fill="#FFB7C5" opacity=".33"/><ellipse cx="92" cy="95" rx="5" ry="3" fill="#FFB7C5" opacity=".33"/><path d="M53 127C42 135 32 155 35 172" stroke="#f4cba6" stroke-width="11" stroke-linecap="round" fill="none"/><path d="M107 127C118 135 128 155 125 172" stroke="#f4cba6" stroke-width="11" stroke-linecap="round" fill="none"/><rect x="33" y="170" width="74" height="48" rx="5" fill="#1c1c2e"/><rect x="37" y="175" width="66" height="36" rx="3" fill="#0d2137"/><rect x="37" y="175" width="66" height="36" rx="3" fill="url(#cgScr2)" opacity=".8"/><rect x="42" y="181" width="30" height="2" rx="1" fill="#D4AF37" opacity=".9"/><rect x="42" y="187" width="22" height="2" rx="1" fill="#FFB7C5" opacity=".7"/><rect x="42" y="193" width="28" height="2" rx="1" fill="#D4AF37" opacity=".55"/><rect x="42" y="199" width="18" height="2" rx="1" fill="#a0a0ff" opacity=".5"/><rect x="42" y="205" width="24" height="2" rx="1" fill="#FFB7C5" opacity=".4"/><rect x="29" y="218" width="82" height="5" rx="3" fill="#1c1c2e"/><g class="cg-p" style="animation-delay:0s;animation-duration:3.2s"><circle cx="20" cy="65" r="3.5" fill="#FFB7C5" opacity=".6"/><circle cx="22" cy="61" r="2" fill="#ffcdd8" opacity=".4"/></g><g class="cg-p" style="animation-delay:1.1s;animation-duration:4s"><circle cx="142" cy="55" r="3" fill="#FFB7C5" opacity=".55"/><circle cx="138" cy="59" r="1.8" fill="#ffcdd8" opacity=".35"/></g><g class="cg-p" style="animation-delay:2s;animation-duration:3.6s"><circle cx="148" cy="110" r="2.2" fill="#D4AF37" opacity=".4"/></g><g class="cg-p" style="animation-delay:.6s;animation-duration:4.2s"><circle cx="14" cy="120" r="2" fill="#FFB7C5" opacity=".45"/></g><g class="cg-p" style="animation-delay:1.7s;animation-duration:3.8s"><circle cx="145" cy="165" r="2.5" fill="#FFB7C5" opacity=".38"/></g><g class="cg-p" style="animation-delay:2.5s;animation-duration:3.4s"><circle cx="16" cy="170" r="1.8" fill="#D4AF37" opacity=".3"/></g></svg></div>
+        </div>
+        <div class="cg-state-badge" id="cg-agent-label"><span class="cg-state-dot"></span>HAZIR</div>
+        <div class="cg-btn-group">
           <button class="blog-gen-btn" id="cg-btn-analyze" onclick="cherryAnalyze()">Trend Analizi Yap</button>
-          <button class="blog-gen-btn" id="cg-btn-auto" onclick="cherryAutoRun()" disabled>Tum Bloglari Yaz</button>
+          <button class="blog-gen-btn" id="cg-btn-auto" onclick="cherryAutoRun()" disabled
+            style="background:rgba(255,255,255,.05)!important;opacity:.5">Tum Bloglari Yaz</button>
         </div>
       </div>
-      <div class="card" style="padding:16px">
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5;margin-bottom:12px">AYARLAR</div>
-        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-bottom:9px;font-size:.8rem">
-          <input type="checkbox" id="cg-trust-mode" checked onchange="cherrySaveSettings()"> Guven sinyalleri
+
+      <!-- Settings -->
+      <div class="card" style="padding:16px 16px 12px">
+        <div class="cg-section-label">AYARLAR</div>
+        <label class="cg-toggle-row">
+          <input type="checkbox" id="cg-trust-mode" checked onchange="cherrySaveSettings()">
+          <span class="cg-toggle-track"><span class="cg-toggle-thumb"></span></span>
+          <span>Guven sinyalleri ekle</span>
         </label>
-        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;margin-bottom:9px;font-size:.8rem">
-          <input type="checkbox" id="cg-auto-gen" onchange="cherrySaveSettings()"> Analiz sonrasi otomatik yaz
+        <label class="cg-toggle-row">
+          <input type="checkbox" id="cg-auto-gen" onchange="cherrySaveSettings()">
+          <span class="cg-toggle-track"><span class="cg-toggle-thumb"></span></span>
+          <span>Analiz sonrasi otomatik yaz</span>
         </label>
-        <label style="display:flex;align-items:center;gap:9px;cursor:pointer;font-size:.8rem">
-          <input type="checkbox" id="cg-auto-daily" onchange="cherrySaveSettings()"> Gunluk otomatik calis
+        <label class="cg-toggle-row">
+          <input type="checkbox" id="cg-auto-daily" onchange="cherrySaveSettings()">
+          <span class="cg-toggle-track"><span class="cg-toggle-thumb"></span></span>
+          <span>Gunluk otomatik calis</span>
         </label>
       </div>
-    </div>
-    <!-- Right: agenda + preview + log + history -->
-    <div style="display:flex;flex-direction:column;gap:12px">
-      <div class="card" style="padding:20px">
+
+    </div><!-- /left col -->
+
+    <!-- Right col -->
+    <div class="cg-right-col">
+
+      <!-- Agenda card -->
+      <div class="card" style="padding:18px 20px">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5">GUNLUK AJANDA</div>
-          <div style="font-size:.7rem;opacity:.35" id="cg-agenda-date"></div>
+          <div class="cg-section-label" style="margin-bottom:0">GUNLUK AJANDA</div>
+          <div style="font-size:.69rem;opacity:.28" id="cg-agenda-date"></div>
         </div>
-        <div id="cg-agenda-list"><div style="opacity:.35;font-size:.84rem;padding:8px 0">Henuz analiz yapilmadi. "Trend Analizi Yap" butonuna bas.</div></div>
-      </div>
-      <div class="card" style="padding:20px;display:none" id="cg-preview-card">
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5;margin-bottom:12px">BLOG ONIZLEME</div>
-        <div id="cg-blog-preview" style="max-height:300px;overflow-y:auto;font-size:.82rem;line-height:1.75"></div>
-        <div style="display:flex;gap:8px;margin-top:14px">
-          <button class="b-action-btn" style="flex:1" onclick="cherryCopyHTML()">HTML Kopyala</button>
-          <button class="b-action-btn" style="flex:1" onclick="cherryPublish()">Shopify Gonder</button>
+        <div id="cg-agenda-list">
+          <div class="cg-empty">Trend analizi yapilmadi. "Trend Analizi Yap" butonuna bas.</div>
         </div>
       </div>
-      <div class="card" style="padding:20px">
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5;margin-bottom:10px">AKTIVITE GUNLUGU</div>
-        <div id="cg-activity-log" style="max-height:180px;overflow-y:auto;font-size:.76rem;line-height:1.85;opacity:.75"></div>
+
+      <!-- Stream row: live preview + activity -->
+      <div class="cg-stream-row">
+
+        <!-- Live stream / preview -->
+        <div class="card cg-stream-card">
+          <div class="cg-stream-hdr">
+            <div class="cg-section-label" style="margin-bottom:0">CANLI AKIS / ONIZLEME</div>
+            <div class="cg-live-lbl" id="cg-live-lbl" style="display:none">
+              <span class="cg-live-dot"></span>LIVE
+            </div>
+          </div>
+          <div class="cg-stream-meta" id="cg-stream-meta">Blog yazimina baslamak icin ajandadan bir konu sec ya da "Tum Bloglari Yaz" butonunu kullan.</div>
+          <div class="cg-stream-body" id="cg-stream-text"></div>
+          <div class="cg-stream-footer">
+            <span class="cg-stream-wc" id="cg-stream-words">0 kelime</span>
+            <div style="display:flex;gap:6px">
+              <button class="b-action-btn" id="cg-copy-btn" onclick="cherryCopyHTML()" style="display:none">HTML Kopyala</button>
+              <button class="b-action-btn" id="cg-pub-btn" onclick="cherryPublish()" style="display:none">Shopifya Gonder</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity log -->
+        <div class="card cg-activity-card">
+          <div class="cg-section-label">AKTIVITE</div>
+          <div class="cg-activity-scroll" id="cg-activity-log"></div>
+        </div>
+
+      </div><!-- /stream-row -->
+
+      <!-- History -->
+      <div class="card" style="padding:18px 20px" id="cg-history-wrap">
+        <div class="cg-section-label" style="margin-bottom:12px">BUGUNUN BLOGLARI</div>
+        <div class="cg-hist-grid" id="cg-history-grid">
+          <div class="cg-empty">Henuz hic blog yazilmadi.</div>
+        </div>
       </div>
-      <div class="card" style="padding:20px" id="cg-history-card">
-        <div style="font-size:.68rem;font-weight:700;letter-spacing:.12em;opacity:.5;margin-bottom:12px">BUGUNUN BLOGLARI</div>
-        <div id="cg-history-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px"></div>
-      </div>
-    </div>
-  </div>
+
+    </div><!-- /right col -->
+  </div><!-- /main grid -->
 </div>
 
 </main>
@@ -3684,127 +3798,193 @@ function urunProfitCalc() {
 }
 
 
-// ─── CHERRYGLOW AI AGENT ────────────────────────────────────────
+// ─── CHERRYGLOW AI AGENT ───────────────────────────────────────────────────────
 
-const CG_KEY = 'cg_state';
+const CG_KEY = 'cg_state_v2';
 
-function cgLoadState() {
-  try { return JSON.parse(localStorage.getItem(CG_KEY)) || {}; } catch(e) { return {}; }
-}
-function cgSaveState(s) {
-  localStorage.setItem(CG_KEY, JSON.stringify(s));
-}
+function cgLoad() { try { return JSON.parse(localStorage.getItem(CG_KEY)) || {}; } catch(e) { return {}; } }
+function cgSave(s) { localStorage.setItem(CG_KEY, JSON.stringify(s)); }
 
+// ── State machine ──────────────────────────────────────────────────────────────
 function setCherryState(state) {
   var fig = document.getElementById('cg-figure');
   var lbl = document.getElementById('cg-agent-label');
   var pill = document.getElementById('cg-status-pill');
-  if (!fig) return;
-  fig.className = 'cg-figure ' + state;
-  var labels = {idle:'HAZIR', analyzing:'ANALIZ EDIYOR', writing:'YAZIYOR', done:'TAMAMLANDI'};
-  var pillLabels = {idle:'Hazir', analyzing:'Analiz', writing:'Yazıyor', done:'Tamam'};
-  if (lbl) lbl.textContent = labels[state] || 'HAZIR';
-  if (pill) pill.textContent = pillLabels[state] || state;
+  if (fig) fig.className = 'cg-figure ' + state;
+  var map = {
+    idle:      { t:'HAZIR',     p:'Hazir',          c:'' },
+    analyzing: { t:'ANALIZ',    p:'Analiz Ediyor',   c:'analyzing' },
+    writing:   { t:'YAZIYOR',   p:'Yaziyor',         c:'writing' },
+    done:      { t:'TAMAM',     p:'Tamamlandi',      c:'done' }
+  };
+  var info = map[state] || map.idle;
+  if (lbl) { lbl.innerHTML = '<span class="cg-state-dot"></span>' + info.t; lbl.className = 'cg-state-badge ' + info.c; }
+  if (pill) { pill.textContent = info.p; pill.className = 'cg-state-badge ' + info.c; }
+  if (state === 'writing') startBlossomRain();
+  else if (state === 'idle' || state === 'done') stopBlossomRain();
 }
 
-function cherryLog(msg) {
+// ── Cherry blossom rain ────────────────────────────────────────────────────────
+var _blossomTimer = null;
+function startBlossomRain() {
+  var bg = document.getElementById('cg-blossom-bg');
+  if (!bg) return;
+  bg.style.display = 'block';
+  if (_blossomTimer) return;
+  _blossomTimer = setInterval(function() {
+    var el = document.createElement('div');
+    el.className = 'cg-blossom';
+    var sz = 5 + Math.random() * 9;
+    var left = Math.random() * 100;
+    var dur = 5 + Math.random() * 5;
+    var delay = Math.random() * 1.5;
+    var cols = ['#FFB7C5','#FFC8D5','#FF9BAC','#FFD4DF','#FFCBA4','#D4AF37'];
+    el.style.cssText = 'left:' + left + '%;width:' + sz + 'px;height:' + sz + 'px;background:' + cols[Math.floor(Math.random()*cols.length)] + ';animation-name:cg-fall;animation-duration:' + dur + 's;animation-delay:' + delay + 's;border-radius:50% 0;opacity:0;';
+    bg.appendChild(el);
+    setTimeout(function() { if (el.parentNode) el.parentNode.removeChild(el); }, (dur + delay + 0.5) * 1000);
+  }, 350);
+}
+function stopBlossomRain() {
+  if (_blossomTimer) { clearInterval(_blossomTimer); _blossomTimer = null; }
+  var bg = document.getElementById('cg-blossom-bg');
+  if (bg) setTimeout(function() { bg.style.display = 'none'; bg.innerHTML = ''; }, 5000);
+}
+
+// ── Activity log ──────────────────────────────────────────────────────────────
+function cherryLog(msg, type) {
   var el = document.getElementById('cg-activity-log');
   if (!el) return;
   var now = new Date();
-  var ts = ('0'+now.getHours()).slice(-2) + ':' + ('0'+now.getMinutes()).slice(-2);
-  el.innerHTML = '<div>' + ts + ' — ' + msg + '</div>' + el.innerHTML;
+  var ts = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+  var entry = document.createElement('div');
+  entry.className = 'cg-log-entry log-' + (type || 'info');
+  entry.innerHTML = '<span class="cg-log-ts">' + ts + '</span><span class="cg-log-msg">' + msg + '</span>';
+  el.insertBefore(entry, el.firstChild);
+  var timeEl = document.getElementById('cg-stat-time');
+  if (timeEl) timeEl.textContent = ts;
 }
 
-function renderCherryPage() {
-  var s = cgLoadState();
-  // Load settings
-  var settings = s.settings || {};
-  var trustEl = document.getElementById('cg-trust-mode');
-  var autoGenEl = document.getElementById('cg-auto-gen');
-  var autoDailyEl = document.getElementById('cg-auto-daily');
-  if (trustEl) trustEl.checked = settings.trustMode !== false;
-  if (autoGenEl) autoGenEl.checked = !!settings.autoGen;
-  if (autoDailyEl) autoDailyEl.checked = !!settings.autoDaily;
-  // Restore agenda
-  var today = new Date().toISOString().slice(0,10);
-  var dateEl = document.getElementById('cg-agenda-date');
-  if (dateEl) dateEl.textContent = today;
-  if (s.agendaDate === today && s.agenda && s.agenda.length) {
-    renderCherryAgenda(s.agenda);
-    document.getElementById('cg-btn-auto').disabled = false;
-  }
-  renderCherryHistory(s.history || []);
-  // Auto daily
-  if (settings.autoDaily) {
-    var lastRun = s.lastAutoRun || '';
-    if (lastRun !== today) cherryAnalyze();
-  }
+// ── Stats update ──────────────────────────────────────────────────────────────
+function cgUpdateStats() {
+  var s = cgLoad();
+  var agenda = s.agenda || [];
+  var done = agenda.filter(function(a) { return a.done; }).length;
+  var total = Math.max(agenda.length, 1);
+  var words = agenda.reduce(function(acc, a) {
+    return acc + (a.blogMd ? a.blogMd.trim().split(/\s+/).length : 0);
+  }, 0);
+  var pct = done / total * 100;
+  var circ = 2 * Math.PI * 46; // r=46 → ~289
+  var de = document.getElementById('cg-stat-done');
+  var we = document.getElementById('cg-stat-words');
+  var pe = document.getElementById('cg-stat-prog');
+  var mf = document.getElementById('cg-mini-fill');
+  var rf = document.getElementById('cg-ring-fill');
+  if (de) de.textContent = done;
+  if (we) we.textContent = words > 999 ? (words/1000).toFixed(1) + 'K' : words;
+  if (pe) pe.textContent = done + ' / ' + agenda.length + ' tamamlandi';
+  if (mf) mf.style.width = pct + '%';
+  if (rf) rf.setAttribute('stroke-dashoffset', circ * (1 - pct / 100));
 }
 
+// ── Render agenda ─────────────────────────────────────────────────────────────
 function renderCherryAgenda(agenda) {
   var el = document.getElementById('cg-agenda-list');
   if (!el) return;
+  if (!agenda || !agenda.length) {
+    el.innerHTML = '<div class="cg-empty">Ajanda bos.</div>';
+    return;
+  }
   el.innerHTML = agenda.map(function(item, i) {
-    var cls = 'cg-agenda-card' + (item.done ? ' done' : '') + (item.active ? ' active' : '');
-    return '<div class="' + cls + '" id="cg-card-' + i + '" onclick="cherryShowBlog(' + i + ')">'
-      + '<div class="cg-agenda-num">' + (item.done ? '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="#34C759" stroke-width="2"><polyline points="2,8 6,12 14,4"/></svg>' : (i+1)) + '</div>'
-      + '<div><div class="cg-agenda-label">' + item.label + '</div>'
-      + '<div class="cg-agenda-topic">' + item.topic.slice(0,80) + (item.topic.length > 80 ? '...' : '') + '</div></div>'
+    var cls = 'cg-agenda-item' + (item.done ? ' done' : '') + (item.active ? ' active' : '');
+    var badgeCls = item.done ? 'bdg-done' : (item.active ? 'bdg-write' : 'bdg-wait');
+    var badgeTxt = item.done ? 'Yazildi' : (item.active ? 'Yaziyor...' : 'Bekliyor');
+    var numHtml = item.done
+      ? '<svg viewBox="0 0 16 16" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="2,8 6,12 14,4"/></svg>'
+      : (i + 1);
+    var wc = item.blogMd ? item.blogMd.trim().split(/\s+/).length : 0;
+    var barHtml = item.active
+      ? '<div class="cg-writebar-wrap"><div class="cg-writebar-fill" id="cg-wbar-' + i + '" style="width:60%"></div></div>'
+      : (item.done && wc ? '<div style="font-size:.66rem;opacity:.35;margin-top:4px">' + wc + ' kelime</div>' : '');
+    return '<div class="' + cls + '" id="cg-aitem-' + i + '" onclick="cherryViewAgendaItem(' + i + ')">'
+      + '<div class="cg-agenda-num">' + numHtml + '</div>'
+      + '<div class="cg-agenda-body">'
+      + '<div class="cg-agenda-row"><span class="cg-agenda-lbl">' + item.label + '</span>'
+      + '<span class="cg-agenda-bdg ' + badgeCls + '">' + badgeTxt + '</span></div>'
+      + '<div class="cg-agenda-topic">' + item.topic.slice(0, 85) + (item.topic.length > 85 ? '...' : '') + '</div>'
+      + barHtml
+      + '</div>'
       + '</div>';
   }).join('');
 }
 
+// ── Render history ─────────────────────────────────────────────────────────────
 function renderCherryHistory(history) {
   var el = document.getElementById('cg-history-grid');
   if (!el) return;
-  if (!history.length) { el.innerHTML = '<div style="opacity:.35;font-size:.82rem">Henuz blog yok.</div>'; return; }
-  el.innerHTML = history.map(function(item, i) {
-    return '<div class="cg-hist-card" onclick="cherryShowHistBlog(' + i + ')">'
-      + '<div class="cg-hist-title">' + item.title + '</div>'
-      + '<div class="cg-hist-meta">' + item.date + '</div>'
-      + '</div>';
+  if (!history || !history.length) {
+    el.innerHTML = '<div class="cg-empty">Henuz hic blog yazilmadi.</div>';
+    return;
+  }
+  el.innerHTML = history.slice(0, 12).map(function(item, i) {
+    var wc = item.md ? item.md.trim().split(/\s+/).length : 0;
+    return '<div class="cg-hist-item" onclick="cherryViewHistItem(' + i + ')">'
+      + '<div class="cg-hist-title">' + (item.title || 'Blog #' + (i+1)) + '</div>'
+      + '<div class="cg-hist-meta">' + item.date + (wc ? ' &middot; ' + wc + ' kelime' : '') + '</div>'
+      + '<div class="cg-hist-actions">'
+      + '<button class="b-action-btn" style="font-size:.67rem;padding:4px 10px" onclick="event.stopPropagation();cherryViewHistItem(' + i + ')">Goruntule</button>'
+      + '<button class="b-action-btn" style="font-size:.67rem;padding:4px 10px" onclick="event.stopPropagation();cherryCopyHistHTML(' + i + ')">HTML</button>'
+      + '</div></div>';
   }).join('');
 }
 
-function cherryShowBlog(i) {
-  var s = cgLoadState();
-  var agenda = s.agenda || [];
-  if (!agenda[i] || !agenda[i].blogMd) return;
-  var el = document.getElementById('cg-blog-preview');
-  var card = document.getElementById('cg-preview-card');
-  if (el) el.innerHTML = simpleMarkdownToHTML(agenda[i].blogMd);
-  if (card) card.style.display = 'block';
-  window._cgPreviewIdx = i;
-  window._cgPreviewSource = 'agenda';
-}
-
-function cherryShowHistBlog(i) {
-  var s = cgLoadState();
-  var history = s.history || [];
-  if (!history[i] || !history[i].md) return;
-  var el = document.getElementById('cg-blog-preview');
-  var card = document.getElementById('cg-preview-card');
-  if (el) el.innerHTML = simpleMarkdownToHTML(history[i].md);
-  if (card) card.style.display = 'block';
-  window._cgPreviewIdx = i;
-  window._cgPreviewSource = 'history';
-}
-
-function cherryCopyHTML() {
-  var s = cgLoadState();
-  var md = '';
-  if (window._cgPreviewSource === 'agenda') {
-    var agenda = s.agenda || [];
-    md = (agenda[window._cgPreviewIdx] || {}).blogMd || '';
-  } else {
-    var history = s.history || [];
-    md = (history[window._cgPreviewIdx] || {}).md || '';
+// ── View helpers ──────────────────────────────────────────────────────────────
+function cgShowStream(md, title, streaming) {
+  var meta = document.getElementById('cg-stream-meta');
+  var body = document.getElementById('cg-stream-text');
+  var wc = document.getElementById('cg-stream-words');
+  var live = document.getElementById('cg-live-lbl');
+  var copyBtn = document.getElementById('cg-copy-btn');
+  var pubBtn = document.getElementById('cg-pub-btn');
+  if (meta) meta.textContent = title || '';
+  if (body) body.textContent = md || '';
+  if (live) live.style.display = streaming ? 'flex' : 'none';
+  if (wc) {
+    var n = md ? md.trim().split(/\s+/).length : 0;
+    wc.textContent = n + ' kelime';
   }
-  if (!md) { cherryLog('Kopyalanacak blog bulunamadi.'); return; }
-  navigator.clipboard.writeText(enrichBlogHTML(simpleMarkdownToHTML(md)))
-    .then(function() { cherryLog('HTML kopyalandi.'); });
+  if (copyBtn) copyBtn.style.display = streaming ? 'none' : 'block';
+  if (pubBtn) pubBtn.style.display = streaming ? 'none' : 'block';
+  window._cgCurrentMd = md;
 }
 
+function cherryViewAgendaItem(i) {
+  var s = cgLoad();
+  var item = (s.agenda || [])[i];
+  if (!item || !item.blogMd) { cherryLog('Bu blog henuz yazilmadi.', 'info'); return; }
+  cgShowStream(item.blogMd, item.label, false);
+}
+function cherryViewHistItem(i) {
+  var s = cgLoad();
+  var item = (s.history || [])[i];
+  if (!item) return;
+  cgShowStream(item.md, item.title, false);
+}
+
+// ── Copy / publish ─────────────────────────────────────────────────────────────
+function cherryCopyHTML() {
+  var md = window._cgCurrentMd;
+  if (!md) { cherryLog('Kopyalanacak icerik yok.', 'info'); return; }
+  navigator.clipboard.writeText(enrichBlogHTML(simpleMarkdownToHTML(md)))
+    .then(function() { cherryLog('HTML panoya kopyalandi.', 'ok'); });
+}
+function cherryCopyHistHTML(i) {
+  var s = cgLoad();
+  var item = (s.history || [])[i];
+  if (!item) return;
+  navigator.clipboard.writeText(enrichBlogHTML(simpleMarkdownToHTML(item.md)))
+    .then(function() { cherryLog('HTML kopyalandi: ' + item.title, 'ok'); });
+}
 function cherryPublish() {
   cherryCopyHTML();
   setTimeout(function() {
@@ -3812,185 +3992,239 @@ function cherryPublish() {
   }, 400);
 }
 
+// ── Settings ───────────────────────────────────────────────────────────────────
 function cherrySaveSettings() {
-  var s = cgLoadState();
+  var s = cgLoad();
   s.settings = {
-    trustMode: document.getElementById('cg-trust-mode') ? document.getElementById('cg-trust-mode').checked : true,
-    autoGen: document.getElementById('cg-auto-gen') ? document.getElementById('cg-auto-gen').checked : false,
-    autoDaily: document.getElementById('cg-auto-daily') ? document.getElementById('cg-auto-daily').checked : false
+    trustMode: !!(document.getElementById('cg-trust-mode') || {checked:true}).checked,
+    autoGen:   !!(document.getElementById('cg-auto-gen') || {}).checked,
+    autoDaily: !!(document.getElementById('cg-auto-daily') || {}).checked
   };
-  cgSaveState(s);
-  cherryLog('Ayarlar kaydedildi.');
+  cgSave(s);
+  cherryLog('Ayarlar kaydedildi.', 'ok');
 }
 
-function buildCherrySystemPrompt(item, today, trustMode) {
-  var base = 'Sen Retrocameraland icin SEO odakli, Turkce blog yazisi yazan bir yapay zeka asistansin.'
-    + ' Tarih: ' + today + '.'
-    + ' Konu: ' + item.topic + '.'
-    + ' Baslik icin konu etiketi kullan: ' + item.label + '.'
-    + ' Kurallar: 1. H1 ile basla, H2/H3 alt basliklar kullan. 2. Min 800 kelime. 3. SEO puani 90+ hedefle.'
-    + ' 4. Markdown formatinda yaz. 5. EM DASH yasak: "—" kullanma, virgul veya tire kullan.'
-    + ' 6. Mobil uyumlu, kisa paragraflar.';
-  if (trustMode !== false) {
-    base += ' 7. MARKA: Retrocameraland dolap/sahibinden gibi platformlardan farki vurgula: uzman kurator secimi, 15+ kontrol, iade garantisi, RCL kutusu. 8. Blog sonuna CTA ekle: retrocameraland.com a yonlendir.';
+// ── Page render ────────────────────────────────────────────────────────────────
+function renderCherryPage() {
+  var s = cgLoad();
+  // Settings
+  var settings = s.settings || {};
+  var tm = document.getElementById('cg-trust-mode'); if (tm) tm.checked = settings.trustMode !== false;
+  var ag = document.getElementById('cg-auto-gen');   if (ag) ag.checked = !!settings.autoGen;
+  var ad = document.getElementById('cg-auto-daily'); if (ad) ad.checked = !!settings.autoDaily;
+  // Agenda
+  var today = new Date().toISOString().slice(0, 10);
+  var dateEl = document.getElementById('cg-agenda-date');
+  if (dateEl) dateEl.textContent = today;
+  if (s.agendaDate === today && s.agenda && s.agenda.length) {
+    renderCherryAgenda(s.agenda);
+    var autoBtn = document.getElementById('cg-btn-auto');
+    if (autoBtn) { autoBtn.disabled = false; autoBtn.style.opacity = '1'; }
   }
-  return base;
+  renderCherryHistory(s.history || []);
+  cgUpdateStats();
+  // Auto daily
+  if (settings.autoDaily && s.lastAutoRun !== today) cherryAnalyze();
 }
 
+// ── System prompt builder ──────────────────────────────────────────────────────
+function buildCherrySystemPrompt(item, today, trustMode) {
+  var prompt = 'Sen Retrocameraland icin SEO odakli Turkce blog yazisi yazan bir yapay zeka asistansin.'
+    + ' Tarih: ' + today + '. Konu: ' + item.topic + '. Baslik etiketi: ' + item.label + '.'
+    + ' Kurallar: 1. H1 ile basla, H2/H3 alt basliklar kullan. 2. Min 900 kelime. 3. SEO puani 90+ hedefle.'
+    + ' 4. Markdown formatinda yaz. 5. EM DASH yasak - "—" kullanma. 6. Mobil uyumlu kisa paragraflar.'
+    + ' 7. Cok naturel, insansi dil kullan. 8. Pratik bilgi, liste ve tablo kullan.';
+  if (trustMode !== false) {
+    prompt += ' 9. MARKA: Retrocameraland dolap/sahibinden gibi platformlardan tamamen farklidir - uzman kurator secimi, 15+ kontrol, iade garantisi, RCL kutusu. Bu farki blog icinde dogal bir gecisle vurgula.'
+      + ' 10. Blog sonuna kisa bir CTA ekle: retrocameraland.com a yonlendir.';
+  }
+  return prompt;
+}
+
+// ── Analyze (trend research) ───────────────────────────────────────────────────
 async function cherryAnalyze() {
   var analyzeBtn = document.getElementById('cg-btn-analyze');
   if (analyzeBtn) analyzeBtn.disabled = true;
   setCherryState('analyzing');
-  cherryLog('Trend analizi basliyor...');
-  var today = new Date().toISOString().slice(0,10);
-  var prompt = 'Bugun ' + today + ' tarihi icin Retrocameraland (retro/vintage/Y2K dijital kamera satis sitesi) adina 5 adet SEO odakli Turkce blog konusu olustur.'
-    + ' Her konu icin kisa bir etiket (max 4 kelime) ve detayli bir konu aciklamasi ver.'
-    + ' Yaniti SADECE gecerli JSON array olarak ver, baska bir sey yazma:'
-    + ' [{"label":"...","topic":"..."},...]';
+  cherryLog('Bugun icin trend analizi yapiliyor...', 'analysis');
+  var today = new Date().toISOString().slice(0, 10);
+  var prompt = 'Bugun ' + today + ' tarihi icin Retrocameraland (retro/vintage/Y2K dijital kamera satis sitesi, retrocameraland.com) adina 5 adet yuksek SEO potansiyelli Turkce blog konusu olustur.'
+    + ' Konular: guncel trendler, arama intentleri, Turkiyede populer kamera modelleri, kullanici sorulari.'
+    + ' SADECE asagidaki JSON array formatinda yanit ver, baska hicbir sey yazma: [{"label":"max 4 kelime","topic":"detayli konu aciklamasi - 1-2 cumle"},...]';
   try {
     var res = await fetch('/api/chat', {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
         model: 'claude-haiku-4-5-20251001',
-        max_tokens: 800,
-        messages: [{role:'user', content: prompt}]
+        max_tokens: 900,
+        messages: [{role: 'user', content: prompt}]
       })
     });
+    if (!res.ok) throw new Error('API: ' + res.status);
     var data = await res.json();
-    var txt = (data.content && data.content[0] && data.content[0].text) || '';
-    var jsonMatch = txt.match(/\[[\s\S]*\]/);
-    if (!jsonMatch) throw new Error('JSON parse hatasi');
-    var agenda = JSON.parse(jsonMatch[0]);
-    agenda = agenda.slice(0, 5).map(function(item) {
-      return {label: item.label || 'Konu', topic: item.topic || '', done: false, active: false, blogMd: ''};
+    var txt = (((data.content || [])[0]) || {}).text || '';
+    var m = txt.match(/\[[\s\S]*\]/);
+    if (!m) throw new Error('JSON alinamadi');
+    var raw = JSON.parse(m[0]);
+    var agenda = raw.slice(0, 5).map(function(it) {
+      return {label: it.label || 'Konu', topic: it.topic || '', done: false, active: false, blogMd: ''};
     });
-    var s = cgLoadState();
+    var s = cgLoad();
     s.agenda = agenda;
     s.agendaDate = today;
-    cgSaveState(s);
+    cgSave(s);
     renderCherryAgenda(agenda);
     document.getElementById('cg-agenda-date').textContent = today;
-    document.getElementById('cg-btn-auto').disabled = false;
+    var autoBtn = document.getElementById('cg-btn-auto');
+    if (autoBtn) { autoBtn.disabled = false; autoBtn.style.opacity = '1'; }
     setCherryState('idle');
-    cherryLog('Analiz tamamlandi. ' + agenda.length + ' konu hazir.');
-    // Auto generate if setting is on
+    cherryLog('Analiz tamam. ' + agenda.length + ' konu hazir.', 'ok');
+    // Auto-generate if setting enabled
     var settings = s.settings || {};
-    if (settings.autoGen) {
-      setTimeout(cherryAutoRun, 600);
-    }
+    if (settings.autoGen) setTimeout(cherryAutoRun, 800);
   } catch(e) {
     setCherryState('idle');
-    cherryLog('Analiz hatasi: ' + e.message);
+    cherryLog('Analiz hatasi: ' + e.message, 'err');
   }
   if (analyzeBtn) analyzeBtn.disabled = false;
 }
 
+// ── Generate one blog (SSE streaming) ─────────────────────────────────────────
 async function cherryGenerateBlog(index) {
-  var s = cgLoadState();
+  var s = cgLoad();
   var agenda = s.agenda || [];
   if (!agenda[index]) return;
   var item = agenda[index];
-  var today = new Date().toISOString().slice(0,10);
+  var today = new Date().toISOString().slice(0, 10);
   var settings = s.settings || {};
   var trustMode = settings.trustMode !== false;
+
+  // UI: mark active
   setCherryState('writing');
-  cherryLog('Blog yaziliyor: ' + item.label);
-  // Mark active
   item.active = true;
   agenda[index] = item;
   s.agenda = agenda;
-  cgSaveState(s);
+  cgSave(s);
   renderCherryAgenda(agenda);
-  var card = document.getElementById('cg-card-' + index);
-  if (card) card.className = 'cg-agenda-card active';
+
+  // Show stream panel with live flag
+  cgShowStream('', item.label + ' yaziliyor...', true);
+  var streamBody = document.getElementById('cg-stream-text');
+  var streamWc   = document.getElementById('cg-stream-words');
+
   var sysPrompt = buildCherrySystemPrompt(item, today, trustMode);
   var md = '';
+  var lastUpdate = 0;
+
   try {
     var res = await fetch('/api/chat', {
       method: 'POST',
-      headers: {'Content-Type':'application/json'},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        model: 'claude-haiku-4-5-20251001',
-        max_tokens: 2048,
+        model: 'claude-sonnet-4-6',
+        max_tokens: 4096,
         stream: true,
         system: sysPrompt,
-        messages: [{role:'user', content: 'Bu konuda eksiksiz bir blog yazisi yaz: ' + item.topic}]
+        messages: [{role: 'user', content: 'Bu konuda eksiksiz, SEO skoru 90+ hedefleyen Turkce blog yazisi olustur: ' + item.topic}]
       })
     });
-    var reader = res.body.getReader();
+    if (!res.ok || !res.body) throw new Error('API: ' + (await res.text()).slice(0, 150));
+
+    var reader  = res.body.getReader();
     var decoder = new TextDecoder();
-    var buf = '';
+    var buffer  = '';
+
     while (true) {
-      var readResult = await reader.read();
-      if (readResult.done) break;
-      buf += decoder.decode(readResult.value, {stream:true});
-      var lines = buf.split('\n');
-      buf = lines.pop();
+      var chunk = await reader.read();
+      if (chunk.done) break;
+      buffer += decoder.decode(chunk.value, {stream: true});
+      var lines = buffer.split('\n');
+      buffer = lines.pop() || '';
       for (var li = 0; li < lines.length; li++) {
-        var line = lines[li].trim();
-        if (!line.startsWith('data:')) continue;
-        var json = line.slice(5).trim();
-        if (json === '[DONE]') break;
+        var line = lines[li];
+        if (!line.startsWith('data: ')) continue;
+        var raw = line.slice(6).trim();
+        if (raw === '[DONE]') continue;
         try {
-          var ev = JSON.parse(json);
-          if (ev.type === 'content_block_delta' && ev.delta && ev.delta.text) {
-            md += ev.delta.text;
+          var evt = JSON.parse(raw);
+          if (evt.type === 'content_block_delta' && evt.delta && evt.delta.type === 'text_delta') {
+            md += evt.delta.text;
+            // Throttle DOM updates to ~80ms to keep UI responsive
+            var now = Date.now();
+            if (now - lastUpdate > 80 && streamBody) {
+              streamBody.textContent = md;
+              var cur = document.createElement('span');
+              cur.className = 'cg-cursor';
+              streamBody.appendChild(cur);
+              streamBody.scrollTop = streamBody.scrollHeight;
+              var wc = md.trim().split(/\s+/).length;
+              if (streamWc) streamWc.textContent = wc + ' kelime';
+              lastUpdate = now;
+            }
           }
         } catch(pe) {}
       }
     }
-    // Save blog
-    item.done = true;
+
+    // Final state
+    var finalWc = md.trim().split(/\s+/).length;
+    cgShowStream(md, item.label + ' — tamamlandi (' + finalWc + ' kelime)', false);
+
+    // Persist
+    item.done   = true;
     item.active = false;
     item.blogMd = md;
     agenda[index] = item;
     s.agenda = agenda;
-    // Add to history
-    var firstLine = md.split('\n')[0].replace(/^#+\s*/, '').trim().slice(0, 60);
+    var title = md.split('\n')[0].replace(/^#+\s*/, '').trim().slice(0, 60);
     var history = s.history || [];
-    history.unshift({title: firstLine, date: today, md: md});
+    history.unshift({title: title, date: today, md: md});
     if (history.length > 30) history = history.slice(0, 30);
     s.history = history;
     s.lastAutoRun = today;
-    cgSaveState(s);
+    cgSave(s);
+
     renderCherryAgenda(agenda);
     renderCherryHistory(history);
-    // Show preview
-    var previewEl = document.getElementById('cg-blog-preview');
-    var previewCard = document.getElementById('cg-preview-card');
-    if (previewEl) previewEl.innerHTML = simpleMarkdownToHTML(md);
-    if (previewCard) previewCard.style.display = 'block';
-    window._cgPreviewIdx = index;
-    window._cgPreviewSource = 'agenda';
+    cgUpdateStats();
+    window._cgCurrentMd = md;
+
     setCherryState('done');
-    cherryLog('Blog tamamlandi: ' + item.label);
-    setTimeout(function() { setCherryState('idle'); }, 2500);
+    cherryLog(item.label + ' — ' + finalWc + ' kelime', 'ok');
+    setTimeout(function() { setCherryState('idle'); }, 3000);
+
   } catch(e) {
     item.active = false;
     agenda[index] = item;
-    cgSaveState(s);
+    s.agenda = agenda;
+    cgSave(s);
+    renderCherryAgenda(agenda);
+    cgShowStream('', 'Hata: ' + e.message, false);
     setCherryState('idle');
-    cherryLog('Blog hatasi: ' + e.message);
+    cherryLog('Hata: ' + e.message, 'err');
   }
 }
 
+// ── Auto-run all ───────────────────────────────────────────────────────────────
 async function cherryAutoRun() {
-  var s = cgLoadState();
-  var agenda = s.agenda || [];
   var autoBtn = document.getElementById('cg-btn-auto');
-  if (autoBtn) autoBtn.disabled = true;
+  if (autoBtn) { autoBtn.disabled = true; autoBtn.style.opacity = '.5'; }
+  var s = cgLoad();
+  var agenda = s.agenda || [];
+  cherryLog('Tum bloglar icin oto-yazim basladi (' + agenda.length + ' konu).', 'analysis');
   for (var i = 0; i < agenda.length; i++) {
-    s = cgLoadState();
-    if (!(s.agenda || [])[i]) continue;
-    if ((s.agenda[i] || {}).done) { cherryLog('Atlandi (zaten yazildi): ' + s.agenda[i].label); continue; }
+    s = cgLoad();
+    var current = (s.agenda || [])[i];
+    if (!current) continue;
+    if (current.done) { cherryLog('Atlandi (mevcut): ' + current.label, 'info'); continue; }
     await cherryGenerateBlog(i);
-    await new Promise(function(r) { setTimeout(r, 1200); });
+    await new Promise(function(r) { setTimeout(r, 1500); });
   }
   setCherryState('done');
-  cherryLog('Tum bloglar tamamlandi.');
-  setTimeout(function() { setCherryState('idle'); }, 3000);
-  if (autoBtn) autoBtn.disabled = false;
+  cherryLog('Tum bloglar tamamlandi!', 'ok');
+  setTimeout(function() { setCherryState('idle'); }, 4000);
+  if (autoBtn) { autoBtn.disabled = false; autoBtn.style.opacity = '1'; }
 }
 
 
