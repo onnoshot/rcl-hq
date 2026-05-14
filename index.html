@@ -530,15 +530,15 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cg-ts-line.think{color:rgba(212,175,55,.55);}
 
 /* Agenda */
-.cg-agenda-wrap{display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto;}
+.cg-agenda-wrap{display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent;}
 .cg-panel-title{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.38;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;}
-.cg-agenda-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:all .2s;}
-.cg-agenda-item:hover{background:rgba(212,175,55,.08);border-color:rgba(212,175,55,.2);}
-.cg-ai-cat{font-size:.58rem;padding:2px 7px;border-radius:6px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.2);color:rgba(212,175,55,.7);flex-shrink:0;}
-.cg-ai-topic{font-size:.78rem;flex:1;color:rgba(255,255,255,.75);}
-.cg-ai-status{font-size:.6rem;opacity:.4;}
-.cg-ai-status.done{color:rgba(52,199,89,.7);opacity:1;}
-.cg-ai-status.running{color:rgba(212,175,55,.8);opacity:1;}
+.cg-agenda-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:10px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.055);cursor:pointer;transition:all .18s;}
+.cg-agenda-item:hover{background:rgba(212,175,55,.07);border-color:rgba(212,175,55,.2);transform:translateX(2px);}
+.cg-ai-cat{font-size:.56rem;padding:2px 7px;border-radius:6px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.18);color:rgba(212,175,55,.65);flex-shrink:0;letter-spacing:.04em;}
+.cg-ai-topic{font-size:.77rem;flex:1;color:rgba(255,255,255,.78);line-height:1.4;}
+.cg-ai-status{font-size:.58rem;opacity:.35;flex-shrink:0;}
+.cg-ai-status.done{color:rgba(52,199,89,.65);opacity:1;}
+.cg-ai-status.running{color:rgba(212,175,55,.85);opacity:1;animation:cg-status-pulse 1.2s ease-in-out infinite;}
 
 /* History */
 .cg-agenda-item.done-item{opacity:.4;}
@@ -2369,14 +2369,14 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
     <!-- Thought log -->
     <div class="card" style="padding:12px 14px;flex-shrink:0">
-      <div class="cg-panel-title" style="margin-bottom:6px;font-size:.6rem">Dusunce Akisi</div>
-      <div class="cg-thought-stream" style="margin-bottom:0;min-height:36px;max-height:72px;overflow:hidden;">
-        <div id="cg-ts-inner" style="font-size:.68rem;opacity:.55"></div>
+      <div class="cg-panel-title" style="margin-bottom:8px;font-size:.6rem">Dusunce Akisi</div>
+      <div class="cg-thought-stream" style="margin-bottom:0;min-height:60px;max-height:150px;overflow-y:auto;">
+        <div id="cg-ts-inner"></div>
       </div>
     </div>
 
     <!-- Agenda card -->
-    <div class="card" style="padding:12px 14px;flex-shrink:0;max-height:280px;display:flex;flex-direction:column;">
+    <div class="card" style="padding:12px 14px;flex-shrink:0;max-height:400px;display:flex;flex-direction:column;">
       <div class="cg-panel-title" style="margin-bottom:8px;flex-shrink:0">
         Gundem
         <span style="display:inline-flex;align-items:center;gap:6px">
@@ -4514,7 +4514,7 @@ function urunProfitCalc() {
 
 
 // ─── CHERRYGLOW AI AGENT v4.1 ──────────────────────────────────────────────
-const CG_VERSION = 'v5.3.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
+const CG_VERSION = 'v5.4.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
 
 // ── Brain v5 — kalici bellek ──────────────────────────────────────────────────
 var CG_BRAIN_KEY = 'cg_brain_v5';
@@ -4554,8 +4554,15 @@ function cgGetBrain() {
     return JSON.parse(raw);
   } catch(e) { return cgDefaultBrain(); }
 }
+var _cgSaveTimer = null;
+var _cgPendingBrain = null;
 function cgSaveBrain(b) {
-  try { localStorage.setItem(CG_BRAIN_KEY, JSON.stringify(b)); } catch(e) {}
+  _cgPendingBrain = b;
+  clearTimeout(_cgSaveTimer);
+  _cgSaveTimer = setTimeout(function() {
+    try { localStorage.setItem(CG_BRAIN_KEY, JSON.stringify(_cgPendingBrain)); } catch(e) {}
+    _cgPendingBrain = null;
+  }, 600);
 }
 function cgSessionStart() {
   var b = cgGetBrain();
@@ -4569,12 +4576,20 @@ function cgSessionStart() {
   if (ks.length > 90) ks.sort().slice(0, ks.length-90).forEach(function(k){ delete b.daily_stats[k]; });
   cgSaveBrain(b);
 }
+var _cgLogQueue = [];
+var _cgLogFlushTimer = null;
 function cgLogMessage(role, msg) {
-  var b = cgGetBrain();
-  b.conversation_log = b.conversation_log || [];
-  b.conversation_log.push({ts:Date.now(), role:role, msg:msg.slice(0,400), sid:b.current_session});
-  if (b.conversation_log.length > 400) b.conversation_log = b.conversation_log.slice(-400);
-  cgSaveBrain(b);
+  _cgLogQueue.push({ts:Date.now(), role:role, msg:msg.slice(0,400), sid:(cgGetBrain()||{}).current_session});
+  clearTimeout(_cgLogFlushTimer);
+  _cgLogFlushTimer = setTimeout(function() {
+    if (!_cgLogQueue.length) return;
+    var b = cgGetBrain();
+    b.conversation_log = b.conversation_log || [];
+    _cgLogQueue.forEach(function(e){ b.conversation_log.push(e); });
+    _cgLogQueue = [];
+    if (b.conversation_log.length > 400) b.conversation_log = b.conversation_log.slice(-400);
+    cgSaveBrain(b);
+  }, 1500);
 }
 function cgRecentlyDiscussed(days) {
   var cutoff = Date.now() - (days||30) * 86400000;
@@ -4922,9 +4937,9 @@ function cherryLog(msg, type) {
   if (_cgLogs.length > 60) _cgLogs = _cgLogs.slice(-60);
   var el = document.getElementById('cg-ts-inner');
   if (!el) return;
-  el.innerHTML = _cgLogs.slice(-8).map(function(l){
+  el.innerHTML = _cgLogs.slice(-14).map(function(l){
     var t = new Date(l.ts).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-    return '<div class="cg-ts-line '+(l.type||'')+'"><span style="opacity:.3;font-size:.6rem;margin-right:6px">'+t+'</span>'+l.msg+'</div>';
+    return '<div class="cg-ts-line '+(l.type||'')+'"><span style="opacity:.25;font-size:.58rem;margin-right:7px;font-family:var(--mono)">'+t+'</span>'+l.msg+'</div>';
   }).join('');
   el.scrollTop = el.scrollHeight;
   var la = document.getElementById('cg-last-act');
@@ -5314,11 +5329,11 @@ async function cherryGenerateBlog(agendaIdx) {
   if (brain.history.length > 50) brain.history = brain.history.slice(-50);
   if (!brain.brand) brain.brand = BLOG_SEO.brand_context;
   // Gunluk istatistikler
-  var _ds2 = new Date().toDateString();
+  var _dsToday = new Date().toDateString();
   brain.daily_stats = brain.daily_stats || {};
-  if (!brain.daily_stats[_ds2]) brain.daily_stats[_ds2] = {blogs:0,words:0,published:0,sessions:0};
-  brain.daily_stats[_ds2].blogs++;
-  brain.daily_stats[_ds2].words += (scoreObj.wc||0);
+  if (!brain.daily_stats[_dsToday]) brain.daily_stats[_dsToday] = {blogs:0,words:0,published:0,sessions:0};
+  brain.daily_stats[_dsToday].blogs++;
+  brain.daily_stats[_dsToday].words += (scoreObj.wc||0);
   cgSaveBrain(brain);
   _cgHistory = brain.history;
 
@@ -5375,7 +5390,8 @@ function renderCherryPage() {
   // Greeting + ROI
   setTimeout(cgCherryGreeting, 500);
   setTimeout(cgRefreshROI, 800);
-  setTimeout(function(){ cgInsightEngine(); cgProactiveResearch(); }, 3500);
+  // Sadece insight engine otomatik başlasın; proaktif araştırma kullanıcı isteğiyle
+  setTimeout(cgInsightEngine, 3500);
   // Re-sync waveform
   cgUpdateWaveform('idle');
   // Restore stats from brain
@@ -5417,6 +5433,7 @@ var _cgChatHistory = [];
 function cgAddMessage(from, text, type, delay) {
   delay = delay || 0;
   if (from === 'cherry' && delay === 0) delay = 120 + Math.min(text.length * 6, 600);
+  // Log immediately for user messages; cherry messages are batched via debounce
   cgLogMessage(from === 'cherry' ? 'cherry' : 'user', text);
   setTimeout(function() {
     // Remove typing indicator if exists
