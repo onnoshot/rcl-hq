@@ -2975,27 +2975,68 @@ function setOutputTab(tab) {
 }
 
 function simpleMarkdownToHTML(md) {
-  let html = md
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/`([^`]+)`/g,'<code>$1</code>')
-    .replace(/^# (.+)$/gm,'<h1>$1</h1>')
-    .replace(/^## (.+)$/gm,'<h2>$1</h2>')
-    .replace(/^### (.+)$/gm,'<h3>$1</h3>')
-    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g,'<em>$1</em>')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
-    .replace(/^[-*] (.+)$/gm,'<li>$1</li>');
-  // Wrap consecutive <li> groups in <ul>
-  html = html.replace(/(<li>[^\n]*\n)+/g, s => '<ul>' + s + '</ul>');
-  // Wrap double-newline-separated blocks in <p> tags
-  const paras = html.split('\n\n');
-  html = paras.map(p => {
-    p = p.trim();
-    if (!p) return '';
-    if (/^<(h[1-6]|ul|pre|li|p)/.test(p)) return p;
-    return '<p>' + p.replace(/\n/g,' ') + '</p>';
-  }).filter(Boolean).join('\n');
-  return html;
+  if (!md) return '';
+  // Clean em-dashes one more time
+  let text = md.replace(/—/g, ',').replace(/ — /g, ', ');
+
+  const lines = text.split('\n');
+  const out = [];
+  let i = 0;
+
+  while (i < lines.length) {
+    const line = lines[i];
+
+    // Code block
+    if (line.startsWith('```')) {
+      const lang = line.slice(3).trim();
+      let code = '';
+      i++;
+      while (i < lines.length && !lines[i].startsWith('```')) { code += lines[i] + '\n'; i++; }
+      out.push('<pre style="background:#1a1a1a;border-radius:8px;padding:14px 16px;overflow-x:auto;font-size:13px;line-height:1.6;color:#e5e5e5;margin:16px 0;white-space:pre-wrap;word-break:break-word"><code>' + escH(code.trim()) + '</code></pre>');
+      i++; continue;
+    }
+
+    // Headings
+    if (/^# /.test(line)) { out.push('<h1 style="font-size:clamp(1.3rem,4vw,1.9rem);font-weight:700;color:#111;margin:0 0 16px;line-height:1.25">' + inline(line.slice(2)) + '</h1>'); i++; continue; }
+    if (/^## /.test(line)) { out.push('<h2 style="font-size:clamp(1.1rem,3.5vw,1.45rem);font-weight:700;color:#111;margin:28px 0 12px;line-height:1.3;padding-bottom:6px;border-bottom:1px solid #e8e8e8">' + inline(line.slice(3)) + '</h2>'); i++; continue; }
+    if (/^### /.test(line)) { out.push('<h3 style="font-size:clamp(1rem,3vw,1.2rem);font-weight:600;color:#222;margin:20px 0 8px;line-height:1.35">' + inline(line.slice(4)) + '</h3>'); i++; continue; }
+
+    // List block
+    if (/^[-*] /.test(line) || /^\d+\. /.test(line)) {
+      const ordered = /^\d+\. /.test(line);
+      const items = [];
+      while (i < lines.length && (/^[-*] /.test(lines[i]) || /^\d+\. /.test(lines[i]))) {
+        items.push('<li style="margin-bottom:6px;line-height:1.6">' + inline(lines[i].replace(/^[-*] /,'').replace(/^\d+\. /,'')) + '</li>');
+        i++;
+      }
+      const tag = ordered ? 'ol' : 'ul';
+      out.push('<' + tag + ' style="margin:0 0 14px;padding-left:22px;color:#333;font-size:clamp(0.88rem,2.5vw,1rem)">' + items.join('') + '</' + tag + '>');
+      continue;
+    }
+
+    // Blank line
+    if (line.trim() === '') { i++; continue; }
+
+    // Paragraph
+    let para = '';
+    while (i < lines.length && lines[i].trim() !== '' && !/^[#\-*`]/.test(lines[i]) && !/^\d+\. /.test(lines[i])) {
+      para += (para ? ' ' : '') + lines[i];
+      i++;
+    }
+    if (para) out.push('<p style="margin:0 0 14px;line-height:1.75;color:#333;font-size:clamp(0.88rem,2.5vw,1rem)">' + inline(para) + '</p>');
+  }
+
+  return out.join('\n');
+
+  function escH(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function inline(s) {
+    return escH(s)
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g,'<em>$1</em>')
+      .replace(/`([^`]+)`/g,'<code style="background:#f3f3f3;border-radius:4px;padding:1px 5px;font-size:0.9em">$1</code>')
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener" style="color:#0066cc;text-decoration:none">$1</a>')
+      .replace(/\*\*\[([^\]]+)\]\*\*/g,'<strong>[$1]</strong>');
+  }
 }
 
 function renderBlogPage() {
@@ -3066,7 +3107,8 @@ KURALLAR:
 10. ${opts.schema ? 'Yazının SONUNA JSON-LD schema ekle (Article + FAQPage)' : ''}
 11. ${opts.urunler ? 'İlgili ürünleri [Ürün](retrocameraland.com.tr) şeklinde referans et' : ''}
 12. Her H2 min 3 cümle | Internal link fırsatlarını **[Link Önerisi: konu]** olarak işaretle
-13. Türkçe yaz | Rakip marka adı kullanma`;
+13. Türkçe yaz | Rakip marka adı kullanma
+14. EM DASH YASAK: "—" karakterini hiçbir şekilde kullanma; virgül, nokta veya tire (-) kullan`;
 
   try {
     const res = await fetch('/api/chat', {
@@ -3119,6 +3161,7 @@ Yukarıdaki tüm kurallara uygun, SEO skoru 90+ hedefleyen Türkçe blog yazıs�
     if (actionBtns) actionBtns.style.visibility = 'visible';
     if (bottomBar) bottomBar.style.display = 'flex';
     if (quickActions) quickActions.style.display = 'flex';
+    lastBlogMd = lastBlogMd.replace(/\u2014/g, ',').replace(/ — /g, ', ');
     renderBlogSEOScore(lastBlogMd, focusKw || topic.split(' ').slice(0,3).join(' '));
     findRelatedYouTubeVideos(topic, focusKw);
 
@@ -3220,7 +3263,7 @@ function findRelatedYouTubeVideos(topic, focusKw) {
 }
 
 function embedYouTubeInBlog(videoId, videoTitle) {
-  const embedBlock = '\n\n📺 **İlgili Video: ' + videoTitle + '**\n\n<figure><iframe width="560" height="315" src="https://www.youtube.com/embed/' + videoId + '" title="' + videoTitle + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></figure>\n\n';
+  const embedBlock = '\n\n📺 **İlgili Video: ' + videoTitle + '**\n\n<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;max-width:100%;margin:20px 0"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0" src="https://www.youtube.com/embed/' + videoId + '" title="' + videoTitle + '" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe></div>\n\n';
   lastBlogMd += embedBlock;
   const outputMd = document.getElementById('blog-output-md');
   if (outputMd) {
@@ -3360,11 +3403,12 @@ SEO KURALLARI:
 - "retrocameraland.com.tr", "Türkiye", "2026" ve kondisyon bilgisi mutlaka geçmeli
 - Teknik specs: model adı, yıl, megapiksel, sensör tipi (CCD/CMOS), zoom mutlaka
 - Başlıklar H2 (##) formatında
-- Min 400 kelime`;
+- Min 400 kelime
+- "—" (em dash) karakterini ASLA kullanma; virgül veya tire (-) kullan`;
 
   const userMsg = `Ürün: ${productName}
 ${yil ? 'Tahmini Yıl: ' + yil : ''}
-Kondisyon: ${kondisyon}/10 — ${condLabel}
+Kondisyon: ${kondisyon}/10, ${condLabel}
 ${condNot ? 'Kondisyon Notu: ' + condNot : ''}
 Kutu İçeriği: ${includeList}
 Vurgu: ${vurgu}
@@ -3417,6 +3461,7 @@ Bu ürün için yukarıdaki yapıya ve RCL editöryal stiline uygun, SEO skoru 9
 
     if (streamBar) streamBar.style.display = 'none';
     if (actionBtns) actionBtns.style.visibility = 'visible';
+    lastUrunMd = lastUrunMd.replace(/\u2014/g, ',').replace(/ — /g, ', ');
     renderUrunSEOScore(lastUrunMd, model);
 
   } catch(err) {
