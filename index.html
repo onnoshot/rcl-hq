@@ -752,28 +752,29 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   </div>
 </div>
 <script>
-// Auth gate — standalone script, runs independently of page JS
-(function(){
-  var SK = 'rcl_auth_v1';
-  function unlock(){
-    var o=document.getElementById('rcl-auth-overlay');
-    if(o){o.style.transition='opacity .5s';o.style.opacity='0';
-      setTimeout(function(){o.style.display='none';},520);}
+function rclAuthCheck() {
+  var p = document.getElementById('rcl-auth-pw');
+  var e = document.getElementById('rcl-auth-err');
+  if (!p) return;
+  if (p.value === 'onn'+'o0'+'1') {
+    sessionStorage.setItem('rcl_auth_v1', '1');
+    var o = document.getElementById('rcl-auth-overlay');
+    if (o) { o.style.opacity = '0'; o.style.transition = 'opacity .4s'; setTimeout(function(){ o.style.display='none'; }, 420); }
+    if (e) e.textContent = '';
+  } else {
+    if (e) e.textContent = 'Hatali sifre.';
+    p.value = ''; p.focus();
   }
-  window.rclAuthCheck=function(){
-    var p=document.getElementById('rcl-auth-pw');
-    var e=document.getElementById('rcl-auth-err');
-    if(!p)return;
-    var ok=false;
-    try{ok=(p.value===atob('b25ubzAx'));}catch(ex){}
-    if(ok){sessionStorage.setItem(SK,'1');if(e)e.textContent='';unlock();}
-    else{if(e)e.textContent='Hatali sifre.';p.value='';p.focus();}
-  };
-  window.addEventListener('load',function(){
-    if(sessionStorage.getItem(SK)==='1')unlock();
-    else{var p=document.getElementById('rcl-auth-pw');if(p)p.focus();}
-  });
-})();
+}
+window.addEventListener('load', function() {
+  if (sessionStorage.getItem('rcl_auth_v1') === '1') {
+    var o = document.getElementById('rcl-auth-overlay');
+    if (o) o.style.display = 'none';
+  } else {
+    var p = document.getElementById('rcl-auth-pw');
+    if (p) setTimeout(function(){ p.focus(); }, 100);
+  }
+});
 </script>
 
 <div class="orb orb1"></div><div class="orb orb2"></div>
