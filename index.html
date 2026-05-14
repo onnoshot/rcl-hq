@@ -1,4 +1,3 @@
-<!-- RCL-BUILD: 20260515-v5 -->
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -605,47 +604,6 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cw-auto-row{display:flex;align-items:center;gap:6px;font-size:.62rem;color:rgba(255,255,255,.4);}
 .cg-w-version{font-size:.6rem;opacity:.35;font-weight:400;margin-left:6px;}
 
-/* ── RCL Auth Gate ──────────────────────────────────────────────────── */
-#rcl-auth-overlay{position:fixed;inset:0;z-index:99999;background:#08060f;
-  display:flex;align-items:center;justify-content:center;
-  animation:none;transition:opacity .6s ease;}
-#rcl-auth-overlay.fade-out{opacity:0;pointer-events:none;}
-.rcl-auth-card{
-  width:380px;padding:44px 40px 40px;
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(212,175,55,.18);
-  border-radius:20px;
-  backdrop-filter:blur(24px) saturate(160%);
-  box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 0 1px rgba(212,175,55,.06);
-  text-align:center;
-}
-.rcl-auth-logo{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;
-  background:linear-gradient(135deg,#D4AF37,#FFB7C5);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  margin-bottom:6px;}
-.rcl-auth-sub{font-size:.72rem;opacity:.35;margin-bottom:32px;letter-spacing:.08em;}
-.rcl-auth-label{font-size:.65rem;opacity:.35;letter-spacing:.12em;text-transform:uppercase;
-  text-align:left;margin-bottom:6px;}
-.rcl-auth-input{
-  width:100%;box-sizing:border-box;
-  padding:12px 16px;border-radius:12px;
-  background:rgba(255,255,255,.05);
-  border:1px solid rgba(255,255,255,.1);
-  color:rgba(255,255,255,.88);font-size:.9rem;outline:none;
-  transition:border .2s;}
-.rcl-auth-input:focus{border-color:rgba(212,175,55,.5);}
-.rcl-auth-btn{
-  width:100%;margin-top:16px;padding:13px;
-  border-radius:12px;border:none;cursor:pointer;
-  background:linear-gradient(135deg,rgba(212,175,55,.9),rgba(200,150,40,.8));
-  color:#0d0a18;font-size:.88rem;font-weight:700;letter-spacing:.04em;
-  transition:all .2s;box-shadow:0 4px 16px rgba(212,175,55,.3);}
-.rcl-auth-btn:hover{background:linear-gradient(135deg,#D4AF37,#c8a030);
-  box-shadow:0 6px 24px rgba(212,175,55,.45);}
-.rcl-auth-btn:active{transform:scale(.98);}
-.rcl-auth-err{font-size:.72rem;color:rgba(255,69,58,.75);margin-top:10px;
-  min-height:18px;transition:opacity .2s;}
-.rcl-auth-footer{font-size:.62rem;opacity:.2;margin-top:24px;}
 
 /* ── CherryGlow Chat Interface ──────────────────────────────────────────── */
 .cg-main-grid{grid-template-columns:370px 1fr !important;}
@@ -739,44 +697,6 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 </style>
 </head>
 <body>
-<div id="rcl-auth-overlay">
-  <div class="rcl-auth-card">
-    <div class="rcl-auth-logo">Retrocameraland HQ</div>
-    <div class="rcl-auth-sub">OZEL YONETIM PANELI</div>
-    <div class="rcl-auth-label">Erisim Sifresi</div>
-    <input class="rcl-auth-input" type="password" id="rcl-auth-pw"
-      placeholder="&bull;&bull;&bull;&bull;&bull;&bull;"
-      onkeydown="if(event.key==='Enter')rclAuthCheck()">
-    <button class="rcl-auth-btn" onclick="rclAuthCheck()">Giris Yap</button>
-    <div class="rcl-auth-err" id="rcl-auth-err"></div>
-    <div class="rcl-auth-footer">Bu panel yalnizca yetkili kullanicilara ozeldir.</div>
-  </div>
-</div>
-<script>
-function rclAuthCheck() {
-  var p = document.getElementById('rcl-auth-pw');
-  var e = document.getElementById('rcl-auth-err');
-  if (!p) return;
-  if (p.value === 'onn'+'o0'+'1') {
-    sessionStorage.setItem('rcl_auth_v1', '1');
-    var o = document.getElementById('rcl-auth-overlay');
-    if (o) { o.style.opacity = '0'; o.style.transition = 'opacity .4s'; setTimeout(function(){ o.style.display='none'; }, 420); }
-    if (e) e.textContent = '';
-  } else {
-    if (e) e.textContent = 'Hatali sifre.';
-    p.value = ''; p.focus();
-  }
-}
-window.addEventListener('load', function() {
-  if (sessionStorage.getItem('rcl_auth_v1') === '1') {
-    var o = document.getElementById('rcl-auth-overlay');
-    if (o) o.style.display = 'none';
-  } else {
-    var p = document.getElementById('rcl-auth-pw');
-    if (p) setTimeout(function(){ p.focus(); }, 100);
-  }
-});
-</script>
 
 <div class="orb orb1"></div><div class="orb orb2"></div>
 
