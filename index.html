@@ -415,6 +415,98 @@ footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:v
   </div>
 </div>
 
+<!-- GA4 TRAFFIC -->
+<div class="sec fi" style="transition-delay:.255s">
+  <div class="sec-label">Site Trafiği</div>
+  <div class="g g4" style="margin-bottom:12px">
+    <div class="card p">
+      <div class="kpi-lbl">Toplam Ziyaretçi</div>
+      <div class="kpi-big" id="ga4-visitors">—</div>
+      <div class="kpi-sub">son 30 gün</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Organik Pay</div>
+      <div class="kpi-big" id="ga4-organic-pct">—</div>
+      <div class="kpi-sub">toplam trafiğin</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Bounce Rate</div>
+      <div class="kpi-big" id="ga4-bounce">—</div>
+      <div class="kpi-sub">hemen çıkma oranı</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Ort. Oturum Süresi</div>
+      <div class="kpi-big" id="ga4-session">—</div>
+      <div class="kpi-sub">dakika:saniye</div>
+    </div>
+  </div>
+  <div class="g g6-6">
+    <div class="card p">
+      <div class="chart-title">Aylık Trafik Trendi</div>
+      <div class="chart-sub">Son 6 ay · oturum sayısı</div>
+      <div style="height:200px"><canvas id="ga4TrendChart"></canvas></div>
+    </div>
+    <div class="card p" style="text-align:center">
+      <div class="chart-title" style="text-align:left">Trafik Kaynakları</div>
+      <div class="chart-sub" style="text-align:left">son 30 gün · oturum dağılımı</div>
+      <div style="position:relative;width:155px;height:155px;margin:8px auto 16px">
+        <canvas id="ga4SourceDonut"></canvas>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
+          <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--t1);letter-spacing:-0.04em" id="ga4DonutTotal">—</div>
+          <div style="font-size:0.59rem;color:var(--t3);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.1em">oturum</div>
+        </div>
+      </div>
+      <div id="ga4SourceLegend" style="display:flex;flex-direction:column;gap:7px;text-align:left"></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG SEO -->
+<div class="sec fi" style="transition-delay:.265s">
+  <div class="sec-label">Blog & SEO Performansı</div>
+  <div class="g g4" style="margin-bottom:12px">
+    <div class="card p">
+      <div class="kpi-lbl">Toplam Blog Yazısı</div>
+      <div class="kpi-big" id="blog-total">—</div>
+      <div class="kpi-sub">yayınlanmış içerik</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Aylık Organik Trafik</div>
+      <div class="kpi-big" id="blog-organic">—</div>
+      <div class="kpi-sub">bloglardan gelen</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">En Yüksek Trafik</div>
+      <div class="kpi-big" id="blog-top-views" style="font-size:2rem">—</div>
+      <div class="kpi-sub" id="blog-top-name">sayfa görüntüleme</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Ort. SEO Skoru</div>
+      <div class="kpi-big" id="blog-avg-seo">—</div>
+      <div class="kpi-sub">100 üzerinden</div>
+    </div>
+  </div>
+  <div class="g g6-6">
+    <div class="card tcard">
+      <div class="thead">
+        <span class="ttitle">Blog Performans Tablosu</span>
+        <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3)">trafike göre ↓</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>#</th><th>Blog Başlığı</th><th>Görüntüleme</th><th>Organik</th><th>Sipariş</th><th>SEO</th></tr></thead>
+          <tbody id="blogTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="card p">
+      <div class="chart-title">Aylık Blog Yayın & Trafik</div>
+      <div class="chart-sub">Son 6 ay · yayın sayısı ve toplam trafik</div>
+      <div style="height:200px"><canvas id="blogTrendChart"></canvas></div>
+    </div>
+  </div>
+</div>
+
 <!-- PROFIT ANALYSIS -->
 <div class="sec fi" style="transition-delay:.26s">
   <div class="sec-label">Kârlılık Analizi</div>
@@ -598,13 +690,13 @@ footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:v
 <script>
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-05-14T18:17:45",
+  "updated_at": "2026-05-14T19:20:49",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6429,
+  "followers": 6433,
   "media_count": 272,
   "avg_likes": 55,
-  "total_engagement": 668,
+  "total_engagement": 669,
   "type_counts": {
     "VIDEO": 5,
     "CAROUSEL_ALBUM": 7
@@ -622,7 +714,7 @@ const INSTAGRAM = {
       "id": "18111928819850525",
       "date": "12 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 142,
+      "likes": 143,
       "comments": 0,
       "url": "https://www.instagram.com/p/DYO7S-2iEqR/"
     },
@@ -1523,6 +1615,164 @@ function renderProfit(){
   ).join('');
 }
 
+
+function renderGA4Traffic() {
+  const kpi = GA4_TRAFFIC.kpi_30d;
+  counter(document.getElementById('ga4-visitors'), kpi.visitors);
+  document.getElementById('ga4-organic-pct').textContent = '%' + kpi.organic_pct;
+  document.getElementById('ga4-bounce').textContent = '%' + kpi.bounce_rate;
+  const mins = Math.floor(kpi.avg_session_sec / 60);
+  const secs = kpi.avg_session_sec % 60;
+  document.getElementById('ga4-session').textContent = mins + ':' + String(secs).padStart(2,'0');
+
+  const months = GA4_TRAFFIC.monthly;
+  const ctx = document.getElementById('ga4TrendChart').getContext('2d');
+  const grad = ctx.createLinearGradient(0, 0, 0, 200);
+  grad.addColorStop(0, 'rgba(48,209,88,0.22)');
+  grad.addColorStop(1, 'rgba(48,209,88,0)');
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: months.map(m => m.label),
+      datasets: [
+        {
+          label: 'Oturum',
+          data: months.map(m => m.sessions),
+          borderColor: '#30D158', borderWidth: 2,
+          fill: true, backgroundColor: grad,
+          tension: 0.4, pointRadius: 0,
+          pointHoverRadius: 5, pointHoverBackgroundColor: '#30D158',
+          pointHoverBorderColor: '#0A0A0B', pointHoverBorderWidth: 2
+        },
+        {
+          label: 'Organik',
+          data: months.map(m => m.organic),
+          borderColor: 'rgba(212,175,55,0.75)', borderWidth: 1.5,
+          fill: false, tension: 0.4, pointRadius: 0,
+          borderDash: [4,3],
+          pointHoverRadius: 4, pointHoverBackgroundColor: '#D4AF37'
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          mode: 'index', intersect: false,
+          callbacks: { label: ctx => `  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}` },
+          backgroundColor: 'rgba(0,0,0,0.96)', borderColor: 'rgba(48,209,88,0.3)', borderWidth: 1,
+          titleColor: '#F5F5F7', bodyColor: 'rgba(245,245,247,0.6)', padding: 12,
+          bodyFont: { family: '-apple-system', size: 11 }
+        }
+      },
+      scales: {
+        x: { ticks: { font: { family: '-apple-system', size: 9 }, color: '#6E6E73' }, grid: { color: 'rgba(255,255,255,0.04)' }, border: { display: false } },
+        y: { ticks: { font: { family: '-apple-system', size: 9 }, color: '#6E6E73', callback: v => v >= 1000 ? fmt(v/1000)+'K' : v }, grid: { color: 'rgba(255,255,255,0.04)' }, border: { display: false } }
+      },
+      animation: { duration: 1100, easing: 'easeOutQuart' },
+      interaction: { mode: 'index', intersect: false }
+    }
+  });
+
+  const src = GA4_TRAFFIC.sources;
+  const srcTotal = src.reduce((s,c) => s + c.sessions, 0);
+  document.getElementById('ga4DonutTotal').textContent = fmt(srcTotal);
+  new Chart(document.getElementById('ga4SourceDonut').getContext('2d'), {
+    type: 'doughnut',
+    data: {
+      labels: src.map(s => s.name),
+      datasets: [{ data: src.map(s => s.sessions), backgroundColor: src.map(s => s.color+'BB'), borderColor: src.map(s => s.color), borderWidth: 2, hoverOffset: 6 }]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false, cutout: '72%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: { label: ctx => ` ${ctx.label}: ${fmt(ctx.parsed)} oturum (%${src[ctx.dataIndex].pct})` },
+          backgroundColor: 'rgba(0,0,0,0.96)', borderColor: 'rgba(48,209,88,0.3)', borderWidth: 1,
+          titleColor: '#F5F5F7', bodyColor: 'rgba(245,245,247,0.6)', padding: 12,
+          bodyFont: { family: '-apple-system', size: 11 }
+        }
+      },
+      animation: { duration: 1200, easing: 'easeOutQuart' }
+    }
+  });
+  document.getElementById('ga4SourceLegend').innerHTML = src.map(s =>
+    `<div class="leg"><div class="leg-dot" style="background:${s.color}"></div><span class="leg-name">${s.name}</span><span class="leg-pct">%${s.pct}</span></div>`
+  ).join('');
+}
+
+function renderBlogSEO() {
+  const bs = BLOG_SEO;
+  counter(document.getElementById('blog-total'), bs.total_posts);
+  counter(document.getElementById('blog-organic'), bs.monthly_organic);
+
+  const sorted = [...bs.posts].sort((a,b) => b.views - a.views);
+  const top = sorted[0];
+  counter(document.getElementById('blog-top-views'), top.views);
+  const topName = top.title.length > 26 ? top.title.slice(0,26)+'…' : top.title;
+  document.getElementById('blog-top-name').textContent = topName;
+
+  const avgSeo = Math.round(bs.posts.reduce((s,p) => s + p.seo, 0) / bs.posts.length);
+  document.getElementById('blog-avg-seo').textContent = avgSeo;
+
+  document.getElementById('blogTableBody').innerHTML = sorted.map((p, i) => {
+    const seoColor = p.seo >= 90 ? 'var(--green)' : p.seo >= 75 ? 'var(--warn)' : 'var(--danger)';
+    return `<tr>
+      <td class="cd">${i+1}</td>
+      <td style="color:var(--t1);font-size:0.70rem;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${p.title}">${p.title}</td>
+      <td class="cg">${fmt(p.views)}</td>
+      <td style="color:var(--green);font-family:var(--mono)">${fmt(p.organic)}</td>
+      <td class="cd">${p.orders}</td>
+      <td style="font-family:var(--mono);font-size:0.76rem;font-weight:600;color:${seoColor}">${p.seo}</td>
+    </tr>`;
+  }).join('');
+
+  const bMonths = bs.monthly;
+  new Chart(document.getElementById('blogTrendChart').getContext('2d'), {
+    type: 'bar',
+    data: {
+      labels: bMonths.map(m => m.label),
+      datasets: [
+        {
+          label: 'Blog Yazısı',
+          data: bMonths.map(m => m.posts),
+          backgroundColor: 'rgba(212,175,55,0.55)',
+          borderColor: '#D4AF37', borderWidth: 1, borderRadius: 5,
+          yAxisID: 'y1'
+        },
+        {
+          label: 'Trafik',
+          data: bMonths.map(m => m.traffic),
+          backgroundColor: 'rgba(48,209,88,0.18)',
+          borderColor: 'rgba(48,209,88,0.65)', borderWidth: 1.5, borderRadius: 5,
+          yAxisID: 'y2'
+        }
+      ]
+    },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          mode: 'index', intersect: false,
+          callbacks: { label: ctx => `  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}` },
+          backgroundColor: 'rgba(0,0,0,0.96)', borderColor: 'rgba(212,175,55,0.3)', borderWidth: 1,
+          titleColor: '#F5F5F7', bodyColor: 'rgba(245,245,247,0.6)', padding: 12,
+          bodyFont: { family: '-apple-system', size: 11 }
+        }
+      },
+      scales: {
+        x: { ticks: { font: { family: '-apple-system', size: 9 }, color: '#6E6E73' }, grid: { display: false }, border: { display: false } },
+        y1: { position: 'left', ticks: { font: { family: '-apple-system', size: 9 }, color: '#D4AF37', stepSize: 1 }, grid: { color: 'rgba(255,255,255,0.04)' }, border: { display: false } },
+        y2: { position: 'right', ticks: { font: { family: '-apple-system', size: 9 }, color: '#30D158', callback: v => v >= 1000 ? fmt(v/1000)+'K' : v }, grid: { display: false }, border: { display: false } }
+      },
+      animation: { duration: 900, easing: 'easeOutQuart', delay: ctx => ctx.dataIndex * 60 }
+    }
+  });
+}
+
 function renderYouTube() {
   const ch=YOUTUBE.channel,goal=YOUTUBE.sub_goal||10000;
   const pct=Math.min(Math.round(ch.subscribers/goal*100),100);
@@ -1634,6 +1884,8 @@ renderRevenueChart();
 renderOrders();
 renderChannels();
 renderInventory();
+renderGA4Traffic();
+renderBlogSEO();
 renderYouTube();
 renderInstagram();
 initCostCfg();
