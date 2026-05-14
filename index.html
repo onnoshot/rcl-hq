@@ -256,6 +256,69 @@ tfoot td{border-top:1px solid rgba(212,175,55,0.14);color:var(--gold);font-weigh
 .prog-track{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
 .prog-fill{height:100%;border-radius:2px;transition:width 1.4s cubic-bezier(.16,1,.3,1);width:0;}
 
+/* FİNANS SAYFASI */
+.fin-hero{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
+@media(max-width:900px){.fin-hero{grid-template-columns:1fr;}}
+.fin-kpi{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.16,1,.3,1),box-shadow .25s;}
+.fin-kpi:hover{transform:translateY(-3px);box-shadow:0 20px 56px rgba(0,0,0,0.5);}
+.fin-kpi-gold{border-color:rgba(212,175,55,0.35);box-shadow:0 0 56px rgba(212,175,55,0.09);}
+.fin-kpi-gold::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.5),transparent);}
+.fin-kpi-green{border-color:rgba(48,209,88,0.25);box-shadow:0 0 40px rgba(48,209,88,0.06);}
+.fin-kpi-green::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(48,209,88,0.45),transparent);}
+.fin-kpi-red{border-color:rgba(255,69,58,0.2);}
+.fin-kpi-label{font-size:0.64rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--t3);font-family:var(--mono);margin-bottom:10px;}
+.fin-kpi-value{font-size:3.2rem;font-weight:700;letter-spacing:-0.04em;line-height:1;margin-bottom:8px;}
+.fin-kpi-sub{font-size:0.68rem;color:var(--t3);font-family:var(--mono);}
+.fin-kpi-bg-icon{position:absolute;right:-8px;bottom:-12px;font-size:5rem;opacity:0.04;pointer-events:none;user-select:none;}
+.fin-kpi-trend{display:flex;align-items:center;gap:6px;margin-top:8px;}
+.trend-up{color:var(--green);font-size:0.72rem;font-family:var(--mono);}
+.trend-down{color:var(--danger);font-size:0.72rem;font-family:var(--mono);}
+
+/* WATERFALL */
+.waterfall-bar{transition:height .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1);}
+.wf-row{display:flex;align-items:center;gap:12px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);cursor:default;transition:background .15s;border-radius:6px;}
+.wf-row:hover{background:rgba(255,255,255,0.025);}
+.wf-label{font-size:0.72rem;font-family:var(--mono);color:var(--t2);flex:0 0 220px;}
+.wf-bar-wrap{flex:1;height:22px;background:rgba(255,255,255,0.04);border-radius:5px;overflow:hidden;position:relative;}
+.wf-bar-fill{height:100%;border-radius:5px;transition:width 1.1s cubic-bezier(.16,1,.3,1);width:0;display:flex;align-items:center;padding-left:8px;}
+.wf-bar-fill span{font-size:0.64rem;font-family:var(--mono);font-weight:600;white-space:nowrap;}
+.wf-amount{font-size:0.76rem;font-family:var(--mono);font-weight:600;flex:0 0 100px;text-align:right;}
+
+/* COST INPUT GRID */
+.cost-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+@media(max-width:700px){.cost-grid{grid-template-columns:1fr;}}
+.cost-field{display:flex;flex-direction:column;gap:6px;}
+.cost-field-label{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.13em;color:var(--t3);font-family:var(--mono);}
+.cost-field-input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:10px;color:var(--t1);font-family:var(--mono);font-size:0.9rem;padding:10px 14px;outline:none;transition:border-color .2s,background .2s;-moz-appearance:textfield;text-align:right;}
+.cost-field-input:focus{border-color:rgba(212,175,55,0.5);background:rgba(255,255,255,0.08);}
+.cost-field-input::-webkit-inner-spin-button,.cost-field-input::-webkit-outer-spin-button{opacity:.4;}
+.cost-field-hint{font-size:0.59rem;color:var(--t3);font-family:var(--mono);}
+
+/* MARGIN GAUGE */
+.gauge-wrap{position:relative;width:160px;height:80px;overflow:hidden;margin:0 auto;}
+.gauge-bg{fill:none;stroke:rgba(255,255,255,0.08);stroke-width:16;stroke-linecap:round;}
+.gauge-fill{fill:none;stroke-width:16;stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.16,1,.3,1),stroke 1.2s;}
+.gauge-label{font-size:1.6rem;font-weight:700;font-family:var(--mono);text-anchor:middle;}
+
+/* KDV METER */
+.kdv-meter{display:flex;flex-direction:column;gap:8px;}
+.kdv-meter-row{display:flex;justify-content:space-between;align-items:center;padding:8px 14px;border-radius:10px;background:rgba(255,69,58,0.06);border:1px solid rgba(255,69,58,0.14);}
+.kdv-meter-row .lbl{font-size:0.7rem;font-family:var(--mono);color:var(--t2);}
+.kdv-meter-row .val{font-size:0.86rem;font-family:var(--mono);font-weight:700;color:var(--danger);}
+
+/* SPARKLINE */
+.sparkline{display:flex;align-items:flex-end;gap:3px;height:36px;}
+.spark-bar{flex:1;border-radius:3px 3px 0 0;transition:height .6s cubic-bezier(.16,1,.3,1);min-height:3px;}
+
+/* DÖNEM KARŞILAŞTIRMA */
+.period-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.pc-card{background:rgba(255,255,255,0.03);border:1px solid var(--b0);border-radius:14px;padding:16px;transition:border-color .2s;}
+.pc-card:hover{border-color:rgba(212,175,55,0.2);}
+.pc-card.selected{border-color:rgba(212,175,55,0.4);background:rgba(212,175,55,0.05);}
+.pc-period{font-size:0.62rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:10px;}
+.pc-rev{font-size:1.4rem;font-weight:700;font-family:var(--mono);color:var(--gold);margin-bottom:4px;}
+.pc-sub{font-size:0.65rem;color:var(--t3);font-family:var(--mono);}
+
 /* BLOG OLUŞTURUCU */
 .blog-opt-label{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:20px;background:rgba(255,255,255,0.04);border:1px solid var(--b0);font-size:0.71rem;font-family:var(--mono);color:var(--t2);cursor:pointer;transition:all .2s;user-select:none;}
 .blog-opt-label:hover{border-color:rgba(212,175,55,0.2);color:var(--t1);}
@@ -280,6 +343,10 @@ footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:v
       <span class="nav-label">Ana Sayfa</span>
     </div>
     <div class="sb-section">Operasyon</div>
+    <div class="nav-item" data-page="finance" onclick="navigate('finance',this)">
+      <svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+      <span class="nav-label">Finans</span>
+    </div>
     <div class="nav-item" data-page="inventory" onclick="navigate('inventory',this)">
       <svg viewBox="0 0 24 24"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="17"/><line x1="9" y1="14.5" x2="15" y2="14.5"/></svg>
       <span class="nav-label">Stok</span>
@@ -423,6 +490,215 @@ footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:v
   <footer class="fi"><span>Retrocameraland HQ · retrocameraland.myshopify.com</span></footer>
 </div>
 
+<!-- ═══════════════════ FİNANS ═══════════════════ -->
+<div class="page" id="page-finance">
+  <div class="page-topbar fi">
+    <div class="pt-left">
+      <div class="pt-title">Finans <span>Kontrolü</span></div>
+      <div class="pt-sub">Gelir · KDV · Maliyet · Kârlılık · Tam kontrol paneli</div>
+    </div>
+    <div class="pt-right">
+      <div class="period-tabs">
+        <button class="period-tab active" onclick="setFinPeriod('30d',this)">30 Gün</button>
+        <button class="period-tab" onclick="setFinPeriod('90d',this)">90 Gün</button>
+        <button class="period-tab" onclick="setFinPeriod('year',this)">1 Yıl</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DÖNEM KARŞILAŞTIRMA -->
+  <div class="sec fi" style="transition-delay:.03s">
+    <div class="period-compare" id="fin-period-compare"></div>
+  </div>
+
+  <!-- HERO KPIs -->
+  <div class="fin-hero fi" style="transition-delay:.06s">
+    <div class="fin-kpi fin-kpi-gold">
+      <div class="fin-kpi-label">Brüt Gelir</div>
+      <div class="fin-kpi-value gold" id="fin-rev">—</div>
+      <div class="fin-kpi-sub" id="fin-rev-sub">—</div>
+      <div class="sparkline" id="fin-rev-spark" style="margin-top:12px"></div>
+      <div class="fin-kpi-bg-icon">₺</div>
+    </div>
+    <div class="fin-kpi fin-kpi-green">
+      <div class="fin-kpi-label">Net Kâr (tahmini)</div>
+      <div class="fin-kpi-value" id="fin-net" style="color:var(--green)">—</div>
+      <div class="fin-kpi-sub"><span id="fin-margin-lbl">—</span> kâr marjı</div>
+      <!-- Gauge SVG -->
+      <div style="margin-top:14px">
+        <div class="gauge-wrap">
+          <svg viewBox="0 0 160 80" style="width:160px;height:80px;overflow:visible">
+            <path d="M 20 80 A 60 60 0 0 1 140 80" class="gauge-bg"/>
+            <path d="M 20 80 A 60 60 0 0 1 140 80" class="gauge-fill" id="fin-gauge-fill" stroke="var(--green)" stroke-dasharray="188.5" stroke-dashoffset="188.5"/>
+            <text x="80" y="72" class="gauge-label" fill="var(--t1)" font-size="18" font-weight="700" id="fin-gauge-label">—</text>
+          </svg>
+        </div>
+      </div>
+      <div class="fin-kpi-bg-icon">📈</div>
+    </div>
+    <div class="fin-kpi fin-kpi-red">
+      <div class="fin-kpi-label">Toplam Kesintiler</div>
+      <div class="fin-kpi-value" id="fin-total-cut" style="color:var(--danger)">—</div>
+      <div class="fin-kpi-sub" id="fin-cut-pct">gelirin —'i kesinti</div>
+      <div class="kdv-meter" style="margin-top:14px" id="fin-cut-meter"></div>
+      <div class="fin-kpi-bg-icon">✂️</div>
+    </div>
+  </div>
+
+  <!-- GELİR CHART + SİPARİŞ -->
+  <div class="sec fi" style="transition-delay:.09s">
+    <div class="g g8-4">
+      <div class="card p">
+        <div class="chart-title">Aylık Gelir Trendi</div>
+        <div class="chart-sub">Son 12 ay — Shopify verisi</div>
+        <div style="height:240px"><canvas id="finRevChart"></canvas></div>
+      </div>
+      <div class="card tcard">
+        <div class="thead"><span class="ttitle">Son Siparişler</span></div>
+        <table><tbody id="finOrdersBody"></tbody></table>
+      </div>
+    </div>
+  </div>
+
+  <!-- WATERFALL KÂR ANALİZİ -->
+  <div class="sec fi" style="transition-delay:.12s">
+    <div class="sec-label">Kâr Analizi — Waterfall</div>
+    <div class="g g6-6">
+      <div class="card p">
+        <div class="chart-title">Gelirden Kâra Yolculuk</div>
+        <div class="chart-sub" id="fin-wf-sub">—</div>
+        <div style="margin-top:14px;display:flex;flex-direction:column;gap:2px" id="fin-waterfall"></div>
+      </div>
+      <div class="card p">
+        <div class="chart-title">Maliyet Dağılımı</div>
+        <div class="chart-sub">Kesinti kalemleri</div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;margin-top:8px">
+          <div style="position:relative;height:150px"><canvas id="finCostDonut"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:1rem;font-weight:700;font-family:var(--mono);color:var(--t1)" id="finCostDonutTotal">—</div><div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono)">kesinti</div></div></div>
+          <div style="display:flex;flex-direction:column;gap:8px" id="finCostLegend"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MALİYET KONTROL PANELİ -->
+  <div class="sec fi" style="transition-delay:.15s">
+    <div class="sec-label">Maliyet Kontrol Merkezi</div>
+    <div class="g g3">
+      <!-- KDV Kontrolü -->
+      <div class="card p">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,69,58,0.1);border:1px solid rgba(255,69,58,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem">🏛️</div>
+          <div><div style="font-size:0.82rem;font-weight:600;color:var(--t1)">KDV Hesaplama</div><div style="font-size:0.64rem;color:var(--t3);font-family:var(--mono)">Otomatik hesaplanır</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(255,69,58,0.06);border:1px solid rgba(255,69,58,0.14);border-radius:10px">
+            <span style="font-size:0.72rem;font-family:var(--mono);color:var(--t2)">KDV Oranı</span>
+            <div style="display:flex;align-items:center;gap:8px">
+              <select id="cfg-kdv-rate" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:7px;color:var(--t1);font-family:var(--mono);font-size:0.8rem;padding:5px 10px;outline:none;cursor:pointer" onchange="renderFinancePage()">
+                <option value="20" selected>%20 (standart)</option>
+                <option value="10">%10 (indirimli)</option>
+                <option value="1">%1 (özel)</option>
+              </select>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;background:rgba(255,255,255,0.03);border-radius:8px">
+            <span style="font-size:0.7rem;font-family:var(--mono);color:var(--t3)">KDV tutarı</span>
+            <span style="font-size:0.82rem;font-family:var(--mono);font-weight:700;color:var(--danger)" id="fin-kdv-amount">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;background:rgba(255,255,255,0.03);border-radius:8px">
+            <span style="font-size:0.7rem;font-family:var(--mono);color:var(--t3)">KDV hariç gelir</span>
+            <span style="font-size:0.82rem;font-family:var(--mono);font-weight:700;color:var(--t1)" id="fin-rev-no-kdv">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:8px 14px;background:rgba(255,255,255,0.03);border-radius:8px">
+            <span style="font-size:0.7rem;font-family:var(--mono);color:var(--t3)">Sipariş başına KDV</span>
+            <span style="font-size:0.82rem;font-family:var(--mono);font-weight:700;color:var(--danger)" id="fin-kdv-per-ord">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Komisyon & Sabit Giderler -->
+      <div class="card p">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(255,159,10,0.1);border:1px solid rgba(255,159,10,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem">💳</div>
+          <div><div style="font-size:0.82rem;font-weight:600;color:var(--t1)">Komisyon & Giderler</div><div style="font-size:0.64rem;color:var(--t3);font-family:var(--mono)">Sipariş başına maliyet</div></div>
+        </div>
+        <div class="cost-grid">
+          <div class="cost-field">
+            <div class="cost-field-label">Kargo (₺/sipariş)</div>
+            <input class="cost-field-input" id="cfg-kargo2" type="number" oninput="syncCostCfg();renderFinancePage()">
+            <div class="cost-field-hint" id="fin-kargo-total">—</div>
+          </div>
+          <div class="cost-field">
+            <div class="cost-field-label">Kutu/Paket (₺/sipariş)</div>
+            <input class="cost-field-input" id="cfg-kutu2" type="number" oninput="syncCostCfg();renderFinancePage()">
+            <div class="cost-field-hint" id="fin-kutu-total">—</div>
+          </div>
+          <div class="cost-field">
+            <div class="cost-field-label">Iyzico Komisyon (%)</div>
+            <input class="cost-field-input" id="cfg-iyzico2" type="number" step="0.01" oninput="syncCostCfg();renderFinancePage()">
+            <div class="cost-field-hint" id="fin-iyzico-total">—</div>
+          </div>
+          <div class="cost-field">
+            <div class="cost-field-label">Shopify Komisyon (%)</div>
+            <input class="cost-field-input" id="cfg-shopify2" type="number" step="0.01" oninput="syncCostCfg();renderFinancePage()">
+            <div class="cost-field-hint" id="fin-shopify-total">—</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ürün Maliyeti & Kâr -->
+      <div class="card p">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(191,90,242,0.1);border:1px solid rgba(191,90,242,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem">📦</div>
+          <div><div style="font-size:0.82rem;font-weight:600;color:var(--t1)">Ürün Maliyeti (COGS)</div><div style="font-size:0.64rem;color:var(--t3);font-family:var(--mono)">Kamera maliyetleri</div></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div>
+            <div class="cost-field-label" style="margin-bottom:6px">Özel Ortalama Maliyet (₺) — boş bırakırsan stok maliyeti kullanılır</div>
+            <input class="cost-field-input" id="cfg-avg-cost" type="number" placeholder="Otomatik (stoktan)" style="width:100%" oninput="renderFinancePage()">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+            <div style="padding:10px 12px;background:rgba(191,90,242,0.06);border:1px solid rgba(191,90,242,0.15);border-radius:9px">
+              <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">COGS</div>
+              <div style="font-size:0.9rem;font-family:var(--mono);font-weight:700;color:var(--purple)" id="fin-cogs">—</div>
+            </div>
+            <div style="padding:10px 12px;background:rgba(48,209,88,0.06);border:1px solid rgba(48,209,88,0.15);border-radius:9px">
+              <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">Brüt Kâr</div>
+              <div style="font-size:0.9rem;font-family:var(--mono);font-weight:700;color:var(--green)" id="fin-gross-profit">—</div>
+            </div>
+          </div>
+          <div style="padding:10px 12px;background:rgba(255,255,255,0.03);border-radius:9px">
+            <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-bottom:6px">BAŞABAŞ NOKTASI (aylık)</div>
+            <div style="font-size:0.86rem;font-family:var(--mono);font-weight:700;color:var(--gold)" id="fin-breakeven">—</div>
+            <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-top:3px" id="fin-breakeven-sub">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KANAL GELİR ANALİZİ -->
+  <div class="sec fi" style="transition-delay:.18s">
+    <div class="sec-label">Kanal Kârlılık Analizi</div>
+    <div class="card p">
+      <div class="chart-title">Kanallara Göre Gelir & Sipariş</div>
+      <div class="chart-sub">Tüm zamanlar — kesinti hesabı dahil tahmini net</div>
+      <div style="height:220px;margin-top:14px"><canvas id="finChannelChart"></canvas></div>
+    </div>
+  </div>
+
+  <!-- SİPARİŞ BAŞINA MALİYET ANALİZİ -->
+  <div class="sec fi" style="transition-delay:.21s">
+    <div class="sec-label">Sipariş Başına Analiz</div>
+    <div class="g g4">
+      <div class="card p"><div class="kpi-lbl">AOV</div><div class="kpi-big gold" id="fin-aov">—</div><div class="kpi-sub">ortalama sipariş değeri</div></div>
+      <div class="card p"><div class="kpi-lbl">Sipariş Başına Maliyet</div><div class="kpi-big" style="color:var(--danger)" id="fin-cost-per-ord">—</div><div class="kpi-sub">tüm kesintiler dahil</div></div>
+      <div class="card p"><div class="kpi-lbl">Sipariş Başına Net</div><div class="kpi-big" id="fin-net-per-ord">—</div><div class="kpi-sub">tahmini net kâr</div></div>
+      <div class="card p"><div class="kpi-lbl">Toplam Sipariş</div><div class="kpi-big" id="fin-orders">—</div><div class="kpi-sub" id="fin-orders-sub">—</div></div>
+    </div>
+  </div>
+
+</div>
 <!-- ═══════════════════ SEO PANELİ ═══════════════════ -->
 <div class="page" id="page-seo">
   <div class="page-topbar fi">
@@ -1497,7 +1773,7 @@ function setPeriod(p, btn) {
 }
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','inventory','youtube','instagram','seo','blog','mamba'];
+const PAGES = ['overview','finance','inventory','youtube','instagram','seo','blog','mamba'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -1513,6 +1789,7 @@ function navigate(page, navEl) {
     if (match) match.classList.add('active');
   }
   window.location.hash = page;
+  if (page === 'finance') renderFinancePage();
   if (page === 'seo') renderSEOPage();
   if (page === 'mamba') renderMambaBriefing();
 }
@@ -1769,6 +2046,221 @@ function renderInstagram() {
   const typeIcon={'CAROUSEL_ALBUM':'🖼','VIDEO':'🎬','IMAGE':'📷'};
   const ipb=document.getElementById('igPostsBody');
   if(ipb) ipb.innerHTML=ig.posts.map(p=>`<tr><td class="cd" style="white-space:nowrap">${p.date}</td><td class="cd" style="font-size:0.72rem">${typeIcon[p.type]||p.type}</td><td class="cg">${fmt(p.likes)}</td><td><a href="${p.url}" target="_blank" style="color:var(--purple);text-decoration:none;font-family:var(--mono);font-size:0.72rem">${p.comments} ↗</a></td></tr>`).join('');
+}
+
+// ─── FİNANS SAYFASI ──────────────────────────────────────
+let finPeriod = '30d';
+
+function setFinPeriod(p, btn) {
+  finPeriod = p;
+  document.querySelectorAll('#page-finance .period-tab').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderFinancePage();
+}
+
+function syncCostCfg() {
+  const get = id => parseFloat(document.getElementById(id)?.value) || 0;
+  const cfg = {
+    kargo_tl: get('cfg-kargo2') || get('cfg-kargo'),
+    kutu_tl:  get('cfg-kutu2')  || get('cfg-kutu'),
+    iyzico_pct: get('cfg-iyzico2') || get('cfg-iyzico'),
+    shopify_pct: get('cfg-shopify2') || get('cfg-shopify'),
+  };
+  localStorage.setItem('rcl_cost_cfg', JSON.stringify(cfg));
+}
+
+function initFinanceCosts() {
+  const c = loadCostCfg();
+  const set = (id, v) => { const el = document.getElementById(id); if (el && !el.value) el.value = v; };
+  set('cfg-kargo2', c.kargo_tl); set('cfg-kutu2', c.kutu_tl);
+  set('cfg-iyzico2', c.iyzico_pct); set('cfg-shopify2', c.shopify_pct);
+}
+
+function renderFinancePage() {
+  initFinanceCosts();
+  const d = SHOPIFY[`period_${finPeriod}`] || SHOPIFY.period_30d;
+  const periodLbl = {'30d':'Son 30 gün','90d':'Son 90 gün','year':'Son 12 ay'};
+  const rev = d.revenue, orders = d.orders;
+
+  // ── Dönem karşılaştırma kartları ──
+  const periods = [
+    {key:'30d', label:'Son 30 Gün'},
+    {key:'90d', label:'Son 90 Gün'},
+    {key:'year', label:'Son 12 Ay'},
+  ];
+  const pcEl = document.getElementById('fin-period-compare');
+  if (pcEl) pcEl.innerHTML = periods.map(p => {
+    const pd = SHOPIFY[`period_${p.key}`] || {};
+    return `<div class="pc-card${finPeriod===p.key?' selected':''}" onclick="setFinPeriod('${p.key}',null);document.querySelectorAll('#page-finance .period-tab').forEach(b=>b.classList.remove('active'))">
+      <div class="pc-period">${p.label}</div>
+      <div class="pc-rev">${fmtTL(pd.revenue||0)}</div>
+      <div class="pc-sub">${pd.orders||0} sipariş · AOV ${fmtTL(pd.aov||0)}</div>
+    </div>`;
+  }).join('');
+
+  // ── Hero KPIs ──
+  const kdvRate = parseFloat(document.getElementById('cfg-kdv-rate')?.value) || 20;
+  const kargo_tl = parseFloat(document.getElementById('cfg-kargo2')?.value) || 0;
+  const kutu_tl  = parseFloat(document.getElementById('cfg-kutu2')?.value) || 0;
+  const iyzico_pct = parseFloat(document.getElementById('cfg-iyzico2')?.value) || 0;
+  const shopify_pct = parseFloat(document.getElementById('cfg-shopify2')?.value) || 0;
+
+  const kdv = Math.round(rev * kdvRate / (100 + kdvRate));
+  const iyzico = Math.round(rev * iyzico_pct / 100);
+  const shopifyFee = Math.round(rev * shopify_pct / 100);
+  const kargo = orders * kargo_tl;
+  const kutu  = orders * kutu_tl;
+
+  const camCosts = loadCamCosts(), camEntries = Object.values(camCosts).filter(v=>v>0);
+  const customAvg = parseFloat(document.getElementById('cfg-avg-cost')?.value) || 0;
+  const avgCamCost = customAvg > 0 ? customAvg : (camEntries.length > 0 ? Math.round(camEntries.reduce((s,v)=>s+v,0)/camEntries.length) : 0);
+  const cogs = avgCamCost * orders;
+
+  const totalCut = kdv + iyzico + shopifyFee + kargo + kutu + cogs;
+  const net = rev - totalCut;
+  const margin = rev > 0 ? (net/rev*100).toFixed(1) : 0;
+  const netPerOrd = orders > 0 ? Math.round(net/orders) : 0;
+  const costPerOrd = orders > 0 ? Math.round(totalCut/orders) : 0;
+
+  counter(document.getElementById('fin-rev'), rev, '₺');
+  const frs = document.getElementById('fin-rev-sub'); if(frs) frs.textContent = periodLbl[finPeriod] + ' · ' + orders + ' sipariş';
+  const fnEl = document.getElementById('fin-net'); if(fnEl){fnEl.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));fnEl.style.color=net>=0?'var(--green)':'var(--danger)';}
+  const fml = document.getElementById('fin-margin-lbl'); if(fml){fml.textContent='%'+margin;fml.style.color=parseFloat(margin)>=30?'var(--green)':parseFloat(margin)>=15?'var(--warn)':'var(--danger)';}
+  const ftc = document.getElementById('fin-total-cut'); if(ftc) ftc.textContent = '₺'+fmt(totalCut);
+  const fcp = document.getElementById('fin-cut-pct'); if(fcp) fcp.textContent = 'Gelirin %'+(rev>0?(totalCut/rev*100).toFixed(1):0)+'i';
+
+  // Gauge animasyonu
+  setTimeout(() => {
+    const gf = document.getElementById('fin-gauge-fill');
+    const gl = document.getElementById('fin-gauge-label');
+    if (gf) {
+      const pct = Math.min(Math.max(parseFloat(margin), 0), 100) / 100;
+      const dashOffset = 188.5 * (1 - pct);
+      gf.style.strokeDashoffset = dashOffset;
+      const c = parseFloat(margin)>=30?'#30D158':parseFloat(margin)>=15?'#FF9F0A':'#FF453A';
+      gf.style.stroke = c;
+    }
+    if (gl) { gl.textContent = '%'+margin; gl.style.fill = parseFloat(margin)>=30?'#30D158':parseFloat(margin)>=15?'#FF9F0A':'#FF453A'; }
+  }, 400);
+
+  // KDV kutusu
+  const fka = document.getElementById('fin-kdv-amount'); if(fka) fka.textContent='₺'+fmt(kdv);
+  const fnk = document.getElementById('fin-rev-no-kdv'); if(fnk) fnk.textContent='₺'+fmt(rev-kdv);
+  const fkp = document.getElementById('fin-kdv-per-ord'); if(fkp) fkp.textContent=orders>0?'₺'+fmt(Math.round(kdv/orders)):'—';
+
+  // Maliyet alanı ipuçları
+  const hints = [
+    ['fin-kargo-total', kargo, `${orders} sipariş × ₺${kargo_tl}`],
+    ['fin-kutu-total',  kutu,  `${orders} sipariş × ₺${kutu_tl}`],
+    ['fin-iyzico-total', iyzico, `₺${fmt(rev)} × %${iyzico_pct}`],
+    ['fin-shopify-total', shopifyFee, `₺${fmt(rev)} × %${shopify_pct}`],
+  ];
+  hints.forEach(([id, val, hint]) => { const el=document.getElementById(id); if(el) el.textContent = val>0 ? `₺${fmt(val)} toplam · ${hint}` : hint; });
+
+  // COGS & Başabaş
+  const fcogs = document.getElementById('fin-cogs'); if(fcogs) fcogs.textContent = avgCamCost>0?'₺'+fmt(cogs):'Maliyet girilmedi';
+  const fgp = document.getElementById('fin-gross-profit'); if(fgp){const gp=rev-cogs-kdv;fgp.textContent='₺'+fmt(Math.max(gp,0));fgp.style.color=gp>=0?'var(--green)':'var(--danger)';}
+  const fbe = document.getElementById('fin-breakeven');
+  const fbes = document.getElementById('fin-breakeven-sub');
+  if(fbe && avgCamCost>0) {
+    const fixedPerOrd = kargo_tl + kutu_tl + (iyzico_pct+shopify_pct)/100 * (d.aov||12000);
+    const netPerUnitRaw = (d.aov||12000) - avgCamCost - Math.round((d.aov||12000)*kdvRate/(100+kdvRate)) - fixedPerOrd;
+    const beOrders = netPerUnitRaw > 0 ? Math.ceil(500 / netPerUnitRaw) : null;
+    fbe.textContent = beOrders ? beOrders + ' sipariş' : 'Hesaplanamadı';
+    if(fbes) fbes.textContent = beOrders ? `₺${fmt(beOrders*(d.aov||12000))} aylık ciro hedefi` : 'Maliyet verisini gir';
+  } else if(fbe) { fbe.textContent='Maliyet girilmedi'; if(fbes) fbes.textContent='Stok sayfasından kamera maliyetlerini gir'; }
+
+  // Sipariş başına analiz
+  counter(document.getElementById('fin-aov'), d.aov, '₺');
+  const fco=document.getElementById('fin-cost-per-ord'); if(fco) fco.textContent='₺'+fmt(costPerOrd);
+  const fno=document.getElementById('fin-net-per-ord'); if(fno){fno.textContent=(netPerOrd>=0?'₺':'-₺')+fmt(Math.abs(netPerOrd));fno.style.color=netPerOrd>=0?'var(--green)':'var(--danger)';}
+  counter(document.getElementById('fin-orders'), orders);
+  const fos=document.getElementById('fin-orders-sub'); if(fos) fos.textContent=periodLbl[finPeriod];
+
+  // ── Waterfall ──
+  const wfSub = document.getElementById('fin-wf-sub'); if(wfSub) wfSub.textContent=periodLbl[finPeriod]+' · '+orders+' sipariş';
+  const wfData = [
+    {label:'Brüt Gelir', val:rev, color:'#D4AF37', type:'start'},
+    {label:`KDV %${kdvRate}`, val:-kdv, color:'#FF453A', type:'minus'},
+    {label:`Iyzico %${iyzico_pct}`, val:-iyzico, color:'#FF9F0A', type:'minus'},
+    {label:`Shopify %${shopify_pct}`, val:-shopifyFee, color:'#FF9F0A', type:'minus'},
+    {label:`Kargo (${orders}×₺${kargo_tl})`, val:-kargo, color:'#6E6E73', type:'minus'},
+    {label:`Kutu (${orders}×₺${kutu_tl})`, val:-kutu, color:'#6E6E73', type:'minus'},
+    {label:avgCamCost>0?`COGS (${orders}×₺${fmt(avgCamCost)})`:'COGS (girilmedi)', val:-cogs, color:'#BF5AF2', type:'minus'},
+    {label:'Net Kâr', val:net, color:net>=0?'#30D158':'#FF453A', type:'total'},
+  ];
+  const maxVal = rev;
+  const wfEl = document.getElementById('fin-waterfall');
+  if (wfEl) {
+    wfEl.innerHTML = wfData.map(row => {
+      const pct = Math.max(Math.abs(row.val) / maxVal * 100, 1).toFixed(1);
+      const sign = row.val > 0 ? '+' : '';
+      const isTotal = row.type === 'total';
+      return `<div class="wf-row">
+        <span class="wf-label">${row.label}</span>
+        <div class="wf-bar-wrap">
+          <div class="wf-bar-fill waterfall-bar" data-w="${pct}" style="background:${row.color}22;border:1px solid ${row.color}44;width:0">
+            <span style="color:${row.color};font-weight:${isTotal?'700':'600'}">${sign}₺${fmt(Math.abs(row.val))}</span>
+          </div>
+        </div>
+        <span class="wf-amount" style="color:${row.color}">${sign}₺${fmt(Math.abs(row.val))}</span>
+      </div>`;
+    }).join('');
+    setTimeout(() => {
+      document.querySelectorAll('.wf-bar-fill[data-w]').forEach(b => { b.style.width = b.dataset.w + '%'; });
+    }, 200);
+  }
+
+  // ── Maliyet Dağılımı Donut ──
+  const costItems = [
+    {label:`KDV %${kdvRate}`, val:kdv, color:'#FF453A'},
+    {label:`Iyzico`, val:iyzico, color:'#FF9F0A'},
+    {label:`Shopify`, val:shopifyFee, color:'#F5A623'},
+    {label:`Kargo`, val:kargo, color:'#8E8E93'},
+    {label:`Kutu`, val:kutu, color:'#6E6E73'},
+    {label:`COGS`, val:cogs, color:'#BF5AF2'},
+  ].filter(c => c.val > 0);
+  const donutTotal = costItems.reduce((s,c)=>s+c.val,0);
+  const cdtEl = document.getElementById('finCostDonutTotal'); if(cdtEl) cdtEl.textContent='₺'+fmt(donutTotal);
+  mkChart('finCostDonut',{type:'doughnut',data:{labels:costItems.map(c=>c.label),datasets:[{data:costItems.map(c=>c.val),backgroundColor:costItems.map(c=>c.color+'99'),borderColor:costItems.map(c=>c.color),borderWidth:2,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'70%',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.label}: ₺${fmt(ctx.parsed)} (%${rev>0?(ctx.parsed/rev*100).toFixed(1):0})`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},animation:{duration:1200,easing:'easeOutQuart'}}});
+  const fclEl = document.getElementById('finCostLegend');
+  if(fclEl) fclEl.innerHTML=costItems.map(c=>`<div class="leg"><div class="leg-dot" style="background:${c.color}"></div><span class="leg-name">${c.label}</span><span class="leg-pct">%${rev>0?(c.val/rev*100).toFixed(1):0}</span></div>`).join('');
+
+  // ── Sparkline ──
+  const revData = SHOPIFY.monthly_revenue;
+  const sparkEl = document.getElementById('fin-rev-spark');
+  if (sparkEl) {
+    const maxSpark = Math.max(...revData);
+    sparkEl.innerHTML = revData.map((v,i) => {
+      const h = maxSpark > 0 ? Math.max(Math.round(v/maxSpark*36), 3) : 3;
+      const isLast = i === revData.length-1;
+      return `<div class="spark-bar" style="height:${h}px;background:${isLast?'#D4AF37':i===revData.indexOf(Math.max(...revData))?'rgba(212,175,55,0.7)':'rgba(212,175,55,0.25)'}"></div>`;
+    }).join('');
+  }
+
+  // ── Kesinti mini-meter ──
+  const cutMeterEl = document.getElementById('fin-cut-meter');
+  if (cutMeterEl) {
+    const items = [{lbl:'KDV',val:kdv,c:'var(--danger)'},{lbl:'Komisyon',val:iyzico+shopifyFee,c:'var(--warn)'},{lbl:'Operasyon',val:kargo+kutu,c:'var(--t2)'},{lbl:'COGS',val:cogs,c:'var(--purple)'}].filter(i=>i.val>0);
+    cutMeterEl.innerHTML = items.map(i=>`<div class="kdv-meter-row"><span class="lbl">${i.lbl}</span><span class="val" style="color:${i.c}">₺${fmt(i.val)}</span></div>`).join('');
+  }
+
+  // ── Gelir Trend Chart ──
+  if (document.getElementById('finRevChart')) {
+    const grad = document.getElementById('finRevChart').getContext('2d').createLinearGradient(0,0,0,240);
+    grad.addColorStop(0,'rgba(212,175,55,0.3)'); grad.addColorStop(1,'rgba(212,175,55,0)');
+    mkChart('finRevChart',{type:'line',data:{labels:SHOPIFY.monthly_labels,datasets:[{data:SHOPIFY.monthly_revenue,borderColor:'#D4AF37',borderWidth:2.5,fill:true,backgroundColor:grad,tension:0.4,pointRadius:SHOPIFY.monthly_revenue.map((_,i)=>i===SHOPIFY.monthly_revenue.length-1?6:0),pointBackgroundColor:'#D4AF37',pointBorderColor:'#000',pointBorderWidth:2,pointHoverRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>[`  Gelir: ${fmtTL(ctx.parsed.y)}`,`  Sipariş: ${SHOPIFY.monthly_orders[ctx.dataIndex]}`]},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.35)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:14,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1200,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
+  }
+
+  // ── Son Siparişler ──
+  const fob = document.getElementById('finOrdersBody');
+  if(fob) fob.innerHTML=SHOPIFY.recent_orders.map(o=>`<tr><td class="cd">${o.date}</td><td class="cg">${fmtTL(o.amount)}</td></tr>`).join('');
+
+  // ── Kanal Chart ──
+  if (document.getElementById('finChannelChart')) {
+    const ch = SHOPIFY.channels;
+    mkChart('finChannelChart',{type:'bar',data:{labels:ch.map(c=>c.name),datasets:[{label:'Gelir',data:ch.map(c=>c.rev),backgroundColor:ch.map(c=>c.color+'55'),borderColor:ch.map(c=>c.color),borderWidth:2,borderRadius:8,yAxisID:'y1'},{label:'Sipariş',data:ch.map(c=>c.orders),backgroundColor:ch.map(c=>c.color+'33'),borderColor:ch.map(c=>c.color+'88'),borderWidth:1,borderRadius:6,type:'bar',yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>ctx.dataset.label==='Gelir'?`  Gelir: ${fmtTL(ctx.parsed.y)}`:`  Sipariş: ${ctx.parsed.y}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y1:{position:'left',ticks:{font:{family:'-apple-system',size:9},color:'#D4AF37',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y2:{position:'right',ticks:{font:{family:'-apple-system',size:9},color:'#A1A1A6'},grid:{display:false},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*80}}});
+  }
 }
 
 // ─── SEO PANELİ ──────────────────────────────────────────
