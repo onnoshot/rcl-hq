@@ -416,48 +416,25 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 @keyframes cg-hair-sway{0%,100%{transform:rotate(0deg);}50%{transform:rotate(.4deg) translateX(.5px);}}
 @keyframes cg-hair-active{0%,100%{transform:rotate(0deg);}33%{transform:rotate(-.5deg);}66%{transform:rotate(.6deg);}}
 
-/* ── LIVING CHARACTER ANIMATIONS ────────────────────────── */
-.cg-figure.idle .cg-svg{animation:cg-idle-breath 6s ease-in-out infinite;}
-@keyframes cg-idle-breath{
-  0%,100%{transform:translateY(0) rotate(0deg);}
-  50%{transform:translateY(-3px) rotate(.1deg);}
+/* ── CHARACTER STATE GLOWS — kol & sac animasyonlari korunuyor ──── */
+.cg-figure.idle .cg-svg{filter:drop-shadow(0 0 6px rgba(212,175,55,.12));}
+.cg-figure.analyzing .cg-svg{filter:drop-shadow(0 0 20px rgba(90,200,250,.5));animation:cg-glow-analyze 2.2s ease-in-out infinite;}
+@keyframes cg-glow-analyze{
+  0%,100%{filter:drop-shadow(0 0 14px rgba(90,200,250,.45));}
+  50%{filter:drop-shadow(0 0 28px rgba(90,200,250,.8)) brightness(1.07);}
 }
-.cg-figure.analyzing .cg-svg{filter:drop-shadow(0 0 18px rgba(90,200,250,.55));animation:cg-think-anim 1.5s ease-in-out infinite;}
-@keyframes cg-think-anim{
-  0%,100%{transform:rotate(0) scale(1) translateY(0);}
-  25%{transform:rotate(-2.5deg) scale(1.01) translateY(-3px);filter:drop-shadow(0 0 26px rgba(90,200,250,.75)) brightness(1.1);}
-  55%{transform:rotate(1.8deg) scale(1.015) translateY(-1px);}
-  80%{transform:rotate(-1deg) scale(1.008) translateY(-2px);filter:drop-shadow(0 0 30px rgba(90,200,250,.8)) brightness(1.12);}
+.cg-figure.writing .cg-svg{filter:drop-shadow(0 0 18px rgba(212,175,55,.5));animation:cg-glow-write 1.9s ease-in-out infinite;}
+@keyframes cg-glow-write{
+  0%,100%{filter:drop-shadow(0 0 14px rgba(212,175,55,.45));}
+  50%{filter:drop-shadow(0 0 28px rgba(212,175,55,.82)) brightness(1.08);}
 }
-.cg-figure.writing .cg-svg{filter:drop-shadow(0 0 22px rgba(212,175,55,.6));animation:cg-type-anim 2s ease-in-out infinite;}
-@keyframes cg-type-anim{
-  0%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 16px rgba(212,175,55,.5)) brightness(1);}
-  20%{transform:translateY(-5px) scale(1.02) rotate(.6deg);filter:drop-shadow(0 0 28px rgba(212,175,55,.8)) brightness(1.12);}
-  42%{transform:translateY(-3px) scale(1.016) rotate(-.3deg);}
-  65%{transform:translateY(-6px) scale(1.022) rotate(.8deg);filter:drop-shadow(0 0 34px rgba(212,175,55,.88)) brightness(1.18);}
-  85%{transform:translateY(-2px) scale(1.01) rotate(-.2deg);}
-  100%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 16px rgba(212,175,55,.5)) brightness(1);}
-}
-.cg-figure.done .cg-svg{filter:drop-shadow(0 0 24px rgba(52,199,89,.6));animation:cg-celebrate .75s cubic-bezier(.34,1.56,.64,1) both;}
-@keyframes cg-celebrate{
-  0%{transform:scale(.93) translateY(8px);}
-  55%{transform:scale(1.07) translateY(-6px) rotate(2deg);}
-  80%{transform:scale(.98) translateY(-2px) rotate(-1deg);}
-  100%{transform:scale(1) translateY(0) rotate(0);}
-}
-/* Human break states */
-.cg-figure.tired .cg-svg{filter:drop-shadow(0 0 10px rgba(100,100,180,.35));animation:cg-tired-anim 4s ease-in-out infinite;}
-@keyframes cg-tired-anim{
-  0%,100%{transform:translateY(0) rotate(1deg);}
-  50%{transform:translateY(4px) rotate(2deg);}
-}
-.cg-figure.smoke .cg-svg,.cg-figure.coffee .cg-svg{filter:drop-shadow(0 0 8px rgba(200,180,150,.22));animation:cg-casual-anim 5s ease-in-out infinite;}
-.cg-figure.wc .cg-svg{filter:drop-shadow(0 0 8px rgba(255,149,0,.2));animation:cg-wc-anim 1.5s ease-in-out forwards;}
-.cg-figure.think .cg-svg{filter:drop-shadow(0 0 14px rgba(90,200,250,.4));animation:cg-think-anim 2.5s ease-in-out infinite;}
-.cg-figure.stretch .cg-svg{filter:drop-shadow(0 0 8px rgba(100,200,100,.25));animation:cg-stretch-anim 3s ease-in-out infinite;}
-@keyframes cg-casual-anim{0%,100%{transform:translateY(0) rotate(-.5deg);}50%{transform:translateY(-3px) rotate(.5deg);}}
-@keyframes cg-wc-anim{0%{transform:translateX(0);}40%{transform:translateX(8px) rotate(3deg);}100%{transform:translateX(12px) rotate(5deg) scale(.95);}}
-@keyframes cg-stretch-anim{0%,100%{transform:translateY(0) scaleY(1);}50%{transform:translateY(-8px) scaleY(1.04);}}
+.cg-figure.done .cg-svg{filter:drop-shadow(0 0 24px rgba(52,199,89,.65));animation:cg-glow-done .8s cubic-bezier(.34,1.56,.64,1) both;}
+@keyframes cg-glow-done{0%{opacity:.7;}60%{opacity:1;filter:drop-shadow(0 0 36px rgba(52,199,89,.9)) brightness(1.14);}100%{filter:drop-shadow(0 0 24px rgba(52,199,89,.65));}}
+.cg-figure.tired .cg-svg{filter:drop-shadow(0 0 8px rgba(100,100,180,.28));}
+.cg-figure.smoke .cg-svg,.cg-figure.coffee .cg-svg{filter:drop-shadow(0 0 6px rgba(200,180,150,.18));}
+.cg-figure.wc .cg-svg{filter:drop-shadow(0 0 6px rgba(255,149,0,.18));}
+.cg-figure.think .cg-svg{filter:drop-shadow(0 0 16px rgba(90,200,250,.38));animation:cg-glow-analyze 3s ease-in-out infinite;}
+.cg-figure.stretch .cg-svg{filter:drop-shadow(0 0 6px rgba(100,200,100,.2));}
 
 /* Character props */
 .cg-prop{transition:opacity .5s ease;}
@@ -544,13 +521,13 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cg-kw-tag{font-size:.62rem;padding:3px 9px;border-radius:8px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);color:rgba(212,175,55,.75);}
 
 /* Thought stream */
-.cg-thought-stream{background:rgba(0,0,0,.2);border-radius:10px;padding:10px 14px;margin-bottom:10px;min-height:44px;font-size:.72rem;line-height:1.6;}
-.cg-ts-line{color:rgba(255,255,255,.45);}
-.cg-ts-line.ok{color:rgba(52,199,89,.7);}
+.cg-thought-stream{background:rgba(0,0,0,.25);border-radius:10px;padding:10px 14px;margin-bottom:10px;min-height:40px;border:1px solid rgba(255,255,255,.04);}
+.cg-ts-line{color:rgba(255,255,255,.38);font-size:.67rem;line-height:1.7;font-family:var(--mono);}
+.cg-ts-line.ok{color:rgba(52,199,89,.65);}
 .cg-ts-line.err{color:rgba(255,69,58,.6);}
-.cg-ts-line.warn{color:rgba(255,149,0,.7);}
-.cg-ts-line.info{color:rgba(90,200,250,.7);}
-.cg-ts-line.think{color:rgba(212,175,55,.65);font-style:italic;}
+.cg-ts-line.warn{color:rgba(255,149,0,.65);}
+.cg-ts-line.info{color:rgba(90,200,250,.6);}
+.cg-ts-line.think{color:rgba(212,175,55,.55);}
 
 /* Agenda */
 .cg-agenda-wrap{display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto;}
@@ -565,16 +542,39 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 /* History */
 .cg-agenda-item.done-item{opacity:.4;}
-.cg-ana-grid{display:flex;flex-direction:column;gap:4px;padding:2px 0;}
-.cg-ana-section-hdr{font-size:.54rem;text-transform:uppercase;letter-spacing:.12em;opacity:.3;font-family:var(--mono);padding:1px 0;}
-.cg-ana-row{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-top:4px;}
-.cg-ana-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:8px 5px;text-align:center;}
-.cg-ana-roi{background:rgba(212,175,55,.07);border:1px solid rgba(212,175,55,.14);border-radius:10px;padding:10px 12px;margin-top:6px;}
-.cg-ana-roi-main{font-size:1.2rem;font-weight:700;font-family:var(--mono);color:#D4AF37;margin-bottom:3px;}
-.cg-ana-roi-sub{font-size:.57rem;opacity:.38;line-height:1.45;}
-.cg-ana-chart{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:8px 10px;margin-top:6px;}
-.cg-ana-blogs{display:flex;flex-direction:column;gap:3px;margin-top:4px;}
-.cg-ana-blog-row{display:flex;align-items:center;gap:8px;padding:5px 7px;background:rgba(255,255,255,.02);border-radius:6px;border:1px solid rgba(255,255,255,.04);}
+.cg-ana-grid{display:flex;flex-direction:column;gap:6px;padding:2px 0;}
+.cg-ana-section-hdr{
+  font-size:.54rem;text-transform:uppercase;letter-spacing:.14em;
+  opacity:.28;font-family:var(--mono);padding:2px 0 0;
+  display:flex;align-items:center;gap:6px;
+}
+.cg-ana-section-hdr::before{
+  content:'';display:block;width:16px;height:1px;background:rgba(255,255,255,.12);
+}
+.cg-ana-row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:4px;}
+.cg-ana-card{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+  border-radius:10px;padding:10px 6px;text-align:center;
+  transition:border-color .2s;
+}
+.cg-ana-card:hover{border-color:rgba(255,255,255,.12);}
+.cg-ana-roi{
+  background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.14);
+  border-radius:12px;padding:12px 14px;margin-top:4px;
+}
+.cg-ana-roi-main{font-size:1.35rem;font-weight:700;font-family:var(--mono);color:#D4AF37;margin-bottom:4px;letter-spacing:-.01em;}
+.cg-ana-roi-sub{font-size:.58rem;opacity:.35;line-height:1.5;}
+.cg-ana-chart{
+  background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);
+  border-radius:10px;padding:10px 12px;margin-top:4px;
+}
+.cg-ana-blogs{display:flex;flex-direction:column;gap:4px;margin-top:4px;}
+.cg-ana-blog-row{
+  display:flex;align-items:center;gap:8px;padding:7px 8px;
+  background:rgba(255,255,255,.02);border-radius:8px;border:1px solid rgba(255,255,255,.04);
+  transition:background .15s;
+}
+.cg-ana-blog-row:hover{background:rgba(255,255,255,.04);}
 .cg-hist-item{padding:10px 12px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05);margin-bottom:6px;cursor:pointer;transition:all .2s;}
 .cg-hist-item:hover{background:rgba(255,255,255,.06);}
 .cg-hist-title{font-size:.78rem;color:rgba(255,255,255,.8);margin-bottom:4px;}
@@ -624,56 +624,127 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cg-w-version{font-size:.6rem;opacity:.35;font-weight:400;margin-left:6px;}
 
 
-/* ── CherryGlow Chat Interface ──────────────────────────────────────────── */
+/* ── CherryGlow Chat — yeniden tasarim ──────────────────────────────────── */
 .cg-main-grid{grid-template-columns:290px 1fr !important;}
-.cg-chat-card{display:flex;flex-direction:column;padding:14px;min-height:260px;}
-.cg-chat-messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;
-  padding:4px 2px;max-height:280px;scrollbar-width:thin;scrollbar-color:rgba(212,175,55,.2) transparent;}
-.cg-msg{display:flex;align-items:flex-end;gap:7px;max-width:92%;}
+.cg-chat-card{display:flex;flex-direction:column;padding:0;min-height:340px;overflow:hidden;}
+
+/* Chat header */
+.cg-chat-header{
+  display:flex;align-items:center;gap:10px;padding:12px 16px 10px;
+  border-bottom:1px solid rgba(255,255,255,.05);flex-shrink:0;
+}
+.cg-chat-av-wrap{
+  width:34px;height:34px;border-radius:50%;
+  background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cg-cherry-av-svg{width:22px;height:22px;display:block;}
+.cg-petal{transform-box:fill-box;transform-origin:50% 100%;}
+@keyframes cg-petal-sway{0%,100%{transform:rotate(0deg);}50%{transform:rotate(1.5deg);}}
+.cg-petal:nth-child(1){animation:cg-petal-sway 4s ease-in-out infinite;}
+.cg-petal:nth-child(2){animation:cg-petal-sway 4s ease-in-out .4s infinite;}
+.cg-petal:nth-child(3){animation:cg-petal-sway 4s ease-in-out .8s infinite;}
+.cg-petal:nth-child(4){animation:cg-petal-sway 4s ease-in-out 1.2s infinite;}
+.cg-petal:nth-child(5){animation:cg-petal-sway 4s ease-in-out 1.6s infinite;}
+.cg-chat-hd-info{flex:1;min-width:0;}
+.cg-chat-hd-name{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.9);line-height:1.2;}
+.cg-chat-hd-status{display:flex;align-items:center;gap:5px;margin-top:2px;}
+.cg-chat-status-dot{
+  width:5px;height:5px;border-radius:50%;background:rgba(52,199,89,.85);flex-shrink:0;
+  animation:cg-status-pulse 2.5s ease-in-out infinite;
+}
+@keyframes cg-status-pulse{0%,100%{opacity:.85;}50%{opacity:.35;}}
+.cg-chat-hd-state-txt{font-size:.6rem;color:rgba(52,199,89,.65);}
+
+/* Messages */
+.cg-chat-messages{
+  flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;
+  padding:14px 14px 8px;max-height:320px;
+  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.08) transparent;
+}
+.cg-chat-messages::-webkit-scrollbar{width:3px;}
+.cg-chat-messages::-webkit-scrollbar-thumb{background:rgba(255,255,255,.1);border-radius:4px;}
+.cg-msg{display:flex;align-items:flex-end;gap:8px;max-width:90%;}
 .cg-msg.cherry{align-self:flex-start;}
 .cg-msg.user{align-self:flex-end;flex-direction:row-reverse;}
-.cg-msg-av{width:26px;height:26px;border-radius:50%;background:rgba(212,175,55,.12);
-  border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;
-  font-size:13px;flex-shrink:0;}
-.cg-msg-bbl{padding:8px 13px 6px;border-radius:14px;font-size:.78rem;line-height:1.55;
-  position:relative;max-width:230px;}
-.cg-msg.cherry .cg-msg-bbl{background:rgba(212,175,55,.09);border:1px solid rgba(212,175,55,.18);
-  color:rgba(255,255,255,.82);border-bottom-left-radius:4px;}
-.cg-msg.user .cg-msg-bbl{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);
-  color:rgba(255,255,255,.72);border-bottom-right-radius:4px;}
-.cg-msg-bbl.insight{background:rgba(90,200,250,.09);border-color:rgba(90,200,250,.22);}
-.cg-msg-bbl.question{background:rgba(191,90,242,.09);border-color:rgba(191,90,242,.22);}
-.cg-msg-bbl.done{background:rgba(52,199,89,.09);border-color:rgba(52,199,89,.22);}
-.cg-msg-bbl.report{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.28);}
-.cg-msg-bbl.task{background:rgba(255,149,0,.09);border-color:rgba(255,149,0,.22);}
-.cg-msg-time{font-size:.55rem;opacity:.3;margin-top:3px;text-align:right;}
-.cg-typing-dots{display:flex;gap:4px;align-items:center;padding:10px 14px;
-  background:rgba(212,175,55,.09);border:1px solid rgba(212,175,55,.18);border-radius:14px;
-  border-bottom-left-radius:4px;}
-.cg-typing-dots span{width:5px;height:5px;border-radius:50%;background:rgba(212,175,55,.6);
-  animation:cg-dot .9s ease-in-out infinite;}
+.cg-msg-av{
+  width:28px;height:28px;border-radius:50%;
+  background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.cg-msg-bbl{
+  padding:10px 14px 8px;border-radius:16px;font-size:.8rem;line-height:1.62;
+  position:relative;max-width:250px;word-break:break-word;
+}
+.cg-msg.cherry .cg-msg-bbl{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.85);border-bottom-left-radius:4px;
+}
+.cg-msg.user .cg-msg-bbl{
+  background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);
+  color:rgba(255,255,255,.9);border-bottom-right-radius:4px;
+}
+.cg-msg-bbl.insight{background:rgba(90,200,250,.07);border-color:rgba(90,200,250,.18);}
+.cg-msg-bbl.question{background:rgba(191,90,242,.07);border-color:rgba(191,90,242,.16);}
+.cg-msg-bbl.done{background:rgba(52,199,89,.07);border-color:rgba(52,199,89,.18);}
+.cg-msg-bbl.report{background:rgba(212,175,55,.09);border-color:rgba(212,175,55,.22);}
+.cg-msg-bbl.task{background:rgba(255,149,0,.07);border-color:rgba(255,149,0,.18);}
+.cg-msg-time{font-size:.54rem;opacity:.25;margin-top:4px;text-align:right;}
+
+/* Typing indicator */
+.cg-typing-dots{
+  display:flex;gap:5px;align-items:center;padding:12px 16px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;border-bottom-left-radius:4px;
+}
+.cg-typing-dots span{
+  width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.35);
+  animation:cg-dot .9s ease-in-out infinite;
+}
 .cg-typing-dots span:nth-child(2){animation-delay:.18s;}
 .cg-typing-dots span:nth-child(3){animation-delay:.36s;}
-@keyframes cg-dot{0%,80%,100%{transform:scale(.7);opacity:.4;}40%{transform:scale(1);opacity:1;}}
-.cg-chat-chips{display:flex;flex-wrap:wrap;gap:5px;padding:8px 0 4px;}
-.cg-chip{padding:5px 11px;border-radius:20px;font-size:.67rem;border:1px solid rgba(255,255,255,.09);
-  background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;
-  white-space:nowrap;}
-.cg-chip:hover{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.3);
-  color:rgba(212,175,55,.85);}
-.cg-chip.hot{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.3);
-  color:rgba(212,175,55,.85);}
-.cg-chat-input-row{display:flex;gap:6px;padding-top:8px;
-  border-top:1px solid rgba(255,255,255,.06);}
-.cg-chat-input{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
-  border-radius:10px;padding:8px 12px;color:rgba(255,255,255,.8);font-size:.78rem;
-  outline:none;transition:border .2s;}
-.cg-chat-input:focus{border-color:rgba(212,175,55,.4);}
-.cg-chat-input::placeholder{color:rgba(255,255,255,.22);}
-.cg-chat-send{padding:8px 15px;border-radius:10px;border:1px solid rgba(212,175,55,.3);
-  background:rgba(212,175,55,.12);color:#D4AF37;font-size:.82rem;cursor:pointer;
-  transition:all .2s;}
-.cg-chat-send:hover{background:rgba(212,175,55,.28);}
+@keyframes cg-dot{0%,80%,100%{transform:scale(.65);opacity:.35;}40%{transform:scale(1);opacity:.85;}}
+
+/* Quick action chips */
+.cg-chat-chips{
+  display:flex;flex-wrap:wrap;gap:5px;padding:8px 14px 6px;
+  border-top:1px solid rgba(255,255,255,.04);flex-shrink:0;
+}
+.cg-chip{
+  padding:6px 13px;border-radius:20px;font-size:.66rem;letter-spacing:.02em;
+  border:1px solid rgba(255,255,255,.07);background:transparent;
+  color:rgba(255,255,255,.42);cursor:pointer;transition:all .18s;white-space:nowrap;
+}
+.cg-chip:hover{
+  background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.28);
+  color:rgba(212,175,55,.88);transform:translateY(-1px);
+}
+.cg-chip.hot{
+  background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.3);
+  color:rgba(212,175,55,.85);
+}
+
+/* Input row */
+.cg-chat-input-row{
+  display:flex;gap:0;padding:10px 12px;flex-shrink:0;
+  border-top:1px solid rgba(255,255,255,.05);
+}
+.cg-chat-input{
+  flex:1;background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);border-right:none;
+  border-radius:12px 0 0 12px;padding:10px 14px;
+  color:rgba(255,255,255,.88);font-size:.8rem;outline:none;transition:border-color .2s;
+}
+.cg-chat-input:focus{border-color:rgba(212,175,55,.38);}
+.cg-chat-input::placeholder{color:rgba(255,255,255,.2);}
+.cg-chat-send{
+  padding:10px 16px;border-radius:0 12px 12px 0;
+  border:1px solid rgba(212,175,55,.28);border-left:none;
+  background:rgba(212,175,55,.1);color:#D4AF37;cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;justify-content:center;
+}
+.cg-chat-send:hover{background:rgba(212,175,55,.22);}
+.cg-send-svg{width:15px;height:15px;display:block;}
 
 /* ── Analytics row ──────────────────────────────────────────────────────── */
 .cg-analytics-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
@@ -2322,24 +2393,46 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
     <!-- Chat panel (Cherry ↔ Patron) -->
     <div class="card cg-chat-card" style="flex:1">
-      <div class="cg-panel-title" style="margin-bottom:10px;flex-shrink:0">
-        Cherry ile Konuş
-        <span style="font-size:.58rem;opacity:.28;font-weight:400">calisan · patron</span>
+      <!-- Chat header -->
+      <div class="cg-chat-header">
+        <div class="cg-chat-av-wrap">
+          <svg class="cg-cherry-av-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".92"/>
+            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".88" transform="rotate(72 12 12)"/>
+            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".84" transform="rotate(144 12 12)"/>
+            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".88" transform="rotate(216 12 12)"/>
+            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".84" transform="rotate(288 12 12)"/>
+            <circle cx="12" cy="12" r="3.2" fill="#D4AF37"/>
+            <circle cx="12" cy="12" r="1.5" fill="#FFE566" opacity=".6"/>
+          </svg>
+        </div>
+        <div class="cg-chat-hd-info">
+          <div class="cg-chat-hd-name">CherryGlow</div>
+          <div class="cg-chat-hd-status">
+            <div class="cg-chat-status-dot" id="cg-chat-status-dot"></div>
+            <span class="cg-chat-hd-state-txt" id="cg-chat-status-txt">hazir</span>
+          </div>
+        </div>
+        <span class="cg-version" id="cg-version" style="font-size:.58rem"></span>
       </div>
+
       <div class="cg-chat-messages" id="cg-chat-messages"></div>
       <div class="cg-chat-chips" id="cg-chat-chips">
-        <span class="cg-chip hot" onclick="cgInsightEngine()">Analiz Yap</span>
-        <span class="cg-chip" onclick="cgUserSend('Hepsini yaz')">Hepsini Yaz</span>
-        <span class="cg-chip" onclick="cgUserSend('Rapor ver')">Rapor</span>
+        <span class="cg-chip hot" onclick="cgProactiveResearch()">Konu Oner</span>
+        <span class="cg-chip" onclick="cgInsightEngine()">Analiz</span>
+        <span class="cg-chip" onclick="cgDailyReport()">Rapor</span>
         <span class="cg-chip" onclick="cgUserSend('Ne kadar kazandim')">Gelir?</span>
-        <span class="cg-chip" onclick="cgUserSend('Hangi konu en iyi')">En Iyi Konu</span>
       </div>
       <div class="cg-chat-input-row">
         <input type="text" class="cg-chat-input" id="cg-chat-input"
-          placeholder="Cherry'ye bir sey soyle..."
+          placeholder="Cherry'ye bir soru sor..."
           onkeydown="if(event.key==='Enter'&&this.value.trim())cgUserSend(this.value)">
         <button class="cg-chat-send"
-          onclick="var v=document.getElementById('cg-chat-input').value;if(v.trim())cgUserSend(v)">&#8594;</button>
+          onclick="var v=document.getElementById('cg-chat-input').value;if(v.trim())cgUserSend(v)">
+          <svg class="cg-send-svg" viewBox="0 0 20 20" fill="none">
+            <path d="M18 10L2 2.5l3 7.5-3 7.5L18 10z" fill="currentColor"/>
+          </svg>
+        </button>
       </div>
     </div>
   </div>
@@ -4421,7 +4514,7 @@ function urunProfitCalc() {
 
 
 // ─── CHERRYGLOW AI AGENT v4.1 ──────────────────────────────────────────────
-const CG_VERSION = 'v5.2.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
+const CG_VERSION = 'v5.3.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
 
 // ── Brain v5 — kalici bellek ──────────────────────────────────────────────────
 var CG_BRAIN_KEY = 'cg_brain_v5';
@@ -4541,6 +4634,13 @@ function setCherryState(s) {
 
   // Waveform
   cgUpdateWaveform(s);
+
+  // Chat header status sync
+  var chatDot = document.getElementById('cg-chat-status-dot');
+  var chatTxt = document.getElementById('cg-chat-status-txt');
+  var col2 = CG_STATE_COLORS[s] || 'rgba(150,150,150,.5)';
+  if (chatDot) { chatDot.style.background = col2; chatDot.style.boxShadow = '0 0 6px '+col2; }
+  if (chatTxt) chatTxt.textContent = CG_STATE_TEXTS[s] || s;
 
   // Widget sync
   cgUpdateWidget(s);
@@ -4832,7 +4932,7 @@ function cherryLog(msg, type) {
 }
 
 function cherryThink(msg, type) {
-  cherryLog('\u{1F4AD} '+msg, type||'think');
+  cherryLog('> '+msg, type||'think');
 }
 
 // ── Version display ───────────────────────────────────────────────────────────
@@ -5335,7 +5435,7 @@ function cgAddMessage(from, text, type, delay) {
       if (!msgEl) return;
       var typing = document.createElement('div');
       typing.className = 'cg-msg cherry'; typing.id = 'cg-typing-dot';
-      typing.innerHTML = '<div class="cg-msg-av">🌸</div><div class="cg-typing-dots"><span></span><span></span><span></span></div>';
+      typing.innerHTML = '<div class="cg-msg-av"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".9"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".86" transform="rotate(72 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".82" transform="rotate(144 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".86" transform="rotate(216 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".82" transform="rotate(288 12 12)"/><circle cx="12" cy="12" r="3" fill="#D4AF37"/><circle cx="12" cy="12" r="1.4" fill="#FFE566" opacity=".55"/></svg></div><div class="cg-typing-dots"><span></span><span></span><span></span></div>';
       msgEl.appendChild(typing);
       msgEl.scrollTop = msgEl.scrollHeight;
     }, 60);
@@ -5349,7 +5449,7 @@ function cgRenderChat() {
     var isC = msg.from === 'cherry';
     var t = new Date(msg.ts).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
     return '<div class="cg-msg ' + (isC?'cherry':'user') + '">' +
-      (isC ? '<div class="cg-msg-av">🌸</div>' : '') +
+      (isC ? '<div class="cg-msg-av"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".9"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".86" transform="rotate(72 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".82" transform="rotate(144 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".86" transform="rotate(216 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".82" transform="rotate(288 12 12)"/><circle cx="12" cy="12" r="3" fill="#D4AF37"/><circle cx="12" cy="12" r="1.4" fill="#FFE566" opacity=".55"/></svg></div>' : '') +
       '<div class="cg-msg-bbl ' + msg.type + '">' + msg.text +
       '<div class="cg-msg-time">' + t + '</div></div></div>';
   }).join('');
@@ -5447,7 +5547,7 @@ function cgHandleUserCommand(text) {
 
   } else if (/tesek|harika|guzel|super|bravo|muk/.test(lower)) {
     var praises = [
-      'Tessekurler Onur! Daha iyisi icin cok calisiyorum 🌸',
+      'Tessekurler Onur! Daha iyisi icin cok calisiyorum.',
       'Motive oldum! Bir sonraki blog icin hazir ve heyecanliyim.',
       'Hedefimiz 90+ SEO puani. Devam!',
     ];
@@ -5827,8 +5927,9 @@ function cgDailyReport() {
 
 function cgAnaCard(label, val, suffix, color) {
   return '<div class="cg-ana-card">' +
-    '<div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;opacity:.38;font-family:var(--mono);margin-bottom:3px">' + label + '</div>' +
-    '<div style="font-size:1.05rem;font-weight:700;font-family:var(--mono);color:' + color + '">' + val + (suffix||'') + '</div>' +
+    '<div style="font-size:.52rem;text-transform:uppercase;letter-spacing:.12em;opacity:.32;font-family:var(--mono);margin-bottom:5px">' + label + '</div>' +
+    '<div style="font-size:1.2rem;font-weight:700;font-family:var(--mono);color:' + color + ';letter-spacing:-.01em">' + val + '</div>' +
+    (suffix ? '<div style="font-size:.55rem;opacity:.4;margin-top:1px">' + suffix + '</div>' : '') +
     '</div>';
 }
 
