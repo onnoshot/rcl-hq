@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-14T21:28:10",
+  "updated_at": "2026-05-14T22:28:13",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3960,
     "total_views": 1109720,
-    "video_count": 378
+    "video_count": 379
   },
   "analytics": {
     "last_30d": {
-      "views": 72441,
-      "watch_hours": 164.6,
-      "subs_gained": 167,
-      "subs_lost": 107,
-      "avg_view_sec": 18
+      "views": 79820,
+      "watch_hours": 186.8,
+      "subs_gained": 191,
+      "subs_lost": 109,
+      "avg_view_sec": 19
     },
-    "watch_hours_year": 2976.0,
-    "watch_hours_year_long": 1589.6,
-    "watch_hours_year_shorts": 1386.4,
+    "watch_hours_year": 2998.2,
+    "watch_hours_year_long": 1602.8,
+    "watch_hours_year_shorts": 1395.4,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,19 +52,28 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 25882,
-        "watch_min": 3349,
-        "subs_gained": 66
+        "views": 33261,
+        "watch_min": 4683,
+        "subs_gained": 90
       }
     ]
   },
   "videos": [
     {
+      "id": "TvPGsbRhSmQ",
+      "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
+      "date": "14 May 2026",
+      "views": 154,
+      "likes": 1,
+      "comments": 0,
+      "url": "https://youtu.be/TvPGsbRhSmQ"
+    },
+    {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1090,
-      "likes": 11,
+      "views": 1111,
+      "likes": 12,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
     },
@@ -81,7 +90,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1728,
+      "views": 1733,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -99,8 +108,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4492,
-      "likes": 69,
+      "views": 4497,
+      "likes": 72,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -108,8 +117,8 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3687,
-      "likes": 22,
+      "views": 3691,
+      "likes": 23,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
     },
@@ -139,15 +148,6 @@ const YOUTUBE = {
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
-    },
-    {
-      "id": "-mrJ8maR2eo",
-      "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
-      "date": "25 Nis 2026",
-      "views": 314,
-      "likes": 10,
-      "comments": 3,
-      "url": "https://youtu.be/-mrJ8maR2eo"
     }
   ],
   "sub_goal": 10000
