@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-14T18:23:17",
+  "updated_at": "2026-05-14T19:20:52",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -69,19 +69,10 @@ const YOUTUBE = {
       "url": "https://youtu.be/LHg76IQG7aw"
     },
     {
-      "id": "-Ig3lgUcm8c",
-      "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
-      "date": "8 May 2026",
-      "views": 2041,
-      "likes": 25,
-      "comments": 6,
-      "url": "https://youtu.be/-Ig3lgUcm8c"
-    },
-    {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1725,
+      "views": 1728,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -148,6 +139,15 @@ const YOUTUBE = {
       "likes": 9,
       "comments": 3,
       "url": "https://youtu.be/-mrJ8maR2eo"
+    },
+    {
+      "id": "ie_8TBsWv-Y",
+      "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
+      "date": "20 Nis 2026",
+      "views": 5666,
+      "likes": 72,
+      "comments": 2,
+      "url": "https://youtu.be/ie_8TBsWv-Y"
     }
   ],
   "sub_goal": 10000
