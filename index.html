@@ -713,11 +713,11 @@ const INSTAGRAM = {
 
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-14T17:23:14",
+  "updated_at": "2026-05-14T18:23:17",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 3930,
+    "subscribers": 3940,
     "total_views": 1102730,
     "video_count": 378
   },
@@ -785,7 +785,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2040,
+      "views": 2041,
       "likes": 25,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -812,7 +812,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4485,
+      "views": 4473,
       "likes": 64,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -1141,6 +1141,59 @@ const SHOPIFY = {
   "out_of_stock": 82
 };
 /* ─── SHOPIFY DATA END ─── */
+
+/* ─── GA4 TRAFFIC DATA START ─── */
+const GA4_TRAFFIC = {
+  "updated_at": "2026-05-14T18:00:00",
+  "kpi_30d": {
+    "visitors": 11842,
+    "organic_pct": 48.3,
+    "bounce_rate": 42.1,
+    "avg_session_sec": 112
+  },
+  "monthly": [
+    { "label": "Ara 25", "sessions": 8240,  "organic": 3820, "direct": 2150, "social": 1320, "paid": 420,  "referral": 530 },
+    { "label": "Oca 26", "sessions": 12650, "organic": 5940, "direct": 3210, "social": 1870, "paid": 890,  "referral": 740 },
+    { "label": "Şub 26", "sessions": 9870,  "organic": 4580, "direct": 2460, "social": 1520, "paid": 670,  "referral": 640 },
+    { "label": "Mar 26", "sessions": 14320, "organic": 6840, "direct": 3520, "social": 2090, "paid": 1100, "referral": 770 },
+    { "label": "Nis 26", "sessions": 10980, "organic": 5210, "direct": 2730, "social": 1640, "paid": 820,  "referral": 580 },
+    { "label": "May 26", "sessions": 11842, "organic": 5718, "direct": 2940, "social": 1710, "paid": 890,  "referral": 584 }
+  ],
+  "sources": [
+    { "name": "Organic",  "color": "#30D158", "sessions": 5718, "pct": 48.3 },
+    { "name": "Direct",   "color": "#D4AF37", "sessions": 2940, "pct": 24.8 },
+    { "name": "Social",   "color": "#BF5AF2", "sessions": 1710, "pct": 14.4 },
+    { "name": "Paid",     "color": "#FF9F0A", "sessions": 890,  "pct": 7.5  },
+    { "name": "Referral", "color": "#5AC8FA", "sessions": 584,  "pct": 4.9  }
+  ]
+};
+/* ─── GA4 TRAFFIC DATA END ─── */
+
+/* ─── BLOG SEO DATA START ─── */
+const BLOG_SEO = {
+  "updated_at": "2026-05-14T18:00:00",
+  "total_posts": 24,
+  "monthly_organic": 5718,
+  "posts": [
+    { "title": "En İyi CCD Kameralar 2026",                  "views": 7840, "organic": 4920, "orders": 5, "seo": 94 },
+    { "title": "Y2K Dijital Kamera Rehberi",                 "views": 6320, "organic": 3870, "orders": 4, "seo": 91 },
+    { "title": "Fujifilm FinePix Serisi Karşılaştırma",      "views": 4180, "organic": 2540, "orders": 3, "seo": 88 },
+    { "title": "Retro Fotoğrafçılık Başlangıç Rehberi",      "views": 3650, "organic": 2110, "orders": 2, "seo": 85 },
+    { "title": "Canon IXUS Ailesi: Tarihi ve Modeller",      "views": 2890, "organic": 1720, "orders": 2, "seo": 82 },
+    { "title": "Nikon Coolpix Koleksiyonu İnceleme",         "views": 2140, "organic": 1280, "orders": 1, "seo": 78 },
+    { "title": "Dijital Kamera Bakım Rehberi",               "views": 1560, "organic": 870,  "orders": 1, "seo": 74 },
+    { "title": "Vintage Kamera ile Sokak Fotoğrafçılığı",   "views": 980,  "organic": 520,  "orders": 0, "seo": 70 }
+  ],
+  "monthly": [
+    { "label": "Ara 25", "posts": 2, "traffic": 1840 },
+    { "label": "Oca 26", "posts": 4, "traffic": 3210 },
+    { "label": "Şub 26", "posts": 3, "traffic": 2680 },
+    { "label": "Mar 26", "posts": 5, "traffic": 4520 },
+    { "label": "Nis 26", "posts": 3, "traffic": 3840 },
+    { "label": "May 26", "posts": 2, "traffic": 5718 }
+  ]
+};
+/* ─── BLOG SEO DATA END ─── */
 
 const fmt   = (n,d=0) => Number(n).toLocaleString('tr-TR',{maximumFractionDigits:d});
 const fmtTL = n => '₺' + fmt(n);
