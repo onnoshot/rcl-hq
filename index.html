@@ -2962,7 +2962,6 @@ function setOutputTab(tab) {
 function simpleMarkdownToHTML(md) {
   let html = md
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-    .replace(/^```[\s\S]*?^```/gm, m => `<pre><code>${m.slice(3,m.lastIndexOf('```')).trim()}</code></pre>`)
     .replace(/`([^`]+)`/g,'<code>$1</code>')
     .replace(/^# (.+)$/gm,'<h1>$1</h1>')
     .replace(/^## (.+)$/gm,'<h2>$1</h2>')
@@ -2970,19 +2969,17 @@ function simpleMarkdownToHTML(md) {
     .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
     .replace(/\*(.+?)\*/g,'<em>$1</em>')
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>')
-    .replace(/^- (.+)$/gm,'<li>$1</li>')
-    .replace(/^\d+\. (.+)$/gm,'<li>$1</li>');
-  html = html.replace(/(<li>[\s\S]+?<\/li>)(?=
-(?!<li>)|
-?$)/gs, '<ul>$1</ul>');
-  html = html.split(/
-
-+/).map(para => {
-    para = para.trim();
-    if (!para || /^<[h1-6|ul|pre|li]/.test(para)) return para;
-    return `<p>${para}</p>`;
-  }).join('
-');
+    .replace(/^[-*] (.+)$/gm,'<li>$1</li>');
+  // Wrap consecutive <li> groups in <ul>
+  html = html.replace(/(<li>[^\n]*\n)+/g, s => '<ul>' + s + '</ul>');
+  // Wrap double-newline-separated blocks in <p> tags
+  const paras = html.split('\n\n');
+  html = paras.map(p => {
+    p = p.trim();
+    if (!p) return '';
+    if (/^<(h[1-6]|ul|pre|li|p)/.test(p)) return p;
+    return '<p>' + p.replace(/\n/g,' ') + '</p>';
+  }).filter(Boolean).join('\n');
   return html;
 }
 
@@ -3045,16 +3042,12 @@ KURALLAR:
 1. Markdown formatı (H1, H2, H3)
 2. Uzunluk: ${lengthMap[length]}
 3. Ton: ${tone} | Hedef kitle: ${audience} | Format: ${format}
-4. Focus keyword: "${focusKw || topic.split(' ').slice(0,3).join(' ')}" — H1'de, ilk paragrafta ve min 3 H2'de geçmeli
+4. Focus keyword: "${focusKw || topic.split(' ').slice(0,3).join(' ')}" — H1\'de, ilk paragrafta ve min 3 H2'de geçmeli
 5. ${opts.yil2026 ? '2026 yılını başlık ve içerikte vurgula' : ''}
 6. ${opts.sss ? '"## Sıkça Sorulan Sorular" bölümü — min 5 soru-cevap (schema uyumlu format)' : ''}
 7. ${opts.sosyal ? 'Yazının sonuna: "📺 [youtube.com/@retrocameraland] | 📸 [instagram.com/retrocameraland] | 🛒 [retrocameraland.com.tr]"' : ''}
 8. ${opts.ai ? 'İlk 2 paragraf AI Overview için: soru-cevap formatında, net kısa yanıtlar' : ''}
-9. ${opts.meta ? 'Yazının BAŞINA ekle: ```
-📌 Meta (160 kar): [...]
-🔑 Keyword: [...]
-🏷️ Title (60 kar): [...]
-```' : ''}
+9. ${opts.meta ? 'Yazının BAŞINA şunu ekle: Meta Description (160 kar), Focus Keyword, SEO Başlık (60 kar)' : ''}
 10. ${opts.schema ? 'Yazının SONUNA JSON-LD schema ekle (Article + FAQPage)' : ''}
 11. ${opts.urunler ? 'İlgili ürünleri [Ürün](retrocameraland.com.tr) şeklinde referans et' : ''}
 12. Her H2 min 3 cümle | Internal link fırsatlarını **[Link Önerisi: konu]** olarak işaretle
@@ -3088,8 +3081,7 @@ Yukarıdaki tüm kurallara uygun, SEO skoru 90+ hedefleyen Türkçe blog yazıs�
       const { done, value } = await reader.read();
       if (done) break;
       buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('
-');
+      const lines = buffer.split('\n');
       buffer = lines.pop() || '';
       for (const line of lines) {
         if (!line.startsWith('data: ')) continue;
@@ -3128,7 +3120,7 @@ function renderBlogSEOScore(text, kw) {
   const checks = [
     {label:'H1 başlık',      pass: /^# /m.test(text)},
     {label:'H2 ×3+',         pass: (text.match(/^## /gm)||[]).length >= 3},
-    {label:'Keyword H1'de', pass: new RegExp(kw.split(' ')[0],'i').test((text.match(/^# .+/m)||[''])[0])},
+    {label:'Keyword H1\'de', pass: new RegExp(kw.split(' ')[0],'i').test((text.match(/^# .+/m)||[''])[0])},
     {label:'2026 vurgusu',   pass: /2026/i.test(text)},
     {label:'SSS bölümü',     pass: /sıkça sorulan|faq/i.test(text)},
     {label:'Meta desc',      pass: /meta description/i.test(text)},
@@ -3340,8 +3332,7 @@ Bu ürün için yukarıdaki yapıya ve RCL editöryal stiline uygun, SEO skoru 9
       const { done, value } = await reader.read();
       if (done) break;
       buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('
-');
+      const lines = buffer.split('\n');
       buffer = lines.pop() || '';
       for (const line of lines) {
         if (!line.startsWith('data: ')) continue;
@@ -3379,8 +3370,7 @@ function renderUrunSEOScore(text, model) {
   if (!seoBar) return;
   const modelWords = (model || '').split(' ').filter(w => w.length > 2);
   const checks = [
-    {label:'Model adı başlıkta', pass: modelWords.length > 0 && new RegExp(modelWords[0], 'i').test(text.split('
-')[0] || '')},
+    {label:'Model adı başlıkta', pass: modelWords.length > 0 && new RegExp(modelWords[0], 'i').test(text.split('\n')[0] || '')},
     {label:'H2 bölümler (4+)',   pass: (text.match(/^## /gm)||[]).length >= 4},
     {label:'Kutu içeriği',       pass: /kutu içeriği|📦/i.test(text)},
     {label:'Kondisyon bilgisi',  pass: /kondisyon|✅/i.test(text)},
