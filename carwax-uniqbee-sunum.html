@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Carwax Türkiye × UniqBee — 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Outfit:wght@300;400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#060810;
+  --layer1:rgba(255,255,255,.025);
+  --gold:#C9922A;--goldl:#E5B140;--goldhl:#F5CC68;
+  --golddim:rgba(201,146,42,.12);--goldbdr:rgba(201,146,42,.22);
+  --red:#C72828;--reddim:rgba(199,40,40,.14);
+  --blue:#1567CC;--bluedim:rgba(21,103,204,.14);
+  --cream:#EDE3CA;--muted:#5E5E78;--muted2:#3A3A52;
+  --rj:'Rajdhani',sans-serif;--ro:'Outfit',sans-serif;--rb:'Barlow Condensed',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--cream);font-family:var(--ro);
+  background-image:linear-gradient(rgba(201,146,42,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(201,146,42,.025) 1px,transparent 1px);
+  background-size:80px 80px;background-attachment:fixed;
+  overflow-x:hidden;
+}
+
+/* ── PROGRESS ── */
+#progress{position:fixed;top:0;left:0;height:2px;width:0;z-index:900;background:linear-gradient(90deg,var(--gold),var(--goldhl));transition:width .08s linear;pointer-events:none}
+
+/* ── STICKY HEADER ── */
+#topbar{
+  position:sticky;top:0;z-index:800;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 40px;
+  background:rgba(6,8,16,.9);
+  border-bottom:1px solid rgba(201,146,42,.12);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+}
+.tb-logo{font-family:var(--rj);font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--cream)}
+.tb-logo span{color:var(--goldl)}
+.tb-right{display:flex;align-items:center;gap:20px}
+.tb-sec{font-family:var(--rb);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+.tb-sec strong{color:var(--goldl)}
+.tb-links{display:flex;gap:16px}
+.tb-links a{font-family:var(--rb);font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s}
+.tb-links a:hover{color:var(--goldl)}
+
+/* ── SECTION ── */
+.sec{width:100%;position:relative;border-bottom:1px solid rgba(201,146,42,.07)}
+.inner{position:relative;z-index:1;width:100%;max-width:1160px;margin:0 auto;padding:80px 80px 88px}
+
+/* animasyon yok — tüm içerik her zaman görünür */
+
+/* ── EYEBROW ── */
+.eyebrow{font-family:var(--rb);font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:var(--goldl);display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.eyebrow::before{content:'';display:block;width:32px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.eyebrow::after{content:'';display:block;flex:1;height:1px;background:linear-gradient(90deg,rgba(201,146,42,.15),transparent)}
+
+/* ── HEADLINES ── */
+.h-display{font-family:var(--rj);font-weight:700;font-size:clamp(48px,6.5vw,96px);line-height:.95;letter-spacing:-.01em;color:var(--cream)}
+.h-title{font-family:var(--rj);font-weight:700;font-size:clamp(28px,4vw,58px);line-height:1.05;color:var(--cream);word-break:break-word;overflow-wrap:break-word}
+.h-sub{font-family:var(--rj);font-weight:600;font-size:clamp(16px,2vw,26px);color:var(--cream);line-height:1.2}
+.h-card{font-family:var(--rj);font-weight:700;font-size:clamp(14px,1.4vw,19px);color:var(--cream);line-height:1.2}
+.gold{color:var(--goldl)}.red{color:var(--red)}
+.body{font-size:clamp(13px,1vw,15px);line-height:1.8;color:rgba(237,227,202,.65)}
+.small{font-size:12px;line-height:1.6;color:var(--muted)}
+
+/* ── RULE ── */
+.rule{display:flex;align-items:center;gap:16px;margin:20px 0}
+.rule::before,.rule::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--goldbdr),transparent)}
+.rule-diamond{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);flex-shrink:0}
+
+/* ── CARDS ── */
+.card{background:var(--layer1);border:1px solid rgba(201,146,42,.16);border-radius:2px;padding:28px;position:relative;transition:all .3s;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.card::before,.card::after{content:'';position:absolute;width:14px;height:14px;border-color:var(--gold);border-style:solid;opacity:.5}
+.card::before{top:-1px;left:-1px;border-width:1px 0 0 1px}
+.card::after{bottom:-1px;right:-1px;border-width:0 1px 1px 0}
+.card:hover{background:rgba(201,146,42,.06);border-color:rgba(201,146,42,.35)}
+.card-red{background:var(--reddim);border-color:rgba(199,40,40,.25)}
+.card-gold{background:var(--golddim);border-color:rgba(201,146,42,.32)}
+.card-blue{background:var(--bluedim);border-color:rgba(21,103,204,.25)}
+
+/* ── STAT HERO ── */
+.stat-hero{display:flex;flex-direction:column;gap:2px;padding:24px 28px;background:var(--layer1);border-radius:2px;border:1px solid var(--goldbdr);position:relative;overflow:hidden}
+.stat-hero::before,.stat-hero::after{content:'';position:absolute;width:12px;height:12px;border-color:var(--gold);border-style:solid;opacity:.6}
+.stat-hero::before{top:0;left:0;border-width:1px 0 0 1px}
+.stat-hero::after{bottom:0;right:0;border-width:0 1px 1px 0}
+.stat-hero .big{font-family:var(--rb);font-weight:900;font-size:clamp(44px,7vw,88px);line-height:1;color:var(--goldl)}
+.stat-hero .unit{font-family:var(--rb);font-size:clamp(20px,3vw,36px);font-weight:700;color:var(--gold)}
+.stat-hero .lbl{font-family:var(--rb);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+
+/* ── TAGS ── */
+.tag{font-family:var(--rb);font-size:10px;letter-spacing:.15em;text-transform:uppercase;padding:4px 12px;border-radius:1px;border:1px solid;display:inline-block}
+.tg{border-color:var(--goldbdr);color:var(--goldl);background:var(--golddim)}
+.tr{border-color:rgba(199,40,40,.35);color:var(--red);background:var(--reddim)}
+.tb{border-color:rgba(21,103,204,.35);color:var(--blue);background:var(--bluedim)}
+.tm{border-color:var(--muted2);color:var(--muted);background:transparent}
+
+/* ── GRIDS ── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+
+/* ── PILLAR ── */
+.pillar{padding:32px 28px;border:1px solid;border-radius:2px;display:flex;flex-direction:column;gap:14px;height:100%;position:relative}
+.pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.p1{border-color:rgba(21,103,204,.3);background:rgba(21,103,204,.06)}.p1::before{background:linear-gradient(90deg,var(--blue),transparent)}
+.p2{border-color:rgba(201,146,42,.3);background:rgba(201,146,42,.06)}.p2::before{background:linear-gradient(90deg,var(--gold),transparent)}
+.p3{border-color:rgba(199,40,40,.3);background:rgba(199,40,40,.06)}.p3::before{background:linear-gradient(90deg,var(--red),transparent)}
+.pillar .pnum{font-family:var(--rb);font-weight:900;font-size:64px;line-height:1;opacity:.1;position:absolute;top:8px;right:16px}
+
+/* ── BULLET LIST ── */
+.blist{display:flex;flex-direction:column;gap:6px}
+.blist li{list-style:none;font-size:13px;color:rgba(237,227,202,.65);padding-left:16px;position:relative;line-height:1.6}
+.blist li::before{content:'›';position:absolute;left:0;color:var(--goldl);font-weight:700}
+
+/* ── CONTENT ITEM ── */
+.ci{border:1px solid;border-radius:2px;padding:18px 16px;display:flex;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.ci-red{border-color:rgba(199,40,40,.22);background:var(--reddim)}
+.ci-gold{border-color:rgba(201,146,42,.22);background:var(--golddim)}
+.ci-num{font-family:var(--rb);font-weight:900;font-size:48px;color:rgba(255,255,255,.05);line-height:1;position:absolute;bottom:-8px;right:8px}
+.ci-title{font-family:var(--rj);font-weight:700;font-size:13px;line-height:1.35;color:var(--cream)}
+.ci-desc{font-size:11px;color:var(--muted);line-height:1.5}
+
+/* ── YT BLOCK ── */
+.yt-block{border:1px solid rgba(21,103,204,.3);border-radius:2px;background:rgba(21,103,204,.07);padding:32px;display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:start;position:relative}
+.yt-block::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),transparent)}
+.yt-n{font-family:var(--rb);font-weight:900;font-size:80px;line-height:1;color:rgba(21,103,204,.2)}
+
+/* ── FUNNEL ── */
+.fstep{display:flex;gap:20px;align-items:flex-start;padding:18px 20px;border-left:2px solid var(--goldbdr);position:relative;margin-left:6px;background:linear-gradient(90deg,rgba(201,146,42,.04),transparent);transition:all .3s}
+.fstep::before{content:'';position:absolute;left:-8px;top:50%;transform:translateY(-50%);width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 16px var(--gold)}
+.fstep:hover{border-left-color:var(--gold);background:rgba(201,146,42,.08)}
+.fstep-n{font-family:var(--rb);font-weight:900;font-size:40px;color:rgba(201,146,42,.2);line-height:1;flex-shrink:0;min-width:48px}
+
+/* ── CROW ── */
+.crow{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:center;padding:16px 20px;border:1px solid rgba(201,146,42,.12);border-radius:2px;background:var(--layer1);transition:all .25s}
+.crow:hover{background:rgba(201,146,42,.07);border-color:var(--goldbdr)}
+.crow-icon{font-size:26px;text-align:center}
+
+/* ── WHY ── */
+.why{padding:28px 24px;border:1px solid rgba(201,146,42,.14);border-radius:2px;background:var(--layer1);text-align:center;display:flex;flex-direction:column;align-items:center;gap:12px;position:relative;transition:all .3s}
+.why::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold);transition:width .4s}
+.why:hover::after{width:100%}
+.why:hover{background:rgba(201,146,42,.07)}
+.why-icon{font-size:36px}
+
+/* ── BUDGET ── */
+.brow{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.04)}
+.brow:hover{background:rgba(201,146,42,.04)}
+.brow-amt{font-family:var(--rb);font-weight:700;font-size:17px;color:var(--cream);white-space:nowrap}
+
+/* ── CALENDAR ── */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cday-h{font-family:var(--rb);font-size:9px;letter-spacing:.1em;color:var(--muted);text-align:center;padding:3px 0;text-transform:uppercase}
+.cday{aspect-ratio:1;border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:10px;font-weight:600;background:rgba(255,255,255,.025);color:var(--muted);position:relative;font-family:var(--rb)}
+.cday.e{background:transparent}
+.cday.rd{background:rgba(199,40,40,.18);color:var(--cream);border:1px solid rgba(199,40,40,.4)}
+.cday.gd{background:rgba(201,146,42,.18);color:var(--cream);border:1px solid rgba(201,146,42,.4)}
+.cday.bd{background:rgba(21,103,204,.18);color:var(--cream);border:1px solid rgba(21,103,204,.4)}
+.cday.sh{background:rgba(201,146,42,.3);color:var(--goldl);border:1px solid var(--gold);font-weight:900}
+
+/* ── PERSONA ── */
+.persona{border:1px solid;border-radius:2px;padding:28px;height:100%;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden}
+.persona::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pblue{border-color:rgba(21,103,204,.3);background:rgba(21,103,204,.07)}.pblue::before{background:linear-gradient(90deg,var(--blue),transparent)}
+.pgold{border-color:rgba(201,146,42,.3);background:rgba(201,146,42,.07)}.pgold::before{background:linear-gradient(90deg,var(--gold),transparent)}
+.pred{border-color:rgba(199,40,40,.3);background:rgba(199,40,40,.07)}.pred::before{background:linear-gradient(90deg,var(--red),transparent)}
+.p-icon{font-size:34px;margin-bottom:4px}
+.p-age{font-family:var(--rb);font-size:11px;letter-spacing:.15em;color:var(--muted);text-transform:uppercase}
+
+/* ── SERVICE GRID ── */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.svc-i{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid rgba(201,146,42,.12);border-radius:2px;background:var(--layer1);font-family:var(--rj);font-weight:600;font-size:13px;transition:all .25s}
+.svc-i:hover{border-color:var(--goldbdr);background:var(--golddim)}
+.svc-i .ico{font-size:18px;flex-shrink:0}
+
+/* ── COVER ── */
+#s1{
+  min-height:100vh;display:flex;align-items:center;
+  background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(201,146,42,.09) 0%,transparent 55%),radial-gradient(ellipse 50% 60% at 85% 80%,rgba(199,40,40,.06) 0%,transparent 50%),var(--bg);
+  overflow:hidden;
+}
+.cover-rings{position:absolute;right:-80px;top:50%;transform:translateY(-50%);pointer-events:none;overflow:hidden}
+.cover-ring{border-radius:50%;border:1px solid rgba(201,146,42,.07);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.cr1{width:700px;height:700px;animation:spin 50s linear infinite}
+.cr2{width:500px;height:500px;border-color:rgba(201,146,42,.1);animation:spin 36s linear infinite reverse}
+.cr3{width:300px;height:300px;border-color:rgba(201,146,42,.14);animation:spin 24s linear infinite}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.cover-tag{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.cover-tag-line{width:48px;height:1px;background:var(--gold)}
+.cover-tag-text{font-family:var(--rb);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--goldl)}
+.cover-title{font-family:var(--rj);font-weight:700;font-size:clamp(52px,9vw,120px);line-height:.92;letter-spacing:-.02em;color:var(--cream);margin-bottom:6px}
+.cover-partner{font-family:var(--rb);font-size:clamp(13px,1.8vw,20px);letter-spacing:.15em;color:rgba(237,227,202,.45);margin-bottom:40px}
+.cover-bottom{display:flex;align-items:center;flex-wrap:wrap;gap:0;border-top:1px solid rgba(201,146,42,.2);padding-top:28px;margin-top:12px}
+.cover-pill{font-family:var(--rb);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--goldl);padding:8px 24px;border:1px solid var(--goldbdr);border-radius:1px;white-space:nowrap}
+.cover-sep{width:1px;height:40px;background:var(--goldbdr);margin:0 28px;flex-shrink:0}
+.cover-meta{font-size:13px;color:var(--muted)}
+
+/* ── CLOSING ── */
+#s15{background:radial-gradient(ellipse 70% 70% at 80% 50%,rgba(201,146,42,.11) 0%,transparent 55%),var(--bg)}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  #topbar{padding:8px 14px}
+  #s1{min-height:auto!important;padding-top:24px}
+  .inner{padding:40px 16px 52px}
+  .tb-logo span[style*="13px"]{font-size:11px!important}
+  .sec-ctr-wrap{display:none}
+  .tb-links{display:none}
+  .inner{padding:48px 16px 60px}
+  .g2,.g3,.g4{grid-template-columns:1fr!important}
+  .svc{grid-template-columns:1fr 1fr!important}
+  .ci-grid-r,.ci-grid-c,.why-grid{grid-template-columns:1fr 1fr!important}
+  .gc-s2,.gc-s5,.gc-s9,.gc-s10,.gc-s12,.gc-s13{grid-template-columns:1fr!important}
+  .gc-s5-row{display:flex!important;flex-wrap:wrap;gap:10px!important;align-items:center}
+  .gc-s5-desc{flex:1;min-width:180px;border-left:none!important;padding-left:0!important}
+  .yt-block{grid-template-columns:1fr!important}
+  .yt-n{font-size:48px}
+  .cover-rings{display:none}
+  .cover-bottom{flex-direction:column;gap:12px;align-items:flex-start}
+  .cover-sep{display:none}
+  .cal-2col{grid-template-columns:1fr!important}
+  .cal-divider{display:none!important}
+  .cal-stats{flex-direction:row!important;flex-wrap:wrap}
+  .cal-stats .stat-hero{flex:1;min-width:120px}
+  .brow{grid-template-columns:1fr auto!important;align-items:start}
+  .h-title{font-size:clamp(24px,6vw,40px)!important}
+  /* Inline grid overrides */
+  .gc-mini2{grid-template-columns:1fr!important}
+  .gc-s5-row{display:flex!important;flex-wrap:wrap;gap:10px!important}
+  .gc-s5-row .gc-s5-desc{border-left:none!important;padding-left:0!important;flex:1;min-width:140px}
+  /* Genel overflow koruması */
+  .sec,.inner{max-width:100%!important}
+}
+@media(max-width:480px){
+  .ci-grid-r,.ci-grid-c,.why-grid{grid-template-columns:1fr!important}
+  .svc{grid-template-columns:1fr!important}
+  .g4{grid-template-columns:1fr 1fr!important}
+  .cover-title{font-size:clamp(44px,13vw,80px)!important}
+}
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true"><symbol id="cw" viewBox="0 0 2540 617"><g transform="translate(0,617) scale(.1,-.1)" fill="currentColor"><path d="M3761 5642 c-5 -9 -14 -44 -20 -76 -6 -33 -19 -87 -30 -120 -10 -34
+-26 -92 -36 -131 -10 -38 -30 -115 -46 -170 -15 -55 -35 -127 -43 -160 -9 -33
+-27 -98 -40 -145 -44 -154 -68 -244 -86 -315 -10 -38 -24 -88 -32 -110 -9 -22
+-18 -62 -23 -90 -4 -27 -11 -58 -16 -67 -24 -45 -67 -1 -93 94 -10 35 -26 86
+-36 113 -22 61 -55 159 -81 240 -21 67 -51 158 -84 255 -13 36 -26 78 -30 95
+-3 16 -16 50 -28 75 -11 25 -26 70 -32 100 -8 36 -17 55 -26 55 -18 0 -18
+-139 -1 -270 7 -49 17 -144 23 -210 10 -121 15 -168 45 -477 9 -92 14 -174 10
+-183 -10 -28 -36 -15 -114 58 -43 39 -122 110 -176 157 -93 80 -246 214 -363
+319 -28 25 -86 75 -128 111 -42 36 -132 114 -199 173 -273 244 -396 347 -410
+347 -23 0 -19 -34 7 -67 13 -15 44 -59 70 -98 26 -38 85 -124 131 -190 84
+-119 132 -187 263 -380 65 -95 162 -235 245 -355 22 -30 50 -71 63 -90 14 -19
+51 -73 84 -120 82 -116 98 -147 83 -162 -10 -10 -19 -9 -45 1 -17 7 -50 18
+-72 23 -22 6 -69 21 -105 33 -114 41 -193 66 -269 86 -41 11 -86 26 -100 33
+-14 7 -48 18 -76 25 -27 6 -70 20 -95 30 -71 29 -261 89 -307 96 -24 4 -46 11
+-49 16 -10 16 -55 30 -75 24 -33 -11 -21 -34 24 -45 23 -7 53 -22 67 -35 22
+-21 141 -90 225 -129 32 -15 157 -84 234 -128 25 -15 62 -34 81 -43 19 -8 46
+-22 60 -29 145 -82 261 -144 288 -155 38 -16 72 -68 49 -77 -12 -4 -284 -2
+-1167 11 -201 3 -375 3 -388 0 -57 -14 9 -44 233 -105 61 -17 151 -42 200 -55
+149 -41 296 -81 365 -99 36 -9 92 -26 125 -36 33 -11 92 -27 130 -35 39 -9 88
+-23 109 -31 22 -9 65 -20 95 -25 77 -14 223 -59 239 -74 23 -21 -9 -35 -112
+-50 -53 -8 -105 -19 -115 -24 -10 -6 -53 -14 -97 -20 -44 -5 -124 -21 -178
+-35 -54 -14 -109 -26 -123 -26 -13 0 -72 -11 -131 -24 -103 -24 -246 -53 -402
+-82 -41 -7 -102 -22 -135 -33 -33 -10 -84 -22 -113 -25 -66 -8 -82 -15 -82
+-32 0 -22 50 -28 110 -14 31 8 125 14 220 15 243 3 784 23 948 35 151 11 182
+6 182 -29 0 -10 -12 -27 -27 -37 -16 -9 -113 -86 -218 -170 -104 -84 -242
+-195 -306 -246 -63 -51 -153 -123 -200 -159 -75 -59 -121 -111 -108 -124 7 -6
+139 35 164 51 12 8 46 21 76 29 30 8 72 23 94 34 21 12 47 21 57 21 10 0 40
+11 66 24 27 13 66 27 88 31 21 4 49 14 62 22 22 14 80 35 237 87 39 13 94 36
+123 52 l54 28 -9 80 c-4 45 -8 146 -8 226 1 116 4 154 19 190 10 25 25 69 32
+99 26 98 124 280 222 411 49 66 242 261 315 317 101 79 214 153 292 193 22 11
+56 29 75 40 19 11 42 20 50 20 9 0 26 7 39 16 22 16 104 48 201 81 25 8 74 25
+110 38 36 14 88 27 115 30 78 9 188 37 207 53 10 8 29 51 42 96 49 160 79 262
+91 316 18 76 52 192 136 467 17 56 29 112 27 125 -5 37 -31 27 -58 -24 -14
+-27 -51 -94 -83 -150 -32 -57 -79 -141 -104 -188 -25 -47 -53 -96 -63 -110
+-10 -14 -38 -65 -64 -113 -26 -49 -64 -117 -84 -150 -20 -34 -55 -97 -77 -141
+-40 -79 -58 -97 -77 -78 -6 6 -11 133 -14 333 -3 178 -9 348 -14 378 -6 30
+-10 131 -10 225 -1 177 -14 409 -26 439 -8 22 -31 22 -43 -1z"/>
+<path d="M19590 4102 c-15 -5 -12 -48 4 -64 7 -8 23 -32 35 -54 12 -21 30 -50
+40 -64 28 -38 213 -333 238 -381 12 -23 28 -49 36 -58 8 -9 35 -52 61 -96 26
+-44 65 -107 86 -140 22 -33 48 -76 60 -95 11 -19 33 -54 48 -77 15 -24 49 -80
+76 -125 27 -46 57 -92 66 -103 38 -47 90 -145 90 -172 0 -23 -19 -46 -101
+-123 -55 -52 -191 -183 -302 -290 -372 -360 -613 -593 -931 -899 -299 -289
+-345 -341 -298 -341 9 0 392 0 851 0 713 0 837 2 856 14 13 8 47 43 76 77 30
+34 121 132 202 218 88 92 173 194 210 249 52 79 65 92 88 92 33 0 52 -24 75
+-95 9 -27 25 -62 36 -77 10 -15 24 -42 30 -60 6 -18 17 -40 24 -48 7 -8 22
+-35 34 -60 12 -25 37 -72 55 -105 19 -33 43 -78 54 -100 10 -22 32 -55 48 -73
+l28 -33 744 0 c501 0 748 4 755 11 11 11 -11 59 -64 140 -16 25 -41 65 -55 90
+-14 25 -39 65 -55 90 -16 25 -41 65 -55 90 -14 25 -39 65 -55 90 -16 25 -41
+65 -55 90 -14 25 -52 88 -85 140 -32 52 -73 118 -89 145 -17 28 -67 109 -112
+180 -44 72 -94 154 -112 183 -18 29 -45 75 -62 102 -59 97 -84 141 -90 161 -6
+18 44 72 324 348 681 671 901 890 1027 1021 72 74 141 143 153 153 18 15 20
+21 11 33 -11 12 -129 14 -825 14 l-812 0 -59 -63 c-163 -173 -332 -370 -369
+-430 -53 -86 -85 -118 -114 -115 -22 3 -28 11 -41 63 -9 33 -23 71 -32 85 -8
+14 -18 41 -22 60 -4 19 -17 50 -30 70 -52 80 -76 120 -76 128 0 4 -12 24 -26
+43 -14 19 -31 48 -39 64 -7 17 -26 45 -41 63 l-29 32 -738 3 c-405 1 -742 1
+-747 -1z"/>
+<path d="M4325 4085 c-38 -7 -117 -20 -175 -30 -58 -9 -141 -28 -185 -41 -44
+-13 -96 -27 -115 -31 -19 -3 -56 -17 -82 -29 -26 -13 -53 -24 -59 -24 -10 0
+-135 -55 -180 -80 -9 -4 -60 -32 -115 -60 -209 -111 -383 -267 -523 -470 -41
+-60 -161 -307 -161 -333 0 -9 -12 -53 -27 -99 -28 -82 -28 -87 -27 -328 l1
+-245 36 -128 c20 -70 43 -140 51 -155 9 -15 22 -43 31 -62 15 -33 57 -105 100
+-166 44 -66 148 -183 212 -239 107 -96 302 -235 328 -235 7 0 20 -9 30 -20 9
+-10 34 -25 54 -31 20 -7 47 -20 60 -30 12 -10 39 -21 60 -25 20 -3 54 -16 76
+-29 22 -12 60 -25 83 -29 24 -4 61 -15 82 -26 21 -11 66 -24 101 -30 35 -5 91
+-19 124 -29 38 -12 121 -23 225 -30 91 -7 206 -19 256 -28 78 -13 102 -14 175
+-3 46 8 109 14 139 15 119 5 289 27 375 49 50 13 109 27 132 30 24 3 59 13 78
+21 19 8 50 21 69 29 l33 14 6 124 c3 68 9 303 12 524 8 445 10 431 -56 394
+-19 -11 -54 -28 -79 -40 -25 -11 -66 -32 -91 -45 -26 -14 -53 -25 -59 -25 -7
+0 -36 -11 -64 -24 -28 -14 -91 -37 -141 -52 -82 -25 -108 -28 -285 -32 -212
+-4 -261 2 -385 45 -118 42 -174 75 -236 140 -186 191 -201 513 -36 722 35 45
+143 131 163 131 6 0 23 9 38 21 45 35 201 80 316 90 128 12 349 -4 430 -31 30
+-10 69 -20 85 -23 42 -8 240 -105 295 -146 45 -32 89 -52 95 -41 3 5 6 240 6
+521 0 580 6 542 -84 554 -28 4 -71 16 -96 27 -25 10 -77 23 -115 28 -39 5
+-114 19 -166 31 -85 20 -129 22 -420 24 -232 2 -345 0 -395 -10z"/>
+<path d="M11720 4085 c-8 -10 -10 -29 -6 -58 15 -93 27 -209 36 -347 6 -80 15
+-172 20 -205 5 -33 16 -139 25 -235 15 -174 29 -322 45 -455 5 -38 14 -133 20
+-210 10 -134 22 -246 41 -385 5 -36 13 -130 19 -210 5 -80 14 -174 19 -210 5
+-36 17 -146 25 -245 30 -339 48 -472 69 -493 11 -11 136 -13 671 -13 576 0
+659 2 679 16 12 8 47 64 78 123 30 59 80 154 111 212 86 162 86 163 104 200 9
+19 27 55 41 80 237 445 384 744 398 808 4 18 22 67 41 108 25 54 40 74 54 74
+10 0 22 -4 25 -10 3 -5 8 -62 10 -127 9 -270 17 -400 27 -432 6 -19 10 -55 9
+-80 0 -25 4 -80 9 -121 5 -41 12 -147 15 -235 3 -88 9 -203 15 -255 5 -52 13
+-144 18 -205 9 -109 22 -155 45 -155 7 0 314 -1 682 -1 l670 0 15 22 c20 27
+80 140 175 324 42 83 83 157 91 166 7 8 19 31 25 50 7 19 20 45 29 59 10 14
+27 45 39 70 39 82 162 314 185 350 13 19 27 46 31 60 4 14 16 37 27 52 10 15
+24 42 30 60 6 18 19 44 29 58 9 14 52 93 94 175 153 296 193 371 226 430 19
+33 56 103 83 155 26 52 63 122 81 155 19 33 38 71 44 85 6 14 18 39 27 55 10
+17 28 51 40 77 13 25 28 49 33 52 5 4 15 23 22 44 6 20 20 49 31 64 10 15 24
+42 30 60 6 18 16 40 23 48 7 8 47 82 90 165 43 82 86 161 97 176 11 15 18 35
+16 45 -3 18 -28 19 -707 22 -515 1 -707 -1 -718 -9 -7 -7 -34 -55 -59 -108
+-25 -53 -81 -168 -124 -256 -43 -88 -82 -171 -86 -185 -4 -14 -14 -36 -24 -50
+-10 -14 -21 -36 -25 -50 -4 -14 -15 -36 -25 -50 -9 -14 -23 -41 -30 -60 -7
+-19 -22 -47 -32 -62 -10 -14 -18 -32 -18 -40 0 -7 -41 -94 -90 -193 -49 -99
+-90 -187 -90 -195 0 -8 -10 -33 -21 -55 -12 -22 -28 -60 -35 -85 -7 -25 -26
+-76 -42 -115 -22 -52 -34 -71 -50 -73 -32 -5 -38 22 -46 206 -4 89 -12 175
+-17 191 -5 15 -11 57 -14 92 -2 35 -8 150 -14 254 -10 191 -27 380 -35 393 -2
+4 -9 99 -16 212 -6 113 -13 213 -16 223 -5 16 -40 17 -549 17 l-543 0 -122
+-247 c-67 -137 -187 -378 -265 -538 -79 -159 -157 -321 -174 -360 -16 -38 -63
+-136 -104 -216 -41 -80 -80 -162 -86 -182 -17 -50 -37 -65 -59 -43 -15 15 -18
+54 -24 314 -10 418 -12 448 -27 532 -7 41 -11 99 -8 129 3 30 2 75 -3 100 -5
+25 -11 146 -14 268 -2 123 -7 227 -11 233 -4 7 -222 10 -649 10 -562 0 -645
+-2 -656 -15z"/>
+<path d="M17530 4068 c-11 -18 -30 -53 -41 -78 -11 -25 -26 -54 -32 -65 -23
+-41 -107 -214 -107 -221 0 -4 -7 -15 -15 -24 -8 -9 -73 -133 -145 -275 -71
+-141 -135 -265 -143 -274 -8 -9 -20 -33 -26 -53 -7 -20 -18 -42 -26 -48 -8 -6
+-19 -28 -26 -48 -6 -20 -19 -48 -29 -62 -9 -14 -22 -40 -29 -59 -6 -19 -18
+-42 -26 -51 -8 -9 -21 -34 -28 -56 -8 -22 -26 -56 -39 -75 -13 -20 -83 -152
+-154 -293 -71 -141 -168 -331 -216 -423 -91 -177 -93 -180 -114 -228 -7 -16
+-29 -57 -48 -90 -19 -33 -83 -157 -142 -275 -59 -118 -113 -222 -120 -230 -21
+-25 -46 -102 -35 -113 13 -13 1029 -11 1045 2 8 6 55 95 106 197 53 105 104
+194 118 205 25 19 40 20 453 17 488 -3 458 2 463 -90 2 -30 8 -70 14 -89 6
+-19 13 -76 16 -128 7 -127 7 -127 145 -126 103 1 112 3 153 30 24 16 171 154
+328 307 157 154 348 340 424 415 l139 135 -7 109 c-3 61 -13 129 -21 152 -8
+23 -22 101 -30 172 -9 72 -22 150 -29 175 -8 25 -20 97 -26 160 -7 63 -18 138
+-25 165 -13 51 -29 145 -40 244 -3 30 -15 100 -26 155 -12 56 -24 135 -29 176
+-5 41 -17 116 -28 165 -11 50 -22 126 -26 170 -4 44 -15 118 -26 165 -10 47
+-22 108 -27 135 l-8 50 -748 3 -747 2 -20 -32z m557 -1060 c4 -7 11 -146 15
+-308 3 -162 10 -341 13 -397 7 -100 7 -102 -18 -127 l-26 -26 -199 0 c-184 0
+-200 1 -216 19 -18 20 -15 52 8 80 11 14 39 65 76 138 11 23 37 70 57 105 20
+35 45 81 56 103 11 22 28 51 38 64 11 13 19 31 19 40 0 9 14 43 30 76 16 33
+30 66 30 73 0 12 52 125 73 160 5 6 14 12 22 12 8 0 17 -6 22 -12z"/>
+<path d="M23905 4056 c-127 -25 -220 -102 -282 -232 -34 -72 -35 -77 -31 -172
+3 -90 6 -102 41 -164 39 -69 115 -146 175 -174 49 -23 137 -44 186 -44 44 0
+127 25 185 54 50 26 146 131 161 176 9 27 19 40 32 40 16 0 18 10 18 125 0
+106 -2 125 -15 125 -9 0 -24 20 -35 45 -24 55 -107 145 -165 180 -43 25 -151
+55 -190 54 -11 -1 -47 -6 -80 -13z m179 -92 c31 -11 70 -37 108 -73 48 -45 64
+-69 84 -124 28 -78 29 -104 10 -168 -22 -73 -41 -103 -97 -153 -82 -73 -100
+-81 -209 -81 -85 0 -100 3 -141 27 -146 86 -204 258 -136 403 41 88 97 139
+186 171 50 18 138 17 195 -2z"/>
+<path d="M23836 3864 c-13 -13 -16 -44 -16 -188 0 -182 3 -196 47 -196 29 0
+43 27 43 83 0 92 55 86 115 -12 43 -70 83 -91 122 -66 31 21 29 34 -12 86 -43
+54 -44 85 -5 134 33 42 37 72 15 115 -25 49 -60 60 -184 60 -86 0 -113 -3
+-125 -16z m185 -64 c28 -16 26 -68 -4 -79 -25 -10 -75 -4 -94 12 -22 16 -15
+57 10 67 30 12 65 12 88 0z"/>
+<path d="M6402 3072 c-13 -2 -39 -14 -59 -28 -20 -13 -40 -24 -45 -24 -12 0
+-96 -59 -157 -110 -50 -42 -140 -146 -190 -220 -37 -54 -96 -195 -127 -305
+-29 -98 -29 -104 -28 -345 0 -228 2 -249 22 -298 12 -29 27 -74 32 -99 6 -25
+19 -58 29 -72 10 -14 23 -40 28 -56 6 -17 22 -48 37 -70 99 -151 174 -233 267
+-296 115 -77 153 -99 168 -99 9 0 32 -10 51 -22 54 -33 253 -74 405 -84 134
+-9 366 32 470 82 28 13 66 31 85 39 84 38 167 92 236 157 52 47 91 65 119 54
+12 -4 15 -27 15 -114 0 -72 4 -114 13 -126 12 -16 52 -17 587 -17 536 0 575 1
+587 17 10 14 13 221 13 1021 0 981 0 1003 -19 1013 -13 6 -221 10 -605 10
+-674 0 -620 8 -610 -95 8 -75 1 -111 -25 -125 -16 -8 -30 -1 -83 43 -35 29
+-88 68 -118 87 -30 18 -72 44 -93 58 l-38 25 -472 1 c-260 1 -482 0 -495 -2z
+m1051 -703 c82 -12 126 -37 191 -111 63 -69 76 -103 76 -196 0 -78 -1 -82 -42
+-144 -60 -89 -134 -138 -222 -147 -36 -4 -99 -4 -140 0 -79 8 -116 27 -201
+108 -92 87 -112 205 -53 310 17 31 38 64 47 75 32 37 124 89 179 102 74 16 81
+16 165 3z"/>
+<path d="M9208 3069 c-17 -9 -18 -68 -18 -1013 0 -801 3 -1006 13 -1020 12
+-16 53 -17 636 -17 451 0 627 3 637 11 11 10 14 95 16 458 l3 447 32 65 c18
+36 40 74 50 85 26 29 124 105 135 105 5 0 35 12 66 28 55 26 62 27 222 27 159
+-1 168 -2 258 -33 105 -37 118 -38 126 -16 9 23 7 862 -1 867 -5 3 -129 6
+-278 8 l-270 4 -75 -39 c-85 -44 -125 -72 -192 -133 -34 -31 -56 -43 -77 -43
+-42 0 -51 23 -44 112 9 117 64 108 -632 108 -382 -1 -596 -4 -607 -11z"/></g></symbol><symbol id="ub" viewBox="0 0 3000 3000"><g transform="translate(0,3000) scale(.1,-.1)" fill="currentColor"><path d="M9905 28027 c-159 -56 -271 -138 -348 -255 -103 -155 -128 -357 -67 -541 27 -81 68 -146 185 -291 179 -223 692 -868 830 -1043 77 -98 184 -233 238 -300 115 -143 156 -193 275 -342 174 -217 580 -723 720 -896 78 -97 142 -183 142 -191 0 -8 -51 -58 -113 -111 -183 -155 -421 -408 -598 -637 -83 -107 -257 -363 -339 -499 -133 -221 -311 -614 -384 -846 -67 -216 -99 -326 -116 -411 -5 -27 -17 -78 -25 -114 -8 -36 -26 -150 -39 -255 -59 -462 -57 -744 10 -1153 8 -51 17 -99 20 -106 9 -24 -21 -33 -141 -44 -405 -38 -1447 -185 -1825 -258 -41 -8 -100 -19 -130 -24 -317 -58 -954 -195 -1160 -249 -41 -11 -235 -60 -430 -109 -195 -50 -402 -103 -460 -120 -58 -16 -118 -33 -135 -36 -119 -26 -933 -303 -1145 -389 -47 -19 -182 -74 -300 -122 -118 -48 -235 -96 -260 -107 -25 -12 -65 -30 -90 -41 -231 -103 -730 -366 -849 -446 -14 -10 -107 -71 -206 -136 -610 -401 -1029 -783 -1456 -1330 -364 -466 -669 -1068 -854 -1685 -49 -164 -120 -480 -150 -665 -8 -55 -20 -127 -25 -160 -29 -186 -54 -516 -54 -730 -1 -206 28 -570 63 -810 102 -686 313 -1317 641 -1915 122 -221 294 -479 484 -725 259 -336 709 -777 1059 -1040 128 -97 410 -284 542 -360 91 -53 487 -255 499 -255 3 0 34 -13 68 -29 336 -153 684 -261 1158 -360 317 -66 693 -101 1085 -101 420 0 785 42 1185 136 157 37 194 46 370 94 173 47 476 156 633 229 37 17 69 31 71 31 4 0 144 65 335 156 74 36 140 63 147 60 7 -2 20 -49 29 -103 46 -264 83 -431 129 -593 92 -318 194 -658 205 -679 5 -9 23 -57 39 -106 33 -97 218 -561 273 -685 101 -229 373 -748 516 -985 195 -324 480 -708 767 -1035 565 -641 1369 -1226 2106 -1532 926 -385 1882 -497 2830 -332 47 8 109 19 139 24 228 39 755 202 968 300 24 11 45 20 49 20 9 0 358 173 451 224 78 42 183 103 228 133 369 242 532 361 796 582 85 71 359 323 383 353 11 13 60 68 110 123 310 340 486 567 731 939 73 111 140 215 149 231 9 17 27 46 39 66 133 214 348 630 489 949 16 36 33 74 38 85 135 296 397 1078 490 1460 48 202 100 468 100 521 0 16 6 38 13 47 11 16 24 11 152 -52 140 -69 334 -161 340 -161 2 0 36 -15 77 -34 40 -18 105 -47 143 -64 302 -132 884 -289 1279 -347 314 -45 382 -49 811 -50 450 0 511 5 845 61 487 83 978 226 1327 385 674 308 1088 581 1599 1055 347 321 647 686 931 1130 415 649 695 1443 798 2259 33 260 39 371 39 680 0 386 -12 535 -75 923 -43 266 -137 631 -238 917 -48 139 -57 161 -92 242 -11 24 -19 45 -19 47 0 9 -76 169 -162 341 -164 327 -362 633 -583 900 -202 245 -251 300 -384 435 -466 471 -1121 924 -1858 1286 -116 57 -214 104 -217 104 -3 0 -34 13 -70 30 -115 52 -457 190 -626 252 -91 33 -201 73 -244 90 -194 73 -713 239 -901 288 -66 17 -163 43 -215 57 -52 14 -111 29 -130 33 -19 4 -136 33 -260 65 -124 31 -270 67 -325 80 -55 12 -172 40 -260 60 -166 38 -322 72 -485 105 -445 91 -608 121 -790 150 -74 11 -205 31 -290 45 -85 13 -256 38 -380 55 -124 17 -252 35 -285 40 -63 10 -81 12 -498 60 -142 16 -263 32 -268 36 -6 3 -8 17 -4 31 30 123 65 486 65 688 0 262 -34 607 -81 825 -12 52 -25 113 -29 135 -12 52 -51 197 -84 305 -109 364 -303 775 -534 1135 -89 138 -305 423 -409 542 -111 125 -320 330 -428 419 -46 38 -84 76 -84 84 0 8 30 52 67 96 37 45 93 115 125 155 133 170 764 959 907 1134 86 105 188 231 227 280 39 50 142 180 230 291 143 181 232 292 476 593 263 322 276 339 316 420 47 93 62 162 63 291 1 186 -51 319 -173 440 -147 147 -413 225 -602 176 -167 -44 -266 -118 -433 -326 -33 -41 -118 -147 -189 -235 -71 -88 -179 -221 -239 -295 -61 -74 -190 -234 -287 -355 -208 -261 -752 -944 -958 -1204 -80 -101 -182 -229 -227 -285 -103 -128 -315 -398 -357 -453 -18 -23 -38 -45 -46 -48 -7 -3 -47 10 -90 29 -335 151 -820 290 -1201 345 -270 39 -379 45 -735 45 -436 0 -649 -20 -1020 -95 -275 -56 -658 -182 -909 -298 -86 -40 -90 -41 -106 -24 -15 16 -263 326 -765 958 -87 110 -256 321 -375 469 -118 148 -262 328 -320 401 -124 157 -500 624 -626 778 -49 60 -102 128 -119 151 -99 139 -264 313 -349 368 -90 58 -170 80 -306 84 -108 3 -120 1 -205 -29z m4045 -9640 c0 -8 -9 -40 -19 -73 -11 -32 -31 -104 -46 -159 -27 -100 -109 -378 -125 -425 -5 -14 -25 -79 -46 -145 -121 -394 -288 -833 -460 -1213 -13 -29 -24 -54 -24 -57 0 -2 -16 -38 -35 -79 -19 -42 -35 -78 -35 -80 0 -2 -27 -61 -60 -131 -33 -70 -60 -129 -60 -131 0 -7 -232 -470 -273 -546 -19 -35 -72 -133 -117 -218 -45 -85 -125 -229 -178 -320 -52 -91 -113 -196 -135 -235 -175 -306 -536 -868 -738 -1152 -239 -335 -675 -891 -889 -1133 -451 -511 -1063 -1088 -1464 -1380 -48 -36 -120 -89 -160 -118 -195 -143 -502 -339 -721 -460 -426 -234 -979 -455 -1305 -522 -25 -5 -79 -17 -120 -25 -239 -52 -363 -66 -615 -72 -356 -8 -563 12 -903 87 -220 48 -346 86 -532 157 -148 57 -369 163 -498 240 -41 24 -76 43 -79 43 -2 0 -66 41 -141 91 -572 383 -1008 906 -1315 1577 -96 209 -182 478 -247 772 -17 79 -40 257 -52 398 -12 154 -5 606 12 717 5 39 15 104 21 145 46 325 134 593 329 995 147 303 276 493 523 772 315 356 668 615 1309 962 152 82 360 182 528 253 52 22 109 46 125 53 255 108 570 220 870 310 50 15 101 31 115 36 14 4 61 18 105 30 44 12 112 30 150 41 75 21 87 24 210 58 315 85 926 228 1290 301 28 5 95 19 150 30 55 12 145 29 200 39 55 10 186 35 290 55 215 41 591 104 800 134 77 12 201 30 275 41 476 73 1061 137 1895 210 66 6 194 17 285 25 212 18 647 49 1065 75 706 43 845 48 845 27z m2410 2 c863 -43 1769 -111 2485 -185 132 -13 284 -29 337 -34 391 -38 803 -93 1278 -170 69 -11 152 -24 185 -30 183 -29 254 -41 390 -64 83 -15 197 -36 255 -47 58 -11 155 -29 215 -40 162 -28 589 -119 940 -201 121 -28 236 -54 255 -58 54 -11 411 -105 570 -150 355 -100 834 -252 1040 -330 47 -18 110 -41 140 -52 30 -12 123 -50 205 -86 83 -35 184 -79 225 -97 196 -85 616 -308 805 -428 500 -317 931 -721 1188 -1114 266 -408 464 -904 542 -1358 40 -232 55 -593 35 -842 -49 -604 -268 -1231 -618 -1768 -275 -423 -600 -749 -1016 -1020 -151 -99 -191 -121 -381 -215 -378 -186 -654 -272 -1145 -357 -147 -25 -173 -27 -490 -27 -402 -1 -510 12 -920 110 -662 159 -1350 502 -2040 1018 -207 154 -292 223 -500 405 -594 520 -915 862 -1503 1598 -258 324 -491 644 -688 948 -199 305 -234 362 -404 650 -65 110 -145 245 -178 300 -139 230 -519 966 -675 1306 -40 86 -102 228 -138 315 -36 88 -74 178 -85 201 -26 57 -140 350 -201 513 -75 202 -218 641 -252 770 -8 30 -44 159 -80 286 -36 127 -66 239 -66 248 0 20 5 20 290 5z m-1306 -2881 c68 -162 170 -391 246 -553 73 -155 251 -512 311 -625 28 -52 78 -147 111 -210 125 -236 291 -517 445 -753 46 -70 83 -132 83 -138 0 -13 -2477 -12 -2485 2 -4 5 15 42 43 82 108 157 294 477 427 732 90 174 170 326 230 440 105 196 244 482 352 720 70 154 163 374 163 385 0 6 8 10 18 10 12 0 28 -25 56 -92z m2613 -4257 c23 -25 81 -93 129 -151 147 -180 329 -372 706 -745 351 -349 460 -451 638 -600 46 -38 105 -90 132 -113 47 -43 47 -44 41 -95 -15 -141 -119 -747 -130 -758 -4 -4 -1883 -9 -4175 -11 -3338 -2 -4169 0 -4180 10 -7 7 -17 54 -24 105 -6 50 -22 142 -34 202 -31 159 -38 203 -57 369 l-17 148 45 42 c25 22 101 90 169 150 187 163 340 306 485 451 368 367 666 680 808 847 86 102 163 189 170 192 6 2 1191 5 2632 4 l2620 0 42 -47z m813 -4417 c0 -22 -130 -262 -232 -428 -558 -910 -1386 -1647 -2158 -1921 -197 -70 -354 -113 -530 -149 -241 -47 -275 -51 -565 -51 -262 0 -290 2 -439 28 -305 54 -478 105 -781 231 -216 89 -507 261 -739 435 -584 440 -971 898 -1415 1676 -50 89 -91 168 -91 178 0 16 200 17 3475 17 3216 0 3475 -1 3475 -16z"/></g></symbol></svg>
+
+<div id="progress"></div>
+
+<header id="topbar">
+  <div class="tb-logo" style="display:flex;align-items:center;gap:12px">
+    <svg width="90" height="22" viewBox="0 0 2540 617" style="color:var(--cream);flex-shrink:0"><use href="#cw"/></svg>
+    <span style="color:var(--muted2);font-size:16px;line-height:1;font-weight:300">×</span>
+    <svg width="22" height="22" viewBox="0 0 3000 3000" style="color:var(--goldl);flex-shrink:0"><use href="#ub"/></svg>
+    <span style="font-family:var(--ro);font-weight:500;font-size:13px;color:var(--cream);letter-spacing:.01em;white-space:nowrap">UniqBee Digital Agency</span>
+  </div>
+  <div class="tb-right">
+    <div class="tb-sec sec-ctr-wrap" id="sec-ctr">Sosyal Medya Strateji Sunumu <strong>2026</strong></div>
+    <div class="tb-links">
+      <a href="https://www.uniqbee.com" target="_blank">uniqbee.com</a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+  S1 ▸ KAPAK
+═══════════════════════════════════════ -->
+<section class="sec" id="s1">
+<div class="cover-rings">
+  <div class="cover-ring cr1"></div>
+  <div class="cover-ring cr2"></div>
+  <div class="cover-ring cr3"></div>
+</div>
+<div class="inner">
+  <div class="cover-tag reveal"><div class="cover-tag-line"></div><div class="cover-tag-text">Sosyal Medya Strateji Sunumu — 2026</div></div>
+  <div class="cover-title reveal r2">CARWAX<br><span style="color:var(--goldl)">TÜRKİYE</span></div>
+  <div class="cover-partner reveal r3" style="display:flex;align-items:center;gap:16px;letter-spacing:.15em">
+    <span>×</span>
+    <svg width="26" height="26" viewBox="0 0 3000 3000" style="color:var(--goldl);opacity:.85"><use href="#ub"/></svg>
+    <span>UniqBee Digital Agency</span>
+  </div>
+  <div class="cover-bottom reveal r4">
+    <div class="cover-pill">10 Mayıs — 10 Haziran 2026</div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta">
+      <div style="font-family:var(--rb);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Hazırlayan</div>
+      <div style="display:flex;align-items:center;gap:8px"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 3000 3000" style="color:var(--cream)"><use href="#ub"/></svg><span style="font-family:var(--rj);font-weight:600;font-size:15px;color:var(--cream)">UniqBee Digital Agency</span></div>
+    </div>
+    <div class="cover-sep"></div>
+    <div class="cover-meta">
+      <div style="font-family:var(--rb);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Web</div>
+      <div style="font-family:var(--rj);font-weight:600;font-size:15px;color:var(--goldl)">uniqbee.com</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S2 ▸ CARWAX KİM?
+═══════════════════════════════════════ -->
+<section class="sec" id="s2">
+<div class="inner">
+  <div class="eyebrow reveal">Marka Kimliği</div>
+  <div class="h-title reveal r2">Türkiye'nin Lider<br>Araç Bakım Markası — <span class="gold">2002'den Beri</span></div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:start" class="reveal r3 gc-s2">
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="stat-hero">
+        <div><span class="big" data-target="22">22</span><span class="unit">+</span></div>
+        <div class="lbl">Yıl Deneyim</div>
+      </div>
+      <div class="stat-hero">
+        <div><span class="big" data-target="122">122</span><span class="unit">+</span></div>
+        <div class="lbl">Aktif İstasyon</div>
+      </div>
+      <div class="gc-mini2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="stat-hero" style="padding:18px 20px">
+          <div><span class="big" style="font-size:clamp(32px,4vw,48px)" data-target="6">6</span></div>
+          <div class="lbl">Ülke</div>
+        </div>
+        <div class="stat-hero" style="padding:18px 20px">
+          <div><span class="big" style="font-size:clamp(32px,4vw,48px)" data-target="190">190</span></div>
+          <div class="lbl">2030 Hedef</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <p class="body" style="font-size:14px;max-width:500px">Amerikalı ve Türk mühendislerin ortak formülasyonuyla üretilen Carwax; seramik kaplama, PPF, nano boya koruma ve detailing alanlarında 22 yılda inşa edilmiş bir güven markasıdır.</p>
+      <div class="svc">
+        <div class="svc-i"><span class="ico">🛡️</span>Nano Boya Koruma</div>
+        <div class="svc-i"><span class="ico">💎</span>Seramik Kaplama</div>
+        <div class="svc-i"><span class="ico">🎞️</span>PPF Kaplama</div>
+        <div class="svc-i"><span class="ico">🪟</span>Cam Filmi</div>
+        <div class="svc-i"><span class="ico">✨</span>Detaylı Temizlik</div>
+        <div class="svc-i"><span class="ico">🎨</span>Renk Değişimi</div>
+        <div class="svc-i"><span class="ico">🔧</span>Küçük Alan Boya</div>
+        <div class="svc-i"><span class="ico">🌿</span>Eko Formüller</div>
+        <div class="svc-i"><span class="ico">🏪</span>3 İstasyon Tipi</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S3 ▸ HEDEF KİTLE
+═══════════════════════════════════════ -->
+<section class="sec" id="s3">
+<div class="inner">
+  <div class="eyebrow reveal">Hedef Kitle Analizi</div>
+  <div class="h-title reveal r2">3 Ana Müşteri Segmenti</div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div class="g3 reveal r3">
+    <div class="persona pblue">
+      <div class="p-icon">🚗</div>
+      <div class="h-card" style="color:rgba(21,103,204,.9)">Araç Sahibi</div>
+      <div class="p-age">25–50 Yaş · Orta-Üst Gelir</div>
+      <ul class="blist">
+        <li>Aracına değer veren, kalite arayan</li>
+        <li>Araç yatırımını korumak isteyen</li>
+        <li>Profesyonel sonuç peşinde</li>
+        <li>Instagram & YouTube aktif kullanıcı</li>
+        <li>Before/after içeriklere duyarlı</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px">
+        <span class="tag tb">Seramik</span><span class="tag tb">PPF</span><span class="tag tb">Detailing</span>
+      </div>
+    </div>
+    <div class="persona pgold">
+      <div class="p-icon">🏢</div>
+      <div class="h-card" style="color:var(--goldl)">Kurumsal Filo</div>
+      <div class="p-age">İşletme Sahipleri · B2B</div>
+      <ul class="blist">
+        <li>Filolarını düzenli bakıma tabi tutan</li>
+        <li>Maliyet-fayda odaklı kararlar veren</li>
+        <li>Sözleşmeli hizmet arayan</li>
+        <li>Güven ve istikrar önceliği</li>
+        <li>LinkedIn & yönetim odaklı içerik</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px">
+        <span class="tag tg">Toplu Bakım</span><span class="tag tg">Rutin Servis</span>
+      </div>
+    </div>
+    <div class="persona pred">
+      <div class="p-icon">💼</div>
+      <div class="h-card" style="color:rgba(199,40,40,.9)">Franchise Yatırımcısı</div>
+      <div class="p-age">30–55 Yaş · Girişimci Ruh</div>
+      <ul class="blist">
+        <li>Kanıtlanmış iş modeli arayan</li>
+        <li>Düşük riskli yatırım peşinde</li>
+        <li>Sektör değiştirmek isteyen</li>
+        <li>Marka güvencesi önceliği</li>
+        <li>Başarı hikayelerine odaklı</li>
+      </ul>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:12px">
+        <span class="tag tr">Franchise</span><span class="tag tr">Bayilik</span><span class="tag tr">Yatırım</span>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S4 ▸ İÇERİK STRATEJİSİ
+═══════════════════════════════════════ -->
+<section class="sec" id="s4">
+<div class="inner">
+  <div class="eyebrow reveal">İçerik Stratejisi</div>
+  <div class="h-title reveal r2">3 Sütunlu İçerik Çerçevesi</div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <p class="body reveal r2" style="max-width:640px;margin-bottom:24px">Her içerik parçası bu üç sütundan birine hizmet eder. Algoritma dostu, insan odaklı ve dönüşüm bazlı bir içerik ekosistemine böylece ulaşılır.</p>
+  <div class="g3 reveal r3">
+    <div class="pillar p1">
+      <div class="pnum">01</div>
+      <div class="tag tb" style="width:fit-content">Sütun 01</div>
+      <div class="h-sub" style="color:rgba(100,160,255,.9)">🎓 EĞİT</div>
+      <p class="body" style="font-size:13px">Bilinç oluştur. İzleyiciyi daha akıllı hale getiren, kaydedilen ve paylaşılan içerikler.</p>
+      <ul class="blist" style="margin-top:4px">
+        <li>Seramik kaplama rehberi</li>
+        <li>Araç bakım ipuçları</li>
+        <li>Hizmet karşılaştırmaları</li>
+        <li>SSS formatı carousels</li>
+      </ul>
+      <div class="tag tb" style="margin-top:auto;width:fit-content">%40 İçerik Payı</div>
+    </div>
+    <div class="pillar p2">
+      <div class="pnum">02</div>
+      <div class="tag tg" style="width:fit-content">Sütun 02</div>
+      <div class="h-sub" style="color:var(--goldl)">✨ İLHAM VER</div>
+      <p class="body" style="font-size:13px">Arzu yarat. Aracın dönüşümünü dramatize eden, wow faktörü yüksek içerikler.</p>
+      <ul class="blist" style="margin-top:4px">
+        <li>Before & after reels</li>
+        <li>Çekim günü B-roll</li>
+        <li>Müşteri hikayeleri</li>
+        <li>Lifestyle & araç estetiği</li>
+      </ul>
+      <div class="tag tg" style="margin-top:auto;width:fit-content">%35 İçerik Payı</div>
+    </div>
+    <div class="pillar p3">
+      <div class="pnum">03</div>
+      <div class="tag tr" style="width:fit-content">Sütun 03</div>
+      <div class="h-sub" style="color:rgba(220,80,80,.9)">🚀 DÖNÜŞTÜR</div>
+      <p class="body" style="font-size:13px">Harekete geçir. Rezervasyon, franchise başvurusu ve satış odaklı içerikler.</p>
+      <ul class="blist" style="margin-top:4px">
+        <li>Franchise fırsat içerikleri</li>
+        <li>Kampanya duyuruları</li>
+        <li>Müşteri yorumları</li>
+        <li>CTA'lı highlight stories</li>
+      </ul>
+      <div class="tag tr" style="margin-top:auto;width:fit-content">%25 İçerik Payı</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S5 ▸ AYLIK PAKET
+═══════════════════════════════════════ -->
+<section class="sec" id="s5">
+<div class="inner">
+  <div class="eyebrow reveal">Aylık İçerik Paketi</div>
+  <div class="h-title reveal r2">1 Çekim Günü — <span class="gold">18 Yayın</span> · 3 Platform</div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:start" class="reveal r3 gc-s5">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card gc-s5-row" style="display:grid;grid-template-columns:56px auto 1fr auto;align-items:center;gap:12px;padding:20px 24px">
+        <div style="font-size:34px">🎬</div>
+        <div><div style="font-family:var(--rb);font-weight:900;font-size:48px;color:var(--goldl);line-height:1">08</div><div style="font-family:var(--rb);font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase">Reels Videosu</div></div>
+        <div class="gc-s5-desc" style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;border-left:1px solid var(--muted2)">15–60 saniye · Trend formatlar<br>Profesyonel kurgu · Müzik lisansı</div>
+        <div class="tag tr">Reels</div>
+      </div>
+      <div class="card gc-s5-row" style="display:grid;grid-template-columns:56px auto 1fr auto;align-items:center;gap:12px;padding:20px 24px">
+        <div style="font-size:34px">🖼️</div>
+        <div><div style="font-family:var(--rb);font-weight:900;font-size:48px;color:var(--goldl);line-height:1">08</div><div style="font-family:var(--rb);font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase">Carousel Post</div></div>
+        <div class="gc-s5-desc" style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;border-left:1px solid var(--muted2)">5–10 kart · Eğitici & dönüştürücü<br>Marka şablonları · Güçlü metin</div>
+        <div class="tag tg">Carousel</div>
+      </div>
+      <div class="card gc-s5-row" style="display:grid;grid-template-columns:56px auto 1fr auto;align-items:center;gap:12px;padding:20px 24px">
+        <div style="font-size:34px">▶️</div>
+        <div><div style="font-family:var(--rb);font-weight:900;font-size:48px;color:var(--goldl);line-height:1">02</div><div style="font-family:var(--rb);font-size:10px;letter-spacing:.18em;color:var(--muted);text-transform:uppercase">YouTube Video</div></div>
+        <div class="gc-s5-desc" style="font-size:12px;color:var(--muted);line-height:1.6;padding-left:12px;border-left:1px solid var(--muted2)">15–25 dakika · SEO optimize<br>Thumbnail tasarımı · Alt yazı</div>
+        <div class="tag tb">YouTube</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card card-gold" style="text-align:center;padding:32px">
+        <div style="font-family:var(--rb);font-weight:900;font-size:88px;color:var(--goldl);line-height:1">18</div>
+        <div style="font-family:var(--rb);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-top:8px">Toplam Aylık Yayın</div>
+        <div style="width:40px;height:1px;background:var(--gold);margin:16px auto"></div>
+        <div style="font-family:var(--rb);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)">Instagram · YouTube · TikTok</div>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="h-card" style="margin-bottom:14px">Çekim Verimliliği</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="font-family:var(--rb);font-size:11px;letter-spacing:.1em;color:var(--muted);min-width:90px">1 ÇEKİM GÜNÜ</div>
+            <div style="flex:1;height:4px;background:var(--muted2);border-radius:2px;overflow:hidden"><div style="width:100%;height:100%;background:linear-gradient(90deg,var(--gold),var(--goldhl))"></div></div>
+            <div style="font-family:var(--rb);font-weight:900;color:var(--goldl);font-size:14px">18 içerik</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="font-family:var(--rb);font-size:11px;letter-spacing:.1em;color:var(--muted);min-width:90px">3 PLATFORM</div>
+            <div style="flex:1;height:4px;background:var(--muted2);border-radius:2px;overflow:hidden"><div style="width:75%;height:100%;background:linear-gradient(90deg,var(--blue),transparent)"></div></div>
+            <div style="font-family:var(--rb);font-weight:900;color:var(--goldl);font-size:14px">~6 içerik</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S6 ▸ 8 REELS
+═══════════════════════════════════════ -->
+<section class="sec" id="s6">
+<div class="inner">
+  <div class="eyebrow reveal">Reels İçerik Planı</div>
+  <div class="h-title reveal r2">8 Reels Konsepti <span class="red">— Mayıs–Haziran 2026</span></div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div class="ci-grid-r reveal r3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+    <div class="ci ci-red"><div class="ci-num">01</div><span class="tag tr" style="width:fit-content;font-size:9px">EĞİT</span><div class="ci-title">🏆 Türkiye'nin En Köklü Araç Bakım Markası</div><div class="ci-desc">Lansman içeriği. 22 yıllık güven. Hook: "Arabanız bunu hak ediyor."</div></div>
+    <div class="ci ci-red"><div class="ci-num">02</div><span class="tag tr" style="width:fit-content;font-size:9px">İLHAM</span><div class="ci-title">✨ Seramik Kaplama Before & After</div><div class="ci-desc">Dramatik reveal anı. Müzikli dönüşüm. Yüksek paylaşım potansiyeli.</div></div>
+    <div class="ci ci-red"><div class="ci-num">03</div><span class="tag tr" style="width:fit-content;font-size:9px">EĞİT</span><div class="ci-title">⚡ PPF Uygulama — Time-lapse</div><div class="ci-desc">Uygulamadan bitişe hızlı kesimli montaj. Teknik uzmanlık görseli.</div></div>
+    <div class="ci ci-red"><div class="ci-num">04</div><span class="tag tr" style="width:fit-content;font-size:9px">DÖNÜŞTÜR</span><div class="ci-title">🎥 Müşteri Deneyimi Vlog</div><div class="ci-desc">Gerçek müşteri hikayesi. Kapıdan alış → teslim. Güven inşası.</div></div>
+    <div class="ci ci-red"><div class="ci-num">05</div><span class="tag tr" style="width:fit-content;font-size:9px">İLHAM</span><div class="ci-title">🔍 İstasyon Turu — BTS</div><div class="ci-desc">Behind the scenes. Profesyonel ortam ve ekip. Kalite algısı.</div></div>
+    <div class="ci ci-red"><div class="ci-num">06</div><span class="tag tr" style="width:fit-content;font-size:9px">DÖNÜŞTÜR</span><div class="ci-title">💰 Franchise Başarı Hikayesi</div><div class="ci-desc">"Carwax ile işimi kurdum." Franchise adaylarına doğrudan konuşur.</div></div>
+    <div class="ci ci-red"><div class="ci-num">07</div><span class="tag tr" style="width:fit-content;font-size:9px">EĞİT</span><div class="ci-title">🚘 Arabanızın Değerini Koruyun</div><div class="ci-desc">Lifestyle & duygusal bağ. Araç = yatırım. Seramik = sigorta.</div></div>
+    <div class="ci ci-red"><div class="ci-num">08</div><span class="tag tr" style="width:fit-content;font-size:9px">EĞİT</span><div class="ci-title">🧹 Aylık Temizlik Rutini Pro</div><div class="ci-desc">Uzman kamera karşısında adım adım. Trend format. Kaydedilen içerik.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S7 ▸ 8 CAROUSEL
+═══════════════════════════════════════ -->
+<section class="sec" id="s7">
+<div class="inner">
+  <div class="eyebrow reveal">Carousel İçerik Planı</div>
+  <div class="h-title reveal r2">8 Carousel Konsepti <span class="gold">— Kaydır & Öğren</span></div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div class="ci-grid-c reveal r3" style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+    <div class="ci ci-gold"><div class="ci-num">01</div><span class="tag tg" style="width:fit-content;font-size:9px">EĞİT</span><div class="ci-title">📖 Carwax Nedir? 22 Yıllık Güven</div><div class="ci-desc">Marka tanıtım serisi. Kuruluştan bugüne sayılarla anlatım.</div></div>
+    <div class="ci ci-gold"><div class="ci-num">02</div><span class="tag tg" style="width:fit-content;font-size:9px">EĞİT</span><div class="ci-title">⚠️ Araç Bakımında 5 Büyük Hata</div><div class="ci-desc">Kaydırma tetikleyici. Her kartta hata + doğru çözüm. Yüksek kaydetme.</div></div>
+    <div class="ci ci-gold"><div class="ci-num">03</div><span class="tag tg" style="width:fit-content;font-size:9px">EĞİT</span><div class="ci-title">⚖️ Nano Boya vs Normal Yıkama</div><div class="ci-desc">Karşılaştırma formatı. Yan yana görsel + fiyat/değer tablosu.</div></div>
+    <div class="ci ci-gold"><div class="ci-num">04</div><span class="tag tg" style="width:fit-content;font-size:9px">DÖNÜŞTÜR</span><div class="ci-title">🗂️ Carwax Hizmetleri: Hangisi Size Göre?</div><div class="ci-desc">Hizmet kataloğu. Her kart bir hizmet = karar vermeyi kolaylaştırır.</div></div>
+    <div class="ci ci-gold"><div class="ci-num">05</div><span class="tag tg" style="width:fit-content;font-size:9px">EĞİT</span><div class="ci-title">📈 Araç Değerinizi Koruyun</div><div class="ci-desc">2. el değer kaybı verileriyle. Finans perspektifi ile konuşur.</div></div>
+    <div class="ci ci-gold"><div class="ci-num">06</div><span class="tag tg" style="width:fit-content;font-size:9px">DÖNÜŞTÜR</span><div class="ci-title">🏪 Franchise: Kendi İşinin Patronu</div><div class="ci-desc">3 istasyon tipi, yatırım avantajları ve başvuru adımları.</div></div>
+    <div class="ci ci-gold"><div class="ci-num">07</div><span class="tag tg" style="width:fit-content;font-size:9px">DÖNÜŞTÜR</span><div class="ci-title">⭐ Müşteri Yorumları & Dönüşümler</div><div class="ci-desc">Sosyal kanıt formatı. Gerçek yorumlar + before/after görseller.</div></div>
+    <div class="ci ci-gold"><div class="ci-num">08</div><span class="tag tg" style="width:fit-content;font-size:9px">DÖNÜŞTÜR</span><div class="ci-title">🎁 Haziran Bakım Sezonu Paketi</div><div class="ci-desc">Kampanya duyurusu. Sezon motivasyonu. CTA son kartta.</div></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S8 ▸ YOUTUBE
+═══════════════════════════════════════ -->
+<section class="sec" id="s8">
+<div class="inner">
+  <div class="eyebrow reveal">YouTube Strateji</div>
+  <div class="h-title reveal r2">2 Long-Form Video<br><span style="color:rgba(100,160,255,.85)">Otorite & Organik Büyüme</span></div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <p class="body reveal r2" style="max-width:640px;margin-bottom:24px">YouTube, kısa formatlara kıyasla marka otoritesi ve uzun vadeli organik erişim için vazgeçilmezdir. Bu iki video Carwax'ı sektörün bilgi merkezine dönüştürür.</p>
+  <div style="display:flex;flex-direction:column;gap:16px" class="reveal r3">
+    <div class="yt-block">
+      <div class="yt-n">01</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+          <span class="tag tb">▶ Video 1</span><span class="tag tm">15–20 Dakika</span><span class="tag tm">📅 22 Mayıs 2026</span>
+        </div>
+        <div class="h-sub" style="margin-bottom:10px">🛡️ Seramik Kaplama Tam Rehberi: Bilmeniz Gereken Her Şey</div>
+        <p class="body" style="font-size:13px">Seramik kaplamanın ne olduğundan fiyatına, uygulama sürecinden bakımına kadar her şeyi anlatan kapsamlı rehber video. "Seramik kaplama" aramalarda organik görünürlük. Sonunda Carwax istasyonlarına yönlendirme CTA'sı eklenir.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+          <span class="tag tb">🔍 SEO Optimize</span><span class="tag tb">🖼️ Thumbnail</span><span class="tag tb">📑 Chapters</span><span class="tag tb">💬 Alt Yazı</span><span class="tag tb">📌 Pinned CTA</span>
+        </div>
+      </div>
+    </div>
+    <div class="yt-block">
+      <div class="yt-n">02</div>
+      <div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+          <span class="tag tb">▶ Video 2</span><span class="tag tm">20–25 Dakika</span><span class="tag tm">📅 5 Haziran 2026</span>
+        </div>
+        <div class="h-sub" style="margin-bottom:10px">💼 Carwax Franchise: Kendi İşinin Patronu Ol — Başarı & Yatırım Rehberi</div>
+        <p class="body" style="font-size:13px">Gerçek bir Carwax bayisi ile röportaj + franchise sürecinin adım adım anlatımı. Yatırım getirisini somutlaştırır, franchise adaylarını ikna eder. "Araç bakım franchise" aramalarda görünürlük sağlar.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:14px">
+          <span class="tag tb">💰 Franchise Odaklı</span><span class="tag tb">🎙️ Röportaj</span><span class="tag tb">📊 İnfografik</span><span class="tag tb">🎯 End Screen CTA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S9 ▸ FRANCHİSE HUNISI
+═══════════════════════════════════════ -->
+<section class="sec" id="s9">
+<div class="inner">
+  <div class="eyebrow reveal">Franchise Teşvik Stratejisi</div>
+  <div class="h-title reveal r2">Sosyal Medyadan<br><span class="gold">Franchise Adayına</span> Dönüşüm Hunisi</div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start" class="reveal r3 gc-s9">
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <div class="fstep"><div class="fstep-n">01</div><div><div class="h-card" style="color:var(--goldl);margin-bottom:4px">🔔 Farkındalık İçerikleri</div><p class="body" style="font-size:13px">"Araç bakım sektörü büyüyor" · "122 istasyon, 6 ülke" · Sektör verileriyle merak yaratılır.</p></div></div>
+      <div class="fstep"><div class="fstep-n">02</div><div><div class="h-card" style="color:var(--goldl);margin-bottom:4px">💡 İlgi Oluşturma</div><p class="body" style="font-size:13px">Başarılı bayi hikayeleri · İstasyon turu reels · "Kendi işinin patronu ol" carousel serisi.</p></div></div>
+      <div class="fstep"><div class="fstep-n">03</div><div><div class="h-card" style="color:var(--goldl);margin-bottom:4px">🔎 Değerlendirme</div><p class="body" style="font-size:13px">Franchise avantajları karşılaştırması · Yatırım getirisi infografiği · YouTube rehber videosu.</p></div></div>
+      <div class="fstep"><div class="fstep-n">04</div><div><div class="h-card" style="color:var(--goldl);margin-bottom:4px">✅ Karar & Başvuru</div><p class="body" style="font-size:13px">Bio linki ile direkt form · Stories CTA · DM yönlendirmesi · WhatsApp butonlu bağlantı.</p></div></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card card-gold" style="padding:24px">
+        <div class="h-card" style="color:var(--goldl);margin-bottom:12px">💡 Franchise İçerik Fikirleri</div>
+        <ul class="blist">
+          <li>"3 İstasyon Tipi: Senin İçin Hangisi?" carousel</li>
+          <li>Bayi röportaj serisi (Reels)</li>
+          <li>"İstasyon Açmadan Önce Bilmen Gereken 5 Şey"</li>
+          <li>Aylık franchise Q&A Stories</li>
+          <li>Yeni bayi açılışı kutlama içerikleri</li>
+        </ul>
+      </div>
+      <div class="gc-mini2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="card card-red" style="text-align:center;padding:20px">
+          <div style="font-family:var(--rb);font-weight:900;font-size:36px;color:var(--red)">%3–5</div>
+          <div class="small" style="margin-top:4px">Story → Link Tıklama</div>
+        </div>
+        <div class="card card-red" style="text-align:center;padding:20px">
+          <div style="font-family:var(--rb);font-weight:900;font-size:36px;color:var(--red)">5–10</div>
+          <div class="small" style="margin-top:4px">Aylık Franchise Başvurusu</div>
+        </div>
+      </div>
+      <div class="card" style="padding:18px;text-align:center">
+        <div class="small" style="margin-bottom:4px;text-transform:uppercase;letter-spacing:.15em">2030 Hedefi</div>
+        <div style="font-family:var(--rb);font-weight:900;font-size:48px;color:var(--goldl);line-height:1">190</div>
+        <div class="small">İstasyon — Sosyal medya bu hedefe destek olur</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S10 ▸ ÇEKİM GÜNÜ
+═══════════════════════════════════════ -->
+<section class="sec" id="s10">
+<div class="inner">
+  <div class="eyebrow reveal">Prodüksiyon Planı</div>
+  <div class="h-title reveal r2">1 Çekim Günü — <span class="gold">~13 Mayıs 2026</span></div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start" class="reveal r3 gc-s10">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card card-gold" style="padding:22px">
+        <div class="h-card" style="color:var(--goldl);margin-bottom:10px">📍 Çekim Detayları</div>
+        <ul class="blist">
+          <li>Lokasyon: Carwax istasyonu (servis alanı + dış mekan)</li>
+          <li>Çekim süresi: 08:00 – 18:00 (10 saat)</li>
+          <li>Ekip: Kameraman, asistan, ışık uzmanı, yönetmen</li>
+          <li>Araç: Müşteri veya kiralık gösterilik araç</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:22px">
+        <div class="h-card" style="margin-bottom:14px">🎥 Ekipman</div>
+        <div class="gc-mini2" style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="card" style="padding:12px;text-align:center;border-radius:2px">📷<div style="font-size:11px;color:var(--muted);margin-top:4px">Sony FX3 / Canon R5</div></div>
+          <div class="card" style="padding:12px;text-align:center;border-radius:2px">🎯<div style="font-size:11px;color:var(--muted);margin-top:4px">DJI Ronin Gimbal</div></div>
+          <div class="card" style="padding:12px;text-align:center;border-radius:2px">🚁<div style="font-size:11px;color:var(--muted);margin-top:4px">Drone Çekim</div></div>
+          <div class="card" style="padding:12px;text-align:center;border-radius:2px">💡<div style="font-size:11px;color:var(--muted);margin-top:4px">LED Panel Işık</div></div>
+          <div class="card" style="padding:12px;text-align:center;border-radius:2px">🎙️<div style="font-size:11px;color:var(--muted);margin-top:4px">Lavalye + Boom</div></div>
+          <div class="card" style="padding:12px;text-align:center;border-radius:2px">🎨<div style="font-size:11px;color:var(--muted);margin-top:4px">Colour Checker</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div class="h-card" style="color:var(--goldl);margin-bottom:4px">⏱️ Günlük Zaman Çizelgesi</div>
+      <div style="display:flex;flex-direction:column;gap:0">
+        <div style="display:flex;gap:0;align-items:stretch"><div style="display:flex;flex-direction:column;align-items:center;margin-right:16px"><div style="width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:4px"></div><div style="flex:1;width:1px;background:var(--goldbdr)"></div></div><div style="padding-bottom:16px;flex:1"><div style="font-family:var(--rb);font-weight:700;font-size:13px;color:var(--goldl)">08:00 – 10:00</div><div style="font-size:13px;color:rgba(237,227,202,.65)">Kurulum, ışık kontrolü, araç hazırlığı</div></div></div>
+        <div style="display:flex;gap:0;align-items:stretch"><div style="display:flex;flex-direction:column;align-items:center;margin-right:16px"><div style="width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:4px"></div><div style="flex:1;width:1px;background:var(--goldbdr)"></div></div><div style="padding-bottom:16px;flex:1"><div style="font-family:var(--rb);font-weight:700;font-size:13px;color:var(--goldl)">10:00 – 13:00</div><div style="font-size:13px;color:rgba(237,227,202,.65)">Hizmet uygulamaları: seramik, PPF, detailing çekimleri</div></div></div>
+        <div style="display:flex;gap:0;align-items:stretch"><div style="display:flex;flex-direction:column;align-items:center;margin-right:16px"><div style="width:10px;height:10px;border-radius:50%;background:var(--gold);flex-shrink:0;margin-top:4px"></div><div style="flex:1;width:1px;background:var(--goldbdr)"></div></div><div style="padding-bottom:16px;flex:1"><div style="font-family:var(--rb);font-weight:700;font-size:13px;color:var(--goldl)">14:00 – 16:30</div><div style="font-size:13px;color:rgba(237,227,202,.65)">Müşteri/bayi röportajı, B-roll, istasyon turu</div></div></div>
+        <div style="display:flex;gap:0;align-items:stretch"><div style="display:flex;flex-direction:column;align-items:center;margin-right:16px"><div style="width:10px;height:10px;border-radius:50%;background:var(--goldl);flex-shrink:0;margin-top:4px;box-shadow:0 0 8px var(--gold)"></div></div><div style="flex:1"><div style="font-family:var(--rb);font-weight:700;font-size:13px;color:var(--goldl)">16:30 – 18:00</div><div style="font-size:13px;color:rgba(237,227,202,.65)">Before/after sahnesi + gün kapanış çekimleri</div></div></div>
+      </div>
+      <div class="card card-red" style="padding:18px;margin-top:4px">
+        <div class="h-card" style="color:var(--red);margin-bottom:10px">📦 Çekim Çıktıları</div>
+        <ul class="blist">
+          <li>8 Reels için ham footage</li>
+          <li>2 YouTube videosu için uzun ham çekim</li>
+          <li>Carousel için fotoğraf seti (50+ kare)</li>
+          <li>Stories, highlight & thumbnail materyali</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S11 ▸ TAKVİM
+═══════════════════════════════════════ -->
+<section class="sec" id="s11">
+<div class="inner">
+  <div class="eyebrow reveal">Yayın Takvimi</div>
+  <div class="h-title reveal r2"><span class="gold">10 Mayıs — 10 Haziran 2026</span></div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div class="reveal r3 cal-2col" style="display:grid;grid-template-columns:1fr auto 1fr auto;gap:24px;align-items:start">
+    <div>
+      <div style="font-family:var(--rb);font-size:14px;letter-spacing:.15em;color:var(--goldl);margin-bottom:12px;text-transform:uppercase">Mayıs 2026</div>
+      <div class="cal-grid">
+        <div class="cday-h">Pzt</div><div class="cday-h">Sal</div><div class="cday-h">Çar</div><div class="cday-h">Per</div><div class="cday-h">Cum</div><div class="cday-h">Cmt</div><div class="cday-h">Paz</div>
+        <div class="cday e"></div><div class="cday e"></div><div class="cday e"></div><div class="cday e"></div><div class="cday">1</div><div class="cday">2</div><div class="cday">3</div>
+        <div class="cday">4</div><div class="cday">5</div><div class="cday">6</div><div class="cday">7</div><div class="cday">8</div><div class="cday">9</div><div class="cday rd">10</div>
+        <div class="cday">11</div><div class="cday gd">12</div><div class="cday sh">13✦</div><div class="cday rd">14</div><div class="cday">15</div><div class="cday gd">16</div><div class="cday">17</div>
+        <div class="cday rd">18</div><div class="cday">19</div><div class="cday gd">20</div><div class="cday">21</div><div class="cday rd">22</div><div class="cday bd">23</div><div class="cday">24</div>
+        <div class="cday gd">25</div><div class="cday">26</div><div class="cday rd">27</div><div class="cday gd">28</div><div class="cday">29</div><div class="cday">30</div><div class="cday">31</div>
+      </div>
+    </div>
+    <div class="cal-divider" style="width:1px;background:var(--goldbdr);align-self:stretch;margin-top:30px"></div>
+    <div>
+      <div style="font-family:var(--rb);font-size:14px;letter-spacing:.15em;color:var(--goldl);margin-bottom:12px;text-transform:uppercase">Haziran 2026</div>
+      <div class="cal-grid">
+        <div class="cday-h">Pzt</div><div class="cday-h">Sal</div><div class="cday-h">Çar</div><div class="cday-h">Per</div><div class="cday-h">Cum</div><div class="cday-h">Cmt</div><div class="cday-h">Paz</div>
+        <div class="cday rd">1</div><div class="cday">2</div><div class="cday rd">3</div><div class="cday gd">4</div><div class="cday bd">5</div><div class="cday">6</div><div class="cday rd">7</div>
+        <div class="cday">8</div><div class="cday gd">9</div><div class="cday gd" style="border-color:var(--goldhl)">10</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:20px">
+        <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;border-radius:1px;background:rgba(199,40,40,.4);flex-shrink:0"></div><span class="small">Reels Yayın Günü (8)</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;border-radius:1px;background:rgba(201,146,42,.4);flex-shrink:0"></div><span class="small">Carousel Yayın Günü (8)</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;border-radius:1px;background:rgba(21,103,204,.4);flex-shrink:0"></div><span class="small">YouTube Yayın Günü (2)</span></div>
+        <div style="display:flex;align-items:center;gap:8px"><div style="width:12px;height:12px;border-radius:1px;background:rgba(201,146,42,.5);border:1px solid var(--gold);flex-shrink:0"></div><span class="small">Çekim Günü</span></div>
+      </div>
+    </div>
+    <div class="cal-stats" style="display:flex;flex-direction:column;gap:14px;min-width:150px">
+      <div class="stat-hero" style="padding:20px;text-align:center">
+        <div style="text-align:center"><span class="big" style="font-size:52px">18</span></div>
+        <div class="lbl">Toplam Yayın</div>
+      </div>
+      <div class="card" style="padding:16px;text-align:center">
+        <div style="font-family:var(--rb);font-size:13px;color:var(--red);font-weight:700;margin-bottom:2px">8 × Reels</div>
+        <div style="font-family:var(--rb);font-size:13px;color:var(--goldl);font-weight:700;margin-bottom:2px">8 × Carousel</div>
+        <div style="font-family:var(--rb);font-size:13px;color:var(--blue);font-weight:700">2 × YouTube</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S12 ▸ UNIQBEE KATKI
+═══════════════════════════════════════ -->
+<section class="sec" id="s12">
+<div class="inner">
+  <div class="eyebrow reveal">UniqBee'nin Katkısı</div>
+  <div class="h-title reveal r2">Biz Sadece İçerik<br><span class="gold">Üretmiyoruz</span></div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px" class="reveal r3 gc-s12">
+    <div class="crow"><div class="crow-icon">🎯</div><div><div class="h-card" style="margin-bottom:3px">Strateji & Planlama</div><p class="small">Marka sesi, içerik pillarları ve yayın takvimi baştan sona tasarlanır.</p></div></div>
+    <div class="crow"><div class="crow-icon">🎬</div><div><div class="h-card" style="margin-bottom:3px">Profesyonel Prodüksiyon</div><p class="small">Sinema kalitesi çekim, kurgu, renk düzeltme ve ses miksajı.</p></div></div>
+    <div class="crow"><div class="crow-icon">✍️</div><div><div class="h-card" style="margin-bottom:3px">Copywriting & Caption</div><p class="small">Algoritmayı besleyen, kullanıcıyı durduran güçlü metinler ve hashtag stratejisi.</p></div></div>
+    <div class="crow"><div class="crow-icon">🎨</div><div><div class="h-card" style="margin-bottom:3px">Marka Şablonları & Tasarım</div><p class="small">Carwax görsel kimliğine uygun carousel şablonları ve thumbnail standartları.</p></div></div>
+    <div class="crow"><div class="crow-icon">📲</div><div><div class="h-card" style="margin-bottom:3px">Sosyal Medya Yönetimi</div><p class="small">Zamanlanmış yayın, community management, yorum ve DM takibi. 7/24.</p></div></div>
+    <div class="crow"><div class="crow-icon">📊</div><div><div class="h-card" style="margin-bottom:3px">Performans Analizi</div><p class="small">Aylık raporlama: reach, engagement, franchise başvuru tracing ve öneriler.</p></div></div>
+    <div class="crow"><div class="crow-icon">🚀</div><div><div class="h-card" style="margin-bottom:3px">YouTube SEO & Optimizasyon</div><p class="small">Anahtar kelime araştırması, başlık/açıklama/tag optimizasyonu ve A/B testi.</p></div></div>
+    <div class="crow"><div class="crow-icon">🤝</div><div><div class="h-card" style="margin-bottom:3px">Haftalık Check-in & Revizyon</div><p class="small">Her yayın öncesi onay süreci. Revizyonlar 24 saatte tamamlanır.</p></div></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S13 ▸ BÜTÇE
+═══════════════════════════════════════ -->
+<section class="sec" id="s13">
+<div class="inner">
+  <div class="eyebrow reveal">Bütçe Dökümü</div>
+  <div class="h-title reveal r2">Aylık Hizmet Bedeli — <span class="gold">Şeffaf Fiyatlandırma</span></div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:32px;align-items:start" class="reveal r3 gc-s13">
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div style="display:grid;grid-template-columns:1fr auto;padding:10px 16px;border-bottom:1px solid var(--muted2)">
+        <span style="font-family:var(--rb);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)">Hizmet Kalemi</span>
+        <span style="font-family:var(--rb);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)">Tutar (TL)</span>
+      </div>
+      <div class="brow"><div><div style="font-family:var(--rj);font-weight:700;font-size:14px">🎯 Strateji, Planlama & Raporlama</div><div class="small">İçerik stratejisi, yayın takvimi, aylık analiz</div></div><div class="brow-amt">12.000</div></div>
+      <div class="brow"><div><div style="font-family:var(--rj);font-weight:700;font-size:14px">🎬 Çekim Günü — Prodüksiyon Ekibi</div><div class="small">Kameraman, asistan, ışık, ulaşım & ekipman</div></div><div class="brow-amt">28.000</div></div>
+      <div class="brow"><div><div style="font-family:var(--rj);font-weight:700;font-size:14px">📱 8 Reels Kurgu & Post-Prodüksiyon</div><div class="small">Kurgu, renk, müzik lisansı, alt yazı, export</div></div><div class="brow-amt">35.000</div></div>
+      <div class="brow"><div><div style="font-family:var(--rj);font-weight:700;font-size:14px">🖼️ 8 Carousel Tasarım & Metin</div><div class="small">Grafik tasarım, copywriting, marka uyumu</div></div><div class="brow-amt">20.000</div></div>
+      <div class="brow"><div><div style="font-family:var(--rj);font-weight:700;font-size:14px">▶️ 2 YouTube Video Prodüksiyon</div><div class="small">Kurgu, grafik, thumbnail, SEO, chapters</div></div><div class="brow-amt">30.000</div></div>
+      <div class="brow"><div><div style="font-family:var(--rj);font-weight:700;font-size:14px">📲 Sosyal Medya Yönetimi & Community</div><div class="small">Zamanlama, yorumlar, DM, stories</div></div><div class="brow-amt">15.000</div></div>
+      <div style="display:grid;grid-template-columns:1fr auto;padding:14px 16px;border-top:1px solid var(--goldbdr);margin-top:4px">
+        <span style="font-family:var(--rj);font-weight:700;font-size:16px">Toplam Hizmet Bedeli</span>
+        <span style="font-family:var(--rb);font-weight:900;font-size:20px;color:var(--goldl)">150.000</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr auto;padding:8px 16px">
+        <span style="color:var(--muted);font-size:13px">KDV (%20)</span>
+        <span style="font-family:var(--rb);color:var(--muted);font-size:14px">30.000</span>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card card-gold" style="text-align:center;padding:32px">
+        <div style="font-family:var(--rb);font-size:11px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Genel Toplam</div>
+        <div style="font-family:var(--rb);font-weight:900;font-size:clamp(44px,6vw,76px);color:var(--goldl);line-height:1">180K</div>
+        <div style="font-family:var(--rb);font-size:13px;letter-spacing:.12em;color:var(--muted);margin-top:4px">TL — KDV Dahil</div>
+        <div style="width:40px;height:1px;background:var(--gold);margin:18px auto"></div>
+        <div style="font-size:13px;color:var(--muted)">%50 Peşin · %50 Yayım Sonrası</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div class="card" style="padding:14px;display:flex;justify-content:space-between;align-items:center"><span class="small">8 Reels / içerik</span><span style="font-family:var(--rb);font-weight:700;color:var(--goldl)">~8.125 ₺</span></div>
+        <div class="card" style="padding:14px;display:flex;justify-content:space-between;align-items:center"><span class="small">8 Carousel / içerik</span><span style="font-family:var(--rb);font-weight:700;color:var(--goldl)">~5.875 ₺</span></div>
+        <div class="card" style="padding:14px;display:flex;justify-content:space-between;align-items:center"><span class="small">2 YouTube / video</span><span style="font-family:var(--rb);font-weight:700;color:var(--goldl)">~19.000 ₺</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S14 ▸ NEDEN UNIQBEE?
+═══════════════════════════════════════ -->
+<section class="sec" id="s14">
+<div class="inner">
+  <div class="eyebrow reveal">Neden UniqBee?</div>
+  <div class="h-title reveal r2">Sizi Öne Çıkaran <span class="gold">6 Fark</span></div>
+  <div class="rule reveal r2"><div class="rule-diamond"></div></div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px" class="reveal r3 why-grid">
+    <div class="why"><div class="why-icon">🏆</div><div class="h-card">Sektör Odaklı Deneyim</div><p class="small" style="line-height:1.6">Otomotiv ve franchise markalarıyla çalışma deneyimimiz sayesinde Carwax'ın ihtiyacını hızlıca kavrarız.</p></div>
+    <div class="why"><div class="why-icon">🎬</div><div class="h-card">End-to-End Prodüksiyon</div><p class="small" style="line-height:1.6">Stratejiden çekime, kurgudan yayına kadar tek çatı altında. Tek muhatap, sıfır koordinasyon kaybı.</p></div>
+    <div class="why"><div class="why-icon">📈</div><div class="h-card">Veri Odaklı Strateji</div><p class="small" style="line-height:1.6">Her kararın arkasında ölçüm vardır. Hangi içerik daha çok franchise başvurusu getirdi? Raporlarla takip.</p></div>
+    <div class="why"><div class="why-icon">⚡</div><div class="h-card">Hızlı Teslimat</div><p class="small" style="line-height:1.6">Çekim sonrası 7 iş günü içinde tüm içerikler onaya hazır. Yayın takviminize sadık, revizyonda esnek.</p></div>
+    <div class="why"><div class="why-icon">🔐</div><div class="h-card">Şeffaf Süreç</div><p class="small" style="line-height:1.6">Haftalık check-in, aylık rapor, anlık WhatsApp iletişimi. Paranın nereye gittiğini her zaman görürsünüz.</p></div>
+    <div class="why"><div class="why-icon">🌱</div><div class="h-card">Büyümeye Hazır Yapı</div><p class="small" style="line-height:1.6">Carwax büyüdükçe paket büyür. İçerik hacmi, platform sayısı ve yatırım esnek biçimde ölçeklenir.</p></div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════
+  S15 ▸ KAPANIŞ
+═══════════════════════════════════════ -->
+<section class="sec" id="s15">
+<div class="inner" style="text-align:center;align-items:center;display:flex;flex-direction:column;justify-content:center;min-height:80vh">
+  <div style="margin-bottom:32px"><svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 3000 3000" style="color:var(--goldl)"><use href="#ub"/></svg></div>
+  <div style="font-family:var(--rb);font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--goldl);margin-bottom:24px" class="reveal">Hazır olduğunuzda biz hazırız</div>
+  <div class="h-display reveal r2" style="font-size:clamp(44px,8vw,100px)">Birlikte<br><span class="gold">Büyüyelim.</span></div>
+  <div style="display:flex;align-items:center;gap:16px;margin:28px 0" class="reveal r3">
+    <div style="flex:1;max-width:120px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))"></div>
+    <div style="width:6px;height:6px;background:var(--gold);transform:rotate(45deg)"></div>
+    <div style="flex:1;max-width:120px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+  </div>
+  <p class="body reveal r3" style="max-width:520px;font-size:15px;margin-bottom:36px">Carwax Türkiye'nin sosyal medyada hak ettiği yeri alması, franchise ağını büyütmesi ve marka değerini güçlendirmesi için UniqBee olarak tam anlamıyla hazırız.</p>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center" class="reveal r4">
+    <a href="https://www.uniqbee.com" target="_blank" rel="noopener" style="text-decoration:none">
+      <div class="card card-gold" style="padding:20px 28px;text-align:center;min-width:180px"><div style="font-size:26px;margin-bottom:8px">🌐</div><div style="font-family:var(--rb);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">Web Site</div><div style="font-family:var(--rj);font-weight:600;font-size:13px;color:var(--goldl)">uniqbee.com</div></div>
+    </a>
+    <a href="https://www.instagram.com/uniqbeedigital" target="_blank" rel="noopener" style="text-decoration:none">
+      <div class="card card-gold" style="padding:20px 28px;text-align:center;min-width:180px"><div style="font-size:26px;margin-bottom:8px">📸</div><div style="font-family:var(--rb);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">Instagram</div><div style="font-family:var(--rj);font-weight:600;font-size:13px;color:var(--goldl)">@uniqbeedigital</div></div>
+    </a>
+    <div class="card card-gold" style="padding:20px 28px;text-align:center;min-width:180px"><div style="font-size:26px;margin-bottom:8px">📅</div><div style="font-family:var(--rb);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:5px">Başlangıç</div><div style="font-family:var(--rj);font-weight:600;font-size:13px;color:var(--goldl)">10 Mayıs 2026</div></div>
+  </div>
+  <div style="font-family:var(--rb);font-size:10px;letter-spacing:.25em;color:var(--muted);margin-top:40px" class="reveal r5">CARWAX TÜRKİYE × UNIQBEE DIGITAL AGENCY — 2026</div>
+</div>
+</section>
+
+<script>
+// Progress bar
+const bar=document.getElementById('progress');
+window.addEventListener('scroll',()=>{
+  const pct=window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100;
+  bar.style.width=Math.min(pct,100)+'%';
+},{passive:true});
+
+// Sayaçları direkt say — animasyon yok, hedef değeri göster
+document.querySelectorAll('[data-target]').forEach(el=>{
+  el.textContent=el.dataset.target;
+});
+
+// Section counter in topbar
+const sections=document.querySelectorAll('.sec');
+const secCtr=document.getElementById('sec-ctr');
+const secNames=['Kapak','Carwax Kim?','Hedef Kitle','İçerik Stratejisi','Aylık Paket','8 Reels','8 Carousel','YouTube','Franchise','Çekim Günü','Takvim','UniqBee Katkı','Bütçe','Neden UniqBee?','Kapanış'];
+const secObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const i=Array.from(sections).indexOf(e.target);
+      if(i>=0)secCtr.innerHTML=secNames[i]+' <strong>'+(i+1)+'/'+sections.length+'</strong>';
+    }
+  });
+},{threshold:0.2});
+sections.forEach(s=>secObs.observe(s));
+</script>
+</body>
+</html>

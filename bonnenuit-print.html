@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Bonne Nuit — Sosyal Medya Strateji Raporu | UniqBee</title>
+<style>
+/* ─────────────────────────────────────────────────────────────────
+   DESIGN SYSTEM
+   Typography: System SF Pro / Helvetica Neue
+   Grid: 8px base unit
+   Colors: Near-black, white, gold accent, muted grays
+───────────────────────────────────────────────────────────────── */
+:root {
+  --black:   #0F0F0F;
+  --ink:     #1C1C1E;
+  --body:    #3A3A3C;
+  --muted:   #6C6C70;
+  --border:  #E5E5EA;
+  --surface: #F5F5F7;
+  --white:   #FFFFFF;
+  --gold:    #C9963E;
+  --gold-lt: #F0E0C0;
+  --gold-bg: #FBF6EE;
+  --rose:    #B05A5A;
+  --teal:    #357A70;
+  --bee:     #E6961A;
+  --page-w:  210mm;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: -apple-system, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+  background: #D8D8D8;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* ─── PAGE ─────────────────────────────────────────────────────── */
+.page {
+  width: var(--page-w);
+  min-height: 297mm;
+  margin: 12px auto;
+  background: var(--white);
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+}
+
+@media print {
+  body { background: white; }
+  .page { margin: 0; width: 100%; box-shadow: none; }
+}
+
+/* ─── RUNNING HEADER / FOOTER ──────────────────────────────────── */
+.run-header {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.rh-brand {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: var(--black);
+  text-transform: uppercase;
+}
+
+.rh-brand span { color: var(--bee); }
+
+.rh-right {
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.3px;
+}
+
+.run-footer {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 36px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+}
+
+.rf-left { font-size: 8.5px; color: var(--muted); }
+.rf-mid  { font-size: 8.5px; color: var(--gold); font-weight: 600; letter-spacing: 0.5px; }
+.rf-right { font-size: 8.5px; color: var(--muted); }
+
+/* ─── CONTENT AREA ─────────────────────────────────────────────── */
+.body { padding: 28px 28px 52px; }
+
+/* ─── TYPOGRAPHY ───────────────────────────────────────────────── */
+.label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--black);
+  line-height: 1.15;
+  margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.desc {
+  font-size: 11px;
+  color: var(--body);
+  line-height: 1.75;
+  max-width: 560px;
+  margin-bottom: 20px;
+}
+
+.rule { height: 1px; background: var(--border); margin: 20px 0; }
+
+.rule-gold { height: 2px; background: var(--gold); width: 32px; margin-bottom: 16px; border-radius: 1px; }
+
+/* ─── GRID ─────────────────────────────────────────────────────── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
+.g5 { display: grid; grid-template-columns: repeat(5,1fr); gap: 8px; }
+
+/* ─── CARD ─────────────────────────────────────────────────────── */
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  background: var(--white);
+}
+
+.card-icon { font-size: 18px; margin-bottom: 8px; display: block; }
+.card-title { font-size: 11px; font-weight: 700; margin-bottom: 4px; color: var(--ink); }
+.card-body  { font-size: 10px; color: var(--body); line-height: 1.65; }
+
+/* ─── PROGRESS ─────────────────────────────────────────────────── */
+.prog { margin-bottom: 12px; }
+.prog-row { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.prog-name { font-size: 11px; font-weight: 600; color: var(--ink); }
+.prog-score { font-size: 11px; font-weight: 700; color: var(--rose); }
+.prog-bg { height: 5px; background: var(--surface); border-radius: 3px; overflow: hidden; }
+.prog-fill { height: 100%; border-radius: 3px; }
+.prog-note { font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+/* ─── SWOT ─────────────────────────────────────────────────────── */
+.swot { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+.sq { padding: 18px; }
+.sq:nth-child(1) { background: var(--ink);  color: white; }
+.sq:nth-child(2) { background: var(--rose); color: white; }
+.sq:nth-child(3) { background: var(--teal); color: white; }
+.sq:nth-child(4) { background: var(--gold); color: white; }
+.sq-lbl { font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; opacity: .55; margin-bottom: 3px; }
+.sq-ttl { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.sq ul  { list-style: none; }
+.sq ul li { font-size: 10px; padding: 3.5px 0; border-bottom: 1px solid rgba(255,255,255,.12); display:flex; gap:5px; line-height:1.4; }
+.sq ul li:last-child { border:none; }
+.sq ul li::before { content:'—'; opacity:.4; flex-shrink:0; }
+
+/* ─── TABLE ─────────────────────────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; }
+th { background: var(--ink); color: white; padding: 9px 12px; text-align: left; font-size: 10px; font-weight: 600; letter-spacing: 0.3px; }
+td { padding: 8px 12px; border-bottom: 1px solid var(--border); font-size: 10.5px; vertical-align: middle; }
+tr:last-child td { border: none; }
+tr:hover td { background: var(--surface); }
+.check  { color: var(--teal); font-weight: 700; }
+.cross  { color: var(--rose); font-weight: 700; }
+.part   { color: var(--gold); font-weight: 700; }
+
+/* ─── PILL TAG ─────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+.tg { background: var(--gold-bg); color: #7A5010; }
+.tr { background: #FEF0F0; color: #8B2020; }
+.tt { background: #EFF8F6; color: #195045; }
+.td { background: var(--surface); color: var(--ink); }
+.tb { background: #F0EFF9; color: #2A2060; }
+
+/* ─── INSIGHT ──────────────────────────────────────────────────── */
+.insight {
+  background: var(--surface);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 6px 6px 0;
+  padding: 14px 16px;
+  margin: 14px 0;
+}
+.insight-lbl { font-size: 9px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+.insight p { font-size: 10.5px; color: var(--body); line-height: 1.75; }
+.insight strong { color: var(--ink); font-weight: 700; }
+
+/* ─── PILLAR CARD ──────────────────────────────────────────────── */
+.pc {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 12px;
+  text-align: center;
+  background: rgba(255,255,255,.04);
+}
+.pc-em { font-size: 22px; display: block; margin-bottom: 6px; }
+.pc-name { font-size: 10px; font-weight: 700; color: white; margin-bottom: 3px; }
+.pc-pct  { font-size: 22px; font-weight: 800; color: var(--gold); display: block; margin-bottom: 4px; letter-spacing: -0.5px; }
+.pc-desc { font-size: 9px; color: rgba(255,255,255,.45); line-height: 1.5; }
+
+/* ─── CALENDAR ─────────────────────────────────────────────────── */
+.cal { display: grid; grid-template-columns: repeat(7,1fr); gap: 6px; }
+.cd {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px;
+  padding: 10px 6px;
+  text-align: center;
+}
+.cd.hl { background: rgba(201,150,62,.12); border-color: rgba(201,150,62,.35); }
+.cd-day { font-size: 8px; letter-spacing: 0.5px; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 5px; }
+.cd-em  { font-size: 16px; display: block; margin-bottom: 4px; }
+.cd-tp  { font-size: 9px; font-weight: 700; color: rgba(255,255,255,.65); }
+.cd.hl .cd-tp { color: var(--gold); }
+.cd-sub { font-size: 8px; color: rgba(255,255,255,.3); margin-top: 2px; line-height: 1.3; }
+
+/* ─── IDEA CARD ────────────────────────────────────────────────── */
+.ic {
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 10px;
+  background: rgba(255,255,255,.025);
+}
+.ic-top { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 7px; }
+.ic-num {
+  width: 24px; height: 24px;
+  background: var(--gold);
+  color: white;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800;
+  flex-shrink: 0;
+}
+.ic-ttl { font-size: 12px; font-weight: 700; color: white; line-height: 1.3; }
+.ic-body { font-size: 10px; color: rgba(255,255,255,.55); line-height: 1.7; }
+.ic-src { font-size: 9px; color: rgba(255,255,255,.3); margin-top: 5px; }
+.ic-src span { color: var(--gold); }
+
+/* ─── PLATFORM CARD ────────────────────────────────────────────── */
+.plat-card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 14px;
+}
+.plat-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.plat-logo {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.plat-name { font-size: 12px; font-weight: 700; color: var(--ink); }
+.plat-status { font-size: 9px; color: var(--muted); margin-top: 1px; }
+.plat-body { padding: 12px 14px; }
+.plat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.plat-section-ttl { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+.plat-list { list-style: none; }
+.plat-list li { font-size: 10px; color: var(--body); padding: 2.5px 0; display: flex; gap: 6px; line-height: 1.4; border-bottom: 1px solid var(--border); }
+.plat-list li:last-child { border: none; }
+.plat-list li::before { content: '›'; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+/* ─── KPI CARD ─────────────────────────────────────────────────── */
+.kc {
+  border-radius: 8px;
+  padding: 16px 14px;
+  border-top: 2px solid var(--gold);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--gold);
+  text-align: center;
+}
+.kc-big { font-size: 28px; font-weight: 800; color: var(--ink); display: block; margin-bottom: 3px; letter-spacing: -1px; }
+.kc-lbl { font-size: 10px; font-weight: 700; color: var(--ink); margin-bottom: 3px; }
+.kc-desc { font-size: 9px; color: var(--muted); line-height: 1.5; }
+
+/* ─── ROADMAP ──────────────────────────────────────────────────── */
+.tl { border-left: 2px solid var(--border); padding-left: 20px; }
+.tl-item { position: relative; margin-bottom: 20px; }
+.tl-dot {
+  position: absolute; left: -26px; top: 3px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 2px solid var(--white);
+  box-shadow: 0 0 0 2px var(--gold);
+}
+.tl-item:nth-child(2) .tl-dot { background: var(--rose); box-shadow: 0 0 0 2px var(--rose); }
+.tl-item:nth-child(3) .tl-dot { background: var(--teal); box-shadow: 0 0 0 2px var(--teal); }
+.tl-ph { font-size: 8.5px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 2px; }
+.tl-item:nth-child(2) .tl-ph { color: var(--rose); }
+.tl-item:nth-child(3) .tl-ph { color: var(--teal); }
+.tl-ttl { font-size: 14px; font-weight: 700; color: var(--ink); margin-bottom: 7px; }
+.tl-chips { display: flex; flex-wrap: wrap; gap: 5px; }
+.tl-chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 3px 9px;
+  font-size: 10px;
+  color: var(--body);
+}
+
+/* ─── QUOTE ────────────────────────────────────────────────────── */
+.quote {
+  border: 1px solid var(--gold-lt);
+  background: var(--gold-bg);
+  border-radius: 8px;
+  padding: 18px 20px 14px;
+  position: relative;
+  margin-bottom: 16px;
+}
+.quote::before {
+  content: '\201C';
+  font-size: 48px;
+  color: var(--gold-lt);
+  position: absolute;
+  top: -4px; left: 12px;
+  line-height: 1;
+  font-family: Georgia, serif;
+}
+.quote p { font-size: 11px; color: var(--ink); line-height: 1.8; font-style: italic; padding-left: 20px; }
+.quote-attr { font-size: 9px; font-weight: 700; color: var(--gold); padding-left: 20px; margin-top: 8px; }
+
+/* ─── CHIPS ROW ────────────────────────────────────────────────── */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--body);
+  display: flex; align-items: center; gap: 4px;
+}
+.chip-gold { background: var(--gold-bg); border-color: var(--gold-lt); color: #7A5010; }
+.chip-teal { background: #EFF8F6; border-color: #C0E8E0; color: #195045; }
+.chip-rose { background: #FEF0F0; border-color: #F0D0D0; color: #8B2020; }
+
+/* ─── COMPETITOR ANALYSIS CARD ─────────────────────────────────── */
+.cc {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.cc-head {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.cc-logo {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.cc-name { font-size: 11px; font-weight: 700; color: var(--ink); }
+.cc-sub  { font-size: 9px; color: var(--muted); }
+.cc-body { padding: 10px 14px; }
+.cc-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 8px; }
+.cc-text { font-size: 10px; color: var(--body); line-height: 1.7; margin-bottom: 7px; }
+.cc-lesson {
+  border-left: 2px solid var(--gold);
+  padding: 7px 10px;
+  background: var(--gold-bg);
+  border-radius: 0 5px 5px 0;
+  font-size: 10px; color: var(--ink); line-height: 1.65;
+}
+.cc-lesson strong { color: var(--gold); font-weight: 700; }
+
+/* ─── DARK SECTION ─────────────────────────────────────────────── */
+.dark { background: var(--ink); }
+.dark .run-header { border-bottom-color: rgba(255,255,255,.1); }
+.dark .rh-brand { color: white; }
+.dark .rh-right { color: rgba(255,255,255,.35); }
+.dark .run-footer { border-top-color: rgba(255,255,255,.1); background: var(--black); }
+.dark .rf-left, .dark .rf-right { color: rgba(255,255,255,.3); }
+.dark .label { color: var(--gold); }
+.dark .title { color: white; }
+.dark .desc  { color: rgba(255,255,255,.5); }
+.dark .rule  { background: rgba(255,255,255,.1); }
+
+/* ─── COVER ────────────────────────────────────────────────────── */
+.cover {
+  background: #0A0A0F;
+  min-height: 297mm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Dekoratif arka plan çizgileri */
+.cover::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    linear-gradient(135deg, rgba(201,150,62,.06) 0%, transparent 50%),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 59px,
+      rgba(255,255,255,.018) 59px,
+      rgba(255,255,255,.018) 60px
+    );
+  pointer-events: none;
+}
+
+/* Altın ışık aksan */
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; right: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,150,62,.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cov-top {
+  position: relative;
+  z-index: 2;
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,.07);
+}
+
+.cov-agency {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: white;
+}
+.cov-agency span { color: var(--bee); }
+
+.cov-top-right { text-align: right; }
+.cov-date { font-size: 9px; color: rgba(255,255,255,.28); letter-spacing: 1.5px; text-transform: uppercase; }
+.cov-tagline { font-size: 8.5px; color: rgba(255,255,255,.15); letter-spacing: 1px; margin-top: 2px; }
+
+/* Sol dikey çizgi aksanı */
+.cov-accent-line {
+  position: absolute;
+  z-index: 2;
+  left: 32px;
+  top: 80px;
+  bottom: 56px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold) 0%, rgba(201,150,62,.15) 60%, transparent 100%);
+  border-radius: 1px;
+}
+
+.cov-main {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  padding: 52px 32px 36px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cov-eyebrow {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  opacity: .85;
+}
+
+.cov-client-name {
+  font-size: 11px;
+  color: rgba(255,255,255,.35);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.cov-h1 {
+  font-size: 76px;
+  font-weight: 800;
+  color: white;
+  line-height: .95;
+  letter-spacing: -3px;
+  margin-bottom: 18px;
+}
+.cov-h1 em { color: var(--gold); font-style: normal; display: block; }
+
+.cov-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.cov-divider-line { flex: 1; max-width: 200px; height: 1px; background: rgba(255,255,255,.1); }
+.cov-divider-dot  { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+.cov-h2 {
+  font-size: 15px;
+  font-weight: 400;
+  color: rgba(255,255,255,.4);
+  letter-spacing: 0.2px;
+  margin-bottom: 28px;
+  line-height: 1.5;
+  max-width: 360px;
+}
+
+.cov-desc {
+  font-size: 11px;
+  color: rgba(255,255,255,.35);
+  max-width: 380px;
+  line-height: 1.9;
+  margin-bottom: 40px;
+  border-left: 1px solid rgba(255,255,255,.1);
+  padding-left: 14px;
+}
+
+.cov-stats {
+  display: flex;
+  gap: 0;
+  max-width: 420px;
+}
+.cs {
+  padding: 14px 18px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-right: none;
+  background: rgba(255,255,255,.02);
+}
+.cs:first-child { border-radius: 6px 0 0 6px; }
+.cs:last-child  { border-right: 1px solid rgba(255,255,255,.07); border-radius: 0 6px 6px 0; }
+.cs-num { font-size: 22px; font-weight: 800; color: var(--gold); letter-spacing: -0.5px; display: block; }
+.cs-lbl { font-size: 7.5px; color: rgba(255,255,255,.25); letter-spacing: 0.5px; text-transform: uppercase; margin-top: 1px; }
+
+.cov-bottom {
+  position: relative;
+  z-index: 2;
+  padding: 16px 32px;
+  border-top: 1px solid rgba(255,255,255,.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.cov-client { font-size: 9px; color: rgba(255,255,255,.25); letter-spacing: 0.3px; }
+.cov-client strong { color: rgba(255,255,255,.6); font-weight: 600; }
+.cov-conf { font-size: 8px; color: rgba(255,255,255,.15); letter-spacing: 2px; text-transform: uppercase; }
+
+/* ─── BACK COVER ───────────────────────────────────────────────── */
+.back {
+  background: var(--gold);
+  min-height: 297mm;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 40px;
+  color: white;
+}
+.back-bee { font-size: 11px; font-weight: 700; letter-spacing: 3px; opacity: .55; margin-bottom: 36px; text-transform: uppercase; }
+.back-h { font-size: 38px; font-weight: 800; line-height: 1.15; letter-spacing: -1px; margin-bottom: 14px; }
+.back-p { font-size: 13px; opacity: .8; max-width: 400px; line-height: 1.8; margin-bottom: 30px; }
+.back-btn { background: white; color: var(--gold); padding: 11px 28px; border-radius: 6px; font-size: 13px; font-weight: 700; display: inline-block; }
+.back-foot { font-size: 9px; opacity: .4; margin-top: 48px; letter-spacing: 0.3px; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════
+     P1  COVER
+═══════════════════════════════ -->
+<div class="page cover">
+  <div class="cov-top">
+    <div class="cov-agency">Uniq<span>Bee</span></div>
+    <div class="cov-top-right">
+      <div class="cov-date">Nisan 2026</div>
+      <div class="cov-tagline">Social Media Agency</div>
+    </div>
+  </div>
+
+  <div class="cov-accent-line"></div>
+
+  <div class="cov-main">
+    <div class="cov-client-name">Bonne Nuit Patisserie</div>
+    <div class="cov-eyebrow">Sosyal Medya Strateji Raporu</div>
+    <div class="cov-h1">Büyüme<br><em>Analizi.</em></div>
+
+    <div class="cov-divider">
+      <div class="cov-divider-dot"></div>
+      <div class="cov-divider-line"></div>
+    </div>
+
+    <div class="cov-h2">Marka analizi, global rakip dersleri,<br>platform stratejisi ve 90 günlük aksiyon planı.</div>
+
+    <p class="cov-desc">Marka kimliği değerlendirmesi · Global rakip kampanya analizleri · Platform genişleme stratejisi · İçerik mimarisi · 90 günlük ölçülebilir aksiyon planı</p>
+
+    <div class="cov-stats">
+      <div class="cs"><span class="cs-num">5</span><span class="cs-lbl">İçerik Başlığı</span></div>
+      <div class="cs"><span class="cs-num">4</span><span class="cs-lbl">Global Analiz</span></div>
+      <div class="cs"><span class="cs-num">8</span><span class="cs-lbl">Kampanya</span></div>
+      <div class="cs"><span class="cs-num">4</span><span class="cs-lbl">Platform</span></div>
+      <div class="cs"><span class="cs-num">90</span><span class="cs-lbl">Günlük Plan</span></div>
+    </div>
+  </div>
+
+  <div class="cov-bottom">
+    <div class="cov-client">Hazırlayan: <strong>UniqBee Social Media Agency</strong> &nbsp;·&nbsp; Müşteri: <strong>Bonne Nuit Patisserie</strong></div>
+    <div class="cov-conf">Confidential</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     P2  MARKA KİMLİĞİ
+═══════════════════════════════ -->
+<div class="page">
+  <div class="run-header">
+    <div class="rh-brand">Uniq<span style="color:var(--bee)">Bee</span></div>
+    <div class="rh-right">Bonne Nuit Strateji Raporu · Nisan 2026</div>
+  </div>
+  <div class="body">
+    <p class="label">01 — Marka Profili</p>
+    <h2 class="title">Bonne Nuit Kimdir?</h2>
+    <div class="rule-gold"></div>
+    <p class="desc">İstanbul'un premium el yapımı pastacılık markası. Aynı gün teslimat, günlük taze üretim ve kişiselleştirilmiş tasarım anlayışıyla kutlamalar için özel deneyimler yaratıyor.</p>
+
+    <div class="g2" style="margin-bottom:18px">
+      <div class="card"><span class="card-icon">🎂</span><div class="card-title">Ürün Portföyü</div><div class="card-body">Tiramisu, cheesecake, doğum günü pastası, Chambre çikolata kutuları, peluş oyuncak &amp; balon paketleri. Hediye deneyimi satıyor, ürün değil.</div></div>
+      <div class="card"><span class="card-icon">👑</span><div class="card-title">Fiyat Segmenti</div><div class="card-body">249 – 2.990 TL. Orta-üst premium. Satın alma kararı büyük ölçüde duygusal — hediye ve kutlama odaklı.</div></div>
+      <div class="card"><span class="card-icon">🚚</span><div class="card-title">Temel Farklılaştırıcılar</div><div class="card-body">Aynı gün teslimat, günlük üretim politikası, katkısız doğal malzeme, elle yapım sınırlı adet.</div></div>
+      <div class="card"><span class="card-icon">🎯</span><div class="card-title">Hedef Kitle</div><div class="card-body">25–45 yaş, İstanbul, premium hediye arayan, estetik duyarlı tüketiciler. Instagram'da aktif.</div></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <p class="label">02 — Mevcut Durum</p>
+    <h2 class="title" style="font-size:18px">Sosyal Medya Olgunluk Skoru</h2>
+    <div class="rule-gold"></div>
+    <p class="desc" style="margin-bottom:14px">Yalnızca Instagram aktif. Diğer tüm platformlarda hesap yok. 7 kriter üzerinden değerlendirme.</p>
+
+    <div class="prog"><div class="prog-row"><span class="prog-name">Görsel Tutarlılık &amp; Feed Estetiği</span><span class="prog-score">65%</span></div><div class="prog-bg"><div class="prog-fill" style="width:65%;background:linear-gradient(90deg,#C9963E,#E0C070)"></div></div><div class="prog-note">Ürün fotoğrafçılığı güçlü — grid uyumu ve renk paleti tutarsız</div></div>
+    <div class="prog"><div class="prog-row"><span class="prog-name">Caption &amp; Hikaye Anlatımı</span><span class="prog-score">30%</span></div><div class="prog-bg"><div class="prog-fill" style="width:30%;background:linear-gradient(90deg,#B05A5A,#D08080)"></div></div><div class="prog-note">Sadece ürün adı + fiyat — marka sesi, duygu ve hikaye yok</div></div>
+    <div class="prog"><div class="prog-row"><span class="prog-name">Reels &amp; Video İçerik</span><span class="prog-score">20%</span></div><div class="prog-bg"><div class="prog-fill" style="width:20%;background:linear-gradient(90deg,#8B2020,#B05A5A)"></div></div><div class="prog-note">Neredeyse sıfır — Instagram algoritması için kritik zafiyet</div></div>
+    <div class="prog"><div class="prog-row"><span class="prog-name">Topluluk Yönetimi &amp; Etkileşim</span><span class="prog-score">40%</span></div><div class="prog-bg"><div class="prog-fill" style="width:40%;background:linear-gradient(90deg,#B05A5A,#C9963E)"></div></div><div class="prog-note">Yorumlara yanıt eksik, DM stratejisi yok, UGC toplanmıyor</div></div>
+    <div class="prog"><div class="prog-row"><span class="prog-name">Hashtag &amp; Keşfet Stratejisi</span><span class="prog-score">35%</span></div><div class="prog-bg"><div class="prog-fill" style="width:35%;background:linear-gradient(90deg,#B05A5A,#C08040)"></div></div><div class="prog-note">Rastgele hashtag — araştırılmış niş + lokasyon hashtag kullanımı yok</div></div>
+    <div class="prog"><div class="prog-row"><span class="prog-name">Stories &amp; Highlights</span><span class="prog-score">45%</span></div><div class="prog-bg"><div class="prog-fill" style="width:45%;background:linear-gradient(90deg,#C9963E,#357A70)"></div></div><div class="prog-note">Highlights mevcut ama güncel değil; interaktif stories kullanılmıyor</div></div>
+    <div class="prog"><div class="prog-row"><span class="prog-name">Influencer &amp; UGC İşbirlikleri</span><span class="prog-score">15%</span></div><div class="prog-bg"><div class="prog-fill" style="width:15%;background:linear-gradient(90deg,#8B2020,#B05A5A)"></div></div><div class="prog-note">Görünür strateji yok — premium segment için en kritik eksik</div></div>
+  </div>
+  <div class="run-footer">
+    <div class="rf-left">Gizli &amp; Özel · UniqBee Social Media Agency</div>
+    <div class="rf-mid">BONNE NUIT · STRATEJİ RAPORU 2026</div>
+    <div class="rf-right">2 / 9</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     P3  SWOT
+═══════════════════════════════ -->
+<div class="page">
+  <div class="run-header">
+    <div class="rh-brand">Uniq<span style="color:var(--bee)">Bee</span></div>
+    <div class="rh-right">Bonne Nuit Strateji Raporu · Nisan 2026</div>
+  </div>
+  <div class="body">
+    <p class="label">03 — Stratejik Değerlendirme</p>
+    <h2 class="title">SWOT Analizi</h2>
+    <div class="rule-gold"></div>
+    <p class="desc">Sosyal medya perspektifinden güçlü/zayıf yönler, fırsatlar ve dışsal tehditler.</p>
+
+    <div class="swot" style="margin-bottom:18px">
+      <div class="sq">
+        <div class="sq-lbl">Strengths</div>
+        <div class="sq-ttl">Güçlü Yönler</div>
+        <ul>
+          <li>Premium &amp; son derece fotoğraflanabilir ürünler</li>
+          <li>Güçlü aynı gün teslimat değer önerisi</li>
+          <li>El yapımı, katkısız → yüksek güven</li>
+          <li>Geniş ürün portföyü</li>
+          <li>İstanbul odaklı lokasyon avantajı</li>
+          <li>Duygusal satın alma tetikleyicileri güçlü</li>
+        </ul>
+      </div>
+      <div class="sq">
+        <div class="sq-lbl">Weaknesses</div>
+        <div class="sq-ttl">Zayıf Yönler</div>
+        <ul>
+          <li>Video içerik neredeyse sıfır</li>
+          <li>Marka sesi tanımsız ve tutarsız</li>
+          <li>Topluluk yönetimi tamamen pasif</li>
+          <li>UGC toplama sistemi yok</li>
+          <li>Influencer stratejisi hiç yok</li>
+          <li>Instagram dışında hiçbir platform yok</li>
+        </ul>
+      </div>
+      <div class="sq">
+        <div class="sq-lbl">Opportunities</div>
+        <div class="sq-ttl">Fırsatlar</div>
+        <ul>
+          <li>Reels ile organik erişimi katlamak</li>
+          <li>Behind-the-scenes ile marka sevgisi inşa etmek</li>
+          <li>Mikro-influencer gifting modeli</li>
+          <li>YouTube, TikTok, LinkedIn platformları boş</li>
+          <li>Sezonsal &amp; trend bağlantılı viral içerik</li>
+          <li>Instagram Shopping entegrasyonu</li>
+        </ul>
+      </div>
+      <div class="sq">
+        <div class="sq-lbl">Threats</div>
+        <div class="sq-ttl">Tehditler</div>
+        <ul>
+          <li>Rakip pastacıların aktif içerik üretimi</li>
+          <li>Instagram algoritması video önceliklendiriyor</li>
+          <li>Enflasyonda premium algısı baskısı</li>
+          <li>Görsel benzerlik kaynaklı marka karışıklığı</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="insight">
+      <div class="insight-lbl">UniqBee Değerlendirmesi</div>
+      <p>Bonne Nuit'nin <strong>en büyük fırsatı video içerik boşluğu ve platform yokluğu.</strong> Segment içinde video üreten ve çok platformlu marka sayısı son derece az. Harekete geçen ilk marka, rakipleri önünde organik erişimde ve marka bilinirliğinde 6–12 ay içinde belirgin mesafe açar. Ürün kalitesi ve estetik zaten hazır — eksik olan <strong>sistematik içerik üretimi, tutarlı marka sesi ve platform çeşitliliği.</strong></p>
+    </div>
+  </div>
+  <div class="run-footer">
+    <div class="rf-left">Gizli &amp; Özel · UniqBee Social Media Agency</div>
+    <div class="rf-mid">BONNE NUIT · STRATEJİ RAPORU 2026</div>
+    <div class="rf-right">3 / 9</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     P4  GLOBAL RAKİP ANALİZİ
+═══════════════════════════════ -->
+<div class="page">
+  <div class="run-header">
+    <div class="rh-brand">Uniq<span style="color:var(--bee)">Bee</span></div>
+    <div class="rh-right">Bonne Nuit Strateji Raporu · Nisan 2026</div>
+  </div>
+  <div class="body">
+    <p class="label">04 — Global Benchmark</p>
+    <h2 class="title">Dünya Liderlerinden Dersler</h2>
+    <div class="rule-gold"></div>
+    <p class="desc">Benzer premium pastacılık ve lüks gıda markalarının sosyal medyada kanıtlanmış kampanya taktikleri — ve her birinin Bonne Nuit'ye uyarlaması.</p>
+
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-logo" style="background:#E8F4E8">🌿</div>
+        <div><div class="cc-name">Ladurée — Paris</div><div class="cc-sub">Premium makaroncu · 4.2M+ Instagram takipçisi</div></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-tags"><span class="tag tg">Estetik Tutarlılık</span><span class="tag tt">Lifestyle Pozisyonlama</span><span class="tag tr">Sınırlı Seri Hype</span></div>
+        <p class="cc-text">Ladurée'nin gücü sadece makaron değil — <strong>bir yaşam tarzı satması.</strong> Her post yeşil-altın renk paleti ve "nazik lüks" duygusunu taşıyor. Sezonsal koleksiyonlar (Noel, Sevgililer Günü) için önceden hype oluşturuluyor; limitli edisyon kutular koleksiyon parçası gibi konumlandırılıyor.</p>
+        <div class="cc-lesson"><strong>Bonne Nuit'ye uyarlama:</strong> Her içerikte aynı renk paletini ve duygu dilini kullan. Özel gün koleksiyonlarını en az 2 hafta önceden duyur. "Sınırlı üretim" mesajını içeriklere göm — kıtlık algısı hem satış hem paylaşım değeri üretir.</div>
+      </div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-logo" style="background:#FFF3DC">🥐</div>
+        <div><div class="cc-name">Dominique Ansel Bakery — New York</div><div class="cc-sub">Cronut'un yaratıcısı · Viral içerik ustası</div></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-tags"><span class="tag tg">Viral Ürün Lansmanı</span><span class="tag td">Behind-the-Scenes</span><span class="tag tt">Hikaye Odaklı Caption</span></div>
+        <p class="cc-text">Dominique Ansel, Cronut'u bir ürün olarak değil <strong>kültürel bir olay</strong> olarak sundu. Yapım sürecini belgeleyen içerikler "sırra ortak et" duygusu yaratıyor. Her ürünün arkasında bir hikaye var — ilham kaynağı, teknik zorluk, kişisel bağlantı. Bu yaklaşım kendiliğinden basın ilgisi de üretiyor.</p>
+        <div class="cc-lesson"><strong>Bonne Nuit'ye uyarlama:</strong> Her yeni ürün lansmanına kısa bir "arka plan" caption'ı ekle. "Bu pastanın ilhamı neydi? Hangi malzemeyi bulmak zor oldu?" Bu anlatılar hem paylaşılabilir hem de medya değeri taşıyor.</div>
+      </div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-logo" style="background:#F0F0F8">⭐</div>
+        <div><div class="cc-name">Pierre Hermé — Paris</div><div class="cc-sub">Haute pâtisserie · Lüks segmentin referansı</div></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-tags"><span class="tag td">Minimal Estetik</span><span class="tag tg">Usta Anlatısı</span><span class="tag tb">Küratörel Yaklaşım</span></div>
+        <p class="cc-text">Pierre Hermé seyrek yayınlar — ama her post <strong>bir sergi eseri kalitesinde.</strong> Fotoğraf kompozisyonu parfüm markalarıyla yarışır. Çok az kelimeyle çok şey anlatan kısa caption'lar. "Ulaşılamazlık" algısı kasıtlı olarak korunuyor — bu da premium değeri besliyor.</p>
+        <div class="cc-lesson"><strong>Bonne Nuit'ye uyarlama:</strong> Sıklıktan önce kalite. Az ama kusursuz post, çok ama sıradan posttan değerlidir. Her paylaşım önce "bu premium görünüyor mu?" filtresinden geçmeli. Caption: 2–3 güçlü cümle yeterli.</div>
+      </div>
+    </div>
+
+    <div class="cc">
+      <div class="cc-head">
+        <div class="cc-logo" style="background:#FEF0F0">🧁</div>
+        <div><div class="cc-name">Sprinkles Cupcakes — Los Angeles</div><div class="cc-sub">ABD'nin en viral cupcake markası · Güçlü UGC &amp; topluluk modeli</div></div>
+      </div>
+      <div class="cc-body">
+        <div class="cc-tags"><span class="tag tr">UGC Stratejisi</span><span class="tag tt">Marka Sesi</span><span class="tag tg">Sürpriz Kampanyaları</span></div>
+        <p class="cc-text">Sprinkles'ın Instagram stratejisi <strong>müşterinin sesini merkeze alan</strong> bir model. Her hafta müşteri paylaşımları repost ediliyor, her yoruma yanıt veriliyor. "Bugün sürpriz bir şey var" formatında Stories ile spontane alışveriş tetikleniyor. Marka sesi: neşeli, sıcak, kapsayıcı.</p>
+        <div class="cc-lesson"><strong>Bonne Nuit'ye uyarlama:</strong> Topluluk yönetimine zaman ayır. Sipariş kutusuna "paylaş &amp; etiketle" kartı koy. DM'lara günlük yanıt ver. Marka sesi kişisel ve sıcak olsun — kurumsal soğukluk premium algısını öldürür.</div>
+      </div>
+    </div>
+  </div>
+  <div class="run-footer">
+    <div class="rf-left">Gizli &amp; Özel · UniqBee Social Media Agency</div>
+    <div class="rf-mid">BONNE NUIT · STRATEJİ RAPORU 2026</div>
+    <div class="rf-right">4 / 9</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     P5  PLATFORM STRATEJİSİ
+═══════════════════════════════ -->
+<div class="page">
+  <div class="run-header">
+    <div class="rh-brand">Uniq<span style="color:var(--bee)">Bee</span></div>
+    <div class="rh-right">Bonne Nuit Strateji Raporu · Nisan 2026</div>
+  </div>
+  <div class="body">
+    <p class="label">05 — Platform Genişleme Stratejisi</p>
+    <h2 class="title">Neler Yapılabilir?</h2>
+    <div class="rule-gold"></div>
+    <p class="desc">Bonne Nuit şu an yalnızca Instagram'da aktif. YouTube, TikTok, LinkedIn ve X'te hiçbir hesap yok. Her platform farklı bir kitleye farklı içerikle ulaşıyor.</p>
+
+    <div class="plat-card">
+      <div class="plat-head">
+        <div class="plat-logo" style="background:linear-gradient(135deg,#E1306C,#833AB4)">📸</div>
+        <div>
+          <div class="plat-name">Instagram — Ana Platform</div>
+          <div class="plat-status">AKTİF · @bonnenuitpatisserie · Öncelik: Maksimum</div>
+        </div>
+        <div style="margin-left:auto"><span class="tag tt">Mevcut</span></div>
+      </div>
+      <div class="plat-body">
+        <div class="plat-row">
+          <div>
+            <div class="plat-section-ttl">İçerik Formatları</div>
+            <ul class="plat-list">
+              <li>Reels — haftada 3 (ASMR, behind-the-scenes, trend)</li>
+              <li>Carousel — haftada 2 (ürün koleksiyonu, hediye rehberi)</li>
+              <li>Stories — günlük 3–5 (teaser, üretim anı, anket)</li>
+              <li>Statik post — haftada 1 (kampanya, özel gün)</li>
+            </ul>
+          </div>
+          <div>
+            <div class="plat-section-ttl">Öncelikli Aksiyonlar</div>
+            <ul class="plat-list">
+              <li>Feed estetiği ve renk paleti standardizasyonu</li>
+              <li>Instagram Shopping tam entegrasyonu</li>
+              <li>Highlights revizyonu (5 kategori, branded kapaklar)</li>
+              <li>UGC repost programı başlatma</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-card">
+      <div class="plat-head">
+        <div class="plat-logo" style="background:#FF0000">▶</div>
+        <div>
+          <div class="plat-name">YouTube — Uzun Form &amp; Keşfet</div>
+          <div class="plat-status">HESAP YOK · Açılması öneriliyor · Öncelik: Orta</div>
+        </div>
+        <div style="margin-left:auto"><span class="tag tr">Yok</span></div>
+      </div>
+      <div class="plat-body">
+        <div class="plat-row">
+          <div>
+            <div class="plat-section-ttl">İçerik Fikirleri</div>
+            <ul class="plat-list">
+              <li>"Bir pastanın doğuşu" — baştan sona üretim belgeseli (8–15 dk)</li>
+              <li>Ayın lezzeti: malzeme seçimi + neden bu tat?</li>
+              <li>Müşteri hikayeleri: "En özel doğum günüm" mini video</li>
+              <li>YouTube Shorts: Instagram Reels içeriklerini çapraz yayınla</li>
+            </ul>
+          </div>
+          <div>
+            <div class="plat-section-ttl">Neden Değerli?</div>
+            <ul class="plat-list">
+              <li>Google arama trafiği: "İstanbul pasta sipariş" aramalarında görün</li>
+              <li>SEO değeri — videolar yıllarca trafik üretir</li>
+              <li>Marka derinliği: 60 saniyelik Reels'te anlatılamayan hikaye burada</li>
+              <li>Shorts ile Instagram Reels içerikleri sıfır ekstra maliyetle yayınlanır</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-card">
+      <div class="plat-head">
+        <div class="plat-logo" style="background:#000">♪</div>
+        <div>
+          <div class="plat-name">TikTok — Gen Z &amp; Viral Büyüme</div>
+          <div class="plat-status">HESAP YOK · Açılması öneriliyor · Öncelik: Yüksek</div>
+        </div>
+        <div style="margin-left:auto"><span class="tag tr">Yok</span></div>
+      </div>
+      <div class="plat-body">
+        <div class="plat-row">
+          <div>
+            <div class="plat-section-ttl">İçerik Fikirleri</div>
+            <ul class="plat-list">
+              <li>Pasta yapımı ASMR — trend seslerle</li>
+              <li>"24 saatte ne kadar pasta üretiyoruz?" format</li>
+              <li>Müşteri tepkisi reaksiyon videoları</li>
+              <li>"En güzel doğum günü sürprizini yaptık" hikaye formatı</li>
+            </ul>
+          </div>
+          <div>
+            <div class="plat-section-ttl">Neden Değerli?</div>
+            <ul class="plat-list">
+              <li>Organik erişim Instagram'dan 5–10x daha yüksek olabilir</li>
+              <li>25–35 yaş artık TikTok'ta aktif — hedef kitle burada</li>
+              <li>Instagram Reels içerikleri %80 TikTok'a uyumlu — çapraz yayın</li>
+              <li>Viral bir video tüm markayı büyütebilir — maliyetsiz</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="plat-card">
+      <div class="plat-head">
+        <div class="plat-logo" style="background:#0A66C2">in</div>
+        <div>
+          <div class="plat-name">LinkedIn — B2B &amp; Kurumsal Hediye</div>
+          <div class="plat-status">HESAP YOK · Uzun vadede açılması öneriliyor · Öncelik: Düşük</div>
+        </div>
+        <div style="margin-left:auto"><span class="tag td">İleride</span></div>
+      </div>
+      <div class="plat-body">
+        <div class="plat-row">
+          <div>
+            <div class="plat-section-ttl">İçerik Fikirleri</div>
+            <ul class="plat-list">
+              <li>Kurumsal hediye paketleri tanıtımı</li>
+              <li>"Ekibine özel doğum günü pastası" B2B teklifi</li>
+              <li>Marka değerleri: doğal malzeme, yerel üretim hikayesi</li>
+              <li>Etkinlik &amp; toplantı ikramı hizmetleri</li>
+            </ul>
+          </div>
+          <div>
+            <div class="plat-section-ttl">Neden Değerli?</div>
+            <ul class="plat-list">
+              <li>Kurumsal segment = yüksek birim sipariş değeri</li>
+              <li>Şirket kutlamaları, yıl dönümleri → tekrar eden gelir</li>
+              <li>İK ve ofis yöneticileri LinkedIn'de aktif</li>
+              <li>Rakiplerin hiçbiri bu segmentte sosyal medyada değil</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="run-footer">
+    <div class="rf-left">Gizli &amp; Özel · UniqBee Social Media Agency</div>
+    <div class="rf-mid">BONNE NUIT · STRATEJİ RAPORU 2026</div>
+    <div class="rf-right">5 / 9</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     P6  CONTENT PILLARS + CALENDAR (dark)
+═══════════════════════════════ -->
+<div class="page dark">
+  <div class="run-header" style="border-bottom-color:rgba(255,255,255,.08)">
+    <div class="rh-brand" style="color:white">Uniq<span style="color:var(--bee)">Bee</span></div>
+    <div class="rh-right" style="color:rgba(255,255,255,.35)">Bonne Nuit Strateji Raporu · Nisan 2026</div>
+  </div>
+  <div class="body">
+    <p class="label">06 — İçerik Mimarisi</p>
+    <h2 class="title">5 Ana İçerik Başlığı</h2>
+    <div class="rule-gold"></div>
+    <p class="desc">Her pilar farklı bir amaca hizmet eder. Sadece satış içeriği paylaşmak takipçiyi kaçırır — denge kritik.</p>
+
+    <div class="g5" style="margin-bottom:22px">
+      <div class="pc"><span class="pc-em">✨</span><div class="pc-name">Ürün Büyüsü</div><span class="pc-pct">30%</span><div class="pc-desc">Ürün çekimi, close-up, unboxing</div></div>
+      <div class="pc"><span class="pc-em">👩‍🍳</span><div class="pc-name">Perde Arkası</div><span class="pc-pct">25%</span><div class="pc-desc">Atölye, pastacının rutini</div></div>
+      <div class="pc"><span class="pc-em">🎉</span><div class="pc-name">Müşteri Anları</div><span class="pc-pct">20%</span><div class="pc-desc">UGC, müşteri hikayeleri</div></div>
+      <div class="pc"><span class="pc-em">💡</span><div class="pc-name">Eğitim &amp; İlham</div><span class="pc-pct">15%</span><div class="pc-desc">Hediye rehberleri, ipuçları</div></div>
+      <div class="pc"><span class="pc-em">🤝</span><div class="pc-name">Topluluk</div><span class="pc-pct">10%</span><div class="pc-desc">Anket, soru-cevap, trend</div></div>
+    </div>
+
+    <div class="rule" style="border-color:rgba(255,255,255,.1);margin-bottom:18px"></div>
+
+    <p class="label">07 — Örnek Haftalık Plan</p>
+    <h2 class="title" style="font-size:18px">İçerik Takvimi</h2>
+    <div class="rule-gold"></div>
+    <p class="desc" style="margin-bottom:14px">Haftada 7 içerik: 3 Reels + 2 Carousel + 1 Statik + Günlük Stories. Altın renkli günler Reels günleri.</p>
+
+    <div class="cal" style="margin-bottom:18px">
+      <div class="cd hl"><div class="cd-day">Pzt</div><span class="cd-em">🎬</span><div class="cd-tp">Reels</div><div class="cd-sub">Atölye sabahı</div></div>
+      <div class="cd"><div class="cd-day">Sal</div><span class="cd-em">📸</span><div class="cd-tp">Carousel</div><div class="cd-sub">Ürün koleksiyonu</div></div>
+      <div class="cd"><div class="cd-day">Çar</div><span class="cd-em">🌟</span><div class="cd-tp">UGC</div><div class="cd-sub">Müşteri repost</div></div>
+      <div class="cd hl"><div class="cd-day">Per</div><span class="cd-em">🎬</span><div class="cd-tp">Reels</div><div class="cd-sub">Pasta close-up</div></div>
+      <div class="cd"><div class="cd-day">Cum</div><span class="cd-em">🎂</span><div class="cd-tp">Statik</div><div class="cd-sub">Sipariş hatırlatma</div></div>
+      <div class="cd"><div class="cd-day">Cmt</div><span class="cd-em">💬</span><div class="cd-tp">Carousel</div><div class="cd-sub">Hediye rehberi</div></div>
+      <div class="cd hl"><div class="cd-day">Paz</div><span class="cd-em">🎬</span><div class="cd-tp">Reels</div><div class="cd-sub">Trend ses</div></div>
+    </div>
+
+    <div style="background:rgba(201,150,62,.08);border:1px solid rgba(201,150,62,.2);border-radius:7px;padding:12px 14px">
+      <div style="font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:7px">Stories Günlük Rutini</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <span style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);padding:4px 10px;border-radius:4px;font-size:9.5px;border:1px solid rgba(255,255,255,.08)">☀️ Sabah — "Bugün ne var?" teaser</span>
+        <span style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);padding:4px 10px;border-radius:4px;font-size:9.5px;border:1px solid rgba(255,255,255,.08)">🍽 Öğle — Üretim anı snap</span>
+        <span style="background:rgba(255,255,255,.06);color:rgba(255,255,255,.6);padding:4px 10px;border-radius:4px;font-size:9.5px;border:1px solid rgba(255,255,255,.08)">🌙 Akşam — Müşteri anı / anket</span>
+      </div>
+    </div>
+  </div>
+  <div class="run-footer" style="background:var(--black);border-top-color:rgba(255,255,255,.08)">
+    <div class="rf-left" style="color:rgba(255,255,255,.3)">Gizli &amp; Özel · UniqBee Social Media Agency</div>
+    <div class="rf-mid">BONNE NUIT · STRATEJİ RAPORU 2026</div>
+    <div class="rf-right" style="color:rgba(255,255,255,.3)">6 / 9</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     P7  KAMPANYA FİKİRLERİ (dark)
+═══════════════════════════════ -->
+<div class="page" style="background:#111827">
+  <div class="run-header" style="border-bottom-color:rgba(255,255,255,.08);background:#111827">
+    <div class="rh-brand" style="color:white">Uniq<span style="color:var(--bee)">Bee</span></div>
+    <div class="rh-right" style="color:rgba(255,255,255,.35)">Bonne Nuit Strateji Raporu · Nisan 2026</div>
+  </div>
+  <div class="body">
+    <p class="label">08 — Kampanya Önerileri</p>
+    <h2 class="title" style="color:white">Neler Yapılabilir?</h2>
+    <div class="rule-gold"></div>
+    <p class="desc" style="color:rgba(255,255,255,.5)">Global markalardan ilham alınarak Bonne Nuit için tasarlanmış, somut ve uygulanabilir 8 kampanya fikri.</p>
+
+    <div class="g2">
+      <div>
+        <div class="ic">
+          <div class="ic-top"><div class="ic-num">1</div><div><span class="tag tg" style="margin-bottom:4px;display:inline-block">Reels Serisi</span><div class="ic-ttl">"Sihir Başlıyor" ASMR Pastacılık</div></div></div>
+          <div class="ic-body">Kremayı dökmek, çikolatayı eritmek, meyveleri dizmek — haftada 60 saniyelik ASMR Reels. Ses açıkken izletilen, organik paylaşılan format.</div>
+          <div class="ic-src">Kaynak: <span>Dominique Ansel Behind-the-Scenes</span></div>
+        </div>
+        <div class="ic">
+          <div class="ic-top"><div class="ic-num">2</div><div><span class="tag tr" style="margin-bottom:4px;display:inline-block">UGC Kampanyası</span><div class="ic-ttl">#BonneNuitAnım Challenge</div></div></div>
+          <div class="ic-body">Her siparişe kart: "Anını paylaş, sürpriz kazan." Repost + küçük indirim döngüsü. Her müşteri hem içerik hem sosyal kanıt haline gelir.</div>
+          <div class="ic-src">Kaynak: <span>Sprinkles UGC Modeli</span></div>
+        </div>
+        <div class="ic">
+          <div class="ic-top"><div class="ic-num">3</div><div><span class="tag tt" style="margin-bottom:4px;display:inline-block">Influencer</span><div class="ic-ttl">Mikro-Influencer Gifting</div></div></div>
+          <div class="ic-body">5K–50K İstanbul lifestyle hesaplarına ay başı özel kutu. Ödeme yok — sadece deneyim. Nano influencer güveni büyük hesaptan daha etkili.</div>
+          <div class="ic-src">Kaynak: <span>Sprinkles Seeding Programı</span></div>
+        </div>
+        <div class="ic">
+          <div class="ic-top"><div class="ic-num">4</div><div><span class="tag tg" style="margin-bottom:4px;display:inline-block">Sezonsal Hype</span><div class="ic-ttl">Özel Gün 7-Gün Countdown</div></div></div>
+          <div class="ic-body">Sevgililer Günü, anneler günü öncesi 7 günlük Stories serisi. Her gün farklı ürün, son gün aciliyet mesajı. Erken sipariş teşviki.</div>
+          <div class="ic-src">Kaynak: <span>Ladurée Sınırlı Seri Stratejisi</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="ic">
+          <div class="ic-top"><div class="ic-num">5</div><div><span class="tag tr" style="margin-bottom:4px;display:inline-block">Hikaye Anlatımı</span><div class="ic-ttl">Her Pastanın Bir Hikayesi Var</div></div></div>
+          <div class="ic-body">Her yeni ürün lansmanında kısa bir caption: "Bu lezzetin ilhamı neydi?" İnsanlar ürün değil arka planı sever — ve paylaşır.</div>
+          <div class="ic-src">Kaynak: <span>Dominique Ansel Storytelling</span></div>
+        </div>
+        <div class="ic">
+          <div class="ic-top"><div class="ic-num">6</div><div><span class="tag tt" style="margin-bottom:4px;display:inline-block">Topluluk</span><div class="ic-ttl">Pastacıya Sor — Haftalık Q&amp;A</div></div></div>
+          <div class="ic-body">Haftalık Stories: "Bu haftanın sırrını merak ediyor musun?" Cevabı kısa Reels'e dönüştür. Arkasındaki insanı göster — marka sevgisi inşa eder.</div>
+          <div class="ic-src">Kaynak: <span>Sprinkles Marka Sesi</span></div>
+        </div>
+        <div class="ic">
+          <div class="ic-top"><div class="ic-num">7</div><div><span class="tag tb" style="margin-bottom:4px;display:inline-block">Premium Algı</span><div class="ic-ttl">Profil &amp; Highlights Revizyonu</div></div></div>
+          <div class="ic-body">Highlights: Ürünler / Teslimat / Mutlu Müşteriler / Hakkımızda / Sipariş. Kapakları marka paletine göre tasarla. Profil izlenimi 2 saniyede oluşur.</div>
+          <div class="ic-src">Kaynak: <span>Pierre Hermé Küratörel Yaklaşım</span></div>
+        </div>
+        <div class="ic">
+          <div class="ic-top"><div class="ic-num">8</div><div><span class="tag tg" style="margin-bottom:4px;display:inline-block">Viral Potansiyel</span><div class="ic-ttl">"Sınırlı Seri" Ürün Lansmanı</div></div></div>
+          <div class="ic-body">Ayda bir limitli pasta. Önceden teaser, gün içi stok sayacı, sonra "bitti" postu. Kıtlık hem satış hem viral içerik değeri üretir.</div>
+          <div class="ic-src">Kaynak: <span>Ladurée &amp; Dominique Ansel Limited Edition</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="run-footer" style="background:#0A0F1A;border-top-color:rgba(255,255,255,.08)">
+    <div class="rf-left" style="color:rgba(255,255,255,.3)">Gizli &amp; Özel · UniqBee Social Media Agency</div>
+    <div class="rf-mid">BONNE NUIT · STRATEJİ RAPORU 2026</div>
+    <div class="rf-right" style="color:rgba(255,255,255,.3)">7 / 9</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     P8  KPI + ROADMAP
+═══════════════════════════════ -->
+<div class="page" style="background:var(--surface)">
+  <div class="run-header" style="background:var(--surface);border-bottom-color:var(--border)">
+    <div class="rh-brand">Uniq<span style="color:var(--bee)">Bee</span></div>
+    <div class="rh-right">Bonne Nuit Strateji Raporu · Nisan 2026</div>
+  </div>
+  <div class="body">
+    <p class="label">09 — Başarı Kriterleri</p>
+    <h2 class="title">90 Günlük KPI Hedefleri</h2>
+    <div class="rule-gold"></div>
+
+    <div class="g4" style="margin-bottom:22px">
+      <div class="kc"><span class="kc-big">+3×</span><div class="kc-lbl">Organik Erişim</div><div class="kc-desc">Reels odaklı stratejiyle mevcut erişimin 3 katına çıkması</div></div>
+      <div class="kc" style="border-top-color:var(--rose)"><span class="kc-big" style="color:var(--rose)">%5+</span><div class="kc-lbl">Etkileşim Oranı</div><div class="kc-desc">Sektör ort. %1–3. Topluluk yönetimiyle %5 üzeri hedef</div></div>
+      <div class="kc" style="border-top-color:var(--teal)"><span class="kc-big" style="color:var(--teal)">+50%</span><div class="kc-lbl">Takipçi Büyümesi</div><div class="kc-desc">Influencer gifting + UGC kampanyasıyla organik artış</div></div>
+      <div class="kc"><span class="kc-big">+40%</span><div class="kc-lbl">DM Dönüşümü</div><div class="kc-desc">Stories CTA + aktif DM yönetimiyle sipariş artışı</div></div>
+    </div>
+
+    <div class="rule"></div>
+
+    <p class="label">10 — Uygulama Planı</p>
+    <h2 class="title" style="font-size:18px">90 Günlük Büyüme Yol Haritası</h2>
+    <div class="rule-gold"></div>
+
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-ph">FAZ 1 · GÜN 1–30 · ALTYAPI &amp; KİMLİK</div>
+        <div class="tl-ttl">Temel Kurulum</div>
+        <div class="tl-chips">
+          <span class="tl-chip">🎨 Feed estetiği &amp; renk paleti</span>
+          <span class="tl-chip">📝 Bio &amp; highlights revizyonu</span>
+          <span class="tl-chip">🔍 Hashtag araştırması</span>
+          <span class="tl-chip">📸 Profesyonel içerik çekimi</span>
+          <span class="tl-chip">🗓 İçerik takvimi sistemi</span>
+          <span class="tl-chip">💬 Yorum &amp; DM yanıt rutini</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-ph">FAZ 2 · GÜN 31–60 · İÇERİK &amp; TOPLULUK</div>
+        <div class="tl-ttl">İçerik Motoru</div>
+        <div class="tl-chips">
+          <span class="tl-chip">🎬 Haftada 3 Reels başlat</span>
+          <span class="tl-chip">👩‍🍳 Behind-the-scenes serisi</span>
+          <span class="tl-chip">🌟 UGC kampanyası başlat</span>
+          <span class="tl-chip">📊 Caption A/B testi</span>
+          <span class="tl-chip">🎁 İlk 5 influencer gönderimi</span>
+          <span class="tl-chip">📹 TikTok &amp; YouTube hesap aç</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-ph">FAZ 3 · GÜN 61–90 · BÜYÜME &amp; GENIŞLEME</div>
+        <div class="tl-ttl">Ölçekleme</div>
+        <div class="tl-chips">
+          <span class="tl-chip">🚀 En iyi Reels'leri boost et</span>
+          <span class="tl-chip">🤝 Influencer ağını genişlet</span>
+          <span class="tl-chip">🛒 Instagram Shopping aktif et</span>
+          <span class="tl-chip">🎯 Sezonsal kampanya planla</span>
+          <span class="tl-chip">💼 LinkedIn hesabı aç</span>
+          <span class="tl-chip">📋 90 gün sonuç raporu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="run-footer" style="background:var(--surface);border-top-color:var(--border)">
+    <div class="rf-left">Gizli &amp; Özel · UniqBee Social Media Agency</div>
+    <div class="rf-mid">BONNE NUIT · STRATEJİ RAPORU 2026</div>
+    <div class="rf-right">8 / 9</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     P9  BENCHMARK TABLE + QUOTE
+═══════════════════════════════ -->
+<div class="page">
+  <div class="run-header">
+    <div class="rh-brand">Uniq<span style="color:var(--bee)">Bee</span></div>
+    <div class="rh-right">Bonne Nuit Strateji Raporu · Nisan 2026</div>
+  </div>
+  <div class="body">
+    <p class="label">11 — Rakip Karşılaştırması</p>
+    <h2 class="title">Benchmark Tablosu</h2>
+    <div class="rule-gold"></div>
+
+    <table style="margin-bottom:22px">
+      <thead>
+        <tr>
+          <th>Kriter</th>
+          <th>Bonne Nuit (Şimdi)</th>
+          <th>Rakip Ortalama</th>
+          <th>Hedef — 90 Gün</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Haftalık Post Sayısı</td><td><span class="part">~3–4</span></td><td>5–7</td><td><span class="check">7+</span></td></tr>
+        <tr><td>Reels Kullanımı</td><td><span class="cross">Çok az</span></td><td>Orta</td><td><span class="check">Haftada 3</span></td></tr>
+        <tr><td>Stories Günlük</td><td><span class="cross">Düzensiz</span></td><td>1–2/gün</td><td><span class="check">3–5/gün</span></td></tr>
+        <tr><td>Influencer İşbirliği</td><td><span class="cross">Yok</span></td><td>Ayda 2–3</td><td><span class="check">Ayda 5+</span></td></tr>
+        <tr><td>UGC Toplama</td><td><span class="cross">Yok</span></td><td>Zaman zaman</td><td><span class="check">Aktif kampanya</span></td></tr>
+        <tr><td>Caption Kalitesi</td><td><span class="part">Minimal</span></td><td>Orta</td><td><span class="check">Hikaye odaklı</span></td></tr>
+        <tr><td>Instagram Shopping</td><td><span class="cross">Aktif değil</span></td><td>Kısmen</td><td><span class="check">Tam entegre</span></td></tr>
+        <tr><td>TikTok Varlığı</td><td><span class="cross">Yok</span></td><td>Kısmen</td><td><span class="check">Aktif kanal</span></td></tr>
+        <tr><td>YouTube Varlığı</td><td><span class="cross">Yok</span></td><td>Nadir</td><td><span class="check">Shorts + uzun form</span></td></tr>
+        <tr><td>Ürün Estetiği</td><td><span class="check">Güçlü</span></td><td>Değişken</td><td><span class="check">Daha güçlü</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="rule"></div>
+
+    <p class="label">12 — UniqBee Değerlendirmesi</p>
+    <h2 class="title" style="font-size:18px">Sonuç &amp; Öneriler</h2>
+    <div class="rule-gold"></div>
+
+    <div class="quote">
+      <p>Bonne Nuit, sosyal medyada büyümek için gereken her şeye sahip: premium ürünler, güçlü teslimat, kişiselleştirilmiş deneyim. Eksik olan tek şey <strong>sistematik içerik üretimi ve platform çeşitliliği.</strong><br><br>
+      Önce temeli kur — bir feed estetiği ve marka sesi belirle, sabitle. Sonra haftada 3 Reels'e odaklan; video olmadan Instagram büyümesi artık mümkün değil. Üçüncü olarak TikTok'u ihmal etme — organik erişim potansiyeli Instagram'ın 5 katı olabilir.<br><br>
+      Ladurée, Pierre Hermé, Sprinkles — bunlar büyük bütçelerle değil, <strong>tutarlılıkla</strong> büyüdü. Bonne Nuit de yapabilir.</p>
+      <div class="quote-attr">— UniqBee Strateji Ekibi, Nisan 2026</div>
+    </div>
+
+    <div class="chips">
+      <span class="chip chip-gold">✓ Tutarlılık önce gelir</span>
+      <span class="chip chip-teal">✓ Video olmadan büyüme yok</span>
+      <span class="chip chip-rose">✓ Topluluk = marka değeri</span>
+      <span class="chip chip-gold">✓ Her post premium filtresinden geçmeli</span>
+      <span class="chip">✓ Platform çeşitliliği rekabet avantajı</span>
+    </div>
+  </div>
+  <div class="run-footer">
+    <div class="rf-left">Gizli &amp; Özel · UniqBee Social Media Agency</div>
+    <div class="rf-mid">BONNE NUIT · STRATEJİ RAPORU 2026</div>
+    <div class="rf-right">9 / 9</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════
+     BACK COVER
+═══════════════════════════════ -->
+<div class="page back">
+  <div class="back-bee">UniqBee Social Media Agency</div>
+  <h2 class="back-h">Bu markayı<br>büyütmeye hazır mısın?</h2>
+  <p class="back-p">Doğru strateji, tutarlı içerik ve çok platformlu yaklaşımla Bonne Nuit İstanbul'un en güçlü premium pastacılık markası olabilir.</p>
+  <div class="back-btn">@bonnenuitpatisserie</div>
+  <div class="back-foot">UniqBee Social Media Agency &nbsp;·&nbsp; Nisan 2026 &nbsp;·&nbsp; Bonne Nuit Patisserie &nbsp;·&nbsp; Gizli &amp; Özel</div>
+</div>
+
+</body>
+</html>

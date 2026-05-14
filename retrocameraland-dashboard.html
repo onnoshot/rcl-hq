@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Camera Land — Analytics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* SF Pro Display stack — uses system font on Apple devices, Inter elsewhere */
+@font-face {
+  font-family: 'SF Pro Display';
+  src: local('SF Pro Display'), local('.SFNSDisplay'), local('SF Pro Text'), local('.SFNS-Regular');
+  font-weight: 100 900;
+}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --bg:          #080808;
+  --bg2:         #0e0e0e;
+  --surface:     rgba(255,255,255,0.04);
+  --surface-h:   rgba(255,255,255,0.07);
+  --border:      rgba(255,255,255,0.07);
+  --border-h:    rgba(245,166,35,0.35);
+  --amber:       #F5A623;
+  --amber-dim:   rgba(245,166,35,0.15);
+  --amber-glow:  rgba(245,166,35,0.08);
+  --cream:       #E8D5B7;
+  --green:       #30D158;
+  --red:         #FF453A;
+  --text:        #F2F2F7;
+  --text2:       rgba(242,242,247,0.55);
+  --text3:       rgba(242,242,247,0.3);
+  --mono:        'JetBrains Mono', ui-monospace, monospace;
+  --serif:       'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:        'SF Pro Display', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --radius:      16px;
+  --radius-sm:   10px;
+}
+
+/* ─── RESET ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+/* ─── FILM GRAIN ─────────────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* ─── AMBIENT ORBS ───────────────────────────────────────── */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+}
+.orb-1 { width: 600px; height: 600px; background: #F5A623; top: -200px; right: -100px; }
+.orb-2 { width: 400px; height: 400px; background: #8B5CF6; bottom: -100px; left: -100px; }
+.orb-3 { width: 300px; height: 300px; background: #F5A623; bottom: 200px; right: 200px; opacity: 0.05; }
+
+/* ─── LAYOUT ─────────────────────────────────────────────── */
+.shell {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px 80px;
+}
+
+/* ─── HEADER ─────────────────────────────────────────────── */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px 0 48px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.logo-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--amber-dim);
+  border: 1px solid rgba(245,166,35,0.3);
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+.logo-text h1 {
+  font-family: var(--sans);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.logo-text p {
+  font-size: 0.72rem;
+  color: var(--text3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.header-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.live-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(48,209,88,0.1);
+  border: 1px solid rgba(48,209,88,0.25);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 0.72rem;
+  color: var(--green);
+  font-family: var(--mono);
+  letter-spacing: 0.05em;
+}
+.live-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green);
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite;
+}
+.date-badge {
+  font-size: 0.72rem;
+  color: var(--text3);
+  font-family: var(--mono);
+}
+
+/* ─── SECTION LABELS ─────────────────────────────────────── */
+.section-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--text3);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── PERIOD TABS ────────────────────────────────────────── */
+.period-tabs {
+  display: flex;
+  gap: 4px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: 32px;
+  width: fit-content;
+}
+.period-tab {
+  padding: 6px 18px;
+  border-radius: 7px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text2);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  background: transparent;
+  letter-spacing: 0.05em;
+}
+.period-tab.active {
+  background: var(--amber-dim);
+  color: var(--amber);
+  border: 1px solid rgba(245,166,35,0.2);
+}
+.period-tab:hover:not(.active) { color: var(--text); }
+
+/* ─── KPI GRID ───────────────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+/* ─── CARD BASE ──────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: transform 0.3s cubic-bezier(.34,1.56,.64,1),
+              border-color 0.3s,
+              box-shadow 0.3s,
+              background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 60%);
+  pointer-events: none;
+}
+.card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: var(--border-h);
+  background: var(--surface-h);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(245,166,35,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* ─── KPI CARD ───────────────────────────────────────────── */
+.kpi-card {
+  padding: 24px;
+  cursor: default;
+}
+.kpi-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 9px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  margin-bottom: 16px;
+  background: var(--amber-dim);
+}
+.kpi-label {
+  font-size: 0.7rem;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin-bottom: 6px;
+}
+.kpi-value {
+  font-family: var(--mono);
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.kpi-value.big { font-size: 2rem; }
+.kpi-delta {
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.kpi-delta.up   { color: var(--green); }
+.kpi-delta.down { color: var(--red); }
+.kpi-delta.neu  { color: var(--text3); }
+.kpi-sub {
+  font-size: 0.68rem;
+  color: var(--text3);
+  margin-top: 4px;
+}
+
+/* ─── HIGHLIGHT CARD ─────────────────────────────────────── */
+.kpi-card.highlight {
+  background: linear-gradient(135deg, rgba(245,166,35,0.12) 0%, rgba(245,166,35,0.04) 100%);
+  border-color: rgba(245,166,35,0.2);
+}
+.kpi-card.highlight .kpi-value { color: var(--amber); }
+.kpi-card.highlight:hover { border-color: rgba(245,166,35,0.5); }
+
+/* ─── CHARTS SECTION ─────────────────────────────────────── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.chart-card {
+  padding: 28px;
+}
+.chart-card .chart-title {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.chart-card .chart-sub {
+  font-size: 0.72rem;
+  color: var(--text3);
+  margin-bottom: 24px;
+}
+.chart-wrap {
+  position: relative;
+  height: 220px;
+}
+.chart-wrap canvas { width: 100% !important; }
+
+/* ─── AI INSIGHT ─────────────────────────────────────────── */
+.ai-insight {
+  background: linear-gradient(135deg, rgba(139,92,246,0.08) 0%, rgba(245,166,35,0.05) 100%);
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: var(--radius);
+  padding: 20px 24px;
+  margin-bottom: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.ai-insight::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #8B5CF6, var(--amber));
+  border-radius: 2px;
+}
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(139,92,246,0.9);
+  background: rgba(139,92,246,0.1);
+  border-radius: 20px;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+}
+.ai-badge-dot {
+  width: 5px;
+  height: 5px;
+  background: #8B5CF6;
+  border-radius: 50%;
+  animation: pulse-dot 2s infinite 0.5s;
+}
+.ai-insight p {
+  font-size: 0.85rem;
+  color: var(--text2);
+  line-height: 1.7;
+}
+.ai-insight strong { color: var(--text); font-weight: 500; }
+
+/* ─── PRODUCTS ───────────────────────────────────────────── */
+.product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.product-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: all 0.25s;
+  cursor: default;
+}
+.product-row:hover {
+  background: rgba(245,166,35,0.05);
+  border-color: rgba(245,166,35,0.2);
+  transform: translateX(4px);
+}
+.product-rank {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--amber);
+  width: 20px;
+  text-align: center;
+}
+.product-name {
+  flex: 1;
+  font-size: 0.82rem;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.product-bar-wrap {
+  width: 80px;
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.product-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--amber), rgba(245,166,35,0.5));
+  border-radius: 2px;
+  transition: width 1s cubic-bezier(.22,1,.36,1);
+  width: 0;
+}
+.product-rev {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--amber);
+  text-align: right;
+  min-width: 80px;
+}
+.product-qty {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text3);
+  min-width: 40px;
+  text-align: right;
+}
+
+/* ─── RECENT ORDERS ──────────────────────────────────────── */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.orders-table th {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text3);
+  text-align: left;
+  padding: 0 12px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.orders-table td {
+  padding: 12px;
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+  transition: all 0.2s;
+}
+.orders-table tr:hover td {
+  background: rgba(245,166,35,0.03);
+}
+.orders-table tr:last-child td { border-bottom: none; }
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(48,209,88,0.1);
+  color: var(--green);
+  border: 1px solid rgba(48,209,88,0.2);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.65rem;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.status-pill-dot { width: 5px; height: 5px; background: var(--green); border-radius: 50%; }
+.order-amount {
+  font-family: var(--mono);
+  color: var(--amber);
+  font-size: 0.82rem;
+}
+
+/* ─── GROWTH METER ───────────────────────────────────────── */
+.growth-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.period-card {
+  padding: 24px;
+  text-align: center;
+}
+.period-card .p-label {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text3);
+  margin-bottom: 12px;
+}
+.period-card .p-rev {
+  font-family: var(--mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+}
+.period-card .p-orders {
+  font-size: 0.72rem;
+  color: var(--text3);
+  font-family: var(--mono);
+}
+.period-card .p-aov {
+  font-size: 0.72rem;
+  color: var(--amber);
+  font-family: var(--mono);
+  margin-top: 6px;
+}
+.radial-wrap {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 12px;
+}
+.radial-wrap svg { transform: rotate(-90deg); }
+.radial-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 3; }
+.radial-fg {
+  fill: none;
+  stroke: var(--amber);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-dasharray: 201;
+  stroke-dashoffset: 201;
+  transition: stroke-dashoffset 1.5s cubic-bezier(.22,1,.36,1) 0.5s;
+}
+.radial-pct {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--amber);
+}
+
+/* ─── TWO COL ────────────────────────────────────────────── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.full-row { margin-bottom: 12px; }
+
+/* ─── SCROLL ANIMATIONS ──────────────────────────────────── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.22,1,.36,1);
+}
+.fade-up.visible { opacity: 1; transform: none; }
+
+/* ─── KEYFRAMES ──────────────────────────────────────────── */
+@keyframes pulse-dot {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.5; transform: scale(0.8); }
+}
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.shimmer-text {
+  background: linear-gradient(90deg, var(--amber) 30%, #fff 50%, var(--amber) 70%);
+  background-size: 400px 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── INVENTORY TABLE ────────────────────────────────────── */
+#invTable tfoot td {
+  padding: 12px;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  border-top: 1px solid rgba(245,166,35,0.25);
+  color: var(--amber);
+  font-weight: 500;
+}
+.inv-bar-wrap {
+  display: inline-block;
+  width: 60px;
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 2px;
+  overflow: hidden;
+  vertical-align: middle;
+  margin-left: 6px;
+}
+.inv-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--amber), rgba(245,166,35,0.4));
+  border-radius: 2px;
+  width: 0;
+  transition: width 1.2s cubic-bezier(.22,1,.36,1);
+}
+.inv-pct {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text3);
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+footer {
+  text-align: center;
+  font-size: 0.65rem;
+  color: var(--text3);
+  font-family: var(--mono);
+  padding-top: 48px;
+  border-top: 1px solid var(--border);
+  letter-spacing: 0.08em;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .charts-grid { grid-template-columns: 1fr; }
+  .two-col { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .growth-grid { grid-template-columns: 1fr; }
+  .shell { padding: 0 16px 60px; }
+  header { padding: 20px 0 32px; }
+  .kpi-value { font-size: 1.4rem; }
+  .kpi-value.big { font-size: 1.6rem; }
+  .orders-table th:nth-child(3),
+  .orders-table td:nth-child(3) { display: none; }
+  .product-bar-wrap { display: none; }
+}
+@media (max-width: 380px) {
+  .kpi-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="shell">
+
+  <!-- HEADER -->
+  <header class="fade-up">
+    <div class="logo">
+      <div class="logo-icon">📷</div>
+      <div class="logo-text">
+        <h1>Retro Camera Land</h1>
+        <p>Analytics Dashboard</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <span class="date-badge">19 Nis 2026</span>
+      <div class="live-badge"><span class="live-dot"></span>Canlı</div>
+    </div>
+  </header>
+
+  <!-- PERIOD TABS -->
+  <div class="fade-up" style="transition-delay:0.05s">
+    <div class="period-tabs">
+      <button class="period-tab" onclick="setPeriod('30d',this)">30 Gün</button>
+      <button class="period-tab active" onclick="setPeriod('90d',this)">90 Gün</button>
+      <button class="period-tab" onclick="setPeriod('year',this)">Yıllık</button>
+    </div>
+  </div>
+
+  <!-- KPI CARDS -->
+  <div class="section-label fade-up" style="transition-delay:0.1s">Temel Metrikler</div>
+  <div class="kpi-grid fade-up" style="transition-delay:0.15s">
+
+    <div class="kpi-card card highlight">
+      <div class="kpi-icon">₺</div>
+      <div class="kpi-label">Toplam Gelir</div>
+      <div class="kpi-value big" id="kpi-rev" data-30="68810" data-90="153490" data-year="689894">₺0</div>
+      <div class="kpi-delta up" id="kpi-rev-delta">↑ Ana metrik</div>
+    </div>
+
+    <div class="kpi-card card">
+      <div class="kpi-icon">🛍</div>
+      <div class="kpi-label">Sipariş Sayısı</div>
+      <div class="kpi-value" id="kpi-orders" data-30="6" data-90="13" data-year="59">0</div>
+      <div class="kpi-sub" id="kpi-orders-sub">sipariş tamamlandı</div>
+    </div>
+
+    <div class="kpi-card card">
+      <div class="kpi-icon">💰</div>
+      <div class="kpi-label">Ort. Sipariş Değeri</div>
+      <div class="kpi-value" id="kpi-aov" data-30="11468" data-90="11807" data-year="11693">₺0</div>
+      <div class="kpi-delta up" id="kpi-aov-delta">↑ Premium segment</div>
+    </div>
+
+    <div class="kpi-card card">
+      <div class="kpi-icon">👥</div>
+      <div class="kpi-label">Toplam Müşteri</div>
+      <div class="kpi-value" id="kpi-customers">0</div>
+      <div class="kpi-delta neu">↔ Toplam kayıtlı</div>
+    </div>
+
+    <div class="kpi-card card">
+      <div class="kpi-icon">📦</div>
+      <div class="kpi-label">Ödeme Başarısı</div>
+      <div class="kpi-value">%100</div>
+      <div class="kpi-delta up">↑ Tüm siparişler ödendi</div>
+    </div>
+
+    <div class="kpi-card card">
+      <div class="kpi-icon">🏆</div>
+      <div class="kpi-label">En İyi Ay</div>
+      <div class="kpi-value" style="font-size:1.2rem">Kas 2025</div>
+      <div class="kpi-delta up">↑ ₺233.639</div>
+    </div>
+
+  </div>
+
+  <!-- AI INSIGHT #1 -->
+  <div class="ai-insight fade-up" style="transition-delay:0.2s" id="ai-main">
+    <div class="ai-badge"><span class="ai-badge-dot"></span>AI Analiz</div>
+    <p id="ai-main-text">
+      <strong>Kasım 2025 spike'ı kritik:</strong> Kara Cuma & alışveriş sezonu etkisiyle tek ayda <strong>₺233.639</strong> gelir elde edildi — yıllık toplam gelirin <strong>%33,9'u</strong>. 2026 başında aylık ortalama ~₺47K ile istikrar sağlandı. <strong>Öneri:</strong> Kasım kampanyasını erken planlayın, bu ay büyüme motorunuz.
+    </p>
+  </div>
+
+  <!-- REVENUE TREND CHART -->
+  <div class="charts-grid fade-up" style="transition-delay:0.25s">
+    <div class="chart-card card">
+      <div class="chart-title">Gelir Trendi</div>
+      <div class="chart-sub">Aylık bazda gelir performansı (₺)</div>
+      <div class="chart-wrap">
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+    <div class="chart-card card">
+      <div class="chart-title">Sipariş Hacmi</div>
+      <div class="chart-sub">Aylık sipariş sayısı</div>
+      <div class="chart-wrap">
+        <canvas id="ordersChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- PERIOD COMPARISON -->
+  <div class="section-label fade-up" style="transition-delay:0.3s">Dönem Karşılaştırması</div>
+  <div class="growth-grid fade-up" style="transition-delay:0.35s">
+
+    <div class="period-card card">
+      <div class="p-label">Son 30 Gün</div>
+      <div class="radial-wrap">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <circle class="radial-bg" cx="40" cy="40" r="32"/>
+          <circle class="radial-fg" id="r30" cx="40" cy="40" r="32" data-pct="10"/>
+        </svg>
+        <div class="radial-pct">10%</div>
+      </div>
+      <div class="p-rev">₺68.810</div>
+      <div class="p-orders">6 sipariş</div>
+      <div class="p-aov">AOV ₺11.468</div>
+    </div>
+
+    <div class="period-card card">
+      <div class="p-label">Son 90 Gün</div>
+      <div class="radial-wrap">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <circle class="radial-bg" cx="40" cy="40" r="32"/>
+          <circle class="radial-fg" id="r90" cx="40" cy="40" r="32" data-pct="22"/>
+        </svg>
+        <div class="radial-pct">22%</div>
+      </div>
+      <div class="p-rev">₺153.490</div>
+      <div class="p-orders">13 sipariş</div>
+      <div class="p-aov">AOV ₺11.807</div>
+    </div>
+
+    <div class="period-card card highlight">
+      <div class="p-label">Son 365 Gün</div>
+      <div class="radial-wrap">
+        <svg width="80" height="80" viewBox="0 0 80 80">
+          <circle class="radial-bg" cx="40" cy="40" r="32"/>
+          <circle class="radial-fg" id="ryear" cx="40" cy="40" r="32" data-pct="100"/>
+        </svg>
+        <div class="radial-pct">100%</div>
+      </div>
+      <div class="p-rev">₺689.894</div>
+      <div class="p-orders">59 sipariş</div>
+      <div class="p-aov">AOV ₺11.693</div>
+    </div>
+
+  </div>
+
+  <!-- AI INSIGHT #2 -->
+  <div class="ai-insight fade-up" style="transition-delay:0.38s">
+    <div class="ai-badge"><span class="ai-badge-dot"></span>AI Analiz · AOV</div>
+    <p>
+      <strong>Ortalama sipariş değeri ₺11.693</strong> — bu rakam retro kamera pazarında güçlü bir premium konumlanmayı doğruluyor. Dönemler arası AOV sapması %3'ün altında kalıyor; bu da <strong>fiyat tutarlılığının</strong> ve müşteri kalitesinin korunduğunu gösteriyor. <strong>Öneri:</strong> Bundle (kit + aksesuar) teklifleriyle AOV'yi ₺13K+'a taşıyabilirsiniz.
+    </p>
+  </div>
+
+  <!-- INVENTORY SECTION -->
+  <div class="section-label fade-up" style="transition-delay:0.52s">Canlı Envanter</div>
+
+  <!-- INVENTORY KPIs -->
+  <div class="kpi-grid fade-up" style="transition-delay:0.54s; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); margin-bottom:12px">
+    <div class="kpi-card card highlight">
+      <div class="kpi-icon">🏭</div>
+      <div class="kpi-label">Envanter Değeri</div>
+      <div class="kpi-value big" id="inv-val">₺0</div>
+      <div class="kpi-delta up">↑ Satış fiyatıyla</div>
+    </div>
+    <div class="kpi-card card">
+      <div class="kpi-icon">📷</div>
+      <div class="kpi-label">Stokta Kamera</div>
+      <div class="kpi-value" id="inv-cam">0</div>
+      <div class="kpi-sub">adet mevcut</div>
+    </div>
+    <div class="kpi-card card">
+      <div class="kpi-icon">🔌</div>
+      <div class="kpi-label">Stokta Aksesuar</div>
+      <div class="kpi-value" id="inv-acc">0</div>
+      <div class="kpi-sub">adet mevcut</div>
+    </div>
+    <div class="kpi-card card">
+      <div class="kpi-icon">⚠️</div>
+      <div class="kpi-label">Stokta Yok</div>
+      <div class="kpi-value" style="color:var(--red)">74</div>
+      <div class="kpi-sub">ürün çeşidi</div>
+    </div>
+  </div>
+
+  <!-- INVENTORY TABLE -->
+  <div class="full-row fade-up" style="transition-delay:0.56s">
+    <div class="chart-card card">
+      <div class="chart-title">Stokta Olan Kameralar</div>
+      <div class="chart-sub">Satış fiyatına göre sıralı — güncel stok durumu</div>
+      <div style="overflow-x:auto">
+        <table class="orders-table" id="invTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Ürün</th>
+              <th>Fiyat</th>
+              <th>Adet</th>
+              <th>Stok Değeri</th>
+              <th>Pay %</th>
+            </tr>
+          </thead>
+          <tbody id="invBody"></tbody>
+          <tfoot id="invFoot"></tfoot>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="fade-up" style="transition-delay:0.6s">
+    retrocameraland.myshopify.com · Shopify Admin API v2024-01 ·
+    <span class="shimmer-text">Powered by Claude AI</span>
+  </footer>
+
+</div>
+
+<script>
+/* ─── DATA ─────────────────────────────────────────────────── */
+const MONTHS = ['Tem 25','Ağu 25','Eyl 25','Eki 25','Kas 25','Ara 25','Oca 26','Şub 26','Mar 26','Nis 26'];
+const REVENUE = [2590, 75378, 62128, 82649, 233639, 43360, 56890, 39470, 46450, 47340];
+const ORDERS  = [1, 8, 9, 8, 12, 4, 6, 3, 4, 4];
+const PRODUCTS = [
+  { name: 'Canon G7X Mark III',        qty: 2, rev: 118990 },
+  { name: 'Sony Cyber-shot DSC-W110',  qty: 3, rev: 42470  },
+  { name: 'Canon IXUS 285 HS',         qty: 2, rev: 39490  },
+  { name: 'Panasonic LUMIX DC-TZ99',   qty: 1, rev: 32490  },
+  { name: 'Diğer Ürünler',             qty: 8, rev: 456454 },
+];
+const RECENT_ORDERS = [
+  { date: '18 Nis 2026', amount: 8490  },
+  { date: '17 Nis 2026', amount: 14490 },
+  { date: '10 Nis 2026', amount: 12490 },
+  { date: '03 Nis 2026', amount: 11870 },
+  { date: '26 Mar 2026', amount: 9990  },
+  { date: '20 Mar 2026', amount: 11480 },
+  { date: '09 Mar 2026', amount: 13490 },
+  { date: '08 Mar 2026', amount: 11490 },
+  { date: '27 Şub 2026', amount: 9990  },
+  { date: '15 Şub 2026', amount: 13490 },
+];
+
+/* ─── PERIOD DATA ──────────────────────────────────────────── */
+const PERIOD_DATA = {
+  '30d':  { rev: 68810,  orders: 6,  aovDelta: '-0.2% vs yıllık ort.', insight: '<strong>Son 30 günde ₺68.810</strong> gelir ve 6 sipariş kaydedildi. Nisan aylık ortalama seyrinde gidiyor. Bu hızla kapanırsa yıllık <strong>₺825K</strong> projeksiyon oluşur.' },
+  '90d':  { rev: 153490, orders: 13, aovDelta: '+1.0% vs yıllık ort.', insight: '<strong>Son 90 günde ₺153.490</strong> — çeyreklik bazda güçlü performans. AOV ₺11.807 ile yıllık ortalamanın üzerinde: premium müşteri segmenti aktif.' },
+  'year': { rev: 689894, orders: 59, aovDelta: 'Yıllık ortalama',       insight: '<strong>Kasım 2025 spike\'ı kritik:</strong> Kara Cuma & alışveriş sezonu etkisiyle tek ayda <strong>₺233.639</strong> gelir elde edildi — yıllık toplam gelirin <strong>%33,9\'u</strong>. 2026 başında aylık ortalama ~₺47K ile istikrar sağlandı. <strong>Öneri:</strong> Kasım kampanyasını erken planlayın.' },
+};
+
+let currentPeriod = '90d';
+
+/* ─── COUNTER ANIMATION ────────────────────────────────────── */
+function animateCounter(el, target, prefix='', suffix='', duration=1200) {
+  let start = 0;
+  const startTime = performance.now();
+  function step(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 4);
+    const current = Math.floor(ease * target);
+    el.textContent = prefix + current.toLocaleString('tr-TR') + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = prefix + target.toLocaleString('tr-TR') + suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+/* ─── SET PERIOD ────────────────────────────────────────────── */
+function setPeriod(period, btn) {
+  currentPeriod = period;
+  document.querySelectorAll('.period-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const d = PERIOD_DATA[period];
+  animateCounter(document.getElementById('kpi-rev'), d.rev, '₺');
+  animateCounter(document.getElementById('kpi-orders'), d.orders);
+  const aov = Math.round(d.rev / d.orders);
+  animateCounter(document.getElementById('kpi-aov'), aov, '₺');
+  document.getElementById('kpi-orders-sub').textContent = `${d.orders} sipariş tamamlandı`;
+  document.getElementById('ai-main-text').innerHTML = d.insight;
+}
+
+/* ─── INIT COUNTERS ─────────────────────────────────────────── */
+function initCounters() {
+  const d = PERIOD_DATA[currentPeriod];
+  animateCounter(document.getElementById('kpi-rev'), d.rev, '₺', '', 1400);
+  animateCounter(document.getElementById('kpi-orders'), d.orders, '', '', 1000);
+  animateCounter(document.getElementById('kpi-aov'), Math.round(d.rev/d.orders), '₺', '', 1200);
+  animateCounter(document.getElementById('kpi-customers'), 654, '', '', 1600);
+}
+
+/* ─── CHART DEFAULTS ────────────────────────────────────────── */
+Chart.defaults.color = 'rgba(242,242,247,0.4)';
+Chart.defaults.borderColor = 'rgba(255,255,255,0.06)';
+Chart.defaults.font.family = "'JetBrains Mono', monospace";
+Chart.defaults.font.size = 10;
+
+/* ─── REVENUE CHART ─────────────────────────────────────────── */
+const revCtx = document.getElementById('revenueChart').getContext('2d');
+const revGrad = revCtx.createLinearGradient(0,0,0,220);
+revGrad.addColorStop(0, 'rgba(245,166,35,0.3)');
+revGrad.addColorStop(1, 'rgba(245,166,35,0)');
+
+new Chart(revCtx, {
+  type: 'line',
+  data: {
+    labels: MONTHS,
+    datasets: [{
+      data: REVENUE,
+      borderColor: '#F5A623',
+      backgroundColor: revGrad,
+      borderWidth: 2,
+      fill: true,
+      tension: 0.4,
+      pointBackgroundColor: '#F5A623',
+      pointRadius: 3,
+      pointHoverRadius: 6,
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: '#F5A623',
+      pointHoverBorderWidth: 2,
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    interaction: { intersect: false, mode: 'index' },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(14,14,14,0.95)',
+        borderColor: 'rgba(245,166,35,0.3)',
+        borderWidth: 1,
+        padding: 12,
+        callbacks: {
+          label: ctx => `  ₺${ctx.parsed.y.toLocaleString('tr-TR')}`,
+          title: ctx => ctx[0].label,
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 9 } } },
+      y: {
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: {
+          font: { size: 9 },
+          callback: v => v >= 1000 ? `₺${v/1000}K` : `₺${v}`,
+        }
+      }
+    },
+    animation: { duration: 1200, easing: 'easeOutQuart' }
+  }
+});
+
+/* ─── ORDERS CHART ──────────────────────────────────────────── */
+const ordCtx = document.getElementById('ordersChart').getContext('2d');
+new Chart(ordCtx, {
+  type: 'bar',
+  data: {
+    labels: MONTHS,
+    datasets: [{
+      data: ORDERS,
+      backgroundColor: ORDERS.map((v,i) => v === Math.max(...ORDERS)
+        ? 'rgba(245,166,35,0.85)'
+        : 'rgba(245,166,35,0.25)'),
+      borderColor: 'transparent',
+      borderRadius: 6,
+      borderSkipped: false,
+      hoverBackgroundColor: 'rgba(245,166,35,0.7)',
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        backgroundColor: 'rgba(14,14,14,0.95)',
+        borderColor: 'rgba(245,166,35,0.3)',
+        borderWidth: 1,
+        padding: 12,
+        callbacks: { label: ctx => `  ${ctx.parsed.y} sipariş` }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { font: { size: 9 } } },
+      y: {
+        grid: { color: 'rgba(255,255,255,0.04)' },
+        ticks: { font: { size: 9 }, stepSize: 2 },
+        beginAtZero: true
+      }
+    },
+    animation: { duration: 1000, easing: 'easeOutQuart', delay: ctx => ctx.dataIndex * 60 }
+  }
+});
+
+/* ─── RADIAL RINGS ──────────────────────────────────────────── */
+function initRadials() {
+  document.querySelectorAll('.radial-fg').forEach(el => {
+    const pct = parseInt(el.dataset.pct);
+    const circumference = 201;
+    const offset = circumference - (pct / 100) * circumference;
+    setTimeout(() => { el.style.strokeDashoffset = offset; }, 600);
+  });
+}
+
+/* ─── SCROLL OBSERVER ───────────────────────────────────────── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+
+/* ─── INVENTORY DATA ────────────────────────────────────────── */
+const INVENTORY = [
+  { name: 'Sony Cyber-shot DSC-TX9',           price: 14490, qty: 1 },
+  { name: 'Canon PowerShot SD400',             price: 12490, qty: 1 },
+  { name: 'Casio Exilim EX-N10 Gold Edition',  price: 11990, qty: 1 },
+  { name: 'Lumix DMC-FT10',                    price: 11990, qty: 1 },
+  { name: 'Casio Exilim EX-Z110',              price: 11490, qty: 1 },
+  { name: 'Fujifilm FinePix 4700 Zoom',        price: 11490, qty: 1 },
+  { name: 'Fujifilm FinePix T200',             price: 11490, qty: 1 },
+  { name: 'Nikon Coolpix S52c',                price: 11490, qty: 1 },
+  { name: 'Olympus SP-700',                    price: 11490, qty: 1 },
+  { name: 'Konica Minolta DiMAGE X50',         price: 10990, qty: 1 },
+  { name: 'JVC GZ-MC200E',                     price: 10490, qty: 1 },
+  { name: 'Kodak EasyShare V603',              price: 10490, qty: 1 },
+  { name: 'Kodak Slice R502',                  price: 10490, qty: 1 },
+  { name: 'Sanyo Xacti VPC-HD1',               price: 10490, qty: 1 },
+  { name: 'Samsung ES65',                      price:  9990, qty: 1 },
+  { name: 'Casio Exilim EX-Z4',               price:  9490, qty: 1 },
+  { name: 'Casio Exilim EX-Z85',              price:  9490, qty: 1 },
+  { name: 'Olympus SP-320',                    price:  9490, qty: 1 },
+  { name: 'Olympus SZ-10',                     price:  9490, qty: 1 },
+  { name: 'HP Photosmart R827',                price:  8900, qty: 1 },
+  { name: 'Nikon Coolpix 885',                 price:  8900, qty: 1 },
+  { name: 'Traveler DC-830',                   price:  8490, qty: 1 },
+  { name: 'Sony Cybershot DSC-S85',            price:  7990, qty: 1 },
+  { name: 'Kodak ZX1 Weather-Resistant',       price:  4900, qty: 1 },
+];
+const ACC_TOTAL_VAL = 9600;
+const ACC_TOTAL_QTY = 10;
+
+function buildInventoryTable() {
+  const tbody = document.getElementById('invBody');
+  const tfoot = document.getElementById('invFoot');
+  const totalVal = INVENTORY.reduce((s,r) => s + r.price*r.qty, 0) + ACC_TOTAL_VAL;
+  const maxVal = INVENTORY[0].price;
+
+  INVENTORY.forEach((r, i) => {
+    const val = r.price * r.qty;
+    const pct = ((val / totalVal) * 100).toFixed(1);
+    const barW = Math.round((r.price / maxVal) * 100);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="font-family:var(--mono);font-size:0.65rem;color:var(--text3)">${i+1}</td>
+      <td style="font-size:0.8rem;color:var(--text)">${r.name}</td>
+      <td style="font-family:var(--mono);font-size:0.78rem;color:var(--text2)">₺${r.price.toLocaleString('tr-TR')}</td>
+      <td style="font-family:var(--mono);font-size:0.78rem;text-align:center">${r.qty}</td>
+      <td style="font-family:var(--mono);font-size:0.78rem;color:var(--amber)">₺${val.toLocaleString('tr-TR')}</td>
+      <td>
+        <span class="inv-pct">${pct}%</span>
+        <span class="inv-bar-wrap"><span class="inv-bar" data-w="${barW}"></span></span>
+      </td>
+    `;
+    tbody.appendChild(tr);
+  });
+
+  // Aksesuar satırı
+  const accTr = document.createElement('tr');
+  accTr.innerHTML = `
+    <td style="font-family:var(--mono);font-size:0.65rem;color:var(--text3)">+</td>
+    <td style="font-size:0.8rem;color:var(--text2);font-style:italic">Aksesuar (kart okuyucu, şarj, tripod…)</td>
+    <td style="font-family:var(--mono);font-size:0.78rem;color:var(--text3)">—</td>
+    <td style="font-family:var(--mono);font-size:0.78rem;text-align:center;color:var(--text2)">${ACC_TOTAL_QTY}</td>
+    <td style="font-family:var(--mono);font-size:0.78rem;color:var(--text2)">₺${ACC_TOTAL_VAL.toLocaleString('tr-TR')}</td>
+    <td><span class="inv-pct">${((ACC_TOTAL_VAL/totalVal)*100).toFixed(1)}%</span></td>
+  `;
+  tbody.appendChild(accTr);
+
+  // Footer toplam
+  tfoot.innerHTML = `<tr>
+    <td colspan="3" style="font-size:0.72rem;letter-spacing:0.08em">TOPLAM ENVANTER DEĞERİ</td>
+    <td style="text-align:center">${INVENTORY.reduce((s,r)=>s+r.qty,0)+ACC_TOTAL_QTY}</td>
+    <td>₺${totalVal.toLocaleString('tr-TR')}</td>
+    <td>%100</td>
+  </tr>`;
+
+  // Animate bars
+  setTimeout(() => {
+    document.querySelectorAll('.inv-bar').forEach((b,i) => {
+      setTimeout(() => { b.style.width = b.dataset.w + '%'; }, i * 40);
+    });
+  }, 800);
+}
+
+/* ─── INIT ──────────────────────────────────────────────────── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.fade-up').forEach((el, i) => {
+      el.style.transitionDelay = `${i * 0.05}s`;
+    });
+    initCounters();
+    initRadials();
+    buildInventoryTable();
+    animateCounter(document.getElementById('inv-val'), 258090, '₺', '', 1400);
+    animateCounter(document.getElementById('inv-cam'), 24, '', '', 1000);
+    animateCounter(document.getElementById('inv-acc'), 10, '', '', 1000);
+    // Trigger bars after short delay
+    setTimeout(() => {
+      document.querySelectorAll('.product-bar').forEach((bar, i) => {
+        setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, 800 + i * 100);
+      });
+    }, 200);
+  }, 100);
+});
+</script>
+</body>
+</html>

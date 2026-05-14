@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Mare Gastro — Yakında</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root { --navy: #0B1A2E; }
+
+        html { height: 100%; }
+
+        body {
+            background: var(--navy);
+            color: #fff;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* ── Custom cursor (desktop only) ─────────────────── */
+        @media (pointer: fine) { body { cursor: none; } }
+
+        .cur, .cur-ring {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: 9999;
+            transform: translate(-50%,-50%);
+        }
+
+        .cur {
+            width: 7px; height: 7px;
+            background: rgba(255,255,255,0.85);
+            transition: width .3s, height .3s, background .3s;
+        }
+
+        .cur-ring {
+            width: 30px; height: 30px;
+            border: 1px solid rgba(255,255,255,0.28);
+            z-index: 9998;
+            transition: width .3s, height .3s;
+        }
+
+        .cur.on  { width: 12px; height: 12px; background: rgba(255,255,255,.4); }
+        .cur-ring.on { width: 46px; height: 46px; }
+
+        @media (pointer: coarse) { .cur, .cur-ring { display: none !important; } }
+
+        /* ── Background glow ──────────────────────────────── */
+        .bg {
+            position: fixed; inset: 0;
+            background: radial-gradient(ellipse 60% 52% at 50% 42%, #112244 0%, transparent 68%);
+            animation: breathe 8s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes breathe {
+            0%,100% { opacity: .4; }
+            50%      { opacity: .95; }
+        }
+
+        /* ── Content wrapper ──────────────────────────────── */
+        .wrap {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            max-width: 560px;
+            padding: clamp(1rem, 4vh, 2rem) clamp(1.2rem, 5vw, 2.5rem);
+            will-change: transform;
+        }
+
+        /* ── MARE ─────────────────────────────────────────── */
+        .mare {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: clamp(3.8rem, 15vw, 10rem);
+            letter-spacing: 0.18em;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+            opacity: 0;
+            animation: fadeIn 1.6s ease forwards .2s;
+            user-select: none;
+            transition: letter-spacing .7s ease;
+        }
+
+        .mare:hover { letter-spacing: 0.26em; }
+
+        /* ── GASTRO ───────────────────────────────────────── */
+        .gastro {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 200;
+            font-size: clamp(.65rem, 2.3vw, .95rem);
+            letter-spacing: 0.68em;
+            text-transform: uppercase;
+            margin-bottom: clamp(1.6rem, 4vh, 3rem);
+            opacity: 0;
+            animation: fadeIn 1.6s ease forwards .9s;
+            transition: letter-spacing .65s ease;
+            user-select: none;
+        }
+
+        .gastro:hover { letter-spacing: .95em; }
+
+        /* ── Fish ─────────────────────────────────────────── */
+        .fish-wrap {
+            margin-bottom: clamp(1.6rem, 4vh, 3rem);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 1.5s;
+        }
+
+        .fish-svg {
+            width: clamp(90px, 20vw, 138px);
+            height: auto;
+            overflow: visible;
+            display: block;
+            transition: filter .5s ease;
+        }
+
+        .fish-wrap:hover .fish-svg {
+            filter: drop-shadow(0 0 18px rgba(255,255,255,.38));
+        }
+
+        .fs {
+            stroke: #fff;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* stroke-draw — dasharray set by JS */
+        #fb  { animation: drawPath 2.2s cubic-bezier(.4,0,.2,1) forwards 1.7s; }
+        #ft1 { animation: drawPath .65s ease forwards 3.7s; }
+        #ft2 { animation: drawPath .65s ease forwards 4.1s; }
+
+        @keyframes drawPath { to { stroke-dashoffset: 0; } }
+
+        /* ── Divider ──────────────────────────────────────── */
+        .line {
+            width: 0; height: 1px;
+            background: rgba(255,255,255,.18);
+            margin-bottom: clamp(1.2rem, 3vh, 2rem);
+            animation: expandLine .9s ease forwards 2.2s;
+        }
+
+        @keyframes expandLine { to { width: min(150px, 38vw); } }
+
+        /* ── Label ────────────────────────────────────────── */
+        .label {
+            font-size: clamp(.5rem, 1.4vw, .6rem);
+            font-weight: 300;
+            letter-spacing: .5em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.38);
+            margin-bottom: .45rem;
+            opacity: 0;
+            animation: fadeIn .8s ease forwards 2.5s;
+        }
+
+        /* ── Location ─────────────────────────────────────── */
+        .location {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 300;
+            font-size: clamp(.85rem, 2.2vw, 1.1rem);
+            color: rgba(255,255,255,.48);
+            letter-spacing: .05em;
+            margin-bottom: clamp(1.4rem, 3.5vh, 2.5rem);
+            opacity: 0;
+            animation: fadeIn .8s ease forwards 2.8s;
+        }
+
+        /* ── Progress bar ─────────────────────────────────── */
+        .prog-section {
+            width: 100%;
+            max-width: min(300px, 82vw);
+            margin-bottom: clamp(1.4rem, 3.5vh, 2.4rem);
+            opacity: 0;
+            animation: fadeIn .8s ease forwards 3.1s;
+        }
+
+        .prog-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: .55rem;
+        }
+
+        .prog-text {
+            font-size: clamp(.45rem, 1.3vw, .54rem);
+            font-weight: 300;
+            letter-spacing: .42em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.28);
+        }
+
+        .prog-pct {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(.7rem, 1.6vw, .78rem);
+            color: rgba(255,255,255,.28);
+        }
+
+        .prog-track {
+            width: 100%;
+            height: 1px;
+            background: rgba(255,255,255,.1);
+            position: relative;
+        }
+
+        .prog-fill {
+            position: absolute;
+            left: 0; top: 0;
+            height: 1px;
+            width: 0;
+            background: rgba(255,255,255,.45);
+            animation: fillBar 3.2s cubic-bezier(.4,0,.2,1) forwards 3.4s;
+        }
+
+        .prog-dot {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: #fff;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 8px rgba(255,255,255,.7), 0 0 18px rgba(255,255,255,.3);
+            animation: moveDot 3.2s cubic-bezier(.4,0,.2,1) forwards 3.4s;
+        }
+
+        /* shimmer sweep after fill completes */
+        .prog-shimmer {
+            position: absolute;
+            top: -1px; left: 0;
+            height: 3px; width: 45px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,.7), transparent);
+            animation: shimmer 2s ease-in-out infinite 7s;
+            pointer-events: none;
+        }
+
+        @keyframes fillBar  { to { width: 74%; } }
+        @keyframes moveDot  { to { left: 74%; } }
+        @keyframes shimmer  {
+            0%   { left: 0;   opacity: 0; }
+            10%  { opacity: 1; }
+            100% { left: 74%; opacity: 0; }
+        }
+
+        /* ── Email form ───────────────────────────────────── */
+        .form {
+            display: flex;
+            width: 100%;
+            max-width: min(380px, 90vw);
+            margin-bottom: clamp(1.4rem, 3.5vh, 2.4rem);
+            opacity: 0;
+            animation: fadeIn .8s ease forwards 3.4s;
+        }
+
+        .form input {
+            flex: 1;
+            min-width: 0;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,.18);
+            border-right: none;
+            color: #fff;
+            padding: .85rem 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(.7rem, 1.8vw, .76rem);
+            font-weight: 300;
+            letter-spacing: .07em;
+            outline: none;
+            -webkit-appearance: none;
+            transition: border-color .3s, background .3s;
+        }
+
+        .form input::placeholder { color: rgba(255,255,255,.2); }
+
+        .form input:hover,
+        .form input:focus {
+            border-color: rgba(255,255,255,.48);
+            background: rgba(255,255,255,.025);
+        }
+
+        .form button {
+            background: transparent;
+            border: 1px solid rgba(255,255,255,.18);
+            color: #fff;
+            padding: .85rem clamp(.9rem, 2vw, 1.4rem);
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(.58rem, 1.5vw, .65rem);
+            font-weight: 300;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            cursor: pointer;
+            white-space: nowrap;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            transition: border-color .3s;
+        }
+
+        .form button span { position: relative; z-index: 1; }
+
+        .form button::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: rgba(255,255,255,.08);
+            transform: translateX(-101%);
+            transition: transform .42s cubic-bezier(.4,0,.2,1);
+        }
+
+        .form button:hover::after { transform: translateX(0); }
+        .form button:hover { border-color: rgba(255,255,255,.48); }
+
+        /* ── Social icons ─────────────────────────────────── */
+        .socials {
+            display: flex;
+            align-items: center;
+            gap: clamp(.8rem, 2.5vw, 1.5rem);
+            opacity: 0;
+            animation: fadeIn .8s ease forwards 3.7s;
+        }
+
+        .soc {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,.38);
+            text-decoration: none;
+            padding: .45rem;
+            min-width: 44px; min-height: 44px; /* touch target */
+            transition: color .35s, filter .35s, transform .35s;
+        }
+
+        .soc svg { width: 18px; height: 18px; display: block; }
+
+        .soc:hover {
+            color: rgba(255,255,255,.9);
+            filter: drop-shadow(0 0 10px rgba(255,255,255,.28));
+            transform: translateY(-3px);
+        }
+
+        .sep { width: 1px; height: 12px; background: rgba(255,255,255,.1); flex-shrink: 0; }
+
+        /* ── Credit ───────────────────────────────────────── */
+        .credit {
+            position: fixed;
+            bottom: max(1.2rem, env(safe-area-inset-bottom));
+            font-size: clamp(.48rem, 1.3vw, .56rem);
+            font-weight: 300;
+            letter-spacing: .35em;
+            color: rgba(255,255,255,.14);
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn .8s ease forwards 4s;
+            user-select: none;
+            white-space: nowrap;
+            z-index: 2;
+        }
+
+        /* ── Click ripple ─────────────────────────────────── */
+        .ripple {
+            position: fixed;
+            pointer-events: none;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,.1);
+            transform: translate(-50%,-50%);
+            animation: rippleAnim 1.3s ease-out forwards;
+        }
+
+        @keyframes rippleAnim {
+            from { width: 0; height: 0; opacity: .5; }
+            to   { width: 100px; height: 100px; opacity: 0; }
+        }
+
+        /* ── Bottom waves ─────────────────────────────────── */
+        .waves {
+            position: fixed;
+            bottom: 0; left: 0;
+            width: 100%; height: 70px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ── Shared ───────────────────────────────────────── */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        /* ── Responsive: small phones ─────────────────────── */
+        @media (max-width: 400px) {
+            .socials { gap: .5rem; }
+            .sep { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .form { flex-direction: column; }
+            .form input {
+                border-right: 1px solid rgba(255,255,255,.18);
+                border-bottom: none;
+            }
+            .form input:hover, .form input:focus {
+                border-right-color: rgba(255,255,255,.48);
+            }
+            .form button { padding: .9rem; letter-spacing: .28em; }
+        }
+
+        @media (max-height: 640px) {
+            .wrap { padding-top: .5rem; padding-bottom: .5rem; }
+            .mare { margin-bottom: .15rem; }
+            .gastro { margin-bottom: 1rem; }
+            .fish-wrap { margin-bottom: 1rem; }
+            .line { margin-bottom: .8rem; }
+            .location { margin-bottom: 1rem; }
+            .prog-section { margin-bottom: 1rem; }
+            .form { margin-bottom: 1rem; }
+            .credit { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom cursor (desktop) -->
+    <div class="cur" id="cur"></div>
+    <div class="cur-ring" id="curRing"></div>
+
+    <!-- Background -->
+    <div class="bg"></div>
+
+    <!-- Animated waves -->
+    <svg class="waves" viewBox="0 0 1440 70" preserveAspectRatio="none">
+        <path fill="rgba(255,255,255,.042)"
+              d="M0,35 C240,65 480,5 720,35 C960,65 1200,5 1440,35 L1440,70 L0,70 Z">
+            <animateTransform attributeName="transform" type="translate"
+                values="0,0;-360,0;0,0" dur="18s" repeatCount="indefinite"/>
+        </path>
+        <path fill="rgba(255,255,255,.022)"
+              d="M0,48 C300,18 600,60 900,42 C1200,24 1350,58 1440,48 L1440,70 L0,70 Z">
+            <animateTransform attributeName="transform" type="translate"
+                values="0,0;360,0;0,0" dur="24s" repeatCount="indefinite"/>
+        </path>
+    </svg>
+
+    <!-- Main content -->
+    <div class="wrap" id="wrap">
+
+        <!-- MARE -->
+        <h1 class="mare">MARE</h1>
+
+        <!-- GASTRO -->
+        <p class="gastro">Gastro</p>
+
+        <!-- Fish icon -->
+        <div class="fish-wrap">
+            <svg class="fish-svg" viewBox="0 0 280 96" xmlns="http://www.w3.org/2000/svg">
+                <!-- Body: elongated, nose left -->
+                <path class="fs" id="fb"
+                      d="M 10,48 C 48,6 196,6 216,48 C 196,90 48,90 10,48 Z"/>
+                <!-- Tail upper -->
+                <path class="fs" id="ft1"
+                      d="M 207,48 C 222,32 248,20 258,10"/>
+                <!-- Tail lower -->
+                <path class="fs" id="ft2"
+                      d="M 207,48 C 222,64 248,76 258,86"/>
+            </svg>
+        </div>
+
+        <!-- Divider -->
+        <div class="line"></div>
+
+        <!-- Label -->
+        <p class="label">Yakında Açılıyor</p>
+
+        <!-- Location -->
+        <p class="location">Didi Otel &nbsp;·&nbsp; Sapanca &nbsp;·&nbsp; Fine Dining</p>
+
+        <!-- Progress bar -->
+        <div class="prog-section">
+            <div class="prog-head">
+                <span class="prog-text">Hazırlanıyor</span>
+                <span class="prog-pct" id="pct">0%</span>
+            </div>
+            <div class="prog-track">
+                <div class="prog-fill"></div>
+                <div class="prog-dot"></div>
+                <div class="prog-shimmer"></div>
+            </div>
+        </div>
+
+        <!-- Email form -->
+        <form class="form" id="frm" onsubmit="submitForm(event)">
+            <input type="email" id="mail" placeholder="E-posta adresinizi girin" required>
+            <button type="submit" id="btn"><span id="btnTxt">Haberdar Ol</span></button>
+        </form>
+
+        <!-- Social icons -->
+        <div class="socials">
+
+            <a class="soc" href="https://www.instagram.com/maregastrosapanca/" target="_blank" rel="noopener" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5"/>
+                    <circle cx="12" cy="12" r="4.5"/>
+                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                </svg>
+            </a>
+
+            <div class="sep"></div>
+
+            <a class="soc" href="https://www.tiktok.com/@maregastro" target="_blank" rel="noopener" aria-label="TikTok">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.19 8.19 0 0 0 4.77 1.52V6.77a4.84 4.84 0 0 1-1-.08z"/>
+                </svg>
+            </a>
+
+            <div class="sep"></div>
+
+            <a class="soc" href="https://www.youtube.com/@MareGastro" target="_blank" rel="noopener" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.95C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20.06 12 20.06 12 20.06s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/>
+                </svg>
+            </a>
+
+            <div class="sep"></div>
+
+            <a class="soc" href="https://www.linkedin.com/company/mare-gastro/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect x="2" y="9" width="4" height="12"/>
+                    <circle cx="4" cy="4" r="2"/>
+                </svg>
+            </a>
+
+            <div class="sep"></div>
+
+            <a class="soc" href="mailto:info@maregastro.com" aria-label="E-posta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                    <polyline points="22,6 12,13 2,6"/>
+                </svg>
+            </a>
+
+        </div>
+    </div>
+
+    <p class="credit">© 2026 Mare Gastro &nbsp;·&nbsp; Sapanca</p>
+
+    <script>
+    // ── Fish: real path lengths ──────────────────────────────────────
+    window.addEventListener('load', () => {
+        ['fb','ft1','ft2'].forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const len = el.getTotalLength();
+            el.style.strokeDasharray  = len;
+            el.style.strokeDashoffset = len;
+        });
+    });
+
+    // ── Progress counter ─────────────────────────────────────────────
+    const pctEl = document.getElementById('pct');
+    let started = false;
+    setTimeout(() => {
+        if (started) return;
+        started = true;
+        const target = 74, duration = 3200;
+        const start = performance.now();
+        function tick(now) {
+            const t = Math.min((now - start) / duration, 1);
+            // ease out cubic
+            const eased = 1 - Math.pow(1 - t, 3);
+            pctEl.textContent = Math.round(eased * target) + '%';
+            if (t < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+    }, 3400);
+
+    // ── Custom cursor ────────────────────────────────────────────────
+    const cur     = document.getElementById('cur');
+    const curRing = document.getElementById('curRing');
+    let mx = -200, my = -200, rx = -200, ry = -200;
+
+    window.addEventListener('mousemove', e => {
+        mx = e.clientX; my = e.clientY;
+        cur.style.left = mx + 'px';
+        cur.style.top  = my + 'px';
+    });
+
+    (function loop() {
+        rx += (mx - rx) * 0.13;
+        ry += (my - ry) * 0.13;
+        curRing.style.left = rx + 'px';
+        curRing.style.top  = ry + 'px';
+        requestAnimationFrame(loop);
+    })();
+
+    document.querySelectorAll('a, button, input, .mare, .gastro, .fish-wrap').forEach(el => {
+        el.addEventListener('mouseenter', () => { cur.classList.add('on'); curRing.classList.add('on'); });
+        el.addEventListener('mouseleave', () => { cur.classList.remove('on'); curRing.classList.remove('on'); });
+    });
+
+    // ── Click ripple ─────────────────────────────────────────────────
+    document.addEventListener('click', e => {
+        const r = document.createElement('div');
+        r.className = 'ripple';
+        r.style.left = e.clientX + 'px';
+        r.style.top  = e.clientY + 'px';
+        document.body.appendChild(r);
+        setTimeout(() => r.remove(), 1300);
+    });
+
+    // ── Subtle parallax (desktop only) ───────────────────────────────
+    const wrap = document.getElementById('wrap');
+    if (window.matchMedia('(pointer: fine)').matches) {
+        window.addEventListener('mousemove', e => {
+            const x = (e.clientX / window.innerWidth  - 0.5) * 10;
+            const y = (e.clientY / window.innerHeight - 0.5) * 7;
+            wrap.style.transform = `translate(${x}px,${y}px)`;
+        });
+    }
+
+    // ── Form submit ───────────────────────────────────────────────────
+    function submitForm(e) {
+        e.preventDefault();
+        const txt  = document.getElementById('btnTxt');
+        const mail = document.getElementById('mail');
+        const btn  = document.getElementById('btn');
+        txt.textContent = 'Kaydedildi ✓';
+        mail.value = '';
+        mail.disabled = btn.disabled = true;
+        setTimeout(() => {
+            txt.textContent = 'Haberdar Ol';
+            mail.disabled = btn.disabled = false;
+        }, 4000);
+    }
+    </script>
+</body>
+</html>

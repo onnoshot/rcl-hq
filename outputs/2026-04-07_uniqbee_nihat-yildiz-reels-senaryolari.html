@@ -1,0 +1,2811 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nihat Yıldız · Instagram Reels Senaryo Kataloğu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --surface: #111111;
+    --surface2: #161616;
+    --surface3: #1c1c1c;
+    --border: #2a2a2a;
+    --border-light: #333333;
+    --gold: #c9a96e;
+    --gold-dim: #8a6f3e;
+    --gold-pale: #2a1f0e;
+    --white: #f0ede8;
+    --white-dim: #8a8680;
+    --white-faint: #3a3835;
+    --accent: #d4af72;
+    --red: #c0392b;
+    --green: #27ae60;
+    --blue: #2980b9;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--white);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.3;
+  }
+
+  .serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(ellipse, rgba(201,169,110,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .agency-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+    padding: 8px 20px;
+    border: 1px solid var(--gold-dim);
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .hero-client {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(56px, 10vw, 110px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .hero-client span {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-dim);
+    margin-top: 24px;
+    margin-bottom: 56px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .hero-meta-item {
+    text-align: center;
+  }
+
+  .hero-meta-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white-faint);
+    margin-bottom: 6px;
+  }
+
+  .hero-meta-value {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--gold);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--white-faint);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .hero-scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--border), transparent);
+  }
+
+  /* INTRO */
+  .intro {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 100px 40px;
+    text-align: center;
+  }
+
+  .intro-label {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .intro-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--white);
+  }
+
+  .intro-text em {
+    color: var(--gold);
+    font-style: italic;
+  }
+
+  .intro-note {
+    margin-top: 40px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--white-dim);
+    line-height: 1.8;
+  }
+
+  /* CONTEXT BAR */
+  .context-bar {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 60px;
+  }
+
+  .context-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+  }
+
+  .context-item-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 10px;
+  }
+
+  .context-item-value {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.6;
+  }
+
+  /* TOC */
+  .toc {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 100px 40px;
+  }
+
+  .toc-header {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 48px;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2px;
+  }
+
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    color: var(--white-dim);
+    font-size: 13px;
+    font-weight: 400;
+    transition: color 0.2s, padding-left 0.2s;
+    cursor: pointer;
+  }
+
+  .toc-item:hover {
+    color: var(--white);
+    padding-left: 8px;
+  }
+
+  .toc-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 18px;
+    color: var(--gold);
+    min-width: 28px;
+  }
+
+  .toc-badge {
+    margin-left: auto;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .badge-viral { background: rgba(192,57,43,0.15); color: #e74c3c; }
+  .badge-premium { background: rgba(201,169,110,0.12); color: var(--gold); }
+  .badge-sinematik { background: rgba(41,128,185,0.15); color: #5dade2; }
+  .badge-mizah { background: rgba(39,174,96,0.15); color: #2ecc71; }
+
+  /* MAIN CONTENT */
+  .scenarios {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 40px 120px;
+  }
+
+  /* SCENARIO CARD */
+  .scenario {
+    margin-bottom: 120px;
+    scroll-margin-top: 60px;
+  }
+
+  .scenario-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .scenario-number {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 80px;
+    font-weight: 300;
+    color: var(--border-light);
+    line-height: 1;
+    min-width: 80px;
+    margin-top: -8px;
+  }
+
+  .scenario-header-content {
+    flex: 1;
+  }
+
+  .scenario-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .scenario-tag {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .scenario-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+
+  .scenario-concept {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--white-dim);
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  /* HOOK BOX */
+  .hook-box {
+    background: var(--gold-pale);
+    border: 1px solid var(--gold-dim);
+    border-left: 3px solid var(--gold);
+    padding: 28px 32px;
+    margin-bottom: 40px;
+    border-radius: 2px;
+  }
+
+  .hook-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .hook-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  /* FLOW */
+  .flow {
+    margin-bottom: 40px;
+  }
+
+  .flow-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white-faint);
+    margin-bottom: 20px;
+  }
+
+  .flow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flow-step {
+    display: flex;
+    gap: 20px;
+    position: relative;
+  }
+
+  .flow-step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 38px;
+    top: 36px;
+    bottom: 0;
+    width: 1px;
+    background: var(--border);
+  }
+
+  .flow-time {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--gold);
+    min-width: 56px;
+    padding-top: 10px;
+    letter-spacing: 0.05em;
+  }
+
+  .flow-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border-light);
+    border: 2px solid var(--border);
+    margin-top: 14px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .flow-content {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white-dim);
+    line-height: 1.7;
+    padding: 8px 0 24px;
+    flex: 1;
+  }
+
+  /* DIALOGS */
+  .dialog-block {
+    margin-bottom: 40px;
+  }
+
+  .dialog-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white-faint);
+    margin-bottom: 20px;
+  }
+
+  .dialog-line {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    align-items: flex-start;
+  }
+
+  .dialog-speaker {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    min-width: 60px;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .speaker-ny { color: var(--gold); }
+  .speaker-ss { color: var(--white-dim); }
+  .speaker-vo { color: #5dade2; }
+
+  .dialog-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .dialog-note {
+    font-size: 12px;
+    color: var(--white-faint);
+    font-style: italic;
+    margin-top: 2px;
+  }
+
+  /* GRID 3 COL */
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2px;
+    margin-bottom: 40px;
+  }
+
+  .detail-card {
+    background: var(--surface);
+    padding: 28px;
+    border: 1px solid var(--border);
+  }
+
+  .detail-card-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white-faint);
+    margin-bottom: 14px;
+  }
+
+  .detail-card-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white-dim);
+    line-height: 1.7;
+  }
+
+  /* MESSAGE + WHY */
+  .insight-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 40px;
+  }
+
+  @media (max-width: 600px) {
+    .insight-row { grid-template-columns: 1fr; }
+  }
+
+  .insight-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 28px;
+  }
+
+  .insight-card-label {
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--white-faint);
+    margin-bottom: 14px;
+  }
+
+  .insight-card-text {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.7;
+  }
+
+  /* FINAL CARD */
+  .final-line {
+    background: linear-gradient(135deg, var(--gold-pale), transparent);
+    border: 1px solid var(--gold-dim);
+    padding: 28px 32px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .final-line-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+
+  .final-line-label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 6px;
+  }
+
+  .final-line-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1.4;
+  }
+
+  /* SECTION HEADERS */
+  .section-title-wrap {
+    padding: 100px 40px 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .section-kicker {
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.1;
+  }
+
+  /* CATEGORIES */
+  .categories {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px 120px;
+  }
+
+  .category-section {
+    margin-bottom: 80px;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .category-letter {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .category-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+
+  .category-subtitle {
+    font-size: 12px;
+    color: var(--white-faint);
+    margin-top: 4px;
+  }
+
+  .rank-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .rank-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .rank-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
+    color: var(--gold);
+    min-width: 24px;
+    line-height: 1;
+    padding-top: 2px;
+  }
+
+  .rank-content { flex: 1; }
+
+  .rank-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .rank-reason {
+    font-size: 13px;
+    color: var(--white-dim);
+    line-height: 1.6;
+  }
+
+  /* PUNCHLINES */
+  .punchlines {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .punchline-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .punchline-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 40px;
+    color: var(--border-light);
+    line-height: 1;
+    min-width: 32px;
+  }
+
+  .punchline-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.4;
+    flex: 1;
+  }
+
+  .punchline-source {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--white-faint);
+    margin-top: 6px;
+  }
+
+  /* FINAL SELECTION */
+  .final-selection {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px 120px;
+  }
+
+  .top5-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 80px;
+  }
+
+  .top5-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 32px;
+    display: flex;
+    gap: 24px;
+  }
+
+  .top5-rank {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 40px;
+  }
+
+  .top5-content { flex: 1; }
+
+  .top5-title {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+
+  .top5-reason {
+    font-size: 14px;
+    color: var(--white-dim);
+    line-height: 1.7;
+  }
+
+  /* PODIUM */
+  .podium {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  @media (max-width: 700px) {
+    .podium { grid-template-columns: 1fr; }
+  }
+
+  .podium-card {
+    padding: 40px 32px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .podium-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+  }
+
+  .podium-safe { background: var(--surface); }
+  .podium-safe::before { background: #27ae60; }
+
+  .podium-loud { background: var(--surface2); }
+  .podium-loud::before { background: #c0392b; }
+
+  .podium-prestige { background: var(--surface); }
+  .podium-prestige::before { background: var(--gold); }
+
+  .podium-badge {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    padding: 5px 10px;
+    border-radius: 2px;
+    display: inline-block;
+  }
+
+  .badge-safe { background: rgba(39,174,96,0.15); color: #2ecc71; }
+  .badge-loud { background: rgba(192,57,43,0.15); color: #e74c3c; }
+  .badge-prestige { background: rgba(201,169,110,0.12); color: var(--gold); }
+
+  .podium-num {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 64px;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .safe-num { color: rgba(39,174,96,0.4); }
+  .loud-num { color: rgba(192,57,43,0.4); }
+  .prestige-num { color: rgba(201,169,110,0.3); }
+
+  .podium-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .podium-reason {
+    font-size: 13px;
+    color: var(--white-dim);
+    line-height: 1.7;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 60px 40px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .footer-sub {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white-faint);
+    margin-bottom: 32px;
+  }
+
+  .footer-meta {
+    font-size: 12px;
+    color: var(--white-faint);
+    line-height: 1.8;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .hero { padding: 80px 24px; }
+    .intro, .toc, .scenarios, .categories, .final-selection { padding-left: 24px; padding-right: 24px; }
+    .section-title-wrap { padding-left: 24px; padding-right: 24px; }
+    .context-bar { padding: 40px 24px; }
+    .scenario-header { flex-direction: column; gap: 16px; }
+    .scenario-number { font-size: 48px; }
+    .insight-row { grid-template-columns: 1fr; }
+  }
+
+  /* UTILITY */
+  .gold { color: var(--gold); }
+  .dim { color: var(--white-dim); }
+  hr.thin { border: none; border-top: 1px solid var(--border); margin: 60px 0; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="agency-tag">uniqbee · Creative Direction</div>
+  <h1 class="hero-client">Nihat <span>Yıldız</span></h1>
+  <p class="hero-sub">Instagram Reels · Senaryo Kataloğu · Salon Tasarımı</p>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Senaryo Sayısı</div>
+      <div class="hero-meta-value">14</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Format</div>
+      <div class="hero-meta-value">Reels 9:16</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Süre</div>
+      <div class="hero-meta-value">20–30 sn</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-label">Tarih</div>
+      <div class="hero-meta-value">Nisan 2026</div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Aşağı kaydır
+  </div>
+</section>
+
+<!-- INTRO -->
+<div class="section-divider"></div>
+<section class="intro">
+  <div class="intro-label">Yaratıcı Vizyon</div>
+  <p class="intro-text">
+    Bu katalog, Nihat Yıldız'ın salon tasarımındaki uzmanlığını Instagram Reels formatında anlatmak için üretilmiş <em>14 özgün senaryo</em> içermektedir.
+  </p>
+  <p class="intro-note">
+    Hiçbir senaryo klişe "önce-sonra" ya da "mutlu müşteri" formatını takip etmez.<br>
+    Her fikir; boş mekânın potansiyelini, vizyonu ve özgüveni ön plana taşır.<br>
+    Tüm çekimler tek mekânda, 2 kişiyle, düşük-orta prodüksiyonla uygulanabilir.
+  </p>
+</section>
+
+<!-- CONTEXT BAR -->
+<div class="context-bar">
+  <div class="context-grid">
+    <div class="context-item">
+      <div class="context-item-label">Mekân</div>
+      <div class="context-item-value">Boş, henüz dekore edilmemiş salon</div>
+    </div>
+    <div class="context-item">
+      <div class="context-item-label">Oyuncular</div>
+      <div class="context-item-value">Nihat Yıldız ve salon sahibi</div>
+    </div>
+    <div class="context-item">
+      <div class="context-item-label">Hedef Mesaj</div>
+      <div class="context-item-value">Bu alanın en güçlü isimlerinden biri</div>
+    </div>
+    <div class="context-item">
+      <div class="context-item-label">Kanal</div>
+      <div class="context-item-value">Nihat Yıldız Instagram hesabı</div>
+    </div>
+    <div class="context-item">
+      <div class="context-item-label">Prodüksiyon</div>
+      <div class="context-item-value">Düşük / Orta bütçe, tek lokasyon</div>
+    </div>
+    <div class="context-item">
+      <div class="context-item-label">Strateji</div>
+      <div class="context-item-value">Viral + Prestij dengesini kurmak</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<section class="toc">
+  <div class="toc-header">İçindekiler</div>
+  <div class="toc-grid">
+    <a class="toc-item" href="#s1">
+      <span class="toc-num">01</span> Mimar Okur
+      <span class="toc-badge badge-sinematik">Sinematik</span>
+    </a>
+    <a class="toc-item" href="#s2">
+      <span class="toc-num">02</span> Fiyat Sorusu
+      <span class="toc-badge badge-premium">Premium</span>
+    </a>
+    <a class="toc-item" href="#s3">
+      <span class="toc-num">03</span> Google Maps Yorumu
+      <span class="toc-badge badge-viral">Viral</span>
+    </a>
+    <a class="toc-item" href="#s4">
+      <span class="toc-num">04</span> Mekânı Dinle
+      <span class="toc-badge badge-sinematik">Sinematik</span>
+    </a>
+    <a class="toc-item" href="#s5">
+      <span class="toc-num">05</span> Rakip Teklif
+      <span class="toc-badge badge-viral">Viral</span>
+    </a>
+    <a class="toc-item" href="#s6">
+      <span class="toc-num">06</span> Filmin Afişi
+      <span class="toc-badge badge-mizah">Mizah</span>
+    </a>
+    <a class="toc-item" href="#s7">
+      <span class="toc-num">07</span> Tek Soru
+      <span class="toc-badge badge-premium">Premium</span>
+    </a>
+    <a class="toc-item" href="#s8">
+      <span class="toc-num">08</span> Boş Tablo
+      <span class="toc-badge badge-mizah">Mizah</span>
+    </a>
+    <a class="toc-item" href="#s9">
+      <span class="toc-num">09</span> Mimari Bellek
+      <span class="toc-badge badge-premium">Premium</span>
+    </a>
+    <a class="toc-item" href="#s10">
+      <span class="toc-num">10</span> İlk Saniyelerde Karar
+      <span class="toc-badge badge-viral">Viral</span>
+    </a>
+    <a class="toc-item" href="#s11">
+      <span class="toc-num">11</span> Müşterini Tanı
+      <span class="toc-badge badge-premium">Premium</span>
+    </a>
+    <a class="toc-item" href="#s12">
+      <span class="toc-num">12</span> Boş Koltuk
+      <span class="toc-badge badge-sinematik">Sinematik</span>
+    </a>
+    <a class="toc-item" href="#s13">
+      <span class="toc-num">13</span> Karşılaştırma Yok
+      <span class="toc-badge badge-premium">Premium</span>
+    </a>
+    <a class="toc-item" href="#s14">
+      <span class="toc-num">14</span> Saat Sabahın İkisi
+      <span class="toc-badge badge-sinematik">Sinematik</span>
+    </a>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SCENARIOS -->
+<div class="section-title-wrap">
+  <div class="section-kicker">Senaryo Kataloğu</div>
+  <h2 class="section-heading">14 Özgün Fikir</h2>
+</div>
+
+<section class="scenarios">
+
+  <!-- S1 -->
+  <div class="scenario" id="s1">
+    <div class="scenario-header">
+      <div class="scenario-number">01</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-sinematik">Sinematik</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Diyalogsuz Ağırlıklı</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Vizyon Temalı</span>
+        </div>
+        <h2 class="scenario-title">Mimar Okur</h2>
+        <p class="scenario-concept">Nihat Yıldız boş mekânı geziyor, sanki orada olmayan şeyleri görüyormuş gibi. Salon sahibi onu izliyor, anlamaya çalışıyor. Sessizlik ve hareket, sözden önce geliyor.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Nihat yavaşça yürüyor. Gözleri bir noktada takılı kalıyor. Ses yok. Müzik yok. Sadece adım sesi.</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–2 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat boş mekânın ortasında duruyor, çevresine bakıyor. Salon sahibi kapıda bekliyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">2–8 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat sessizce yürüyor, duvara dokunuyor, eliyle havada bir çizgi çiziyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">8–14 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi öne geliyor: "Ne düşünüyorsun?"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">14–20 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat dönmeden, mekâna konuşur gibi: "Işık buradan giriyor. Ayna oraya. Müşteri sandalyesi tam bu noktada. Salon hazır zaten. Biz sadece onu görünür kılacağız."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">20–28 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi etrafına bakıyor. Boş duvarları görüyor. Ama yüzü değişiyor. Yazı geliyor.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div>
+          <div class="dialog-text">"Ne düşünüyorsun?"</div>
+        </div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div>
+          <div class="dialog-text">"Salon hazır zaten. Biz sadece onu görünür kılacağız."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Önce salon sahibinin arkasından çekim, Nihat orta planda. Nihat konuşurken close-up yüz. Son anda salon sahibinin değişen yüzüne kesme.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Yavaş, ağır, sinematik. Müzik minimal. Sadece son cümlede hafif swell. Ambiyans sesi baskın.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Uzman, boş mekânda bitmiş hali görür. Başkasının hiçbir şey göremediği yerde o, geleceği görmektedir.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Vizyon sahibi, sakin, otoriter. Konuşmadan önce düşünen adam. Sessizliği etkili kullanan profesyonel.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Salon hazır zaten. Biz sadece onu görünür kılacağız."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S2 -->
+  <div class="scenario" id="s2">
+    <div class="scenario-header">
+      <div class="scenario-number">02</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-premium">Premium</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Güven Temalı</span>
+        </div>
+        <h2 class="scenario-title">Fiyat Sorusu</h2>
+        <p class="scenario-concept">Klasik "fiyat ne kadar?" sorusuna beklenmedik, karizmatik bir cevap. Nihat fiyatı değil deneyimi konuşuyor. Viral potansiyeli yüksek, marka değerini zirveye taşıyan bir format.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Salon sahibi direkt kameraya bakıyor: "Ona fiyat sormayı unutmuştum." Cut, Nihat karşısında duruyor.</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–2 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibinin kameraya bakışı ve itirafı.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">2–6 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi Nihat'a dönüyor: "Nihat Bey, bütçemiz konuştuk mu peki?"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">6–12 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat hafif gülümsüyor. Önce cebine bakıyor, sonra salona.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">12–18 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">"Bütçe salonun kalitesini belirlemez. Vizyon belirler. Siz vizyonunuzu bana verdiniz. Gerisini bana bırakın."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">18–26 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Peki ya fiyat?" Nihat yürümeye başlıyor: "Sizi o sorudan kurtaracak kadar iyi bir iş yapacağım."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">26–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Freeze frame. Salon sahibinin yüzü. Yazı.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Bütçemiz konuştuk mu peki?"</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Vizyon belirler. Sizi o sorudan kurtaracak kadar iyi bir iş yapacağım."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">İki kişi arasında klasik karşılıklı çekim. Son satırda Nihat yürürken takip shot, ardından freeze.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Konuşmalar keskin, hızlı. Son satır yavaşlıyor. Freeze ile bitiyor. Müzik freeze anında giriyor.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Bu adam fiyatla değil, kaliteyle konuşur. Paranın önüne değeri koyar.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Güven, özgüven, premium. Müşteri "zaten güvendim, fiyat artık önemli değil" hissine ulaşıyor.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Fiyat değil, vizyon."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S3 -->
+  <div class="scenario" id="s3">
+    <div class="scenario-header">
+      <div class="scenario-number">03</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-viral">Viral</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Meme Format</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Sosyal Kanıt</span>
+        </div>
+        <h2 class="scenario-title">Google Maps Yorumu</h2>
+        <p class="scenario-concept">Meme formatı. Ekranda gerçek bir yorum gibi görünen 5 yıldızlı mesaj beliriyor, sonra sahne o yorumu canlandırıyor. Meta, komik ve şık. Retention oranı yüksek format.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Ekranda mock Google Maps yorumu beliriveriyor: "Salonumuzu ona teslim ettim. 3 gün sonra mekânımı tanımadım. ⭐⭐⭐⭐⭐"</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–2 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Google Maps yorum mock-up'ı ekranda beliriyor ve okunuyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">2–6 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Cut: Boş salonda salon sahibi Nihat ile karşı karşıya.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">6–12 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi gergin: "Bu kadar boş bir yer gerçekten dönüşür mü?"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">12–18 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat etrafına bir kez bakıyor. Tek kelime: "Evet."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">18–24 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat salona bakıyor, duraksıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">24–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Caption olarak: "Bitmeden önce son kez bak. Bir daha bu hali göremeyeceksin."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Bu kadar boş bir yer gerçekten dönüşür mü?"</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Evet."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-vo">Caption</div>
+        <div><div class="dialog-text">"Bitmeden önce son kez bak. Bir daha bu hali göremeyeceksin."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Mock-up ekran görüntüsü ile başlıyor, sonra doğal çekim. Son caption wide shot boş mekan üzerinde.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Hızlı başlangıç, ortada ağırlaşıyor, final duruyor. "Evet" anında müzik dip noktasına iniyor.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Sosyal kanıtla başlayan, özgüveni tek kelimeyle ortaya koyan, sinematik kapanışla bitiren senaryo.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Meme formatı tanıdık ama uygulama zekice. "Evet" tek kelimesinde maksimum özgüven.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Her boş mekan bir başyapıt bekliyor."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S4 -->
+  <div class="scenario" id="s4">
+    <div class="scenario-header">
+      <div class="scenario-number">04</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-sinematik">Sinematik</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Minimal Dialog</span>
+        </div>
+        <h2 class="scenario-title">Mekânı Dinle</h2>
+        <p class="scenario-concept">Sessiz, estetik ve neredeyse mistik bir sahne. Nihat gözlerini kapatıyor. Salon sahibi anlayamıyor. Sonra anlıyor. Dialog minimal, his maksimum.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Nihat boş mekânın ortasında. Gözleri kapalı. Ekrana yazı: "Tasarım başlamadan önce..."</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–2 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat gözleri kapalı. Salon sahibi kapıda, anlayamıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">2–8 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat yavaşça yürüyor. Duvara dokunuyor. Zemine bakıyor. Tavana bakıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">8–14 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi sessizce: "Ne yapıyorsun?"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">14–18 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Mekânı dinliyorum."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">18–24 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi kameraya bakıyor. Sonra o da etrafına bakmaya başlıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">24–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Şimdi duyabildin mi?" Salon sahibinin yüzü değişiyor. Müzik giriyor.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Ne yapıyorsun?"</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Mekânı dinliyorum."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Şimdi duyabildin mi?"</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Çok yavaş dolly hareketi. Close-up'lar dominant: el duvarda, gözler, zemin dokusu.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Ağır çekim hissi. Gerçek sürede ama yavaş cut'lar. Müzik sadece final cümlede giriyor.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Uzman, insanların görmediği şeyleri duyar. Mekân onunla konuşur.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Mistik ama profesyonel. Rakiplerden tamamen farklı bir dil. "Bu adam başka seviye."</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Tasarım, dinlemekle başlar."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S5 -->
+  <div class="scenario" id="s5">
+    <div class="scenario-header">
+      <div class="scenario-number">05</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-viral">Viral</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Gerilim Temalı</span>
+        </div>
+        <h2 class="scenario-title">Rakip Teklif</h2>
+        <p class="scenario-concept">Salon sahibi başka bir tasarımcıdan teklif almış. Nihat'ın tepkisi sakin ve "lethal." Rakibini küçümsemeden, ama kimsenin unutamayacağı bir fark ortaya koyuyor.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Salon sahibi telefonu uzatıyor: "Başka bir yerden de teklif aldım."</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–2 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi Nihat'a telefonu uzatıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">2–8 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat telefona bakıyor, kaydırıyor. Rengi değişmiyor. Telefonu nazikçe geri veriyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">8–14 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Ne diyorsun?" Nihat: "İyi teklif."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">14–20 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi şaşırıyor. Nihat devam ediyor: "Ama o sana bir salon yapar. Ben sana bir deneyim yaparım."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">20–24 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat etrafına bakıyor: "İkisi aynı fiyata gelmez."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">24–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi telefona bakıyor. Sessizce cebine koyuyor. Nihat döner, yürür.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Başka bir yerden de teklif aldım."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Ne diyorsun?"</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"İyi teklif. Ama o sana bir salon yapar. Ben sana bir deneyim yaparım. İkisi aynı fiyata gelmez."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Telefon close-up ile başlıyor. Nihat'ın yüzü react shot. Son satırda iki kişi arasında wide.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Konuşmalar keskin. "İyi teklif" sonrası ani duraklama bırakılıyor. İzleyici neye uğradığını anlayamadan film bitiyor.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Rakipten üstün, ama ego olmadan. Fark ürün değil, kategori.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Özgüvenli, rakibine saygısızlık etmeden üstün duran adam. "Salon" ile "deneyim" ayrımı akılda kalıcı.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Salon değil, deneyim."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S6 -->
+  <div class="scenario" id="s6">
+    <div class="scenario-header">
+      <div class="scenario-number">06</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-mizah">Mizah</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Parodi</span>
+        </div>
+        <h2 class="scenario-title">Filmin Afişi</h2>
+        <p class="scenario-concept">Sahne sanki bir gerilim filminin açılışı gibi kurgulanıyor. Ciddi ama farkında. Nihat bir "suç mahalli" dedektifi gibi mekânı geziyor. Mizah değer kaybettirmiyor, prestij taşıyor.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Dramatik müzik. Nihat ağır adımlarla içeri giriyor. Yazı: "Her boş mekan bir suç mahalli değildir. Ama bazıları tasarım suçu işlemiştir."</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–2 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Dramatik giriş ve açılış yazısı.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">2–8 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat yavaşça salonu geziyor. Salon sahibi köşede izliyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">8–14 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat duraksıyor. Bakışları değişiyor: "Burada ne oldu?" (tamamen ciddi)</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">14–18 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Ne yani? Boş bir mekan bu." Nihat: "Tam olarak."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">18–24 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Potansiyel bu kadar açıkken boş bırakmak... suçtur."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">24–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi gülümsüyor. Nihat da hafifçe. Yazı geliyor.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Burada ne oldu?"</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Boş bir mekan bu."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Tam olarak. Potansiyel bu kadar açıkken boş bırakmak... suçtur."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Sinematik wide shot girişi. Nihat'ın yürüyüşü low angle. Son diyalog two-shot.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Dramatik başlangıç, sonra tonu hafifçe kırıyor. İki his aynı anda taşınıyor.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Bu adam işe farklı bakar. Boş mekân bile ona bir "vaka" gibi görünür.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Yaratıcı, esprili ama kendine saygılı. Marka değerini düşürmeden insanileştiriyor.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Potansiyel kurtarma uzmanı."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S7 -->
+  <div class="scenario" id="s7">
+    <div class="scenario-header">
+      <div class="scenario-number">07</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-premium">Premium</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Müşteri Odaklı</span>
+        </div>
+        <h2 class="scenario-title">Tek Soru</h2>
+        <p class="scenario-concept">Minimal ve güçlü. Salon sahibi çok şey anlatıyor, Nihat tek soru soruyor. O soru her şeyi değiştiriyor ve tasarımın gerçek başlangıç noktasını ortaya koyuyor.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Salon sahibi hızla konuşuyor: "Şu köşeye şunu koyalım, duvara şunu yapalım, renk şu olsun..." Nihat sessiz.</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–5 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi hızlı hızlı fikirlerini sayıyor, ellerini kullanıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">5–10 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat hiç konuşmuyor. Sadece dinliyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">10–16 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi bitiyor: "Ne düşünüyorsun?" Nihat: "Tek bir şey soracağım."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">16–22 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Müşterini şu an tarif et bana."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">22–28 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi duraksıyor. Düşünüyor. İlk kez gerçekten düşünüyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">28–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "İşte oradan başlayacağız."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Ne düşünüyorsun?"</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Tek bir şey soracağım. Müşterini şu an tarif et bana."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"İşte oradan başlayacağız."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Başta salon sahibi aktif, Nihat pasif arka planda. Nihat konuşunca roller değişiyor, close-up Nihat'a geçiyor.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Hızlı başlangıç, tam duruş, ağır final. Üç farklı tempo tek videoda.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">İyi tasarımcı dinler, sonra sorar. Doğru soru, yüz cevaptan değerlidir.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Müşteri odaklı, metodolojik, uzman. Tasarımın arkasındaki stratejiyi görünür kılıyor.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Tasarım, doğru sorudan başlar."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S8 -->
+  <div class="scenario" id="s8">
+    <div class="scenario-header">
+      <div class="scenario-number">08</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-mizah">Mizah</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Absürt</span>
+        </div>
+        <h2 class="scenario-title">Boş Tablo</h2>
+        <p class="scenario-concept">Absürt ama şık. Nihat ve salon sahibi bir müze tablosuna bakar gibi boş duvara bakıyorlar. Komedi zamanlaması mükemmel. Finalde mesaj tamamen ciddiye alınıyor.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">İkisi yan yana boş duvara bakıyor. Sessizlik. İzleyici: "Ne oluyor bunlara?"</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–4 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">İkisi yan yana boş duvara bakıyor. Tam sessizlik.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">4–8 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Nihat Bey... bu duvar boş."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">8–12 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Biliyorum." Hâlâ bakıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">12–18 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Şimdi ne yapıyoruz?" Nihat: "Onu mahvetmemeye çalışıyorum."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">18–24 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Ne?" Nihat: "Boş duvar, en tehlikeli andır. Çoğu tasarımcı bu anda yanlış yapar."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">24–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi yavaşça duvara bakmaya başlıyor. Farklı gözlerle.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Bu duvar boş."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Biliyorum."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Ne yapıyoruz?"</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Onu mahvetmemeye çalışıyorum. Boş duvar en tehlikeli andır. Çoğu tasarımcı bu anda yanlış yapar."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">İkili shot dominant. Sonunda salon sahibinin duvara dönüşü tam profile çekim.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Komedi zamanlaması. "Biliyorum" sonrası uzun bekleme. Finalde tempo ağırlaşıyor.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Uzman çabuktan başlamaz. Düşünür. İyi karar vermek, hız değil, öngörüdür.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Hem komik hem metodolojik. Güven veren ama eğlenceli. Takipçi kazandıran format.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. İyi tasarım, kötü kararlardan kaçınmaktır."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S9 -->
+  <div class="scenario" id="s9">
+    <div class="scenario-header">
+      <div class="scenario-number">09</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-premium">Premium</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Belgesel Tonu</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Voiceover</span>
+        </div>
+        <h2 class="scenario-title">Mimari Bellek</h2>
+        <p class="scenario-concept">Nihat daha önce tasarladığı salonlardan anılarla bu boş mekânı eşleştiriyor. Dialog değil, anlatı. Belgesel tonu, referans gücü ve tecrübe birikimi ön planda.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Voiceover başlıyor (Nihat'ın sesi): "Her boş mekan bana bir şey hatırlatır." Kamera ağır çekimde salona ilerliyor.</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–2 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Voiceover başlıyor. Nihat boş salona yürüyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">2–8 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat mekânda yürüyor, kameraya değil mekâna bakıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">8–14 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Voiceover: "Bu köşe bana İstanbul'daki bir salonu hatırlattı. Orada ışık aynı şekilde giriyordu."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">14–20 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Voiceover: "Müşterim 'buraya ne yapacaksın?' diye sormuştu. Ben de 'bekle' demiştim."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">20–25 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat duraksıyor. Salon sahibi arka planda izliyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">25–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Voiceover: "Şimdi o salon, şehrin en çok konuşulan yerlerinden." Nihat döner: "Burası daha iyi olacak."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar ve Voiceover</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-vo">VO</div>
+        <div><div class="dialog-text">"Her boş mekan bana bir şey hatırlatır."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-vo">VO</div>
+        <div><div class="dialog-text">"Şimdi o salon, şehrin en çok konuşulan yerlerinden."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Burası daha iyi olacak."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Sinematik. Nihat'ın arkasından takip çekimi. Ağır çekim ile detay shotlar: zemin, duvar, ışık.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Belgesel tonu. Müzik alttan giriyor, hiç dominant olmuyor. Voiceover her şeyi taşıyor.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Tecrübe ve hafıza. Bu adam yüzlerce salon yapmış. Her mekânda birikimini getiriyor.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Tecrübeli, referanslı, premium. Hikaye anlatımı en güçlü marka aracı.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Her salon bir hikayedir."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S10 -->
+  <div class="scenario" id="s10">
+    <div class="scenario-header">
+      <div class="scenario-number">10</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-viral">Viral</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Şok Etkisi</span>
+        </div>
+        <h2 class="scenario-title">İlk Saniyelerde Karar</h2>
+        <p class="scenario-concept">Nihat mekâna giriyor, 3 saniye içinde kararını veriyor. Salon sahibi şaşırıyor. "Tamam. Bitti." üç kelimede mesleki ömrün özeti.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Kapı açılıyor. Hızlı cut'larla mekânın detayları: zemin, tavan, pencere, duvar. Bir panorama.</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–3 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Kapı açılıyor. Hızlı detay shotları.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">3–6 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat duraksıyor. Bir 360 bakış.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">6–8 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Tamam. Bitti."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">8–14 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Ne bitti? Daha bakmadın ki."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">14–22 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Baktım. Işık güneye akıyor. Zemin değişmeli. Tavan yüksekliği avantaj. Renk paleti zaten belli."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">22–28 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Bu kadar mı hızlı?" Nihat: "Yıllar böyle hızlanıyor."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Tamam. Bitti."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Daha bakmadın ki."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Baktım. Işık güneye akıyor. Zemin değişmeli. Tavan yüksekliği avantaj. Renk paleti zaten belli."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Bu kadar mı hızlı?"</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Yıllar böyle hızlanıyor."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Giriş anı sinematik. İlk 3 saniyede hızlı kesme detay shotları. Diyaloglarda klasik karşılıklı çekim.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">İlk 8 saniye hızlı, sonra normal ritme iniyor. "Tamam. Bitti." sonrası ani duraklama şarart.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Usta, aceminin saatlerde gördüğünü saniyede görür. Hız, tecrübenin doğal sonucudur.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Uzman, tecrübeli, verimli. "Tamam. Bitti." anında meme potansiyeli taşıyor.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Yıllar bazı şeyleri saniyeye sıkıştırır."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S11 -->
+  <div class="scenario" id="s11">
+    <div class="scenario-header">
+      <div class="scenario-number">11</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-premium">Premium</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Psikoloji Odaklı</span>
+        </div>
+        <h2 class="scenario-title">Müşterini Tanı</h2>
+        <p class="scenario-concept">Nihat, tasarımı müşteri psikolojisinden türetiyor. Hiç ölçü, renk veya malzeme söylemeden. "Malzeme fısıldar. Işık sarar." Metafor odaklı, paylaşılabilir.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Nihat direkt kameraya bakıyor: "Salonuna gelen müşteri kim?"</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–2 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat kameraya direkt bakış ve soru.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">2–8 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi düşünüyor: "Ağırlıklı 30-45 yaş, orta üst segment, kaliteye önem veren..."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">8–14 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "O zaman salon ona ne hissettirmeli?"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">14–18 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Özel hissettirmeli. Önemli."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">18–24 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Doğru. Özel olan yerler gürültü yapmaz. Malzeme fısıldar. Işık sarar. Renk söylemez ama hissettirir."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">24–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "İşte bunları bu mekâna ekleyeceğiz." Salon sahibi: "Şimdi anladım."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Salonuna gelen müşteri kim?"</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Özel olan yerler gürültü yapmaz. Malzeme fısıldar. Işık sarar. Renk söylemez ama hissettirir."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Şimdi anladım."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Başta kameraya bakış. Sonra iki kişi arasında. Final'de wide shot mekânla birlikte.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Soru-cevap ritmi. "Malzeme fısıldar" cümlesinde müzik hafifçe giriyor.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Tasarım müşteri psikolojisini anlamakla başlar. Teknik değil, psikolojik yaklaşım.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Entelektüel derinlik. Sadece estetik değil, strateji. Paylaşılabilir alıntı kalitesinde diyalog.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Salon tasarımı, müşteri psikolojisidir."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S12 -->
+  <div class="scenario" id="s12">
+    <div class="scenario-header">
+      <div class="scenario-number">12</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-sinematik">Sinematik</span>
+          <span class="scenario-tag badge-premium">Premium</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Nesne Odaklı</span>
+        </div>
+        <h2 class="scenario-title">Boş Koltuk</h2>
+        <p class="scenario-concept">Boş bir kuaför koltuğu üzerinden insan deneyimini anlatan şiirsel senaryo. Nesne, karakter gibi kullanılıyor. Reklam filmciliğinin en üst dili.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Boş kuaför koltuğuna yakın çekim. Nihat'ın sesi: "Bu koltuk yüzlerce hikaye taşıyacak."</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–4 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Boş koltuk close-up. Voiceover başlıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">4–10 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat koltuğun yanında duruyor. Salon sahibi izliyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">10–16 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Bu koltuğa oturan kişi nasıl hissetmeli? Rahat mı? Özel mi? Güvende mi?"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">16–20 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Tabii ki rahat ve özel."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">20–26 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "O zaman her şey o koltuğun etrafında kurulur. Işık, renk, malzeme, koku, ses."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">26–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Salon değil. Bir deneyim alanı tasarlıyoruz." Kamera koltuğa geri döner.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Bu koltuk yüzlerce hikaye taşıyacak."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Salon değil. Bir deneyim alanı tasarlıyoruz."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Nesne odaklı başlangıç ve bitiş. Koltuk karakter gibi. Sinematik renk paleti: soğuk başlangıç, sıcak final.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Yavaş, şiirsel. Müzik baştan sona alttan. Hiç dominant olmuyor. His ön planda.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Her detay müşteri deneyimi için var. Koltuktan salon okuyan adam.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Derin düşünen, bütüncül, premium. Instagram feed'e en çok yakışan estetik.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Bir koltuktan bir dünya inşa etmek."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S13 -->
+  <div class="scenario" id="s13">
+    <div class="scenario-header">
+      <div class="scenario-number">13</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-premium">Premium</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Özgünlük Temalı</span>
+        </div>
+        <h2 class="scenario-title">Karşılaştırma Yok</h2>
+        <p class="scenario-concept">Salon sahibi referans fotoğraf gösteriyor. Nihat bakmıyor bile. Taklit değil özgünlük. "Sonu benzer olan hiçbir salon hatırlanmaz." Tek cümleyle konu kapanıyor.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Salon sahibi telefonu uzatıyor: "Şuna benzer bir şey istiyorum." Nihat telefona bakmıyor.</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–4 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi referans fotoğraf gösteriyor. Nihat etrafına bakıyor, telefona değil.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">4–8 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Beğenmedin mi?"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">8–14 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Güzel salon. Ama o salon onlar için doğruydu."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">14–20 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat etrafına bakıyor: "Bu mekan sana özel bir şey söylüyor. Onu dinleyeceğiz."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">20–26 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Sonu 'benzer' olan hiçbir salon hatırlanmaz."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">26–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi telefonu cebine koyuyor: "Peki. Seni dinliyorum."</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Şuna benzer bir şey istiyorum."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Güzel salon. Ama o salon onlar için doğruydu. Sonu 'benzer' olan hiçbir salon hatırlanmaz."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Peki. Seni dinliyorum."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Telefon ekranı close-up, sonra Nihat'ın yüzü, sonra mekan wide shot. Üçlü geçiş.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">"Benzer" kelimesi vurgulanıyor. Uzun duraklama. Telefon cebe girerken cut.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Taklit değil, özgünlük. Hatırlanmak istiyorsan, benzersiz olman gerekir.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Yaratıcı kimliği olan, klişeye teslim olmayan tasarımcı. "Benzer" kelimesi problem, Nihat çözüm.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Benzersiz mekanlar, benzersiz hikayeler."</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="thin">
+
+  <!-- S14 -->
+  <div class="scenario" id="s14">
+    <div class="scenario-header">
+      <div class="scenario-number">14</div>
+      <div class="scenario-header-content">
+        <div class="scenario-tags">
+          <span class="scenario-tag badge-sinematik">Sinematik</span>
+          <span class="scenario-tag" style="background:rgba(255,255,255,0.05);color:var(--white-dim)">Tutku Temalı</span>
+        </div>
+        <h2 class="scenario-title">Saat Sabahın İkisi</h2>
+        <p class="scenario-concept">Nihat gece yarısı tek başına o boş salona gidiyor. Çünkü bir fikir gelmiş. "Sabah başka bir ışık var." Bu cümle her şeyi anlatıyor. Tutkuyu göstermenin en şiirsel yolu.</p>
+      </div>
+    </div>
+
+    <div class="hook-box">
+      <div class="hook-label">Hook · İlk 2 Saniye</div>
+      <div class="hook-text">Ekranda mesaj görünüyor: "Saat 02.15. Salonda bekliyorum. — Nihat Yıldız"</div>
+    </div>
+
+    <div class="flow">
+      <div class="flow-label">Video Akışı</div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="flow-time">0–4 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Mesaj ekranı. Salon sahibinin şaşkın yüzü.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">4–10 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Karanlık boş salon. Nihat içinde, telefon flaşı ile aydınlanıyor.</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">10–16 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi geliyor: "Ne oldu? Her şey yolunda mı?"</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">16–22 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Gece aklıma geldi. Işığı şuraya almak gerekiyor. Gelip görmem gerekti."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">22–26 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Salon sahibi: "Bunu sabah da yapabilirdin."</div>
+        </div>
+        <div class="flow-step">
+          <div class="flow-time">26–30 sn</div>
+          <div class="flow-dot"></div>
+          <div class="flow-content">Nihat: "Sabah başka bir ışık var." İkisi karanlık salona bakıyor.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dialog-block">
+      <div class="dialog-label">Diyaloglar</div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Gece aklıma geldi. Gelip görmem gerekti."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ss">Salon S.</div>
+        <div><div class="dialog-text">"Bunu sabah da yapabilirdin."</div></div>
+      </div>
+      <div class="dialog-line">
+        <div class="dialog-speaker speaker-ny">Nihat Y.</div>
+        <div><div class="dialog-text">"Sabah başka bir ışık var."</div></div>
+      </div>
+    </div>
+
+    <div class="detail-grid">
+      <div class="detail-card">
+        <div class="detail-card-label">Kamera Kullanımı</div>
+        <div class="detail-card-text">Telefon ekranı ile başlıyor. Karanlık salon estetik. Tek lamba ya da telefon flaşı ışık kaynağı.</div>
+      </div>
+      <div class="detail-card">
+        <div class="detail-card-label">Kurgu Ritmi</div>
+        <div class="detail-card-text">Dramatik. "Sabah başka bir ışık var" sonrası siyah ekran. Müzik o an giriyor ve fade out.</div>
+      </div>
+    </div>
+
+    <div class="insight-row">
+      <div class="insight-card">
+        <div class="insight-card-label">Ana Mesaj</div>
+        <div class="insight-card-text">Tutkusu olan bir profesyonel. İş ona saat sormaz. O işine sormaz.</div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card-label">Marka Algısına Katkı</div>
+        <div class="insight-card-text">Deli derecede işine bağlı ama "deli" değil, "tutkulu." En insani ve en güçlü marka hikayesi.</div>
+      </div>
+    </div>
+
+    <div class="final-line">
+      <div class="final-line-icon">✦</div>
+      <div>
+        <div class="final-line-label">Önerilen Final Yazısı</div>
+        <div class="final-line-text">"Nihat Yıldız. Tasarım saat tanımaz."</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CATEGORIES -->
+<div class="section-title-wrap">
+  <div class="section-kicker">Seçim Kılavuzu</div>
+  <h2 class="section-heading">Kategori Analizleri</h2>
+</div>
+
+<section class="categories">
+
+  <!-- A: Viral -->
+  <div class="category-section">
+    <div class="category-header">
+      <div class="category-letter">A</div>
+      <div>
+        <div class="category-title">En Viral Potansiyeli Yüksek 3 Senaryo</div>
+        <div class="category-subtitle">Reels algoritmasına en uyumlu, paylaşım ve yorum üretecek formatlar</div>
+      </div>
+    </div>
+    <div class="rank-list">
+      <div class="rank-item">
+        <div class="rank-num">1</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 03 · Google Maps Yorumu</div>
+          <div class="rank-reason">Meme formatı tanıdık, uygulama beklenmedik. Sosyal kanıt ve twist final kombinasyonu. Reels'te en yüksek retention veren format.</div>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-num">2</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 05 · Rakip Teklif</div>
+          <div class="rank-reason">Evrensel gerilim: rakip var. Nihat'ın sakin tepkisi merak uyandırıyor. "Salon değil, deneyim" ayrımı paylaşılabilir.</div>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-num">3</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 10 · İlk Saniyelerde Karar</div>
+          <div class="rank-reason">"Tamam. Bitti." anlık meme potansiyeli taşıyor. Yorum bölümü "Tamam. Bitti." ile dolacak.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- B: Premium -->
+  <div class="category-section">
+    <div class="category-header">
+      <div class="category-letter">B</div>
+      <div>
+        <div class="category-title">En Premium ve Prestijli 3 Senaryo</div>
+        <div class="category-subtitle">Marka değerini en yukarı taşıyan, lüks algı yaratan formatlar</div>
+      </div>
+    </div>
+    <div class="rank-list">
+      <div class="rank-item">
+        <div class="rank-num">1</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 12 · Boş Koltuk</div>
+          <div class="rank-reason">Nesne üzerinden insan deneyimini anlatmak, reklam filmciliğinin en üst seviyesi. Instagram feed'e en yakışan estetik.</div>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-num">2</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 09 · Mimari Bellek</div>
+          <div class="rank-reason">Belgesel tonu, referans gücü ve tecrübe birikimi. Voiceover formatı premium markaların tercih ettiği dil.</div>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-num">3</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 04 · Mekânı Dinle</div>
+          <div class="rank-reason">Mistik ama profesyonel. Sessizlik ve his ön planda. "Bu adam başka seviye" hissini en net veren senaryo.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- C: Düşük Prodüksiyon -->
+  <div class="category-section">
+    <div class="category-header">
+      <div class="category-letter">C</div>
+      <div>
+        <div class="category-title">En Düşük Prodüksiyonla En Yüksek Etki</div>
+        <div class="category-subtitle">Ekipman ve hazırlık minimum, sonuç maksimum</div>
+      </div>
+    </div>
+    <div class="rank-list">
+      <div class="rank-item">
+        <div class="rank-num">1</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 07 · Tek Soru</div>
+          <div class="rank-reason">Sadece iki kişi konuşuyor. Set kurmaya gerek yok. Metin bütün işi yapıyor.</div>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-num">2</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 08 · Boş Tablo</div>
+          <div class="rank-reason">Tek duvar, tek bakış. Mizah sahneyi taşıyor. Ekstra dekor ya da ışık gerekmiyor.</div>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-num">3</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 02 · Fiyat Sorusu</div>
+          <div class="rank-reason">Dialog dominant, mekan neredeyse önemsiz. Sabit kamera ve doğal ışıkla çekilebilir.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- D: Kolay Çekim -->
+  <div class="category-section">
+    <div class="category-header">
+      <div class="category-letter">D</div>
+      <div>
+        <div class="category-title">En Rahat Çekilecek 3 Senaryo</div>
+        <div class="category-subtitle">Lojistik basitliği ve set kolaylığı öne çıkan senaryolar</div>
+      </div>
+    </div>
+    <div class="rank-list">
+      <div class="rank-item">
+        <div class="rank-num">1</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 01 · Mimar Okur</div>
+          <div class="rank-reason">Yürüyüş ve tek diyalog. Düz çekim, ekstra hareket yok. Sahne basit ama güçlü.</div>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-num">2</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 13 · Karşılaştırma Yok</div>
+          <div class="rank-reason">Telefon sahnesi ve kısa diyalog. Hareket minimal, çekim klasik karşılıklı kurgu.</div>
+        </div>
+      </div>
+      <div class="rank-item">
+        <div class="rank-num">3</div>
+        <div class="rank-content">
+          <div class="rank-title">Senaryo 11 · Müşterini Tanı</div>
+          <div class="rank-reason">Tamamen diyalog bazlı, sabit çekim yeterli. Kamera hareketi minimum, içerik maksimum.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- E: Punchlines -->
+  <div class="category-section">
+    <div class="category-header">
+      <div class="category-letter">E</div>
+      <div>
+        <div class="category-title">En Güçlü 5 Kapanış Cümlesi</div>
+        <div class="category-subtitle">Ekran görüntüsü alınacak, paylaşılacak, akılda kalacak punchline'lar</div>
+      </div>
+    </div>
+    <div class="punchlines">
+      <div class="punchline-item">
+        <div class="punchline-num">1</div>
+        <div>
+          <div class="punchline-text">"Salon hazır zaten. Biz sadece onu görünür kılacağız."</div>
+          <div class="punchline-source">Senaryo 01 · Vizyon ve özgüven</div>
+        </div>
+      </div>
+      <div class="punchline-item">
+        <div class="punchline-num">2</div>
+        <div>
+          <div class="punchline-text">"Sonu 'benzer' olan hiçbir salon hatırlanmaz."</div>
+          <div class="punchline-source">Senaryo 13 · İddia ve cesaret</div>
+        </div>
+      </div>
+      <div class="punchline-item">
+        <div class="punchline-num">3</div>
+        <div>
+          <div class="punchline-text">"O sana bir salon yapar. Ben sana bir deneyim yaparım."</div>
+          <div class="punchline-source">Senaryo 05 · Rakip farkı, keskin</div>
+        </div>
+      </div>
+      <div class="punchline-item">
+        <div class="punchline-num">4</div>
+        <div>
+          <div class="punchline-text">"Sabah başka bir ışık var."</div>
+          <div class="punchline-source">Senaryo 14 · Şiirsel, derin, akılda kalıcı</div>
+        </div>
+      </div>
+      <div class="punchline-item">
+        <div class="punchline-num">5</div>
+        <div>
+          <div class="punchline-text">"Malzeme fısıldar. Işık sarar. Renk söylemez ama hissettirir."</div>
+          <div class="punchline-source">Senaryo 11 · Metaforik, premium, paylaşılabilir</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- FINAL SELECTION -->
+<div class="section-title-wrap">
+  <div class="section-kicker">Editöryal Seçim</div>
+  <h2 class="section-heading">En İyi 5 ve Nihai Karar</h2>
+</div>
+
+<section class="final-selection">
+
+  <div class="top5-grid">
+    <div class="top5-item">
+      <div class="top5-rank">1</div>
+      <div class="top5-content">
+        <div class="top5-title">Senaryo 01 · Mimar Okur</div>
+        <div class="top5-reason">Vizyonun görselleştirildiği en güçlü sahne. Sözsüz profesyonellik. Her sektörden izleyici anlayabilir. "Salon hazır zaten" cümlesi altın değerinde. Nihat Yıldız'ı en saf haliyle tanıtıyor.</div>
+      </div>
+    </div>
+    <div class="top5-item">
+      <div class="top5-rank">2</div>
+      <div class="top5-content">
+        <div class="top5-title">Senaryo 05 · Rakip Teklif</div>
+        <div class="top5-reason">Gerçek piyasa dinamiğini içeriyor. Herkes rakip teklifle karşılaşmış. Nihat'ın sakin duruşu izleyiciyi anında kazanıyor. "Deneyim" farkı net ve akılda kalıcı.</div>
+      </div>
+    </div>
+    <div class="top5-item">
+      <div class="top5-rank">3</div>
+      <div class="top5-content">
+        <div class="top5-title">Senaryo 10 · İlk Saniyelerde Karar</div>
+        <div class="top5-reason">"Tamam. Bitti." üç kelime tek başına içerik. Uzman hızını sinematik göstermek çok nadir başarılır. Bu senaryo başarıyor. Yorum bölümü bu cümleyle dolacak.</div>
+      </div>
+    </div>
+    <div class="top5-item">
+      <div class="top5-rank">4</div>
+      <div class="top5-content">
+        <div class="top5-title">Senaryo 07 · Tek Soru</div>
+        <div class="top5-reason">Prodüksiyon yok, sadece metin. Ama mesaj derin. Müşteri odaklı yaklaşımı en doğal gösteren senaryo. Çekilmesi, anlaşılması ve sevilmesi kolay.</div>
+      </div>
+    </div>
+    <div class="top5-item">
+      <div class="top5-rank">5</div>
+      <div class="top5-content">
+        <div class="top5-title">Senaryo 12 · Boş Koltuk</div>
+        <div class="top5-reason">Sinematik güzelliği ve şiirsel dili premium algıyı zirveye taşıyor. Markanın Instagram feed'ine en çok yakışan içerik. Kaydet oranı en yüksek bu olacak.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PODIUM -->
+  <div class="podium">
+    <div class="podium-card podium-safe">
+      <div class="podium-badge badge-safe">En Güvenli Seçim</div>
+      <div class="podium-num safe-num">07</div>
+      <div class="podium-title">Tek Soru</div>
+      <div class="podium-reason">Çekilmesi kolay, söylenmesi kolay, anlaşılması kolay. Mesaj net, punchline güçlü. Her müşteri segmentine hitap eder. Hiçbir şey ters gidemez.</div>
+    </div>
+    <div class="podium-card podium-loud">
+      <div class="podium-badge badge-loud">En Çok Ses Getirecek</div>
+      <div class="podium-num loud-num">10</div>
+      <div class="podium-title">İlk Saniyelerde Karar</div>
+      <div class="podium-reason">"Tamam. Bitti." ilk izleyişte şok, ikinci izleyişte anlam. Reels algoritmasının sevdiği format: kısa sürede büyük etki. Yorum ve paylaşım potansiyeli en yüksek bu.</div>
+    </div>
+    <div class="podium-card podium-prestige">
+      <div class="podium-badge badge-prestige">En Prestijli</div>
+      <div class="podium-num prestige-num">12</div>
+      <div class="podium-title">Boş Koltuk</div>
+      <div class="podium-reason">Nesne üzerinden insan deneyimini anlatmak, reklam filmciliğinin zirvesi. Nihat Yıldız'ı sanatçı olarak konumlandırıyor. Premium izleyici bu videoyu kaydeder.</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-logo">uniqbee</div>
+  <div class="footer-sub">Creative Strategy · Content Direction · Brand Building</div>
+  <div class="footer-meta">
+    Nihat Yıldız · Instagram Reels Senaryo Kataloğu<br>
+    Nisan 2026 · 14 Özgün Senaryo · Gizli ve Müşteriye Özel
+  </div>
+</footer>
+
+</body>
+</html>

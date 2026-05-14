@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Hakan Kara × UniqBee — Teklif Sunumu 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#050508;
+  --s1:#0A0A10;
+  --s2:#0F0F18;
+  --gold:#C8982A;
+  --gold2:#E8C76A;
+  --gold3:rgba(200,152,42,.15);
+  --goldb:rgba(200,152,42,.28);
+  --cream:#EDE3CA;
+  --white:#F9F7F2;
+  --muted:#6A6A82;
+  --muted2:#2A2A3C;
+  --red:#CC5050;
+  --redb:rgba(204,80,80,.18);
+  --green:#3E9970;
+  --fd:'Playfair Display',Georgia,serif;
+  --fb:'DM Sans',sans-serif;
+  --r8:8px;
+}
+html{scroll-behavior:smooth;overflow-x:hidden;}
+body{font-family:var(--fb);background:var(--bg);color:var(--cream);overflow-x:hidden;}
+
+/* ── FLOATING BG ORBS ── */
+.orbs{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);opacity:.07;animation:float 20s ease-in-out infinite;}
+.orb1{width:400px;height:400px;background:var(--gold);top:-100px;right:-100px;animation-duration:25s;}
+.orb2{width:300px;height:300px;background:#4A60CC;bottom:10%;left:-80px;animation-duration:30s;animation-delay:-10s;}
+.orb3{width:250px;height:250px;background:var(--gold);bottom:30%;right:20%;animation-duration:20s;animation-delay:-5s;}
+@keyframes float{0%,100%{transform:translateY(0) scale(1);}50%{transform:translateY(-40px) scale(1.05);}}
+
+/* ── GRID TEXTURE ── */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(200,152,42,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(200,152,42,.015) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;}
+
+/* ── PROGRESS ── */
+#prog{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));z-index:999;width:0%;transition:width .15s;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(5,5,8,.9),transparent);backdrop-filter:blur(10px);}
+.nav-logo{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--gold2);letter-spacing:.05em;}
+.nav-logo span{color:var(--white);}
+.nav-dots{display:flex;gap:8px;align-items:center;}
+.nd{width:6px;height:6px;border-radius:50%;background:var(--muted2);cursor:pointer;transition:all .3s;border:1px solid transparent;}
+.nd.active{background:var(--gold);border-color:var(--gold);transform:scale(1.4);}
+.nd:hover{background:var(--gold2);}
+@media(max-width:600px){.nav-dots{gap:6px;}.nd{width:5px;height:5px;}}
+
+/* ── SECTIONS ── */
+section{position:relative;z-index:1;padding:100px 80px 80px;min-height:100vh;display:flex;flex-direction:column;justify-content:center;}
+@media(max-width:900px){section{padding:90px 32px 60px;}}
+@media(max-width:600px){section{padding:80px 20px 50px;}}
+
+/* ── SECTION LABELS ── */
+.s-tag{display:inline-flex;align-items:center;gap:10px;font-size:9px;font-weight:600;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:20px;}
+.s-tag::before{content:'';width:24px;height:1px;background:var(--gold);}
+
+/* ── HEADINGS ── */
+.h1{font-family:var(--fd);font-size:clamp(38px,6vw,80px);font-weight:900;color:var(--white);line-height:1.0;letter-spacing:-.02em;}
+.h1 em{font-style:italic;color:var(--gold2);display:block;}
+.h2{font-family:var(--fd);font-size:clamp(28px,4vw,52px);font-weight:700;color:var(--white);line-height:1.1;}
+.h2 em{font-style:italic;color:var(--gold2);}
+.lead{font-size:clamp(13px,1.5vw,16px);color:var(--muted);line-height:1.85;max-width:560px;}
+
+/* ── GOLD DIVIDER ── */
+.gdiv{width:80px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin:24px 0;}
+.gdiv-c{margin:24px auto;}
+
+/* ── REVEAL ── */
+.rv{opacity:1;transform:none;}
+.d1,.d2,.d3,.d4,.d5,.d6,.d7{}
+
+/* ── CARDS ── */
+.card{background:var(--s1);border:1px solid var(--goldb);border-radius:var(--r8);padding:24px;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s,border-color .3s;}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(200,152,42,.12);border-color:var(--gold);}
+.card-red{border-color:var(--redb);}
+.card-red:hover{border-color:var(--red);box-shadow:0 20px 60px rgba(204,80,80,.1);}
+
+/* ── BADGE ── */
+.badge{display:inline-block;font-size:9px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;padding:4px 12px;border-radius:20px;}
+.badge-gold{background:var(--gold3);border:1px solid var(--goldb);color:var(--gold);}
+.badge-red{background:var(--redb);border:1px solid rgba(204,80,80,.3);color:var(--red);}
+.badge-green{background:rgba(62,153,112,.15);border:1px solid rgba(62,153,112,.3);color:var(--green);}
+
+/* ═══════════════════ 1. HERO ═══════════════════ */
+#s1{min-height:100vh;background:var(--bg);justify-content:center;align-items:center;text-align:center;overflow:hidden;}
+.hero-inner{position:relative;z-index:2;}
+.hero-tag{font-size:10px;font-weight:600;letter-spacing:.6em;color:var(--gold);text-transform:uppercase;margin-bottom:32px;display:block;}
+.hero-title{font-family:var(--fd);font-size:clamp(44px,8vw,110px);font-weight:900;color:var(--white);line-height:.95;letter-spacing:-.03em;margin-bottom:8px;}
+.hero-title em{font-style:italic;color:var(--gold2);background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-sub{font-size:clamp(12px,1.5vw,15px);color:var(--muted);letter-spacing:.15em;text-transform:uppercase;line-height:2.2;margin-top:32px;}
+.hero-line{width:140px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:32px auto;}
+.hero-chips{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:0;}
+.chip{background:var(--s2);border:1px solid var(--goldb);border-radius:20px;padding:8px 18px;font-size:11px;color:var(--cream);letter-spacing:.05em;}
+.hero-scroll-cue{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;animation:bounce 2s ease-in-out infinite;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+.hero-scroll-cue span{font-size:8px;letter-spacing:.4em;color:var(--muted);text-transform:uppercase;}
+.arrow-down{width:16px;height:16px;border-right:1px solid var(--gold);border-bottom:1px solid var(--gold);transform:rotate(45deg);}
+.hero-bg-text{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-family:var(--fd);font-size:clamp(80px,15vw,200px);font-weight:900;color:rgba(200,152,42,.03);white-space:nowrap;pointer-events:none;letter-spacing:-.05em;}
+
+/* ═══════════════════ 2. MEVCUT DURUM ═══════════════════ */
+#s2{background:var(--s1);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:40px 0 24px;}
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.stats-grid{grid-template-columns:1fr 1fr;gap:12px;}}
+.scard{border-radius:var(--r8);padding:28px 22px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+.scard:hover{transform:translateY(-4px);}
+.scard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.scard-ok{background:var(--s2);border:1px solid var(--goldb);}
+.scard-ok::before{background:linear-gradient(90deg,var(--gold),var(--gold2));}
+.scard-warn{background:rgba(204,80,80,.06);border:1px solid var(--redb);}
+.scard-warn::before{background:linear-gradient(90deg,var(--red),#E07070);}
+.scard-num{font-family:var(--fd);font-size:clamp(32px,4vw,46px);font-weight:900;line-height:1;margin-bottom:6px;}
+.scard-ok .scard-num{color:var(--white);}
+.scard-warn .scard-num{color:var(--red);}
+.scard-lbl{font-size:9px;font-weight:600;letter-spacing:.25em;color:var(--muted);text-transform:uppercase;margin-bottom:12px;}
+.scard-note{font-size:11.5px;color:var(--muted);line-height:1.65;}
+.scard-icon{position:absolute;top:16px;right:16px;font-size:16px;opacity:.5;}
+
+/* Insight box */
+.insight{background:var(--gold3);border:1px solid var(--goldb);border-left:3px solid var(--gold);border-radius:0 var(--r8) var(--r8) 0;padding:18px 24px;}
+.insight p{font-size:13px;color:var(--cream);line-height:1.8;}
+.insight strong{color:var(--gold2);font-weight:600;}
+
+/* Bar infographic */
+.ratio-bar{margin-top:20px;}
+.ratio-label{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:8px;}
+.ratio-track{width:100%;height:8px;background:var(--muted2);border-radius:4px;overflow:hidden;}
+.ratio-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--red),#E07070);width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1);}
+.ratio-target{display:flex;align-items:center;gap:8px;margin-top:8px;font-size:10px;color:var(--muted);}
+.ratio-target::before{content:'';width:16px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold2));flex-shrink:0;}
+
+/* ═══════════════════ 3. SORUNLAR ═══════════════════ */
+#s3{background:var(--bg);}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+@media(max-width:900px){.prob-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.prob-grid{grid-template-columns:1fr;gap:12px;}}
+.pcard{background:var(--s1);border:1px solid var(--redb);border-radius:var(--r8);padding:22px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s;cursor:default;}
+.pcard:hover{transform:translateY(-5px);border-color:var(--red);box-shadow:0 16px 48px rgba(204,80,80,.15);}
+.pcard::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:rgba(204,80,80,.5);transition:width .3s;}
+.pcard:hover::after{width:4px;background:var(--red);}
+.pcard-n{font-family:var(--fd);font-size:42px;font-weight:900;color:rgba(204,80,80,.1);line-height:1;margin-bottom:10px;transition:color .3s;}
+.pcard:hover .pcard-n{color:rgba(204,80,80,.2);}
+.pcard-t{font-size:13px;font-weight:600;color:var(--white);margin-bottom:7px;}
+.pcard-d{font-size:11.5px;color:var(--muted);line-height:1.72;}
+
+/* ═══════════════════ 4. FIRSATLAR ═══════════════════ */
+#s4{background:var(--s1);}
+.opp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+@media(max-width:900px){.opp-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:500px){.opp-grid{grid-template-columns:1fr;gap:12px;}}
+.ocard{background:var(--bg);border:1px solid var(--goldb);border-radius:var(--r8);padding:22px;position:relative;overflow:hidden;cursor:default;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.ocard:hover{transform:translateY(-5px);border-color:var(--gold);box-shadow:0 20px 60px rgba(200,152,42,.18);}
+.ocard::after{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--gold),transparent);transition:width .3s;}
+.ocard:hover::after{width:4px;}
+.ocard-n{font-family:var(--fd);font-size:42px;font-weight:900;color:rgba(200,152,42,.12);line-height:1;margin-bottom:8px;transition:color .3s;}
+.ocard:hover .ocard-n{color:rgba(200,152,42,.22);}
+.ocard-t{font-size:13px;font-weight:600;color:var(--white);margin-bottom:7px;margin-top:8px;}
+.ocard-d{font-size:11.5px;color:var(--muted);line-height:1.72;}
+
+/* ═══════════════════ 5. STRATEJİ ═══════════════════ */
+#s5{background:var(--bg);}
+.strat-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:44px;align-items:start;}
+@media(max-width:800px){.strat-grid{grid-template-columns:1fr;gap:36px;}}
+
+/* Platform cards */
+.plt-card{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--s1);border:1px solid var(--goldb);border-radius:var(--r8);margin-bottom:12px;position:relative;transition:transform .3s,box-shadow .3s;}
+.plt-card:hover{transform:translateX(4px);box-shadow:0 8px 32px rgba(200,152,42,.1);}
+.plt-icon{width:40px;height:40px;border-radius:10px;background:var(--s2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.plt-info h3{font-size:14px;font-weight:600;color:var(--white);}
+.plt-info p{font-size:11px;color:var(--muted);margin-top:2px;}
+.plt-pri{margin-left:auto;flex-shrink:0;}
+
+/* Donut chart */
+.donut-wrap{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+.donut-svg{flex-shrink:0;}
+.donut-legend{display:flex;flex-direction:column;gap:12px;}
+.leg-item{display:flex;align-items:center;gap:10px;}
+.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.leg-name{font-size:12px;font-weight:600;color:var(--white);}
+.leg-pct{font-size:11px;color:var(--muted);margin-left:auto;padding-left:16px;}
+.leg-desc{font-size:10px;color:var(--muted);line-height:1.4;}
+.donut-seg{fill:none;stroke-width:20;stroke-linecap:butt;transition:stroke-width .3s;}
+.donut-seg:hover{stroke-width:24;}
+
+/* ═══════════════════ 6. PAKET ═══════════════════ */
+#s6{background:var(--s1);}
+.pkg-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:44px;align-items:start;}
+@media(max-width:800px){.pkg-grid{grid-template-columns:1fr;gap:28px;}}
+
+/* Shooting days */
+.day-card{background:var(--bg);border:1px solid var(--goldb);border-radius:var(--r8);padding:24px;margin-bottom:14px;transition:border-color .3s;}
+.day-card:last-child{margin-bottom:0;}
+.day-card:hover{border-color:var(--gold);}
+.day-header{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--goldb);}
+.day-num{width:40px;height:40px;border:1px solid var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:20px;font-weight:700;color:var(--gold);flex-shrink:0;}
+.day-header h3{font-size:14px;font-weight:600;color:var(--white);}
+.day-header p{font-size:11px;color:var(--gold);margin-top:2px;}
+.day-list{list-style:none;}
+.day-list li{font-size:12px;color:var(--muted);padding:5px 0;display:flex;align-items:center;gap:10px;}
+.day-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+
+/* Deliverable cards */
+.deliv-card{display:flex;align-items:center;gap:18px;padding:16px 20px;background:var(--bg);border:1px solid var(--goldb);border-radius:var(--r8);margin-bottom:10px;transition:transform .25s,box-shadow .25s;}
+.deliv-card:last-child{margin-bottom:0;}
+.deliv-card:hover{transform:translateX(4px);box-shadow:0 8px 28px rgba(200,152,42,.12);}
+.deliv-num{font-family:var(--fd);font-size:34px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;width:56px;}
+.deliv-info h4{font-size:13px;font-weight:600;color:var(--white);}
+.deliv-info p{font-size:11px;color:var(--muted);margin-top:2px;}
+
+/* ═══════════════════ 7. WEB ═══════════════════ */
+#s7{background:var(--bg);}
+.web-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;margin-top:44px;align-items:center;}
+@media(max-width:800px){.web-grid{grid-template-columns:1fr;gap:36px;}}
+.web-price{font-family:var(--fd);font-size:clamp(48px,6vw,72px);font-weight:900;color:var(--gold2);background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.web-lbl{font-size:10px;color:var(--muted);letter-spacing:.2em;text-transform:uppercase;margin-top:6px;}
+.web-items{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+@media(max-width:500px){.web-items{grid-template-columns:1fr;}}
+.wi{display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--s1);border:1px solid var(--goldb);border-radius:var(--r8);transition:border-color .25s,transform .25s;}
+.wi:hover{border-color:var(--gold);transform:translateY(-2px);}
+.wi-icon{width:28px;height:28px;background:var(--gold3);border:1px solid var(--goldb);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.wi h4{font-size:12px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.wi p{font-size:10.5px;color:var(--muted);line-height:1.55;}
+
+/* ═══════════════════ 8. FİYAT ═══════════════════ */
+#s8{background:var(--s1);}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px;}
+@media(max-width:900px){.price-grid{grid-template-columns:1fr;gap:16px;}}
+.prc{background:var(--bg);border:1px solid var(--goldb);border-radius:12px;padding:32px 28px;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;}
+.prc:hover{transform:translateY(-6px);box-shadow:0 24px 64px rgba(200,152,42,.12);}
+.prc.feat{background:linear-gradient(145deg,rgba(200,152,42,.1),rgba(200,152,42,.04));border:2px solid var(--gold);position:relative;}
+.prc.feat::before{content:'EN POPÜLER';position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--gold),var(--gold2));color:var(--bg);font-size:8px;font-weight:700;letter-spacing:.35em;padding:4px 16px;border-radius:20px;white-space:nowrap;}
+.prc-badge{font-size:9px;font-weight:600;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:block;}
+.prc-title{font-size:16px;font-weight:600;color:var(--white);margin-bottom:6px;}
+.prc-desc{font-size:11.5px;color:var(--muted);line-height:1.7;margin-bottom:24px;flex:1;}
+.prc-amt{font-family:var(--fd);font-size:clamp(40px,4vw,52px);font-weight:900;color:var(--white);line-height:1;}
+.prc.feat .prc-amt{color:var(--gold2);background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:clamp(46px,5vw,60px);}
+.prc-period{font-size:10px;color:var(--muted);margin-top:5px;letter-spacing:.1em;}
+.prc-div{width:100%;height:1px;background:var(--goldb);margin:20px 0;}
+.prc-inc{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.prc-inc li{font-size:11.5px;color:var(--muted);display:flex;align-items:flex-start;gap:9px;line-height:1.5;}
+.prc-inc li::before{content:'✓';color:var(--gold);font-size:11px;flex-shrink:0;margin-top:1px;}
+
+/* ═══════════════════ 9. NEDEN UNİQBEE ═══════════════════ */
+#s9{background:var(--bg);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:44px;align-items:center;}
+@media(max-width:800px){.why-grid{grid-template-columns:1fr;gap:36px;}}
+.why-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px;}
+.wstat{text-align:center;padding:24px;background:var(--s1);border:1px solid var(--goldb);border-radius:var(--r8);}
+.wstat-n{font-family:var(--fd);font-size:42px;font-weight:900;color:var(--gold2);background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;}
+.wstat-l{font-size:11px;color:var(--muted);margin-top:6px;}
+.why-pts{display:flex;flex-direction:column;gap:14px;}
+.wp{display:flex;align-items:flex-start;gap:18px;padding:20px;background:var(--s1);border:1px solid var(--goldb);border-radius:var(--r8);transition:transform .25s,border-color .25s;}
+.wp:hover{transform:translateX(4px);border-color:var(--gold);}
+.wp-n{font-family:var(--fd);font-size:28px;font-weight:900;color:var(--gold);line-height:1;flex-shrink:0;opacity:.7;}
+.wp h4{font-size:13px;font-weight:600;color:var(--white);margin-bottom:4px;}
+.wp p{font-size:11.5px;color:var(--muted);line-height:1.65;}
+
+/* ═══════════════════ 10. CTA ═══════════════════ */
+#s10{background:var(--s1);text-align:center;justify-content:center;align-items:center;}
+.cta-inner{max-width:600px;margin:0 auto;}
+.cta-tag{font-size:9px;font-weight:600;letter-spacing:.55em;color:var(--gold);text-transform:uppercase;margin-bottom:24px;display:block;}
+.cta-t{font-family:var(--fd);font-size:clamp(42px,7vw,88px);font-weight:900;color:var(--white);line-height:.95;margin-bottom:12px;}
+.cta-t em{font-style:italic;color:var(--gold2);background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.cta-sub{font-size:14px;color:var(--muted);margin-bottom:40px;line-height:1.7;}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--bg);font-family:var(--fb);font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;padding:16px 40px;border-radius:4px;text-decoration:none;transition:transform .25s,box-shadow .25s;border:none;cursor:pointer;}
+.cta-btn:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(200,152,42,.4);}
+.cta-btn-ghost{background:transparent;border:1px solid var(--goldb);color:var(--gold);margin-left:14px;}
+.cta-btn-ghost:hover{border-color:var(--gold);box-shadow:0 16px 48px rgba(200,152,42,.1);}
+.cta-contacts{display:flex;justify-content:center;gap:40px;margin-top:48px;flex-wrap:wrap;}
+.cc{text-align:center;}
+.cc-lbl{font-size:8px;font-weight:600;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:6px;}
+.cc-val{font-size:13px;color:var(--cream);}
+.cta-logo{margin-top:56px;font-family:var(--fd);font-size:22px;font-weight:700;color:var(--gold2);}
+.cta-logo span{color:var(--white);}
+.cta-divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--goldb),transparent);margin:32px auto;}
+
+/* ── Decorative corners ── */
+.dc{position:absolute;width:48px;height:48px;opacity:.4;}
+.dc-tl{top:40px;left:56px;border-top:1px solid var(--goldb);border-left:1px solid var(--goldb);}
+.dc-br{bottom:40px;right:56px;border-bottom:1px solid var(--goldb);border-right:1px solid var(--goldb);}
+@media(max-width:600px){.dc{display:none;}}
+</style>
+</head>
+<body>
+
+<!-- Floating background orbs -->
+<div class="orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
+<!-- Progress bar -->
+<div id="prog"></div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-logo"><span>Uniq</span>Bee</div>
+  <div class="nav-dots" id="ndots">
+    <div class="nd active" title="Giriş"></div>
+    <div class="nd" title="Mevcut Durum"></div>
+    <div class="nd" title="Sorunlar"></div>
+    <div class="nd" title="Fırsatlar"></div>
+    <div class="nd" title="Strateji"></div>
+    <div class="nd" title="Paket"></div>
+    <div class="nd" title="Web Yenileme"></div>
+    <div class="nd" title="Fiyatlandırma"></div>
+    <div class="nd" title="Neden UniqBee"></div>
+    <div class="nd" title="İletişim"></div>
+  </div>
+</nav>
+
+<!-- ═══ 1. HERO ═══ -->
+<section id="s1">
+  <div class="dc dc-tl"></div>
+  <div class="hero-inner">
+    <span class="hero-tag rv">UniqBee Creative Studio · 2026</span>
+    <h1 class="hero-title rv d1">
+      Dr. Hakan Kara<br>
+      <em>Dijital Strateji</em>
+    </h1>
+    <div class="hero-line rv d2"></div>
+    <p class="hero-sub rv d3">
+      Sosyal Medya Yönetimi &amp; Web Sitesi Yenileme<br>
+      Teklif Sunumu
+    </p>
+    <div class="hero-chips rv d4">
+      <span class="chip">📸 Instagram</span>
+      <span class="chip">▶️ YouTube</span>
+      <span class="chip">🎵 TikTok</span>
+      <span class="chip">🌐 Web Sitesi</span>
+    </div>
+  </div>
+  <div class="hero-bg-text">RINOPLASTI</div>
+  <div class="hero-scroll-cue">
+    <span>Kaydır</span>
+    <div class="arrow-down"></div>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<!-- ═══ 2. MEVCUT DURUM ═══ -->
+<section id="s2">
+  <div class="dc dc-tl"></div>
+  <div class="s-tag rv">01 — Mevcut Durum</div>
+  <h2 class="h2 rv d1">Instagram Analizi</h2>
+  <p class="lead rv d2">Sayılar güçlü bir potansiyel taşıyor — ancak mevcut strateji bu potansiyeli değer yaratmaya dönüştüremiyor.</p>
+
+  <div class="stats-grid">
+    <div class="scard scard-ok rv d1">
+      <div class="scard-icon">📌</div>
+      <div class="scard-num" data-count="2152">2.152</div>
+      <div class="scard-lbl">Toplam Gönderi</div>
+      <p class="scard-note">Yüksek emek birikimi — ancak takipçiye yansımıyor</p>
+    </div>
+    <div class="scard scard-ok rv d2">
+      <div class="scard-icon">👥</div>
+      <div class="scard-num" data-count="19100">19.100</div>
+      <div class="scard-lbl">Takipçi</div>
+      <p class="scard-note">2.152 gönderi için beklenenin çok altında</p>
+    </div>
+    <div class="scard scard-warn rv d3">
+      <div class="scard-icon">⚠️</div>
+      <div class="scard-num" data-count="3251">3.251</div>
+      <div class="scard-lbl">Takip Edilen</div>
+      <p class="scard-note">Takipçiden fazla — marka imajına zarar veriyor</p>
+    </div>
+    <div class="scard scard-warn rv d4">
+      <div class="scard-icon">📉</div>
+      <div class="scard-num">8.8×</div>
+      <div class="scard-lbl">Gönderi/Takipçi Oranı</div>
+      <p class="scard-note">Hekim hesabı için sağlıklı oran 30–50× olmalı</p>
+    </div>
+  </div>
+
+  <div class="ratio-bar rv d5">
+    <div class="ratio-label">
+      <span>Mevcut performans: 8.8×</span>
+      <span style="color:var(--red)">%82 altında optimal seviyenin</span>
+    </div>
+    <div class="ratio-track">
+      <div class="ratio-fill" id="ratioFill"></div>
+    </div>
+    <div class="ratio-target">Hedef oran: 30–50× (sektör ortalaması)</div>
+  </div>
+
+  <div class="insight rv d6" style="margin-top:20px;">
+    <p>Büyük ihtimalle geçmişte <strong>follow/unfollow taktiği</strong> kullanıldı. Bu hem algoritmayı cezalandırıyor hem de marka güvenilirliğini zedeliyor. <strong>Doğru stratejiyle aynı emek 4–5× daha fazla organik büyüme üretir.</strong></p>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<!-- ═══ 3. SORUNLAR ═══ -->
+<section id="s3">
+  <div class="dc dc-tl"></div>
+  <div class="s-tag rv">02 — Tespit Edilen Sorunlar</div>
+  <h2 class="h2 rv d1">Ne Düzeltilmeli?</h2>
+  <p class="lead rv d2">Mevcut dijital varlıkta <span style="color:var(--red);font-weight:600;">6 kritik sorun</span> tespit edildi. Her biri hasta dönüşümünü ve organik büyümeyi doğrudan etkiliyor.</p>
+
+  <div class="prob-grid">
+    <div class="pcard rv d1">
+      <div class="pcard-n">01</div>
+      <span class="badge badge-red" style="margin-bottom:10px;">Acil</span>
+      <h3 class="pcard-t">Görsel Tutarsızlık</h3>
+      <p class="pcard-d">Her gönderide farklı ışık, arka plan ve çekim açısı. Standart bir marka estetiği ve kimliği yok.</p>
+    </div>
+    <div class="pcard rv d2">
+      <div class="pcard-n">02</div>
+      <span class="badge badge-red" style="margin-bottom:10px;">Yüksek</span>
+      <h3 class="pcard-t">Yalnızca Önce / Sonra</h3>
+      <p class="pcard-d">Sayfa bir fotoğraf arşivine dönmüş. İzleyiciyi tutacak eğitim veya hikaye içeriği yok.</p>
+    </div>
+    <div class="pcard rv d3">
+      <div class="pcard-n">03</div>
+      <span class="badge badge-red" style="margin-bottom:10px;">Kritik</span>
+      <h3 class="pcard-t">YouTube Yok</h3>
+      <p class="pcard-d">Rinoplasti araştıran hasta en çok YouTube'da karar veriyor. Bu kanal boş — rakiplere bedava trafik.</p>
+    </div>
+    <div class="pcard rv d4">
+      <div class="pcard-n">04</div>
+      <span class="badge badge-red" style="margin-bottom:10px;">Yüksek</span>
+      <h3 class="pcard-t">TikTok Yok</h3>
+      <p class="pcard-d">Türkiye'de estetik sektörünün en hızlı büyüyen platformu. Organik erişim potansiyeli çok yüksek.</p>
+    </div>
+    <div class="pcard rv d5">
+      <div class="pcard-n">05</div>
+      <span class="badge badge-red" style="margin-bottom:10px;">SEO Kaybı</span>
+      <h3 class="pcard-t">Web Blogu Boş (404)</h3>
+      <p class="pcard-d">"Piezo rinoplasti nedir", "burun estetiği fiyatı" gibi yüzlerce günlük arama rakiplere akıyor.</p>
+    </div>
+    <div class="pcard rv d6">
+      <div class="pcard-n">06</div>
+      <span class="badge badge-red" style="margin-bottom:10px;">Dönüşüm</span>
+      <h3 class="pcard-t">Güven Sinyalleri Eksik</h3>
+      <p class="pcard-d">Sitede hasta yorumu, sertifika veya başarı hikayesi yok. Ziyaretçi ikna olmadan ayrılıyor.</p>
+    </div>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<!-- ═══ 4. FIRSATLAR ═══ -->
+<section id="s4">
+  <div class="dc dc-tl"></div>
+  <div class="s-tag rv">03 — Büyüme Fırsatları</div>
+  <h2 class="h2 rv d1">Kullanılmayan Silahlar</h2>
+  <p class="lead rv d2">Dr. Hakan Kara'nın Piezo tekniği, 15 yıllık deneyimi ve gerçek hasta sonuçları güçlü bir içerik altyapısı. Sorun: bu sermaye ham görünüyor.</p>
+
+  <div class="opp-grid">
+    <div class="ocard rv d1">
+      <div class="ocard-n">01</div>
+      <span class="badge badge-gold">Farklılaştırıcı</span>
+      <h3 class="ocard-t">Piezo / Ultrasonik Tekniği</h3>
+      <p class="ocard-d">Gerçek bir rekabet avantajı — yeterince öne çıkarılmıyor. Eğitim içeriğiyle hem güven hem SEO kazandırır.</p>
+    </div>
+    <div class="ocard rv d2">
+      <div class="ocard-n">02</div>
+      <span class="badge badge-gold">En Büyük Fırsat</span>
+      <h3 class="ocard-t">YouTube Eğitim Kanalı</h3>
+      <p class="ocard-d">"Ameliyat günlüğü", "iyileşme süreci", "rinoplasti nasıl yapılır" — binlerce organik arama karşılıksız bekliyor.</p>
+    </div>
+    <div class="ocard rv d3">
+      <div class="ocard-n">03</div>
+      <span class="badge badge-gold">Organik Motor</span>
+      <h3 class="ocard-t">TikTok Büyümesi</h3>
+      <p class="ocard-d">Sağlık/estetik içeriği TikTok'ta viralize olma potansiyeli en yüksek kategori. Sıfır reklam bütçesiyle erişim mümkün.</p>
+    </div>
+    <div class="ocard rv d4">
+      <div class="ocard-n">04</div>
+      <span class="badge badge-gold">Segment</span>
+      <h3 class="ocard-t">Erkek Rinoplasti</h3>
+      <p class="ocard-d">Feed'de erkek hastalar zaten var, ancak markalaşmamış. Hızla büyüyen, az kalabalık bir segment.</p>
+    </div>
+    <div class="ocard rv d5">
+      <div class="ocard-n">05</div>
+      <span class="badge badge-gold">Duygusal Bağ</span>
+      <h3 class="ocard-t">Hasta Yolculuğu Serisi</h3>
+      <p class="ocard-d">Muayene → ameliyat → iyileşme → sonuç. Gerçek hasta hikayeleri hem viralize olur hem dönüştürür.</p>
+    </div>
+    <div class="ocard rv d6">
+      <div class="ocard-n">06</div>
+      <span class="badge badge-gold">Lokasyon</span>
+      <h3 class="ocard-t">Kocaeli + İstanbul</h3>
+      <p class="ocard-d">İki şehirde aktif olmak geniş coğrafi erişim sağlar. Bölgesel SEO ve hedefli içerik üretilebilir.</p>
+    </div>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<!-- ═══ 5. STRATEJİ ═══ -->
+<section id="s5">
+  <div class="dc dc-tl"></div>
+  <div class="s-tag rv">04 — Platform & İçerik Stratejisi</div>
+  <h2 class="h2 rv d1">Dijital Ekosistem</h2>
+
+  <div class="strat-grid">
+    <!-- Platforms -->
+    <div class="rv d2">
+      <p style="font-size:9px;font-weight:600;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;">Platform Öncelikleri</p>
+      <div class="plt-card">
+        <div class="plt-icon">📸</div>
+        <div class="plt-info">
+          <h3>Instagram</h3>
+          <p>Marka kalesi — topluluk ve güven inşası</p>
+        </div>
+        <div class="plt-pri"><span class="badge badge-gold">Ana Platform</span></div>
+      </div>
+      <div class="plt-card">
+        <div class="plt-icon">▶️</div>
+        <div class="plt-info">
+          <h3>YouTube</h3>
+          <p>Uzun form — uzman konumlandırması</p>
+        </div>
+        <div class="plt-pri"><span class="badge badge-green">Otorite</span></div>
+      </div>
+      <div class="plt-card">
+        <div class="plt-icon">🎵</div>
+        <div class="plt-info">
+          <h3>TikTok</h3>
+          <p>Organik erişim motoru — viral potansiyel</p>
+        </div>
+        <div class="plt-pri"><span class="badge badge-green">Büyüme</span></div>
+      </div>
+    </div>
+
+    <!-- Donut chart -->
+    <div class="rv d3">
+      <p style="font-size:9px;font-weight:600;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:18px;">İçerik Sütunları</p>
+      <div class="donut-wrap">
+        <svg class="donut-svg" width="160" height="160" viewBox="0 0 160 160">
+          <circle cx="80" cy="80" r="60" fill="none" stroke="var(--muted2)" stroke-width="20"/>
+          <!-- Kanıtla 35% -->
+          <circle class="donut-seg" cx="80" cy="80" r="60" stroke="#E8C76A"
+            stroke-dasharray="131.9 376.9" stroke-dashoffset="0" transform="rotate(-90 80 80)"/>
+          <!-- Eğit 30% -->
+          <circle class="donut-seg" cx="80" cy="80" r="60" stroke="#C8982A"
+            stroke-dasharray="113.1 376.9" stroke-dashoffset="-131.9" transform="rotate(-90 80 80)"/>
+          <!-- Güven Kur 20% -->
+          <circle class="donut-seg" cx="80" cy="80" r="60" stroke="#8B6520"
+            stroke-dasharray="75.4 376.9" stroke-dashoffset="-245" transform="rotate(-90 80 80)"/>
+          <!-- Dönüştür 15% -->
+          <circle class="donut-seg" cx="80" cy="80" r="60" stroke="#3A3A52"
+            stroke-dasharray="56.5 376.9" stroke-dashoffset="-320.4" transform="rotate(-90 80 80)"/>
+          <text x="80" y="75" text-anchor="middle" font-family="Playfair Display" font-size="22" font-weight="900" fill="#F9F7F2">4</text>
+          <text x="80" y="95" text-anchor="middle" font-family="DM Sans" font-size="9" fill="#6A6A82" letter-spacing="2">SÜTUN</text>
+        </svg>
+        <div class="donut-legend">
+          <div class="leg-item">
+            <div class="leg-dot" style="background:#E8C76A"></div>
+            <div><div style="display:flex;gap:8px;align-items:center;"><span class="leg-name">Kanıtla</span><span class="leg-pct" style="padding:0">%35</span></div><div class="leg-desc">Before/after, hasta hikayeleri</div></div>
+          </div>
+          <div class="leg-item">
+            <div class="leg-dot" style="background:#C8982A"></div>
+            <div><div style="display:flex;gap:8px;align-items:center;"><span class="leg-name">Eğit</span><span class="leg-pct" style="padding:0">%30</span></div><div class="leg-desc">Teknik açıklamalar, SSS</div></div>
+          </div>
+          <div class="leg-item">
+            <div class="leg-dot" style="background:#8B6520"></div>
+            <div><div style="display:flex;gap:8px;align-items:center;"><span class="leg-name">Güven Kur</span><span class="leg-pct" style="padding:0">%20</span></div><div class="leg-desc">Doktor kişiliği, klinik</div></div>
+          </div>
+          <div class="leg-item">
+            <div class="leg-dot" style="background:#3A3A52"></div>
+            <div><div style="display:flex;gap:8px;align-items:center;"><span class="leg-name">Dönüştür</span><span class="leg-pct" style="padding:0">%15</span></div><div class="leg-desc">CTA, konsültasyon daveti</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<!-- ═══ 6. PAKET ═══ -->
+<section id="s6">
+  <div class="dc dc-tl"></div>
+  <div class="s-tag rv">05 — Aylık Paket Detayı</div>
+  <h2 class="h2 rv d1">2 Çekim Günü, <em>Tam Teslim</em></h2>
+
+  <div class="pkg-grid">
+    <div class="rv d2">
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-num">1</div>
+          <div>
+            <h3>Klinik Çekim Günü</h3>
+            <p>Kocaeli / İstanbul Muayenehane</p>
+          </div>
+        </div>
+        <ul class="day-list">
+          <li>Standart ışık düzeniyle before/after fotoğrafları</li>
+          <li>Doktor portre ve aksiyon çekimleri</li>
+          <li>İzinli hasta röportaj videoları</li>
+          <li>Konsültasyon anı görüntüleri</li>
+        </ul>
+      </div>
+      <div class="day-card">
+        <div class="day-header">
+          <div class="day-num">2</div>
+          <div>
+            <h3>Stüdyo / Outdoor Çekim</h3>
+            <p>Eğitim & Marka İçerikleri</p>
+          </div>
+        </div>
+        <ul class="day-list">
+          <li>Eğitim reels (Piezo, iyileşme, SSS)</li>
+          <li>Doktor kamera karşısı anlatım videoları</li>
+          <li>Marka imaj fotoğrafları</li>
+          <li>YouTube uzun form çekimi (ayda 1)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rv d3">
+      <p style="font-size:9px;font-weight:600;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;margin-bottom:16px;">Aylık Teslimatlar</p>
+      <div class="deliv-card">
+        <div class="deliv-num">8</div>
+        <div class="deliv-info">
+          <h4>Reels</h4>
+          <p>Instagram + TikTok + YouTube Shorts formatlarında</p>
+        </div>
+      </div>
+      <div class="deliv-card">
+        <div class="deliv-num">20</div>
+        <div class="deliv-info">
+          <h4>Fotoğraf</h4>
+          <p>Feed + Story formatlarında düzenlenmiş</p>
+        </div>
+      </div>
+      <div class="deliv-card">
+        <div class="deliv-num">1</div>
+        <div class="deliv-info">
+          <h4>İçerik Takvimi</h4>
+          <p>Caption + hashtag + optimal yayın saatleri dahil</p>
+        </div>
+      </div>
+      <div class="deliv-card">
+        <div class="deliv-num">3</div>
+        <div class="deliv-info">
+          <h4>Platform Yönetimi</h4>
+          <p>Instagram · TikTok · YouTube aktif yönetim</p>
+        </div>
+      </div>
+      <div class="deliv-card">
+        <div class="deliv-num">∞</div>
+        <div class="deliv-info">
+          <h4>Performans Raporu</h4>
+          <p>Büyüme, erişim ve dönüşüm metrikleri</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<!-- ═══ 7. WEB YENİLEME ═══ -->
+<section id="s7">
+  <div class="dc dc-tl"></div>
+  <div class="s-tag rv">06 — Web Sitesi</div>
+  <div class="web-grid">
+    <div class="rv d1">
+      <span class="badge badge-gold" style="margin-bottom:18px;">Tek Seferlik Proje · 3–4 Hafta</span>
+      <h2 class="h2" style="margin-bottom:14px;">Web Sitesi<br><em>Yenileme</em></h2>
+      <div class="gdiv"></div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.85;margin-bottom:24px;">Mevcut site profesyonel bir temel sunuyor; ancak blog boş, hasta yorumu yok ve rakipler Google'da önünüzde. SEO + dönüşüm odaklı (SAE) kapsamlı revizyon ile kalıcı değer yaratıyoruz.</p>
+      <div class="web-price">₺35.000</div>
+      <div class="web-lbl">Tek seferlik ödeme · KDV hariç</div>
+    </div>
+    <div class="rv d2">
+      <div class="web-items">
+        <div class="wi">
+          <div class="wi-icon">🔍</div>
+          <div>
+            <h4>SEO Optimizasyonu</h4>
+            <p>Anahtar kelime analizi, sayfa içi SEO, meta etiketler, schema markup</p>
+          </div>
+        </div>
+        <div class="wi">
+          <div class="wi-icon">📈</div>
+          <div>
+            <h4>SAE — Dönüşüm Tasarımı</h4>
+            <p>CTA yerleşimi, danışma formu optimizasyonu, WhatsApp butonu</p>
+          </div>
+        </div>
+        <div class="wi">
+          <div class="wi-icon">✍️</div>
+          <div>
+            <h4>Blog + 5 Makale</h4>
+            <p>"Piezo rinoplasti nedir" gibi yüksek trafikli konular SEO uyumlu</p>
+          </div>
+        </div>
+        <div class="wi">
+          <div class="wi-icon">⭐</div>
+          <div>
+            <h4>Hasta Yorumları</h4>
+            <p>Google entegrasyonu + öne çıkan hasta hikayeleri bölümü</p>
+          </div>
+        </div>
+        <div class="wi">
+          <div class="wi-icon">🏅</div>
+          <div>
+            <h4>Güven Sinyalleri</h4>
+            <p>Sertifikalar, üyelikler, medya görünürlükleri sayfası</p>
+          </div>
+        </div>
+        <div class="wi">
+          <div class="wi-icon">⚡</div>
+          <div>
+            <h4>Hız & Mobil</h4>
+            <p>Core Web Vitals, sosyal medya embeds, mobil optimizasyon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<!-- ═══ 8. FİYAT ═══ -->
+<section id="s8">
+  <div class="dc dc-tl"></div>
+  <div class="s-tag rv">07 — Fiyatlandırma</div>
+  <h2 class="h2 rv d1">Şeffaf & Net Yatırım</h2>
+  <p class="lead rv d2">Tüm üretim, yönetim ve raporlama tek çatı altında. Gizli maliyet yok.</p>
+
+  <div class="price-grid">
+    <div class="prc rv d2">
+      <span class="prc-badge">Aylık · Sosyal Medya</span>
+      <h3 class="prc-title">Sosyal Medya Yönetimi</h3>
+      <p class="prc-desc">2 çekim günü, içerik üretimi ve 3 platform yönetimi. Minimum 3 aylık taahhüt.</p>
+      <div class="prc-amt">₺90.000</div>
+      <div class="prc-period">aylık · KDV hariç</div>
+      <div class="prc-div"></div>
+      <ul class="prc-inc">
+        <li>8 Reels (Instagram + TikTok + YouTube)</li>
+        <li>20 fotoğraf (feed + story)</li>
+        <li>Aylık içerik takvimi</li>
+        <li>3 platform aktif yönetimi</li>
+        <li>Aylık performans raporu</li>
+      </ul>
+    </div>
+    <div class="prc rv d3">
+      <span class="prc-badge">Tek Seferlik · Web</span>
+      <h3 class="prc-title">Web Sitesi Yenileme</h3>
+      <p class="prc-desc">SEO + SAE uyumlu kapsamlı revizyon. 3–4 haftada teslim. Tek ödeme, kalıcı değer.</p>
+      <div class="prc-amt">₺35.000</div>
+      <div class="prc-period">tek seferlik · KDV hariç</div>
+      <div class="prc-div"></div>
+      <ul class="prc-inc">
+        <li>SEO tam optimizasyon</li>
+        <li>Dönüşüm odaklı tasarım revizyonu</li>
+        <li>Blog kurulumu + 5 başlangıç makalesi</li>
+        <li>Hasta yorum sistemi</li>
+        <li>Hız & mobil optimizasyon</li>
+      </ul>
+    </div>
+    <div class="prc feat rv d4">
+      <span class="prc-badge">Başlangıç Paketi</span>
+      <h3 class="prc-title">İlk Ay — Tam Paket</h3>
+      <p class="prc-desc">Sosyal medya yönetimi + web yenileme birlikte. Dijital dönüşümün tüm kapsamı tek çatıda.</p>
+      <div class="prc-amt">₺125.000</div>
+      <div class="prc-period">ilk ay toplamı · KDV hariç</div>
+      <div class="prc-div"></div>
+      <ul class="prc-inc">
+        <li>Sosyal medya yönetimi: ₺90.000</li>
+        <li>Web sitesi yenileme: ₺35.000</li>
+        <li>Devam eden aylık: ₺90.000</li>
+        <li>Minimum taahhüt: 3 ay</li>
+        <li>Aylık strateji toplantısı dahil</li>
+      </ul>
+    </div>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<!-- ═══ 9. NEDEN UNİQBEE ═══ -->
+<section id="s9">
+  <div class="dc dc-tl"></div>
+  <div class="s-tag rv">08 — Neden UniqBee</div>
+  <div class="why-grid">
+    <div class="rv d1">
+      <h2 class="h2">Neden<br><em>UniqBee?</em></h2>
+      <div class="gdiv"></div>
+      <p class="lead" style="margin-bottom:28px;">Sağlık ve estetik sektörüne özel strateji. Jenerik ajans yaklaşımı değil — doktorunuzun sesini, uzmanlığını ve farkını öne çıkaran özgün içerik.</p>
+      <div class="why-stats">
+        <div class="wstat">
+          <div class="wstat-n">100%</div>
+          <div class="wstat-l">Yerli Üretim</div>
+        </div>
+        <div class="wstat">
+          <div class="wstat-n">3+</div>
+          <div class="wstat-l">Platform Uzmanlığı</div>
+        </div>
+        <div class="wstat">
+          <div class="wstat-n">0</div>
+          <div class="wstat-l">Gizli Maliyet</div>
+        </div>
+        <div class="wstat">
+          <div class="wstat-n">24</div>
+          <div class="wstat-l">İçerik/Ay (min.)</div>
+        </div>
+      </div>
+    </div>
+    <div class="why-pts rv d2">
+      <div class="wp">
+        <div class="wp-n">1</div>
+        <div>
+          <h4>Sektör Odaklı Dil</h4>
+          <p>Medikal estetik terminolojisine hâkimiz. Hasta psikolojisi, güven inşası ve KVKK bilincimizde.</p>
+        </div>
+      </div>
+      <div class="wp">
+        <div class="wp-n">2</div>
+        <div>
+          <h4>Platform-Native İçerik</h4>
+          <p>Her platform için sıfırdan üretim. Algoritma için değil, hasta için tasarım anlayışı.</p>
+        </div>
+      </div>
+      <div class="wp">
+        <div class="wp-n">3</div>
+        <div>
+          <h4>Veri Odaklı Büyüme</h4>
+          <p>Aylık performans raporlarıyla neyin işe yaradığını ölçüyor, stratejiyi sürekli optimize ediyoruz.</p>
+        </div>
+      </div>
+      <div class="wp">
+        <div class="wp-n">4</div>
+        <div>
+          <h4>Tek Muhatap</h4>
+          <p>Çekim, montaj, yayın, yönetim, raporlama — hepsi tek ekipten. Koordinasyon yükü sıfır.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<!-- ═══ 10. CTA ═══ -->
+<section id="s10">
+  <div class="dc dc-tl"></div>
+  <div class="cta-inner">
+    <span class="cta-tag rv">UniqBee Creative Studio</span>
+    <h2 class="cta-t rv d1">Birlikte<br><em>Büyüyelim</em></h2>
+    <p class="cta-sub rv d2">Teklifi onaylayın — ilk çekim gününü birlikte planlayalım.</p>
+    <div class="rv d3">
+      <a href="mailto:uniqbeedigital@gmail.com" class="cta-btn">Teklifi Onayla →</a>
+      <a href="https://wa.me/905058533003" class="cta-btn cta-btn-ghost">WhatsApp →</a>
+    </div>
+    <div class="cta-divider rv d4"></div>
+    <div class="cta-contacts rv d5">
+      <div class="cc">
+        <span class="cc-lbl">E-posta</span>
+        <span class="cc-val">uniqbeedigital@gmail.com</span>
+      </div>
+      <div class="cc">
+        <span class="cc-lbl">Başlangıç</span>
+        <span class="cc-val">Onay sonrası 7 gün</span>
+      </div>
+      <div class="cc">
+        <span class="cc-lbl">Min. Taahhüt</span>
+        <span class="cc-val">3 Ay</span>
+      </div>
+    </div>
+    <div class="cta-logo rv d6"><span>Uniq</span>Bee</div>
+  </div>
+  <div class="dc dc-br"></div>
+</section>
+
+<script>
+// ── Progress bar ──
+const prog = document.getElementById('prog');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY, h = document.body.scrollHeight - window.innerHeight;
+  prog.style.width = (s / h * 100) + '%';
+  updateDots();
+});
+
+// ── Dot navigation ──
+const sections = document.querySelectorAll('section');
+const dots = document.querySelectorAll('.nd');
+
+function updateDots() {
+  let cur = 0;
+  sections.forEach((s, i) => {
+    if (s.getBoundingClientRect().top <= window.innerHeight * 0.5) cur = i;
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+}
+
+dots.forEach((d, i) => {
+  d.addEventListener('click', () => sections[i].scrollIntoView({ behavior: 'smooth' }));
+});
+
+// ── Keyboard navigation ──
+document.addEventListener('keydown', e => {
+  const cur = [...sections].findIndex(s => s.getBoundingClientRect().top > -window.innerHeight * 0.5 && s.getBoundingClientRect().top <= window.innerHeight * 0.5);
+  if (e.key === 'ArrowDown' && cur < sections.length - 1) sections[cur + 1].scrollIntoView({ behavior: 'smooth' });
+  if (e.key === 'ArrowUp' && cur > 0) sections[cur - 1].scrollIntoView({ behavior: 'smooth' });
+});
+
+// reveal sınıfları artık sadece marker - içerik her zaman görünür
+
+// ── Counter animation ──
+function counter(el, target, dur = 1600) {
+  const start = performance.now();
+  const update = now => {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);
+    el.textContent = Math.round(ease * target).toLocaleString('tr');
+    if (p < 1) requestAnimationFrame(update);
+    else el.textContent = target.toLocaleString('tr');
+  };
+  requestAnimationFrame(update);
+}
+
+const cntObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const t = parseInt(e.target.dataset.count);
+      if (t) counter(e.target, t);
+      cntObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => cntObs.observe(el));
+
+// ── Ratio bar animation ──
+const ratioObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.getElementById('ratioFill').style.width = '18%';
+      ratioObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+const ratioEl = document.getElementById('ratioFill');
+if (ratioEl) ratioObs.observe(ratioEl.closest('section'));
+
+// ── Hero immediate reveal ──
+setTimeout(() => {
+  document.querySelectorAll('#s1 .rv').forEach(el => el.classList.add('on'));
+}, 150);
+</script>
+</body>
+</html>

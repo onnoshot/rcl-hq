@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrocameraland — Analytics</title>
+<link rel="icon" type="image/png" href="rcl-logo.png">
+<link rel="apple-touch-icon" href="rcl-logo.png">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg:#000000; --s1:#0a0a0a; --s2:#141414;
+  --b0:rgba(255,255,255,0.06); --b1:rgba(255,255,255,0.10); --b2:rgba(255,255,255,0.18);
+  --gold:#D4AF37; --gold-h:#E5C158; --gold-dim:rgba(212,175,55,0.10);
+  --gold-glow:0 0 48px rgba(212,175,55,0.09);
+  --t1:#F5F5F7; --t2:#A1A1A6; --t3:#6E6E73;
+  --green:#30D158; --warn:#FF9F0A; --danger:#FF453A; --red:#FF453A; --purple:#BF5AF2;
+  --r:20px; --r-sm:14px;
+  --sans:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
+  --mono:'SF Pro Display','SF Pro Text',-apple-system,BlinkMacSystemFont,'Helvetica Neue',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100vh;overflow-x:hidden;line-height:1.5;-webkit-font-smoothing:antialiased;}
+/* film grain removed */
+.orb{position:fixed;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0;}
+.orb1{width:700px;height:700px;background:var(--gold);top:-280px;right:-160px;opacity:0.022;}
+.orb2{width:500px;height:500px;background:#6E6E73;bottom:-160px;left:-160px;opacity:0.016;}
+.shell{position:relative;z-index:1;max-width:1440px;margin:0 auto;padding:0 40px 120px;}
+
+/* TOPBAR */
+.topbar{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:16px 0;border-bottom:1px solid transparent;transition:background .3s,border-color .3s,backdrop-filter .3s;}
+.topbar.scrolled{background:rgba(0,0,0,0.75);backdrop-filter:blur(28px) saturate(200%);-webkit-backdrop-filter:blur(28px) saturate(200%);border-bottom-color:rgba(255,255,255,0.06);}
+.logo{display:flex;align-items:center;gap:12px;}
+.logo-img{height:34px;width:auto;object-fit:contain;}
+.topbar-right{display:flex;align-items:center;gap:10px;}
+.live-pill{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:20px;background:rgba(48,209,88,0.08);border:1px solid rgba(48,209,88,0.2);font-size:0.68rem;font-family:var(--mono);color:var(--green);letter-spacing:0.08em;}
+.live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pdot 2s infinite;}
+@keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.6)}}
+.upd-time{font-size:0.67rem;font-family:var(--mono);color:var(--t3);}
+
+/* HERO */
+.hero{padding:88px 0 56px;}
+.hero-meta{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:20px;}
+.greeting{font-size:4.8rem;font-weight:700;letter-spacing:-0.04em;color:var(--t1);line-height:1.02;margin-bottom:10px;}
+.greeting span{color:var(--gold);}
+.hero-sub{font-size:0.8rem;color:var(--t3);font-family:var(--mono);letter-spacing:0.04em;}
+.hero-right{display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+.hero-date{font-size:0.8rem;color:var(--t3);font-family:var(--mono);}
+
+/* PERIOD TABS */
+.period-tabs{display:flex;gap:3px;background:rgba(255,255,255,0.03);border:1px solid var(--b0);border-radius:12px;padding:4px;}
+.period-tab{padding:6px 18px;border-radius:9px;font-family:var(--mono);font-size:0.68rem;color:var(--t3);cursor:pointer;transition:all .2s;border:none;background:transparent;letter-spacing:0.06em;}
+.period-tab.active{background:var(--gold-dim);color:var(--gold);border:1px solid rgba(212,175,55,0.2);}
+.period-tab:hover:not(.active){color:var(--t1);}
+
+/* SECTION */
+.sec{margin-bottom:16px;}
+.sec-label{font-size:0.63rem;text-transform:uppercase;letter-spacing:0.22em;color:var(--t3);display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.sec-label::after{content:'';flex:1;height:1px;background:var(--b0);}
+
+/* BENTO */
+.g{display:grid;gap:14px;}
+.g4{grid-template-columns:repeat(4,1fr);}
+.g8-4{grid-template-columns:2fr 1fr;}
+.g6-6{grid-template-columns:1fr 1fr;}
+.g3{grid-template-columns:1fr 1fr 1fr;}
+.gch{grid-template-columns:270px 1fr;}
+@media(max-width:1100px){.g4{grid-template-columns:repeat(2,1fr);}.g8-4,.g6-6,.g3,.gch{grid-template-columns:1fr;}}
+@media(max-width:600px){.g4{grid-template-columns:1fr 1fr;}.shell{padding:0 16px 80px;}.greeting{font-size:2.4rem;}}
+
+/* CARD */
+.card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--r);position:relative;overflow:hidden;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .25s;}
+
+.card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.14);box-shadow:0 24px 64px rgba(0,0,0,0.6);}
+.card-gold{border-color:rgba(212,175,55,0.3);box-shadow:0 0 56px rgba(212,175,55,0.11);}
+.card-gold::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.45),transparent);}
+.p{padding:28px;}.psm{padding:22px;}
+
+/* KPI HERO */
+.kpi-lbl{font-size:0.66rem;text-transform:uppercase;letter-spacing:0.14em;color:var(--t3);font-family:var(--mono);margin-bottom:10px;}
+.kpi-big{font-size:3.4rem;font-weight:700;letter-spacing:-0.04em;color:var(--t1);font-family:var(--mono);line-height:1;margin-bottom:8px;}
+.kpi-big.gold{color:var(--gold);}
+.kpi-sub{font-size:0.68rem;color:var(--t3);font-family:var(--mono);margin-top:6px;}
+.delta{display:inline-flex;align-items:center;gap:4px;font-size:0.68rem;font-family:var(--mono);padding:3px 8px;border-radius:6px;}
+.dn{background:rgba(110,110,115,0.12);color:var(--t3);}
+
+/* CHART */
+.chart-title{font-size:0.84rem;font-weight:600;color:var(--t2);margin-bottom:4px;}
+.chart-sub{font-size:0.67rem;color:var(--t3);font-family:var(--mono);margin-bottom:18px;}
+
+/* TABLE */
+.tcard{overflow:hidden;}
+.thead{padding:18px 22px 14px;border-bottom:1px solid var(--b0);display:flex;align-items:center;justify-content:space-between;}
+.ttitle{font-size:0.8rem;font-weight:600;color:var(--t2);}
+table{width:100%;border-collapse:collapse;}
+th{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--t3);font-family:var(--mono);padding:9px 20px;text-align:left;border-bottom:1px solid var(--b0);font-weight:500;}
+td{font-size:0.76rem;padding:9px 20px;border-bottom:1px solid rgba(255,255,255,0.028);color:var(--t2);font-family:var(--mono);}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(255,255,255,0.014);color:var(--t1);}
+.cg{color:var(--gold);}
+.cd{color:var(--t3);}
+tfoot td{border-top:1px solid rgba(212,175,55,0.14);color:var(--gold);font-weight:600;}
+
+/* CHANNEL CARDS */
+.chi{display:flex;flex-direction:column;gap:7px;padding:11px 13px;border-radius:var(--r-sm);border:1px solid var(--b0);background:rgba(255,255,255,0.014);transition:border-color .2s,background .2s;}
+.chi:hover{border-color:rgba(212,175,55,0.2);background:rgba(255,255,255,0.025);}
+.chi-head{display:flex;align-items:center;gap:9px;}
+.chi-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.chi-name{font-size:0.78rem;font-weight:500;color:var(--t1);flex:1;}
+.chi-pct{font-family:var(--mono);font-size:0.82rem;font-weight:700;color:var(--gold);}
+.chi-track{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
+.chi-fill{height:100%;border-radius:2px;transition:width 1.4s cubic-bezier(.16,1,.3,1);width:0;}
+.chi-meta{display:flex;justify-content:space-between;font-size:0.62rem;font-family:var(--mono);color:var(--t3);}
+
+/* LEGEND */
+.leg{display:flex;align-items:center;gap:8px;}
+.leg-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.leg-name{font-size:0.67rem;font-family:var(--mono);color:var(--t2);flex:1;}
+.leg-pct{font-size:0.67rem;font-family:var(--mono);color:var(--t3);}
+
+/* INV BAR */
+.ibw{display:inline-block;width:48px;height:2px;background:rgba(255,255,255,0.06);border-radius:1px;overflow:hidden;vertical-align:middle;margin-left:8px;}
+.ib{height:100%;background:linear-gradient(90deg,var(--gold),rgba(212,175,55,0.35));border-radius:1px;width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1);}
+
+/* QUICK STATS */
+.qs-val{font-family:var(--mono);font-size:1.4rem;font-weight:600;letter-spacing:-0.04em;line-height:1;margin-bottom:4px;}
+.qs-lbl{font-size:0.61rem;color:var(--t3);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.08em;line-height:1.5;}
+
+/* GOALS */
+.goal-row{display:flex;flex-direction:column;gap:5px;}
+.goal-head{display:flex;justify-content:space-between;}
+.goal-head span:first-child{font-size:0.7rem;color:var(--t2);font-family:var(--mono);}
+.goal-head span:last-child{font-size:0.63rem;color:var(--t3);font-family:var(--mono);}
+.goal-track{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
+.goal-fill{height:100%;border-radius:2px;transition:width 1.4s cubic-bezier(.16,1,.3,1);width:0;}
+.goal-note{font-size:0.61rem;color:var(--t3);font-family:var(--mono);}
+
+/* PROGRESS */
+.prog-wrap{margin-top:12px;}
+.prog-lbl{display:flex;justify-content:space-between;margin-bottom:5px;}
+.prog-lbl span{font-size:0.62rem;color:var(--t3);font-family:var(--mono);}
+.prog-track{height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden;}
+.prog-fill{height:100%;border-radius:2px;transition:width 1.4s cubic-bezier(.16,1,.3,1);width:0;}
+
+/* CHANNEL PILLS */
+.cpill{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:20px;font-size:0.68rem;font-family:var(--mono);letter-spacing:0.04em;text-decoration:none;transition:opacity .2s,transform .15s;border:1px solid;}
+.cpill:hover{opacity:.72;transform:translateY(-1px);}
+
+/* VID TITLE */
+.vt{color:var(--t1);font-size:0.73rem;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.vt a{color:inherit;text-decoration:none;}
+.vt a:hover{color:var(--gold);}
+
+/* SHIMMER */
+.shimmer{background:linear-gradient(90deg,var(--gold),#fffbe6,var(--gold));background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shim 3s infinite;}
+@keyframes shim{0%{background-position:200%}100%{background-position:-200%}}
+
+/* COST INPUTS */
+.cost-input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:9px;color:var(--t1);font-family:var(--mono);font-size:0.88rem;padding:8px 12px;width:100%;text-align:right;outline:none;transition:border-color .2s,background .2s;-moz-appearance:textfield;}
+.cost-input:focus{border-color:rgba(212,175,55,0.45);background:rgba(255,255,255,0.08);}
+.cost-input::-webkit-inner-spin-button,.cost-input::-webkit-outer-spin-button{opacity:.4;}
+/* INLINE COST CELL */
+.cam-cost-input{background:transparent;border:none;border-bottom:1px dashed rgba(255,255,255,0.15);color:var(--warn);font-family:var(--mono);font-size:0.76rem;width:80px;text-align:right;outline:none;padding:2px 4px;transition:border-color .2s,background .2s;-moz-appearance:textfield;}
+.cam-cost-input:focus{border-bottom-color:rgba(212,175,55,0.6);background:rgba(212,175,55,0.06);border-radius:4px;}
+.cam-cost-input::placeholder{color:var(--t3);font-size:0.68rem;}
+.cam-cost-input::-webkit-inner-spin-button,.cam-cost-input::-webkit-outer-spin-button{display:none;}
+.cost-var-lbl{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px;}
+.profit-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+.profit-row:last-child{border-bottom:none;}
+.profit-total{border-top:1px solid rgba(255,255,255,0.10);margin-top:4px;padding-top:10px !important;border-bottom:none !important;}
+
+/* FOOTER */
+footer{border-top:1px solid var(--b0);padding:28px 0 0;font-size:0.66rem;color:var(--t3);font-family:var(--mono);letter-spacing:0.06em;display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.footer-logo{height:22px;width:auto;object-fit:contain;opacity:0.3;}
+
+/* FADE IN */
+.fi{opacity:0;transform:translateY(22px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+.fi.vis{opacity:1;transform:translateY(0);}
+
+/* ORB FLOAT — handled by JS parallax RAF */
+.orb1,.orb2{will-change:transform;}
+
+/* LOGO ENTRANCE */
+.logo-img{animation:logo-in .9s cubic-bezier(.16,1,.3,1) forwards;opacity:0;}
+@keyframes logo-in{from{opacity:0;transform:scale(.82) translateX(-10px);}to{opacity:1;transform:scale(1) translateX(0);}}
+.live-pill{animation:pill-in .6s cubic-bezier(.16,1,.3,1) .35s both;}
+@keyframes pill-in{from{opacity:0;transform:scale(.75);}to{opacity:1;transform:scale(1);}}
+.upd-time{animation:fade-slide-r .5s ease .55s both;}
+@keyframes fade-slide-r{from{opacity:0;transform:translateX(10px);}to{opacity:1;transform:translateX(0);}}
+
+/* HERO WORD REVEAL */
+.g-word{display:inline-block;opacity:0;transform:translateY(32px);filter:blur(10px);animation:w-in .72s cubic-bezier(.16,1,.3,1) forwards;}
+@keyframes w-in{to{opacity:1;transform:translateY(0);filter:blur(0);}}
+.g-word.gold{color:var(--gold);}
+
+/* HERO SCAN LINE */
+.hero{position:relative;}
+.hero-scan{position:absolute;left:0;right:0;height:1px;top:0;background:linear-gradient(90deg,transparent 0%,rgba(212,175,55,.55) 50%,transparent 100%);pointer-events:none;opacity:0;animation:scan 2.4s cubic-bezier(.4,0,.2,1) .2s forwards;}
+@keyframes scan{0%{top:0;opacity:0;}10%{opacity:.8;}85%{opacity:.3;}100%{top:100%;opacity:0;}}
+
+/* HERO SUB REVEAL */
+.hero-sub{overflow:hidden;}
+.hero-sub-inner{display:inline-block;animation:sub-in .55s cubic-bezier(.16,1,.3,1) 1s both;}
+@keyframes sub-in{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* HERO DATE + TABS */
+.hero-date{animation:fade-up .5s cubic-bezier(.16,1,.3,1) .9s both;}
+.period-tabs{animation:fade-up .5s cubic-bezier(.16,1,.3,1) 1.05s both;}
+@keyframes fade-up{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* GREETING SHIMMER SWEEP */
+.greeting{position:relative;overflow:hidden;}
+.greeting::after{content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);pointer-events:none;animation:gsweep 4s ease-in-out 1.8s infinite;}
+@keyframes gsweep{0%{left:-120%;}100%{left:220%;}}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="shell">
+
+<!-- TOPBAR -->
+<nav class="topbar" id="topbar">
+  <div class="logo">
+    <img src="rcl-logo.png" alt="Retrocameraland" class="logo-img">
+  </div>
+  <div class="topbar-right">
+    <div class="live-pill"><div class="live-dot"></div>LIVE</div>
+    <span class="upd-time" id="updateTime">—</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero fi" style="transition-delay:.05s" id="hero">
+  <div class="hero-scan"></div>
+  <div class="hero-meta">
+    <div>
+      <div class="greeting" id="greeting"></div>
+      <div class="hero-sub"><span class="hero-sub-inner">retrocameraland.myshopify.com · Shopify + YouTube + Instagram</span></div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-date" id="brandDate">—</div>
+      <div class="period-tabs">
+        <button class="period-tab active" onclick="setPeriod('30d',this)">30 Gün</button>
+        <button class="period-tab" onclick="setPeriod('90d',this)">90 Gün</button>
+        <button class="period-tab" onclick="setPeriod('year',this)">1 Yıl</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- KPI STRIP -->
+<div class="sec fi" style="transition-delay:.10s">
+  <div class="sec-label">Satış Performansı</div>
+  <div class="g g4">
+    <div class="card p card-gold">
+      <div class="kpi-lbl">Gelir</div>
+      <div class="kpi-big gold" id="s-rev">—</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <div class="delta dn" id="s-rev-delta">—</div>
+        <div class="kpi-sub" id="s-rev-sub" style="margin-top:0">—</div>
+      </div>
+      <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(212,175,55,0.12)">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:0.1em">KDV %20</span>
+          <span style="font-family:var(--mono);font-size:0.88rem;font-weight:600;color:var(--warn)" id="s-kdv">—</span>
+        </div>
+        <div style="font-size:0.61rem;font-family:var(--mono);color:var(--t3);margin-top:3px" id="s-kdv-sub">gelirin 1/6'sı · devlete</div>
+      </div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Sipariş</div>
+      <div class="kpi-big" id="s-ord">—</div>
+      <div class="kpi-sub" id="s-ord-sub">tamamlanan sipariş</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Ort. Sipariş (AOV)</div>
+      <div class="kpi-big" id="s-aov">—</div>
+      <div class="kpi-sub">sipariş başına ortalama</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Toplam Müşteri</div>
+      <div class="kpi-big" id="s-cust">—</div>
+      <div class="kpi-sub">kayıtlı müşteri</div>
+    </div>
+  </div>
+</div>
+
+<!-- REVENUE CHART + RECENT ORDERS -->
+<div class="sec fi" style="transition-delay:.15s">
+  <div class="g g8-4">
+    <div class="card p">
+      <div class="chart-title">Aylık Gelir Trendi</div>
+      <div class="chart-sub">Son 12 ay · Shopify verisi</div>
+      <div style="height:240px"><canvas id="revenueChart"></canvas></div>
+    </div>
+    <div class="card tcard">
+      <div class="thead">
+        <span class="ttitle">Son Siparişler</span>
+        <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3)">Shopify</span>
+      </div>
+      <table>
+        <thead><tr><th>Tarih</th><th>Tutar</th></tr></thead>
+        <tbody id="ordersBody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- CHANNELS + INVENTORY -->
+<div class="sec fi" style="transition-delay:.19s">
+  <div class="sec-label">Kanal Dağılımı & Stok</div>
+  <div class="g gch">
+    <div class="card p" style="text-align:center">
+      <div class="chart-title" style="text-align:left">Sipariş Kaynakları</div>
+      <div class="chart-sub" style="text-align:left">sipariş sayısına göre</div>
+      <div style="position:relative;width:155px;height:155px;margin:0 auto 16px">
+        <canvas id="channelDonut"></canvas>
+        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none">
+          <div style="font-family:var(--mono);font-size:1.55rem;font-weight:700;color:var(--t1);letter-spacing:-0.04em" id="donutTotal">—</div>
+          <div style="font-size:0.59rem;color:var(--t3);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.1em">sipariş</div>
+        </div>
+      </div>
+      <div id="channelLegend" style="display:flex;flex-direction:column;gap:7px;text-align:left"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card p" style="padding-bottom:16px">
+        <div class="chart-title" style="margin-bottom:12px">Kanal Detayları</div>
+        <div id="channelCards" style="display:flex;flex-direction:column;gap:8px"></div>
+      </div>
+      <div class="g g4" style="gap:10px">
+        <div class="card psm">
+          <div class="kpi-lbl">Stok Değeri</div>
+          <div class="qs-val" style="color:var(--gold)" id="inv-val">—</div>
+          <div class="qs-lbl">satış fiyatı</div>
+        </div>
+        <div class="card psm">
+          <div class="kpi-lbl">Kamera</div>
+          <div class="qs-val" id="inv-cam">—</div>
+          <div class="qs-lbl">stokta adet</div>
+        </div>
+        <div class="card psm">
+          <div class="kpi-lbl">Aksesuar</div>
+          <div class="qs-val" id="inv-acc">—</div>
+          <div class="qs-lbl">stokta adet</div>
+        </div>
+        <div class="card psm">
+          <div class="kpi-lbl">Tükenen</div>
+          <div class="qs-val" style="color:var(--danger)" id="inv-oos">—</div>
+          <div class="qs-lbl">varyant</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INVENTORY TABLES + GOALS -->
+<div class="sec fi" style="transition-delay:.23s">
+  <div class="sec-label">Stok Detayı</div>
+  <div class="g g6-6">
+    <div class="card tcard">
+      <div class="thead">
+        <span class="ttitle" id="camTitle">Kameralar</span>
+        <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3)">fiyata göre ↓</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>#</th><th>Ürün</th><th>Satış</th><th>Maliyet</th><th>Kâr</th></tr></thead>
+          <tbody id="camBody"></tbody>
+          <tfoot><tr><td colspan="2" style="padding:11px 20px;font-size:0.66rem;letter-spacing:0.08em">TOPLAM</td><td style="padding:11px 20px" id="camTotal">—</td><td style="padding:11px 20px" id="camCostTotal">—</td><td style="padding:11px 20px" id="camProfitTotal">—</td></tr></tfoot>
+        </table>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div class="card tcard">
+        <div class="thead">
+          <span class="ttitle" id="accTitle">Aksesuarlar</span>
+          <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3)">değere göre ↓</span>
+        </div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead><tr><th>#</th><th>Ürün</th><th>Birim</th><th>Adet</th><th>Toplam</th></tr></thead>
+            <tbody id="accBody"></tbody>
+            <tfoot><tr><td colspan="4" style="padding:11px 20px;font-size:0.66rem;letter-spacing:0.08em">TOPLAM</td><td style="padding:11px 20px" id="accTotal">—</td></tr></tfoot>
+          </table>
+        </div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl" style="margin-bottom:14px">Q2 2026 Hedefleri</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div class="goal-row">
+            <div class="goal-head"><span>YT Abone</span><span>→ 10.000</span></div>
+            <div class="goal-track"><div class="goal-fill" style="background:var(--red)" id="goalYT"></div></div>
+            <div class="goal-note">YouTube Studio'dan güncellenir</div>
+          </div>
+          <div class="goal-row">
+            <div class="goal-head"><span>Blog / Ay</span><span>→ 4 yazı</span></div>
+            <div class="goal-track"><div class="goal-fill" style="width:50%;background:var(--gold)"></div></div>
+            <div class="goal-note">~2/4 tamamlandı</div>
+          </div>
+          <div class="goal-row">
+            <div class="goal-head"><span>Aylık Gelir</span><span>→ ₺80K</span></div>
+            <div class="goal-track"><div class="goal-fill" style="width:72%;background:var(--green)"></div></div>
+            <div class="goal-note" id="goalRevNote">—</div>
+          </div>
+          <div class="goal-row">
+            <div class="goal-head"><span>Stok Doldur</span><span>→ 0 tükenen</span></div>
+            <div class="goal-track"><div class="goal-fill" style="width:17%;background:#5AC8FA"></div></div>
+            <div class="goal-note" id="goalOosNote">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFIT ANALYSIS -->
+<div class="sec fi" style="transition-delay:.26s">
+  <div class="sec-label">Kârlılık Analizi</div>
+  <div class="g g4" style="margin-bottom:12px">
+    <div class="card psm">
+      <div class="cost-var-lbl">Kargo (₺ / sipariş)</div>
+      <input class="cost-input" id="cfg-kargo" type="number" value="300" oninput="saveCostCfg();renderProfit()">
+    </div>
+    <div class="card psm">
+      <div class="cost-var-lbl">Kutu (₺ / sipariş)</div>
+      <input class="cost-input" id="cfg-kutu" type="number" value="100" oninput="saveCostCfg();renderProfit()">
+    </div>
+    <div class="card psm">
+      <div class="cost-var-lbl">Iyzico Komisyon (%)</div>
+      <input class="cost-input" id="cfg-iyzico" type="number" step="0.01" value="2.35" oninput="saveCostCfg();renderProfit()">
+    </div>
+    <div class="card psm">
+      <div class="cost-var-lbl">Shopify Komisyon (%)</div>
+      <input class="cost-input" id="cfg-shopify" type="number" step="0.01" value="2.0" oninput="saveCostCfg();renderProfit()">
+    </div>
+  </div>
+  <div class="g g6-6">
+    <div class="card p">
+      <div class="chart-title">Maliyet Dağılımı</div>
+      <div class="chart-sub" id="profit-period-lbl">Son 30 gün</div>
+      <div id="profit-breakdown" style="margin-top:16px"></div>
+    </div>
+    <div class="g" style="grid-template-columns:1fr 1fr;gap:14px">
+      <div class="card p" style="border-color:rgba(48,209,88,0.18)">
+        <div class="kpi-lbl">Tahmini Net Kâr</div>
+        <div class="kpi-big" id="profit-net" style="color:var(--green)">—</div>
+        <div class="kpi-sub" id="profit-note">—</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Kâr Marjı</div>
+        <div class="kpi-big" id="profit-margin">—</div>
+        <div class="kpi-sub">brüt gelire göre</div>
+      </div>
+      <div class="card p" style="grid-column:span 2">
+        <div class="kpi-lbl" style="margin-bottom:12px">Toplam Maliyet Kalemi</div>
+        <div id="profit-cost-summary" style="display:flex;flex-wrap:wrap;gap:8px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- YOUTUBE -->
+<div class="sec fi" style="transition-delay:.29s">
+  <div class="sec-label">YouTube Kanalı</div>
+  <div class="g g4" style="margin-bottom:12px">
+    <div class="card p" style="border-color:rgba(255,69,58,0.2)">
+      <div class="kpi-lbl">Abone Sayısı</div>
+      <div class="kpi-big" style="color:var(--red)" id="yt-subs">—</div>
+      <div class="prog-wrap">
+        <div class="prog-lbl"><span id="yt-sub-pct-label">—</span><span>Hedef: 10.000</span></div>
+        <div class="prog-track"><div class="prog-fill" style="background:var(--red)" id="yt-sub-bar"></div></div>
+      </div>
+    </div>
+    <div class="card p" style="border-color:rgba(255,69,58,0.15)">
+      <div class="kpi-lbl">İzlenme Saati / 12 Ay</div>
+      <div class="kpi-big" style="color:var(--red)" id="yt-watch-hrs">—</div>
+      <div class="prog-wrap">
+        <div class="prog-lbl"><span id="yt-watch-pct-label">—</span><span>Hedef: 4.000 saat</span></div>
+        <div class="prog-track"><div class="prog-fill" style="background:var(--red)" id="yt-watch-bar"></div></div>
+      </div>
+      <div class="kpi-sub" style="margin-top:10px">YPP monetizasyon eşiği</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Toplam İzlenme</div>
+      <div class="kpi-big" id="yt-views">—</div>
+      <div class="kpi-sub" id="yt-vids-sub">— video · tüm zamanlar</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Son 30 Gün</div>
+      <div class="kpi-big" id="yt-30d-views">—</div>
+      <div class="kpi-sub" id="yt-30d-sub">—</div>
+    </div>
+  </div>
+  <div class="g g6-6">
+    <div class="card p">
+      <div class="chart-title">Aylık İzlenme Trendi</div>
+      <div class="chart-sub" id="yt-chart-sub">Son 6 ay</div>
+      <div style="height:200px"><canvas id="ytViewsChart"></canvas></div>
+    </div>
+    <div class="card tcard">
+      <div class="thead">
+        <span class="ttitle">Son Videolar</span>
+        <a href="https://www.youtube.com/@retrocameraland" target="_blank" style="font-size:0.62rem;font-family:var(--mono);color:var(--red);text-decoration:none">Kanala git →</a>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Tarih</th><th>Video</th><th>İzlenme</th><th>Beğeni</th></tr></thead>
+          <tbody id="ytVideosBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- INSTAGRAM -->
+<div class="sec fi" style="transition-delay:.31s">
+  <div class="sec-label">Instagram</div>
+  <div class="g g4" style="margin-bottom:12px">
+    <div class="card p" style="border-color:rgba(191,90,242,0.25)">
+      <div class="kpi-lbl">Takipçi</div>
+      <div class="kpi-big" style="color:var(--purple)" id="ig-followers">—</div>
+      <div class="prog-wrap">
+        <div class="prog-lbl"><span id="ig-followers-pct">—</span><span>Hedef: 10.000</span></div>
+        <div class="prog-track"><div class="prog-fill" style="background:var(--purple)" id="ig-followers-bar"></div></div>
+      </div>
+    </div>
+    <div class="card p" style="border-color:rgba(191,90,242,0.12)">
+      <div class="kpi-lbl">Gönderi</div>
+      <div class="kpi-big" style="color:var(--purple)" id="ig-posts">—</div>
+      <div class="kpi-sub" id="ig-posts-sub">toplam gönderi</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Ort. Beğeni</div>
+      <div class="kpi-big" id="ig-avg-likes">—</div>
+      <div class="kpi-sub">gönderi başına (son 12)</div>
+    </div>
+    <div class="card p">
+      <div class="kpi-lbl">Toplam Etkileşim</div>
+      <div class="kpi-big" id="ig-engagement">—</div>
+      <div class="kpi-sub">beğeni + yorum (son 12)</div>
+    </div>
+  </div>
+  <div class="g g6-6">
+    <div class="card p">
+      <div class="chart-title">İçerik Türü Dağılımı</div>
+      <div class="chart-sub" id="ig-type-sub">Son 12 gönderi</div>
+      <div id="ig-type-bars" style="display:flex;flex-direction:column;gap:12px;margin-top:18px"></div>
+    </div>
+    <div class="card tcard">
+      <div class="thead">
+        <span class="ttitle">Son Gönderiler</span>
+        <a href="https://www.instagram.com/retrocameraland" target="_blank" style="font-size:0.62rem;font-family:var(--mono);color:var(--purple);text-decoration:none">Profile git →</a>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead><tr><th>Tarih</th><th>Tür</th><th>Beğeni</th><th>Yorum</th></tr></thead>
+          <tbody id="igPostsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CHANNEL LINKS -->
+<div class="sec fi" style="transition-delay:.35s">
+  <div class="sec-label">Kanallar</div>
+  <div class="card psm" style="display:flex;gap:8px;flex-wrap:wrap">
+    <a href="https://retrocameraland.com" target="_blank" class="cpill" style="background:rgba(212,175,55,0.07);border-color:rgba(212,175,55,0.22);color:var(--gold)">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      retrocameraland.com
+    </a>
+    <a href="https://www.youtube.com/@retrocameraland" target="_blank" class="cpill" style="background:rgba(255,69,58,0.07);border-color:rgba(255,69,58,0.18);color:var(--red)">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+      YouTube
+    </a>
+    <a href="https://www.tiktok.com/@retrocameraland" target="_blank" class="cpill" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.09);color:var(--t2)">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 3a5.6 5.6 0 0 1-5.6-5.6h-3.5v15.1a2.8 2.8 0 1 1-2.8-2.8c.3 0 .5 0 .8.1V6.3a6.3 6.3 0 0 0-.8-.1 6.3 6.3 0 1 0 6.3 6.3V8.8a9.1 9.1 0 0 0 5.6 1.9V7.2A5.6 5.6 0 0 1 19.6 3z"/></svg>
+      TikTok
+    </a>
+    <a href="https://www.pinterest.com/retrocameraland" target="_blank" class="cpill" style="background:rgba(230,0,35,0.05);border-color:rgba(230,0,35,0.16);color:#E60023">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12c0 5.1 3.1 9.4 7.6 11.2-.1-.9-.2-2.3 0-3.3.2-.8 1.3-5.7 1.3-5.7s-.3-.7-.3-1.7c0-1.6.9-2.8 2.1-2.8 1 0 1.5.7 1.5 1.6 0 1-.6 2.5-.9 3.8-.3 1.1.5 2 1.6 2 1.9 0 3.2-2 3.2-4.9 0-2.6-1.8-4.4-4.4-4.4-3 0-4.8 2.3-4.8 4.6 0 .9.4 1.9.8 2.4.1.1.1.3.1.4l-.3 1.2c-.1.3-.3.4-.6.2-1.5-.7-2.4-2.9-2.4-4.6 0-3.7 2.7-7.2 7.9-7.2 4.1 0 7.3 2.9 7.3 6.9 0 4.1-2.6 7.4-6.2 7.4-1.2 0-2.3-.6-2.7-1.3l-.7 2.8c-.3 1-.9 2.1-1.4 2.9.9.3 1.9.4 2.9.4 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg>
+      Pinterest
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="fi" style="transition-delay:.35s">
+  <img src="rcl-logo.png" alt="Retrocameraland" class="footer-logo">
+  <span>retrocameraland.myshopify.com · Shopify Admin API · Saatlik güncelleme ·</span>
+  <span class="shimmer">Powered by Claude AI</span>
+</footer>
+
+</div>
+
+<script>
+/* ─── INSTAGRAM DATA START ─── */
+const INSTAGRAM = {
+  "updated_at": "2026-05-14T17:17:42",
+  "username": "retrocameraland",
+  "name": "Retro Camera Land",
+  "followers": 6428,
+  "media_count": 272,
+  "avg_likes": 55,
+  "total_engagement": 666,
+  "type_counts": {
+    "VIDEO": 5,
+    "CAROUSEL_ALBUM": 7
+  },
+  "posts": [
+    {
+      "id": "18115202152809089",
+      "date": "13 May 2026",
+      "type": "VIDEO",
+      "likes": 61,
+      "comments": 1,
+      "url": "https://www.instagram.com/reel/DYSX0DmIHwf/"
+    },
+    {
+      "id": "18111928819850525",
+      "date": "12 May 2026",
+      "type": "CAROUSEL_ALBUM",
+      "likes": 140,
+      "comments": 0,
+      "url": "https://www.instagram.com/p/DYO7S-2iEqR/"
+    },
+    {
+      "id": "18115773172749112",
+      "date": "8 May 2026",
+      "type": "VIDEO",
+      "likes": 28,
+      "comments": 0,
+      "url": "https://www.instagram.com/reel/DYFcSJjIRhu/"
+    },
+    {
+      "id": "18026696300819171",
+      "date": "4 May 2026",
+      "type": "CAROUSEL_ALBUM",
+      "likes": 143,
+      "comments": 1,
+      "url": "https://www.instagram.com/p/DX7GlPLiAB_/"
+    },
+    {
+      "id": "18101736734047012",
+      "date": "2 May 2026",
+      "type": "CAROUSEL_ALBUM",
+      "likes": 15,
+      "comments": 0,
+      "url": "https://www.instagram.com/p/DX1_HlAiJdh/"
+    },
+    {
+      "id": "18087255242609116",
+      "date": "1 May 2026",
+      "type": "CAROUSEL_ALBUM",
+      "likes": 38,
+      "comments": 0,
+      "url": "https://www.instagram.com/p/DXzUTTwCGGw/"
+    },
+    {
+      "id": "17886431487378731",
+      "date": "29 Nis 2026",
+      "type": "VIDEO",
+      "likes": 45,
+      "comments": 0,
+      "url": "https://www.instagram.com/reel/DXtbzXmIYYx/"
+    },
+    {
+      "id": "17920167630337696",
+      "date": "27 Nis 2026",
+      "type": "CAROUSEL_ALBUM",
+      "likes": 56,
+      "comments": 1,
+      "url": "https://www.instagram.com/p/DXn7XV6CJoH/"
+    },
+    {
+      "id": "18105347032902803",
+      "date": "26 Nis 2026",
+      "type": "VIDEO",
+      "likes": 41,
+      "comments": 0,
+      "url": "https://www.instagram.com/reel/DXltdQ7IPMH/"
+    },
+    {
+      "id": "18089660810248856",
+      "date": "25 Nis 2026",
+      "type": "CAROUSEL_ALBUM",
+      "likes": 45,
+      "comments": 0,
+      "url": "https://www.instagram.com/p/DXjGTiHiCAA/"
+    },
+    {
+      "id": "18086971511203373",
+      "date": "20 Nis 2026",
+      "type": "VIDEO",
+      "likes": 23,
+      "comments": 1,
+      "url": "https://www.instagram.com/reel/DXXAHRCI7gE/"
+    },
+    {
+      "id": "18042760670777322",
+      "date": "19 Nis 2026",
+      "type": "CAROUSEL_ALBUM",
+      "likes": 27,
+      "comments": 0,
+      "url": "https://www.instagram.com/p/DXUL5lEiOjj/"
+    }
+  ],
+  "follower_goal": 10000
+};
+/* ─── INSTAGRAM DATA END ─── */
+
+/* ─── YOUTUBE DATA START ─── */
+const YOUTUBE = {
+  "updated_at": "2026-05-14T17:23:14",
+  "channel": {
+    "title": "Retro Camera Land",
+    "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
+    "subscribers": 3930,
+    "total_views": 1102730,
+    "video_count": 378
+  },
+  "analytics": {
+    "last_30d": {
+      "views": 72441,
+      "watch_hours": 164.6,
+      "subs_gained": 167,
+      "subs_lost": 107,
+      "avg_view_sec": 18
+    },
+    "watch_hours_year": 2976.0,
+    "watch_hours_year_long": 1589.6,
+    "watch_hours_year_shorts": 1386.4,
+    "monthly": [
+      {
+        "label": "Ara 25",
+        "views": 102641,
+        "watch_min": 16916,
+        "subs_gained": 437
+      },
+      {
+        "label": "Oca 26",
+        "views": 214842,
+        "watch_min": 45223,
+        "subs_gained": 2739
+      },
+      {
+        "label": "Şub 26",
+        "views": 119281,
+        "watch_min": 20493,
+        "subs_gained": 831
+      },
+      {
+        "label": "Mar 26",
+        "views": 233881,
+        "watch_min": 39203,
+        "subs_gained": 337
+      },
+      {
+        "label": "Nis 26",
+        "views": 103716,
+        "watch_min": 21729,
+        "subs_gained": 136
+      },
+      {
+        "label": "May 26",
+        "views": 25882,
+        "watch_min": 3349,
+        "subs_gained": 66
+      }
+    ]
+  },
+  "videos": [
+    {
+      "id": "LHg76IQG7aw",
+      "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
+      "date": "13 May 2026",
+      "views": 1071,
+      "likes": 11,
+      "comments": 0,
+      "url": "https://youtu.be/LHg76IQG7aw"
+    },
+    {
+      "id": "-Ig3lgUcm8c",
+      "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
+      "date": "8 May 2026",
+      "views": 2040,
+      "likes": 25,
+      "comments": 6,
+      "url": "https://youtu.be/-Ig3lgUcm8c"
+    },
+    {
+      "id": "VnLTp2ufa6A",
+      "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
+      "date": "7 May 2026",
+      "views": 1725,
+      "likes": 30,
+      "comments": 1,
+      "url": "https://youtu.be/VnLTp2ufa6A"
+    },
+    {
+      "id": "yIrL45HroS8",
+      "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
+      "date": "6 May 2026",
+      "views": 1410,
+      "likes": 11,
+      "comments": 0,
+      "url": "https://youtu.be/yIrL45HroS8"
+    },
+    {
+      "id": "3qQFPZtOHf0",
+      "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
+      "date": "30 Nis 2026",
+      "views": 4485,
+      "likes": 64,
+      "comments": 0,
+      "url": "https://youtu.be/3qQFPZtOHf0"
+    },
+    {
+      "id": "UcdfytnpKEA",
+      "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
+      "date": "29 Nis 2026",
+      "views": 3687,
+      "likes": 22,
+      "comments": 0,
+      "url": "https://youtu.be/UcdfytnpKEA"
+    },
+    {
+      "id": "dFixvsNLQ_k",
+      "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
+      "date": "29 Nis 2026",
+      "views": 245,
+      "likes": 12,
+      "comments": 2,
+      "url": "https://youtu.be/dFixvsNLQ_k"
+    },
+    {
+      "id": "U0c_YNzbRHE",
+      "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
+      "date": "29 Nis 2026",
+      "views": 576,
+      "likes": 6,
+      "comments": 0,
+      "url": "https://youtu.be/U0c_YNzbRHE"
+    },
+    {
+      "id": "bY4UWZ-wEwY",
+      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
+      "date": "26 Nis 2026",
+      "views": 810,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/bY4UWZ-wEwY"
+    },
+    {
+      "id": "-mrJ8maR2eo",
+      "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
+      "date": "25 Nis 2026",
+      "views": 296,
+      "likes": 9,
+      "comments": 3,
+      "url": "https://youtu.be/-mrJ8maR2eo"
+    }
+  ],
+  "sub_goal": 10000
+};
+/* ─── YOUTUBE DATA END ─── */
+
+/* ─── SHOPIFY DATA START ─── */
+const SHOPIFY = {
+  "updated_at": "2026-05-14T17:24:13",
+  "period_30d": {
+    "revenue": 108160,
+    "orders": 9,
+    "aov": 12018
+  },
+  "period_90d": {
+    "revenue": 202450,
+    "orders": 17,
+    "aov": 11909
+  },
+  "period_year": {
+    "revenue": 768335,
+    "orders": 64,
+    "aov": 12005
+  },
+  "customers_total": 727,
+  "monthly_labels": [
+    "Haz 25",
+    "Tem 25",
+    "Ağu 25",
+    "Eyl 25",
+    "Eki 25",
+    "Kas 25",
+    "Ara 25",
+    "Oca 26",
+    "Oca 26",
+    "Mar 26",
+    "Nis 26",
+    "May 26"
+  ],
+  "monthly_revenue": [
+    0,
+    2590,
+    68639,
+    62128,
+    82649,
+    233639,
+    43360,
+    56890,
+    56890,
+    46450,
+    65320,
+    67200
+  ],
+  "monthly_orders": [
+    0,
+    1,
+    6,
+    9,
+    8,
+    12,
+    4,
+    6,
+    6,
+    4,
+    6,
+    5
+  ],
+  "channels": [
+    {
+      "name": "Direkt",
+      "icon": "🔗",
+      "color": "#F5A623",
+      "orders": 25,
+      "rev": 331550,
+      "order_pct": 39.1,
+      "rev_pct": 43.2
+    },
+    {
+      "name": "Google",
+      "icon": "🔍",
+      "color": "#4285F4",
+      "orders": 20,
+      "rev": 224166,
+      "order_pct": 31.2,
+      "rev_pct": 29.2
+    },
+    {
+      "name": "Instagram",
+      "icon": "📸",
+      "color": "#BF5AF2",
+      "orders": 17,
+      "rev": 193389,
+      "order_pct": 26.6,
+      "rev_pct": 25.2
+    },
+    {
+      "name": "YouTube",
+      "icon": "▶",
+      "color": "#FF453A",
+      "orders": 1,
+      "rev": 9990,
+      "order_pct": 1.6,
+      "rev_pct": 1.3
+    },
+    {
+      "name": "AI / Arama",
+      "icon": "🤖",
+      "color": "#5AC8FA",
+      "orders": 1,
+      "rev": 9240,
+      "order_pct": 1.6,
+      "rev_pct": 1.2
+    }
+  ],
+  "recent_orders": [
+    {
+      "date": "12 May 2026",
+      "amount": 15490
+    },
+    {
+      "date": "9 May 2026",
+      "amount": 14490
+    },
+    {
+      "date": "9 May 2026",
+      "amount": 11240
+    },
+    {
+      "date": "4 May 2026",
+      "amount": 10490
+    },
+    {
+      "date": "2 May 2026",
+      "amount": 15490
+    },
+    {
+      "date": "29 Nis 2026",
+      "amount": 7990
+    },
+    {
+      "date": "26 Nis 2026",
+      "amount": 9990
+    },
+    {
+      "date": "18 Nis 2026",
+      "amount": 8490
+    },
+    {
+      "date": "17 Nis 2026",
+      "amount": 14490
+    },
+    {
+      "date": "10 Nis 2026",
+      "amount": 12490
+    }
+  ],
+  "cameras": [
+    {
+      "name": "Fujifilm FinePix Z90",
+      "price": 18490
+    },
+    {
+      "name": "Fujifilm FinePix Z700 EXR",
+      "price": 15490
+    },
+    {
+      "name": "Canon PowerShot SD400",
+      "price": 12490
+    },
+    {
+      "name": "Lumix DMC-FT10",
+      "price": 11990
+    },
+    {
+      "name": "Canon IXUS i",
+      "price": 11490
+    },
+    {
+      "name": "Casio Exilim EX-Z110",
+      "price": 11490
+    },
+    {
+      "name": "Fujifilm FinePix 4700 Zoom",
+      "price": 11490
+    },
+    {
+      "name": "Nikon Coolpix S52c",
+      "price": 11490
+    },
+    {
+      "name": "Konica Minolta DiMAGE X50",
+      "price": 10990
+    },
+    {
+      "name": "Kodak EasyShare V603",
+      "price": 10490
+    },
+    {
+      "name": "Kodak Slice R502",
+      "price": 10490
+    },
+    {
+      "name": "Olympus SP-700",
+      "price": 10490
+    },
+    {
+      "name": "Sanyo Xacti VPC-HD1",
+      "price": 10490
+    },
+    {
+      "name": "Casio Exilim EX-Z4",
+      "price": 9490
+    },
+    {
+      "name": "Casio Exilim EX-Z85",
+      "price": 9490
+    },
+    {
+      "name": "Olympus SP-320",
+      "price": 9490
+    },
+    {
+      "name": "Olympus Stylus 790 SW",
+      "price": 9490
+    },
+    {
+      "name": "Olympus SZ-10",
+      "price": 9490
+    },
+    {
+      "name": "HP Photosmart R827",
+      "price": 8900
+    },
+    {
+      "name": "Nikon Coolpix 885",
+      "price": 8900
+    },
+    {
+      "name": "Traveler DC-830",
+      "price": 8490
+    },
+    {
+      "name": "Sony Cybershot DSC-S85",
+      "price": 7990
+    },
+    {
+      "name": "Kodak ZX1 “Weather-Resistant”",
+      "price": 4900
+    }
+  ],
+  "accessories": [
+    {
+      "name": "Type-C ve USB 2.0 SD-MicroSD TF Kart Okuyucu",
+      "price": 1490,
+      "qty": 3
+    },
+    {
+      "name": "Y2K Digicam Fotoğraf/Video Aktarıcı - xD, CF, SD, MS Destekli All-in-One Kart Okuyucu",
+      "price": 790,
+      "qty": 2
+    },
+    {
+      "name": "USB-C 3'ü 1 Arada Kart Okuyucu — SD / MicroSD / USB",
+      "price": 690,
+      "qty": 2
+    },
+    {
+      "name": "Universal Kamera Batarya Şarj Cihazı",
+      "price": 590,
+      "qty": 2
+    },
+    {
+      "name": "Ulanzi VLOG Tripod",
+      "price": 990,
+      "qty": 1
+    }
+  ],
+  "out_of_stock": 82
+};
+/* ─── SHOPIFY DATA END ─── */
+
+const fmt   = (n,d=0) => Number(n).toLocaleString('tr-TR',{maximumFractionDigits:d});
+const fmtTL = n => '₺' + fmt(n);
+
+let period = '30d';
+function setPeriod(p,btn) {
+  period = p;
+  document.querySelectorAll('.period-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderKPIs();
+  renderProfit();
+}
+
+function counter(el,target,prefix='',ms=1200) {
+  let t0=null;
+  const step=ts=>{
+    if(!t0)t0=ts;
+    const p=Math.min((ts-t0)/ms,1),e=1-Math.pow(1-p,4);
+    el.textContent=prefix+fmt(Math.round(target*e));
+    if(p<1)requestAnimationFrame(step);
+    else el.textContent=prefix+fmt(target);
+  };
+  requestAnimationFrame(step);
+}
+
+function renderHeader() {
+  const upd=new Date(SHOPIFY.updated_at);
+  document.getElementById('updateTime').textContent=
+    upd.toLocaleString('tr-TR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+  const h=new Date().getHours();
+  const gr=h<12?'Günaydın':h<18?'İyi günler':'İyi akşamlar';
+  const words=[{t:gr+',',gold:false},{t:'Onur.',gold:true}];
+  document.getElementById('greeting').innerHTML=words.map((w,i)=>
+    `<span class="g-word${w.gold?' gold':''}" style="animation-delay:${.08+i*.18}s">${w.t}&nbsp;</span>`
+  ).join('');
+  document.getElementById('brandDate').textContent=
+    new Date().toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+}
+
+function initParallax() {
+  const o1=document.querySelector('.orb1'),o2=document.querySelector('.orb2');
+  let tx1=0,ty1=0,tx2=0,ty2=0,cx1=0,cy1=0,cx2=0,cy2=0;
+  document.addEventListener('mousemove',e=>{
+    const x=(e.clientX/window.innerWidth-.5)*2,y=(e.clientY/window.innerHeight-.5)*2;
+    tx1=x*24;ty1=y*18;tx2=-x*18;ty2=-y*14;
+  },{passive:true});
+  (function raf(){
+    cx1+=(tx1-cx1)*.06;cy1+=(ty1-cy1)*.06;
+    cx2+=(tx2-cx2)*.06;cy2+=(ty2-cy2)*.06;
+    o1.style.transform=`translate(${cx1}px,${cy1}px)`;
+    o2.style.transform=`translate(${cx2}px,${cy2}px)`;
+    requestAnimationFrame(raf);
+  })();
+}
+
+function renderKPIs() {
+  const d=SHOPIFY[`period_${period}`]||SHOPIFY.period_30d;
+  counter(document.getElementById('s-rev'),d.revenue,'₺');
+  counter(document.getElementById('s-ord'),d.orders);
+  counter(document.getElementById('s-aov'),d.aov,'₺');
+  counter(document.getElementById('s-cust'),SHOPIFY.customers_total);
+  const lbl={'30d':'Son 30 gün','90d':'Son 90 gün','year':'Son 12 ay'};
+  document.getElementById('s-rev-sub').textContent=lbl[period]+' toplam';
+  document.getElementById('s-ord-sub').textContent=d.orders+' sipariş tamamlandı';
+  document.getElementById('s-rev-delta').textContent=lbl[period];
+  const kdv=Math.round(d.revenue/6);
+  document.getElementById('s-kdv').textContent='₺'+fmt(kdv);
+  document.getElementById('s-kdv-sub').textContent=lbl[period]+' · gelirin 1/6\'sı';
+}
+
+function renderRevenueChart() {
+  const ctx=document.getElementById('revenueChart').getContext('2d');
+  const grad=ctx.createLinearGradient(0,0,0,240);
+  grad.addColorStop(0,'rgba(212,175,55,0.28)');
+  grad.addColorStop(1,'rgba(212,175,55,0)');
+  new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:SHOPIFY.monthly_labels,
+      datasets:[{
+        data:SHOPIFY.monthly_revenue,
+        borderColor:'#D4AF37',borderWidth:2,
+        fill:true,backgroundColor:grad,
+        tension:0.4,pointRadius:0,
+        pointHoverRadius:5,pointHoverBackgroundColor:'#D4AF37',
+        pointHoverBorderColor:'#0A0A0B',pointHoverBorderWidth:2
+      }]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          mode:'index',intersect:false,
+          callbacks:{label:ctx=>[`  Gelir: ${fmtTL(ctx.parsed.y)}`,`  Sipariş: ${SHOPIFY.monthly_orders[ctx.dataIndex]}`]},
+          backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,
+          titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:14,
+          titleFont:{family:'-apple-system',size:11},bodyFont:{family:'-apple-system',size:11}
+        }
+      },
+      scales:{
+        x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},
+        y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}
+      },
+      animation:{duration:1200,easing:'easeOutQuart'},
+      interaction:{mode:'index',intersect:false}
+    }
+  });
+}
+
+function renderOrders() {
+  document.getElementById('ordersBody').innerHTML=SHOPIFY.recent_orders.map(o=>
+    `<tr><td class="cd">${o.date}</td><td class="cg">${fmtTL(o.amount)}</td></tr>`
+  ).join('');
+}
+
+function renderChannels() {
+  const ch=SHOPIFY.channels;
+  const total=ch.reduce((s,c)=>s+c.orders,0);
+  document.getElementById('donutTotal').textContent=fmt(total);
+  new Chart(document.getElementById('channelDonut').getContext('2d'),{
+    type:'doughnut',
+    data:{
+      labels:ch.map(c=>c.name),
+      datasets:[{data:ch.map(c=>c.orders),backgroundColor:ch.map(c=>c.color+'BB'),borderColor:ch.map(c=>c.color),borderWidth:2,hoverOffset:6}]
+    },
+    options:{
+      responsive:true,maintainAspectRatio:false,cutout:'72%',
+      plugins:{
+        legend:{display:false},
+        tooltip:{
+          callbacks:{label:ctx=>` ${ctx.label}: ${ctx.parsed} sipariş (%${ch[ctx.dataIndex].order_pct})`},
+          backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,
+          titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,
+          bodyFont:{family:'-apple-system',size:11}
+        }
+      },
+      animation:{duration:1200,easing:'easeOutQuart'}
+    }
+  });
+  document.getElementById('channelLegend').innerHTML=ch.map(c=>
+    `<div class="leg"><div class="leg-dot" style="background:${c.color}"></div><span class="leg-name">${c.name}</span><span class="leg-pct">%${c.order_pct}</span></div>`
+  ).join('');
+  const maxOrd=ch[0].orders;
+  document.getElementById('channelCards').innerHTML=ch.map(c=>
+    `<div class="chi">
+      <div class="chi-head"><div class="chi-dot" style="background:${c.color}"></div><div class="chi-name">${c.name}</div><div class="chi-pct">%${c.order_pct}</div></div>
+      <div class="chi-track"><div class="chi-fill" data-w="${Math.round(c.orders/maxOrd*100)}" style="background:${c.color}"></div></div>
+      <div class="chi-meta"><span>${c.orders} sipariş</span><span>${fmtTL(c.rev)} \xb7 gelirin %${c.rev_pct}'i</span></div>
+    </div>`
+  ).join('');
+  setTimeout(()=>{document.querySelectorAll('.chi-fill').forEach(b=>{b.style.width=b.dataset.w+'%';});},400);
+}
+
+// ─── ÜRÜN MALİYETLERİ (localStorage'dan yüklenir, tabloda düzenlenebilir) ────
+function loadCamCosts(){
+  try{const s=localStorage.getItem('rcl_cam_costs');return s?JSON.parse(s):{};}
+  catch{return{};}
+}
+function saveCamCost(name,val){
+  const d=loadCamCosts();
+  if(val>0)d[name]=val; else delete d[name];
+  localStorage.setItem('rcl_cam_costs',JSON.stringify(d));
+}
+const CAMERA_COSTS=loadCamCosts();
+
+function updateCamTotals(){
+  const cams=SHOPIFY.cameras;
+  const costs=loadCamCosts();
+  const filled=cams.filter(c=>costs[c.name]>0);
+  const costTot=filled.reduce((s,c)=>s+costs[c.name],0);
+  const saleTot=filled.reduce((s,c)=>s+c.price,0);
+  document.getElementById('camCostTotal').textContent=costTot>0?fmtTL(costTot):'—';
+  const profEl=document.getElementById('camProfitTotal');
+  if(costTot>0){const p=saleTot-costTot;profEl.textContent=fmtTL(p);profEl.style.color=p>=0?'var(--green)':'var(--danger)';}
+  else{profEl.textContent='—';profEl.style.color='';}
+  cams.forEach(c=>{
+    const el=document.getElementById('kar-'+c.name.replace(/\W/g,'_'));
+    if(!el)return;
+    const cost=costs[c.name]||0;
+    if(cost>0){const k=c.price-cost;el.textContent=fmtTL(k);el.style.color=k>=0?'var(--green)':'var(--danger)';}
+    else{el.textContent='—';el.style.color='var(--t3)';}
+  });
+}
+
+function renderInventory() {
+  const cams=SHOPIFY.cameras,accs=SHOPIFY.accessories;
+  const camVal=cams.reduce((s,c)=>s+c.price,0);
+  const accVal=accs.reduce((s,a)=>s+a.price*a.qty,0);
+  const accQty=accs.reduce((s,a)=>s+a.qty,0);
+  counter(document.getElementById('inv-val'),camVal+accVal,'₺');
+  document.getElementById('inv-cam').textContent=cams.length;
+  document.getElementById('inv-acc').textContent=accQty;
+  document.getElementById('inv-oos').textContent=SHOPIFY.out_of_stock;
+  document.getElementById('camTitle').textContent=`Kameralar (${cams.length})`;
+  document.getElementById('accTitle').textContent=`Aksesuarlar (${accQty} adet)`;
+  const costs=loadCamCosts();
+  document.getElementById('camBody').innerHTML=cams.map((c,i)=>{
+    const cost=costs[c.name]||0;
+    const kar=cost>0?c.price-cost:null;
+    const safeId=c.name.replace(/\W/g,'_');
+    return `<tr>
+      <td class="cd">${i+1}</td>
+      <td style="color:var(--t1);font-size:0.72rem">${c.name}</td>
+      <td class="cg">${fmtTL(c.price)}</td>
+      <td><input class="cam-cost-input" type="number" placeholder="gir" value="${cost>0?cost:''}"
+        data-name="${c.name.replace(/"/g,'&quot;')}"
+        oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);updateCamTotals();renderProfit()"
+      ></td>
+      <td id="kar-${safeId}" style="font-family:var(--mono);color:${kar===null?'var(--t3)':kar>=0?'var(--green)':'var(--danger)'}">${kar===null?'—':fmtTL(kar)}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('camTotal').textContent=fmtTL(camVal);
+  updateCamTotals();
+  document.getElementById('accBody').innerHTML=accs.map((a,i)=>
+    `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${a.name}</td><td class="cd">${fmtTL(a.price)}</td><td class="cd" style="text-align:center">${a.qty}</td><td class="cg">${fmtTL(a.price*a.qty)}</td></tr>`
+  ).join('');
+  document.getElementById('accTotal').textContent=fmtTL(accVal);
+  const rev=SHOPIFY.monthly_revenue,lbl=SHOPIFY.monthly_labels;
+  document.getElementById('goalRevNote').textContent=fmtTL(rev[rev.length-1])+' / ₺80K — '+lbl[lbl.length-1];
+  document.getElementById('goalOosNote').textContent=SHOPIFY.out_of_stock+' varyant tükendi';
+}
+
+// ─── KÂRLIlık YAPILANDIRMASI ─────────────────────────────────────────────────
+const COST_DEFAULTS={kargo_tl:300,kutu_tl:100,iyzico_pct:2.35,shopify_pct:2.0};
+
+function loadCostCfg(){
+  try{const s=localStorage.getItem('rcl_cost_cfg');return s?{...COST_DEFAULTS,...JSON.parse(s)}:{...COST_DEFAULTS};}
+  catch{return{...COST_DEFAULTS};}
+}
+function saveCostCfg(){
+  localStorage.setItem('rcl_cost_cfg',JSON.stringify({
+    kargo_tl:parseFloat(document.getElementById('cfg-kargo').value)||0,
+    kutu_tl:parseFloat(document.getElementById('cfg-kutu').value)||0,
+    iyzico_pct:parseFloat(document.getElementById('cfg-iyzico').value)||0,
+    shopify_pct:parseFloat(document.getElementById('cfg-shopify').value)||0,
+  }));
+}
+function initCostCfg(){
+  const c=loadCostCfg();
+  document.getElementById('cfg-kargo').value=c.kargo_tl;
+  document.getElementById('cfg-kutu').value=c.kutu_tl;
+  document.getElementById('cfg-iyzico').value=c.iyzico_pct;
+  document.getElementById('cfg-shopify').value=c.shopify_pct;
+}
+
+function renderProfit(){
+  const cfg={
+    kargo_tl:parseFloat(document.getElementById('cfg-kargo').value)||0,
+    kutu_tl:parseFloat(document.getElementById('cfg-kutu').value)||0,
+    iyzico_pct:parseFloat(document.getElementById('cfg-iyzico').value)||0,
+    shopify_pct:parseFloat(document.getElementById('cfg-shopify').value)||0,
+  };
+  const d=SHOPIFY[`period_${period}`]||SHOPIFY.period_30d;
+  const rev=d.revenue, orders=d.orders;
+  const periodLbl={'30d':'Son 30 gün','90d':'Son 90 gün','year':'Son 12 ay'};
+  document.getElementById('profit-period-lbl').textContent=periodLbl[period]+' · '+orders+' sipariş';
+
+  const kdv        = Math.round(rev/6);
+  const iyzico     = Math.round(rev*cfg.iyzico_pct/100);
+  const shopifyFee = Math.round(rev*cfg.shopify_pct/100);
+  const kargo      = orders*cfg.kargo_tl;
+  const kutu       = orders*cfg.kutu_tl;
+
+  // COGS: girilen kamera maliyetlerinin ortalaması × sipariş sayısı
+  const camCosts=loadCamCosts();
+  const camEntries=Object.values(camCosts).filter(v=>v>0);
+  const avgCamCost=camEntries.length>0?Math.round(camEntries.reduce((s,v)=>s+v,0)/camEntries.length):0;
+  const cogs=avgCamCost*orders;
+  const cogsLbl=avgCamCost>0?`Ürün Maliyeti (ort. ₺${fmt(avgCamCost)} × ${orders})`:'Ürün Maliyeti (maliyet girilmedi)';
+
+  const totalCost  = kdv+iyzico+shopifyFee+kargo+kutu+cogs;
+  const net        = rev-totalCost;
+  const margin     = rev>0?(net/rev*100).toFixed(1):0;
+
+  const rows=[
+    {lbl:'Brüt Gelir',                              val:rev,         color:'var(--gold)',   sign:'+'},
+    {lbl:'KDV %20 (dahil)',                          val:-kdv,        color:'var(--danger)', sign:'-'},
+    {lbl:`Iyzico %${cfg.iyzico_pct}`,                val:-iyzico,     color:'var(--warn)',   sign:'-'},
+    {lbl:`Shopify %${cfg.shopify_pct}`,              val:-shopifyFee, color:'var(--warn)',   sign:'-'},
+    {lbl:`Kargo (${orders} × ₺${cfg.kargo_tl})`,    val:-kargo,      color:'var(--t2)',     sign:'-'},
+    {lbl:`Kutu (${orders} × ₺${cfg.kutu_tl})`,      val:-kutu,       color:'var(--t2)',     sign:'-'},
+    {lbl:cogsLbl,                                    val:-cogs,       color:avgCamCost>0?'var(--purple)':'var(--t3)', sign:'-'},
+  ];
+
+  document.getElementById('profit-breakdown').innerHTML=rows.map((r,i)=>
+    `<div class="profit-row${i===rows.length-1?' profit-total':''}">
+      <span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${r.lbl}</span>
+      <span style="font-family:var(--mono);font-size:0.82rem;font-weight:600;color:${r.color}">${r.sign}₺${fmt(Math.abs(r.val))}</span>
+    </div>`
+  ).join('')+
+  `<div class="profit-row profit-total">
+    <span style="font-size:0.72rem;color:var(--t1);font-family:var(--mono);font-weight:600">Net Kâr</span>
+    <span style="font-family:var(--mono);font-size:0.9rem;font-weight:700;color:${net>=0?'var(--green)':'var(--danger)'}">${net>=0?'+':'-'}₺${fmt(Math.abs(net))}</span>
+  </div>`;
+
+  const netEl=document.getElementById('profit-net');
+  netEl.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));
+  netEl.style.color=net>=0?'var(--green)':'var(--danger)';
+  const margEl=document.getElementById('profit-margin');
+  margEl.textContent='%'+margin;
+  margEl.style.color=margin>=30?'var(--green)':margin>=15?'var(--warn)':'var(--danger)';
+  document.getElementById('profit-note').textContent='₺'+fmt(totalCost)+' toplam maliyet';
+
+  const pills=[
+    {lbl:'KDV',val:kdv,c:'var(--danger)'},
+    {lbl:'Iyzico',val:iyzico,c:'var(--warn)'},
+    {lbl:'Shopify',val:shopifyFee,c:'var(--warn)'},
+    {lbl:'Kargo',val:kargo,c:'var(--t2)'},
+    {lbl:'Kutu',val:kutu,c:'var(--t2)'},
+    {lbl:'Ürün',val:cogs,c:avgCamCost>0?'var(--purple)':'var(--t3)'},
+  ];
+  document.getElementById('profit-cost-summary').innerHTML=pills.map(p=>
+    `<div style="padding:6px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07)">
+      <div style="font-size:0.59rem;font-family:var(--mono);color:var(--t3);letter-spacing:0.1em;text-transform:uppercase">${p.lbl}</div>
+      <div style="font-size:0.82rem;font-family:var(--mono);font-weight:600;color:${p.c};margin-top:2px">₺${fmt(p.val)}</div>
+    </div>`
+  ).join('');
+}
+
+function renderYouTube() {
+  const ch=YOUTUBE.channel,goal=YOUTUBE.sub_goal||10000;
+  const pct=Math.min(Math.round(ch.subscribers/goal*100),100);
+  counter(document.getElementById('yt-subs'),ch.subscribers);
+  counter(document.getElementById('yt-views'),ch.total_views);
+  document.getElementById('yt-vids-sub').textContent=fmt(ch.video_count)+' video · tüm zamanlar';
+  document.getElementById('yt-sub-pct-label').textContent='%'+pct+' tamamlandı';
+  setTimeout(()=>{
+    document.getElementById('yt-sub-bar').style.width=pct+'%';
+    document.getElementById('goalYT').style.width=pct+'%';
+  },500);
+  const an=YOUTUBE.analytics;
+  // Watch hours 4000 saat hedefi
+  if(an&&an.watch_hours_year!=null){
+    const wh=an.watch_hours_year,whGoal=4000;
+    const whPct=Math.min(Math.round(wh/whGoal*100),100);
+    counter(document.getElementById('yt-watch-hrs'),wh);
+    document.getElementById('yt-watch-pct-label').textContent='%'+whPct+' tamamlandı';
+    setTimeout(()=>{document.getElementById('yt-watch-bar').style.width=whPct+'%';},500);
+  } else {
+    document.getElementById('yt-watch-hrs').textContent='—';
+    document.getElementById('yt-watch-pct-label').textContent='Veri bekleniyor';
+  }
+  if(an&&an.last_30d){
+    counter(document.getElementById('yt-30d-views'),an.last_30d.views);
+    document.getElementById('yt-30d-sub').textContent=fmt(an.last_30d.subs_gained)+' yeni abone · '+fmt(an.last_30d.watch_hours)+' saat';
+    if(an.monthly&&an.monthly.length){
+      document.getElementById('yt-chart-sub').textContent='Aylık izlenme — son 6 ay';
+      const views=an.monthly.map(m=>m.views),maxV=Math.max(...views);
+      new Chart(document.getElementById('ytViewsChart').getContext('2d'),{
+        type:'bar',
+        data:{labels:an.monthly.map(m=>m.label),datasets:[{data:views,backgroundColor:views.map(v=>v===maxV?'rgba(255,69,58,0.85)':'rgba(255,69,58,0.2)'),borderColor:views.map(v=>v===maxV?'#FF453A':'rgba(255,69,58,0.4)'),borderWidth:1,borderRadius:6}]},
+        options:{
+          responsive:true,maintainAspectRatio:false,
+          plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>['  İzlenme: '+fmt(ctx.parsed.y),'  Yeni abone: '+fmt(an.monthly[ctx.dataIndex].subs_gained)]},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,69,58,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},
+          scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?fmt(v/1000)+'K':v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},
+          animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*60}
+        }
+      });
+    }
+  } else {
+    document.getElementById('yt-30d-views').textContent='—';
+    document.getElementById('yt-30d-sub').textContent='Analytics API bekleniyor';
+  }
+  document.getElementById('ytVideosBody').innerHTML=YOUTUBE.videos.map(v=>
+    `<tr><td class="cd" style="white-space:nowrap">${v.date}</td><td class="vt"><a href="${v.url}" target="_blank" title="${v.title}">${v.title}</a></td><td class="cg">${fmt(v.views)}</td><td class="cd">${fmt(v.likes)}</td></tr>`
+  ).join('');
+}
+
+function renderInstagram() {
+  const ig = INSTAGRAM;
+  const goal = ig.follower_goal || 10000;
+  const pct  = Math.min(Math.round(ig.followers / goal * 100), 100);
+  counter(document.getElementById('ig-followers'), ig.followers);
+  counter(document.getElementById('ig-posts'), ig.media_count);
+  counter(document.getElementById('ig-avg-likes'), ig.avg_likes);
+  counter(document.getElementById('ig-engagement'), ig.total_engagement);
+  document.getElementById('ig-followers-pct').textContent = '%' + pct + ' tamamlandı';
+  document.getElementById('ig-posts-sub').textContent = fmt(ig.media_count) + ' gönderi · tüm zamanlar';
+  setTimeout(() => { document.getElementById('ig-followers-bar').style.width = pct + '%'; }, 500);
+
+  const types = ig.type_counts || {};
+  const total = Object.values(types).reduce((s,v) => s + v, 0);
+  const typeNames = {'CAROUSEL_ALBUM':'Carousel / Albüm','VIDEO':'Video / Reel','IMAGE':'Fotoğraf'};
+  document.getElementById('ig-type-sub').textContent = `Son ${total} gönderi · içerik türü dağılımı`;
+  document.getElementById('ig-type-bars').innerHTML = Object.entries(types).map(([k,v]) => {
+    const p = Math.round(v / total * 100);
+    return `<div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:5px">
+        <span style="font-size:0.7rem;color:var(--t2);font-family:var(--mono)">${typeNames[k]||k}</span>
+        <span style="font-size:0.7rem;color:var(--t3);font-family:var(--mono)">${v} gönderi · %${p}</span>
+      </div>
+      <div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden">
+        <div data-ig-w="${p}" style="height:100%;background:var(--purple);border-radius:2px;width:0;transition:width 1.4s cubic-bezier(.16,1,.3,1)"></div>
+      </div>
+    </div>`;
+  }).join('');
+  setTimeout(() => {
+    document.querySelectorAll('[data-ig-w]').forEach(b => { b.style.width = b.dataset.igW + '%'; });
+  }, 600);
+
+  const typeIcon = {'CAROUSEL_ALBUM':'🖼','VIDEO':'🎬','IMAGE':'📷'};
+  document.getElementById('igPostsBody').innerHTML = ig.posts.map(p =>
+    `<tr>
+      <td class="cd" style="white-space:nowrap">${p.date}</td>
+      <td class="cd" style="font-size:0.72rem">${typeIcon[p.type]||p.type}</td>
+      <td class="cg">${fmt(p.likes)}</td>
+      <td><a href="${p.url}" target="_blank" style="color:var(--purple);text-decoration:none;font-family:var(--mono);font-size:0.72rem">${p.comments} ↗</a></td>
+    </tr>`
+  ).join('');
+}
+
+function initFade() {
+  const obs=new IntersectionObserver(
+    entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis');}),
+    {threshold:0.04}
+  );
+  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+}
+
+function initTopbar() {
+  const tb=document.getElementById('topbar');
+  window.addEventListener('scroll',()=>{tb.classList.toggle('scrolled',window.scrollY>20);},{passive:true});
+}
+
+renderHeader();
+renderKPIs();
+renderRevenueChart();
+renderOrders();
+renderChannels();
+renderInventory();
+renderYouTube();
+renderInstagram();
+initCostCfg();
+renderProfit();
+initFade();
+initTopbar();
+initParallax();
+</script>
+</body>
+</html>

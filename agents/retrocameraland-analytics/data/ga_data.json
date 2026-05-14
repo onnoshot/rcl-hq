@@ -1,0 +1,696 @@
+{
+  "updated_at": "2026-05-13T09:00:13.171866",
+  "property_id": "493627571",
+  "period_7d": {
+    "sessions": 1042,
+    "activeUsers": 888,
+    "newUsers": 854,
+    "screenPageViews": 5786,
+    "bounceRate": 0.1392,
+    "averageSessionDuration": 151.7
+  },
+  "period_30d": {
+    "sessions": 5066,
+    "activeUsers": 4226,
+    "newUsers": 4134,
+    "screenPageViews": 28329,
+    "bounceRate": 0.124,
+    "averageSessionDuration": 128.3
+  },
+  "period_90d": {
+    "sessions": 22770,
+    "activeUsers": 19246,
+    "newUsers": 19211,
+    "screenPageViews": 113784,
+    "bounceRate": 0.1567,
+    "averageSessionDuration": 101.7
+  },
+  "daily": [
+    {
+      "date": "20260213",
+      "sessions": 167,
+      "users": 151
+    },
+    {
+      "date": "20260214",
+      "sessions": 160,
+      "users": 150
+    },
+    {
+      "date": "20260215",
+      "sessions": 203,
+      "users": 193
+    },
+    {
+      "date": "20260216",
+      "sessions": 167,
+      "users": 159
+    },
+    {
+      "date": "20260217",
+      "sessions": 127,
+      "users": 117
+    },
+    {
+      "date": "20260218",
+      "sessions": 125,
+      "users": 116
+    },
+    {
+      "date": "20260219",
+      "sessions": 439,
+      "users": 414
+    },
+    {
+      "date": "20260220",
+      "sessions": 423,
+      "users": 397
+    },
+    {
+      "date": "20260221",
+      "sessions": 476,
+      "users": 448
+    },
+    {
+      "date": "20260222",
+      "sessions": 521,
+      "users": 492
+    },
+    {
+      "date": "20260223",
+      "sessions": 409,
+      "users": 382
+    },
+    {
+      "date": "20260224",
+      "sessions": 223,
+      "users": 204
+    },
+    {
+      "date": "20260225",
+      "sessions": 240,
+      "users": 222
+    },
+    {
+      "date": "20260226",
+      "sessions": 237,
+      "users": 219
+    },
+    {
+      "date": "20260227",
+      "sessions": 246,
+      "users": 231
+    },
+    {
+      "date": "20260228",
+      "sessions": 309,
+      "users": 279
+    },
+    {
+      "date": "20260301",
+      "sessions": 349,
+      "users": 312
+    },
+    {
+      "date": "20260302",
+      "sessions": 263,
+      "users": 236
+    },
+    {
+      "date": "20260303",
+      "sessions": 234,
+      "users": 214
+    },
+    {
+      "date": "20260304",
+      "sessions": 201,
+      "users": 181
+    },
+    {
+      "date": "20260305",
+      "sessions": 211,
+      "users": 195
+    },
+    {
+      "date": "20260306",
+      "sessions": 372,
+      "users": 351
+    },
+    {
+      "date": "20260307",
+      "sessions": 417,
+      "users": 388
+    },
+    {
+      "date": "20260308",
+      "sessions": 284,
+      "users": 261
+    },
+    {
+      "date": "20260309",
+      "sessions": 207,
+      "users": 191
+    },
+    {
+      "date": "20260310",
+      "sessions": 236,
+      "users": 213
+    },
+    {
+      "date": "20260311",
+      "sessions": 160,
+      "users": 150
+    },
+    {
+      "date": "20260312",
+      "sessions": 210,
+      "users": 198
+    },
+    {
+      "date": "20260313",
+      "sessions": 174,
+      "users": 167
+    },
+    {
+      "date": "20260314",
+      "sessions": 190,
+      "users": 179
+    },
+    {
+      "date": "20260315",
+      "sessions": 223,
+      "users": 203
+    },
+    {
+      "date": "20260316",
+      "sessions": 204,
+      "users": 194
+    },
+    {
+      "date": "20260317",
+      "sessions": 208,
+      "users": 196
+    },
+    {
+      "date": "20260318",
+      "sessions": 189,
+      "users": 179
+    },
+    {
+      "date": "20260319",
+      "sessions": 224,
+      "users": 201
+    },
+    {
+      "date": "20260320",
+      "sessions": 276,
+      "users": 254
+    },
+    {
+      "date": "20260321",
+      "sessions": 299,
+      "users": 283
+    },
+    {
+      "date": "20260322",
+      "sessions": 345,
+      "users": 317
+    },
+    {
+      "date": "20260323",
+      "sessions": 229,
+      "users": 216
+    },
+    {
+      "date": "20260324",
+      "sessions": 269,
+      "users": 253
+    },
+    {
+      "date": "20260325",
+      "sessions": 251,
+      "users": 231
+    },
+    {
+      "date": "20260326",
+      "sessions": 357,
+      "users": 329
+    },
+    {
+      "date": "20260327",
+      "sessions": 343,
+      "users": 313
+    },
+    {
+      "date": "20260328",
+      "sessions": 334,
+      "users": 305
+    },
+    {
+      "date": "20260329",
+      "sessions": 898,
+      "users": 839
+    },
+    {
+      "date": "20260330",
+      "sessions": 824,
+      "users": 767
+    },
+    {
+      "date": "20260331",
+      "sessions": 699,
+      "users": 663
+    },
+    {
+      "date": "20260401",
+      "sessions": 770,
+      "users": 709
+    },
+    {
+      "date": "20260402",
+      "sessions": 328,
+      "users": 307
+    },
+    {
+      "date": "20260403",
+      "sessions": 263,
+      "users": 242
+    },
+    {
+      "date": "20260404",
+      "sessions": 333,
+      "users": 301
+    },
+    {
+      "date": "20260405",
+      "sessions": 336,
+      "users": 319
+    },
+    {
+      "date": "20260406",
+      "sessions": 229,
+      "users": 201
+    },
+    {
+      "date": "20260407",
+      "sessions": 188,
+      "users": 173
+    },
+    {
+      "date": "20260408",
+      "sessions": 130,
+      "users": 123
+    },
+    {
+      "date": "20260409",
+      "sessions": 152,
+      "users": 139
+    },
+    {
+      "date": "20260410",
+      "sessions": 179,
+      "users": 162
+    },
+    {
+      "date": "20260411",
+      "sessions": 160,
+      "users": 149
+    },
+    {
+      "date": "20260412",
+      "sessions": 167,
+      "users": 153
+    },
+    {
+      "date": "20260413",
+      "sessions": 145,
+      "users": 135
+    },
+    {
+      "date": "20260414",
+      "sessions": 134,
+      "users": 128
+    },
+    {
+      "date": "20260415",
+      "sessions": 119,
+      "users": 112
+    },
+    {
+      "date": "20260416",
+      "sessions": 142,
+      "users": 131
+    },
+    {
+      "date": "20260417",
+      "sessions": 135,
+      "users": 125
+    },
+    {
+      "date": "20260418",
+      "sessions": 177,
+      "users": 164
+    },
+    {
+      "date": "20260419",
+      "sessions": 195,
+      "users": 184
+    },
+    {
+      "date": "20260420",
+      "sessions": 142,
+      "users": 126
+    },
+    {
+      "date": "20260421",
+      "sessions": 130,
+      "users": 114
+    },
+    {
+      "date": "20260422",
+      "sessions": 124,
+      "users": 112
+    },
+    {
+      "date": "20260423",
+      "sessions": 174,
+      "users": 158
+    },
+    {
+      "date": "20260424",
+      "sessions": 158,
+      "users": 134
+    },
+    {
+      "date": "20260425",
+      "sessions": 200,
+      "users": 181
+    },
+    {
+      "date": "20260426",
+      "sessions": 205,
+      "users": 192
+    },
+    {
+      "date": "20260427",
+      "sessions": 170,
+      "users": 159
+    },
+    {
+      "date": "20260428",
+      "sessions": 121,
+      "users": 110
+    },
+    {
+      "date": "20260429",
+      "sessions": 186,
+      "users": 170
+    },
+    {
+      "date": "20260430",
+      "sessions": 234,
+      "users": 222
+    },
+    {
+      "date": "20260501",
+      "sessions": 259,
+      "users": 235
+    },
+    {
+      "date": "20260502",
+      "sessions": 181,
+      "users": 168
+    },
+    {
+      "date": "20260503",
+      "sessions": 236,
+      "users": 212
+    },
+    {
+      "date": "20260504",
+      "sessions": 240,
+      "users": 230
+    },
+    {
+      "date": "20260505",
+      "sessions": 162,
+      "users": 143
+    },
+    {
+      "date": "20260506",
+      "sessions": 132,
+      "users": 124
+    },
+    {
+      "date": "20260507",
+      "sessions": 137,
+      "users": 130
+    },
+    {
+      "date": "20260508",
+      "sessions": 177,
+      "users": 150
+    },
+    {
+      "date": "20260509",
+      "sessions": 138,
+      "users": 120
+    },
+    {
+      "date": "20260510",
+      "sessions": 180,
+      "users": 160
+    },
+    {
+      "date": "20260511",
+      "sessions": 195,
+      "users": 174
+    },
+    {
+      "date": "20260512",
+      "sessions": 192,
+      "users": 175
+    },
+    {
+      "date": "20260513",
+      "sessions": 24,
+      "users": 20
+    }
+  ],
+  "sources": [
+    {
+      "name": "Organic Social",
+      "sessions": 1555,
+      "pct": 31.1
+    },
+    {
+      "name": "Organic Search",
+      "sessions": 1470,
+      "pct": 29.4
+    },
+    {
+      "name": "Direct",
+      "sessions": 863,
+      "pct": 17.3
+    },
+    {
+      "name": "Organic Video",
+      "sessions": 446,
+      "pct": 8.9
+    },
+    {
+      "name": "Unassigned",
+      "sessions": 343,
+      "pct": 6.9
+    },
+    {
+      "name": "Cross-network",
+      "sessions": 149,
+      "pct": 3.0
+    },
+    {
+      "name": "Organic Shopping",
+      "sessions": 82,
+      "pct": 1.6
+    },
+    {
+      "name": "Referral",
+      "sessions": 57,
+      "pct": 1.1
+    },
+    {
+      "name": "Paid Search",
+      "sessions": 33,
+      "pct": 0.7
+    },
+    {
+      "name": "Email",
+      "sessions": 4,
+      "pct": 0.1
+    }
+  ],
+  "top_pages": [
+    {
+      "path": "/",
+      "sessions": 2396,
+      "pageviews": 5613,
+      "bounceRate": 5.6,
+      "avgDuration": 56
+    },
+    {
+      "path": "/collections/dijital-fotograf-makinesi",
+      "sessions": 1773,
+      "pageviews": 8523,
+      "bounceRate": 2.1,
+      "avgDuration": 98
+    },
+    {
+      "path": "/pages/links",
+      "sessions": 1098,
+      "pageviews": 2460,
+      "bounceRate": 1.0,
+      "avgDuration": 21
+    },
+    {
+      "path": "/products/canon-powershot-sd400",
+      "sessions": 206,
+      "pageviews": 527,
+      "bounceRate": 1.5,
+      "avgDuration": 61
+    },
+    {
+      "path": "/en/pages/links",
+      "sessions": 175,
+      "pageviews": 366,
+      "bounceRate": 3.4,
+      "avgDuration": 35
+    },
+    {
+      "path": "/en",
+      "sessions": 146,
+      "pageviews": 319,
+      "bounceRate": 13.7,
+      "avgDuration": 40
+    },
+    {
+      "path": "/products/sony-cyber-shot-dsc-tx9",
+      "sessions": 136,
+      "pageviews": 301,
+      "bounceRate": 5.1,
+      "avgDuration": 104
+    },
+    {
+      "path": "/products/canon-ixus-160",
+      "sessions": 134,
+      "pageviews": 305,
+      "bounceRate": 4.5,
+      "avgDuration": 52
+    },
+    {
+      "path": "/products/sony-cyber-shot-dsc-t9",
+      "sessions": 132,
+      "pageviews": 287,
+      "bounceRate": 12.9,
+      "avgDuration": 37
+    },
+    {
+      "path": "/products/fujifilm-finepix-t200",
+      "sessions": 130,
+      "pageviews": 324,
+      "bounceRate": 3.8,
+      "avgDuration": 114
+    },
+    {
+      "path": "/products/sony-cybershot-dsc-s85",
+      "sessions": 129,
+      "pageviews": 325,
+      "bounceRate": 5.4,
+      "avgDuration": 95
+    },
+    {
+      "path": "/en/collections/dijital-fotograf-makinesi",
+      "sessions": 103,
+      "pageviews": 499,
+      "bounceRate": 2.9,
+      "avgDuration": 194
+    },
+    {
+      "path": "/products/samsung-es65",
+      "sessions": 103,
+      "pageviews": 237,
+      "bounceRate": 4.9,
+      "avgDuration": 60
+    },
+    {
+      "path": "/search",
+      "sessions": 102,
+      "pageviews": 434,
+      "bounceRate": 1.0,
+      "avgDuration": 79
+    },
+    {
+      "path": "/products/olympus-sz-10",
+      "sessions": 99,
+      "pageviews": 253,
+      "bounceRate": 4.0,
+      "avgDuration": 89
+    }
+  ],
+  "devices": {
+    "mobile": {
+      "sessions": 3823,
+      "pct": 75.7
+    },
+    "desktop": {
+      "sessions": 1139,
+      "pct": 22.5
+    },
+    "tablet": {
+      "sessions": 89,
+      "pct": 1.8
+    }
+  },
+  "countries": [
+    {
+      "name": "Türkiye",
+      "sessions": 3894
+    },
+    {
+      "name": "Singapore",
+      "sessions": 301
+    },
+    {
+      "name": "United States",
+      "sessions": 180
+    },
+    {
+      "name": "United Kingdom",
+      "sessions": 54
+    },
+    {
+      "name": "India",
+      "sessions": 44
+    },
+    {
+      "name": "Germany",
+      "sessions": 42
+    },
+    {
+      "name": "Netherlands",
+      "sessions": 31
+    },
+    {
+      "name": "Italy",
+      "sessions": 26
+    },
+    {
+      "name": "Philippines",
+      "sessions": 23
+    },
+    {
+      "name": "China",
+      "sessions": 22
+    }
+  ],
+  "ai_insights": ""
+}

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.retrocameraland.instagram.hourly</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Library/Frameworks/Python.framework/Versions/3.14/bin/python3</string>
+        <string>/Users/onnoshot/Downloads/Agentlar/retrocameraland-instagram-fetch.py</string>
+    </array>
+
+    <key>StartInterval</key>
+    <integer>3600</integer>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/onnoshot/Downloads/Agentlar/outputs/instagram-fetch-stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/onnoshot/Downloads/Agentlar/outputs/instagram-fetch-stderr.log</string>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/onnoshot/Downloads/Agentlar</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/onnoshot</string>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin:/Users/onnoshot/.local/bin</string>
+    </dict>
+</dict>
+</plist>

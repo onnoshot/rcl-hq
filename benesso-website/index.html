@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Benesso Coffee — Balat'ta 3. Nesil Özel Kahve Deneyimi. İstanbul'un karakterli semtinden dünyaca ünlü single-origin kahveler, workshop'lar ve origin trip fırsatları." />
+  <meta name="keywords" content="specialty coffee, özel kahve, single origin, Balat kahve, İstanbul kahve, 3. nesil kahve, nitelikli kahve, workshop kahve, filtre kahve, espresso" />
+  <meta name="author" content="Benesso Coffee" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#D4621A" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.benessocoffee.com/" />
+  <meta property="og:title" content="Benesso Coffee — Balat'ta 3. Nesil Özel Kahve" />
+  <meta property="og:description" content="Dünyanın en iyi kahve üreticilerinden, en doğal işlemeyle gelen single-origin kahveler. İstanbul Balat'ta kurumsal kahve kültürü." />
+  <meta property="og:image" content="https://www.benessocoffee.com/images/og-cover.jpg" />
+  <meta property="og:locale" content="tr_TR" />
+  <meta property="og:site_name" content="Benesso Coffee" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Benesso Coffee — Balat'ta 3. Nesil Özel Kahve" />
+  <meta name="twitter:description" content="Dünyanın en iyi kahvelerini İstanbul'dan keşfedin." />
+  <meta name="twitter:image" content="https://www.benessocoffee.com/images/og-cover.jpg" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.benessocoffee.com/" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.benessocoffee.com/#organization",
+        "name": "Benesso Coffee",
+        "legalName": "Bima Kahve Sanayi ve Dış Ticaret Limited Şirketi",
+        "url": "https://www.benessocoffee.com",
+        "logo": "https://www.benessocoffee.com/images/logo.svg",
+        "email": "info@benessocoffee.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Yavuz Sultan Selim Mah. Kara Sarıklı Sk. No: 3/A",
+          "addressLocality": "Fatih",
+          "addressRegion": "İstanbul",
+          "postalCode": "34087",
+          "addressCountry": "TR"
+        },
+        "sameAs": [
+          "https://www.instagram.com/benessocoffee"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.benessocoffee.com/#website",
+        "url": "https://www.benessocoffee.com",
+        "name": "Benesso Coffee",
+        "publisher": { "@id": "https://www.benessocoffee.com/#organization" },
+        "inLanguage": "tr-TR",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://www.benessocoffee.com/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Store",
+        "name": "Benesso Coffee",
+        "description": "Balat'ta 3. Nesil Özel Kahve Deneyimi",
+        "url": "https://www.benessocoffee.com",
+        "priceRange": "₺₺",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Yavuz Sultan Selim Mah. Kara Sarıklı Sk. No: 3/A",
+          "addressLocality": "Fatih",
+          "addressRegion": "İstanbul",
+          "postalCode": "34087",
+          "addressCountry": "TR"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <title>Benesso Coffee — Balat'ta 3. Nesil Özel Kahve Deneyimi</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       ANNOUNCEMENT BAR
+  ═══════════════════════════════════════════════ -->
+  <div class="announcement-bar" role="banner">
+    <p>Türkiye geneli kargo — 500₺ üzeri <strong>ücretsiz</strong> &nbsp;·&nbsp; Yeni Hasat: <a href="#products">Guji Washed Ethiopia →</a></p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       HEADER / NAV
+  ═══════════════════════════════════════════════ -->
+  <header class="site-header" id="site-header" role="banner">
+    <nav class="nav-container" aria-label="Ana Navigasyon">
+
+      <button class="nav-hamburger" id="hamburgerBtn" aria-label="Menüyü aç" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <a href="/" class="nav-logo" aria-label="Benesso Coffee Ana Sayfa">
+        <!-- SVG Logo inline (brand orange) -->
+        <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="44" height="44" rx="8" fill="#D4621A"/>
+          <path d="M10 32 C10 20 18 12 22 12 C26 12 34 20 34 32" stroke="#FFF8F0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <ellipse cx="22" cy="30" rx="8" ry="4" fill="#FFF8F0" opacity="0.2"/>
+          <path d="M16 22 Q22 17 28 22" stroke="#FFF8F0" stroke-width="2" stroke-linecap="round" fill="none"/>
+          <path d="M14 27 Q22 21 30 27" stroke="#FFF8F0" stroke-width="2" stroke-linecap="round" fill="none"/>
+        </svg>
+        <span class="nav-logo-text">BENESSO<br/><small>COFFEE</small></span>
+      </a>
+
+      <ul class="nav-links" id="navMenu" role="list">
+        <li><a href="#products" class="nav-link has-dropdown" aria-haspopup="true">
+          Kahveler
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <ul class="dropdown" role="list">
+            <li><a href="#products">Nitelikli-Yöresel</a></li>
+            <li><a href="#classics">Klasikler</a></li>
+            <li><a href="#tasting-sets">Tadım Setleri</a></li>
+            <li><a href="#toptan">Toptan Satış</a></li>
+          </ul>
+        </a></li>
+        <li><a href="#workshop" class="nav-link">Workshop</a></li>
+        <li><a href="#origin" class="nav-link">Origin Trip</a></li>
+        <li><a href="#toptan" class="nav-link">Toptan Satış</a></li>
+        <li><a href="#blog" class="nav-link">Coffee Blog</a></li>
+        <li><a href="#about" class="nav-link">Hakkımızda</a></li>
+        <li><a href="#contact" class="nav-link">İletişim</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-icon-btn" aria-label="Dil: Türkçe">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.3"/><path d="M8 1v14M1 8h14M2.5 4h11M2.5 12h11" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+          TR
+        </button>
+        <button class="nav-icon-btn" aria-label="Arama">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="1.5"/><path d="M12.5 12.5L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <button class="nav-icon-btn" aria-label="Hesabım">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="6" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M2 16c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+        <button class="nav-icon-btn nav-cart-btn" aria-label="Sepet (0 ürün)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 2h2l2.5 9h7l2-6H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="14.5" r="1" fill="currentColor"/><circle cx="13" cy="14.5" r="1" fill="currentColor"/></svg>
+          <span class="cart-badge" aria-hidden="true">0</span>
+        </button>
+      </div>
+
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ═══════════════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════════════ -->
+    <section class="hero" aria-labelledby="hero-headline">
+      <div class="hero-media">
+        <!-- Gradient overlay for video/image -->
+        <div class="hero-overlay" aria-hidden="true"></div>
+        <!-- Placeholder: Replace src with actual video/image -->
+        <div class="hero-bg-placeholder" aria-hidden="true">
+          <svg class="hero-grain" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+            <rect width="100%" height="100%" filter="url(#grain)" opacity="0.08"/>
+          </svg>
+          <!-- Decorative coffee pattern -->
+          <div class="hero-pattern" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <div class="hero-content container">
+        <div class="hero-eyebrow animate-up">Balat · İstanbul · Est. 2018</div>
+        <h1 class="hero-headline animate-up" id="hero-headline">
+          Nitelikli Kahve,<br/>
+          <em>Gerçek Deneyim</em>
+        </h1>
+        <p class="hero-sub animate-up">Dünyanın en iyi kahve üreticilerinden, en doğal işlemeyle gelen<br class="d-none-mobile"/> single-origin kahveleri İstanbul'dan keşfedin.</p>
+        <div class="hero-ctas animate-up">
+          <a href="#products" class="btn btn-primary">Kahveleri Keşfet</a>
+          <a href="#about" class="btn btn-ghost">Hikayemiz</a>
+        </div>
+        <div class="hero-stats animate-up" aria-label="İstatistikler">
+          <div class="stat"><strong>12+</strong><span>Köken Ülke</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat"><strong>3. Nesil</strong><span>Kavurma Deneyimi</span></div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat"><strong>%100</strong><span>Etik Tedarik</span></div>
+        </div>
+      </div>
+
+      <a href="#products" class="hero-scroll-cta" aria-label="Aşağı kaydır">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </a>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         TRUST BAR
+    ═══════════════════════════════════════════════ -->
+    <div class="trust-bar" aria-label="Öne çıkan özellikler">
+      <div class="container trust-grid">
+        <div class="trust-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3C7 3 3 7 3 12s4 9 9 9 9-4 9-9-4-9-9-9z" stroke="#D4621A" stroke-width="1.5"/><path d="M8 12l3 3 5-5" stroke="#D4621A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Etik &amp; Sürdürülebilir Tedarik</span>
+        </div>
+        <div class="trust-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2" stroke="#D4621A" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#D4621A" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <span>Sipariş Gününde Kavrulan Taze Kahve</span>
+        </div>
+        <div class="trust-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m0 0v-5h4v5m0 0h3a1 1 0 001-1V10" stroke="#D4621A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>500₺ Üzeri Ücretsiz Kargo</span>
+        </div>
+        <div class="trust-item">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4.5 12.5l5 5 10-10" stroke="#D4621A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>SCA Sertifikalı Baristalar</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         FEATURED PRODUCTS — NİTELİKLİ-YÖRESEL
+    ═══════════════════════════════════════════════ -->
+    <section class="section products-section" id="products" aria-labelledby="products-heading">
+      <div class="container">
+        <header class="section-header">
+          <div class="section-eyebrow">Koleksiyonumuz</div>
+          <h2 class="section-title" id="products-heading">Nitelikli-Yöresel Kahvelerimiz</h2>
+          <p class="section-sub">Her çekirdek, kökeni ve işleme yöntemini yansıtan özgün bir hikaye taşır.</p>
+        </header>
+
+        <div class="products-grid" role="list">
+
+          <!-- Product 1 -->
+          <article class="product-card" role="listitem" itemscope itemtype="https://schema.org/Product">
+            <a href="#product-tasting-set" class="product-card-link" tabindex="0">
+              <div class="product-card-image">
+                <div class="product-badge">Yeni</div>
+                <div class="product-img-placeholder p-purple" aria-hidden="true">
+                  <div class="product-icon">⚗️</div>
+                  <div class="product-img-label">ETÜ</div>
+                </div>
+                <div class="product-hover-overlay" aria-hidden="true">
+                  <button class="quick-add" tabindex="-1">Sepete Ekle</button>
+                </div>
+              </div>
+              <div class="product-card-info">
+                <div class="product-origin">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="5" r="2.5" stroke="#D4621A" stroke-width="1.2"/><path d="M6 12C6 12 2 8.5 2 5.5a4 4 0 018 0C10 8.5 6 12 6 12z" stroke="#D4621A" stroke-width="1.2" fill="none"/></svg>
+                  Çoklu Köken
+                </div>
+                <h3 class="product-name" itemprop="name">ETü Tadım Seti</h3>
+                <div class="product-flavor-tags">
+                  <span>Çikolata</span><span>Fındık</span><span>Kırmızı Meyve</span>
+                </div>
+                <div class="product-footer">
+                  <span class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <meta itemprop="priceCurrency" content="TRY"/>
+                    <span itemprop="price" content="498">498₺</span>
+                  </span>
+                  <button class="btn-add-mini" aria-label="ETü Tadım Seti sepete ekle">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Product 2 -->
+          <article class="product-card product-card--featured" role="listitem" itemscope itemtype="https://schema.org/Product">
+            <a href="#product-guji" class="product-card-link" tabindex="0">
+              <div class="product-card-image">
+                <div class="product-badge badge-origin">Hasat 2024</div>
+                <div class="product-img-placeholder p-amber" aria-hidden="true">
+                  <div class="product-icon">🫘</div>
+                  <div class="product-img-label">GUJI</div>
+                </div>
+                <div class="product-hover-overlay" aria-hidden="true">
+                  <button class="quick-add" tabindex="-1">Sepete Ekle</button>
+                </div>
+              </div>
+              <div class="product-card-info">
+                <div class="product-origin">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="5" r="2.5" stroke="#D4621A" stroke-width="1.2"/><path d="M6 12C6 12 2 8.5 2 5.5a4 4 0 018 0C10 8.5 6 12 6 12z" stroke="#D4621A" stroke-width="1.2" fill="none"/></svg>
+                  Guji, Etiyopya
+                </div>
+                <h3 class="product-name" itemprop="name">Guji Washed Ethiopia</h3>
+                <div class="product-flavor-tags">
+                  <span>Bergamot</span><span>Çiçeksi</span><span>Şeftali</span>
+                </div>
+                <div class="product-footer">
+                  <span class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <meta itemprop="priceCurrency" content="TRY"/>
+                    <span itemprop="price" content="558">558₺</span>
+                  </span>
+                  <button class="btn-add-mini" aria-label="Guji Washed Ethiopia sepete ekle">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Product 3 -->
+          <article class="product-card" role="listitem" itemscope itemtype="https://schema.org/Product">
+            <a href="#product-kenya" class="product-card-link" tabindex="0">
+              <div class="product-card-image">
+                <div class="product-img-placeholder p-sand" aria-hidden="true">
+                  <div class="product-icon">🌍</div>
+                  <div class="product-img-label">KENYA</div>
+                </div>
+                <div class="product-hover-overlay" aria-hidden="true">
+                  <button class="quick-add" tabindex="-1">Sepete Ekle</button>
+                </div>
+              </div>
+              <div class="product-card-info">
+                <div class="product-origin">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="5" r="2.5" stroke="#D4621A" stroke-width="1.2"/><path d="M6 12C6 12 2 8.5 2 5.5a4 4 0 018 0C10 8.5 6 12 6 12z" stroke="#D4621A" stroke-width="1.2" fill="none"/></svg>
+                  Kirinyaga, Kenya
+                </div>
+                <h3 class="product-name" itemprop="name">Kathakwa Washed Kenya</h3>
+                <div class="product-flavor-tags">
+                  <span>Frenk Üzümü</span><span>Domates</span><span>Sitrik</span>
+                </div>
+                <div class="product-footer">
+                  <span class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <meta itemprop="priceCurrency" content="TRY"/>
+                    <span itemprop="price" content="498">498₺</span>
+                  </span>
+                  <button class="btn-add-mini" aria-label="Kathakwa Washed Kenya sepete ekle">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <!-- Product 4 -->
+          <article class="product-card" role="listitem" itemscope itemtype="https://schema.org/Product">
+            <a href="#product-costarica" class="product-card-link" tabindex="0">
+              <div class="product-card-image">
+                <div class="product-badge badge-limited">Sınırlı Stok</div>
+                <div class="product-img-placeholder p-warm" aria-hidden="true">
+                  <div class="product-icon">🌺</div>
+                  <div class="product-img-label">COSTA RICA</div>
+                </div>
+                <div class="product-hover-overlay" aria-hidden="true">
+                  <button class="quick-add" tabindex="-1">Sepete Ekle</button>
+                </div>
+              </div>
+              <div class="product-card-info">
+                <div class="product-origin">
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="5" r="2.5" stroke="#D4621A" stroke-width="1.2"/><path d="M6 12C6 12 2 8.5 2 5.5a4 4 0 018 0C10 8.5 6 12 6 12z" stroke="#D4621A" stroke-width="1.2" fill="none"/></svg>
+                  Tarrazú, Costa Rica
+                </div>
+                <h3 class="product-name" itemprop="name">La Isla Honey Costa Rica</h3>
+                <div class="product-flavor-tags">
+                  <span>Bal</span><span>Karamel</span><span>Elma</span>
+                </div>
+                <div class="product-footer">
+                  <span class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <meta itemprop="priceCurrency" content="TRY"/>
+                    <span itemprop="price" content="498">498₺</span>
+                  </span>
+                  <button class="btn-add-mini" aria-label="La Isla Honey Costa Rica sepete ekle">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  </button>
+                </div>
+              </div>
+            </a>
+          </article>
+
+        </div>
+
+        <div class="section-cta-wrap">
+          <a href="#all-products" class="btn btn-outline">Tüm Kahveleri Gör →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         ABOUT EDITORIAL
+    ═══════════════════════════════════════════════ -->
+    <section class="section about-section" id="about" aria-labelledby="about-heading">
+      <div class="container about-grid">
+        <div class="about-visual" aria-hidden="true">
+          <div class="about-img-block about-img-1">
+            <div class="about-img-placeholder">
+              <div class="about-img-text">Balat<br/>Roastery</div>
+            </div>
+          </div>
+          <div class="about-img-block about-img-2">
+            <div class="about-img-placeholder about-img-placeholder--sm">
+              <div class="about-img-text">Origin<br/>Direct</div>
+            </div>
+          </div>
+          <div class="about-badge" aria-label="Kuruluş yılı">
+            <div class="about-badge-inner">
+              <span>EST.</span>
+              <strong>2018</strong>
+              <span>BALAT</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <div class="section-eyebrow">Hakkımızda</div>
+          <h2 class="section-title" id="about-heading">Balat'ta<br/>3. Nesil Kahve<br/>Deneyimi</h2>
+          <p class="about-lead">Benesso Coffee, kahvenin kökü ve hikayesiyle ilham alan; nitelikli çekirdek, özgün kavurma, modern kurumsal ve güçlü kahve kültürü etrafında şekillenen bir kahve markasıdır.</p>
+          <p>Etiyopya'nın dağlarından Colombia'nın tepelerine uzanan tedarik ağımızla, dünyada sadece en özel %1'lik kahveleri getiriyor; her çekirdeği İstanbul Balat'taki kavurma atölyemizde, sipariş gününde kavuruyoruz.</p>
+          <ul class="about-pillars" aria-label="Temel değerlerimiz">
+            <li>
+              <div class="pillar-icon" aria-hidden="true">01</div>
+              <div>
+                <strong>Nitelikli Çekirdek</strong>
+                <p>Üreticilerle doğrudan ilişki, etik fiyat, şeffaf tedarik.</p>
+              </div>
+            </li>
+            <li>
+              <div class="pillar-icon" aria-hidden="true">02</div>
+              <div>
+                <strong>Bilinçli Kavurma</strong>
+                <p>Her köken için özel kavurma profili. Sipariş gününde taze.</p>
+              </div>
+            </li>
+            <li>
+              <div class="pillar-icon" aria-hidden="true">03</div>
+              <div>
+                <strong>Karakterli İçim</strong>
+                <p>Kahveyi kalite ve estetik ekseninde yeniden tanımlamak.</p>
+              </div>
+            </li>
+          </ul>
+          <a href="#about-full" class="btn btn-outline">Hikayemizi Oku →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         CLASSICS
+    ═══════════════════════════════════════════════ -->
+    <section class="section classics-section" id="classics" aria-labelledby="classics-heading">
+      <div class="container">
+        <header class="section-header">
+          <div class="section-eyebrow">Daima Hazır</div>
+          <h2 class="section-title" id="classics-heading">Klasikler</h2>
+          <p class="section-sub">Günlük ritüeliniz için güvenilir, tutarlı, mükemmel kavurulmuş karışımlar.</p>
+        </header>
+        <div class="classics-grid" role="list">
+
+          <article class="classic-card" role="listitem" itemscope itemtype="https://schema.org/Product">
+            <a href="#classic-espresso" class="classic-card-link">
+              <div class="classic-img" aria-hidden="true">
+                <div class="classic-img-placeholder">
+                  <div class="classic-label">ESPRESSO</div>
+                </div>
+              </div>
+              <div class="classic-info">
+                <h3 itemprop="name">Mogiana By Alfonso<br/>Classic Espresso</h3>
+                <div class="classic-meta">
+                  <span>Brazil · Colombia</span>
+                  <span class="classic-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <meta itemprop="priceCurrency" content="TRY"/>
+                    <span itemprop="price" content="498">498₺</span>
+                  </span>
+                </div>
+                <div class="product-flavor-tags">
+                  <span>Çikolata</span><span>Ceviz</span><span>Karamel</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+          <article class="classic-card" role="listitem" itemscope itemtype="https://schema.org/Product">
+            <a href="#classic-filter" class="classic-card-link">
+              <div class="classic-img" aria-hidden="true">
+                <div class="classic-img-placeholder classic-img-placeholder--filter">
+                  <div class="classic-label">FİLTRE</div>
+                </div>
+              </div>
+              <div class="classic-info">
+                <h3 itemprop="name">Mogiana By Alfonso<br/>Classic Filtre</h3>
+                <div class="classic-meta">
+                  <span>Brazil · Ethiopia</span>
+                  <span class="classic-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                    <meta itemprop="priceCurrency" content="TRY"/>
+                    <span itemprop="price" content="498">498₺</span>
+                  </span>
+                </div>
+                <div class="product-flavor-tags">
+                  <span>Portakal</span><span>Vanilya</span><span>Hafif</span>
+                </div>
+              </div>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         WORKSHOP
+    ═══════════════════════════════════════════════ -->
+    <section class="section workshop-section" id="workshop" aria-labelledby="workshop-heading">
+      <div class="container">
+        <header class="section-header">
+          <div class="section-eyebrow">Atölye Çalışmaları</div>
+          <h2 class="section-title" id="workshop-heading">Workshop</h2>
+          <p class="section-sub">Kahveyi sadece içmek değil, anlamak ve üretmek isteyenler için.</p>
+        </header>
+
+        <div class="workshop-grid" role="list">
+
+          <article class="workshop-card" role="listitem" itemscope itemtype="https://schema.org/Event">
+            <div class="workshop-card-img" aria-hidden="true">
+              <div class="workshop-img-placeholder">
+                <div class="workshop-icon">☕</div>
+                <div class="workshop-img-text">BREW<br/>YOURSELF</div>
+              </div>
+            </div>
+            <div class="workshop-card-content">
+              <div class="workshop-tag">Demleme Atölyesi</div>
+              <h3 itemprop="name">Brew Yourself</h3>
+              <p class="workshop-subtitle">Kendi Kahveni Kendin Yap</p>
+              <p itemprop="description">V60, Aeropress, Chemex, French Press ve daha fazlasını profesyonel baristamızla birlikte öğrenin. 3 saatlik interaktif atölye.</p>
+              <ul class="workshop-includes">
+                <li>Demleme teorisi ve pratik</li>
+                <li>Tüm ekipman dahil</li>
+                <li>Tadım notu defteri</li>
+                <li>Sertifika</li>
+              </ul>
+              <div class="workshop-footer">
+                <span class="workshop-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                  <meta itemprop="priceCurrency" content="TRY"/>
+                  <span itemprop="price" content="1000">1.000₺</span>
+                  <small>/kişi</small>
+                </span>
+                <a href="#workshop-book" class="btn btn-primary btn-sm">Yer Ayır</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="workshop-card workshop-card--dark" role="listitem" itemscope itemtype="https://schema.org/Event">
+            <div class="workshop-card-img" aria-hidden="true">
+              <div class="workshop-img-placeholder workshop-img-placeholder--dark">
+                <div class="workshop-icon">🔥</div>
+                <div class="workshop-img-text">ROAST<br/>YOURSELF</div>
+              </div>
+            </div>
+            <div class="workshop-card-content">
+              <div class="workshop-tag">Kavurma Atölyesi</div>
+              <h3 itemprop="name">Roast Yourself</h3>
+              <p class="workshop-subtitle">Kendi Kahveni Kendin Kavur</p>
+              <p itemprop="description">Ham çekirdekten kupa kahveye tüm süreci yaşayın. Benesso'nun profesyonel kavurma makinesiyle kendi kavurma profilinizi oluşturun.</p>
+              <ul class="workshop-includes">
+                <li>Ham çekirdek seçimi</li>
+                <li>Kavurma profili tasarımı</li>
+                <li>Kendi kavurduğunuz 250g kahveyi götürün</li>
+                <li>Sertifika + digital profil</li>
+              </ul>
+              <div class="workshop-footer">
+                <span class="workshop-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                  <meta itemprop="priceCurrency" content="TRY"/>
+                  <span itemprop="price" content="1500">1.500₺</span>
+                  <small>/kişi</small>
+                </span>
+                <a href="#workshop-roast-book" class="btn btn-primary btn-sm">Yer Ayır</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         ORIGIN TRIP EDITORIAL BANNER
+    ═══════════════════════════════════════════════ -->
+    <section class="section origin-section" id="origin" aria-labelledby="origin-heading">
+      <div class="origin-inner">
+        <div class="origin-overlay" aria-hidden="true"></div>
+        <div class="container origin-content">
+          <div class="section-eyebrow eyebrow-light">Yeni Sezon</div>
+          <h2 class="origin-title" id="origin-heading">Origin Trip<br/>Etiyopya 2025</h2>
+          <p class="origin-text">Kahvenin anavatanında, üreticilerle yan yana olun. Yıllık Origin Trip programımıza kayıt için bize ulaşın.</p>
+          <div class="origin-details">
+            <div class="origin-detail-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2" y="3" width="14" height="13" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M6 1v4M12 1v4M2 8h14" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              <span>Ekim 2025 · 8 Gün</span>
+            </div>
+            <div class="origin-detail-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2C6.24 2 4 4.24 4 7c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z" stroke="currentColor" stroke-width="1.3"/><circle cx="9" cy="7" r="1.5" stroke="currentColor" stroke-width="1.3"/></svg>
+              <span>Addis Ababa · Guji · Yirgacheffe</span>
+            </div>
+            <div class="origin-detail-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.3"/><path d="M9 5v4l3 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+              <span>Maksimum 8 kişi</span>
+            </div>
+          </div>
+          <a href="#origin-register" class="btn btn-light">Ön Kayıt Yaptır →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         WHOLESALE / TOPTAN
+    ═══════════════════════════════════════════════ -->
+    <section class="section wholesale-section" id="toptan" aria-labelledby="wholesale-heading">
+      <div class="container wholesale-grid">
+        <div class="wholesale-text">
+          <div class="section-eyebrow">Kurumsal</div>
+          <h2 class="section-title" id="wholesale-heading">Toptan Satış &amp;<br/>Kurumsal Çözümler</h2>
+          <p>Cafe, restoran, otel veya ofis için özel kavurma profilleri ve fiyatlandırmamızla tanışın. Benesso kalitesini kurumunuza taşıyın.</p>
+          <ul class="wholesale-features">
+            <li>Özel etiket &amp; ambalaj seçeneği</li>
+            <li>Haftalık taze teslimat</li>
+            <li>SCA sertifikalı barista eğitimi</li>
+            <li>Ekipman danışmanlığı</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary">Teklif Al →</a>
+        </div>
+        <div class="wholesale-visual" aria-hidden="true">
+          <div class="wholesale-card wc-1">
+            <div class="wc-icon">🏢</div>
+            <strong>Ofis Çözümleri</strong>
+            <p>Aylık paketler</p>
+          </div>
+          <div class="wholesale-card wc-2">
+            <div class="wc-icon">☕</div>
+            <strong>Cafe &amp; Restoran</strong>
+            <p>Özel profil</p>
+          </div>
+          <div class="wholesale-card wc-3">
+            <div class="wc-icon">🏨</div>
+            <strong>Otel &amp; Konaklama</strong>
+            <p>White-label</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         BLOG PREVIEW
+    ═══════════════════════════════════════════════ -->
+    <section class="section blog-section" id="blog" aria-labelledby="blog-heading">
+      <div class="container">
+        <header class="section-header">
+          <div class="section-eyebrow">Coffee Blog</div>
+          <h2 class="section-title" id="blog-heading">Kahve Dünyasından</h2>
+        </header>
+        <div class="blog-grid" role="list">
+
+          <article class="blog-card" role="listitem" itemscope itemtype="https://schema.org/BlogPosting">
+            <a href="#blog-1" class="blog-card-link">
+              <div class="blog-img" aria-hidden="true">
+                <div class="blog-img-placeholder">
+                  <span>Kavurma</span>
+                </div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <time datetime="2024-10-15" itemprop="datePublished">15 Ekim 2024</time>
+                  <span class="blog-tag">Kavurma</span>
+                </div>
+                <h3 itemprop="headline">Light Roast vs Dark Roast: Hangisi Sizin İçin?</h3>
+                <p itemprop="description">Kavurma seviyesi kahvenizin tadını, aromalarını ve kafein içeriğini nasıl etkiler? Detaylı bir rehber.</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="blog-card" role="listitem" itemscope itemtype="https://schema.org/BlogPosting">
+            <a href="#blog-2" class="blog-card-link">
+              <div class="blog-img" aria-hidden="true">
+                <div class="blog-img-placeholder blog-img-2">
+                  <span>Demleme</span>
+                </div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <time datetime="2024-09-28" itemprop="datePublished">28 Eylül 2024</time>
+                  <span class="blog-tag">Demleme</span>
+                </div>
+                <h3 itemprop="headline">V60 ile Mükemmel Filtre Kahve Rehberi</h3>
+                <p itemprop="description">Oran, sıcaklık, öğütme derecesi — V60'ı ustaca kullanmak için bilmeniz gereken her şey.</p>
+              </div>
+            </a>
+          </article>
+
+          <article class="blog-card" role="listitem" itemscope itemtype="https://schema.org/BlogPosting">
+            <a href="#blog-3" class="blog-card-link">
+              <div class="blog-img" aria-hidden="true">
+                <div class="blog-img-placeholder blog-img-3">
+                  <span>Origin</span>
+                </div>
+              </div>
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <time datetime="2024-09-05" itemprop="datePublished">5 Eylül 2024</time>
+                  <span class="blog-tag">Origin Trip</span>
+                </div>
+                <h3 itemprop="headline">Etiyopya'da Kahvenin Anavatanını Keşfetmek</h3>
+                <p itemprop="description">2024 Origin Trip'imizden gözlemler, fotoğraflar ve üreticilerle geçirdiğimiz unutulmaz anlar.</p>
+              </div>
+            </a>
+          </article>
+
+        </div>
+        <div class="section-cta-wrap">
+          <a href="#all-blog" class="btn btn-outline">Tüm Yazıları Gör →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         INSTAGRAM SOCIAL PROOF
+    ═══════════════════════════════════════════════ -->
+    <section class="section instagram-section" aria-labelledby="instagram-heading">
+      <div class="container">
+        <header class="section-header">
+          <div class="section-eyebrow">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5" stroke="#D4621A" stroke-width="1.5"/><circle cx="8" cy="8" r="3" stroke="#D4621A" stroke-width="1.5"/><circle cx="11.5" cy="4.5" r="0.75" fill="#D4621A"/></svg>
+            @benessocoffee
+          </div>
+          <h2 class="section-title" id="instagram-heading">Benesso Dünyasını<br/>Instagram'da Keşfedin</h2>
+        </header>
+        <div class="instagram-grid" aria-label="Instagram gönderileri">
+          <a href="https://instagram.com/benessocoffee" class="insta-cell insta-cell-1" target="_blank" rel="noopener noreferrer" aria-label="Instagram'da görüntüle">
+            <div class="insta-placeholder"><span>Kavurma Atölyesi</span></div>
+            <div class="insta-hover" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="white"/></svg>
+            </div>
+          </a>
+          <a href="https://instagram.com/benessocoffee" class="insta-cell insta-cell-2" target="_blank" rel="noopener noreferrer" aria-label="Instagram'da görüntüle">
+            <div class="insta-placeholder"><span>Origin Trip</span></div>
+            <div class="insta-hover" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="white"/></svg>
+            </div>
+          </a>
+          <a href="https://instagram.com/benessocoffee" class="insta-cell insta-cell-3" target="_blank" rel="noopener noreferrer" aria-label="Instagram'da görüntüle">
+            <div class="insta-placeholder"><span>Filtre Kahve</span></div>
+            <div class="insta-hover" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="white"/></svg>
+            </div>
+          </a>
+          <a href="https://instagram.com/benessocoffee" class="insta-cell insta-cell-4" target="_blank" rel="noopener noreferrer" aria-label="Instagram'da görüntüle">
+            <div class="insta-placeholder"><span>Çekirdekler</span></div>
+            <div class="insta-hover" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="white"/></svg>
+            </div>
+          </a>
+          <a href="https://instagram.com/benessocoffee" class="insta-cell insta-cell-5" target="_blank" rel="noopener noreferrer" aria-label="Instagram'da görüntüle">
+            <div class="insta-placeholder"><span>Workshop</span></div>
+            <div class="insta-hover" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="white"/></svg>
+            </div>
+          </a>
+          <a href="https://instagram.com/benessocoffee" class="insta-cell insta-cell-6" target="_blank" rel="noopener noreferrer" aria-label="Instagram'da görüntüle">
+            <div class="insta-placeholder"><span>Balat</span></div>
+            <div class="insta-hover" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.5"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="1.5"/><circle cx="17" cy="7" r="1" fill="white"/></svg>
+            </div>
+          </a>
+        </div>
+        <div class="section-cta-wrap">
+          <a href="https://instagram.com/benessocoffee" class="btn btn-outline" target="_blank" rel="noopener noreferrer">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="2" width="12" height="12" rx="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><circle cx="11.5" cy="4.5" r="0.75" fill="currentColor"/></svg>
+            @benessocoffee Takip Et
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         NEWSLETTER
+    ═══════════════════════════════════════════════ -->
+    <section class="section newsletter-section" aria-labelledby="newsletter-heading">
+      <div class="container newsletter-inner">
+        <div class="newsletter-text">
+          <h2 id="newsletter-heading">Yeni Hasat Bildirimleri<br/>ve Özel Fırsatlar</h2>
+          <p>Her ay yeni çekirdekler, workshop tarihleri ve kahve dünyasından seçkiler — doğrudan gelen kutunuza.</p>
+        </div>
+        <form class="newsletter-form" action="#" method="post" aria-label="Bülten kayıt formu" novalidate>
+          <div class="newsletter-field">
+            <label for="newsletter-email" class="visually-hidden">E-posta adresiniz</label>
+            <input type="email" id="newsletter-email" name="email" placeholder="E-posta adresiniz" required aria-required="true" autocomplete="email"/>
+            <button type="submit" class="btn btn-primary">Abone Ol</button>
+          </div>
+          <p class="newsletter-privacy">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="2" y="5" width="8" height="6" rx="1" stroke="currentColor" stroke-width="1.1"/><path d="M4 5V3.5a2 2 0 014 0V5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+            Verilerinizi asla paylaşmıyoruz. İstediğiniz zaman çıkabilirsiniz.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         CONTACT
+    ═══════════════════════════════════════════════ -->
+    <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="container contact-grid">
+
+        <div class="contact-info">
+          <div class="section-eyebrow">Ulaşın</div>
+          <h2 class="section-title" id="contact-heading">İletişim</h2>
+
+          <address class="contact-details" itemscope itemtype="https://schema.org/LocalBusiness">
+            <meta itemprop="name" content="Benesso Coffee"/>
+            <div class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#D4621A" stroke-width="1.3"/><path d="M2 6l7 5 7-5" stroke="#D4621A" stroke-width="1.3"/></svg>
+              <div>
+                <strong>E-posta</strong>
+                <a href="mailto:info@benessocoffee.com" itemprop="email">info@benessocoffee.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2C6.24 2 4 4.24 4 7c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z" stroke="#D4621A" stroke-width="1.3"/><circle cx="9" cy="7" r="2" stroke="#D4621A" stroke-width="1.3"/></svg>
+              <div>
+                <strong>Adres</strong>
+                <span itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+                  <span itemprop="streetAddress">Yavuz Sultan Selim Mah. Kara Sarıklı Sk. No: 3/A</span><br/>
+                  <span itemprop="postalCode">34087</span>
+                  <span itemprop="addressLocality">Fatih</span> /
+                  <span itemprop="addressRegion">İstanbul</span>
+                </span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><rect x="2" y="3" width="14" height="12" rx="2" stroke="#D4621A" stroke-width="1.3"/><path d="M6 2v3M12 2v3M2 9h14" stroke="#D4621A" stroke-width="1.3" stroke-linecap="round"/></svg>
+              <div>
+                <strong>Çalışma Saatleri</strong>
+                <span>Pazartesi – Cumartesi: 09:00 – 18:00</span>
+              </div>
+            </div>
+            <div class="contact-social">
+              <a href="https://instagram.com/benessocoffee" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="6" r="1" fill="currentColor"/></svg>
+              </a>
+            </div>
+          </address>
+        </div>
+
+        <div class="contact-form-wrap">
+          <form class="contact-form" action="#" method="post" aria-label="İletişim formu" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contact-name">Ad Soyad</label>
+                <input type="text" id="contact-name" name="name" placeholder="Adınız" autocomplete="name"/>
+              </div>
+              <div class="form-group">
+                <label for="contact-email">E-posta <span aria-label="zorunlu">*</span></label>
+                <input type="email" id="contact-email" name="email" placeholder="E-posta adresiniz" required aria-required="true" autocomplete="email"/>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contact-phone">Telefon</label>
+              <input type="tel" id="contact-phone" name="phone" placeholder="Telefon numaranız" autocomplete="tel"/>
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">Konu</label>
+              <select id="contact-subject" name="subject">
+                <option value="">Konu seçin</option>
+                <option value="siparis">Sipariş / Ürün</option>
+                <option value="toptan">Toptan Satış</option>
+                <option value="workshop">Workshop</option>
+                <option value="origin">Origin Trip</option>
+                <option value="diger">Diğer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contact-message">Mesajınız</label>
+              <textarea id="contact-message" name="message" rows="5" placeholder="Mesajınızı buraya yazın..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Gönder →</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+
+      <div class="footer-brand">
+        <a href="/" class="footer-logo" aria-label="Benesso Coffee Ana Sayfa">
+          <svg width="40" height="40" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="44" height="44" rx="8" fill="#D4621A"/>
+            <path d="M10 32 C10 20 18 12 22 12 C26 12 34 20 34 32" stroke="#FFF8F0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M16 22 Q22 17 28 22" stroke="#FFF8F0" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <path d="M14 27 Q22 21 30 27" stroke="#FFF8F0" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div>
+            <strong>BENESSO</strong>
+            <span>COFFEE</span>
+          </div>
+        </a>
+        <p class="footer-tagline">Balat'tan Dünyanın En İyi<br/>Kahveleri — Her Yudum Bir Hikaye.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/benessocoffee" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="4" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="3.5" stroke="currentColor" stroke-width="1.5"/><circle cx="14" cy="6" r="1" fill="currentColor"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav class="footer-nav" aria-label="Ürünler">
+        <h3>Kahveler</h3>
+        <ul>
+          <li><a href="#products">Nitelikli-Yöresel</a></li>
+          <li><a href="#classics">Klasikler</a></li>
+          <li><a href="#tasting-sets">Tadım Setleri</a></li>
+          <li><a href="#toptan">Toptan Satış</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Deneyim">
+        <h3>Deneyim</h3>
+        <ul>
+          <li><a href="#workshop">Workshop</a></li>
+          <li><a href="#origin">Origin Trip</a></li>
+          <li><a href="#blog">Coffee Blog</a></li>
+          <li><a href="#about">Hakkımızda</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer-nav" aria-label="Destek">
+        <h3>Destek</h3>
+        <ul>
+          <li><a href="#contact">İletişim</a></li>
+          <li><a href="#faq">SSS</a></li>
+          <li><a href="#shipping">Kargo Bilgileri</a></li>
+          <li><a href="#returns">İade Politikası</a></li>
+          <li><a href="#privacy">Gizlilik Politikası</a></li>
+        </ul>
+      </nav>
+
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>&copy; <span id="footer-year"></span> Benesso Coffee · Bima Kahve Sanayi ve Dış Ticaret Limited Şirketi</p>
+        <p class="footer-legal">
+          <a href="#kvkk">KVKK Aydınlatma Metni</a> &nbsp;·&nbsp;
+          <a href="#terms">Kullanım Koşulları</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Sayfanın başına dön" hidden>
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M5 12l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </button>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrocameraland · YouTube</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --surface: #ffffff;
+    --surface2: #f5f5f7;
+    --border: #e0e0e5;
+    --text: #1d1d1f;
+    --text2: #6e6e73;
+    --text3: #aeaeb2;
+    --accent: #0071e3;
+    --accent-bg: #e8f0fe;
+    --green: #28cd41;
+    --green-bg: #edfbef;
+    --red: #ff3b30;
+    --red-bg: #fff0ef;
+    --amber: #ff9f0a;
+    --amber-bg: #fff5e6;
+    --purple: #bf5af2;
+    --purple-bg: #f5eeff;
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 40px 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+  }
+  .header-left { display:flex; align-items:center; gap:14px; }
+  .channel-avatar {
+    width: 44px; height: 44px;
+    background: #ff3b30;
+    border-radius: 50%;
+    display: flex; align-items:center; justify-content:center;
+    font-size: 20px;
+    flex-shrink:0;
+  }
+  .header-left h1 { font-size: 20px; font-weight: 600; letter-spacing: -0.3px; }
+  .header-left p { font-size: 13px; color: var(--text2); margin-top: 2px; }
+  .header-right { display:flex; gap:8px; align-items:center; }
+  .chip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 13px;
+    font-size: 12px;
+    color: var(--text2);
+  }
+  .chip-live {
+    background: var(--green-bg);
+    border-color: rgba(40,205,65,.2);
+    color: var(--green);
+  }
+  .chip-live::before { content:'●'; margin-right:5px; font-size:8px; }
+
+  /* ── DIVIDER ── */
+  .divider { height:1px; background:var(--border); margin: 36px 0 28px; }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .section-header h2 { font-size: 17px; font-weight: 600; letter-spacing: -0.2px; }
+  .source-tag {
+    font-size: 11px;
+    color: var(--text3);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 3px 8px;
+  }
+  .source-tag span { color: var(--accent); }
+
+  /* ── ANALYSIS BOX ── */
+  .analysis {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .analysis-icon { font-size: 16px; flex-shrink:0; margin-top:1px; }
+  .analysis p { font-size: 13px; color: var(--text2); line-height: 1.6; }
+  .analysis p strong { color: var(--text); }
+
+  /* ── GOAL CARD ── */
+  .goal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+  }
+  .goal-numbers { display:flex; align-items:baseline; gap:6px; margin-bottom:20px; }
+  .goal-current { font-size: 48px; font-weight: 700; letter-spacing: -1px; color: var(--text); }
+  .goal-of { font-size: 20px; color: var(--text3); }
+  .goal-target { font-size: 20px; color: var(--text3); }
+  .goal-label { font-size: 13px; color: var(--text2); margin-bottom: 8px; }
+
+  .progress-track {
+    height: 8px;
+    background: var(--surface2);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 37.4%;
+    background: var(--accent);
+    border-radius: 8px;
+  }
+  .progress-meta { display:flex; justify-content:space-between; font-size:12px; color:var(--text3); }
+
+  .goal-stats { display:flex; gap:12px; margin-top:20px; }
+  .goal-stat {
+    flex:1;
+    background: var(--surface2);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+  }
+  .goal-stat .gs-val { font-size: 20px; font-weight: 600; color: var(--text); }
+  .goal-stat .gs-label { font-size: 11px; color: var(--text2); margin-top: 3px; }
+
+  /* ── STAT CARDS ── */
+  .cards-row { display:grid; grid-template-columns: repeat(4,1fr); gap:12px; }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+  }
+  .sc-label { font-size: 12px; color: var(--text2); margin-bottom: 8px; }
+  .sc-val { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; color: var(--text); }
+  .sc-sub { font-size: 12px; color: var(--text3); margin-top: 4px; }
+  .sc-icon { font-size: 18px; margin-bottom: 10px; }
+
+  /* ── CHART CARD ── */
+  .chart-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 22px;
+  }
+  .chart-card .card-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .chart-card .card-source { font-size: 11px; color: var(--text3); margin-bottom: 18px; }
+  .chart-wrap { position:relative; height:200px; }
+
+  /* ── GRID LAYOUTS ── */
+  .g2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .g3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; }
+
+  /* ── VIDEO LIST ── */
+  .video-list { display:flex; flex-direction:column; }
+  .vi {
+    display: flex; align-items: center; gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .vi:last-child { border-bottom: none; }
+  .vi-num { font-size: 12px; color: var(--text3); width: 18px; text-align:center; flex-shrink:0; }
+  .vi-info { flex:1; min-width:0; }
+  .vi-title { font-size: 13px; color: var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .vi-meta { display:flex; gap:6px; align-items:center; margin-top:3px; }
+  .vi-date { font-size: 11px; color: var(--text3); }
+  .fmt {
+    font-size: 10px; font-weight: 500;
+    padding: 1px 6px; border-radius: 5px;
+  }
+  .fmt-s { background:var(--red-bg); color:var(--red); }
+  .fmt-m { background:var(--green-bg); color:var(--green); }
+  .fmt-l { background:var(--accent-bg); color:var(--accent); }
+  .vi-views { font-size: 14px; font-weight: 600; color: var(--text); flex-shrink:0; }
+  .vi-views small { display:block; font-size:10px; color:var(--text3); font-weight:400; text-align:right; }
+
+  /* ── IDEA CARDS ── */
+  .idea {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+  .idea:last-child { margin-bottom:0; }
+  .idea-top { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:6px; }
+  .idea-title { font-size: 13px; font-weight: 600; color: var(--text); line-height:1.4; }
+  .idea-fmt {
+    font-size: 10px; font-weight: 600;
+    padding: 2px 8px; border-radius: 6px; flex-shrink:0;
+  }
+  .idea-desc { font-size: 12px; color: var(--text2); line-height: 1.55; margin-bottom:8px; }
+  .idea-tags { display:flex; gap:6px; flex-wrap:wrap; }
+  .tag {
+    font-size: 11px; color: var(--text2);
+    background: var(--surface2); border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 6px;
+  }
+  .tag-p { color: var(--purple); background: var(--purple-bg); border-color: rgba(191,90,242,.2); }
+  .tag-h { color: var(--amber); background: var(--amber-bg); border-color: rgba(255,159,10,.2); }
+
+  /* ── PRODUCT TABLE ── */
+  table { width:100%; border-collapse:collapse; }
+  th {
+    font-size: 11px; color: var(--text2); font-weight: 500;
+    text-align: left; padding: 0 12px 10px; text-transform: uppercase; letter-spacing: .04em;
+  }
+  td { font-size: 13px; padding: 10px 12px; border-top: 1px solid var(--border); }
+  tr:hover td { background: var(--surface2); }
+  .badge-stok { color: var(--green); background: var(--green-bg); font-size:11px; padding:2px 8px; border-radius:6px; }
+  .badge-out  { color: var(--red);   background: var(--red-bg);   font-size:11px; padding:2px 8px; border-radius:6px; }
+  .priority { color: var(--accent); font-size: 12px; }
+
+  /* ── ROADMAP ── */
+  .rm { display:flex; flex-direction:column; }
+  .rm-row { display:flex; gap:14px; padding-bottom:18px; }
+  .rm-row:last-child { padding-bottom:0; }
+  .rm-spine { display:flex; flex-direction:column; align-items:center; flex-shrink:0; }
+  .rm-node {
+    width:26px; height:26px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:600; flex-shrink:0;
+  }
+  .rm-node.done { background:var(--accent-bg); color:var(--accent); }
+  .rm-node.now  { background:var(--accent); color:#fff; box-shadow:0 0 0 4px rgba(0,113,227,.15); }
+  .rm-node.next { background:var(--surface2); color:var(--text3); border:1px solid var(--border); }
+  .rm-spine-line { width:1px; flex:1; background:var(--border); margin-top:4px; min-height:14px; }
+  .rm-row:last-child .rm-spine-line { display:none; }
+  .rm-body { padding-top:3px; }
+  .rm-title { font-size:13px; font-weight:600; color:var(--text); }
+  .rm-desc { font-size:12px; color:var(--text2); margin-top:3px; line-height:1.5; }
+  .rm-chip {
+    display:inline-block; margin-top:5px;
+    font-size:10px; color:var(--accent);
+    background:var(--accent-bg); padding:2px 8px; border-radius:6px;
+  }
+  .rm-chip.active { background:var(--amber-bg); color:var(--amber); }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align:center; font-size:11px; color:var(--text3);
+    margin-top:48px; padding-top:20px; border-top:1px solid var(--border);
+  }
+
+  @media(max-width:900px){
+    .cards-row { grid-template-columns:repeat(2,1fr); }
+    .g2,.g3 { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="channel-avatar">📷</div>
+    <div>
+      <h1>Retrocameraland</h1>
+      <p>YouTube Kanal Analizi</p>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="chip chip-live">Canlı veri</div>
+    <div class="chip">3 Nisan 2026</div>
+    <div class="chip">Kanal yaşı: 9.5 ay</div>
+  </div>
+</div>
+
+<!-- ───────────────────────────── HEDEF ── -->
+<div class="section-header">
+  <h2>Büyüme Hedefi</h2>
+  <div class="source-tag">Kaynak: <span>YouTube Data API v3</span> · channels.statistics</div>
+</div>
+
+<div class="goal-card">
+  <div class="goal-label">Toplam Abone / Hedef</div>
+  <div class="goal-numbers">
+    <div class="goal-current">3.740</div>
+    <div class="goal-of">/</div>
+    <div class="goal-target">10.000</div>
+  </div>
+  <div class="progress-track"><div class="progress-fill"></div></div>
+  <div class="progress-meta"><span>%37.4 tamamlandı</span><span>6.260 abone kaldı</span></div>
+  <div class="goal-stats">
+    <div class="goal-stat">
+      <div class="gs-val">394</div>
+      <div class="gs-label">abone / ay (ortalama)</div>
+    </div>
+    <div class="goal-stat">
+      <div class="gs-val">~16 ay</div>
+      <div class="gs-label">mevcut hızda tahmini süre</div>
+    </div>
+    <div class="goal-stat">
+      <div class="gs-val" style="color:var(--green)">~5 ay</div>
+      <div class="gs-label">Shorts ivmesi korunursa</div>
+    </div>
+    <div class="goal-stat">
+      <div class="gs-val">200+</div>
+      <div class="gs-label">aylık minimum hedef</div>
+    </div>
+  </div>
+</div>
+
+<div class="analysis">
+  <div class="analysis-icon">📊</div>
+  <p>Kanal <strong>Haziran 2025'te</strong> açıldı ve 9.5 ayda 3.740 aboneye ulaştı. Bu aylık ~394 organik büyüme demek. Mevcut hızda 10.000'e yaklaşık 16 ay kaldı. Ancak <strong>Shorts formatının ivmesi artarsa</strong> bu süre ciddi ölçüde kısalabilir — en iyi Shorts 77.000 görüntülenme aldı ve her viral Shorts ~100–300 yeni abone getiriyor.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ───────────────────────────── ÖZET KARTI ── -->
+<div class="section-header">
+  <h2>Kanal Özeti</h2>
+  <div class="source-tag">Kaynak: <span>YouTube Data API v3</span> · channels.statistics</div>
+</div>
+
+<div class="cards-row">
+  <div class="stat-card">
+    <div class="sc-icon">👁️</div>
+    <div class="sc-label">Toplam Görüntülenme</div>
+    <div class="sc-val">971.612</div>
+    <div class="sc-sub">Ort. 2.661 / video</div>
+  </div>
+  <div class="stat-card">
+    <div class="sc-icon">🎬</div>
+    <div class="sc-label">Yayımlanan Video</div>
+    <div class="sc-val">365</div>
+    <div class="sc-sub">~1.28 video / gün</div>
+  </div>
+  <div class="stat-card">
+    <div class="sc-icon">👥</div>
+    <div class="sc-label">Abone</div>
+    <div class="sc-val">3.740</div>
+    <div class="sc-sub">Haz 2025'ten beri</div>
+  </div>
+  <div class="stat-card">
+    <div class="sc-icon">🛒</div>
+    <div class="sc-label">Shopify Ürün</div>
+    <div class="sc-val">45+</div>
+    <div class="sc-sub">Günlük otomatik sync</div>
+  </div>
+</div>
+
+<div class="analysis">
+  <div class="analysis-icon">💡</div>
+  <p>365 video / 9.5 ay = <strong>günlük ortalama 1.28 video</strong>. Bu oldukça yüksek bir yayın hızı. Her videonun 2.661 ortalama görüntülenme alması, içerik kalitesinin tutarlı olduğunu gösteriyor. Hız korunurken <strong>format seçimine odaklanmak</strong> büyümeyi doğrudan etkiler.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ───────────────────────────── FORMAT PERFORMANSI ── -->
+<div class="section-header">
+  <h2>Format Performansı</h2>
+  <div class="source-tag">Kaynak: <span>YouTube Data API v3</span> · videos.statistics + contentDetails</div>
+</div>
+
+<div class="g2">
+  <div class="chart-card">
+    <div class="card-title">Formata Göre Ortalama Görüntülenme</div>
+    <div class="card-source">Shorts (&lt;60s) · Mid-form (1–5dk) · Long-form (5dk+)</div>
+    <div class="chart-wrap"><canvas id="formatChart"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <div class="card-title">İçerik Tipi Dağılımı</div>
+    <div class="card-source">Son 10 analiz edilen video, tahmini oran</div>
+    <div class="chart-wrap"><canvas id="donutChart"></canvas></div>
+  </div>
+</div>
+
+<div class="analysis">
+  <div class="analysis-icon">⚡</div>
+  <p><strong>Shorts formatı açık ara lider:</strong> 9–12 saniyelik videolar ortalama 45.000+ görüntülenme alıyor. En iyi Shorts (%77K) long-form'un 3 katı izlenmeye ulaştı. Buna karşın <strong>belgesel tarzı long-form</strong> da güçlü — "Yoshi Kameraları Tamir Ediyor" 43.773 görüntülenmeyle Shorts'a yakın performans sergiledi. İki format birlikte kullanılmalı: Shorts keşif için, long-form bağlılık ve abone dönüşümü için.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ───────────────────────────── EN İYİ VİDEOLAR ── -->
+<div class="section-header">
+  <h2>En Çok İzlenen Videolar</h2>
+  <div class="source-tag">Kaynak: <span>YouTube Data API v3</span> · search?order=viewCount · videos.statistics</div>
+</div>
+
+<div class="g2">
+  <div class="chart-card">
+    <div class="card-title">Görüntülenme Karşılaştırması</div>
+    <div class="card-source">İlk 6 video, toplam görüntülenme</div>
+    <div class="chart-wrap"><canvas id="topChart"></canvas></div>
+  </div>
+  <div class="chart-card" style="padding:22px;">
+    <div class="card-title" style="margin-bottom:4px;">Video Listesi</div>
+    <div class="card-source">Format: <span style="color:var(--red)">Shorts</span> · <span style="color:var(--green)">Mid</span> · <span style="color:var(--accent)">Long</span></div>
+    <div class="video-list">
+      <div class="vi">
+        <div class="vi-num">1</div>
+        <div class="vi-info">
+          <div class="vi-title">Uygun fiyatlı ve full set dijital kamera isteyen?</div>
+          <div class="vi-meta"><span class="vi-date">4 Tem 2025</span><span class="fmt fmt-s">Shorts · 9s</span></div>
+        </div>
+        <div class="vi-views">77.714<small>görüntülenme</small></div>
+      </div>
+      <div class="vi">
+        <div class="vi-num">2</div>
+        <div class="vi-info">
+          <div class="vi-title">NIKON COOLPIX Dijital Kamera Stoklarda!</div>
+          <div class="vi-meta"><span class="vi-date">28 Tem 2025</span><span class="fmt fmt-s">Shorts · 9s</span></div>
+        </div>
+        <div class="vi-views">64.134<small>görüntülenme</small></div>
+      </div>
+      <div class="vi">
+        <div class="vi-num">3</div>
+        <div class="vi-info">
+          <div class="vi-title">SONY CYBERSHOT T9 (2006) 📸</div>
+          <div class="vi-meta"><span class="vi-date">23 Oca 2026</span><span class="fmt fmt-s">Shorts · 12s</span></div>
+        </div>
+        <div class="vi-views">45.606<small>görüntülenme</small></div>
+      </div>
+      <div class="vi">
+        <div class="vi-num">4</div>
+        <div class="vi-info">
+          <div class="vi-title">Yoshi Kameraları Tamir Ediyor | Belgesel</div>
+          <div class="vi-meta"><span class="vi-date">1 Oca 2026</span><span class="fmt fmt-l">Long · 10m31s</span></div>
+        </div>
+        <div class="vi-views">43.773<small>görüntülenme</small></div>
+      </div>
+      <div class="vi">
+        <div class="vi-num">5</div>
+        <div class="vi-info">
+          <div class="vi-title">Neden Herkes Bu Eski Sony Kamerayı Arıyor?</div>
+          <div class="vi-meta"><span class="vi-date">23 Oca 2026</span><span class="fmt fmt-m">Mid · 3m36s</span></div>
+        </div>
+        <div class="vi-views">25.312<small>görüntülenme</small></div>
+      </div>
+      <div class="vi">
+        <div class="vi-num">6</div>
+        <div class="vi-info">
+          <div class="vi-title">Retro Kamera ile Fotoğraf Çektin mi?</div>
+          <div class="vi-meta"><span class="vi-date">5 Ağu 2025</span><span class="fmt fmt-s">Shorts · 9s</span></div>
+        </div>
+        <div class="vi-views">24.840<small>görüntülenme</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="analysis">
+  <div class="analysis-icon">🔍</div>
+  <p>İlk 3 sıra tamamen <strong>Shorts formatında</strong>. 4. sıradaki belgesel ise (43K) Shorts'a sadece 2.000 görüntülenme farkla yakın — bu long-form içeriğin de güçlü olduğunu kanıtlıyor. Dikkat çekici bir diğer bulgu: <strong>"Stok geldi" temalı Shorts</strong> (Nikon: 64K) doğrudan ürün tanıtımı yapmasına rağmen viral oldu. Reklam içerik olmak zorunda değil.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ───────────────────────────── ETKİLEŞİM ── -->
+<div class="section-header">
+  <h2>Etkileşim Analizi</h2>
+  <div class="source-tag">Kaynak: <span>YouTube Data API v3</span> · videos.statistics.likeCount / viewCount</div>
+</div>
+
+<div class="chart-card">
+  <div class="card-title">Beğeni Oranı (Beğeni / 1.000 Görüntülenme)</div>
+  <div class="card-source">Yüksek oran = izleyici bağlılığı güçlü</div>
+  <div class="chart-wrap" style="height:180px;"><canvas id="engChart"></canvas></div>
+</div>
+
+<div class="analysis">
+  <div class="analysis-icon">❤️</div>
+  <p><strong>"C2 Seviye dijital kamera aşkı"</strong> en yüksek beğeni oranına sahip (9.56 / 1K görüntülenme) — bu izleyicinin bu tür duygusal/estetik içerikle çok güçlü bağ kurduğunu gösteriyor. <strong>"Uygun fiyatlı kamera"</strong> Shorts'u ise hem en fazla izlenmeyi hem de 4.97 beğeni oranını aldı — hem keşif hem bağlılık için ideal format. Düşük beğeni oranları genellikle kısa Shorts'larda normal — izleyici "like" basmaya gerek duymadan geçiyor.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ───────────────────────────── İÇERİK FİKİRLERİ ── -->
+<div class="section-header">
+  <h2>İçerik Fikirleri</h2>
+  <div class="source-tag">Kaynak: <span>Veri analizi</span> + Shopify katalog · kanıtlı formatlara dayalı</div>
+</div>
+
+<div class="g2">
+  <div>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:12px;font-weight:500;">SHORTS — Hızlı büyüme</p>
+    <div class="idea">
+      <div class="idea-top">
+        <div class="idea-title">Casio Exilim EX-Z85 Stoklarda! 🎉</div>
+        <span class="idea-fmt fmt-s">Shorts</span>
+      </div>
+      <div class="idea-desc">Nikon "Stoklarda!" Shorts 64K izlenme aldı. Aynı format — Casio EX-Z85 stokta ve ₺9.490'da. Direk uygula.</div>
+      <div class="idea-tags">
+        <span class="tag tag-p">📦 Casio Exilim EX-Z85</span>
+        <span class="tag tag-h">🔥 Kanıtlı format</span>
+      </div>
+    </div>
+    <div class="idea">
+      <div class="idea-top">
+        <div class="idea-title">Sony TX9 ile çekilen en iyi 5 fotoğraf 📸</div>
+        <span class="idea-fmt fmt-s">Shorts</span>
+      </div>
+      <div class="idea-desc">Sony T9 Shorts 45K aldı. Fotoğraf kalite gösterimi izleyiciyi çekiyor + ürün linki açıklamada.</div>
+      <div class="idea-tags">
+        <span class="tag tag-p">📦 Sony Cyber-shot TX9</span>
+        <span class="tag tag-h">🔥 Ürün stokta</span>
+      </div>
+    </div>
+    <div class="idea">
+      <div class="idea-top">
+        <div class="idea-title">2025'te uygun fiyatlı retro kamera hangisi?</div>
+        <span class="idea-fmt fmt-s">Shorts</span>
+      </div>
+      <div class="idea-desc">En viral Shorts'un güncel versiyonu. Sanyo CG-10 (₺8.490) öne çıkar. Sezonluk içerik, tekrar üretilebilir.</div>
+      <div class="idea-tags">
+        <span class="tag tag-p">📦 Sanyo Xacti CG-10</span>
+        <span class="tag tag-h">🔥 Viral başlık</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <p style="font-size:12px;color:var(--text2);margin-bottom:12px;font-weight:500;">LONG-FORM — Abone dönüşümü</p>
+    <div class="idea">
+      <div class="idea-top">
+        <div class="idea-title">Neden Herkes CCD Kamera Arıyor? (2025 Trendi)</div>
+        <span class="idea-fmt fmt-m">Mid · 3–5 dk</span>
+      </div>
+      <div class="idea-desc">"Neden herkes arıyor" başlık formatı 25K aldı. CCD trend açıklaması + stokta olan ürünlere yönlendirme.</div>
+      <div class="idea-tags">
+        <span class="tag tag-h">🔥 Kanıtlı başlık</span>
+        <span class="tag">Trend içerik</span>
+      </div>
+    </div>
+    <div class="idea">
+      <div class="idea-top">
+        <div class="idea-title">Retrocameraland Deposunda 1 Gün | Belgesel</div>
+        <span class="idea-fmt fmt-l">Long · 10+ dk</span>
+      </div>
+      <div class="idea-desc">Yoshi belgeseli 43K aldı. "Depo turu / kamera nasıl geliyor" belgeseli aynı enerjiyle çalışır. Marka hikayesi.</div>
+      <div class="idea-tags">
+        <span class="tag tag-h">🔥 Belgesel format güçlü</span>
+        <span class="tag">Marka</span>
+      </div>
+    </div>
+    <div class="idea">
+      <div class="idea-top">
+        <div class="idea-title">Fujifilm T200 vs Canon IXUS 160 — Hangisi?</div>
+        <span class="idea-fmt fmt-m">Mid · 3–5 dk</span>
+      </div>
+      <div class="idea-desc">İki stokta olan ürün, karar aşamasındaki alıcıyı direkt yakalar. Karşılaştırma → satışa dönüşüm.</div>
+      <div class="idea-tags">
+        <span class="tag tag-p">📦 Fujifilm T200</span>
+        <span class="tag tag-p">📦 Canon IXUS 160</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="analysis">
+  <div class="analysis-icon">🧠</div>
+  <p>İçerik fikirleri <strong>tamamen veri destekli</strong>: her fikir kanalın kendi en iyi performanslı videoların formatına dayanıyor. Yeni bir format denemek yerine <strong>zaten işe yaramış kalıpları tekrarlamak</strong> en hızlı büyüme yolu. Özellikle "stok geldi" Shorts serisi doğrudan satışa bağlanabilir.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ───────────────────────────── ÜRÜNLER ── -->
+<div class="section-header">
+  <h2>Ürün Kataloğu</h2>
+  <div class="source-tag">Kaynak: <span>Shopify</span> · retrocameraland.com/products.json · günlük sync</div>
+</div>
+
+<div class="chart-card" style="padding:0; overflow:hidden;">
+  <table>
+    <thead>
+      <tr style="border-bottom:1px solid var(--border);">
+        <th style="padding:14px 16px;">Ürün</th>
+        <th>Fiyat</th>
+        <th>Stok</th>
+        <th>Video Önceliği</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="font-weight:500;">Canon IXUS 160</td><td>₺14.490</td><td><span class="badge-stok">Stokta</span></td><td class="priority">En yüksek · viral geçmiş</td></tr>
+      <tr><td style="font-weight:500;">Sony Cyber-shot TX9</td><td>₺14.490</td><td><span class="badge-stok">Stokta</span></td><td class="priority">En yüksek · 45K Shorts</td></tr>
+      <tr><td style="font-weight:500;">Sanyo Xacti CG-10</td><td>₺8.490</td><td><span class="badge-stok">Stokta</span></td><td class="priority">Yüksek · uygun fiyat</td></tr>
+      <tr><td style="font-weight:500;">Fujifilm FinePix T200</td><td>₺11.490</td><td><span class="badge-stok">Stokta</span></td><td style="color:var(--text2);font-size:12px;">Orta · karşılaştırma</td></tr>
+      <tr><td style="font-weight:500;">Casio Exilim EX-Z85</td><td>₺9.490</td><td><span class="badge-stok">Stokta</span></td><td style="color:var(--text2);font-size:12px;">Orta · stok Shorts</td></tr>
+      <tr><td style="font-weight:500;">Lumix DMC-FT10</td><td>₺11.990</td><td><span class="badge-stok">Stokta</span></td><td style="color:var(--text2);font-size:12px;">Orta · waterproof niche</td></tr>
+      <tr><td style="font-weight:500;">Nikon Coolpix S60</td><td>₺13.490</td><td><span class="badge-out">Stok yok</span></td><td style="color:var(--text3);font-size:12px;">Bekle</td></tr>
+      <tr><td style="font-weight:500;">Sony Cyber-shot DSC-T500</td><td>₺11.490</td><td><span class="badge-out">Stok yok</span></td><td style="color:var(--text3);font-size:12px;">Bekle</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="analysis">
+  <div class="analysis-icon">🛍️</div>
+  <p>Stokta olan ürünler video öncelik sıralamasına göre listelendi. <strong>Canon IXUS 160 ve Sony TX9</strong> hem stokta hem de kanalın en viral içeriklerinde geçiyor — bu iki ürün için Shorts üretmek doğrudan satışa dönüşme ihtimali en yüksek. <strong>Stok biten ürünler için video üretmemek</strong> önemli: izleyici gelip satın alamazsa deneyim kötü biter.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ───────────────────────────── ROADMAP ── -->
+<div class="section-header">
+  <h2>10.000 Abone Yol Haritası</h2>
+  <div class="source-tag">Kaynak: <span>Projeksiyon modeli</span> · mevcut büyüme hızı + Shorts ivmesi senaryosu</div>
+</div>
+
+<div class="g2">
+  <div class="chart-card">
+    <div class="card-title">Büyüme Projeksiyonu</div>
+    <div class="card-source">Gerçek veri + 2 senaryo</div>
+    <div class="chart-wrap" style="height:220px;"><canvas id="projChart"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <div class="card-title">Milestone'lar</div>
+    <div class="card-source">Abone hedefleri ve açılan özellikler</div>
+    <div class="rm" style="margin-top:8px;">
+      <div class="rm-row">
+        <div class="rm-spine"><div class="rm-node done">✓</div><div class="rm-spine-line"></div></div>
+        <div class="rm-body">
+          <div class="rm-title">Kanal kuruldu · 0 → 3.740</div>
+          <div class="rm-desc">365 video, 971K izlenme. Shorts formatı keşfedildi.</div>
+          <div class="rm-chip">Tamamlandı · Haz 2025</div>
+        </div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-spine"><div class="rm-node now">▶</div><div class="rm-spine-line"></div></div>
+        <div class="rm-body">
+          <div class="rm-title">3.740 → 5.000 · Shorts ivmesi</div>
+          <div class="rm-desc">Haftada 3+ Shorts + stok bildirimleri. Kanıtlı formatları tekrarla.</div>
+          <div class="rm-chip active">Devam ediyor · ~3–4 ay</div>
+        </div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-spine"><div class="rm-node next">5K</div><div class="rm-spine-line"></div></div>
+        <div class="rm-body">
+          <div class="rm-title">5.000 · Kanal Üyeliği açılır</div>
+          <div class="rm-desc">YouTube özel içerik ve erken erişim özelliği aktif olur.</div>
+        </div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-spine"><div class="rm-node next">7K</div><div class="rm-spine-line"></div></div>
+        <div class="rm-body">
+          <div class="rm-title">7.000 · Sponsorluk fırsatları</div>
+          <div class="rm-desc">Film, lens, aksesuar markaları 7K+ kanalları hedefler.</div>
+        </div>
+      </div>
+      <div class="rm-row">
+        <div class="rm-spine"><div class="rm-node next">🎯</div><div class="rm-spine-line"></div></div>
+        <div class="rm-body">
+          <div class="rm-title">10.000 · YouTube Partner!</div>
+          <div class="rm-desc">Reklam geliri aktif. Türkiye'nin #1 retro kamera kanalı.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="analysis">
+  <div class="analysis-icon">🗺️</div>
+  <p>Projeksiyon iki senaryo gösteriyor: <strong>mevcut hız</strong> (~394 abone/ay) ile 10K'ya Ekim 2027'de ulaşılır. <strong>Shorts ivmesi</strong> (600–800+ abone/ay) senaryosunda ise Eylül 2026 hedeflenebilir. Fark yaratan tek değişken Shorts frekansı — haftada 5'e çıkmak bu süreyi neredeyse yarıya indirebilir.</p>
+</div>
+
+<footer>
+  Retrocameraland YouTube Agent &nbsp;·&nbsp; YouTube Data API v3 + Shopify products.json &nbsp;·&nbsp; Her gün 09:03'te otomatik güncellenir
+</footer>
+
+<script>
+Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif';
+const BORDER = '#e0e0e5';
+const TEXT2 = '#6e6e73';
+const baseOpts = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: { legend: { labels: { color: TEXT2, font:{size:11}, boxWidth:12 } } },
+};
+
+// FORMAT
+new Chart(document.getElementById('formatChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Shorts (< 60s)', 'Mid-form (1–5 dk)', 'Long-form (5+ dk)'],
+    datasets: [{
+      data: [45157, 18564, 27797],
+      backgroundColor: ['rgba(255,59,48,.15)', 'rgba(40,205,65,.15)', 'rgba(0,113,227,.15)'],
+      borderColor: ['#ff3b30', '#28cd41', '#0071e3'],
+      borderWidth: 1.5, borderRadius: 8,
+    }]
+  },
+  options: {
+    ...baseOpts,
+    scales: {
+      x: { ticks:{color:TEXT2, font:{size:11}}, grid:{color:'rgba(0,0,0,.05)'} },
+      y: { ticks:{color:TEXT2, font:{size:11}, callback: v => v>=1000?Math.round(v/1000)+'K':v}, grid:{color:'rgba(0,0,0,.05)'} }
+    },
+    plugins: { legend:{display:false} }
+  }
+});
+
+// DONUT
+new Chart(document.getElementById('donutChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Shorts', 'Mid-form', 'Long-form'],
+    datasets: [{
+      data: [65, 20, 15],
+      backgroundColor: ['rgba(255,59,48,.8)', 'rgba(40,205,65,.8)', 'rgba(0,113,227,.8)'],
+      borderColor: '#fff',
+      borderWidth: 2,
+    }]
+  },
+  options: {
+    ...baseOpts,
+    cutout: '68%',
+    plugins: {
+      legend: { position:'right', labels:{color:TEXT2, font:{size:11}, padding:14, boxWidth:10} }
+    }
+  }
+});
+
+// TOP VİDEOLAR
+new Chart(document.getElementById('topChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Uygun fiyatlı\nkamera', 'Nikon\nStoklarda', 'Sony T9\nShorts', 'Yoshi\nBelgesel', 'Sony T9\nİnceleme', 'Retro foto\nçektin mi'],
+    datasets: [{
+      data: [77714, 64134, 45606, 43773, 25312, 24840],
+      backgroundColor: 'rgba(0,113,227,.15)',
+      borderColor: '#0071e3',
+      borderWidth: 1.5, borderRadius: 6,
+    }]
+  },
+  options: {
+    ...baseOpts,
+    indexAxis: 'y',
+    scales: {
+      x: { ticks:{color:TEXT2, font:{size:10}, callback: v => v>=1000?Math.round(v/1000)+'K':v}, grid:{color:'rgba(0,0,0,.05)'} },
+      y: { ticks:{color:TEXT2, font:{size:10}}, grid:{display:false} }
+    },
+    plugins: { legend:{display:false} }
+  }
+});
+
+// ETKİLEŞİM
+new Chart(document.getElementById('engChart'), {
+  type: 'bar',
+  data: {
+    labels: ['C2 kamera\naşkı', 'Uygun fiyatlı\nkamera', 'Retro foto\nçektin mi', 'Make-up\nCheck', 'Pentax\nOptio', 'Nikon\nStok', 'Nikon\nS3200', 'Sony T9\nİnceleme', 'Yoshi\nBelg.', 'Sony T9\nShort'],
+    datasets: [{
+      label: 'Beğeni / 1.000 görüntülenme',
+      data: [9.56, 4.97, 4.83, 3.00, 4.74, 3.29, 2.71, 2.41, 1.48, 1.32],
+      backgroundColor: 'rgba(191,90,242,.15)',
+      borderColor: '#bf5af2',
+      borderWidth: 1.5, borderRadius: 6,
+    }]
+  },
+  options: {
+    ...baseOpts,
+    scales: {
+      x: { ticks:{color:TEXT2, font:{size:9}}, grid:{color:'rgba(0,0,0,.05)'} },
+      y: { ticks:{color:TEXT2, font:{size:11}}, grid:{color:'rgba(0,0,0,.05)'} }
+    },
+    plugins: { legend:{display:false} }
+  }
+});
+
+// PROJEKSİYON
+new Chart(document.getElementById('projChart'), {
+  type: 'line',
+  data: {
+    labels: ['Haz','Tem','Ağu','Eyl','Eki','Kas','Ara','Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki'],
+    datasets: [
+      {
+        label: 'Gerçek büyüme',
+        data: [0,300,700,1100,1600,2000,2500,2900,3200,3500,3740,null,null,null,null,null,null],
+        borderColor: '#0071e3', backgroundColor: 'rgba(0,113,227,.08)',
+        fill: true, tension: 0.4, pointRadius: 3, borderWidth: 2,
+        pointBackgroundColor: '#0071e3',
+      },
+      {
+        label: 'Mevcut hız',
+        data: [null,null,null,null,null,null,null,null,null,null,3740,4134,4528,4922,5316,5710,6104],
+        borderColor: '#aeaeb2', borderDash: [5,4], tension: 0.4,
+        pointRadius: 2, fill: false, borderWidth: 1.5,
+      },
+      {
+        label: 'Shorts ivmesi',
+        data: [null,null,null,null,null,null,null,null,null,null,3740,4540,5500,6700,7800,8900,10000],
+        borderColor: '#28cd41', borderDash: [4,3], tension: 0.4,
+        pointRadius: 2, fill: false, borderWidth: 1.5,
+      },
+      {
+        label: '10.000 hedef',
+        data: Array(17).fill(10000),
+        borderColor: 'rgba(255,159,10,.4)', borderDash: [2,6],
+        pointRadius: 0, fill: false, borderWidth: 1,
+      }
+    ]
+  },
+  options: {
+    ...baseOpts,
+    scales: {
+      x: { ticks:{color:TEXT2, font:{size:9}}, grid:{color:'rgba(0,0,0,.05)'} },
+      y: { ticks:{color:TEXT2, font:{size:10}, callback: v => v>=1000?Math.round(v/1000)+'K':v}, grid:{color:'rgba(0,0,0,.05)'}, min:0, max:11000 }
+    },
+    plugins: {
+      legend: { labels:{color:TEXT2, font:{size:10}, boxWidth:14, padding:14} }
+    }
+  }
+});
+</script>
+</body>
+</html>

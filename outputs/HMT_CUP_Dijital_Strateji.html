@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>HMT CUP 2026 — Dijital Medya Stratejisi & Bütçe</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&family=Bebas+Neue&display=swap');
+
+/* ═══════════ TOKENS ═══════════ */
+:root{
+  --r:#CC0000; --rb:#E82020; --rd:#A50000;
+  --w:#FFFFFF;
+  --bg:#F7F7F7;
+  --bg2:#EFEFEF;
+  --bg3:#E5E5E5;
+  --ink:#111111;
+  --ink2:#333333;
+  --ink3:#666666;
+  --ink4:#999999;
+  --border:#DEDEDE;
+  --border2:#CACACA;
+  --accent-gold:#D4A843;
+  --accent-blue:#1A73E8;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ═══════════ RESET ═══════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--w);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+/* ═══════════ NAV ═══════════ */
+.nav{
+  position:fixed;inset:0 0 auto;z-index:900;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  background:rgba(255,255,255,.97);
+  border-bottom:2px solid var(--r);
+  backdrop-filter:blur(20px);
+  transition:box-shadow .3s var(--ease);
+}
+.nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.nav-logo{display:flex;align-items:center;gap:11px}
+.nav-hex{
+  width:34px;height:34px;background:var(--r);
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  display:grid;place-items:center;flex-shrink:0;
+}
+.nav-hex svg{width:16px;height:16px;fill:white}
+.nav-brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--ink)}
+.nav-brand em{color:var(--r);font-style:normal}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink3);position:relative;padding-bottom:3px;
+  transition:color .25s var(--ease);
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
+  background:var(--r);transition:width .3s var(--ease);
+}
+.nav-links a:hover{color:var(--r)}
+.nav-links a:hover::after{width:100%}
+.nav-pill{
+  background:var(--r);color:white;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;padding:8px 18px;
+  white-space:nowrap;
+}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{width:22px;height:2px;background:var(--ink);transition:all .3s var(--ease);border-radius:1px}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{
+  display:none;position:fixed;top:64px;inset:auto 0 0;z-index:899;
+  background:white;border-top:1px solid var(--border);
+  padding:32px 24px;flex-direction:column;gap:20px;
+  box-shadow:0 8px 32px rgba(0,0,0,.12);
+}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink2);padding:8px 0;border-bottom:1px solid var(--border)}
+.mob-menu a:last-child{border-bottom:none}
+.mob-menu a:hover{color:var(--r)}
+
+/* ═══════════ UTILS ═══════════ */
+.c{max-width:1180px;margin:0 auto;padding:0 32px}
+.sec{padding:88px 0}
+.lbl{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--r);margin-bottom:10px}
+.h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5.5vw,66px);letter-spacing:2px;line-height:1.0;color:var(--ink);margin-bottom:20px}
+.h1 em{color:var(--r);font-style:normal}
+.h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4vw,46px);letter-spacing:2px;line-height:1.05;color:var(--ink);margin-bottom:16px}
+.h2 em{color:var(--r);font-style:normal}
+.body-txt{font-size:14px;font-weight:400;line-height:1.9;color:var(--ink3);max-width:540px}
+.bar{width:44px;height:3px;background:var(--r);margin-bottom:36px}
+
+/* reveal disabled for maximum mobile compatibility */
+
+/* ═══════════ HERO ═══════════ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  justify-content:center;text-align:center;overflow:hidden;
+  padding:80px 24px 64px;background:var(--ink);
+}
+.hero-pattern{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at 20% 50%,rgba(204,0,0,.2) 0%,transparent 50%),
+    radial-gradient(ellipse at 80% 30%,rgba(204,0,0,.12) 0%,transparent 50%),
+    radial-gradient(ellipse at 50% 80%,rgba(204,0,0,.08) 0%,transparent 40%);
+}
+.hero-body{position:relative;z-index:2}
+.htag{
+  display:inline-block;border:1px solid var(--r);color:var(--r);
+  font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;
+  padding:8px 20px;margin-bottom:28px;
+  animation:fu .7s var(--ease) .2s both;
+}
+.ht{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(48px,10vw,120px);
+  line-height:.9;letter-spacing:-2px;color:white;
+  margin-bottom:8px;animation:fu .9s var(--ease) .4s both;
+}
+.ht em{color:var(--r);font-style:normal}
+.ht-sub{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(20px,3.5vw,38px);
+  letter-spacing:8px;color:rgba(255,255,255,.35);
+  margin-bottom:36px;animation:fu .9s var(--ease) .6s both;
+}
+.hdiv{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin-bottom:36px;animation:fi .8s var(--ease) .8s both;
+}
+.hdiv-line{width:64px;height:1px;background:var(--r)}
+.hdiv-dot{width:6px;height:6px;background:var(--r);transform:rotate(45deg);flex-shrink:0}
+
+.hero-chips{
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+  margin-bottom:40px;animation:fu .9s var(--ease) 1s both;
+}
+.hero-chip{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.6);font-size:10px;font-weight:600;
+  letter-spacing:2px;text-transform:uppercase;padding:10px 20px;
+}
+.hero-chip em{color:var(--r);font-style:normal;font-weight:700}
+
+.hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fu .9s var(--ease) 1.2s both}
+.btn-r{
+  background:var(--r);color:white;font-size:10px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;padding:14px 36px;
+  transition:background .25s var(--ease),transform .2s var(--ease),box-shadow .25s;
+  display:inline-block;
+}
+.btn-r:hover{background:var(--rb);transform:translateY(-2px);box-shadow:0 10px 28px rgba(204,0,0,.35)}
+.btn-outline-w{
+  background:transparent;color:white;font-size:10px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;padding:13px 36px;
+  border:1px solid rgba(255,255,255,.35);
+  transition:border-color .25s var(--ease),transform .2s var(--ease);
+  display:inline-block;
+}
+.btn-outline-w:hover{border-color:white;transform:translateY(-2px)}
+
+/* ═══════════ SECTION DIVIDER ═══════════ */
+.redstrip{height:4px;background:var(--r)}
+
+/* ═══════════ OVERVIEW SECTION ═══════════ */
+.overview{background:white;padding:88px 0}
+.overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.overview-right{display:flex;flex-direction:column;gap:2px}
+.ov-card{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:20px 18px;border-left:3px solid transparent;
+  background:var(--bg);border-bottom:1px solid var(--border);
+  transition:border-color .3s,background .3s;cursor:default;
+}
+.ov-card:hover{border-left-color:var(--r);background:white}
+.ov-ico{
+  width:42px;height:42px;border-radius:50%;flex-shrink:0;
+  background:rgba(204,0,0,.08);border:1px solid rgba(204,0,0,.2);
+  display:grid;place-items:center;
+  transition:background .3s,transform .3s var(--ease);
+}
+.ov-card:hover .ov-ico{background:rgba(204,0,0,.15);transform:scale(1.08)}
+.ov-ico svg{width:18px;height:18px;fill:var(--r)}
+.ov-card h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.ov-card p{font-size:11px;color:var(--ink3);line-height:1.65}
+
+/* ═══════════ VIDEO CONTENT PLAN ═══════════ */
+.vidplan{background:var(--ink);padding:88px 0;position:relative;overflow:hidden}
+.vidplan::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 15% 50%,rgba(204,0,0,.15) 0%,transparent 55%),
+             radial-gradient(ellipse at 85% 20%,rgba(204,0,0,.08) 0%,transparent 45%);
+  pointer-events:none;
+}
+.vidplan .c{position:relative;z-index:1}
+.vidplan .lbl{color:rgba(255,255,255,.5)}
+.vidplan .h1{color:white}
+.vidplan .h1 em{color:var(--r)}
+.vidplan .bar{background:var(--r)}
+.vidplan .body-txt{color:rgba(255,255,255,.55)}
+
+.vid-cats{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:52px;margin-bottom:2px}
+.vid-cat{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  padding:36px 28px;position:relative;overflow:hidden;
+  transition:background .3s,border-color .3s,transform .25s var(--ease);cursor:default;
+}
+.vid-cat:hover{background:rgba(204,0,0,.1);border-color:rgba(204,0,0,.3);transform:translateY(-4px)}
+.vid-cat::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--r);
+  transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease);
+}
+.vid-cat:hover::before{transform:scaleY(1)}
+.vid-cat-num{
+  font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;
+  color:rgba(255,255,255,.05);position:absolute;top:12px;right:16px;
+}
+.vid-cat-ico{
+  width:48px;height:48px;background:rgba(204,0,0,.15);border:1px solid rgba(204,0,0,.35);
+  border-radius:10px;display:grid;place-items:center;margin-bottom:20px;
+  transition:background .3s,border-color .3s;
+}
+.vid-cat:hover .vid-cat-ico{background:rgba(204,0,0,.3);border-color:rgba(204,0,0,.6)}
+.vid-cat-ico svg{width:22px;height:22px;fill:var(--r)}
+.vid-cat h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1.5px;color:white;margin-bottom:6px}
+.vid-cat-badge{
+  display:inline-block;background:rgba(204,0,0,.25);color:var(--r);
+  font-size:8px;font-weight:700;letter-spacing:1.5px;padding:4px 10px;
+  text-transform:uppercase;margin-bottom:12px;
+}
+.vid-cat p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.7}
+.vid-cat ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.vid-cat ul li{
+  font-size:11px;color:rgba(255,255,255,.45);line-height:1.5;
+  padding-left:16px;position:relative;
+}
+.vid-cat ul li::before{
+  content:'';width:4px;height:4px;background:var(--r);border-radius:50%;
+  position:absolute;left:0;top:6px;
+}
+
+/* ═══════════ PRESENTERS ═══════════ */
+.presenters{background:var(--bg);padding:88px 0}
+.pres-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:52px}
+.pres-card{
+  background:white;border:1px solid var(--border);overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s;cursor:default;
+}
+.pres-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.1)}
+.pres-visual{
+  height:280px;position:relative;overflow:hidden;
+}
+.pres-visual.female{background:linear-gradient(135deg,#2a0a0a,#1a0505)}
+.pres-visual.male{background:linear-gradient(135deg,#0a0a1a,#050510)}
+.pres-visual-inner{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;
+}
+.pres-avatar{
+  width:100px;height:100px;border-radius:50%;
+  border:3px solid var(--r);display:grid;place-items:center;
+  background:rgba(204,0,0,.1);
+}
+.pres-avatar svg{width:44px;height:44px;fill:var(--r)}
+.pres-role{
+  font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;color:white;
+}
+.pres-gender{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.pres-body{padding:32px 28px}
+.pres-body h3{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1.5px;color:var(--ink);margin-bottom:12px}
+.pres-body p{font-size:12px;color:var(--ink3);line-height:1.75;margin-bottom:18px}
+.pres-tasks{display:flex;flex-direction:column;gap:8px}
+.pres-task{
+  display:flex;align-items:center;gap:10px;
+  font-size:11px;color:var(--ink2);
+  padding:8px 12px;background:var(--bg);border-left:2px solid var(--r);
+}
+
+/* ═══════════ VIDEO DETAILS ═══════════ */
+.vid-details{background:white;padding:88px 0}
+.vd-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px}
+.vd-card{
+  background:var(--bg);padding:32px 24px;
+  border:1px solid var(--border);border-top:4px solid transparent;
+  transition:border-top-color .3s,background .3s,transform .3s var(--ease),box-shadow .3s;cursor:default;
+}
+.vd-card:hover{border-top-color:var(--r);background:white;transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.07)}
+.vd-num{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--bg3);line-height:.9;margin-bottom:6px}
+.vd-card:hover .vd-num{color:var(--r)}
+.vd-card h4{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px;color:var(--ink);margin-bottom:4px}
+.vd-type{
+  display:inline-block;font-size:8px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;padding:4px 10px;margin-bottom:12px;
+  background:rgba(204,0,0,.08);color:var(--r);
+}
+.vd-card p{font-size:11px;color:var(--ink3);line-height:1.7;margin-bottom:12px}
+.vd-meta{display:flex;gap:12px;flex-wrap:wrap}
+.vd-meta span{
+  font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  color:var(--ink4);background:var(--bg2);padding:4px 8px;
+}
+
+/* ═══════════ INSTAGRAM STRATEGY ═══════════ */
+.insta{background:var(--bg);padding:88px 0}
+.insta-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:52px}
+.insta-phone{
+  width:280px;height:480px;margin:0 auto;
+  background:var(--ink);border-radius:32px;
+  border:3px solid var(--ink2);position:relative;overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,.25);
+}
+.insta-notch{
+  position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:100px;height:22px;background:var(--ink);
+  border-radius:0 0 14px 14px;z-index:3;
+}
+.insta-screen{
+  position:absolute;inset:8px;border-radius:24px;overflow:hidden;
+  background:linear-gradient(180deg,#1a0505,#0a0a0a);
+  display:flex;flex-direction:column;align-items:center;
+  padding:44px 20px 20px;gap:14px;
+}
+.insta-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:3px;color:white}
+.insta-logo em{color:var(--r);font-style:normal}
+.insta-stats-row{display:flex;gap:16px;width:100%}
+.insta-stat{
+  flex:1;text-align:center;padding:10px 0;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-radius:8px;
+}
+.insta-stat-n{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--r);line-height:1}
+.insta-stat-l{font-size:7px;font-weight:600;letter-spacing:1px;color:rgba(255,255,255,.35);text-transform:uppercase;margin-top:2px}
+.insta-grid-mock{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;width:100%;flex:1;
+}
+.insta-grid-item{
+  background:rgba(204,0,0,.12);border:1px solid rgba(204,0,0,.2);
+  border-radius:4px;aspect-ratio:1;
+  display:grid;place-items:center;
+}
+.insta-grid-item svg{width:16px;height:16px;fill:rgba(204,0,0,.5)}
+
+.insta-content-types{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.ict{
+  background:white;padding:28px 20px;text-align:center;
+  border:1px solid var(--border);border-top:3px solid transparent;
+  transition:border-top-color .3s,transform .3s var(--ease),box-shadow .3s;cursor:default;
+}
+.ict:hover{border-top-color:var(--r);transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.07)}
+.ict-ico{
+  width:44px;height:44px;border-radius:50%;margin:0 auto 14px;
+  background:rgba(204,0,0,.07);border:1px solid rgba(204,0,0,.18);
+  display:grid;place-items:center;
+  transition:background .3s,transform .3s var(--ease);
+}
+.ict:hover .ict-ico{background:rgba(204,0,0,.15);transform:scale(1.08)}
+.ict-ico svg{width:20px;height:20px;fill:var(--r)}
+.ict h4{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;color:var(--ink);margin-bottom:4px}
+.ict-freq{font-size:9px;font-weight:700;letter-spacing:2px;color:var(--r);text-transform:uppercase;margin-bottom:8px}
+.ict p{font-size:11px;color:var(--ink3);line-height:1.6}
+
+/* ═══════════ COACH STRATEGY ═══════════ */
+.coaches{background:var(--ink);padding:88px 0;position:relative;overflow:hidden}
+.coaches::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 0%,rgba(204,0,0,.12) 0%,transparent 50%);
+  pointer-events:none;
+}
+.coaches .c{position:relative;z-index:1}
+.coaches .lbl{color:rgba(255,255,255,.5)}
+.coaches .h1{color:white}
+.coaches .h1 em{color:var(--r)}
+.coaches .bar{background:var(--r)}
+.coaches .body-txt{color:rgba(255,255,255,.55)}
+
+.funnel{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:52px}
+.funnel-step{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  padding:32px 22px;position:relative;overflow:hidden;
+  transition:background .3s,transform .25s var(--ease);cursor:default;
+}
+.funnel-step:hover{background:rgba(204,0,0,.1);transform:translateY(-4px)}
+.funnel-step-num{
+  font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:1;
+  color:rgba(255,255,255,.04);position:absolute;top:8px;right:14px;
+}
+.funnel-step-ico{
+  width:44px;height:44px;background:rgba(204,0,0,.15);border:1px solid rgba(204,0,0,.35);
+  border-radius:8px;display:grid;place-items:center;margin-bottom:18px;
+  transition:background .3s,border-color .3s;
+}
+.funnel-step:hover .funnel-step-ico{background:rgba(204,0,0,.3);border-color:rgba(204,0,0,.6)}
+.funnel-step-ico svg{width:20px;height:20px;fill:var(--r)}
+.funnel-step h4{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1.5px;color:white;margin-bottom:8px}
+.funnel-step p{font-size:11px;color:rgba(255,255,255,.45);line-height:1.7}
+
+.coach-tactics{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
+.ct{
+  background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);
+  padding:28px 22px;border-left:3px solid transparent;
+  transition:border-left-color .3s,background .3s;cursor:default;
+}
+.ct:hover{border-left-color:var(--r);background:rgba(255,255,255,.06)}
+.ct h4{font-size:12px;font-weight:700;color:white;margin-bottom:6px}
+.ct p{font-size:11px;color:rgba(255,255,255,.4);line-height:1.6}
+
+/* ═══════════ TIMELINE ═══════════ */
+.timeline{background:var(--bg);padding:88px 0}
+.tl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:52px}
+.tl-card{
+  background:white;padding:32px 24px;
+  border:1px solid var(--border);border-top:4px solid transparent;
+  transition:border-top-color .3s,transform .3s var(--ease),box-shadow .3s;cursor:default;
+  position:relative;
+}
+.tl-card:hover{border-top-color:var(--r);transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.07)}
+.tl-week{
+  font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:2px;
+  color:var(--r);margin-bottom:6px;
+}
+.tl-card h4{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--ink);margin-bottom:10px}
+.tl-card ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.tl-card ul li{
+  font-size:11px;color:var(--ink3);line-height:1.5;
+  padding-left:14px;position:relative;
+}
+.tl-card ul li::before{
+  content:'';width:4px;height:4px;background:var(--r);border-radius:50%;
+  position:absolute;left:0;top:6px;
+}
+
+/* ═══════════ BUDGET ═══════════ */
+.budget{background:white;padding:88px 0;border-top:1px solid var(--border)}
+.budget-grid{margin-top:52px}
+.budget-table{width:100%;border-collapse:collapse;margin-bottom:2px}
+.budget-table thead th{
+  background:var(--ink);color:white;
+  font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;
+  text-transform:uppercase;padding:16px 20px;text-align:left;
+}
+.budget-table thead th:last-child{text-align:right}
+.budget-table tbody td{
+  padding:14px 20px;font-size:12px;color:var(--ink2);
+  border-bottom:1px solid var(--border);
+}
+.budget-table tbody td:last-child{text-align:right;font-weight:700;color:var(--ink);font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:1px}
+.budget-table tbody tr{transition:background .2s;cursor:default}
+.budget-table tbody tr:hover{background:var(--bg)}
+.budget-cat{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--r);display:block;margin-bottom:2px}
+.budget-desc{font-size:10px;color:var(--ink4);margin-top:2px}
+.budget-total{
+  background:var(--r);padding:24px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.budget-total-label{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;color:white}
+.budget-total-val{font-family:'Bebas Neue',sans-serif;font-size:36px;color:white;letter-spacing:1px}
+.budget-note{
+  margin-top:20px;padding:20px 24px;background:var(--bg);border-left:3px solid var(--r);
+  font-size:11px;color:var(--ink3);line-height:1.7;
+}
+
+/* ═══════════ CTA ═══════════ */
+.cta{background:var(--r);padding:88px 24px;text-align:center}
+.cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,80px);letter-spacing:3px;line-height:.95;color:white;margin-bottom:18px}
+.cta p{font-size:14px;color:rgba(255,255,255,.78);max-width:460px;margin:0 auto 36px;line-height:1.8}
+.btn-blk{
+  display:inline-block;background:var(--ink);color:white;
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  padding:16px 44px;transition:opacity .25s,transform .2s var(--ease),box-shadow .25s;
+}
+.btn-blk:hover{opacity:.85;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.4)}
+
+/* ═══════════ FOOTER ═══════════ */
+footer{
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:10px;padding:22px 48px;
+}
+.f-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:5px;color:var(--r)}
+.f-copy,.f-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25)}
+
+/* ═══════════ ANIMATIONS ═══════════ */
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+@media(max-width:1024px){
+  .nav{padding:0 24px}
+  .overview-grid,.insta-top,.pres-grid{grid-template-columns:1fr}
+  .vid-cats{grid-template-columns:1fr}
+  .vd-grid{grid-template-columns:repeat(2,1fr)}
+  .funnel{grid-template-columns:repeat(2,1fr)}
+  .coach-tactics{grid-template-columns:1fr}
+  .tl-grid{grid-template-columns:repeat(2,1fr)}
+  .insta-content-types{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:768px){
+  .nav-links,.nav-pill{display:none}
+  .nav-burger{display:flex}
+  .c{padding:0 20px}
+  .overview{padding:64px 0}
+  .vidplan{padding:64px 0}
+  .presenters{padding:64px 0}
+  .vid-details{padding:64px 0}
+  .insta{padding:64px 0}
+  .coaches{padding:64px 0}
+  .timeline{padding:64px 0}
+  .budget{padding:64px 0}
+  .ht{font-size:clamp(44px,14vw,80px);letter-spacing:-1px}
+  .ht-sub{font-size:clamp(16px,4vw,24px);letter-spacing:4px}
+  .hero-chips{flex-direction:column;align-items:center}
+  .hbtns{flex-direction:column;align-items:center;width:100%;max-width:320px;margin:0 auto}
+  .btn-r,.btn-outline-w{width:100%;text-align:center;padding:15px}
+  .vd-grid{grid-template-columns:1fr}
+  .funnel{grid-template-columns:1fr}
+  .tl-grid{grid-template-columns:1fr}
+  .insta-content-types{grid-template-columns:1fr}
+  .insta-phone{width:240px;height:400px}
+  .pres-visual{height:220px}
+  footer{padding:18px 20px;flex-direction:column;text-align:center;gap:8px}
+}
+@media(max-width:480px){
+  .h1{font-size:clamp(32px,8vw,48px)}
+  .overview-grid{gap:32px}
+  .pres-grid{gap:24px}
+  .budget-table thead th{font-size:11px;padding:12px 14px}
+  .budget-table tbody td{padding:12px 14px;font-size:11px}
+  .budget-table tbody td:last-child{font-size:15px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">
+    <div class="nav-hex">
+      <svg viewBox="0 0 24 24"><path d="M12 2l5 3v6l-5 3-5-3V5z"/></svg>
+    </div>
+    <span class="nav-brand">HMT <em>CUP</em></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#overview">Genel Bakış</a></li>
+    <li><a href="#videos">Video İçerikler</a></li>
+    <li><a href="#presenters">Sunucular</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#coaches">Hoca Stratejisi</a></li>
+    <li><a href="#budget">Bütçe</a></li>
+  </ul>
+  <div class="nav-pill">Dijital Strateji 2026</div>
+  <div class="nav-burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#overview" onclick="closeMenu()">Genel Bakış</a>
+  <a href="#videos" onclick="closeMenu()">Video İçerikler</a>
+  <a href="#presenters" onclick="closeMenu()">Sunucular</a>
+  <a href="#instagram" onclick="closeMenu()">Instagram</a>
+  <a href="#coaches" onclick="closeMenu()">Hoca Stratejisi</a>
+  <a href="#budget" onclick="closeMenu()">Bütçe</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-body">
+    <div class="htag">UniqBee Dijital Medya Ajansı — Strateji Dokümanı</div>
+    <div class="ht">DİJİTAL<br><em>MEDYA</em></div>
+    <div class="ht-sub">Turnuva Öncesi Strateji & Bütçe</div>
+    <div class="hdiv">
+      <div class="hdiv-line"></div>
+      <div class="hdiv-dot"></div>
+      <div class="hdiv-line"></div>
+    </div>
+    <div class="hero-chips">
+      <div class="hero-chip"><em>12</em> Video İçerik</div>
+      <div class="hero-chip"><em>2</em> Profesyonel Sunucu</div>
+      <div class="hero-chip"><em>1</em> Instagram Sayfası</div>
+      <div class="hero-chip"><em>∞</em> Heyecan</div>
+    </div>
+    <div class="hbtns">
+      <a href="#videos" class="btn-r">Stratejiyi İncele</a>
+      <a href="#budget" class="btn-outline-w">Bütçeyi Gör</a>
+    </div>
+  </div>
+</section>
+<div class="redstrip"></div>
+
+<!-- ══════════ OVERVIEW ══════════ -->
+<section id="overview" class="overview">
+  <div class="c">
+    <div class="overview-grid">
+      <div>
+        <p class="lbl">Genel Bakış</p>
+        <h2 class="h1">Turnuva Öncesi<br><em>Dijital Plan</em></h2>
+        <div class="bar"></div>
+        <p class="body-txt">HMT CUP'ı Türkiye gündemine taşımak için turnuva öncesinde yapılması gereken tüm dijital çalışmaları kapsayan stratejik yol haritası. Video prodüksiyon, sosyal medya yönetimi ve hoca ikna stratejisi bu planın 3 temel ayağını oluşturuyor.</p>
+      </div>
+      <div class="overview-right">
+        <div class="ov-card">
+          <div class="ov-ico"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+          <div><h4>12 Video İçerik</h4><p>Tanıtım, röportaj, bilgilendirme ve motivasyon videoları. Kadın ve erkek sunucuyla profesyonel prodüksiyon.</p></div>
+        </div>
+        <div class="ov-card">
+          <div class="ov-ico"><svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></div>
+          <div><h4>Instagram Sayfası</h4><p>@hmtcup profesyonel Instagram hesabı. Reels, Story, Feed içerik planı ve haftalık takvim.</p></div>
+        </div>
+        <div class="ov-card">
+          <div class="ov-ico"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+          <div><h4>Hoca İkna Stratejisi</h4><p>Futbol okulu hocalarını turnuvaya çekmek için hedefli dijital kampanya ve özel davet içerikleri.</p></div>
+        </div>
+        <div class="ov-card">
+          <div class="ov-ico"><svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+          <div><h4>Detaylı Bütçe</h4><p>Tüm kalemlerin şeffaf bütçelendirmesi. Prodüksiyon, sunucu, sosyal medya ve reklam ayrıntıları.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VIDEO CONTENT PLAN ══════════ -->
+<section id="videos" class="vidplan">
+  <div class="c">
+    <p class="lbl">Video İçerik Planı</p>
+    <h2 class="h1">Turnuva Öncesi<br><em>Video Üretimi</em></h2>
+    <div class="bar"></div>
+    <p class="body-txt">Profesyonel 1 kadın + 1 erkek sunucu eşliğinde çekilecek video içerikler. Tanıtımdan röportaja, motivasyondan bilgilendirmeye kapsamlı bir içerik havuzu.</p>
+  </div>
+  <div class="c">
+    <div class="vid-cats">
+      <div class="vid-cat">
+        <div class="vid-cat-num">01</div>
+        <div class="vid-cat-ico"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+        <h3>Tanıtım & Teaser</h3>
+        <div class="vid-cat-badge">3 Video</div>
+        <p>Turnuvanın büyüklüğünü, heyecanını ve profesyonelliğini anlatan sinematik içerikler.</p>
+        <ul>
+          <li>60 sn sinematik tanıtım filmi (drone + slider çekim)</li>
+          <li>30 sn Instagram Reels teaser — geri sayım</li>
+          <li>15 sn Story formatında hızlı tanıtım klibi</li>
+        </ul>
+      </div>
+      <div class="vid-cat">
+        <div class="vid-cat-num">02</div>
+        <div class="vid-cat-ico"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg></div>
+        <h3>Bilgilendirme & Sunucu</h3>
+        <div class="vid-cat-badge">4 Video</div>
+        <p>Kadın ve erkek sunucu eşliğinde turnuva detaylarını anlatan stüdyo çekimleri.</p>
+        <ul>
+          <li>Turnuva tanıtım sunumu — "HMT CUP nedir?" (2 dk)</li>
+          <li>Yaş kategorileri ve kurallar bilgilendirme (90 sn)</li>
+          <li>Kayıt süreci ve katılım şartları rehber (90 sn)</li>
+          <li>Lokasyon ve otel tanıtımı — "Nerede, nasıl?" (2 dk)</li>
+        </ul>
+      </div>
+      <div class="vid-cat">
+        <div class="vid-cat-num">03</div>
+        <div class="vid-cat-ico"><svg viewBox="0 0 24 24"><path d="M12 14c1.66 0 2.99-1.34 2.99-3S13.66 8 12 8c-1.66 0-3 1.34-3 3s1.34 3 3 3zm0-14C5.38 0 0 5.38 0 12s5.38 12 12 12 12-5.38 12-12S18.62 0 12 0zm0 22c-5.52 0-10-4.48-10-10S6.48 2 12 2s10 4.48 10 10-4.48 10-10 10z"/></svg></div>
+        <h3>Röportaj & Referans</h3>
+        <div class="vid-cat-badge">3 Video</div>
+        <p>Güven inşa eden özgün röportaj içerikleri. Hocalar ve ailelerden gerçek sözler.</p>
+        <ul>
+          <li>Altyapı hocası röportajı — "Neden HMT CUP?" (90 sn)</li>
+          <li>Veli/aile röportajı — "Çocuğum için neden katılıyorum" (60 sn)</li>
+          <li>Organizasyon komitesi ile sahne arkası sohbeti (2 dk)</li>
+        </ul>
+      </div>
+      <div class="vid-cat">
+        <div class="vid-cat-num">04</div>
+        <div class="vid-cat-ico"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg></div>
+        <h3>Motivasyon & Heyecan</h3>
+        <div class="vid-cat-badge">2 Video</div>
+        <p>Çocukların ve ailelerin duygularına dokunan, heyecan ve beklenti oluşturan içerikler.</p>
+        <ul>
+          <li>Ünlü futbolcu mesajı — "Sen de büyük sahnedesin" (30 sn)</li>
+          <li>Geri sayım serisi — turnuvaya X gün kaldı (15 sn × haftalık)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRESENTERS ══════════ -->
+<section id="presenters" class="presenters">
+  <div class="c">
+    <p class="lbl">Sunucu Kadrosu</p>
+    <h2 class="h1">Profesyonel<br><em>Sunucu Ekibi</em></h2>
+    <div class="bar"></div>
+    <p class="body-txt">Turnuvanın yüzü olacak 1 kadın ve 1 erkek profesyonel sunucu. Stüdyo çekimleri, saha röportajları ve sosyal medya içeriklerinde ana karakter.</p>
+    <div class="pres-grid">
+      <div class="pres-card">
+        <div class="pres-visual female">
+          <div class="pres-visual-inner">
+            <div class="pres-avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+            <div class="pres-role">KADIN SUNUCU</div>
+            <div class="pres-gender">Spor Muhabiri / Sunucu Profili</div>
+          </div>
+        </div>
+        <div class="pres-body">
+          <h3>Ana Sunucu — Kadın</h3>
+          <p>Enerjik, samimi ve çocuklarla doğal iletişim kurabilen bir profil. Stüdyo programı formatında bilgilendirme yapacak, sahada röportajlar gerçekleştirecek.</p>
+          <div class="pres-tasks">
+            <div class="pres-task">🎤 Stüdyo bilgilendirme videoları sunumu</div>
+            <div class="pres-task">📹 Saha röportajları — veli ve hoca görüşmeleri</div>
+            <div class="pres-task">📱 Instagram canlı yayın moderasyonu</div>
+            <div class="pres-task">🎬 Tanıtım filminde açılış/kapanış sunumu</div>
+          </div>
+        </div>
+      </div>
+      <div class="pres-card">
+        <div class="pres-visual male">
+          <div class="pres-visual-inner">
+            <div class="pres-avatar"><svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg></div>
+            <div class="pres-role">ERKEK SUNUCU</div>
+            <div class="pres-gender">Spor Yorumcusu / Anlatıcı Profili</div>
+          </div>
+        </div>
+        <div class="pres-body">
+          <h3>Yardımcı Sunucu — Erkek</h3>
+          <p>Futbol bilgisi güçlü, analitik ve karizmatik bir profil. Teknik detayları sade dille aktaracak, sahada hocalarla birebir görüşmeler yapacak.</p>
+          <div class="pres-tasks">
+            <div class="pres-task">⚽ Teknik bilgilendirme ve kural açıklamaları</div>
+            <div class="pres-task">🏟️ Saha teknik yorumları ve hazırlık sunumu</div>
+            <div class="pres-task">🎙️ Hoca ve altyapı uzmanı röportajları</div>
+            <div class="pres-task">📊 Scout süreci ve transfer bilgilendirmesi</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VIDEO DETAILS ══════════ -->
+<section class="vid-details">
+  <div class="c">
+    <p class="lbl">Çekilecek Videolar</p>
+    <h2 class="h1">12 Profesyonel<br><em>Video İçerik</em></h2>
+    <div class="bar"></div>
+    <p class="body-txt">Her video için format, süre ve yayın kanalı detayları.</p>
+    <div class="vd-grid">
+      <div class="vd-card">
+        <div class="vd-num">01</div>
+        <h4>Sinematik Tanıtım Filmi</h4>
+        <div class="vd-type">Prodüksiyon</div>
+        <p>Drone, slider ve gimbal çekimlerle turnuvanın büyüklüğünü gösteren sinematik açılış filmi. Sunucuların seslendirmesiyle.</p>
+        <div class="vd-meta"><span>60 sn</span><span>YouTube + Instagram</span><span>Drone</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">02</div>
+        <h4>"HMT CUP Nedir?" Sunumu</h4>
+        <div class="vd-type">Stüdyo</div>
+        <p>Kadın ve erkek sunucu birlikte. Program formatında turnuva bilgilendirmesi. Yeşil perde veya stüdyo dekor.</p>
+        <div class="vd-meta"><span>2 dk</span><span>YouTube + Feed</span><span>Stüdyo</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">03</div>
+        <h4>Yaş Kategorileri Rehberi</h4>
+        <div class="vd-type">Bilgilendirme</div>
+        <p>U9, U10, U11 kategorilerinin detaylı anlatımı. Kurallar, fikstür formatı ve kazanımlar.</p>
+        <div class="vd-meta"><span>90 sn</span><span>Reels + YouTube</span><span>Stüdyo</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">04</div>
+        <h4>Kayıt Süreci Rehberi</h4>
+        <div class="vd-type">Bilgilendirme</div>
+        <p>Nasıl başvurulur, belgeler neler, son tarih ne zaman? Adım adım kayıt rehberi.</p>
+        <div class="vd-meta"><span>90 sn</span><span>Reels + Story</span><span>Stüdyo</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">05</div>
+        <h4>Lokasyon & Otel Tanıtımı</h4>
+        <div class="vd-type">Tanıtım</div>
+        <p>Turnuvanın yapılacağı lokasyon, otel ve tesislerin detaylı tanıtımı. Vlog formatı.</p>
+        <div class="vd-meta"><span>2 dk</span><span>YouTube + Reels</span><span>Saha</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">06</div>
+        <h4>Hoca Röportajı</h4>
+        <div class="vd-type">Röportaj</div>
+        <p>Altyapı hocası ile "Neden HMT CUP'a katılmalısınız?" temalı derinlemesine röportaj.</p>
+        <div class="vd-meta"><span>90 sn</span><span>YouTube + Feed</span><span>Saha</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">07</div>
+        <h4>Veli/Aile Röportajı</h4>
+        <div class="vd-type">Röportaj</div>
+        <p>"Çocuğum için neden bu turnuvayı seçtim?" — gerçek aile hikâyeleri ve beklentiler.</p>
+        <div class="vd-meta"><span>60 sn</span><span>Reels + Story</span><span>Saha</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">08</div>
+        <h4>Sahne Arkası — BTS</h4>
+        <div class="vd-type">Vlog</div>
+        <p>Organizasyon komitesi ile hazırlık sürecinin sahne arkası. Saha hazırlıkları, ekip çalışması.</p>
+        <div class="vd-meta"><span>2 dk</span><span>YouTube + Reels</span><span>Saha</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">09</div>
+        <h4>Ünlü Futbolcu Mesajı</h4>
+        <div class="vd-type">Motivasyon</div>
+        <p>Tanınmış bir futbolcudan çocuklara motivasyon mesajı. "Sen de büyük sahnedesin."</p>
+        <div class="vd-meta"><span>30 sn</span><span>Reels + Story</span><span>Uzaktan</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">10</div>
+        <h4>Reels Teaser Serisi</h4>
+        <div class="vd-type">Teaser</div>
+        <p>Hızlı kesimli, müzikli geri sayım videoları. Haftalık yayın, turnuvaya kadar sürekli.</p>
+        <div class="vd-meta"><span>15-30 sn</span><span>Reels + TikTok</span><span>Mix</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">11</div>
+        <h4>Scout Süreci Açıklaması</h4>
+        <div class="vd-type">Bilgilendirme</div>
+        <p>Büyük kulüplerin altyapı scout'ları nasıl izliyor? Transfer süreci nasıl işliyor? Erkek sunucu anlatıyor.</p>
+        <div class="vd-meta"><span>90 sn</span><span>YouTube + Reels</span><span>Stüdyo</span></div>
+      </div>
+      <div class="vd-card">
+        <div class="vd-num">12</div>
+        <h4>Story Q&A Serisi</h4>
+        <div class="vd-type">Etkileşim</div>
+        <p>Sunucuların takipçi sorularını yanıtladığı interaktif soru-cevap serisi. Haftalık düzenli yayın.</p>
+        <div class="vd-meta"><span>60 sn</span><span>Story + Reels</span><span>Stüdyo</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ INSTAGRAM STRATEGY ══════════ -->
+<section id="instagram" class="insta">
+  <div class="c">
+    <div class="insta-top">
+      <div>
+        <p class="lbl">Instagram Stratejisi</p>
+        <h2 class="h1">@hmtcup<br><em>Profesyonel</em> Sayfa</h2>
+        <div class="bar"></div>
+        <p class="body-txt">Turnuvanın resmi Instagram hesabı. Katılımcı çekmek, heyecan oluşturmak ve marka bilinirliği yaratmak için sistematik bir içerik stratejisi.</p>
+      </div>
+      <div>
+        <div class="insta-phone">
+          <div class="insta-notch"></div>
+          <div class="insta-screen">
+            <div class="insta-logo">HMT <em>CUP</em></div>
+            <div class="insta-stats-row">
+              <div class="insta-stat"><div class="insta-stat-n">48</div><div class="insta-stat-l">Gönderi</div></div>
+              <div class="insta-stat"><div class="insta-stat-n">10K</div><div class="insta-stat-l">Takipçi</div></div>
+              <div class="insta-stat"><div class="insta-stat-n">720</div><div class="insta-stat-l">Takip</div></div>
+            </div>
+            <div class="insta-grid-mock">
+              <div class="insta-grid-item"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+              <div class="insta-grid-item"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+              <div class="insta-grid-item"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+              <div class="insta-grid-item"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+              <div class="insta-grid-item"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+              <div class="insta-grid-item"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+              <div class="insta-grid-item"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+              <div class="insta-grid-item"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+              <div class="insta-grid-item"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="insta-content-types">
+      <div class="ict">
+        <div class="ict-ico"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+        <h4>Reels</h4>
+        <div class="ict-freq">Haftada 3-4 Adet</div>
+        <p>Kısa, dinamik ve paylaşılabilir video içerikler. Sunucu tanıtımları, teaser'lar, bilgilendirme klipleri.</p>
+      </div>
+      <div class="ict">
+        <div class="ict-ico"><svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+        <h4>Feed Post</h4>
+        <div class="ict-freq">Haftada 2-3 Adet</div>
+        <p>Grafik tasarım postları. Kulüp tanıtımı, ödül duyurusu, katılımcı takım açıklamaları.</p>
+      </div>
+      <div class="ict">
+        <div class="ict-ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <h4>Story</h4>
+        <div class="ict-freq">Her Gün</div>
+        <p>Günlük interaktif story'ler. Geri sayım, anketler, soru-cevap, sahne arkası paylaşımları.</p>
+      </div>
+      <div class="ict">
+        <div class="ict-ico"><svg viewBox="0 0 24 24"><path d="M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"/></svg></div>
+        <h4>Canlı Yayın</h4>
+        <div class="ict-freq">Haftada 1 Adet</div>
+        <p>Sunucu eşliğinde Instagram Live. Soru-cevap, misafir hocalar, turnuva güncellemeleri.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ COACH STRATEGY ══════════ -->
+<section id="coaches" class="coaches">
+  <div class="c">
+    <p class="lbl">Hoca İkna Stratejisi</p>
+    <h2 class="h1">Futbol Okulu<br><em>Hocalarını Çekmek</em></h2>
+    <div class="bar"></div>
+    <p class="body-txt">Genç futbol takımı hocalarını HMT CUP'a katılmaya ikna etmek için dijital medya üzerinden yürütülecek hedefli çalışmalar.</p>
+
+    <div class="funnel">
+      <div class="funnel-step">
+        <div class="funnel-step-num">01</div>
+        <div class="funnel-step-ico"><svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg></div>
+        <h4>Farkındalık</h4>
+        <p>Hedefli Instagram & Facebook reklamları ile futbol okullarına ulaşma. "Takımını büyük sahneyle buluştur" mesajı.</p>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-num">02</div>
+        <div class="funnel-step-ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+        <h4>İlgi & Güven</h4>
+        <p>Referans röportajları, başarı hikayeleri ve profesyonel destek ekibi detaylarıyla güven inşası. Hoca testimonial videoları.</p>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-num">03</div>
+        <div class="funnel-step-ico"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg></div>
+        <h4>Karar & Teklif</h4>
+        <p>Özel WhatsApp davet mesajları ve kişiselleştirilmiş video davetiyeleri. Erken kayıt avantajları ve özel fiyatlar.</p>
+      </div>
+      <div class="funnel-step">
+        <div class="funnel-step-num">04</div>
+        <div class="funnel-step-ico"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div>
+        <h4>Dönüşüm</h4>
+        <p>Online kayıt formu, bire bir telefon görüşmesi ve kalan kontenjan bildirimi ile aciliyet oluşturma.</p>
+      </div>
+    </div>
+
+    <div class="coach-tactics">
+      <div class="ct">
+        <h4>🎯 Hedefli Reklam Kampanyası</h4>
+        <p>Instagram ve Facebook'ta futbol okulu sahibi, antrenör ve spor eğitmeni hedef kitlesine özel reklam. Coğrafi hedefleme: İstanbul + büyük şehirler.</p>
+      </div>
+      <div class="ct">
+        <h4>📩 Kişisel Video Davetiye</h4>
+        <p>Sunucuların isimleriyle hitap ederek çektiği kişiselleştirilmiş davet videoları. WhatsApp ve DM üzerinden birebir gönderim.</p>
+      </div>
+      <div class="ct">
+        <h4>📊 Ücretsiz Webinar</h4>
+        <p>"Altyapı Futbolunda Transfer Süreci" konulu ücretsiz online webinar. Katılımcılara özel turnuva indirimi teklifi.</p>
+      </div>
+      <div class="ct">
+        <h4>🤝 Referans Programı</h4>
+        <p>Kayıt olan hocaların başka hocaları davet etmesiyle kazanılan indirimler ve ödüller. "2 takım getir, 1 takım bedava" modeli.</p>
+      </div>
+      <div class="ct">
+        <h4>📱 WhatsApp Broadcast</h4>
+        <p>Futbol okulu veritabanına haftalık güncelleme ve geri sayım mesajları. Turnuva detayları ve kalan kontenjan bildirimi.</p>
+      </div>
+      <div class="ct">
+        <h4>⭐ Influencer İşbirliği</h4>
+        <p>Futbol alanında tanınmış Instagram hesapları ve eski futbolcularla işbirliği. Ortak canlı yayın ve içerik paylaşımı.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TIMELINE ══════════ -->
+<section class="timeline">
+  <div class="c">
+    <p class="lbl">Zaman Çizelgesi</p>
+    <h2 class="h1">8 Haftalık<br><em>Yol Haritası</em></h2>
+    <div class="bar"></div>
+    <p class="body-txt">Turnuva öncesi 8 haftalık dijital medya üretim ve yayın takvimi.</p>
+    <div class="tl-grid">
+      <div class="tl-card">
+        <div class="tl-week">Hafta 1–2</div>
+        <h4>Hazırlık & Kurulum</h4>
+        <ul>
+          <li>Instagram sayfası açılışı ve branding</li>
+          <li>Sunucu casting ve onay</li>
+          <li>Stüdyo ve ekipman hazırlığı</li>
+          <li>İçerik takvimi finalize</li>
+        </ul>
+      </div>
+      <div class="tl-card">
+        <div class="tl-week">Hafta 3–4</div>
+        <h4>Prodüksiyon — Faz 1</h4>
+        <ul>
+          <li>Sinematik tanıtım filmi çekimi</li>
+          <li>Stüdyo bilgilendirme videoları çekimi</li>
+          <li>Instagram içerik üretimi başlangıcı</li>
+          <li>İlk reklam kampanyası başlatma</li>
+        </ul>
+      </div>
+      <div class="tl-card">
+        <div class="tl-week">Hafta 5–6</div>
+        <h4>Prodüksiyon — Faz 2</h4>
+        <ul>
+          <li>Röportaj videoları çekimi</li>
+          <li>Saha tanıtım çekimleri</li>
+          <li>Hoca ikna kampanyası yoğunlaştırma</li>
+          <li>Haftalık Reels + Story rutini</li>
+        </ul>
+      </div>
+      <div class="tl-card">
+        <div class="tl-week">Hafta 7–8</div>
+        <h4>Lansman & Yoğunlaşma</h4>
+        <ul>
+          <li>Geri sayım serisi başlatma</li>
+          <li>Ünlü futbolcu mesajı yayını</li>
+          <li>Son kayıt çağrısı kampanyası</li>
+          <li>Canlı yayın serisi ve Q&A</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BUDGET ══════════ -->
+<section id="budget" class="budget">
+  <div class="c">
+    <p class="lbl">Bütçelendirme</p>
+    <h2 class="h1">Detaylı<br><em>Maliyet Tablosu</em></h2>
+    <div class="bar"></div>
+    <p class="body-txt">Tüm dijital medya çalışmalarının kalem kalem maliyetlendirmesi. KDV dahil toplam yatırım.</p>
+    <div class="budget-grid">
+      <table class="budget-table">
+        <thead>
+          <tr>
+            <th>Kalem</th>
+            <th>Tutar (₺)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="budget-cat">Video Prodüksiyon</span>
+              Tanıtım Filmi (60 sn)
+              <div class="budget-desc">Drone, slider, gimbal çekim + post-prodüksiyon + renk düzeltme + ses tasarımı</div>
+            </td>
+            <td>35.000</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="budget-cat">Video Prodüksiyon</span>
+              Bilgilendirme Videoları
+              <div class="budget-desc">Stüdyo çekim + ışık + kurgu + grafik animasyon + sunucu prodüksiyonu</div>
+            </td>
+            <td>35.000</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="budget-cat">Video Prodüksiyon</span>
+              Röportaj Saha Videoları
+              <div class="budget-desc">Saha çekim ekibi + ses kayıt + kurgu + altyazı + renk düzeltme</div>
+            </td>
+            <td>30.000</td>
+          </tr>
+          <tr>
+            <td>
+              <span class="budget-cat">Tasarım</span>
+              Grafik Tasarım Paketi
+              <div class="budget-desc">Feed şablonları + Story şablonları + highlight kapakları + profil tasarımı + post tasarımları</div>
+            </td>
+            <td>20.000</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="budget-total">
+        <div class="budget-total-label">TOPLAM YATIRIM</div>
+        <div class="budget-total-val">₺120.000</div>
+      </div>
+      <div class="budget-note">
+        <strong>Not:</strong> Yukarıdaki bütçe KDV dahil tahmini tutarları içermektedir. Erken onay durumunda özel indirim uygulanır.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta">
+  <h2>HAREKETE<br>GEÇME<br>ZAMANI</h2>
+  <p>HMT CUP'ı Türkiye'nin gündemine taşımak için dijital stratejimiz hazır. Başlayalım.</p>
+  <a href="https://uniqbee.com" target="_blank" rel="noopener" class="btn-blk">UniqBee ile İletişime Geç</a>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="f-brand">HMT CUP</div>
+  <div class="f-copy">© 2026 HMT CUP — Dijital Medya Stratejisi</div>
+  <div class="f-tag">UniqBee Creative Agency</div>
+</footer>
+
+<script>
+/* — Mobile menu — */
+function toggleMenu(){
+  document.getElementById('burger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('mobMenu').classList.remove('open');
+}
+
+/* — Nav scroll — */
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+},{passive:true});
+
+/* scroll reveal removed for mobile compatibility */
+</script>
+</body>
+</html>

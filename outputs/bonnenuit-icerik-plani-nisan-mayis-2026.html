@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonnenuit × UniqBee — Sosyal Medya İçerik Planı | Nisan–Mayıs 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700&display=swap');
+
+  :root {
+    --black: #0a0a0a;
+    --offwhite: #f7f5f0;
+    --cream: #ede9e1;
+    --warm-gray: #b8b0a4;
+    --mid-gray: #6b6560;
+    --dark-gray: #2d2926;
+    --accent: #c9a96e;
+    --accent-light: #e8d5b0;
+    --accent-dark: #8a6d3f;
+    --white: #ffffff;
+    --border: rgba(185,170,155,0.22);
+    --border-strong: rgba(185,170,155,0.45);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--offwhite);
+    color: var(--dark-gray);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 64px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 55% at 50% 38%, rgba(201,169,110,0.13) 0%, transparent 68%);
+    pointer-events: none;
+  }
+
+  .cover-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--accent);
+    margin-bottom: 36px;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.2s forwards;
+  }
+
+  .cover-logo {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(48px, 9vw, 104px);
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -3px;
+    line-height: 1.0;
+    opacity: 0;
+    animation: fadeUp 0.9s 0.4s forwards;
+  }
+
+  .cover-logo span { color: var(--accent); }
+
+  .cover-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--accent);
+    margin: 36px auto;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.6s forwards;
+  }
+
+  .cover-subtitle {
+    font-size: clamp(13px, 1.8vw, 15px);
+    font-weight: 400;
+    color: var(--warm-gray);
+    letter-spacing: 0.3px;
+    max-width: 460px;
+    line-height: 1.9;
+    opacity: 0;
+    animation: fadeUp 0.8s 0.8s forwards;
+  }
+
+  .cover-meta {
+    margin-top: 64px;
+    display: flex;
+    gap: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s 1.0s forwards;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cover-meta-item { text-align: center; }
+
+  .cover-meta-item strong {
+    display: block;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .cover-meta-item span {
+    font-size: 10px;
+    color: var(--warm-gray);
+    letter-spacing: 1.5px;
+    font-weight: 500;
+  }
+
+  .cover-badge {
+    position: absolute;
+    bottom: 36px;
+    right: 48px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--mid-gray);
+    opacity: 0;
+    animation: fadeUp 0.8s 1.2s forwards;
+  }
+
+  /* ── NAV ── */
+  .toc-nav {
+    background: var(--black);
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    overflow-x: auto;
+    display: flex;
+    gap: 0;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .toc-nav::-webkit-scrollbar { display: none; }
+
+  .toc-nav a {
+    display: inline-block;
+    padding: 15px 18px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--warm-gray);
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .toc-nav a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── SECTION BASE ── */
+  section {
+    padding: 72px 40px;
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(26px, 3.5vw, 44px);
+    font-weight: 800;
+    color: var(--black);
+    line-height: 1.12;
+    letter-spacing: -1.5px;
+    margin-bottom: 8px;
+  }
+
+  .section-title em {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  .section-lead {
+    font-size: 15px;
+    color: var(--mid-gray);
+    max-width: 580px;
+    margin-bottom: 44px;
+    line-height: 1.8;
+    font-weight: 400;
+  }
+
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0;
+  }
+
+  .section-break {
+    height: 1px;
+    background: var(--border);
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+
+  /* ── CARDS GRID ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 22px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.05);
+  }
+
+  .card-icon {
+    width: 38px;
+    height: 38px;
+    background: var(--cream);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    margin-bottom: 14px;
+  }
+
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 7px;
+    letter-spacing: -0.2px;
+  }
+
+  .card p {
+    font-size: 13px;
+    color: var(--mid-gray);
+    line-height: 1.7;
+  }
+
+  .card.accent-card { background: var(--accent); border-color: var(--accent); }
+  .card.accent-card h3, .card.accent-card p { color: var(--white); }
+
+  .card.dark-card { background: var(--dark-gray); border-color: var(--dark-gray); }
+  .card.dark-card h3 { color: var(--white); }
+  .card.dark-card p { color: rgba(255,255,255,0.55); }
+
+  /* ── LAYOUT ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 36px;
+  }
+
+  .three-col {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 36px;
+  }
+
+  /* ── STAT ROW ── */
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 28px 0;
+  }
+
+  .stat-box {
+    flex: 1;
+    min-width: 130px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 16px;
+    text-align: center;
+  }
+
+  .stat-box strong {
+    display: block;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--black);
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 5px;
+  }
+
+  .stat-box span {
+    font-size: 10px;
+    color: var(--mid-gray);
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
+  /* ── TAGS ── */
+  .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+
+  .tag {
+    padding: 4px 11px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+  }
+
+  .tag-neutral { background: var(--cream); color: var(--dark-gray); }
+  .tag-gold { background: var(--accent-light); color: var(--accent-dark); }
+  .tag-dark { background: var(--dark-gray); color: var(--white); }
+  .tag-outline { border: 1px solid var(--border-strong); color: var(--mid-gray); background: transparent; }
+
+  /* ── TABLES ── */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-top: 28px;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+
+  thead { background: var(--black); }
+
+  thead th {
+    padding: 13px 14px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: var(--warm-gray);
+    white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: rgba(201,169,110,0.04); }
+
+  tbody td {
+    padding: 12px 14px;
+    color: var(--dark-gray);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  tbody td:first-child {
+    font-weight: 700;
+    color: var(--black);
+    white-space: nowrap;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .badge-reels { background: #1a1a1a; color: var(--white); }
+  .badge-carousel { background: var(--cream); color: var(--dark-gray); }
+  .badge-satis { background: #1d4a2e; color: #7dd6a0; }
+  .badge-etkilesim { background: #1a2e4a; color: #7ab8d6; }
+  .badge-bilinclik { background: #3d2a1a; color: #d6a87a; }
+  .badge-topluluk { background: #2d1a3d; color: #b87ad6; }
+  .badge-guven { background: #1a3d2a; color: #7ad6b8; }
+  .badge-egitim { background: #2a3d1a; color: #b8d67a; }
+  .badge-ozelgun { background: #3d1a2a; color: var(--accent-light); }
+
+  .row-highlight { background: rgba(201,169,110,0.06) !important; }
+
+  /* ── CONTENT PIECE ── */
+  .content-piece {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+
+  .content-piece-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .content-piece-num {
+    width: 34px;
+    height: 34px;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+
+  .content-piece-meta { flex: 1; }
+
+  .content-piece-meta strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--black);
+    margin-bottom: 2px;
+  }
+
+  .content-piece-meta span {
+    font-size: 12px;
+    color: var(--mid-gray);
+  }
+
+  .content-piece-body { padding: 18px 22px; }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .detail-item label {
+    display: block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+
+  .detail-item p {
+    font-size: 12.5px;
+    color: var(--dark-gray);
+    line-height: 1.55;
+  }
+
+  /* ── SLIDE LIST ── */
+  .slide-list { list-style: none; margin-top: 10px; }
+
+  .slide-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+
+  .slide-list li:last-child { border-bottom: none; }
+
+  .slide-num {
+    width: 22px;
+    height: 22px;
+    background: var(--cream);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent-dark);
+    flex-shrink: 0;
+  }
+
+  /* ── SHOOT DAY ── */
+  .shoot-day {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 22px;
+    margin-bottom: 16px;
+  }
+
+  .shoot-day-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .shoot-day-date {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 9px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    min-width: 72px;
+  }
+
+  .shoot-day-date small {
+    display: block;
+    font-size: 9px;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  .shoot-day-title { flex: 1; }
+  .shoot-day-title strong { display: block; font-size: 15px; font-weight: 700; color: var(--black); }
+  .shoot-day-title span { font-size: 12px; color: var(--mid-gray); }
+
+  .shoot-item {
+    display: flex;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+
+  .shoot-item:last-child { border-bottom: none; }
+
+  .shoot-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .dot-video { background: var(--accent); }
+  .dot-photo { background: #4a7d6e; }
+
+  /* ── SPECIAL DAY ── */
+  .special-day-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 22px;
+    border-left: 4px solid var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .special-day-card h3 { font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 3px; }
+
+  .special-day-card .date-tag {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 1px;
+    margin-bottom: 11px;
+    display: block;
+  }
+
+  .special-day-card p { font-size: 13px; color: var(--mid-gray); line-height: 1.7; }
+
+  /* ── COMPETITOR ── */
+  .competitor-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+  }
+
+  .competitor-card .brand-name {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 3px;
+    letter-spacing: -0.5px;
+  }
+
+  .competitor-card .brand-type {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 14px;
+    display: block;
+    font-weight: 600;
+  }
+
+  .pro-con p {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: var(--mid-gray);
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .pro-con p:last-child { border-bottom: none; }
+
+  /* ── PILLAR ── */
+  .pillar {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 22px;
+  }
+
+  .pillar-num {
+    font-size: 36px;
+    font-weight: 900;
+    color: var(--accent-light);
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -2px;
+  }
+
+  .pillar h3 { font-size: 14px; font-weight: 700; color: var(--black); margin-bottom: 7px; }
+  .pillar p { font-size: 13px; color: var(--mid-gray); line-height: 1.7; }
+
+  /* ── BUDGET ── */
+  .budget-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+    gap: 16px;
+  }
+
+  .budget-row:last-child { border-bottom: none; }
+  .budget-row span { color: var(--mid-gray); }
+  .budget-row strong { color: var(--black); font-weight: 700; font-size: 14px; white-space: nowrap; }
+
+  .budget-total {
+    background: var(--black);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+  }
+
+  .budget-total span { color: var(--warm-gray); font-size: 11px; letter-spacing: 0.5px; }
+  .budget-total strong { color: var(--white); font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+
+  /* ── INSIGHT BLOCK ── */
+  .insight-block {
+    background: var(--black);
+    color: var(--white);
+    border-radius: 14px;
+    padding: 28px 26px;
+    margin: 28px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .insight-block::before {
+    content: '"';
+    position: absolute;
+    top: -14px;
+    left: 18px;
+    font-size: 110px;
+    font-weight: 900;
+    color: rgba(201,169,110,0.12);
+    line-height: 1;
+  }
+
+  .insight-block p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.82);
+    position: relative;
+    z-index: 1;
+  }
+
+  .insight-block cite {
+    display: block;
+    margin-top: 14px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ── PROGRESS ── */
+  .progress-item { margin-bottom: 14px; }
+
+  .progress-item label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 5px;
+  }
+
+  .progress-bar { height: 5px; background: var(--cream); border-radius: 100px; overflow: hidden; }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 100px;
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    background: var(--accent-light);
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin: 20px 0;
+    border-left: 4px solid var(--accent);
+  }
+
+  .callout p { font-size: 13.5px; color: var(--accent-dark); line-height: 1.7; }
+  .callout strong { color: var(--black); }
+
+  /* ── HOOK STRIP ── */
+  .hook-strip {
+    background: var(--black);
+    border-radius: 9px;
+    padding: 13px 16px;
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .hook-strip .hook-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    flex-shrink: 0;
+    padding-top: 1px;
+  }
+
+  .hook-strip p { font-size: 13px; color: rgba(255,255,255,0.82); line-height: 1.5; font-style: italic; }
+
+  /* ── NUMBERED LIST ── */
+  .numbered-list { list-style: none; counter-reset: step; }
+
+  .numbered-list li {
+    counter-increment: step;
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--dark-gray);
+    align-items: flex-start;
+  }
+
+  .numbered-list li:last-child { border-bottom: none; }
+
+  .numbered-list li::before {
+    content: counter(step, decimal-leading-zero);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 3px;
+    min-width: 22px;
+  }
+
+  /* ── FOOTER ── */
+  .page-footer {
+    background: var(--black);
+    padding: 44px 40px;
+    text-align: center;
+  }
+
+  .page-footer .logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .page-footer .logo span { color: var(--accent); }
+  .page-footer p { font-size: 12px; color: var(--mid-gray); letter-spacing: 0.3px; }
+
+  /* ── UTILITIES ── */
+  .mt-32 { margin-top: 32px; }
+  .mt-24 { margin-top: 24px; }
+  .mt-16 { margin-top: 16px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    section { padding: 48px 20px; }
+    .cover { padding: 56px 24px; }
+    .toc-nav { padding: 0 16px; }
+    .two-col { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr; }
+    .cover-meta { gap: 20px; }
+    .stat-row { gap: 10px; }
+    .section-title { letter-spacing: -1px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- KAPAK -->
+<div class="cover" id="top">
+  <div class="cover-tag">UniqBee Dijital Medya × Bonnenuit Patisserie</div>
+  <div class="cover-logo">
+    Bonne<span>nuit</span><br>
+    İçerik Planı
+  </div>
+  <div class="cover-divider"></div>
+  <div class="cover-subtitle">
+    15 Nisan – 15 Mayıs 2026 · Instagram Sosyal Medya Stratejisi<br>
+    Reels & Carousel · Prodüksiyon Planı · İçerik Takvimi
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <strong>27</strong>
+      <span>Toplam İçerik</span>
+    </div>
+    <div class="cover-meta-item">
+      <strong>12</strong>
+      <span>Reels</span>
+    </div>
+    <div class="cover-meta-item">
+      <strong>15</strong>
+      <span>Carousel</span>
+    </div>
+    <div class="cover-meta-item">
+      <strong>7</strong>
+      <span>Çekim Günü</span>
+    </div>
+    <div class="cover-meta-item">
+      <strong>504K</strong>
+      <span>Takipçi Bazı</span>
+    </div>
+  </div>
+  <div class="cover-badge">Hazırlayan: UniqBee · Nisan 2026</div>
+</div>
+
+<!-- Navigasyon -->
+<nav class="toc-nav">
+  <a href="#marka-analizi">Marka</a>
+  <a href="#sosyal-medya">Sosyal Medya</a>
+  <a href="#urun-analizi">Ürünler</a>
+  <a href="#rakip">Rakipler</a>
+  <a href="#strateji">Strateji</a>
+  <a href="#produksiyon">Prodüksiyon</a>
+  <a href="#takvim">Takvim</a>
+  <a href="#reels">Reels</a>
+  <a href="#carousel">Carousel</a>
+  <a href="#ozel-gunler">Özel Günler</a>
+  <a href="#sonuc">Sonuç</a>
+  <a href="#butce">Bütçe</a>
+</nav>
+
+
+<!-- ═══════════════════════════════════════
+     01 — Marka Analizi
+════════════════════════════════════════ -->
+<section id="marka-analizi">
+  <div class="section-label">01 — Marka Analizi</div>
+  <h2 class="section-title">Bonnenuit'i <em>Tanımak</em></h2>
+  <p class="section-lead">Web sitesi, ürün kataloğu ve müşteri geri bildirimlerine dayalı marka analizi. Gözleme dayalı tespitler — varsayım içermez.</p>
+
+  <div class="insight-block">
+    <p>"Bonnenuit, İstanbul'un hediyeleşme kültürüne oturan, duygusal anları çikolata ve pasta aracılığıyla anlatan bir premium patisserie markası. Marka özü tek cümleyle özetlenebilir: <strong>Sizi özenle seven biri var.</strong>"</p>
+    <cite>UniqBee Marka Değerlendirmesi · 2026</cite>
+  </div>
+
+  <div class="two-col">
+    <div>
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <h3>Marka Özü</h3>
+        <p>Sevgiyi ve özeni somutlaştırmak. Bonnenuit, ürün satmıyor — bir duyguyu ürüne çeviriyor. "Size bir Bonne Nuit geldiyse, bilin ki sizi özenle seven biri var" sloganı bu felsefenin özlü ifadesi.</p>
+      </div>
+      <div class="card mt-16">
+        <div class="card-icon">🗣</div>
+        <h3>Marka Sesi</h3>
+        <p>Sıcak, yakın, duygusal. Resmi değil ama başıbozuk da değil. "Sen" ile konuşan bir marka. Kutlama, mutluluk, sürpriz ve özel an dili hâkim. Fiyat değil, his ön planda.</p>
+      </div>
+      <div class="card mt-16">
+        <div class="card-icon">🎨</div>
+        <h3>Görsel Dil</h3>
+        <p>Renkli, modern, çiçekler ve balonlarla desteklenen canlı bir estetik. Web sitesinde animasyonlu gif görseller kullanılmış. Krem, pembe ve altın tonlar hâkim. Premium ancak ulaşılabilir hissiyatı var.</p>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="card-icon">👥</div>
+        <h3>Hedef Kitle</h3>
+        <p><strong>Birincil:</strong> 22–40 yaş arası, İstanbul'da yaşayan, doğum günü ve kutlama gibi özel anlarda duygusal hediye arayan, ağırlıklı kadın kitle.<br><br>
+        <strong>İkincil:</strong> Kurumsal hediye alıcıları, yeni doğan ve nişan gibi özel geçişlerde alışveriş yapanlar.<br><br>
+        <strong>Ortak motivasyon:</strong> "Aldım ama özenle seçtim" hissini yaşatmak.</p>
+      </div>
+      <div class="card mt-16">
+        <div class="card-icon">📍</div>
+        <h3>Konumlandırma</h3>
+        <p>Premium fakat kitlesel erişimli segment. ₺249 balondan ₺21.000 kurumsal pakete uzanan geniş fiyat yelpazesi hem geniş kitlelere erişim sağlıyor hem de premium algıyı sarsabilecek bir çeşitlilik yaratıyor.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-row mt-32">
+    <div class="stat-box"><strong>504K</strong><span>Instagram Takipçisi</span></div>
+    <div class="stat-box"><strong>749+</strong><span>Toplam Gönderi</span></div>
+    <div class="stat-box"><strong>18:00</strong><span>Aynı Gün Teslimat Sınırı</span></div>
+    <div class="stat-box"><strong>7/7</strong><span>Teslimat Günleri</span></div>
+    <div class="stat-box"><strong>₺249–21K</strong><span>Fiyat Aralığı</span></div>
+  </div>
+
+  <div class="two-col mt-32">
+    <div class="card">
+      <div class="card-icon">✅</div>
+      <h3>Güçlü Yönler</h3>
+      <ul class="numbered-list">
+        <li>504K organik takipçi — bu segmentte rakipsiz güç</li>
+        <li>Geniş ürün yelpazesi: pasta, hediye, çikolata, balon, peluş</li>
+        <li>Aynı gün teslimat vaadi — güçlü operasyonel koz</li>
+        <li>Duygusal marka dili — içerik üretimi için zengin zemin</li>
+        <li>Kişiselleştirme seçenekleri — hikâyeleştirme için avantaj</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚠️</div>
+      <h3>Geliştirilmesi Gereken Alanlar</h3>
+      <ul class="numbered-list">
+        <li>Teslimat gecikmelerine dair şikâyetler marka güvenini aşındırıyor</li>
+        <li>Geniş fiyat yelpazesi premium algıyla çelişiyor olabilir</li>
+        <li>Bazı gönderilerde görsel–ürün uyuşmazlığı raporlanmış</li>
+        <li>Müşteri hizmetleri yanıt hızı iyileştirmeye açık</li>
+        <li>İçerik stratejisinde marka derinliği eksikliği riski</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     02 — Sosyal Medya Analizi
+════════════════════════════════════════ -->
+<section id="sosyal-medya">
+  <div class="section-label">02 — Sosyal Medya Analizi</div>
+  <h2 class="section-title">Mevcut <em>Performans Okuması</em></h2>
+  <p class="section-lead">Gözlemsel analiz — Instagram'a doğrudan erişim kısıtlı olduğu için bu bölümdeki bazı tespitler arama verilerine ve platform bilgisine dayalı çıkarımlardır.</p>
+
+  <div class="callout">
+    <p><strong>Şeffaflık notu:</strong> Instagram'ın oturum açılmadan içerik gösterme kısıtlaması nedeniyle hesabın bireysel içerikleri, etkileşim oranları ve son paylaşımlar doğrudan incelenemedi. Aşağıdaki analizin bir kısmı arama sonuçlarından elde edilen verilere ve platform bilgisine dayalı gözlemsel çıkarımlardır.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Hesap Gücü</h3>
+      <p>@bonnenuitpatisserie, 504K takipçi ile İstanbul'un en büyük patisserie hesaplarından biri. Bu rakam, benzer segment rakiplerine kıyasla son derece güçlü bir organik kitleyi temsil ediyor.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎬</div>
+      <h3>Format Çeşitliliği</h3>
+      <p>749+ gönderi ile aktif içerik üretimi var. Reels kullanımının güçlenmesi bir fırsat penceresi. Erken güçlü Reels içeriği üretenler hesabı büyük ivme yakalıyor.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎨</div>
+      <h3>Estetik Tutarlılık</h3>
+      <p>Markanın web sitesindeki renkli, canlı ve duygusal görsel dili hesapta da sürdürülüyor olmalı. Prodüksiyon kalitesinin 504K beklentisiyle örtüşmesi kritik önem taşıyor.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">💬</div>
+      <h3>Topluluk Potansiyeli</h3>
+      <p>504K takipçi hesabın önemli organik bir ivme yakaladığını gösteriyor. Müşteri teslimat fotoğrafları ve yorum kültürü kullanıcı kaynaklı içerik potansiyeli taşıyor.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🚨</div>
+      <h3>Riskler</h3>
+      <p>Şikâyetvar'daki müşteri şikâyetleri sosyal medyaya yansırsa güven algısını zedeleyebilir. İçerik planında proaktif güven iletişimi bu riski dengelemelidir.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔭</div>
+      <h3>Fırsatlar</h3>
+      <p>504K'lık kitlenin satın alma dönüşümünü artırmak için güçlü bir içerik altyapısı kurulabilir. Reels + carousel dengesi ve düzenli yayın takvimi bu fırsatı hayata geçirir.</p>
+    </div>
+  </div>
+
+  <div class="insight-block mt-32">
+    <p>504.000 takipçi bir araç, amaç değil. Bu plan, bu kitleyi <strong>bir topluluğa dönüştürmeyi</strong> hedefliyor. Takipçi sayan hesaptan hikâye anlatan markaya geçiş tam da burada başlıyor.</p>
+    <cite>UniqBee Strateji Notu</cite>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     03 — Ürün Analizi
+════════════════════════════════════════ -->
+<section id="urun-analizi">
+  <div class="section-label">03 — Ürün Analizi</div>
+  <h2 class="section-title">İçerik Üretimine En <em>Uygun Ürünler</em></h2>
+  <p class="section-lead">Satışta olan ürünler içerik potansiyellerine göre değerlendirildi.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Ürün</th>
+          <th>Fiyat</th>
+          <th>İçerik Potansiyeli</th>
+          <th>Satış Gücü</th>
+          <th>Öncelik</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-highlight">
+          <td>Venedik (Brownie Pasta)</td>
+          <td>₺1.599</td>
+          <td>Doku çekimleri için mükemmel, bestseller ürün</td>
+          <td>En yüksek talep</td>
+          <td><span class="badge badge-satis">A+</span></td>
+        </tr>
+        <tr>
+          <td>Sirene Tiramisu</td>
+          <td>₺1.799</td>
+          <td>Katmanlar, doku, renk — video için ideal</td>
+          <td>Güçlü</td>
+          <td><span class="badge badge-satis">A+</span></td>
+        </tr>
+        <tr class="row-highlight">
+          <td>Joy Doğum Günü Paketi</td>
+          <td>₺5.490</td>
+          <td>Kutlama sahnesi, tam bir hikâye</td>
+          <td>En yüksek sepet değeri</td>
+          <td><span class="badge badge-satis">A+</span></td>
+        </tr>
+        <tr>
+          <td>New York Cheesecake</td>
+          <td>₺1.899</td>
+          <td>Minimal estetik, flat-lay için güçlü</td>
+          <td>Güçlü</td>
+          <td><span class="badge badge-etkilesim">A</span></td>
+        </tr>
+        <tr class="row-highlight">
+          <td>Chambre Hediye Kutusu</td>
+          <td>₺999</td>
+          <td>Kutu açılışı içeriği için ideal</td>
+          <td>Geniş hedef kitle, erişilebilir fiyat</td>
+          <td><span class="badge badge-satis">A+</span></td>
+        </tr>
+        <tr>
+          <td>Venus (Tart Koleksiyonu)</td>
+          <td>₺1.899</td>
+          <td>Detay makro çekimler için güçlü</td>
+          <td>Orta</td>
+          <td><span class="badge badge-etkilesim">A</span></td>
+        </tr>
+        <tr class="row-highlight">
+          <td>Peluş Hayvanlar</td>
+          <td>₺540–590</td>
+          <td>Sevimli, erişilebilir, kombin içerikler</td>
+          <td>Giriş fiyatı ürün</td>
+          <td><span class="badge badge-bilinclik">B+</span></td>
+        </tr>
+        <tr>
+          <td>Helyum Balonlar</td>
+          <td>₺249–1.299</td>
+          <td>Kutlama atmosferi tamamlayıcısı</td>
+          <td>Eklenti ürün</td>
+          <td><span class="badge badge-bilinclik">B</span></td>
+        </tr>
+        <tr class="row-highlight">
+          <td>Venedik + Çiçek + Balon Kombini</td>
+          <td>₺3.299 (-18%)</td>
+          <td>En zengin görsel, kutlamanın tamamı tek karede</td>
+          <td>İndirim + kombin = yüksek dönüşüm</td>
+          <td><span class="badge badge-satis">A+</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="three-col mt-32">
+    <div class="card">
+      <div class="card-icon">🎥</div>
+      <h3>Video İçin Öncelikli</h3>
+      <p>Venedik (doku ve kesme sahnesi), Chambre (kutu açılışı), Joy paketi (kutlama sahnesi), Sirene Tiramisu (katman çekimi). Bu ürünlerin hareketi ve dokusu video için biçilmiş kaftan.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📸</div>
+      <h3>Fotoğraf İçin Öncelikli</h3>
+      <p>New York Cheesecake (minimal flat lay), Venus tarts (detay makro), Chambre kutu (estetik düzenleme), Venedik dilim kesiti. Hareketsiz güzelliği olan ürünler.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">❤️</div>
+      <h3>Satış + Duygu Dengesi</h3>
+      <p>En güçlü içerik: Joy Paketi. Hem en yüksek ortalama sipariş değeri hem en derin duygusal hikâye potansiyeli. Anneler Günü'nde bu paketin öne çıkarılması kritik.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     04 — Rakip Analizi
+════════════════════════════════════════ -->
+<section id="rakip">
+  <div class="section-label">04 — Rakip Analizi</div>
+  <h2 class="section-title">Sektörde <em>Neredeyiz?</em></h2>
+  <p class="section-lead">Yerel ve global benchmark markalar incelendi. Bonnenuit için farklılaşma fırsatları çıkarıldı.</p>
+
+  <div class="two-col">
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:14px;">Yerel Rakipler</p>
+
+      <div class="competitor-card" style="margin-bottom:14px;">
+        <div class="brand-name">Jean Pierre Istanbul</div>
+        <span class="brand-type">Premium Pastane · Göktürk</span>
+        <div class="pro-con">
+          <p>~90K takipçi — Bonnenuit'in çok altında</p>
+          <p>Fransız pastacılık geleneği, ekler kimliği güçlü</p>
+          <p>Prodüksiyon kalitesi yüksek, estetik tutarlılık var</p>
+          <p>Fırsat: Teslimat ve hediyeleşme alanında ciddi boşluk var</p>
+        </div>
+      </div>
+
+      <div class="competitor-card" style="margin-bottom:14px;">
+        <div class="brand-name">Divan Pastaneleri</div>
+        <span class="brand-type">Kurumsal Premium · Zincir</span>
+        <div class="pro-con">
+          <p>Güçlü marka bilinirliği ve güven algısı</p>
+          <p>Kurumsal ve geleneksel kitleye hâkim</p>
+          <p>Sosyal medya dili genellikle mesafeli ve kurumsal</p>
+          <p>Fırsat: Duygusal ve genç iletişim dili ile ayrışma</p>
+        </div>
+      </div>
+
+      <div class="competitor-card">
+        <div class="brand-name">Patisserie Bonjour</div>
+        <span class="brand-type">Artisan Pastane · İstanbul</span>
+        <div class="pro-con">
+          <p>Butik segment, sınırlı erişim</p>
+          <p>Estetik içerik üretimi mevcut</p>
+          <p>Fırsat: 504K takipçi = erişimde karşılaştırılamaz avantaj</p>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--accent);margin-bottom:14px;">Global Benchmark</p>
+
+      <div class="competitor-card" style="margin-bottom:14px;">
+        <div class="brand-name">Ladurée</div>
+        <span class="brand-type">Fransız Lüks Patisserie · Global</span>
+        <div class="pro-con">
+          <p>Markanın kendisi içerik — macaron bir estetik sembolü</p>
+          <p>Pastel renkler, tutarlı görsel dil, yaşam tarzı odaklı</p>
+          <p>Ürün değil, his sattığının en iyi örneği</p>
+          <p>Öğrenim: Kutlama anını değil, beklenti anını sat</p>
+        </div>
+      </div>
+
+      <div class="competitor-card" style="margin-bottom:14px;">
+        <div class="brand-name">Pierre Hermé Paris</div>
+        <span class="brand-type">Şef Liderliğinde Patisserie · Global</span>
+        <div class="pro-con">
+          <p>116K+ video — video stratejisini erken benimsedi</p>
+          <p>Süreç içerikleri (ellerin üretimi) çok güçlü</p>
+          <p>Sanatçı bakışı = ürün değer algısını artırıyor</p>
+          <p>Öğrenim: "Yapım sürecini göster" formatı işe yarıyor</p>
+        </div>
+      </div>
+
+      <div class="competitor-card">
+        <div class="brand-name">Milk Bar</div>
+        <span class="brand-type">Modern Pastane · New York</span>
+        <div class="pro-con">
+          <p>Eğlenceli, çarpıcı, kolayca viral olan içerik dili</p>
+          <p>Sıradan ürünleri viral yapan güçlü açılış kullanımı</p>
+          <p>Öğrenim: Ciddi değil, eğlenceli video açılışları işe yarıyor</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insight-block mt-32">
+    <p>Bonnenuit'in en büyük avantajı şu an rakipsiz: <strong>Türkiye'de bu segmentte 504K organik takipçi sahibi başka bir patisserie markası yok.</strong> Bu kitleyi tutmak ve büyütmek için gereken tek şey tutarlı, kaliteli ve duygusal içerik üretimi.</p>
+    <cite>UniqBee Rekabet Analizi Notu</cite>
+  </div>
+
+  <div class="three-col mt-24">
+    <div class="card">
+      <div class="card-icon">🏆</div>
+      <h3>Bonnenuit'in Üstün Olduğu Alan</h3>
+      <p>Takipçi kitlesi, teslimat kapsamı, ürün çeşitliliği ve hediyeleşme ekosistemi. Bu alanlarda kimse yakın değil.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚖️</div>
+      <h3>Eşit Olduğu Alan</h3>
+      <p>Görsel estetik ve içerik derinliği henüz takipçi avantajı kadar güçlü değil. Rakipler bu noktada telafi edebilir.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>Farklılaşma Fırsatı</h3>
+      <p>Duygusal hikâye anlatımı + şeffaf marka iletişimi + topluluk hissi. Bu üçlüyü tam uygulayan yerli patisserie markası henüz yok.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     05 — İçerik Stratejisi
+════════════════════════════════════════ -->
+<section id="strateji">
+  <div class="section-label">05 — İçerik Stratejisi</div>
+  <h2 class="section-title">Yaratıcı <em>Yön & Omurga</em></h2>
+  <p class="section-lead">Bu ay için tek bir yaratıcı yön: "Kutlama anının mimarı olmak."</p>
+
+  <div class="insight-block">
+    <p>Bu ay Bonnenuit Instagram'ı şunu fısıldamalı: <strong>"Her özel an için yanındayım."</strong> Ürün satmıyoruz — bir anın olmazsa olmazı oluyoruz. Nisan'dan Mayıs'a uzanan bu dönem yılın en duygusal hediye sezonunu kapsıyor. 23 Nisan'dan Anneler Günü'ne her içerik bu fısıltıyı güçlendiriyor.</p>
+    <cite>UniqBee Yaratıcı Brief · Nisan–Mayıs 2026</cite>
+  </div>
+
+  <div class="three-col">
+    <div class="pillar"><div class="pillar-num">01</div><h3>Duygu Önce, Satış Sonra</h3><p>Her satış odaklı içeriğin öncesinde marka hissini güçlendiren bir içerik gelsin. Duygusal zemin olmadan satış mesajı boşa düşer.</p></div>
+    <div class="pillar"><div class="pillar-num">02</div><h3>Kaliteli Prodüksiyon = Güven</h3><p>504K takipçiyle orantılı prodüksiyon kalitesi şart. Her içerik markanın iddia ettiği premiumluğu görsel olarak kanıtlamalı.</p></div>
+    <div class="pillar"><div class="pillar-num">03</div><h3>Topluluk Hissi İnşa Et</h3><p>504K kişi takipçi, topluluk değil. Etkileşim odaklı içerikler, soru sormak ve cevaplara değer vermek bu kitleyi topluluğa dönüştürür.</p></div>
+    <div class="pillar"><div class="pillar-num">04</div><h3>Her Format Farklı İş Yapar</h3><p>Reels: Keşfet'te erişim, yeni kitle, viral potansiyel. Carousel: Mevcut kitleyi besle, güven inşa et, kaydet dedirt.</p></div>
+    <div class="pillar"><div class="pillar-num">05</div><h3>Anneler Günü'nü Hazırla</h3><p>10 Mayıs bu planın doruk noktası. Son iki haftanın tüm içerikleri bu hedefe doğru birikimli bir his inşa etmeli.</p></div>
+    <div class="pillar"><div class="pillar-num">06</div><h3>Şeffaflık Güven Satar</h3><p>Teslimat şikâyeti olan bir markanın en güçlü silahı şeffaflık. "Nasıl hazırlıyoruz, nasıl gönderiyoruz" içerikleri güven onarımına katkı sağlar.</p></div>
+  </div>
+
+  <div class="mt-32">
+    <h3 style="font-size:15px;font-weight:700;margin-bottom:18px;color:var(--black);">İçerik Dağılım Mantığı</h3>
+    <div class="progress-item"><label><span>Ürün & Satış Odaklı</span><span>35%</span></label><div class="progress-bar"><div class="progress-fill" style="width:35%"></div></div></div>
+    <div class="progress-item"><label><span>Yaşam Tarzı & Ambiyans</span><span>20%</span></label><div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div></div>
+    <div class="progress-item"><label><span>Marka Hissi & Hikâye</span><span>15%</span></label><div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div></div>
+    <div class="progress-item"><label><span>Eğitici & Bilgilendirici</span><span>15%</span></label><div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div></div>
+    <div class="progress-item"><label><span>Etkileşim & Topluluk</span><span>10%</span></label><div class="progress-bar"><div class="progress-fill" style="width:10%"></div></div></div>
+    <div class="progress-item"><label><span>Özel Gün & Sosyal Sorumluluk</span><span>5%</span></label><div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div></div>
+  </div>
+
+  <div class="two-col mt-32">
+    <div class="card">
+      <div class="card-icon">🎬</div>
+      <h3>Reels'in Rolü</h3>
+      <p>Keşfet'te yer almak, yeni kitle kazanmak ve viral potansiyel yaratmak. Güçlü açılış + trend ses + 15–30 saniyelik sıkı kurgu ideal format.</p>
+      <div class="tags mt-16">
+        <span class="tag tag-dark">Keşfet Erişimi</span>
+        <span class="tag tag-gold">Yeni Kitle</span>
+        <span class="tag tag-neutral">Viral Potansiyel</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📱</div>
+      <h3>Carousel'in Rolü</h3>
+      <p>Mevcut kitleyi beslemek, bilgi vermek ve "kaydet" aksiyonunu tetiklemek. Carousel'lar Instagram'da en yüksek kaydetme oranını alır — bu algoritma için güçlü bir sinyal.</p>
+      <div class="tags mt-16">
+        <span class="tag tag-dark">Kaydetme Tetikleyici</span>
+        <span class="tag tag-gold">Güven İnşası</span>
+        <span class="tag tag-neutral">Keşfet Desteği</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     06 — Prodüksiyon Planı
+════════════════════════════════════════ -->
+<section id="produksiyon">
+  <div class="section-label">06 — Prodüksiyon Planı</div>
+  <h2 class="section-title">Hangi Gün <em>Ne Çekilecek?</em></h2>
+  <p class="section-lead">7 çekim gününden 27 içerik üretme mantığı. Tek lokasyondan, çok format.</p>
+
+  <div class="callout">
+    <p><strong>Temel Prodüksiyon Prensibi:</strong> Her çekim günü minimum 3–5 kullanılabilir içerik üretecek şekilde planlanmalı. Ürün değişimi hızlı olsun, dekor sabit kalsın — böylece günde 4+ farklı içerik materyali çekilebilir. Reels ve carousel materyali aynı çekim gününden türetilebilir.</p>
+  </div>
+
+  <div class="shoot-day">
+    <div class="shoot-day-header">
+      <div class="shoot-day-date">13 Nis<small>Video</small></div>
+      <div class="shoot-day-title">
+        <strong>Video Çekim Günü 1 — "Ürün Dünyası"</strong>
+        <span>Venedik, Sirene Tiramisu, Joy Pasta — lezzetin dokusu ve hikâyesi</span>
+      </div>
+    </div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R1 Materyali:</strong> Venedik pasta — dilim kesme, doku yakın çekimi, pudra şekeri yağdırma sahnesi (yavaş çekim)</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R2 Materyali:</strong> Sirene Tiramisu — kaşık daldırma, katman görünümü, pasta tabağa alınma sahnesi</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R7 Materyali:</strong> Kamera arkası — şef elleri, ekip, mutfak ortamı, hazırlık sürecinden kısa kesitler</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C1 Fotoğraf Materyali:</strong> Doğum günü pastası ürün fotoğrafları — Venedik, Sirene, Joy. Hem flat-lay hem 45° açı</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C2 Materyali:</strong> "Doğru pasta nasıl seçilir" carousel için ürün karşılaştırma görüntüleri</div></div>
+  </div>
+
+  <div class="shoot-day">
+    <div class="shoot-day-header">
+      <div class="shoot-day-date">14 Nis<small>Video</small></div>
+      <div class="shoot-day-title">
+        <strong>Video Çekim Günü 2 — "Teslimat & Deneyim"</strong>
+        <span>Teslimat sürecinden kutlama anına — hikâyenin ikinci perdesi</span>
+      </div>
+    </div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R3 Materyali:</strong> Teslimat günlüğü — paketleme, çanta, kapıdan teslim sahnesi (müşteri deneyimi bakış açısı)</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R4 Materyali:</strong> Chambre kutu açılışı — yavaş açış, içindeki ürünlerin birer birer görünümü, ses efekti</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R6 Materyali:</strong> "Sürpriz nasıl hazırlanır?" adım adım rehber — sipariş, paketleme, balon, teslim zinciri</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C3 Materyali:</strong> Chambre koleksiyonu detay fotoğraflar — kutu dışı, içi, ürünler yakın çekim</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C8 Materyali:</strong> Balon + pasta kombin görüntüleri — kutlama atmosferi, farklı kombinler</div></div>
+  </div>
+
+  <div class="shoot-day">
+    <div class="shoot-day-header">
+      <div class="shoot-day-date">16 Nis<small>Fotoğraf</small></div>
+      <div class="shoot-day-title">
+        <strong>Fotoğraf Çekim Günü 1 — "Hediye Ekosistemi"</strong>
+        <span>Peluş, balon, kombin paketler — hediyeleşme atmosferi</span>
+      </div>
+    </div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C4 Materyali:</strong> Hediye fikirleri carousel için farklı ürün kombinleri — farklı bütçe senaryoları</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C9 Materyali:</strong> Peluş hayvan koleksiyonu — tüm peluşlar bir arada ve ayrı ayrı detay</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C6 Materyali:</strong> Teslimat süreci fotoğrafları — paket, çanta, adres etiketi (güven içeriği)</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>Stok:</strong> Marka ambiyans fotoğrafları — ürünsüz lokasyon, ışık, doku. Çoklu içerikte kullanılabilir</div></div>
+  </div>
+
+  <div class="shoot-day">
+    <div class="shoot-day-header">
+      <div class="shoot-day-date">19 Nis<small>Hibrit</small></div>
+      <div class="shoot-day-title">
+        <strong>Hibrit Çekim Günü — "23 Nisan & Çocuk"</strong>
+        <span>Bayram temalı içerik + çocuklara yönelik ürünler</span>
+      </div>
+    </div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R5 Materyali:</strong> 23 Nisan temalı video — çocuklar için pasta, balon ve peluş. Renkli, neşeli, hızlı kurgu</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C5 Materyali:</strong> En sevilen tatlar carousel — ürünlerin "en beğenilen" formatında sıralanması</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C10 Materyali:</strong> Anneler Günü hediye rehberi için ürün fotoğrafları — pastel, yumuşak tonlar</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R10 Materyali:</strong> "Annenle en son ne zaman pasta yediniz?" temalı duygusal sahne — ürün arka planda</div></div>
+  </div>
+
+  <div class="shoot-day">
+    <div class="shoot-day-header">
+      <div class="shoot-day-date">20 Nis<small>Video</small></div>
+      <div class="shoot-day-title">
+        <strong>Video Çekim Günü 4 — "Anneler Günü Öncesi"</strong>
+        <span>Duygusal içerikler için ham materyal — Mayıs'ın zirvesine hazırlık</span>
+      </div>
+    </div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R9 Materyali:</strong> 1 Mayıs için pastacı emeği — ellerden, mutfaktan, gece çalışmalardan kısa kesitler</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R11 Materyali:</strong> Anneler Günü arifesi — annelere hediye yolculuğu, duygusal ağır tempo</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R12 Materyali:</strong> Ay kapanış videosu için en güzel karelerin ön çekimi</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C12 Materyali:</strong> Anneler Günü paket önerileri carousel — 3 farklı bütçe için 3 farklı öneri</div></div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Verimli Prodüksiyon Notu:</strong> Ürün değişimi yapılırken dekor sabit tutulsun. Aynı lokasyonda 3–4 ürün değişimi = 3–4 farklı içerik materyali. Her video için en az 3 kat fazla ham materyal çekin — kurgu aşamasında seçim yapmak, çekim günü tekrar yapmaktan çok daha ekonomik.</p>
+  </div>
+
+  <div class="shoot-day" style="border-left: 4px solid #4a7d6e;">
+    <div class="shoot-day-header">
+      <div class="shoot-day-date" style="background:#4a7d6e;">Stok<small>Dijital</small></div>
+      <div class="shoot-day-title">
+        <strong>Çekim Gerektirmeyen İçerikler</strong>
+        <span>Tasarım, metin, montaj — hazır materyallerle üretilir</span>
+      </div>
+    </div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C7 — Fiyat-Değer Carousel:</strong> Sadece metin + ürün fotoğrafı. "₺999'a neler geliyor?" bilgi carousel'ı</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C14 — Müşteri Yorumları Carousel:</strong> Gerçek müşteri yorumlarının estetik tasarım şablonlarına alınması</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-photo"></span><div><strong>C15 — Ay Özeti Carousel:</strong> Metin ve grafik ağırlıklı — çekim gerektirmez</div></div>
+    <div class="shoot-item"><span class="shoot-dot dot-video"></span><div><strong>R8 — Sık Sorulan Sorular:</strong> Stok görseller + grafik animasyon — ek çekim gerekmez</div></div>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     07 — İçerik Takvimi
+════════════════════════════════════════ -->
+<section id="takvim">
+  <div class="section-label">07 — İçerik Takvimi</div>
+  <h2 class="section-title">15 Nisan – 15 Mayıs <em>Tam Plan</em></h2>
+  <p class="section-lead">27 içerik: 12 Reels + 15 Carousel. Düzenli yayın ritmi ve Anneler Günü'ne doğru birikimli yapı.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Tarih</th>
+          <th>Format</th>
+          <th>Başlık</th>
+          <th>Konsept</th>
+          <th>Amaç</th>
+          <th>Ürün</th>
+          <th>Çekim</th>
+          <th>Açılış / Kapak</th>
+          <th>Harekete Geçirici</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>R1</td><td>15 Nis Sal</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>İlk Lokmada Anlarsın</td>
+          <td>Venedik pastanın doku ve lezzet sahnesi. Yavaş dilim kesimi, pudra yağmuru, kaşık daldırma</td>
+          <td><span class="badge badge-satis">Satış</span></td>
+          <td>Venedik ₺1.599</td>
+          <td>13 Nis Video</td>
+          <td>"Bu sesi duymak için sesi açın 🍫"</td>
+          <td>Link biyografi'de, sipariş ver</td>
+        </tr>
+        <tr>
+          <td>C1</td><td>16 Nis Çar</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Hangi Pasta Senin?</td>
+          <td>5 farklı pasta yan yana, her birinin karakteri 1 cümleyle. Son slayt: sipariş yönlendirmesi</td>
+          <td><span class="badge badge-etkilesim">Etkileşim</span></td>
+          <td>Venedik, Sirene, Joy, NY Cheesecake, Venus</td>
+          <td>13 Nis Foto</td>
+          <td>"Hangi pasta sensin? Yorumlarda söyle ⬇"</td>
+          <td>Yoruma çek, paylaş</td>
+        </tr>
+        <tr>
+          <td>R2</td><td>17 Nis Per</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Katmanlı Bir Şey Var Burada</td>
+          <td>Sirene Tiramisu'nun katman hikâyesi — kaşık daldırıyor, katmanlar açılıyor</td>
+          <td><span class="badge badge-satis">Satış</span></td>
+          <td>Sirene Tiramisu ₺1.799</td>
+          <td>13 Nis Video</td>
+          <td>"Tiramisu sevenler sesi açsın 🎵"</td>
+          <td>Sipariş linki biyografi'de</td>
+        </tr>
+        <tr>
+          <td>C2</td><td>18 Nis Cum</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Doğru Pastayı Seçmenin 5 Kuralı</td>
+          <td>Kişi sayısı, tat tercihi, teslimat zamanı, bütçe, sürpriz mi değil mi — her slayt bir karar noktası</td>
+          <td><span class="badge badge-egitim">Eğitim</span></td>
+          <td>Genel ürün yelpazesi</td>
+          <td>13 Nis Foto + stok</td>
+          <td>"Yanlış pasta seçmek istemiyorsan kaydet 📌"</td>
+          <td>Kaydet, bir arkadaşına gönder</td>
+        </tr>
+        <tr>
+          <td>R3</td><td>19 Nis Cmt</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Sipariş'ten Kapıya: 6 Saat</td>
+          <td>Siparişin gelişinden teslimatına kadar günlük tarzı 30 saniyelik süreç videosu. Güven inşası</td>
+          <td><span class="badge badge-guven">Güven</span></td>
+          <td>Tüm ürünler</td>
+          <td>14 Nis Video</td>
+          <td>"Sipariş verdim, acaba gelecek mi? 👀"</td>
+          <td>Bugün sipariş ver, bugün gelsin</td>
+        </tr>
+        <tr>
+          <td>C3</td><td>20 Nis Paz</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Chambre: Bir Kutu, Sonsuz Anlam</td>
+          <td>Chambre koleksiyonu tanıtımı. Öğretmene, yeni iş arkadaşına, sağlık çalışanına — her slayt bir senaryo</td>
+          <td><span class="badge badge-satis">Satış</span></td>
+          <td>Chambre ₺999</td>
+          <td>14 Nis Foto</td>
+          <td>"Hediye ne alacaksın diye düşünmeden bak 👇"</td>
+          <td>Link biyografi'de sipariş</td>
+        </tr>
+        <tr>
+          <td>R4</td><td>21 Nis Pzt</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Kutu Açılıyor</td>
+          <td>Chambre kutusunun yavaş açılışı. İçinden çıkanlar tek tek ortaya çıkıyor. Ses efektli estetik açılış</td>
+          <td><span class="badge badge-satis">Satış</span></td>
+          <td>Chambre ₺999</td>
+          <td>14 Nis Video</td>
+          <td>"İçinde ne var merak ettim…"</td>
+          <td>Sende de olsun, link biyografi'de</td>
+        </tr>
+        <tr>
+          <td>C4</td><td>22 Nis Sal</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Her Bütçeye Hediye Var</td>
+          <td>3 bütçe seviyesi: ₺249 başlangıç, ₺999 orta, ₺3.299+ premium. Her bütçe için en iyi öneri</td>
+          <td><span class="badge badge-satis">Satış</span></td>
+          <td>Geniş ürün yelpazesi</td>
+          <td>16 Nis Foto</td>
+          <td>"Bütçen ne olursa olsun güzel bir hediye var 🎁"</td>
+          <td>Yorumda bütçeyi yaz, öneri atalım</td>
+        </tr>
+        <tr class="row-highlight">
+          <td>R5</td><td>23 Nis Çar</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Bugün Onların Günü</td>
+          <td>23 Nisan temalı. Çocuklara özel pasta ve balon sahneleri. Renkli, hızlı, müzikli</td>
+          <td><span class="badge badge-ozelgun">Özel Gün</span></td>
+          <td>Joy Çocuk Paketi, Balonlar</td>
+          <td>19 Nis Video</td>
+          <td>"23 Nisan Ulusal Egemenlik ve Çocuk Bayramı Kutlu Olsun 🎈"</td>
+          <td>Beğen, çocuklara paylaş</td>
+        </tr>
+        <tr>
+          <td>C5</td><td>24 Nis Per</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>En Çok Sipariş Edilen 5 Tat</td>
+          <td>En popüler 5 ürün. Sosyal kanıt carousel'ı — hangi pasta en çok tercih edildi?</td>
+          <td><span class="badge badge-guven">Güven</span></td>
+          <td>Venedik, Sirene, Chambre, Joy, NY Cheesecake</td>
+          <td>19 Nis Foto</td>
+          <td>"Herkes bunları seçiyor, merak ettik mi? 👇"</td>
+          <td>Sen hangisini seçerdin?</td>
+        </tr>
+        <tr>
+          <td>R6</td><td>25 Nis Cum</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Mükemmel Sürpriz Nasıl Hazırlanır?</td>
+          <td>Adım adım: sipariş ver → pasta seç → not ekle → balon ekle → kapıda sürpriz. Rehber formatı</td>
+          <td><span class="badge badge-egitim">Eğitim</span></td>
+          <td>Joy Paketi, Chambre</td>
+          <td>14 Nis Video</td>
+          <td>"Sürpriz yapmak istiyorsun ama nasıl? 🎁"</td>
+          <td>Link biyografi'de, adım 1'i sen at</td>
+        </tr>
+        <tr>
+          <td>C6</td><td>26 Nis Cmt</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Paketliyoruz, Sevgiyle</td>
+          <td>Teslimat süreci: hazırlık, paketleme, kontrol, çıkış, kapıya ulaşım. Şeffaflık ve güven odaklı</td>
+          <td><span class="badge badge-guven">Güven</span></td>
+          <td>Tüm ürünler</td>
+          <td>16 Nis Foto</td>
+          <td>"Sipariş verince ne oluyor? Tüm süreci anlattık 👇"</td>
+          <td>Kaydet, sonra sürpriz planla</td>
+        </tr>
+        <tr>
+          <td>R7</td><td>27 Nis Paz</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Sahne Arkasında</td>
+          <td>Çekim gününden kesitler: mutfak, ekip, hazırlık anları. Marka insanlaşması. Samimi, düşük kurgu</td>
+          <td><span class="badge badge-topluluk">Topluluk</span></td>
+          <td>Marka — ürünsüz</td>
+          <td>13 Nis Video</td>
+          <td>"Perde arkasına bakmak ister misiniz? 🎬"</td>
+          <td>Kaydet, paylaş, takipte kal</td>
+        </tr>
+        <tr>
+          <td>C7</td><td>28 Nis Pzt</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>₺999'a Neler Geliyor?</td>
+          <td>Chambre kutusunun içindekiler slayt slayt açıklanıyor. Fiyat-değer denklemini netleştiren şeffaf içerik</td>
+          <td><span class="badge badge-guven">Güven</span></td>
+          <td>Chambre ₺999</td>
+          <td>Stok + 14 Nis Foto</td>
+          <td>"₺999 çok mu az, çok mu fazla? Karar sen ver 👇"</td>
+          <td>Sipariş ver, link biyografi'de</td>
+        </tr>
+        <tr>
+          <td>R8</td><td>29 Nis Sal</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Sık Sorulan 5 Soru</td>
+          <td>Hızlı soru-cevap formatı. Aynı gün teslimat, kişiselleştirme, kaç kişilik gibi sorular</td>
+          <td><span class="badge badge-egitim">Eğitim</span></td>
+          <td>Tüm ürünler</td>
+          <td>Stok görseller + grafik</td>
+          <td>"Bu soruları hep alıyoruz, bir kerede anlatalım 🎤"</td>
+          <td>Başka sorun var mı? Yoruma yaz</td>
+        </tr>
+        <tr>
+          <td>C8</td><td>30 Nis Çar</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Pasta + Balon + Peluş = ?</td>
+          <td>Kombin öneriler carousel'ı. Farklı kombinler, toplam fiyatlar ve "en çok sevilenler" etiketi</td>
+          <td><span class="badge badge-satis">Satış</span></td>
+          <td>Venedik + Balon + Peluş Kombini</td>
+          <td>14 Nis Foto</td>
+          <td>"Tek başına da güzel, ama birlikte çok daha iyi 🎈🍰"</td>
+          <td>Kombini seç, link biyografi'de</td>
+        </tr>
+        <tr class="row-highlight">
+          <td>R9</td><td>1 May Cum</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Ellerin Emeği</td>
+          <td>1 Mayıs Emek Günü için pastacı elleri. Ellerin çalışması, hamur, çikolata, süsleme. Güçlü müzik</td>
+          <td><span class="badge badge-ozelgun">Özel Gün</span></td>
+          <td>Marka — süreç odaklı</td>
+          <td>20 Nis Video</td>
+          <td>"Her lezzetin arkasında bir emek var. Kutlu olsun 🤲"</td>
+          <td>Beğen, ekibi sev</td>
+        </tr>
+        <tr>
+          <td>C9</td><td>2 May Cmt</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Küçük Hediyeler, Büyük Sevinç</td>
+          <td>Peluş hayvan koleksiyonu tanıtımı. Her peluş için karakter önerisi ve "kime uyar" açıklaması</td>
+          <td><span class="badge badge-satis">Satış</span></td>
+          <td>Peluş koleksiyonu ₺540–590</td>
+          <td>16 Nis Foto</td>
+          <td>"En sevimli hediyeyi buldunuz 🐼🐣🐻"</td>
+          <td>Favorini yoruma yaz</td>
+        </tr>
+        <tr>
+          <td>C10</td><td>3 May Paz</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Annen İçin En İyi Hediye Rehberi</td>
+          <td>Anneler Günü öncesi hediye rehberi. "Annen nasıl biri?" sorusuyla başlar, profil başına ürün önerisiyle biter</td>
+          <td><span class="badge badge-egitim">Eğitim</span></td>
+          <td>Chambre, Joy Paketi, Venedik</td>
+          <td>19 Nis Foto</td>
+          <td>"Annen için ne alacaksın bilmiyorsan kaydet 📌"</td>
+          <td>Kaydet, Anneler Günü planla</td>
+        </tr>
+        <tr>
+          <td>R10</td><td>5 May Sal</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Annenle En Son Ne Yaptın?</td>
+          <td>Duygusal video. "Annenle ne zaman son pasta yediniz?" sorusuyla açılıyor. Minimal prodüksiyon, maksimum his</td>
+          <td><span class="badge badge-etkilesim">Etkileşim</span></td>
+          <td>Venedik / Sirene</td>
+          <td>19 Nis Video</td>
+          <td>"Annenle en son kahve içip pasta yediğin ne zaman? 🫶"</td>
+          <td>Tarihi yoruma yaz</td>
+        </tr>
+        <tr>
+          <td>C11</td><td>6 May Çar</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Annen Hangi Pasta?</td>
+          <td>Eğlenceli soru-cevap formatı carousel. Sorularla sonunda pasta önerisi — paylaşılabilir içerik</td>
+          <td><span class="badge badge-etkilesim">Etkileşim</span></td>
+          <td>Tüm pastalar</td>
+          <td>Stok görsel + grafik</td>
+          <td>"Annen hangi pasta olurdu? Bul ve paylaş 👇"</td>
+          <td>Sonucu yoruma yaz, anneni etiketle</td>
+        </tr>
+        <tr>
+          <td>C12</td><td>8 May Cum</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>3 Bütçe, 3 Mükemmel Anneler Günü</td>
+          <td>₺590 / ₺1.599 / ₺5.490 üç farklı hediye paketi önerisi. Her biri için "neden özel" açıklaması</td>
+          <td><span class="badge badge-satis">Satış</span></td>
+          <td>Peluş / Venedik / Joy Paketi</td>
+          <td>20 Nis Foto</td>
+          <td>"Annen için bütçen ne olursa olsun mükemmel bir seçim var 💝"</td>
+          <td>Kaydet, sipariş ver, 10 Mayıs yaklaşıyor</td>
+        </tr>
+        <tr class="row-highlight">
+          <td>R11</td><td>9 May Cmt</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>Yarın Anneler Günü</td>
+          <td>Duygusal, ağır tempolu. Pasta + an birleşimi. Müzik yük taşıyor. Acele sipariş için güçlü yönlendirme</td>
+          <td><span class="badge badge-ozelgun">Özel Gün</span></td>
+          <td>Joy Paketi, Chambre, Venedik</td>
+          <td>20 Nis Video</td>
+          <td>"Yarın anneler günü. Sen ne yapıyorsun? 🌷"</td>
+          <td>Hâlâ sipariş var, bugün ver</td>
+        </tr>
+        <tr class="row-highlight">
+          <td>C13</td><td>10 May Paz</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Anneler Günü Kutlu Olsun</td>
+          <td>Duygusal kutlama carousel'ı. İlk slayt güçlü tipografi, sonrakiler güçlü görseller. Sade, hissettiren</td>
+          <td><span class="badge badge-ozelgun">Özel Gün</span></td>
+          <td>Marka — duygusal</td>
+          <td>19+20 Nis Foto</td>
+          <td>"Dünyada bir tane var. Annelere 💗"</td>
+          <td>Anneni etiketle, paylaş</td>
+        </tr>
+        <tr>
+          <td>C14</td><td>11 May Pzt</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Siz Yazdınız, Biz Okuduk</td>
+          <td>Gerçek müşteri yorumlarının estetik şablonlara alındığı sosyal kanıt carousel'ı</td>
+          <td><span class="badge badge-guven">Güven</span></td>
+          <td>Tüm ürünler</td>
+          <td>Stok + tasarım</td>
+          <td>"Sizi okumak bizim en güzel ödülümüz 🙏"</td>
+          <td>Sen de deneyimini paylaş</td>
+        </tr>
+        <tr>
+          <td>C15</td><td>13 May Çar</td>
+          <td><span class="badge badge-carousel">Carousel</span></td>
+          <td>Bu Ay Neler Oldu?</td>
+          <td>Ay özet carousel'ı. En çok sipariş edilen ürün, en çok etkileşim alan içerik, öne çıkan anlara bakış</td>
+          <td><span class="badge badge-topluluk">Topluluk</span></td>
+          <td>Marka — özet</td>
+          <td>Stok + montaj</td>
+          <td>"Nisan'dan Mayıs'a: Sizinle geçirdiğimiz ay 🗓"</td>
+          <td>Haziran için takipte kal</td>
+        </tr>
+        <tr class="row-highlight">
+          <td>R12</td><td>15 May Cum</td>
+          <td><span class="badge badge-reels">Reels</span></td>
+          <td>30 Gün, 27 İçerik</td>
+          <td>Ay boyunca üretilen en güzel karelerin ve en güçlü anların hızlı montajı. Enerjik, şarkılı kapanış</td>
+          <td><span class="badge badge-bilinclik">Bilinirlik</span></td>
+          <td>Tüm ürünler</td>
+          <td>20 Nis Video + tüm çekimler</td>
+          <td>"Bu ay siz olmasaydınız yarım kalırdı. Teşekkürler 🫶"</td>
+          <td>Paylaş, Haziran'da görüşürüz</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     08 — Reels Detayları
+════════════════════════════════════════ -->
+<section id="reels">
+  <div class="section-label">08 — Reels Fikirleri Detayı</div>
+  <h2 class="section-title">Her Reels İçin <em>Tam Brifing</em></h2>
+  <p class="section-lead">12 Reels'in her biri için açılış, akış, çekim önerileri, müzik mantığı ve kapanış yönlendirmesi.</p>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R1</div>
+      <div class="content-piece-meta">
+        <strong>İlk Lokmada Anlarsın — 15 Nisan</strong>
+        <span>Venedik Pasta · Satış · Video: 13 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Bu sesi duymak için sesi açın 🍫" — ilk kare: kaşık pastaya inerken</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış (15–25 sn)</label><p>Sesi aç mesajı (0–2sn) → Kaşık daldırma yavaş çekim (2–8sn) → Kesilen dilim (8–14sn) → Ürün adı + fiyat ekranda (14–20sn) → Yönlendirme (20–25sn)</p></div>
+        <div class="detail-item"><label>Çekim Açıları</label><p>Üstten düz çekim, 45° yan, makro yakın (doku), yavaş çekim kesinlikle olmalı</p></div>
+        <div class="detail-item"><label>Müzik Mantığı</label><p>Ses efekti ağırlıklı — kaşık, pasta kırılması, tabak sesi. Fon müziği minimalist</p></div>
+        <div class="detail-item"><label>Ekran Yazıları</label><p>"Venedik" → "₺1.599" → "Bugün sipariş ver, bugün gelir"</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R2</div>
+      <div class="content-piece-meta">
+        <strong>Katmanlı Bir Şey Var Burada — 17 Nisan</strong>
+        <span>Sirene Tiramisu · Satış · Video: 13 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Tiramisu sevenler, bu için ne kadar bekledi biliyor musun?" — kaşık katmanlı birinci karede görünüyor</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Kaşık katmana dalıyor → katmanlar görünüyor → yakın çekim krem → tabak alınıyor → "Sirene Tiramisu" yazısı → sipariş yönlendirmesi</p></div>
+        <div class="detail-item"><label>Çekim Önerisi</label><p>Kesit görünümünü ön plana al. Tiramisu'nun en güçlü yönü katmanlar — bunu kaçırma</p></div>
+        <div class="detail-item"><label>Müzik</label><p>İtalyan / bossa nova trend ses. Hafif şıklık hissi</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"Link biyografi'de. İlk lokmayı bugün al."</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R3</div>
+      <div class="content-piece-meta">
+        <strong>Sipariş'ten Kapıya: 6 Saat — 19 Nisan</strong>
+        <span>Tüm Ürünler · Güven İnşası · Video: 14 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Sipariş verdim, acaba gelecek mi? 👀" — soru ekranda, müşteri bakış açısı hissi</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Sipariş ekranı → mutfakta hazırlık → paketleme → çanta → kurye → kapı zili → paketi alan el → ürün çıkıyor</p></div>
+        <div class="detail-item"><label>Amaç</label><p>Teslimat güvensizliğine karşı proaktif iletişim. Şeffaflık = güven = satış</p></div>
+        <div class="detail-item"><label>Ekran Yazıları</label><p>"09:00 — Sipariş verildi" / "11:00 — Hazırlandı" / "14:00 — Kapıda"</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"18:00'a kadar sipariş ver, bugün kapında."</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R4</div>
+      <div class="content-piece-meta">
+        <strong>Kutu Açılıyor — 21 Nisan</strong>
+        <span>Chambre Hediye Kutusu · Satış · Video: 14 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"İçinde ne var merak ettim… 📦" — kutu kapalı, eller üstünde, gerilim</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Kapalı kutu → yavaş kapak açılışı → içerikler birer birer → yakın çekim her ürün → fiyat ekranda → "Sende de olsun"</p></div>
+        <div class="detail-item"><label>Çekim</label><p>Tepeden çekim ideal. Açılış yavaş çekilmeli. Ambalaj sesi eklenebilir</p></div>
+        <div class="detail-item"><label>Müzik</label><p>Gizemli → mutlu geçiş. Trend "açılış" tarzı ses</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"₺999. Kime hediye edeceksin? Yoruma yaz."</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R5</div>
+      <div class="content-piece-meta">
+        <strong>Bugün Onların Günü — 23 Nisan</strong>
+        <span>Joy Çocuk Paketi · Özel Gün · Video: 19 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"23 Nisan Ulusal Egemenlik ve Çocuk Bayramı Kutlu Olsun 🎈" — ilk kare: renkli balon, pasta, çocukça enerji</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Renkli balonlar → çocuk paketi pasta → peluş oyuncaklar → kutlama mesajı → Bonnenuit logosu</p></div>
+        <div class="detail-item"><label>Ton</label><p>Neşeli, hızlı kesim, enerjik müzik. Ürün ikincil — his ön planda</p></div>
+        <div class="detail-item"><label>Müzik</label><p>Çocuksu, neşeli trend ses. Coşkulu ama sade</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"Çocuklara özel hediyeler link biyografi'de 🎂"</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R6</div>
+      <div class="content-piece-meta">
+        <strong>Mükemmel Sürpriz Nasıl Hazırlanır? — 25 Nisan</strong>
+        <span>Joy / Chambre · Eğitim · Video: 14 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Sürpriz yapmak istiyorsun ama nasıl? Adım adım anlattım 👇"</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Adım 1: Sipariş (web sitesi görünüyor) → 2: Pasta seç → 3: Özel not ekle → 4: Balon ekle → 5: Kapıda sürpriz anı</p></div>
+        <div class="detail-item"><label>Ekran Yazıları</label><p>"Siteye gir / Pastayı seç / Not ekle / Balon ekle / Bekle — kalanı biz hallederiz"</p></div>
+        <div class="detail-item"><label>Amaç</label><p>Sipariş sürecini kolaylaştır = dönüşüm artışı. "Ben nasıl yapacağım?" engelini kaldır</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"Link biyografi'de. Adım 1'i sen at, kalanı biz hallederiz."</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R7</div>
+      <div class="content-piece-meta">
+        <strong>Sahne Arkasında — 27 Nisan</strong>
+        <span>Marka İnsanlaşması · Topluluk · Video: 13 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Perde arkasına bakmak ister misiniz? 🎬" — mutfak girişi, koşturan biri</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Mutfak koşturmacası → şef elleri yakın → ekip gülüyor → sabah hazırlığı → ilk ürün çıkıyor → "Her lokmada bir ekip var"</p></div>
+        <div class="detail-item"><label>Ton</label><p>Gerçek, samimi. Hafif hata bile doğal bırakılabilir. Aşırı kurgu işe yaramaz</p></div>
+        <div class="detail-item"><label>Müzik</label><p>Neşeli, sakin kafe vibes trend ses</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"Ekibimizi seviyorsanız 🤍 ile belirtin"</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R8</div>
+      <div class="content-piece-meta">
+        <strong>Sık Sorulan 5 Soru — 29 Nisan</strong>
+        <span>Tüm Ürünler · Eğitim · Stok Görsel</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Bu soruları çok alıyoruz, bir kerede anlatalım 🎤"</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>5 Soru</label><p>1. Aynı gün teslimat var mı? ✅ / 2. Kişiselleştirme olur mu? ✅ / 3. Kaç kişilik? / 4. Glutensiz seçenek? / 5. Kurumsal sipariş?</p></div>
+        <div class="detail-item"><label>Format</label><p>Hızlı soru-cevap. Soru ekranda büyük → cevap 1 saniye → geçiş. Toplam 20–25 saniye</p></div>
+        <div class="detail-item"><label>Ekran Yazıları</label><p>Her soru büyük font, cevap altında küçük font. Yeşil tik ✅ kullan</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"Başka sorun? Yoruma yaz, cevap verelim."</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R9</div>
+      <div class="content-piece-meta">
+        <strong>Ellerin Emeği — 1 Mayıs</strong>
+        <span>Marka · Özel Gün · Video: 20 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Her lezzetin arkasında bir emek var. Bugün o ellere selam olsun 🤲"</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Eller hamur yoğuruyor → çikolata döküyor → süslüyor → pasta hazır → ekibin elleri yan yana → "1 Mayıs Kutlu Olsun"</p></div>
+        <div class="detail-item"><label>Ton</label><p>Saygılı, içten, siyasi değil — saf emek kutlaması. Marka değerini insanileştiriyor</p></div>
+        <div class="detail-item"><label>Müzik</label><p>Duygusal, nostaljik — güçlü ama sert olmayan bir seçim</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>Yönlendirme yok — bu içerik saf his. Beğeni yeterli.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R10</div>
+      <div class="content-piece-meta">
+        <strong>Annenle En Son Ne Yaptın? — 5 Mayıs</strong>
+        <span>Etkileşim Odaklı · Video: 19 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Annenle en son kahve içip pasta yediğin ne zaman? 🫶" — soru büyük, ürün arka planda</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Soru ekranda → ürün masada yumuşak odakta → müzik tüm yükü taşıyor → son kare: "10 Mayıs'ta bir sebebin olsun"</p></div>
+        <div class="detail-item"><label>Ton</label><p>Minimal prodüksiyon, maksimum his. Bu videoyu çok üretme — sadelik işe yarıyor</p></div>
+        <div class="detail-item"><label>Müzik</label><p>Duygusal, hüzünlü değil ama sıcak. Nostalji hissi</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"Tarihi yoruma yaz. Anneler Günü yaklaşıyor 🌷"</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R11</div>
+      <div class="content-piece-meta">
+        <strong>Yarın Anneler Günü — 9 Mayıs</strong>
+        <span>Özel Gün · Satış · Video: 20 Nisan</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Yarın anneler günü. Sen ne yapıyorsun? 🌷" — ağır tempo, pasta ve çiçek karesi</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Soru → ürünlerin yavaş gösterimi → sipariş kolaylığı hatırlatması → "18:00'a kadar sipariş ver" → Bonnenuit logosu</p></div>
+        <div class="detail-item"><label>Ton</label><p>Duygusal ama baskıcı değil. "Hâlâ yetiştirilebilir" hissi ver</p></div>
+        <div class="detail-item"><label>Müzik</label><p>Güçlü duygusal — bu videonun müziği çok önemli</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"Hâlâ sipariş var. Link biyografi'de, bugün ver."</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">R12</div>
+      <div class="content-piece-meta">
+        <strong>30 Gün, 27 İçerik — 15 Mayıs</strong>
+        <span>Kapanış · Bilinirlik · Video: Tüm Çekimler</span>
+      </div>
+      <span class="badge badge-reels">Reels</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip">
+        <span class="hook-label">Açılış</span>
+        <p>"Bu ay siz olmasaydınız yarım kalırdı. Teşekkürler 🫶" — ay boyunca çekilen en güzel kare</p>
+      </div>
+      <div class="detail-grid mt-16">
+        <div class="detail-item"><label>Akış</label><p>Hızlı kurgu: ürün karesi → teslimat → kutu açılışı → bayram → Anneler Günü → ekip → son kare: Bonnenuit logosu</p></div>
+        <div class="detail-item"><label>Ton</label><p>Enerjik, coşkulu. Teşekkür mesajı içten gelsin. Ay boyunca biriken tüm his bu videoda biriyor</p></div>
+        <div class="detail-item"><label>Müzik</label><p>Yüksek enerji — ayın en güçlü ses seçimi bu olmalı</p></div>
+        <div class="detail-item"><label>Yönlendirme</label><p>"Haziran'da görüşürüz. Bildirimleri açmayı unutma."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     09 — Carousel Detayları
+════════════════════════════════════════ -->
+<section id="carousel">
+  <div class="section-label">09 — Carousel Fikirleri Detayı</div>
+  <h2 class="section-title">Her Carousel İçin <em>Slayt Yapısı</em></h2>
+  <p class="section-lead">15 carousel'ın her biri için kapak cümlesi, slayt akışı ve son slayt yönlendirmesi.</p>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">C1</div>
+      <div class="content-piece-meta"><strong>Hangi Pasta Senin? — 16 Nisan</strong><span>5 Ürün Tanıtımı · Etkileşim</span></div>
+      <span class="badge badge-carousel">Carousel</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip"><span class="hook-label">Kapak</span><p>"Hangi pasta seni en iyi anlatıyor? Kaydır, bul 👇"</p></div>
+      <ul class="slide-list mt-16">
+        <li><span class="slide-num">1</span>Kapak: "Hangi pasta senin?" — tüm pasta siluetleri bir arada, güçlü tipografi</li>
+        <li><span class="slide-num">2</span>Venedik: "Klasik ama sıradan değil. Brownie tabanında bir şaheser."</li>
+        <li><span class="slide-num">3</span>Sirene Tiramisu: "İtalyan geleneği, İstanbul'da. Katmanlar konuşuyor."</li>
+        <li><span class="slide-num">4</span>Joy Pasta: "Sürpriz yapmak isteyenler için tasarlandı."</li>
+        <li><span class="slide-num">5</span>New York Cheesecake: "Sadelikte lüksü anlayanlar için."</li>
+        <li><span class="slide-num">6</span>Venus Tarts: "Minik ama hafife alınmaz. Sanat gibi."</li>
+        <li><span class="slide-num">7</span>Son: "Hangisi sensin? Yoruma yaz 🍰 · Sipariş için link biyografi'de"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">C2</div>
+      <div class="content-piece-meta"><strong>Doğru Pastayı Seçmenin 5 Kuralı — 18 Nisan</strong><span>Rehber İçerik · Eğitim · Kaydet Tetikleyici</span></div>
+      <span class="badge badge-carousel">Carousel</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip"><span class="hook-label">Kapak</span><p>"Yanlış pasta seçmek istemiyorsan bu carousel'ı kaydet 📌"</p></div>
+      <ul class="slide-list mt-16">
+        <li><span class="slide-num">1</span>Kapak: "5 Adımda Mükemmel Pasta Seçimi"</li>
+        <li><span class="slide-num">2</span>Kural 1: Kaç kişi? (Porsiyon rehberi: 6–8–12 kişilik opsiyonlar)</li>
+        <li><span class="slide-num">3</span>Kural 2: Kimin için? (Yaş, tat tercihi, diyet kısıtı)</li>
+        <li><span class="slide-num">4</span>Kural 3: Ne zaman lazım? (Aynı gün mü, ileri tarih mi?)</li>
+        <li><span class="slide-num">5</span>Kural 4: Bütçen? (₺599'dan ₺5.490'a aralıklar)</li>
+        <li><span class="slide-num">6</span>Kural 5: Sürpriz mi kutlama mı? (Teslimat notu + balon ekleme)</li>
+        <li><span class="slide-num">7</span>Son: "Hâlâ emin değilsen WhatsApp'tan sor → [numara]"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">C3</div>
+      <div class="content-piece-meta"><strong>Chambre: Bir Kutu, Sonsuz Anlam — 20 Nisan</strong><span>Chambre ₺999 · Satış</span></div>
+      <span class="badge badge-carousel">Carousel</span>
+    </div>
+    <div class="content-piece-body">
+      <div class="hook-strip"><span class="hook-label">Kapak</span><p>"Hediye ne alacaksın bilmiyorsan bu carousel bitti senin için 👇"</p></div>
+      <ul class="slide-list mt-16">
+        <li><span class="slide-num">1</span>Kapak: Chambre kutusu kapalı, şık fotoğraf + "₺999'lık bir jest"</li>
+        <li><span class="slide-num">2</span>Senaryo: "Öğretmenine hediye" → "Öğretmene Chambre"</li>
+        <li><span class="slide-num">3</span>Senaryo: "Yeni işe başlayan arkadaşa" → "Yeni İş Chambre"</li>
+        <li><span class="slide-num">4</span>Senaryo: "Sağlık çalışanına teşekkür" → "Sağlık Çalışanı Chambre"</li>
+        <li><span class="slide-num">5</span>Kutu içeriği: "Brownie + Cookie + Özel kart" yakın çekim</li>
+        <li><span class="slide-num">6</span>Son: "Kime hediye edeceksin? Yoruma yaz → link biyografi'de sipariş"</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content-piece">
+    <div class="content-piece-header">
+      <div class="content-piece-num">C4–C15</div>
+      <div class="content-piece-meta"><strong>Kalan 12 Carousel — Özet Yapı</strong><span>22 Nisan – 13 Mayıs</span></div>
+    </div>
+    <div class="content-piece-body">
+      <ul class="slide-list">
+        <li><span class="slide-num">C4</span><div><strong>Her Bütçeye Hediye (22 Nis):</strong> Kapak: "Bütçen ne olursa olsun harika hediye var." 3 bütçe seviyesi, her biri ayrı slayt. Son: yoruma bütçeni yaz, öneri gönderelim.</div></li>
+        <li><span class="slide-num">C5</span><div><strong>En Çok Sipariş Edilen 5 Tat (24 Nis):</strong> Sosyal kanıt formatı. "Bu hafta en çok sipariş edilen 5 lezzet." Her ürün açıklamayla. Son: hangisi en çok sana yakın?</div></li>
+        <li><span class="slide-num">C6</span><div><strong>Paketliyoruz, Sevgiyle (26 Nis):</strong> Teslimat süreci şeffaflık carousel'ı. Adım adım: hazırlık → paket → kontrol → çıkış → kapı. Güven odaklı.</div></li>
+        <li><span class="slide-num">C7</span><div><strong>₺999'a Neler Geliyor? (28 Nis):</strong> Chambre kutusundaki her ürün ayrı slayt, değeri açıklanıyor. Fiyat-değer algısını güçlendirir.</div></li>
+        <li><span class="slide-num">C8</span><div><strong>Pasta + Balon + Peluş = ? (30 Nis):</strong> Kombin öneriler. Her kombinin toplam fiyatı, "en popüler" etiketi. Satış odaklı, görsel yoğun.</div></li>
+        <li><span class="slide-num">C9</span><div><strong>Küçük Hediyeler, Büyük Sevinç (2 May):</strong> Peluş koleksiyonu. Her peluş için 1 slayt, "kime uyar" ve karakter açıklaması. Sevimli, erişilebilir fiyat.</div></li>
+        <li><span class="slide-num">C10</span><div><strong>Anneler Günü Hediye Rehberi (3 May):</strong> "Annen nasıl biri?" sorusuyla başlar. 4 farklı profil → 4 ürün önerisi. Kaydet tetikleyici. Son: sipariş linki.</div></li>
+        <li><span class="slide-num">C11</span><div><strong>Annen Hangi Pasta? (6 May):</strong> Soru formatı carousel. 5 soru → pasta öneri sonucu. Eğlenceli, paylaşılabilir. Son slayt: "Sonucu annene gönder."</div></li>
+        <li><span class="slide-num">C12</span><div><strong>3 Bütçe, 3 Mükemmel Anneler Günü (8 May):</strong> ₺590 / ₺1.599 / ₺5.490. Her bütçe için ayrı slayt. Aciliyet hissi: "10 Mayıs yaklaşıyor."</div></li>
+        <li><span class="slide-num">C13</span><div><strong>Anneler Günü Kutlu Olsun (10 May):</strong> Minimal, duygusal. Güçlü tipografi, sade ürün görselleri. Satışa değil — hisse yönelik. Paylaşılabilir format.</div></li>
+        <li><span class="slide-num">C14</span><div><strong>Siz Yazdınız, Biz Okuduk (11 May):</strong> Müşteri yorumları. Her yorumun estetik şablonu var. 5–6 yorum. Son: "Sen de deneyimini paylaş."</div></li>
+        <li><span class="slide-num">C15</span><div><strong>Bu Ay Neler Oldu? (13 May):</strong> Ay özet carousel'ı. En çok sipariş, en çok etkileşim, öne çıkan anlar. Kapanış: "Haziran'da görüşürüz."</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     10 — Özel Günler
+════════════════════════════════════════ -->
+<section id="ozel-gunler">
+  <div class="section-label">10 — Özel Gün Entegrasyonu</div>
+  <h2 class="section-title">Tarihlerle <em>Anlam Kurmak</em></h2>
+  <p class="section-lead">15 Nisan – 15 Mayıs arasındaki özel günlerden markaya gerçekten uyum sağlayabilecek olanlar seçildi. Zorlama içerik üretilmedi.</p>
+
+  <div class="special-day-card">
+    <h3>23 Nisan — Ulusal Egemenlik ve Çocuk Bayramı</h3>
+    <span class="date-tag">23 Nisan · Yüksek Öncelik</span>
+    <p><strong>Neden seçildi:</strong> Çocuk doğum günü pastaları ve Joy Çocuk Paketleri markanın güçlü ürün kategorisinden biri. Bu gün hem duygusal hem ticari değer taşıyor.<br><br>
+    <strong>Nasıl işlenecek:</strong> Siyasi ya da resmi kutlama dili değil — neşeli, çocuksu, balonlu bir enerji. "Bu gün onların" mesajı etrafında pasta + balon + peluş kombini öne çıkarılacak.<br><br>
+    <strong>İçerik:</strong> R5 (Reels) — renkli, hızlı kurgu, trend müzik.</p>
+  </div>
+
+  <div class="special-day-card" style="border-left-color: #4a7d6e;">
+    <h3>1 Mayıs — Emek ve Dayanışma Günü</h3>
+    <span class="date-tag" style="color:#4a7d6e;">1 Mayıs · Sosyal Sorumluluk</span>
+    <p><strong>Neden seçildi:</strong> Markanın arkasındaki emeği görünür kılmak hem insanlaşma sağlar hem de çalışan takdirini öne çıkarır. Siyasi değil — sadece "el emeği" kutlaması.<br><br>
+    <strong>Nasıl işlenecek:</strong> Pastacı elleri, üretim sürecinin anlık görüntüsü. "Her lezzetin arkasında bir emek var" mesajı. Ekip öne çıkarılacak.<br><br>
+    <strong>Markaya katkısı:</strong> Şeffaflık + güven + insanileşme. Teslimat şikâyeti geçmişi olan bir marka için bu içerik güven onarımına katkı sağlar.<br><br>
+    <strong>İçerik:</strong> R9 (Reels) — elleri gösteren yavaş çekim.</p>
+  </div>
+
+  <div class="special-day-card" style="border-left-color: #a07060;">
+    <h3>10 Mayıs — Anneler Günü</h3>
+    <span class="date-tag" style="color:#a07060;">10 Mayıs · En Yüksek Öncelik</span>
+    <p><strong>Neden seçildi:</strong> Bu plan döneminin en güçlü ticari anı. Bonnenuit'in "sevgiyi hediyeye dönüştüren" konumlanması Anneler Günü için biçilmiş kaftan.<br><br>
+    <strong>Nasıl işlenecek:</strong> Sadece 10 Mayıs değil — 3 Mayıs'tan itibaren bir hafta boyunca birikim kurulacak. Her gün biraz daha fazla his, 10 Mayıs'ta doruk noktası.<br><br>
+    <strong>İçerik akışı:</strong> C10 (Rehber, 3 May) → R10 (Duygu, 5 May) → C11 (Eğlenceli, 6 May) → C12 (Satış, 8 May) → R11 (Arife, 9 May) → C13 (Kutlama, 10 May)<br><br>
+    <strong>Markaya katkısı:</strong> Hem en yüksek satış hacmi hem en güçlü duygusal marka anı.</p>
+  </div>
+
+  <div class="callout mt-24">
+    <p><strong>Neden dahil edilmedi?</strong> 12 Mayıs bazı kaynaklarda Anneler Günü olarak geçiyor ancak 2026'da Mayıs'ın ikinci Pazar günü <strong>10 Mayıs</strong>'a denk geliyor — takvim buna göre düzenlendi. 19 Mayıs Gençlik Bayramı kapsam dışında kalıyor.</p>
+  </div>
+
+  <h3 style="font-size:16px;font-weight:700;margin:32px 0 16px;color:var(--black);">Sosyal Sorumluluk Önerileri</h3>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-icon">🌱</div>
+      <h3>"Bir Pasta, Bir Fidan" Eylemi</h3>
+      <p>Mayıs ayı boyunca her 100 sipariş için bir fidan dikimi taahhüdü. Küçük ölçekli ama sahici bir girişim. İçerik: taahhüdü duyuran bir paylaşım + ay sonunda kaç fidan dikildiğinin açıklanması.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--accent-dark);"><strong>Marka katkısı:</strong> Premium + duyarlı algı. Rakiplerden farklılaşma.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">👩‍🍳</div>
+      <h3>Ekip Görünürlüğü Serisi</h3>
+      <p>"Bonnenuit Ailesi" serisi: 1 Mayıs sonrasında ekipten bir kişiyi tanıtan kısa içerik. İsim, görevi, pasta hakkındaki görüşü. İnsanileşme ve şeffaflık aynı anda.</p>
+      <p style="margin-top:8px;font-size:12px;color:var(--accent-dark);"><strong>Marka katkısı:</strong> Güven inşası, topluluk hissi, özgün içerik.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     11 — Sonuç & Ajans Önerileri
+════════════════════════════════════════ -->
+<section id="sonuc">
+  <div class="section-label">11 — Sonuç & Ajans Önerileri</div>
+  <h2 class="section-title">Bir Sonraki <em>Adım</em></h2>
+  <p class="section-lead">Bu ayın ötesine bakış: Haziran ve sonrası için stratejik yön önerileri.</p>
+
+  <div class="cards-grid">
+    <div class="card">
+      <div class="card-icon">📐</div>
+      <h3>Genişletilmesi Gereken Formatlar</h3>
+      <p><strong>Reels:</strong> Bu ay en kritik yatırım formatı. Hangilerinin en fazla keşfet görünümü aldığını ölçün, Haziran'da o formatı büyütün.<br><br>
+      <strong>Carousel:</strong> Kaydetme oranı yüksek türleri belirleyin (rehber + soru formatları büyük ihtimalle öne çıkacak) ve ağırlığı artırın.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📊</div>
+      <h3>Takip Edilmesi Gereken Metrikler</h3>
+      <ul style="font-size:13px;color:var(--mid-gray);line-height:2.2;padding-left:16px;">
+        <li>Reels: Görüntülenme sayısı + izlenme oranı (%)</li>
+        <li>Carousel: Kaydetme sayısı</li>
+        <li>Tüm içerikler: Etkileşim oranı</li>
+        <li>Biyografi link tıklamaları</li>
+        <li>Yorum kalitesi (ürün sorusu mu, his yorumu mu?)</li>
+        <li>Yeni takipçi kazanımı (Reels kaynaklı)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-icon">🗓</div>
+      <h3>Haziran İçin Stratejik Yön</h3>
+      <p><strong>Yaz geçişi:</strong> Mayıs'ın duygusal yoğunluğundan sonra Haziran'ı daha hafif ve mevsimsel tutun.<br><br>
+      <strong>Kullanıcı içeriği:</strong> #bonnenuit etiketini aktif hale getirin, müşteri içeriklerini yeniden paylaşın.<br><br>
+      <strong>Hikâyeler:</strong> Instagram Hikâyeler aktif kullanılmıyorsa Haziran'da başlatın — anket, soru, sayaç ile etkileşim artırın.<br><br>
+      <strong>Ücretli tanıtım:</strong> En iyi Reels'i ücretli tanıtıma dönüştürün.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">⚡</div>
+      <h3>Acil Öneri</h3>
+      <p>Teslimat şikâyetlerini sosyal medya üzerinden proaktif yönetin. C6 (teslimat sürecini anlatan carousel) bu riski içerikle yönetmenin en akıllıca yolu. Hikâyeler'de "bugün siparişler yolda" tarzı anlık paylaşımlar güven kültürü inşa eder.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🎯</div>
+      <h3>Bu Planın Başarısı İçin</h3>
+      <ul style="font-size:13px;color:var(--mid-gray);line-height:2.2;padding-left:16px;">
+        <li>Çekim günlerine sadık kalın, ertelenmesin</li>
+        <li>Her içerik zamanında yayınlansın</li>
+        <li>Yorumlara ilk 1 saatte yanıt verin</li>
+        <li>Altyazılar kopyadan değil, markadan gelsin</li>
+        <li>Anneler Günü haftası öncelikli kaynak ayrılsın</li>
+      </ul>
+    </div>
+    <div class="card accent-card">
+      <div class="card-icon" style="background:rgba(255,255,255,0.2);">🏆</div>
+      <h3>Hedef: Ay Sonu</h3>
+      <p>Bu planın sonunda Bonnenuit Instagram'ı, 504K takipçiyi besleyen, güven inşa eden, hem Keşfet'te büyüyen hem de mevcut kitleye satış yapan bir sisteme dönüşmüş olmalı. Bir hesaptan bir markaya geçiş, burada başlıyor.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-break"></div>
+
+<!-- ═══════════════════════════════════════
+     12 — Bütçe
+════════════════════════════════════════ -->
+<section id="butce">
+  <div class="section-label">12 — Bütçelendirme</div>
+  <h2 class="section-title">Prodüksiyon <em>Maliyet Çerçevesi</em></h2>
+  <p class="section-lead">Aşağıdaki rakamlar piyasa değerlendirmesine dayalı tahmini ederlerdir. Marka ile birlikte gözden geçirilecektir.</p>
+
+  <div class="card" style="max-width:560px;">
+    <h3 style="margin-bottom:20px;font-size:15px;font-weight:800;">🎥 Prodüksiyon</h3>
+    <div class="budget-row"><span>Video Çekimi (4 gün)</span><strong>₺24.000</strong></div>
+    <div class="budget-row"><span>Fotoğraf Çekimi (3 gün)</span><strong>₺18.000</strong></div>
+    <div class="budget-row"><span>Video Kurgu & Post-prodüksiyon (12 Reels)</span><strong>₺24.000</strong></div>
+    <div class="budget-row"><span>Grafik Tasarım & Retouching (15 Carousel)</span><strong>₺24.000</strong></div>
+    <div class="budget-row"><span>Strateji, Yönetim & Raporlama (aylık)</span><strong>₺20.000</strong></div>
+    <div class="budget-total"><span>Aylık Toplam</span><strong>₺110.000</strong></div>
+  </div>
+
+  <div class="callout mt-24">
+    <p>Bu fiyatlandırma reklam bütçesini kapsamaz. Ücretli tanıtım ihtiyacı ayrıca değerlendirilecektir.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="page-footer">
+  <div class="logo">Bonne<span>nuit</span> × UniqBee</div>
+  <p>15 Nisan – 15 Mayıs 2026 · Sosyal Medya İçerik Stratejisi</p>
+  <p style="margin-top:6px;">Hazırlayan: UniqBee Dijital Medya · Nisan 2026</p>
+  <p style="margin-top:20px;font-size:10px;color:#333;">Bu doküman gizlidir ve yalnızca Bonnenuit markası ile paylaşılmak üzere hazırlanmıştır.</p>
+</div>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.07 });
+
+  document.querySelectorAll('.card, .content-piece, .shoot-day, .special-day-card, .stat-box, .pillar, .competitor-card').forEach(el => {
+    el.classList.add('fade-in');
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>

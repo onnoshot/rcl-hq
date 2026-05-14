@@ -1,0 +1,1611 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Retrocameraland — İşbirliği Teklifi 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --black:#080808;
+  --dark:#0e0e0e;
+  --surface:#141414;
+  --border:rgba(255,255,255,.06);
+  --cream:#EAE4D8;
+  --warm:#F5EFE3;
+  --muted:#6B6460;
+  --muted2:#3A3632;
+  --gold:#C9A55A;
+  --goldl:#E0BC73;
+  --amber:#D47A42;
+  --golddim:rgba(201,165,90,.1);
+  --goldbdr:rgba(201,165,90,.2);
+  --fn:'Bebas Neue',sans-serif;
+  --fs:'Cormorant Garamond',serif;
+  --fm:'DM Mono',monospace;
+  --fb:'Karla',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--cream);
+  font-family:var(--fb);
+  overflow-x:hidden;
+  cursor:crosshair;
+}
+
+/* ── GRAIN CANVAS ── */
+#grain{
+  position:fixed;inset:0;
+  z-index:9999;
+  pointer-events:none;
+  opacity:.04;
+  mix-blend-mode:overlay;
+}
+
+/* ── SCROLL PROGRESS ── */
+#progress{
+  position:fixed;top:0;left:0;height:1px;
+  width:0;z-index:1000;
+  background:linear-gradient(90deg,var(--gold),var(--amber));
+  transition:width .08s linear;
+  pointer-events:none;
+}
+
+/* ── STICKY NAV ── */
+#nav{
+  position:fixed;top:0;left:0;right:0;
+  z-index:900;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 48px;
+  background:rgba(8,8,8,.0);
+  transition:background .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+#nav.scrolled{
+  background:rgba(8,8,8,.92);
+  border-color:var(--border);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+.nav-logo{
+  font-family:var(--fn);
+  letter-spacing:.12em;
+  font-size:1.1rem;
+  color:var(--cream);
+  text-decoration:none;
+}
+.nav-logo span{color:var(--gold)}
+.nav-tag{
+  font-family:var(--fm);
+  font-size:.68rem;
+  color:var(--muted);
+  letter-spacing:.08em;
+}
+
+/* ── REVEAL ANIMATIONS ── */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-clip{
+  clip-path:inset(0 100% 0 0);
+  transition:clip-path 1s cubic-bezier(.77,0,.175,1);
+}
+.reveal-clip.visible{clip-path:inset(0 0% 0 0)}
+.reveal-left{
+  opacity:0;
+  transform:translateX(-50px);
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);
+}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{
+  opacity:0;
+  transform:translateX(50px);
+  transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);
+}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.delay-1{transition-delay:.1s}
+.delay-2{transition-delay:.2s}
+.delay-3{transition-delay:.3s}
+.delay-4{transition-delay:.4s}
+.delay-5{transition-delay:.5s}
+.delay-6{transition-delay:.6s}
+.delay-7{transition-delay:.7s}
+.delay-8{transition-delay:.8s}
+
+/* ── HERO ── */
+#hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  overflow:hidden;
+  padding:120px 48px 80px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,165,90,.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(212,122,66,.04) 0%, transparent 60%),
+    var(--black);
+}
+.hero-frame{
+  position:absolute;
+  inset:40px;
+  border:1px solid rgba(201,165,90,.12);
+  pointer-events:none;
+}
+.hero-frame::before,.hero-frame::after{
+  content:'';
+  position:absolute;
+  width:20px;height:20px;
+}
+.hero-frame::before{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold)}
+.hero-frame::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold)}
+.frame-br{position:absolute;top:-1px;right:-1px;width:20px;height:20px;border-top:2px solid var(--gold);border-right:2px solid var(--gold)}
+.frame-bl{position:absolute;bottom:-1px;left:-1px;width:20px;height:20px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold)}
+
+.hero-eyebrow{
+  font-family:var(--fm);
+  font-size:.65rem;
+  letter-spacing:.3em;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:36px;
+  opacity:0;
+  animation:fadeUp .8s .3s forwards;
+}
+.hero-title{
+  font-family:var(--fn);
+  font-size:clamp(3.5rem,10vw,9rem);
+  line-height:.92;
+  letter-spacing:.04em;
+  color:var(--warm);
+  margin-bottom:8px;
+  opacity:0;
+  animation:fadeUp .9s .5s forwards;
+}
+.hero-title span{
+  display:block;
+  color:var(--gold);
+  font-size:.52em;
+  letter-spacing:.15em;
+  font-family:var(--fm);
+  margin-bottom:4px;
+}
+.hero-tagline{
+  font-family:var(--fs);
+  font-size:clamp(1.1rem,2.5vw,1.6rem);
+  font-style:italic;
+  font-weight:300;
+  color:var(--muted);
+  margin-top:28px;
+  max-width:560px;
+  line-height:1.5;
+  opacity:0;
+  animation:fadeUp .9s .7s forwards;
+}
+.hero-scroll{
+  position:absolute;
+  bottom:48px;left:50%;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;
+  align-items:center;gap:10px;
+  opacity:0;
+  animation:fadeUp .9s 1.2s forwards;
+}
+.hero-scroll span{
+  font-family:var(--fm);
+  font-size:.6rem;
+  letter-spacing:.2em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+.scroll-line{
+  width:1px;height:50px;
+  background:linear-gradient(var(--gold),transparent);
+  animation:scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse{
+  0%,100%{opacity:.3;transform:scaleY(1)}
+  50%{opacity:1;transform:scaleY(1.2)}
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ── STRIP DIVIDER ── */
+.film-strip{
+  width:100%;
+  overflow:hidden;
+  padding:20px 0;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.strip-inner{
+  display:flex;
+  gap:0;
+  animation:stripScroll 20s linear infinite;
+  width:max-content;
+}
+.strip-item{
+  display:flex;
+  align-items:center;
+  gap:32px;
+  padding:0 40px;
+  font-family:var(--fm);
+  font-size:.65rem;
+  letter-spacing:.2em;
+  color:var(--muted);
+  white-space:nowrap;
+  border-right:1px solid var(--border);
+}
+.strip-dot{color:var(--gold)}
+@keyframes stripScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ── SECTIONS ── */
+section{
+  position:relative;
+  padding:120px 48px;
+  max-width:1400px;
+  margin:0 auto;
+}
+section.full-width{
+  max-width:100%;
+  padding-left:0;padding-right:0;
+}
+
+.section-label{
+  display:flex;align-items:center;gap:16px;
+  font-family:var(--fm);
+  font-size:.62rem;
+  letter-spacing:.25em;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:48px;
+}
+.section-label::before{
+  content:'';
+  display:block;
+  width:32px;height:1px;
+  background:var(--gold);
+}
+
+/* ── MANIFESTO ── */
+#manifesto{
+  max-width:100%;
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:100px 80px;
+  text-align:center;
+}
+.manifesto-quote{
+  font-family:var(--fs);
+  font-size:clamp(2rem,5vw,4.2rem);
+  font-weight:300;
+  line-height:1.2;
+  color:var(--warm);
+  max-width:1000px;
+  margin:0 auto;
+}
+.manifesto-quote em{
+  font-style:italic;
+  color:var(--gold);
+}
+.manifesto-sub{
+  font-family:var(--fb);
+  font-size:.9rem;
+  color:var(--muted);
+  font-weight:300;
+  margin-top:32px;
+  letter-spacing:.05em;
+}
+
+/* ── WHO WE ARE ── */
+#about{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.about-text h2{
+  font-family:var(--fn);
+  font-size:clamp(2.5rem,5vw,5rem);
+  letter-spacing:.04em;
+  line-height:.92;
+  color:var(--warm);
+  margin-bottom:32px;
+}
+.about-text p{
+  font-size:1rem;
+  line-height:1.8;
+  color:var(--muted);
+  font-weight:300;
+  margin-bottom:20px;
+}
+.about-text p strong{color:var(--cream)}
+.about-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+}
+.stat-box{
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:40px 32px;
+  transition:border-color .3s;
+}
+.stat-box:hover{border-color:var(--goldbdr)}
+.stat-num{
+  font-family:var(--fn);
+  font-size:clamp(2.5rem,4vw,4rem);
+  letter-spacing:.04em;
+  color:var(--gold);
+  display:block;
+  margin-bottom:8px;
+}
+.stat-label{
+  font-family:var(--fm);
+  font-size:.62rem;
+  letter-spacing:.18em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+/* ── AUDIENCE ── */
+#audience{
+  background:var(--black);
+}
+.audience-intro{
+  max-width:700px;
+  margin-bottom:72px;
+}
+.audience-intro h2{
+  font-family:var(--fs);
+  font-size:clamp(2.2rem,4vw,3.8rem);
+  font-weight:300;
+  line-height:1.15;
+  color:var(--warm);
+  margin-bottom:20px;
+}
+.audience-intro h2 em{font-style:italic;color:var(--gold)}
+.audience-intro p{
+  font-size:.95rem;
+  line-height:1.8;
+  color:var(--muted);
+  font-weight:300;
+}
+.audience-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.persona-card{
+  background:var(--surface);
+  padding:40px 32px;
+  border:1px solid var(--border);
+  position:relative;
+  overflow:hidden;
+  transition:border-color .4s,background .4s;
+}
+.persona-card::before{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--amber));
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .5s cubic-bezier(.77,0,.175,1);
+}
+.persona-card:hover{
+  border-color:var(--goldbdr);
+  background:rgba(201,165,90,.04);
+}
+.persona-card:hover::before{transform:scaleX(1)}
+.persona-icon{
+  font-size:2rem;
+  margin-bottom:24px;
+  display:block;
+}
+.persona-title{
+  font-family:var(--fn);
+  font-size:1.5rem;
+  letter-spacing:.06em;
+  color:var(--cream);
+  margin-bottom:12px;
+}
+.persona-desc{
+  font-size:.85rem;
+  line-height:1.7;
+  color:var(--muted);
+  font-weight:300;
+}
+.persona-tag{
+  display:inline-block;
+  margin-top:20px;
+  font-family:var(--fm);
+  font-size:.58rem;
+  letter-spacing:.2em;
+  color:var(--gold);
+  text-transform:uppercase;
+  border:1px solid var(--goldbdr);
+  padding:4px 10px;
+}
+
+/* ── HOW IT WORKS ── */
+#process{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  max-width:100%;
+}
+.process-inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 48px;
+}
+.process-header{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:end;
+  margin-bottom:80px;
+}
+.process-header h2{
+  font-family:var(--fn);
+  font-size:clamp(2.5rem,5vw,5.5rem);
+  letter-spacing:.04em;
+  line-height:.92;
+  color:var(--warm);
+}
+.process-header p{
+  font-size:.95rem;
+  line-height:1.8;
+  color:var(--muted);
+  font-weight:300;
+  padding-bottom:8px;
+}
+.steps-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.step-card{
+  background:var(--black);
+  padding:48px 40px;
+  border:1px solid var(--border);
+  position:relative;
+}
+.step-num{
+  font-family:var(--fn);
+  font-size:6rem;
+  letter-spacing:.04em;
+  color:rgba(201,165,90,.1);
+  line-height:1;
+  position:absolute;
+  top:24px;right:24px;
+}
+.step-icon{
+  width:48px;height:48px;
+  border:1px solid var(--goldbdr);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:28px;
+  font-size:1.3rem;
+}
+.step-title{
+  font-family:var(--fs);
+  font-size:1.8rem;
+  font-weight:600;
+  color:var(--cream);
+  margin-bottom:16px;
+  line-height:1.1;
+}
+.step-desc{
+  font-size:.88rem;
+  line-height:1.75;
+  color:var(--muted);
+  font-weight:300;
+}
+.step-tag{
+  display:flex;align-items:center;gap:8px;
+  margin-top:28px;
+  font-family:var(--fm);
+  font-size:.6rem;
+  letter-spacing:.15em;
+  color:var(--gold);
+}
+.step-tag::before{content:'';display:block;width:20px;height:1px;background:var(--gold)}
+
+/* ── BRAND CATEGORIES ── */
+#brands{
+  background:var(--black);
+}
+.brands-header{
+  max-width:700px;
+  margin-bottom:72px;
+}
+.brands-header h2{
+  font-family:var(--fn);
+  font-size:clamp(2.5rem,5vw,5rem);
+  letter-spacing:.04em;
+  line-height:.92;
+  color:var(--warm);
+  margin-bottom:24px;
+}
+.brands-header p{
+  font-size:.95rem;
+  line-height:1.8;
+  color:var(--muted);
+  font-weight:300;
+}
+.brands-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:2px;
+}
+.brand-cat{
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:32px 28px;
+  position:relative;
+  overflow:hidden;
+  transition:border-color .4s,background .4s;
+  cursor:default;
+}
+.brand-cat::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,rgba(201,165,90,.06) 0%,transparent 60%);
+  opacity:0;
+  transition:opacity .4s;
+}
+.brand-cat:hover{
+  border-color:var(--goldbdr);
+}
+.brand-cat:hover::after{opacity:1}
+.brand-cat-icon{
+  font-size:1.6rem;
+  margin-bottom:16px;
+  display:block;
+  transition:transform .3s;
+}
+.brand-cat:hover .brand-cat-icon{transform:scale(1.15)}
+.brand-cat-name{
+  font-family:var(--fs);
+  font-size:1.15rem;
+  font-weight:600;
+  color:var(--cream);
+  margin-bottom:8px;
+}
+.brand-cat-desc{
+  font-size:.78rem;
+  line-height:1.65;
+  color:var(--muted);
+  font-weight:300;
+}
+.brand-cat-fit{
+  display:inline-block;
+  margin-top:16px;
+  font-family:var(--fm);
+  font-size:.56rem;
+  letter-spacing:.18em;
+  padding:3px 8px;
+  border:1px solid;
+  text-transform:uppercase;
+}
+.fit-perfect{color:#72c87a;border-color:rgba(114,200,122,.3)}
+.fit-great{color:var(--gold);border-color:var(--goldbdr)}
+.fit-strong{color:#7eb8e8;border-color:rgba(126,184,232,.3)}
+
+/* ── DELIVERABLES ── */
+#deliverables{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  max-width:100%;
+}
+.deliverables-inner{
+  max-width:1400px;
+  margin:0 auto;
+  padding:0 48px;
+}
+.deliverables-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:start;
+}
+.deliverables-left h2{
+  font-family:var(--fn);
+  font-size:clamp(2.5rem,5vw,5rem);
+  letter-spacing:.04em;
+  line-height:.92;
+  color:var(--warm);
+  margin-bottom:24px;
+}
+.deliverables-left p{
+  font-size:.95rem;
+  line-height:1.8;
+  color:var(--muted);
+  font-weight:300;
+  margin-bottom:40px;
+}
+.deliverables-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.deliverable-item{
+  display:flex;
+  align-items:center;
+  gap:20px;
+  background:var(--black);
+  border:1px solid var(--border);
+  padding:24px 28px;
+  transition:border-color .3s;
+}
+.deliverable-item:hover{border-color:var(--goldbdr)}
+.d-icon{
+  width:40px;height:40px;
+  min-width:40px;
+  border:1px solid var(--goldbdr);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+}
+.d-content{}
+.d-title{
+  font-family:var(--fs);
+  font-size:1.1rem;
+  font-weight:600;
+  color:var(--cream);
+  margin-bottom:4px;
+}
+.d-sub{
+  font-size:.78rem;
+  color:var(--muted);
+  font-weight:300;
+  line-height:1.5;
+}
+.deliverables-right{
+  padding-top:60px;
+}
+.highlight-box{
+  background:var(--black);
+  border:1px solid var(--goldbdr);
+  padding:40px;
+  position:relative;
+  overflow:hidden;
+}
+.highlight-box::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:linear-gradient(90deg,var(--gold),var(--amber));
+}
+.highlight-box h3{
+  font-family:var(--fs);
+  font-size:1.8rem;
+  font-weight:600;
+  color:var(--cream);
+  margin-bottom:16px;
+}
+.highlight-box p{
+  font-size:.9rem;
+  line-height:1.75;
+  color:var(--muted);
+  font-weight:300;
+}
+.highlight-divider{
+  width:100%;height:1px;
+  background:var(--border);
+  margin:28px 0;
+}
+.highlight-point{
+  display:flex;gap:14px;
+  margin-bottom:16px;
+}
+.h-bullet{
+  color:var(--gold);
+  font-family:var(--fn);
+  font-size:1rem;
+  letter-spacing:.1em;
+  min-width:20px;
+  margin-top:2px;
+}
+.h-text{
+  font-size:.88rem;
+  line-height:1.65;
+  color:var(--muted);
+  font-weight:300;
+}
+.h-text strong{color:var(--cream)}
+
+/* ── INVESTMENT ── */
+#investment{
+  background:var(--black);
+  text-align:center;
+  padding:160px 80px;
+  max-width:100%;
+  position:relative;
+  overflow:hidden;
+}
+.invest-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(201,165,90,.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.invest-label{
+  font-family:var(--fm);
+  font-size:.65rem;
+  letter-spacing:.3em;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:40px;
+  display:flex;align-items:center;justify-content:center;gap:20px;
+}
+.invest-label::before,.invest-label::after{
+  content:'';display:block;width:60px;height:1px;background:var(--gold);opacity:.4;
+}
+.invest-price{
+  font-family:var(--fn);
+  font-size:clamp(4rem,12vw,11rem);
+  letter-spacing:.04em;
+  line-height:.9;
+  color:var(--warm);
+  margin-bottom:0;
+}
+.invest-price small{
+  display:block;
+  font-size:.22em;
+  letter-spacing:.2em;
+  color:var(--gold);
+  margin-bottom:12px;
+}
+.invest-price .currency{
+  font-size:.35em;
+  color:var(--muted);
+  vertical-align:top;
+  margin-top:16px;
+  margin-right:4px;
+}
+.invest-kdv{
+  font-family:var(--fm);
+  font-size:.75rem;
+  letter-spacing:.15em;
+  color:var(--muted);
+  margin-top:16px;
+}
+.invest-divider{
+  width:1px;
+  height:80px;
+  background:linear-gradient(var(--gold),transparent);
+  margin:48px auto;
+  opacity:.3;
+}
+.invest-breakdown{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:2px;
+  max-width:700px;
+  margin:0 auto 48px;
+}
+.invest-item{
+  background:var(--surface);
+  border:1px solid var(--border);
+  padding:32px;
+  text-align:left;
+}
+.invest-item-label{
+  font-family:var(--fm);
+  font-size:.6rem;
+  letter-spacing:.2em;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-bottom:12px;
+}
+.invest-item-val{
+  font-family:var(--fn);
+  font-size:1.8rem;
+  letter-spacing:.05em;
+  color:var(--cream);
+}
+.invest-item-val span{font-size:.5em;color:var(--muted)}
+.invest-note{
+  font-family:var(--fs);
+  font-size:1.1rem;
+  font-style:italic;
+  color:var(--muted);
+  font-weight:300;
+  max-width:500px;
+  margin:0 auto;
+  line-height:1.6;
+}
+
+/* ── CTA ── */
+#cta{
+  background:var(--surface);
+  border-top:1px solid var(--border);
+  max-width:100%;
+  padding:140px 80px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.cta-accent{
+  position:absolute;
+  top:-1px;left:50%;
+  transform:translateX(-50%);
+  width:200px;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+}
+.cta-eyebrow{
+  font-family:var(--fm);
+  font-size:.65rem;
+  letter-spacing:.3em;
+  color:var(--gold);
+  text-transform:uppercase;
+  margin-bottom:32px;
+}
+.cta-title{
+  font-family:var(--fs);
+  font-size:clamp(2.5rem,5vw,5rem);
+  font-weight:300;
+  line-height:1.1;
+  color:var(--warm);
+  margin-bottom:16px;
+}
+.cta-title em{
+  font-style:italic;
+  color:var(--gold);
+}
+.cta-sub{
+  font-size:1rem;
+  color:var(--muted);
+  font-weight:300;
+  line-height:1.7;
+  max-width:520px;
+  margin:0 auto 56px;
+}
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:16px;
+  background:var(--gold);
+  color:#080808;
+  font-family:var(--fn);
+  font-size:1.1rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  padding:20px 48px;
+  text-decoration:none;
+  position:relative;
+  overflow:hidden;
+  transition:background .3s,transform .2s;
+}
+.cta-btn::before{
+  content:'';
+  position:absolute;inset:0;
+  background:rgba(255,255,255,.15);
+  transform:translateX(-100%);
+  transition:transform .4s;
+}
+.cta-btn:hover::before{transform:translateX(0)}
+.cta-btn:hover{transform:translateY(-2px)}
+.cta-btn-arrow{
+  font-size:1.2rem;
+  transition:transform .3s;
+}
+.cta-btn:hover .cta-btn-arrow{transform:translateX(4px)}
+.cta-contact{
+  display:flex;
+  justify-content:center;
+  gap:48px;
+  margin-top:60px;
+  flex-wrap:wrap;
+}
+.contact-item{
+  text-align:center;
+}
+.contact-label{
+  font-family:var(--fm);
+  font-size:.58rem;
+  letter-spacing:.2em;
+  color:var(--muted);
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.contact-val{
+  font-family:var(--fs);
+  font-size:1rem;
+  color:var(--cream);
+  font-weight:300;
+}
+.contact-val a{
+  color:var(--cream);
+  text-decoration:none;
+  transition:color .2s;
+}
+.contact-val a:hover{color:var(--gold)}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--black);
+  border-top:1px solid var(--border);
+  padding:40px 80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.footer-logo{
+  font-family:var(--fn);
+  font-size:1.3rem;
+  letter-spacing:.15em;
+  color:var(--muted);
+}
+.footer-logo span{color:var(--gold)}
+.footer-copy{
+  font-family:var(--fm);
+  font-size:.6rem;
+  letter-spacing:.15em;
+  color:var(--muted2);
+  text-transform:uppercase;
+}
+
+/* ── APERTURE DECORATION ── */
+.aperture{
+  width:300px;height:300px;
+  position:relative;
+  margin:0 auto;
+}
+.aperture-ring{
+  position:absolute;inset:0;
+  border-radius:50%;
+  border:1px solid var(--border);
+  animation:rotateRing 20s linear infinite;
+}
+.aperture-ring:nth-child(2){
+  inset:20px;
+  border-color:var(--goldbdr);
+  animation-duration:15s;
+  animation-direction:reverse;
+}
+.aperture-ring:nth-child(3){
+  inset:50px;
+  border-color:var(--border);
+  animation-duration:25s;
+}
+.aperture-dot{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:0 0 20px var(--gold);
+}
+@keyframes rotateRing{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
+}
+.aperture-tick{
+  position:absolute;
+  top:50%;left:50%;
+  width:50%;height:1px;
+  transform-origin:0 50%;
+  background:linear-gradient(90deg,transparent,rgba(201,165,90,.3));
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #about{grid-template-columns:1fr}
+  .audience-grid{grid-template-columns:1fr 1fr}
+  .brands-grid{grid-template-columns:1fr 1fr}
+  .steps-grid{grid-template-columns:1fr}
+  .deliverables-layout{grid-template-columns:1fr}
+  .invest-breakdown{grid-template-columns:1fr}
+  .process-header{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:20px;text-align:center}
+  #nav{padding:16px 24px}
+  section{padding:80px 24px}
+  #manifesto,#process,#deliverables,#investment,#cta{padding-left:24px;padding-right:24px}
+}
+@media(max-width:600px){
+  .audience-grid{grid-template-columns:1fr}
+  .brands-grid{grid-template-columns:1fr}
+  .cta-contact{gap:32px}
+  .hero-frame{inset:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- GRAIN CANVAS -->
+<canvas id="grain"></canvas>
+
+<!-- SCROLL PROGRESS -->
+<div id="progress"></div>
+
+<!-- SVG for aperture ticks (hidden) -->
+<svg width="0" height="0" style="position:absolute"></svg>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">RCL<span>×</span>İŞBİRLİĞİ</a>
+  <span class="nav-tag">2026 — Teklif Dokümanı</span>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero" style="max-width:100%;padding-left:0;padding-right:0">
+  <div class="hero-bg"></div>
+  <div class="hero-frame">
+    <div class="frame-br"></div>
+    <div class="frame-bl"></div>
+  </div>
+
+  <div style="position:relative;z-index:2">
+    <p class="hero-eyebrow">Retrocameraland × İşbirliği Teklifi</p>
+    <h1 class="hero-title">
+      <span>İSTANBUL'UN EN</span>
+      KREATİF<br>KİTLESİ
+    </h1>
+    <p class="hero-tagline">
+      Markanızı fotoğraf estetiğinin en seçkin takipçilerine<br>
+      taşıyoruz — dijital kameralarla çekilen özgün içeriklerle.
+    </p>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Keşfet</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- FILM STRIP -->
+<div class="film-strip">
+  <div class="strip-inner" id="strip">
+    <div class="strip-item"><span class="strip-dot">◆</span> İÇERİK ÜRETİCİLER</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> YÖNETMENler</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> MÜZİSYENLER</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> FENOMENLER</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> AJANS SAHİPLERİ</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> MARKA ELÇİLERİ</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> DİJİTAL KAMERAlar</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> ORGANİK ERİŞİM</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> PRESTİJLİ KİTLE</div>
+    <!-- duplicate for seamless loop -->
+    <div class="strip-item"><span class="strip-dot">◆</span> İÇERİK ÜRETİCİLER</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> YÖNETMENler</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> MÜZİSYENLER</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> FENOMENLER</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> AJANS SAHİPLERİ</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> MARKA ELÇİLERİ</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> DİJİTAL KAMERAlar</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> ORGANİK ERİŞİM</div>
+    <div class="strip-item"><span class="strip-dot">◆</span> PRESTİJLİ KİTLE</div>
+  </div>
+</div>
+
+<!-- ═══════════════ MANIFESTO ═══════════════ -->
+<div id="manifesto">
+  <p class="manifesto-quote reveal">
+    Retrocameraland'ı takip edenler sadece müşteri değil —<br>
+    <em>kültür üreticileri.</em> Onlara ulaşmak,<br>
+    markanıza organik bir <em>statü kazandırır.</em>
+  </p>
+  <p class="manifesto-sub reveal delay-2">
+    İstanbul'un en etkili kreatif kitlesiyle tek kapıdan buluşma fırsatı.
+  </p>
+</div>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about">
+  <div class="about-text">
+    <div class="section-label reveal">Biz Kimiz</div>
+    <h2 class="reveal delay-1">RETRO<br>CAMERA<br>LAND</h2>
+    <p class="reveal delay-2">
+      <strong>Retrocameraland,</strong> Türkiye'nin fotoğraf kültürü alanında en prestijli dijital platformlarından biri. Film ve dijital kameraların estetiği üzerine inşa edilmiş, seçici bir kitleye seslenen bir marka evreni.
+    </p>
+    <p class="reveal delay-3">
+      Sıradan bir sosyal medya hesabı değil — takipçilerimiz içerik üretiyor, sahneye çıkıyor, marka inşa ediyor. Her biri kendi çevresinde bir <strong>etki merkezidir.</strong>
+    </p>
+  </div>
+  <div class="about-stats">
+    <div class="stat-box reveal delay-2">
+      <span class="stat-num" data-target="82">0</span>
+      <span class="stat-label">% Yüksek Değerli Hesap Oranı</span>
+    </div>
+    <div class="stat-box reveal delay-3">
+      <span class="stat-num" data-target="4" data-suffix="x">0</span>
+      <span class="stat-label">Ortalama Takipçi Etki Çarpanı</span>
+    </div>
+    <div class="stat-box reveal delay-4">
+      <span class="stat-num" data-target="100" data-suffix="%">0</span>
+      <span class="stat-label">Organik, Satın Alınmamış Kitle</span>
+    </div>
+    <div class="stat-box reveal delay-5">
+      <span class="stat-num" data-target="10" data-prefix="₺" data-suffix="K">0</span>
+      <span class="stat-label">Reklam Desteği Dahil</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ AUDIENCE ═══════════════ -->
+<section id="audience">
+  <div class="audience-intro">
+    <div class="section-label reveal">Kitleye Bakın</div>
+    <h2 class="reveal delay-1">Bizi takip edenler<br><em>ne yapar?</em></h2>
+    <p class="reveal delay-2">
+      Takipçilerimizin büyük çoğunluğu kendi kitlelerini oluşturmuş, satın alma kararlarını etkileyen bireyler. Bu, markanızın tek değil — katmanlı bir erişim kazandığı anlamına gelir.
+    </p>
+  </div>
+
+  <div class="audience-grid">
+    <div class="persona-card reveal delay-1">
+      <span class="persona-icon">🎬</span>
+      <div class="persona-title">İçerik Üreticileri</div>
+      <p class="persona-desc">YouTube, Instagram ve TikTok'ta kendi kanallarını yöneten, düzenli içerik üreten ve takipçi kitlesi inşa etmiş bireyler. Markaları organik biçimde çevrelerine yansıtırlar.</p>
+      <span class="persona-tag">Yüksek Yayılım</span>
+    </div>
+    <div class="persona-card reveal delay-2">
+      <span class="persona-icon">🎥</span>
+      <div class="persona-title">Yönetmenler & Fotoğrafçılar</div>
+      <p class="persona-desc">Reklam filmi, klip ve kampanya çeken profesyoneller. Estetik algıları yüksek, marka uyumu konusunda seçici. Kaliteli markaların doğal elçileri.</p>
+      <span class="persona-tag">Yüksek Prestij</span>
+    </div>
+    <div class="persona-card reveal delay-3">
+      <span class="persona-icon">🎵</span>
+      <div class="persona-title">Müzisyenler & Sanatçılar</div>
+      <p class="persona-desc">Aktif sosyal medya kullanan, sahnede ve dijitalde görünür olan müzisyenler. Kıyafet, aksesuar ve yaşam tarzı markalarına doğal uyum sağlarlar.</p>
+      <span class="persona-tag">Kültürel Etki</span>
+    </div>
+    <div class="persona-card reveal delay-2">
+      <span class="persona-icon">⭐</span>
+      <div class="persona-title">Fenomenler & Influencer'lar</div>
+      <p class="persona-desc">10K–1M+ takipçili hesaplar. Ürün ve marka paylaşımları doğrudan satışa dönüşen, güvenilir sesler. Bizim kitlemiz bu kitleye güveniyor.</p>
+      <span class="persona-tag">Doğrudan Etki</span>
+    </div>
+    <div class="persona-card reveal delay-3">
+      <span class="persona-icon">🏢</span>
+      <div class="persona-title">Ajans Sahipleri & Direktörler</div>
+      <p class="persona-desc">Reklam, prodüksiyon ve kreatif ajans yöneticileri. Yüksek harcama gücüne sahip, B2B bağlantı potansiyeli de taşıyan elit profil.</p>
+      <span class="persona-tag">B2B Potansiyel</span>
+    </div>
+    <div class="persona-card reveal delay-4">
+      <span class="persona-icon">👑</span>
+      <div class="persona-title">Marka Elçileri & Trend Kuranlar</div>
+      <p class="persona-desc">Kaliteli hesapları takip eden, güçlü ağ etkisi olan bireyler. Yeni markaları çevrelerine tanıtan ilk benimseyiciler — early adopter etkisi.</p>
+      <span class="persona-tag">Çoğaltan Etki</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+<div id="process" style="padding:120px 0">
+  <div class="process-inner">
+    <div class="process-header">
+      <h2 class="reveal">NASIL<br>ÇALIŞIR?</h2>
+      <p class="reveal delay-2">
+        Süreç tamamen bizim tarafımızdan yönetilir. Sizden tek beklentimiz ürünlerinizi veya mekanınızı tanıtmak — gerisini biz hallederiz. Üç adımda markanız Retrocameraland kitlesine ulaşır.
+      </p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal delay-1">
+        <div class="step-num">01</div>
+        <div class="step-icon">📋</div>
+        <div class="step-title">Brifing &<br>Planlama</div>
+        <p class="step-desc">
+          Markanızı, ürününüzü ve hedeflerinizi derinlemesine anlıyoruz. Kitleyle en yüksek rezonansı yakalamak için içerik stratejisini birlikte belirliyoruz.
+        </p>
+        <div class="step-tag">Hafta 1</div>
+      </div>
+      <div class="step-card reveal delay-2">
+        <div class="step-num">02</div>
+        <div class="step-icon">📸</div>
+        <div class="step-title">Çekim &<br>Üretim</div>
+        <p class="step-desc">
+          Ürünlerinizi veya mekanınızı dijital kameralarla, Retrocameraland estetik diline uygun çekiyoruz. Fotoğraf ve video içerikler üretiliyor — ham, gerçek, etkileyici.
+        </p>
+        <div class="step-tag">Hafta 2</div>
+      </div>
+      <div class="step-card reveal delay-3">
+        <div class="step-num">03</div>
+        <div class="step-icon">🚀</div>
+        <div class="step-title">Yayın &<br>Reklam</div>
+        <p class="step-desc">
+          İçerikler Retrocameraland kanallarında yayınlanıyor. Paketin 10.000 TL'lik reklam bütçesiyle desteklenerek organik + paid erişim birleşiyor.
+        </p>
+        <div class="step-tag">Hafta 3–4</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ BRAND CATEGORIES ═══════════════ -->
+<section id="brands">
+  <div class="brands-header">
+    <div class="section-label reveal">Uyum Analizi</div>
+    <h2 class="reveal delay-1">HANGİ<br>MARKALAR<br>UYGUNDUR?</h2>
+    <p class="reveal delay-2">
+      Kitlemizdeki kreatif bireylerin kim olduğuna ve neyi satın aldığına baktık. İşte Retrocameraland işbirliğinden en yüksek verimi alacak marka kategorileri:
+    </p>
+  </div>
+
+  <div class="brands-grid">
+    <div class="brand-cat reveal delay-1">
+      <span class="brand-cat-icon">☕</span>
+      <div class="brand-cat-name">Specialty Coffee & Kafe</div>
+      <p class="brand-cat-desc">Kreatifler çalışma mekanlarını özenle seçer. Çekici bir kahve mekanı, estetik içeriklerin doğal arka planı haline gelir.</p>
+      <span class="brand-cat-fit fit-perfect">Mükemmel Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-2">
+      <span class="brand-cat-icon">👗</span>
+      <div class="brand-cat-name">Moda & Streetwear</div>
+      <p class="brand-cat-desc">İçerik üreticiler ve müzisyenler giyim markalarının organik elçileridir. Fotoğraf çekimlerinde kıyafet doğal bir sahne unsurudur.</p>
+      <span class="brand-cat-fit fit-perfect">Mükemmel Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-3">
+      <span class="brand-cat-icon">🎵</span>
+      <div class="brand-cat-name">Plak & Müzik Mağazaları</div>
+      <p class="brand-cat-desc">Müzisyen ve kreatif kitle için plak kültürü güçlü bir bağ noktası. Vintage estetikle örtüşen mükemmel bir uyum.</p>
+      <span class="brand-cat-fit fit-perfect">Mükemmel Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-4">
+      <span class="brand-cat-icon">🕶️</span>
+      <div class="brand-cat-name">Premium Gözlük</div>
+      <p class="brand-cat-desc">Kişisel marka inşa eden herkes için güneş gözlüğü bir imza aksesuarıdır. Fotoğraf karesinde her zaman görünür.</p>
+      <span class="brand-cat-fit fit-perfect">Mükemmel Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-1">
+      <span class="brand-cat-icon">🥃</span>
+      <div class="brand-cat-name">Craft Spirits & Premium Bar</div>
+      <p class="brand-cat-desc">Yönetmenler, sanatçılar ve ajan sahipleri yüksek değerli içecek markalarıyla doğal uyum içindedir. "Sohbet kültürü" markası.</p>
+      <span class="brand-cat-fit fit-great">Harika Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-2">
+      <span class="brand-cat-icon">👟</span>
+      <div class="brand-cat-name">Sneaker & Kültür Markaları</div>
+      <p class="brand-cat-desc">İçerik üreticiler sneaker kültürünün kalbinde yer alır. Her çekim bir ayakkabı tanıtımı fırsatına dönüşebilir.</p>
+      <span class="brand-cat-fit fit-great">Harika Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-3">
+      <span class="brand-cat-icon">🌿</span>
+      <div class="brand-cat-name">Niche Parfüm Evleri</div>
+      <p class="brand-cat-desc">Statü ve kimlik bilinci yüksek kitle. Niche parfüm, kişisel marka inşa eden bireyler için güçlü bir ifade aracıdır.</p>
+      <span class="brand-cat-fit fit-great">Harika Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-4">
+      <span class="brand-cat-icon">🏨</span>
+      <div class="brand-cat-name">Butik Otel & Konaklama</div>
+      <p class="brand-cat-desc">Yaratıcı profesyoneller estetik mekanları keşfeder ve paylaşır. Butik oteller mükemmel çekim lokasyonları sunar.</p>
+      <span class="brand-cat-fit fit-great">Harika Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-1">
+      <span class="brand-cat-icon">🎨</span>
+      <div class="brand-cat-name">Sanat Galerisi & Kreatif Alan</div>
+      <p class="brand-cat-desc">Kitlemizdeki kreatifler kültürel mekanlara ilgi duyar. Galeri ve atölye mekanları doğal içerik üretim noktalarıdır.</p>
+      <span class="brand-cat-fit fit-strong">Güçlü Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-2">
+      <span class="brand-cat-icon">✒️</span>
+      <div class="brand-cat-name">Tattoo & Body Art Stüdyoları</div>
+      <p class="brand-cat-desc">Müzisyen, fenomen ve sanatçılardan oluşan kitleyle tattoo kültürü arasındaki örtüşme son derece güçlü.</p>
+      <span class="brand-cat-fit fit-strong">Güçlü Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-3">
+      <span class="brand-cat-icon">💈</span>
+      <div class="brand-cat-name">Premium Grooming & Cilt Bakımı</div>
+      <p class="brand-cat-desc">Kamera önünde görünen içerik üreticiler görünüm ürünlerine ciddi önem verir. Organik kullanım kolaylığı yüksek.</p>
+      <span class="brand-cat-fit fit-strong">Güçlü Uyum</span>
+    </div>
+    <div class="brand-cat reveal delay-4">
+      <span class="brand-cat-icon">📚</span>
+      <div class="brand-cat-name">Kitabevi & Kültür Mekanları</div>
+      <p class="brand-cat-desc">Entelektüel estetik ile fotoğraf kültürünün buluşma noktası. Okuma kültürü, kreatif kitleyle güçlü bir bağ kurar.</p>
+      <span class="brand-cat-fit fit-strong">Güçlü Uyum</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ DELIVERABLES ═══════════════ -->
+<div id="deliverables" style="padding:120px 0">
+  <div class="deliverables-inner">
+    <div class="deliverables-layout">
+      <div class="deliverables-left">
+        <div class="section-label reveal">Paket İçeriği</div>
+        <h2 class="reveal delay-1">NE<br>ALIRSINIZ?</h2>
+        <p class="reveal delay-2">Her işbirliği paketi eksiksiz teslim edilir. Çekimden yayına, reklamdan raporlamaya — tek elden.</p>
+
+        <ul class="deliverables-list">
+          <li class="deliverable-item reveal delay-1">
+            <div class="d-icon">📸</div>
+            <div class="d-content">
+              <div class="d-title">Profesyonel Dijital Kamera Çekimi</div>
+              <div class="d-sub">Ürün ve mekan çekimi — RCL estetik diliyle, full-frame dijital kamerayla.</div>
+            </div>
+          </li>
+          <li class="deliverable-item reveal delay-2">
+            <div class="d-icon">🎞️</div>
+            <div class="d-content">
+              <div class="d-title">Özel İçerik Üretimi</div>
+              <div class="d-sub">Fotoğraf + video formatında içerikler — sosyal medyaya hazır, markanıza özel.</div>
+            </div>
+          </li>
+          <li class="deliverable-item reveal delay-3">
+            <div class="d-icon">📢</div>
+            <div class="d-content">
+              <div class="d-title">RCL Kanallarında Yayın</div>
+              <div class="d-sub">Instagram, TikTok ve diğer aktif kanallarda organik yayın — gerçek erişim.</div>
+            </div>
+          </li>
+          <li class="deliverable-item reveal delay-4">
+            <div class="d-icon">📊</div>
+            <div class="d-content">
+              <div class="d-title">10.000 TL Reklam Bütçesi</div>
+              <div class="d-sub">İçerikleriniz hedef kitleye paid reklamla da desteklenir — bütçe pakete dahil.</div>
+            </div>
+          </li>
+          <li class="deliverable-item reveal delay-5">
+            <div class="d-icon">📈</div>
+            <div class="d-content">
+              <div class="d-title">Performans Raporu</div>
+              <div class="d-sub">Erişim, etkileşim ve dönüşüm verileriyle kampanya sonuç raporu.</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="deliverables-right">
+        <div class="highlight-box reveal delay-3">
+          <h3>Neden bu işbirliği farklı?</h3>
+          <p>Tipik influencer işbirlikleri tek yönlü bir tanıtımdır. Bizimkisi ise markanızı bir <strong>kültürel hareketin parçası</strong> haline getirir.</p>
+          <div class="highlight-divider"></div>
+          <div class="highlight-point">
+            <span class="h-bullet">→</span>
+            <p class="h-text"><strong>Estetik uyum:</strong> İçerikler zorla uydurmadan, organik biçimde markanızı tanıtır.</p>
+          </div>
+          <div class="highlight-point">
+            <span class="h-bullet">→</span>
+            <p class="h-text"><strong>Katmanlı erişim:</strong> Takipçilerimizin kendi kitleleri var — etki zincirleme yayılır.</p>
+          </div>
+          <div class="highlight-point">
+            <span class="h-bullet">→</span>
+            <p class="h-text"><strong>Statü transferi:</strong> RCL markasının prestiji, iş birliği yaptığı markaya yansır.</p>
+          </div>
+          <div class="highlight-point">
+            <span class="h-bullet">→</span>
+            <p class="h-text"><strong>Reklam desteği:</strong> 10.000 TL'lik paid boost ile sadece organikle sınırlı kalmayız.</p>
+          </div>
+          <div class="highlight-divider"></div>
+          <div class="highlight-point">
+            <span class="h-bullet">★</span>
+            <p class="h-text">Toplam paket değeri çok üzerinde bir yatırım geri dönüşü için tasarlanmıştır — içerik, yayın ve reklam tek çatı altında.</p>
+          </div>
+        </div>
+
+        <!-- APERTURE DECORATION -->
+        <div style="margin-top:60px;opacity:.3" class="reveal delay-4">
+          <div class="aperture">
+            <div class="aperture-ring"></div>
+            <div class="aperture-ring"></div>
+            <div class="aperture-ring"></div>
+            <div class="aperture-dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ INVESTMENT ═══════════════ -->
+<div id="investment">
+  <div class="invest-bg"></div>
+  <div style="position:relative;z-index:2">
+    <div class="invest-label reveal">İşbirliği Yatırımı</div>
+    <div class="invest-price reveal delay-1">
+      <small>Toplam Paket Bedeli</small>
+      <span class="currency">₺</span>50.000
+    </div>
+    <p class="invest-kdv reveal delay-2">+ KDV</p>
+
+    <div class="invest-divider"></div>
+
+    <div class="invest-breakdown reveal delay-2">
+      <div class="invest-item">
+        <div class="invest-item-label">İçerik & Prodüksiyon</div>
+        <div class="invest-item-val">₺40.000<span> + KDV</span></div>
+      </div>
+      <div class="invest-item">
+        <div class="invest-item-label">Reklam Bütçesi (Dahil)</div>
+        <div class="invest-item-val">₺10.000<span> değer</span></div>
+      </div>
+    </div>
+
+    <p class="invest-note reveal delay-3">
+      "Reklam bütçesi ayrıca fatura edilmez — toplam ödemenin<br>
+      içinde kampanyanızı da destekliyoruz."
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════ CTA ═══════════════ -->
+<div id="cta">
+  <div class="cta-accent"></div>
+  <p class="cta-eyebrow reveal">Bir Adım Kaldı</p>
+  <h2 class="cta-title reveal delay-1">Markanızı<br><em>sahneye taşıyalım.</em></h2>
+  <p class="cta-sub reveal delay-2">
+    Retrocameraland ile çalışmaya hazır mısınız? Sorularınızı yanıtlamak, mekanınızı keşfetmek ve ilk brifinge başlamak için bize ulaşın.
+  </p>
+
+  <div class="reveal delay-3">
+    <a href="mailto:info@retrocameraland.com" class="cta-btn">
+      Hemen İletişime Geçin
+      <span class="cta-btn-arrow">→</span>
+    </a>
+  </div>
+
+  <div class="cta-contact reveal delay-4">
+    <div class="contact-item">
+      <div class="contact-label">E-posta</div>
+      <div class="contact-val"><a href="mailto:info@retrocameraland.com">info@retrocameraland.com</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Instagram</div>
+      <div class="contact-val"><a href="#">@retrocameraland</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Konum</div>
+      <div class="contact-val">İstanbul, Türkiye</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">RETRO<span>CAMERA</span>LAND</div>
+  <div class="footer-copy">© 2026 — İşbirliği Teklifi — Gizli Doküman</div>
+</footer>
+
+<script>
+// ── GRAIN EFFECT ──
+(function(){
+  const canvas = document.getElementById('grain');
+  const ctx = canvas.getContext('2d');
+  let w, h, frame;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+
+  function drawGrain() {
+    const imageData = ctx.createImageData(w, h);
+    const data = imageData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      const v = Math.random() * 255 | 0;
+      data[i] = data[i+1] = data[i+2] = v;
+      data[i+3] = Math.random() * 18 + 4 | 0;
+    }
+    ctx.putImageData(imageData, 0, 0);
+    frame = requestAnimationFrame(drawGrain);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  drawGrain();
+})();
+
+// ── SCROLL PROGRESS ──
+const progress = document.getElementById('progress');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+  progress.style.width = pct + '%';
+}, { passive: true });
+
+// ── NAV SCROLL STATE ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ── INTERSECTION OBSERVER REVEALS ──
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-clip');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => observer.observe(el));
+
+// ── COUNTER ANIMATION ──
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800;
+  const start = performance.now();
+
+  function update(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * target);
+    el.textContent = prefix + current + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && e.target.dataset.target) {
+      animateCounter(e.target);
+      counterObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => counterObserver.observe(el));
+
+// ── APERTURE TICKS ──
+(function(){
+  const apertures = document.querySelectorAll('.aperture');
+  apertures.forEach(aperture => {
+    for (let i = 0; i < 8; i++) {
+      const tick = document.createElement('div');
+      tick.className = 'aperture-tick';
+      tick.style.transform = `rotate(${i * 45}deg)`;
+      aperture.appendChild(tick);
+    }
+  });
+})();
+
+// ── SMOOTH PARALLAX ON HERO ──
+const hero = document.getElementById('hero');
+window.addEventListener('scroll', () => {
+  if (window.scrollY < window.innerHeight) {
+    const y = window.scrollY * 0.3;
+    const bg = hero.querySelector('.hero-bg');
+    if (bg) bg.style.transform = `translateY(${y}px)`;
+  }
+}, { passive: true });
+
+// ── CARD HOVER 3D TILT ──
+document.querySelectorAll('.persona-card, .brand-cat').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    card.style.transform = `perspective(600px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg) translateY(-2px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+    card.style.transition = 'transform 0.5s cubic-bezier(.16,1,.3,1)';
+  });
+  card.addEventListener('mouseenter', () => {
+    card.style.transition = 'transform 0.1s';
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+[Fri Apr 24 23:22:01 +03 2026] === Telegram raporu başladı ===
+<stdin>:105: SyntaxWarning: "\." is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\."? A raw string is also an option.
+<stdin>:108: SyntaxWarning: "\-" is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\-"? A raw string is also an option.
+✓ Telegram mesajı gönderildi — 174 oturum (dün)
+[Fri Apr 24 23:22:05 +03 2026] === Tamamlandı ===
+[Fri Apr 24 23:26:52 +03 2026] === Telegram raporu başladı ===
+Günlük rapor modu...
+✓ Telegram gönderildi
+   KPI: 174 oturum
+[Fri Apr 24 23:26:58 +03 2026] === Tamamlandı ===

@@ -1,0 +1,3462 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Didi Otel Sapanca Sosyal Medya Strateji Dosyası | UniqBee</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --black: #080808;
+  --dark: #111111;
+  --dark2: #1a1a1a;
+  --dark3: #222222;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #e8e4de;
+  --text-muted: #7a756e;
+  --text-mid: #b5ada4;
+  --gold: #c9a96e;
+  --gold-light: #e8d5a8;
+  --gold-dark: #8a6840;
+  --gold-glow: rgba(201,169,110,0.15);
+  --green: #4a7c59;
+  --green-light: #d4ede0;
+  --blue: #3d6478;
+  --red: #8b3d3d;
+  --white: #ffffff;
+  --card-bg: rgba(255,255,255,0.03);
+  --card-bg2: rgba(255,255,255,0.05);
+  --card-border: rgba(255,255,255,0.06);
+  --section-pad: 100px 60px;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family:'Inter',sans-serif;
+  background:var(--black);
+  color:var(--text);
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:var(--dark); }
+::-webkit-scrollbar-thumb { background:var(--gold-dark); border-radius:2px; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity:0; }
+  to   { opacity:1; }
+}
+@keyframes pulse {
+  0%,100% { box-shadow:0 0 0 0 rgba(201,169,110,0.4); }
+  50%      { box-shadow:0 0 0 12px rgba(201,169,110,0); }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.fade-up { opacity:0; animation:fadeUp 0.8s forwards; }
+.fade-up:nth-child(2) { animation-delay:.1s; }
+.fade-up:nth-child(3) { animation-delay:.2s; }
+.fade-up:nth-child(4) { animation-delay:.3s; }
+
+/* ── NAV ── */
+.nav {
+  position:fixed; top:0; left:0; right:0; z-index:1000;
+  background:rgba(8,8,8,0.94);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 32px;
+  overflow-x:auto;
+  white-space:nowrap;
+  scrollbar-width:none;
+  gap:0;
+}
+.nav::-webkit-scrollbar { display:none; }
+
+.nav-inner {
+  display:flex;
+  align-items:center;
+  gap:0;
+  max-width:1400px;
+  width:100%;
+}
+
+.nav-brand {
+  font-family:'Playfair Display',serif;
+  font-size:14px;
+  color:var(--gold);
+  margin-right:32px;
+  flex-shrink:0;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+
+.nav-links {
+  display:flex;
+  align-items:center;
+  gap:0;
+  flex:1;
+  justify-content:center;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.nav-links::-webkit-scrollbar { display:none; }
+
+.nav a {
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  padding:18px 13px;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  text-decoration:none;
+  transition:color .25s ease;
+  flex-shrink:0;
+  white-space:nowrap;
+}
+
+.nav a::after {
+  content:'';
+  position:absolute;
+  bottom:0; left:50%; right:50%;
+  height:2px;
+  background:var(--gold);
+  transition:left .25s ease, right .25s ease;
+  border-radius:2px 2px 0 0;
+}
+
+.nav a:hover {
+  color:var(--white);
+}
+
+.nav a:hover::after {
+  left:13px;
+  right:13px;
+}
+
+.nav a.active {
+  color:var(--gold);
+}
+
+.nav a.active::after {
+  left:13px;
+  right:13px;
+  background:var(--gold);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:120px 40px 80px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-bg {
+  position:absolute; inset:0;
+  background:
+    radial-gradient(ellipse 100% 70% at 50% 0%, rgba(201,169,110,0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(74,124,89,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(61,100,120,0.06) 0%, transparent 50%);
+  pointer-events:none;
+}
+
+.hero-grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+
+.hero-tag {
+  font-size:10px; font-weight:700; letter-spacing:5px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:28px;
+  opacity:0; animation:fadeUp .7s .2s forwards;
+}
+
+.hero-agency {
+  font-size:11px; font-weight:600; letter-spacing:4px;
+  text-transform:uppercase; color:var(--text-muted);
+  margin-bottom:20px;
+  opacity:0; animation:fadeUp .7s .3s forwards;
+}
+.hero-agency span { color:var(--gold); }
+
+.hero-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(52px,9vw,110px);
+  font-weight:400;
+  color:var(--white);
+  letter-spacing:-2px;
+  line-height:1.0;
+  margin-bottom:10px;
+  opacity:0; animation:fadeUp .9s .4s forwards;
+}
+.hero-title em { color:var(--gold); font-style:italic; }
+
+.hero-subtitle-line {
+  font-size:clamp(14px,2vw,18px);
+  font-weight:300;
+  color:var(--text-muted);
+  letter-spacing:3px;
+  text-transform:uppercase;
+  margin-bottom:40px;
+  opacity:0; animation:fadeUp .7s .6s forwards;
+}
+
+.hero-divider {
+  width:80px; height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:0 auto 40px;
+  opacity:0; animation:fadeIn .7s .7s forwards;
+}
+
+.hero-desc {
+  max-width:560px;
+  font-size:15px; color:var(--text-mid);
+  line-height:1.8;
+  margin-bottom:60px;
+  opacity:0; animation:fadeUp .7s .8s forwards;
+}
+
+.hero-stats {
+  display:flex; gap:60px; flex-wrap:wrap; justify-content:center;
+  opacity:0; animation:fadeUp .7s 1s forwards;
+}
+.hero-stat { text-align:center; }
+.hero-stat strong {
+  display:block;
+  font-family:'Playfair Display',serif;
+  font-size:32px; font-weight:700;
+  color:var(--white);
+  line-height:1;
+  margin-bottom:6px;
+}
+.hero-stat span {
+  font-size:9px; font-weight:600; letter-spacing:3px;
+  text-transform:uppercase; color:var(--text-muted);
+}
+
+.hero-badge {
+  position:absolute; bottom:40px; right:48px;
+  font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  color:var(--text-muted);
+  opacity:0; animation:fadeUp .7s 1.2s forwards;
+}
+
+/* ── SECTION BASE ── */
+section {
+  padding:var(--section-pad);
+  max-width:1400px;
+  margin:0 auto;
+}
+.section-full {
+  max-width:100%;
+  padding:var(--section-pad);
+}
+
+.section-header {
+  margin-bottom:60px;
+}
+.section-num {
+  font-size:9px; font-weight:700; letter-spacing:4px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:16px;
+  display:block;
+}
+.section-title {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(32px,5vw,54px);
+  font-weight:400;
+  color:var(--white);
+  line-height:1.1;
+  letter-spacing:-1px;
+  margin-bottom:16px;
+}
+.section-title em { color:var(--gold); font-style:italic; }
+.section-lead {
+  font-size:16px; color:var(--text-mid);
+  max-width:640px;
+  line-height:1.8;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  max-width:1400px; margin:0 auto;
+  height:1px;
+  background:linear-gradient(90deg,transparent,var(--border2),transparent);
+}
+
+/* ── CARDS ── */
+.card {
+  background:var(--card-bg2);
+  border:1px solid var(--card-border);
+  border-radius:16px;
+  padding:28px 32px;
+  transition:all .3s;
+}
+.card:hover {
+  background:rgba(201,169,110,0.05);
+  border-color:rgba(201,169,110,0.2);
+  transform:translateY(-2px);
+}
+.card-gold {
+  border-color:rgba(201,169,110,0.3);
+  background:rgba(201,169,110,0.06);
+}
+
+.card-icon {
+  font-size:24px; margin-bottom:16px; display:block;
+}
+.card-title {
+  font-size:13px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:12px;
+}
+.card-text {
+  font-size:14px; color:var(--text-mid); line-height:1.7;
+}
+
+/* ── GRID LAYOUTS ── */
+.grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+.grid-3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.grid-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.grid-auto { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+
+/* ── BRAND ANALYSIS ── */
+.brand-hero-card {
+  background:var(--dark2);
+  border:1px solid var(--border2);
+  border-radius:20px;
+  padding:48px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:48px;
+  align-items:start;
+  margin-bottom:40px;
+}
+.brand-name-block .hotel-name {
+  font-family:'Playfair Display',serif;
+  font-size:48px; font-weight:400;
+  color:var(--white);
+  letter-spacing:-1px;
+  line-height:1;
+  margin-bottom:8px;
+}
+.brand-name-block .hotel-sub {
+  font-size:11px; font-weight:600; letter-spacing:3px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:24px;
+}
+.brand-name-block .hotel-tagline {
+  font-size:16px; color:var(--text-mid);
+  line-height:1.8; font-style:italic;
+  padding-left:16px;
+  border-left:2px solid var(--gold);
+}
+.brand-facts { display:flex; flex-direction:column; gap:16px; }
+.brand-fact {
+  display:flex; align-items:flex-start; gap:16px;
+  padding:16px;
+  background:rgba(255,255,255,0.03);
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+.brand-fact-label {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--text-muted);
+  min-width:80px; margin-top:2px;
+}
+.brand-fact-value {
+  font-size:14px; color:var(--text);
+  line-height:1.5;
+}
+
+/* ── PILLAR TAGS ── */
+.tag {
+  display:inline-block;
+  padding:5px 12px;
+  border-radius:100px;
+  font-size:11px; font-weight:600;
+  letter-spacing:1px;
+  background:rgba(201,169,110,0.1);
+  border:1px solid rgba(201,169,110,0.2);
+  color:var(--gold-light);
+  margin:4px;
+}
+.tag-green {
+  background:rgba(74,124,89,0.15);
+  border-color:rgba(74,124,89,0.3);
+  color:#7dc99a;
+}
+.tag-blue {
+  background:rgba(61,100,120,0.15);
+  border-color:rgba(61,100,120,0.3);
+  color:#7fb8d4;
+}
+.tag-red {
+  background:rgba(139,61,61,0.15);
+  border-color:rgba(139,61,61,0.3);
+  color:#d48888;
+}
+
+/* ── TARGET AUDIENCE ── */
+.audience-card {
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:16px;
+  padding:32px;
+  transition:all .3s;
+}
+.audience-card:hover {
+  border-color:rgba(201,169,110,0.2);
+  background:rgba(201,169,110,0.04);
+}
+.audience-icon { font-size:36px; margin-bottom:16px; }
+.audience-name {
+  font-size:16px; font-weight:700; color:var(--white);
+  margin-bottom:4px;
+}
+.audience-sub {
+  font-size:11px; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:16px;
+}
+.audience-list {
+  list-style:none; display:flex; flex-direction:column; gap:8px;
+}
+.audience-list li {
+  font-size:13px; color:var(--text-mid);
+  padding-left:16px; position:relative; line-height:1.5;
+}
+.audience-list li::before {
+  content:'→'; position:absolute; left:0; color:var(--gold); font-size:11px;
+}
+
+/* ── COMPETITOR ── */
+.competitor-card {
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  overflow:hidden;
+  transition:all .3s;
+}
+.competitor-card:hover { border-color:rgba(255,255,255,0.12); }
+.competitor-header {
+  padding:24px 28px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.competitor-name {
+  font-size:18px; font-weight:700; color:var(--white);
+}
+.competitor-tier {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase;
+  padding:4px 10px; border-radius:100px;
+}
+.tier-direct { background:rgba(139,61,61,0.2); color:#d48888; border:1px solid rgba(139,61,61,0.3); }
+.tier-strong { background:rgba(201,169,110,0.15); color:var(--gold); border:1px solid rgba(201,169,110,0.25); }
+.tier-mid { background:rgba(74,124,89,0.15); color:#7dc99a; border:1px solid rgba(74,124,89,0.3); }
+.competitor-body { padding:24px 28px; }
+.competitor-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;
+}
+.competitor-kv label {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--text-muted);
+  display:block; margin-bottom:4px;
+}
+.competitor-kv p { font-size:13px; color:var(--text-mid); line-height:1.5; }
+.competitor-gap {
+  margin-top:16px; padding:16px;
+  background:rgba(201,169,110,0.06);
+  border-radius:10px;
+  border-left:3px solid var(--gold);
+}
+.competitor-gap label {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold);
+  display:block; margin-bottom:6px;
+}
+.competitor-gap p { font-size:13px; color:var(--text-mid); }
+
+/* ── SWOT ── */
+.swot-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:3px;
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid var(--border);
+}
+.swot-cell {
+  padding:40px;
+  min-height:320px;
+}
+.swot-s { background:rgba(74,124,89,0.08); border-right:1px solid var(--border); border-bottom:1px solid var(--border); }
+.swot-w { background:rgba(139,61,61,0.06); border-bottom:1px solid var(--border); }
+.swot-o { background:rgba(61,100,120,0.08); border-right:1px solid var(--border); }
+.swot-t { background:rgba(180,140,60,0.06); }
+
+.swot-label {
+  font-size:9px; font-weight:800; letter-spacing:4px;
+  text-transform:uppercase; margin-bottom:6px;
+  display:block;
+}
+.swot-s .swot-label { color:#7dc99a; }
+.swot-w .swot-label { color:#d48888; }
+.swot-o .swot-label { color:#7fb8d4; }
+.swot-t .swot-label { color:#e8c97a; }
+
+.swot-title {
+  font-family:'Playfair Display',serif;
+  font-size:28px; font-weight:400;
+  color:var(--white); margin-bottom:24px;
+  line-height:1.1;
+}
+.swot-items { list-style:none; display:flex; flex-direction:column; gap:14px; }
+.swot-item { display:flex; gap:12px; align-items:flex-start; }
+.swot-dot {
+  width:6px; height:6px; border-radius:50%;
+  flex-shrink:0; margin-top:7px;
+}
+.swot-s .swot-dot { background:#7dc99a; }
+.swot-w .swot-dot { background:#d48888; }
+.swot-o .swot-dot { background:#7fb8d4; }
+.swot-t .swot-dot { background:#e8c97a; }
+.swot-item-text { font-size:13px; color:var(--text-mid); line-height:1.6; }
+.swot-item-note {
+  font-size:11px; color:var(--text-muted);
+  font-style:italic; margin-top:4px; display:block;
+}
+
+/* ── POSITIONING ── */
+.positioning-statement {
+  background:var(--dark2);
+  border:1px solid rgba(201,169,110,0.2);
+  border-radius:20px;
+  padding:52px;
+  text-align:center;
+  margin-bottom:40px;
+  position:relative;
+  overflow:hidden;
+}
+.positioning-statement::before {
+  content:'';
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 50%, rgba(201,169,110,0.06) 0%, transparent 70%);
+  pointer-events:none;
+}
+.pos-eyebrow {
+  font-size:10px; font-weight:700; letter-spacing:4px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:20px;
+}
+.pos-quote {
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,4vw,36px);
+  font-weight:400; color:var(--white);
+  line-height:1.4; font-style:italic;
+  max-width:800px; margin:0 auto 24px;
+}
+.pos-quote span { color:var(--gold); }
+.pos-sub { font-size:14px; color:var(--text-mid); max-width:560px; margin:0 auto; }
+
+/* ── PILLARS ── */
+.pillar-card {
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:32px;
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+}
+.pillar-card::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:3px;
+  background:linear-gradient(90deg,var(--gold-dark),var(--gold));
+}
+.pillar-card:hover {
+  border-color:rgba(201,169,110,0.2);
+  transform:translateY(-3px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+.pillar-num {
+  font-size:48px; font-weight:900;
+  color:rgba(201,169,110,0.1);
+  font-family:'Playfair Display',serif;
+  line-height:1; margin-bottom:12px;
+}
+.pillar-name {
+  font-size:15px; font-weight:700; color:var(--white);
+  margin-bottom:6px;
+}
+.pillar-en {
+  font-size:10px; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold);
+  margin-bottom:16px;
+}
+.pillar-desc { font-size:13px; color:var(--text-mid); line-height:1.7; margin-bottom:16px; }
+.pillar-formats { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:12px; }
+.pillar-cta {
+  font-size:11px; font-weight:600; color:var(--gold);
+  letter-spacing:1px;
+}
+
+/* ── REELS / CAROUSEL ── */
+.content-idea-card {
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  transition:all .3s;
+}
+.content-idea-card:hover {
+  border-color:rgba(201,169,110,0.15);
+  box-shadow:0 12px 32px rgba(0,0,0,0.3);
+}
+.content-idea-num {
+  background:var(--dark3);
+  padding:14px 20px;
+  border-bottom:1px solid var(--border);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.content-idea-num span {
+  font-size:11px; font-weight:800; color:var(--gold);
+  letter-spacing:2px;
+}
+.content-idea-type {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase;
+  padding:3px 8px; border-radius:100px;
+}
+.type-reels { background:rgba(255,100,100,0.15); color:#ff7b7b; border:1px solid rgba(255,100,100,0.2); }
+.type-carousel { background:rgba(100,150,255,0.15); color:#8ab4ff; border:1px solid rgba(100,150,255,0.2); }
+.type-story { background:rgba(200,150,255,0.15); color:#c89eff; border:1px solid rgba(200,150,255,0.2); }
+.content-idea-body { padding:20px; }
+.content-idea-title {
+  font-size:15px; font-weight:700; color:var(--white);
+  margin-bottom:10px; line-height:1.4;
+}
+.content-idea-rows { display:flex; flex-direction:column; gap:10px; }
+.content-idea-row label {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; color:var(--text-muted);
+  display:block; margin-bottom:3px;
+}
+.content-idea-row p { font-size:12px; color:var(--text-mid); line-height:1.5; }
+.hook-text {
+  background:rgba(201,169,110,0.06);
+  border-left:3px solid var(--gold);
+  padding:8px 12px;
+  border-radius:0 8px 8px 0;
+  font-size:13px; color:var(--text); font-style:italic;
+}
+
+/* ── CALENDAR ── */
+.calendar-month {
+  margin-bottom:48px;
+}
+.calendar-month-title {
+  font-family:'Playfair Display',serif;
+  font-size:28px; color:var(--white);
+  margin-bottom:24px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--border);
+}
+.calendar-week { margin-bottom:16px; }
+.calendar-week-label {
+  font-size:9px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--text-muted);
+  margin-bottom:10px; padding:6px 0;
+}
+.calendar-grid {
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
+}
+.cal-day {
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px;
+  min-height:100px;
+  font-size:11px;
+  transition:all .2s;
+}
+.cal-day:hover { border-color:rgba(201,169,110,0.2); }
+.cal-day.empty { background:transparent; border-color:transparent; }
+.cal-date {
+  font-size:10px; font-weight:700; color:var(--text-muted);
+  margin-bottom:6px;
+}
+.cal-content-type {
+  font-size:9px; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase; margin-bottom:4px;
+  padding:2px 6px; border-radius:4px; display:inline-block;
+}
+.cal-reels { background:rgba(255,100,100,0.15); color:#ff7b7b; }
+.cal-carousel { background:rgba(100,150,255,0.15); color:#8ab4ff; }
+.cal-story-only { background:rgba(200,150,255,0.1); color:#c89eff; }
+.cal-title { font-size:11px; color:var(--text); line-height:1.4; font-weight:500; }
+.cal-theme {
+  font-size:10px; color:var(--text-muted);
+  margin-top:4px; line-height:1.3;
+}
+
+/* ── STORY SYSTEM ── */
+.story-series {
+  display:flex; flex-direction:column; gap:16px;
+}
+.story-item {
+  display:flex; gap:20px; align-items:flex-start;
+  padding:20px 24px;
+  background:var(--card-bg);
+  border:1px solid var(--card-border);
+  border-radius:12px;
+  transition:all .2s;
+}
+.story-item:hover { border-color:rgba(201,169,110,0.15); }
+.story-day {
+  font-size:11px; font-weight:800; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold);
+  min-width:60px; margin-top:2px;
+}
+.story-content { flex:1; }
+.story-title { font-size:14px; font-weight:600; color:var(--white); margin-bottom:4px; }
+.story-desc { font-size:13px; color:var(--text-mid); line-height:1.5; }
+
+/* ── HIGHLIGHTS ── */
+.highlight-grid {
+  display:flex; flex-wrap:wrap; gap:12px;
+  margin-top:24px;
+}
+.highlight-item {
+  background:var(--dark3);
+  border:1px solid var(--border2);
+  border-radius:12px;
+  padding:16px 20px;
+  display:flex; flex-direction:column; align-items:center;
+  gap:8px;
+  min-width:100px;
+  transition:all .2s;
+}
+.highlight-item:hover { border-color:rgba(201,169,110,0.2); }
+.highlight-icon { font-size:24px; }
+.highlight-label {
+  font-size:10px; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase; color:var(--text-muted);
+  text-align:center;
+}
+
+/* ── POSITIONING PILLARS ── */
+.pos-pillars {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:2px;
+  border:1px solid var(--border); border-radius:16px; overflow:hidden;
+  margin-top:40px;
+}
+.pos-pillar {
+  padding:32px;
+  background:var(--dark2);
+  transition:all .3s;
+}
+.pos-pillar:not(:last-child) { border-right:1px solid var(--border); }
+.pos-pillar:hover { background:var(--dark3); }
+.pos-pillar-icon { font-size:28px; margin-bottom:16px; }
+.pos-pillar-label {
+  font-size:9px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--gold); margin-bottom:8px;
+}
+.pos-pillar-title { font-size:18px; font-weight:700; color:var(--white); margin-bottom:10px; }
+.pos-pillar-text { font-size:13px; color:var(--text-mid); line-height:1.6; }
+
+/* ── GROWTH ── */
+.growth-card {
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px 32px;
+  transition:all .3s;
+}
+.growth-card:hover {
+  border-color:rgba(201,169,110,0.2);
+  background:rgba(201,169,110,0.03);
+}
+.growth-num {
+  font-size:36px; font-weight:900;
+  font-family:'Playfair Display',serif;
+  color:rgba(201,169,110,0.2);
+  line-height:1; margin-bottom:12px;
+}
+.growth-title { font-size:15px; font-weight:700; color:var(--white); margin-bottom:10px; }
+.growth-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+.growth-list li {
+  font-size:13px; color:var(--text-mid);
+  padding-left:16px; position:relative; line-height:1.5;
+}
+.growth-list li::before { content:'›'; position:absolute; left:0; color:var(--gold); }
+
+/* ── ACTION PLAN ── */
+.action-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.action-phase {
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:16px; padding:32px;
+  position:relative; overflow:hidden;
+}
+.action-phase::after {
+  content:'';
+  position:absolute; bottom:0; left:0; right:0; height:3px;
+}
+.phase-1::after { background:linear-gradient(90deg,var(--gold),var(--gold-dark)); }
+.phase-2::after { background:linear-gradient(90deg,var(--green),#2d5c3a); }
+.phase-3::after { background:linear-gradient(90deg,var(--blue),#1e3d4f); }
+.phase-label {
+  font-size:9px; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; margin-bottom:8px;
+}
+.phase-1 .phase-label { color:var(--gold); }
+.phase-2 .phase-label { color:#7dc99a; }
+.phase-3 .phase-label { color:#7fb8d4; }
+.phase-title { font-size:20px; font-weight:700; color:var(--white); margin-bottom:16px; }
+.phase-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.phase-list li {
+  font-size:13px; color:var(--text-mid);
+  padding-left:20px; position:relative; line-height:1.5;
+}
+.phase-1 .phase-list li::before { content:'01'; position:absolute; left:0; font-size:9px; font-weight:800; color:var(--gold); top:2px; }
+.phase-2 .phase-list li::before { content:'02'; position:absolute; left:0; font-size:9px; font-weight:800; color:#7dc99a; top:2px; }
+.phase-3 .phase-list li::before { content:'03'; position:absolute; left:0; font-size:9px; font-weight:800; color:#7fb8d4; top:2px; }
+
+/* ── FOOTER ── */
+.footer {
+  border-top:1px solid var(--border);
+  padding:60px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:100%;
+  flex-wrap:wrap;
+  gap:24px;
+}
+.footer-brand {
+  font-family:'Playfair Display',serif;
+  font-size:22px; color:var(--gold);
+  letter-spacing:1px;
+}
+.footer-copy {
+  font-size:11px; color:var(--text-muted);
+  letter-spacing:1px;
+}
+
+/* ── SECTION BACKGROUNDS ── */
+.bg-dark2 { background:var(--dark2); }
+.bg-dark3 { background:var(--dark3); }
+
+/* ── SECTION SEPARATORS ── */
+.section-sep {
+  text-align:center;
+  padding:40px;
+  color:var(--text-muted);
+  font-size:11px; letter-spacing:4px;
+  text-transform:uppercase;
+}
+
+/* ── METRIC CARDS ── */
+.metric-row {
+  display:flex; gap:20px; flex-wrap:wrap; margin-bottom:32px;
+}
+.metric-card {
+  flex:1; min-width:140px;
+  background:var(--dark2);
+  border:1px solid var(--border);
+  border-radius:12px; padding:24px;
+  text-align:center;
+}
+.metric-value {
+  font-family:'Playfair Display',serif;
+  font-size:28px; font-weight:700;
+  color:var(--white); display:block; margin-bottom:4px;
+}
+.metric-label {
+  font-size:10px; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; color:var(--text-muted);
+}
+.metric-note { font-size:11px; color:var(--gold); margin-top:4px; }
+
+/* ── DIGITAL ANALYSIS ── */
+.digital-item {
+  display:flex; gap:16px; padding:16px 20px;
+  border-bottom:1px solid var(--border);
+}
+.digital-item:last-child { border-bottom:none; }
+.digital-icon { font-size:18px; min-width:32px; }
+.digital-label { font-size:12px; font-weight:700; color:var(--white); margin-bottom:3px; }
+.digital-text { font-size:13px; color:var(--text-mid); }
+.digital-status {
+  font-size:9px; font-weight:700; letter-spacing:2px;
+  text-transform:uppercase; padding:2px 8px; border-radius:100px;
+  align-self:flex-start; margin-top:2px;
+}
+.status-weak { background:rgba(139,61,61,0.2); color:#d48888; border:1px solid rgba(139,61,61,0.3); }
+.status-ok { background:rgba(180,140,60,0.15); color:#e8c97a; border:1px solid rgba(180,140,60,0.3); }
+.status-strong { background:rgba(74,124,89,0.15); color:#7dc99a; border:1px solid rgba(74,124,89,0.3); }
+
+/* ── DIFFERENTIATOR ── */
+.diff-block {
+  background:var(--dark2);
+  border:1px solid rgba(201,169,110,0.15);
+  border-radius:16px; padding:36px;
+  margin-top:40px;
+}
+.diff-title {
+  font-family:'Playfair Display',serif;
+  font-size:24px; color:var(--white); margin-bottom:20px;
+}
+.diff-list { list-style:none; display:flex; flex-direction:column; gap:14px; }
+.diff-list li {
+  display:flex; gap:16px; align-items:flex-start;
+  font-size:14px; color:var(--text-mid); line-height:1.6;
+}
+.diff-list li::before {
+  content:'◆'; color:var(--gold); font-size:8px;
+  flex-shrink:0; margin-top:6px;
+}
+
+/* ── TONES ── */
+.tone-row {
+  display:flex; gap:12px; flex-wrap:wrap; margin-top:20px;
+}
+.tone-chip {
+  padding:8px 18px;
+  border-radius:100px;
+  font-size:12px; font-weight:600;
+  border:1px solid var(--border2);
+  color:var(--text-mid);
+  background:var(--dark2);
+  transition:all .2s;
+}
+.tone-chip.active {
+  background:rgba(201,169,110,0.12);
+  border-color:rgba(201,169,110,0.3);
+  color:var(--gold-light);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+  :root { --section-pad: 60px 24px; }
+
+  /* grids */
+  .grid-2,.grid-3,.grid-4,.grid-auto { grid-template-columns:1fr; }
+  .brand-hero-card { grid-template-columns:1fr; gap:32px; padding:32px; }
+  .swot-grid { grid-template-columns:1fr; }
+  .swot-cell { min-height:auto; padding:32px; }
+  .pos-pillars { grid-template-columns:1fr; }
+  .pos-pillar { border-right:none !important; border-bottom:1px solid var(--border); }
+  .action-grid { grid-template-columns:1fr; }
+  .competitor-row { grid-template-columns:1fr; }
+
+  /* calendar */
+  .calendar-grid { grid-template-columns:repeat(3,1fr); }
+  .cal-day { min-height:80px; padding:8px; }
+
+  /* budget table */
+  .budget-row { grid-template-columns:1fr 1fr !important; }
+  .budget-row .budget-note { display:none; }
+
+  /* hero */
+  .hero-stats { gap:24px; }
+  .hero { padding:100px 24px 60px; }
+  .hero-badge { display:none; }
+  .cover-meta { gap:24px; }
+
+  /* nav */
+  .nav { padding:0 12px; justify-content:flex-start; }
+  .nav-inner { justify-content:flex-start; }
+  .nav-links { justify-content:flex-start; }
+  .nav a { padding:14px 10px; font-size:9px; letter-spacing:1.5px; }
+  .nav a::after { left:50%; right:50%; }
+  .nav a:hover::after,.nav a.active::after { left:10px; right:10px; }
+  .nav-brand { margin-right:16px; font-size:12px; }
+
+  /* positioning */
+  .positioning-statement { padding:36px 24px; }
+  .pos-quote { font-size:clamp(18px,4vw,28px); }
+
+  /* cards */
+  .card { padding:22px 20px; }
+  .pillar-card { padding:24px 20px; }
+  .growth-card { padding:22px 20px; }
+  .action-phase { padding:24px 20px; }
+
+  /* footer */
+  .footer { padding:40px 24px; flex-direction:column; text-align:center; }
+
+  /* story */
+  .story-item { flex-direction:column; gap:6px; }
+  .story-day { min-width:auto; }
+
+  /* highlight grid */
+  .highlight-grid { gap:8px; }
+  .highlight-item { min-width:80px; padding:12px; }
+
+  /* metric row */
+  .metric-row { gap:12px; }
+  .metric-card { min-width:120px; padding:18px; }
+
+  /* competitor */
+  .competitor-header { flex-direction:column; align-items:flex-start; gap:8px; }
+  .competitor-body { padding:20px; }
+}
+
+@media(max-width:600px) {
+  :root { --section-pad: 48px 16px; }
+
+  /* calendar */
+  .calendar-grid { grid-template-columns:repeat(2,1fr); }
+  .cal-day { min-height:auto; padding:6px; }
+  .cal-theme { display:none; }
+
+  /* hero */
+  .hero-title { letter-spacing:-1px; }
+  .hero-stats { gap:16px; }
+  .hero-stat strong { font-size:24px; }
+  .hero-desc { font-size:14px; }
+
+
+  [style*="grid-template-columns:2fr 1fr 1fr"] {
+    grid-template-columns:1fr auto !important;
+    gap:4px;
+  }
+  [style*="grid-template-columns:2fr 1fr 1fr"] > *:nth-child(2) { display:none; }
+
+  /* section titles */
+  .section-title { font-size:clamp(26px,7vw,40px); }
+
+  /* nav brand hidden on very small */
+  .nav-brand { display:none; }
+
+  /* cards */
+  .card,.pillar-card,.growth-card { padding:18px 16px; }
+  .swot-cell { padding:24px 16px; }
+  .swot-title { font-size:22px; }
+
+  /* content idea cards */
+  .content-idea-card { font-size:13px; }
+  .content-idea-body { padding:16px; }
+
+  /* positioning statement */
+  .positioning-statement { padding:28px 16px; }
+
+  /* audience cards */
+  .audience-card { padding:24px 18px; }
+
+  /* phase list */
+  .phase-list li { padding-left:28px; }
+
+  /* tone chips */
+  .tone-row { gap:6px; }
+  .tone-chip { padding:6px 12px; font-size:11px; }
+
+  /* tags */
+  .tag,.tag-green,.tag-blue { font-size:10px; padding:4px 10px; }
+
+  /* story */
+  .story-series { gap:10px; }
+
+  /* footer */
+  .footer { padding:32px 16px; gap:16px; }
+  .footer-brand { font-size:18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">UniqBee × Didi</span>
+    <div class="nav-links">
+      <a href="#marka">Marka</a>
+      <a href="#dijital">Dijital</a>
+      <a href="#hedef-kitle">Kitle</a>
+      <a href="#rakip">Rakip</a>
+      <a href="#swot">SWOT</a>
+      <a href="#konumlandirma">Konumlandırma</a>
+      <a href="#strateji">Strateji</a>
+      <a href="#sutunlar">Sütunlar</a>
+      <a href="#reels">Reels</a>
+      <a href="#carousel">Carousel</a>
+      <a href="#story">Story</a>
+      <a href="#takvim">Takvim</a>
+      <a href="#buyume">Büyüme</a>
+      <a href="#aksiyon">Aksiyon</a>
+      <a href="#butce">Bütçe</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <p class="hero-agency">Hazırlayan: <span>UniqBee Dijital Medya Ajansı</span></p>
+  <p class="hero-tag">Sosyal Medya Strateji Dosyası 2026</p>
+  <h1 class="hero-title">Didi<br><em>Otel</em></h1>
+  <p class="hero-subtitle-line">Sapanca · Sosyal Medya Stratejisi</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">
+    Sapanca Gölü kıyısındaki bu köklü butik oteli, rakipsiz bir dijital varlığa ve dönüşüm yaratan içerik sistemine kavuşturmak için hazırlanmış kapsamlı strateji dosyası.
+  </p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <strong>2013</strong>
+      <span>Kuruluş Yılı</span>
+    </div>
+    <div class="hero-stat">
+      <strong>500m</strong>
+      <span>Sapanca Gölü'ne</span>
+    </div>
+    <div class="hero-stat">
+      <strong>8+</strong>
+      <span>İçerik Sütunu</span>
+    </div>
+    <div class="hero-stat">
+      <strong>30</strong>
+      <span>Günlük Plan</span>
+    </div>
+    <div class="hero-stat">
+      <strong>10+</strong>
+      <span>Reels Fikri</span>
+    </div>
+  </div>
+  <span class="hero-badge">Nisan 2026 · Gizli &amp; Profesyonel</span>
+</section>
+
+<div class="divider"></div>
+
+<!-- MARKA ANALİZİ -->
+<section id="marka">
+  <div class="section-header">
+    <span class="section-num">01 Marka Analizi</span>
+    <h2 class="section-title">Didi Otel <em>Ne Satıyor?</em></h2>
+    <p class="section-lead">Markanın özüne, duygusal vaadine ve mevcut dijital kimliğinin güçlü-zayıf noktalarına bakıyoruz.</p>
+  </div>
+
+  <div class="brand-hero-card">
+    <div class="brand-name-block">
+      <h3 class="hotel-name">Didi Otel</h3>
+      <p class="hotel-sub">Sapanca · Kırkpınar · 2013'ten beri</p>
+      <p class="hotel-tagline">
+        "Sapanca Gölü'nün hemen yanında, şehrin gürültüsünden sıyrılmak için tasarlanmış; yeşilin içinde, suyun yanında, seninle başbaşa bir alan."
+      </p>
+    </div>
+    <div class="brand-facts">
+      <div class="brand-fact">
+        <span class="brand-fact-label">Konum</span>
+        <span class="brand-fact-value">Kırkpınar Mah., Sapanca Sapanca Gölü'ne 500m, İstanbul'a ~95km, İstanbul-Ankara otoyolu çıkışına 500m</span>
+      </div>
+      <div class="brand-fact">
+        <span class="brand-fact-label">Konsept</span>
+        <span class="brand-fact-value">Butik otel · Aile işletmesi · Doğayla iç içe · Göl manzarası · Geniş yeşil bahçe</span>
+      </div>
+      <div class="brand-fact">
+        <span class="brand-fact-label">Oda Tipleri</span>
+        <span class="brand-fact-value">Standart / Superior / Deluxe / Suite / Aile Odası bahçe, havuz veya göl manzaralı seçenekler</span>
+      </div>
+      <div class="brand-fact">
+        <span class="brand-fact-label">Sunduğu</span>
+        <span class="brand-fact-value">Serpme kahvaltı dahil, sezonluk açık havuz, restoran, bar, oda servisi, geniş yeşil bahçe</span>
+      </div>
+      <div class="brand-fact">
+        <span class="brand-fact-label">TripAdvisor</span>
+        <span class="brand-fact-value">37 otel arasında 8. sıra · 5 üzerinden 4.0 puan · Müşteriler özellikle kahvaltıyı ve personeli övüyor</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <span class="card-icon">🎯</span>
+      <p class="card-title">Gerçekte Ne Satıyor?</p>
+      <p class="card-text">Didi Otel teknik olarak "oda" satıyor, ama gerçekte <strong style="color:var(--gold)">şehirden kaçış hissi</strong> satıyor. İstanbul baskısından uzaklaşmak isteyen çiftlerin, haftasonu dinginlik arayanların "huzurlu bir nefes" aldığı, geri döneceği bir yer. Fiyat değil his, oda değil atmosfer satın alınıyor.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">💚</span>
+      <p class="card-title">Ana Duygusal Vaat</p>
+      <p class="card-text"><strong style="color:var(--gold)">Yavaşlamak.</strong> Sabah kahvesini bahçede içmek. Havuzda sessizce uzanmak. Akşam yemeğini acele etmeden yemek. Didi, premium lüks değil <em>kaliteli sakinlik</em> satıyor ve bu, şehirli hedef kitle için çok güçlü bir vaat.</p>
+    </div>
+    <div class="card">
+      <span class="card-icon">✨</span>
+      <p class="card-title">Marka Kişiliği</p>
+      <p class="card-text">Sıcak, güvenilir, samimi. Gösteriş yapmayan ama kalitesinden emin. Doğayla uyumlu, aile sıcaklığında ama profesyonel. Sakin ama içten. <strong style="color:var(--gold)">Bir arkadaşın evi gibi hissettiren ama otel konforu sunan</strong> o nadir yer.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;">
+    <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Marka Duygu Haritası</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      <span class="tag">🌿 Doğa &amp; Yeşil</span>
+      <span class="tag">💧 Göl Hissi</span>
+      <span class="tag">☕ Sabah Sakinliği</span>
+      <span class="tag">🌄 Gün Batımı</span>
+      <span class="tag">❤️ Çift Kaçamağı</span>
+      <span class="tag">🏡 Ev Sıcaklığı</span>
+      <span class="tag">🌱 Organik Atmosfer</span>
+      <span class="tag">🏖️ Havuz Keyfi</span>
+      <span class="tag">🥐 Zengin Kahvaltı</span>
+      <span class="tag">🌙 Dingin Uyku</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- DİJİTAL ANALİZ -->
+<section id="dijital">
+  <div class="section-header">
+    <span class="section-num">02 Dijital Görünürlük Analizi</span>
+    <h2 class="section-title">Dijital Varlığı <em>Nerede?</em></h2>
+    <p class="section-lead">Instagram'dan web sitesine, Google'dan platform profillerine mevcut dijital izin kapsamlı değerlendirmesi.</p>
+  </div>
+
+  <div class="metric-row">
+    <div class="metric-card">
+      <span class="metric-value">~2K</span>
+      <span class="metric-label">Instagram Takipçi</span>
+      <span class="metric-note">Potansiyelin çok altında</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">171</span>
+      <span class="metric-label">Toplam Gönderi</span>
+      <span class="metric-note">Düşük içerik birikimi</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">4.0/5</span>
+      <span class="metric-label">TripAdvisor Puanı</span>
+      <span class="metric-note">8./37 solide ama üst sıralara erişilebilir</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">2013</span>
+      <span class="metric-label">Faaliyet Yılı</span>
+      <span class="metric-note">13 yıllık güven birikimi az kullanılıyor</span>
+    </div>
+    <div class="metric-card">
+      <span class="metric-value">2</span>
+      <span class="metric-label">Instagram Hesabı</span>
+      <span class="metric-note">Dağınık marka kimliği riski</span>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border);background:var(--dark3);">
+        <p class="card-title" style="margin:0;">📱 Instagram Analizi</p>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">👥</span>
+        <div style="flex:1;">
+          <p class="digital-label">Takipçi Sayısı</p>
+          <p class="digital-text">~2.000 takipçi, rakiplere kıyasla çok düşük. Feronia 8K+, markalar arası büyük uçurum.</p>
+        </div>
+        <span class="digital-status status-weak">Zayıf</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">🎬</span>
+        <div style="flex:1;">
+          <p class="digital-label">Reels Kullanımı</p>
+          <p class="digital-text">Çok sınırlı ya da yok. Organik erişimin %80'i Reels'ten geliyor; kritik eksik.</p>
+        </div>
+        <span class="digital-status status-weak">Kritik Eksik</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">🖼️</span>
+        <div style="flex:1;">
+          <p class="digital-label">Görsel Kalitesi</p>
+          <p class="digital-text">Mekân güzel ama görseller standart fotoğraf kalitesinde. Editorial çekim yok. Premium hissettirmiyor.</p>
+        </div>
+        <span class="digital-status status-ok">Gelişebilir</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">✍️</span>
+        <div style="flex:1;">
+          <p class="digital-label">Caption Dili</p>
+          <p class="digital-text">Genellikle ürün tanımlaması tarzında. Duygu, hikaye, merak yok. "Harika manzara" klişeleri.</p>
+        </div>
+        <span class="digital-status status-weak">Zayıf</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">💬</span>
+        <div style="flex:1;">
+          <p class="digital-label">Etkileşim Oranı</p>
+          <p class="digital-text">Takipçi kalitesi bilinmiyor. Yorum sayısı düşük. Save/share kültürü oluşturulmamış.</p>
+        </div>
+        <span class="digital-status status-weak">Düşük</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">📌</span>
+        <div style="flex:1;">
+          <p class="digital-label">Profil Biyografisi</p>
+          <p class="digital-text">Konum ve temel bilgi var; ancak duygusal bir vaat, net bir CTA veya link eksik olabilir.</p>
+        </div>
+        <span class="digital-status status-ok">Düzeltilebilir</span>
+      </div>
+    </div>
+
+    <div class="card" style="padding:0;overflow:hidden;">
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border);background:var(--dark3);">
+        <p class="card-title" style="margin:0;">🌐 Web &amp; Platform Analizi</p>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">🌍</span>
+        <div style="flex:1;">
+          <p class="digital-label">Web Sitesi</p>
+          <p class="digital-text">sapancadidiotel.com mevcut. Temel bilgiler var. Ancak görsel dil, hikâye anlatısı ve dönüşüm optimizasyonu eksik.</p>
+        </div>
+        <span class="digital-status status-ok">Orta</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">⭐</span>
+        <div style="flex:1;">
+          <p class="digital-label">Google Yorumları</p>
+          <p class="digital-text">Kahvaltı, personel, temizlik öne çıkıyor. Yorum sayısı yükseltilmeli. Yorum metinleri içerik üretimine çevrilebilir.</p>
+        </div>
+        <span class="digital-status status-ok">İyi Baz</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">🏨</span>
+        <div style="flex:1;">
+          <p class="digital-label">OTA Varlığı</p>
+          <p class="digital-text">Booking, Expedia, Hotels.com, Obilet, Etstur vb. platformlarda aktif. OTA görselleri sosyal medyaya yansıtılmıyor.</p>
+        </div>
+        <span class="digital-status status-strong">İyi</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">📲</span>
+        <div style="flex:1;">
+          <p class="digital-label">Çift Hesap Sorunu</p>
+          <p class="digital-text">@didiotelsapanca ve @didibutikotelsapanca iki farklı hesap var. Marka otoritesi bölünüyor. Tek hesapta toplanmalı.</p>
+        </div>
+        <span class="digital-status status-weak">Risk</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">🎯</span>
+        <div style="flex:1;">
+          <p class="digital-label">Rezervasyon Yönlendirmesi</p>
+          <p class="digital-text">Sosyal medya'dan rezervasyona yönlendiren güçlü bir bağlantı sistemi yok. "Hemen Rezervasyon Yap" çağrısı eksik.</p>
+        </div>
+        <span class="digital-status status-weak">Kritik Eksik</span>
+      </div>
+      <div class="digital-item">
+        <span class="digital-icon">🎥</span>
+        <div style="flex:1;">
+          <p class="digital-label">Video İçerik</p>
+          <p class="digital-text">Mekânın sinematik potansiyeli dijitale yansımıyor. Göl, bahçe, havuz, sabah ışığı kullanılmayan görsel hazine.</p>
+        </div>
+        <span class="digital-status status-weak">Fırsat</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="diff-block">
+    <h3 class="diff-title">Özet Değerlendirme: Dijital Boşluklar</h3>
+    <ul class="diff-list">
+      <li>Mekânın estetik değeri dijital dünyaya henüz doğru yansıtılamıyor 13 yıllık bir otelin 2.000 takipçisi, kritik bir kaçırılmış fırsatı işaret ediyor.</li>
+      <li>Reels ve video formatı tamamen boş; bu, organik büyümenin en hızlı kanalı olduğundan öncelik 1.</li>
+      <li>İki Instagram hesabı marka otoritesini bölüyor tek hesapta konsolidasyon şart.</li>
+      <li>Yorumlar ve misafir deneyimleri içeriğe dönüştürülmüyor; sosyal kanıt gücü atıl kalıyor.</li>
+      <li>Biyografi ve profile bağlantısı rezervasyon hunisine dahil edilmemiş dönüşüm kaybı oluşuyor.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HEDEF KİTLE -->
+<section id="hedef-kitle">
+  <div class="section-header">
+    <span class="section-num">03 Hedef Kitle Analizi</span>
+    <h2 class="section-title">Kim Geliyor, <em>Neden Geliyor?</em></h2>
+    <p class="section-lead">Her segmentin motivasyonu, karar tetikleyicileri ve hangi içerik türüne tepki verdiği.</p>
+  </div>
+
+  <div class="grid-3">
+    <div class="audience-card">
+      <div class="audience-icon">💑</div>
+      <p class="audience-name">Şehirli Çiftler</p>
+      <p class="audience-sub">Birincil Hedef</p>
+      <ul class="audience-list">
+        <li>İstanbul / Ankara'dan 1–2 günlük kaçamak arayanlar</li>
+        <li>Romantik atmosfer, mahremiyet, göl hissi öncelikli</li>
+        <li>Instagram'da estetik mekanları takip ediyorlar</li>
+        <li>Karar tetikleyici: "Burada çok güzel görünüyor" fotoğrafları</li>
+        <li>Etkili içerik: Çift anları, kahvaltı detayları, havuz Reels</li>
+        <li>Dil: Romantik, özlemli, "seninle burada olmak istiyorum"</li>
+      </ul>
+    </div>
+
+    <div class="audience-card">
+      <div class="audience-icon">🏙️</div>
+      <p class="audience-name">Beyaz Yakalı Profesyoneller</p>
+      <p class="audience-sub">Birincil Hedef</p>
+      <ul class="audience-list">
+        <li>28–42 yaş, hafta içi yoğun iş temposu</li>
+        <li>Cuma akşamı çıkıp Pazar dönüş planı</li>
+        <li>WiFi + huzur birlikte arıyor (workation potansiyeli)</li>
+        <li>Karar tetikleyici: "Ulaşım kolay" + "Fiyat makul" + "Fotoğraflar güzel"</li>
+        <li>Etkili içerik: "95km'de kaçış" mesaj formatı, sabah rutini Reels</li>
+        <li>Dil: Pratik ama ilham verici</li>
+      </ul>
+    </div>
+
+    <div class="audience-card">
+      <div class="audience-icon">📸</div>
+      <p class="audience-name">Estetik Mekân Arayanlar</p>
+      <p class="audience-sub">İkincil Hedef</p>
+      <ul class="audience-list">
+        <li>Instagram'da içerik üretmeye uygun yer arıyan 22–35 yaş kitle</li>
+        <li>Fotojeniklik, ışık, doğa-tasarım uyumu aranıyor</li>
+        <li>Onlarca hesaba tag atıyorlar UGC potansiyeli yüksek</li>
+        <li>Karar tetikleyici: Diğer ziyaretçilerin paylaştığı güzel fotoğraflar</li>
+        <li>Etkili içerik: Detay çekimleri, "şurada poz verilebilir" anlar</li>
+        <li>Dil: Visual-first, estetik keşif dili</li>
+      </ul>
+    </div>
+
+    <div class="audience-card">
+      <div class="audience-icon">🎂</div>
+      <p class="audience-name">Özel Gün Kutlayanlar</p>
+      <p class="audience-sub">Yüksek Değerli Segment</p>
+      <ul class="audience-list">
+        <li>Yıl dönümü, doğum günü, evlilik teklifi planlayanlar</li>
+        <li>Kişiselleştirilmiş deneyim bekliyor</li>
+        <li>Sosyal kanıtı çok önemsiyor "daha önce gidenler ne dedi?"</li>
+        <li>Karar tetikleyici: Özel gün dekorasyonu, şarap/çiçek hizmetleri</li>
+        <li>Etkili içerik: "Sürpriz yaptım" hikâyeleri, özel anlar</li>
+        <li>Dil: Sentimental, özel, "unutulmaz an" odaklı</li>
+      </ul>
+    </div>
+
+    <div class="audience-card">
+      <div class="audience-icon">🌿</div>
+      <p class="audience-name">Doğa &amp; Sakinlik Arayanlar</p>
+      <p class="audience-sub">İkincil Hedef</p>
+      <ul class="audience-list">
+        <li>Dijital detoks, yürüyüş, göl kenarı sakinliği istiyorlar</li>
+        <li>Büyük tatil yerlerinin kalabalığından kaçıyorlar</li>
+        <li>Bahçe, ağaçlar, göl manzarası öncelikli</li>
+        <li>Karar tetikleyici: "Şehir gürültüsünden uzak" vaadi</li>
+        <li>Etkili içerik: Sabah bahçe görüntüleri, yürüyüş, kuş sesi</li>
+        <li>Dil: Meditasyon hissi, yavaşlama, nefes alma</li>
+      </ul>
+    </div>
+
+    <div class="audience-card">
+      <div class="audience-icon">👨‍👩‍👧</div>
+      <p class="audience-name">Aileler</p>
+      <p class="audience-sub">Destekleyici Segment</p>
+      <ul class="audience-list">
+        <li>Havuz + geniş bahçe avantajını gören aileler</li>
+        <li>Aile odası seçeneği mevcut kullanılmıyor içerikte</li>
+        <li>Çocuklu ailelerin güvenlik + konfor dengesi araması</li>
+        <li>Karar tetikleyici: Çocukların oynayacağı yeşil alan görselleri</li>
+        <li>Etkili içerik: Bahçe, havuz, kahvaltı atmosferi</li>
+        <li>Dil: Sıcak, güvenli, hafıza yaratıcı</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RAKİP ANALİZİ -->
+<section id="rakip">
+  <div class="section-header">
+    <span class="section-num">04 Rakip Analizi</span>
+    <h2 class="section-title">Sapanca'da <em>Kime Karşı</em> Oynuyoruz?</h2>
+    <p class="section-lead">Bölgedeki temel rakiplerin konumlandırma, sosyal medya gücü ve Didi'ye göre açıkları.</p>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:24px;">
+
+    <div class="competitor-card">
+      <div class="competitor-header">
+        <span class="competitor-name">The Red Witch Boutique Hotel</span>
+        <span class="competitor-tier tier-direct">Direkt Rakip</span>
+      </div>
+      <div class="competitor-body">
+        <div class="competitor-row">
+          <div class="competitor-kv">
+            <label>Konumlandırma</label>
+            <p>TripAdvisor'da #1. Sapanca'nın en iyi değerlendirilen butik oteli. Eklektik, gizemli, dikkat çekici isim.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Sosyal Medya Gücü</label>
+            <p>İsim gücü ve marka curiosity'si yüksek. Görsel dili tutarlı ve özgün. Story kullanımı aktif.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Güçlü Yanı</label>
+            <p>Güçlü marka kimliği, #1 TripAdvisor sıralaması, ağızdan ağza yayılma potansiyeli yüksek isim.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Zayıf Yanı</label>
+            <p>Küçük ölçek, sınırlı kapasite. Premium fiyatlandırma bazı segmentleri dışarıda bırakıyor.</p>
+          </div>
+        </div>
+        <div class="competitor-gap">
+          <label>Didi İçin Fırsat</label>
+          <p>Didi, "köklü güven + daha erişilebilir fiyat + büyük bahçe ve havuz deneyimi" ekseniyle ayrışabilir. Red Witch'in küçük kapasitesi, Didi'nin daha fazla kişiye ulaşmasını sağlar.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="competitor-card">
+      <div class="competitor-header">
+        <span class="competitor-name">Feronia Suites (Masukiye)</span>
+        <span class="competitor-tier tier-strong">Dijital Açıdan Güçlü</span>
+      </div>
+      <div class="competitor-body">
+        <div class="competitor-row">
+          <div class="competitor-kv">
+            <label>Konumlandırma</label>
+            <p>"Boheme &amp; Luxury Resort" mitolojik karakterlerden ilham alan taş evler, özel havuzlar, çok güçlü hikâye anlatısı.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Sosyal Medya Gücü</label>
+            <p>8.000+ Instagram takipçi, tutarlı görsel dil, güçlü Reels kullanımı, editoryal kalite içerik. Benchmark olabilir.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Güçlü Yanı</label>
+            <p>Çok güçlü brand storytelling, "kaçış" hissini mükemmel satıyor, premium segment liderliği.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Zayıf Yanı</label>
+            <p>Masukiye konumu Sapanca merkeze uzak. Ultra premium fiyat her segmente hitap etmiyor.</p>
+          </div>
+        </div>
+        <div class="competitor-gap">
+          <label>Didi İçin Fırsat</label>
+          <p>Didi, Sapanca merkeze yakınlığı ve ulaşım kolaylığını sahiplenebilir. "Aynı huzur, yarı yolda" konumlandırmasıyla Feronia'nın marka dilini daha erişilebilir fiyatla sunabilir.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="competitor-card">
+      <div class="competitor-header">
+        <span class="competitor-name">Rif Sapanca (Adult Only)</span>
+        <span class="competitor-tier tier-direct">Direkt Rakip</span>
+      </div>
+      <div class="competitor-body">
+        <div class="competitor-row">
+          <div class="competitor-kv">
+            <label>Konumlandırma</label>
+            <p>Sadece yetişkin. 3 kat, 6 oda ultra intimacy. Göl manzarası ve havuz. Mahremiyet odaklı.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Sosyal Medya Gücü</label>
+            <p>@rifsapanca aktif bir hesap. "Adult only" formatı net bir hedef kitle mesajı veriyor. Niş ama güçlü.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Güçlü Yanı</label>
+            <p>Ultra niş konumlandırma. "Sadece çiftler için" mesajı karar vermeyi kolaylaştırıyor.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Zayıf Yanı</label>
+            <p>6 oda kapasitesi çok sınırlı. Aile ve geniş gruplar için seçenek değil.</p>
+          </div>
+        </div>
+        <div class="competitor-gap">
+          <label>Didi İçin Fırsat</label>
+          <p>Didi, hem çiftlere hem ailelere hitap edebilir. "Herkes için bir kaçamak" çatısı altında daha geniş bir kitleyi kapsayabilir. Rif'in dolu olduğu haftalarda Didi ikinci tercihe dönüşebilir.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="competitor-card">
+      <div class="competitor-header">
+        <span class="competitor-name">Sapanca View Hotel</span>
+        <span class="competitor-tier tier-mid">Fiyat/Konsept Yakını</span>
+      </div>
+      <div class="competitor-body">
+        <div class="competitor-row">
+          <div class="competitor-kv">
+            <label>Konumlandırma</label>
+            <p>"Göl enerjisini hisset" doğada konfor, manzara odaklı anlatı. Benzer fiyat segmenti.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Sosyal Medya Gücü</label>
+            <p>Orta düzey dijital varlık. Görsel dil tutarsız. Didi ile benzer sorunlar paylaşıyor.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Güçlü Yanı</label>
+            <p>Göl manzarasını ön plana çıkarıyor. İsimde "view" kelimesiyle fark yaratmaya çalışıyor.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Zayıf Yanı</label>
+            <p>Belirgin bir kimlik yok. "Sadece bir otel" algısının ötesine geçilemiyor.</p>
+          </div>
+        </div>
+        <div class="competitor-gap">
+          <label>Didi İçin Fırsat</label>
+          <p>Didi, 13 yıllık güven birikimi ve gerçek müşteri yorumlarıyla bu rakibe karşı çok daha güçlü sosyal kanıt silahına sahip. Bunu aktif olarak kullanmalı.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="competitor-card">
+      <div class="competitor-header">
+        <span class="competitor-name">Richmond Nua Wellness Spa</span>
+        <span class="competitor-tier tier-mid">Üst Segment Rakip</span>
+      </div>
+      <div class="competitor-body">
+        <div class="competitor-row">
+          <div class="competitor-kv">
+            <label>Konumlandırma</label>
+            <p>Wellness, spa, adult only. Sapanca'nın en premium zincir tesisi. Farklı fiyat segmentinde ama aynı "kaçış" pazarında.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Sosyal Medya Gücü</label>
+            <p>Zincir gücü ile profesyonel içerik. Büyük bütçeli fotoğraflar, tutarlı marka dili.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Güçlü Yanı</label>
+            <p>Spa + wellness kombinasyonu, büyük tesis imkânları, marka güveni.</p>
+          </div>
+          <div class="competitor-kv">
+            <label>Zayıf Yanı</label>
+            <p>Büyük ve soğuk hissettiriyor. "Samimi ev ortamı" veremez. Fiyatı üst segment.</p>
+          </div>
+        </div>
+        <div class="competitor-gap">
+          <label>Didi İçin Fırsat</label>
+          <p>Didi, "büyük otelin soğukluğu değil, ev sıcaklığıyla lüks" mesajını güçlü bir şekilde sahiplenebilir. Butik otelin samimiyeti bir güçtür.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="diff-block" style="margin-top:32px;">
+    <h3 class="diff-title">Pazar Boşluğu: Didi Nerede Ayrışabilir?</h3>
+    <ul class="diff-list">
+      <li><strong style="color:var(--gold)">"13 yıllık sıcaklık"</strong> Yeni açılan cool otellerin veremeyeceği gerçek birikim ve güven. "Neden Didi?" sorusuna bu cevap verilmeli.</li>
+      <li><strong style="color:var(--gold)">"İstanbul'a en yakın gerçek kaçamak"</strong> Otoyol çıkışına 500m mesafe, stratejik konumlandırma kozıdır. Rakipler bu kadar erişilebilir değil.</li>
+      <li><strong style="color:var(--gold)">"Kahvaltıyla başlayan gün"</strong> Serpe kahvaltı marka kimliğinin merkezine alınmalı. Yorum verisi bunu destekliyor.</li>
+      <li><strong style="color:var(--gold)">"Butik sıcaklık, tam konfor"</strong> Ne küçük Rif'in kapasitesi kısıtı, ne büyük Richmond'un soğukluğu. Tam arada, tam yerinde bir yer.</li>
+      <li><strong style="color:var(--gold)">"Çiftler + aileler + arkadaş grupları"</strong> Adult only rakiplerin kapattığı kitleyi açık kollarla bekliyor.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SWOT -->
+<section id="swot">
+  <div class="section-header">
+    <span class="section-num">05 SWOT Analizi</span>
+    <h2 class="section-title">Güçlü mü, <em>Kırılgan mı?</em></h2>
+    <p class="section-lead">Her madde, sosyal medya stratejisine etkisiyle birlikte değerlendiriliyor.</p>
+  </div>
+
+  <div class="swot-grid">
+    <div class="swot-cell swot-s">
+      <span class="swot-label">Strengths</span>
+      <h3 class="swot-title">Güçlü<br>Yanlar</h3>
+      <ul class="swot-items">
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>13 yıllık köklü varlık (2013)</strong>
+            <span class="swot-item-note">Sosyal kanıt içeriklerinde "yıllar içindeki misafir hikayeleri" birikimi kullanılabilir.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Sapanca Gölü'ne 500m mesafe</strong>
+            <span class="swot-item-note">Göl manzarası, sabah yürüyüşü, su hissi içeriklerinde benzersiz bir koz.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Mükemmel kahvaltı deneyimi</strong>
+            <span class="swot-item-note">Yorumların birinci önceliği. Kahvaltı Reels'leri çok yüksek etkileşim potansiyeli taşır.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>İlgili, güleryüzlü personel</strong>
+            <span class="swot-item-note">Personel hikayeleri ve misafir ilgisi UGC içeriklerini besler.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Geniş yeşil bahçe + sezonluk havuz</strong>
+            <span class="swot-item-note">Yaz içeriklerinin omurgası. "Bu yaz nerede olacaksın?" formatında güçlü.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>İstanbul'a çok yakın konum</strong>
+            <span class="swot-item-note">"95km'de huzur" formatı yüksek save/share değeri taşır.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="swot-cell swot-w">
+      <span class="swot-label">Weaknesses</span>
+      <h3 class="swot-title">Zayıf<br>Yanlar</h3>
+      <ul class="swot-items">
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Düşük Instagram takipçisi (~2K)</strong>
+            <span class="swot-item-note">Reels stratejisi başlatılmazsa organik büyüme yavaş kalır.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Reels ve video içerik yokluğu</strong>
+            <span class="swot-item-note">Organik erişimin en güçlü kanalı tamamen boş acil öncelik.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Çift Instagram hesabı karmaşası</strong>
+            <span class="swot-item-note">Marka otoritesi bölünüyor, follower tabanı birleştirilemiyor.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Görsel kalitesi standart seviyelerde</strong>
+            <span class="swot-item-note">Editorial çekim yapılmadan premium hissini vermek zor.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Caption ve marka dili zayıf</strong>
+            <span class="swot-item-note">Duygu ve hikaye yok. "Güzel manzara" klişeleri dönüşüm yaratmıyor.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Oda WiFi şikayetleri</strong>
+            <span class="swot-item-note">Workation segmenti için büyük engel. İçerik bunu öne çıkarmamalı.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="swot-cell swot-o">
+      <span class="swot-label">Opportunities</span>
+      <h3 class="swot-title">Fırsatlar</h3>
+      <ul class="swot-items">
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Hafta sonu kaçamak talebinin artması</strong>
+            <span class="swot-item-note">Pandemi sonrası kısa tatil kültürü yerleşti. "Her hafta sonu bir kaçamak" içerikleri çok etkili.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Reels ile sıfır maliyet organik büyüme</strong>
+            <span class="swot-item-note">Birkaç viral Reels binlerce yeni potansiyel misafiri çekebilir.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Micro-influencer işbirlikleri</strong>
+            <span class="swot-item-note">Sapanca/doğa/seyahat nişinde 10K–100K takipçili hesaplar çok etkili.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Dört mevsim içerik avantajı</strong>
+            <span class="swot-item-note">Yaz: havuz/göl. Sonbahar: yaprak renkleri. Kış: ateş/battaniye. İlkbahar: bahçe.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Google yorum birikimini içeriğe dönüştürme</strong>
+            <span class="swot-item-note">Gerçek yorum alıntıları carousel veya story formatında güçlü sosyal kanıt.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Romantik anlar ekonomisi</strong>
+            <span class="swot-item-note">Evlilik yıldönümü + doğum günü paketleri = premium fiyat + yüksek değer algısı.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="swot-cell swot-t">
+      <span class="swot-label">Threats</span>
+      <h3 class="swot-title">Tehditler</h3>
+      <ul class="swot-items">
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Güçlü dijital rakipler (Feronia, Red Witch)</strong>
+            <span class="swot-item-note">Hızlı hareket edilmezse dijital fark kapanmaz ve rakipler ilk tercihe dönüşür.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Sapanca'ya yeni açılan tesisler</strong>
+            <span class="swot-item-note">Bölge popülerleştikçe rekabet artıyor. Güçlü marka kimliği zorunlu hale geliyor.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Algoritmik değişimler</strong>
+            <span class="swot-item-note">Instagram algoritması anlık değişebilir. Çok kanallı strateji gerekli.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Mevsimsellik riski</strong>
+            <span class="swot-item-note">Kış döneminde doluluk düşebilir. 4 mevsim içerik stratejisi bu riski azaltır.</span>
+          </div>
+        </li>
+        <li class="swot-item">
+          <span class="swot-dot"></span>
+          <div class="swot-item-text">
+            <strong>Teknik şikayetlerin yayılması</strong>
+            <span class="swot-item-note">WiFi/TV şikayetleri platformlarda görünürleşirse dönüşüm düşer.</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- KONUMLANDIRMA -->
+<section id="konumlandirma">
+  <div class="section-header">
+    <span class="section-num">06 Marka Konumlandırma Önerisi</span>
+    <h2 class="section-title">Didi Bundan Böyle <em>Ne Anlatacak?</em></h2>
+    <p class="section-lead">Yeni dijital kimlik, duygusal vaat, ton of voice ve görsel yön önerileri.</p>
+  </div>
+
+  <div class="positioning-statement">
+    <p class="pos-eyebrow">Önerilen Marka Özü</p>
+    <p class="pos-quote">"<span>Şehrin sesini kapat.</span> Gölün sesiyle uyan."</p>
+    <p class="pos-sub">Didi Otel, İstanbul'un gürültüsünü 95 km'de bırakan, sabah kahvaltısının en güzel yapıldığı, yavaşlamanın bir lüks değil bir hak olduğunu hatırlatan o nadir yerlerden biri.</p>
+  </div>
+
+  <div class="pos-pillars">
+    <div class="pos-pillar">
+      <div class="pos-pillar-icon">🎯</div>
+      <p class="pos-pillar-label">Duygusal Vaat</p>
+      <h4 class="pos-pillar-title">Yavaşlamanın Lüksü</h4>
+      <p class="pos-pillar-text">Didi sadece "konaklama" satmıyor. Şehir yaşamının hızına karşı bilinçli bir yavaşlama, dinginlik ve nefes alma anı satıyor. Her detay kahvaltıdan bahçeye, havuzdan odaya bu hissin parçası.</p>
+    </div>
+    <div class="pos-pillar" style="border-left:1px solid var(--border);">
+      <div class="pos-pillar-icon">🌿</div>
+      <p class="pos-pillar-label">Fonksiyonel Vaat</p>
+      <h4 class="pos-pillar-title">Ulaşım Kolaylığı + Doğa</h4>
+      <p class="pos-pillar-text">İstanbul-Ankara otoyolu çıkışına 500m, Sapanca Gölü'ne 500m. Bu ikili vaat benzersiz: hem kolayca geliniyor hem de tam anlamıyla doğanın içindesin. Rakiplerin büyük çoğunluğunda bu denge yok.</p>
+    </div>
+    <div class="pos-pillar" style="border-left:1px solid var(--border);">
+      <div class="pos-pillar-icon">🤝</div>
+      <p class="pos-pillar-label">Güven Vaadi</p>
+      <h4 class="pos-pillar-title">13 Yılın Sıcaklığı</h4>
+      <p class="pos-pillar-text">2013'ten bu yana binlerce misafiri ağırlayan bir ekip. Yeni açılan "cool" tesislerin veremeyeceği gerçek birikim ve güven. "Bizi tercih etmenin nedeni var ve bunu biliyor ve sahipleniyoruz."</p>
+    </div>
+  </div>
+
+  <div style="margin-top:40px;">
+    <div class="grid-2">
+      <div class="card">
+        <p class="card-title">Ton of Voice</p>
+        <p class="card-text" style="margin-bottom:16px;">Konuşma diline yakın ama şiirsel. Kışkırtıcı değil, davet edici. "Bak nasıl güzeliz" değil, "seni burada görmek istiyoruz." İçtenlik ön planda, satış arkada.</p>
+        <div class="tone-row">
+          <span class="tone-chip active">Samimi</span>
+          <span class="tone-chip active">Romantik</span>
+          <span class="tone-chip active">Davetkar</span>
+          <span class="tone-chip active">Şiirsel</span>
+          <span class="tone-chip">Abartılı</span>
+          <span class="tone-chip">Soğuk</span>
+          <span class="tone-chip">Kurumsal</span>
+        </div>
+        <p style="font-size:11px;color:var(--text-muted);margin-top:12px;">✓ Aktif kullanılacak · ✗ Kaçınılacak</p>
+      </div>
+      <div class="card">
+        <p class="card-title">Görsel Dil &amp; Art Direction</p>
+        <p class="card-text" style="margin-bottom:16px;">Warm tones krem, toprak, yeşil, altın. Doğal ışık zorunlu; flaş yok. Geniş açı + yakın detay dengesi. Model kullanımı çift odaklı, yüz göstermeden yaşam anları.</p>
+        <div class="tone-row">
+          <span class="tone-chip active">Warm Tones</span>
+          <span class="tone-chip active">Doğal Işık</span>
+          <span class="tone-chip active">Detay Odaklı</span>
+          <span class="tone-chip active">Film Grain</span>
+          <span class="tone-chip">HDR Doygunluk</span>
+          <span class="tone-chip">Soğuk Filtre</span>
+        </div>
+        <p style="font-size:11px;color:var(--text-muted);margin-top:12px;">✓ Aktif kullanılacak · ✗ Kaçınılacak</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="diff-block" style="margin-top:32px;">
+    <h3 class="diff-title">Hangi Klişelerden Uzak Durulmalı?</h3>
+    <ul class="diff-list">
+      <li>"Muhteşem manzara" / "Harika deneyim" / "Unutulmaz tatil" bunlar hiçbir şey söylemiyor. Spesifik olmak ikna eder.</li>
+      <li>Stok fotoğrafı hissi veren, ruhsuz "standart otel fotoğrafçılığı" her oda görseli aynı açıdan çekilmiş yataklar.</li>
+      <li>"Rezervasyon için DM atın" tek CTA'sı linktree, direkt rezervasyon bağlantısı şart.</li>
+      <li>Sadece mekan gösteren içerikler; misafir deneyimi, duygu ve hikâye olmadan mekânın değeri aktarılamaz.</li>
+      <li>Her gönderiye 30 hashtag ekleme alışkanlığı kaliteli 5-8 hashtag çok daha etkili.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STRATEJİ -->
+<section id="strateji">
+  <div class="section-header">
+    <span class="section-num">07 Sosyal Medya Stratejisi</span>
+    <h2 class="section-title">Sistem Nasıl <em>Çalışacak?</em></h2>
+    <p class="section-lead">Reels'ten story'ye, kaydetme kültüründen rezervasyona uzanan bütüncül içerik motoru.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-gold">
+      <p class="card-title">📐 Ana İletişim Omurgası</p>
+      <p class="card-text">Her içerik, şu üç sorudan en az birini cevaplar:<br><br>
+      <strong style="color:var(--gold)">1. Neden Didi?</strong> Yer özelliğini, kahvaltıyı, bahçeyi, gölü anlat.<br>
+      <strong style="color:var(--gold)">2. Neden Şimdi?</strong> Mevsimsel koz, özel gün, hava durumu, hafta sonu.<br>
+      <strong style="color:var(--gold)">3. Neden Güveneyim?</strong> Gerçek yorumlar, 13 yıl, personel yüzleri, misafir anları.
+      </p>
+    </div>
+    <div class="card">
+      <p class="card-title">🎯 Platform Öncelik Sırası</p>
+      <p class="card-text">
+      <strong style="color:var(--gold)">1. Instagram Reels</strong> Organik büyüme motoru. Haftada min 2 Reels.<br>
+      <strong style="color:var(--gold)">2. Instagram Feed (Carousel)</strong> Güven ve derinlik. Haftada min 1-2 carousel.<br>
+      <strong style="color:var(--gold)">3. Instagram Story</strong> Günlük bağ, rezervasyona yönlendirme.<br>
+      <strong style="color:var(--gold)">4. Google Profil</strong> Fotoğraf güncellemeleri, yorum yanıtları.<br>
+      <strong style="color:var(--gold)">5. TikTok</strong> (ilerleyen aşamada) Reels içeriklerini cross-post.
+      </p>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top:24px;">
+    <div class="card">
+      <p class="card-title">💾 Save/Share Stratejisi</p>
+      <p class="card-text">Her carousel'in son slaydında "Hafızana kaydet" çağrısı. "Sapanca'ya gitmeyi düşünenler kaydetsin" tipi formatlar. "Bunu arkadaşına gönder" ipucu carousel'leri "Bu sonu gören hafta sonu planı yapar" formatı.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">💬 Yorum Üretme Stratejisi</p>
+      <p class="card-text">"Sabah kahvaltısında çayını mı tercih edersin, kahveni mi?" / "Bahçe mi, havuz mu?" tipi basit sorular. Her Reels'te yorum davet eden son frame. Gelen yorumlara hızlı, sıcak, kişisel cevaplar.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">📅 Rezervasyona Yönlendirme</p>
+      <p class="card-text">Bio'da Linktree: Rezervasyon + Galeri + Yorumlar. Her story'de swipe-up veya bağlantı sticker. Haftada 1 story "Bu hafta sonu müsait odalarımız" formatı. Son 5 pozitif yorum story'de + rezervasyon linki.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">🌸 Mevsimsellik Stratejisi</p>
+      <p class="card-text">Her mevsim için ayrı görsel ton. Yaz: havuz mavi, gölgeli yeşil. Sonbahar: amber, sıcak sarı, bardak çay. Kış: iç mekan, ateş, battaniye, sıcak kahve. İlkbahar: bahçe çiçeği, sabah ışığı, yeniden doğuş.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">🏅 Güven Oluşturma Stratejisi</p>
+      <p class="card-text">Haftada 1 gerçek misafir yorumu carousel'ı. Personel tanıtım serisi (insanlar insanlara güvenir). "Bu haftanın misafiri" formatı (izin alınarak). Google/TripAdvisor yıldızlarını story'de düzenli paylaşma.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">📸 UGC Sistemi</p>
+      <p class="card-text">Check-in'de "@didiotelsapanca etiketle" kartı odaya koy. Etiketleyen misafirlere story repost + teşekkür mesajı. Her ay en iyi UGC fotoğrafı öne çıkar. UGC Highlights oluştur. UGC görseller reklam kreatiflerine dönüştür.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- İÇERİK SÜTUNLARI -->
+<section id="sutunlar">
+  <div class="section-header">
+    <span class="section-num">08 İçerik Sütunları</span>
+    <h2 class="section-title">8 Sütun, <em>1 Ses</em></h2>
+    <p class="section-lead">Her içerik bu sekiz kategoriden birine girer. Her kategorinin net bir amacı, hedef kitlesi ve CTA mantığı var.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="pillar-card">
+      <p class="pillar-num">01</p>
+      <p class="pillar-name">Sabah Ritüeli & Kahvaltı Anları</p>
+      <p class="pillar-en">Morning Ritual</p>
+      <p class="pillar-desc">Didi'nin en güçlü kozunu serpme kahvaltıyı hikâyeleştiren içerikler. Masanın üstündeki detaylar, bahçede çay içen eller, sabah ışığının pencereden girmesi. Kahvaltı "bir öğün" değil, "güne en iyi başlangıç".</p>
+      <div class="pillar-formats">
+        <span class="tag">Reels</span><span class="tag">Carousel</span><span class="tag">Story</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Örnek Başlıklar:</p>
+      <p class="card-text">"Dünya'nın en iyi kahvaltısı burada yapılıyor." / "Saat 9:00, bahçe masası, sıcak çay." / "Bu kahvaltıyı hafızana kaydet."</p>
+      <p class="pillar-cta" style="margin-top:12px;">CTA: "Didi'de sabahla uyan rezervasyon linkte."</p>
+    </div>
+
+    <div class="pillar-card">
+      <p class="pillar-num">02</p>
+      <p class="pillar-name">Romantik Kaçamak Anları</p>
+      <p class="pillar-en">Romantic Escape</p>
+      <p class="pillar-desc">Çift odaklı, el ele yürüyüş, havuz kenarında oturuş, göl manzarasına bakış, oda detayı, şarap kadehi içerikler. Yüz göstermeksizin "siz de burada olabilirsiniz" hissi. Film gibi kurgulanmış anlar.</p>
+      <div class="pillar-formats">
+        <span class="tag">Reels</span><span class="tag">Tek Kare</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Örnek Başlıklar:</p>
+      <p class="card-text">"Bazen tek ihtiyacınız olan iki bardak çay ve sessizlik." / "Bu hafta sonu onunla gel." / "Kaçamak için bahanene gerek yok."</p>
+      <p class="pillar-cta" style="margin-top:12px;">CTA: "Bu linki ona gönder." / "Sürpriz yap."</p>
+    </div>
+
+    <div class="pillar-card">
+      <p class="pillar-num">03</p>
+      <p class="pillar-name">Sapanca Atmosferi & Doğa Hissi</p>
+      <p class="pillar-en">Nature &amp; Atmosphere</p>
+      <p class="pillar-desc">Gölün sabah sisi, bahçedeki ağaçlar, havuzun yansıması, kuş sesi. Oteli değil, bölgenin ruhunu anlatan içerikler. Sapanca'ya dair bilgi veren, insanları "Sapanca" aramasıyla Didi'ye ulaştıran içerikler.</p>
+      <div class="pillar-formats">
+        <span class="tag">Reels</span><span class="tag">Story</span><span class="tag">Carousel</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Örnek Başlıklar:</p>
+      <p class="card-text">"Sapanca'da bir sabah böyle başlar." / "500 metre ötede göl var." / "Şehir gürültüsü burada biter."</p>
+      <p class="pillar-cta" style="margin-top:12px;">CTA: "Sapanca rehberi için kaydet." / "Gitmeyi planlıyorsan DM at."</p>
+    </div>
+
+    <div class="pillar-card">
+      <p class="pillar-num">04</p>
+      <p class="pillar-name">Sosyal Kanıt & Misafir Hikayeleri</p>
+      <p class="pillar-en">Social Proof</p>
+      <p class="pillar-desc">Gerçek misafir yorumlarını estetik bir formatta sunan carousel'ler. "13 yıldır neden seçiliyor?" anlatısı. "Misafirimiz ne dedi?" formatı. TripAdvisor ve Google yorumlarını içeriğe çevir.</p>
+      <div class="pillar-formats">
+        <span class="tag">Carousel</span><span class="tag">Story</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Örnek Başlıklar:</p>
+      <p class="card-text">"5 yıldızlı deneyim, 5 yıldızlı yorum." / "Misafirlerimiz ne dedi?" / "2013'ten bu yana neden seçiliyoruz?"</p>
+      <p class="pillar-cta" style="margin-top:12px;">CTA: "Sen de yazan ol." / "Deneyimini paylaş."</p>
+    </div>
+
+    <div class="pillar-card">
+      <p class="pillar-num">05</p>
+      <p class="pillar-name">Oda & Mimari Detayları</p>
+      <p class="pillar-en">Space &amp; Architecture</p>
+      <p class="pillar-desc">Odaların en güzel köşeleri, pencere manzaraları, yatak üstü detaylar, bornoz, havlu katlama, banyo detayları. Her odayı "bu odada olmak istiyorum" hissettiren içerikler. Karşılaştırmalı oda turu.</p>
+      <div class="pillar-formats">
+        <span class="tag">Carousel</span><span class="tag">Reels</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Örnek Başlıklar:</p>
+      <p class="card-text">"Bu pencereden sabah uyandım." / "Hangi oda siz? [sondaki hangisi]" / "Göl manzaralı oda rehberi."</p>
+      <p class="pillar-cta" style="margin-top:12px;">CTA: "Oda seçmek için link biyografide." / "Bu odayı müsaitken al."</p>
+    </div>
+
+    <div class="pillar-card">
+      <p class="pillar-num">06</p>
+      <p class="pillar-name">Özel Gün & Sürpriz Planları</p>
+      <p class="pillar-en">Special Occasions</p>
+      <p class="pillar-desc">Doğum günü, yıl dönümü, evlilik teklifi, baby shower. Sürpriz dekorasyon, masa kurulumu, özel cake. Bu segment hem en fazla paylaşım yapıyor hem de en yüksek ortalama geliri temsil ediyor.</p>
+      <div class="pillar-formats">
+        <span class="tag">Carousel</span><span class="tag">Story</span><span class="tag">Reels</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Örnek Başlıklar:</p>
+      <p class="card-text">"Yıl dönümünüzü unutulmaz yapın." / "Sürpriz planlar için bizimle iletişime geçin." / "Ekstra dokunuşlar dahil."</p>
+      <p class="pillar-cta" style="margin-top:12px;">CTA: "Özel gün paketi için DM at." / "Bize haber ver, gerisini biz halledelim."</p>
+    </div>
+
+    <div class="pillar-card">
+      <p class="pillar-num">07</p>
+      <p class="pillar-name">"95 km'de Kaçamak" Formatı</p>
+      <p class="pillar-en">Quick Escape</p>
+      <p class="pillar-desc">İstanbul'dan kaçış temalı içerikler. "Cuma akşamı çık, Pazar dön" içerik serisi. Ulaşım kolaylığını vurgula. "Pasaportsuz en iyi tatil" formatı. Pratik bilgi + duygusal tetikleyici kombinasyonu.</p>
+      <div class="pillar-formats">
+        <span class="tag">Carousel</span><span class="tag">Reels</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Örnek Başlıklar:</p>
+      <p class="card-text">"İstanbul'dan 95 km, şehirden ışık yılı uzakta." / "Cuma akşamı uygulamayı aç, rezervasyonu yap, git." / "Pasaport gerekmez, sadece çanta al."</p>
+      <p class="pillar-cta" style="margin-top:12px;">CTA: "Bu hafta sonu için hâlâ yer var." / "Kaydet hafta sonu planı için."</p>
+    </div>
+
+    <div class="pillar-card">
+      <p class="pillar-num">08</p>
+      <p class="pillar-name">Sinematik Mood & Editorial</p>
+      <p class="pillar-en">Cinematic Mood</p>
+      <p class="pillar-desc">Sadece satış değil, duygu yaratan içerikler. Gün batımı, sabah sisi, bahçede yağmur, havuzun sessizliği. Müzik seçimi ön planda, sözler arka planda. "Neden Didi?" değil "Nasıl Didi?" hissettiren içerikler.</p>
+      <div class="pillar-formats">
+        <span class="tag">Reels</span>
+      </div>
+      <p style="font-size:12px;color:var(--text-muted);margin-bottom:6px;">Örnek Başlıklar:</p>
+      <p class="card-text">"Bu sessizliği duyuyor musun?" / "Şehir bitti. Başka bir şey başladı." / "Film gibi bir hafta sonu."</p>
+      <p class="pillar-cta" style="margin-top:12px;">CTA: "Sesi aç." / "Bu hissi yaşamak istersen link biyografide."</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- REELS FİKİRLERİ -->
+<section id="reels">
+  <div class="section-header">
+    <span class="section-num">09 Reels Fikirleri</span>
+    <h2 class="section-title">10 Reels, <em>10 Farklı An</em></h2>
+    <p class="section-lead">Her fikir çekilebilir, uygulanabilir ve performans mantığıyla kurgulanmış.</p>
+  </div>
+
+  <div class="grid-2">
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 01</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Cuma Akşamı Paketi</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"Cuma akşamı saat 17:00'de ne yapıyorsun?"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>Hızlı kurgu: ofis çıkışı → araba → otoyol → Sapanca tabelası → otel girişi → bahçe → havuz → kahvaltı masası. Transformasyon formatı.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>"17:00'de çıktım. 19:30'da bahçedeydim."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Bu hafta sonu için hâlâ yer var → link biyografide</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 02</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Kahvaltı Tablesu Turu</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"Bu tabloya oturmadan çıkış yapılmaz."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>Slow motion kahvaltı detayları: sıcak çay buharı, tereyağı eriyor, reçel kaşığı, peynir tabağı, yeşillikler. Sonunda tam masa görünümü.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>"Her sabah dahil." + fiyat bilgisi</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Bu kahvaltıya katılmak için linke tıkla.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 03</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Sessizliğin Sesi</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"Sesi aç. Bu sessizliği duyuyor musun?"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>Ses odaklı: kuş sesi, yaprak hışırtısı, havuzdan su sesi, çay doldurma sesi. Görüntüler doğa detayları. Minimum müzik, maksimum doğa sesi.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>"Şehir bitti. Başka bir şey başladı."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Bu sessizliği yaşamak istiyorsan → rezervasyon</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 04</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Havuz Slow-Mo</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"Bu yaz nerede olmak istiyorsun?"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>Slow motion: suya giren ayaklar, su sıçraması, havuz yüzeyi yansıması, güneş ışığının su içinde kırılması. Yaz hit şarkısı background.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>"Cevap: Sapanca'da, Didi'nin havuzunda."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Yaz rezervasyonları dolmadan → link biyografide</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 05</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">95 Kilometre</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"İstanbul'dan kaç kilometre uzakta olman gerekiyor ki nefes alasın?"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>İstanbul silüeti → "95" rakamı → Sapanca gölü. Kontrast: şehir kalabalığı vs. boş bahçe.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>"Cevap: 95. Didi Otel Sapanca."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Arkadaşına tag at. Bu hafta sonu planınız olsun.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 06</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">24 Saat Didi'de</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"Didi'de 24 saat nasıl geçer?"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>Zaman damgalı montaj: "Akşam varış → oda keşfi → bahçede akşam yemeği → sabah göl görüntüsü → kahvaltı → havuz → öğle → gitme vakti." Vlog formatı.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>Her sahneye saat damgası.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Sen de bu 24 saati yaşa → rezervasyon için link</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 07</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Yıl Dönümü Sürprizi</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"Bu yıl dönümünü o hiç unutmayacak."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>Oda dekoru hazırlığı: çiçekler, mum, köpük şampanya. Kapı açılıyor, sürpriz tepkisi (arkadan çekim). Bahçede romantik akşam.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>"Özel günler özel yerler ister. Bize haber ver."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Özel gün planı için DM at. Geri kalanını biz halledelim.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 08</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Sabah Sisi Gölü</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"Herkes derin uyurken göl böyle görünüyor."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>Erken sabah drone veya telefon çekimi: göl üzerindeki sis, ağaçların silueti, doğan güneş. Minimalist müzik. 15-20 saniye.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>"Sapanca. Sabah 06:30. Didi'nin bahçesinden."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Bu manzarayı canlı görmek istiyorsan → link</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 09</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Oda Turu: Göl Manzaralı</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"Bu odanın penceresinden ne görünüyor biliyor musun?"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>Oda kapısı açılıyor → oda turu → kamera pencereye gidiyor → göl görüntüsü → geri dönüş → yatak detayı → banyo. Canlı diyalog veya müzik üstüne yazı.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>"Sabah uyandığında ilk gördüğün bu olsun."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Bu odayı rezerve et → link biyografide</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>R 10</span>
+        <span class="content-idea-type type-reels">Reels</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">İş + Dinlenme Dengesi</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>Hook</label>
+            <p class="hook-text">"Peki ya laptop açıp bahçede çalışsan?"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Kurgu</label>
+            <p>Bahçede laptop, yanında çay. Yeşil arka plan. Havuz yakında. "Ofis değil ama çok daha verimli" anlatısı.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Ekran Yazısı</label>
+            <p>"Workation mı dediler? Biz buna 'doğru karar' deriz."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>CTA</label>
+            <p>Hafta içi konaklamalarda özel fiyat → DM at</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CAROUSEL FİKİRLERİ -->
+<section id="carousel">
+  <div class="section-header">
+    <span class="section-num">10 Carousel Fikirleri</span>
+    <h2 class="section-title">Kaydet, <em>Paylaş, Dönüştür</em></h2>
+    <p class="section-lead">Her carousel yüksek save/share potansiyeli ile kurgulandı. İlk slayt kaydırttırır, son slayt harekete geçirir.</p>
+  </div>
+
+  <div class="grid-2">
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 01</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Sapanca'ya Gitmeden Önce Bilmen Gereken 7 Şey</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"Sapanca'ya gideceksen bunu kaydet 📌"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>1: Hook / 2-8: Her slayt bir ipucu (mevsim, ulaşım, ne yapılır, nerede yenir, göl zamanı, otel seçimi, check-in saati) / 9: CTA</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Çok yüksek "gidecekler" kaydediyor. Sapanca aramasında organik bulunurluk.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 02</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Didi'yi 5 Yıldızla Anlatan 5 Gerçek Yorum</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"Kelimelerimiz değil, misafirlerimizin kelimeleri."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>1: Hook / 2-6: Her slayt 1 gerçek yorum (büyük typography, isim-şehir bilgisi, yıldızlar) / 7: "Sen de bu ekibe katıl" CTA</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Güven oluşturucu. "Buraya gideyim mi?" sorgusundaki kişiler bu içerikten karar veriyor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 03</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Oda Karşılaştırma Rehberi</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"Hangi oda sana göre? Kaydır ve seç."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>1: Hook / 2-6: Her oda tipi için görsel + kısa özellik listesi (manzara, kişi sayısı, özellikler) / 7: Rezervasyon CTA</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Yüksek gelmeyi düşünenler kaydedip karşılaştırıyor. Yorum "ben suite istiyorum" türünde engagement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 04</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">İstanbul'dan En Kolay 5 Hafta Sonu Kaçamağı</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"İstanbul'dan kaçmak istiyorsan bunu kaydet."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>1: Hook / 2-5: 5 lokasyon (Sapanca birinci sırada) / 6: "Ve en kolayı: Didi Otel, Sapanca" / 7: CTA</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Çok yüksek geniş bir kitleye hitap ediyor, Didi'yi kaçamak listesinde birinci sıraya koyuyor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 05</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Didi Kahvaltısı: Ne Var, Nasıl Hazırlanıyor?</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"Bu kahvaltıyı herkes hak ediyor."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>1: Tam kahvaltı tablosu / 2-7: Her slayt bir detay (peynir çeşitleri, reçeller, sıcak yemekler, taze ekmek, vs.) / 8: "Her sabah dahil"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Yüksek foodie kitlesi kaydediyor, "buraya gitmek istiyorum" yorumları geliyor.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 06</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Çiftler İçin Didi'de 48 Saat Programı</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"Bu hafta sonu programını ona gönder."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>1: Hook / 2-8: Saat saat program (varış, akşam yemeği, gece, sabah, kahvaltı, göl yürüyüşü, havuz, çıkış) / 9: Rezervasyon</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Çok yüksek share formatı güçlü. "Bunu ona gönder" yapısı viral potansiyel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 07</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">4 Mevsim Didi: Hangi Mevsim Sen?</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"Didi'yi hangi mevsimde ziyaret etmeliyim? Hepsi."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>1: Hook / 2-5: Her mevsim için ayrı görsel ve kısa his anlatısı / 6: "Sen hangi mevsimleri seçerdin?" sorusu / 7: CTA</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Yüksek "dört mevsim gelmeye değer" algısı oluşturuyor. Yorum engajmanı yüksek.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 08</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Neden Didi? 8 Gerçek Neden</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"Sormadan önce: işte 8 cevap."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>Her slayt tek bir güçlü neden: "Göl 500m ötede" / "Kahvaltı dahil" / "2013'ten güvenilir" / "Otoyol çıkışı yakın" vs.</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Orta-yüksek. Karar aşamasındaki kişilere yönelik. Rezervasyon dönüşümünde en etkili içerik türü.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 09</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Özel Gün Paketi: Ne Var, Nasıl Talep Edilir?</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"Yıl dönümünü unutulmaz yapmak istiyorsan kaydır."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>1: Hook / 2-5: Paket detayları (çiçek, dekor, şarap, özel masa) / 6: Nasıl talep edilir / 7: DM CTA</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Yüksek yaklaşan özel günü olanlar kaydediyor. Doğrudan DM/rezervasyon dönüşümü güçlü.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-idea-card">
+      <div class="content-idea-num">
+        <span>C 10</span>
+        <span class="content-idea-type type-carousel">Carousel</span>
+      </div>
+      <div class="content-idea-body">
+        <h4 class="content-idea-title">Sapanca'da Yapılacak 10 Şey (Didi'den)</h4>
+        <div class="content-idea-rows">
+          <div class="content-idea-row">
+            <label>İlk Slayt Hook</label>
+            <p class="hook-text">"Sapanca'ya gidiyorsun. Bunu kaydet."</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Slayt Akışı</label>
+            <p>1: Hook / 2-11: Her slayt 1 aktivite (göl yürüyüşü, doğa fotoğrafı, kafeler, market, macera alanları vs.) / 12: "Başlangıç noktası: Didi Otel"</p>
+          </div>
+          <div class="content-idea-row">
+            <label>Save Potansiyeli</label>
+            <p>Çok yüksek gezi rehberi formatı her zaman yüksek kaydetme alır. Sapanca hashtag'inde bulunurluk.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- STORY SİSTEMİ -->
+<section id="story">
+  <div class="section-header">
+    <span class="section-num">11 Story Sistemi</span>
+    <h2 class="section-title">Her Gün <em>Bir Bağ</em></h2>
+    <p class="section-lead">Story'ler marka ile misafir arasındaki günlük köprüdür. Sistem haline getirilmeli.</p>
+  </div>
+
+  <div class="grid-2">
+    <div>
+      <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Haftalık Story Sistemi</p>
+      <div class="story-series">
+        <div class="story-item">
+          <span class="story-day">PAZ</span>
+          <div class="story-content">
+            <p class="story-title">Hafta Sonu Kapanışı + "Bu Hafta Sonu Nasıldı?"</p>
+            <p class="story-desc">Misafir fotoğrafları repost, hafta sonu özeti, "nasıldı?" anketi, bir sonraki hafta sonu için rezervasyon çağrısı.</p>
+          </div>
+        </div>
+        <div class="story-item">
+          <span class="story-day">PAZ</span>
+          <div class="story-content">
+            <p class="story-title">Pazar Akşamı: "Cuma Nerede Olacaksın?"</p>
+            <p class="story-desc">Erken rezervasyon yaptırmak için Pazar akşamı paylaşım: "Bu hafta sonu planın var mı? Didi'de yer var."</p>
+          </div>
+        </div>
+        <div class="story-item">
+          <span class="story-day">SAL</span>
+          <div class="story-content">
+            <p class="story-title">Salı Sorusu</p>
+            <p class="story-desc">"Sabah çay mı, kahve mi?" / "Göl mü, havuz mu?" / "Çift mi, aile mi?" Basit anket. Hafta ortası engagement'ı canlandırır.</p>
+          </div>
+        </div>
+        <div class="story-item">
+          <span class="story-day">PER</span>
+          <div class="story-content">
+            <p class="story-title">Perşembe Hatırlatması</p>
+            <p class="story-desc">"Yarın Cuma. Kaçmak için son şans." Bu hafta sonu müsait odaları gösteren urgency story'si. Rezervasyon sticker zorunlu.</p>
+          </div>
+        </div>
+        <div class="story-item">
+          <span class="story-day">CUM</span>
+          <div class="story-content">
+            <p class="story-title">Cuma Giriş Anı</p>
+            <p class="story-desc">O gün gelen misafirler girerken bahçeye ilk adım, "hoşgeldiniz" anı. Canlı ve sıcak his. Bu gün story en yüksek görüntülenme alır.</p>
+          </div>
+        </div>
+        <div class="story-item">
+          <span class="story-day">CMT</span>
+          <div class="story-content">
+            <p class="story-title">Cumartesi Kahvaltı Turu</p>
+            <p class="story-desc">Hafta sonu kahvaltı masasından canlı görüntü. "Bugün masada ne var?" formatı. ASMR-yakın bir yiyecek detayı serisi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;">Highlight Arşiv Sistemi</p>
+      <div class="highlight-grid">
+        <div class="highlight-item">
+          <span class="highlight-icon">🛏️</span>
+          <span class="highlight-label">Odalar</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🍳</span>
+          <span class="highlight-label">Kahvaltı</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🌊</span>
+          <span class="highlight-label">Havuz & Göl</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🌿</span>
+          <span class="highlight-label">Bahçe</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">💑</span>
+          <span class="highlight-label">Kaçamak</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">⭐</span>
+          <span class="highlight-label">Yorumlar</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🎂</span>
+          <span class="highlight-label">Özel Günler</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">🗺️</span>
+          <span class="highlight-label">Nasıl Gelinir</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">📋</span>
+          <span class="highlight-label">SSS</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-icon">❄️</span>
+          <span class="highlight-label">4 Mevsim</span>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;">
+        <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Story Anket & Etkileşim Fikirleri</p>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div class="card" style="padding:14px 18px;">
+            <p class="card-text"><strong style="color:var(--white)">Seç & Oyla:</strong> "Hangi oda? / Suite 🛏️ vs Göl Manzaralı 🌊"</p>
+          </div>
+          <div class="card" style="padding:14px 18px;">
+            <p class="card-text"><strong style="color:var(--white)">Soru Kutusu:</strong> "Didi hakkında merak ettiğin nedir?" yanıtlar carousel'e dönüşür</p>
+          </div>
+          <div class="card" style="padding:14px 18px;">
+            <p class="card-text"><strong style="color:var(--white)">Quiz:</strong> "Sapanca hakkında ne kadar biliyorsun? 3 soru."</p>
+          </div>
+          <div class="card" style="padding:14px 18px;">
+            <p class="card-text"><strong style="color:var(--white)">Geri Sayım:</strong> Yaz sezonu, havuz açılışı, özel gün kampanyası için geri sayım.</p>
+          </div>
+          <div class="card" style="padding:14px 18px;">
+            <p class="card-text"><strong style="color:var(--white)">Emoji Kaydırma:</strong> "Didi'yi ne kadar çok seviyorsun?" → ❤️ kaydırma</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ÇEKİM PLANI -->
+<section id="cekim">
+  <div class="section-header">
+    <span class="section-num">12 Çekim Planı Önerileri</span>
+    <h2 class="section-title">Hangi Sahne, <em>Nasıl Çekilir?</em></h2>
+    <p class="section-lead">Art direction, model kullanımı ve teknik çekim notları.</p>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <p class="card-title">👥 Model Kullanımı</p>
+      <p class="card-text" style="margin-bottom:16px;">Çift konsepti vazgeçilmez. Ama yüz göstermekten kaçın <strong style="color:var(--gold)">siluet, el, ayak, sırt</strong> çekimleri daha universally relatable ve estetik.</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;">
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5;"><span style="position:absolute;left:0;color:var(--gold);">→</span> El ele yürüyüş çekimi bahçeden havuza doğru</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5;"><span style="position:absolute;left:0;color:var(--gold);">→</span> Bornoz içinde pencerede kahve sabah ışığında</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5;"><span style="position:absolute;left:0;color:var(--gold);">→</span> Havuz kenarında iki kişi uzaktan çekim</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5;"><span style="position:absolute;left:0;color:var(--gold);">→</span> Kahvaltı masasında karşılıklı çay içme</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5;"><span style="position:absolute;left:0;color:var(--gold);">→</span> Bahçe bankında kitap okuma uzak plan</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;line-height:1.5;"><span style="position:absolute;left:0;color:var(--gold);">→</span> Çift yürüyüş göl kenarında siluet</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="card-title">🎨 Art Direction Rehberi</p>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="padding:10px 14px;background:rgba(201,169,110,0.06);border-radius:8px;border-left:3px solid var(--gold);">
+          <p style="font-size:12px;font-weight:700;color:var(--gold);margin-bottom:4px;">Renk Paleti</p>
+          <p style="font-size:13px;color:var(--text-mid);">Krem, toprak sarısı, açık yeşil, amber. Soğuk tonlar yok. Her kare warm ve davetkar.</p>
+        </div>
+        <div style="padding:10px 14px;background:rgba(74,124,89,0.06);border-radius:8px;border-left:3px solid var(--green);">
+          <p style="font-size:12px;font-weight:700;color:#7dc99a;margin-bottom:4px;">Işık</p>
+          <p style="font-size:13px;color:var(--text-mid);">Sadece doğal ışık. Flaş yasak. Sabah 7–9 arası altın saat ve akşam 17–19 arası altın saat öncelikli.</p>
+        </div>
+        <div style="padding:10px 14px;background:rgba(61,100,120,0.06);border-radius:8px;border-left:3px solid var(--blue);">
+          <p style="font-size:12px;font-weight:700;color:#7fb8d4;margin-bottom:4px;">Kompozisyon</p>
+          <p style="font-size:13px;color:var(--text-mid);">Rule of thirds. Çok ortalanmış fotoğraflardan kaçın. Doğa arka planı her zaman ön planda.</p>
+        </div>
+        <div style="padding:10px 14px;background:rgba(139,61,61,0.06);border-radius:8px;border-left:3px solid var(--red);">
+          <p style="font-size:12px;font-weight:700;color:#d48888;margin-bottom:4px;">Post-Production</p>
+          <p style="font-size:13px;color:var(--text-mid);">Film grain filtre, hafif vignette. Aşırı düzeltme ve HDR yasak. Raw/Lightroom preset tutarlılığı zorunlu.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-3" style="margin-top:24px;">
+    <div class="card">
+      <p class="card-title">☀️ Sabah Çekimleri (07:00–09:00)</p>
+      <p class="card-text">Altın saat ışığı, kahvaltı masası, bahçede ilk adımlar, göl sisini yakalamak. En yüksek estetik değer bu saatte. Her hafta en az 2 sabah çekim seansı planlanmalı.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">🌅 Akşam Çekimleri (17:00–19:00)</p>
+      <p class="card-text">Gün batımı, havuz yansıması, romantik akşam bahçesi, loş ışıklar. Duygusal yoğunluğu en yüksek anlar. Çift modeli bu saatte kullanılmalı.</p>
+    </div>
+    <div class="card">
+      <p class="card-title">🎬 Lüks vs Samimi Denge</p>
+      <p class="card-text"><strong style="color:var(--gold)">Lüks hissi:</strong> Sunum detayları, oda estetiği, havuz, akşam masa kurulumu.<br><strong style="color:var(--gold)">Samimi his:</strong> Personel gülüşmesi, misafir mutluluğu, "gerçek an" yakalamalar. İkisi dengeli kullanılmalı.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- MAYIS 2026 İÇERİK TAKVİMİ -->
+<section id="takvim">
+  <div class="section-header">
+    <span class="section-num">13 1 Aylık İçerik Takvimi</span>
+    <h2 class="section-title">Mayıs 2026 <em>Planı</em></h2>
+    <p class="section-lead">Marka imajı, duygusal bağ, sosyal kanıt ve satış arasında dengeli 30 günlük içerik akışı.</p>
+  </div>
+
+  <!-- HAFTA 1 -->
+  <div style="margin-bottom:48px;">
+    <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">HAFTA 1 1–7 Mayıs 2026 | Tema: "Yaza Merhaba"</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Per 1 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Mayıs Açılış: "Yaz geldi, Didi hazır"</p>
+        <p style="font-size:11px;color:var(--text-muted);">Marka İmajı</p>
+        <p style="font-size:12px;color:var(--text-mid);">Bahçenin yaz versiyonu, havuz açılışı, çiçekler. Hook: "Mayıs başladı. Didi hazır mısın?" CTA: Yaz rezervasyonları başladı.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Cmt 3 Mayıs</p>
+        <div><span class="content-idea-type type-carousel" style="font-size:9px;">Carousel</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Kahvaltı Tablosu Turu</p>
+        <p style="font-size:11px;color:var(--text-muted);">Gastronomi</p>
+        <p style="font-size:12px;color:var(--text-mid);">Serpme kahvaltının tüm detayları. Her slayt bir yiyecek detayı. Son slayt: "Her sabah dahil."</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Pzt 5 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Havuz Slow-Mo Açılışı</p>
+        <p style="font-size:11px;color:var(--text-muted);">Estetik / Yaz</p>
+        <p style="font-size:12px;color:var(--text-mid);">Sezonluk havuz açılış videosu. Yaz hiti müzik. "Bu yaz nerede olacaksın?" hook'u.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Çar 7 Mayıs</p>
+        <div><span class="content-idea-type type-carousel" style="font-size:9px;">Carousel</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">5 Gerçek Misafir Yorumu</p>
+        <p style="font-size:11px;color:var(--text-muted);">Sosyal Kanıt</p>
+        <p style="font-size:12px;color:var(--text-mid);">Seçilmiş 5 güçlü yorum, büyük tipografi ile. "Kelimelerimiz değil misafirlerimizin kelimeleri." Güven builder.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HAFTA 2 -->
+  <div style="margin-bottom:48px;">
+    <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">HAFTA 2 8–14 Mayıs 2026 | Tema: "Çift Anları & Kaçamak Ruhu"</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Per 8 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Cuma Akşamı Paketi</p>
+        <p style="font-size:11px;color:var(--text-muted);">Kaçamak / Dönüşüm</p>
+        <p style="font-size:12px;color:var(--text-mid);">"Yarın Cuma" urgency formatı. Ofis → Didi transformasyonu. Perşembe günü yayınlanarak Cuma rezervasyonunu hedefliyor.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Cmt 10 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Göl Yürüyüşü</p>
+        <p style="font-size:11px;color:var(--text-muted);">Doğa Atmosferi</p>
+        <p style="font-size:12px;color:var(--text-mid);">Otel çıkışından göle kadar 5 dakika. "500 metre ötede göl" vaadini görselleştir.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Pzt 12 Mayıs</p>
+        <div><span class="content-idea-type type-carousel" style="font-size:9px;">Carousel</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Çiftler İçin 48 Saat Programı</p>
+        <p style="font-size:11px;color:var(--text-muted);">Romantik / Satış</p>
+        <p style="font-size:12px;color:var(--text-mid);">"Bunu ona gönder" formatı. Saat saat 48 saatlik çift programı. Yüksek share potansiyeli.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Çar 14 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Bornoz & Kahve Sabahı</p>
+        <p style="font-size:11px;color:var(--text-muted);">Lifestyle / Estetik</p>
+        <p style="font-size:12px;color:var(--text-mid);">ASMR-yakın sabah rutini. Bornoz, pencere, bahçe, kahve. "Bu sabah rutinini dene bir de."</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HAFTA 3 -->
+  <div style="margin-bottom:48px;">
+    <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">HAFTA 3 15–21 Mayıs 2026 | Tema: "Güven ve Marka Derinliği"</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Per 15 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">13 Yıl, 1 Yer</p>
+        <p style="font-size:11px;color:var(--text-muted);">Marka Güveni</p>
+        <p style="font-size:12px;color:var(--text-mid);">2013'ten bu yana hikaye. Eski/yeni karşılaştırma. "Bazı yerler sadece otel değildir." Duygusal, güven inşa edici.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Cmt 17 Mayıs</p>
+        <div><span class="content-idea-type type-carousel" style="font-size:9px;">Carousel</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Sapanca'da Yapılacak 10 Şey</p>
+        <p style="font-size:11px;color:var(--text-muted);">Bilgi / Kaydet</p>
+        <p style="font-size:12px;color:var(--text-mid);">Yüksek kaydetme potansiyeli. Sapanca rehberi, Didi başlangıç noktası olarak. Organik arama'dan trafik.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Pzt 19 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Personel Rutini Behind the Scenes</p>
+        <p style="font-size:11px;color:var(--text-muted);">Güven / İnsan</p>
+        <p style="font-size:12px;color:var(--text-mid);">Kahvaltı hazırlayan mutfak ekibi. "Didi'nin arkasındaki eller." İnsanlar insanlara güvenir.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Çar 21 Mayıs</p>
+        <div><span class="content-idea-type type-carousel" style="font-size:9px;">Carousel</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Soru-Cevap: Didi Hakkında 8 Soru</p>
+        <p style="font-size:11px;color:var(--text-muted);">Bilgi / Güven</p>
+        <p style="font-size:12px;color:var(--text-mid);">Karar aşamasındakilerin en sık sorduğu sorulara cevap. Dönüşüm odaklı içerik.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- HAFTA 4 -->
+  <div style="margin-bottom:48px;">
+    <p style="font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--border);">HAFTA 4 22–31 Mayıs 2026 | Tema: "Özel Anlar & Yaz Finalı"</p>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Per 22 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Yıl Dönümü Sürprizi</p>
+        <p style="font-size:11px;color:var(--text-muted);">Özel Gün / Satış</p>
+        <p style="font-size:12px;color:var(--text-mid);">Özel gün dekoru, sürpriz hazırlık, misafir mutluluğu. "Bu yıl dönümünü o hiç unutmayacak." DM CTA.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Cmt 24 Mayıs</p>
+        <div><span class="content-idea-type type-carousel" style="font-size:9px;">Carousel</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Oda Karşılaştırma Rehberi</p>
+        <p style="font-size:11px;color:var(--text-muted);">Satış / Bilgi</p>
+        <p style="font-size:12px;color:var(--text-mid);">Tüm oda tiplerini karşılaştır. "Hangi oda sana göre?" yorum etkileşimi. Rezervasyon CTA.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Pzt 26 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Sabah Sisi Gölü</p>
+        <p style="font-size:11px;color:var(--text-muted);">Sinematik / Atmosfer</p>
+        <p style="font-size:12px;color:var(--text-mid);">Erken sabah göl sisi. Minimalist müzik. "Herkes derin uyurken göl böyle görünüyor." Editorial hissi.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Çar 28 Mayıs</p>
+        <div><span class="content-idea-type type-carousel" style="font-size:9px;">Carousel</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Haziran Rezervasyon Çağrısı</p>
+        <p style="font-size:11px;color:var(--text-muted);">Satış / Urgency</p>
+        <p style="font-size:12px;color:var(--text-mid);">"Haziran dolmadan önce..." formatı. Müsait haftasonları listesi, "En iyi odalar gidiyor" urgency mesajı.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:80px 1fr 1fr 1fr 2fr;gap:16px;align-items:start;padding:16px 20px;background:var(--dark2);border:1px solid var(--border);border-radius:12px;">
+        <p style="font-size:13px;font-weight:700;color:var(--gold);">Cmt 31 Mayıs</p>
+        <div><span class="content-idea-type type-reels" style="font-size:9px;">Reels</span></div>
+        <p style="font-size:13px;color:var(--white);font-weight:600;">Mayıs Özeti + Haziran'a Çağrı</p>
+        <p style="font-size:11px;color:var(--text-muted);">Marka / Kapanış</p>
+        <p style="font-size:12px;color:var(--text-mid);">Mayıs boyunca yaşananların montajı. Misafir anları, kahvaltılar, bahçe. "Haziran'da görüşmek üzere."</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div style="padding:24px;background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.15);border-radius:12px;">
+    <p style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">İçerik Dağılım Dengesi Mayıs</p>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <span class="tag">🎯 Marka İmajı: %30</span>
+      <span class="tag">💰 Satış/Dönüşüm: %25</span>
+      <span class="tag">⭐ Sosyal Kanıt: %20</span>
+      <span class="tag">📚 Bilgi/Değer: %15</span>
+      <span class="tag">🎬 Sinematik: %10</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BÜYÜME ÖNERİLERİ -->
+<section id="buyume">
+  <div class="section-header">
+    <span class="section-num">14 Ek Büyüme Önerileri</span>
+    <h2 class="section-title">Daha <em>Hızlı Büyümek</em> İçin</h2>
+    <p class="section-lead">Organik büyümeyi hızlandıracak, dönüşümü artıracak ve rakiplerden ayrışacak ek aksiyonlar.</p>
+  </div>
+
+  <div class="grid-3">
+
+    <div class="growth-card">
+      <p class="growth-num">01</p>
+      <p class="growth-title">Profil & Bio Optimizasyonu</p>
+      <ul class="growth-list">
+        <li>Tek hesapta birleşme (@didiotelsapanca öncelikli)</li>
+        <li>Bio: "🌿 Sapanca Gölü yanında, şehirden 95 km | Kahvaltı dahil | ⬇️ Rezervasyon"</li>
+        <li>Linktree: Rezervasyon + Galeri + Yorumlar + WhatsApp</li>
+        <li>Profil fotoğrafı: Net logo veya imzalı göl fotoğrafı</li>
+        <li>Kapak fotoğrafları: Highlight ikonları tutarlı, minimal tasarım</li>
+      </ul>
+    </div>
+
+    <div class="growth-card">
+      <p class="growth-num">02</p>
+      <p class="growth-title">Micro-Influencer Stratejisi</p>
+      <ul class="growth-list">
+        <li>Hedef: 10K–80K takipçi aralığı, nişler: seyahat/lifestyle/çift/yemek</li>
+        <li>Konum: İstanbul ve Ankara bazlı içerik üreticileri öncelikli</li>
+        <li>Model: 1–2 gece ücretsiz konaklama = içerik + story + Reels</li>
+        <li>Aylık 1–2 influencer işbirliği hedefi</li>
+        <li>Sözleşme: Etiketleme zorunluluğu, içerik teslim tarihi ve kullanım hakkı</li>
+      </ul>
+    </div>
+
+    <div class="growth-card">
+      <p class="growth-num">03</p>
+      <p class="growth-title">UGC Sistemi</p>
+      <ul class="growth-list">
+        <li>Her odaya "Bizi etiketle" kartı (QR kod ile Instagram profile bağlantı)</li>
+        <li>Etiketleyen misafirlere story repost + teşekkür mesajı</li>
+        <li>Ayda 1 "En İyi UGC Fotoğrafı" öne çıkarma + küçük ödül</li>
+        <li>En iyi UGC'ler paid reklam kreatiflerine dönüştürülsün</li>
+        <li>UGC Highlights albümü oluştur</li>
+      </ul>
+    </div>
+
+    <div class="growth-card">
+      <p class="growth-num">04</p>
+      <p class="growth-title">Google Yorumlarını İçeriğe Çevirme</p>
+      <ul class="growth-list">
+        <li>Her ay en güçlü 5 Google yorumunu seç</li>
+        <li>Carousel formatında estetik tasarımla paylaş</li>
+        <li>Yorum sahibine DM at, paylaşımda etiketle (izin ile)</li>
+        <li>Story'de "Bu hafta yorum aldık" formatı</li>
+        <li>Her checkout'tan sonra Google yorum hatırlatması gönder</li>
+      </ul>
+    </div>
+
+    <div class="growth-card">
+      <p class="growth-num">05</p>
+      <p class="growth-title">Özel Gün Kampanyaları</p>
+      <ul class="growth-list">
+        <li>Sevgililer Günü (14 Şubat) 1 ay önceden kampanya başlat</li>
+        <li>Anneler Günü (Mayıs) "Annene kaçamak hediye et" paketi</li>
+        <li>Yaz kampanyası (Haziran başı) erken rezervasyon indirimi</li>
+        <li>Yılbaşı (Aralık) "Yeni yıla doğada gir" konsepti</li>
+        <li>Her kampanya için özel landing page / story seti</li>
+      </ul>
+    </div>
+
+    <div class="growth-card">
+      <p class="growth-num">06</p>
+      <p class="growth-title">Sabit Dönüşüm Gönderileri</p>
+      <ul class="growth-list">
+        <li>Grid'de her zaman en üstte: Rezervasyon bilgilendirme pinned post</li>
+        <li>"Neden Didi?" özet carouselı hiç silinmeyecek, güncellenecek</li>
+        <li>"Oda Rehberi" carouselı sık erişilen referans içerik</li>
+        <li>"Nasıl Gelinir?" story highlight tüm ulaşım seçenekleri</li>
+        <li>WhatsApp rezervasyon butonu story'de her Perşembe aktif</li>
+      </ul>
+    </div>
+
+    <div class="growth-card">
+      <p class="growth-num">07</p>
+      <p class="growth-title">Grid & Estetik Düzen Önerisi</p>
+      <ul class="growth-list">
+        <li>3'lü grid bloklarında içerik planı: her 3 gönderi bir tema bütünlüğü</li>
+        <li>Warm tones tutarlılığı tüm görsellerde aynı Lightroom preset</li>
+        <li>Video/fotoğraf dönüşümü: her 3 gönderiden 1'i mutlaka Reels</li>
+        <li>Grid ilk bakışta "premium butik otel" izlenimi vermeli</li>
+        <li>Stok fotoğraf kullanımı kesinlikle yok tüm içerik orijinal</li>
+      </ul>
+    </div>
+
+    <div class="growth-card">
+      <p class="growth-num">08</p>
+      <p class="growth-title">TikTok Cross-Post Stratejisi</p>
+      <ul class="growth-list">
+        <li>Instagram Reels'leri TikTok'a da yükle (watermark dikkat)</li>
+        <li>TikTok Sapanca nişinde organik büyüme potansiyeli yüksek</li>
+        <li>TikTok'ta daha samimi/ham içerik kabul görür ayrı ton</li>
+        <li>Aylık TikTok performans takibi başlat</li>
+        <li>3 ay TikTok verisi sonrası ayrı içerik stratejisi değerlendir</li>
+      </ul>
+    </div>
+
+    <div class="growth-card">
+      <p class="growth-num">09</p>
+      <p class="growth-title">Ölçüm & Optimizasyon Sistemi</p>
+      <ul class="growth-list">
+        <li>Haftalık: Erişim, etkileşim, takipçi artışı, story görüntüleme</li>
+        <li>Aylık: En yüksek performanslı 3 içerik analizi → neden işe yaradı?</li>
+        <li>Aylık: En düşük performanslı içerik → ne değiştirilmeli?</li>
+        <li>Rezervasyon bağlantısı tıklamaları takibi (UTM link)</li>
+        <li>Her 3 ayda strateji revizyonu toplantısı</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AKSİYON PLANI -->
+<section id="aksiyon">
+  <div class="section-header">
+    <span class="section-num">15 Aksiyon Planı</span>
+    <h2 class="section-title">Nereden <em>Başlıyoruz?</em></h2>
+    <p class="section-lead">İlk 90 günde yapılacaklar, öncelik sırasıyla ve somut adımlarla.</p>
+  </div>
+
+  <div class="action-grid">
+    <div class="action-phase phase-1">
+      <p class="phase-label">Faz 1 İlk 30 Gün</p>
+      <h3 class="phase-title">Temel<br>Kurulum</h3>
+      <ul class="phase-list">
+        <li>İki Instagram hesabını tek hesapta birleştir</li>
+        <li>Bio ve profil optimizasyonu tamamla</li>
+        <li>Linktree veya link oluştur (rezervasyon + galeri)</li>
+        <li>Highlight kategorilerini oluştur ve doldur</li>
+        <li>Lightroom preset belirle, tüm görsel kalite standardını ayarla</li>
+        <li>İlk profesyonel çekim günü planla (sabah + akşam seanslı)</li>
+        <li>İlk 4 Reels yayınla kahvaltı, havuz, 95km, çift</li>
+        <li>İlk micro-influencer görüşmesi başlat</li>
+      </ul>
+    </div>
+
+    <div class="action-phase phase-2">
+      <p class="phase-label">Faz 2 30–60. Gün</p>
+      <h3 class="phase-title">İçerik<br>Motoru</h3>
+      <ul class="phase-list">
+        <li>Haftalık içerik takvimi süreci otomatikleştir</li>
+        <li>İlk influencer iş birliğini gerçekleştir</li>
+        <li>UGC sistemini başlat (odalara kart, QR kod)</li>
+        <li>Story anket ve etkileşim serilerini başlat</li>
+        <li>Google yorum → carousel dönüşüm sistemini kur</li>
+        <li>Özel gün paketi tanıtım içeriğini yayınla</li>
+        <li>İlk aylık performans raporu çıkar</li>
+        <li>Carousel save/share metriklerini analiz et</li>
+      </ul>
+    </div>
+
+    <div class="action-phase phase-3">
+      <p class="phase-label">Faz 3 60–90. Gün</p>
+      <h3 class="phase-title">Ölçek &<br>Büyüme</h3>
+      <ul class="phase-list">
+        <li>İkinci ve üçüncü influencer iş birliklerini tamamla</li>
+        <li>En iyi UGC içeriklerini paid reklama dönüştür</li>
+        <li>TikTok cross-post başlat ve performans ölç</li>
+        <li>Sezonluk kampanya (Haziran yaz) için özel içerik seti üret</li>
+        <li>90 gün sonuç raporu: takipçi artışı, etkileşim, rezervasyon artışı</li>
+        <li>Strateji revizyonu ve yeni 90 gün planı</li>
+        <li>2. çekim günü (yeni mevsim, yeni içerik stoğu)</li>
+        <li>Influencer ağını genişlet, yeni niş hedefle</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- KAPANIŞ -->
+  <div class="positioning-statement" style="margin-top:60px;">
+    <p class="pos-eyebrow">UniqBee × Didi Otel Sapanca</p>
+    <p class="pos-quote">"Didi 13 yıldır <span>doğru işi yapıyor.</span><br>Artık dünyaya da anlatma zamanı."</p>
+    <p class="pos-sub">Bu strateji, Didi Otel'in sahip olduğu gerçek değeri dijital dünyaya taşımak için tasarlandı. Reels'ten carousel'a, story'den influencer'a her adım birbirini besleyen, ölçülebilir sonuçlara odaklı bir sistem kurguluyor.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- BÜTÇE -->
+<section id="butce">
+  <div class="section-header">
+    <span class="section-num">16 — Bütçelendirme</span>
+    <h2 class="section-title">1 Aylık Plan <em>Yatırım Tablosu</em></h2>
+    <p class="section-lead">Mayıs 2026 sosyal medya yönetimi için toplam hizmet bütçesi. Tüm kalemler aşağıda detaylandırılmıştır.</p>
+  </div>
+
+  <!-- Toplam Tutar Kartı -->
+  <div style="background:var(--dark2);border:1px solid rgba(201,169,110,0.3);border-radius:20px;padding:48px;text-align:center;margin-bottom:40px;position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,169,110,0.07) 0%,transparent 70%);pointer-events:none;"></div>
+    <p style="font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Toplam Hizmet Bedeli</p>
+    <p style="font-family:'Playfair Display',serif;font-size:clamp(48px,8vw,88px);font-weight:700;color:var(--white);line-height:1;letter-spacing:-2px;margin-bottom:12px;">125.000 <span style="font-size:clamp(24px,4vw,44px);color:var(--gold);">TL</span></p>
+    <p style="font-size:14px;color:var(--text-muted);letter-spacing:2px;">+ KDV (%20) · Aylık Sabit Hizmet Bedeli</p>
+    <div style="display:flex;gap:48px;justify-content:center;flex-wrap:wrap;margin-top:36px;padding-top:36px;border-top:1px solid var(--border);">
+      <div style="text-align:center;">
+        <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--white);">130.000 TL</p>
+        <p style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:4px;">Hizmet Bedeli</p>
+      </div>
+      <div style="text-align:center;">
+        <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--white);">26.000 TL</p>
+        <p style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:4px;">KDV (%20)</p>
+      </div>
+      <div style="text-align:center;">
+        <p style="font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--gold);">156.000 TL</p>
+        <p style="font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:4px;">KDV Dahil Toplam</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Kalem Tablosu -->
+  <div style="display:flex;flex-direction:column;gap:3px;border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:40px;">
+
+    <!-- Başlık -->
+    <div class="budget-row" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:0;background:var(--dark3);padding:14px 28px;">
+      <p style="font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);">Hizmet Kalemi</p>
+      <p style="font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);">Kapsam</p>
+      <p style="font-size:9px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);text-align:right;">Tutar (TL)</p>
+    </div>
+
+    <!-- Kalem 1 -->
+    <div class="budget-row" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:0;background:var(--dark2);padding:22px 28px;border-top:1px solid var(--border);align-items:center;">
+      <div>
+        <p style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;">Sosyal Medya Yönetimi</p>
+        <p style="font-size:12px;color:var(--text-muted);">Planlama, yayın takvimi, topluluk yönetimi</p>
+      </div>
+      <p style="font-size:13px;color:var(--text-mid);">1 ay / tam kapsam</p>
+      <p style="font-size:17px;font-weight:700;color:var(--white);text-align:right;">35.000</p>
+    </div>
+
+    <!-- Kalem 2 -->
+    <div class="budget-row" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:0;background:var(--dark2);padding:22px 28px;border-top:1px solid var(--border);align-items:center;">
+      <div>
+        <p style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;">İçerik Üretimi</p>
+        <p style="font-size:12px;color:var(--text-muted);">Senaryo, kurgu, tasarım, montaj, caption yazımı</p>
+      </div>
+      <p style="font-size:13px;color:var(--text-mid);">8 Reels + 8 Carousel</p>
+      <p style="font-size:17px;font-weight:700;color:var(--white);text-align:right;">35.000</p>
+    </div>
+
+    <!-- Kalem 3 -->
+    <div class="budget-row" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:0;background:var(--dark2);padding:22px 28px;border-top:1px solid var(--border);align-items:center;">
+      <div>
+        <p style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;">Fotoğraf ve Video Çekimi</p>
+        <p style="font-size:12px;color:var(--text-muted);">Profesyonel içerik üretim seansı, ekip ve ekipman</p>
+      </div>
+      <p style="font-size:13px;color:var(--text-mid);">4 tam gün çekim</p>
+      <p style="font-size:17px;font-weight:700;color:var(--white);text-align:right;">40.000</p>
+    </div>
+
+    <!-- Kalem 4 -->
+    <div class="budget-row" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:0;background:var(--dark2);padding:22px 28px;border-top:1px solid var(--border);align-items:center;">
+      <div>
+        <p style="font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px;">Strateji ve Raporlama</p>
+        <p style="font-size:12px;color:var(--text-muted);">Performans takibi, haftalık özet, aylık rapor</p>
+      </div>
+      <p style="font-size:13px;color:var(--text-mid);">1 aylık periyot</p>
+      <p style="font-size:17px;font-weight:700;color:var(--white);text-align:right;">20.000</p>
+    </div>
+
+    <!-- TOPLAM SATIRI -->
+    <div class="budget-row" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:0;background:rgba(201,169,110,0.08);padding:22px 28px;border-top:1px solid rgba(201,169,110,0.25);align-items:center;">
+      <p style="font-size:14px;font-weight:800;color:var(--gold);letter-spacing:1px;">TOPLAM (KDV Hariç)</p>
+      <p></p>
+      <p style="font-size:22px;font-weight:800;color:var(--gold);text-align:right;">130.000</p>
+    </div>
+
+  </div>
+
+  <!-- Notlar -->
+  <div class="grid-2">
+    <div class="card card-gold">
+      <p class="card-title">Kapsam Dahilindekiler</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span> Tüm içerik üretimi (Reels, carousel, story)</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span> Günlük topluluk yönetimi ve DM yanıtlama</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span> 2 profesyonel çekim günü (ekip dahil)</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span> Haftalık ve aylık performans raporlaması</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span> Profil optimizasyonu ve setup (tek seferlik)</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--gold);">✓</span> UGC sistemi kurulumu (tek seferlik)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="card-title">Kapsam Dışındakiler</p>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#d48888;">✗</span> Micro-influencer koordinasyon ve yönetimi</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#d48888;">✗</span> Influencer bedelleri (ayrıca fiyatlandırılır)</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#d48888;">✗</span> Instagram reklam bütçesi (müşteri tarafından karşılanır)</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#d48888;">✗</span> UGC kart baskı ve üretim maliyeti</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#d48888;">✗</span> Web sitesi güncellemeleri</li>
+        <li style="font-size:13px;color:var(--text-mid);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:#d48888;">✗</span> Konaklama ve seyahat giderleri (çekim günleri hariç)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Ödeme Koşulları -->
+  <div style="margin-top:24px;padding:28px 32px;background:var(--dark2);border:1px solid var(--border);border-radius:14px;display:flex;gap:40px;flex-wrap:wrap;align-items:center;">
+    <div>
+      <p style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Ödeme Planı</p>
+      <p style="font-size:14px;color:var(--white);font-weight:600;">%50 başlangıçta, %50 ay sonunda</p>
+    </div>
+    <div>
+      <p style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Sözleşme Süresi</p>
+      <p style="font-size:14px;color:var(--white);font-weight:600;">1 ay (yenilenebilir)</p>
+    </div>
+    <div>
+      <p style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Para Birimi</p>
+      <p style="font-size:14px;color:var(--white);font-weight:600;">Türk Lirası (TRY)</p>
+    </div>
+    <div>
+      <p style="font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Fatura</p>
+      <p style="font-size:14px;color:var(--white);font-weight:600;">E-Fatura / E-Arşiv</p>
+    </div>
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <p class="footer-brand">UniqBee</p>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:4px;">Dijital Medya Ajansı</p>
+  </div>
+  <div style="text-align:center;">
+    <p style="font-size:13px;color:var(--text-mid);">Didi Otel Sapanca Sosyal Medya Strateji Dosyası</p>
+    <p style="font-size:11px;color:var(--text-muted);margin-top:4px;">Nisan 2026 · Gizli &amp; Profesyonel</p>
+  </div>
+  <div style="text-align:right;">
+    <p class="footer-copy">Bu dosya UniqBee Dijital Medya Ajansı tarafından<br>müşteri sunumu için hazırlanmıştır.</p>
+  </div>
+</footer>
+
+<script>
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const target = document.querySelector(a.getAttribute('href'));
+    if(target) {
+      const offset = 56;
+      window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+    }
+  });
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.card, .pillar-card, .competitor-card, .audience-card, .content-idea-card, .growth-card, .action-phase').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
+
+// Nav active state
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    if(window.scrollY >= section.offsetTop - 120) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    const isActive = link.getAttribute('href') === '#' + current;
+    link.classList.toggle('active', isActive);
+    link.style.color = '';
+    link.style.borderBottomColor = '';
+  });
+}, { passive: true });
+</script>
+
+</body>
+</html>

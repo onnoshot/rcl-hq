@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bonnenuit × Reels — Çekim Günü Sunum | 23 Nisan 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+  :root {
+    --black:        #0c0a08;
+    --offwhite:     #f8f5f0;
+    --cream:        #ede8df;
+    --warm-gray:    #b5ada5;
+    --mid-gray:     #6b625a;
+    --dark-gray:    #2b2420;
+    --gold:         #c9a464;
+    --gold-light:   #e8d4a8;
+    --gold-dark:    #8a6835;
+    --rose:         #c4817a;
+    --blush:        #f0d0cc;
+    --white:        #ffffff;
+    --border:       rgba(180,165,145,0.20);
+    --border-mid:   rgba(180,165,145,0.40);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--offwhite);
+    color: var(--dark-gray);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% 40%, rgba(201,164,100,0.12) 0%, transparent 65%),
+      radial-gradient(ellipse 40% 30% at 20% 80%, rgba(196,129,122,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cover-grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    background-size: 180px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .cover-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 4px;
+    color: var(--gold); margin-bottom: 44px; text-transform: uppercase;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .cover-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 10vw, 110px);
+    font-weight: 700; font-style: italic;
+    color: var(--white); letter-spacing: -1px; line-height: 1.0;
+    opacity: 0; animation: fadeUp 0.9s 0.4s forwards;
+  }
+  .cover-logo span { color: var(--gold); }
+  .cover-divider {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    margin: 48px auto;
+    opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .cover-headline {
+    font-size: clamp(14px, 2vw, 17px); font-weight: 300;
+    color: var(--warm-gray); letter-spacing: 0.5px;
+    line-height: 1.85; max-width: 480px;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .cover-headline strong { color: var(--white); font-weight: 600; }
+  .cover-date {
+    margin-top: 56px; font-size: 11px; letter-spacing: 3px;
+    color: var(--gold-dark); font-weight: 500; text-transform: uppercase;
+    opacity: 0; animation: fadeUp 0.8s 1.0s forwards;
+  }
+  .cover-scroll {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0; animation: fadeUp 0.8s 1.4s forwards;
+  }
+  .cover-scroll span { font-size: 9px; letter-spacing: 3px; color: var(--warm-gray); text-transform: uppercase; }
+  .cover-scroll-line {
+    width: 1px; height: 32px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION WRAPPER ── */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 90px 32px;
+  }
+  .section-tag {
+    font-size: 10px; font-weight: 600; letter-spacing: 4px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 14px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700; color: var(--dark-gray);
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-title em { font-style: italic; color: var(--gold-dark); }
+  .section-lead {
+    font-size: 15px; color: var(--mid-gray);
+    max-width: 600px; line-height: 1.85; margin-bottom: 52px;
+  }
+
+  /* ── DIVIDER BAND ── */
+  .band {
+    background: var(--black);
+    padding: 64px 32px;
+    text-align: center;
+  }
+  .band-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(18px, 3.5vw, 30px);
+    color: var(--white); font-style: italic;
+    max-width: 680px; margin: 0 auto; line-height: 1.6;
+  }
+  .band-text em { color: var(--gold); font-style: normal; }
+
+  /* ── STAT ROW ── */
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 1px; background: var(--border-mid);
+    border: 1px solid var(--border-mid);
+    border-radius: 4px; overflow: hidden;
+    margin-bottom: 64px;
+  }
+  .stat-cell {
+    background: var(--white);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px; font-weight: 700; color: var(--gold-dark);
+    line-height: 1;
+  }
+  .stat-label { font-size: 11px; color: var(--warm-gray); margin-top: 6px; letter-spacing: 0.5px; }
+
+  /* ── REEL CARDS ── */
+  .reels-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media(max-width:640px){.reels-grid{grid-template-columns:1fr;} .stat-row{grid-template-columns:1fr;}}
+
+  .reel-card {
+    background: var(--white);
+    border: 1px solid var(--border-mid);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: box-shadow 0.25s;
+  }
+  .reel-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+
+  .reel-card-header {
+    padding: 22px 24px 0;
+    display: flex; align-items: flex-start; gap: 14px;
+  }
+  .reel-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 38px; font-weight: 700;
+    color: var(--gold-light); line-height: 1;
+    flex-shrink: 0; margin-top: -4px;
+  }
+  .reel-title-wrap {}
+  .reel-badge {
+    display: inline-block;
+    font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; padding: 3px 9px;
+    border-radius: 2px; margin-bottom: 7px;
+  }
+  .badge-fire { background: #fff2e8; color: #c0622a; }
+  .badge-trending { background: #e8f5ee; color: #2a7a4f; }
+  .badge-hook { background: #f0e8ff; color: #6a2aaa; }
+  .badge-emotion { background: #ffe8f0; color: #aa2a60; }
+  .badge-asmr { background: #e8f0ff; color: #2a50aa; }
+  .badge-brand { background: #fff8e8; color: #aa7a2a; }
+
+  .reel-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px; font-weight: 700;
+    color: var(--dark-gray); line-height: 1.3;
+  }
+  .reel-card-body { padding: 16px 24px 24px; }
+  .reel-desc {
+    font-size: 13.5px; color: var(--mid-gray);
+    line-height: 1.75; margin-bottom: 18px;
+  }
+
+  .reel-detail-row {
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .reel-detail {
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .reel-detail-icon {
+    width: 20px; text-align: center; flex-shrink: 0;
+    font-size: 13px; margin-top: 1px;
+  }
+  .reel-detail-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--gold-dark);
+    min-width: 52px; margin-top: 2px;
+  }
+  .reel-detail-text {
+    font-size: 12.5px; color: var(--mid-gray); line-height: 1.55;
+  }
+  .reel-detail-text strong { color: var(--dark-gray); font-weight: 600; }
+
+  /* ── HOOK SECTION ── */
+  .hook-list { display: flex; flex-direction: column; gap: 16px; }
+  .hook-item {
+    background: var(--white); border: 1px solid var(--border-mid);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 18px 22px;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .hook-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; color: var(--gold-light);
+    font-weight: 700; flex-shrink: 0; line-height: 1; margin-top: 2px;
+  }
+  .hook-quote {
+    font-size: 14px; font-weight: 600; color: var(--dark-gray);
+    line-height: 1.45; font-style: italic; font-family: 'Playfair Display', serif;
+    margin-bottom: 5px;
+  }
+  .hook-note { font-size: 12px; color: var(--warm-gray); line-height: 1.5; }
+
+  /* ── TIPS ── */
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media(max-width:640px){.tips-grid{grid-template-columns:1fr;}}
+  .tip-card {
+    background: var(--white); border: 1px solid var(--border-mid);
+    border-radius: 4px; padding: 24px;
+  }
+  .tip-icon { font-size: 22px; margin-bottom: 12px; }
+  .tip-title { font-size: 13px; font-weight: 700; color: var(--dark-gray); margin-bottom: 8px; letter-spacing: 0.3px; }
+  .tip-body { font-size: 12.5px; color: var(--mid-gray); line-height: 1.7; }
+  .tip-body strong { color: var(--dark-gray); }
+
+  /* ── HASHTAGS ── */
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+  .hashtag {
+    display: inline-block;
+    font-size: 11.5px; font-weight: 500;
+    padding: 6px 14px; border-radius: 2px;
+    border: 1px solid var(--border-mid);
+    color: var(--mid-gray); background: var(--white);
+    letter-spacing: 0.2px;
+  }
+  .hashtag.hl { background: var(--black); color: var(--gold); border-color: var(--black); }
+
+  /* ── CHECKLIST ── */
+  .checklist { display: flex; flex-direction: column; gap: 12px; }
+  .check-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 14px 18px; background: var(--white);
+    border: 1px solid var(--border-mid); border-radius: 4px;
+  }
+  .check-box {
+    width: 18px; height: 18px; border: 2px solid var(--gold);
+    border-radius: 2px; flex-shrink: 0; margin-top: 2px;
+  }
+  .check-text { font-size: 13px; color: var(--dark-gray); line-height: 1.55; }
+  .check-text span { font-size: 11px; color: var(--warm-gray); display: block; margin-top: 2px; }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--black);
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-style: italic;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .footer-logo span { color: var(--gold); }
+  .footer-sub { font-size: 11px; color: var(--warm-gray); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* ── SECTION BG VARIANTS ── */
+  .bg-cream { background: var(--cream); }
+  .bg-white { background: var(--white); }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ COVER ═══════════════════════════ -->
+<section class="cover">
+  <div class="cover-grain"></div>
+  <div class="cover-tag">Çekim Günü Sunumu — Instagram Reels</div>
+  <div class="cover-logo"><span>Bonne</span>nuit</div>
+  <div class="cover-divider"></div>
+  <div class="cover-headline">
+    Bugün çekiyorsun. Bu sunum sana <strong>ne çekeceğini</strong>,
+    <strong>nasıl kurgulanacağını</strong> ve <strong>hangi hook'u kullanacağını</strong>
+    sahne sahne anlatıyor.
+  </div>
+  <div class="cover-date">23 Nisan 2026 · Çekim Günü</div>
+  <div class="cover-scroll">
+    <div class="cover-scroll-line"></div>
+    <span>Kaydır</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ NEDEN REELS ═══════════════════════════ -->
+<section class="section">
+  <div class="section-tag">Başlamadan Önce</div>
+  <div class="section-title">Neden Reels <em>artık zorunlu</em>?</div>
+  <div class="section-lead">
+    Instagram algoritması 2026'da Reels'e en yüksek organik erişimi veriyor.
+    Doğru format, doğru hook — Bonnenuit görünmesi gereken insanlara ulaşır.
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-cell">
+      <div class="stat-num">%37.9</div>
+      <div class="stat-label">Reels'in diğer formatlara göre fazla erişimi</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">7–15<span style="font-size:18px">sn</span></div>
+      <div class="stat-label">En yüksek tamamlanma oranı verilen uzunluk aralığı</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">3<span style="font-size:18px">sn</span></div>
+      <div class="stat-label">İzleyicinin yarısının ayrıldığı kritik eşik</div>
+    </div>
+  </div>
+
+  <div class="section-tag">Altın Kural</div>
+  <div class="section-title" style="margin-bottom:10px;">En güçlü <em>kare ilk kare</em>.</div>
+  <div class="section-lead" style="margin-bottom:0;">
+    Reels'te ilk 3 saniye her şeydir. İzleyici scroll'u durdurmadıysa hiçbir şeyi görmez.
+    Her fikrin başına en çarpıcı görseli koy — sonra süreci göster.
+  </div>
+</section>
+
+<!-- ═══════════════════════════ BAND ═══════════════════════════ -->
+<div class="band">
+  <div class="band-text">
+    "Kullanıcılar mükemmel çekimleri değil, <em>gerçek ve doyurucu</em> anları paylaşıyor."
+  </div>
+</div>
+
+<!-- ═══════════════════════════ REEL FİKİRLERİ ═══════════════════════════ -->
+<section class="section bg-cream">
+  <div class="section-tag">İçerik Fikirleri</div>
+  <div class="section-title">Bugün çekebileceğin <em>10 Reels</em></div>
+  <div class="section-lead">
+    Her kart = bir çekim fikri. Format, hook, kamera açısı ve müzik önerileri hazır.
+    Tümünü çekmek zorunda değilsin — 3 tanesi bile güçlü bir hafta yapar.
+  </div>
+
+  <div class="reels-grid">
+
+    <!-- 1 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">01</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-fire">🔥 Viral Trend</div>
+          <div class="reel-title">İlk Kesim Anı</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          Bir pastanın tam ortasından kesiliş anı. Katmanlar, krem, meyve dolgusu — hepsi bir anda ortaya çıkıyor. 2026'nın en çok izlenen pastane formatı.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>Yakın plan + yandan:</strong> Bıçak giriyor → yavaş çekim → içi açılıyor. İlk kare doğrudan kesime gir.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>7–10 sn.</strong> Daha uzatma — tatmin hissi hızlı gelmeli.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">ASMR ses + arka planda trending slow piano. Sessize çalışsa bile görselin kendisi yeterli.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"İçini görmeden geçme →"</strong> (ekranın üstüne beyaz yazı)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">02</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-trending">📈 2026 Trendi</div>
+          <div class="reel-title">Malzemeden Tamamına</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          Ham malzemeler masada → çırpma → fırın → tabakta mükemmel ürün. Hızlandırılmış süreç. İnsanlar "nasıl yapıldı" merakını seviyor.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>Kuş bakışı (overhead):</strong> Masa üstünden. Her aşama için sabit açı, hızlandırılmış kurgu.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>12–15 sn.</strong> 4–5 aşamayı sığdır.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">Upbeat Fransız cafe müziği. "Bonne Nuit" adıyla marka tonuna uyuyor.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"Sıfırdan. Görmek ister misin?"</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">03</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-asmr">🔊 ASMR</div>
+          <div class="reel-title">Kruvasan Kıtırdası</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          2026'da "crunchy texture" içerikleri %19 büyüyor. Kruvasanı yavaşça kopar, sesi kaydet. Ses kapalı izleyenlere bile kabuk parçalanması yeterli.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>Ultra yakın:</strong> Parmakların kruvasana temas anı. Kırılmanın anında buhar/kabuk görünsün.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>6–8 sn.</strong> Kısa ama tatmin edici.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">Ses kapatma, sadece doğal kıtırdama sesi. Görüntü yeterince güçlü.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"Sesi aç 🔊"</strong> — sesi açtırırsan etkileşim patlıyor.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">04</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-emotion">💛 Duygu</div>
+          <div class="reel-title">Sabahın İlk Saati</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          Açılış öncesi hazırlık — tepsiler fırından çıkıyor, vitrin diziliyor, kahve demleniyor. "Perde arkası" formatı özgünlük hissi veriyor ve algoritmanın favorisi.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>POV + genel:</strong> Ekmek tepsiyi kaldıran el (POV) → vitrinin dizilişi (genel). Kapsayıcı kurgu.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>10–15 sn.</strong> 3–4 sahne akıyor.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">Yavaş, lo-fi sabah müziği. "Morning routine" hissi.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"Siz uyurken biz..."</strong> — merak uyandırıcı.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">05</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-fire">🔥 Viral</div>
+          <div class="reel-title">Çikolata / Karamel Akışı</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          Eriyik çikolata, karamel sos ya da glaze bir pastanın üzerine yavaşça dökülüyor. "Drizzle" videoları milyonlarca izlenme alıyor. Yavaş çekim şart.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>Yandan + 60fps yavaş çekim:</strong> Akış başlangıcı → pasta üzerinde yayılışı. Parlak ışık şart.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>8–12 sn.</strong> Yavaş çekim zamanı uzatıyor ama hissi hızlı.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">Trending "satisfying" ASMR ses veya soft piano. İkisi de çalışıyor.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"Dayanamadık 🤤"</strong> veya yazısız — görsel kendisi hook.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">06</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-trending">📈 Mini Trend</div>
+          <div class="reel-title">Mini Pasta / Tek Lokmacık</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          "One-bite cakes" menülerde %386 büyüdü. Bonnenuit'te mini versiyon varsa çek. Yoksa normal pastadan parmak büyüklüğünde bir dilim göster. Şirinlik viral ettiriyor.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>Makro yakın + elle tutma:</strong> Parmaklar arasında mini pasta, büyük pasta arka planda bokeh.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>7–10 sn.</strong></div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">Eğlenceli, hafif. "Küçük ama güçlü" hissi.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"Büyük zevk, küçük paket 🍰"</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">07</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-brand">✨ Marka</div>
+          <div class="reel-title">Vitrin Turu</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          Günün ürünlerinin bir turu — vitrin camına yakın, yavaşça kayan kamera. Her ürüne 1–2 saniyelik odak. "Bugün ne var?" sorusunu görüntüyle yanıtlıyor.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>Yatay kaydırma (slide):</strong> Vitrin boyunca yavaş hareket. Kamera sabit, ürün değişiyor ya da tersi.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>10–15 sn.</strong> 5–7 ürün sığar.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">Zarif, minimalist müzik. Bonnenuit'in "iyi gece" lüks atmosferi.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"Bugünkü seçimler 👇"</strong> veya <strong>"Hangi biri senin?"</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">08</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-hook">🪝 Hook Gücü</div>
+          <div class="reel-title">Beklenti vs. Gerçek</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          "Beklenti: X. Gerçek: X+1" formatı 2026'da hâlâ en etkili hook'lardan biri. Hamur kütlesi vs. pişmiş pasta. Basit malzeme vs. karmaşık tat.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>Split anı:</strong> Ham/basit görüntü → cut → muhteşem sonuç. Sert geçiş daha iyi çalışıyor.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>8–12 sn.</strong></div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">Geçişte ses değişimi (monoton → dans müziği) etkiyi katlıyor.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"Beklenti / Gerçek"</strong> metni ekrana yaz. Format tanıdık, izlenmeyi artırıyor.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">09</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-emotion">💛 Duygu</div>
+          <div class="reel-title">Hediye Paketleme Anı</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          Birisi için alınan pasta — kutu kapanıyor, kurdela bağlanıyor, çanta hazırlanıyor. "Sevgi dili" içerikleri etkileşimi duygusal bağ kurarak artırıyor.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>Yakın + eller:</strong> Ürün kutunun içine giriyor → kapanıyor → kurdelası bağlanıyor. Temiz beyaz zemin.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>10–13 sn.</strong></div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">Sıcak, duygu yüklü müzik. İnsanlar sevdikleri için düşünüyor.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"Birisini düşündün mü birden? 🎁"</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="reel-card">
+      <div class="reel-card-header">
+        <div class="reel-num">10</div>
+        <div class="reel-title-wrap">
+          <div class="reel-badge badge-trending">📈 Renk Trendi</div>
+          <div class="reel-title">Mevsim Rengi Ürün Sıralaması</div>
+        </div>
+      </div>
+      <div class="reel-card-body">
+        <div class="reel-desc">
+          İlkbahar: limon sarısı, açık pembe, mint. Ürünleri rengine göre sırala, üstten çek. "Color palette" formatı 2026'da hem estetik hem algoritma dostu.
+        </div>
+        <div class="reel-detail-row">
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎬</div>
+            <div class="reel-detail-label">Kamera</div>
+            <div class="reel-detail-text"><strong>Tam overhead:</strong> Beyaz ya da ahşap zemin. Renkli ürünler renk sırasına dizilmiş. Yavaş zoom out.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">⏱</div>
+            <div class="reel-detail-label">Süre</div>
+            <div class="reel-detail-text"><strong>8–10 sn.</strong></div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">🎵</div>
+            <div class="reel-detail-label">Ses</div>
+            <div class="reel-detail-text">Hafif, bahar hissi veren Indie/Pop. Renk geçişleriyle müzik ritmi uyuşsun.</div>
+          </div>
+          <div class="reel-detail">
+            <div class="reel-detail-icon">💬</div>
+            <div class="reel-detail-label">Hook Yazısı</div>
+            <div class="reel-detail-text"><strong>"Nisan paleti 🌸"</strong> ya da <strong>"Hangisi senin rengin?"</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /reels-grid -->
+</section>
+
+<!-- ═══════════════════════════ HOOK YAZILARI ═══════════════════════════ -->
+<div class="band">
+  <div class="band-text">"İlk 3 saniyede durdurmadın mı? <em>Hiçbir şey</em> görülemez."</div>
+</div>
+
+<section class="section">
+  <div class="section-tag">Hook Kütüphanesi</div>
+  <div class="section-title">Ekrana yazabileceğin <em>hazır hook'lar</em></div>
+  <div class="section-lead">
+    Bu yazıları Reels'in ilk karesinde beyaz kalın yazıyla ekrana koy. Sese gerek yok — görme refleksi çalışıyor.
+  </div>
+
+  <div class="hook-list">
+    <div class="hook-item">
+      <div class="hook-num">01</div>
+      <div>
+        <div class="hook-quote">"İçini görmeden geçme →"</div>
+        <div class="hook-note">Kesim anları için. Merak refleksi devreye giriyor. Ok işareti izlemeyi devam ettiriyor.</div>
+      </div>
+    </div>
+    <div class="hook-item">
+      <div class="hook-num">02</div>
+      <div>
+        <div class="hook-quote">"Siz uyurken biz pişiriyorduk."</div>
+        <div class="hook-note">Sabah hazırlık videoları için. Emek ve özen mesajı. Güven inşa ediyor.</div>
+      </div>
+    </div>
+    <div class="hook-item">
+      <div class="hook-num">03</div>
+      <div>
+        <div class="hook-quote">"Bu sesi duyunca dayanamıyoruz 🔊"</div>
+        <div class="hook-note">ASMR kıtırdama videoları için. Sesi açtırıyor = tam izlenme oranı artıyor.</div>
+      </div>
+    </div>
+    <div class="hook-item">
+      <div class="hook-num">04</div>
+      <div>
+        <div class="hook-quote">"Haftanın en çok satılanı: tahmin et."</div>
+        <div class="hook-note">Merak boşluğu açıyor. Cevap yorumlara geliyor = etkileşim patlaması.</div>
+      </div>
+    </div>
+    <div class="hook-item">
+      <div class="hook-num">05</div>
+      <div>
+        <div class="hook-quote">"Ne zaman görsen, almadan geçemiyorsun değil mi?"</div>
+        <div class="hook-note">Tanıma hissi yaratıyor. İnsanlar "ben de!" diye yorum yazıyor.</div>
+      </div>
+    </div>
+    <div class="hook-item">
+      <div class="hook-num">06</div>
+      <div>
+        <div class="hook-quote">"Bugün sınırlı sayıda. 👀"</div>
+        <div class="hook-note">Aciliyet. "Gideceğim" yorumlarını, kaydet butonunu tetikliyor.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ TEKNİK İPUÇLARI ═══════════════════════════ -->
+<section class="section bg-cream">
+  <div class="section-tag">Çekim Gününde</div>
+  <div class="section-title">Teknik <em>ipuçları</em></div>
+  <div class="section-lead">
+    Ekipman değil, ışık ve açı belirliyor. Telefon kamera yeterli — bu kurallar her şeyin önünde.
+  </div>
+
+  <div class="tips-grid">
+    <div class="tip-card">
+      <div class="tip-icon">☀️</div>
+      <div class="tip-title">IŞIK — En Kritik Etken</div>
+      <div class="tip-body">
+        Doğal ışık tercih et. <strong>Pencerenin yanı</strong> her zaman ring light'tan iyi. Işık kaynağını ürünün yanında tut, arkasında değil. Yansıma varsa beyaz karton tut karşısına.
+      </div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">📐</div>
+      <div class="tip-title">4 Temel Açı</div>
+      <div class="tip-body">
+        <strong>Overhead (kuş bakışı):</strong> Süreç, düzenleme.<br>
+        <strong>45°:</strong> Ürün detayı, katman.<br>
+        <strong>Yandan:</strong> Akış, drizzle.<br>
+        <strong>Yakın plan (makro):</strong> Doku, kırılma. Her ürünü bu 4 açıyla çek, editlemesi kolay.
+      </div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🎬</div>
+      <div class="tip-title">60fps Yavaş Çekim</div>
+      <div class="tip-body">
+        Telefon ayarlarından <strong>60fps veya 120fps</strong> seç. Sonra editörde 0.5x hızına düşür. Çikolata akışı, krema çırpma, kesim anı — hepsi yavaşlatılınca çok daha çarpıcı.
+      </div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🎯</div>
+      <div class="tip-title">Odak & Zemin</div>
+      <div class="tip-body">
+        Ekrana dokunarak <strong>ürüne odakla,</strong> arka planı bulanıklaştır. Zemin: <strong>mermer, beyaz, ahşap.</strong> Renkli veya dağınık zemin dikkat dağıtıyor — çekimden önce temizle.
+      </div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">🧹</div>
+      <div class="tip-title">Sahneyi Temizle</div>
+      <div class="tip-body">
+        Her çekimden önce zemin ve arka plan kontrol. <strong>Priz, kağıt, havlu</strong> görünmemeli. Temizliğin yarısı editlemede zaman kazandırıyor.
+      </div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-icon">⏺</div>
+      <div class="tip-title">Her Şeyi Çek, Sonra Seç</div>
+      <div class="tip-body">
+        Sahnede kafan çalışmaz — her açıdan, her hızda çek. <strong>Editlemede at.</strong> Oran: 30 dakika çekim → 15 saniye Reels. Malzeme bolluğu en iyi editoru sen yapıyor.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ HASHTAG ═══════════════════════════ -->
+<section class="section bg-white">
+  <div class="section-tag">Yayınlarken</div>
+  <div class="section-title">Hashtag <em>stratejisi</em></div>
+  <div class="section-lead">
+    15–20 hashtag ideal. Büyük + orta + küçük karışımı. Sadece dev hashtag kullanma — orada kaybolursun.
+  </div>
+
+  <div style="margin-bottom:28px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:12px;">Bonnenuit'e Özel</div>
+    <div class="tag-cloud">
+      <span class="hashtag hl">#bonnenuit</span>
+      <span class="hashtag hl">#bonnenuitpatisserie</span>
+      <span class="hashtag hl">#bonnenuittürkiye</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:28px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:12px;">Lokasyon & Türkçe</div>
+    <div class="tag-cloud">
+      <span class="hashtag">#pastane</span>
+      <span class="hashtag">#patisserie</span>
+      <span class="hashtag">#türkiyepastane</span>
+      <span class="hashtag">#istanbul</span>
+      <span class="hashtag">#istanbulfood</span>
+      <span class="hashtag">#tatlı</span>
+      <span class="hashtag">#kek</span>
+      <span class="hashtag">#pasta</span>
+    </div>
+  </div>
+
+  <div style="margin-bottom:28px;">
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:12px;">Global Keşif</div>
+    <div class="tag-cloud">
+      <span class="hashtag">#patisserielife</span>
+      <span class="hashtag">#frenchpastry</span>
+      <span class="hashtag">#bakery</span>
+      <span class="hashtag">#croissant</span>
+      <span class="hashtag">#cakesofinstagram</span>
+      <span class="hashtag">#foodphotography</span>
+      <span class="hashtag">#foodreels</span>
+      <span class="hashtag">#satisfying</span>
+      <span class="hashtag">#asmrfood</span>
+      <span class="hashtag">#instafood</span>
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold-dark);text-transform:uppercase;margin-bottom:12px;">Nisan Mevsimi</div>
+    <div class="tag-cloud">
+      <span class="hashtag">#springpastry</span>
+      <span class="hashtag">#lemondesert</span>
+      <span class="hashtag">#matcha</span>
+      <span class="hashtag">#nisan2026</span>
+      <span class="hashtag">#mevsimtatlı</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ ÇEKIM GÜNÜ CHECK ═══════════════════════════ -->
+<section class="section bg-cream">
+  <div class="section-tag">Çekime Başlamadan</div>
+  <div class="section-title">Hızlı <em>kontrol listesi</em></div>
+  <div class="section-lead">
+    Çekim yerine gelmeden önce geç. Her satır tick'lenmedikçe kamera açılmasın.
+  </div>
+
+  <div class="checklist">
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Telefon tam şarjlı ve depolama boş (min. 10GB)
+        <span>Çekim ortasında bitmesi en büyük zaman kaybı.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Çekim yapılacak tüm alanlar temizlendi
+        <span>Priz, bezler, fazla ekipman görünmemeli.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">En güzel/fotojenik ürünler ayrıldı
+        <span>Hepsini sahneye koyma. En iyiler seçildi mi?</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Telefon ayarı: 60fps açık, ızgara görünümü açık
+        <span>Yavaş çekim için. Işık analizini kolaylaştırır.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Doğal ışık kaynağı belirlendi
+        <span>Pencere tarafı. Güneş nerede olacak?</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Kamera tripod veya sabit destek var
+        <span>Overhead çekimler için şart. Sallanan görüntü profesyonelliği öldürür.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Hook yazıları ve caption'lar önceden hazır
+        <span>Çekim sonrası yazmak zaman alıyor. Şimdi yaz, ekle.</span>
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-text">Yayın takvimi kararlaştırıldı (haftada 3–5 Reel hedef)
+        <span>Bugün çekilen içeriklerin yayın tarihleri planlandı mı?</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ ÖNERİLEN PROGRAM ═══════════════════════════ -->
+<section class="section">
+  <div class="section-tag">Çekim Günü Önerisi</div>
+  <div class="section-title">Zaman <em>planı</em></div>
+  <div class="section-lead">
+    Tüm günü tüketme. 2–3 saatte 5 farklı Reels çekimi yapılabilir.
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--border-mid);border-radius:4px;overflow:hidden;">
+    <div style="display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--border-mid);">
+      <div style="padding:18px 20px;background:var(--black);color:var(--gold);font-size:13px;font-weight:700;font-family:'Playfair Display',serif;">Sabah</div>
+      <div style="padding:18px 20px;background:var(--white);font-size:13px;color:var(--dark-gray);line-height:1.6;"><strong>Açılış & hazırlık çekimi (Fikir #04)</strong><br><span style="color:var(--warm-gray);font-size:12px;">Vitrin doldurulurken, tepsiler çıkarken. Doğal ışık en iyi bu saatte.</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--border-mid);">
+      <div style="padding:18px 20px;background:var(--black);color:var(--gold);font-size:13px;font-weight:700;font-family:'Playfair Display',serif;">Öğleden Önce</div>
+      <div style="padding:18px 20px;background:var(--cream);font-size:13px;color:var(--dark-gray);line-height:1.6;"><strong>Ürün çekimleri: kesim, drizzle, ASMR (Fikir #01, #05, #03)</strong><br><span style="color:var(--warm-gray);font-size:12px;">Bu üç Reels bugünün en viral adayları. Sırayla çek.</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1fr;border-bottom:1px solid var(--border-mid);">
+      <div style="padding:18px 20px;background:var(--black);color:var(--gold);font-size:13px;font-weight:700;font-family:'Playfair Display',serif;">Öğleden Sonra</div>
+      <div style="padding:18px 20px;background:var(--white);font-size:13px;color:var(--dark-gray);line-height:1.6;"><strong>Vitrin turu + mevsim rengi (Fikir #07, #10)</strong><br><span style="color:var(--warm-gray);font-size:12px;">Hızlı çekimler. Güneş kısık olursa bokeh etkisi güzel çıkar.</span></div>
+    </div>
+    <div style="display:grid;grid-template-columns:100px 1fr;">
+      <div style="padding:18px 20px;background:var(--black);color:var(--gold);font-size:13px;font-weight:700;font-family:'Playfair Display',serif;">Akşam</div>
+      <div style="padding:18px 20px;background:var(--cream);font-size:13px;color:var(--dark-gray);line-height:1.6;"><strong>Hediye paketleme (Fikir #09)</strong><br><span style="color:var(--warm-gray);font-size:12px;">Akşam saatinde daha sıcak ışık. Satışa itmek için "bugün sınırlı" hook'u kullan.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+<footer class="footer">
+  <div class="footer-logo"><span>Bonne</span>nuit</div>
+  <div class="footer-sub" style="margin-bottom:16px;">Çekim Günü Sunum · 23 Nisan 2026</div>
+  <div style="font-size:11px;color:var(--warm-gray);opacity:0.5;">Hazırlayan: Claude Code / Agentlar Workspace</div>
+</footer>
+
+</body>
+</html>

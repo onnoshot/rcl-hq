@@ -1,0 +1,3228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Mare by Didi Otel · Naming &amp; Identity Direction</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sand: #f5f0e8;
+    --stone: #e8e0d0;
+    --warm-white: #faf8f4;
+    --parchment: #ede7da;
+    --navy: #0d1b2a;
+    --deep-navy: #07111c;
+    --mid-navy: #152238;
+    --slate: #4a5568;
+    --sea-grey: #8b9aaa;
+    --gold: #b8965a;
+    --gold-light: #d4af72;
+    --gold-pale: #f0e6cc;
+    --cream: #fdf9f2;
+    --charcoal: #2d3748;
+    --mist: #c8d4de;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── NOISE TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .serif { font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif; }
+  .playfair { font-family: 'Playfair Display', 'Palatino Linotype', Georgia, serif; }
+
+  h1, h2, h3 {
+    font-family: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
+    font-weight: 400;
+    line-height: 1.15;
+  }
+
+  /* ─── SCROLL REVEAL ─── */
+  /* Default: visible. JS adds animation only when it loads. */
+  .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+  }
+  /* When JS is active, body gets .js-ready and reveals animate in */
+  .js-ready .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  .js-ready .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* ─── SECTION BASE ─── */
+  section {
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+    section { padding: 80px 0; }
+  }
+
+  /* ─── EYEBROW LABEL ─── */
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--stone) 20%, var(--stone) 80%, transparent);
+    margin: 0;
+  }
+
+  .divider-gold {
+    background: linear-gradient(90deg, transparent, var(--gold-light) 20%, var(--gold-light) 80%, transparent);
+    opacity: 0.4;
+  }
+
+  /* ─── SECTION NUMBER ─── */
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 120px;
+    font-weight: 300;
+    color: var(--stone);
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION 1 — HERO
+  ══════════════════════════════════════ */
+  #hero {
+    min-height: 100vh;
+    background: var(--deep-navy);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Abstract wave lines */
+  #hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(184,150,90,0.07) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 80% at 20% 80%, rgba(13,27,42,0.9) 0%, transparent 60%);
+    z-index: 1;
+  }
+
+  .hero-waves {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .hero-waves svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0.12;
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 48px;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-inner { padding: 80px 24px; }
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 56px;
+  }
+
+  .badge {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(212,175,114,0.85);
+    border: 1px solid rgba(184,150,90,0.3);
+    padding: 7px 14px;
+    backdrop-filter: blur(8px);
+    background: rgba(184,150,90,0.06);
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-subtitle-line {
+    width: 56px;
+    height: 1px;
+    background: var(--gold);
+    margin: 28px 0;
+  }
+
+  @keyframes expandLine {
+    from { width: 0; opacity: 0; }
+    to { width: 56px; opacity: 1; }
+  }
+
+  .hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--mist);
+    letter-spacing: 0.04em;
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    margin-top: 64px;
+  }
+
+  .hero-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .hero-meta-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sea-grey);
+  }
+
+  .hero-meta-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--sand);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-meta-sep {
+    width: 1px;
+    height: 32px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  .hero-agency {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    z-index: 2;
+    text-align: right;
+  }
+
+  .hero-agency-label {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--sea-grey);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .hero-agency-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Hero animasyonları — sadece JS aktifken çalışır */
+  .js-ready .hero-badges       { animation: fadeUp 0.9s 0.2s both; }
+  .js-ready .hero-title        { animation: fadeUp 0.9s 0.4s both; }
+  .js-ready .hero-subtitle-line{ animation: expandLine 0.9s 0.7s both; }
+  .js-ready .hero-subtitle     { animation: fadeUp 0.9s 0.6s both; }
+  .js-ready .hero-meta         { animation: fadeUp 0.9s 0.9s both; }
+  .js-ready .hero-agency       { animation: fadeUp 0.9s 1.1s both; }
+  .js-ready .scroll-indicator  { animation: fadeUp 0.9s 1.3s both; }
+
+  /* ═══════════════════════════════════════
+     SECTION 2 — PROJECT BRIEF
+  ══════════════════════════════════════ */
+  #brief {
+    background: var(--warm-white);
+  }
+
+  .brief-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 64px;
+  }
+
+  @media (max-width: 900px) {
+    .brief-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .brief-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(26px, 3.5vw, 38px);
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+
+  .brief-lead em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .brief-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .brief-point {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+
+  .brief-point-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+    padding-top: 2px;
+    min-width: 20px;
+  }
+
+  .brief-point-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+
+  .brief-point-text strong {
+    color: var(--navy);
+    font-weight: 500;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION 3 — CONCEPT DNA
+  ══════════════════════════════════════ */
+  #concept {
+    background: var(--navy);
+    color: var(--sand);
+  }
+
+  #concept .eyebrow { color: var(--gold-light); }
+  #concept .eyebrow::before { background: var(--gold-light); }
+
+  .concept-header {
+    max-width: 640px;
+    margin-bottom: 72px;
+  }
+
+  .concept-title {
+    font-size: clamp(36px, 5vw, 64px);
+    color: var(--sand);
+    margin-top: 12px;
+  }
+
+  .concept-subtitle {
+    font-size: 15px;
+    color: var(--sea-grey);
+    line-height: 1.7;
+    margin-top: 20px;
+    font-weight: 300;
+  }
+
+  .dna-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  @media (max-width: 900px) {
+    .dna-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .dna-grid { grid-template-columns: 1fr; }
+  }
+
+  .dna-card {
+    background: rgba(13,27,42,0.8);
+    padding: 40px 32px;
+    transition: background 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .dna-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .dna-card:hover { background: rgba(21,34,56,0.9); }
+  .dna-card:hover::before { opacity: 0.6; }
+
+  .dna-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 20px;
+    opacity: 0.6;
+  }
+
+  .dna-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--sand);
+    margin-bottom: 10px;
+    letter-spacing: 0.03em;
+  }
+
+  .dna-card-desc {
+    font-size: 12.5px;
+    color: var(--sea-grey);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* last card spans 2 if 7 items */
+  .dna-card:nth-child(7) {
+    grid-column: span 2;
+  }
+
+  @media (max-width: 900px) {
+    .dna-card:nth-child(7) { grid-column: span 1; }
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION 4 — NAMING STRATEGY
+  ══════════════════════════════════════ */
+  #naming {
+    background: var(--cream);
+  }
+
+  .naming-intro {
+    max-width: 640px;
+    margin-bottom: 72px;
+  }
+
+  .naming-intro-text {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.8;
+    margin-top: 20px;
+  }
+
+  .naming-options {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .naming-option {
+    background: var(--warm-white);
+    border: 1px solid var(--stone);
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+
+  .naming-option.featured {
+    border-color: var(--gold);
+    background: var(--warm-white);
+  }
+
+  .naming-option-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 36px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .naming-option-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 4vw, 40px);
+    font-weight: 400;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+  }
+
+  .naming-option.featured .naming-option-title {
+    color: var(--gold);
+  }
+
+  .naming-featured-tag {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    padding: 5px 12px;
+    margin-left: 16px;
+  }
+
+  .naming-option-body {
+    padding: 0 36px 36px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 700px) {
+    .naming-option-body { grid-template-columns: 1fr 1fr; }
+    .naming-option-header { padding: 20px 20px; }
+    .naming-option-body { padding: 0 20px 20px; }
+  }
+
+  .naming-attr {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .naming-attr-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sea-grey);
+  }
+
+  .naming-attr-score {
+    display: flex;
+    gap: 3px;
+    align-items: center;
+  }
+
+  .score-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--stone);
+  }
+
+  .score-dot.filled { background: var(--gold); }
+
+  .naming-attr-note {
+    font-size: 12px;
+    color: var(--slate);
+    line-height: 1.5;
+  }
+
+  .naming-pros-cons {
+    padding: 0 36px 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 700px) {
+    .naming-pros-cons { grid-template-columns: 1fr; padding: 0 20px 20px; }
+  }
+
+  .pros-cons-block h4 {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .pros-cons-block.pros h4 { color: #5a8a6a; }
+  .pros-cons-block.cons h4 { color: #9a7060; }
+
+  .pros-cons-block ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pros-cons-block li {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .pros-cons-block.pros li::before {
+    content: '+';
+    position: absolute;
+    left: 0;
+    color: #5a8a6a;
+    font-weight: 600;
+  }
+
+  .pros-cons-block.cons li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: #9a7060;
+    font-size: 10px;
+    top: 2px;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION 5 — WORLD REFERENCES
+  ══════════════════════════════════════ */
+  #references {
+    background: var(--parchment);
+  }
+
+  .ref-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    margin-top: 64px;
+  }
+
+  @media (max-width: 768px) {
+    .ref-cols { grid-template-columns: 1fr; gap: 48px; }
+  }
+
+  .ref-block {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .ref-insight {
+    padding: 32px;
+    border-left: 2px solid var(--gold);
+    background: rgba(255,255,255,0.5);
+  }
+
+  .ref-insight-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+
+  .ref-insight-text {
+    font-size: 13.5px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+
+  .ref-quote {
+    padding: 40px;
+    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ref-quote::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    right: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 180px;
+    color: rgba(184,150,90,0.08);
+    line-height: 1;
+  }
+
+  .ref-quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--sand);
+    line-height: 1.5;
+    position: relative;
+  }
+
+  .ref-quote-source {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 20px;
+    display: block;
+    position: relative;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION 6 — FINAL RECOMMENDATION
+  ══════════════════════════════════════ */
+  #recommendation {
+    background: var(--deep-navy);
+    color: var(--sand);
+    text-align: center;
+    padding: 140px 0;
+  }
+
+  #recommendation .eyebrow { color: var(--gold-light); }
+  #recommendation .eyebrow::before { background: var(--gold-light); }
+
+  .rec-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 9vw, 110px);
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 1;
+    letter-spacing: 0.04em;
+    margin: 20px 0 8px;
+    position: relative;
+    display: inline-block;
+  }
+
+  .rec-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 300;
+    color: var(--sea-grey);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 64px;
+  }
+
+  .rec-pillars {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    margin: 64px 0;
+    text-align: left;
+  }
+
+  @media (max-width: 900px) {
+    .rec-pillars { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 480px) {
+    .rec-pillars { grid-template-columns: 1fr; }
+  }
+
+  .rec-pillar {
+    background: rgba(7,17,28,0.6);
+    padding: 32px 24px;
+    border-top: 1px solid rgba(184,150,90,0.2);
+    transition: background 0.3s ease;
+  }
+
+  .rec-pillar:hover {
+    background: rgba(21,34,56,0.7);
+  }
+
+  .rec-pillar-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 16px;
+    opacity: 0.5;
+  }
+
+  .rec-pillar-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  .rec-pillar-text {
+    font-size: 12px;
+    color: var(--sea-grey);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .rec-usage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+    text-align: left;
+  }
+
+  @media (max-width: 600px) {
+    .rec-usage { grid-template-columns: 1fr; }
+  }
+
+  .usage-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 28px;
+  }
+
+  .usage-card-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .usage-card-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--sand);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+  }
+
+  .usage-card-note {
+    font-size: 12px;
+    color: var(--sea-grey);
+    margin-top: 8px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION 7 — BRAND ARCHITECTURE
+  ══════════════════════════════════════ */
+  #architecture {
+    background: var(--warm-white);
+  }
+
+  .arch-diagram {
+    margin: 72px auto 0;
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .arch-node {
+    width: 100%;
+    padding: 36px 48px;
+    text-align: center;
+    position: relative;
+  }
+
+  .arch-node-master {
+    background: var(--navy);
+    color: var(--sand);
+  }
+
+  .arch-node-endorsed {
+    background: var(--gold-pale);
+    border: 2px solid var(--gold);
+    margin-top: 0;
+  }
+
+  .arch-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 0;
+    position: relative;
+  }
+
+  .arch-connector-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--navy), var(--gold));
+  }
+
+  .arch-connector-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sea-grey);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(16px, -50%);
+    white-space: nowrap;
+  }
+
+  .arch-node-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .arch-node-master .arch-node-label { color: var(--sea-grey); }
+  .arch-node-endorsed .arch-node-label { color: var(--gold); }
+
+  .arch-node-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+
+  .arch-node-master .arch-node-name { color: var(--sand); }
+  .arch-node-endorsed .arch-node-name { color: var(--navy); }
+
+  .arch-node-desc {
+    font-size: 12.5px;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .arch-node-master .arch-node-desc { color: var(--sea-grey); }
+  .arch-node-endorsed .arch-node-desc { color: var(--slate); }
+
+  .arch-attributes {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  @media (max-width: 700px) {
+    .arch-attributes { grid-template-columns: 1fr; }
+    .arch-node { padding: 24px 28px; }
+  }
+
+  .arch-attr-card {
+    padding: 28px;
+    border: 1px solid var(--stone);
+    background: var(--cream);
+  }
+
+  .arch-attr-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+
+  .arch-attr-text {
+    font-size: 13px;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION 8 — LOGO DIRECTIONS
+  ══════════════════════════════════════ */
+  #logo {
+    background: var(--navy);
+    color: var(--sand);
+  }
+
+  #logo .eyebrow { color: var(--gold-light); }
+  #logo .eyebrow::before { background: var(--gold-light); }
+
+  .logo-intro {
+    max-width: 640px;
+    margin-bottom: 80px;
+  }
+
+  .logo-directions {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .logo-dir {
+    background: rgba(7,17,28,0.8);
+    border: 1px solid rgba(255,255,255,0.06);
+    overflow: hidden;
+    transition: border-color 0.4s ease;
+  }
+
+  .logo-dir:hover { border-color: rgba(184,150,90,0.3); }
+
+  .logo-dir-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+
+  @media (max-width: 768px) {
+    .logo-dir-inner { grid-template-columns: 1fr; }
+  }
+
+  .logo-preview {
+    background: rgba(5,12,20,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 64px 48px;
+    min-height: 260px;
+    border-right: 1px solid rgba(255,255,255,0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo-preview::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(184,150,90,0.04), transparent);
+  }
+
+  @media (max-width: 768px) {
+    .logo-preview { min-height: 220px; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  }
+
+  .logo-info {
+    padding: 48px;
+  }
+
+  .logo-dir-num {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .logo-dir-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: var(--sand);
+    font-weight: 400;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .logo-dir-desc {
+    font-size: 13.5px;
+    color: var(--sea-grey);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 28px;
+  }
+
+  .logo-attrs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .logo-attr {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .logo-attr-key {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sea-grey);
+  }
+
+  .logo-attr-val {
+    font-size: 12.5px;
+    color: var(--mist);
+    line-height: 1.5;
+  }
+
+  /* ─── SVG LOGO STYLES ─── */
+
+  /* 1 — EDITORIAL WORDMARK */
+  .logo-editorial text {
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION 9 — MOCKUPS
+  ══════════════════════════════════════ */
+  #mockups {
+    background: var(--parchment);
+  }
+
+  .mockup-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 64px;
+  }
+
+  @media (max-width: 900px) {
+    .mockup-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 580px) {
+    .mockup-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .mockup-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+    border: 1px solid var(--stone);
+  }
+
+  .mockup-surface {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mockup-label-area {
+    padding: 12px 16px;
+    background: white;
+  }
+
+  .mockup-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--sea-grey);
+  }
+
+  /* Mockup surfaces */
+  .mock-menu { background: var(--navy); }
+  .mock-plate { background: #f0ede8; }
+  .mock-napkin { background: #e8e3da; }
+  .mock-wine { background: #1a0f0a; }
+  .mock-signage { background: var(--deep-navy); }
+
+  /* ═══════════════════════════════════════
+     SECTION 10 — VERBAL IDENTITY
+  ══════════════════════════════════════ */
+  #verbal {
+    background: var(--warm-white);
+  }
+
+  .verbal-chars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 48px 0;
+  }
+
+  .verbal-char {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--navy);
+    border: 1px solid var(--stone);
+    padding: 10px 20px;
+    letter-spacing: 0.06em;
+    transition: all 0.3s ease;
+    cursor: default;
+  }
+
+  .verbal-char:hover {
+    background: var(--navy);
+    color: var(--sand);
+    border-color: var(--navy);
+  }
+
+  .tone-block {
+    background: var(--navy);
+    padding: 48px;
+    margin-bottom: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tone-block::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 30%;
+    background: linear-gradient(90deg, transparent, rgba(184,150,90,0.04));
+  }
+
+  .tone-block-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .tone-block-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: var(--sand);
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 680px;
+  }
+
+  .taglines-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+  }
+
+  @media (max-width: 600px) {
+    .taglines-grid { grid-template-columns: 1fr; }
+  }
+
+  .tagline-item {
+    padding: 28px 32px;
+    border: 1px solid var(--stone);
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+
+  .tagline-item:hover { border-color: var(--gold); }
+
+  .tagline-lang {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sea-grey);
+    margin-bottom: 10px;
+  }
+
+  .tagline-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--navy);
+    line-height: 1.4;
+  }
+
+  .tagline-note {
+    font-size: 11.5px;
+    color: var(--sea-grey);
+    margin-top: 8px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* ═══════════════════════════════════════
+     SECTION 11 — CONCLUSION
+  ══════════════════════════════════════ */
+  #conclusion {
+    background: var(--deep-navy);
+    color: var(--sand);
+    padding: 160px 0;
+  }
+
+  .conclusion-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .conclusion-lead {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5.5vw, 70px);
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 48px;
+  }
+
+  .conclusion-lead em { font-style: italic; color: var(--gold-light); }
+
+  .conclusion-recs {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin-bottom: 80px;
+  }
+
+  .conclusion-rec {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    padding: 28px 32px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: background 0.3s ease;
+  }
+
+  .conclusion-rec:hover { background: rgba(255,255,255,0.05); }
+
+  .conclusion-rec-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 28px;
+  }
+
+  .conclusion-rec-content {}
+
+  .conclusion-rec-title {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sea-grey);
+    margin-bottom: 6px;
+  }
+
+  .conclusion-rec-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    color: var(--sand);
+    font-weight: 400;
+    margin-bottom: 6px;
+    letter-spacing: 0.04em;
+  }
+
+  .conclusion-rec-note {
+    font-size: 13px;
+    color: var(--sea-grey);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  .conclusion-final {
+    padding: 48px;
+    border-left: 2px solid var(--gold);
+    background: rgba(184,150,90,0.04);
+    margin-bottom: 80px;
+  }
+
+  .conclusion-final-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    color: var(--sand);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  .footer-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+  }
+
+  .footer-info {
+    text-align: right;
+  }
+
+  .footer-info-line {
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--sea-grey);
+    letter-spacing: 0.08em;
+    line-height: 1.7;
+  }
+
+  .footer-credit {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 8px;
+  }
+
+  /* ─── UTILITY ─── */
+  .text-gold { color: var(--gold); }
+  .mt-8 { margin-top: 8px; }
+  .mt-12 { margin-top: 12px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-20 { margin-top: 20px; }
+  .mt-32 { margin-top: 32px; }
+
+  /* section header reusable */
+  .section-header { margin-bottom: 64px; }
+  .section-title {
+    font-size: clamp(36px, 5vw, 56px);
+    color: var(--navy);
+    margin-top: 12px;
+    line-height: 1.15;
+  }
+
+  .light .section-title { color: var(--sand); }
+
+  /* ─── SCORE BARS ─── */
+  .score-bar-section { /* observed wrapper */ }
+
+  .score-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .score-bar-row:last-child { border-bottom: none; }
+
+  .score-bar-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--sea-grey);
+    min-width: 180px;
+    flex-shrink: 0;
+  }
+
+  .score-bar-track {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.07);
+    position: relative;
+    overflow: visible;
+  }
+
+  .score-bar-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    width: 0%;
+    transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .score-bar-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--gold-light);
+    min-width: 36px;
+    text-align: right;
+  }
+
+  @media (max-width: 600px) {
+    .score-bar-label { min-width: 120px; font-size: 11px; }
+  }
+
+  /* ─── MOBILE EXTRAS ─── */
+  @media (max-width: 540px) {
+    .hero-meta { flex-direction: column; gap: 16px; align-items: flex-start; }
+    .hero-meta-sep { display: none; }
+    .naming-option-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .logo-info { padding: 28px 20px; }
+    .logo-dir-num, .logo-dir-name { padding: 0; }
+    .logo-attrs { grid-template-columns: 1fr; }
+    .section-num { font-size: 80px; top: 20px; right: 16px; }
+    .arch-node { padding: 20px 20px; }
+    .rec-pillars { grid-template-columns: 1fr; }
+    .conclusion-rec { flex-direction: column; gap: 12px; }
+  }
+
+  /* ─── SCROLL INDICATOR ─── */
+  .scroll-indicator {
+    position: absolute;
+    bottom: 48px;
+    left: 48px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .scroll-line {
+    width: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gold);
+    animation: scrollAnim 2s 2s infinite;
+  }
+
+  @keyframes scrollAnim {
+    0% { left: -100%; }
+    50% { left: 0; }
+    100% { left: 100%; }
+  }
+
+  .scroll-text {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 20px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.4s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(7,17,28,0.92);
+    backdrop-filter: blur(16px);
+    padding: 14px 48px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--gold-light);
+    letter-spacing: 0.12em;
+    text-decoration: none;
+  }
+
+  .nav-label {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 16px 20px; }
+    nav.scrolled { padding: 12px 20px; }
+  }
+
+  /* ─── NAMING OPTION TOGGLE ─── */
+  .naming-toggle-icon {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .naming-toggle-icon::before,
+  .naming-toggle-icon::after {
+    content: '';
+    position: absolute;
+    background: var(--sea-grey);
+    transition: all 0.3s ease;
+  }
+  .naming-toggle-icon::before {
+    width: 12px; height: 1px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .naming-toggle-icon::after {
+    width: 1px; height: 12px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .naming-option.open .naming-toggle-icon::after { transform: translate(-50%, -50%) rotate(90deg); opacity: 0; }
+
+  .naming-option-collapse {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s cubic-bezier(0.16,1,0.3,1);
+  }
+  .naming-option.open .naming-option-collapse { max-height: 600px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-brand">La Mare</a>
+  <span class="nav-label">Naming &amp; Identity · UniqBee</span>
+</nav>
+
+<!-- ═══════════════════════════════════════
+     SECTION 1 — HERO
+══════════════════════════════════════ -->
+<section id="hero">
+
+  <div class="hero-waves">
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-100 500 Q200 420 500 500 Q800 580 1100 480 Q1300 420 1540 500" stroke="rgba(184,150,90,0.6)" stroke-width="1" fill="none"/>
+      <path d="M-100 540 Q250 460 550 540 Q850 620 1150 520 Q1350 460 1540 540" stroke="rgba(184,150,90,0.3)" stroke-width="1" fill="none"/>
+      <path d="M-100 580 Q220 500 520 580 Q820 660 1120 560 Q1320 500 1540 580" stroke="rgba(184,150,90,0.15)" stroke-width="1" fill="none"/>
+      <path d="M-100 460 Q180 380 480 460 Q780 540 1080 440 Q1280 380 1540 460" stroke="rgba(184,150,90,0.2)" stroke-width="0.5" fill="none"/>
+      <path d="M200 100 Q400 200 600 150 Q800 100 1000 200 Q1200 300 1400 200" stroke="rgba(255,255,255,0.04)" stroke-width="80" fill="none"/>
+      <circle cx="1100" cy="200" r="300" fill="rgba(184,150,90,0.03)"/>
+      <circle cx="200" cy="700" r="200" fill="rgba(21,34,56,0.4)"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner container">
+
+    <div class="hero-badges">
+      <span class="badge">Naming Strategy</span>
+      <span class="badge">Brand Identity</span>
+      <span class="badge">Luxury Hospitality</span>
+      <span class="badge">Fine Dining Concept</span>
+    </div>
+
+    <h1 class="hero-title">
+      Didi Otel<br>
+      <em>Fine Dining Restaurant</em><br>
+      Naming &amp; Identity Direction
+    </h1>
+
+    <div class="hero-subtitle-line"></div>
+
+    <p class="hero-subtitle">
+      Denizden ilham alan, destinasyon değeri taşıyan<br>yeni bir gastronomi markasının adını koymak.
+    </p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Proje</span>
+        <span class="hero-meta-value">Didi Otel Restoran</span>
+      </div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Hizmet</span>
+        <span class="hero-meta-value">Naming + Identity</span>
+      </div>
+      <div class="hero-meta-sep"></div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Ajans</span>
+        <span class="hero-meta-value">UniqBee</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+
+  <div class="hero-agency">
+    <span class="hero-agency-label">Prepared by</span>
+    <span class="hero-agency-name">UniqBee</span>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 2 — PROJECT BRIEF
+══════════════════════════════════════ -->
+<section id="brief">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Proje Özeti</span>
+      <h2 class="section-title">Bu restoran neden<br><em>farklı</em> olmalı?</h2>
+    </div>
+
+    <div class="brief-grid">
+      <div class="reveal reveal-delay-1">
+        <p class="brief-lead">
+          Didi Otel'in bahçesi, sıradan bir yeme-içme alanına değil,
+          <em>kendi başına çekim gücü olan</em> bir gastronomi deneyimine ev sahipliği yapacak.
+        </p>
+      </div>
+
+      <ul class="brief-points">
+        <li class="brief-point reveal reveal-delay-1">
+          <span class="brief-point-num">01</span>
+          <p class="brief-point-text"><strong>Ayrı bir marka kimliği gereklidir.</strong> Restoranın Didi Otel ile ortak bir kimliği olursa destinasyon değeri otel konuklarıyla sınırlı kalır; ayrı bir marka, dış misafiri de çeker.</p>
+        </li>
+        <li class="brief-point reveal reveal-delay-2">
+          <span class="brief-point-num">02</span>
+          <p class="brief-point-text"><strong>Deniz ürünleri restoranı, Sapanca'da niş bir konum.</strong> Göl ve orman baskın; deniz temalı fine dining bu bölgede özgün ve hatırlanabilir bir kontrast yaratır.</p>
+        </li>
+        <li class="brief-point reveal reveal-delay-3">
+          <span class="brief-point-num">03</span>
+          <p class="brief-point-text"><strong>Romantik akşam deneyimi premium fiyatlandırmayı meşrulaştırır.</strong> Doğru marka adı ve kimliği, fiyat hassasiyetini azaltır ve tekrar ziyareti artırır.</p>
+        </li>
+        <li class="brief-point reveal reveal-delay-4">
+          <span class="brief-point-num">04</span>
+          <p class="brief-point-text"><strong>Sosyal medya paylaşılabilirliği bir büyüme kanalıdır.</strong> Doğru estetik ve isim, organik içerik üretimini tetikler. Bu, restoran için en düşük maliyetli ve en sürdürülebilir trafik kaynağıdır.</p>
+        </li>
+        <li class="brief-point reveal reveal-delay-5">
+          <span class="brief-point-num">05</span>
+          <p class="brief-point-text"><strong>Uzun vadeli marka sermayesi inşa edilmeli.</strong> İyi seçilmiş bir isim, gelecekteki pop-up, catering veya şehir içi expansion için temel oluşturur.</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 3 — CONCEPT DNA
+══════════════════════════════════════ -->
+<section id="concept">
+  <div class="container">
+    <div class="concept-header reveal">
+      <span class="eyebrow">Konsept DNA</span>
+      <h2 class="section-title" style="color:var(--sand);">Karakteri tanımla,<br>markayı inşa et.</h2>
+      <p class="concept-subtitle">Her güçlü marka, birkaç köklü değerin üzerine oturur. Bu restoranı diğerlerinden ayıran sekiz temel kavram:</p>
+    </div>
+
+    <div class="dna-grid">
+      <!-- Card 1 -->
+      <div class="dna-card reveal reveal-delay-1">
+        <svg class="dna-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 22 Q10 14 16 18 Q22 22 28 14" stroke="rgba(184,150,90,0.7)" stroke-width="1.2" fill="none"/>
+          <path d="M4 26 Q10 18 16 22 Q22 26 28 18" stroke="rgba(184,150,90,0.3)" stroke-width="0.8" fill="none"/>
+        </svg>
+        <h3 class="dna-card-title">Sea-Led Fine Dining</h3>
+        <p class="dna-card-desc">Menünün kalbinde mevsimsel, özenle seçilmiş ve ustalıkla yorumlanmış deniz ürünleri yer alır. Deniz bir tema değil, bir felsefedir.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="dna-card reveal reveal-delay-2">
+        <svg class="dna-icon" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="10" stroke="rgba(184,150,90,0.5)" stroke-width="1"/>
+          <path d="M16 6 V26 M6 16 H26" stroke="rgba(184,150,90,0.3)" stroke-width="0.6"/>
+          <circle cx="16" cy="16" r="2" fill="rgba(184,150,90,0.7)"/>
+        </svg>
+        <h3 class="dna-card-title">Destination Dining</h3>
+        <p class="dna-card-desc">Yemek için Sapanca'ya gelinir; Sapanca'dayken gidilir değil. Bu fark, restoranın çekim gücünü tanımlar.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="dna-card reveal reveal-delay-3">
+        <svg class="dna-icon" viewBox="0 0 32 32" fill="none">
+          <rect x="8" y="8" width="16" height="16" stroke="rgba(184,150,90,0.5)" stroke-width="1" fill="none"/>
+          <rect x="12" y="12" width="8" height="8" stroke="rgba(184,150,90,0.3)" stroke-width="0.6" fill="none"/>
+        </svg>
+        <h3 class="dna-card-title">Quiet Luxury</h3>
+        <p class="dna-card-desc">Sessiz lüks; gösteriş değil, derinlik. Kaliteyi anlayan misafir için titizlikle hazırlanmış her detay.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="dna-card reveal reveal-delay-4">
+        <svg class="dna-icon" viewBox="0 0 32 32" fill="none">
+          <path d="M8 24 C8 24 12 8 16 16 C20 24 24 8 24 8" stroke="rgba(184,150,90,0.6)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+        </svg>
+        <h3 class="dna-card-title">Romantic Evenings</h3>
+        <p class="dna-card-desc">Akşamın ilerlemesiyle derinleşen bir atmosfer; ışık, ses, ritim ve servis birlikte orchestrate edilir.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="dna-card reveal reveal-delay-1">
+        <svg class="dna-icon" viewBox="0 0 32 32" fill="none">
+          <path d="M6 26 Q16 10 26 26" stroke="rgba(184,150,90,0.5)" stroke-width="1" fill="none"/>
+          <circle cx="16" cy="14" r="3" stroke="rgba(184,150,90,0.4)" stroke-width="0.8" fill="none"/>
+        </svg>
+        <h3 class="dna-card-title">Seasonal Seafood</h3>
+        <p class="dna-card-desc">Menü mevsimlere göre değişir. Bu bir kısıtlama değil, otantikliğin ve tazeliğin açık ifadesidir.</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="dna-card reveal reveal-delay-2">
+        <svg class="dna-icon" viewBox="0 0 32 32" fill="none">
+          <path d="M6 20 H26 M6 20 L16 8 L26 20" stroke="rgba(184,150,90,0.5)" stroke-width="1" fill="none" stroke-linejoin="round"/>
+        </svg>
+        <h3 class="dna-card-title">Elevated Local</h3>
+        <p class="dna-card-desc">Yerel hammaddeyi dünya standartlarıyla işlemek; Sapanca'yı bir gastronomi haritasına koymak.</p>
+      </div>
+      <!-- Card 7 — spans 2 cols -->
+      <div class="dna-card reveal reveal-delay-3">
+        <svg class="dna-icon" viewBox="0 0 32 32" fill="none">
+          <path d="M6 16 Q11 6 16 16 Q21 26 26 16" stroke="rgba(184,150,90,0.6)" stroke-width="1.2" fill="none"/>
+          <circle cx="16" cy="16" r="1.5" fill="rgba(184,150,90,0.8)"/>
+          <circle cx="6" cy="16" r="1.5" fill="rgba(184,150,90,0.4)"/>
+          <circle cx="26" cy="16" r="1.5" fill="rgba(184,150,90,0.4)"/>
+        </svg>
+        <h3 class="dna-card-title">Signature Hospitality</h3>
+        <p class="dna-card-desc">Didi Otel'in misafir anlayışı restoran deneyimine taşınır; servis bir görev değil, bir ifadedir. Her temas noktası markanın karakter beyanıdır.</p>
+      </div>
+      <!-- Card 8 -->
+      <div class="dna-card reveal reveal-delay-4">
+        <svg class="dna-icon" viewBox="0 0 32 32" fill="none">
+          <path d="M16 4 L20 12 L28 12 L22 18 L24 26 L16 22 L8 26 L10 18 L4 12 L12 12 Z" stroke="rgba(184,150,90,0.4)" stroke-width="0.8" fill="none"/>
+        </svg>
+        <h3 class="dna-card-title">The Art of the Table</h3>
+        <p class="dna-card-desc">Sofra kurgusu bir seremonya gibi tasarlanır. Mise en place'tan son yuduma uzanan her detay bilinçli bir ritüelin parçasıdır.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 4 — NAMING STRATEGY
+══════════════════════════════════════ -->
+<section id="naming">
+  <div class="container">
+    <div class="naming-intro reveal">
+      <span class="eyebrow">İsim Stratejisi</span>
+      <h2 class="section-title">Üç aday,<br>bir doğru karar.</h2>
+      <p class="naming-intro-text">Her isim farklı bir marka kişiliği, farklı bir çağrışım alanı ve farklı bir ticari mantık taşır. Bu analiz, sezgisel tercihlerin ötesine geçer.</p>
+    </div>
+
+    <div class="naming-options reveal">
+
+      <!-- OPTION 1 — MARE -->
+      <div class="naming-option" id="opt1">
+        <div class="naming-option-header" onclick="toggleOption('opt1')">
+          <h3 class="naming-option-title">Mare</h3>
+          <div class="naming-toggle-icon"></div>
+        </div>
+        <div class="naming-option-collapse">
+          <div class="naming-option-body">
+            <div class="naming-attr">
+              <span class="naming-attr-label">Ton</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Ultra minimal, güçlü, editoryal</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Lüks Algısı</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot"></span>
+              </div>
+              <span class="naming-attr-note">Yüksek. Sadelik, lüksün en güçlü dilidir</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Akılda Kalıcılık</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Tek heceli, unutulmaz</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Uluslararası Telaffuz</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Her dilde kolay ve açık</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Otel İlişkisi</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot"></span><span class="score-dot"></span><span class="score-dot"></span>
+              </div>
+              <span class="naming-attr-note">Zayıf. Bağımsız durar, otelyle bağ kurulmaz</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Marka Gücü</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot"></span>
+              </div>
+              <span class="naming-attr-note">Tek başına güçlü ama Sapanca bağlamında desteğe ihtiyaç var</span>
+            </div>
+          </div>
+          <div class="naming-pros-cons">
+            <div class="pros-cons-block pros">
+              <h4>Avantajlar</h4>
+              <ul>
+                <li>Çarpıcı kısalık, yüksek recall</li>
+                <li>Grafik olarak çok güçlü</li>
+                <li>Tam bağımsız marka potansiyeli</li>
+                <li>Her format ve yüzeyde işler</li>
+              </ul>
+            </div>
+            <div class="pros-cons-block cons">
+              <h4>Riskler</h4>
+              <ul>
+                <li>Otelten kopuk algı riski</li>
+                <li>Türkiye'de İtalyanca "deniz" bilinmeyebilir</li>
+                <li>Yeni kullanıcılara bağlamı net değil</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION 2 — LA MARE -->
+      <div class="naming-option" id="opt2">
+        <div class="naming-option-header" onclick="toggleOption('opt2')">
+          <h3 class="naming-option-title">La Mare</h3>
+          <div class="naming-toggle-icon"></div>
+        </div>
+        <div class="naming-option-collapse">
+          <div class="naming-option-body">
+            <div class="naming-attr">
+              <span class="naming-attr-label">Ton</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Fransız Riviera, zarif, sofistike</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Lüks Algısı</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Çok yüksek. Fransızca artikel doğrudan premium çağrışım yaratır</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Akılda Kalıcılık</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Ritim ve ahenk var; söylemesi zevkli</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Uluslararası Telaffuz</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot"></span>
+              </div>
+              <span class="naming-attr-note">Fransız/İtalyan kültürüne aşina kitlelerde kolay</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Otel İlişkisi</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot"></span><span class="score-dot"></span><span class="score-dot"></span>
+              </div>
+              <span class="naming-attr-note">Henüz bağımsız, otel ismi bilinmeden yeterli</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Marka Gücü</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Güçlü bağımsız marka, Riviera çağrışımı doğal</span>
+            </div>
+          </div>
+          <div class="naming-pros-cons">
+            <div class="pros-cons-block pros">
+              <h4>Avantajlar</h4>
+              <ul>
+                <li>Çok premium ve rafine ses tonu</li>
+                <li>Bağımsız marka değeri yüksek</li>
+                <li>Tipografik olarak çok çalışır</li>
+                <li>Menü kısa adı için ideal: "La Mare"</li>
+              </ul>
+            </div>
+            <div class="pros-cons-block cons">
+              <h4>Riskler</h4>
+              <ul>
+                <li>Otelten tam kopuk, sinerji sınırlı</li>
+                <li>İleride franchising veya expansion zorlaşabilir</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPTION 3 — LA MARE BY DIDI — FEATURED -->
+      <div class="naming-option featured" id="opt3">
+        <div class="naming-option-header" onclick="toggleOption('opt3')">
+          <div style="display:flex;align-items:center;gap:0;flex-wrap:wrap;">
+            <h3 class="naming-option-title">La Mare by Didi Otel</h3>
+            <span class="naming-featured-tag">Önerilen</span>
+          </div>
+          <div class="naming-toggle-icon"></div>
+        </div>
+        <div class="naming-option-collapse">
+          <div class="naming-option-body">
+            <div class="naming-attr">
+              <span class="naming-attr-label">Ton</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Signature restaurant, güven veren, statü aktaran</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Lüks Algısı</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">La Mare'nin zarafeti + Didi Otel'in güveni birleşir</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Akılda Kalıcılık</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot"></span>
+              </div>
+              <span class="naming-attr-note">Kısa kullanımda "La Mare" olarak hatırlanır</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Uluslararası Telaffuz</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot"></span>
+              </div>
+              <span class="naming-attr-note">Her iki dil de evrensel</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Otel İlişkisi</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Mükemmel denge: hem bağımsız hem endorsed</span>
+            </div>
+            <div class="naming-attr">
+              <span class="naming-attr-label">Marka Gücü</span>
+              <div class="naming-attr-score">
+                <span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span><span class="score-dot filled"></span>
+              </div>
+              <span class="naming-attr-note">Çift katmanlı: restoran kendi kimliğini kazanır</span>
+            </div>
+          </div>
+          <div class="naming-pros-cons">
+            <div class="pros-cons-block pros">
+              <h4>Avantajlar</h4>
+              <ul>
+                <li>Otel marka değerini restoran taşır</li>
+                <li>Bağımsız gastronomi markası olarak da güçlü</li>
+                <li>"By" yapısı dünyada kanıtlanmış: Nobu by Caesars, Zuma by Ritz-Carlton</li>
+                <li>Kısa kullanım esnekliği: sadece "La Mare"</li>
+                <li>Büyüme ve expansion'a açık yapı</li>
+                <li>SEO ve dijital kimlikte çift katman avantajı</li>
+              </ul>
+            </div>
+            <div class="pros-cons-block cons">
+              <h4>Dikkat Noktaları</h4>
+              <ul>
+                <li>Tam isim uzun; kısa kullanım standartlaşmalı</li>
+                <li>Didi Otel markası güçlendikçe sinerji artar, başlangıçta Didi bilinirliği kritik</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 5 — WORLD REFERENCES
+══════════════════════════════════════ -->
+<section id="references">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Dünyadan Bağlam</span>
+      <h2 class="section-title">İsmin arkasındaki<br>stratejik mantık.</h2>
+    </div>
+
+    <div class="ref-cols">
+      <div class="ref-block">
+        <div class="ref-insight reveal reveal-delay-1">
+          <h3 class="ref-insight-title">Neden tek kelime isimler premium?</h3>
+          <p class="ref-insight-text">Nobu, Zuma, Noma, Alain Ducasse. Bu restoran isimleri kısa ve güçlüdür. Fazla kelime açıklamak zorunda gibi hissettirir; az kelime ise güveni zaten olduğu gibi sunar. Tek isim, konumu sorgulatmayan bir özgüven taşır.</p>
+        </div>
+
+        <div class="ref-insight reveal reveal-delay-2">
+          <h3 class="ref-insight-title">Neden Fransızca / İtalyanca çağrışım lüks hissettirir?</h3>
+          <p class="ref-insight-text">Dil, bilinçdışı kalite çağrışımları taşır. <em>Mare</em> (İtalyanca, deniz) ve <em>La Mer</em> (Fransızca) gibi kelimeler yüzyıllık mutfak kültürüyle yüklüdür. Tüketici bu mirası bilmeden hisseder. La Mare, Riviera zarafeti ile haute cuisine disiplinini tek bir isimde buluşturur.</p>
+        </div>
+
+        <div class="ref-insight reveal reveal-delay-3">
+          <h3 class="ref-insight-title">Küresel "by" yapıları neden işe yarar?</h3>
+          <p class="ref-insight-text"><em>Nobu by The Venetian. Spago by Wolfgang Puck. Zuma by The Ritz-Carlton.</em> "By" yapısı bir endorse ifadesidir: restoranın bağımsız kimliğini teslim ederken ana markanın güven ve statüsünü transfer eder. Müşteri hem yeni bir şey keşfeder hem tanıdık bir güvenceye tutunur.</p>
+        </div>
+      </div>
+
+      <div class="ref-block">
+        <div class="ref-quote reveal reveal-delay-1">
+          <p class="ref-quote-text">Mare sözcüğü İtalyanca'da denizi ifade eder; ama duyulduğunda somut bir mekan çağrıştırır. Amalfi'nin kayalıkları, Portofino'nun limandaki masaları ya da bir teras yemeğinin Adriyatik'e açılan sessizliği.</p>
+          <span class="ref-quote-source">Naming Context · Riviera Restaurant Language</span>
+        </div>
+
+        <div class="ref-insight reveal reveal-delay-2" style="border-left-color: var(--navy); background: var(--sand);">
+          <h3 class="ref-insight-title">Neden "La Mare by Didi Otel" üç adayın en güçlüsü?</h3>
+          <p class="ref-insight-text">Bu isim bir içerik mimarisi kurar: La Mare, duygusal ve estetik değeri taşır. By Didi Otel, kurumsal güveni ve köken bağlamını sağlar. Bu ayrışma, restoranın hem bağımsız bir gastronomi destinasyonu hem de otel deneyiminin kutlanan parçası olarak konumlanmasını mümkün kılar.</p>
+        </div>
+
+        <div class="ref-insight reveal reveal-delay-3" style="background: rgba(13,27,42,0.06);">
+          <h3 class="ref-insight-title">Benzer başarılı örnekler</h3>
+          <p class="ref-insight-text"><strong>Marea</strong> (NYC) · Deniz referanslı, Michelin yıldızlı fine dining<br><strong>Le Bernardin</strong> · Fransızca ton, NYC'nin en iyi deniz ürünleri restoranı<br><strong>Aqua</strong> (Singapur, Londra) · Sadelik ve su çağrışımı<br><strong>Marea by Aman</strong> · Lüks otel portföyünde branded dining modeli</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 6 — FINAL RECOMMENDATION
+══════════════════════════════════════ -->
+<section id="recommendation">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="reveal">
+        <span class="eyebrow" style="justify-content:center;">Nihai Öneri</span>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(13px,1.8vw,16px);color:var(--sea-grey);letter-spacing:0.25em;text-transform:uppercase;font-weight:300;margin-top:12px;margin-bottom:20px;">Tercih edilen isim</p>
+        <h2 class="rec-title">La Mare</h2>
+        <p class="rec-subtitle">by Didi Otel</p>
+      </div>
+
+      <div class="rec-pillars reveal">
+        <div class="rec-pillar">
+          <svg class="rec-pillar-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M3 17 Q8 9 12 13 Q16 17 21 9" stroke="rgba(184,150,90,0.8)" stroke-width="1.2" fill="none"/>
+          </svg>
+          <p class="rec-pillar-title">Brand Elegance</p>
+          <p class="rec-pillar-text">La Mare, tek başına duran zarif bir marka adıdır. Grafik uygulamaları sınırlamaz, zenginleştirir.</p>
+        </div>
+        <div class="rec-pillar">
+          <svg class="rec-pillar-icon" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="8" stroke="rgba(184,150,90,0.8)" stroke-width="1"/>
+            <circle cx="12" cy="12" r="3" fill="rgba(184,150,90,0.4)"/>
+          </svg>
+          <p class="rec-pillar-title">Premium Endorsement</p>
+          <p class="rec-pillar-text">Didi Otel'in güveni ve statüsü restoran kimliğine transfer edilir; misafir tanıdık bir çatıya güvenir.</p>
+        </div>
+        <div class="rec-pillar">
+          <svg class="rec-pillar-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M4 20 L20 4 M4 12 H20 M12 4 V20" stroke="rgba(184,150,90,0.8)" stroke-width="1" opacity="0.5"/>
+            <path d="M4 20 L12 4 L20 20" stroke="rgba(184,150,90,0.8)" stroke-width="1.2" fill="none"/>
+          </svg>
+          <p class="rec-pillar-title">Scalable Identity</p>
+          <p class="rec-pillar-text">İsim büyümeye ve yeni formatlara hazır: pop-up, catering, second location hepsi bu kimlikle mümkün.</p>
+        </div>
+        <div class="rec-pillar">
+          <svg class="rec-pillar-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M12 3 C7 3 3 7 3 12 S7 21 12 21 S21 17 21 12 S17 3 12 3" stroke="rgba(184,150,90,0.8)" stroke-width="1" fill="none"/>
+            <path d="M12 8 V13 L16 15" stroke="rgba(184,150,90,0.6)" stroke-width="1" stroke-linecap="round"/>
+          </svg>
+          <p class="rec-pillar-title">Destination Feel</p>
+          <p class="rec-pillar-text">Sapanca ziyaretçileri özel bir gastronomi destinasyonu olarak arar, bulur ve paylaşır.</p>
+        </div>
+        <div class="rec-pillar">
+          <svg class="rec-pillar-icon" viewBox="0 0 24 24" fill="none">
+            <path d="M3 12 Q8 6 12 12 Q16 18 21 12" stroke="rgba(184,150,90,0.8)" stroke-width="1.2" fill="none"/>
+            <path d="M3 16 Q8 10 12 16 Q16 22 21 16" stroke="rgba(184,150,90,0.4)" stroke-width="0.8" fill="none"/>
+          </svg>
+          <p class="rec-pillar-title">Dual-Layer Value</p>
+          <p class="rec-pillar-text">Otel misafiri ve dış misafir için aynı anda değer üretir; iki ayrı trafik kanalı tek marka altında.</p>
+        </div>
+      </div>
+
+      <div class="rec-usage reveal">
+        <div class="usage-card">
+          <p class="usage-card-label">Ana Kullanım</p>
+          <p class="usage-card-value">La Mare by Didi Otel</p>
+          <p class="usage-card-note">Tabela, web sitesi, Google haritalar, basın, resmi tüm iletişim</p>
+        </div>
+        <div class="usage-card">
+          <p class="usage-card-label">Sosyal &amp; Kısa Kullanım</p>
+          <p class="usage-card-value">La Mare</p>
+          <p class="usage-card-note">Instagram bio, hashtag, reservasyon linki, menü kapağı kısa hali</p>
+        </div>
+        <div class="usage-card">
+          <p class="usage-card-label">Monogram / Nesne</p>
+          <p class="usage-card-value" style="letter-spacing:0.2em;">LM</p>
+          <p class="usage-card-note">Tabak baskısı, bardak altlığı, peçete nakışı, masa kartı, mühür</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 7 — BRAND ARCHITECTURE
+══════════════════════════════════════ -->
+<section id="architecture">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Marka Mimarisi</span>
+      <h2 class="section-title">Bağımsızlık ile<br>aidiyet arasındaki denge.</h2>
+    </div>
+
+    <div class="arch-diagram reveal reveal-delay-1">
+      <div class="arch-node arch-node-master">
+        <p class="arch-node-label">Ana Marka / Master Brand</p>
+        <p class="arch-node-name">Didi Otel</p>
+        <p class="arch-node-desc">Sapanca'da konumlanan boutique / luxury otel deneyimi. Statü ve güven katmanı.</p>
+      </div>
+      <div class="arch-connector">
+        <div class="arch-connector-line"></div>
+        <span class="arch-connector-label">Endorsed Brand</span>
+      </div>
+      <div class="arch-node arch-node-endorsed">
+        <p class="arch-node-label">İmza Restoran / Signature Restaurant</p>
+        <p class="arch-node-name">La Mare by Didi Otel</p>
+        <p class="arch-node-desc">Kendi ruhu ve karakterine sahip fine dining. Didi Otel'in gücünü taşır, ama bağımsız bir gastronomi kimliğiyle var olur.</p>
+      </div>
+    </div>
+
+    <div class="arch-attributes reveal reveal-delay-2">
+      <div class="arch-attr-card">
+        <h3 class="arch-attr-title">Kendi Ruhu Olmalı</h3>
+        <p class="arch-attr-text">La Mare, Didi Otel'in bir uzantısı değil; otelin bahçesinde doğmuş ayrı bir karakterdir. Kendi logosu, kendi tonu, kendi menü dili olmalıdır. Bu ayrışma, restoran için bağımsız talep yaratır.</p>
+      </div>
+      <div class="arch-attr-card" style="border-color:var(--gold);background:var(--gold-pale);">
+        <h3 class="arch-attr-title">Ama Otelten Güç Alır</h3>
+        <p class="arch-attr-text">"By Didi Otel" bölümü bir soyadı gibi çalışır: restoranın kim olduğunu, hangi değer sistemine bağlı olduğunu ve nerede durduğunu tek bir yapıyla aktarır. İlk ziyaretçiye güvence, sadık misafiri ise onore eder.</p>
+      </div>
+      <div class="arch-attr-card">
+        <h3 class="arch-attr-title">Ortak Değer Büyür</h3>
+        <p class="arch-attr-text">Restoran ün kazandıkça otel değeri de artar; otel misafiri arttıkça restoran trafiği de büyür. Bu çift yönlü sinerji, endorsed brand mimarisinin temel vaadidir.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 7B — COLOR PALETTE SYSTEM
+══════════════════════════════════════ -->
+<section id="palette" style="background:var(--cream);padding:100px 0;">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Renk Sistemi</span>
+      <h2 class="section-title">La Mare'nin<br>renk dili.</h2>
+      <p style="font-size:14px;color:var(--slate);line-height:1.75;margin-top:20px;max-width:540px;font-weight:300;">Her renk bir duyguya karşılık gelir. Bu palet, La Mare'nin görsel dünyasının tamamında tutarlı bir premium his yaratmak için tasarlandı.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:3px;margin-top:64px;" class="reveal reveal-delay-1">
+      <!-- Deep Navy -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="height:200px;background:#07111c;position:relative;overflow:hidden;">
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,0.5));">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:0.1em;">Primary Dark</p>
+          </div>
+        </div>
+        <div style="padding:14px 16px;background:white;border:1px solid var(--stone);border-top:none;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:400;color:var(--navy);margin-bottom:3px;">Deep Navy</p>
+          <p style="font-size:10px;color:var(--sea-grey);font-weight:400;letter-spacing:0.1em;">#07111C</p>
+          <p style="font-size:10px;color:var(--sea-grey);margin-top:4px;line-height:1.4;">Gece, derinlik, otorite</p>
+        </div>
+      </div>
+      <!-- Warm Navy -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="height:200px;background:#0d1b2a;"></div>
+        <div style="padding:14px 16px;background:white;border:1px solid var(--stone);border-top:none;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--navy);margin-bottom:3px;">Ocean Navy</p>
+          <p style="font-size:10px;color:var(--sea-grey);letter-spacing:0.1em;">#0D1B2A</p>
+          <p style="font-size:10px;color:var(--sea-grey);margin-top:4px;line-height:1.4;">Ana fon, menü, tabela</p>
+        </div>
+      </div>
+      <!-- Gold -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="height:200px;background:linear-gradient(160deg,#b8965a,#d4af72);"></div>
+        <div style="padding:14px 16px;background:white;border:1px solid var(--stone);border-top:none;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--navy);margin-bottom:3px;">Signature Gold</p>
+          <p style="font-size:10px;color:var(--sea-grey);letter-spacing:0.1em;">#B8965A</p>
+          <p style="font-size:10px;color:var(--sea-grey);margin-top:4px;line-height:1.4;">Vurgu, detay, eyebrow</p>
+        </div>
+      </div>
+      <!-- Sand -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="height:200px;background:#f5f0e8;border-top:1px solid var(--stone);"></div>
+        <div style="padding:14px 16px;background:white;border:1px solid var(--stone);border-top:none;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--navy);margin-bottom:3px;">Sand White</p>
+          <p style="font-size:10px;color:var(--sea-grey);letter-spacing:0.1em;">#F5F0E8</p>
+          <p style="font-size:10px;color:var(--sea-grey);margin-top:4px;line-height:1.4;">Yazı (dark bg), parchment</p>
+        </div>
+      </div>
+      <!-- Sea Grey -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="height:200px;background:#8b9aaa;"></div>
+        <div style="padding:14px 16px;background:white;border:1px solid var(--stone);border-top:none;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--navy);margin-bottom:3px;">Sea Grey</p>
+          <p style="font-size:10px;color:var(--sea-grey);letter-spacing:0.1em;">#8B9AAA</p>
+          <p style="font-size:10px;color:var(--sea-grey);margin-top:4px;line-height:1.4;">İkincil metin, meta bilgi</p>
+        </div>
+      </div>
+      <!-- Cream -->
+      <div style="display:flex;flex-direction:column;">
+        <div style="height:200px;background:#fdf9f2;border-top:1px solid var(--stone);"></div>
+        <div style="padding:14px 16px;background:white;border:1px solid var(--stone);border-top:none;">
+          <p style="font-family:'Cormorant Garamond',serif;font-size:15px;color:var(--navy);margin-bottom:3px;">Warm Cream</p>
+          <p style="font-size:10px;color:var(--sea-grey);letter-spacing:0.1em;">#FDF9F2</p>
+          <p style="font-size:10px;color:var(--sea-grey);margin-top:4px;line-height:1.4;">Ana sayfa zemin, kartlar</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color Application Note -->
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:40px;" class="reveal reveal-delay-2">
+      <div style="padding:28px;background:var(--navy);border:1px solid rgba(255,255,255,0.06);">
+        <p style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Gece Servisi Paleti</p>
+        <p style="font-size:13px;color:var(--sea-grey);line-height:1.65;font-weight:300;">Deep Navy + Signature Gold + Sand White. Akşam atmosferinde dominant karanlık, altın aksan ışık gibi davranır.</p>
+      </div>
+      <div style="padding:28px;background:var(--parchment);border:1px solid var(--stone);">
+        <p style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Baskı &amp; Materyal Paleti</p>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;font-weight:300;">Warm Cream + Stone + Ocean Navy. Menü, kartvizit ve şarap listesi için doğal keten hissi.</p>
+      </div>
+      <div style="padding:28px;background:white;border:1px solid var(--stone);">
+        <p style="font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">Dijital &amp; Sosyal Paleti</p>
+        <p style="font-size:13px;color:var(--slate);line-height:1.65;font-weight:300;">Dark mode öncelikli. Deep Navy zemin üzerinde Sand White metin ve Gold vurgu; scroll-stopping estetik.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 7C — TYPOGRAPHY SYSTEM
+══════════════════════════════════════ -->
+<section id="typography" style="background:var(--navy);padding:100px 0;">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--gold-light);">
+        <span style="display:inline-block;width:28px;height:1px;background:var(--gold-light);vertical-align:middle;margin-right:10px;"></span>
+        Tipografi Sistemi
+      </span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,56px);color:var(--sand);margin-top:12px;line-height:1.15;">Karakteri taşıyan<br>harf seçimi.</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:64px;" class="reveal reveal-delay-1">
+
+      <!-- Serif -->
+      <div style="background:rgba(5,12,20,0.8);padding:48px;border:1px solid rgba(255,255,255,0.05);">
+        <p style="font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;">Display / Başlık Fontu</p>
+        <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(48px,7vw,84px);font-weight:300;color:var(--sand);line-height:0.95;letter-spacing:-0.01em;">La<br><em style="color:var(--gold-light);">Mare</em></p>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);">
+          <p style="font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--sea-grey);margin-bottom:8px;">Cormorant Garamond</p>
+          <p style="font-size:12px;color:var(--sea-grey);line-height:1.65;font-weight:300;">Light 300 · Regular 400 · Italic 300i<br>Büyük başlıklar, isim logosu, menü section başlıkları, hero alanlar</p>
+        </div>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px;">
+          <div>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:rgba(255,255,255,0.25);letter-spacing:0.06em;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:rgba(255,255,255,0.2);letter-spacing:0.04em;">abcdefghijklmnopqrstuvwxyz 0123456789</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sans -->
+      <div style="background:rgba(255,255,255,0.03);padding:48px;border:1px solid rgba(255,255,255,0.05);">
+        <p style="font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;">Body / İkincil Metin Fontu</p>
+        <p style="font-family:'Inter',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:300;color:var(--sand);line-height:1.1;letter-spacing:0.12em;">by Didi<br>Otel</p>
+        <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.07);">
+          <p style="font-size:10px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--sea-grey);margin-bottom:8px;">Inter</p>
+          <p style="font-size:12px;color:var(--sea-grey);line-height:1.65;font-weight:300;">Light 300 · Regular 400 · Medium 500 · SemiBold 600<br>Metin blokları, etiketler, caption, navigasyon, UI detayları</p>
+        </div>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:12px;">
+          <p style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.25);font-weight:300;letter-spacing:0.08em;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+          <p style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(255,255,255,0.2);font-weight:300;">abcdefghijklmnopqrstuvwxyz 0123456789</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Type scale -->
+    <div style="margin-top:2px;background:rgba(5,12,20,0.6);padding:40px 48px;border:1px solid rgba(255,255,255,0.05);" class="reveal reveal-delay-2">
+      <p style="font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;">Tipografi Hiyerarşisi</p>
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="display:flex;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.04);">
+          <span style="font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--sea-grey);min-width:80px;">Hero</span>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,6vw,72px);font-weight:300;color:var(--sand);line-height:1;">La Mare</p>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.04);">
+          <span style="font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--sea-grey);min-width:80px;">Heading</span>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,48px);font-weight:400;color:var(--sand);font-style:italic;">Fine Dining Restaurant</p>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.04);">
+          <span style="font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--sea-grey);min-width:80px;">Subhead</span>
+          <p style="font-family:'Inter',sans-serif;font-size:clamp(14px,2vw,20px);font-weight:300;color:var(--mist);letter-spacing:0.04em;">Denizden ilham alan, destinasyon değeri taşıyan.</p>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;padding-bottom:16px;border-bottom:1px solid rgba(255,255,255,0.04);">
+          <span style="font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--sea-grey);min-width:80px;">Eyebrow</span>
+          <p style="font-family:'Inter',sans-serif;font-size:10px;font-weight:600;color:var(--gold);letter-spacing:0.22em;text-transform:uppercase;">Brand Identity</p>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:24px;">
+          <span style="font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--sea-grey);min-width:80px;">Body</span>
+          <p style="font-family:'Inter',sans-serif;font-size:13px;font-weight:300;color:var(--sea-grey);line-height:1.65;max-width:500px;">Mevsimsel deniz ürünleri, titizlikle seçilmiş içkiler ve akşamın ritmiyle evrilen bir servis anlayışı. Her detay, markanın sessiz lüks felsefesini yansıtır.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider divider-gold"></div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 8 — LOGO DIRECTIONS
+══════════════════════════════════════ -->
+<section id="logo">
+  <div class="container">
+    <div class="logo-intro reveal">
+      <span class="eyebrow">Logo Yönleri</span>
+      <h2 class="section-title" style="color:var(--sand);">Beş farklı kimlik,<br>bir tek karakter.</h2>
+      <p style="font-size:14px;color:var(--sea-grey);line-height:1.7;margin-top:20px;font-weight:300;">Her logo yönü farklı bir yaratıcı tutumu temsil eder. Hepsi La Mare by Didi Otel için tasarlanmıştır; ancak farklı kitleler, mecralar ve duygusal tonlar için optimize edilmiştir.</p>
+    </div>
+
+    <div class="logo-directions">
+
+      <!-- LOGO DIR 1 — EDITORIAL WORDMARK -->
+      <div class="logo-dir reveal">
+        <div class="logo-dir-inner">
+          <div class="logo-preview mock-wordmark" style="background:linear-gradient(150deg,#060f18,#0d1b2a 60%,#10203a);">
+            <svg viewBox="0 0 420 180" width="380" height="162" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="goldGrad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#b8965a;stop-opacity:0"/>
+                  <stop offset="30%" style="stop-color:#d4af72;stop-opacity:1"/>
+                  <stop offset="70%" style="stop-color:#d4af72;stop-opacity:1"/>
+                  <stop offset="100%" style="stop-color:#b8965a;stop-opacity:0"/>
+                </linearGradient>
+              </defs>
+              <!-- Top thin rule -->
+              <line x1="60" y1="38" x2="360" y2="38" stroke="url(#goldGrad1)" stroke-width="0.5"/>
+              <!-- Main title -->
+              <text x="210" y="105" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Cormorant Garamond',Georgia,serif" font-size="72" font-weight="300"
+                fill="#f0ead8" letter-spacing="4" font-style="italic">La Mare</text>
+              <!-- Separator rule with ornament -->
+              <line x1="70" y1="130" x2="178" y2="130" stroke="url(#goldGrad1)" stroke-width="0.6"/>
+              <circle cx="210" cy="130" r="2.5" fill="rgba(184,150,90,0.7)"/>
+              <line x1="242" y1="130" x2="350" y2="130" stroke="url(#goldGrad1)" stroke-width="0.6"/>
+              <!-- Subtitle -->
+              <text x="210" y="150" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Inter',sans-serif" font-size="9.5" font-weight="400"
+                fill="rgba(184,150,90,0.85)" letter-spacing="7">BY DIDI OTEL</text>
+              <!-- Bottom thin rule -->
+              <line x1="60" y1="168" x2="360" y2="168" stroke="url(#goldGrad1)" stroke-width="0.5"/>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <p class="logo-dir-num">Direction 01</p>
+            <h3 class="logo-dir-name">Editorial Wordmark</h3>
+            <p class="logo-dir-desc">Ultra zarif bir serif tipografi üzerine kurulu wordmark. "La Mare" ana ismi italik bir ağırlıkla öne çıkar; "by Didi Otel" ince spaced kapitallerle altında yer alır. Moda evi estetiği ile fine dining otoritesini birleştirir.</p>
+            <div class="logo-attrs">
+              <div class="logo-attr">
+                <span class="logo-attr-key">Stil</span>
+                <span class="logo-attr-val">High-fashion serif wordmark</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">En Güçlü Alan</span>
+                <span class="logo-attr-val">Menü kapağı, antet, web</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Hitap Ettiği Kitle</span>
+                <span class="logo-attr-val">Gastronomi meraklıları, çiftler, premium diner</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Avantaj</span>
+                <span class="logo-attr-val">Evrensel okunabilirlik, zamansız prestij</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGO DIR 2 — MONOGRAM SEAL -->
+      <div class="logo-dir reveal">
+        <div class="logo-dir-inner">
+          <div class="logo-preview" style="background:linear-gradient(145deg,#f2ece0,#e8e0ce);">
+            <svg viewBox="0 0 220 220" width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <path id="outerArc" d="M 110,110 m -90,0 a 90,90 0 1,1 180,0 a 90,90 0 1,1 -180,0"/>
+                <path id="innerArc" d="M 110,110 m -74,0 a 74,74 0 1,1 148,0 a 74,74 0 1,1 -148,0"/>
+              </defs>
+              <!-- Triple ring -->
+              <circle cx="110" cy="110" r="97" fill="none" stroke="#0d1b2a" stroke-width="1.2"/>
+              <circle cx="110" cy="110" r="90" fill="none" stroke="rgba(184,150,90,0.5)" stroke-width="0.5"/>
+              <circle cx="110" cy="110" r="76" fill="none" stroke="#0d1b2a" stroke-width="0.6"/>
+              <!-- Circular text -->
+              <text font-family="'Inter',sans-serif" font-size="8" font-weight="600" letter-spacing="6" fill="#0d1b2a" opacity="0.75">
+                <textPath href="#outerArc" startOffset="3%">LA MARE · BY DIDI OTEL · SAPANCA ·</textPath>
+              </text>
+              <!-- Ornamental dots at cardinal points -->
+              <circle cx="110" cy="20" r="2.5" fill="#b8965a"/>
+              <circle cx="200" cy="110" r="2.5" fill="#b8965a"/>
+              <circle cx="110" cy="200" r="2.5" fill="#b8965a"/>
+              <circle cx="20" cy="110" r="2.5" fill="#b8965a"/>
+              <!-- Monogram -->
+              <text x="110" y="104" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Cormorant Garamond',Georgia,serif" font-size="58" font-weight="400"
+                fill="#0d1b2a" letter-spacing="3">LM</text>
+              <!-- Thin gold rule under monogram -->
+              <line x1="74" y1="124" x2="146" y2="124" stroke="#b8965a" stroke-width="0.8"/>
+              <!-- Small est text -->
+              <text x="110" y="137" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Inter',sans-serif" font-size="7.5" font-weight="600"
+                fill="#b8965a" letter-spacing="4.5">SAPANCA</text>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <p class="logo-dir-num">Direction 02</p>
+            <h3 class="logo-dir-name">Monogram Seal</h3>
+            <p class="logo-dir-desc">LM monogramını merkeze alan, dairesel yazı bandıyla tamamlanan bir mühür. Nesne uygulamalarında kendi başına çalışan, kurumsal ağırlığı yüksek bir kimlik. Her küçük ölçekli uygulama için güçlüdür.</p>
+            <div class="logo-attrs">
+              <div class="logo-attr">
+                <span class="logo-attr-key">Stil</span>
+                <span class="logo-attr-val">Heraldic seal / Emblem</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">En Güçlü Alan</span>
+                <span class="logo-attr-val">Tabak baskısı, bardak altı, damga, peçete</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Hitap Ettiği Kitle</span>
+                <span class="logo-attr-val">Kurumsal kimlik, koleksiyonerler, premium gifting</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Avantaj</span>
+                <span class="logo-attr-val">Nesne üretiminde mükemmel, hatırlatıcı güç yüksek</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGO DIR 3 — COASTAL EMBLEM -->
+      <div class="logo-dir reveal">
+        <div class="logo-dir-inner">
+          <div class="logo-preview" style="background:linear-gradient(165deg,#0a1620 0%,#0d1b2a 50%,#0f2030 100%);">
+            <svg viewBox="0 0 360 190" width="340" height="180" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#b8965a;stop-opacity:0"/>
+                  <stop offset="25%" style="stop-color:#d4af72;stop-opacity:0.9"/>
+                  <stop offset="75%" style="stop-color:#d4af72;stop-opacity:0.9"/>
+                  <stop offset="100%" style="stop-color:#b8965a;stop-opacity:0"/>
+                </linearGradient>
+                <linearGradient id="waveGrad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#b8965a;stop-opacity:0"/>
+                  <stop offset="50%" style="stop-color:#b8965a;stop-opacity:0.4"/>
+                  <stop offset="100%" style="stop-color:#b8965a;stop-opacity:0"/>
+                </linearGradient>
+              </defs>
+              <!-- Horizon line -->
+              <line x1="40" y1="62" x2="320" y2="62" stroke="rgba(184,150,90,0.12)" stroke-width="0.5"/>
+              <!-- Primary wave — abstract, refined -->
+              <path d="M50 62 C90 42, 130 80, 180 62 C230 44, 270 80, 310 62"
+                stroke="url(#waveGrad)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+              <!-- Secondary echo waves -->
+              <path d="M70 72 C105 58, 140 82, 180 72 C220 62, 255 82, 290 72"
+                stroke="url(#waveGrad2)" stroke-width="0.8" fill="none" stroke-linecap="round"/>
+              <path d="M80 80 C112 69, 145 88, 180 80 C215 72, 248 88, 280 80"
+                stroke="rgba(184,150,90,0.12)" stroke-width="0.5" fill="none" stroke-linecap="round"/>
+              <!-- Gold ornament dots at wave peak -->
+              <circle cx="180" cy="62" r="2" fill="rgba(212,175,114,0.8)"/>
+              <!-- Name — spaced capitals, classic -->
+              <text x="180" y="118" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Cormorant Garamond',Georgia,serif" font-size="46" font-weight="300"
+                fill="#f0ead8" letter-spacing="10">LA MARE</text>
+              <!-- Thin separator -->
+              <line x1="80" y1="138" x2="280" y2="138" stroke="rgba(184,150,90,0.3)" stroke-width="0.5"/>
+              <!-- Tagline -->
+              <text x="180" y="157" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Inter',sans-serif" font-size="8.5" font-weight="400"
+                fill="rgba(184,150,90,0.7)" letter-spacing="6">BY DIDI OTEL</text>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <p class="logo-dir-num">Direction 03</p>
+            <h3 class="logo-dir-name">Coastal Emblem</h3>
+            <p class="logo-dir-desc">Soyut bir ufuk çizgisi ve dalga ritmi, isimle bütünleşiyor. Denize referans veriyor; ama klişe olta veya balık ikonlarından tamamen uzak. Geometrik, soyut ve rafine bir coastal imge.</p>
+            <div class="logo-attrs">
+              <div class="logo-attr">
+                <span class="logo-attr-key">Stil</span>
+                <span class="logo-attr-val">Abstract emblem + wordmark</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">En Güçlü Alan</span>
+                <span class="logo-attr-val">Tabela, ön kapı, sosyal medya profil</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Hitap Ettiği Kitle</span>
+                <span class="logo-attr-val">Denizci estetik sevenler, coastal dining tutkunu</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Avantaj</span>
+                <span class="logo-attr-val">Konuyu anlatan ama sınıfını düşürmeyen bir imge</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGO DIR 4 — MINIMAL RIVIERA -->
+      <div class="logo-dir reveal">
+        <div class="logo-dir-inner">
+          <div class="logo-preview" style="background:#f8f5ef;">
+            <svg viewBox="0 0 380 160" width="360" height="150" xmlns="http://www.w3.org/2000/svg">
+              <!-- Very light texture hint — thin vertical lines, barely visible -->
+              <line x1="190" y1="24" x2="190" y2="136" stroke="rgba(13,27,42,0.04)" stroke-width="0.5"/>
+              <!-- Main wordmark — italic, maximum letter-spacing, light weight -->
+              <text x="190" y="76" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Cormorant Garamond',Georgia,serif" font-size="60" font-weight="300"
+                fill="#0d1b2a" letter-spacing="16" font-style="italic">La Mare</text>
+              <!-- Ultra-minimal separator: just a 1px dot -->
+              <circle cx="190" cy="108" r="1.5" fill="#b8965a" opacity="0.7"/>
+              <!-- By Didi Otel — extreme spaced, very light -->
+              <text x="190" y="128" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Inter',sans-serif" font-size="8" font-weight="300"
+                fill="#8b9aaa" letter-spacing="9">BY DIDI OTEL</text>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <p class="logo-dir-num">Direction 04</p>
+            <h3 class="logo-dir-name">Minimal Riviera</h3>
+            <p class="logo-dir-desc">Maksimum whitespace, italik serif wordmark ve çok hafif ikincil metin. Beach club estetiği ile fine dining zarafeti arasında mükemmel bir denge. Açık arka planlarda ve premium kağıt materyallerinde çok güçlü.</p>
+            <div class="logo-attrs">
+              <div class="logo-attr">
+                <span class="logo-attr-key">Stil</span>
+                <span class="logo-attr-val">Ultra-minimal italic wordmark</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">En Güçlü Alan</span>
+                <span class="logo-attr-val">Şarap listesi, menü, letter press, packaging</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Hitap Ettiği Kitle</span>
+                <span class="logo-attr-val">Minimalist estet, modern hospitality tutkunu</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Avantaj</span>
+                <span class="logo-attr-val">Zamansız ve trend bağımsız; 10 yıl sonra hâlâ geçerli</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LOGO DIR 5 — SIGNATURE TIDE -->
+      <div class="logo-dir reveal">
+        <div class="logo-dir-inner">
+          <div class="logo-preview" style="background:radial-gradient(ellipse 90% 80% at 50% 50%, #111e2e, #07111c);">
+            <svg viewBox="0 0 400 180" width="380" height="170" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <filter id="textGlow" x="-5%" y="-20%" width="110%" height="140%">
+                  <feGaussianBlur stdDeviation="4" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <linearGradient id="tideGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#b8965a;stop-opacity:0"/>
+                  <stop offset="20%" style="stop-color:#d4af72;stop-opacity:0.8"/>
+                  <stop offset="50%" style="stop-color:#f0d898;stop-opacity:1"/>
+                  <stop offset="80%" style="stop-color:#d4af72;stop-opacity:0.8"/>
+                  <stop offset="100%" style="stop-color:#b8965a;stop-opacity:0"/>
+                </linearGradient>
+              </defs>
+              <!-- Ambient glow orb behind text -->
+              <ellipse cx="200" cy="85" rx="130" ry="50" fill="rgba(184,150,90,0.03)" filter="url(#softGlow)"/>
+              <!-- Main signature name with subtle glow -->
+              <text x="200" y="82" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Cormorant Garamond',Georgia,serif" font-size="66" font-weight="300"
+                fill="#f5eedd" letter-spacing="3" font-style="italic" filter="url(#textGlow)">La Mare</text>
+              <!-- Tide wave underline — animated feel, 3 layers -->
+              <path d="M60 118 C90 108, 120 128, 150 118 C180 108, 210 128, 240 118 C270 108, 300 128, 340 118"
+                stroke="url(#tideGrad)" stroke-width="1.3" fill="none" stroke-linecap="round" filter="url(#softGlow)"/>
+              <path d="M80 126 C108 118, 135 134, 160 126 C185 118, 212 134, 240 126 C268 118, 295 134, 320 126"
+                stroke="rgba(184,150,90,0.25)" stroke-width="0.7" fill="none" stroke-linecap="round"/>
+              <path d="M100 132 C124 126, 148 138, 170 132 C192 126, 216 138, 240 132 C264 126, 288 138, 300 132"
+                stroke="rgba(184,150,90,0.08)" stroke-width="0.5" fill="none" stroke-linecap="round"/>
+              <!-- By Didi Otel -->
+              <text x="200" y="158" dominant-baseline="middle" text-anchor="middle"
+                font-family="'Inter',sans-serif" font-size="9" font-weight="300"
+                fill="rgba(184,150,90,0.65)" letter-spacing="6.5">BY DIDI OTEL</text>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <p class="logo-dir-num">Direction 05</p>
+            <h3 class="logo-dir-name">Signature Tide</h3>
+            <p class="logo-dir-desc">Hafif kaligrafik bir ağırlık ve akışkan alt çizgi ile tamamlanan, imza estetiği güçlü bir yaklaşım. Dalgayı çağrıştıran altlık çizgisi ince ve soyuttur; duygusal ama asla kitsch değil.</p>
+            <div class="logo-attrs">
+              <div class="logo-attr">
+                <span class="logo-attr-key">Stil</span>
+                <span class="logo-attr-val">Signature italic + fluid accent</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">En Güçlü Alan</span>
+                <span class="logo-attr-val">Dark-mode dijital, sosyal medya, gece atmosferi</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Hitap Ettiği Kitle</span>
+                <span class="logo-attr-val">Romantik çiftler, duygusal deneyim arayanlar</span>
+              </div>
+              <div class="logo-attr">
+                <span class="logo-attr-key">Avantaj</span>
+                <span class="logo-attr-val">En yüksek duygusal rezonans, en fotoğraflanabilir</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 9 — MOCKUPS
+══════════════════════════════════════ -->
+<section id="mockups">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Uygulama Mockupları</span>
+      <h2 class="section-title">Kimlik temas<br>noktalarında.</h2>
+    </div>
+
+    <div class="mockup-grid">
+
+      <!-- MENU -->
+      <div class="mockup-card reveal reveal-delay-1">
+        <div class="mockup-surface mock-menu">
+          <svg viewBox="0 0 120 120" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="14" width="80" height="94" fill="none" stroke="rgba(184,150,90,0.3)" stroke-width="0.8"/>
+            <rect x="24" y="18" width="72" height="86" fill="rgba(7,17,28,0.8)" stroke="rgba(184,150,90,0.15)" stroke-width="0.4"/>
+            <text x="60" y="44" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Cormorant Garamond',serif" font-size="11" font-weight="300" font-style="italic" fill="#e8dfc8" letter-spacing="1">La Mare</text>
+            <line x1="36" y1="52" x2="84" y2="52" stroke="rgba(184,150,90,0.5)" stroke-width="0.5"/>
+            <text x="60" y="62" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Inter',sans-serif" font-size="5" fill="rgba(184,150,90,0.7)" letter-spacing="2.5">BY DIDI OTEL</text>
+            <line x1="50" y1="80" x2="70" y2="80" stroke="rgba(255,255,255,0.1)" stroke-width="0.4"/>
+            <text x="60" y="90" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Inter',sans-serif" font-size="4.5" fill="rgba(255,255,255,0.2)" letter-spacing="2">MENU</text>
+          </svg>
+        </div>
+        <div class="mockup-label-area">
+          <p class="mockup-label">Menü Kapağı</p>
+        </div>
+      </div>
+
+      <!-- PLATE -->
+      <div class="mockup-card reveal reveal-delay-2">
+        <div class="mockup-surface mock-plate">
+          <svg viewBox="0 0 120 120" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="50" fill="#f8f5f0" stroke="#e0dbd2" stroke-width="0.8"/>
+            <circle cx="60" cy="60" r="42" fill="none" stroke="#ddd8ce" stroke-width="0.4"/>
+            <circle cx="60" cy="60" r="24" fill="none" stroke="#d8d3c8" stroke-width="0.3"/>
+            <!-- Monogram LM on plate -->
+            <text x="60" y="62" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Cormorant Garamond',serif" font-size="22" font-weight="400" fill="rgba(13,27,42,0.15)" letter-spacing="2">LM</text>
+          </svg>
+        </div>
+        <div class="mockup-label-area">
+          <p class="mockup-label">Tabak Baskısı</p>
+        </div>
+      </div>
+
+      <!-- NAPKIN -->
+      <div class="mockup-card reveal reveal-delay-3">
+        <div class="mockup-surface mock-napkin">
+          <svg viewBox="0 0 120 120" width="110" height="110" xmlns="http://www.w3.org/2000/svg">
+            <!-- Folded napkin shape -->
+            <rect x="20" y="20" width="80" height="80" fill="#e2ddd4" stroke="#ccc6bc" stroke-width="0.6" rx="2"/>
+            <line x1="20" y1="20" x2="100" y2="100" stroke="#d6d0c6" stroke-width="0.4"/>
+            <line x1="100" y1="20" x2="20" y2="100" stroke="#d6d0c6" stroke-width="0.4"/>
+            <!-- Embroidery area center -->
+            <text x="60" y="62" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Cormorant Garamond',serif" font-size="18" font-weight="400" fill="rgba(13,27,42,0.25)" letter-spacing="2" font-style="italic">LM</text>
+          </svg>
+        </div>
+        <div class="mockup-label-area">
+          <p class="mockup-label">Peçete Nakışı</p>
+        </div>
+      </div>
+
+      <!-- WINE LIST -->
+      <div class="mockup-card reveal reveal-delay-4">
+        <div class="mockup-surface mock-wine">
+          <svg viewBox="0 0 100 140" width="88" height="126" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="8" width="84" height="124" fill="#120806" stroke="rgba(184,150,90,0.2)" stroke-width="0.6"/>
+            <rect x="12" y="12" width="76" height="116" fill="none" stroke="rgba(184,150,90,0.08)" stroke-width="0.4"/>
+            <!-- Gold ornament line -->
+            <line x1="22" y1="38" x2="78" y2="38" stroke="rgba(184,150,90,0.5)" stroke-width="0.5"/>
+            <text x="50" y="56" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Cormorant Garamond',serif" font-size="9.5" font-weight="300" font-style="italic" fill="#e8dfc8" letter-spacing="1">La Mare</text>
+            <line x1="22" y1="70" x2="78" y2="70" stroke="rgba(184,150,90,0.2)" stroke-width="0.4"/>
+            <text x="50" y="82" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Inter',sans-serif" font-size="4.5" fill="rgba(184,150,90,0.6)" letter-spacing="2">BY DIDI OTEL</text>
+            <text x="50" y="108" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Inter',sans-serif" font-size="4" fill="rgba(255,255,255,0.15)" letter-spacing="2.5">WINE LIST</text>
+          </svg>
+        </div>
+        <div class="mockup-label-area">
+          <p class="mockup-label">Şarap Listesi</p>
+        </div>
+      </div>
+
+      <!-- SIGNAGE -->
+      <div class="mockup-card reveal reveal-delay-5">
+        <div class="mockup-surface mock-signage">
+          <svg viewBox="0 0 140 120" width="130" height="110" xmlns="http://www.w3.org/2000/svg">
+            <!-- Backlit sign panel -->
+            <rect x="10" y="30" width="120" height="60" fill="#07111c" stroke="rgba(184,150,90,0.3)" stroke-width="0.7" rx="1"/>
+            <!-- glow effect -->
+            <rect x="12" y="32" width="116" height="56" fill="none" stroke="rgba(184,150,90,0.08)" stroke-width="2" rx="0.5"/>
+            <text x="70" y="54" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Cormorant Garamond',serif" font-size="16" font-weight="300" font-style="italic"
+              fill="#f5f0e8" letter-spacing="3">La Mare</text>
+            <line x1="28" y1="64" x2="112" y2="64" stroke="rgba(184,150,90,0.4)" stroke-width="0.5"/>
+            <text x="70" y="74" dominant-baseline="middle" text-anchor="middle"
+              font-family="'Inter',sans-serif" font-size="5.5" fill="rgba(184,150,90,0.7)" letter-spacing="3.5">BY DIDI OTEL</text>
+            <!-- Stand -->
+            <line x1="65" y1="90" x2="65" y2="108" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <line x1="75" y1="90" x2="75" y2="108" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <line x1="50" y1="108" x2="90" y2="108" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="mockup-label-area">
+          <p class="mockup-label">Giriş Tabelası</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ═══════════════════════════════════════
+     SECTION 10 — VERBAL IDENTITY
+══════════════════════════════════════ -->
+<section id="verbal">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow">Sözel Kimlik</span>
+      <h2 class="section-title">Marka nasıl konuşur,<br>nasıl hissettirir?</h2>
+    </div>
+
+    <div class="verbal-chars reveal">
+      <span class="verbal-char">Refined</span>
+      <span class="verbal-char">Coastal</span>
+      <span class="verbal-char">Elegant</span>
+      <span class="verbal-char">Intimate</span>
+      <span class="verbal-char">Seasonal</span>
+      <span class="verbal-char">Poetic</span>
+    </div>
+
+    <div class="tone-block reveal">
+      <p class="tone-block-title">Marka Tonu</p>
+      <p class="tone-block-text">La Mare sakin ama emin bir sesle konuşur. İletişim dili sade, şiirsel ve ölçülüdür. "En iyi", "eşsiz", "olağanüstü" gibi boş sıfatlara başvurmak yerine duyguyu bir sahne kurar gibi anlatır. Yemek bir performans değil, bir ritüeldir ve bu ritüelin dili de aynı disiplini taşır.</p>
+    </div>
+
+    <div class="taglines-grid reveal">
+      <div class="tagline-item">
+        <p class="tagline-lang">Türkçe · Ana Tagline</p>
+        <p class="tagline-text">Denizin zarif hali.</p>
+        <p class="tagline-note">Konuyu ve karakteri tek cümlede anlatır. Güçlü, hatırlanabilir.</p>
+      </div>
+      <div class="tagline-item">
+        <p class="tagline-lang">İngilizce · Ana Tagline</p>
+        <p class="tagline-text">Where the sea meets the table.</p>
+        <p class="tagline-note">Uluslararası misafir için net, görsel ve duygusal bir açılış.</p>
+      </div>
+      <div class="tagline-item">
+        <p class="tagline-lang">Türkçe · Sosyal Medya</p>
+        <p class="tagline-text">Sapanca'da bir deniz akşamı.</p>
+        <p class="tagline-note">Lokasyon bağlamını doğal taşır. Instagram caption ruhunda, sade ve paylaşılabilir.</p>
+      </div>
+      <div class="tagline-item">
+        <p class="tagline-lang">İngilizce · Sosyal Medya</p>
+        <p class="tagline-text">Seasonal seafood, elevated evenings.</p>
+        <p class="tagline-note">İki temel değeri paralel yapıyla birleştirir. Kolayca akılda kalır.</p>
+      </div>
+      <div class="tagline-item">
+        <p class="tagline-lang">Türkçe · Menü Açılışı</p>
+        <p class="tagline-text">Mevsimin en iyisinden, özenle seçilmiş.</p>
+        <p class="tagline-note">Mevsimselliği ve seçici editöryel tutumu mütevazı ama güçlü bir dille aktarır.</p>
+      </div>
+      <div class="tagline-item">
+        <p class="tagline-lang">İngilizce · Rezervasyon</p>
+        <p class="tagline-text">A refined coastal table. Reserve yours.</p>
+        <p class="tagline-note">Harekete geçirici ama baskı yapmayan bir ton. Doğal ve davetkar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 10B — KARAR MATRİSİ
+══════════════════════════════════════ -->
+<section id="matrix" style="background:var(--navy);padding:100px 0;">
+  <div class="container">
+    <div class="reveal">
+      <span class="eyebrow" style="color:var(--gold-light);">
+        <span style="display:inline-block;width:28px;height:1px;background:var(--gold-light);vertical-align:middle;margin-right:10px;"></span>
+        Karar Matrisi
+      </span>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(36px,5vw,56px);color:var(--sand);margin-top:12px;line-height:1.15;">La Mare by Didi Otel<br>neden <em style="font-style:italic;color:var(--gold-light);">kazanıyor?</em></h2>
+      <p style="font-size:14px;color:var(--sea-grey);margin-top:20px;font-weight:300;line-height:1.7;max-width:520px;">Marka kararları sezgiyle değil, ölçülebilir kriterlerle verilir. Üç adayın karşılaştırmalı değerlendirmesi:</p>
+    </div>
+
+    <!-- Matrix Table -->
+    <div style="margin-top:64px;overflow-x:auto;" class="reveal reveal-delay-1">
+      <table style="width:100%;border-collapse:collapse;min-width:640px;">
+        <thead>
+          <tr>
+            <th style="text-align:left;padding:14px 20px;font-size:9px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:var(--sea-grey);border-bottom:1px solid rgba(255,255,255,0.08);">Kriter</th>
+            <th style="text-align:center;padding:14px 20px;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--sea-grey);border-bottom:1px solid rgba(255,255,255,0.08);">Mare</th>
+            <th style="text-align:center;padding:14px 20px;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--sea-grey);border-bottom:1px solid rgba(255,255,255,0.08);">La Mare</th>
+            <th style="text-align:center;padding:14px 20px;font-size:9px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(184,150,90,0.4);background:rgba(184,150,90,0.04);">La Mare by Didi Otel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+            <td style="padding:16px 20px;font-size:13px;color:var(--mist);font-weight:300;">Premium algı (ilk izlenim)</td>
+            <td style="text-align:center;padding:16px 20px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--sea-grey);">4</span><span style="font-size:9px;color:var(--sea-grey);">/5</span>
+            </td>
+            <td style="text-align:center;padding:16px 20px;">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--mist);">5</span><span style="font-size:9px;color:var(--sea-grey);">/5</span>
+            </td>
+            <td style="text-align:center;padding:16px 20px;background:rgba(184,150,90,0.04);">
+              <span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold-light);">5</span><span style="font-size:9px;color:var(--gold);">/5</span>
+            </td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+            <td style="padding:16px 20px;font-size:13px;color:var(--mist);font-weight:300;">Marka mimarisi uyumu</td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--sea-grey);">2</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--mist);">3</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;background:rgba(184,150,90,0.04);"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold-light);">5</span><span style="font-size:9px;color:var(--gold);">/5</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+            <td style="padding:16px 20px;font-size:13px;color:var(--mist);font-weight:300;">Destinasyon değeri aktarımı</td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--sea-grey);">3</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--mist);">4</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;background:rgba(184,150,90,0.04);"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold-light);">5</span><span style="font-size:9px;color:var(--gold);">/5</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+            <td style="padding:16px 20px;font-size:13px;color:var(--mist);font-weight:300;">Akılda kalıcılık / recall</td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--sea-grey);">5</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--mist);">5</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;background:rgba(184,150,90,0.04);"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold-light);">4</span><span style="font-size:9px;color:var(--gold);">/5</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+            <td style="padding:16px 20px;font-size:13px;color:var(--mist);font-weight:300;">Uluslararası kullanım uygunluğu</td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--sea-grey);">5</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--mist);">5</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;background:rgba(184,150,90,0.04);"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold-light);">5</span><span style="font-size:9px;color:var(--gold);">/5</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+            <td style="padding:16px 20px;font-size:13px;color:var(--mist);font-weight:300;">Ölçeklenebilirlik / expansion</td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--sea-grey);">4</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--mist);">4</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;background:rgba(184,150,90,0.04);"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold-light);">5</span><span style="font-size:9px;color:var(--gold);">/5</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+            <td style="padding:16px 20px;font-size:13px;color:var(--mist);font-weight:300;">Logo geliştirme esnekliği</td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--sea-grey);">5</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--mist);">5</span><span style="font-size:9px;color:var(--sea-grey);">/5</span></td>
+            <td style="text-align:center;padding:16px 20px;background:rgba(184,150,90,0.04);"><span style="font-family:'Cormorant Garamond',serif;font-size:22px;color:var(--gold-light);">5</span><span style="font-size:9px;color:var(--gold);">/5</span></td>
+          </tr>
+          <!-- TOTAL ROW -->
+          <tr style="background:rgba(184,150,90,0.06);">
+            <td style="padding:20px 20px;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);">Toplam Skor</td>
+            <td style="text-align:center;padding:20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--sea-grey);">28</span><span style="font-size:10px;color:var(--sea-grey);">/35</span></td>
+            <td style="text-align:center;padding:20px;"><span style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--mist);">31</span><span style="font-size:10px;color:var(--sea-grey);">/35</span></td>
+            <td style="text-align:center;padding:20px;background:rgba(184,150,90,0.06);border:1px solid rgba(184,150,90,0.2);"><span style="font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--gold-light);">34</span><span style="font-size:10px;color:var(--gold);">/35</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Animated score bars -->
+    <div style="margin-top:72px;" class="reveal reveal-delay-2 score-bar-section">
+      <p style="font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:32px;">Performans Profili · La Mare by Didi Otel</p>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Premium Algı</span>
+        <div class="score-bar-track"><div class="score-bar-fill" data-width="100%"></div></div>
+        <span class="score-bar-val">5.0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Marka Mimarisi</span>
+        <div class="score-bar-track"><div class="score-bar-fill" data-width="100%"></div></div>
+        <span class="score-bar-val">5.0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Destinasyon Değeri</span>
+        <div class="score-bar-track"><div class="score-bar-fill" data-width="100%"></div></div>
+        <span class="score-bar-val">5.0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Akılda Kalıcılık</span>
+        <div class="score-bar-track"><div class="score-bar-fill" data-width="80%"></div></div>
+        <span class="score-bar-val">4.0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Uluslararası Uygunluk</span>
+        <div class="score-bar-track"><div class="score-bar-fill" data-width="100%"></div></div>
+        <span class="score-bar-val">5.0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Ölçeklenebilirlik</span>
+        <div class="score-bar-track"><div class="score-bar-fill" data-width="100%"></div></div>
+        <span class="score-bar-val">5.0</span>
+      </div>
+      <div class="score-bar-row">
+        <span class="score-bar-label">Logo Esnekliği</span>
+        <div class="score-bar-track"><div class="score-bar-fill" data-width="100%"></div></div>
+        <span class="score-bar-val">5.0</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECTION 11 — CONCLUSION
+══════════════════════════════════════ -->
+<section id="conclusion">
+  <div class="container">
+    <div class="conclusion-inner">
+
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--gold-light);">
+          <span style="display:block;width:28px;height:1px;background:var(--gold-light);flex-shrink:0;"></span>
+          Ajans Önerisi
+        </span>
+        <h2 class="conclusion-lead" style="margin-top:20px;">
+          Bu üç karar,<br>
+          <em>her şeyi netleştirir.</em>
+        </h2>
+      </div>
+
+      <div class="conclusion-recs reveal">
+        <div class="conclusion-rec">
+          <span class="conclusion-rec-num">I</span>
+          <div class="conclusion-rec-content">
+            <p class="conclusion-rec-title">Tercih Edilen İsim</p>
+            <p class="conclusion-rec-value">La Mare by Didi Otel</p>
+            <p class="conclusion-rec-note">Otel kimliğini taşıyan, ama kendi ruhuna sahip endorsed signature restaurant adı. Premium telaffuz, uluslararası çağrışım, ölçeklenebilir yapı.</p>
+          </div>
+        </div>
+        <div class="conclusion-rec">
+          <span class="conclusion-rec-num">II</span>
+          <div class="conclusion-rec-content">
+            <p class="conclusion-rec-title">Kısa Kullanım</p>
+            <p class="conclusion-rec-value">La Mare</p>
+            <p class="conclusion-rec-note">Sosyal medya, rezervasyon, sözlü iletişim ve menü kapağında "La Mare" olarak kısaltılır. Kullanıcı kolayca benimseyecek şekilde tasarlanmış.</p>
+          </div>
+        </div>
+        <div class="conclusion-rec">
+          <span class="conclusion-rec-num">III</span>
+          <div class="conclusion-rec-content">
+            <p class="conclusion-rec-title">Önerilen Logo Yönü</p>
+            <p class="conclusion-rec-value">Editorial Wordmark + Monogram Seal</p>
+            <p class="conclusion-rec-note">İki katmanlı sistem: büyük yüzeyler ve iletişimde Editorial Wordmark, nesne uygulamaları ve ince temas noktalarında Monogram Seal. Bu ikili sistem dünya standartlarında fine dining markalamaya uygundur.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="conclusion-final reveal">
+        <p class="conclusion-final-text">
+          "La Mare by Didi Otel, Didi Otel için sıradan bir yeme-içme alanı değildir.
+          Kendi başına destinasyon değeri olan bir imza deneyimidir. İsim bu vizyonu taşıyor,
+          logo bu karakteri yaşatıyor, marka dili bu ritüeli anlatıyor."
+        </p>
+      </div>
+
+      <!-- WHY UNIQBEE -->
+      <div style="margin-bottom:80px;" class="reveal">
+        <p style="font-size:9px;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:36px;">Neden UniqBee?</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,0.05);">
+          <div style="padding:32px;background:rgba(7,17,28,0.6);">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold-light);line-height:1;margin-bottom:12px;">01</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--sand);margin-bottom:8px;letter-spacing:0.03em;">Strateji önce gelir.</p>
+            <p style="font-size:12.5px;color:var(--sea-grey);line-height:1.65;font-weight:300;">Tasarımdan önce marka kararı. Her estetik tercih bir stratejik gerekçeyle desteklenir.</p>
+          </div>
+          <div style="padding:32px;background:rgba(7,17,28,0.6);">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold-light);line-height:1;margin-bottom:12px;">02</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--sand);margin-bottom:8px;letter-spacing:0.03em;">Hospitality uzmanlığı.</p>
+            <p style="font-size:12.5px;color:var(--sea-grey);line-height:1.65;font-weight:300;">Otel ve restoran markalamada test edilmiş metodoloji ve kategori bilgisi.</p>
+          </div>
+          <div style="padding:32px;background:rgba(7,17,28,0.6);">
+            <p style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;color:var(--gold-light);line-height:1;margin-bottom:12px;">03</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--sand);margin-bottom:8px;letter-spacing:0.03em;">Uçtan uca sahiplik.</p>
+            <p style="font-size:12.5px;color:var(--sea-grey);line-height:1.65;font-weight:300;">İsimden logoya, menü tasarımından dijital kimliğe; tek ekip, tek vizyon, tam tutarlılık.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bar reveal">
+        <div>
+          <p class="footer-brand">UniqBee</p>
+          <p style="font-size:11px;color:var(--sea-grey);margin-top:6px;letter-spacing:0.06em;">Dijital Ajans · Marka Stratejisi &amp; Yaratıcı Kimlik</p>
+        </div>
+        <div class="footer-info">
+          <p class="footer-info-line">Didi Otel Fine Dining Restaurant</p>
+          <p class="footer-info-line">Naming &amp; Identity Direction · 2026</p>
+          <p class="footer-credit">Confidential Client Presentation</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  // ─── MARK JS ACTIVE (enables reveal animations) ───
+  document.body.classList.add('js-ready');
+
+  // ─── NAV SCROLL ───
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  // ─── SCROLL REVEAL ───
+  const revealEls = document.querySelectorAll('.reveal');
+
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    // Fallback: make everything visible immediately
+    revealEls.forEach(el => el.classList.add('visible'));
+  }
+
+  // Safety net: after 2s force all reveals visible (handles local file edge cases)
+  setTimeout(() => {
+    revealEls.forEach(el => el.classList.add('visible'));
+  }, 2000);
+
+  // ─── NAMING OPTION TOGGLE ───
+  function toggleOption(id) {
+    const el = document.getElementById(id);
+    const wasOpen = el.classList.contains('open');
+    // close all
+    document.querySelectorAll('.naming-option').forEach(o => o.classList.remove('open'));
+    // toggle current
+    if (!wasOpen) el.classList.add('open');
+  }
+
+  // Open featured option on load after delay
+  setTimeout(() => {
+    const opt3 = document.getElementById('opt3');
+    if (opt3) opt3.classList.add('open');
+  }, 800);
+
+  // ─── ANIMATED SCORE BARS ───
+  const scoreObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const bars = e.target.querySelectorAll('.score-bar-fill');
+        bars.forEach(bar => {
+          const target = bar.getAttribute('data-width');
+          bar.style.width = target;
+        });
+        scoreObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll('.score-bar-section').forEach(el => scoreObserver.observe(el));
+
+  // ─── PARALLAX HERO WAVES ───
+  const heroWaves = document.querySelector('.hero-waves svg');
+  if (heroWaves) {
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY;
+      heroWaves.style.transform = `translateY(${y * 0.15}px)`;
+    }, { passive: true });
+  }
+</script>
+</body>
+</html>

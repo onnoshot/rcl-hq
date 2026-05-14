@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrocameraland — Analytics Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+<style>
+@font-face {
+  font-family: 'SF Pro Display';
+  src: local('SF Pro Display'), local('.SFNSDisplay'), local('SF Pro Text');
+  font-weight: 100 900;
+}
+:root {
+  --bg:        #080808;
+  --bg2:       #0e0e0e;
+  --surface:   rgba(255,255,255,0.04);
+  --surface-h: rgba(255,255,255,0.07);
+  --border:    rgba(255,255,255,0.07);
+  --border-h:  rgba(245,166,35,0.35);
+  --amber:     #F5A623;
+  --amber-dim: rgba(245,166,35,0.15);
+  --green:     #30D158;
+  --red:       #FF453A;
+  --blue:      #0A84FF;
+  --purple:    #BF5AF2;
+  --teal:      #5AC8FA;
+  --text:      #F2F2F7;
+  --text2:     rgba(242,242,247,0.55);
+  --text3:     rgba(242,242,247,0.3);
+  --mono:      'JetBrains Mono', ui-monospace, monospace;
+  --sans:      'SF Pro Display', 'Inter', -apple-system, sans-serif;
+  --radius:    16px;
+  --radius-sm: 10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; line-height: 1.5; }
+
+body::before {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:9999; opacity:0.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;
+}
+.orb { position:fixed; border-radius:50%; filter:blur(120px); pointer-events:none; z-index:0; }
+.orb-1 { width:500px; height:500px; background:#F5A623; top:-150px; right:-100px; opacity:0.09; }
+.orb-2 { width:400px; height:400px; background:#5AC8FA; bottom:-100px; left:-100px; opacity:0.07; }
+.orb-3 { width:300px; height:300px; background:#BF5AF2; bottom:200px; right:300px; opacity:0.05; }
+
+.shell { position:relative; z-index:1; max-width:1300px; margin:0 auto; padding:0 24px 80px; }
+
+header {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:32px 0 48px; border-bottom:1px solid var(--border); margin-bottom:48px;
+  gap:16px; flex-wrap:wrap;
+}
+.logo { display:flex; align-items:center; gap:14px; }
+.logo-icon {
+  width:44px; height:44px; background:var(--amber-dim);
+  border:1px solid rgba(245,166,35,0.3); border-radius:12px;
+  display:grid; place-items:center; font-size:22px;
+}
+.logo-text h1 { font-size:1.3rem; font-weight:600; letter-spacing:-0.03em; }
+.logo-text p { font-size:0.72rem; color:var(--text3); letter-spacing:0.12em; text-transform:uppercase; }
+.header-meta { display:flex; align-items:center; gap:8px; }
+.live-badge {
+  display:flex; align-items:center; gap:6px;
+  background:rgba(48,209,88,0.1); border:1px solid rgba(48,209,88,0.25);
+  border-radius:20px; padding:5px 12px; font-size:0.72rem;
+  color:var(--green); font-family:var(--mono); letter-spacing:0.05em;
+}
+.live-dot { width:6px; height:6px; background:var(--green); border-radius:50%; animation:pulse-dot 2s infinite; }
+@keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+.date-badge { font-size:0.72rem; color:var(--text3); font-family:var(--mono); }
+
+.section-label {
+  font-size:0.68rem; text-transform:uppercase; letter-spacing:0.18em;
+  color:var(--text3); margin-bottom:16px;
+  display:flex; align-items:center; gap:10px;
+}
+.section-label::after { content:''; flex:1; height:1px; background:var(--border); }
+
+.period-tabs {
+  display:flex; gap:4px; background:rgba(255,255,255,0.04);
+  border:1px solid var(--border); border-radius:10px; padding:4px;
+  margin-bottom:32px; width:fit-content;
+}
+.period-tab {
+  padding:6px 18px; border-radius:7px; font-family:var(--mono); font-size:0.72rem;
+  color:var(--text2); cursor:pointer; transition:all 0.2s; border:none;
+  background:transparent; letter-spacing:0.05em;
+}
+.period-tab.active { background:var(--amber-dim); color:var(--amber); border:1px solid rgba(245,166,35,0.2); }
+.period-tab:hover:not(.active) { color:var(--text); }
+
+.kpi-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; margin-bottom:48px; }
+
+.card {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); backdrop-filter:blur(20px);
+  transition:transform 0.3s cubic-bezier(.34,1.56,.64,1), border-color 0.3s, box-shadow 0.3s;
+  position:relative; overflow:hidden;
+}
+.card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,0.03) 0%,transparent 60%); pointer-events:none; }
+.card:hover { transform:translateY(-3px) scale(1.01); border-color:var(--border-h); background:var(--surface-h); box-shadow:0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06); }
+
+.kpi-card { padding:24px; cursor:default; }
+.kpi-icon { width:32px; height:32px; border-radius:8px; display:grid; place-items:center; font-size:16px; margin-bottom:16px; }
+.kpi-label { font-size:0.7rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.12em; margin-bottom:8px; font-family:var(--mono); }
+.kpi-value { font-size:1.8rem; font-weight:700; letter-spacing:-0.04em; color:var(--text); font-family:var(--mono); }
+.kpi-value.big { font-size:2.2rem; }
+.kpi-sub { font-size:0.72rem; color:var(--text3); margin-top:6px; font-family:var(--mono); }
+.kpi-trend { display:inline-flex; align-items:center; gap:4px; font-size:0.7rem; font-family:var(--mono); margin-top:4px; }
+.trend-up { color:var(--green); }
+.trend-down { color:var(--red); }
+.trend-neutral { color:var(--text3); }
+
+.charts-row { display:grid; grid-template-columns:2fr 1fr; gap:16px; margin-bottom:48px; }
+.chart-card { padding:28px; }
+.chart-title { font-size:0.85rem; font-weight:600; margin-bottom:20px; color:var(--text2); letter-spacing:-0.01em; }
+.chart-wrap { position:relative; }
+
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:48px; }
+.three-col { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:48px; }
+
+.table-card { padding:0; overflow:hidden; }
+.table-card .card-header { padding:24px 28px 20px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; }
+.table-card .card-title { font-size:0.85rem; font-weight:600; color:var(--text2); }
+table { width:100%; border-collapse:collapse; }
+th { font-size:0.65rem; text-transform:uppercase; letter-spacing:0.15em; color:var(--text3); font-family:var(--mono); padding:12px 20px; text-align:left; border-bottom:1px solid var(--border); font-weight:500; }
+td { font-size:0.82rem; padding:12px 20px; border-bottom:1px solid rgba(255,255,255,0.04); color:var(--text2); font-family:var(--mono); }
+tr:last-child td { border-bottom:none; }
+tr:hover td { background:rgba(255,255,255,0.02); color:var(--text); }
+td.path-cell { color:var(--amber); max-width:220px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+td.good { color:var(--green); }
+td.warn { color:var(--amber); }
+td.bad { color:var(--red); }
+
+.bar-row { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.bar-label { font-size:0.75rem; font-family:var(--mono); color:var(--text2); min-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.bar-track { flex:1; height:6px; background:rgba(255,255,255,0.07); border-radius:3px; overflow:hidden; }
+.bar-fill { height:100%; border-radius:3px; transition:width 1s ease; }
+.bar-pct { font-size:0.7rem; font-family:var(--mono); color:var(--text3); min-width:38px; text-align:right; }
+
+.device-grid { display:flex; flex-direction:column; gap:16px; padding:24px 28px; }
+.device-item { display:flex; align-items:center; gap:16px; }
+.device-icon { font-size:20px; width:36px; text-align:center; }
+.device-info { flex:1; }
+.device-name { font-size:0.8rem; color:var(--text2); margin-bottom:4px; }
+.device-bar-track { height:4px; background:rgba(255,255,255,0.07); border-radius:2px; overflow:hidden; }
+.device-bar-fill { height:100%; border-radius:2px; transition:width 1s ease; }
+.device-pct { font-size:0.75rem; font-family:var(--mono); color:var(--amber); min-width:40px; text-align:right; }
+
+.insights-card { padding:28px; margin-bottom:48px; border-color:rgba(245,166,35,0.15); }
+.insights-header { display:flex; align-items:center; gap:10px; margin-bottom:20px; }
+.insights-badge { background:var(--amber-dim); border:1px solid rgba(245,166,35,0.25); border-radius:6px; padding:4px 10px; font-size:0.65rem; font-family:var(--mono); color:var(--amber); letter-spacing:0.1em; text-transform:uppercase; }
+.insights-title { font-size:0.9rem; font-weight:600; color:var(--text2); }
+.insight-item { display:flex; gap:14px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,0.04); }
+.insight-item:last-child { border-bottom:none; }
+.insight-num { font-family:var(--mono); font-size:0.75rem; color:var(--amber); opacity:0.6; min-width:20px; padding-top:1px; }
+.insight-text { font-size:0.85rem; color:var(--text2); line-height:1.6; }
+.insight-text strong { color:var(--text); }
+.no-insights { font-size:0.82rem; color:var(--text3); font-style:italic; }
+
+footer { border-top:1px solid var(--border); padding:24px 0 0; font-size:0.7rem; color:var(--text3); font-family:var(--mono); letter-spacing:0.06em; }
+.shimmer-text { background:linear-gradient(90deg,var(--amber),#fff,var(--amber)); background-size:200%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; animation:shimmer 3s infinite; }
+@keyframes shimmer { 0%{background-position:200%} 100%{background-position:-200%} }
+.fade-up { opacity:0; transform:translateY(16px); transition:opacity .6s, transform .6s; }
+.fade-up.visible { opacity:1; transform:translateY(0); }
+
+.no-data-msg { display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:200px; gap:12px; }
+.no-data-msg .icon { font-size:2.5rem; opacity:.4; }
+.no-data-msg p { font-size:0.82rem; color:var(--text3); font-family:var(--mono); text-align:center; line-height:1.7; }
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<div class="shell">
+
+  <!-- HEADER -->
+  <header class="fade-up">
+    <div class="logo">
+      <div class="logo-icon">📊</div>
+      <div class="logo-text">
+        <h1>Analytics</h1>
+        <p>retrocameraland.com · Google Analytics 4</p>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div class="live-badge"><div class="live-dot"></div>LIVE</div>
+      <div class="date-badge" id="updateBadge">—</div>
+    </div>
+  </header>
+
+  <!-- PERIOD TABS -->
+  <div class="fade-up" style="transition-delay:.05s">
+    <div class="section-label">Dönem</div>
+    <div class="period-tabs">
+      <button class="period-tab" onclick="setPeriod('7d',this)">7 Gün</button>
+      <button class="period-tab active" onclick="setPeriod('30d',this)">30 Gün</button>
+      <button class="period-tab" onclick="setPeriod('90d',this)">90 Gün</button>
+    </div>
+  </div>
+
+  <!-- KPIs -->
+  <div class="fade-up" style="transition-delay:.1s">
+    <div class="section-label">Temel Metrikler</div>
+    <div class="kpi-grid">
+      <div class="card kpi-card">
+        <div class="kpi-icon" style="background:rgba(90,200,250,0.15)">🌐</div>
+        <div class="kpi-label">Oturumlar</div>
+        <div class="kpi-value big" id="kpi-sessions">—</div>
+        <div class="kpi-sub" id="kpi-sessions-sub">—</div>
+      </div>
+      <div class="card kpi-card">
+        <div class="kpi-icon" style="background:rgba(48,209,88,0.15)">👤</div>
+        <div class="kpi-label">Kullanıcılar</div>
+        <div class="kpi-value big" id="kpi-users">—</div>
+        <div class="kpi-sub" id="kpi-users-sub">—</div>
+      </div>
+      <div class="card kpi-card">
+        <div class="kpi-icon" style="background:rgba(245,166,35,0.15)">📄</div>
+        <div class="kpi-label">Sayfa Görüntüleme</div>
+        <div class="kpi-value big" id="kpi-pageviews">—</div>
+        <div class="kpi-sub" id="kpi-pageviews-sub">—</div>
+      </div>
+      <div class="card kpi-card">
+        <div class="kpi-icon" style="background:rgba(255,69,58,0.15)">↩️</div>
+        <div class="kpi-label">Hemen Çıkma</div>
+        <div class="kpi-value big" id="kpi-bounce">—</div>
+        <div class="kpi-sub" id="kpi-bounce-sub">Hedef: &lt;%60</div>
+      </div>
+      <div class="card kpi-card">
+        <div class="kpi-icon" style="background:rgba(191,90,242,0.15)">⏱️</div>
+        <div class="kpi-label">Ort. Oturum Süresi</div>
+        <div class="kpi-value big" id="kpi-duration">—</div>
+        <div class="kpi-sub" id="kpi-duration-sub">Hedef: &gt;2 dakika</div>
+      </div>
+      <div class="card kpi-card">
+        <div class="kpi-icon" style="background:rgba(245,166,35,0.15)">📈</div>
+        <div class="kpi-label">Sayfa / Oturum</div>
+        <div class="kpi-value big" id="kpi-pps">—</div>
+        <div class="kpi-sub" id="kpi-pps-sub">Sayfa görüntüleme / oturum</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHARTS -->
+  <div class="fade-up" style="transition-delay:.15s">
+    <div class="section-label">Trafik Trendi</div>
+    <div class="charts-row">
+      <div class="card chart-card">
+        <div class="chart-title">Günlük Oturumlar — Son 90 Gün</div>
+        <div class="chart-wrap" style="height:220px"><canvas id="lineChart"></canvas></div>
+      </div>
+      <div class="card chart-card">
+        <div class="chart-title">Trafik Kaynakları</div>
+        <div class="chart-wrap" style="height:180px"><canvas id="donutChart"></canvas></div>
+        <div id="sourceLegend" style="margin-top:16px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP PAGES -->
+  <div class="fade-up" style="transition-delay:.2s">
+    <div class="section-label">En Çok Ziyaret Edilen Sayfalar (30 Gün)</div>
+    <div class="card table-card">
+      <div class="card-header">
+        <span class="card-title">Top 15 Sayfa</span>
+        <span style="font-size:0.7rem;font-family:var(--mono);color:var(--text3)">Oturuma göre sıralı</span>
+      </div>
+      <div style="overflow-x:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Sayfa</th>
+              <th>Oturum</th>
+              <th>Görüntüleme</th>
+              <th>Bounce</th>
+              <th>Ort. Süre</th>
+            </tr>
+          </thead>
+          <tbody id="pagesBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEVICES + COUNTRIES + SOURCES -->
+  <div class="fade-up" style="transition-delay:.25s">
+    <div class="section-label">Kitle Segmentleri</div>
+    <div class="three-col">
+
+      <!-- DEVICES -->
+      <div class="card">
+        <div class="card-header" style="padding:20px 24px 16px;border-bottom:1px solid var(--border)">
+          <span class="card-title" style="font-size:0.82rem;font-weight:600;color:var(--text2)">Cihaz Dağılımı</span>
+        </div>
+        <div class="device-grid" id="devicesBlock"></div>
+      </div>
+
+      <!-- COUNTRIES -->
+      <div class="card" style="padding:20px 24px">
+        <div class="chart-title">En Çok Trafik Gönderen Ülkeler</div>
+        <div id="countriesBlock"></div>
+      </div>
+
+      <!-- SOURCES BARS -->
+      <div class="card" style="padding:20px 24px">
+        <div class="chart-title">Kanal Dağılımı (Detay)</div>
+        <div id="sourcesBarsBlock"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- AI INSIGHTS -->
+  <div class="fade-up" style="transition-delay:.3s">
+    <div class="section-label">AI Tavsiyeleri</div>
+    <div class="card insights-card">
+      <div class="insights-header">
+        <div class="insights-badge">Claude AI</div>
+        <div class="insights-title">Aksiyon Önerileri</div>
+      </div>
+      <div id="insightsContent"></div>
+    </div>
+  </div>
+
+  <footer class="fade-up" style="transition-delay:.35s">
+    retrocameraland.com · Google Analytics 4 · <span class="shimmer-text">Powered by Claude AI</span>
+  </footer>
+
+</div>
+
+<script>
+/* ─── DATA BLOCK START ─── */
+const GA_DATA = {"updated_at": "2026-05-13T09:00:13.171866", "property_id": "493627571", "period_7d": {"sessions": 1042, "activeUsers": 888, "newUsers": 854, "screenPageViews": 5786, "bounceRate": 0.1392, "averageSessionDuration": 151.7}, "period_30d": {"sessions": 5066, "activeUsers": 4226, "newUsers": 4134, "screenPageViews": 28329, "bounceRate": 0.124, "averageSessionDuration": 128.3}, "period_90d": {"sessions": 22770, "activeUsers": 19246, "newUsers": 19211, "screenPageViews": 113784, "bounceRate": 0.1567, "averageSessionDuration": 101.7}, "daily": [{"date": "20260213", "sessions": 167, "users": 151}, {"date": "20260214", "sessions": 160, "users": 150}, {"date": "20260215", "sessions": 203, "users": 193}, {"date": "20260216", "sessions": 167, "users": 159}, {"date": "20260217", "sessions": 127, "users": 117}, {"date": "20260218", "sessions": 125, "users": 116}, {"date": "20260219", "sessions": 439, "users": 414}, {"date": "20260220", "sessions": 423, "users": 397}, {"date": "20260221", "sessions": 476, "users": 448}, {"date": "20260222", "sessions": 521, "users": 492}, {"date": "20260223", "sessions": 409, "users": 382}, {"date": "20260224", "sessions": 223, "users": 204}, {"date": "20260225", "sessions": 240, "users": 222}, {"date": "20260226", "sessions": 237, "users": 219}, {"date": "20260227", "sessions": 246, "users": 231}, {"date": "20260228", "sessions": 309, "users": 279}, {"date": "20260301", "sessions": 349, "users": 312}, {"date": "20260302", "sessions": 263, "users": 236}, {"date": "20260303", "sessions": 234, "users": 214}, {"date": "20260304", "sessions": 201, "users": 181}, {"date": "20260305", "sessions": 211, "users": 195}, {"date": "20260306", "sessions": 372, "users": 351}, {"date": "20260307", "sessions": 417, "users": 388}, {"date": "20260308", "sessions": 284, "users": 261}, {"date": "20260309", "sessions": 207, "users": 191}, {"date": "20260310", "sessions": 236, "users": 213}, {"date": "20260311", "sessions": 160, "users": 150}, {"date": "20260312", "sessions": 210, "users": 198}, {"date": "20260313", "sessions": 174, "users": 167}, {"date": "20260314", "sessions": 190, "users": 179}, {"date": "20260315", "sessions": 223, "users": 203}, {"date": "20260316", "sessions": 204, "users": 194}, {"date": "20260317", "sessions": 208, "users": 196}, {"date": "20260318", "sessions": 189, "users": 179}, {"date": "20260319", "sessions": 224, "users": 201}, {"date": "20260320", "sessions": 276, "users": 254}, {"date": "20260321", "sessions": 299, "users": 283}, {"date": "20260322", "sessions": 345, "users": 317}, {"date": "20260323", "sessions": 229, "users": 216}, {"date": "20260324", "sessions": 269, "users": 253}, {"date": "20260325", "sessions": 251, "users": 231}, {"date": "20260326", "sessions": 357, "users": 329}, {"date": "20260327", "sessions": 343, "users": 313}, {"date": "20260328", "sessions": 334, "users": 305}, {"date": "20260329", "sessions": 898, "users": 839}, {"date": "20260330", "sessions": 824, "users": 767}, {"date": "20260331", "sessions": 699, "users": 663}, {"date": "20260401", "sessions": 770, "users": 709}, {"date": "20260402", "sessions": 328, "users": 307}, {"date": "20260403", "sessions": 263, "users": 242}, {"date": "20260404", "sessions": 333, "users": 301}, {"date": "20260405", "sessions": 336, "users": 319}, {"date": "20260406", "sessions": 229, "users": 201}, {"date": "20260407", "sessions": 188, "users": 173}, {"date": "20260408", "sessions": 130, "users": 123}, {"date": "20260409", "sessions": 152, "users": 139}, {"date": "20260410", "sessions": 179, "users": 162}, {"date": "20260411", "sessions": 160, "users": 149}, {"date": "20260412", "sessions": 167, "users": 153}, {"date": "20260413", "sessions": 145, "users": 135}, {"date": "20260414", "sessions": 134, "users": 128}, {"date": "20260415", "sessions": 119, "users": 112}, {"date": "20260416", "sessions": 142, "users": 131}, {"date": "20260417", "sessions": 135, "users": 125}, {"date": "20260418", "sessions": 177, "users": 164}, {"date": "20260419", "sessions": 195, "users": 184}, {"date": "20260420", "sessions": 142, "users": 126}, {"date": "20260421", "sessions": 130, "users": 114}, {"date": "20260422", "sessions": 124, "users": 112}, {"date": "20260423", "sessions": 174, "users": 158}, {"date": "20260424", "sessions": 158, "users": 134}, {"date": "20260425", "sessions": 200, "users": 181}, {"date": "20260426", "sessions": 205, "users": 192}, {"date": "20260427", "sessions": 170, "users": 159}, {"date": "20260428", "sessions": 121, "users": 110}, {"date": "20260429", "sessions": 186, "users": 170}, {"date": "20260430", "sessions": 234, "users": 222}, {"date": "20260501", "sessions": 259, "users": 235}, {"date": "20260502", "sessions": 181, "users": 168}, {"date": "20260503", "sessions": 236, "users": 212}, {"date": "20260504", "sessions": 240, "users": 230}, {"date": "20260505", "sessions": 162, "users": 143}, {"date": "20260506", "sessions": 132, "users": 124}, {"date": "20260507", "sessions": 137, "users": 130}, {"date": "20260508", "sessions": 177, "users": 150}, {"date": "20260509", "sessions": 138, "users": 120}, {"date": "20260510", "sessions": 180, "users": 160}, {"date": "20260511", "sessions": 195, "users": 174}, {"date": "20260512", "sessions": 192, "users": 175}, {"date": "20260513", "sessions": 24, "users": 20}], "sources": [{"name": "Organic Social", "sessions": 1555, "pct": 31.1}, {"name": "Organic Search", "sessions": 1470, "pct": 29.4}, {"name": "Direct", "sessions": 863, "pct": 17.3}, {"name": "Organic Video", "sessions": 446, "pct": 8.9}, {"name": "Unassigned", "sessions": 343, "pct": 6.9}, {"name": "Cross-network", "sessions": 149, "pct": 3.0}, {"name": "Organic Shopping", "sessions": 82, "pct": 1.6}, {"name": "Referral", "sessions": 57, "pct": 1.1}, {"name": "Paid Search", "sessions": 33, "pct": 0.7}, {"name": "Email", "sessions": 4, "pct": 0.1}], "top_pages": [{"path": "/", "sessions": 2396, "pageviews": 5613, "bounceRate": 5.6, "avgDuration": 56}, {"path": "/collections/dijital-fotograf-makinesi", "sessions": 1773, "pageviews": 8523, "bounceRate": 2.1, "avgDuration": 98}, {"path": "/pages/links", "sessions": 1098, "pageviews": 2460, "bounceRate": 1.0, "avgDuration": 21}, {"path": "/products/canon-powershot-sd400", "sessions": 206, "pageviews": 527, "bounceRate": 1.5, "avgDuration": 61}, {"path": "/en/pages/links", "sessions": 175, "pageviews": 366, "bounceRate": 3.4, "avgDuration": 35}, {"path": "/en", "sessions": 146, "pageviews": 319, "bounceRate": 13.7, "avgDuration": 40}, {"path": "/products/sony-cyber-shot-dsc-tx9", "sessions": 136, "pageviews": 301, "bounceRate": 5.1, "avgDuration": 104}, {"path": "/products/canon-ixus-160", "sessions": 134, "pageviews": 305, "bounceRate": 4.5, "avgDuration": 52}, {"path": "/products/sony-cyber-shot-dsc-t9", "sessions": 132, "pageviews": 287, "bounceRate": 12.9, "avgDuration": 37}, {"path": "/products/fujifilm-finepix-t200", "sessions": 130, "pageviews": 324, "bounceRate": 3.8, "avgDuration": 114}, {"path": "/products/sony-cybershot-dsc-s85", "sessions": 129, "pageviews": 325, "bounceRate": 5.4, "avgDuration": 95}, {"path": "/en/collections/dijital-fotograf-makinesi", "sessions": 103, "pageviews": 499, "bounceRate": 2.9, "avgDuration": 194}, {"path": "/products/samsung-es65", "sessions": 103, "pageviews": 237, "bounceRate": 4.9, "avgDuration": 60}, {"path": "/search", "sessions": 102, "pageviews": 434, "bounceRate": 1.0, "avgDuration": 79}, {"path": "/products/olympus-sz-10", "sessions": 99, "pageviews": 253, "bounceRate": 4.0, "avgDuration": 89}], "devices": {"mobile": {"sessions": 3823, "pct": 75.7}, "desktop": {"sessions": 1139, "pct": 22.5}, "tablet": {"sessions": 89, "pct": 1.8}}, "countries": [{"name": "Türkiye", "sessions": 3894}, {"name": "Singapore", "sessions": 301}, {"name": "United States", "sessions": 180}, {"name": "United Kingdom", "sessions": 54}, {"name": "India", "sessions": 44}, {"name": "Germany", "sessions": 42}, {"name": "Netherlands", "sessions": 31}, {"name": "Italy", "sessions": 26}, {"name": "Philippines", "sessions": 23}, {"name": "China", "sessions": 22}], "ai_insights": ""};
+/* ─── DATA BLOCK END ─── */
+
+/* ─── DEMO DATA (credentials kurulmadan önce) ─── */
+const DEMO_DATA = {
+  updated_at: new Date().toISOString(),
+  period_7d:  { sessions:842, activeUsers:621, screenPageViews:2340, bounceRate:0.52, averageSessionDuration:138 },
+  period_30d: { sessions:3870, activeUsers:2810, screenPageViews:10420, bounceRate:0.55, averageSessionDuration:127 },
+  period_90d: { sessions:11240, activeUsers:7930, screenPageViews:29800, bounceRate:0.57, averageSessionDuration:121 },
+  daily: Array.from({length:90},(_,i)=>{
+    const d = new Date(); d.setDate(d.getDate()-89+i);
+    const ds = d.toISOString().slice(0,10).replace(/-/g,'');
+    const base = 120 + Math.sin(i/7)*30 + Math.random()*40;
+    return {date:ds, sessions:Math.round(base), users:Math.round(base*.75)};
+  }),
+  sources:[
+    {name:'Organic Search', sessions:1820, pct:47.0},
+    {name:'Direct',         sessions:930,  pct:24.0},
+    {name:'Social',         sessions:620,  pct:16.0},
+    {name:'Referral',       sessions:310,  pct:8.0},
+    {name:'Email',          sessions:190,  pct:5.0},
+  ],
+  top_pages:[
+    {path:'/',                     sessions:1240, pageviews:1680, bounceRate:45.2, avgDuration:98},
+    {path:'/collections/all',      sessions:820,  pageviews:1230, bounceRate:51.4, avgDuration:143},
+    {path:'/blogs/news',           sessions:560,  pageviews:710,  bounceRate:62.1, avgDuration:187},
+    {path:'/products/canon-g7x',   sessions:380,  pageviews:540,  bounceRate:48.3, avgDuration:214},
+    {path:'/products/sony-w110',   sessions:290,  pageviews:410,  bounceRate:53.7, avgDuration:198},
+    {path:'/products/fujifilm-x',  sessions:240,  pageviews:360,  bounceRate:55.0, avgDuration:176},
+    {path:'/pages/about',          sessions:180,  pageviews:240,  bounceRate:68.2, avgDuration:72},
+    {path:'/products/olympus-mju', sessions:160,  pageviews:230,  bounceRate:50.1, avgDuration:210},
+    {path:'/blogs/news/y2k-trend', sessions:140,  pageviews:195,  bounceRate:42.8, avgDuration:256},
+    {path:'/collections/retro',    sessions:120,  pageviews:180,  bounceRate:57.9, avgDuration:132},
+  ],
+  devices:{
+    mobile:  {sessions:2320, pct:60.0},
+    desktop: {sessions:1350, pct:34.9},
+    tablet:  {sessions:200,  pct:5.1},
+  },
+  countries:[
+    {name:'Türkiye', sessions:3100},
+    {name:'Almanya', sessions:210},
+    {name:'ABD',     sessions:170},
+    {name:'İngiltere',sessions:140},
+    {name:'Fransa',  sessions:110},
+  ],
+  ai_insights: "**Demo mod aktif.** GA4 credentials kurulumu tamamlandıktan sonra gerçek AI tavsiyeleri burada görünecek.",
+};
+
+const DATA = GA_DATA || DEMO_DATA;
+const IS_DEMO = !GA_DATA;
+
+/* ─── UTILS ─── */
+function fmt(n, decimals=0) {
+  if (n == null || isNaN(n)) return '—';
+  return Number(n).toLocaleString('tr-TR', {maximumFractionDigits: decimals});
+}
+function fmtDuration(sec) {
+  if (!sec) return '—';
+  const m = Math.floor(sec / 60), s = Math.round(sec % 60);
+  return m > 0 ? `${m}d ${s}sn` : `${s}sn`;
+}
+function fmtDate(iso) {
+  try {
+    return new Date(iso).toLocaleDateString('tr-TR', {day:'numeric', month:'long', year:'numeric', hour:'2-digit', minute:'2-digit'});
+  } catch { return iso; }
+}
+
+/* ─── SOURCE COLORS ─── */
+const SRC_COLORS = [
+  '#F5A623','#5AC8FA','#30D158','#BF5AF2','#FF9F0A',
+  '#0A84FF','#FF453A','#64D2FF','#FF6961','#98D8C8',
+];
+
+/* ─── PERIOD STATE ─── */
+let currentPeriod = '30d';
+
+function getPeriodData(p) {
+  const key = `period_${p}`;
+  return DATA[key] || {};
+}
+
+function setPeriod(period, btn) {
+  currentPeriod = period;
+  document.querySelectorAll('.period-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderKPIs();
+}
+
+/* ─── COUNTER ANIMATION ─── */
+function animateCounter(el, target, formatter, duration=1100) {
+  let startTime = null;
+  function step(ts) {
+    if (!startTime) startTime = ts;
+    const progress = Math.min((ts - startTime) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 4);
+    el.textContent = formatter(target * ease);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = formatter(target);
+  }
+  requestAnimationFrame(step);
+}
+
+/* ─── KPIs ─── */
+function renderKPIs() {
+  const d = getPeriodData(currentPeriod);
+  const sessions  = d.sessions || 0;
+  const users     = d.activeUsers || 0;
+  const pageviews = d.screenPageViews || 0;
+  const bounce    = (d.bounceRate || 0) * 100;
+  const duration  = d.averageSessionDuration || 0;
+  const pps       = sessions > 0 ? pageviews / sessions : 0;
+
+  animateCounter(document.getElementById('kpi-sessions'), sessions, v => fmt(Math.round(v)));
+  animateCounter(document.getElementById('kpi-users'),    users,    v => fmt(Math.round(v)));
+  animateCounter(document.getElementById('kpi-pageviews'),pageviews,v => fmt(Math.round(v)));
+  animateCounter(document.getElementById('kpi-bounce'),   bounce,   v => `%${fmt(v, 1)}`);
+  animateCounter(document.getElementById('kpi-duration'), duration, v => fmtDuration(v));
+  animateCounter(document.getElementById('kpi-pps'),      pps,      v => fmt(v, 1));
+
+  document.getElementById('kpi-sessions-sub').textContent = `${currentPeriod} toplam`;
+  document.getElementById('kpi-users-sub').textContent    = `aktif kullanıcı`;
+  document.getElementById('kpi-pageviews-sub').textContent= `toplam görüntüleme`;
+
+  const bounceEl = document.getElementById('kpi-bounce');
+  bounceEl.style.color = bounce > 70 ? 'var(--red)' : bounce > 60 ? 'var(--amber)' : 'var(--green)';
+}
+
+/* ─── LINE CHART ─── */
+function renderLineChart() {
+  const daily = DATA.daily || [];
+  const labels = daily.map(d => {
+    const s = String(d.date);
+    return `${s.slice(4,6)}/${s.slice(6,8)}`;
+  });
+  const sessions = daily.map(d => d.sessions);
+
+  new Chart(document.getElementById('lineChart'), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        data: sessions,
+        borderColor: '#F5A623',
+        backgroundColor: ctx => {
+          const g = ctx.chart.ctx.createLinearGradient(0,0,0,220);
+          g.addColorStop(0,'rgba(245,166,35,0.25)');
+          g.addColorStop(1,'rgba(245,166,35,0)');
+          return g;
+        },
+        borderWidth: 2,
+        pointRadius: 0,
+        tension: 0.4,
+        fill: true,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: {
+        callbacks: { label: ctx => `${fmt(ctx.parsed.y)} oturum` },
+        backgroundColor: 'rgba(14,14,14,0.95)',
+        borderColor: 'rgba(245,166,35,0.3)',
+        borderWidth: 1,
+        titleColor: '#F2F2F7',
+        bodyColor: 'rgba(242,242,247,0.6)',
+      }},
+      scales: {
+        x: { ticks: { maxTicksLimit: 12, font: { family: 'JetBrains Mono', size: 9 } }, grid: { display: false } },
+        y: { ticks: { font: { family: 'JetBrains Mono', size: 9 } } },
+      }
+    }
+  });
+}
+
+/* ─── DONUT CHART ─── */
+function renderDonutChart() {
+  const sources = DATA.sources || [];
+  const labels  = sources.map(s => s.name);
+  const values  = sources.map(s => s.sessions);
+  const colors  = sources.map((_,i) => SRC_COLORS[i % SRC_COLORS.length]);
+
+  new Chart(document.getElementById('donutChart'), {
+    type: 'doughnut',
+    data: { labels, datasets: [{ data: values, backgroundColor: colors, borderColor: '#080808', borderWidth: 3 }] },
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      cutout: '68%',
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          callbacks: { label: ctx => `${ctx.label}: ${fmt(ctx.parsed)} oturum` },
+          backgroundColor: 'rgba(14,14,14,0.95)', borderColor: 'rgba(245,166,35,0.3)', borderWidth:1,
+          titleColor:'#F2F2F7', bodyColor:'rgba(242,242,247,0.6)',
+        }
+      }
+    }
+  });
+
+  const legend = document.getElementById('sourceLegend');
+  legend.innerHTML = sources.map((s,i) => `
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:7px">
+      <div style="width:8px;height:8px;border-radius:50%;background:${SRC_COLORS[i%SRC_COLORS.length]};flex-shrink:0"></div>
+      <span style="font-size:0.7rem;font-family:var(--mono);color:var(--text2);flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${s.name}</span>
+      <span style="font-size:0.7rem;font-family:var(--mono);color:var(--text3)">%${s.pct}</span>
+    </div>
+  `).join('');
+}
+
+/* ─── TOP PAGES ─── */
+function renderTopPages() {
+  const pages = (DATA.top_pages || []).slice(0, 15);
+  const tbody = document.getElementById('pagesBody');
+  tbody.innerHTML = pages.map((p,i) => {
+    const bounce = p.bounceRate;
+    const bClass = bounce > 70 ? 'bad' : bounce > 55 ? 'warn' : 'good';
+    const dur = p.avgDuration || 0;
+    return `<tr>
+      <td style="color:var(--text3)">${i+1}</td>
+      <td class="path-cell" title="${p.path}">${p.path}</td>
+      <td>${fmt(p.sessions)}</td>
+      <td>${fmt(p.pageviews)}</td>
+      <td class="${bClass}">%${fmt(bounce,1)}</td>
+      <td>${fmtDuration(dur)}</td>
+    </tr>`;
+  }).join('');
+}
+
+/* ─── DEVICES ─── */
+function renderDevices() {
+  const devices = DATA.devices || {};
+  const icons = { mobile:'📱', desktop:'💻', tablet:'📱' };
+  const colors = { mobile:'var(--amber)', desktop:'var(--blue)', tablet:'var(--purple)' };
+  const labels = { mobile:'Mobil', desktop:'Masaüstü', tablet:'Tablet' };
+  const sorted = Object.entries(devices).sort((a,b) => b[1].pct - a[1].pct);
+
+  document.getElementById('devicesBlock').innerHTML = sorted.map(([key, val]) => `
+    <div class="device-item">
+      <div class="device-icon">${icons[key] || '📱'}</div>
+      <div class="device-info">
+        <div class="device-name">${labels[key] || key}</div>
+        <div class="device-bar-track">
+          <div class="device-bar-fill" style="width:${val.pct}%;background:${colors[key]||'var(--amber)'}"></div>
+        </div>
+      </div>
+      <div class="device-pct">%${fmt(val.pct,1)}</div>
+    </div>
+  `).join('');
+}
+
+/* ─── COUNTRIES ─── */
+function renderCountries() {
+  const countries = DATA.countries || [];
+  const max = countries[0]?.sessions || 1;
+  document.getElementById('countriesBlock').innerHTML = countries.map((c,i) => `
+    <div class="bar-row">
+      <div class="bar-label" title="${c.name}">${c.name}</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-w="${Math.round(c.sessions/max*100)}" style="width:0%;background:${SRC_COLORS[i%SRC_COLORS.length]}"></div>
+      </div>
+      <div class="bar-pct">${fmt(c.sessions)}</div>
+    </div>
+  `).join('');
+  setTimeout(() => {
+    document.querySelectorAll('#countriesBlock .bar-fill').forEach(b => {
+      b.style.width = b.dataset.w + '%';
+    });
+  }, 300);
+}
+
+/* ─── SOURCE BARS ─── */
+function renderSourceBars() {
+  const sources = DATA.sources || [];
+  const max = sources[0]?.sessions || 1;
+  document.getElementById('sourcesBarsBlock').innerHTML = sources.map((s,i) => `
+    <div class="bar-row">
+      <div class="bar-label" title="${s.name}">${s.name}</div>
+      <div class="bar-track">
+        <div class="bar-fill" data-w="${Math.round(s.sessions/max*100)}" style="width:0%;background:${SRC_COLORS[i%SRC_COLORS.length]}"></div>
+      </div>
+      <div class="bar-pct">%${s.pct}</div>
+    </div>
+  `).join('');
+  setTimeout(() => {
+    document.querySelectorAll('#sourcesBarsBlock .bar-fill').forEach(b => {
+      b.style.width = b.dataset.w + '%';
+    });
+  }, 400);
+}
+
+/* ─── INSIGHTS ─── */
+function renderInsights() {
+  const raw = DATA.ai_insights || '';
+  const el = document.getElementById('insightsContent');
+
+  if (!raw || raw.trim() === '') {
+    el.innerHTML = `<p class="no-insights">Henüz tavsiye üretilmedi. Günlük cron çalıştıktan sonra Claude AI tavsiyeleri burada görünecek.</p>`;
+    return;
+  }
+
+  if (IS_DEMO) {
+    el.innerHTML = `
+      <div class="insight-item">
+        <div class="insight-num">⚠</div>
+        <div class="insight-text">${raw}</div>
+      </div>`;
+    return;
+  }
+
+  const lines = raw.split('\n').filter(l => l.trim());
+  el.innerHTML = lines.map((line, i) => {
+    const clean = line.replace(/^\*\*/, '').replace(/\*\*/g, '<strong>').replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    return `<div class="insight-item">
+      <div class="insight-num">${i+1}</div>
+      <div class="insight-text">${clean}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ─── HEADER META ─── */
+function renderHeader() {
+  const badge = document.getElementById('updateBadge');
+  if (IS_DEMO) {
+    badge.textContent = 'DEMO VERİ — credentials kurulmadı';
+    badge.style.color = 'var(--amber)';
+  } else {
+    badge.textContent = `Güncelleme: ${fmtDate(DATA.updated_at)}`;
+  }
+}
+
+/* ─── FADE IN ─── */
+function initFade() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+}
+
+/* ─── INIT ─── */
+renderHeader();
+renderKPIs();
+renderLineChart();
+renderDonutChart();
+renderTopPages();
+renderDevices();
+renderCountries();
+renderSourceBars();
+renderInsights();
+initFade();
+</script>
+</body>
+</html>

@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>HMT CUP 2026 — UniqBee</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&family=Bebas+Neue&display=swap');
+
+/* ═══════════ TOKENS ═══════════ */
+:root{
+  --r:#CC0000; --rb:#E82020; --rd:#A50000;
+  --w:#FFFFFF;
+  --bg:#F7F7F7;
+  --bg2:#EFEFEF;
+  --bg3:#E5E5E5;
+  --ink:#111111;
+  --ink2:#333333;
+  --ink3:#666666;
+  --ink4:#999999;
+  --border:#DEDEDE;
+  --border2:#CACACA;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+
+/* ═══════════ RESET ═══════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',sans-serif;background:var(--w);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+
+/* ═══════════ NAV ═══════════ */
+.nav{
+  position:fixed;inset:0 0 auto;z-index:900;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 48px;
+  background:rgba(255,255,255,.97);
+  border-bottom:2px solid var(--r);
+  backdrop-filter:blur(20px);
+  transition:box-shadow .3s var(--ease);
+}
+.nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.08)}
+.nav-logo{display:flex;align-items:center;gap:11px}
+.nav-hex{
+  width:34px;height:34px;background:var(--r);
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  display:grid;place-items:center;flex-shrink:0;
+}
+.nav-hex svg{width:16px;height:16px;fill:white}
+.nav-brand{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:5px;color:var(--ink)}
+.nav-brand em{color:var(--r);font-style:normal}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--ink3);position:relative;padding-bottom:3px;
+  transition:color .25s var(--ease);
+}
+.nav-links a::after{
+  content:'';position:absolute;bottom:0;left:0;width:0;height:2px;
+  background:var(--r);transition:width .3s var(--ease);
+}
+.nav-links a:hover{color:var(--r)}
+.nav-links a:hover::after{width:100%}
+.nav-pill{
+  background:var(--r);color:white;font-size:9px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;padding:8px 18px;
+  white-space:nowrap;
+}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-burger span{width:22px;height:2px;background:var(--ink);transition:all .3s var(--ease);border-radius:1px}
+.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-menu{
+  display:none;position:fixed;top:64px;inset:auto 0 0;z-index:899;
+  background:white;border-top:1px solid var(--border);
+  padding:32px 24px;flex-direction:column;gap:20px;
+  box-shadow:0 8px 32px rgba(0,0,0,.12);
+}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:15px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ink2);padding:8px 0;border-bottom:1px solid var(--border)}
+.mob-menu a:last-child{border-bottom:none}
+.mob-menu a:hover{color:var(--r)}
+
+/* ═══════════ UTILS ═══════════ */
+.c{max-width:1180px;margin:0 auto;padding:0 32px}
+.sec{padding:88px 0}
+.lbl{font-size:10px;font-weight:700;letter-spacing:5px;text-transform:uppercase;color:var(--r);margin-bottom:10px}
+.h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,5.5vw,66px);letter-spacing:2px;line-height:1.0;color:var(--ink);margin-bottom:20px}
+.h1 em{color:var(--r);font-style:normal}
+.body-txt{font-size:14px;font-weight:400;line-height:1.9;color:var(--ink3);max-width:540px}
+.bar{width:44px;height:3px;background:var(--r);margin-bottom:36px}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+@media (max-width: 768px) { .rv { opacity:1 !important; transform:none !important; } }
+.rv.in{opacity:1;transform:none}
+.rv-d1{transition-delay:.1s}.rv-d2{transition-delay:.2s}.rv-d3{transition-delay:.3s}
+
+/* ═══════════ HERO ═══════════ */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  justify-content:center;text-align:center;overflow:hidden;
+  padding:80px 24px 64px;background:var(--ink);
+}
+.hero-img{
+  position:absolute;inset:0;
+  background:url('https://v3b.fal.media/files/b/0a9634f6/gj9ETxOyXdxqaoVDeFsBC_qk3UnPyG.png') center/cover;
+  opacity:.14;
+}
+.hero-vignette{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.15) 40%,rgba(0,0,0,.8) 100%);
+}
+.hero-body{position:relative;z-index:2}
+
+.htag{
+  display:inline-block;border:1px solid var(--r);color:var(--r);
+  font-size:9px;font-weight:700;letter-spacing:5px;text-transform:uppercase;
+  padding:8px 20px;margin-bottom:28px;
+  animation:fu .7s var(--ease) .2s both;
+}
+.ht{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(80px,16vw,190px);
+  line-height:.85;letter-spacing:-3px;color:white;
+  animation:fu .9s var(--ease) .4s both;
+}
+.ht em{color:var(--r);font-style:normal}
+.hsub{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(20px,4vw,44px);
+  letter-spacing:16px;color:rgba(255,255,255,.4);
+  margin-bottom:36px;animation:fu .9s var(--ease) .6s both;
+}
+.hdiv{
+  display:flex;align-items:center;justify-content:center;gap:14px;
+  margin-bottom:36px;animation:fi .8s var(--ease) .8s both;
+}
+.hdiv-line{width:64px;height:1px;background:var(--r)}
+.hdiv-dot{width:6px;height:6px;background:var(--r);transform:rotate(45deg);flex-shrink:0}
+
+.stats-wrap{
+  display:inline-flex;border:1px solid rgba(255,255,255,.15);
+  margin-bottom:40px;animation:fu .9s var(--ease) .95s both;
+}
+.hstat{padding:18px 32px;border-right:1px solid rgba(255,255,255,.15);text-align:center}
+.hstat:last-child{border-right:none}
+.hstat-n{font-family:'Bebas Neue',sans-serif;font-size:40px;color:var(--r);line-height:1}
+.hstat-l{font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
+
+.hbtns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;animation:fu .9s var(--ease) 1.1s both}
+.btn-r{
+  background:var(--r);color:white;font-size:10px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;padding:14px 36px;
+  transition:background .25s var(--ease),transform .2s var(--ease),box-shadow .25s;
+  display:inline-block;
+}
+.btn-r:hover{background:var(--rb);transform:translateY(-2px);box-shadow:0 10px 28px rgba(204,0,0,.35)}
+.btn-outline-w{
+  background:transparent;color:white;font-size:10px;font-weight:700;
+  letter-spacing:2.5px;text-transform:uppercase;padding:13px 36px;
+  border:1px solid rgba(255,255,255,.35);
+  transition:border-color .25s var(--ease),transform .2s var(--ease);
+  display:inline-block;
+}
+.btn-outline-w:hover{border-color:white;transform:translateY(-2px)}
+
+/* ═══════════ SECTION DIVIDER ═══════════ */
+.redstrip{height:4px;background:var(--r)}
+
+/* ═══════════ ABOUT ═══════════ */
+.about{background:white;padding:88px 0}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.img-block{position:relative}
+.img-block img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.img-frame{
+  position:absolute;inset:12px;border:2px solid var(--r);
+  pointer-events:none;transform:translate(10px,10px);
+  transition:transform .4s var(--ease);
+}
+.img-block:hover .img-frame{transform:translate(5px,5px)}
+.feats{display:flex;flex-direction:column;gap:0;margin-top:36px}
+.feat{
+  display:flex;gap:16px;align-items:flex-start;
+  padding:16px 14px;border-left:3px solid transparent;
+  transition:border-color .3s,background .3s;cursor:default;
+}
+.feat:hover{border-left-color:var(--r);background:var(--bg)}
+.feat-n{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--r);line-height:1;min-width:40px}
+.feat-t h4{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:3px}
+.feat-t p{font-size:12px;color:var(--ink3);line-height:1.6}
+
+/* ═══════════ CATEGORIES ═══════════ */
+.cats{background:var(--bg)}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px}
+.cat-card{
+  background:white;padding:48px 32px;text-align:center;
+  position:relative;overflow:hidden;cursor:default;
+  border:1px solid var(--border);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s;
+}
+.cat-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,.1);border-color:var(--r)}
+.cat-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--r);transform:scaleX(0);transform-origin:left;
+  transition:transform .4s var(--ease);
+}
+.cat-card:hover::before{transform:scaleX(1)}
+.cat-n{font-family:'Bebas Neue',sans-serif;font-size:84px;line-height:.9;color:var(--ink);margin-bottom:8px}
+.cat-card:hover .cat-n{color:var(--r)}
+.cat-lbl{font-size:10px;font-weight:700;letter-spacing:4px;color:var(--r);text-transform:uppercase;margin-bottom:16px}
+.cat-desc{font-size:13px;color:var(--ink3);line-height:1.75}
+.cat-badge{
+  display:inline-block;margin-top:20px;border:1px solid var(--r);color:var(--r);
+  font-size:9px;font-weight:700;letter-spacing:2px;padding:6px 14px;text-transform:uppercase;
+  transition:background .3s,color .3s;
+}
+.cat-card:hover .cat-badge{background:var(--r);color:white}
+
+/* ═══════════ NUMBERS ═══════════ */
+.numbers{background:var(--r);padding:0}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr)}
+.num-item{
+  text-align:center;padding:48px 20px;
+  border-right:1px solid rgba(255,255,255,.25);
+}
+.num-item:last-child{border-right:none}
+.num-v{font-family:'Bebas Neue',sans-serif;font-size:64px;color:white;line-height:1}
+.num-l{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-top:6px}
+
+/* ═══════════ CLUBS ═══════════ */
+.clubs{background:white;padding:88px 0}
+.clubs-head{text-align:center;max-width:640px;margin:0 auto 56px}
+.clubs-head .h1{margin-bottom:16px}
+.clubs-head .bar{margin:0 auto 24px}
+.club-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:48px}
+.club-card{
+  display:flex;flex-direction:column;align-items:center;
+  padding:40px 24px 32px;
+  background:var(--bg);border:1px solid var(--border);border-top:3px solid transparent;
+  transition:border-top-color .3s,box-shadow .3s,transform .25s var(--ease);
+  cursor:default;position:relative;overflow:hidden;
+}
+.club-card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(204,0,0,.03) 0%,transparent 60%);
+  opacity:0;transition:opacity .3s;
+}
+.club-card:hover{border-top-color:var(--r);box-shadow:0 12px 40px rgba(0,0,0,.10);transform:translateY(-4px)}
+.club-card:hover::after{opacity:1}
+.club-logo-wrap{
+  width:120px;height:120px;background:white;border-radius:14px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;padding:14px;margin-bottom:24px;
+  transition:transform .3s var(--ease),box-shadow .3s;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);flex-shrink:0;
+}
+.club-card:hover .club-logo-wrap{transform:scale(1.07);box-shadow:0 8px 28px rgba(0,0,0,.13)}
+.club-logo-wrap img{width:88px;height:88px;object-fit:contain;display:block}
+.club-name{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2.5px;color:var(--ink);margin-bottom:6px;text-align:center}
+.club-sub{font-size:10px;color:var(--ink4);letter-spacing:1.5px;text-align:center;margin-bottom:16px}
+.club-chip{
+  background:var(--r);color:white;
+  font-size:8px;font-weight:700;letter-spacing:1.5px;
+  padding:5px 14px;text-transform:uppercase;
+}
+/* ── Transfer Section ── */
+.transfer-section{
+  margin-top:64px;background:var(--ink);border-radius:0;
+  padding:72px 0;position:relative;overflow:hidden;
+}
+.transfer-section::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background:radial-gradient(ellipse at 20% 50%,rgba(204,0,0,.18) 0%,transparent 60%),
+             radial-gradient(ellipse at 80% 20%,rgba(204,0,0,.10) 0%,transparent 50%);
+  pointer-events:none;
+}
+.transfer-section .c{position:relative;z-index:1}
+.transfer-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:64px}
+.transfer-head .lbl{color:rgba(255,255,255,.5);margin-bottom:10px}
+.transfer-head .h1{color:white;margin-bottom:16px}
+.transfer-head .bar{background:var(--r)}
+.transfer-head p{color:rgba(255,255,255,.65);font-size:14px;line-height:1.85;margin-top:20px}
+.transfer-stats{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.ts-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);
+  padding:28px 24px;position:relative;overflow:hidden;
+  transition:background .3s,border-color .3s,transform .25s var(--ease);
+}
+.ts-card:hover{background:rgba(204,0,0,.15);border-color:rgba(204,0,0,.4);transform:translateY(-3px)}
+.ts-card::before{
+  content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--r);
+  transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease);
+}
+.ts-card:hover::before{transform:scaleY(1)}
+.ts-num{font-family:'Bebas Neue',sans-serif;font-size:48px;line-height:1;color:var(--r);margin-bottom:4px}
+.ts-label{font-size:11px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,.55);text-transform:uppercase}
+.ts-desc{font-size:12px;color:rgba(255,255,255,.35);margin-top:6px;line-height:1.5}
+/* Steps */
+.transfer-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.tstep{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
+  padding:32px 24px;position:relative;overflow:hidden;
+  transition:background .3s,transform .25s var(--ease);
+}
+.tstep:hover{background:rgba(204,0,0,.12);transform:translateY(-4px)}
+.tstep-num{
+  font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:1;
+  color:rgba(255,255,255,.06);position:absolute;top:12px;right:16px;
+}
+.tstep-ico{
+  width:44px;height:44px;background:rgba(204,0,0,.15);border:1px solid rgba(204,0,0,.3);
+  border-radius:8px;display:grid;place-items:center;margin-bottom:20px;
+  transition:background .3s,border-color .3s;
+}
+.tstep:hover .tstep-ico{background:rgba(204,0,0,.3);border-color:rgba(204,0,0,.6)}
+.tstep-ico svg{width:20px;height:20px;fill:var(--r)}
+.tstep h4{font-family:'Bebas Neue',sans-serif;font-size:16px;letter-spacing:1.5px;color:white;margin-bottom:8px}
+.tstep p{font-size:11px;color:rgba(255,255,255,.5);line-height:1.7}
+/* CTA Banner */
+.transfer-cta{
+  margin-top:48px;background:var(--r);padding:32px 40px;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+}
+.transfer-cta-text h4{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:white;margin-bottom:4px}
+.transfer-cta-text p{font-size:12px;color:rgba(255,255,255,.75);line-height:1.5}
+.transfer-cta-btn{
+  background:white;color:var(--r);font-size:11px;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;padding:14px 28px;
+  white-space:nowrap;transition:transform .2s,box-shadow .2s;text-decoration:none;display:inline-block;
+}
+.transfer-cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+
+/* ═══════════ PRIZES ═══════════ */
+.prizes{background:var(--bg)}
+.prizes-banner{width:100%;max-height:360px;object-fit:cover}
+.prizes-inner{padding:72px 0}
+.p-grid{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:2px;margin-top:52px}
+.p-card{
+  background:white;padding:44px 24px;text-align:center;
+  border:1px solid var(--border);
+  transition:transform .3s var(--ease),box-shadow .3s;cursor:default;
+}
+.p-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08)}
+.p-card.gold{background:white;border:2px solid var(--r);z-index:2}
+.p-card.gold::before{content:'';display:block;height:4px;background:var(--r);margin:-44px -24px 40px;width:calc(100% + 48px)}
+.p-pos{font-family:'Bebas Neue',sans-serif;font-size:68px;line-height:.9;margin-bottom:10px}
+.p-card.gold .p-pos{color:var(--r)}
+.p-card:not(.gold) .p-pos{color:var(--bg3)}
+.p-icon{font-size:44px;margin-bottom:12px}
+.p-name{font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--ink4);margin-bottom:12px}
+.p-reward{font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:1px;line-height:1.25;color:var(--ink);margin-bottom:6px}
+.p-sub{font-size:11px;color:var(--ink4);line-height:1.65}
+.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:2px}
+.extra{
+  background:white;padding:24px 22px;display:flex;gap:14px;align-items:flex-start;
+  border:1px solid var(--border);border-left:3px solid transparent;
+  transition:border-left-color .3s,background .3s;cursor:default;
+}
+.extra:hover{border-left-color:var(--r);background:var(--bg)}
+.e-icon{font-size:24px;flex-shrink:0}
+.e-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--r);margin-bottom:5px}
+.e-desc{font-size:11px;color:var(--ink3);line-height:1.55}
+
+/* ═══════════ SUPPORT ═══════════ */
+.support{background:white;padding:88px 0}
+.support-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:52px}
+.support-img img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.first-pill{
+  display:inline-flex;align-items:center;gap:10px;background:var(--r);
+  color:white;font-size:9px;font-weight:700;letter-spacing:2.5px;
+  text-transform:uppercase;padding:9px 20px;margin-bottom:24px;
+}
+.sup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.sup-card{
+  background:var(--bg);padding:32px 26px;
+  border:1px solid var(--border);border-top:3px solid transparent;
+  transition:border-top-color .3s,background .3s,transform .3s var(--ease),box-shadow .3s;cursor:default;
+}
+.sup-card:hover{border-top-color:var(--r);background:white;transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.07)}
+.sup-ico{
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(204,0,0,.08);border:1px solid rgba(204,0,0,.2);
+  display:grid;place-items:center;margin-bottom:18px;
+  transition:background .3s,transform .3s var(--ease);
+}
+.sup-card:hover .sup-ico{background:rgba(204,0,0,.15);transform:scale(1.08)}
+.sup-ico svg{width:20px;height:20px;fill:var(--r)}
+.sup-card h3{font-family:'Bebas Neue',sans-serif;font-size:21px;letter-spacing:1px;color:var(--ink);margin-bottom:9px}
+.sup-card p{font-size:12px;line-height:1.75;color:var(--ink3)}
+
+/* ═══════════ EXPERIENCE ═══════════ */
+.exp{background:var(--bg);padding:88px 0}
+.exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:52px}
+.exp-card{
+  background:white;padding:32px 28px;
+  border:1px solid var(--border);border-top:3px solid transparent;
+  transition:border-top-color .3s,transform .3s var(--ease),box-shadow .3s;cursor:default;
+}
+.exp-card:hover{border-top-color:var(--r);transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.07)}
+.exp-ico{
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(204,0,0,.07);border:1px solid rgba(204,0,0,.18);
+  display:grid;place-items:center;margin-bottom:18px;
+  transition:background .3s,transform .3s var(--ease);
+}
+.exp-card:hover .exp-ico{background:rgba(204,0,0,.14);transform:scale(1.08)}
+.exp-ico svg{width:20px;height:20px;fill:var(--r)}
+.exp-card h4{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:var(--ink);margin-bottom:8px}
+.exp-card p{font-size:12px;color:var(--ink3);line-height:1.7}
+
+/* ═══════════ LOCATION ═══════════ */
+.loc{background:white;padding:88px 0}
+.loc-img-wrap{position:relative;margin-top:44px;margin-bottom:2px}
+.loc-img-wrap img{width:100%;max-height:440px;object-fit:cover}
+.loc-caption{
+  position:absolute;inset:auto 0 0;
+  background:linear-gradient(transparent,rgba(0,0,0,.88));
+  padding:56px 48px 28px;
+  display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:12px;
+}
+.loc-cap-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,4.5vw,52px);letter-spacing:4px;line-height:1;color:white}
+.loc-cap-chip{background:var(--r);color:white;font-size:9px;font-weight:700;letter-spacing:2px;padding:8px 16px;text-transform:uppercase;white-space:nowrap}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.loc-card{
+  background:var(--bg);padding:40px;border:1px solid var(--border);
+  border-top:4px solid transparent;
+  transition:border-top-color .3s,background .3s,box-shadow .3s;cursor:default;
+}
+.loc-card.prim{border-top-color:var(--r)}
+.loc-card:hover{background:white;box-shadow:0 8px 24px rgba(0,0,0,.07)}
+.loc-chip{
+  display:inline-block;font-size:9px;font-weight:700;letter-spacing:2px;
+  text-transform:uppercase;padding:5px 12px;margin-bottom:16px;
+}
+.loc-card.prim .loc-chip{background:var(--r);color:white}
+.loc-card:not(.prim) .loc-chip{border:1px solid var(--border2);color:var(--ink4)}
+.loc-card h3{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;color:var(--ink);margin-bottom:12px}
+.loc-card p{font-size:12px;color:var(--ink3);line-height:1.75;margin-bottom:20px}
+.loc-feats{display:flex;flex-direction:column;gap:8px}
+.loc-feat{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--ink2)}
+.loc-feat::before{content:'';width:4px;height:4px;background:var(--r);border-radius:50%;flex-shrink:0}
+
+/* ═══════════ ENTERTAINMENT ═══════════ */
+.ent{background:var(--ink);padding:88px 0}
+.ent .lbl{color:var(--r)}
+.ent .h1{color:white}
+.ent .h1 em{color:var(--r)}
+.ent-stage{
+  position:relative;width:100%;aspect-ratio:21/9;overflow:hidden;
+  margin-top:52px;margin-bottom:2px;
+  background:linear-gradient(135deg,#1a0000,#0d0000);
+}
+@media(max-width:600px){.ent-stage{aspect-ratio:16/9}}
+.ent-lights{
+  position:absolute;bottom:0;left:0;right:0;height:80%;
+  background:
+    radial-gradient(ellipse 30% 100% at 15% 100%,rgba(204,0,0,.4),transparent),
+    radial-gradient(ellipse 30% 100% at 50% 100%,rgba(204,0,0,.2),transparent),
+    radial-gradient(ellipse 30% 100% at 85% 100%,rgba(204,0,0,.4),transparent);
+  animation:lpulse 3.5s ease-in-out infinite;
+}
+@keyframes lpulse{0%,100%{opacity:.6}50%{opacity:1}}
+.ent-stage-inner{
+  position:relative;z-index:2;height:100%;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;
+}
+.ent-stage-ico{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(204,0,0,.2);border:2px solid rgba(204,0,0,.5);
+  display:grid;place-items:center;
+}
+.ent-stage-ico svg{width:36px;height:36px;fill:var(--r)}
+.ent-stage-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(28px,4.5vw,52px);letter-spacing:8px;color:white}
+.ent-stage-sub{font-size:10px;letter-spacing:4px;color:rgba(255,255,255,.4);text-transform:uppercase}
+.ent-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.ent-card{
+  background:var(--b3,#1a1a1a);padding:32px 26px;
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  border-top:3px solid transparent;
+  transition:border-top-color .3s,background .3s;cursor:default;
+}
+.ent-card:hover{border-top-color:var(--r);background:rgba(255,255,255,.07)}
+.ent-ico{
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(204,0,0,.15);border:1px solid rgba(204,0,0,.35);
+  display:grid;place-items:center;margin-bottom:16px;
+  transition:background .3s,transform .3s var(--ease);
+}
+.ent-card:hover .ent-ico{background:rgba(204,0,0,.28);transform:scale(1.08)}
+.ent-ico svg{width:19px;height:19px;fill:var(--r)}
+.ent-card h3{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:1px;color:white;margin-bottom:9px}
+.ent-card p{font-size:12px;color:rgba(255,255,255,.5);line-height:1.7}
+
+/* ═══════════ VIDEO ═══════════ */
+.vid{background:var(--bg);padding:88px 0}
+.vid-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;margin-top:52px}
+.vid-wrap{aspect-ratio:16/9;background:var(--ink);overflow:hidden}
+.vid-wrap video{width:100%;height:100%;object-fit:cover;display:block}
+.vid-info h3{font-family:'Bebas Neue',sans-serif;font-size:30px;letter-spacing:2px;color:var(--r);margin-bottom:12px}
+.vid-info p{font-size:13px;line-height:1.85;color:var(--ink3);margin-bottom:24px}
+.scene-list{display:flex;flex-direction:column;gap:10px}
+.scene{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--ink2);line-height:1.5}
+.scene-n{background:var(--r);color:white;font-size:9px;font-weight:700;padding:3px 7px;flex-shrink:0;margin-top:1px;letter-spacing:.5px}
+
+/* ═══════════ AGENCY ═══════════ */
+.agency{background:white;padding:88px 0;text-align:center;border-top:1px solid var(--border)}
+.agency-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,7vw,80px);letter-spacing:14px;color:var(--ink);margin-bottom:8px}
+.agency-name em{color:var(--r);font-style:normal}
+.agency-sub{font-size:9px;letter-spacing:5px;text-transform:uppercase;color:var(--ink4);margin-bottom:48px}
+.agency-desc{font-size:13px;color:var(--ink3);max-width:500px;margin:0 auto 52px;line-height:1.85}
+.delivs{display:grid;grid-template-columns:repeat(4,1fr);gap:2px}
+.deliv{
+  background:var(--bg);padding:32px 18px;text-align:center;
+  border:1px solid var(--border);border-top:3px solid transparent;
+  transition:border-top-color .3s,background .3s,transform .3s var(--ease),box-shadow .3s;cursor:default;
+}
+.deliv:hover{border-top-color:var(--r);background:white;transform:translateY(-4px);box-shadow:0 10px 24px rgba(0,0,0,.07)}
+.deliv-ico{
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(204,0,0,.07);border:1px solid rgba(204,0,0,.18);
+  display:grid;place-items:center;margin:0 auto 16px;
+  transition:background .3s,transform .3s var(--ease);
+}
+.deliv:hover .deliv-ico{background:rgba(204,0,0,.15);transform:scale(1.08)}
+.deliv-ico svg{width:20px;height:20px;fill:var(--r)}
+.deliv-t{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--r);margin-bottom:6px}
+.deliv-d{font-size:11px;color:var(--ink4);line-height:1.55}
+
+/* ═══════════ CTA ═══════════ */
+.cta{background:var(--r);padding:88px 24px;text-align:center}
+.cta h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(40px,7vw,80px);letter-spacing:3px;line-height:.95;color:white;margin-bottom:18px}
+.cta p{font-size:14px;color:rgba(255,255,255,.78);max-width:460px;margin:0 auto 36px;line-height:1.8}
+.btn-blk{
+  display:inline-block;background:var(--ink);color:white;
+  font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
+  padding:16px 44px;transition:opacity .25s,transform .2s var(--ease),box-shadow .25s;
+}
+.btn-blk:hover{opacity:.85;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.4)}
+
+/* ═══════════ FOOTER ═══════════ */
+footer{
+  background:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:10px;padding:22px 48px;
+}
+.f-brand{font-family:'Bebas Neue',sans-serif;font-size:18px;letter-spacing:5px;color:var(--r)}
+.f-copy,.f-tag{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25)}
+
+/* ═══════════ ANIMATIONS ═══════════ */
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+
+/* ═══════════ RESPONSIVE ═══════════ */
+
+/* Tablet */
+@media(max-width:1024px){
+  .nav{padding:0 24px}
+  .about-grid,
+  .support-top,
+  .vid-grid{grid-template-columns:1fr}
+  .club-cards{grid-template-columns:repeat(3,1fr)}
+  .img-block{order:-1}
+  .transfer-box{border-left:none;border-top:4px solid var(--r)}
+  .transfer-top{grid-template-columns:1fr;gap:40px}
+  .transfer-steps{grid-template-columns:repeat(2,1fr)}
+  .delivs{grid-template-columns:repeat(2,1fr)}
+  .exp-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .nav-links,.nav-pill{display:none}
+  .nav-burger{display:flex}
+  .c{padding:0 20px}
+  .sec{padding:64px 0}
+  .about{padding:64px 0}
+  .support{padding:64px 0}
+  .exp{padding:64px 0}
+  .loc{padding:64px 0}
+  .clubs{padding:64px 0}
+  .agency{padding:64px 0}
+
+  /* Hero */
+  .ht{font-size:clamp(72px,18vw,110px);letter-spacing:-2px}
+  .hsub{font-size:clamp(16px,5vw,28px);letter-spacing:8px}
+  .stats-wrap{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:360px}
+  .hstat{border-bottom:1px solid rgba(255,255,255,.15)}
+  .hstat:nth-child(2){border-right:none}
+  .hstat:nth-child(3){border-bottom:none}
+  .hstat:nth-child(4){border-right:none;border-bottom:none}
+  .hbtns{flex-direction:column;align-items:center;width:100%;max-width:320px;margin:0 auto}
+  .btn-r,.btn-outline-w{width:100%;text-align:center;padding:15px}
+
+  /* Grids → single col */
+  .cat-grid{grid-template-columns:1fr}
+  .nums-grid{grid-template-columns:1fr 1fr}
+  .num-item{border-bottom:1px solid rgba(255,255,255,.2)}
+  .num-item:nth-child(2){border-right:none}
+  .num-item:nth-child(3){border-bottom:none}
+  .num-item:nth-child(4){border-right:none;border-bottom:none}
+  .p-grid{grid-template-columns:1fr}
+  .extras{grid-template-columns:1fr}
+  .sup-grid{grid-template-columns:1fr 1fr}
+  .exp-grid{grid-template-columns:1fr}
+  .ent-cards{grid-template-columns:1fr}
+  .loc-grid{grid-template-columns:1fr}
+  .scene-list{gap:8px}
+
+  /* Location caption */
+  .loc-caption{padding:32px 20px 20px}
+  .loc-cap-title{font-size:28px;letter-spacing:2px}
+
+  /* Transfer section */
+  .transfer-section{margin-top:0;padding:56px 0}
+  .transfer-top{grid-template-columns:1fr;gap:32px;margin-bottom:40px}
+  .transfer-stats{grid-template-columns:1fr 1fr;gap:12px}
+  .ts-num{font-size:36px}
+  .ts-label{font-size:10px;letter-spacing:1.5px}
+  .ts-desc{font-size:11px}
+  .transfer-steps{grid-template-columns:1fr 1fr;gap:2px}
+  .tstep{padding:24px 16px}
+  .tstep-num{font-size:36px;top:8px;right:10px}
+  .transfer-cta{flex-direction:column;align-items:flex-start;padding:24px 20px;gap:16px}
+  .transfer-cta-btn{width:100%;text-align:center}
+
+  /* Club cards */
+  .club-cards{grid-template-columns:1fr;gap:12px}
+
+  /* Footer */
+  footer{padding:18px 20px;flex-direction:column;text-align:center;gap:8px}
+}
+
+/* Small mobile */
+@media(max-width:480px){
+  .sup-grid{grid-template-columns:1fr}
+  .delivs{grid-template-columns:1fr}
+  .nums-grid{grid-template-columns:1fr}
+  .num-item{border-right:none !important}
+  .h1{font-size:clamp(32px,8vw,48px)}
+  .about-grid,.support-top,.vid-grid{gap:32px}
+  .club-cards{grid-template-columns:1fr;gap:12px}
+  .club-card{padding:28px 20px 24px}
+  .transfer-box{padding:24px}
+  .transfer-stats{grid-template-columns:1fr 1fr;gap:10px}
+  .ts-card{padding:20px 14px}
+  .ts-num{font-size:30px}
+  .transfer-steps{grid-template-columns:1fr}
+  .tstep{padding:20px 16px}
+  .loc-card,.sup-card,.exp-card,.cat-card{padding-left:20px;padding-right:20px}
+  .prizes-inner{padding:48px 0}
+  .p-card{padding:32px 18px}
+  .cat-card{padding:36px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════ NAV ══════════ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-logo">
+    <div class="nav-hex">
+      <svg viewBox="0 0 24 24"><path d="M12 2l5 3v6l-5 3-5-3V5z"/></svg>
+    </div>
+    <span class="nav-brand">HMT <em>CUP</em></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">Konsept</a></li>
+    <li><a href="#clubs">Kulüpler</a></li>
+    <li><a href="#prizes">Ödüller</a></li>
+    <li><a href="#support">Ekip</a></li>
+    <li><a href="#location">Lokasyon</a></li>
+    <li><a href="#video">Video</a></li>
+  </ul>
+  <div class="nav-pill">UniqBee × HMT 2026</div>
+  <div class="nav-burger" id="burger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <a href="#about" onclick="closeMenu()">Konsept</a>
+  <a href="#clubs" onclick="closeMenu()">Kulüpler</a>
+  <a href="#prizes" onclick="closeMenu()">Ödüller</a>
+  <a href="#support" onclick="closeMenu()">Ekip</a>
+  <a href="#location" onclick="closeMenu()">Lokasyon</a>
+  <a href="#video" onclick="closeMenu()">Video</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-vignette"></div>
+  <div class="hero-body">
+    <div class="htag">Türkiye'nin En Büyük Çocuk Futbol Turnuvası — 2026</div>
+    <div class="ht">HMT<br><em>CUP</em></div>
+    <div class="hsub">U9 · U10 · U11</div>
+    <div class="hdiv">
+      <div class="hdiv-line"></div>
+      <div class="hdiv-dot"></div>
+      <div class="hdiv-line"></div>
+    </div>
+    <div class="stats-wrap">
+      <div class="hstat"><div class="hstat-n">48</div><div class="hstat-l">Takım</div></div>
+      <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Yaş Grubu</div></div>
+      <div class="hstat"><div class="hstat-n">720+</div><div class="hstat-l">Sporcu</div></div>
+      <div class="hstat"><div class="hstat-n">3</div><div class="hstat-l">Büyük Kulüp</div></div>
+    </div>
+    <div class="hbtns">
+      <a href="#about" class="btn-r">Turnuvayı Keşfet</a>
+      <a href="#video" class="btn-outline-w">Tanıtım Filmi</a>
+    </div>
+  </div>
+</section>
+<div class="redstrip"></div>
+
+<!-- ══════════ ABOUT ══════════ -->
+<section id="about" class="about">
+  <div class="c">
+    <div class="about-grid">
+      <div class="img-block">
+        <img src="https://v3b.fal.media/files/b/0a9634f6/gj9ETxOyXdxqaoVDeFsBC_qk3UnPyG.png" alt="HMT CUP" loading="lazy"/>
+        <div class="img-frame"></div>
+      </div>
+      <div>
+        <p class="lbl">Turnuva Konsepti</p>
+        <h2 class="h1">Türkiye'de<br>Bir <em>İlk</em></h2>
+        <div class="bar"></div>
+        <p class="body-txt">HMT CUP; İstanbul ve Türkiye genelindeki futbol okullarını bir araya getiren, büyük kulüplerin gerçek altyapılarıyla buluşturan, psikolog, diyetisyen ve fizyoterapistin sahada olduğu Türkiye'nin ilk profesyonel çocuk futbol turnuvasıdır.</p>
+        <div class="feats">
+          <div class="feat">
+            <div class="feat-n">48</div>
+            <div class="feat-t">
+              <h4>Takım — 3 Yaş Kategorisi</h4>
+              <p>U9, U10 ve U11 grubunda İstanbul ve Türkiye genelinden futbol okulları</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-n">3</div>
+            <div class="feat-t">
+              <h4>Büyük Kulüp Altyapısı</h4>
+              <p>Galatasaray, Beşiktaş ve Fenerbahçe gerçek altyapı takımları misafir</p>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-n">1.</div>
+            <div class="feat-t">
+              <h4>Türkiye'de İlk Defa</h4>
+              <p>Çocuk futbol turnuvasında psikolog, diyetisyen ve fizyoterapist desteği</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CATEGORIES ══════════ -->
+<section id="categories" class="cats rv">
+  <div class="c">
+    <p class="lbl">Yaş Kategorileri</p>
+    <h2 class="h1">3 Kategori,<br>Sonsuz <em>Hırs</em></h2>
+    <div class="bar"></div>
+    <p class="body-txt">Her yaş grubuna özel fikstür, eşit fırsatlar ve ayrı ödül töreni.</p>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card rv rv-d1">
+      <div class="cat-n">U9</div>
+      <div class="cat-lbl">2016 Doğumlular</div>
+      <p class="cat-desc">Futbolun büyüsüyle bu denli büyük bir sahneyle ilk kez buluşan minik yıldızlar. Geleceğin süper starları buradan çıkacak.</p>
+      <span class="cat-badge">Minik Yıldızlar</span>
+    </div>
+    <div class="cat-card rv rv-d2">
+      <div class="cat-n">U10</div>
+      <div class="cat-lbl">2015 Doğumlular</div>
+      <p class="cat-desc">Taktik zekanın geliştiği, bireysel becerilerin öne çıktığı kritik yaş grubu. Scout ekiplerinin en yakın takip edeceği kategori.</p>
+      <span class="cat-badge">Scout Odaklı</span>
+    </div>
+    <div class="cat-card rv rv-d3">
+      <div class="cat-n">U11</div>
+      <div class="cat-lbl">2014 Doğumlular</div>
+      <p class="cat-desc">Teknik altyapısını oturtan, büyük kulüp transfer radarına girmeye en yakın yaş kategorisi. Rekabetin doruk noktası.</p>
+      <span class="cat-badge">Transfer Odaklı</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ NUMBERS ══════════ -->
+<div class="numbers rv">
+  <div class="c">
+    <div class="nums-grid">
+      <div class="num-item"><div class="num-v">48</div><div class="num-l">Katılımcı Takım</div></div>
+      <div class="num-item"><div class="num-v">720+</div><div class="num-l">Genç Sporcu</div></div>
+      <div class="num-item"><div class="num-v">5+</div><div class="num-l">Uzman Destek</div></div>
+      <div class="num-item"><div class="num-v">3</div><div class="num-l">Büyük Kulüp</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CLUBS ══════════ -->
+<section id="clubs" class="clubs rv">
+  <div class="c">
+    <div class="clubs-head">
+      <p class="lbl">Özel Konuk Kulüpler</p>
+      <h2 class="h1">3 Dev,<br>Bir <em>Turnuva</em></h2>
+      <div class="bar"></div>
+      <p class="body-txt">Galatasaray, Beşiktaş ve Fenerbahçe'nin gerçek altyapı takımları HMT CUP'ta misafirimiz olacak. Futbol okulları bu devlerle oynama ve kendini kanıtlama fırsatı bulacak.</p>
+    </div>
+    <div class="club-cards">
+      <div class="club-card">
+        <div class="club-logo-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Galatasaray_S.K._Logo_2026_5-stars.svg/250px-Galatasaray_S.K._Logo_2026_5-stars.svg.png" alt="Galatasaray" loading="lazy"/>
+        </div>
+        <div class="club-name">Galatasaray S.K.</div>
+        <div class="club-sub">Gerçek Altyapı · Misafir</div>
+        <div class="club-chip">Altyapı</div>
+      </div>
+      <div class="club-card">
+        <div class="club-logo-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/BesiktasJK-Logo.svg/250px-BesiktasJK-Logo.svg.png" alt="Beşiktaş" loading="lazy"/>
+        </div>
+        <div class="club-name">Beşiktaş J.K.</div>
+        <div class="club-sub">Gerçek Altyapı · Misafir</div>
+        <div class="club-chip">Altyapı</div>
+      </div>
+      <div class="club-card">
+        <div class="club-logo-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Fenerbah%C3%A7e.svg/250px-Fenerbah%C3%A7e.svg.png" alt="Fenerbahçe" loading="lazy"/>
+        </div>
+        <div class="club-name">Fenerbahçe S.K.</div>
+        <div class="club-sub">Gerçek Altyapı · Misafir</div>
+        <div class="club-chip">Altyapı</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRANSFER ══════════ -->
+<section class="transfer-section rv">
+  <div class="c">
+    <div class="transfer-top">
+      <div class="transfer-head">
+        <p class="lbl">Büyük Kulüplerin Radarı</p>
+        <h2 class="h1">Çocuğunun<br>Hayalini <em>Yakala</em></h2>
+        <div class="bar"></div>
+        <p>HMT CUP'ta her maç bir sınav, her gol bir fırsat. Türkiye'nin en köklü kulüplerinin altyapı sorumluları ve profesyonel scout ekipleri sahayı baştan sona izliyor. Bir çocuğun hayatı, tek bir turnuvada değişebilir.</p>
+      </div>
+      <div class="transfer-stats">
+        <div class="ts-card rv rv-d1">
+          <div class="ts-num">3</div>
+          <div class="ts-label">Büyük Kulüp</div>
+          <div class="ts-desc">Galatasaray, Beşiktaş, Fenerbahçe altyapı hocaları sahada</div>
+        </div>
+        <div class="ts-card rv rv-d2">
+          <div class="ts-num">48</div>
+          <div class="ts-label">Katılımcı Takım</div>
+          <div class="ts-desc">İstanbul ve Türkiye genelinden seçkin futbol okulları</div>
+        </div>
+        <div class="ts-card rv rv-d3">
+          <div class="ts-num">U9–U11</div>
+          <div class="ts-label">Yaş Kategorileri</div>
+          <div class="ts-desc">2014, 2015, 2016 doğumlular için ayrı kategoriler</div>
+        </div>
+        <div class="ts-card rv rv-d4">
+          <div class="ts-num">%100</div>
+          <div class="ts-label">Canlı Gözlem</div>
+          <div class="ts-desc">Tüm maçlar scout ve altyapı hocaları tarafından anlık değerlendiriliyor</div>
+        </div>
+      </div>
+    </div>
+    <div class="transfer-steps rv">
+      <div class="tstep">
+        <div class="tstep-num">01</div>
+        <div class="tstep-ico">
+          <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+        </div>
+        <h4>Scout İzliyor</h4>
+        <p>Profesyonel scout ekipleri her maçı, her pozisyonu izleyip raporluyor. Hiçbir yetenek gözden kaçmıyor.</p>
+      </div>
+      <div class="tstep">
+        <div class="tstep-num">02</div>
+        <div class="tstep-ico">
+          <svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+        </div>
+        <h4>Performans Raporu</h4>
+        <p>Her oyuncu için bireysel değerlendirme. Hız, teknik, karar verme, takım oyunu kriterleri ölçülüyor.</p>
+      </div>
+      <div class="tstep">
+        <div class="tstep-num">03</div>
+        <div class="tstep-ico">
+          <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        </div>
+        <h4>Aile Buluşması</h4>
+        <p>Dikkat çeken oyuncuların aileleriyle doğrudan köprü kuruluyor. Süreç şeffaf ve destekli ilerliyor.</p>
+      </div>
+      <div class="tstep">
+        <div class="tstep-num">04</div>
+        <div class="tstep-ico">
+          <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+        </div>
+        <h4>Altyapı Kapısı</h4>
+        <p>Galatasaray, Beşiktaş veya Fenerbahçe altyapısına adım atma fırsatı. Çocuğunun en büyük hayali gerçek olabilir.</p>
+      </div>
+    </div>
+    <div class="transfer-cta rv rv-d1">
+      <div class="transfer-cta-text">
+        <h4>Takımını Kaydet — Fırsatı Kaçırma</h4>
+        <p>Kontenjanlar sınırlı · 48 takım · 3 yaş kategorisi · Türkiye geneli</p>
+      </div>
+      <a href="https://uniqbee.com" target="_blank" rel="noopener" class="transfer-cta-btn">Hemen Başvur</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRIZES ══════════ -->
+<section id="prizes" class="prizes rv">
+  <img class="prizes-banner" src="https://v3b.fal.media/files/b/0a9634f3/yjb22geE0BV-FiN2QA6Ii_A45crP5G.png" alt="Kupa" loading="lazy"/>
+  <div class="prizes-inner">
+    <div class="c">
+      <p class="lbl">Ödüller & Kutlama</p>
+      <h2 class="h1">Her Çocuk<br>Bir <em>Kahraman</em></h2>
+      <div class="bar"></div>
+      <p class="body-txt">Her yaş kategorisinde ayrı ödül töreni. Birinciden sonuncuya her takım madalyayla ayrılıyor.</p>
+      <div class="p-grid">
+        <div class="p-card rv rv-d1">
+          <div class="p-pos">2.</div>
+          <div class="p-icon">🥈</div>
+          <div class="p-name">İkincilik</div>
+          <div class="p-reward">Adidas Krampon</div>
+          <p class="p-sub">Her oyuncuya<br>Adidas markalı krampon</p>
+        </div>
+        <div class="p-card gold rv rv-d2">
+          <div class="p-pos">1.</div>
+          <div class="p-icon">🏆</div>
+          <div class="p-name">Şampiyonluk</div>
+          <div class="p-reward">Alaçatı Tatili</div>
+          <p class="p-sub">Aile ile birlikte<br>2 Gece · 3 Gün · 3 Kişi</p>
+        </div>
+        <div class="p-card rv rv-d3">
+          <div class="p-pos">3.</div>
+          <div class="p-icon">🥉</div>
+          <div class="p-name">Üçüncülük</div>
+          <div class="p-reward">Adidas Tişört</div>
+          <p class="p-sub">Her oyuncuya<br>Adidas markalı tişört</p>
+        </div>
+      </div>
+      <div class="extras">
+        <div class="extra">
+          <div class="e-icon">👑</div>
+          <div><div class="e-title">Gol Kralı</div><div class="e-desc">En golcü oyuncuya özel ödül ve plaket</div></div>
+        </div>
+        <div class="extra">
+          <div class="e-icon">🎖️</div>
+          <div><div class="e-title">Tüm Katılımcılar</div><div class="e-desc">Her takıma madalya — kimse ödülsüz ayrılmıyor</div></div>
+        </div>
+        <div class="extra">
+          <div class="e-icon">⭐</div>
+          <div><div class="e-title">Onur Ödülleri</div><div class="e-desc">En iyi kaleci, orta saha, fair play ödülleri</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="https://v3b.fal.media/files/b/0a9634f9/KeqU3Vr6gYyPMLFpTrNO5_e21ZKdCq.png" alt="Ödül Töreni" style="width:100%;max-height:340px;object-fit:cover" loading="lazy"/>
+</section>
+
+<!-- ══════════ SUPPORT ══════════ -->
+<section id="support" class="support rv">
+  <div class="c">
+    <div class="support-top">
+      <div>
+        <div class="first-pill">★ Türkiye'de İlk</div>
+        <p class="lbl">Profesyonel Destek Ekibi</p>
+        <h2 class="h1">Sahada Sadece<br>Futbol Değil, <em>Bilim</em></h2>
+        <div class="bar"></div>
+        <p class="body-txt">Psikolog, diyetisyen ve fizyoterapist ilk kez bir çocuk futbol turnuvasında sahada. Her 10 takıma bir danışman hoca. Çocuklar sadece maç kazanmıyor, büyüyor.</p>
+      </div>
+      <div>
+        <img src="https://v3b.fal.media/files/b/0a9634fc/RaLpSNCLJD87djBDWCO0b_Jk4uszWt.png" alt="Destek Ekibi" loading="lazy"/>
+      </div>
+    </div>
+    <div class="sup-grid">
+      <div class="sup-card rv rv-d1">
+        <div class="sup-ico"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 2.61 1.41 4.9 3.5 6.19V17l1.5 1.5L11.5 20h1l1.5-1.5L15.5 17v-1.81C17.59 13.9 19 11.61 19 9c0-3.87-3.13-7-7-7zm-1 14v-1h2v1h-2zm3-2h-4v-1.06C8.42 11.87 7 10.57 7 9c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.57-1.42 2.87-3 3.94V14z"/></svg></div>
+        <h3>Sporcu Psikoloğu</h3>
+        <p>Turnuva stresi, rekabet baskısı ve anlık duygu değişimleriyle baş etmek için profesyonel destek. Çocuklar, aileler ve hocalar için açık danışmanlık.</p>
+      </div>
+      <div class="sup-card rv rv-d2">
+        <div class="sup-ico"><svg viewBox="0 0 24 24"><path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zm15.03-7c0-3.5-2.77-6.58-6.53-6.94L8 6.05H2v2h4l-1.43 1.43c-.46.46-.72 1.08-.72 1.73V14a2 2 0 0 0 2 2h10.18V14.99z"/></svg></div>
+        <h3>Sporcu Diyetisyeni</h3>
+        <p>Oda oda gezerek maç günü beslenme planı sunan uzman. Açık büfede ne alınmalı, mücadeleden kaç saat önce kahvaltı yapılmalı — bilimsel rehber.</p>
+      </div>
+      <div class="sup-card rv rv-d3">
+        <div class="sup-ico"><svg viewBox="0 0 24 24"><path d="M13.49 5.48c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm-3.6 13.9l1-4.4 2.1 2v6h2v-7.5l-2.1-2 .6-3c1.3 1.5 3.3 2.5 5.5 2.5v-2c-1.9 0-3.5-1-4.3-2.4l-1-1.6c-.4-.6-1-1-1.7-1-.3 0-.5.1-.8.1l-5.2 2.2v4.7h2v-3.4l1.8-.7-1.6 8.1-4.9-1-.4 2 7 1.4z"/></svg></div>
+        <h3>Fizyoterapist</h3>
+        <p>Anlık sakatlık müdahalesi, sporcu masajı ve maç sonrası toparlanma desteği. Turnuva boyunca tam donanımlı sağlık kapasitesi.</p>
+      </div>
+      <div class="sup-card rv">
+        <div class="sup-ico"><svg viewBox="0 0 24 24"><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z"/></svg></div>
+        <h3>Danışman Hocalar</h3>
+        <p>Her 10 takıma 1 danışman hoca. Fikstür yönetimi, teknik destek, iletişim koordinasyonu. Hiçbir takım sahipsiz kalmıyor.</p>
+      </div>
+      <div class="sup-card rv rv-d1">
+        <div class="sup-ico"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z"/></svg></div>
+        <h3>Sağlık Ekibi</h3>
+        <p>Tam donanımlı sağlık ekibi turnuva boyunca hazır. Anlık müdahale kapasitesi ve acil durum protokolleri.</p>
+      </div>
+      <div class="sup-card rv rv-d2">
+        <div class="sup-ico"><svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg></div>
+        <h3>Üniversite Gönüllüleri</h3>
+        <p>İstanbul Kültür ve Bahçeşehir Üniversitesi'nden 10-12 gönüllü. Sandviç, ayran dağıtımı ve çocuk eğlencesi organizasyonu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ EXPERIENCE ══════════ -->
+<section class="exp rv">
+  <div class="c">
+    <p class="lbl">Turnuva Deneyimi</p>
+    <h2 class="h1">Sadece Turnuva Değil,<br><em>Bir Deneyim</em></h2>
+    <div class="bar"></div>
+  </div>
+  <div class="exp-grid">
+    <div class="exp-card rv rv-d1">
+      <div class="exp-ico"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
+      <h4>Maçlar Arası Müzik</h4>
+      <p>Maçları beklerken çocuklar ve aileler için canlı müzik. Atmosfer hiç düşmüyor.</p>
+    </div>
+    <div class="exp-card rv rv-d2">
+      <div class="exp-ico"><svg viewBox="0 0 24 24"><path d="M7 13c1.66 0 3-1.34 3-3S8.66 7 7 7s-3 1.34-3 3 1.34 3 3 3zm12-6h-8v7H3V5H1v15h2v-3h18v3h2v-9c0-2.21-1.79-4-4-4z"/></svg></div>
+      <h4>5 Yıldızlı Otel Konforu</h4>
+      <p>Aileler dahil tam pansiyon. Turnuva bir tatil gibi geçecek — sahada rekabet, otelde rahat.</p>
+    </div>
+    <div class="exp-card rv rv-d3">
+      <div class="exp-ico"><svg viewBox="0 0 24 24"><path d="M18 3v2h-2V3H8v2H6V3H4v18h2v-2h2v2h8v-2h2v2h2V3h-2zM8 17H6v-2h2v2zm0-4H6v-2h2v2zm0-4H6V7h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2V7h2v2z"/></svg></div>
+      <h4>Profesyonel Video Çekim</h4>
+      <p>Tüm maçlar ve özel anlar kayıt altına alınacak. Turnuva sonrası özel klip ve hatıra paketi.</p>
+    </div>
+    <div class="exp-card rv">
+      <div class="exp-ico"><svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm4.24 16L12 15.45 7.77 18l1.12-4.81-3.73-3.23 4.92-.42L12 5l1.92 4.53 4.92.42-3.73 3.23L16.23 18z"/></svg></div>
+      <h4>Ünlü Futbolcu Videoları</h4>
+      <p>Ünlü futbolculardan HMT CUP'a destek videoları — çocuklara sürpriz motivasyon mesajları.</p>
+    </div>
+    <div class="exp-card rv rv-d1">
+      <div class="exp-ico"><svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg></div>
+      <h4>Sporcu İkramı</h4>
+      <p>Diyetisyen rehberliğinde sandviç ve ayran ikramı. Üniversite gönüllüleri tarafından sunuluyor.</p>
+    </div>
+    <div class="exp-card rv rv-d2">
+      <div class="exp-ico"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+      <h4>Canlı Sosyal Medya</h4>
+      <p>Anlık Instagram, TikTok ve YouTube içerikleri. Her çocuk bir süper star gibi sahneye taşınıyor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LOCATION ══════════ -->
+<section id="location" class="loc rv">
+  <div class="c">
+    <p class="lbl">Lokasyon</p>
+    <h2 class="h1">Türkiye'nin En<br><em>Güzel</em> Sahilleri</h2>
+    <div class="bar"></div>
+    <p class="body-txt">İki güçlü alternatif değerlendiriliyor. Her ikisi de şampiyonlar kalitesinde altyapıya sahip.</p>
+  </div>
+  <div class="loc-img-wrap">
+    <img src="https://v3b.fal.media/files/b/0a96350b/yarBdc7NT8EF3PTE5nEGc_xdUi3PLV.png" alt="Lokasyon" loading="lazy"/>
+    <div class="loc-caption">
+      <div class="loc-cap-title">Antalya<br>veya Kuşadası</div>
+      <span class="loc-cap-chip">Lokasyon Belirleniyor</span>
+    </div>
+  </div>
+  <div class="loc-grid">
+    <div class="loc-card prim rv rv-d1">
+      <span class="loc-chip">Öncelikli Seçenek</span>
+      <h3>🌴 Antalya</h3>
+      <p>Türkiye'nin turizm başkenti. Dünya standartlarında oteller, geniş spor tesisleri, her mevsim güneş. Aileler için mükemmel tatil+turnuva deneyimi.</p>
+      <div class="loc-feats">
+        <div class="loc-feat">Uluslararası havalimanı bağlantısı</div>
+        <div class="loc-feat">5 yıldızlı resort otel altyapısı</div>
+        <div class="loc-feat">Geniş açık sahalar ve spor tesisleri</div>
+        <div class="loc-feat">Aileler için tatil + turnuva deneyimi</div>
+      </div>
+    </div>
+    <div class="loc-card rv rv-d2">
+      <span class="loc-chip">Alternatif</span>
+      <h3>🌊 Kuşadası</h3>
+      <p>Ege'nin incisi. Butik otel deneyimi, sahil şeridi ve muhteşem günbatımları. Küçük şehir atmosferinde büyük turnuva heyecanı.</p>
+      <div class="loc-feats">
+        <div class="loc-feat">İzmir havalimanı yakınlığı</div>
+        <div class="loc-feat">Ege kıyısında premium tesisler</div>
+        <div class="loc-feat">Daha samimi ve odaklı atmosfer</div>
+        <div class="loc-feat">Benzersiz Ege doğası deneyimi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ENTERTAINMENT ══════════ -->
+<section id="entertainment" class="ent rv">
+  <div class="c">
+    <p class="lbl">Final Gecesi</p>
+    <h2 class="h1">Turnuva Bitmez,<br><em>Efsane</em> Başlar</h2>
+    <div class="bar"></div>
+  </div>
+  <div class="ent-stage">
+    <div class="ent-lights"></div>
+    <div class="ent-stage-inner">
+      <div class="ent-stage-ico"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
+      <div class="ent-stage-title">KAPANIŞ KONSERİ</div>
+      <div class="ent-stage-sub">DJ Setup · Sahne Işıkları · Ödül Töreni</div>
+    </div>
+  </div>
+  <div class="ent-cards">
+    <div class="ent-card rv rv-d1">
+      <div class="ent-ico"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></div>
+      <h3>Ünlü Sanatçı</h3>
+      <p>Ödül töreninin ardından büyük kapanış: ünlü bir sanatçı sahne alacak.</p>
+    </div>
+    <div class="ent-card rv rv-d2">
+      <div class="ent-ico"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg></div>
+      <h3>DJ & Ses Sistemi</h3>
+      <p>Profesyonel DJ kabini, tam donanımlı ses ve ışık sistemi. Maçlar arası atmosfer kesintisiz devam ediyor.</p>
+    </div>
+    <div class="ent-card rv rv-d3">
+      <div class="ent-ico"><svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8H21V2c-2.76 0-5 2.24-5 4z"/></svg></div>
+      <h3>İkram & Eğlence</h3>
+      <p>HMT CUP tişörtlü üniversite gönüllüleri sandviç, ayran ve içecek ikramı sunuyor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ VIDEO ══════════ -->
+<section id="video" class="vid rv">
+  <div class="c">
+    <p class="lbl">Tanıtım Filmi</p>
+    <h2 class="h1">HMT CUP<br><em>Teaser</em></h2>
+    <div class="bar"></div>
+    <div class="vid-grid">
+      <div>
+        <div class="vid-wrap">
+          <video controls autoplay muted loop playsinline>
+            <source src="https://v3b.fal.media/files/b/0a963538/aXooJrrdBa2kcIclFvTsN_output.mp4" type="video/mp4"/>
+          </video>
+        </div>
+      </div>
+      <div class="vid-info">
+        <h3>Sinematik Açılış</h3>
+        <p>Şampiyonlar kalitesinde teaser. Turnuvanın heyecanını, büyüklüğünü ve ruhunu saniyeler içinde aktarıyor.</p>
+        <div class="scene-list">
+          <div class="scene"><span class="scene-n">01</span>Stadyum ışıkları dramatik açılış</div>
+          <div class="scene"><span class="scene-n">02</span>48 takım, U9 / U10 / U11 kategorileri</div>
+          <div class="scene"><span class="scene-n">03</span>Çocuklar sahaya çıkıyor — kalabalık tezahüratı</div>
+          <div class="scene"><span class="scene-n">04</span>Güçlü şut, gol sevinci — slow motion</div>
+          <div class="scene"><span class="scene-n">05</span>Kupa töreni — kırmızı konfeti</div>
+          <div class="scene"><span class="scene-n">06</span>HMT CUP 2026 · 48 TAKIM · TÜRKİYE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ AGENCY ══════════ -->
+<section class="agency rv">
+  <div class="c">
+    <div class="agency-name">UNIQ<em>BEE</em></div>
+    <div class="agency-sub">Creative Agency — Digital Production</div>
+    <p class="agency-desc">HMT CUP'ı Türkiye'nin gündemine taşıyacak her türlü görsel, dijital ve tanıtım içeriğini üretmek için buradayız.</p>
+    <div class="delivs">
+      <div class="deliv rv rv-d1">
+        <div class="deliv-ico"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+        <div class="deliv-t">Logo & Marka</div>
+        <div class="deliv-d">HMT CUP logo paketi, renk paleti, font seti</div>
+      </div>
+      <div class="deliv rv rv-d2">
+        <div class="deliv-ico"><svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg></div>
+        <div class="deliv-t">Sosyal Medya Kiti</div>
+        <div class="deliv-d">Instagram, TikTok, YouTube şablon paketi</div>
+      </div>
+      <div class="deliv rv rv-d3">
+        <div class="deliv-ico"><svg viewBox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"/></svg></div>
+        <div class="deliv-t">Tanıtım Videoları</div>
+        <div class="deliv-d">Teaser, kapsamlı tanıtım ve destek videoları</div>
+      </div>
+      <div class="deliv rv">
+        <div class="deliv-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></div>
+        <div class="deliv-t">Turnuva Materyalleri</div>
+        <div class="deliv-d">Afişler, sertifikalar, madalya, banner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta rv">
+  <h2>HAREKETE<br>GEÇME<br>ZAMANI</h2>
+  <p>HMT CUP'ı Türkiye'nin en büyük çocuk futbol turnuvası yapmak için her şey hazır.</p>
+  <a href="https://uniqbee.com" target="_blank" rel="noopener" class="btn-blk">UniqBee ile İletişime Geç</a>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="f-brand">HMT CUP</div>
+  <div class="f-copy">© 2026 HMT CUP — Tüm Hakları Saklıdır</div>
+  <div class="f-tag">UniqBee Creative Agency</div>
+</footer>
+
+<script>
+/* — Mobile menu — */
+function toggleMenu(){
+  document.getElementById('burger').classList.toggle('open');
+  document.getElementById('mobMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('burger').classList.remove('open');
+  document.getElementById('mobMenu').classList.remove('open');
+}
+
+/* — Nav scroll — */
+window.addEventListener('scroll',()=>{
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 20);
+},{passive:true});
+
+/* — Scroll reveal — */
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+  });
+},{threshold:0,rootMargin:'0px 0px 100px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+setTimeout(() => document.querySelectorAll('.rv').forEach(el=>el.classList.add('in')), 1000);
+</script>
+</body>
+</html>

@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Metin Vural — Sosyal Medya Teklifi | Uniqbee Ajans</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080810;
+      --surface: #0f0f1a;
+      --card: #13131f;
+      --card-hover: #191928;
+      --border: rgba(255,255,255,0.07);
+      --border-gold: rgba(196,158,83,0.3);
+      --gold: #c49e53;
+      --gold-light: #e2c07a;
+      --gold-dim: rgba(196,158,83,0.12);
+      --red: #c45353;
+      --red-dim: rgba(196,83,83,0.12);
+      --text: #ede9df;
+      --text-mid: #9896a0;
+      --text-dim: #5a5868;
+      --blue: #4a7fa5;
+      --green: #5a9e7a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: linear-gradient(to bottom, rgba(8,8,16,0.96), transparent);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transition: background 0.3s, border-bottom 0.3s;
+    }
+    .nav-logo { font-weight: 600; font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); }
+    .nav-badge { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 14px; border-radius: 100px; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; padding: 120px 24px 80px; position: relative; overflow: hidden;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(196,158,83,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,158,83,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+    }
+    .hero-glow {
+      position: absolute; width: 700px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,158,83,0.07) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      animation: pulse 5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { transform: translate(-50%,-50%) scale(1); opacity:1; }
+      50% { transform: translate(-50%,-50%) scale(1.12); opacity:0.6; }
+    }
+    .hero-orb {
+      position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none;
+    }
+    .hero-orb-1 { width:300px; height:300px; background:rgba(196,158,83,0.05); top:20%; left:10%; animation: float1 8s ease-in-out infinite; }
+    .hero-orb-2 { width:200px; height:200px; background:rgba(74,127,165,0.05); bottom:20%; right:10%; animation: float2 10s ease-in-out infinite; }
+    @keyframes float1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(20px,-30px)} }
+    @keyframes float2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-20px,20px)} }
+
+    .hero-eyebrow { font-size: 10px; letter-spacing: 0.45em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; opacity:0; animation: fadeUp 0.8s ease 0.3s forwards; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(44px,8vw,92px); font-weight: 300; line-height: 1.05; letter-spacing: -0.02em; color: var(--text); opacity:0; animation: fadeUp 0.8s ease 0.5s forwards; }
+    .hero-title em { font-style: italic; color: var(--gold); }
+    .hero-subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px,2.5vw,24px); font-weight: 300; color: var(--text-mid); margin-top: 16px; opacity:0; animation: fadeUp 0.8s ease 0.7s forwards; }
+    .hero-divider { width: 60px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 32px auto; opacity:0; animation: fadeUp 0.8s ease 0.9s forwards; }
+    .hero-meta { display: flex; gap: clamp(24px,5vw,48px); justify-content: center; flex-wrap: wrap; opacity:0; animation: fadeUp 0.8s ease 1.1s forwards; }
+    .hero-meta-item { text-align: center; }
+    .hero-meta-value { font-family: 'Cormorant Garamond', serif; font-size: clamp(28px,5vw,38px); font-weight: 600; color: var(--gold-light); line-height: 1; }
+    .hero-meta-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-dim); margin-top: 6px; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+    /* ── SECTIONS ── */
+    section { padding: clamp(60px,8vw,100px) clamp(20px,5vw,48px); max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 10px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px,5vw,56px); font-weight: 300; line-height: 1.1; color: var(--text); margin-bottom: 16px; }
+    .section-title em { font-style: italic; color: var(--gold); }
+    .section-desc { font-size: 15px; color: var(--text-mid); max-width: 560px; line-height: 1.7; }
+    .sep { width:100%; height:1px; background:linear-gradient(to right,transparent,rgba(196,158,83,0.25),transparent); }
+
+    /* ── REVEAL ── */
+    .reveal { transition:opacity 0.7s ease,transform 0.7s ease; }
+    .reveal.will-animate { opacity:0; transform:translateY(28px); }
+    .reveal.will-animate.visible { opacity:1; transform:none; }
+
+    /* ── PROFIL ANALİZİ ── */
+    .profil-wrap { margin-top: 48px; display: flex; flex-direction: column; gap: 32px; }
+
+    /* Uzmanlık & Hedef Kitle row */
+    .profil-top { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .info-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 28px; position: relative; overflow: hidden;
+      transition: border-color 0.35s, transform 0.35s, box-shadow 0.35s;
+      cursor: default;
+    }
+    .info-card::after {
+      content:''; position:absolute; inset:0;
+      background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(196,158,83,0.07), transparent 65%);
+      opacity:0; transition:opacity 0.4s;
+    }
+    .info-card:hover { border-color: var(--border-gold); transform:translateY(-3px); box-shadow:0 16px 48px rgba(0,0,0,0.35); }
+    .info-card:hover::after { opacity:1; }
+
+    .ic-label { font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:14px; }
+    .ic-icon { font-size:28px; margin-bottom:12px; }
+    .ic-title { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--text); margin-bottom:10px; line-height:1.2; }
+    .ic-body { font-size:13px; color:var(--text-mid); line-height:1.6; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:7px; margin-top:14px; }
+    .tag { font-size:11px; padding:4px 12px; border-radius:100px; background:var(--gold-dim); border:1px solid var(--border-gold); color:var(--gold-light); }
+
+    /* Metrik skoru infografik */
+    .metrics-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .metric-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+      padding: 22px 18px; text-align:center; position:relative; overflow:hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .metric-card:hover { border-color:var(--border-gold); transform:translateY(-3px); }
+    .metric-card::before {
+      content:''; position:absolute; bottom:0; left:0; right:0; height:3px;
+      background: linear-gradient(to right, transparent, var(--mc,var(--gold)), transparent);
+    }
+    .metric-score {
+      font-family:'Cormorant Garamond',serif; font-size:42px; font-weight:300; line-height:1;
+      color: var(--mc,var(--gold));
+    }
+    .metric-label { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); margin:8px 0 14px; }
+    .score-bar { height:5px; background:var(--border); border-radius:100px; overflow:hidden; }
+    .score-fill { height:100%; border-radius:100px; background:linear-gradient(to right, var(--mc,var(--gold)), var(--gold-light)); transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+    .metric-note { font-size:11px; color:var(--text-dim); margin-top:10px; line-height:1.4; }
+
+    /* Güçlü & Zayıf karşılaştırma */
+    .compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .compare-card {
+      border-radius: 18px; padding: 28px; position:relative; overflow:hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .compare-card:hover { transform:translateY(-3px); box-shadow:0 20px 50px rgba(0,0,0,0.4); }
+    .compare-card.guc { background:var(--card); border:1px solid rgba(90,158,122,0.3); }
+    .compare-card.gap { background:var(--card); border:1px solid rgba(196,83,83,0.25); }
+    .compare-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; }
+    .compare-card.guc::before { background:linear-gradient(to right,transparent,var(--green),transparent); }
+    .compare-card.gap::before { background:linear-gradient(to right,transparent,var(--red),transparent); }
+    .cc-header { display:flex; align-items:center; gap:10px; margin-bottom:20px; }
+    .cc-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .cc-title { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; }
+    .cc-item { display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
+    .cc-icon { font-size:16px; line-height:1; flex-shrink:0; margin-top:1px; }
+    .cc-text strong { font-size:13px; color:var(--text); display:block; margin-bottom:2px; }
+    .cc-text span { font-size:12px; color:var(--text-mid); line-height:1.4; }
+
+    /* Hedef kitle segmentleri */
+    .audience-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .audience-card {
+      background:var(--card); border:1px solid var(--border); border-radius:16px; padding:22px;
+      transition: border-color 0.3s, transform 0.3s;
+      position:relative; overflow:hidden;
+    }
+    .audience-card:hover { border-color:var(--border-gold); transform:translateY(-2px); }
+    .audience-card::after {
+      content:''; position:absolute; bottom:0; left:20px; right:20px; height:1px;
+      background:linear-gradient(to right,transparent,var(--gold-dim),transparent);
+    }
+    .aud-emoji { font-size:24px; margin-bottom:10px; }
+    .aud-title { font-size:13px; font-weight:600; color:var(--text); margin-bottom:6px; }
+    .aud-desc { font-size:12px; color:var(--text-mid); line-height:1.5; }
+
+    /* ── NEDEN UNİQBEE ── */
+    .transform-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:48px; }
+    .tf-card {
+      border-radius:20px; padding:32px; position:relative; overflow:hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .tf-card:hover { transform:translateY(-4px); box-shadow:0 24px 60px rgba(0,0,0,0.4); }
+    .tf-card.before { background:var(--card); border:1px solid rgba(196,83,83,0.2); }
+    .tf-card.after { background:var(--card); border:1px solid var(--border-gold); }
+    .tf-card::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; }
+    .tf-card.before::before { background:linear-gradient(to right,transparent,#c45353,transparent); }
+    .tf-card.after::before { background:linear-gradient(to right,transparent,var(--gold),transparent); }
+    .tf-header { display:flex; align-items:center; gap:12px; margin-bottom:24px; }
+    .tf-badge { font-size:10px; letter-spacing:0.3em; text-transform:uppercase; padding:5px 14px; border-radius:100px; }
+    .tf-badge.before { background:rgba(196,83,83,0.1); color:#e08080; border:1px solid rgba(196,83,83,0.25); }
+    .tf-badge.after { background:var(--gold-dim); color:var(--gold-light); border:1px solid var(--border-gold); }
+    .tf-item { display:flex; gap:12px; align-items:flex-start; margin-bottom:16px; }
+    .tf-item:last-child { margin-bottom:0; }
+    .tf-check { font-size:15px; line-height:1.3; flex-shrink:0; }
+    .tf-text strong { font-size:13px; color:var(--text); display:block; }
+    .tf-text span { font-size:12px; color:var(--text-mid); line-height:1.4; }
+    .kpi-row { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:20px; }
+    .kpi-box { background:var(--card); border:1px solid var(--border); border-radius:14px; padding:20px; text-align:center; }
+    .kpi-val { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:var(--gold); line-height:1; }
+    .kpi-lbl { font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); margin-top:6px; }
+
+    /* ── STRATEJİ ── */
+    .pillars { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:48px; }
+    .pillar {
+      background:var(--card); border:1px solid var(--border); border-radius:16px; padding:30px 24px;
+      text-align:center; position:relative; overflow:hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .pillar:hover { border-color:var(--border-gold); transform:translateY(-3px); }
+    .pillar::after { content:''; position:absolute; bottom:0;left:0;right:0; height:2px; background:linear-gradient(to right,transparent,var(--gold),transparent); transform:scaleX(0); transition:transform 0.3s; }
+    .pillar:hover::after { transform:scaleX(1); }
+    .pillar-n { font-family:'Cormorant Garamond',serif; font-size:56px; font-weight:300; color:rgba(196,158,83,0.12); line-height:1; }
+    .pillar-t { font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--text); margin:6px 0; }
+    .pillar-d { font-size:13px; color:var(--text-mid); line-height:1.6; }
+
+    /* ── İÇERİK PLANI ── */
+    .content-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:24px; }
+    .content-item {
+      background:var(--card); border:1px solid var(--border); border-radius:12px;
+      padding:18px 20px; display:flex; gap:14px; align-items:flex-start;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .content-item:hover { border-color:var(--border-gold); transform:translateX(3px); }
+    .ci-num { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--gold); line-height:1; min-width:30px; }
+    .ci-badge { font-size:9px; padding:3px 9px; border-radius:100px; letter-spacing:0.1em; text-transform:uppercase; display:inline-block; margin-bottom:5px; }
+    .ci-badge.reels-b { background:var(--gold-dim); border:1px solid var(--border-gold); color:var(--gold-light); }
+    .ci-badge.car-b { background:rgba(74,127,165,0.12); border:1px solid rgba(74,127,165,0.3); color:#7ab0d4; }
+    .ci-name { font-size:13px; font-weight:500; color:var(--text); margin-bottom:3px; }
+    .ci-desc { font-size:11px; color:var(--text-dim); line-height:1.4; }
+
+    /* ── TAKVİM ── */
+    .cal-outer { background:var(--card); border:1px solid var(--border); border-radius:20px; overflow:hidden; margin-top:48px; }
+    .cal-head { padding:24px 28px; border-bottom:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; background:linear-gradient(135deg,rgba(196,158,83,0.05),transparent); }
+    .cal-month { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; }
+    .cal-legend { display:flex; gap:16px; flex-wrap:wrap; }
+    .leg-item { display:flex; align-items:center; gap:6px; font-size:11px; color:var(--text-mid); }
+    .leg-dot { width:9px; height:9px; border-radius:50%; }
+    .lg-s { background:var(--green); }
+    .lg-r { background:var(--gold); }
+    .lg-c { background:var(--blue); }
+
+    .cal-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .cal-grid { display:grid; grid-template-columns:repeat(7,minmax(80px,1fr)); min-width:560px; }
+    .cal-dn { padding:10px 8px; text-align:center; font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); border-bottom:1px solid var(--border); }
+    .cal-day { min-height:82px; padding:9px 8px; border-right:1px solid var(--border); border-bottom:1px solid var(--border); position:relative; transition:background 0.2s; }
+    .cal-day:nth-child(7n) { border-right:none; }
+    .cal-day:hover { background:rgba(255,255,255,0.015); }
+    .cal-day.empty { opacity:0.25; }
+    .cal-day.sd { background:rgba(90,158,122,0.03); }
+    .c-num { font-size:12px; color:var(--text-dim); font-weight:500; margin-bottom:5px; }
+    .c-ev { font-size:9px; padding:2px 6px; border-radius:5px; margin-bottom:2px; line-height:1.3; font-weight:500; }
+    .c-ev.r { background:rgba(196,158,83,0.18); color:var(--gold-light); border:1px solid rgba(196,158,83,0.25); }
+    .c-ev.c { background:rgba(74,127,165,0.18); color:#7ab0d4; border:1px solid rgba(74,127,165,0.25); }
+    .c-ev.s { background:rgba(90,158,122,0.18); color:#8ecfb0; border:1px solid rgba(90,158,122,0.25); }
+
+    /* ── PLATFORMLAR ── */
+    .plat-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin-top:48px; }
+    .plat-card {
+      background:var(--card); border:1px solid var(--border); border-radius:20px; padding:32px 26px;
+      position:relative; overflow:hidden;
+      transition: border-color 0.3s, transform 0.35s, box-shadow 0.35s;
+    }
+    .plat-card:hover { border-color:rgba(255,255,255,0.13); transform:translateY(-5px); box-shadow:0 22px 60px rgba(0,0,0,0.4); }
+    .plat-card::before { content:''; position:absolute; top:0;left:0;right:0; height:3px; background:var(--pc, var(--gold)); }
+    .plat-card.instagram { --pc: linear-gradient(to right,#f58529,#dd2a7b,#8134af); }
+    .plat-card.youtube { --pc: #ff0000; }
+    .plat-card.tiktok { --pc: linear-gradient(to right,#010101,#00f2ea,#ff0050); }
+    .plat-card.facebook { --pc: #1877f2; }
+    .plat-top { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+    .plat-icon { width:48px; height:48px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:22px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); flex-shrink:0; }
+    .plat-name { font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--text); }
+    .plat-role { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-dim); margin-top:2px; }
+    .plat-desc { font-size:13px; color:var(--text-mid); line-height:1.6; margin-bottom:16px; }
+    .plat-feats { list-style:none; }
+    .plat-feats li { font-size:12px; color:var(--text-mid); padding:6px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:8px; }
+    .plat-feats li::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+    .plat-feats li:last-child { border-bottom:none; }
+
+    /* ── REKLAM ── */
+    .ads-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:48px; }
+    .ads-card { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:28px; }
+    .ads-card-title { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--gold); margin-bottom:22px; }
+    .camp-item { display:flex; justify-content:space-between; align-items:center; padding:11px 0; border-bottom:1px solid var(--border); }
+    .camp-item:last-child { border-bottom:none; }
+    .camp-name { font-size:13px; color:var(--text); }
+    .camp-sub { font-size:11px; color:var(--text-dim); }
+    .camp-val { font-size:13px; color:var(--gold); font-weight:500; }
+    .pbar { height:4px; background:var(--border); border-radius:100px; margin:10px 0; overflow:hidden; }
+    .pfill { height:100%; border-radius:100px; background:linear-gradient(to right,var(--gold),var(--gold-light)); }
+    .stat-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:20px; }
+    .stat-box { background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:10px; padding:14px; }
+    .stat-val { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:var(--gold-light); line-height:1; }
+    .stat-lbl { font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--text-dim); margin-top:4px; }
+
+    /* ── BÜTÇE ── */
+    .budget-card { background:var(--card); border:1px solid var(--border-gold); border-radius:24px; padding:clamp(24px,5vw,44px); margin-top:48px; position:relative; overflow:hidden; }
+    .budget-card::before { content:''; position:absolute; top:-80px; right:-80px; width:260px; height:260px; background:radial-gradient(circle,rgba(196,158,83,0.07),transparent 70%); }
+    .budget-head { font-family:'Cormorant Garamond',serif; font-size:12px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:28px; }
+    .b-row { display:flex; justify-content:space-between; align-items:center; padding:16px 0; border-bottom:1px solid var(--border); gap:12px; flex-wrap:wrap; }
+    .b-label { font-size:14px; color:var(--text); }
+    .b-sub { font-size:11px; color:var(--text-dim); margin-top:2px; }
+    .b-val { font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--gold-light); white-space:nowrap; }
+    .b-total { display:flex; justify-content:space-between; align-items:center; padding:24px 0 0; margin-top:8px; flex-wrap:wrap; gap:12px; }
+    .b-total-lbl { font-size:13px; color:var(--text-mid); }
+    .b-total-val { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,6vw,52px); font-weight:300; color:var(--gold-light); line-height:1; }
+    .b-total-val span { font-size:18px; color:var(--text-dim); }
+    .b-kdv-row { display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding-top:12px; border-top:1px solid var(--border); flex-wrap:wrap; gap:8px; }
+    .b-note { font-size:12px; color:var(--text-dim); }
+    .b-kdv-val { font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--text-mid); }
+    .b-final { display:flex; justify-content:space-between; align-items:center; margin-top:10px; padding:16px 20px; background:rgba(196,158,83,0.05); border:1px solid var(--border-gold); border-radius:12px; flex-wrap:wrap; gap:8px; }
+    .b-final-lbl { font-size:13px; font-weight:600; color:var(--text); }
+    .b-final-val { font-family:'Cormorant Garamond',serif; font-size:clamp(26px,4vw,36px); color:var(--gold-light); }
+    .b-ads { display:flex; justify-content:space-between; align-items:center; margin-top:14px; padding:18px 20px; background:rgba(196,158,83,0.04); border:1px dashed var(--border-gold); border-radius:12px; flex-wrap:wrap; gap:12px; }
+    .b-ads-text { font-size:13px; color:var(--text-mid); }
+    .b-ads-title { font-size:14px; color:var(--text); font-weight:500; margin-bottom:3px; }
+    .b-ads-val { font-family:'Cormorant Garamond',serif; font-size:26px; color:var(--gold); white-space:nowrap; }
+
+    /* ── ÖDEME TİMLİNE ── */
+    .pay-timeline { margin-top:48px; position:relative; }
+    .pay-timeline::before { content:''; position:absolute; left:28px; top:16px; bottom:16px; width:2px; background:linear-gradient(to bottom,var(--gold),rgba(196,158,83,0.1)); }
+    .pay-item { display:flex; gap:28px; margin-bottom:0; padding:0 0 36px; position:relative; }
+    .pay-item:last-child { padding-bottom:0; }
+    .pay-dot-wrap { flex-shrink:0; width:58px; display:flex; flex-direction:column; align-items:center; padding-top:4px; }
+    .pay-dot { width:18px; height:18px; border-radius:50%; background:var(--gold); border:3px solid var(--bg); box-shadow:0 0 0 2px var(--gold), 0 0 16px rgba(196,158,83,0.35); flex-shrink:0; }
+    .pay-dot.dim { background:var(--text-dim); box-shadow:0 0 0 2px var(--text-dim); }
+    .pay-body { background:var(--card); border:1px solid var(--border); border-radius:16px; padding:24px; flex:1; position:relative; overflow:hidden; transition:border-color 0.3s; }
+    .pay-body:hover { border-color:var(--border-gold); }
+    .pay-body::before { content:''; position:absolute; top:0;left:0;right:0; height:2px; background:linear-gradient(to right,transparent,var(--gold),transparent); }
+    .pay-phase { font-size:10px; letter-spacing:0.3em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+    .pay-date { font-family:'Cormorant Garamond',serif; font-size:clamp(24px,4vw,32px); font-weight:300; color:var(--text); line-height:1.1; margin-bottom:6px; }
+    .pay-amount { font-family:'Cormorant Garamond',serif; font-size:clamp(18px,3vw,24px); color:var(--gold-light); margin-bottom:10px; }
+    .pay-detail { font-size:13px; color:var(--text-mid); line-height:1.6; }
+    .pay-pct { position:absolute; top:18px; right:22px; font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:rgba(196,158,83,0.08); line-height:1; }
+
+    /* ── FOOTER ── */
+    footer { padding:50px clamp(20px,5vw,48px); border-top:1px solid var(--border); display:flex; align-items:center; justify-content:space-between; max-width:1200px; margin:0 auto; flex-wrap:wrap; gap:20px; }
+    .f-logo { font-weight:600; font-size:13px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); }
+    .f-tag { font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic; color:var(--text-dim); }
+    .f-copy { font-size:11px; color:var(--text-dim); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      nav { padding:14px 20px; }
+      .nav-badge { display:none; }
+      .hero { padding:100px 20px 60px; }
+      section { padding:60px 20px; }
+      .profil-top { grid-template-columns:1fr; }
+      .metrics-row { grid-template-columns:repeat(2,1fr); }
+      .compare-row { grid-template-columns:1fr; }
+      .audience-row { grid-template-columns:1fr; }
+      .transform-grid { grid-template-columns:1fr; }
+      .kpi-row { grid-template-columns:repeat(2,1fr); }
+      .pillars { grid-template-columns:1fr; }
+      .content-grid { grid-template-columns:1fr; }
+      .plat-grid { grid-template-columns:1fr; }
+      .ads-grid { grid-template-columns:1fr; }
+      .stat-row { grid-template-columns:1fr 1fr; }
+      .pay-timeline::before { left:22px; }
+      .pay-dot-wrap { width:46px; }
+      .pay-pct { font-size:36px; right:14px; top:14px; }
+      footer { flex-direction:column; align-items:flex-start; }
+      .cal-head { flex-direction:column; align-items:flex-start; }
+
+      /* inline-styled grids - mobil override */
+      .inline-2col { grid-template-columns: 1fr !important; }
+      .inline-3col { grid-template-columns: 1fr !important; }
+      .inline-5col { grid-template-columns: repeat(2,1fr) !important; }
+
+      /* budget row sarma */
+      .b-row { flex-direction: column; align-items: flex-start; gap: 6px; }
+      .b-row .b-val { align-self: flex-end; }
+
+      /* pay body */
+      .pay-item { gap:16px; }
+      .pay-body { padding: 18px 16px; }
+
+      /* etkileşim kartları */
+      .eng-grid { grid-template-columns: 1fr !important; }
+
+      /* ubee stats mobil */
+      .ubee-stats { flex-direction: column; }
+      .ubee-stat { width:100%; border-bottom: 1px solid rgba(196,158,83,0.1); }
+      .ubee-stat:last-child { border-bottom: none; }
+      .ubee-stat-sep { display:none; }
+      .ubee-services { grid-template-columns: 1fr 1fr !important; }
+      .ubee-contact { flex-direction: column; padding: 24px 20px; }
+      .ubee-contact-links { width: 100%; }
+      .ubee-link { padding: 10px 14px; }
+
+      /* content dağılım grid */
+      .dist-grid { grid-template-columns: 1fr !important; }
+
+      /* stories */
+      .stories-grid { grid-template-columns: repeat(3,1fr) !important; }
+
+      /* genel inline flex/grid sarma */
+      [style*="grid-template-columns:repeat(3"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: repeat(3"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      .mob-1col { grid-template-columns: 1fr !important; }
+      .mob-2col { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 480px) {
+      .metrics-row { grid-template-columns:1fr 1fr; }
+      .kpi-row { grid-template-columns:1fr 1fr; }
+      .hero-meta { gap:16px; }
+      .ubee-services { grid-template-columns: 1fr !important; }
+      .stories-grid { grid-template-columns: repeat(2,1fr) !important; }
+      [style*="grid-template-columns:repeat(5"] { grid-template-columns: repeat(2,1fr) !important; }
+      [style*="grid-template-columns: repeat(5"] { grid-template-columns: repeat(2,1fr) !important; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Uniqbee</div>
+  <div class="nav-badge">Strateji Teklifi · 2026</div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section class="hero" style="max-width:100%; padding:120px 24px 80px;">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <p class="hero-eyebrow">Uniqbee Ajans · Sosyal Medya Stratejisi</p>
+  <h1 class="hero-title">Dr. Metin Vural<br><em>Dijital Büyüme</em></h1>
+  <p class="hero-subtitle">Medikal Estetik Alanında Profesyonel Video & İçerik Stratejisi</p>
+  <div class="hero-divider"></div>
+  <div class="hero-meta">
+    <div class="hero-meta-item">
+      <div class="hero-meta-value">18</div>
+      <div class="hero-meta-label">İçerik / Ay</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-value">4</div>
+      <div class="hero-meta-label">Platform</div>
+    </div>
+    <div class="hero-meta-item">
+      <div class="hero-meta-value">31</div>
+      <div class="hero-meta-label">Gün</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ PROFİL ANALİZİ ═══════════════ -->
+<section id="analiz">
+  <div class="reveal">
+    <p class="section-label">01 — Mevcut Durum</p>
+    <h2 class="section-title">Profil <em>Analizi</em></h2>
+    <p class="section-desc">@drmetinvural Instagram hesabının detaylı incelemesine dayanan, gerçek verilerle hazırlanmış mevcut durum raporu.</p>
+  </div>
+
+  <div class="profil-wrap">
+
+    <!-- Kimlik kartları -->
+    <div class="profil-top reveal">
+      <div class="info-card">
+        <div class="ic-label">Kimdir?</div>
+        <div class="ic-icon">🩺</div>
+        <div class="ic-title">Dr. Metin Vural<br><span style="font-size:14px; color:var(--text-mid); font-family:'DM Sans',sans-serif; font-weight:400;">PhD — İstanbul Üniversitesi (2020)</span></div>
+        <div class="ic-body" style="margin-top:10px;">Biyoistatistik & Tıp Bilişimi doktorası. Medikal estetik uygulayıcısı ve MasterClass Workshop eğitmeni. Bağdat Caddesi No:104, Kadıköy / İstanbul.</div>
+        <div class="tag-row">
+          <span class="tag">Face Lifting</span>
+          <span class="tag">İp Askı / Spring Thread</span>
+          <span class="tag">Botoks</span>
+          <span class="tag">Dolgu / Filler</span>
+          <span class="tag">Exosome</span>
+          <span class="tag">MasterClass Eğitmen</span>
+          <span class="tag">Kadıköy, İstanbul</span>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="ic-label">Hesap Genel Görünümü — @drmetinvural</div>
+        <div class="ic-icon">📸</div>
+        <div class="ic-title">Karma İçerik,<br>Dağınık Kimlik</div>
+        <div class="ic-body" style="margin-top:10px;">Prosedür videoları, HPV uyarı gönderileri, seyahat fotoğrafları ve eğitim içerikleri birbiriyle karışıyor. Hesap kim olduğunu anlatıyor ama ne sunduğunu yeterince satamıyor.</div>
+        <div class="tag-row">
+          <span class="tag">Instagram: Aktif ama Dağınık</span>
+          <span class="tag">TikTok: Yok</span>
+          <span class="tag">Reklam: Yok</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Etkileşim gerçeği — infografik -->
+    <div class="reveal">
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:18px; padding:28px 32px; position:relative; overflow:hidden;">
+        <div style="position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:radial-gradient(circle,rgba(196,83,83,0.06),transparent 70%);"></div>
+        <div class="section-label" style="margin-bottom:20px;">Gerçek Etkileşim Verileri — Instagram Gönderileri</div>
+        <div class="mob-1col" style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+          <div style="background:rgba(196,83,83,0.06); border:1px solid rgba(196,83,83,0.2); border-radius:14px; padding:20px; text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; color:#e08080; line-height:1;">47</div>
+            <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); margin:6px 0 8px;">Beğeni</div>
+            <div style="font-size:11px; color:var(--text-mid); line-height:1.4;">MasterClass Workshop<br>Masseter Botoks videosu</div>
+          </div>
+          <div style="background:rgba(196,83,83,0.06); border:1px solid rgba(196,83,83,0.2); border-radius:14px; padding:20px; text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; color:#e08080; line-height:1;">0</div>
+            <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); margin:6px 0 8px;">Yorum</div>
+            <div style="font-size:11px; color:var(--text-mid); line-height:1.4;">Prosedür videolarında<br>topluluk etkileşimi yok</div>
+          </div>
+          <div style="background:rgba(90,158,122,0.06); border:1px solid rgba(90,158,122,0.25); border-radius:14px; padding:20px; text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; color:#8ecfb0; line-height:1;">238</div>
+            <div style="font-size:10px; letter-spacing:0.15em; text-transform:uppercase; color:var(--text-dim); margin:6px 0 8px;">Beğeni</div>
+            <div style="font-size:11px; color:var(--text-mid); line-height:1.4;">Doktora diploması<br>kişisel paylaşım</div>
+          </div>
+        </div>
+        <div style="margin-top:16px; padding:14px 18px; background:rgba(196,158,83,0.05); border:1px solid var(--border-gold); border-radius:10px;">
+          <div style="font-size:12px; color:var(--gold-light); line-height:1.6;">
+            <strong>Teşhis:</strong> Kişisel ve akademik içerikler prosedür videolarından 5x daha fazla etkileşim alıyor. Hedef kitle var — ama doğru içerikle beslenmiyor.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stories analizi -->
+    <div class="reveal">
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:18px; padding:28px 32px;">
+        <div class="section-label" style="margin-bottom:18px;">Stories Highlights — Kullanılmayan Altınlar</div>
+        <div class="mob-2col" style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px;">
+          <div style="text-align:center; padding:16px 8px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:14px; transition:border-color 0.3s;" onmouseenter="this.style.borderColor='rgba(196,158,83,0.35)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)'">
+            <div style="font-size:26px; margin-bottom:8px;">🌅</div>
+            <div style="font-size:11px; font-weight:600; color:var(--text);">Günaydın</div>
+            <div style="font-size:10px; color:var(--text-dim); margin-top:4px;">Günlük rutin içerik</div>
+          </div>
+          <div style="text-align:center; padding:16px 8px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:14px; transition:border-color 0.3s;" onmouseenter="this.style.borderColor='rgba(196,158,83,0.35)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)'">
+            <div style="font-size:26px; margin-bottom:8px;">🧵</div>
+            <div style="font-size:11px; font-weight:600; color:var(--text);">Fransız Askı</div>
+            <div style="font-size:10px; color:var(--text-dim); margin-top:4px;">Prosedür serisi</div>
+          </div>
+          <div style="text-align:center; padding:16px 8px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:14px; transition:border-color 0.3s;" onmouseenter="this.style.borderColor='rgba(196,158,83,0.35)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)'">
+            <div style="font-size:26px; margin-bottom:8px;">🌿</div>
+            <div style="font-size:11px; font-weight:600; color:var(--text);">Doğal</div>
+            <div style="font-size:10px; color:var(--text-dim); margin-top:4px;">Sonuç & estetik</div>
+          </div>
+          <div style="text-align:center; padding:16px 8px; background:rgba(255,255,255,0.02); border:1px solid var(--border); border-radius:14px; transition:border-color 0.3s;" onmouseenter="this.style.borderColor='rgba(196,158,83,0.35)'" onmouseleave="this.style.borderColor='rgba(255,255,255,0.07)'">
+            <div style="font-size:26px; margin-bottom:8px;">👥</div>
+            <div style="font-size:11px; font-weight:600; color:var(--text);">Ekibimiz</div>
+            <div style="font-size:10px; color:var(--text-dim); margin-top:4px;">Klinik & takım</div>
+          </div>
+          <div style="text-align:center; padding:16px 8px; background:rgba(196,158,83,0.05); border:1px solid var(--border-gold); border-radius:14px; transition:border-color 0.3s;" onmouseenter="this.style.borderColor='rgba(196,158,83,0.6)'" onmouseleave="this.style.borderColor='rgba(196,158,83,0.3)'">
+            <div style="font-size:26px; margin-bottom:8px;">⚠️</div>
+            <div style="font-size:11px; font-weight:600; color:var(--gold);">Potansiyel</div>
+            <div style="font-size:10px; color:var(--text-dim); margin-top:4px;">İşlenmemiş konular</div>
+          </div>
+        </div>
+        <div style="margin-top:14px; font-size:12px; color:var(--text-mid); line-height:1.6; padding:12px 16px; background:rgba(196,158,83,0.04); border-radius:10px; border:1px solid var(--border-gold);">
+          <strong style="color:var(--gold-light);">Fırsat:</strong> "Fransız Askı" ve "Doğal" highlights'ları güçlü temalar — ama bu konular hiç Reels & Carousel içeriğine dönüştürülmemiş.
+        </div>
+      </div>
+    </div>
+
+    <!-- İçerik karmaşası tespiti -->
+    <div class="reveal">
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:18px; padding:28px 32px;">
+        <div class="section-label" style="margin-bottom:20px;">Mevcut İçerik Dağılımı — Sorun Tespiti</div>
+        <div class="mob-1col" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div>
+            <div style="font-size:12px; color:var(--text-mid); margin-bottom:12px; line-height:1.5;">Şu an hesapta karışık içerik var: medikal prosedürler, HPV uyarıları, İtalya seyahat fotoğrafları ve workshop tanıtımları aynı feedde. Bu durum takipçiyi ve algoritmayı şaşırtıyor.</div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div style="width:100%; background:var(--border); border-radius:100px; height:6px; overflow:hidden;">
+                  <div style="width:35%; height:100%; background:linear-gradient(to right,var(--gold),var(--gold-light)); border-radius:100px;"></div>
+                </div>
+                <span style="font-size:11px; color:var(--text-mid); min-width:100px; flex-shrink:0;">Prosedür / Eğitim %35</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div style="width:100%; background:var(--border); border-radius:100px; height:6px; overflow:hidden;">
+                  <div style="width:25%; height:100%; background:linear-gradient(to right,var(--blue),#7ab0d4); border-radius:100px;"></div>
+                </div>
+                <span style="font-size:11px; color:var(--text-mid); min-width:100px; flex-shrink:0;">Workshop & B2B %25</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div style="width:100%; background:var(--border); border-radius:100px; height:6px; overflow:hidden;">
+                  <div style="width:25%; height:100%; background:linear-gradient(to right,var(--red),#e08080); border-radius:100px;"></div>
+                </div>
+                <span style="font-size:11px; color:var(--text-mid); min-width:100px; flex-shrink:0;">Sağlık Uyarıları %25</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:10px;">
+                <div style="width:100%; background:var(--border); border-radius:100px; height:6px; overflow:hidden;">
+                  <div style="width:15%; height:100%; background:linear-gradient(to right,var(--green),#8ecfb0); border-radius:100px;"></div>
+                </div>
+                <span style="font-size:11px; color:var(--text-mid); min-width:100px; flex-shrink:0;">Kişisel / Seyahat %15</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <div style="padding:12px; background:rgba(196,83,83,0.06); border:1px solid rgba(196,83,83,0.2); border-radius:10px; font-size:12px; color:var(--text-mid); line-height:1.5;">
+              <strong style="color:#e08080;">❌ Sorun:</strong> HPV ve seyahat içerikleri medikal estetik kitleyi dağıtıyor. Algoritma hangi konuda uzman olduğunuzu tanımlamakta zorlanıyor.
+            </div>
+            <div style="padding:12px; background:rgba(90,158,122,0.06); border:1px solid rgba(90,158,122,0.25); border-radius:10px; font-size:12px; color:var(--text-mid); line-height:1.5;">
+              <strong style="color:#8ecfb0;">✅ Güç:</strong> Workshop ve MasterClass içerikleri doktor/profesyonel kitleye hitap ediyor — bu B2B segment geliştirilmeli.
+            </div>
+            <div style="padding:12px; background:rgba(196,158,83,0.06); border:1px solid var(--border-gold); border-radius:10px; font-size:12px; color:var(--text-mid); line-height:1.5;">
+              <strong style="color:var(--gold-light);">💡 Fırsat:</strong> PhD akademik kimliği + MasterClass eğitmenliği + Bağdat Caddesi klinik prestiji üçgeni çok güçlü — henüz hiç kullanılmıyor.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skorlar -->
+    <div class="metrics-row reveal">
+      <div class="metric-card" style="--mc:#c49e53;">
+        <div class="metric-score">3/10</div>
+        <div class="metric-label">Etkileşim Oranı</div>
+        <div class="score-bar"><div class="score-fill" data-width="30%" style="width:0%"></div></div>
+        <div class="metric-note">47 like / prosedür videosu — potansiyelinin çok altında</div>
+      </div>
+      <div class="metric-card" style="--mc:#5a9e7a;">
+        <div class="metric-score">9/10</div>
+        <div class="metric-label">Uzmanlık & Kimlik</div>
+        <div class="score-bar"><div class="score-fill" data-width="90%" style="width:0%"></div></div>
+        <div class="metric-note">PhD + MasterClass + geniş prosedür yelpazesi — çok güçlü</div>
+      </div>
+      <div class="metric-card" style="--mc:#c45353;">
+        <div class="metric-score">2/10</div>
+        <div class="metric-label">İçerik Tutarlılığı</div>
+        <div class="score-bar"><div class="score-fill" data-width="20%" style="width:0%"></div></div>
+        <div class="metric-note">Karma içerik karması algoritmayı şaşırtıyor</div>
+      </div>
+      <div class="metric-card" style="--mc:#4a7fa5;">
+        <div class="metric-score">2/10</div>
+        <div class="metric-label">Platform Çeşitliliği</div>
+        <div class="score-bar"><div class="score-fill" data-width="20%" style="width:0%"></div></div>
+        <div class="metric-note">Yalnızca Instagram — TikTok, YouTube, Facebook boş</div>
+      </div>
+    </div>
+
+    <!-- Güçlü vs Zayıf -->
+    <div class="compare-row reveal">
+      <div class="compare-card guc">
+        <div class="cc-header">
+          <div class="cc-dot" style="background:var(--green);"></div>
+          <div class="cc-title" style="color:#8ecfb0;">Gerçek Güçlü Yönler</div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">✅</div>
+          <div class="cc-text"><strong>PhD Akademik Kimliği</strong><span>İstanbul Üniversitesi Biyoistatistik doktorası — güven ve otorite için nadir avantaj</span></div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">✅</div>
+          <div class="cc-text"><strong>MasterClass Workshop Eğitmeni</strong><span>Doktor/hemşire kitlesine canlı eğitimler — güçlü B2B gelir kapısı ve otorite sinyali</span></div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">✅</div>
+          <div class="cc-text"><strong>Bağdat Caddesi Prestiji</strong><span>Kadıköy'ün en prestijli caddesinde klinik — lokasyon marka değeri taşıyor</span></div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">✅</div>
+          <div class="cc-text"><strong>Kişisel İçerik Potansiyeli</strong><span>Diploma gönderisi 238 like aldı — kişisel hikaye anlatımı kitleyle bağ kuruyor</span></div>
+        </div>
+      </div>
+      <div class="compare-card gap">
+        <div class="cc-header">
+          <div class="cc-dot" style="background:var(--red);"></div>
+          <div class="cc-title" style="color:#e08080;">Kritik Boşluklar</div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">❌</div>
+          <div class="cc-text"><strong>İçerik Kimliği Dağınık</strong><span>HPV uyarısı, seyahat, botoks, workshop — aynı feed'de algoritma ne göstereceğini bilmiyor</span></div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">❌</div>
+          <div class="cc-text"><strong>TikTok & Facebook Yok</strong><span>Türkiye'nin en büyük organik büyüme kanalları tamamen boş, rakipler ilerliyor</span></div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">❌</div>
+          <div class="cc-text"><strong>Ücretli Reklam Kullanılmıyor</strong><span>Kadıköy ve Türkiye geneli hasta adaylarına hiç reklam gösterilmiyor</span></div>
+        </div>
+        <div class="cc-item">
+          <div class="cc-icon">❌</div>
+          <div class="cc-text"><strong>Before/After & Sonuç Yok</strong><span>En yüksek dönüşüm sağlayan içerik türü neredeyse tamamen eksik</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hedef kitle segmentleri -->
+    <div class="audience-row reveal">
+      <div class="audience-card">
+        <div class="aud-emoji">👩</div>
+        <div class="aud-title">Hasta Kitlesi (B2C)</div>
+        <div class="aud-desc">25–55 yaş, Türkiye genelinde medikal estetik araştıran kadınlar. Face lifting, ip askı ve dolgu için güvenilir doktor arayan segment.</div>
+      </div>
+      <div class="audience-card">
+        <div class="aud-emoji">🏥</div>
+        <div class="aud-title">Profesyonel Kitle (B2B)</div>
+        <div class="aud-desc">MasterClass katılmak isteyen doktor, hemşire ve estetisyenler. Dr. Vural'ın en güçlü ve henüz tam işlenmemiş gelir segmenti.</div>
+      </div>
+      <div class="audience-card">
+        <div class="aud-emoji">📱</div>
+        <div class="aud-title">Platform Stratejisi</div>
+        <div class="aud-desc">Instagram'da güven & dönüşüm. TikTok'ta viral erişim ve doktortok formatı. YouTube'da prosedür araştırması. Facebook'ta 35+ hasta hedefleme.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ NEDEN UNİQBEE ═══════════════ -->
+<section id="neden">
+  <div class="reveal">
+    <p class="section-label">02 — Dönüşüm</p>
+    <h2 class="section-title">Şu An <em>vs.</em> Uniqbee ile</h2>
+    <p class="section-desc">Güçlü uzmanlık + zayıf görünürlük = kaybedilen hasta ve gelir. Bu denklemi değiştiriyoruz.</p>
+  </div>
+
+  <div class="transform-grid reveal">
+    <div class="tf-card before">
+      <div class="tf-header"><span class="tf-badge before">Şu An</span></div>
+      <div class="tf-item"><div class="tf-check">✕</div><div class="tf-text"><strong>Plansız yayın takvimi</strong><span>İçerikler gelişigüzel, algoritma göstermiyor</span></div></div>
+      <div class="tf-item"><div class="tf-check">✕</div><div class="tf-text"><strong>TikTok'ta sıfır varlık</strong><span>En büyük organik büyüme kanalı boş</span></div></div>
+      <div class="tf-item"><div class="tf-check">✕</div><div class="tf-text"><strong>Reklam kullanılmıyor</strong><span>Rakipler Meta Ads ile her gün hasta kazanıyor</span></div></div>
+      <div class="tf-item"><div class="tf-check">✕</div><div class="tf-text"><strong>Sosyal kanıt yok</strong><span>Before/after ve testimonial neredeyse sıfır</span></div></div>
+      <div class="tf-item"><div class="tf-check">✕</div><div class="tf-text"><strong>Tek platform bağımlılığı</strong><span>3x erişim potansiyeli harcanıyor</span></div></div>
+      <div class="tf-item"><div class="tf-check">✕</div><div class="tf-text"><strong>B2B segmenti kaçırılıyor</strong><span>Sağlık profesyonellerine hiç içerik üretilmiyor</span></div></div>
+    </div>
+    <div class="tf-card after">
+      <div class="tf-header"><span class="tf-badge after">Uniqbee ile</span></div>
+      <div class="tf-item"><div class="tf-check">✓</div><div class="tf-text"><strong>Haftalık yayın takvimi</strong><span>Her içerik planlanır, onaylanır, zamanlanır</span></div></div>
+      <div class="tf-item"><div class="tf-check">✓</div><div class="tf-text"><strong>TikTok kurulumu & büyümesi</strong><span>"Doktortok" formatıyla viral potansiyel</span></div></div>
+      <div class="tf-item"><div class="tf-check">✓</div><div class="tf-text"><strong>Meta & TikTok Ads yönetimi</strong><span>Aylık 120–160 nitelikli lead hedefi</span></div></div>
+      <div class="tf-item"><div class="tf-check">✓</div><div class="tf-text"><strong>Before/after & testimonial serisi</strong><span>Sosyal kanıt ile randevu kararı hızlanır</span></div></div>
+      <div class="tf-item"><div class="tf-check">✓</div><div class="tf-text"><strong>4 platform senkronizasyonu</strong><span>İçerik her platforma optimize edilerek yayınlanır</span></div></div>
+      <div class="tf-item"><div class="tf-check">✓</div><div class="tf-text"><strong>B2B içerik serisi</strong><span>Eğitim programı için ayrı içerik akışı</span></div></div>
+    </div>
+  </div>
+
+  <div class="kpi-row reveal" style="margin-top:20px;">
+    <div class="kpi-box"><div class="kpi-val">4x</div><div class="kpi-lbl">Platform Varlığı</div></div>
+    <div class="kpi-box"><div class="kpi-val">18</div><div class="kpi-lbl">İçerik / Ay</div></div>
+    <div class="kpi-box"><div class="kpi-val">150K+</div><div class="kpi-lbl">Hedef Erişim</div></div>
+    <div class="kpi-box"><div class="kpi-val">160</div><div class="kpi-lbl">Lead / Ay</div></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ STRATEJİ ═══════════════ -->
+<section id="strateji">
+  <div class="reveal">
+    <p class="section-label">03 — Yaklaşım</p>
+    <h2 class="section-title">İçerik <em>Stratejisi</em></h2>
+    <p class="section-desc">Üç temel sütun üzerine kurulu, güven inşa eden ve dönüşüm sağlayan içerik ekosistemi.</p>
+  </div>
+  <div class="pillars reveal">
+    <div class="pillar"><div class="pillar-n">01</div><div class="pillar-t">Güven & Otorite</div><p class="pillar-d">Eğitici içeriklerle Dr. Vural'ı alanında Türkiye'nin tanınan isimleri arasına taşıma. "Uzmandan öğren" formatı.</p></div>
+    <div class="pillar"><div class="pillar-n">02</div><div class="pillar-t">Prosedür Şeffaflığı</div><p class="pillar-d">Gerçek prosedür videoları, before/after içerikler, hasta yolculuğu. Medikal estetikteki korku ve önyargıları kıran yaklaşım.</p></div>
+    <div class="pillar"><div class="pillar-n">03</div><div class="pillar-t">Ücretli Büyüme</div><p class="pillar-d">Organik içerikle desteklenen Meta ve TikTok reklam stratejisi. Lead generation odaklı, ölçülebilir ROI hedefli.</p></div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ İÇERİK PLANI ═══════════════ -->
+<section id="icerik">
+  <div class="reveal">
+    <p class="section-label">04 — İçerik Planı</p>
+    <h2 class="section-title">10 Reels · 8 <em>Carousel</em></h2>
+    <p class="section-desc">Mayıs ayı boyunca yayınlanacak 18 içeriğin detaylı planı. Her içerik önceden üretilir, onaylanır ve zamanlanır.</p>
+  </div>
+
+  <div class="reveal" style="margin-top:36px;">
+    <p class="section-label" style="font-size:11px; margin-bottom:14px;">📹 REELS — 10 Adet</p>
+    <div class="content-grid">
+      <div class="content-item"><div class="ci-num">R1</div><div><span class="ci-badge reels-b">Tanıtım</span><div class="ci-name">"Dr. Metin Vural Kimdir?" — Klinik Tanıtım</div><div class="ci-desc">Uzman profili, misyon, klinik ortamı. Güven inşası için temel içerik.</div></div></div>
+      <div class="content-item"><div class="ci-num">R2</div><div><span class="ci-badge reels-b">Eğitim</span><div class="ci-name">"Face Lifting Nedir? — İp Askı ile Yüz Germe"</div><div class="ci-desc">En çok aranan prosedürlerden biri. Hook'lu, eğitici ve merak uyandıran format.</div></div></div>
+      <div class="content-item"><div class="ci-num">R3</div><div><span class="ci-badge reels-b">Prosedür</span><div class="ci-name">"Dudak Dolgusu — Adım Adım Nasıl Yapılır?"</div><div class="ci-desc">Gerçek uygulama videosu, şeffaf yaklaşım, korkuları kırma.</div></div></div>
+      <div class="content-item"><div class="ci-num">R4</div><div><span class="ci-badge reels-b">Sonuç</span><div class="ci-name">"Exosome Nedir? — Cilt Yenilenmesinde Yeni Nesil"</div><div class="ci-desc">Trend prosedür, yüksek merak seviyesi. Keşfet'te viral potansiyeli güçlü.</div></div></div>
+      <div class="content-item"><div class="ci-num">R5</div><div><span class="ci-badge reels-b">Eğitim</span><div class="ci-name">"En Çok Sorulan 5 Soru — Botoks Hakkında"</div><div class="ci-desc">Q&A formatı, yorum ve kaydetme davranışını tetikler.</div></div></div>
+      <div class="content-item"><div class="ci-num">R6</div><div><span class="ci-badge reels-b">BTS</span><div class="ci-name">"Yüz Dolgusu Hazırlık Süreci — Klinik Arkası"</div><div class="ci-desc">Şeffaf, insani yaklaşım. Süreci normalleştirir.</div></div></div>
+      <div class="content-item"><div class="ci-num">R7</div><div><span class="ci-badge reels-b">Testimonial</span><div class="ci-name">"Hasta Deneyimi — 3 Ay Sonra Nasıl Hissediyorum?"</div><div class="ci-desc">Sosyal kanıt. Hasta izniyle gerçek deneyim paylaşımı.</div></div></div>
+      <div class="content-item"><div class="ci-num">R8</div><div><span class="ci-badge reels-b">Viral</span><div class="ci-name">"Yanlış Bilinen 5 Şey — Medikal Estetik Gerçeği"</div><div class="ci-desc">Paylaşma motivasyonu yüksek. Viral potansiyeli güçlü.</div></div></div>
+      <div class="content-item"><div class="ci-num">R9</div><div><span class="ci-badge reels-b">Lokal</span><div class="ci-name">"İstanbul Bağdat Caddesi'nde Medikal Estetik — Neden Dr. Vural?"</div><div class="ci-desc">Konum ve klinik avantajını öne çıkaran lokal güven içeriği.</div></div></div>
+      <div class="content-item"><div class="ci-num">R10</div><div><span class="ci-badge reels-b">B2B</span><div class="ci-name">"Biyomedikal Eğitim Nedir? Kimler Katılabilir?"</div><div class="ci-desc">Sağlık profesyonellerine doğrudan hitap. Eğitim programı tanıtımı.</div></div></div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:32px;">
+    <p class="section-label" style="font-size:11px; margin-bottom:14px;">🖼️ CAROUSEL — 8 Adet</p>
+    <div class="content-grid">
+      <div class="content-item"><div class="ci-num" style="color:var(--blue)">C1</div><div><span class="ci-badge car-b">Karşılaştırma</span><div class="ci-name">"Botoks mu, Dolgu mu? Temel Farklar"</div><div class="ci-desc">Karar aşamasındaki hasta için rehber içerik. Yüksek kaydetme oranı.</div></div></div>
+      <div class="content-item"><div class="ci-num" style="color:var(--blue)">C2</div><div><span class="ci-badge car-b">Rehber</span><div class="ci-name">"Medikal Estetik — Doğru Doktor Nasıl Seçilir?"</div><div class="ci-desc">Güven ve otorite inşası. Yetkili uzman olarak konumlandırır.</div></div></div>
+      <div class="content-item"><div class="ci-num" style="color:var(--blue)">C3</div><div><span class="ci-badge car-b">Eğitim</span><div class="ci-name">"Sağlıklı Cilt İçin 5 Temel Adım"</div><div class="ci-desc">Geniş kitlelere ulaşan lifestyle içerik. Paylaşma oranı yüksek.</div></div></div>
+      <div class="content-item"><div class="ci-num" style="color:var(--blue)">C4</div><div><span class="ci-badge car-b">Kişisel</span><div class="ci-name">"Yüz Tipine Göre Dolgu Planlaması"</div><div class="ci-desc">İnteraktif format. Her slayt farklı yüz tipi, kaydırma motivasyonu yüksek.</div></div></div>
+      <div class="content-item"><div class="ci-num" style="color:var(--blue)">C5</div><div><span class="ci-badge car-b">Sonrası</span><div class="ci-name">"Botoks Sonrası 7 Gün — Bakım Rehberi"</div><div class="ci-desc">Mevcut hastalar için değer, potansiyel hastalar için güven.</div></div></div>
+      <div class="content-item"><div class="ci-num" style="color:var(--blue)">C6</div><div><span class="ci-badge car-b">B2B</span><div class="ci-name">"Biyomedikal Eğitim Programı — Müfredat"</div><div class="ci-desc">Profesyonel hedef kitleye hitap. Türkiye geneli erişim hedefi.</div></div></div>
+      <div class="content-item"><div class="ci-num" style="color:var(--blue)">C7</div><div><span class="ci-badge car-b">Uzmanlık</span><div class="ci-name">"Dr. Vural'ın Uzmanlık Alanları — Detaylı"</div><div class="ci-desc">Profil ziyaretçisini takipçiye, takipçiyi hastaya dönüştürür.</div></div></div>
+      <div class="content-item"><div class="ci-num" style="color:var(--blue)">C8</div><div><span class="ci-badge car-b">Özet</span><div class="ci-name">"Mayıs Soru-Cevap — En Çok Sorulanlar"</div><div class="ci-desc">Ay sonu engagement toparlaması. Yorum bazlı topluluk içeriği.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ TAKVİM ═══════════════ -->
+<section id="takvim">
+  <div class="reveal">
+    <p class="section-label">05 — Yayın Takvimi</p>
+    <h2 class="section-title">Mayıs <em>2026</em></h2>
+    <p class="section-desc">1 Mayıs – 31 Mayıs yayın planı. Yeşil günler prodüksiyon günleridir (3 gün/ay).</p>
+  </div>
+
+  <div class="cal-outer reveal">
+    <div class="cal-head">
+      <div class="cal-month">Mayıs 2026</div>
+      <div class="cal-legend">
+        <div class="leg-item"><div class="leg-dot lg-s"></div>Prodüksiyon</div>
+        <div class="leg-item"><div class="leg-dot lg-r"></div>Reels</div>
+        <div class="leg-item"><div class="leg-dot lg-c"></div>Carousel</div>
+      </div>
+    </div>
+    <div class="cal-scroll">
+      <div class="cal-grid">
+        <div class="cal-dn">Pzt</div><div class="cal-dn">Sal</div><div class="cal-dn">Çar</div><div class="cal-dn">Per</div><div class="cal-dn">Cum</div><div class="cal-dn">Cmt</div><div class="cal-dn">Paz</div>
+        <!-- May 1 2026 = Friday, so 4 empty cells before it -->
+        <div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div><div class="cal-day empty"></div>
+        <!-- May 1 Fri -->
+        <div class="cal-day"><div class="c-num">1</div><div class="c-ev r">R1 — Tanıtım</div></div>
+        <!-- May 2 Sat -->
+        <div class="cal-day"><div class="c-num">2</div></div>
+        <!-- May 3 Sun -->
+        <div class="cal-day"><div class="c-num">3</div><div class="c-ev c">C1 — Botoks vs Dolgu</div></div>
+        <!-- Week 2 -->
+        <!-- May 4 Mon - SHOOT 1 -->
+        <div class="cal-day sd"><div class="c-num">4</div><div class="c-ev s">🎬 Prodüksiyon 1</div></div>
+        <!-- May 5 Tue -->
+        <div class="cal-day"><div class="c-num">5</div><div class="c-ev r">R2 — Baby Botoks</div></div>
+        <!-- May 6 Wed -->
+        <div class="cal-day"><div class="c-num">6</div></div>
+        <!-- May 7 Thu -->
+        <div class="cal-day"><div class="c-num">7</div><div class="c-ev c">C2 — Doktor Seçimi</div></div>
+        <!-- May 8 Fri -->
+        <div class="cal-day"><div class="c-num">8</div><div class="c-ev r">R3 — Dudak Dolgusu</div></div>
+        <!-- May 9 Sat -->
+        <div class="cal-day"><div class="c-num">9</div></div>
+        <!-- May 10 Sun -->
+        <div class="cal-day"><div class="c-num">10</div><div class="c-ev c">C3 — Sağlıklı Cilt</div></div>
+        <!-- Week 3 -->
+        <!-- May 11 Mon - SHOOT 2 -->
+        <div class="cal-day sd"><div class="c-num">11</div><div class="c-ev s">🎬 Prodüksiyon 2</div><div class="c-ev r">R4 — Before/After</div></div>
+        <!-- May 12 -->
+        <div class="cal-day"><div class="c-num">12</div></div>
+        <!-- May 13 -->
+        <div class="cal-day"><div class="c-num">13</div><div class="c-ev c">C4 — Yüz Tipi</div></div>
+        <!-- May 14 -->
+        <div class="cal-day"><div class="c-num">14</div><div class="c-ev r">R5 — 5 Soru</div></div>
+        <!-- May 15 -->
+        <div class="cal-day"><div class="c-num">15</div></div>
+        <!-- May 16 -->
+        <div class="cal-day"><div class="c-num">16</div><div class="c-ev c">C5 — Botoks Sonrası</div></div>
+        <!-- May 17 -->
+        <div class="cal-day"><div class="c-num">17</div></div>
+        <!-- Week 4 -->
+        <!-- May 18 Mon - SHOOT 3 -->
+        <div class="cal-day sd"><div class="c-num">18</div><div class="c-ev s">🎬 Prodüksiyon 3</div><div class="c-ev r">R6 — Behind Scenes</div></div>
+        <!-- May 19 -->
+        <div class="cal-day"><div class="c-num">19</div></div>
+        <!-- May 20 -->
+        <div class="cal-day"><div class="c-num">20</div><div class="c-ev r">R7 — Testimonial</div></div>
+        <!-- May 21 -->
+        <div class="cal-day"><div class="c-num">21</div><div class="c-ev c">C6 — Eğitim Prog.</div></div>
+        <!-- May 22 -->
+        <div class="cal-day"><div class="c-num">22</div><div class="c-ev r">R8 — Yanlış Bilinenler</div></div>
+        <!-- May 23 -->
+        <div class="cal-day"><div class="c-num">23</div></div>
+        <!-- May 24 -->
+        <div class="cal-day"><div class="c-num">24</div><div class="c-ev c">C7 — Uzmanlıklar</div></div>
+        <!-- Week 5 -->
+        <!-- May 25 Mon -->
+        <div class="cal-day"><div class="c-num">25</div><div class="c-ev r">R9 — Denizli</div></div>
+        <!-- May 26 -->
+        <div class="cal-day"><div class="c-num">26</div></div>
+        <!-- May 27 -->
+        <div class="cal-day"><div class="c-num">27</div><div class="c-ev r">R10 — Biyomedikal</div></div>
+        <!-- May 28 -->
+        <div class="cal-day"><div class="c-num">28</div></div>
+        <!-- May 29 -->
+        <div class="cal-day"><div class="c-num">29</div><div class="c-ev c">C8 — Aylık Özet</div></div>
+        <!-- May 30 -->
+        <div class="cal-day"><div class="c-num">30</div></div>
+        <!-- May 31 -->
+        <div class="cal-day"><div class="c-num">31</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ PLATFORMLAR ═══════════════ -->
+<section id="platformlar">
+  <div class="reveal">
+    <p class="section-label">06 — Dağıtım</p>
+    <h2 class="section-title">4 Platform, <em>Tek Ses</em></h2>
+    <p class="section-desc">Her içerik dört platforma optimize edilerek uyarlanır. Tutarlı kimlik, platforma özgü format.</p>
+  </div>
+  <div class="plat-grid reveal">
+    <div class="plat-card instagram">
+      <div class="plat-top">
+        <div class="plat-icon">📸</div>
+        <div><div class="plat-name">Instagram</div><div class="plat-role">Ana Kanal · Güven & Dönüşüm</div></div>
+      </div>
+      <p class="plat-desc">Profil güveni, takipçi büyümesi ve randevu dönüşümü için birincil platform. Tüm içerikler burada buluşur.</p>
+      <ul class="plat-feats">
+        <li>10 Reels + 8 Carousel yayını</li>
+        <li>Stories ile günlük etkileşim</li>
+        <li>Highlights: Prosedürler, SSS, Hasta Deneyimleri</li>
+        <li>Instagram Ads — Lead Generation kampanyası</li>
+        <li>Bio link optimizasyonu (randevu linki)</li>
+      </ul>
+    </div>
+    <div class="plat-card youtube">
+      <div class="plat-top">
+        <div class="plat-icon">▶</div>
+        <div><div class="plat-name">YouTube</div><div class="plat-role">Uzun Form · Arama & Karar</div></div>
+      </div>
+      <p class="plat-desc">Uzun form içerik deposu. Arama bazlı erişim ve prosedür araştırması yapan hasta için kritik kanal.</p>
+      <ul class="plat-feats">
+        <li>Reels → YouTube Shorts olarak uyarlama</li>
+        <li>Uzun form prosedür videoları (mevcut kanala ek)</li>
+        <li>SEO odaklı başlık & açıklama optimizasyonu</li>
+        <li>Thumbnail tasarımı standardizasyonu</li>
+        <li>Playlist yapısı: Botoks / Dolgu / Eğitim</li>
+      </ul>
+    </div>
+    <div class="plat-card tiktok">
+      <div class="plat-top">
+        <div class="plat-icon">♪</div>
+        <div><div class="plat-name">TikTok</div><div class="plat-role">Büyüme Kanalı · Viral Erişim</div></div>
+      </div>
+      <p class="plat-desc">Organik büyüme potansiyeli en yüksek platform. Yeni hasta kitlesine ulaşmak için kritik hamle alanı.</p>
+      <ul class="plat-feats">
+        <li>Reels → TikTok uyarlaması (trend müzik & hook)</li>
+        <li>Eğitici "doktortok" formatı</li>
+        <li>Duet & stitch ile topluluk etkileşimi</li>
+        <li>TikTok Ads — farkındalık kampanyaları</li>
+        <li>Keşfet algoritması optimizasyonu</li>
+      </ul>
+    </div>
+    <div class="plat-card facebook">
+      <div class="plat-top">
+        <div class="plat-icon">f</div>
+        <div><div class="plat-name">Facebook</div><div class="plat-role">Reklam & 35+ Kitle</div></div>
+      </div>
+      <p class="plat-desc">35+ kadın hasta kitlesi için güçlü reklam platformu. Meta ekosistemiyle bütünleşik hedefleme avantajı.</p>
+      <ul class="plat-feats">
+        <li>Instagram içeriklerinin otomatik paylaşımı</li>
+        <li>Facebook Ads — 35–55 yaş kadın hedefleme</li>
+        <li>Facebook Grup topluluğu kurulumu (isteğe bağlı)</li>
+        <li>Retargeting ile web ziyaretçisi yeniden hedefleme</li>
+        <li>Meta Business Suite entegrasyonu</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ REKLAM ═══════════════ -->
+<section id="reklamlar">
+  <div class="reveal">
+    <p class="section-label">07 — Ücretli Medya</p>
+    <h2 class="section-title">Reklam <em>Stratejisi</em></h2>
+    <p class="section-desc">Organik içerikle desteklenen, hedefli reklam kampanyaları. Bütçe müşteri tarafından karşılanır.</p>
+  </div>
+  <div class="ads-grid reveal">
+    <div class="ads-card">
+      <div class="ads-card-title">Kampanya Dağılımı</div>
+      <div class="camp-item"><div><div class="camp-name">Farkındalık Kampanyası</div><div class="camp-sub">Video Views — Instagram & TikTok</div></div><div class="camp-val">%35</div></div>
+      <div class="pbar"><div class="pfill" style="width:35%"></div></div>
+      <div class="camp-item"><div><div class="camp-name">Lead Generation</div><div class="camp-sub">Randevu formu — Meta Ads</div></div><div class="camp-val">%45</div></div>
+      <div class="pbar"><div class="pfill" style="width:45%"></div></div>
+      <div class="camp-item"><div><div class="camp-name">Remarketing</div><div class="camp-sub">Profil ziyaretçileri yeniden hedefleme</div></div><div class="camp-val">%20</div></div>
+      <div class="pbar"><div class="pfill" style="width:20%"></div></div>
+      <div style="margin-top:20px;">
+        <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:8px;">Hedef Kitle</div>
+        <div class="tag-row"><span class="tag">Kadın 25–55</span><span class="tag">Tüm Türkiye</span><span class="tag">Medikal Estetik İlgisi</span></div>
+      </div>
+    </div>
+    <div class="ads-card">
+      <div class="ads-card-title">Bütçe Önizlemesi</div>
+      <div style="font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:var(--gold-light); line-height:1; margin-bottom:4px;">30–40K TL</div>
+      <div style="font-size:11px;color:var(--text-dim);margin-bottom:18px;">Aylık reklam bütçesi · Müşteri karşılar</div>
+      <div class="stat-row">
+        <div class="stat-box"><div class="stat-val">~1.1K</div><div class="stat-lbl">Günlük TL</div></div>
+        <div class="stat-box"><div class="stat-val">150K</div><div class="stat-lbl">Erişim Hedefi</div></div>
+        <div class="stat-box"><div class="stat-val">&lt;250</div><div class="stat-lbl">CPL (TL)</div></div>
+        <div class="stat-box"><div class="stat-val">160</div><div class="stat-lbl">Lead / Ay</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ BÜTÇE ═══════════════ -->
+<section id="butce">
+  <div class="reveal">
+    <p class="section-label">08 — Finansal</p>
+    <h2 class="section-title">Bütçe <em>Dökümü</em></h2>
+    <p class="section-desc">Şeffaf fiyatlandırma. Her kalem net tanımlanmış, her hizmet kapsam dahilinde.</p>
+  </div>
+  <div class="budget-card reveal">
+    <div class="budget-head">Sosyal Medya Yönetim Paketi — Mayıs 2026</div>
+    <div class="b-row">
+      <div><div class="b-label">İçerik Prodüksiyonu</div><div class="b-sub">10 Reels + 8 Carousel · 3 Prodüksiyon Günü · Editing & Post-Production</div></div>
+      <div class="b-val">50.000 TL</div>
+    </div>
+    <div class="b-row">
+      <div><div class="b-label">Sosyal Medya Yönetimi</div><div class="b-sub">Takvim Planlaması · Zamanlama · Yorum Yönetimi · 4 Platform</div></div>
+      <div class="b-val">25.000 TL</div>
+    </div>
+    <div class="b-row">
+      <div><div class="b-label">Strateji & Raporlama</div><div class="b-sub">Aylık Performans Raporu · A/B Test Önerileri · Optimizasyon</div></div>
+      <div class="b-val">10.000 TL</div>
+    </div>
+    <div class="b-row" style="border-bottom:none;">
+      <div><div class="b-label">Reklam Yönetimi</div><div class="b-sub">Meta & TikTok Ads Kurulum · Kampanya Optimizasyonu · Raporlama</div></div>
+      <div class="b-val">10.000 TL</div>
+    </div>
+
+    <div class="b-total">
+      <div><div class="b-total-lbl">Toplam Hizmet Bedeli</div><div style="font-size:11px;color:var(--text-dim);margin-top:2px;">KDV Hariç</div></div>
+      <div class="b-total-val">95.000 <span>TL</span></div>
+    </div>
+    <div class="b-kdv-row">
+      <div class="b-note">+ KDV (%18)</div>
+      <div class="b-kdv-val">17.100 TL</div>
+    </div>
+    <div class="b-final">
+      <div class="b-final-lbl">Genel Toplam (KDV Dahil)</div>
+      <div class="b-final-val">112.100 TL</div>
+    </div>
+    <div class="b-ads">
+      <div>
+        <div class="b-ads-title">Ücretli Reklam Bütçesi</div>
+        <div class="b-ads-text">Meta Ads + TikTok Ads · Müşteri tarafından doğrudan platforma ödenir</div>
+      </div>
+      <div class="b-ads-val">30.000 – 40.000 TL</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ ÖDEME PLANI ═══════════════ -->
+<section id="odeme">
+  <div class="reveal">
+    <p class="section-label">09 — Ödeme Planı</p>
+    <h2 class="section-title">Basit & <em>Şeffaf</em></h2>
+    <p class="section-desc">İki eşit taksit. Ay başında çalışma başlar, ay sonunda teslim edilir ve kapatılır.</p>
+  </div>
+
+  <!-- Faturalama notu -->
+  <div class="reveal" style="background:var(--card); border:1px solid var(--border-gold); border-radius:14px; padding:20px 24px; margin-top:40px; display:flex; align-items:center; gap:14px;">
+    <span style="font-size:20px; flex-shrink:0;">🧾</span>
+    <div>
+      <div style="font-size:13px; font-weight:500; color:var(--text); margin-bottom:3px;">Faturalama Politikası</div>
+      <div style="font-size:13px; color:var(--text-mid); line-height:1.6;">Hizmet bedeli <strong style="color:var(--gold-light);">iş başında tamamen faturalandırılır.</strong> Tahsilat ise ay başı ve ay sonu olmak üzere iki eşit taksitte gerçekleşir.</div>
+    </div>
+  </div>
+
+  <div class="pay-timeline reveal" style="margin-top:36px;">
+
+    <div class="pay-item">
+      <div class="pay-dot-wrap"><div class="pay-dot"></div></div>
+      <div class="pay-body">
+        <div class="pay-pct">%50</div>
+        <div class="pay-phase">Fatura Kesilir + 1. Tahsilat</div>
+        <div class="pay-date">1 Mayıs 2026</div>
+        <div class="pay-amount">47.500 TL + KDV</div>
+        <div class="pay-detail">İş başında toplam tutar için fatura kesilir. Birinci taksit tahsil edilir. Strateji brifing, içerik takvimi ve çekim koordinasyonu başlar; reklam hesapları kurulur.</div>
+      </div>
+    </div>
+
+    <div class="pay-item">
+      <div class="pay-dot-wrap"><div class="pay-dot dim"></div></div>
+      <div class="pay-body" style="border-color:rgba(255,255,255,0.05);">
+        <div class="pay-phase" style="color:var(--text-dim);">Proje Aktif</div>
+        <div class="pay-date" style="color:var(--text-mid);">1 – 31 Mayıs 2026</div>
+        <div class="pay-amount" style="color:var(--text-dim); font-size:14px;">3 prodüksiyon günü · 18 içerik · 4 platform · Reklam yönetimi</div>
+        <div class="pay-detail">Tüm içerikler üretilir, onaylanır ve zamanlanarak yayına alınır. Haftalık durum raporları iletilir.</div>
+      </div>
+    </div>
+
+    <div class="pay-item">
+      <div class="pay-dot-wrap"><div class="pay-dot"></div></div>
+      <div class="pay-body">
+        <div class="pay-pct">%50</div>
+        <div class="pay-phase">2. Tahsilat — Ay Sonu</div>
+        <div class="pay-date">31 Mayıs 2026</div>
+        <div class="pay-amount">47.500 TL + KDV</div>
+        <div class="pay-detail">İkinci taksit tahsil edilir. Tüm 18 içerik yayınlanmış, aylık performans raporu ve reklam sonuçları teslim edilmiş olur. Haziran dönemi için yeni teklif sunulur.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="sep"></div>
+
+<!-- ═══════════════ UNIQBEE HAKKINDA ═══════════════ -->
+<section id="uniqbee" style="max-width:100%; padding:0; overflow:hidden;">
+  <div class="ubee-wrap">
+
+    <!-- Animated background -->
+    <div class="ubee-bg">
+      <div class="ubee-hex-grid"></div>
+      <div class="ubee-orb ubee-orb1"></div>
+      <div class="ubee-orb ubee-orb2"></div>
+      <div class="ubee-orb ubee-orb3"></div>
+      <canvas class="ubee-particles" id="ubeeCanvas"></canvas>
+    </div>
+
+    <div class="ubee-inner">
+
+      <!-- Header -->
+      <div class="ubee-header reveal">
+        <div class="ubee-eyebrow">10 — Biz Kimiz?</div>
+        <h2 class="ubee-title">Uniqbee<em> Ajans</em></h2>
+        <p class="ubee-quote">"Yaratıcılık, sistemlerle güçlenir."</p>
+        <p class="ubee-sub">İstanbul merkezli dijital medya ajansı. Strateji, içerik ve dijital deneyimi tek süreçte birleştiriyoruz.</p>
+      </div>
+
+      <!-- Stats row -->
+      <div class="ubee-stats reveal">
+        <div class="ubee-stat">
+          <div class="ubee-stat-num" data-target="8">0</div>
+          <div class="ubee-stat-unit">Yıl</div>
+          <div class="ubee-stat-lbl">Deneyim</div>
+        </div>
+        <div class="ubee-stat-sep"></div>
+        <div class="ubee-stat">
+          <div class="ubee-stat-num" data-target="100">0</div>
+          <div class="ubee-stat-unit">%</div>
+          <div class="ubee-stat-lbl">Müşteri Sadakati</div>
+        </div>
+        <div class="ubee-stat-sep"></div>
+        <div class="ubee-stat">
+          <div class="ubee-stat-num" data-target="4">0</div>
+          <div class="ubee-stat-unit">×</div>
+          <div class="ubee-stat-lbl">Çeyrek Başına Proje</div>
+        </div>
+        <div class="ubee-stat-sep"></div>
+        <div class="ubee-stat">
+          <div class="ubee-stat-num" data-target="6">0</div>
+          <div class="ubee-stat-unit">+</div>
+          <div class="ubee-stat-lbl">Hizmet Alanı</div>
+        </div>
+      </div>
+
+      <!-- Services grid - tilt cards -->
+      <div class="ubee-services reveal">
+        <div class="ubee-svc-card" data-tilt>
+          <div class="ubee-svc-glow"></div>
+          <div class="ubee-svc-icon">🎯</div>
+          <div class="ubee-svc-name">Marka Stratejisi</div>
+          <div class="ubee-svc-desc">Konumlandırma, kimlik ve pazar analizi ile markanı rakiplerinden ayrıştırıyoruz.</div>
+          <div class="ubee-svc-line"></div>
+        </div>
+        <div class="ubee-svc-card" data-tilt>
+          <div class="ubee-svc-glow"></div>
+          <div class="ubee-svc-icon">🎬</div>
+          <div class="ubee-svc-name">Video Prodüksiyon</div>
+          <div class="ubee-svc-desc">Ticari filmler, reklam kampanyaları ve sosyal medya videoları. Global prodüksiyon kapasitesi.</div>
+          <div class="ubee-svc-line"></div>
+        </div>
+        <div class="ubee-svc-card" data-tilt>
+          <div class="ubee-svc-glow"></div>
+          <div class="ubee-svc-icon">📱</div>
+          <div class="ubee-svc-name">Sosyal Medya</div>
+          <div class="ubee-svc-desc">İçerik üretimi, takvim yönetimi ve topluluk büyütme. Platforma özgü strateji.</div>
+          <div class="ubee-svc-line"></div>
+        </div>
+        <div class="ubee-svc-card" data-tilt>
+          <div class="ubee-svc-glow"></div>
+          <div class="ubee-svc-icon">📈</div>
+          <div class="ubee-svc-name">Performans Pazarlama</div>
+          <div class="ubee-svc-desc">Meta, TikTok ve Google Ads yönetimi. Ölçülebilir ROI odaklı büyüme kampanyaları.</div>
+          <div class="ubee-svc-line"></div>
+        </div>
+        <div class="ubee-svc-card" data-tilt>
+          <div class="ubee-svc-glow"></div>
+          <div class="ubee-svc-icon">💻</div>
+          <div class="ubee-svc-name">Web & Dijital Deneyim</div>
+          <div class="ubee-svc-desc">Dönüşüm odaklı web tasarımı ve kullanıcı deneyimi. Marka ile entegre dijital varlık.</div>
+          <div class="ubee-svc-line"></div>
+        </div>
+        <div class="ubee-svc-card" data-tilt>
+          <div class="ubee-svc-glow"></div>
+          <div class="ubee-svc-icon">🤖</div>
+          <div class="ubee-svc-name">AI Destekli Üretim</div>
+          <div class="ubee-svc-desc">Yapay zeka ile hızlandırılmış içerik ve prodüksiyon süreçleri. Daha az süre, daha yüksek kalite.</div>
+          <div class="ubee-svc-line"></div>
+        </div>
+      </div>
+
+      <!-- Contact strip -->
+      <div class="ubee-contact reveal">
+        <div class="ubee-contact-left">
+          <div class="ubee-contact-label">İletişime Geç</div>
+          <div class="ubee-contact-note">Her çeyrekte sınırlı sayıda proje — seçici çalışma modeliyle tam odak.</div>
+        </div>
+        <div class="ubee-contact-links">
+          <a class="ubee-link" href="https://uniqbee.com">
+            <span class="ubee-link-icon">🌐</span>
+            <span class="ubee-link-text">uniqbee.com</span>
+            <span class="ubee-link-arrow">↗</span>
+          </a>
+          <a class="ubee-link" href="mailto:hello@uniqbee.agency">
+            <span class="ubee-link-icon">✉</span>
+            <span class="ubee-link-text">hello@uniqbee.agency</span>
+            <span class="ubee-link-arrow">↗</span>
+          </a>
+          <a class="ubee-link" href="tel:+905437406855">
+            <span class="ubee-link-icon">📞</span>
+            <span class="ubee-link-text">+90 543 740 68 55</span>
+            <span class="ubee-link-arrow">↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+/* ── UNIQBEE SECTION ── */
+.ubee-wrap {
+  position: relative;
+  background: #06060e;
+  overflow: hidden;
+  padding: clamp(60px,8vw,120px) 0 0;
+}
+.ubee-bg {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.ubee-hex-grid {
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52'%3E%3Cpolygon points='30,2 58,17 58,47 30,62 2,47 2,17' fill='none' stroke='rgba(196,158,83,0.04)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 60px 52px;
+  animation: hexDrift 20s linear infinite;
+  opacity: 0.7;
+}
+@keyframes hexDrift { from{background-position:0 0} to{background-position:60px 52px} }
+
+.ubee-orb {
+  position: absolute; border-radius: 50%; filter: blur(100px); pointer-events: none;
+}
+.ubee-orb1 { width:500px; height:500px; background:rgba(196,158,83,0.05); top:-100px; left:-150px; animation:uOrb1 12s ease-in-out infinite; }
+.ubee-orb2 { width:350px; height:350px; background:rgba(74,127,165,0.04); bottom:100px; right:-100px; animation:uOrb2 15s ease-in-out infinite; }
+.ubee-orb3 { width:250px; height:250px; background:rgba(196,83,53,0.03); top:50%; left:50%; animation:uOrb3 10s ease-in-out infinite; }
+@keyframes uOrb1 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(60px,40px)} }
+@keyframes uOrb2 { 0%,100%{transform:translate(0,0)} 50%{transform:translate(-40px,-50px)} }
+@keyframes uOrb3 { 0%,100%{transform:translate(-50%,-50%) scale(1)} 50%{transform:translate(-50%,-50%) scale(1.3)} }
+
+.ubee-particles { position:absolute; inset:0; width:100%; height:100%; }
+
+.ubee-inner {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 clamp(20px,5vw,48px) clamp(60px,8vw,100px);
+}
+
+/* Header */
+.ubee-header { text-align: center; margin-bottom: 64px; }
+.ubee-eyebrow { font-size:10px; letter-spacing:0.45em; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.ubee-title {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(48px,8vw,88px);
+  font-weight:300; line-height:1; letter-spacing:-0.02em; color:var(--text);
+  margin-bottom:20px;
+}
+.ubee-title em { font-style:italic; color:var(--gold); }
+.ubee-quote {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(18px,3vw,26px);
+  font-weight:300; font-style:italic; color:var(--gold-light);
+  margin-bottom:14px; position:relative; display:inline-block;
+}
+.ubee-quote::before,.ubee-quote::after {
+  content:''; position:absolute; top:50%; width:40px; height:1px;
+  background:linear-gradient(to right,transparent,var(--gold));
+}
+.ubee-quote::before { right:calc(100% + 16px); }
+.ubee-quote::after { left:calc(100% + 16px); transform:scaleX(-1); }
+.ubee-sub { font-size:15px; color:var(--text-mid); max-width:520px; margin:0 auto; line-height:1.7; }
+
+/* Stats */
+.ubee-stats {
+  display:flex; align-items:center; justify-content:center;
+  gap:0; background:rgba(255,255,255,0.02);
+  border:1px solid rgba(196,158,83,0.15); border-radius:20px;
+  margin-bottom:56px; overflow:hidden;
+}
+.ubee-stat {
+  flex:1; text-align:center; padding:32px 20px;
+  position:relative; transition:background 0.3s;
+  cursor:default;
+}
+.ubee-stat:hover { background:rgba(196,158,83,0.05); }
+.ubee-stat-num {
+  font-family:'Cormorant Garamond',serif; font-size:clamp(40px,5vw,60px);
+  font-weight:300; color:var(--gold-light); line-height:1; display:inline-block;
+}
+.ubee-stat-unit { font-family:'Cormorant Garamond',serif; font-size:clamp(20px,2.5vw,28px); color:var(--gold); display:inline-block; vertical-align:super; line-height:1; }
+.ubee-stat-lbl { font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--text-dim); margin-top:8px; }
+.ubee-stat-sep { width:1px; background:rgba(196,158,83,0.12); align-self:stretch; flex-shrink:0; }
+
+/* Service cards */
+.ubee-services {
+  display: grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-bottom:56px;
+}
+.ubee-svc-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.07); border-radius:18px; padding:28px 24px;
+  position:relative; overflow:hidden; cursor:default;
+  transition: border-color 0.35s, box-shadow 0.35s, transform 0.1s;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.ubee-svc-card:hover {
+  border-color:rgba(196,158,83,0.35);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 30px rgba(196,158,83,0.06);
+}
+.ubee-svc-glow {
+  position:absolute; inset:0; pointer-events:none; opacity:0;
+  background: radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(196,158,83,0.1), transparent 60%);
+  transition: opacity 0.3s;
+}
+.ubee-svc-card:hover .ubee-svc-glow { opacity:1; }
+.ubee-svc-icon { font-size:28px; margin-bottom:14px; display:block; transition:transform 0.3s; }
+.ubee-svc-card:hover .ubee-svc-icon { transform:scale(1.15) rotate(-5deg); }
+.ubee-svc-name { font-size:15px; font-weight:600; color:var(--text); margin-bottom:8px; }
+.ubee-svc-desc { font-size:12px; color:var(--text-mid); line-height:1.6; }
+.ubee-svc-line {
+  position:absolute; bottom:0; left:0; right:0; height:2px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  transform:scaleX(0); transform-origin:center; transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.ubee-svc-card:hover .ubee-svc-line { transform:scaleX(1); }
+
+/* Contact strip */
+.ubee-contact {
+  display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:28px;
+  background:rgba(196,158,83,0.04); border:1px solid rgba(196,158,83,0.18);
+  border-radius:20px; padding:32px 40px;
+  position:relative; overflow:hidden;
+}
+.ubee-contact::before {
+  content:''; position:absolute; top:-60px; left:-60px;
+  width:200px; height:200px; border-radius:50%;
+  background:radial-gradient(circle,rgba(196,158,83,0.08),transparent 70%);
+}
+.ubee-contact-label { font-size:10px; letter-spacing:0.35em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.ubee-contact-note { font-family:'Cormorant Garamond',serif; font-size:18px; color:var(--text-mid); font-style:italic; max-width:320px; line-height:1.5; }
+.ubee-contact-links { display:flex; flex-direction:column; gap:8px; }
+.ubee-link {
+  display:flex; align-items:center; gap:12px;
+  padding:12px 20px; border-radius:12px; text-decoration:none;
+  background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.06);
+  transition:all 0.3s; position:relative; overflow:hidden; group: true;
+}
+.ubee-link::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg,rgba(196,158,83,0.08),transparent);
+  opacity:0; transition:opacity 0.3s;
+}
+.ubee-link:hover { border-color:rgba(196,158,83,0.3); transform:translateX(4px); }
+.ubee-link:hover::before { opacity:1; }
+.ubee-link-icon { font-size:14px; flex-shrink:0; }
+.ubee-link-text { font-size:13px; color:var(--text); flex:1; }
+.ubee-link-arrow { font-size:14px; color:var(--gold); opacity:0; transform:translateX(-6px); transition:all 0.3s; }
+.ubee-link:hover .ubee-link-arrow { opacity:1; transform:translateX(0); }
+
+/* Mobile */
+@media (max-width:768px) {
+  .ubee-services { grid-template-columns:1fr 1fr; }
+  .ubee-stats { flex-wrap:wrap; }
+  .ubee-stat { min-width:50%; }
+  .ubee-stat-sep { display:none; }
+  .ubee-contact { flex-direction:column; align-items:flex-start; padding:24px; }
+  .ubee-quote::before,.ubee-quote::after { display:none; }
+}
+@media (max-width:480px) {
+  .ubee-services { grid-template-columns:1fr; }
+}
+</style>
+
+<script>
+(function(){
+  /* ── Particle canvas ── */
+  const canvas = document.getElementById('ubeeCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let W, H, particles = [];
+
+  function resize(){
+    W = canvas.width = canvas.offsetWidth;
+    H = canvas.height = canvas.offsetHeight;
+  }
+
+  function mkParticle(){
+    return {
+      x: Math.random()*W, y: Math.random()*H,
+      r: Math.random()*1.5+0.5,
+      vx: (Math.random()-0.5)*0.3, vy: (Math.random()-0.5)*0.3,
+      a: Math.random()
+    };
+  }
+
+  function initParticles(){
+    resize();
+    particles = Array.from({length:60},mkParticle);
+  }
+
+  function drawParticles(){
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(196,158,83,${p.a*0.4})`;
+      ctx.fill();
+    });
+
+    /* draw connecting lines */
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const dx=particles[i].x-particles[j].x;
+        const dy=particles[i].y-particles[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120){
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x,particles[i].y);
+          ctx.lineTo(particles[j].x,particles[j].y);
+          ctx.strokeStyle=`rgba(196,158,83,${(1-dist/120)*0.08})`;
+          ctx.lineWidth=0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(drawParticles);
+  }
+
+  window.addEventListener('resize', ()=>{ resize(); });
+  initParticles();
+  drawParticles();
+
+  /* ── Tilt effect on service cards ── */
+  document.querySelectorAll('[data-tilt]').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-0.5;
+      const y=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform=`perspective(600px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateZ(6px)`;
+      const glow=card.querySelector('.ubee-svc-glow');
+      if(glow){
+        glow.style.setProperty('--gx',((e.clientX-r.left)/r.width*100)+'%');
+        glow.style.setProperty('--gy',((e.clientY-r.top)/r.height*100)+'%');
+      }
+    });
+    card.addEventListener('mouseleave',()=>{
+      card.style.transform='perspective(600px) rotateY(0) rotateX(0) translateZ(0)';
+    });
+  });
+
+  /* ── Counter animation ── */
+  const counters=document.querySelectorAll('.ubee-stat-num');
+  const cObs=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el=entry.target;
+      const target=+el.dataset.target;
+      const dur=1400;
+      const start=performance.now();
+      function step(now){
+        const p=Math.min((now-start)/dur,1);
+        const ease=1-Math.pow(1-p,3);
+        el.textContent=Math.round(ease*target);
+        if(p<1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      cObs.unobserve(el);
+    });
+  },{threshold:0.5});
+  counters.forEach(c=>cObs.observe(c));
+})();
+</script>
+
+<div class="sep"></div>
+
+<footer>
+  <div class="f-logo">Uniqbee</div>
+  <div class="f-tag">"Görünür ol. Güven kazan. Büyü."</div>
+  <div class="f-copy">Dr. Metin Vural · Teklif 2026</div>
+</footer>
+
+<script>
+  // Scroll reveal — only on desktop (>768px), mobile always shows content
+  const revealEls = document.querySelectorAll('.reveal');
+  if (window.innerWidth > 768) {
+    revealEls.forEach(el => el.classList.add('will-animate'));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+  }
+
+  // Score bar animation
+  const barObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('.score-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width;
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.metrics-row').forEach(el => barObserver.observe(el));
+
+  // Mouse glow on info cards
+  document.querySelectorAll('.info-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+      card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+    });
+  });
+
+  // Nav scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(8,8,16,0.97)'
+      : 'linear-gradient(to bottom, rgba(8,8,16,0.96), transparent)';
+    nav.style.borderBottom = window.scrollY > 60 ? '1px solid rgba(196,158,83,0.08)' : '';
+  }, { passive: true });
+</script>
+</body>
+</html>
