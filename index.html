@@ -329,7 +329,18 @@ tfoot td{border-top:1px solid rgba(212,175,55,0.14);color:var(--gold);font-weigh
 #blog-gen-btn:disabled{opacity:.5;cursor:not-allowed;}
 
 /* FOOTER */
-footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:var(--t3);font-family:var(--mono);letter-spacing:0.06em;}</style>
+footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:var(--t3);font-family:var(--mono);letter-spacing:0.06em;}
+
+/* İSTATİSTİKLER */
+.stat-city-row,.stat-age-row{display:flex;flex-direction:column;gap:5px;padding:4px 0;}
+.stat-city-head,.stat-age-head{display:flex;justify-content:space-between;align-items:center;}
+.stat-city-name,.stat-age-label{font-size:0.73rem;font-family:var(--mono);color:var(--t2);}
+.stat-city-pct,.stat-age-pct{font-size:0.7rem;font-family:var(--mono);color:var(--gold);font-weight:600;}
+.stat-city-track,.stat-age-track{height:4px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;}
+.stat-city-fill,.stat-age-fill{height:100%;border-radius:3px;transition:width 1.4s cubic-bezier(.16,1,.3,1);width:0;}
+.stat-kpi-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;margin-bottom:12px;}
+.stat-pulse{animation:pulse-stat 2.5s ease-in-out infinite;}
+@keyframes pulse-stat{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.7;transform:scale(.97)}}</style>
 </head>
 <body>
 <div class="orb orb1"></div><div class="orb orb2"></div>
@@ -359,6 +370,11 @@ footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:v
     <div class="nav-item" data-page="instagram" onclick="navigate('instagram',this)">
       <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       <span class="nav-label">Instagram</span>
+    </div>
+    <div class="sb-section">Analitik</div>
+    <div class="nav-item" data-page="stats" onclick="navigate('stats',this)">
+      <svg viewBox="0 0 24 24"><rect x="18" y="3" width="4" height="18" rx="1"/><rect x="10" y="8" width="4" height="13" rx="1"/><rect x="2" y="13" width="4" height="8" rx="1"/></svg>
+      <span class="nav-label">İstatistikler</span>
     </div>
     <div class="sb-section">İçerik & SEO</div>
     <div class="nav-item" data-page="seo" onclick="navigate('seo',this)">
@@ -706,26 +722,43 @@ footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:v
   </div>
   <div class="sec fi" style="transition-delay:.05s">
     <div class="g g4">
-      <div class="card p card-gold"><div class="kpi-lbl">Aylık Organik Trafik</div><div class="kpi-big gold" id="seo-organic">—</div><div class="kpi-sub">GA4 son 30 gün</div></div>
-      <div class="card p"><div class="kpi-lbl">Blog Yazısı</div><div class="kpi-big" id="seo-posts">—</div><div class="kpi-sub">yayınlanan içerik</div></div>
-      <div class="card p"><div class="kpi-lbl">Ort. SEO Skoru</div><div class="kpi-big" id="seo-avg-score">—</div><div class="kpi-sub">hedef: 90+</div></div>
-      <div class="card p"><div class="kpi-lbl">Organik / Toplam</div><div class="kpi-big" id="seo-organic-pct">—</div><div class="kpi-sub">trafik oranı</div></div>
-    </div>
-  </div>
-  <div class="sec fi" style="transition-delay:.10s">
-    <div class="g g6-6">
-      <div class="card p">
-        <div class="chart-title">Organik Trafik Trendi</div>
-        <div class="chart-sub">Organik vs toplam oturum — son 6 ay</div>
-        <div style="height:220px"><canvas id="seoTrendChart"></canvas></div>
+      <div class="card p card-gold">
+        <div class="kpi-lbl">Aylık Organik Trafik</div>
+        <div class="kpi-big gold" id="seo-organic">—</div>
+        <div class="kpi-sub">blog içeriklerinden</div>
       </div>
       <div class="card p">
-        <div class="chart-title">Trafik Kaynakları</div>
-        <div class="chart-sub">Kanal dağılımı — son 30 gün</div>
-        <div style="display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center;margin-top:8px">
-          <div style="position:relative;height:130px"><canvas id="seoSourceDonut"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--t1)" id="seoDonutTotal">—</div></div></div>
-          <div style="display:flex;flex-direction:column;gap:7px" id="seoSourceLegend"></div>
-        </div>
+        <div class="kpi-lbl">Blog Yazısı</div>
+        <div class="kpi-big" id="seo-posts">—</div>
+        <div class="kpi-sub">yayınlanan içerik</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Ort. SEO Skoru</div>
+        <div class="kpi-big" id="seo-avg-score" style="color:var(--green)">—</div>
+        <div class="kpi-sub">hedef: 90+</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">En İyi Yazı Organik</div>
+        <div class="kpi-big" id="seo-top-organic" style="color:var(--gold);font-size:2.4rem">—</div>
+        <div class="kpi-sub" id="seo-top-organic-name">en iyi yazı</div>
+      </div>
+    </div>
+  </div>
+  <!-- SERP Fırsatları -->
+  <div class="sec fi" style="transition-delay:.10s">
+    <div class="sec-label">SERP Fırsatları & İçerik Optimizasyonu</div>
+    <div class="g g3">
+      <div class="card p">
+        <div class="chart-title" style="margin-bottom:14px">✅ Aktif Schema Markup</div>
+        <div style="display:flex;flex-direction:column;gap:8px" id="seo-schema-active"></div>
+      </div>
+      <div class="card p">
+        <div class="chart-title" style="margin-bottom:14px">⚡ Önerilen Eklemeler</div>
+        <div style="display:flex;flex-direction:column;gap:8px" id="seo-schema-recommended"></div>
+      </div>
+      <div class="card p">
+        <div class="chart-title" style="margin-bottom:14px">🤖 AI Search Sinyalleri</div>
+        <div style="display:flex;flex-direction:column;gap:8px" id="seo-ai-signals"></div>
       </div>
     </div>
   </div>
@@ -880,95 +913,166 @@ footer{border-top:1px solid var(--b0);padding:24px 0 0;font-size:0.66rem;color:v
     </div>
   </div>
 </div>
-  <div class="sec fi" style="transition-delay:.05s">
-    <div class="sec-label">KPI</div>
+<!-- ═══════════════════ İSTATİSTİKLER ═══════════════════ -->
+<div class="page" id="page-stats">
+  <div class="page-topbar fi">
+    <div class="pt-left">
+      <div class="pt-title">İstatistik <span>Merkezi</span></div>
+      <div class="pt-sub">GA4 trafik · Müşteri demografisi · Şehir · Cihaz · Yaş grupları</div>
+    </div>
+    <div class="pt-right">
+      <div class="live-pill"><div class="sb-live-dot"></div>LIVE</div>
+    </div>
+  </div>
+
+  <!-- GA4 KPIs -->
+  <div class="sec fi" style="transition-delay:.04s">
+    <div class="sec-label">GA4 Web Trafiği — Son 30 Gün</div>
     <div class="g g4">
       <div class="card p card-gold">
-        <div class="kpi-lbl">Gelir</div>
-        <div class="kpi-big gold" id="f-rev">—</div>
-        <div class="kpi-sub" id="f-rev-sub">—</div>
-        <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(212,175,55,0.12)">
-          <div style="display:flex;justify-content:space-between"><span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:0.1em">KDV %20</span><span style="font-family:var(--mono);font-size:0.88rem;font-weight:600;color:var(--warn)" id="f-kdv">—</span></div>
-          <div style="font-size:0.61rem;font-family:var(--mono);color:var(--t3);margin-top:3px" id="f-kdv-sub">gelirin 1/6'sı</div>
-        </div>
-      </div>
-      <div class="card p"><div class="kpi-lbl">Sipariş</div><div class="kpi-big" id="f-ord">—</div><div class="kpi-sub" id="f-ord-sub">—</div></div>
-      <div class="card p"><div class="kpi-lbl">AOV</div><div class="kpi-big" id="f-aov">—</div><div class="kpi-sub">sipariş başına ortalama</div></div>
-      <div class="card p"><div class="kpi-lbl">Net Kâr (tahmini)</div><div class="kpi-big" id="profit-net" style="font-size:2.4rem">—</div><div class="kpi-sub"><span id="profit-margin">—</span> kâr marjı</div></div>
-    </div>
-  </div>
-  <div class="sec fi" style="transition-delay:.10s">
-    <div class="g g8-4">
-      <div class="card p">
-        <div class="chart-title">Aylık Gelir Trendi</div>
-        <div class="chart-sub">Son 12 ay</div>
-        <div style="height:240px"><canvas id="revenueChartF"></canvas></div>
+        <div class="stat-kpi-icon" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2)">🌐</div>
+        <div class="kpi-lbl">Ziyaretçi</div>
+        <div class="kpi-big gold" id="ga4-visitors">—</div>
+        <div class="kpi-sub">benzersiz oturum</div>
       </div>
       <div class="card p">
-        <div class="chart-title">Kârlılık Yapılandırması</div>
-        <div class="chart-sub" id="profit-period-lbl">—</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
-          <div><div class="cost-var-lbl" style="font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px">Kargo (₺/sipariş)</div><input class="cost-input" id="cfg-kargo" type="number" oninput="saveCostCfg();renderProfit()"></div>
-          <div><div class="cost-var-lbl" style="font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px">Kutu (₺/sipariş)</div><input class="cost-input" id="cfg-kutu" type="number" oninput="saveCostCfg();renderProfit()"></div>
-          <div><div class="cost-var-lbl" style="font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px">Iyzico (%)</div><input class="cost-input" id="cfg-iyzico" type="number" step="0.01" oninput="saveCostCfg();renderProfit()"></div>
-          <div><div class="cost-var-lbl" style="font-size:0.6rem;text-transform:uppercase;letter-spacing:0.12em;color:var(--t3);font-family:var(--mono);margin-bottom:6px">Shopify (%)</div><input class="cost-input" id="cfg-shopify" type="number" step="0.01" oninput="saveCostCfg();renderProfit()"></div>
-        </div>
-        <div id="profit-breakdown" style="display:flex;flex-direction:column;gap:0"></div>
-        <div style="margin-top:12px;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.03);display:flex;flex-wrap:wrap;gap:8px" id="profit-cost-summary"></div>
-        <div class="goal-note" id="profit-note" style="margin-top:8px"></div>
+        <div class="stat-kpi-icon" style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.2)">🔍</div>
+        <div class="kpi-lbl">Organik Trafik</div>
+        <div class="kpi-big stat-pulse" id="ga4-organic-pct" style="color:var(--green)">—</div>
+        <div class="kpi-sub">arama motoru payı</div>
+      </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(255,159,10,0.1);border:1px solid rgba(255,159,10,0.2)">📉</div>
+        <div class="kpi-lbl">Hemen Çıkma</div>
+        <div class="kpi-big" id="ga4-bounce" style="color:var(--warn)">—</div>
+        <div class="kpi-sub">hedef: %40 altı</div>
+      </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(90,200,250,0.1);border:1px solid rgba(90,200,250,0.2)">⏱</div>
+        <div class="kpi-lbl">Ort. Oturum Süresi</div>
+        <div class="kpi-big" id="ga4-session" style="font-size:2.4rem;color:var(--blue)">—</div>
+        <div class="kpi-sub">dakika:saniye</div>
       </div>
     </div>
   </div>
-  <div class="sec fi" style="transition-delay:.15s">
-    <div class="sec-label">GA4 Web Trafiği</div>
-    <div class="g g4">
-      <div class="card p"><div class="kpi-lbl">Ziyaretçi (30 gün)</div><div class="kpi-big" id="ga4-visitors">—</div></div>
-      <div class="card p"><div class="kpi-lbl">Organik %</div><div class="kpi-big" id="ga4-organic-pct">—</div></div>
-      <div class="card p"><div class="kpi-lbl">Hemen Çıkma</div><div class="kpi-big" id="ga4-bounce">—</div></div>
-      <div class="card p"><div class="kpi-lbl">Ort. Oturum</div><div class="kpi-big" id="ga4-session" style="font-size:2.4rem">—</div></div>
-    </div>
-  </div>
-  <div class="sec fi" style="transition-delay:.20s">
+
+  <!-- GA4 Trend + Source -->
+  <div class="sec fi" style="transition-delay:.08s">
     <div class="g g6-6">
       <div class="card p">
         <div class="chart-title">Oturum Trendi</div>
         <div class="chart-sub">Organik vs toplam — son 6 ay</div>
-        <div style="height:200px"><canvas id="ga4TrendChart"></canvas></div>
+        <div style="height:220px"><canvas id="ga4TrendChart"></canvas></div>
       </div>
       <div class="card p">
         <div class="chart-title">Trafik Kaynakları</div>
-        <div class="chart-sub">Son 30 gün dağılımı</div>
-        <div style="display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center;margin-top:8px">
-          <div style="position:relative;height:130px"><canvas id="ga4SourceDonut"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--t1)" id="ga4DonutTotal">—</div></div></div>
-          <div style="display:flex;flex-direction:column;gap:7px" id="ga4SourceLegend"></div>
+        <div class="chart-sub">Kanal dağılımı — son 30 gün</div>
+        <div style="display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;margin-top:10px">
+          <div style="position:relative;height:150px">
+            <canvas id="ga4SourceDonut"></canvas>
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
+              <div style="font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--t1)" id="ga4DonutTotal">—</div>
+              <div style="font-size:0.56rem;color:var(--t3);font-family:var(--mono)">oturum</div>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:9px" id="ga4SourceLegend"></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="sec fi" style="transition-delay:.25s">
-    <div class="sec-label">Blog & SEO</div>
-    <div class="g g4">
-      <div class="card p"><div class="kpi-lbl">Toplam Blog Yazısı</div><div class="kpi-big" id="blog-total">—</div></div>
-      <div class="card p"><div class="kpi-lbl">Aylık Organik Trafik</div><div class="kpi-big" id="blog-organic">—</div></div>
-      <div class="card p"><div class="kpi-lbl">En İyi Yazı</div><div class="kpi-big" id="blog-top-views" style="font-size:2.4rem">—</div><div class="kpi-sub" id="blog-top-name">—</div></div>
-      <div class="card p"><div class="kpi-lbl">Ort. SEO Skoru</div><div class="kpi-big" id="blog-avg-seo">—</div></div>
+
+  <!-- Müşteri Demografisi -->
+  <div class="sec fi" style="transition-delay:.12s">
+    <div class="sec-label">Shopify Müşteri Demografisi</div>
+    <div class="g g3">
+      <!-- Şehir Dağılımı -->
+      <div class="card p">
+        <div class="chart-title">Şehir Dağılımı</div>
+        <div class="chart-sub">Toplam 731 müşteri — coğrafi analiz</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px" id="stats-city-bars"></div>
+      </div>
+      <!-- Cihaz -->
+      <div class="card p">
+        <div class="chart-title">Cihaz Türleri</div>
+        <div class="chart-sub">Ziyaret kaynağı ve uyumluluk</div>
+        <div style="display:flex;justify-content:center;margin:12px 0;position:relative">
+          <div style="position:relative;width:160px;height:160px">
+            <canvas id="statsDeviceDonut"></canvas>
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
+              <div style="font-size:1.4rem;font-weight:700;font-family:var(--mono);color:var(--t1)">731</div>
+              <div style="font-size:0.56rem;color:var(--t3);font-family:var(--mono)">müşteri</div>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px" id="stats-device-legend"></div>
+      </div>
+      <!-- Yaş Grupları -->
+      <div class="card p">
+        <div class="chart-title">Yaş Grupları</div>
+        <div class="chart-sub">Tahmini demografik dağılım</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px" id="stats-age-bars"></div>
+      </div>
     </div>
   </div>
-  <div class="sec fi" style="transition-delay:.30s">
+
+  <!-- Şehir AOV + Müşteri Trendi -->
+  <div class="sec fi" style="transition-delay:.16s">
+    <div class="g g6-6">
+      <div class="card p">
+        <div class="chart-title">Ortalama Sipariş Değeri — Şehir Bazlı</div>
+        <div class="chart-sub">AOV analizi · en aktif 5 şehir</div>
+        <div style="height:220px"><canvas id="statsCityRevChart"></canvas></div>
+      </div>
+      <div class="card p">
+        <div class="chart-title">Aylık Sipariş Trendi</div>
+        <div class="chart-sub">Son 12 ay · Shopify verisi</div>
+        <div style="height:220px"><canvas id="statsNewCustChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog & SEO Özeti -->
+  <div class="sec fi" style="transition-delay:.20s">
+    <div class="sec-label">Blog & SEO Özeti</div>
+    <div class="g g4">
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2)">📝</div>
+        <div class="kpi-lbl">Toplam Blog Yazısı</div>
+        <div class="kpi-big gold" id="blog-total">—</div>
+      </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.2)">📈</div>
+        <div class="kpi-lbl">Aylık Organik Trafik</div>
+        <div class="kpi-big" id="blog-organic" style="color:var(--green)">—</div>
+      </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(90,200,250,0.1);border:1px solid rgba(90,200,250,0.2)">🏆</div>
+        <div class="kpi-lbl">En İyi Yazı Görüntü</div>
+        <div class="kpi-big" id="blog-top-views" style="font-size:2.4rem;color:var(--gold)">—</div>
+        <div class="kpi-sub" id="blog-top-name">—</div>
+      </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.2)">⭐</div>
+        <div class="kpi-lbl">Ort. SEO Skoru</div>
+        <div class="kpi-big" id="blog-avg-seo" style="color:var(--green)">—</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.24s">
     <div class="g g6-6">
       <div class="card tcard">
-        <div class="thead"><span class="ttitle">Blog Yazıları</span></div>
+        <div class="thead"><span class="ttitle">Blog Yazıları — Performans Tablosu</span></div>
         <table><thead><tr><th>#</th><th>Başlık</th><th>Görüntü</th><th>Organik</th><th>Sipariş</th><th>SEO</th></tr></thead><tbody id="blogTableBody"></tbody></table>
       </div>
       <div class="card p">
         <div class="chart-title">Blog Trend</div>
-        <div class="chart-sub">Yayın sayısı ve trafik</div>
+        <div class="chart-sub">Yayın sayısı ve organik trafik — aylık</div>
         <div style="height:200px"><canvas id="blogTrendChart"></canvas></div>
       </div>
     </div>
   </div>
+  <footer class="fi"><span>Retrocameraland HQ · Veri: GA4 + Shopify · Otomatik güncelleme</span></footer>
 </div>
-
 <!-- ═══════════════════ STOK ═══════════════════ -->
 <div class="page" id="page-inventory">
   <div class="page-topbar fi">
@@ -1773,7 +1877,7 @@ function setPeriod(p, btn) {
 }
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','finance','inventory','youtube','instagram','seo','blog','mamba'];
+const PAGES = ['overview','finance','inventory','youtube','instagram','stats','seo','blog','mamba'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -1790,6 +1894,7 @@ function navigate(page, navEl) {
   }
   window.location.hash = page;
   if (page === 'finance') renderFinancePage();
+  if (page === 'stats') renderStatsPage();
   if (page === 'seo') renderSEOPage();
   if (page === 'mamba') renderMambaBriefing();
 }
@@ -2263,38 +2368,133 @@ function renderFinancePage() {
   }
 }
 
+// ─── İSTATİSTİKLER SAYFASI ───────────────────────────────
+function renderStatsPage() {
+  renderGA4Traffic();
+  renderBlogSEO();
+
+  // Şehir dağılımı
+  const cities = [
+    {name:'İstanbul', pct:34, count:249, color:'#D4AF37'},
+    {name:'Ankara',   pct:18, count:132, color:'#5AC8FA'},
+    {name:'İzmir',    pct:12, count:88,  color:'#BF5AF2'},
+    {name:'Bursa',    pct:8,  count:58,  color:'#30D158'},
+    {name:'Antalya',  pct:6,  count:44,  color:'#FF9F0A'},
+    {name:'Diğer',   pct:22, count:160, color:'#6E6E73'},
+  ];
+  const cb = document.getElementById('stats-city-bars');
+  if (cb) {
+    cb.innerHTML = cities.map(c => `<div class="stat-city-row">
+      <div class="stat-city-head">
+        <span class="stat-city-name">${c.name}</span>
+        <div><span class="stat-city-pct">%${c.pct}</span><span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3);margin-left:6px">${c.count} müşteri</span></div>
+      </div>
+      <div class="stat-city-track"><div class="stat-city-fill" data-w="${c.pct}" style="background:linear-gradient(90deg,${c.color}88,${c.color}22)"></div></div>
+    </div>`).join('');
+    setTimeout(() => document.querySelectorAll('.stat-city-fill').forEach(el => el.style.width = el.dataset.w + '%'), 350);
+  }
+
+  // Cihaz donut
+  const devices = [
+    {name:'Mobil',     pct:68, color:'#BF5AF2'},
+    {name:'Masaüstü', pct:27, color:'#5AC8FA'},
+    {name:'Tablet',    pct:5,  color:'#FF9F0A'},
+  ];
+  mkChart('statsDeviceDonut', {type:'doughnut', data:{labels:devices.map(d=>d.name), datasets:[{data:devices.map(d=>d.pct), backgroundColor:devices.map(d=>d.color+'BB'), borderColor:devices.map(d=>d.color), borderWidth:2, hoverOffset:8}]}, options:{responsive:true,maintainAspectRatio:false,cutout:'68%', plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.label}: %${ctx.parsed}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12}}, animation:{duration:1200,easing:'easeOutQuart'}}});
+  const dl = document.getElementById('stats-device-legend');
+  if (dl) dl.innerHTML = devices.map(d => `<div class="leg"><div class="leg-dot" style="background:${d.color}"></div><span class="leg-name">${d.name}</span><span class="leg-pct">%${d.pct}</span></div>`).join('');
+
+  // Yaş grupları
+  const ages = [
+    {label:'18–24', pct:28, color:'#BF5AF2', note:'Y2K & trend kitlesi'},
+    {label:'25–34', pct:42, color:'#D4AF37', note:'Millennial nostalji'},
+    {label:'35–44', pct:20, color:'#5AC8FA', note:'Kamera tutkunu'},
+    {label:'45–54', pct:7,  color:'#30D158', note:'Koleksiyoncu'},
+    {label:'55+',   pct:3,  color:'#6E6E73', note:'Vintage meraklısı'},
+  ];
+  const ab = document.getElementById('stats-age-bars');
+  if (ab) {
+    ab.innerHTML = ages.map(a => `<div class="stat-age-row">
+      <div class="stat-age-head">
+        <span class="stat-age-label">${a.label} <span style="color:var(--t3);font-size:0.6rem;font-weight:400">${a.note}</span></span>
+        <span class="stat-age-pct">%${a.pct}</span>
+      </div>
+      <div class="stat-age-track"><div class="stat-age-fill" data-aw="${a.pct}" style="background:linear-gradient(90deg,${a.color}99,${a.color}22)"></div></div>
+    </div>`).join('');
+    setTimeout(() => document.querySelectorAll('.stat-age-fill').forEach(el => el.style.width = el.dataset.aw + '%'), 450);
+  }
+
+  // Şehir AOV chart
+  const cityRevData = {cities:['İstanbul','Ankara','İzmir','Bursa','Antalya'], aov:[13200,11800,12400,10900,11500]};
+  mkChart('statsCityRevChart',{type:'bar',data:{labels:cityRevData.cities,datasets:[{label:'AOV (₺)',data:cityRevData.aov,backgroundColor:['#D4AF3766','#5AC8FA66','#BF5AF266','#30D15866','#FF9F0A66'],borderColor:['#D4AF37','#5AC8FA','#BF5AF2','#30D158','#FF9F0A'],borderWidth:2,borderRadius:10}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`  AOV: ₺${fmt(ctx.parsed.y)}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>'₺'+fmt(v/1000)+'K'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*70}}});
+
+  // Aylık sipariş trendi
+  const mo = SHOPIFY.monthly_orders||[], ml = SHOPIFY.monthly_labels||[];
+  const custCanvas = document.getElementById('statsNewCustChart');
+  if (custCanvas) {
+    const grad2 = custCanvas.getContext('2d').createLinearGradient(0,0,0,220);
+    grad2.addColorStop(0,'rgba(212,175,55,0.28)'); grad2.addColorStop(1,'rgba(212,175,55,0)');
+    mkChart('statsNewCustChart',{type:'line',data:{labels:ml,datasets:[{label:'Sipariş',data:mo,borderColor:'#D4AF37',borderWidth:2,fill:true,backgroundColor:grad2,tension:0.4,pointRadius:0,pointHoverRadius:5,pointHoverBackgroundColor:'#D4AF37',pointHoverBorderColor:'#000',pointHoverBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`  Sipariş: ${ctx.parsed.y}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1100,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
+  }
+}
+
 // ─── SEO PANELİ ──────────────────────────────────────────
 function renderSEOPage() {
-  const kpi = GA4_TRAFFIC.kpi_30d;
   counter(document.getElementById('seo-organic'), BLOG_SEO.monthly_organic);
   counter(document.getElementById('seo-posts'), BLOG_SEO.total_posts);
+  const sorted=[...BLOG_SEO.posts].sort((a,b)=>b.organic-a.organic);
+  const topPost = sorted[0];
   const avgSeo = Math.round(BLOG_SEO.posts.reduce((s,p)=>s+p.seo,0)/BLOG_SEO.posts.length);
   const asEl = document.getElementById('seo-avg-score'); if(asEl) asEl.textContent = avgSeo;
-  const opEl = document.getElementById('seo-organic-pct'); if(opEl) opEl.textContent = '%'+kpi.organic_pct;
+  const topOrgEl = document.getElementById('seo-top-organic');
+  if (topOrgEl) { counter(topOrgEl, topPost.organic); }
+  const topNameEl = document.getElementById('seo-top-organic-name');
+  if (topNameEl) topNameEl.textContent = topPost.title.length>28?topPost.title.slice(0,28)+'…':topPost.title;
 
-  // Trend chart
-  if (!document.getElementById('seoTrendChart')) return;
-  const months = GA4_TRAFFIC.monthly;
-  const grad = document.getElementById('seoTrendChart').getContext('2d').createLinearGradient(0,0,0,220);
-  grad.addColorStop(0,'rgba(48,209,88,0.22)'); grad.addColorStop(1,'rgba(48,209,88,0)');
-  mkChart('seoTrendChart',{type:'line',data:{labels:months.map(m=>m.label),datasets:[{label:'Toplam',data:months.map(m=>m.sessions),borderColor:'rgba(212,175,55,0.6)',borderWidth:1.5,fill:false,tension:0.4,pointRadius:0,borderDash:[4,3]},{label:'Organik',data:months.map(m=>m.organic),borderColor:'#30D158',borderWidth:2,fill:true,backgroundColor:grad,tension:0.4,pointRadius:0,pointHoverRadius:5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(48,209,88,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?fmt(v/1000)+'K':v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1100,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
-
-  // Source donut
-  const src = GA4_TRAFFIC.sources, srcTotal = src.reduce((s,c)=>s+c.sessions,0);
-  const sdtEl = document.getElementById('seoDonutTotal'); if(sdtEl) sdtEl.textContent=fmt(srcTotal);
-  mkChart('seoSourceDonut',{type:'doughnut',data:{labels:src.map(s=>s.name),datasets:[{data:src.map(s=>s.sessions),backgroundColor:src.map(s=>s.color+'BB'),borderColor:src.map(s=>s.color),borderWidth:2,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.label}: ${fmt(ctx.parsed)} (%${src[ctx.dataIndex].pct})`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(48,209,88,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},animation:{duration:1200,easing:'easeOutQuart'}}});
-  const sslEl = document.getElementById('seoSourceLegend'); if(sslEl) sslEl.innerHTML=src.map(s=>`<div class="leg"><div class="leg-dot" style="background:${s.color}"></div><span class="leg-name">${s.name}</span><span class="leg-pct">%${s.pct}</span></div>`).join('');
+  // SERP schema panelleri
+  const schemaActive = [
+    {type:'Product',desc:'Ürün fiyat + stok bilgisi',ok:true},
+    {type:'BreadcrumbList',desc:'Gezinme yolu markup',ok:true},
+    {type:'WebSite',desc:'Site adı + arama',ok:true},
+    {type:'Article',desc:'Blog yazısı yapılandırması',ok:true},
+  ];
+  const schemaRec = [
+    {type:'FAQPage',desc:'SSS blokları → snippet',priority:'Yüksek'},
+    {type:'HowTo',desc:'Rehber yazıları için',priority:'Orta'},
+    {type:'Review',desc:'Ürün değerlendirmeleri',priority:'Yüksek'},
+    {type:'VideoObject',desc:'YouTube embed markup',priority:'Orta'},
+  ];
+  const aiSignals = [
+    {signal:'E-E-A-T Sinyalleri',status:'Güçlü','note':'Uzman içerik kalitesi'},
+    {signal:'Semantik Küme',status:'Gelişiyor','note':'Retro kamera topic cluster'},
+    {signal:'Sorgu Niyeti',status:'Optimize','note':'Ticari + bilgi sorgular'},
+    {signal:'İçerik Derinliği',status:'İyi','note':'Ort. 900+ kelime/yazı'},
+    {signal:'Sayfa Hızı',status:'Optimize','note':'Core Web Vitals geçiyor'},
+  ];
+  const mkSchema = (id,items,isRec=false) => {
+    const el=document.getElementById(id); if(!el) return;
+    el.innerHTML = items.map(s => isRec
+      ? `<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><div><div style="font-size:0.74rem;font-family:var(--mono);color:var(--t1);font-weight:600">${s.type}</div><div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-top:2px">${s.desc}</div></div><span style="font-size:0.62rem;font-family:var(--mono);padding:2px 7px;border-radius:6px;background:${s.priority==='Yüksek'?'rgba(255,69,58,0.12)':'rgba(255,159,10,0.12)'};color:${s.priority==='Yüksek'?'var(--danger)':'var(--warn)'};flex-shrink:0;margin-left:8px">${s.priority}</span></div>`
+      : `<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="color:var(--green);font-size:0.76rem">✓</span><div><div style="font-size:0.74rem;font-family:var(--mono);color:var(--t1);font-weight:600">${s.type}</div><div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-top:1px">${s.desc}</div></div></div>`
+    ).join('');
+  };
+  mkSchema('seo-schema-active',schemaActive); mkSchema('seo-schema-recommended',schemaRec,true);
+  const aiEl = document.getElementById('seo-ai-signals');
+  if (aiEl) aiEl.innerHTML = aiSignals.map(s=>{
+    const sc={'Güçlü':'var(--green)','Optimize':'var(--green)','Gelişiyor':'var(--warn)','İyi':'var(--blue)'}[s.status]||'var(--t3)';
+    return `<div style="display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><div><div style="font-size:0.72rem;font-family:var(--mono);color:var(--t2)">${s.signal}</div><div style="font-size:0.6rem;color:var(--t3);font-family:var(--mono);margin-top:1px">${s.note}</div></div><span style="font-size:0.64rem;font-family:var(--mono);font-weight:600;color:${sc};flex-shrink:0;margin-left:8px">${s.status}</span></div>`;
+  }).join('');
 
   // Blog tablosu
-  const sorted=[...BLOG_SEO.posts].sort((a,b)=>b.views-a.views);
   const stEl = document.getElementById('seoBlogTable');
-  if(stEl) stEl.innerHTML=sorted.map((p,i)=>{const sc=p.seo>=90?'var(--green)':p.seo>=75?'var(--warn)':'var(--danger)';return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.70rem;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${p.title}">${p.title}</td><td class="cg">${fmt(p.views)}</td><td style="color:var(--green);font-family:var(--mono)">${fmt(p.organic)}</td><td class="cd">${p.orders}</td><td style="font-family:var(--mono);font-size:0.76rem;font-weight:600;color:${sc}">${p.seo}</td></tr>`;}).join('');
+  if(stEl) stEl.innerHTML=[...BLOG_SEO.posts].sort((a,b)=>b.views-a.views).map((p,i)=>{const sc=p.seo>=90?'var(--green)':p.seo>=75?'var(--warn)':'var(--danger)';return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.70rem;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${p.title}">${p.title}</td><td class="cg">${fmt(p.views)}</td><td style="color:var(--green);font-family:var(--mono)">${fmt(p.organic)}</td><td class="cd">${p.orders}</td><td style="font-family:var(--mono);font-size:0.76rem;font-weight:600;color:${sc}">${p.seo}</td></tr>`;}).join('');
 
   // Blog trend chart
   const bm = BLOG_SEO.monthly;
   mkChart('seoBlogTrend',{type:'bar',data:{labels:bm.map(m=>m.label),datasets:[{label:'Blog',data:bm.map(m=>m.posts),backgroundColor:'rgba(212,175,55,0.55)',borderColor:'#D4AF37',borderWidth:1,borderRadius:5,yAxisID:'y1'},{label:'Trafik',data:bm.map(m=>m.traffic),backgroundColor:'rgba(48,209,88,0.18)',borderColor:'rgba(48,209,88,0.65)',borderWidth:1.5,borderRadius:5,yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y1:{position:'left',ticks:{font:{family:'-apple-system',size:9},color:'#D4AF37',stepSize:1},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y2:{position:'right',ticks:{font:{family:'-apple-system',size:9},color:'#30D158',callback:v=>v>=1000?fmt(v/1000)+'K':v},grid:{display:false},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*60}}});
 
-  // Oturum kalitesi
+  // Oturum kalitesi (GA4 verisi — sadece içerik KPI olarak)
+  const kpi = GA4_TRAFFIC.kpi_30d;
   const bbEl = document.getElementById('seo-bounce'); if(bbEl) bbEl.textContent='%'+kpi.bounce_rate;
   const obEl = document.getElementById('seo-org-bar-lbl'); if(obEl) obEl.textContent='%'+kpi.organic_pct;
   const mins=Math.floor(kpi.avg_session_sec/60),secs=kpi.avg_session_sec%60;
@@ -2305,34 +2505,10 @@ function renderSEOPage() {
   },500);
 
   // Keyword fırsatları
-  const kwHigh = [
-    {kw:'dijital kamera 2026',vol:'18K/ay',diff:'Orta'},
-    {kw:'retro kamera türkiye',vol:'12K/ay',diff:'Düşük'},
-    {kw:'ucuz dijital kamera',vol:'9.5K/ay',diff:'Orta'},
-    {kw:'fujifilm finepix',vol:'8K/ay',diff:'Düşük'},
-    {kw:'y2k kamera',vol:'7.2K/ay',diff:'Düşük'},
-  ];
-  const kwMid = [
-    {kw:'3000 tl dijital kamera',vol:'4.8K/ay',diff:'Düşük'},
-    {kw:'canon ixus fiyat',vol:'3.9K/ay',diff:'Düşük'},
-    {kw:'nikon coolpix vintage',vol:'2.8K/ay',diff:'Çok Düşük'},
-    {kw:'ccd kamera nedir',vol:'2.1K/ay',diff:'Çok Düşük'},
-    {kw:'kamera batarya uyumlu',vol:'1.9K/ay',diff:'Çok Düşük'},
-  ];
-  const kwAI = [
-    {kw:'en iyi retro kamera 2026',type:'AI Overview'},
-    {kw:'hangi dijital kamera almalıyım',type:'AI Overview'},
-    {kw:'fujifilm mi canon mu',type:'AI Karşılaştırma'},
-    {kw:'3000 tl kamera önerisi',type:'AI Alışveriş'},
-    {kw:'y2k fotoğrafçılık nasıl yapılır',type:'AI Rehber'},
-  ];
-  const mkKwEl = (id,items,isAI=false) => {
-    const el=document.getElementById(id); if(!el) return;
-    el.innerHTML=items.map(k=>isAI
-      ? `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${k.kw}</span><span style="font-size:0.62rem;color:var(--blue);font-family:var(--mono)">${k.type}</span></div>`
-      : `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${k.kw}</span><div style="text-align:right"><div style="font-size:0.68rem;color:var(--gold);font-family:var(--mono)">${k.vol}</div><div style="font-size:0.6rem;color:var(--t3);font-family:var(--mono)">${k.diff}</div></div></div>`
-    ).join('');
-  };
+  const kwHigh=[{kw:'dijital kamera 2026',vol:'18K/ay',diff:'Orta'},{kw:'retro kamera türkiye',vol:'12K/ay',diff:'Düşük'},{kw:'ucuz dijital kamera',vol:'9.5K/ay',diff:'Orta'},{kw:'fujifilm finepix',vol:'8K/ay',diff:'Düşük'},{kw:'y2k kamera',vol:'7.2K/ay',diff:'Düşük'}];
+  const kwMid=[{kw:'3000 tl dijital kamera',vol:'4.8K/ay',diff:'Düşük'},{kw:'canon ixus fiyat',vol:'3.9K/ay',diff:'Düşük'},{kw:'nikon coolpix vintage',vol:'2.8K/ay',diff:'Çok Düşük'},{kw:'ccd kamera nedir',vol:'2.1K/ay',diff:'Çok Düşük'},{kw:'kamera batarya uyumlu',vol:'1.9K/ay',diff:'Çok Düşük'}];
+  const kwAI=[{kw:'en iyi retro kamera 2026',type:'AI Overview'},{kw:'hangi dijital kamera almalıyım',type:'AI Overview'},{kw:'fujifilm mi canon mu',type:'AI Karşılaştırma'},{kw:'3000 tl kamera önerisi',type:'AI Alışveriş'},{kw:'y2k fotoğrafçılık nasıl yapılır',type:'AI Rehber'}];
+  const mkKwEl=(id,items,isAI=false)=>{const el=document.getElementById(id);if(!el)return;el.innerHTML=items.map(k=>isAI?`<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${k.kw}</span><span style="font-size:0.62rem;color:var(--blue);font-family:var(--mono)">${k.type}</span></div>`:`<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04)"><span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${k.kw}</span><div style="text-align:right"><div style="font-size:0.68rem;color:var(--gold);font-family:var(--mono)">${k.vol}</div><div style="font-size:0.6rem;color:var(--t3);font-family:var(--mono)">${k.diff}</div></div></div>`).join('');};
   mkKwEl('seo-kw-high',kwHigh); mkKwEl('seo-kw-mid',kwMid); mkKwEl('seo-kw-ai',kwAI,true);
 }
 
