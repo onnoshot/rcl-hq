@@ -603,9 +603,155 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cw-btn-sec:hover{background:rgba(255,255,255,.1);color:white;}
 .cw-auto-row{display:flex;align-items:center;gap:6px;font-size:.62rem;color:rgba(255,255,255,.4);}
 .cg-w-version{font-size:.6rem;opacity:.35;font-weight:400;margin-left:6px;}
+
+/* ── RCL Auth Gate ──────────────────────────────────────────────────── */
+#rcl-auth-overlay{position:fixed;inset:0;z-index:99999;background:#08060f;
+  display:flex;align-items:center;justify-content:center;
+  animation:none;transition:opacity .6s ease;}
+#rcl-auth-overlay.fade-out{opacity:0;pointer-events:none;}
+.rcl-auth-card{
+  width:380px;padding:44px 40px 40px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(212,175,55,.18);
+  border-radius:20px;
+  backdrop-filter:blur(24px) saturate(160%);
+  box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 0 1px rgba(212,175,55,.06);
+  text-align:center;
+}
+.rcl-auth-logo{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;
+  background:linear-gradient(135deg,#D4AF37,#FFB7C5);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:6px;}
+.rcl-auth-sub{font-size:.72rem;opacity:.35;margin-bottom:32px;letter-spacing:.08em;}
+.rcl-auth-label{font-size:.65rem;opacity:.35;letter-spacing:.12em;text-transform:uppercase;
+  text-align:left;margin-bottom:6px;}
+.rcl-auth-input{
+  width:100%;box-sizing:border-box;
+  padding:12px 16px;border-radius:12px;
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.88);font-size:.9rem;outline:none;
+  transition:border .2s;}
+.rcl-auth-input:focus{border-color:rgba(212,175,55,.5);}
+.rcl-auth-btn{
+  width:100%;margin-top:16px;padding:13px;
+  border-radius:12px;border:none;cursor:pointer;
+  background:linear-gradient(135deg,rgba(212,175,55,.9),rgba(200,150,40,.8));
+  color:#0d0a18;font-size:.88rem;font-weight:700;letter-spacing:.04em;
+  transition:all .2s;box-shadow:0 4px 16px rgba(212,175,55,.3);}
+.rcl-auth-btn:hover{background:linear-gradient(135deg,#D4AF37,#c8a030);
+  box-shadow:0 6px 24px rgba(212,175,55,.45);}
+.rcl-auth-btn:active{transform:scale(.98);}
+.rcl-auth-err{font-size:.72rem;color:rgba(255,69,58,.75);margin-top:10px;
+  min-height:18px;transition:opacity .2s;}
+.rcl-auth-footer{font-size:.62rem;opacity:.2;margin-top:24px;}
+
+/* ── CherryGlow Chat Interface ──────────────────────────────────────────── */
+.cg-main-grid{grid-template-columns:370px 1fr !important;}
+.cg-chat-card{display:flex;flex-direction:column;padding:16px;min-height:340px;}
+.cg-chat-messages{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px;
+  padding:4px 2px;max-height:280px;scrollbar-width:thin;scrollbar-color:rgba(212,175,55,.2) transparent;}
+.cg-msg{display:flex;align-items:flex-end;gap:7px;max-width:92%;}
+.cg-msg.cherry{align-self:flex-start;}
+.cg-msg.user{align-self:flex-end;flex-direction:row-reverse;}
+.cg-msg-av{width:26px;height:26px;border-radius:50%;background:rgba(212,175,55,.12);
+  border:1px solid rgba(212,175,55,.28);display:flex;align-items:center;justify-content:center;
+  font-size:13px;flex-shrink:0;}
+.cg-msg-bbl{padding:8px 13px 6px;border-radius:14px;font-size:.78rem;line-height:1.55;
+  position:relative;max-width:230px;}
+.cg-msg.cherry .cg-msg-bbl{background:rgba(212,175,55,.09);border:1px solid rgba(212,175,55,.18);
+  color:rgba(255,255,255,.82);border-bottom-left-radius:4px;}
+.cg-msg.user .cg-msg-bbl{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.11);
+  color:rgba(255,255,255,.72);border-bottom-right-radius:4px;}
+.cg-msg-bbl.insight{background:rgba(90,200,250,.09);border-color:rgba(90,200,250,.22);}
+.cg-msg-bbl.question{background:rgba(191,90,242,.09);border-color:rgba(191,90,242,.22);}
+.cg-msg-bbl.done{background:rgba(52,199,89,.09);border-color:rgba(52,199,89,.22);}
+.cg-msg-bbl.report{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.28);}
+.cg-msg-bbl.task{background:rgba(255,149,0,.09);border-color:rgba(255,149,0,.22);}
+.cg-msg-time{font-size:.55rem;opacity:.3;margin-top:3px;text-align:right;}
+.cg-typing-dots{display:flex;gap:4px;align-items:center;padding:10px 14px;
+  background:rgba(212,175,55,.09);border:1px solid rgba(212,175,55,.18);border-radius:14px;
+  border-bottom-left-radius:4px;}
+.cg-typing-dots span{width:5px;height:5px;border-radius:50%;background:rgba(212,175,55,.6);
+  animation:cg-dot .9s ease-in-out infinite;}
+.cg-typing-dots span:nth-child(2){animation-delay:.18s;}
+.cg-typing-dots span:nth-child(3){animation-delay:.36s;}
+@keyframes cg-dot{0%,80%,100%{transform:scale(.7);opacity:.4;}40%{transform:scale(1);opacity:1;}}
+.cg-chat-chips{display:flex;flex-wrap:wrap;gap:5px;padding:8px 0 4px;}
+.cg-chip{padding:5px 11px;border-radius:20px;font-size:.67rem;border:1px solid rgba(255,255,255,.09);
+  background:rgba(255,255,255,.04);color:rgba(255,255,255,.5);cursor:pointer;transition:all .2s;
+  white-space:nowrap;}
+.cg-chip:hover{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.3);
+  color:rgba(212,175,55,.85);}
+.cg-chip.hot{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.3);
+  color:rgba(212,175,55,.85);}
+.cg-chat-input-row{display:flex;gap:6px;padding-top:8px;
+  border-top:1px solid rgba(255,255,255,.06);}
+.cg-chat-input{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;padding:8px 12px;color:rgba(255,255,255,.8);font-size:.78rem;
+  outline:none;transition:border .2s;}
+.cg-chat-input:focus{border-color:rgba(212,175,55,.4);}
+.cg-chat-input::placeholder{color:rgba(255,255,255,.22);}
+.cg-chat-send{padding:8px 15px;border-radius:10px;border:1px solid rgba(212,175,55,.3);
+  background:rgba(212,175,55,.12);color:#D4AF37;font-size:.82rem;cursor:pointer;
+  transition:all .2s;}
+.cg-chat-send:hover{background:rgba(212,175,55,.28);}
+
+/* ── Analytics row ──────────────────────────────────────────────────────── */
+.cg-analytics-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+
+/* ── Blog ROI card ──────────────────────────────────────────────────────── */
+.cg-roi-big{font-size:2rem;font-weight:900;line-height:1;margin:6px 0 3px;
+  background:linear-gradient(135deg,#D4AF37,#FFB7C5);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-variant-numeric:tabular-nums;}
+.cg-roi-sub{font-size:.63rem;opacity:.38;margin-bottom:12px;}
+.cg-roi-row{display:flex;justify-content:space-between;align-items:center;
+  padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.72rem;}
+.cg-roi-row:last-of-type{border-bottom:none;}
+.cg-roi-lbl{opacity:.42;}
+.cg-roi-val{font-weight:600;color:rgba(255,255,255,.8);}
+.cg-roi-note{font-size:.58rem;opacity:.22;margin-top:10px;font-style:italic;line-height:1.5;}
+.cg-roi-refresh{float:right;padding:3px 8px;border-radius:7px;
+  border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);
+  color:rgba(255,255,255,.4);font-size:.62rem;cursor:pointer;transition:all .2s;}
+.cg-roi-refresh:hover{border-color:rgba(212,175,55,.25);color:rgba(212,175,55,.7);}
+
+/* ── Insight engine ─────────────────────────────────────────────────────── */
+.cg-insight-card{background:linear-gradient(135deg,rgba(212,175,55,.04),rgba(191,90,242,.02));}
+.cg-insight-item{display:flex;align-items:center;gap:11px;padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.04);}
+.cg-insight-item:last-child{border-bottom:none;}
+.cg-insight-icon{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;
+  justify-content:center;font-size:16px;flex-shrink:0;}
+.cg-insight-body{flex:1;}
+.cg-insight-title{font-size:.78rem;color:rgba(255,255,255,.82);margin-bottom:2px;font-weight:600;}
+.cg-insight-desc{font-size:.67rem;opacity:.42;line-height:1.4;}
+.cg-insight-act{padding:5px 11px;border-radius:8px;border:1px solid rgba(212,175,55,.24);
+  background:transparent;color:rgba(212,175,55,.68);font-size:.64rem;cursor:pointer;
+  transition:all .2s;white-space:nowrap;flex-shrink:0;}
+.cg-insight-act:hover{background:rgba(212,175,55,.12);color:#D4AF37;}
+
+/* ── Gradient numbers ───────────────────────────────────────────────────── */
+.cg-grad-num{background:linear-gradient(135deg,#D4AF37,#FFB7C5);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 </style>
 </head>
 <body>
+<div id="rcl-auth-overlay">
+  <div class="rcl-auth-card">
+    <div class="rcl-auth-logo">Retrocameraland HQ</div>
+    <div class="rcl-auth-sub">ÖZEL YÖNETİM PANELİ</div>
+    <div class="rcl-auth-label">Erişim Şifresi</div>
+    <input class="rcl-auth-input" type="password" id="rcl-auth-pw"
+      placeholder="••••••••"
+      onkeydown="if(event.key==='Enter')rclAuthCheck()">
+    <button class="rcl-auth-btn" onclick="rclAuthCheck()">Giriş Yap</button>
+    <div class="rcl-auth-err" id="rcl-auth-err"></div>
+    <div class="rcl-auth-footer">Bu panel yalnızca yetkili kullanıcılara özeldir.</div>
+  </div>
+</div>
+
 <div class="orb orb1"></div><div class="orb orb2"></div>
 
 <aside class="sidebar" id="sidebar">
@@ -1919,6 +2065,8 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   </div>
   <div class="cg-stat-sep"></div>
   <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-today">0</div><div class="cg-stat-lbl">Bugun</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val cg-grad-num" id="cg-stat-rev" style="-webkit-text-fill-color:initial;color:var(--gold)">--</div><div class="cg-stat-lbl">Blog Geliri</div></div>
 </div>
 <div class="cg-main-grid">
   <!-- ── LEFT COL ── -->
@@ -2140,23 +2288,26 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
     </div>
 
     <!-- Thought stream + agenda -->
-    <div class="card" style="padding:16px">
-      <div class="cg-panel-title">
-        Dusunce Akisi
-        <span style="font-size:.6rem;opacity:.35;font-weight:400" id="cg-last-act"></span>
+    <!-- Chat panel (Cherry ↔ Patron) -->
+    <div class="card cg-chat-card" style="flex:1">
+      <div class="cg-panel-title" style="margin-bottom:10px;flex-shrink:0">
+        Cherry ile Konuş
+        <span style="font-size:.58rem;opacity:.28;font-weight:400">calisan · patron</span>
       </div>
-      <div class="cg-thought-stream" id="cg-thought-stream">
-        <div id="cg-ts-inner"><span class="cg-ts-line">Baslamak icin bir konu sec...</span></div>
+      <div class="cg-chat-messages" id="cg-chat-messages"></div>
+      <div class="cg-chat-chips" id="cg-chat-chips">
+        <span class="cg-chip hot" onclick="cgInsightEngine()">Analiz Yap</span>
+        <span class="cg-chip" onclick="cgUserSend('Hepsini yaz')">Hepsini Yaz</span>
+        <span class="cg-chip" onclick="cgUserSend('Rapor ver')">Rapor</span>
+        <span class="cg-chip" onclick="cgUserSend('Ne kadar kazandim')">Gelir?</span>
+        <span class="cg-chip" onclick="cgUserSend('Hangi konu en iyi')">En Iyi Konu</span>
       </div>
-      <div class="cg-panel-title" style="margin-top:14px">
-        Gundem
-        <span class="cg-panel-count" id="cg-agenda-count"
-          style="background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.2);border-radius:8px;padding:1px 7px;font-size:.6rem;color:rgba(212,175,55,.7)">0</span>
-      </div>
-      <div class="cg-agenda-wrap" id="cg-agenda-list"></div>
-      <div class="cg-ctrl-row">
-        <button class="cg-ctrl-btn primary" onclick="cherryAddAllToAgenda()">Tumu Ekle</button>
-        <button class="cg-ctrl-btn" onclick="cherryPublishLatest()">Yayinla</button>
+      <div class="cg-chat-input-row">
+        <input type="text" class="cg-chat-input" id="cg-chat-input"
+          placeholder="Cherry'ye bir sey soyle..."
+          onkeydown="if(event.key==='Enter'&&this.value.trim())cgUserSend(this.value)">
+        <button class="cg-chat-send"
+          onclick="var v=document.getElementById('cg-chat-input').value;if(v.trim())cgUserSend(v)">&#8594;</button>
       </div>
     </div>
   </div>
@@ -2190,26 +2341,60 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
       <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
     </div>
 
-    <!-- SEO infographic panel -->
-    <div class="card" style="padding:16px">
-      <div class="cg-seo-header">
-        SEO Analizi
-        <span id="cg-seo-stamp" style="font-size:.62rem;opacity:.4"></span>
-      </div>
-      <div class="cg-seo-grid" id="cg-seo-grid">
-        <div class="cg-score-ring-wrap">
-          <svg viewBox="0 0 120 120" class="cg-score-ring-svg">
-            <defs><linearGradient id="cgScoreGrad2" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
-            </linearGradient></defs>
-            <circle cx="60" cy="60" r="50" class="cg-sr-bg"/>
-            <circle cx="60" cy="60" r="50" class="cg-sr-fill" id="cg-sr-fill"
-              stroke="url(#cgScoreGrad2)" stroke-dasharray="314" stroke-dashoffset="314"/>
-          </svg>
-          <div class="cg-score-center" id="cg-score-center">--</div>
+    <!-- Analytics row: SEO + ROI side by side -->
+    <div class="cg-analytics-row">
+      <!-- SEO Analysis -->
+      <div class="card" style="padding:16px">
+        <div class="cg-seo-header">
+          SEO Analizi
+          <span id="cg-seo-stamp" style="font-size:.62rem;opacity:.4"></span>
         </div>
-        <div class="cg-seo-bars" id="cg-seo-bars">
-          <div style="font-size:.7rem;opacity:.3;padding:8px 0">Blog tamamlaninca analiz gosterilecek...</div>
+        <div class="cg-seo-grid" id="cg-seo-grid">
+          <div class="cg-score-ring-wrap">
+            <svg viewBox="0 0 120 120" class="cg-score-ring-svg">
+              <defs><linearGradient id="cgScoreGrad2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
+              </linearGradient></defs>
+              <circle cx="60" cy="60" r="50" class="cg-sr-bg"/>
+              <circle cx="60" cy="60" r="50" class="cg-sr-fill" id="cg-sr-fill"
+                stroke="url(#cgScoreGrad2)" stroke-dasharray="314" stroke-dashoffset="314"/>
+            </svg>
+            <div class="cg-score-center" id="cg-score-center">--</div>
+          </div>
+          <div class="cg-seo-bars" id="cg-seo-bars">
+            <div style="font-size:.7rem;opacity:.3;padding:8px 0">Blog tamamlaninca analiz gosterilecek...</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog ROI / Gelir Tahmini -->
+      <div class="card" style="padding:16px">
+        <div class="cg-panel-title" style="margin-bottom:4px">
+          Blog Gelir Tahmini
+          <button class="cg-roi-refresh" onclick="cgRefreshROI()">Yenile</button>
+        </div>
+        <div class="cg-roi-big" id="cg-roi-big">&#8378;0</div>
+        <div class="cg-roi-sub">Tahmini aylik blog geliri</div>
+        <div id="cg-roi-metrics">
+          <div class="cg-roi-row"><span class="cg-roi-lbl">Yazilan Blog</span><span class="cg-roi-val" id="roi-total">0</span></div>
+          <div class="cg-roi-row"><span class="cg-roi-lbl">Yayinlanan</span><span class="cg-roi-val" id="roi-pub">0</span></div>
+          <div class="cg-roi-row"><span class="cg-roi-lbl">Tahmini Ziyaretci/Ay</span><span class="cg-roi-val" id="roi-traffic">0</span></div>
+          <div class="cg-roi-row"><span class="cg-roi-lbl">Donusum Orani</span><span class="cg-roi-val" id="roi-conv">%1.2</span></div>
+          <div class="cg-roi-row"><span class="cg-roi-lbl">Ort. Siparis Degeri</span><span class="cg-roi-val" id="roi-aov">&#8378;12.000</span></div>
+        </div>
+        <div class="cg-roi-note">* SEO skoru bazli organik trafik tahmini. Gercek gelir UTM takibi gerektirir.</div>
+      </div>
+    </div>
+
+    <!-- Insight Engine -->
+    <div class="card cg-insight-card" style="padding:16px">
+      <div class="cg-panel-title" style="margin-bottom:10px">
+        Cherry'nin Icgoruleri
+        <button class="cg-insight-act" onclick="cgInsightEngine()" style="font-size:.62rem;padding:4px 10px">Analiz Et</button>
+      </div>
+      <div id="cg-insight-list">
+        <div style="font-size:.72rem;opacity:.3;padding:8px 0">
+          Ilk bloglar yazildiginda Cherry kendi analizlerini burada sunacak...
         </div>
       </div>
     </div>
@@ -4275,6 +4460,23 @@ function setCherryState(s) {
   if (s === 'done') {
     setTimeout(cgCelebrate, 200);
     setTimeout(function() { setCherryState('idle'); }, 4500);
+    // Chat notification
+    setTimeout(function() {
+      var brain = cgGetBrain();
+      var hist = brain.history || [];
+      var last = hist.length ? hist[hist.length-1] : null;
+      var seoScore = last ? (last.seo||'--') : '--';
+      var title = last ? last.title : 'Blog';
+      cgAddMessage('cherry',
+        '"' + title.slice(0,45) + '" tamamlandi! SEO: ' + seoScore + '/100. Yayinlayayim mi?',
+        'done', 300);
+      cgSetChips([
+        {label:'Evet, Yayinla!', act:'cherryPublishLatest();cgAddMessage("user","Evet yayinla","")', hot:true},
+        {label:'Simdilik Beklet', act:'cgUserSend("Hayir simdilik beklet")'},
+        {label:'Onizle', act:'setCherryTab("preview",document.querySelector(".cg-tab"))'},
+      ]);
+      cgRefreshROI();
+    }, 600);
   }
 }
 
@@ -4986,6 +5188,10 @@ function renderCherryPage() {
   cgBuildAgenda();
   cherryLog('CherryGlow ' + CG_VERSION + ' hazir.', 'ok');
   cherryThink('Gundem analiz edildi. Blog yazmaya hazir!', 'think');
+  // Greeting + ROI
+  setTimeout(cgCherryGreeting, 500);
+  setTimeout(cgRefreshROI, 800);
+  setTimeout(cgInsightEngine, 2000);
   // Re-sync waveform
   cgUpdateWaveform('idle');
   // Restore stats from brain
@@ -5020,6 +5226,408 @@ function initFade() {
   document.querySelectorAll('.fi').forEach(el => obs.observe(el));
 }
 
+
+// ─── CHAT SYSTEM ──────────────────────────────────────────────────────────────
+var _cgChatHistory = [];
+
+function cgAddMessage(from, text, type, delay) {
+  delay = delay || 0;
+  if (from === 'cherry' && delay === 0) delay = 120 + Math.min(text.length * 6, 600);
+  setTimeout(function() {
+    // Remove typing indicator if exists
+    var typDot = document.getElementById('cg-typing-dot');
+    if (typDot && typDot.parentNode) typDot.parentNode.removeChild(typDot);
+    _cgChatHistory.push({from:from, text:text, type:type||'', ts:Date.now()});
+    if (_cgChatHistory.length > 80) _cgChatHistory = _cgChatHistory.slice(-80);
+    cgRenderChat();
+    // Update thought log too
+    if (from === 'cherry') cherryLog(text.slice(0,60), type || '');
+  }, delay);
+  // Show typing indicator for cherry messages
+  if (from === 'cherry' && delay > 200) {
+    setTimeout(function() {
+      var msgEl = document.getElementById('cg-chat-messages');
+      if (!msgEl) return;
+      var typing = document.createElement('div');
+      typing.className = 'cg-msg cherry'; typing.id = 'cg-typing-dot';
+      typing.innerHTML = '<div class="cg-msg-av">🌸</div><div class="cg-typing-dots"><span></span><span></span><span></span></div>';
+      msgEl.appendChild(typing);
+      msgEl.scrollTop = msgEl.scrollHeight;
+    }, 60);
+  }
+}
+
+function cgRenderChat() {
+  var el = document.getElementById('cg-chat-messages');
+  if (!el) return;
+  el.innerHTML = _cgChatHistory.slice(-22).map(function(msg) {
+    var isC = msg.from === 'cherry';
+    var t = new Date(msg.ts).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+    return '<div class="cg-msg ' + (isC?'cherry':'user') + '">' +
+      (isC ? '<div class="cg-msg-av">🌸</div>' : '') +
+      '<div class="cg-msg-bbl ' + msg.type + '">' + msg.text +
+      '<div class="cg-msg-time">' + t + '</div></div></div>';
+  }).join('');
+  el.scrollTop = el.scrollHeight;
+}
+
+function cgSetChips(chips) {
+  var el = document.getElementById('cg-chat-chips');
+  if (!el) return;
+  el.innerHTML = chips.map(function(ch) {
+    return '<span class="cg-chip' + (ch.hot?' hot':'') + '" onclick="' + ch.act + '">' + ch.label + '</span>';
+  }).join('');
+}
+
+function cgResetChips() {
+  cgSetChips([
+    {label:'Analiz Yap', act:'cgInsightEngine()', hot:true},
+    {label:'Hepsini Yaz', act:'cgUserSend("Hepsini yaz")'},
+    {label:'Rapor', act:'cgUserSend("Rapor ver")'},
+    {label:'Gelir?', act:'cgUserSend("Ne kadar kazandim")'},
+    {label:'En Iyi Konu', act:'cgUserSend("Hangi konu en iyi")'},
+  ]);
+}
+
+function cgUserSend(text) {
+  var inp = document.getElementById('cg-chat-input');
+  if (!text && inp) text = inp.value;
+  if (!text || !text.trim()) return;
+  if (inp) inp.value = '';
+  cgAddMessage('user', text, '', 0);
+  cgHandleUserCommand(text);
+}
+
+function cgHandleUserCommand(text) {
+  var lower = text.toLowerCase().trim();
+  var thinkDelay = 500 + Math.min(lower.length * 8, 800);
+
+  if (/^(evet|tamam|yayinla|yayinlayalim|publish|olur|yap)/.test(lower)) {
+    cgAddMessage('cherry', 'Hemen yayinliyorum!', 'task', thinkDelay);
+    setTimeout(function(){ cherryPublishLatest(); cgResetChips(); }, thinkDelay + 400);
+
+  } else if (/^(hayir|dur|beklet|sonra|simdilik)/.test(lower)) {
+    cgAddMessage('cherry', 'Tamam, simdilik bekletiyor. "Yayinla" dediginde gonderecegim.', '', thinkDelay);
+    setTimeout(cgResetChips, thinkDelay + 200);
+
+  } else if (/analiz|rapor|performans|nasil gidiyor/.test(lower)) {
+    setTimeout(cgInsightEngine, thinkDelay);
+
+  } else if (/hepsini yaz|tumunu yaz|baslat|baslayalim/.test(lower)) {
+    cgAddMessage('cherry', 'Tum gundem konularini sirasiya yazacagim! Basliyorum...', 'task', thinkDelay);
+    setTimeout(function() { cherryAddAllToAgenda(); setTimeout(function(){ cherryGenerateBlog(0); }, 800); }, thinkDelay + 300);
+
+  } else if (/gelir|kazan|para|roi|ne kadar/.test(lower)) {
+    setTimeout(function() {
+      cgRefreshROI();
+      cgAddMessage('cherry', cgGenerateROIMessage(), 'report');
+    }, thinkDelay);
+
+  } else if (/en iyi|en yuksek|hangi konu/.test(lower)) {
+    setTimeout(function() {
+      var brain = cgGetBrain();
+      var scores = brain.seo_scores || [];
+      var covered = brain.topics_covered || [];
+      if (!scores.length) {
+        cgAddMessage('cherry', 'Henuz yeterli veri yok. Bir kac blog yazalim!', '');
+        return;
+      }
+      var best = Math.max.apply(null, scores);
+      var bi = scores.indexOf(best);
+      var bt = covered[bi];
+      cgAddMessage('cherry', '"' + (bt&&bt.topic ? bt.topic.slice(0,50) : 'Bu konu') + '" su an en iyi performansimi aliyor: ' + best + '/100 SEO. Bu kategoride devam etmemi ister misin?', 'insight');
+      cgSetChips([
+        {label:'Evet, devam et', act:'cgUserSend("Evet, devam et")', hot:true},
+        {label:'Farkli Konu', act:'cgUserSend("Farkli konu dene")'},
+        {label:'Analiz', act:'cgInsightEngine()'},
+      ]);
+    }, thinkDelay);
+
+  } else if (/tesek|harika|guzel|super|bravo|muk/.test(lower)) {
+    var praises = [
+      'Tessekurler Onur! Daha iyisi icin cok calisiyorum 🌸',
+      'Motive oldum! Bir sonraki blog icin hazir ve heyecanliyim.',
+      'Hedefimiz 90+ SEO puani. Devam!',
+    ];
+    cgAddMessage('cherry', praises[Math.floor(Math.random()*praises.length)], '', thinkDelay);
+
+  } else if (/dinlen|mola|dur|yeter/.test(lower)) {
+    cgAddMessage('cherry', 'Tamam, kisa bir mola veriyorum. Hazir oldugunuzda "baslayalim" deyin.', '', thinkDelay);
+    setTimeout(function(){ setCherryState('idle'); }, thinkDelay + 300);
+
+  } else {
+    var fallbacks = [
+      'Anladim! Bunu stratejime dahil edecegim.',
+      'Not aldim! Bir sonraki icerik uretiminde uygulayacagim.',
+      'Tamam. Devam etmemi ister misin?',
+      'Harika bir nokta. Buna gore gundemimi guncelleyeyim.',
+    ];
+    cgAddMessage('cherry', fallbacks[Math.floor(Math.random()*fallbacks.length)], '', thinkDelay);
+  }
+}
+
+// ─── GREETING ────────────────────────────────────────────────────────────────
+function cgCherryGreeting() {
+  var brain = cgGetBrain();
+  var hist = brain.history || [];
+  var scores = brain.seo_scores || [];
+  var h = new Date().getHours();
+  var gr = h<12?'Gunaydın Onur!':h<18?'Iyi gunler Onur!':'Iyi aksamlar Onur!';
+
+  if (hist.length === 0) {
+    cgAddMessage('cherry', gr + ' Ben CherryGlow, Retrocameraland\'in AI blog asistanim. ' + CG_VERSION + ' versiyonuyla calisiyorum. Ilk blogu birlikte yazalim mi?', 'report', 400);
+    setTimeout(function(){
+      cgAddMessage('cherry', 'Baslamak icin bir konu sec veya "Hepsini Yaz" de. Sana en guncel SEO stratejisiyle muhteşem icerikler yazacagim.', 'question');
+    }, 2000);
+  } else {
+    var avg = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
+    var todayC = (brain.topics_covered||[]).filter(function(t){return t.date===new Date().toDateString();}).length;
+    cgAddMessage('cherry', gr + ' Bugun ' + (todayC>0?todayC+' blog yazdim, ':' henuz baslamadik, ') + 'toplam ' + hist.length + ' blog, ortalama SEO: ' + avg + '/100.', 'report', 400);
+    if (scores.length >= 2) {
+      var best = Math.max.apply(null, scores);
+      var bi = scores.indexOf(best);
+      var bt = (brain.topics_covered||[])[bi];
+      setTimeout(function(){
+        cgAddMessage('cherry', '풠 Icgoru: "' + (bt&&bt.topic?bt.topic.slice(0,45):'En iyi konunuz') + '" ' + best + '/100 ile rekorunuz. Bu kategoriye devam etmemizi oneririm.', 'insight');
+      }, 1800);
+    }
+    var pending = _cgAgenda.filter(function(a){return a.stage==='pending';});
+    if (pending.length > 0) {
+      setTimeout(function(){
+        var preview = pending.slice(0,2).map(function(a){return '"'+a.topic.slice(0,28)+'"';}).join(', ');
+        cgAddMessage('cherry', 'Gundemde ' + pending.length + ' konu bekliyor: ' + preview + '... Hangisinden baslamami istersin?', 'question');
+        cgSetChips([
+          {label:'Hepsini Yaz', act:'cgUserSend("Hepsini yaz")', hot:true},
+          {label:'Analiz Once', act:'cgInsightEngine()'},
+          {label:'Gelir Goster', act:'cgUserSend("Ne kadar kazandim")'},
+        ]);
+      }, 3200);
+    }
+  }
+}
+
+// ─── INSIGHT ENGINE ──────────────────────────────────────────────────────────
+function cgInsightEngine() {
+  var brain = cgGetBrain();
+  var hist = brain.history || [];
+  var scores = brain.seo_scores || [];
+  var covered = brain.topics_covered || [];
+
+  if (scores.length === 0) {
+    cgAddMessage('cherry', 'Henuz analiz edecek yeterli veri yok. Birkaç blog yazalim ve gercek performans verisi biriktirelim!', 'insight');
+    cgRenderInsights([]);
+    return;
+  }
+
+  var avg = Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length);
+  var best = Math.max.apply(null, scores);
+  var worst = Math.min.apply(null, scores);
+  var bestIdx = scores.indexOf(best);
+  var worstIdx = scores.indexOf(worst);
+  var bestTopic = covered[bestIdx] || {};
+  var worstTopic = covered[worstIdx] || {};
+
+  // Category performance
+  var catPerf = {};
+  covered.forEach(function(t,i) {
+    var cat = t.cat || 'genel';
+    if (!catPerf[cat]) catPerf[cat] = {sum:0, count:0, topics:[]};
+    catPerf[cat].sum += (scores[i]||0);
+    catPerf[cat].count++;
+    catPerf[cat].topics.push(t.topic||'');
+  });
+  var cats = Object.keys(catPerf).sort(function(a,b){
+    return (catPerf[b].sum/catPerf[b].count) - (catPerf[a].sum/catPerf[a].count);
+  });
+  var bestCat = cats[0] || '';
+  var bestCatAvg = bestCat ? Math.round(catPerf[bestCat].sum/catPerf[bestCat].count) : 0;
+
+  // Trend: are scores improving?
+  var trend = scores.length >= 3
+    ? (scores.slice(-3).reduce(function(a,b){return a+b;},0)/3 -
+       scores.slice(0,3).reduce(function(a,b){return a+b;},0)/3)
+    : 0;
+
+  var insights = [];
+
+  insights.push({
+    icon:'📈', color:'rgba(52,199,89,.14)',
+    title:'En Iyi Blog',
+    desc:'"' + (bestTopic.topic||'').slice(0,45) + '" — SEO: ' + best + '/100',
+    act:'Benzerini Yaz', onclick:'cgWriteSimilar(' + bestIdx + ')'
+  });
+
+  if (bestCat) {
+    insights.push({
+      icon:'🎯', color:'rgba(212,175,55,.12)',
+      title:'En Guçlu Kategori',
+      desc:'"' + bestCat + '" — Ort. ' + bestCatAvg + '/100 (' + catPerf[bestCat].count + ' blog)',
+      act:'Odaklan', onclick:'cgFocusCategory("' + bestCat + '")'
+    });
+  }
+
+  insights.push({
+    icon: trend >= 2 ? '⬆️' : trend <= -2 ? '⬇️' : '➡️',
+    color: trend >= 2 ? 'rgba(52,199,89,.12)' : trend <= -2 ? 'rgba(255,69,58,.1)' : 'rgba(90,200,250,.1)',
+    title:'SEO Trendi',
+    desc:'Ort. ' + avg + '/100 — ' + (trend>=2?'Yukseliyor!':trend<=-2?'Dusuyor, strateji gozden gec':'Stabil'),
+    act:'Iyilestir', onclick:'cgImproveAvg()'
+  });
+
+  if (hist.length >= 3 && worst < 60) {
+    insights.push({
+      icon:'🔧', color:'rgba(255,149,0,.1)',
+      title:'Gelistirme Firsati',
+      desc:'"' + (worstTopic.topic||'').slice(0,40) + '" — ' + worst + '/100, yeniden yaz?',
+      act:'Yeniden Yaz', onclick:'cgRewriteTopic(' + worstIdx + ')'
+    });
+  }
+
+  cgRenderInsights(insights);
+
+  var msg = 'Analiz tamam! ' + hist.length + ' blog, ort. ' + avg + '/100 SEO. ' +
+    (bestCat ? '"' + bestCat + '" kategorisi ' + bestCatAvg + '/100 ile one cikiyor.' : '') +
+    (trend >= 2 ? ' Performansin yukseliyor!' : trend <= -2 ? ' Son bloklarda dusus var, stratejiyi guncelleyelim.' : '');
+  cgAddMessage('cherry', msg, 'insight');
+
+  setTimeout(function(){
+    cgAddMessage('cherry', 'Hangi konuya odaklanmamı istersin?', 'question');
+    cgSetChips([
+      {label:'En Iyi Kategoride Devam', act:'cgFocusCategory("' + bestCat + '")', hot:true},
+      {label:'Farkli Konu', act:'cgUserSend("Farkli konu sec")'},
+      {label:'Gelir Hesapla', act:'cgRefreshROI()'},
+    ]);
+  }, 2000);
+}
+
+function cgRenderInsights(insights) {
+  var el = document.getElementById('cg-insight-list');
+  if (!el) return;
+  if (!insights.length) {
+    el.innerHTML = '<div style="font-size:.72rem;opacity:.28;padding:10px 0">Ilk bloglardan sonra Cherry\'nin icgoruleri burada gorunecek...</div>';
+    return;
+  }
+  el.innerHTML = insights.map(function(ins){
+    return '<div class="cg-insight-item">' +
+      '<div class="cg-insight-icon" style="background:' + ins.color + '">' + ins.icon + '</div>' +
+      '<div class="cg-insight-body">' +
+        '<div class="cg-insight-title">' + ins.title + '</div>' +
+        '<div class="cg-insight-desc">' + ins.desc + '</div>' +
+      '</div>' +
+      '<button class="cg-insight-act" onclick="' + ins.onclick + '">' + ins.act + '</button>' +
+    '</div>';
+  }).join('');
+}
+
+function cgWriteSimilar(topicIdx) {
+  var brain = cgGetBrain();
+  var covered = brain.topics_covered || [];
+  var t = covered[topicIdx];
+  cgAddMessage('cherry', (t?'"'+t.topic.slice(0,40)+'"':' Bu konu') + ' kategorisine benzer yeni bir icerik yaziyorum!', 'task');
+  cgBuildAgenda();
+  setTimeout(function(){ cherryGenerateBlog(0); }, 600);
+}
+
+function cgFocusCategory(cat) {
+  cgAddMessage('cherry', '"' + cat + '" kategorisine odaklaniyorum. Gundemimi yeniden duzenliyorum...', 'task');
+  cgBuildAgenda();
+  var items = _cgAgenda.filter(function(a){ return a.cat===cat && a.stage==='pending'; });
+  if (items.length) {
+    var idx = _cgAgenda.indexOf(items[0]);
+    setTimeout(function(){ cherryGenerateBlog(idx); }, 600);
+  } else {
+    cgAddMessage('cherry', '"' + cat + '" kategorisinde tum konular yazilmis! Farkli bir kategoriye geceyim mi?', 'question');
+  }
+}
+
+function cgImproveAvg() {
+  cgAddMessage('cherry', 'SEO ortalamasini yukseltmek icin: 1) Daha uzun icerik (1500+ kelime), 2) Guclu anahtar kelime yogunlugu, 3) Daha fazla H2 basligi. Bir sonraki blogda 90+ hedefliyorum!', 'insight');
+}
+
+function cgRewriteTopic(topicIdx) {
+  var brain = cgGetBrain();
+  var covered = brain.topics_covered || [];
+  var t = covered[topicIdx];
+  cgAddMessage('cherry', '"' + (t?t.topic.slice(0,40):'Bu konu') + '" icin daha guclu bir versiyon yaziyorum!', 'task');
+  cgBuildAgenda();
+  setTimeout(function(){ cherryGenerateBlog(0); }, 600);
+}
+
+// ─── ROI CALCULATION ─────────────────────────────────────────────────────────
+function cgCalcBlogROI() {
+  var brain = cgGetBrain();
+  var scores = brain.seo_scores || [];
+  var hist = brain.history || [];
+  var pubHist = hist.filter(function(h){ return h.published; });
+
+  var totalTraffic = scores.reduce(function(sum,s){
+    if (s >= 85) return sum + 520;
+    if (s >= 75) return sum + 310;
+    if (s >= 65) return sum + 160;
+    if (s >= 50) return sum + 70;
+    return sum + 18;
+  }, 0);
+
+  var shopifyAOV = 12000; // from SHOPIFY.period_30d.aov
+  try {
+    if (typeof SHOPIFY !== 'undefined' && SHOPIFY.period_30d && SHOPIFY.period_30d.aov) {
+      shopifyAOV = SHOPIFY.period_30d.aov;
+    }
+  } catch(e) {}
+
+  var convRate = 0.012; // 1.2% for niche vintage camera store
+  var estimatedRevenue = Math.round(totalTraffic * convRate * shopifyAOV);
+  var avgSeo = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
+
+  return {
+    totalBlogs: scores.length,
+    publishedBlogs: pubHist.length,
+    totalTraffic: totalTraffic,
+    estimatedRevenue: estimatedRevenue,
+    convRate: (convRate * 100).toFixed(1),
+    aov: shopifyAOV,
+    avgSeo: avgSeo
+  };
+}
+
+function cgRefreshROI() {
+  var roi = cgCalcBlogROI();
+  var bigEl = document.getElementById('cg-roi-big');
+  if (bigEl) bigEl.textContent = roi.estimatedRevenue > 0
+    ? '₺' + roi.estimatedRevenue.toLocaleString('tr-TR')
+    : '₺0';
+
+  var fields = {
+    'roi-total':   roi.totalBlogs,
+    'roi-pub':     roi.publishedBlogs,
+    'roi-traffic': roi.totalTraffic.toLocaleString('tr-TR'),
+    'roi-conv':    '%' + roi.convRate,
+    'roi-aov':     '₺' + roi.aov.toLocaleString('tr-TR'),
+  };
+  Object.keys(fields).forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.textContent = fields[id];
+  });
+  // Also update stats ribbon
+  var statRevEl = document.getElementById('cg-stat-rev');
+  if (statRevEl && roi.estimatedRevenue > 0) {
+    statRevEl.textContent = '~₺' + Math.round(roi.estimatedRevenue/1000) + 'K';
+  }
+}
+
+function cgGenerateROIMessage() {
+  var roi = cgCalcBlogROI();
+  if (roi.totalBlogs === 0) return 'Henuz blog yazilmamis. Hadi baslayalim!';
+  if (roi.publishedBlogs === 0) {
+    return roi.totalBlogs + ' blog hazir ama hicbiri yayinlanmamis. Yayinlarsak organik trafik baslar!';
+  }
+  return roi.publishedBlogs + ' yayinlanan blog uzerinden tahmini aylik trafik: ~' +
+    roi.totalTraffic.toLocaleString('tr-TR') + ' ziyaretci. ' +
+    '%' + roi.convRate + ' donusum ve ₺' + roi.aov.toLocaleString('tr-TR') +
+    ' AOV ile: ~₺' + roi.estimatedRevenue.toLocaleString('tr-TR') + ' aylik blog geliri tahmini.';
+}
+
+
 // ─── INIT ─────────────────────────────────────────────────
 renderHeader();
 renderKPIs();
@@ -5035,6 +5643,52 @@ initFade();
 initRouter();
 cgInitWidget();
 window.speechSynthesis && window.speechSynthesis.getVoices();
+
+// ── RCL Auth Gate ──────────────────────────────────────────────────────────
+(function() {
+  var HASH = '248a2a063a08b5c52bb81aa0d8630e0b281b93a74f40c36089f9621c19b67262';
+  var SESSION_KEY = 'rcl_auth_v1';
+
+  async function sha256(msg) {
+    var buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+
+  function rclAuthUnlock() {
+    var ov = document.getElementById('rcl-auth-overlay');
+    if (ov) {
+      ov.classList.add('fade-out');
+      setTimeout(function(){ ov.style.display='none'; }, 650);
+    }
+  }
+
+  window.rclAuthCheck = async function() {
+    var pw = document.getElementById('rcl-auth-pw');
+    var err = document.getElementById('rcl-auth-err');
+    if (!pw) return;
+    var h = await sha256(pw.value);
+    if (h === HASH) {
+      sessionStorage.setItem(SESSION_KEY, '1');
+      if (err) err.textContent = '';
+      rclAuthUnlock();
+    } else {
+      if (err) err.textContent = 'Hatalı şifre. Lütfen tekrar deneyin.';
+      pw.value = '';
+      pw.focus();
+    }
+  };
+
+  // Check session on load
+  document.addEventListener('DOMContentLoaded', function() {
+    if (sessionStorage.getItem(SESSION_KEY) === '1') {
+      rclAuthUnlock();
+    } else {
+      var pw = document.getElementById('rcl-auth-pw');
+      if (pw) setTimeout(function(){ pw.focus(); }, 100);
+    }
+  });
+})();
+
 </script>
 </body>
 </html>
