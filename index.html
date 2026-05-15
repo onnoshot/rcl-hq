@@ -5281,7 +5281,11 @@ async function cherryGenerateBlog(agendaIdx) {
     }
     var reader = resp.body.getReader(), decoder = new TextDecoder();
     var buf = '';
-    var _streamStart = Date.now();
+    // Stream sırasında sadece plain-text + kelime sayısı güncelle (markdown parse YOK)
+    // Bu browser freeze'i önler — full render sadece bittikten sonra yapılır
+    if (bodyEl) bodyEl.innerHTML = '<div id="cg-stream-plain" style="font-family:var(--mono);font-size:.82rem;line-height:1.7;white-space:pre-wrap;color:rgba(255,255,255,.7);word-break:break-word;padding:4px 0"></div><span class="cg-stream-cursor"></span>';
+    var plainEl = document.getElementById('cg-stream-plain');
+    var _lastUIUpdate = 0;
     while (true) {
       // 45-second timeout per read chunk
       var _r = await Promise.race([
@@ -5301,14 +5305,12 @@ async function cherryGenerateBlog(agendaIdx) {
           var evt = JSON.parse(raw);
           if (evt.type === 'content_block_delta' && evt.delta && evt.delta.type === 'text_delta') {
             lastBlogMd += evt.delta.text;
+            // DOM güncelleme 200ms'de bir — markdown parse YOK, sadece plain text
             var now = Date.now();
-            if (now - lastUp > 80) {
-              lastUp = now;
-              if (bodyEl && _cgActiveTab === 'preview') {
-                bodyEl.innerHTML = simpleMarkdownToHTML(lastBlogMd) + '<span class="cg-stream-cursor"></span>';
-              }
-              var wc = lastBlogMd.split(/\s+/).length;
-              if (wcEl) wcEl.textContent = wc + ' kelime';
+            if (now - _lastUIUpdate > 200) {
+              _lastUIUpdate = now;
+              if (plainEl) plainEl.textContent = lastBlogMd;
+              if (wcEl) wcEl.textContent = lastBlogMd.split(/\s+/).length + ' kelime';
             }
           }
         } catch(e) {}
