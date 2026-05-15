@@ -624,7 +624,13 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cg-w-version{font-size:.6rem;opacity:.35;font-weight:400;margin-left:6px;}
 
 
-/* ── CherryGlow Chat — yeniden tasarim ──────────────────────────────────── */
+
+/* ── CherryGlow v6 ── */
+.cg-main-grid{grid-template-columns:300px 1fr !important;}
+@keyframes cg-status-pulse{0%,100%{opacity:.85;}50%{opacity:.35;}}
+#cg-action-card{border:1px solid rgba(255,255,255,.07);}
+
+/* chat CSS (legacy - unused) */
 .cg-main-grid{grid-template-columns:290px 1fr !important;}
 .cg-chat-card{display:flex;flex-direction:column;padding:0;min-height:340px;overflow:hidden;}
 
@@ -2039,492 +2045,127 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 
 
-<!-- ═══════════════════ CHERRYGLOW ═══════════════════ -->
+<!-- ═══════════════════ CHERRYGLOW v6 ═══════════════════ -->
 <div class="page" id="page-cherry">
+
 <div class="page-topbar fi">
-  <div class="pt-left" style="display:flex;align-items:center;gap:14px;flex:1">
-    <div>
-      <div class="pt-title" style="display:flex;align-items:center;gap:10px">
-        CherryGlow
-        <span class="cg-version" id="cg-version">v4</span>
-      </div>
-      <div class="pt-sub" style="font-size:.68rem;opacity:.4">Scout &rarr; Brief &rarr; Yaz &rarr; Puan &mdash; Otonom AI Blog Motoru</div>
+  <div class="pt-left">
+    <div class="pt-title" style="display:flex;align-items:center;gap:10px">
+      CherryGlow
+      <span class="cg-version" id="cg-version">v6</span>
     </div>
-    <!-- Siri-style waveform -->
-    <div class="cg-waveform" id="cg-waveform" style="flex:1;max-width:180px">
-      <span class="cg-wb idle-wave" style="--h:18px;--d:0.00s;--c:#D4AF37"></span>
-      <span class="cg-wb idle-wave" style="--h:32px;--d:0.07s;--c:#FFB7C5"></span>
-      <span class="cg-wb idle-wave" style="--h:52px;--d:0.14s;--c:#D4AF37"></span>
-      <span class="cg-wb idle-wave" style="--h:68px;--d:0.21s;--c:#BF5AF2"></span>
-      <span class="cg-wb idle-wave" style="--h:82px;--d:0.28s;--c:#D4AF37"></span>
-      <span class="cg-wb idle-wave" style="--h:90px;--d:0.35s;--c:#FFB7C5"></span>
-      <span class="cg-wb idle-wave" style="--h:78px;--d:0.42s;--c:#D4AF37"></span>
-      <span class="cg-wb idle-wave" style="--h:62px;--d:0.49s;--c:#BF5AF2"></span>
-      <span class="cg-wb idle-wave" style="--h:88px;--d:0.56s;--c:#D4AF37"></span>
-      <span class="cg-wb idle-wave" style="--h:70px;--d:0.63s;--c:#FFB7C5"></span>
-      <span class="cg-wb idle-wave" style="--h:50px;--d:0.70s;--c:#D4AF37"></span>
-      <span class="cg-wb idle-wave" style="--h:28px;--d:0.77s;--c:#FFB7C5"></span>
-    </div>
+    <div class="pt-sub" style="font-size:.68rem;opacity:.4">Konu Seç &rarr; Yaz &rarr; Onayla &rarr; Yayınla</div>
   </div>
-  <div class="pt-right" style="display:flex;align-items:center;gap:12px">
+  <div class="pt-right" style="display:flex;align-items:center;gap:14px">
     <div class="cw-auto-row">
       <span>Oto-yayın</span>
       <label class="cg-sw"><input type="checkbox" id="cg-autopub" onchange="cgToggleAutoPub(this.checked)"><span class="cg-sw-track"></span></label>
     </div>
-    <span class="cg-state-badge" id="cg-status-pill" style="font-size:.65rem;padding:4px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05)">HAZIR</span>
+    <span id="cg-status-pill" style="font-size:.65rem;padding:4px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);letter-spacing:.08em">HAZIR</span>
   </div>
 </div>
+
 <div class="cg-stats-ribbon">
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-done">0</div><div class="cg-stat-lbl">Yazilan Blog</div></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-done">0</div><div class="cg-stat-lbl">Blog</div></div>
   <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-words">0</div><div class="cg-stat-lbl">Toplam Kelime</div></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-words">0</div><div class="cg-stat-lbl">Kelime</div></div>
   <div class="cg-stat-sep"></div>
   <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-seo">--</div><div class="cg-stat-lbl">Ort. SEO</div></div>
   <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item" style="min-width:140px">
-    <div class="cg-mini-progress"><div class="cg-mini-fill" id="cg-mini-fill" style="width:0%"></div></div>
-    <div class="cg-stat-lbl" id="cg-stat-prog">0 / 5 tamamlandi</div>
-  </div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-pub">0</div><div class="cg-stat-lbl">Yayınlanan</div></div>
   <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-today">0</div><div class="cg-stat-lbl">Bugun</div></div>
-  <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val cg-grad-num" id="cg-stat-rev" style="-webkit-text-fill-color:initial;color:var(--gold)">--</div><div class="cg-stat-lbl">Blog Geliri</div></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-today">0</div><div class="cg-stat-lbl">Bugün</div></div>
 </div>
+
 <div class="cg-main-grid">
-  <!-- ── LEFT COL ── -->
+
+  <!-- LEFT: Topics + Log -->
   <div class="cg-left-col">
-    <!-- Character card -->
-    <div class="card cg-char-card">
-      <div class="cg-pulses" id="cg-pulses">
-        <div class="cg-pulse"></div><div class="cg-pulse"></div><div class="cg-pulse"></div>
+
+    <!-- Topics card -->
+    <div class="card" style="padding:16px 14px">
+      <div class="cg-panel-title">
+        Konular
+        <span id="cg-agenda-count" style="font-size:.65rem;opacity:.5;font-weight:500;text-transform:none;letter-spacing:0"></span>
       </div>
-      <div class="cg-char-wrap">
-        <svg class="cg-ring-svg" viewBox="0 0 100 100">
-          <defs><linearGradient id="cgRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
-          </linearGradient></defs>
-          <circle cx="50" cy="50" r="44" class="cg-ring-bg" stroke-width="5"/>
-          <circle cx="50" cy="50" r="44" class="cg-ring-fill" stroke-width="5"
-            stroke-dasharray="276" stroke-dashoffset="276" id="cg-ring-fill"/>
-        </svg>
-        <div class="cg-figure idle" id="cg-figure">
-          <svg id="cherry-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            viewBox="35 15 345 435" class="cg-svg" xml:space="preserve">
-<g id="cg-fig-main">
-  <!-- Hair -->
-  <g id="cg-hair-g" style="transform-origin:165px 50px">
-  <path style="fill:#181818;" d="M184.351,42.996c1.448-3.6-22.449-15.743-25.408-16.702c-7.109-2.304-25.629-5.652-32.995-4.294
-    c-13.918,2.565-22.021,9.917-28.635,23c-12.133,24-3.641,43.116,10.751,48.647c-0.187-4.617,2.739-7.701,6.457-7.709
-    c4.183-0.008,8.388,12.012,8.388,14.334L184.351,42.996z"/>
-  <path style="fill:#181818;" d="M170.436,43.38c22.453-13.357,45.665,16.154,24.076,37.614
-    c-0.738-11.173-11.596-30.625-23.766-31.09L170.436,43.38z"/>
-  </g>
-  <!-- Body & face -->
-  <g>
-    <g>
-      <defs>
-        <linearGradient id="bwSVG1" gradientUnits="userSpaceOnUse" x1="524.2922" y1="231.9725" x2="552.3677" y2="231.9725" gradientTransform="matrix(-0.9905 -0.1372 -0.1372 0.9905 743.8961 36.9817)">
-          <stop offset="0.0056" style="stop-color:#FFBD94"/><stop offset="1" style="stop-color:#FDC38E"/>
-        </linearGradient>
-        <linearGradient id="bwSVG2" gradientUnits="userSpaceOnUse" x1="576.4961" y1="158.2874" x2="609.3096" y2="158.2874" gradientTransform="matrix(-1 0 0 1 732.3047 0)">
-          <stop offset="0" style="stop-color:#E2A86C"/><stop offset="0.3152" style="stop-color:#E2A76C"/><stop offset="0.7697" style="stop-color:#E7885B"/>
-        </linearGradient>
-        <linearGradient id="bwSVG3" gradientUnits="userSpaceOnUse" x1="569.9164" y1="-88.4059" x2="562.9705" y2="-62.3123" gradientTransform="matrix(-0.9056 0.4241 0.4241 0.9056 691.7245 -94.7736)">
-          <stop offset="0.0056" style="stop-color:#F67F30"/><stop offset="1" style="stop-color:#E2A481"/>
-        </linearGradient>
-        <linearGradient id="bwSVG4" gradientUnits="userSpaceOnUse" x1="369.1382" y1="84.8596" x2="352.9987" y2="137.965" gradientTransform="matrix(-1 0 0 1 500.9473 0)">
-          <stop offset="0.5212" style="stop-color:#E2A481"/><stop offset="1" style="stop-color:#DC8C58"/>
-        </linearGradient>
-        <radialGradient id="bwSVG5" cx="539.408" cy="103.5289" r="11.9312" gradientTransform="matrix(-1.2271 0.0423 0.0306 0.8874 810.5794 -5.529)" gradientUnits="userSpaceOnUse">
-          <stop offset="0" style="stop-color:#E77257"/><stop offset="1" style="stop-color:#E2A481"/>
-        </radialGradient>
-        <radialGradient id="bwSVG6" cx="502.9595" cy="102.6513" r="12.5398" gradientTransform="matrix(-1.2271 0.0423 0.0306 0.8874 810.5794 -5.5295)" gradientUnits="userSpaceOnUse">
-          <stop offset="0" style="stop-color:#E77257"/><stop offset="1" style="stop-color:#E2A481"/>
-        </radialGradient>
-        <linearGradient id="bwSVG7" gradientUnits="userSpaceOnUse" x1="547.7159" y1="448.4379" x2="538.7614" y2="457.3924" gradientTransform="matrix(-0.0282 -0.9996 -0.9996 0.0282 836.8538 758.3706)">
-          <stop offset="0.4424" style="stop-color:#DF9F74"/><stop offset="0.9944" style="stop-color:#E5604B"/>
-        </linearGradient>
-        <linearGradient id="bwSVG8" gradientUnits="userSpaceOnUse" x1="268.2675" y1="115.9496" x2="257.7244" y2="119.5487" gradientTransform="matrix(0.1072 -0.9942 -0.9942 -0.1072 425.3035 512.5855)">
-          <stop offset="0.2242" style="stop-color:#DF9F74"/><stop offset="0.8622" style="stop-color:#DA8C51"/>
-        </linearGradient>
-        <linearGradient id="bwSVG9" gradientUnits="userSpaceOnUse" x1="327.8996" y1="224.9245" x2="209.398" y2="252.3669" gradientTransform="matrix(0.9603 -0.2789 0.2789 0.9603 -23.5315 108.322)">
-          <stop offset="0.4424" style="stop-color:#DFA884"/><stop offset="0.9944" style="stop-color:#E5604B"/>
-        </linearGradient>
-        <linearGradient id="bwSVGA" gradientUnits="userSpaceOnUse" x1="106.3677" y1="402.4656" x2="142.1332" y2="402.4656">
-          <stop offset="0.0727" style="stop-color:#DF9F74"/><stop offset="0.703" style="stop-color:#CA744D"/>
-        </linearGradient>
-        <linearGradient id="bwSVGB" gradientUnits="userSpaceOnUse" x1="88.1948" y1="382.6607" x2="196.5902" y2="382.6607">
-          <stop offset="0.3212" style="stop-color:#DF9F74"/><stop offset="0.9944" style="stop-color:#E5604B"/>
-        </linearGradient>
-        <linearGradient id="bwSVGC" gradientUnits="userSpaceOnUse" x1="125.5" y1="397" x2="142" y2="402">
-          <stop offset="0.0056" style="stop-color:#FFBD94"/><stop offset="1" style="stop-color:#FFE4B9"/>
-        </linearGradient>
-      </defs>
-      <path style="fill:url(#bwSVG1);" d="M185.252,214.514c0,0,0.997-1.472,2.271-3.877c4.611-8.699,12.832-29.659-9.442-37.95
-        C149.643,162.102,185.252,214.514,185.252,214.514z"/>
-      <path style="fill:#DF9F74;" d="M139.462,208.065c-1.213-9.79-1.956-19.622-1.98-29.496c-0.002-1.743-0.215-3.444-0.599-5.084
-        c-2.424-17.628-12.174-50.806-13.036-62.092c6.604,7.781,37.026,17.228,34.672,27.511c-1.209,5.271,0,27.688,8.685,39.294
-        c6.001,8.021,6.031,5.52,9.172,19.177c6.433,10.62,11.143,16.51,19.567,24.726c1.186,3.188,4.433,6.489,7.312,9.044
-        c-0.281,0.087-0.558,0.174-0.832,0.277c-18.803,7.195-38.837,12.046-54.904,24.564
-        C144.886,240.002,141.765,224.105,139.462,208.065z"/>
-      <path style="fill:url(#bwSVG2);" d="M140.032,200.631c0,0-0.436,0.972-1.111,2.684c-0.887-8.229-1.418-16.487-1.439-24.774
-        c-0.018-6.774-4.433-12.931-9.215-17.167c-1.574-18.597-2.71-37.865-5.272-57.115l9.758-0.831
-        c0,0,10.09,84.645,23.056,109.718C145.624,208.059,142.596,208.332,140.032,200.631z"/>
-      <path style="fill:url(#bwSVG3);" d="M174.849,49.247c4.504,2.223,7.17,4.842,10.656,9.036
-        c13.882,16.689,8.691,36.337,8.691,36.337c7.501,10.255-4.609,35.21-7.528,40.921c-3.042,5.965,1.013,14.342-13.743,12.894
-        c-16.038-1.572-27.721-9.528-35.592-17.664c-12.299-12.712-15.201-26.967-16.192-40.823C121.845,75.25,132.742,48,174.849,49.247z"/>
-      <path style="fill:#181818;" d="M155.395,77.454c-1.02,0.584-2.713,1.16-3.821,1.581c0.118,0.088,3.09,0.257,5.906,1.296
-        c4.233,1.563,7.882,4.204,7.882,4.204C166.727,82.013,161.354,78.101,155.395,77.454z"/>
-      <path style="fill:url(#bwSVG4);" d="M109.435,87.627c3.228-2.819,5.657-2.499,8.098-0.301
-        c3.347,3.672,9.326,14.682,13.268,22.566c0.002-0.021,0.003-0.04,0.005-0.061c10.194,32.2,35.797,38.983,46.916,38.769
-        c-1.254,0.184,0.013,0.196-1.254,0.184c-18.99-0.184-33.002-6.378-42.49-18.849c-4.078-5.359-6.999-12.248-8.683-18.593
-        c-0.285-0.025-0.982,1.638-1.202,1.882C120.222,117.499,102.602,93.596,109.435,87.627z"/>
-      <path style="fill:#181818;" d="M183.092,83.275c0-3.87,7.892-7.403,11.332-6.229c0.383,2.132,0.122,1.332,0.253,2.09
-        c-3.724-1.16-7.621,1.962-9.479,3.71C183.641,84.309,183.092,83.275,183.092,83.275z"/>
-      <path style="fill:#562C13;" d="M184.485,121.995c0,0-1.452,4.132-0.439,6.289c1.01,2.16-9.453,2.712-9.453,2.712
-        l-3.896-3.104c0,0-6.02-4.944-5.521-4.886c1.34,0.159,12.558-1.757,12.558-1.757l4.608-0.39L184.485,121.995z"/>
-      <path style="fill:url(#bwSVG5);" d="M137.198,109.666c0.206,5.843,6.922,10.36,15.007,10.081
-        c8.089-0.278,14.481-5.246,14.276-11.093c-0.201-5.844-6.92-10.36-15.005-10.081C143.39,98.851,136.997,103.816,137.198,109.666z"/>
-      <path style="fill:url(#bwSVG6);" d="M182.509,105.31c-0.175-5.02,11.497-10.161,11.497-10.161
-        c3.355,5.682,1.306,20.54-1.116,23.851C185.424,118.762,182.699,110.821,182.509,105.31z"/>
-      <g><path style="fill:#FFFFFF;" d="M159.528,89.969c1.142,0.991,3.896,2.172,5.158,5.098c0,0-2.008,0.618-5.745,1.095
-          c-3.738,0.476-8.382,1.712-12.043-0.156c-1.654-0.843-4.247-3.025-4.306-5.611C144.016,89.861,152.757,84.076,159.528,89.969z"/></g>
-      <path style="fill:#8C5F33;" d="M164.686,95.067c0,0-5.296-7.204-11.673-6.036c-2.645,0.484-10.421,1.364-10.421,1.364
-        s0.289-2.269,3.021-3.783C150.383,83.975,161.533,83.672,164.686,95.067z"/>
-      <path style="fill:#FFFFFF;" d="M181.341,95.408c0.511-3.12,1.67-4.336,1.67-4.336c1.575-2.86,7.046-4.059,11.486-0.331
-        c0.114,1.239-0.453,2.426-0.453,2.426c0.008,0.008,0.441,0.349-2.585,1.951C186.808,97.579,181.341,95.408,181.341,95.408z"/>
-      <path style="fill:#8C5F33;" d="M150.674,89.067c0.792,0.042,3.693,0.185,4.487,0.193c0.107,0.002,0.585-0.252,0.107,0.002
-        c0.658-0.353,1.405-0.34,2.074,0.302c0.03,0.112-0.065,0.337,0.081,1.252c0.416,2.57-1.609,5.672-4.547,6.092
-        c-4.429,0.63-7.638-3.235-7.158-6.651C145.787,89.749,147.402,88.887,150.674,89.067z"/>
-      <path style="fill:#8C5F33;" d="M186.543,89.077c1.347-0.504,2.811-0.627,4.222-0.961c0.268,0.455,0.46,0.955,0.56,1.493
-        c0.465,2.63-0.636,6.785-5.263,6.676c-1.377-0.031-3.011-0.721-4.58-3.199C182.623,90.367,184.376,89.889,186.543,89.077z"/>
-      <path style="fill:#8C5F33;" d="M181.401,94.777c0,0,1.108-14.075,13.405-6.725c-0.01,0.556-0.059,1.796-0.059,1.796
-        C191.814,87.33,181.222,90.406,181.401,94.777z"/>
-      <path style="fill:#181818;" d="M196.682,90.126c-0.795,0.255-1.943,0.75-2.184,0.615c-1.122-0.616-11.566-4.309-13.156,4.667
-        C180.969,90.169,185.994,84.507,196.682,90.126z"/>
-      <path style="fill:#C1603E;" d="M120.88,106.245c0,0-2.215-4.953-1.66-7.445c0.555-2.493-0.256-6.887-3.33-8.654
-        c-3.076-1.77-6.974,0.282-4.155,8.518c0,0,2.012-4.805,3.406-2.17c3.75,7.09-1.61,5.191,1.017,8.277
-        C118.789,107.852,120.88,106.245,120.88,106.245z"/>
-      <path style="fill:#181818;" d="M138.929,90.497c0,0,1.765,0.504,4.192-0.587c0.655,0.052,0.298,0.27,0,0
-        c-4.351-0.438-5.878-2.658-5.878-2.658c2.36,2.536,9.06-0.515,15.631,0.376c11.042,1.501,11.813,7.438,11.813,7.438
-        c-1.609-2.021-2.172-2.57-3.515-3.369c-1.167-0.689-3.515-2.16-9.938-2.122C147.98,89.595,140.951,92.315,138.929,90.497z"/>
-      <g>
-        <path style="fill:#D92F36;" d="M172.711,126.603c6.047,1.352,9.799-0.675,11.969,0.516c2.504,1.375,0.497,4.61-2.17,5.319
-          c-2.394,0.638-9.296-0.198-12.084-2.27c-4.021-2.992-5.739-7.38-5.739-7.38S171.594,126.351,172.711,126.603z"/>
-      </g>
-      <path style="fill:#FFFFFF;" d="M184.485,124.142c0,0-3.189,2.171-13.976-0.224l-4.484-0.472l15.575-3.021l4.461,0.447
-        C186.061,120.873,184.003,122.224,184.485,124.142z"/>
-      <g>
-        <path style="fill:#D92F36;" d="M188.471,120.589c0,0,0.248,2.006-2.98,2.275c0,0-1.127-0.249-2.431-0.609
-          c-1.3-0.36-2.456,0.881-5.389,1.276c-4.882,0.655-11.408,0.908-12.984-0.743c0,0,3.45-1.929,8.261-3.788
-          c3.64-1.407,6.14-2.047,9.813,0.308C186.724,115.862,188.334,118.684,188.471,120.589z"/>
-      </g>
-      <path style="fill:url(#bwSVGC);" d="M140.721,216.335c-0.439-2.762-0.861-5.529-1.259-8.297
-        c-0.174-1.409-0.339-2.821-0.492-4.23c8.974,3.167,20.167,15.454,13.549,11.382C149.117,213.096,144.444,213.049,140.721,216.335z"/>
-    </g>
-    <path style="fill:#181818;" d="M189.162,88.848c0.982,0.673,0.839,3.724-0.477,4.945c-1.651,1.533-5.349,1.256-6.354-2.175
-      c1.298-1.253,4.183-3.426,6.473-3.104L189.162,88.848z"/>
-    <path style="fill:#181818;" d="M155.628,89.776c0.311,1.803,0.18,3.573-1.758,4.699c-2.325,1.35-8.122,0.845-6.778-5.113
-      c1.375-0.19,8.327-0.726,8.491,0.166L155.628,89.776z"/>
-    <!-- Extended right arm group -->
-    <g id="cg-arm-r" style="transform-origin:300px 215px">
-      <path style="fill:url(#bwSVG7);" d="M367.119,235.052c0,0,5.814-12.423,9.61-14.933c3.794-2.506-4.997-4.003-9.37,4.133
-        C362.99,232.39,361.964,244.77,367.119,235.052z"/>
-      <path style="fill:url(#bwSVG8);" d="M365.667,214.729c0,0,0.311,0.926,1.121,9.929c0.81,9.005,0.964,12.068-2.205,14.052
-        c0,0-1.585,2.655-6.619,6.845c-5.034,4.185-15.133,9.888-23.739,8.226c-4.736-0.914-11.964-0.668-17.507-0.263
-        c0,0-18.597,3.417-12.95-7.689c0.601-0.642,1.199-1.374,1.796-2.204c7.381-10.3,17.709-14.061,28.133-16.52
-        c10.423-2.458,13.578-4.412,15.395-5.339c1.817-0.929,0.867,5.305-4.337,7.773c-4.398,2.084-10.14,2.494-14.837,7.884
-        c11.556,1.192,19.059-0.096,19.906-0.322c3.327-0.903,8.76-3.884,9.044-4.608c0.309-0.311,0.419-0.509,0.419-0.509
-        l0.196,0.379c0.022-0.007,0.037-0.016,0.037-0.016s-3.956-7.461,2.315-13.79C361.834,218.554,362.685,213.999,365.667,214.729z"/>
-      <path style="fill:url(#bwSVG9);" d="M360.358,234.363c-21.997,15.458-37.955,4.809-42.33,5.481
-        c-2.537-0.07-5.203,0.531-7.575,2.165c-3.306,1.384-5.338,2.825-5.338,2.825c-2.192,1.625-3.821,3.057-4.998,4.314
-        c-2.401,1.573-5.102,3.314-8.017,5.176c3.431,3.668,6.585,7.675,9.941,11.446c4.004-3.553,7.767-6.743,11.112-9.347
-        c3.682-1.738,15.576-3.21,28.318-2.189c3.232,0,11.449-5.149,16.491-8.682C364.583,238.71,369.475,227.957,360.358,234.363z"/>
-      <path style="fill:#D6204A;" d="M363.177,226.064c0,0-4.094-3.541-2.413-9.556C360.764,216.507,362.504,216.349,363.177,226.064z"/>
-      <path style="fill:#D6204A;" d="M366.603,221.365c0,0-3.656-4.27-0.875-9.818C365.728,211.547,367.565,211.738,366.603,221.365z"/>
-      <path style="fill:#D6204A;" d="M373.535,223.651c0,0,0.293-4.82,5.361-6.657C378.896,216.994,379.925,218.192,373.535,223.651z"/>
-    </g>
-    <!-- Bag/document group -->
-    <g id="cg-bag-g">
-      <g>
-        <path style="fill:#FFF8B6;" d="M276.6,271.373c-3.958-5.183-7.709-6.938-2.467-13.358l32.161-20.916
-          c0.569,1.156,5.19,5.502,6.351,15.541c-12.349,7.498-26.665,10.231-35.697,18.36C276.833,271.124,276.715,271.248,276.6,271.373z"/>
-        <path style="fill:#FFFAA6;" d="M284.137,275.98c0,0-1.748-3.083-5.646-2.023c-0.571-0.844-1.221-1.705-1.892-2.584
-          c0.115-0.125,0.233-0.249,0.348-0.373c9.032-8.129,21.651-17.669,34-25.167c1.071,2.592,2.553,10.153,2.115,12.716
-          C307.255,261.55,288.982,274.233,284.137,275.98z"/>
-      </g>
-      <path style="fill:#867363;" d="M308,268c0-9.546-6.667-19.666-12.137-20.137c-3.554,8.123-15.439,20.008-18.916,23.137
-        c-6.971,7.604-54.582,31.694-57.954,20.554c-3.031-10.014-7.94-17.979-9.774-27.308c-4.208-21.409-13.02-38.151-24.869-55.65
-        c5.786,24.727,12.213,85.581,33.256,100.795C225,318.707,297.416,272.338,308,268z"/>
-      <path style="fill:#94806F;" d="M222,296.334c-5.605,1.121-9.534-49.966-4.45-10.244c0.398,3.107,80.247-47.82,80.247-47.82
-        c5.57,4.421,9.041,20.435,9.188,24.01c-4.707,2.498-29.008,13.592-32.484,16.721C259.65,286.499,230,303.828,222,296.334z"/>
-    </g>
-  </g>
-  <!-- Legs & body -->
-  <path style="fill:#7F6B5E;" d="M121,385c5.616-26.207,20.868-48.909,38.377-68.107c-0.164-0.069-0.339-0.125-0.501-0.197
-    c-10.148-4.502-9.832,18.928-20.728,20.498C118.971,339.958,87.652,383,116.331,450h8.367
-    C119.252,428.952,115.594,407.707,121,385z"/>
-  <path style="fill:#7D6C5F;" d="M226.273,357.936c-4.377-8.462-29.333-71.413-24.992-54.108
-    c-11.871-0.9-30.134,2.794-43.803-2.995C139.969,320.031,126.616,358.793,121,385c-3.033,12.74-4.973,47.348,3.698,65h108.369
-    C243.107,410,233.433,376.633,226.273,357.936z"/>
-  <!-- Jacket body -->
-  <path style="fill:#94806F;" d="M168.137,174.577v-12c27.679-1.121,31.723,7.783,34.91,19.393
-    c5.053,18.409,30.048,93.51,40.061,112.362c-3.678,1.303-7.419,2.228-11.16,2.668c-15,3-19-15-24-25
-    c-10.066-19.358-11.747-45.905-23.597-63.404c-1.157-4.945-2.081-8.588-2.798-10.313
-    C177.908,189.52,171.848,182.854,168.137,174.577z"/>
-  <path style="fill:#F9ED9D;" d="M136.884,173.485c0.097,1.024,43.497,45.802,45.215,49.168
-    c-10.906-45.697-5.432-26.591-6.622-27.124c-1.1-3.526-1.678-7.007-0.896-11.434c-3.17,0-2.315-3.523-3.388-7.139
-    c-1.251-2.666,4.756-1.585,6.867-2.642c-1.13-1.886-2.195-3.907-3.24-5.966c0.395,0.125,0.792,0.249,1.191,0.364
-    c1.391,0.489,2.609,1.028,3.693,1.61c34.124,33.486,24.683,107.629,21.577,133.505c-8.941,3.418-47.444,6.372-49.957,2.603
-    c-16.581-13.905-17.257-106.961-23.274-127.869C135.438,181.438,129.671,171.537,136.884,173.485z"/>
-  <!-- Outfit/clothing -->
-  <g id="cg-outfit-g">
-    <path style="fill:#3A4F5C;" d="M190.708,392.317l-18.319-100.69c-0.501-5.908-3.516-6.299-5.343-5.88l-1.226,0.443
-      c6.116,20.315,6.026,45.192,11.18,65.809c3,13,2,28-9,36c-20.405,15.97-51.823,27.197-76.111,17.661l2.069,8.972
-      c0.458,1.988,2.312,3.264,4.139,2.844l93.069-23.171C191.166,394.306,191.166,394.306,190.708,392.317z"/>
-    <path style="fill:#476171;" d="M188.708,391.317l-18.319-100.69c-0.501-5.908-3.516-6.299-5.343-5.88l-1.226,0.443
-      c6.116,20.315,6.026,45.192,11.18,65.809c3,13,2,28-9,36c-20.405,15.97-51.823,27.197-76.111,17.661l2.069,8.972
-      c0.458,1.988,2.312,3.264,4.139,2.844l93.069-23.171C189.166,393.306,189.166,393.306,188.708,391.317z"/>
-    <path style="fill:#5E7D8F;" d="M166,387c11-8,12-23,9-36c-5.154-20.616-5.064-45.493-11.18-65.809l-90.469,32.676
-      c-1.827,0.42-2.936,2.374-2.477,4.364l19.014,82.43C114.177,414.197,145.595,402.97,166,387z"/>
-    <path style="fill:#FFF8B6;" d="M62.89,324.551c3.15-2.974,7.811-3.851,12.446-0.272c17.58,16.54,22.731,25.161,32.139,33.657
-      c-5.479,5.084-8.443,8.047-13.803,14.561C85.814,358.29,62.507,341.349,62.89,324.551z"/>
-    <path style="fill:#FFFAA6;" d="M62.89,324.551c-0.383,16.798,22.925,33.739,30.782,47.947c-0.458,1.275-1.898,2.639-2.335,4.135
-      c-1.092-1.255-7.403-9.105-8.457-10.266c-8.813-9.697-9.567-17.454-21.13-29.617C59.77,331.635,59.525,327.727,62.89,324.551z"/>
-    <path style="fill:#998675;" d="M58.947,333c-15.614-19.666-23.601-38.666-20.787-68.083
-      c0.802-1.913,1.772-4.054,2.89-6.552c2.314-5.171,12.352-34.518,29.218-66.634c16.938-32.256,33.338-39.536,34.489-20.45
-      c0.591,9.811,11.517,28.639-4.248,45.06c-5.461,5.689-26.608,41.204-34.615,56.262c-2.21,4.156-2.13,9.144,0.206,13.23
-      c11.748,20.545,29.448,50.36,38.656,64.764c-4.539,5.273-12.25,11.835-15.216,15.756C84.409,365.319,60.407,336.65,58.947,333z"/>
-    <!-- Foot/shoe details -->
-    <path style="fill:url(#bwSVGA);" d="M106.368,392.632c5.753,10.783,14.229,24.358,17.48,18.069
-      c0.622,0.407,1.235,0.734,1.838,1.004C119.558,404.968,112.17,399.358,106.368,392.632z"/>
-    <path style="fill:url(#bwSVGB);" d="M115.069,363.414c-4.28-2.719-9.767-3.773-13.613-7.128
-      c-3.129-2.729-2.561-4.26-7.158-3.3c-2.095,0.438-1.629,2.681-2.947,4.228l-3.095,3.796c-0.844,4.374,7.236,8.102,8.973,11.488
-      c1.809,3.527,1.894,5.207,3.541,8.88c0.516,1.149,2.715,5.852,5.598,11.254c5.802,6.727,13.19,12.336,19.318,19.073
-      c7.374,3.292,13.151-3.152,11.748-5.52c-1.65,0.405-4.691,1.168-4.691,1.168c-7.642-11.908-13.599-18.686-10.544-26.015
-      c5.852-4.706,24.544,11.522,24.544,2.419C139.402,382.664,123.017,368.464,115.069,363.414z"/>
-  </g>
-  <!-- Hair detail paths -->
-  <path style="fill:#181818;" d="M172.789,46.982c1.263,9.37,0.901,23.418-13.468,30.331c-6.043,2.907-10.212,4.012-18.227,6.813
-    c5.649-3.902,9.448-9.451,12.546-13.376c-5.998,5.614-25.589,18.807-25.589,18.807c1.646,7.749-0.878,18.156-0.504,24.979
-    c-6.242-17.793-8.39-28.887-8.403-33.815c-0.017-6.041,1.95-16.772,4.563-22.243c6.589-13.794,22.7-19.337,39.141-18.328
-    c4.552,0.279,9.52,2.771,9.631,7.766L172.789,46.982z"/>
-  <path style="fill:#181818;" d="M175.447,38.5c3.954-2.946,13.357-0.317,17.512,1.377c5.086,2.075,9.291,6.069,11.613,11.012
-    c4.579,9.749,4.296,22.799-4.185,30.436c6.225-7.386,5.94-17.718-0.929-24.827c-6.39-6.612-18.737-9.108-22.512-17.498
-    L175.447,38.5z"/>
-  <path style="fill:#181818;" d="M171.447,46c7.813,5.961,7.893,8.259,8.531,14.514c0.555,5.431-3.354,11.425-6.456,15.798
-    c4.296-8.429,4.061-24.508-7.574-30.312H171.447z"/>
-  <path style="fill:#181818;" d="M131.447,25c-0.954-7.975-11.966-10.315-18.5-10c-7.788,0.375-15.005,3.307-19.389,10.123
-    c-10.416,16.194,8.708,39.874,25.914,26.891c6.184-4.665,7.495-12.071,11.975-18.014V25z"/>
-  <!-- Eye/face highlights -->
-  <path style="fill:#FFFFFF;" d="M182.866,92.311c0.101,0.64,0.701,1.077,1.342,0.977c0.637-0.101,1.074-0.7,0.974-1.339
-    c-0.102-0.64-0.7-1.078-1.336-0.977C183.204,91.073,182.767,91.673,182.866,92.311z"/>
-  <path style="fill:#FFFFFF;" d="M147.951,93.187c0.101,0.639,0.701,1.076,1.341,0.975c0.639-0.101,1.077-0.702,0.976-1.341
-    c-0.102-0.639-0.702-1.075-1.341-0.975C148.288,91.946,147.854,92.547,147.951,93.187z"/>
-  <!-- Ear ring detail -->
-  <path style="fill:#FFBD4B;" d="M113.983,115.011c-0.745,1.623-1.318,3.513-1.67,5.535c-0.351,2.023-0.462,4.173-0.357,6.272
-    c0.22,4.212,1.4,8.147,3.148,10.73c1.739,2.619,4.022,3.824,6.199,3.398c2.18-0.382,4.244-2.354,5.646-5.411
-    c1.426-3.016,2.17-7.073,2.047-11.102c-0.102-4.029-1.091-8.007-2.758-10.781c-0.931-1.577-2.067-2.742-3.291-3.431v-0.598
-    c1.32,0.566,2.582,1.659,3.646,3.267c1.854,2.749,3.107,6.942,3.336,11.413c0.108,2.229-0.009,4.512-0.384,6.66
-    c-0.373,2.144-0.983,4.16-1.775,5.874c-0.803,1.703-1.788,3.116-2.883,4.12c-1.097,1-2.302,1.565-3.514,1.701
-    c-2.432,0.255-4.868-1.389-6.621-4.355c-1.775-2.94-2.836-7.176-2.947-11.464C111.67,122.553,112.463,118.221,113.983,115.011z"/>
-  <!-- Belt/detail -->
-  <path style="fill:#D6204A;" d="M140.311,383.304c2.005,2.512,6.982,2.645,8.626,0.808c-3.063-1.052-8.061-2.406-7.535-2.699
-    L140.311,383.304z"/>
-</g>
-          </svg>
-        </div>
-      </div>
-      <!-- Human status badge (shown during break states) -->
-      <div class="cg-human-badge" id="cg-human-badge">
-        <div class="cg-hb-label" id="cg-hb-label">Bekliyor...</div>
-        <div class="cg-hb-sub" id="cg-hb-sub"></div>
-      </div>
-      <!-- State pill -->
-      <div class="cg-state-pill">
-        <div class="cg-sp-dot" id="cg-sp-dot"></div>
-        <span id="cg-sp-text">HAZIR</span>
-      </div>
-      <!-- Brain waves -->
-      <div class="cg-brainwaves" id="cg-brainwaves">
-        <span class="bw-bar" style="--bwh:8px;animation-delay:0.00s"></span>
-        <span class="bw-bar" style="--bwh:14px;animation-delay:0.08s"></span>
-        <span class="bw-bar" style="--bwh:20px;animation-delay:0.16s"></span>
-        <span class="bw-bar" style="--bwh:28px;animation-delay:0.24s"></span>
-        <span class="bw-bar" style="--bwh:18px;animation-delay:0.32s"></span>
-        <span class="bw-bar" style="--bwh:24px;animation-delay:0.40s"></span>
-        <span class="bw-bar" style="--bwh:30px;animation-delay:0.48s"></span>
-        <span class="bw-bar" style="--bwh:22px;animation-delay:0.56s"></span>
-        <span class="bw-bar" style="--bwh:18px;animation-delay:0.64s"></span>
-        <span class="bw-bar" style="--bwh:26px;animation-delay:0.72s"></span>
-        <span class="bw-bar" style="--bwh:20px;animation-delay:0.80s"></span>
-        <span class="bw-bar" style="--bwh:16px;animation-delay:0.88s"></span>
-        <span class="bw-bar" style="--bwh:24px;animation-delay:0.96s"></span>
-        <span class="bw-bar" style="--bwh:18px;animation-delay:1.04s"></span>
-        <span class="bw-bar" style="--bwh:12px;animation-delay:1.12s"></span>
-        <span class="bw-bar" style="--bwh:20px;animation-delay:1.20s"></span>
-        
+      <div class="cg-agenda-wrap" id="cg-agenda-list" style="max-height:360px"></div>
+      <div style="display:flex;gap:6px;margin-top:10px">
+        <button class="cg-ctrl-btn" onclick="cgWriteAll()" style="font-size:.68rem">Hepsini Sırayla Yaz</button>
+        <button class="cg-ctrl-btn" onclick="cgResetDone()" style="font-size:.62rem;flex:none;opacity:.5" title="Tamamlananları sıfırla">↺</button>
       </div>
     </div>
 
-    <!-- Thought log -->
-    <div class="card" style="padding:12px 14px;flex-shrink:0">
-      <div class="cg-panel-title" style="margin-bottom:8px;font-size:.6rem">Dusunce Akisi</div>
-      <div class="cg-thought-stream" style="margin-bottom:0;min-height:60px;max-height:150px;overflow-y:auto;">
-        <div id="cg-ts-inner"></div>
-      </div>
+    <!-- Log card -->
+    <div class="card" style="padding:14px 16px;flex-shrink:0">
+      <div class="cg-panel-title" style="margin-bottom:8px">İşlem Günlüğü</div>
+      <div id="cg-log" style="font-size:.64rem;font-family:var(--mono);line-height:1.9;max-height:180px;overflow-y:auto;scrollbar-width:thin"></div>
     </div>
 
-    <!-- Agenda card -->
-    <div class="card" style="padding:12px 14px;flex-shrink:0;max-height:400px;display:flex;flex-direction:column;">
-      <div class="cg-panel-title" style="margin-bottom:8px;flex-shrink:0">
-        Gundem
-        <span style="display:inline-flex;align-items:center;gap:6px">
-          <span id="cg-agenda-count" style="opacity:.4;font-size:.6rem;font-weight:400"></span>
-          <button class="cg-ctrl-btn" style="padding:2px 9px;font-size:.6rem;flex:none;margin:0" onclick="cherryAddAllToAgenda()">Hepsini Yaz</button>
-        </span>
-      </div>
-      <div class="cg-agenda-wrap" style="flex:1;overflow-y:auto;">
-        <div id="cg-agenda-list">
-          <div style="font-size:.7rem;opacity:.3;padding:6px 0">Konular yukleniyor...</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Chat panel (Cherry ↔ Patron) -->
-    <div class="card cg-chat-card" style="flex:1">
-      <!-- Chat header -->
-      <div class="cg-chat-header">
-        <div class="cg-chat-av-wrap">
-          <svg class="cg-cherry-av-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".92"/>
-            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".88" transform="rotate(72 12 12)"/>
-            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".84" transform="rotate(144 12 12)"/>
-            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".88" transform="rotate(216 12 12)"/>
-            <ellipse class="cg-petal" cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".84" transform="rotate(288 12 12)"/>
-            <circle cx="12" cy="12" r="3.2" fill="#D4AF37"/>
-            <circle cx="12" cy="12" r="1.5" fill="#FFE566" opacity=".6"/>
-          </svg>
-        </div>
-        <div class="cg-chat-hd-info">
-          <div class="cg-chat-hd-name">CherryGlow</div>
-          <div class="cg-chat-hd-status">
-            <div class="cg-chat-status-dot" id="cg-chat-status-dot"></div>
-            <span class="cg-chat-hd-state-txt" id="cg-chat-status-txt">hazir</span>
-          </div>
-        </div>
-        <span class="cg-version" id="cg-version" style="font-size:.58rem"></span>
-      </div>
-
-      <div class="cg-chat-messages" id="cg-chat-messages"></div>
-      <div class="cg-chat-chips" id="cg-chat-chips">
-        <span class="cg-chip hot" onclick="cgProactiveResearch()">Konu Oner</span>
-        <span class="cg-chip" onclick="cgInsightEngine()">Analiz</span>
-        <span class="cg-chip" onclick="cgDailyReport()">Rapor</span>
-        <span class="cg-chip" onclick="cgUserSend('Ne kadar kazandim')">Gelir?</span>
-      </div>
-      <div class="cg-chat-input-row">
-        <input type="text" class="cg-chat-input" id="cg-chat-input"
-          placeholder="Cherry'ye bir soru sor..."
-          onkeydown="if(event.key==='Enter'&&this.value.trim())cgUserSend(this.value)">
-        <button class="cg-chat-send"
-          onclick="var v=document.getElementById('cg-chat-input').value;if(v.trim())cgUserSend(v)">
-          <svg class="cg-send-svg" viewBox="0 0 20 20" fill="none">
-            <path d="M18 10L2 2.5l3 7.5-3 7.5L18 10z" fill="currentColor"/>
-          </svg>
-        </button>
-      </div>
-    </div>
   </div>
 
-  <!-- ── RIGHT COL ── -->
+  <!-- RIGHT: Action + Output -->
   <div class="cg-right-col">
-    <!-- Output card -->
-    <div class="card" style="padding:16px">
-      <div class="cg-output-header">
-        <div class="cg-oh-title" id="cg-output-title">Blog Ciktisi</div>
-        <div class="cg-oh-meta">
-          <span id="cg-wc-badge">0 kelime</span>
-          <span id="cg-stage-badge">Bekliyor</span>
-        </div>
-        <div class="cg-oh-actions">
-          <button onclick="copyBlogMD()">MD</button>
-          <button onclick="copyBlogHTML()">HTML</button>
-          <button onclick="cherryOpenShopify()">Shopify</button>
-          <button class="cg-publish-btn" id="cg-publish-btn" onclick="cherryPublishLatest()">Yayinla</button>
-        </div>
-      </div>
-      <div class="cg-tabs">
-        <div class="cg-tab active" onclick="setCherryTab('preview',this)">Onizleme</div>
-        <div class="cg-tab" onclick="setCherryTab('html',this)">HTML</div>
-        <div class="cg-tab" onclick="setCherryTab('seo',this)">SEO Analiz</div>
-        <div class="cg-tab" onclick="setCherryTab('history',this)">Gecmis</div>
-        <div class="cg-tab" data-tab="analytics" onclick="setCherryTab('analytics',this)">Analitik</div>
-      </div>
-      <div class="cg-output-body" id="cg-output-body">
-        <div style="text-align:center;padding:40px 20px;opacity:.25;font-size:.82rem">Bir konu sec ve basla...</div>
-      </div>
-      <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
+
+    <!-- Action card -->
+    <div class="card" id="cg-action-card" style="padding:18px 20px;flex-shrink:0">
+      <div id="cg-action-status" style="margin-bottom:12px;min-height:40px"></div>
+      <div id="cg-action-buttons" style="display:flex;gap:8px;flex-wrap:wrap"></div>
     </div>
 
-    <!-- Analytics row: SEO + ROI side by side -->
-    <div class="cg-analytics-row">
-      <!-- SEO Analysis -->
-      <div class="card" style="padding:16px">
-        <div class="cg-seo-header">
-          SEO Analizi
-          <span id="cg-seo-stamp" style="font-size:.62rem;opacity:.4"></span>
+    <!-- Output card -->
+    <div class="card" style="padding:16px 18px;flex:1;min-height:0">
+      <div class="cg-tabs" style="margin-bottom:12px">
+        <div class="cg-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">Önizleme</div>
+        <div class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</div>
+        <div class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</div>
+        <div class="cg-tab" id="cg-tab-history" onclick="cgTab('history',this)">Geçmiş</div>
+      </div>
+
+      <!-- Preview -->
+      <div id="cg-tab-panel-preview" class="cg-output-body" style="min-height:280px;max-height:520px">
+        <div style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem">Sol taraftaki listeden bir konu seçip <strong>Yaz</strong> butonuna bas</div>
+      </div>
+
+      <!-- HTML -->
+      <div id="cg-tab-panel-html" style="display:none">
+        <div style="display:flex;gap:8px;margin-bottom:8px">
+          <button class="cg-ctrl-btn" onclick="cgCopyHTML()" style="font-size:.65rem">Kopyala</button>
+          <button class="cg-ctrl-btn" onclick="cgDownloadHTML()" style="font-size:.65rem">İndir</button>
         </div>
-        <div class="cg-seo-grid" id="cg-seo-grid">
+        <textarea id="cg-html-ta" style="width:100%;height:360px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(255,255,255,.65);font-size:.68rem;font-family:var(--mono);padding:12px;resize:vertical;box-sizing:border-box" readonly></textarea>
+      </div>
+
+      <!-- SEO -->
+      <div id="cg-tab-panel-seo" style="display:none;padding:4px 0">
+        <div class="cg-seo-grid" style="margin-bottom:14px">
           <div class="cg-score-ring-wrap">
-            <svg viewBox="0 0 120 120" class="cg-score-ring-svg">
-              <defs><linearGradient id="cgScoreGrad2" x1="0" y1="0" x2="1" y2="1">
+            <svg class="cg-score-ring-svg" viewBox="0 0 100 100">
+              <defs><linearGradient id="cgRingGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
               </linearGradient></defs>
-              <circle cx="60" cy="60" r="50" class="cg-sr-bg"/>
-              <circle cx="60" cy="60" r="50" class="cg-sr-fill" id="cg-sr-fill"
-                stroke="url(#cgScoreGrad2)" stroke-dasharray="314" stroke-dashoffset="314"/>
+              <circle cx="50" cy="50" r="40" class="cg-sr-bg" stroke-width="8"/>
+              <circle cx="50" cy="50" r="40" id="cg-seo-ring"
+                style="fill:none;stroke:url(#cgRingGrad6);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
             </svg>
-            <div class="cg-score-center" id="cg-score-center">--</div>
+            <div class="cg-score-center" id="cg-seo-score-num">--</div>
           </div>
-          <div class="cg-seo-bars" id="cg-seo-bars">
-            <div style="font-size:.7rem;opacity:.3;padding:8px 0">Blog tamamlaninca analiz gosterilecek...</div>
-          </div>
+          <div id="cg-seo-checks" class="cg-seo-bars"></div>
         </div>
+        <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
       </div>
 
-      <!-- Blog ROI / Gelir Tahmini -->
-      <div class="card" style="padding:16px">
-        <div class="cg-panel-title" style="margin-bottom:4px">
-          Blog Gelir Tahmini
-          <button class="cg-roi-refresh" onclick="cgRefreshROI()">Yenile</button>
-        </div>
-        <div class="cg-roi-big" id="cg-roi-big">&#8378;0</div>
-        <div class="cg-roi-sub">Tahmini aylik blog geliri</div>
-        <div id="cg-roi-metrics">
-          <div class="cg-roi-row"><span class="cg-roi-lbl">Yazilan Blog</span><span class="cg-roi-val" id="roi-total">0</span></div>
-          <div class="cg-roi-row"><span class="cg-roi-lbl">Yayinlanan</span><span class="cg-roi-val" id="roi-pub">0</span></div>
-          <div class="cg-roi-row"><span class="cg-roi-lbl">Tahmini Ziyaretci/Ay</span><span class="cg-roi-val" id="roi-traffic">0</span></div>
-          <div class="cg-roi-row"><span class="cg-roi-lbl">Donusum Orani</span><span class="cg-roi-val" id="roi-conv">%1.2</span></div>
-          <div class="cg-roi-row"><span class="cg-roi-lbl">Ort. Siparis Degeri</span><span class="cg-roi-val" id="roi-aov">&#8378;12.000</span></div>
-        </div>
-        <div class="cg-roi-note">* SEO skoru bazli organik trafik tahmini. Gercek gelir UTM takibi gerektirir.</div>
+      <!-- History -->
+      <div id="cg-tab-panel-history" style="display:none;max-height:460px;overflow-y:auto">
+        <div id="cg-history-list"></div>
       </div>
+
     </div>
 
-    <!-- Insight Engine -->
-    <div class="card cg-insight-card" style="padding:16px">
-      <div class="cg-panel-title" style="margin-bottom:10px">
-        Cherry'nin Icgoruleri
-        <button class="cg-insight-act" onclick="cgInsightEngine()" style="font-size:.62rem;padding:4px 10px">Analiz Et</button>
-      </div>
-      <div id="cg-insight-list">
-        <div style="font-size:.72rem;opacity:.3;padding:8px 0">
-          Ilk bloglar yazildiginda Cherry kendi analizlerini burada sunacak...
-        </div>
-      </div>
-    </div>
   </div>
+
+</div>
+
+</div>
 </div>
 </main>
 <script id="data-script">
@@ -2686,7 +2327,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-15T16:30:32",
+  "updated_at": "2026-05-15T19:46:42",
   "period_30d": {
     "revenue": 108160,
     "orders": 9,
@@ -2702,7 +2343,7 @@ const SHOPIFY = {
     "orders": 64,
     "aov": 12005
   },
-  "customers_total": 736,
+  "customers_total": 740,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -4513,1633 +4154,719 @@ function urunProfitCalc() {
 }
 
 
-// ─── CHERRYGLOW AI AGENT v4.1 ──────────────────────────────────────────────
-const CG_VERSION = 'v5.4.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
-
-// ── Brain v5 — kalici bellek ──────────────────────────────────────────────────
+// ─── CHERRYGLOW v6 — Button-driven, no chat, no freeze ────────────────────────
+const CG_VERSION = 'v6.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
 var CG_BRAIN_KEY = 'cg_brain_v5';
 var CG_USER = {name:'Onur', store:'Retrocameraland', biz:'analog kamera ve vintage fotograf', city:'Istanbul'};
 
 function cgDefaultBrain() {
-  return {
-    v:5, user:CG_USER, sessions_count:0, current_session:null,
-    topics_covered:[], seo_scores:[], history:[], keywords_used:[],
-    last_active:'', conversation_log:[], daily_stats:{},
-    research_queue:[], proactive_suggestions:[], last_suggestion_ts:0, brand:null
-  };
+  return {v:5, user:CG_USER, sessions_count:0, current_session:null,
+    topics_covered:[], seo_scores:[], history:[], keywords_used:[], last_active:'', daily_stats:{}};
 }
-function cgMigrateBrainV5(old) {
-  var b = cgDefaultBrain();
-  b.topics_covered = old.topics_covered || [];
-  b.seo_scores     = old.seo_scores     || [];
-  b.history        = old.history        || [];
-  b.keywords_used  = old.keywords_used  || [];
-  b.last_active    = old.last_active    || '';
-  b.brand          = old.brand          || null;
-  b.sessions_count = 1;
-  return b;
-}
+
 function cgGetBrain() {
   try {
     var raw = localStorage.getItem(CG_BRAIN_KEY);
-    if (!raw) {
-      var v4 = localStorage.getItem('cg_brain_v4');
-      if (v4) {
-        var migrated = cgMigrateBrainV5(JSON.parse(v4));
-        localStorage.setItem(CG_BRAIN_KEY, JSON.stringify(migrated));
-        return migrated;
-      }
-      return cgDefaultBrain();
-    }
-    return JSON.parse(raw);
+    if (!raw) return cgDefaultBrain();
+    var b = JSON.parse(raw);
+    return (b && typeof b === 'object') ? b : cgDefaultBrain();
   } catch(e) { return cgDefaultBrain(); }
 }
+
 var _cgSaveTimer = null;
-var _cgPendingBrain = null;
 function cgSaveBrain(b) {
-  _cgPendingBrain = b;
   clearTimeout(_cgSaveTimer);
+  var snap = JSON.stringify(b);
   _cgSaveTimer = setTimeout(function() {
-    try { localStorage.setItem(CG_BRAIN_KEY, JSON.stringify(_cgPendingBrain)); } catch(e) {}
-    _cgPendingBrain = null;
+    try { localStorage.setItem(CG_BRAIN_KEY, snap); } catch(e) {}
   }, 600);
 }
-function cgSessionStart() {
-  var b = cgGetBrain();
-  b.current_session = 'sess_' + Date.now();
-  b.sessions_count  = (b.sessions_count || 0) + 1;
-  b.last_active     = new Date().toISOString();
-  var ds = new Date().toDateString();
-  if (!b.daily_stats[ds]) b.daily_stats[ds] = {blogs:0, words:0, published:0, sessions:0};
-  b.daily_stats[ds].sessions++;
-  var ks = Object.keys(b.daily_stats);
-  if (ks.length > 90) ks.sort().slice(0, ks.length-90).forEach(function(k){ delete b.daily_stats[k]; });
-  cgSaveBrain(b);
-}
-var _cgLogQueue = [];
-var _cgLogFlushTimer = null;
-function cgLogMessage(role, msg) {
-  _cgLogQueue.push({ts:Date.now(), role:role, msg:msg.slice(0,400), sid:(cgGetBrain()||{}).current_session});
-  clearTimeout(_cgLogFlushTimer);
-  _cgLogFlushTimer = setTimeout(function() {
-    if (!_cgLogQueue.length) return;
-    var b = cgGetBrain();
-    b.conversation_log = b.conversation_log || [];
-    _cgLogQueue.forEach(function(e){ b.conversation_log.push(e); });
-    _cgLogQueue = [];
-    if (b.conversation_log.length > 400) b.conversation_log = b.conversation_log.slice(-400);
-    cgSaveBrain(b);
-  }, 1500);
-}
-function cgRecentlyDiscussed(days) {
-  var cutoff = Date.now() - (days||30) * 86400000;
-  var b = cgGetBrain();
-  var recent = [];
-  (b.conversation_log||[]).forEach(function(e){ if (e.ts>=cutoff) recent.push(e.msg.toLowerCase()); });
-  (b.topics_covered||[]).forEach(function(t){ if (new Date(t.date).getTime()>=cutoff) recent.push(t.topic.toLowerCase()); });
-  (b.proactive_suggestions||[]).forEach(function(s){ if (s.suggested_ts>=cutoff) recent.push(s.topic.toLowerCase()); });
-  return recent;
-}
 
-// ── State machine ─────────────────────────────────────────────────────────────
-var _cgCurrentState = 'idle';
-var _cgBlossomTimer = null;
-var _cgBreakSchedule = null;
+// ── State object ──────────────────────────────────────────────────────────────
+var _cgSt = {
+  status: 'idle',   // idle | writing | done | error | publishing
+  idx: -1,
+  item: null,
+  intel: null,
+  brief: null,
+  md: '',
+  scoreObj: null,
+  error: '',
+  published: false,
+  writeQueue: [],
+  phase: '',
+  progress: 0
+};
+
+var _cgAgenda = [];
 var _cgAutoPub = false;
+var _cgWriting = false;
+var _cgWriteAbort = null;
 
-var CG_STATE_COLORS = {
-  idle:'rgba(52,199,89,.7)', analyzing:'rgba(90,200,250,.8)', writing:'rgba(212,175,55,.9)',
-  done:'rgba(52,199,89,1)', wc:'rgba(255,149,0,.6)', smoke:'rgba(180,180,180,.5)',
-  coffee:'rgba(180,100,50,.65)', tired:'rgba(120,120,200,.5)', think:'rgba(90,200,250,.55)',
-  stretch:'rgba(100,200,100,.5)'
-};
-var CG_STATE_LABELS = {
-  idle:'HAZIR', analyzing:'ANALIZ', writing:'YAZIYOR', done:'TAMAM',
-  wc:'MOLA', smoke:'SIGARA', coffee:'KAHVE', tired:'DINLENIYOR', think:'DUSUNUYOR', stretch:'GERINIYOR'
-};
-var CG_STATE_TEXTS = {
-  idle:'Bekliyor', analyzing:'Analiz ediyor...', writing:'Blog yaziyor...', done:'Tamamlandi!',
-  wc:'Tuvalette...', coffee:'Kahve yapiyor', smoke:'Sigara molasi', tired:'Dinleniyor',
-  think:'Derin dusuncede...', stretch:'Geriniyor'
-};
-
-function setCherryState(s) {
-  _cgCurrentState = s;
-  var fig = document.getElementById('cg-figure');
-  if (!fig) return;
-  var allStates = ['idle','analyzing','writing','done','wc','smoke','coffee','tired','think','stretch'];
-  allStates.forEach(function(st) { fig.classList.remove(st); });
-  fig.classList.add(s);
-
-  var dot = document.getElementById('cg-sp-dot');
-  var txt = document.getElementById('cg-sp-text');
-  var pill = document.getElementById('cg-status-pill');
-  var col = CG_STATE_COLORS[s] || 'rgba(150,150,150,.5)';
-  var lbl = CG_STATE_LABELS[s] || s.toUpperCase();
-  if (dot) dot.style.background = col;
-  if (txt) txt.textContent = lbl;
-  if (pill) pill.textContent = lbl;
-
-  // Brain wave bars
-  var bwBars = document.querySelectorAll('.bw-bar');
-  var bwActive = (s === 'analyzing' || s === 'writing' || s === 'think');
-  bwBars.forEach(function(b) { b.classList.toggle('active', bwActive); });
-
-  // Blossom disabled
-
-  // Waveform
-  cgUpdateWaveform(s);
-
-  // Chat header status sync
-  var chatDot = document.getElementById('cg-chat-status-dot');
-  var chatTxt = document.getElementById('cg-chat-status-txt');
-  var col2 = CG_STATE_COLORS[s] || 'rgba(150,150,150,.5)';
-  if (chatDot) { chatDot.style.background = col2; chatDot.style.boxShadow = '0 0 6px '+col2; }
-  if (chatTxt) chatTxt.textContent = CG_STATE_TEXTS[s] || s;
-
-  // Widget sync
-  cgUpdateWidget(s);
-
-  // Schedule break on idle
-  if (s === 'idle') cgScheduleBreak();
-  else clearTimeout(_cgBreakSchedule);
-
-  // Celebrate on done
-  if (s === 'done') {
-    setTimeout(cgCelebrate, 200);
-    setTimeout(function() { setCherryState('idle'); }, 4500);
-    // Chat notification
-    setTimeout(function() {
-      var brain = cgGetBrain();
-      var hist = brain.history || [];
-      var last = hist.length ? hist[hist.length-1] : null;
-      var seoScore = last ? (last.seo||'--') : '--';
-      var title = last ? last.title : 'Blog';
-      cgAddMessage('cherry',
-        '"' + title.slice(0,45) + '" hazir! SEO skoru: ' + seoScore + '/100. Shopify\'a yayinlayayim mi?',
-        'done', 300);
-      cgSetChips([
-        {label:'✓ Onayla ve Yayinla', act:'cgApproveAndPublish()', hot:true},
-        {label:'Incele', act:'setCherryTab("preview",document.querySelector(".cg-tab.active"))'},
-        {label:'Beklet', act:'cgAddMessage("cherry","Tamam, bekletiyorum. Hazir olunca \'Yayinla\' butonuna bas.","")'},
-      ]);
-      cgRefreshROI();
-    }, 600);
-  }
-}
-
-// ── Waveform ──────────────────────────────────────────────────────────────────
-function cgUpdateWaveform(state) {
-  var bars = document.querySelectorAll('.cg-wb');
-  var isActive = (state === 'writing' || state === 'analyzing' || state === 'think');
-  var isQuiet = (state === 'wc' || state === 'smoke' || state === 'coffee' || state === 'tired' || state === 'stretch');
-  bars.forEach(function(bar) {
-    bar.classList.remove('active', 'quiet', 'idle-wave');
-    if (isActive) bar.classList.add('active');
-    else if (isQuiet) bar.classList.add('quiet');
-    else bar.classList.add('idle-wave');
-  });
-}
-
-// ── Human break state machine ─────────────────────────────────────────────────
-var CG_BREAKS = [
-  {id:'wc',      label:'Tuvalette... 🚽',              sub:'Az sonra donuyorum',             dur:[60,120], w:2, prop:'bubble', emoji:'🚽'},
-  {id:'smoke',   label:'Sigara molasinda 🚬',       sub:'Balkonda hava aliyorum',          dur:[40,80],  w:3, prop:'cig'},
-  {id:'coffee',  label:'Kahve yapiyor ☕',                   sub:'Turk kahvesi, sade',              dur:[25,50],  w:6, prop:'cup'},
-  {id:'tired',   label:'Kisa mola... 😴',              sub:'Masada 5 dakika gozlerini kapatti',dur:[20,35],  w:4, prop:'zzz'},
-  {id:'think',   label:'Derin dusuncede 💭',           sub:'SEO stratejisi kafasinda',        dur:[15,25],  w:10},
-  {id:'stretch', label:'Geriniyor 🤸',                 sub:'Uzun calismadan sonra kisa mola', dur:[10,20],  w:7},
-];
-
-function cgScheduleBreak() {
-  clearTimeout(_cgBreakSchedule);
-  var delay = 200000 + Math.random() * 200000; // 3.3-6.6 min idle → break
-  _cgBreakSchedule = setTimeout(function() {
-    if (_cgCurrentState === 'idle') cgTriggerBreak();
-  }, delay);
-}
-
-function cgTriggerBreak() {
-  var total = CG_BREAKS.reduce(function(a,b){return a+b.w;},0);
-  var r = Math.random() * total, chosen = CG_BREAKS[0];
-  for (var i=0; i<CG_BREAKS.length; i++) {
-    r -= CG_BREAKS[i].w;
-    if (r <= 0) { chosen = CG_BREAKS[i]; break; }
-  }
-  setCherryState(chosen.id);
-  cgShowHumanBadge(chosen.label, chosen.sub);
-  if (chosen.prop) cgShowProp(chosen.prop, chosen.emoji);
-  var dur = (chosen.dur[0] + Math.random() * (chosen.dur[1] - chosen.dur[0])) * 1000;
-  setTimeout(function() {
-    cgHideProp(); cgHideHumanBadge();
-    setCherryState('idle');
-  }, dur);
-}
-
-function cgShowProp(propName, emoji) {
-  var propMap = {cig:'cg-cig-g', cup:'cg-cup-g', zzz:'cg-zzz-g', bubble:'cg-bubble-g'};
-  var el = document.getElementById(propMap[propName]);
-  if (!el) return;
-  if (propName === 'bubble' && emoji) {
-    var eb = document.getElementById('cg-b-emoji');
-    if (eb) eb.textContent = emoji;
-  }
-  el.style.opacity = '1';
-}
-
-function cgHideProp() {
-  ['cg-cig-g','cg-cup-g','cg-zzz-g','cg-bubble-g'].forEach(function(id) {
-    var el = document.getElementById(id);
-    if (el) el.style.opacity = '0';
-  });
-}
-
-function cgShowHumanBadge(label, sub) {
-  var badge = document.getElementById('cg-human-badge');
-  var lbl   = document.getElementById('cg-hb-label');
-  var sublbl = document.getElementById('cg-hb-sub');
-  if (badge) badge.style.display = 'block';
-  if (lbl)   lbl.textContent   = label;
-  if (sublbl) sublbl.textContent = sub;
-}
-function cgHideHumanBadge() {
-  var badge = document.getElementById('cg-human-badge');
-  if (badge) badge.style.display = 'none';
-}
-
-// ── Cherry blossom — disabled ─────────────────────────────────────────────────
-function cgStartBlossom() {}
-function cgStopBlossom() {}
-
-// ── Celebrate sparks ──────────────────────────────────────────────────────────
-function cgCelebrate() {
-  var fig = document.getElementById('cg-figure');
-  if (!fig) return;
-  var rect = fig.getBoundingClientRect();
-  var cx = rect.left+rect.width/2, cy = rect.top+rect.height/3;
-  var cols = ['#D4AF37','#FFB7C5','#34C759','#5AC8FA','#BF5AF2','#FFD60A'];
-  for (var i=0; i<24; i++) {
-    var sp = document.createElement('div'); sp.className = 'cg-spark';
-    var angle = Math.random()*Math.PI*2, dist = 60+Math.random()*130;
-    var tx = Math.cos(angle)*dist, ty = Math.sin(angle)*dist-50;
-    var sz = 5+Math.random()*9;
-    sp.style.cssText = 'left:'+cx+'px;top:'+cy+'px;width:'+sz+'px;height:'+sz+'px;background:'+
-      cols[Math.floor(Math.random()*cols.length)]+';--tx:'+tx+'px;--ty:'+ty+'px;animation-delay:'+(Math.random()*.3)+'s;';
-    document.body.appendChild(sp);
-    setTimeout(function(s){if(s.parentNode)s.parentNode.removeChild(s);},1300,sp);
-  }
-}
-
-// ── Widget sync ───────────────────────────────────────────────────────────────
-function cgUpdateWidget(state) {
-  var dotEl  = document.getElementById('cw-dot');
-  var txtEl  = document.getElementById('cw-state-text');
-  var subEl  = document.getElementById('cw-state-sub');
-  var col    = CG_STATE_COLORS[state] || 'rgba(150,150,150,.4)';
-  var txt    = CG_STATE_TEXTS[state]  || state;
-  if (dotEl) { dotEl.style.background = col; dotEl.style.boxShadow = '0 0 8px '+col; }
-  if (txtEl) txtEl.textContent = txt;
-  if (subEl) {
-    var subs = {
-      idle:'Blog yazmaya hazir', analyzing:'Konu arastiriyor...', writing:'Icerik uretiyor...',
-      done:'Harika! Bir blog daha!', wc:'Kisa mola, bekleyin...', coffee:'Kahve molasi',
-      smoke:'Sigara molasi', tired:'5 dakika dinleniyor', think:'Strateji dusunuyor', stretch:'Kisa egzersiz'
-    };
-    subEl.textContent = subs[state] || '';
-  }
-  // Widget wave bars
-  var isActive = (state === 'analyzing' || state === 'writing' || state === 'think');
-  document.querySelectorAll('.cw-wb').forEach(function(wb) {
-    wb.classList.toggle('active', isActive);
-  });
-  // Update widget stats from brain
-  var brain = cgGetBrain();
-  var scores = brain.seo_scores || [];
-  var blogsEl = document.getElementById('cw-s-blogs');
-  var seoEl   = document.getElementById('cw-s-seo');
-  var todayEl = document.getElementById('cw-s-today');
-  if (blogsEl) blogsEl.textContent = scores.length;
-  if (seoEl && scores.length) {
-    var avg = Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length);
-    seoEl.textContent = avg;
-  }
-  var todayStr = new Date().toDateString();
-  var todayCount = (brain.topics_covered||[]).filter(function(t){ return t.date===todayStr; }).length;
-  if (todayEl) todayEl.textContent = todayCount;
-}
-
-function cgInitWidget() {
-  var verEl = document.getElementById('cg-w-ver');
-  if (verEl) verEl.textContent = CG_VERSION;
-  cgUpdateWidget(_cgCurrentState);
-}
-
-function cgWidgetQuickWrite() {
-  navigate('cherry', document.querySelector('[data-page=cherry]'));
-  setTimeout(function() {
-    var pending = Array.from(document.querySelectorAll('.cg-agenda-item')).find(function(el){
-      return el.dataset.stage !== 'done' && el.dataset.stage !== 'running';
-    });
-    if (pending) pending.click();
-    else cherryAddAllToAgenda();
-  }, 600);
-}
-
-function cgToggleAutoPub(checked) {
-  _cgAutoPub = checked;
-  // Sync both toggles
-  var t1 = document.getElementById('cg-autopub');
-  var t2 = document.getElementById('cw-auto-toggle');
-  if (t1) t1.checked = checked;
-  if (t2) t2.checked = checked;
-  cherryLog(_cgAutoPub ? 'Oto-yayın ACIK - bloglar otomatik yayinlanacak.' : 'Oto-yayın KAPALI.', 'info');
-}
-
-// ── Publish to Shopify ────────────────────────────────────────────────────────
-async function cherryPublishLatest() {
-  var hist = cgGetBrain().history || [];
-  if (!hist.length) { cherryLog('Yayinlanacak blog bulunamadi.','warn'); return; }
-  var item = hist[hist.length-1];
-  await cherryPublish(item);
-}
-
-async function cherryPublish(item) {
-  if (!item || !item.md) { cherryLog('Icerik yok.','warn'); return; }
-  var html = enrichBlogHTML(simpleMarkdownToHTML(item.md));
-  cherryLog('Shopify\'a yayinlaniyor...','info');
-  var pubBtn = document.getElementById('cg-publish-btn');
-  if (pubBtn) { pubBtn.textContent = 'Gonderiliyor...'; pubBtn.disabled = true; }
-  try {
-    var resp = await fetch('/api/shopify-publish', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({title:item.title||'CherryGlow Blog', body_html:html, published:true})
-    });
-    var data = await resp.json();
-    if (data.article && data.article.id) {
-      cherryLog('Yayinlandi! Shopify ID: '+data.article.id,'ok');
-      cherryThink('Blog Shopify\'da yayinda.','ok');
-      item.published = true; item.shopify_id = data.article.id;
-      var brain = cgGetBrain();
-      brain.history = (brain.history||[]);
-      var idx = brain.history.findIndex(function(h){return h.title===item.title;});
-      if (idx>=0) { brain.history[idx] = item; cgSaveBrain(brain); }
-    } else {
-      var errMsg = data.errors ? JSON.stringify(data.errors) : (data.error||'Bilinmeyen hata');
-      cherryLog('Hata: '+errMsg,'err');
-    }
-  } catch(e) {
-    cherryLog('Baglanti hatasi: '+e.message,'err');
-    cherryLog('Not: Shopify API Vercel env degiskenlerini kontrol edin (SHOPIFY_STORE, SHOPIFY_ACCESS_TOKEN)','warn');
-  } finally {
-    if (pubBtn) { pubBtn.textContent = 'Yayinla'; pubBtn.disabled = false; }
-  }
-}
-
-// ── SEO panel ─────────────────────────────────────────────────────────────────
-function cgUpdateSeoPanel(scoreObj) {
-  if (!scoreObj) return;
-  var score = scoreObj.score || 0;
-  var checks = scoreObj.checks || [];
-  var ring = document.getElementById('cg-sr-fill');
-  if (ring) {
-    var offset = 314 - (score/100)*314;
-    ring.style.strokeDashoffset = offset;
-  }
-  var center = document.getElementById('cg-score-center');
-  if (center) center.textContent = score;
-  var barsEl = document.getElementById('cg-seo-bars');
-  if (!barsEl) return;
-  var metrics = [
-    {label:'Kelime Sayisi', value: Math.min(100, Math.round((scoreObj.wc||0)/20)), color:'#D4AF37'},
-    {label:'H1 / H2 Basliklar', value: checks.some(function(c){return c.key==='h1' && c.pass;})?100:40, color:'#FFB7C5'},
-    {label:'Anahtar Kelime', value: checks.some(function(c){return c.key==='kw' && c.pass;})?85:35, color:'#5AC8FA'},
-    {label:'CTA Varligi', value: checks.some(function(c){return c.key==='cta' && c.pass;})?100:20, color:'#34C759'},
-  ];
-  barsEl.innerHTML = metrics.map(function(m){
-    return '<div class="cg-seo-bar-row">' +
-      '<div class="cg-seo-bar-label">'+m.label+'</div>' +
-      '<div class="cg-seo-bar-track"><div class="cg-seo-bar-fill" style="width:'+m.value+'%;background:'+m.color+'"></div></div>' +
-      '</div>';
-  }).join('') +
-  '<div style="display:flex;flex-direction:column;gap:4px;margin-top:10px">' +
-  checks.slice(0,6).map(function(ch){
-    return '<div class="cg-seo-check '+(ch.pass?'pass':'fail')+'">'+ch.label+'</div>';
-  }).join('') + '</div>';
-
-  var stamp = document.getElementById('cg-seo-stamp');
-  if (stamp) stamp.textContent = new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
-}
-
-// ── Thought log ───────────────────────────────────────────────────────────────
+// ── Log ───────────────────────────────────────────────────────────────────────
 var _cgLogs = [];
-function cherryLog(msg, type) {
-  _cgLogs.push({msg:msg, type:type||'', ts:Date.now()});
-  if (_cgLogs.length > 60) _cgLogs = _cgLogs.slice(-60);
-  var el = document.getElementById('cg-ts-inner');
+function cgLog(msg, type) {
+  _cgLogs.push({ts: Date.now(), msg: msg, type: type || ''});
+  if (_cgLogs.length > 80) _cgLogs = _cgLogs.slice(-80);
+  var el = document.getElementById('cg-log');
   if (!el) return;
-  el.innerHTML = _cgLogs.slice(-14).map(function(l){
-    var t = new Date(l.ts).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-    return '<div class="cg-ts-line '+(l.type||'')+'"><span style="opacity:.25;font-size:.58rem;margin-right:7px;font-family:var(--mono)">'+t+'</span>'+l.msg+'</div>';
+  var lines = _cgLogs.slice(-22);
+  el.innerHTML = lines.map(function(l) {
+    var t = new Date(l.ts).toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    var c = l.type === 'ok'   ? 'rgba(52,199,89,.75)'  :
+            l.type === 'err'  ? 'rgba(255,69,58,.75)'  :
+            l.type === 'warn' ? 'rgba(255,149,0,.75)'  :
+            l.type === 'info' ? 'rgba(90,200,250,.65)' : 'rgba(255,255,255,.35)';
+    return '<div style="color:'+c+';padding:1px 0"><span style="opacity:.25;margin-right:5px">'+t+'</span>'+l.msg+'</div>';
   }).join('');
   el.scrollTop = el.scrollHeight;
-  var la = document.getElementById('cg-last-act');
-  if (la) la.textContent = msg.slice(0,40);
 }
 
-function cherryThink(msg, type) {
-  cherryLog('> '+msg, type||'think');
+// ── Status pill ───────────────────────────────────────────────────────────────
+function cgSetPill(label, bg) {
+  var el = document.getElementById('cg-status-pill');
+  if (!el) return;
+  el.textContent = label;
+  if (bg) { el.style.background = bg; el.style.borderColor = bg.replace(/[\d.]+\)$/, '.4)'); }
+  else { el.style.background = 'rgba(255,255,255,.05)'; el.style.borderColor = 'rgba(255,255,255,.1)'; }
 }
 
-// ── Version display ───────────────────────────────────────────────────────────
-function cgUpdateVersion() {
-  var el = document.getElementById('cg-version');
-  if (el) el.textContent = CG_VERSION;
-}
+// ── Render actions ────────────────────────────────────────────────────────────
+function cgRenderActions() {
+  var sEl = document.getElementById('cg-action-status');
+  var bEl = document.getElementById('cg-action-buttons');
+  if (!sEl || !bEl) return;
 
-// ── Tab system ────────────────────────────────────────────────────────────────
-var _cgActiveTab = 'preview';
-lastBlogMd = '';
-function setCherryTab(tab, el) {
-  _cgActiveTab = tab;
-  document.querySelectorAll('.cg-tab').forEach(function(t){t.classList.remove('active');});
-  if (el) el.classList.add('active');
-  var body = document.getElementById('cg-output-body');
-  if (!body) return;
-  var brain = cgGetBrain();
-  var hist = brain.history || [];
-  if (tab === 'preview') {
-    body.innerHTML = lastBlogMd ? enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd)) : '<div style="text-align:center;padding:40px;opacity:.25">Henuz blog yazilmadi</div>';
-  } else if (tab === 'html') {
-    var htmlEl = document.createElement('textarea');
-    htmlEl.style.cssText = 'width:100%;height:400px;background:rgba(0,0,0,.3);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:10px;font-size:.72rem;font-family:monospace;resize:vertical';
-    htmlEl.value = lastBlogMd ? enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd)) : '';
-    body.innerHTML = '';
-    body.appendChild(htmlEl);
-  } else if (tab === 'seo') {
-    body.innerHTML = '<div style="font-size:.72rem;opacity:.35;padding:20px 0">Son blog tamamlaninca SEO analizi burada gorunecek.</div>';
-  } else if (tab === 'history') {
-    body.innerHTML = hist.length ? hist.slice().reverse().map(function(h,i){
-      var seo = h.seo ? ('<span class="cg-hist-seo" style="background:rgba(212,175,55,.12);color:rgba(212,175,55,.7);border:1px solid rgba(212,175,55,.2);padding:2px 7px;border-radius:6px;font-size:.6rem">SEO:'+h.seo+'</span>') : '';
-      var pub = h.published ? '<span class="cg-hist-pub">Yayinda</span>' : '';
-      var ver = h.version ? '<span style="opacity:.3;font-size:.6rem">'+h.version+'</span>' : '';
-      return '<div class="cg-hist-item" onclick="cgLoadHistory('+i+')">' +
-        '<div class="cg-hist-title">'+h.title+'</div>' +
-        '<div class="cg-hist-meta">'+seo+pub+ver+'<span>'+((h.wc||0)+' kelime')+'</span></div>' +
-        '</div>';
-    }).join('') : '<div style="opacity:.3;font-size:.72rem;padding:20px 0">Gecmis yok</div>';
-  } else if (tab === 'analytics') {
-    body.innerHTML = '<div style="text-align:center;padding:30px;opacity:.25;font-size:.75rem">Yukluyor...</div>';
-    setTimeout(cgDailyReport, 80);
+  var st = _cgSt;
+
+  if (st.status === 'idle') {
+    sEl.innerHTML = '<div style="font-size:.82rem;color:rgba(255,255,255,.4);padding:6px 0">Sol taraftaki listeden bir konu seç ve <strong style="color:rgba(212,175,55,.75)">Yaz</strong> butonuna tıkla &mdash; ya da tümünü sırayla yaz.</div>';
+    bEl.innerHTML = '';
+
+  } else if (st.status === 'writing') {
+    var topic = st.item ? st.item.topic : '';
+    var kwLine = (st.intel && st.intel.primary_kw)
+      ? '<div style="font-size:.7rem;color:rgba(212,175,55,.65);margin-top:4px">KW: '
+        + [st.intel.primary_kw].concat((st.intel.secondary_kws||[]).slice(0,3)).join(' · ')
+        + '</div>' : '';
+    var h1Line = (st.brief && st.brief.h1)
+      ? '<div style="font-size:.7rem;color:rgba(255,255,255,.38);margin-top:3px">Başlık: ' + st.brief.h1.slice(0,60) + '</div>' : '';
+    var prog = st.progress || 10;
+    sEl.innerHTML =
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.55);margin-bottom:5px">' + (st.phase || 'Hazırlanıyor') + '</div>' +
+      '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + topic.slice(0,65) + '</div>' +
+      kwLine + h1Line +
+      '<div style="margin-top:10px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
+        '<div id="cg-prog-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:'+prog+'%;transition:width .6s"></div>' +
+      '</div>';
+    bEl.innerHTML = '<button class="cg-ctrl-btn" onclick="cgAbortWrite()" style="color:rgba(255,69,58,.75);border-color:rgba(255,69,58,.2)">Durdur</button>';
+
+  } else if (st.status === 'done') {
+    var wc  = st.scoreObj ? st.scoreObj.wc    : 0;
+    var seo = st.scoreObj ? st.scoreObj.score : '--';
+    var title = (st.brief && st.brief.h1) ? st.brief.h1 : (st.item ? st.item.topic : '');
+    sEl.innerHTML =
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(52,199,89,.7);margin-bottom:5px">✓ TAMAMLANDI</div>' +
+      '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + title.slice(0,65) + '</div>' +
+      '<div style="font-size:.72rem;color:rgba(255,255,255,.38);margin-top:4px">' + wc + ' kelime · SEO: ' + seo + '/100</div>';
+    bEl.innerHTML =
+      (st.published
+        ? '<button class="cg-ctrl-btn" style="color:rgba(52,199,89,.75);border-color:rgba(52,199,89,.25);cursor:default">✓ Shopify’da Yayınlandı</button>'
+        : '<button class="cg-ctrl-btn primary" onclick="cgPublish()">✓ Onayla ve Yayınla</button>') +
+      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Sıradaki Konuyu Yaz</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgTab(\'seo\',document.getElementById(\'cg-tab-seo\'))" style="font-size:.65rem">SEO</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgTab(\'history\',document.getElementById(\'cg-tab-history\'))" style="font-size:.65rem">Geçmiş</button>';
+
+  } else if (st.status === 'error') {
+    sEl.innerHTML =
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,69,58,.75);margin-bottom:5px">⚠ HATA</div>' +
+      '<div style="font-size:.8rem;color:rgba(255,255,255,.6)">' + (st.error || 'Bilinmeyen hata') + '</div>';
+    bEl.innerHTML =
+      '<button class="cg-ctrl-btn primary" onclick="cgRetry()">Tekrar Dene</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Bu Konuyu Atla</button>';
+
+  } else if (st.status === 'publishing') {
+    sEl.innerHTML = '<div style="font-size:.85rem;color:rgba(212,175,55,.8)">Shopify’a gönderiliyor...</div>';
+    bEl.innerHTML = '';
   }
-}
-
-function cgLoadHistory(revIdx) {
-  var brain = cgGetBrain();
-  var hist = brain.history || [];
-  var item = hist.slice().reverse()[revIdx];
-  if (!item) return;
-  lastBlogMd = item.md || '';
-  var titleEl = document.getElementById('cg-output-title');
-  var wcEl = document.getElementById('cg-wc-badge');
-  if (titleEl) titleEl.textContent = item.title || '—';
-  if (wcEl) wcEl.textContent = (item.wc||0)+' kelime';
-  setCherryTab('preview', document.querySelector('.cg-tab.active'));
-  if (item.seo) cgUpdateSeoPanel({score:item.seo, checks:[], wc:item.wc||0});
-}
-
-// ── Keyword cloud ─────────────────────────────────────────────────────────────
-function cgUpdateKeywords(kws) {
-  var el = document.getElementById('cg-kw-cloud');
-  if (!el || !kws || !kws.length) return;
-  el.innerHTML = kws.map(function(k){
-    return '<span class="cg-kw-tag">'+k+'</span>';
-  }).join('');
 }
 
 // ── Agenda ────────────────────────────────────────────────────────────────────
-var _cgAgenda = [];
-var _cgHistory = [];
-
 function cgBuildAgenda() {
   var brain = cgGetBrain();
-  var covered = (brain.topics_covered||[]).map(function(t){return t.topic;});
+  var covered = (brain.topics_covered || []).map(function(t) { return t.topic; });
   _cgAgenda = [];
   var keys = Object.keys(BLOG_TOPICS);
-  for (var ki=0; ki<keys.length; ki++) {
+  for (var ki = 0; ki < keys.length; ki++) {
     var cat = keys[ki];
     var topics = BLOG_TOPICS[cat];
-    for (var ti=0; ti<topics.length; ti++) {
+    for (var ti = 0; ti < topics.length; ti++) {
       var t = topics[ti];
-      var alreadyDone = covered.indexOf(t.topic) >= 0;
-      _cgAgenda.push({
-        cat: cat, topic: t.topic, label: t.label || cat,
-        done: alreadyDone, stage: alreadyDone ? 'done' : 'pending'
-      });
+      var done = covered.indexOf(t.topic) >= 0;
+      _cgAgenda.push({cat: cat, topic: t.topic, done: done, stage: done ? 'done' : 'pending'});
     }
   }
   cgRenderAgenda();
 }
 
 function cgRenderAgenda() {
-  var el = document.getElementById('cg-agenda-list');
-  var cntEl = document.getElementById('cg-agenda-count');
+  var el  = document.getElementById('cg-agenda-list');
+  var cnt = document.getElementById('cg-agenda-count');
   if (!el) return;
-  var visible = _cgAgenda.slice(0, 12);
-  var pending = _cgAgenda.filter(function(a){return a.stage==='pending';});
-  if (cntEl) cntEl.textContent = pending.length;
-  el.innerHTML = visible.map(function(item, idx){
-    var statusTxt = item.stage==='done' ? 'tamam' : item.stage==='running' ? 'yaziliyor' : '';
-    var statusClass = item.stage==='done' ? 'done' : item.stage==='running' ? 'running' : '';
-    var clickable = item.stage !== 'running';
-    return '<div class="cg-agenda-item' + (item.stage==='done'?' done-item':'') + '" data-idx="'+idx+'" data-stage="'+item.stage+'" ' + (clickable?'onclick="cherryGenerateBlog('+idx+')"':'style="opacity:.45;cursor:default"') + '>' +
-      '<span class="cg-ai-cat">'+item.cat+'</span>' +
-      '<span class="cg-ai-topic">'+item.topic.slice(0,60)+'</span>' +
-      '<span class="cg-ai-status '+statusClass+'">'+statusTxt+'</span>' +
+  var pending = _cgAgenda.filter(function(a) { return a.stage === 'pending'; }).length;
+  if (cnt) cnt.textContent = pending + ' konu bekliyor';
+  el.innerHTML = _cgAgenda.map(function(item, idx) {
+    var running = item.stage === 'running';
+    var done    = item.stage === 'done';
+    var bg  = done    ? 'rgba(52,199,89,.03)'    : running ? 'rgba(212,175,55,.06)' : 'rgba(255,255,255,.025)';
+    var bdr = done    ? 'rgba(52,199,89,.12)'    : running ? 'rgba(212,175,55,.3)'  : 'rgba(255,255,255,.055)';
+    var badge = done    ? '<span style="font-size:.6rem;color:rgba(52,199,89,.6)">✓</span>'
+              : running ? '<span style="font-size:.6rem;color:#D4AF37">●</span>'
+              : '<button onclick="cgWrite('+idx+')" style="font-size:.58rem;padding:3px 9px;border-radius:6px;border:1px solid rgba(212,175,55,.3);background:rgba(212,175,55,.08);color:rgba(212,175,55,.85);cursor:pointer;white-space:nowrap">Yaz</button>';
+    return '<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:'+bg+';border:1px solid '+bdr+';margin-bottom:5px'+(done?';opacity:.42':'')+'">'+
+      '<span style="font-size:.52rem;padding:2px 6px;border-radius:5px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.15);color:rgba(212,175,55,.6);flex-shrink:0">'+item.cat+'</span>'+
+      '<span style="flex:1;font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.35">'+item.topic.slice(0,55)+'</span>'+
+      badge+
       '</div>';
   }).join('');
 }
 
-function cherryAddAllToAgenda() {
-  cgBuildAgenda();
-  cherryLog('Tum konular gundem listesine eklendi.','ok');
+function cgUpdateAgendaStage(idx, stage) {
+  if (_cgAgenda[idx]) { _cgAgenda[idx].stage = stage; cgRenderAgenda(); }
 }
 
-function cgUpdateAgendaItem(idx, stage) {
-  if (_cgAgenda[idx]) {
-    _cgAgenda[idx].stage = stage;
-    cgRenderAgenda();
+// ── Stats ──────────────────────────────────────────────────────────────────────
+function cgUpdateStats() {
+  var brain  = cgGetBrain();
+  var hist   = brain.history || [];
+  var scores = brain.seo_scores || [];
+  var pub    = hist.filter(function(h) { return h.published; }).length;
+  var today  = (brain.topics_covered || []).filter(function(t) { return t.date === new Date().toDateString(); }).length;
+  var tw     = hist.reduce(function(a, h) { return a + (h.wc || 0); }, 0);
+  var avgSeo = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : '--';
+  function s(id, v) { var e = document.getElementById(id); if (e) e.textContent = v; }
+  s('cg-stat-done',  hist.length);
+  s('cg-stat-words', tw >= 1000 ? (tw/1000).toFixed(1)+'K' : tw);
+  s('cg-stat-seo',   avgSeo);
+  s('cg-stat-pub',   pub);
+  s('cg-stat-today', today);
+  var wv = document.getElementById('cg-w-ver');
+  if (wv) wv.textContent = CG_VERSION;
+  cgUpdateWidget(_cgSt.status);
+}
+
+// ── Tabs ───────────────────────────────────────────────────────────────────────
+function cgTab(tab, btn) {
+  ['preview','html','seo','history'].forEach(function(t) {
+    var p = document.getElementById('cg-tab-panel-'+t);
+    var b = document.getElementById('cg-tab-'+t);
+    if (p) p.style.display = (t === tab) ? '' : 'none';
+    if (b) b.classList.toggle('active', t === tab);
+  });
+  if (tab === 'html' && _cgSt.md) {
+    var ta = document.getElementById('cg-html-ta');
+    if (ta) ta.value = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
+  }
+  if (tab === 'history') cgRenderHistory();
+  if (tab === 'seo' && _cgSt.scoreObj) cgRenderSeoPanel(_cgSt.scoreObj);
+}
+
+function cgCopyHTML() {
+  var ta = document.getElementById('cg-html-ta');
+  if (ta && ta.value) navigator.clipboard.writeText(ta.value).then(function() { cgLog('HTML kopyalandı.','ok'); });
+}
+
+function cgDownloadHTML() {
+  var ta = document.getElementById('cg-html-ta');
+  if (!ta || !ta.value) return;
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([ta.value], {type:'text/html'}));
+  a.download = 'cherryglow-blog.html';
+  a.click();
+}
+
+// ── SEO panel ──────────────────────────────────────────────────────────────────
+function cgRenderSeoPanel(sc) {
+  var ring = document.getElementById('cg-seo-ring');
+  var num  = document.getElementById('cg-seo-score-num');
+  var chks = document.getElementById('cg-seo-checks');
+  var kwEl = document.getElementById('cg-kw-cloud');
+  if (ring) ring.style.strokeDashoffset = (251 - 251 * sc.score / 100);
+  if (num)  num.textContent = sc.score;
+  if (chks) chks.innerHTML = (sc.checks || []).map(function(c) {
+    return '<div class="cg-seo-check '+(c.pass?'pass':'fail')+'">'+c.label+'</div>';
+  }).join('');
+  if (kwEl && _cgSt.intel) {
+    var kws = [_cgSt.intel.primary_kw].concat(_cgSt.intel.secondary_kws || []).filter(Boolean);
+    kwEl.innerHTML = kws.map(function(k) { return '<span class="cg-kw-tag">'+k+'</span>'; }).join('');
   }
 }
 
-// ── SEO scoring (client-side) ─────────────────────────────────────────────────
-function cherryScore(md, item, intel) {
-  var score = 0, checks = [];
-  var wc = md.split(/\s+/).length;
-  var h1c = (md.match(/^# /mg)||[]).length;
-  var h2c = (md.match(/^## /mg)||[]).length;
-  var kw = (intel && intel.primary_kw) ? intel.primary_kw.toLowerCase() : '';
-  var kwDensity = kw ? (md.toLowerCase().split(kw).length - 1) : 0;
-  var hasCta = /retrocameraland|koleksiyonu|incele|kesfet|satin al/i.test(md);
-  var longParas = (md.split(/\n\n/).filter(function(p){return p.split(/\s+/).length > 120;}).length);
-
-  checks.push({key:'h1',    pass:h1c===1,    label:'H1 baslik (1 tane): '+(h1c===1?'OK':'Eksik')});
-  checks.push({key:'h2',    pass:h2c>=3,     label:'H2 basliklar (3+): '+h2c+'/3'});
-  checks.push({key:'wc',    pass:wc>=800,    label:'Kelime sayisi (800+): '+wc});
-  checks.push({key:'kw',    pass:kwDensity>=3,label:'Anahtar kelime yog.: '+kwDensity+'x'});
-  checks.push({key:'cta',   pass:hasCta,     label:'CTA/Marka referansi: '+(hasCta?'Var':'Yok')});
-  checks.push({key:'para',  pass:longParas===0,label:'Para uzunlugu: '+(longParas===0?'OK':longParas+' uzun para')});
-
-  if (h1c===1) score += 18;
-  if (h2c>=3)  score += 15; else if (h2c>=2) score += 8;
-  if (wc>=1200) score += 22; else if (wc>=800) score += 16; else if (wc>=500) score += 8;
-  if (kwDensity>=3 && kwDensity<=8) score += 18; else if (kwDensity>=1) score += 9;
-  if (hasCta) score += 14;
-  if (longParas===0) score += 8; else score += 3;
-  score = Math.min(100, score);
-  return {score:score, checks:checks, wc:wc};
-}
-
-// ── Build system prompt ───────────────────────────────────────────────────────
-function buildCherrySystemPrompt(item, intel, brief, today, trustMode, brain) {
-  var topicsCovered = (brain.topics_covered||[]).map(function(t){return t.topic;}).join(', ');
-  var kwsUsed = (brain.keywords_used||[]).slice(-20).join(', ');
-  var avgSeo = '';
-  if (brain.seo_scores && brain.seo_scores.length > 0) {
-    avgSeo = Math.round(brain.seo_scores.reduce(function(a,b){return a+b;},0)/brain.seo_scores.length);
+// ── History ────────────────────────────────────────────────────────────────────
+function cgRenderHistory() {
+  var el = document.getElementById('cg-history-list');
+  if (!el) return;
+  var hist = (cgGetBrain().history || []).slice().reverse();
+  if (!hist.length) {
+    el.innerHTML = '<div style="text-align:center;padding:30px;opacity:.25;font-size:.8rem">Henüz blog yazılmadı</div>';
+    return;
   }
-  var brand = brain.brand || BLOG_SEO.brand_context;
-
-  return `Sen Retrocameraland icin TR diliyle SEO odakli blog yazari olan CherryGlow yapay zeka ajanisın.
-
-MARKA BİLGİSİ:
-- ${brand.name} — ${brand.description}
-- Farki: ${brand.differentiator}
-- Hedef: ${brand.target}
-- Rakipler: ${brand.rivals ? brand.rivals.join(', ') : 'Dolap, Sahibinden, Amazon genel satıcıları'}
-
-GUNCEL GUNDEM (${today}):
-- Birincil anahtar kelime: ${intel.primary_kw || ''}
-- Ikincil kelimeler: ${(intel.secondary_kws||[]).join(', ')}
-- Arama amaci: ${intel.intent || ''}
-- Hook onerisı: ${intel.hook || ''}
-- Rakip acigi: ${intel.competitor_gap || ''}
-
-ICERIK PLANI:
-- H1: ${brief.h1 || ''}
-- H2 baslıklar: ${(brief.h2s||[]).join(' | ')}
-- Hedef kelime: ${brief.target_wc || 1000}+
-
-KURALLAR:
-1. Sadece Turkce yaz, emoji kullanma, tire isaretini (--, -) kullanma
-2. H1 tam olarak 1 tane, H2 en az 4 tane olsun
-3. Anahtar kelimeyi dogal bicimde yerlestir (yoğunluk %0.8-1.5)
-4. Her paragraf max 80-100 kelime
-5. Birden fazla kez cagri-to-action ekle (retrocameraland.com)
-6. Giris paragrafında hook kullan: "${intel.hook || ''}"
-7. Daha once islenen konulardan (${topicsCovered.slice(0,80)}) farkli yonler bul
-8. Kullanilan kelimelerden (${kwsUsed.slice(0,60)}) farkli ifadeler kullan
-9. Marka farki: kurator secimi, iade garantisi, 15+ kontrol listesi
-10. SEO hedef: onceki ortalama ${avgSeo}/100'un ustune cik
-11. Guveni artiran sinyaller ekle: somut detaylar, marka baglantısı, seffaflık
-12. Retrocameraland'i en iyi bilen asistan ol: fiyat politikasi, kondisyon sistemi, premium ambalaj
-
-CIKTI: Sadece Markdown blog yazısı. Baska aciklama yok.`;
+  el.innerHTML = hist.map(function(item, i) {
+    var d   = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
+    var col = item.seo >= 85 ? 'rgba(52,199,89,.75)' : item.seo >= 70 ? 'rgba(212,175,55,.75)' : 'rgba(255,69,58,.6)';
+    var realIdx = hist.length - 1 - i;
+    return '<div class="cg-hist-item" onclick="cgLoadHistory('+realIdx+')">' +
+      '<div class="cg-hist-title">'+(item.title||item.topic||'').slice(0,70)+'</div>' +
+      '<div class="cg-hist-meta">' +
+        '<span>'+d+'</span><span>'+(item.wc||0)+' kelime</span>' +
+        '<span class="cg-hist-seo" style="color:'+col+';background:rgba(0,0,0,.2)">SEO '+(item.seo||'--')+'</span>' +
+        (item.published ? '<span class="cg-hist-pub">✓ Yayınlandı</span>' : '') +
+      '</div></div>';
+  }).join('');
 }
 
-// ── Intelligence pipeline ─────────────────────────────────────────────────────
-async function cherryScout(item, today, brain) {
-  var prompt = `Tarih: ${today}
-Konu: ${item.topic}
-Kategori: ${item.cat}
+function cgLoadHistory(idx) {
+  var item = (cgGetBrain().history || [])[idx];
+  if (!item) return;
+  _cgSt.md        = item.md || '';
+  _cgSt.brief     = {h1: item.title};
+  _cgSt.scoreObj  = {score: item.seo || 0, wc: item.wc || 0, checks: []};
+  _cgSt.published = !!item.published;
+  _cgSt.status    = 'done';
+  var p = document.getElementById('cg-tab-panel-preview');
+  if (p) p.innerHTML = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
+  cgRenderSeoPanel(_cgSt.scoreObj);
+  cgRenderActions();
+  cgTab('preview', document.getElementById('cg-tab-preview'));
+  cgLog('Geçmişten yüklendi: '+(item.title||'').slice(0,40), 'info');
+}
 
-JSON formatında yanıtla (başka açıklama yok):
-{
-  "primary_kw": "...",
-  "secondary_kws": ["...","...","..."],
-  "intent": "bilgilendirme|ticari|karma",
-  "hook": "ilgi çekici giriş cümlesi",
-  "competitor_gap": "rakiplerin kaçırdığı açı",
-  "trending_angle": "güncel ilgi alanı"
-}`;
+// ── API helpers ────────────────────────────────────────────────────────────────
+async function cgFetchJSON(prompt, sys, model, timeout) {
+  var ctrl = new AbortController();
+  var tid  = setTimeout(function() { ctrl.abort(); }, timeout || 20000);
   try {
-    var ctrl = new AbortController();
-    var tid = setTimeout(function(){ ctrl.abort(); }, 20000);
     var resp = await fetch('/api/chat', {
       signal: ctrl.signal,
-      method:'POST', headers:{'Content-Type':'application/json'},
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
-        model:'claude-haiku-4-5-20251001', max_tokens:512,
-        messages:[{role:'user',content:prompt}],
-        system:'SEO uzmanısın. JSON olarak yanıtla.'
+        model: model || 'claude-haiku-4-5-20251001',
+        max_tokens: 512,
+        messages: [{role:'user', content: prompt}],
+        system: sys || 'JSON olarak yanıtla.'
       })
     });
     clearTimeout(tid);
     var data = await resp.json();
-    var txt = (data.content && data.content[0]) ? data.content[0].text : '{}';
-    var m = txt.match(/\{[\s\S]*\}/);
+    var txt  = (data.content && data.content[0]) ? data.content[0].text : '{}';
+    var m    = txt.match(/\{[\s\S]*\}/);
     return m ? JSON.parse(m[0]) : {};
-  } catch(e) { return {}; }
+  } catch(e) { clearTimeout(tid); return {}; }
 }
 
-async function cherryBrief(item, intel, today) {
-  var prompt = `Konu: ${item.topic}
-Ana KW: ${intel.primary_kw || ''}
-Hedef: ${intel.intent || ''}
-
-JSON formatında içerik planı (başka açıklama yok):
-{
-  "h1": "...",
-  "h2s": ["...","...","...","..."],
-  "target_wc": 1100,
-  "intro_hook": "..."
-}`;
-  try {
-    var ctrl2 = new AbortController();
-    var tid2 = setTimeout(function(){ ctrl2.abort(); }, 20000);
-    var resp = await fetch('/api/chat', {
-      signal: ctrl2.signal,
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model:'claude-haiku-4-5-20251001', max_tokens:512,
-        messages:[{role:'user',content:prompt}],
-        system:'İçerik planlamacısın. JSON olarak yanıtla.'
-      })
-    });
-    clearTimeout(tid2);
-    var data = await resp.json();
-    var txt = (data.content && data.content[0]) ? data.content[0].text : '{}';
-    var m = txt.match(/\{[\s\S]*\}/);
-    return m ? JSON.parse(m[0]) : {};
-  } catch(e) { return {}; }
+async function cgScout(item, today) {
+  return cgFetchJSON(
+    'Tarih: '+today+'\nKonu: '+item.topic+'\nKategori: '+item.cat+'\n\n'+
+    'JSON formatında yanıtla (başka açıklama yok):\n'+
+    '{"primary_kw":"...","secondary_kws":["...","...","..."],"intent":"bilgilendirme|ticari|karma","hook":"ilgi çekici giriş cümlesi","competitor_gap":"rakiplerin kaçırdığı açı","trending_angle":"güncel ilgi alanı"}',
+    'SEO uzmanısın. Sadece JSON olarak yanıtla.', 'claude-haiku-4-5-20251001', 20000
+  );
 }
 
-// ── Main generation pipeline ──────────────────────────────────────────────────
-async function cherryGenerateBlog(agendaIdx) {
-  var item = _cgAgenda[agendaIdx];
-  if (!item) { cherryLog('Gundem ogesi bulunamadi.','err'); return; }
-  if (item.stage === 'running') { cherryLog('Zaten yaziliyor...','warn'); return; }
-  if (_cgCurrentState !== 'idle' && _cgCurrentState !== 'done') {
-    // Force reset if stuck for more than 90 seconds
-    cherryLog('Durum sifirlaniyor ve yeniden baslatiliyor...','warn');
-    setCherryState('idle');
-  }
+async function cgBriefCall(item, intel, today) {
+  return cgFetchJSON(
+    'Konu: '+item.topic+'\nAna KW: '+(intel.primary_kw||'')+'\n\n'+
+    'JSON formatında içerik planı:\n'+
+    '{"h1":"...","h2s":["...","...","...","..."],"target_wc":1100,"intro_hook":"..."}',
+    'İçerik planlamacısın. Sadece JSON olarak yanıtla.', 'claude-haiku-4-5-20251001', 20000
+  );
+}
 
-  cgUpdateAgendaItem(agendaIdx, 'running');
+function cgBuildSystemPrompt(item, intel, brief, today, brain) {
+  var covered = (brain.topics_covered||[]).map(function(t){return t.topic;}).slice(-10).join(', ');
+  var brand   = brain.brand || (BLOG_SEO.brand_context || {});
+  return 'Sen Retrocameraland için TR dilinde SEO odaklı blog yazarı olan CherryGlow yapay zeka ajanısın.\n\n'+
+    'MARKA: '+(brand.name||'Retrocameraland')+' — '+(brand.description||'analog kamera satışı')+'\n'+
+    'Hedef kitle: '+(brand.target||'analog fotoğraf severler')+'\n\n'+
+    'KURALLAR:\n'+
+    '- Tam Türkçe yaz, sadece blogu yaz (başka açıklama ekleme)\n'+
+    '- H1 başlık: tam olarak "# '+(brief.h1||item.topic)+'"\n'+
+    '- H2 bölümleri: '+((brief.h2s||[]).join(', '))+'\n'+
+    '- Hedef kelime sayısı: '+(brief.target_wc||1100)+'+\n'+
+    '- Ana KW "'+(intel.primary_kw||'')+'" doğal kullan (3-6x)\n'+
+    '- Giriş hook: "'+(brief.intro_hook||intel.hook||'')+'" ile başla\n'+
+    '- Retrocameraland\'a bağlantılı CTA ekle\n'+
+    '- Daha önce yazılanlar (tekrarlama): '+(covered||'yok');
+}
+
+function cgScore(md, item, intel) {
+  var wc   = md.split(/\s+/).length;
+  var h1c  = (md.match(/^# /mg)||[]).length;
+  var h2c  = (md.match(/^## /mg)||[]).length;
+  var kw   = (intel&&intel.primary_kw) ? intel.primary_kw.toLowerCase() : '';
+  var kwd  = kw ? (md.toLowerCase().split(kw).length - 1) : 0;
+  var cta  = /retrocameraland|koleksiyonu|incele|keşfet|satın al/i.test(md);
+  var long = md.split(/\n\n/).filter(function(p){return p.split(/\s+/).length>120;}).length;
+  var checks = [
+    {key:'h1',  pass:h1c===1,   label:'H1 başlık: '+(h1c===1?'OK':'Eksik')},
+    {key:'h2',  pass:h2c>=3,    label:'H2 bölümler ('+h2c+'/3+): '+(h2c>=3?'OK':'Az')},
+    {key:'wc',  pass:wc>=800,   label:'Kelime ('+wc+'/800+): '+(wc>=800?'OK':'Az')},
+    {key:'kw',  pass:kwd>=3,    label:'KW yoğunluğu ('+kwd+'x): '+(kwd>=3?'OK':'Az')},
+    {key:'cta', pass:cta,       label:'CTA/Marka: '+(cta?'Var':'Yok')},
+    {key:'par', pass:long===0,  label:'Paragraf uzunluğu: '+(long===0?'OK':long+' uzun')}
+  ];
+  var score = 0;
+  if (h1c===1) score += 18;
+  if (h2c>=3)  score += 15; else if (h2c>=2) score += 8;
+  if (wc>=1200) score += 22; else if (wc>=800) score += 16; else if (wc>=500) score += 8;
+  if (kwd>=3&&kwd<=8) score += 18; else if (kwd>=1) score += 9;
+  if (cta)  score += 14;
+  if (long===0) score += 8; else score += 3;
+  return {score: Math.min(100,score), checks: checks, wc: wc};
+}
+
+// ── Main write pipeline ────────────────────────────────────────────────────────
+async function cgWrite(idx) {
+  var item = _cgAgenda[idx];
+  if (!item) { cgLog('Konu bulunamadı.','err'); return; }
+  if (_cgWriting) { cgLog('Zaten yazılıyor, bekle.','warn'); return; }
+
+  _cgWriting   = true;
+  _cgSt.status = 'writing';
+  _cgSt.idx    = idx;
+  _cgSt.item   = item;
+  _cgSt.intel  = null;
+  _cgSt.brief  = null;
+  _cgSt.md     = '';
+  _cgSt.scoreObj  = null;
+  _cgSt.error     = '';
+  _cgSt.published = false;
+  _cgSt.phase     = 'Hazırlanıyor';
+  _cgSt.progress  = 10;
+
+  cgUpdateAgendaStage(idx, 'running');
+  cgSetPill('YAZIYOR', 'rgba(212,175,55,.25)');
+  cgRenderActions();
+  cgLog('Başlıyor: '+item.topic.slice(0,40), 'info');
+
   var today = new Date().toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
   var brain = cgGetBrain();
 
-  // Step 1: Scout
-  setCherryState('analyzing');
-  item.stage = 'scout';
-  cherryLog('Scout: Gundem ve anahtar kelime analizi...','info');
-  cherryThink('Rakip icerikleri ve trend konular taranıyor...','think');
-  var titleEl = document.getElementById('cg-output-title');
-  var stageEl = document.getElementById('cg-stage-badge');
-  if (titleEl) titleEl.textContent = item.topic.slice(0,50);
-  if (stageEl) stageEl.textContent = 'Scout';
-
-  var intel = await cherryScout(item, today, brain);
-  cherryLog('Scout tamamlandı: KW="' + (intel.primary_kw||'') + '"','ok');
-  if (intel.primary_kw) cgUpdateKeywords([intel.primary_kw].concat(intel.secondary_kws||[]).slice(0,8));
-
-  // Step 2: Brief
-  item.stage = 'brief';
-  if (stageEl) stageEl.textContent = 'Brief';
-  cherryLog('Brief: Icerik yapısı olusturuluyor...','info');
-  cherryThink('H1, H2 ve hedef kelime sayisi planlanıyor...','think');
-  var brief = await cherryBrief(item, intel, today);
-  cherryLog('Brief hazır: "' + (brief.h1||'').slice(0,40) + '"','ok');
-  if (brief.h1 && titleEl) titleEl.textContent = brief.h1;
-
-  // Step 3: Write (SSE streaming)
-  item.stage = 'writing';
-  setCherryState('writing');
-  if (stageEl) stageEl.textContent = 'Yazıyor';
-  cherryLog('Yazi basliyor... (Sonnet ile SSE stream)','info');
-  cherryThink('En iyi SEO icerigi yazilıyor...','think');
-
-  var sysPrompt = buildCherrySystemPrompt(item, intel, brief, today, false, brain);
-  var userMsg = `Şimdi yaz:\nKonu: ${item.topic}\nH1: ${brief.h1||item.topic}\nH2 plan: ${(brief.h2s||[]).join(', ')}\nHedef kelime: ${brief.target_wc||1000}+\nHook: ${brief.intro_hook||intel.hook||''}`;
-
-  var bodyEl = document.getElementById('cg-output-body');
-  var wcEl = document.getElementById('cg-wc-badge');
-  lastBlogMd = '';
-  var lastUp = 0;
-
-  var _streamOk = false;
   try {
+    // ── 1. Scout ──────────────────────────────────────────────────────────────
+    _cgSt.phase = 'Scout — KW Analizi';
+    _cgSt.progress = 18;
+    cgRenderActions();
+    cgLog('Scout: anahtar kelime analizi...','info');
+
+    _cgSt.intel = await cgScout(item, today);
+    cgLog('Scout OK: KW="'+(_cgSt.intel.primary_kw||'?')+'"','ok');
+    _cgSt.progress = 35;
+    cgRenderActions();
+
+    // ── 2. Brief ─────────────────────────────────────────────────────────────
+    _cgSt.phase = 'Brief — İçerik Planı';
+    cgRenderActions();
+    cgLog('Brief: içerik yapısı oluşturuluyor...','info');
+
+    _cgSt.brief = await cgBriefCall(item, _cgSt.intel, today);
+    cgLog('Brief OK: "'+(_cgSt.brief.h1||'?').slice(0,40)+'"','ok');
+    _cgSt.progress = 50;
+    cgRenderActions();
+
+    // ── 3. Stream ─────────────────────────────────────────────────────────────
+    _cgSt.phase = 'Yazıyor';
+    cgRenderActions();
+    cgLog('Blog yazılıyor (SSE stream)...','info');
+
+    var sysPrompt = cgBuildSystemPrompt(item, _cgSt.intel, _cgSt.brief, today, brain);
+    var userMsg   = 'Şimdi yaz:\nKonu: '+item.topic+'\nH1: '+(_cgSt.brief.h1||item.topic)+'\nH2 plan: '+((_cgSt.brief.h2s||[]).join(', '))+'\nHedef kelime: '+(_cgSt.brief.target_wc||1100)+'+\nHook: '+(_cgSt.brief.intro_hook||_cgSt.intel.hook||'');
+
+    // Switch to preview tab for streaming
+    cgTab('preview', document.getElementById('cg-tab-preview'));
+    var previewEl = document.getElementById('cg-tab-panel-preview');
+    if (previewEl) previewEl.innerHTML = '<div id="cgsp" style="font-family:var(--mono);font-size:.78rem;line-height:1.85;white-space:pre-wrap;color:rgba(255,255,255,.65);word-break:break-word;padding:4px 0"></div><span class="cg-stream-cursor"></span>';
+    var plain = document.getElementById('cgsp');
+
+    var ctrl = new AbortController();
+    _cgWriteAbort = ctrl;
+
     var resp = await fetch('/api/chat', {
-      method:'POST', headers:{'Content-Type':'application/json'},
+      signal: ctrl.signal,
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
       body: JSON.stringify({
-        model:'claude-sonnet-4-6', max_tokens:3500, stream:true,
-        system: sysPrompt, messages:[{role:'user',content:userMsg}]
+        model: 'claude-sonnet-4-6', max_tokens: 3500, stream: true,
+        system: sysPrompt,
+        messages: [{role:'user', content: userMsg}]
       })
     });
+
     if (!resp.ok) {
-      var errBody = await resp.text().catch(function(){ return 'unknown'; });
-      throw new Error('API ' + resp.status + ': ' + errBody.slice(0,120));
+      var et = await resp.text().catch(function(){return 'unknown';});
+      throw new Error('API '+resp.status+': '+et.slice(0,100));
     }
-    var reader = resp.body.getReader(), decoder = new TextDecoder();
-    var buf = '';
-    // Stream sırasında sadece plain-text + kelime sayısı güncelle (markdown parse YOK)
-    // Bu browser freeze'i önler — full render sadece bittikten sonra yapılır
-    if (bodyEl) bodyEl.innerHTML = '<div id="cg-stream-plain" style="font-family:var(--mono);font-size:.82rem;line-height:1.7;white-space:pre-wrap;color:rgba(255,255,255,.7);word-break:break-word;padding:4px 0"></div><span class="cg-stream-cursor"></span>';
-    var plainEl = document.getElementById('cg-stream-plain');
-    var _lastUIUpdate = 0;
-    while (true) {
-      // 45-second timeout per read chunk
-      var _r = await Promise.race([
-        reader.read(),
-        new Promise(function(_, rej){ setTimeout(function(){ rej(new Error('Stream timeout (45s)')); }, 45000); })
-      ]);
-      if (_r.done) break;
-      buf += decoder.decode(_r.value, {stream:true});
+
+    var reader  = resp.body.getReader();
+    var decoder = new TextDecoder();
+    var buf = '', md = '', lastUI = 0;
+
+    outer: while (true) {
+      var chunk;
+      try {
+        chunk = await Promise.race([
+          reader.read(),
+          new Promise(function(_,r){setTimeout(function(){r(new Error('timeout'));},45000);})
+        ]);
+      } catch(e) {
+        if (e.name === 'AbortError') { cgLog('Durduruldu.','warn'); break; }
+        throw e;
+      }
+      if (chunk.done) break;
+      buf += decoder.decode(chunk.value, {stream:true});
       var lines = buf.split('\n');
       buf = lines.pop();
-      for (var li=0; li<lines.length; li++) {
+      for (var li = 0; li < lines.length; li++) {
         var line = lines[li];
         if (!line.startsWith('data:')) continue;
         var raw = line.slice(5).trim();
-        if (raw === '[DONE]') { _streamOk = true; break; }
+        if (raw === '[DONE]') break outer;
         try {
           var evt = JSON.parse(raw);
-          if (evt.type === 'content_block_delta' && evt.delta && evt.delta.type === 'text_delta') {
-            lastBlogMd += evt.delta.text;
-            // DOM güncelleme 200ms'de bir — markdown parse YOK, sadece plain text
+          if (evt.type==='content_block_delta' && evt.delta && evt.delta.type==='text_delta') {
+            md += evt.delta.text;
             var now = Date.now();
-            if (now - _lastUIUpdate > 200) {
-              _lastUIUpdate = now;
-              if (plainEl) plainEl.textContent = lastBlogMd;
-              if (wcEl) wcEl.textContent = lastBlogMd.split(/\s+/).length + ' kelime';
+            if (now - lastUI > 220) {
+              lastUI = now;
+              if (plain) plain.textContent = md;
+              var prog2 = Math.min(95, 50 + Math.floor(md.split(/\s+/).length / 14));
+              _cgSt.progress = prog2;
+              var bar = document.getElementById('cg-prog-bar');
+              if (bar) bar.style.width = prog2+'%';
             }
           }
-        } catch(e) {}
+        } catch(e2) {}
       }
     }
-    _streamOk = true;
-  } catch(e) {
-    cherryLog('Yazma hatasi: ' + e.message, 'err');
-    if (lastBlogMd.length < 50) {
-      cgAddMessage('cherry', 'Hata olustu: ' + e.message + '. Tekrar denemek ister misin?', 'err');
-      cgSetChips([{label:'Tekrar Dene', act:'cherryGenerateBlog('+agendaIdx+')', hot:true}]);
-      cgUpdateAgendaItem(agendaIdx, 'pending');
-      setCherryState('idle');
+
+    _cgSt.md     = md;
+    _cgWriteAbort = null;
+
+    if (md.length < 80) throw new Error('Yetersiz içerik ('+md.length+' karakter). Tekrar dene.');
+
+    // ── 4. Post-process (yielded frames) ──────────────────────────────────────
+    await new Promise(function(r){setTimeout(r,0);});
+    if (previewEl) previewEl.innerHTML = enrichBlogHTML(simpleMarkdownToHTML(md));
+
+    await new Promise(function(r){setTimeout(r,0);});
+    _cgSt.scoreObj = cgScore(md, item, _cgSt.intel);
+
+    await new Promise(function(r){setTimeout(r,0);});
+    var b = cgGetBrain();
+    b.topics_covered = b.topics_covered || [];
+    b.topics_covered.push({topic:item.topic, date:new Date().toDateString(), score:_cgSt.scoreObj.score});
+    b.keywords_used  = (b.keywords_used||[]).concat(_cgSt.intel.secondary_kws||[]);
+    b.seo_scores     = (b.seo_scores||[]).concat([_cgSt.scoreObj.score]);
+    b.history        = b.history || [];
+    b.history.push({
+      title: _cgSt.brief.h1 || item.topic,
+      topic: item.topic,
+      md:    md,
+      seo:   _cgSt.scoreObj.score,
+      wc:    _cgSt.scoreObj.wc,
+      date:  new Date().toISOString(),
+      published: false
+    });
+    if (b.history.length > 50) b.history = b.history.slice(-50);
+    if (!b.brand && BLOG_SEO.brand_context) b.brand = BLOG_SEO.brand_context;
+    var ds = new Date().toDateString();
+    b.daily_stats = b.daily_stats || {};
+    if (!b.daily_stats[ds]) b.daily_stats[ds] = {blogs:0, words:0, published:0};
+    b.daily_stats[ds].blogs++;
+    b.daily_stats[ds].words += _cgSt.scoreObj.wc;
+    cgSaveBrain(b);
+
+    await new Promise(function(r){setTimeout(r,0);});
+    cgUpdateAgendaStage(idx, 'done');
+    cgRenderSeoPanel(_cgSt.scoreObj);
+    cgUpdateStats();
+
+    _cgSt.status   = 'done';
+    _cgSt.progress = 100;
+    cgSetPill('TAMAM', 'rgba(52,199,89,.25)');
+    cgRenderActions();
+    cgLog('✓ Tamamlandı! "'+(_cgSt.brief.h1||item.topic).slice(0,40)+'" — '+_cgSt.scoreObj.wc+' kelime, SEO '+_cgSt.scoreObj.score,'ok');
+
+    if (_cgAutoPub) {
+      cgLog('Oto-yayın aktif, Shopify\'a gönderiliyor...','info');
+      setTimeout(cgPublish, 500);
       return;
     }
-    cherryLog('Kismi icerik kurtarildi (' + lastBlogMd.split(/\s+/).length + ' kelime).', 'warn');
+
+    // Next in queue (write all)
+    if (_cgSt.writeQueue && _cgSt.writeQueue.length > 0) {
+      var nextIdx = _cgSt.writeQueue.shift();
+      setTimeout(function(){ cgWrite(nextIdx); }, 1500);
+    }
+
+  } catch(e) {
+    if (e.name === 'AbortError') {
+      _cgSt.status = 'idle';
+      cgSetPill('HAZIR', '');
+      cgUpdateAgendaStage(idx, 'pending');
+    } else {
+      _cgSt.status = 'error';
+      _cgSt.error  = e.message.slice(0,120);
+      cgSetPill('HATA', 'rgba(255,69,58,.2)');
+      cgUpdateAgendaStage(idx, 'pending');
+      cgLog('Hata: '+e.message.slice(0,80),'err');
+    }
+    _cgSt.writeQueue = [];
+    cgRenderActions();
+  } finally {
+    _cgWriting    = false;
+    _cgWriteAbort = null;
   }
-
-  // Helper: browser'a bir frame ver (donma önleme)
-  function nf() { return new Promise(function(r){ setTimeout(r, 0); }); }
-
-  // Step 4: Final HTML render (sonraki frame'de)
-  await nf();
-  item.stage = 'scoring';
-  if (stageEl) stageEl.textContent = 'Tamamlandi';
-  if (bodyEl) bodyEl.innerHTML = enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd));
-
-  // Step 5: Score (sonraki frame'de)
-  await nf();
-  var scoreObj = cherryScore(lastBlogMd, item, intel);
-  cgUpdateSeoPanel(scoreObj);
-  cherryLog('SEO skoru: ' + scoreObj.score + '/100 (' + scoreObj.wc + ' kelime)', 'ok');
-
-  // Step 6: Brain'e kaydet (sonraki frame'de)
-  await nf();
-  brain = cgGetBrain();
-  brain.topics_covered = brain.topics_covered || [];
-  brain.topics_covered.push({topic:item.topic, date:new Date().toDateString(), score:scoreObj.score});
-  brain.keywords_used = (brain.keywords_used||[]).concat(intel.secondary_kws||[]);
-  brain.seo_scores = (brain.seo_scores||[]).concat([scoreObj.score]);
-  brain.history = brain.history || [];
-  brain.history.push({
-    title: brief.h1 || item.topic,
-    topic: item.topic,
-    md: lastBlogMd,
-    seo: scoreObj.score,
-    wc: scoreObj.wc,
-    version: CG_VERSION,
-    date: new Date().toISOString()
-  });
-  if (brain.history.length > 50) brain.history = brain.history.slice(-50);
-  if (!brain.brand) brain.brand = BLOG_SEO.brand_context;
-  var _dsToday = new Date().toDateString();
-  brain.daily_stats = brain.daily_stats || {};
-  if (!brain.daily_stats[_dsToday]) brain.daily_stats[_dsToday] = {blogs:0,words:0,published:0,sessions:0};
-  brain.daily_stats[_dsToday].blogs++;
-  brain.daily_stats[_dsToday].words += (scoreObj.wc||0);
-  cgSaveBrain(brain);
-  _cgHistory = brain.history;
-
-  // Step 7: Stats güncelle (sonraki frame'de)
-  await nf();
-  var totalWc = brain.history.reduce(function(a,h){return a+(h.wc||0);},0);
-  var avgSeo = Math.round((brain.seo_scores||[]).reduce(function(a,b){return a+b;},0)/Math.max(1,(brain.seo_scores||[]).length));
-  var statDone = document.getElementById('cg-stat-done');
-  var statWords = document.getElementById('cg-stat-words');
-  var statSeo = document.getElementById('cg-stat-seo');
-  var statProg = document.getElementById('cg-stat-prog');
-  var miniFill = document.getElementById('cg-mini-fill');
-  var statToday = document.getElementById('cg-stat-today');
-  if (statDone) statDone.textContent = brain.history.length;
-  if (statWords) statWords.textContent = (totalWc/1000).toFixed(1)+'K';
-  if (statSeo) statSeo.textContent = avgSeo;
-  if (statProg) statProg.textContent = brain.history.length+' blog yazildi';
-  if (miniFill) miniFill.style.width = Math.min(100,(brain.history.length/5)*100)+'%';
-  var todayCount2 = (brain.topics_covered||[]).filter(function(t){return t.date===new Date().toDateString();}).length;
-  if (statToday) statToday.textContent = todayCount2;
-
-  cgUpdateAgendaItem(agendaIdx, 'done');
-  setCherryState('done');
-  cherryLog('Tamamlandi! "' + (brief.h1||item.topic).slice(0,40) + '"', 'ok');
 }
 
-// ── Approve & Publish ─────────────────────────────────────────────────────────
-function cgApproveAndPublish() {
-  cgAddMessage('user', 'Onayla ve yayinla', '', 0);
-  cgAddMessage('cherry', 'Shopify\'a gonderiyorum...', 'task', 300);
-  setTimeout(function() {
-    cherryPublishLatest().then(function() {
-      // publish sonrasi brain'den kontrol et
-      setTimeout(function() {
-        var last = (cgGetBrain().history||[]).slice(-1)[0];
-        if (last && last.published) {
-          cgAddMessage('cherry', '"' + (last.title||'Blog').slice(0,45) + '" Shopify\'da yayinda! Siradaki konuya geceyim mi?', 'ok', 200);
-          cgSetChips([
-            {label:'Evet, devam et', act:'cherryAddAllToAgenda()', hot:true},
-            {label:'Gunluk Rapor', act:'cgDailyReport()'},
-          ]);
-        } else {
-          cgAddMessage('cherry', 'Yayinlama tamamlandi. Log\'u kontrol et.', 'info', 200);
-        }
-      }, 1000);
-    }).catch(function(e) {
-      cgAddMessage('cherry', 'Baglanti hatasi: ' + e.message + '. Tekrar dene.', 'err', 200);
-      cgSetChips([{label:'Tekrar Dene', act:'cgApproveAndPublish()', hot:true}]);
+function cgAbortWrite() {
+  if (_cgWriteAbort) _cgWriteAbort.abort();
+  _cgSt.writeQueue = [];
+  cgLog('Durdurma isteği gönderildi.','warn');
+}
+
+function cgRetry() {
+  if (_cgSt.idx >= 0) cgWrite(_cgSt.idx);
+  else cgNextPending();
+}
+
+function cgNextPending() {
+  var next = _cgAgenda.findIndex(function(a){ return a.stage === 'pending'; });
+  if (next >= 0) cgWrite(next);
+  else cgLog('Yazılacak konu kalmadı.','warn');
+}
+
+function cgWriteAll() {
+  var pending = [];
+  _cgAgenda.forEach(function(a,i){ if (a.stage==='pending') pending.push(i); });
+  if (!pending.length) { cgLog('Yazılacak konu yok.','warn'); return; }
+  _cgSt.writeQueue = pending.slice(1);
+  cgWrite(pending[0]);
+  cgLog((pending.length)+' konu sıraya alındı.','info');
+}
+
+// ── Publish ────────────────────────────────────────────────────────────────────
+async function cgPublish() {
+  if (!_cgSt.md) { cgLog('Yayınlanacak blog yok.','warn'); return; }
+  var prevStatus  = _cgSt.status;
+  _cgSt.status    = 'publishing';
+  cgSetPill('YAYINLANIYOR','rgba(90,200,250,.25)');
+  cgRenderActions();
+  cgLog('Shopify\'a gönderiliyor...','info');
+
+  var html  = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
+  var title = (_cgSt.brief&&_cgSt.brief.h1) ? _cgSt.brief.h1 : (_cgSt.item ? _cgSt.item.topic : 'CherryGlow Blog');
+
+  try {
+    var resp = await fetch('/api/shopify-publish', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({title:title, body_html:html, published:true})
     });
-  }, 500);
-}
-
-// ── Copy helpers ──────────────────────────────────────────────────────────────
-function copyBlogHTML() {
-  var html = enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd));
-  navigator.clipboard.writeText(html).then(function(){ cherryLog('HTML panoya kopyalandi.','ok'); });
-}
-function copyBlogMD() {
-  navigator.clipboard.writeText(lastBlogMd).then(function(){ cherryLog('Markdown panoya kopyalandi.','ok'); });
-}
-function cherryOpenShopify() {
-  navigator.clipboard.writeText(enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd)))
-    .then(function(){ cherryLog('HTML panoya kopyalandi.','ok'); cherryThink('Shopify aciliyor...','info'); });
-  setTimeout(function(){ window.open('https://retrocameraland.myshopify.com/admin/articles/new','_blank'); }, 400);
-}
-
-// ── Render page ───────────────────────────────────────────────────────────────
-function renderCherryPage() {
-  cgUpdateVersion();
-  cgSessionStart();
-  setCherryState('idle');
-  cgBuildAgenda();
-  cherryLog('CherryGlow ' + CG_VERSION + ' hazir.', 'ok');
-  cherryThink('Gundem analiz edildi. Blog yazmaya hazir!', 'think');
-  // Greeting + ROI
-  setTimeout(cgCherryGreeting, 500);
-  setTimeout(cgRefreshROI, 800);
-  // Sadece insight engine otomatik başlasın; proaktif araştırma kullanıcı isteğiyle
-  setTimeout(cgInsightEngine, 3500);
-  // Re-sync waveform
-  cgUpdateWaveform('idle');
-  // Restore stats from brain
-  var brain = cgGetBrain();
-  var hist = brain.history || [];
-  var scores = brain.seo_scores || [];
-  var statDone = document.getElementById('cg-stat-done');
-  var statWords = document.getElementById('cg-stat-words');
-  var statSeo = document.getElementById('cg-stat-seo');
-  var statToday = document.getElementById('cg-stat-today');
-  if (statDone) statDone.textContent = hist.length;
-  if (statWords) {
-    var tw = hist.reduce(function(a,h){return a+(h.wc||0);},0);
-    statWords.textContent = (tw/1000).toFixed(1)+'K';
-  }
-  if (statSeo && scores.length) {
-    var avg = Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length);
-    statSeo.textContent = avg;
-  }
-  var todayC = (brain.topics_covered||[]).filter(function(t){return t.date===new Date().toDateString();}).length;
-  if (statToday) statToday.textContent = todayC;
-  _cgHistory = hist;
-  // Schedule first break
-  cgScheduleBreak();
-}
-
-function initFade() { document.querySelectorAll(".fi").forEach(function(el){ el.classList.add("vis"); }); }
-
-
-// ─── CHAT SYSTEM ──────────────────────────────────────────────────────────────
-var _cgChatHistory = [];
-
-function cgAddMessage(from, text, type, delay) {
-  delay = delay || 0;
-  if (from === 'cherry' && delay === 0) delay = 120 + Math.min(text.length * 6, 600);
-  // Log immediately for user messages; cherry messages are batched via debounce
-  cgLogMessage(from === 'cherry' ? 'cherry' : 'user', text);
-  setTimeout(function() {
-    // Remove typing indicator if exists
-    var typDot = document.getElementById('cg-typing-dot');
-    if (typDot && typDot.parentNode) typDot.parentNode.removeChild(typDot);
-    _cgChatHistory.push({from:from, text:text, type:type||'', ts:Date.now()});
-    if (_cgChatHistory.length > 80) _cgChatHistory = _cgChatHistory.slice(-80);
-    cgRenderChat();
-    // Update thought log too
-    if (from === 'cherry') cherryLog(text.slice(0,60), type || '');
-  }, delay);
-  // Show typing indicator for cherry messages
-  if (from === 'cherry' && delay > 200) {
-    setTimeout(function() {
-      var msgEl = document.getElementById('cg-chat-messages');
-      if (!msgEl) return;
-      var typing = document.createElement('div');
-      typing.className = 'cg-msg cherry'; typing.id = 'cg-typing-dot';
-      typing.innerHTML = '<div class="cg-msg-av"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".9"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".86" transform="rotate(72 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".82" transform="rotate(144 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".86" transform="rotate(216 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".82" transform="rotate(288 12 12)"/><circle cx="12" cy="12" r="3" fill="#D4AF37"/><circle cx="12" cy="12" r="1.4" fill="#FFE566" opacity=".55"/></svg></div><div class="cg-typing-dots"><span></span><span></span><span></span></div>';
-      msgEl.appendChild(typing);
-      msgEl.scrollTop = msgEl.scrollHeight;
-    }, 60);
-  }
-}
-
-function cgRenderChat() {
-  var el = document.getElementById('cg-chat-messages');
-  if (!el) return;
-  el.innerHTML = _cgChatHistory.slice(-22).map(function(msg) {
-    var isC = msg.from === 'cherry';
-    var t = new Date(msg.ts).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
-    return '<div class="cg-msg ' + (isC?'cherry':'user') + '">' +
-      (isC ? '<div class="cg-msg-av"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".9"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".86" transform="rotate(72 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".82" transform="rotate(144 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#FFB7C5" opacity=".86" transform="rotate(216 12 12)"/><ellipse cx="12" cy="5.5" rx="2.4" ry="4" fill="#F5A0B5" opacity=".82" transform="rotate(288 12 12)"/><circle cx="12" cy="12" r="3" fill="#D4AF37"/><circle cx="12" cy="12" r="1.4" fill="#FFE566" opacity=".55"/></svg></div>' : '') +
-      '<div class="cg-msg-bbl ' + msg.type + '">' + msg.text +
-      '<div class="cg-msg-time">' + t + '</div></div></div>';
-  }).join('');
-  el.scrollTop = el.scrollHeight;
-}
-
-function cgSetChips(chips) {
-  var el = document.getElementById('cg-chat-chips');
-  if (!el) return;
-  el.innerHTML = chips.map(function(ch) {
-    return '<span class="cg-chip' + (ch.hot?' hot':'') + '" onclick="' + ch.act + '">' + ch.label + '</span>';
-  }).join('');
-}
-
-function cgResetChips() {
-  cgSetChips([
-    {label:'Yeni Konu Oner', act:'cgProactiveResearch()', hot:true},
-    {label:'Analiz', act:'cgInsightEngine()'},
-    {label:'Gunluk Rapor', act:'cgDailyReport()'},
-    {label:'Gelir?', act:'cgUserSend("Ne kadar kazandim")'},
-  ]);
-}
-
-function cgUserSend(text) {
-  var inp = document.getElementById('cg-chat-input');
-  if (!text && inp) text = inp.value;
-  if (!text || !text.trim()) return;
-  if (inp) { inp.value = ''; inp.blur(); }
-  cgAddMessage('user', text, '', 0);
-  cgHandleUserCommand(text);
-}
-
-function cgHandleUserCommand(text) {
-  var lower = text.toLowerCase().trim();
-  var thinkDelay = 500 + Math.min(lower.length * 8, 800);
-
-  if (/^(evet|tamam|yayinla|yayinlayalim|publish|olur|yap)/.test(lower)) {
-    cgAddMessage('cherry', 'Hemen yayinliyorum!', 'task', thinkDelay);
-    setTimeout(function(){ cherryPublishLatest(); cgResetChips(); }, thinkDelay + 400);
-
-  } else if (/^(hayir|dur|beklet|sonra|simdilik)/.test(lower)) {
-    cgAddMessage('cherry', 'Tamam, simdilik bekletiyor. "Yayinla" dediginde gonderecegim.', '', thinkDelay);
-    setTimeout(cgResetChips, thinkDelay + 200);
-
-  } else if (/gunluk rapor|bugunun ozeti|ne yaptim|calistim mi/.test(lower)) {
-    setTimeout(cgDailyReport, thinkDelay);
-
-  } else if (/yeni konu|konu oner|ne yaz|arastir/.test(lower)) {
-    cgAddMessage('cherry', 'Arastiriyorum, biraz bekle...', 'think', thinkDelay);
-    setTimeout(cgProactiveResearch, thinkDelay + 400);
-
-  } else if (/rapor/.test(lower)) {
-    setTimeout(function(){
-      cgAddMessage('cherry', 'Hangi raporu istersin?', 'question');
-      cgSetChips([
-        {label:'Gunluk Rapor', act:'cgDailyReport()', hot:true},
-        {label:'Performans', act:'cgInsightEngine()'},
-        {label:'Gelir', act:'cgUserSend("Ne kadar kazandim")'},
-        {label:'Yeni Oneriler', act:'cgProactiveResearch()'},
-      ]);
-    }, thinkDelay);
-
-  } else if (/analiz|performans|nasil gidiyor/.test(lower)) {
-    setTimeout(cgInsightEngine, thinkDelay);
-
-  } else if (/hepsini yaz|tumunu yaz|baslat|baslayalim/.test(lower)) {
-    cgAddMessage('cherry', 'Tum gundem konularini sirasiya yazacagim! Basliyorum...', 'task', thinkDelay);
-    setTimeout(function() { cherryAddAllToAgenda(); setTimeout(function(){ cherryGenerateBlog(0); }, 800); }, thinkDelay + 300);
-
-  } else if (/gelir|kazan|para|roi|ne kadar/.test(lower)) {
-    setTimeout(function() {
-      cgRefreshROI();
-      cgAddMessage('cherry', cgGenerateROIMessage(), 'report');
-    }, thinkDelay);
-
-  } else if (/en iyi|en yuksek|hangi konu/.test(lower)) {
-    setTimeout(function() {
-      var brain = cgGetBrain();
-      var scores = brain.seo_scores || [];
-      var covered = brain.topics_covered || [];
-      if (!scores.length) {
-        cgAddMessage('cherry', 'Henuz yeterli veri yok. Bir kac blog yazalim!', '');
+    var data = await resp.json();
+    if (data.article && data.article.id) {
+      _cgSt.published = true;
+      _cgSt.status    = 'done';
+      cgSetPill('YAYINLANDI','rgba(52,199,89,.25)');
+      cgLog('✓ Shopify\'da yayınlandı! ID: '+data.article.id,'ok');
+      // update brain history
+      var b = cgGetBrain();
+      if (b.history && b.history.length) {
+        for (var i = b.history.length-1; i >= 0; i--) {
+          if (b.history[i].topic === (_cgSt.item ? _cgSt.item.topic : null)) {
+            b.history[i].published  = true;
+            b.history[i].shopify_id = data.article.id;
+            break;
+          }
+        }
+        cgSaveBrain(b);
+      }
+      cgUpdateStats();
+      // continue queue if write-all mode
+      if (_cgSt.writeQueue && _cgSt.writeQueue.length > 0) {
+        var nextIdx = _cgSt.writeQueue.shift();
+        setTimeout(function(){ cgWrite(nextIdx); }, 1500);
         return;
       }
-      var best = Math.max.apply(null, scores);
-      var bi = scores.indexOf(best);
-      var bt = covered[bi];
-      cgAddMessage('cherry', '"' + (bt&&bt.topic ? bt.topic.slice(0,50) : 'Bu konu') + '" su an en iyi performansimi aliyor: ' + best + '/100 SEO. Bu kategoride devam etmemi ister misin?', 'insight');
-      cgSetChips([
-        {label:'Evet, devam et', act:'cgUserSend("Evet, devam et")', hot:true},
-        {label:'Farkli Konu', act:'cgUserSend("Farkli konu dene")'},
-        {label:'Analiz', act:'cgInsightEngine()'},
-      ]);
-    }, thinkDelay);
-
-  } else if (/tesek|harika|guzel|super|bravo|muk/.test(lower)) {
-    var praises = [
-      'Tessekurler Onur! Daha iyisi icin cok calisiyorum.',
-      'Motive oldum! Bir sonraki blog icin hazir ve heyecanliyim.',
-      'Hedefimiz 90+ SEO puani. Devam!',
-    ];
-    cgAddMessage('cherry', praises[Math.floor(Math.random()*praises.length)], '', thinkDelay);
-
-  } else if (/dinlen|mola|dur|yeter/.test(lower)) {
-    cgAddMessage('cherry', 'Tamam, kisa bir mola veriyorum. Hazir oldugunuzda "baslayalim" deyin.', '', thinkDelay);
-    setTimeout(function(){ setCherryState('idle'); }, thinkDelay + 300);
-
-  } else {
-    var fallbacks = [
-      'Anladim! Bunu stratejime dahil edecegim.',
-      'Not aldim! Bir sonraki icerik uretiminde uygulayacagim.',
-      'Tamam. Devam etmemi ister misin?',
-      'Harika bir nokta. Buna gore gundemimi guncelleyeyim.',
-    ];
-    cgAddMessage('cherry', fallbacks[Math.floor(Math.random()*fallbacks.length)], '', thinkDelay);
-  }
-}
-
-// ─── GREETING (baglam farkindaligi, Onur'u taniyor) ─────────────────────────
-function cgCherryGreeting() {
-  var brain  = cgGetBrain();
-  var hist   = brain.history    || [];
-  var scores = brain.seo_scores || [];
-  var h      = new Date().getHours();
-  var gr     = h<6?'Iyi geceler':h<12?'Gunaydin':h<18?'Iyi gunler':'Iyi aksamlar';
-  var tod    = h<6?'gece':h<12?'sabah':h<18?'ogleden sonra':'aksam';
-
-  var ds     = new Date().toDateString();
-  var dsTR   = new Date().toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long'});
-  var todayC = (brain.topics_covered||[]).filter(function(t){return t.date===ds;}).length;
-
-  // Bugun daha once konustuk mu?
-  var recentLog = (brain.conversation_log||[]).slice(-30).filter(function(e){return e.role==='cherry';});
-  var hadConvToday = recentLog.some(function(e){
-    return new Date(e.ts).toDateString()===ds && e.ts < (Date.now()-60000);
-  });
-
-  if (hist.length === 0) {
-    cgAddMessage('cherry', gr + ' Onur! Ben CherryGlow, Retrocameraland’in AI blog asistanim. Analog kamera dunyasinda seninle organik trafigi birlikte buyutelim!', 'report', 400);
-    setTimeout(function(){
-      cgAddMessage('cherry', 'Ilk blogu yazalim mi? Leica, Olympus veya Pentax — hangisiyle baslayalim?', 'question');
-      cgSetChips([
-        {label:'Leica ile Baslayalim', act:'cgUserSend("Leica konusunda blog yaz")', hot:true},
-        {label:'Gundem Listesi', act:'cherryAddAllToAgenda()'},
-        {label:'Analiz Yap', act:'cgInsightEngine()'},
-      ]);
-    }, 2200);
-    return;
-  }
-
-  if (hadConvToday) {
-    cgAddMessage('cherry', 'Tekrar merhaba Onur! ' + (todayC>0?'Bugun '+todayC+' blog yazdim.':'Hala hazir.') + ' Devam edelim mi?', '', 300);
-    cgSetChips([
-      {label:'Devam Et', act:'cgUserSend("devam et")', hot:true},
-      {label:'Gunluk Rapor', act:'cgDailyReport()'},
-      {label:'Analiz', act:'cgInsightEngine()'},
-    ]);
-    return;
-  }
-
-  var avg    = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
-  var pubCnt = hist.filter(function(h){return h.published;}).length;
-
-  // Birincil selamlama
-  var intro = gr + ' Onur! ' + dsTR + ', iyi ' + tod + 'lar.';
-  var stats = todayC > 0
-    ? 'Bugun ' + todayC + ' blog yazdim, toplam ' + hist.length + ' blog. Ort. SEO: ' + avg + '/100.'
-    : 'Toplam ' + hist.length + ' blog (' + pubCnt + ' yayinda), ort. SEO: ' + avg + '/100. Bugun henuz baslamadik.';
-  cgAddMessage('cherry', intro + ' ' + stats, 'report', 400);
-
-  // Son blog referansi
-  if (hist.length > 0) {
-    var last   = hist[hist.length-1];
-    var lastDt = last.date ? new Date(last.date).toLocaleDateString('tr-TR',{day:'numeric',month:'long'}) : '';
-    setTimeout(function(){
-      cgAddMessage('cherry',
-        'Son blog: "' + (last.title||last.topic||'').slice(0,50) + '" — ' + lastDt + ', SEO ' + (last.seo||'?') + '/100, ' + (last.wc||0) + ' kelime.' +
-        (last.published ? ' Shopify’da yayinda!' : ' Henuz yayinlanmadi.'),
-        'insight');
-    }, 1700);
-  }
-
-  // Bekleyen konular
-  var pending = _cgAgenda.filter(function(a){return a.stage==='pending';});
-  if (pending.length > 0) {
-    setTimeout(function(){
-      cgAddMessage('cherry', 'Gundemde ' + pending.length + ' konu bekliyor. Basliyorum mu?', 'question');
-      cgSetChips([
-        {label:'Evet Baslayalim', act:'cgUserSend("Hepsini yaz")', hot:true},
-        {label:'Gunluk Rapor', act:'cgDailyReport()'},
-        {label:'Analiz', act:'cgInsightEngine()'},
-        {label:'Gelir?', act:'cgUserSend("Ne kadar kazandim")'},
-      ]);
-    }, 3200);
-  }
-}
-
-// ─── INSIGHT ENGINE ──────────────────────────────────────────────────────────
-function cgInsightEngine() {
-  var brain = cgGetBrain();
-  var hist = brain.history || [];
-  var scores = brain.seo_scores || [];
-  var covered = brain.topics_covered || [];
-
-  if (scores.length === 0) {
-    cgAddMessage('cherry', 'Henuz analiz edecek yeterli veri yok. Birkaç blog yazalim ve gercek performans verisi biriktirelim!', 'insight');
-    cgRenderInsights([]);
-    return;
-  }
-
-  var avg = Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length);
-  var best = Math.max.apply(null, scores);
-  var worst = Math.min.apply(null, scores);
-  var bestIdx = scores.indexOf(best);
-  var worstIdx = scores.indexOf(worst);
-  var bestTopic = covered[bestIdx] || {};
-  var worstTopic = covered[worstIdx] || {};
-
-  // Category performance
-  var catPerf = {};
-  covered.forEach(function(t,i) {
-    var cat = t.cat || 'genel';
-    if (!catPerf[cat]) catPerf[cat] = {sum:0, count:0, topics:[]};
-    catPerf[cat].sum += (scores[i]||0);
-    catPerf[cat].count++;
-    catPerf[cat].topics.push(t.topic||'');
-  });
-  var cats = Object.keys(catPerf).sort(function(a,b){
-    return (catPerf[b].sum/catPerf[b].count) - (catPerf[a].sum/catPerf[a].count);
-  });
-  var bestCat = cats[0] || '';
-  var bestCatAvg = bestCat ? Math.round(catPerf[bestCat].sum/catPerf[bestCat].count) : 0;
-
-  // Trend: are scores improving?
-  var trend = scores.length >= 3
-    ? (scores.slice(-3).reduce(function(a,b){return a+b;},0)/3 -
-       scores.slice(0,3).reduce(function(a,b){return a+b;},0)/3)
-    : 0;
-
-  var insights = [];
-
-  insights.push({
-    icon:'📈', color:'rgba(52,199,89,.14)',
-    title:'En Iyi Blog',
-    desc:'"' + (bestTopic.topic||'').slice(0,45) + '" — SEO: ' + best + '/100',
-    act:'Benzerini Yaz', onclick:'cgWriteSimilar(' + bestIdx + ')'
-  });
-
-  if (bestCat) {
-    insights.push({
-      icon:'🎯', color:'rgba(212,175,55,.12)',
-      title:'En Guçlu Kategori',
-      desc:'"' + bestCat + '" — Ort. ' + bestCatAvg + '/100 (' + catPerf[bestCat].count + ' blog)',
-      act:'Odaklan', onclick:'cgFocusCategory("' + bestCat + '")'
-    });
-  }
-
-  insights.push({
-    icon: trend >= 2 ? '⬆️' : trend <= -2 ? '⬇️' : '➡️',
-    color: trend >= 2 ? 'rgba(52,199,89,.12)' : trend <= -2 ? 'rgba(255,69,58,.1)' : 'rgba(90,200,250,.1)',
-    title:'SEO Trendi',
-    desc:'Ort. ' + avg + '/100 — ' + (trend>=2?'Yukseliyor!':trend<=-2?'Dusuyor, strateji gozden gec':'Stabil'),
-    act:'Iyilestir', onclick:'cgImproveAvg()'
-  });
-
-  if (hist.length >= 3 && worst < 60) {
-    insights.push({
-      icon:'🔧', color:'rgba(255,149,0,.1)',
-      title:'Gelistirme Firsati',
-      desc:'"' + (worstTopic.topic||'').slice(0,40) + '" — ' + worst + '/100, yeniden yaz?',
-      act:'Yeniden Yaz', onclick:'cgRewriteTopic(' + worstIdx + ')'
-    });
-  }
-
-  cgRenderInsights(insights);
-
-  var msg = 'Analiz tamam! ' + hist.length + ' blog, ort. ' + avg + '/100 SEO. ' +
-    (bestCat ? '"' + bestCat + '" kategorisi ' + bestCatAvg + '/100 ile one cikiyor.' : '') +
-    (trend >= 2 ? ' Performansin yukseliyor!' : trend <= -2 ? ' Son bloklarda dusus var, stratejiyi guncelleyelim.' : '');
-  cgAddMessage('cherry', msg, 'insight');
-
-  setTimeout(function(){
-    cgAddMessage('cherry', 'Hangi konuya odaklanmamı istersin?', 'question');
-    cgSetChips([
-      {label:'En Iyi Kategoride Devam', act:'cgFocusCategory("' + bestCat + '")', hot:true},
-      {label:'Farkli Konu', act:'cgUserSend("Farkli konu sec")'},
-      {label:'Gelir Hesapla', act:'cgRefreshROI()'},
-    ]);
-  }, 2000);
-}
-
-function cgRenderInsights(insights) {
-  var el = document.getElementById('cg-insight-list');
-  if (!el) return;
-  if (!insights.length) {
-    el.innerHTML = '<div style="font-size:.72rem;opacity:.28;padding:10px 0">Ilk bloglardan sonra Cherry\'nin icgoruleri burada gorunecek...</div>';
-    return;
-  }
-  el.innerHTML = insights.map(function(ins){
-    return '<div class="cg-insight-item">' +
-      '<div class="cg-insight-icon" style="background:' + ins.color + '">' + ins.icon + '</div>' +
-      '<div class="cg-insight-body">' +
-        '<div class="cg-insight-title">' + ins.title + '</div>' +
-        '<div class="cg-insight-desc">' + ins.desc + '</div>' +
-      '</div>' +
-      '<button class="cg-insight-act" onclick="' + ins.onclick + '">' + ins.act + '</button>' +
-    '</div>';
-  }).join('');
-}
-
-function cgWriteSimilar(topicIdx) {
-  var brain = cgGetBrain();
-  var covered = brain.topics_covered || [];
-  var t = covered[topicIdx];
-  cgAddMessage('cherry', (t?'"'+t.topic.slice(0,40)+'"':' Bu konu') + ' kategorisine benzer yeni bir icerik yaziyorum!', 'task');
-  cgBuildAgenda();
-  setTimeout(function(){ cherryGenerateBlog(0); }, 600);
-}
-
-function cgFocusCategory(cat) {
-  cgAddMessage('cherry', '"' + cat + '" kategorisine odaklaniyorum. Gundemimi yeniden duzenliyorum...', 'task');
-  cgBuildAgenda();
-  var items = _cgAgenda.filter(function(a){ return a.cat===cat && a.stage==='pending'; });
-  if (items.length) {
-    var idx = _cgAgenda.indexOf(items[0]);
-    setTimeout(function(){ cherryGenerateBlog(idx); }, 600);
-  } else {
-    cgAddMessage('cherry', '"' + cat + '" kategorisinde tum konular yazilmis! Farkli bir kategoriye geceyim mi?', 'question');
-  }
-}
-
-function cgImproveAvg() {
-  cgAddMessage('cherry', 'SEO ortalamasini yukseltmek icin: 1) Daha uzun icerik (1500+ kelime), 2) Guclu anahtar kelime yogunlugu, 3) Daha fazla H2 basligi. Bir sonraki blogda 90+ hedefliyorum!', 'insight');
-}
-
-function cgRewriteTopic(topicIdx) {
-  var brain = cgGetBrain();
-  var covered = brain.topics_covered || [];
-  var t = covered[topicIdx];
-  cgAddMessage('cherry', '"' + (t?t.topic.slice(0,40):'Bu konu') + '" icin daha guclu bir versiyon yaziyorum!', 'task');
-  cgBuildAgenda();
-  setTimeout(function(){ cherryGenerateBlog(0); }, 600);
-}
-
-// ─── PROAKTIF ARASTIRMA MOTORU ────────────────────────────────────────────────
-var CG_RESEARCH_POOL = [
-  {topic:'Leica M6 vs M7: Hangisini Satin Almalisiniz?', cat:'Karsilastirma', reason:'Leica aramalari artis gosteriyor; M6/M7 karsilastirmasi TR’de eksik'},
-  {topic:'Vintage Kameranizin Degerini Dogru Nasil Ogrenirsiniz?', cat:'Satin Alma Rehberleri', reason:'Yanlis fiyatlandirma cok yaygin — bilgi boslugu buyuk'},
-  {topic:'Analog Fotografi Yeni Baslayanlar Icin 2025 Rehberi', cat:'Film Fotografi', reason:'Yeni nesil meraklilari icin TR’de kapsamli rehber yok'},
-  {topic:'Olympus OM-1 Bakim Rehberi: Kullanici Hatalari', cat:'Bakim ve Onarim', reason:'Bakim icerigi guven ve SEO icin kritik'},
-  {topic:'Neden Dijital Yerine Analog Kamera Aldim?', cat:'Yasam Tarzi', reason:'Duygusal hikaye formati en yuksek social share aliyor'},
-  {topic:'Canon AE-1 ile Baslayanlara 2025 Fiyat Rehberi', cat:'Satin Alma Rehberleri', reason:'Canon AE-1 TR’de en cok aranan giris noktasi'},
-  {topic:'Retro Kamera Koleksiyonu Nasil Baslatilir?', cat:'Koleksiyon', reason:'Koleksiyoner kitlesi yuksek AOV potansiyeli tasir'},
-  {topic:'Istanbul’da Film Banyo Hizmetleri 2025', cat:'Film ve Lab', reason:'Yerel + nis + evergreen trafik kaynagi'},
-  {topic:'Pentax K1000 ile Uygulama Fotografciligi', cat:'Kullanim Rehberleri', reason:'Pentax K1000 TR’de az icerik, yuksek arama potansiyeli'},
-  {topic:'SLR mi Rangefinder mi? Hangi Kamerayi Secmeli?', cat:'Karsilastirma', reason:'Karar asama icerigi en yuksek donusum etkisi'},
-  {topic:'Analog Fotografin Meditasyon Etkisi', cat:'Yasam Tarzi', reason:'Wellness + analog trendi — viral potansiyel yuksek'},
-  {topic:'Film Pozlama Hatalari ve Cozimleri', cat:'Teknik Rehberler', reason:'Pratik sorun cozme — aktif aramalar'},
-  {topic:'2025 En Cok Aranan Vintage Kameralar', cat:'Trendler', reason:'Yillik trend icerigi backlink ceker'},
-  {topic:'Zorlu Isikta Analog Fotograf Nasil Cekilir?', cat:'Teknik Rehberler', reason:'Teknik challenge icerigi — merakli kullanicilar'},
-  {topic:'Retrocameraland Kondisyon Sistemi Nasil Calisiyor?', cat:'Marka ve Guven', reason:'Marka guveni ve satin alma karar surecinde kritik'},
-  {topic:'120 Format Film Fotografi: Orta Format Rehberi', cat:'Film Fotografi', reason:'Orta format meraklilarinda buyume var'},
-  {topic:'Film Saklamanin Dogru Yolu: Soguk Depo mu, Oda Sicakligi mi?', cat:'Teknik Rehberler', reason:'Pratik, evergreen, dusuk rekabet'},
-  {topic:'Vintage Kamera Lens Bakim Rehberi', cat:'Bakim ve Onarim', reason:'Lens aramalarinda buyuk trafik potansiyeli'},
-];
-
-function cgProactiveResearch() {
-  var brain    = cgGetBrain();
-  var recent   = cgRecentlyDiscussed(21);
-  var covered  = (brain.topics_covered||[]).map(function(t){ return t.topic.toLowerCase(); });
-  var sugg14d  = (brain.proactive_suggestions||[])
-    .filter(function(s){ return Date.now()-s.suggested_ts < 14*86400000; })
-    .map(function(s){ return s.topic.toLowerCase(); });
-
-  var candidates = CG_RESEARCH_POOL.filter(function(rt) {
-    var tl = rt.topic.toLowerCase();
-    if (covered.indexOf(tl) >= 0) return false;
-    if (sugg14d.indexOf(tl) >= 0) return false;
-    return !recent.some(function(r){ return r.indexOf(tl.slice(0,18)) >= 0; });
-  });
-
-  if (!candidates.length) {
-    var all = [];
-    Object.keys(BLOG_TOPICS).forEach(function(cat){
-      BLOG_TOPICS[cat].forEach(function(t){
-        if (covered.indexOf(t.topic.toLowerCase()) < 0)
-          all.push({topic:t.topic, cat:cat, reason:'Henuz ele alinmamis konu'});
-      });
-    });
-    candidates = all;
-  }
-  if (!candidates.length) {
-    cgAddMessage('cherry', 'Tum standart konular tamamlandi! Yeni fikirleri birlikte uretebiliriz.', 'think');
-    return;
-  }
-
-  var picks = [], pool = candidates.slice();
-  while (picks.length < Math.min(3, pool.length)) {
-    picks.push(pool.splice(Math.floor(Math.random()*pool.length), 1)[0]);
-  }
-
-  var suggs = brain.proactive_suggestions || [];
-  picks.forEach(function(p){
-    suggs.push({topic:p.topic, reason:p.reason||'', cat:p.cat||'', suggested_ts:Date.now(), accepted:false, rejected:false});
-  });
-  brain.proactive_suggestions = suggs.slice(-50);
-  cgSaveBrain(brain);
-
-  setTimeout(function(){
-    cgAddMessage('cherry', 'Arastirdim, sana ' + picks.length + ' taze konu oneriyorum:', 'insight');
-    picks.forEach(function(p, i){
-      setTimeout(function(){
-        cgAddMessage('cherry', (i+1) + '. "' + p.topic + '" — ' + (p.reason||p.cat||''), 'question');
-      }, (i+1) * 1000);
-    });
-    setTimeout(function(){
-      cgSetChips([
-        {label:'1. Konuyu Yaz', act:'cgAcceptSuggestion(0)', hot:true},
-        {label:'2. Konuyu Yaz', act:'cgAcceptSuggestion(1)'},
-        {label:'3. Konuyu Yaz', act:'cgAcceptSuggestion(2)'},
-        {label:'Baska Oner', act:'cgProactiveResearch()'},
-      ]);
-    }, (picks.length+1)*1000);
-  }, 1000);
-}
-
-function cgAcceptSuggestion(idx) {
-  var brain = cgGetBrain();
-  var open  = (brain.proactive_suggestions||[]).filter(function(s){ return !s.accepted && !s.rejected; });
-  var pick  = open[idx];
-  if (!pick) { cgAddMessage('cherry', 'Konu bulunamadi, yeniden ariyorum...', ''); cgProactiveResearch(); return; }
-  pick.accepted = true;
-  cgSaveBrain(brain);
-  cgAddMessage('cherry', 'Harika secim! "' + pick.topic.slice(0,50) + '" icin hemen basliyorum!', 'task');
-  _cgAgenda.unshift({cat:pick.cat||'Genel', topic:pick.topic, done:false, stage:'pending'});
-  cgRenderAgenda();
-  setTimeout(function(){ cherryGenerateBlog(0); }, 800);
-}
-
-// ─── GUNLUK RAPOR ─────────────────────────────────────────────────────────────
-function cgDailyReport() {
-  var brain    = cgGetBrain();
-  var hist     = brain.history    || [];
-  var scores   = brain.seo_scores || [];
-  var ds       = new Date().toDateString();
-  var todayC   = (brain.topics_covered||[]).filter(function(t){ return t.date===ds; }).length;
-  var todayH   = hist.filter(function(h){ return new Date(h.date||'').toDateString()===ds; });
-  var todayWds = todayH.reduce(function(a,h){ return a+(h.wc||0); }, 0);
-  var todayPub = todayH.filter(function(h){ return h.published; }).length;
-  var todaySeo = todayH.length ? Math.round(todayH.reduce(function(a,h){return a+(h.seo||0);},0)/todayH.length) : 0;
-  var totalWds = hist.reduce(function(a,h){ return a+(h.wc||0); }, 0);
-  var pubTotal = hist.filter(function(h){ return h.published; }).length;
-  var avgSeo   = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
-  var roi      = cgCalcBlogROI();
-
-  cgRenderAnalyticsPanel({
-    todayBlogs:todayC, todayWords:todayWds, todaySeo:todaySeo, todayPub:todayPub,
-    totalBlogs:hist.length, totalWords:totalWds, totalPub:pubTotal, avgSeo:avgSeo,
-    roi:roi, todayHist:todayH, allHist:hist, scores:scores
-  });
-
-  var msg = 'Bugunun ozeti: ' + todayC + ' blog, ' + todayWds + ' kelime' +
-    (todayPub ? ', ' + todayPub + ' yayinlandi' : '') +
-    (todaySeo ? ', ort. SEO ' + todaySeo + '/100' : '') + '. ' +
-    'Toplam: ' + hist.length + ' blog (' + pubTotal + ' yayinda), ' + (totalWds/1000).toFixed(1) + 'K kelime.';
-  cgAddMessage('cherry', msg, 'report');
-  setTimeout(function(){
-    cgSetChips([
-      {label:'Yeni Konu Oner', act:'cgProactiveResearch()', hot:true},
-      {label:'Performans', act:'cgInsightEngine()'},
-      {label:'Gelir', act:'cgUserSend("Ne kadar kazandim")'},
-    ]);
-  }, 900);
-}
-
-function cgAnaCard(label, val, suffix, color) {
-  return '<div class="cg-ana-card">' +
-    '<div style="font-size:.52rem;text-transform:uppercase;letter-spacing:.12em;opacity:.32;font-family:var(--mono);margin-bottom:5px">' + label + '</div>' +
-    '<div style="font-size:1.2rem;font-weight:700;font-family:var(--mono);color:' + color + ';letter-spacing:-.01em">' + val + '</div>' +
-    (suffix ? '<div style="font-size:.55rem;opacity:.4;margin-top:1px">' + suffix + '</div>' : '') +
-    '</div>';
-}
-
-function cgRenderAnalyticsPanel(d) {
-  // Switch to analytics tab first
-  var body  = document.getElementById('cg-output-body');
-  if (!body) { cgDailyReport && setTimeout(cgDailyReport, 200); return; }
-
-  // Activate analytics tab
-  document.querySelectorAll('.cg-tab').forEach(function(t){ t.classList.remove('active'); });
-  var ataEl = document.querySelector('.cg-tab[data-tab="analytics"]');
-  if (ataEl) ataEl.classList.add('active');
-
-  // SEO bar chart
-  var barHTML = '';
-  if (d.scores && d.scores.length) {
-    var last8 = d.scores.slice(-8);
-    var mx    = Math.max.apply(null, last8) || 100;
-    barHTML = '<div style="display:flex;align-items:flex-end;gap:4px;height:44px">' +
-      last8.map(function(s,i){
-        var col = s>=85?'#34C759':s>=70?'#D4AF37':'#FF9500';
-        var isL = i===last8.length-1;
-        return '<div title="SEO:'+s+'" style="flex:1;background:'+col+';height:'+(Math.round((s/mx)*100))+'%;border-radius:3px 3px 0 0;opacity:'+(isL?1:.55)+';min-height:3px"></div>';
-      }).join('') + '</div>' +
-      '<div style="font-size:.55rem;opacity:.28;margin-top:3px">Son '+last8.length+' blog SEO trendi</div>';
-  }
-
-  var pubPct = d.totalBlogs > 0 ? Math.round((d.totalPub/d.totalBlogs)*100) : 0;
-
-  body.innerHTML =
-    '<div class="cg-ana-grid">' +
-      '<div class="cg-ana-section-hdr">BUGUN — ' + new Date().toLocaleDateString('tr-TR',{weekday:'short',day:'numeric',month:'short'}) + '</div>' +
-      '<div class="cg-ana-row">' +
-        cgAnaCard('BLOG',d.todayBlogs,'','#D4AF37') +
-        cgAnaCard('KELIME',d.todayWords>999?(d.todayWords/1000).toFixed(1)+'K':d.todayWords,'','#5AC8FA') +
-        cgAnaCard('SEO ORT',d.todaySeo||'--','/100',d.todaySeo>=80?'#34C759':d.todaySeo>=60?'#D4AF37':'#FF9500') +
-        cgAnaCard('YAYINLANDI',d.todayPub,'','#34C759') +
-      '</div>' +
-      '<div class="cg-ana-section-hdr" style="margin-top:10px">TOPLAM</div>' +
-      '<div class="cg-ana-row">' +
-        cgAnaCard('BLOG',d.totalBlogs,'','#D4AF37') +
-        cgAnaCard('KELIME',(d.totalWords/1000).toFixed(1)+'K','','#5AC8FA') +
-        cgAnaCard('YAYINDA',d.totalPub+'/'+d.totalBlogs,'',pubPct>=50?'#34C759':'#FF9500') +
-        cgAnaCard('SEO ORT',d.avgSeo||'--','/100','#BF5AF2') +
-      '</div>' +
-      '<div class="cg-ana-section-hdr" style="margin-top:10px">TAHMINI ETKi</div>' +
-      '<div class="cg-ana-roi">' +
-        '<div class="cg-ana-roi-main">' + (d.roi.estimatedRevenue>0 ? d.roi.estimatedRevenue.toLocaleString('tr-TR')+'&#8201;&#8378;' : 'Veri bekleniyor') + '</div>' +
-        '<div class="cg-ana-roi-sub">Organik gelir katkisi tahmini &middot; ' + d.roi.totalTraffic + ' ziyaretci &middot; %' + d.roi.convRate + ' donusum</div>' +
-      '</div>' +
-      (barHTML ? '<div class="cg-ana-chart">' + barHTML + '</div>' : '') +
-      (d.allHist.length > 0 ?
-        '<div class="cg-ana-section-hdr" style="margin-top:10px">SON BLOGLAR</div>' +
-        '<div class="cg-ana-blogs">' +
-          d.allHist.slice(-6).reverse().map(function(h) {
-            var sc  = h.seo||0;
-            var col = sc>=80?'#34C759':sc>=65?'#D4AF37':'#FF9500';
-            var dt  = h.date ? new Date(h.date).toLocaleDateString('tr-TR',{day:'numeric',month:'short'}) : '';
-            return '<div class="cg-ana-blog-row">' +
-              '<div style="flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:.67rem">' + (h.title||h.topic||'').slice(0,52) + '</div>' +
-              '<div style="display:flex;gap:5px;align-items:center;flex-shrink:0">' +
-                '<span style="color:'+col+';font-family:var(--mono);font-size:.6rem">' + (sc||'?') + '</span>' +
-                '<span style="opacity:.3;font-size:.57rem">' + dt + '</span>' +
-                (h.published ? '<span style="background:rgba(52,199,89,.15);color:#34C759;font-size:.54rem;padding:1px 5px;border-radius:4px">YAYINDA</span>' : '') +
-              '</div>' +
-            '</div>';
-          }).join('') +
-        '</div>' : '') +
-    '</div>';
-}
-
-// ─── ROI CALCULATION ─────────────────────────────────────────────────────────
-function cgCalcBlogROI() {
-  var brain = cgGetBrain();
-  var scores = brain.seo_scores || [];
-  var hist = brain.history || [];
-  var pubHist = hist.filter(function(h){ return h.published; });
-
-  var totalTraffic = scores.reduce(function(sum,s){
-    if (s >= 85) return sum + 520;
-    if (s >= 75) return sum + 310;
-    if (s >= 65) return sum + 160;
-    if (s >= 50) return sum + 70;
-    return sum + 18;
-  }, 0);
-
-  var shopifyAOV = 12000; // from SHOPIFY.period_30d.aov
-  try {
-    if (typeof SHOPIFY !== 'undefined' && SHOPIFY.period_30d && SHOPIFY.period_30d.aov) {
-      shopifyAOV = SHOPIFY.period_30d.aov;
+    } else {
+      throw new Error(data.error || JSON.stringify(data).slice(0,80));
     }
-  } catch(e) {}
-
-  var convRate = 0.012; // 1.2% for niche vintage camera store
-  var estimatedRevenue = Math.round(totalTraffic * convRate * shopifyAOV);
-  var avgSeo = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
-
-  return {
-    totalBlogs: scores.length,
-    publishedBlogs: pubHist.length,
-    totalTraffic: totalTraffic,
-    estimatedRevenue: estimatedRevenue,
-    convRate: (convRate * 100).toFixed(1),
-    aov: shopifyAOV,
-    avgSeo: avgSeo
-  };
+  } catch(e) {
+    _cgSt.status = prevStatus === 'done' ? 'done' : 'error';
+    _cgSt.error  = 'Yayınlama hatası: '+e.message.slice(0,80);
+    cgSetPill('HATA','rgba(255,69,58,.2)');
+    cgLog('Yayınlama hatası: '+e.message.slice(0,80),'err');
+  }
+  cgRenderActions();
 }
 
-function cgRefreshROI() {
-  var roi = cgCalcBlogROI();
-  var bigEl = document.getElementById('cg-roi-big');
-  if (bigEl) bigEl.textContent = roi.estimatedRevenue > 0
-    ? '₺' + roi.estimatedRevenue.toLocaleString('tr-TR')
-    : '₺0';
+// ── Reset / helpers ────────────────────────────────────────────────────────────
+function cgResetDone() {
+  if (!confirm('Tamamlanan konuları sıfırlamak istiyor musunuz?')) return;
+  var b = cgGetBrain();
+  b.topics_covered = [];
+  cgSaveBrain(b);
+  cgBuildAgenda();
+  cgLog('Tamamlanan konular sıfırlandı.','warn');
+}
 
-  var fields = {
-    'roi-total':   roi.totalBlogs,
-    'roi-pub':     roi.publishedBlogs,
-    'roi-traffic': roi.totalTraffic.toLocaleString('tr-TR'),
-    'roi-conv':    '%' + roi.convRate,
-    'roi-aov':     '₺' + roi.aov.toLocaleString('tr-TR'),
-  };
-  Object.keys(fields).forEach(function(id){
-    var el = document.getElementById(id);
-    if (el) el.textContent = fields[id];
+function cgToggleAutoPub(checked) {
+  _cgAutoPub = checked;
+  cgLog('Oto-yayın: '+(checked?'AÇIK':'KAPALI'),'info');
+}
+
+// ── Widget (overview sidebar) ──────────────────────────────────────────────────
+function cgUpdateWidget(state) {
+  var dot = document.getElementById('cw-state-dot');
+  var txt = document.getElementById('cw-state-text');
+  var sub = document.getElementById('cw-state-sub');
+  var cols  = {idle:'rgba(52,199,89,.7)', writing:'rgba(212,175,55,.8)', done:'rgba(52,199,89,.9)', error:'rgba(255,69,58,.7)', publishing:'rgba(90,200,250,.7)'};
+  var lbls  = {idle:'Bekliyor', writing:'Blog yazıyor...', done:'Tamamlandı!', error:'Hata oluştu', publishing:'Yayınlanıyor...'};
+  var subs  = {idle:'Blog yazmaya hazır', writing:'Yapay zeka yazıyor', done:'Blog tamamlandı', error:'Bir sorun oluştu', publishing:'Shopify\'a gönderiliyor'};
+  var col = cols[state] || 'rgba(150,150,150,.5)';
+  if (dot) { dot.style.background = col; dot.style.boxShadow = '0 0 8px '+col; }
+  if (txt) txt.textContent = lbls[state] || state;
+  if (sub) sub.textContent = subs[state] || '';
+  document.querySelectorAll('.cw-wb').forEach(function(b){
+    b.classList.toggle('active', state==='writing'||state==='publishing');
   });
-  // Also update stats ribbon
-  var statRevEl = document.getElementById('cg-stat-rev');
-  if (statRevEl && roi.estimatedRevenue > 0) {
-    statRevEl.textContent = '~₺' + Math.round(roi.estimatedRevenue/1000) + 'K';
-  }
 }
 
-function cgGenerateROIMessage() {
-  var roi = cgCalcBlogROI();
-  if (roi.totalBlogs === 0) return 'Henuz blog yazilmamis. Hadi baslayalim!';
-  if (roi.publishedBlogs === 0) {
-    return roi.totalBlogs + ' blog hazir ama hicbiri yayinlanmamis. Yayinlarsak organik trafik baslar!';
-  }
-  return roi.publishedBlogs + ' yayinlanan blog uzerinden tahmini aylik trafik: ~' +
-    roi.totalTraffic.toLocaleString('tr-TR') + ' ziyaretci. ' +
-    '%' + roi.convRate + ' donusum ve ₺' + roi.aov.toLocaleString('tr-TR') +
-    ' AOV ile: ~₺' + roi.estimatedRevenue.toLocaleString('tr-TR') + ' aylik blog geliri tahmini.';
+function cgInitWidget() {
+  var wv = document.getElementById('cg-w-ver');
+  if (wv) wv.textContent = CG_VERSION;
+  cgUpdateWidget('idle');
 }
+
+function cgWidgetQuickWrite() {
+  navigate('cherry', document.querySelector('[data-page=cherry]'));
+  setTimeout(cgNextPending, 400);
+}
+
+// ── Page init ──────────────────────────────────────────────────────────────────
+function renderCherryPage() {
+  var verEl = document.getElementById('cg-version');
+  if (verEl) verEl.textContent = CG_VERSION;
+  cgBuildAgenda();
+  cgUpdateStats();
+  cgRenderActions();
+  cgLog('CherryGlow '+CG_VERSION+' hazır.','ok');
+}
+
+function initFade() {
+  document.querySelectorAll('.fi').forEach(function(el){ el.classList.add('vis'); });
+}
+
 
 
 // ─── INIT ─────────────────────────────────────────────────
