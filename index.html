@@ -4576,8 +4576,7 @@ async function cgWrite(idx) {
     _cgSt.progress = 50;
     cgRenderActions();
 
-    // ── 3. Yaz (streaming YOK — tek istek, tek cevap) ────────────────────────
-    // Stream loop browser'ı dondurur. Basit fetch + await kullanıyoruz.
+    // ── 3. Yaz (streaming + macrotask yield — hem timeout yok hem donma yok) ───
     _cgSt.phase = 'Yazıyor';
     cgRenderActions();
     cgLog('Blog yazılıyor...','info');
@@ -4587,32 +4586,31 @@ async function cgWrite(idx) {
       '\nH2 plan: '+((_cgSt.brief.h2s||[]).join(', '))+
       '\nHedef kelime: '+(_cgSt.brief.target_wc||1100)+'+\nHook: '+(_cgSt.brief.intro_hook||_cgSt.intel.hook||'');
 
-    // Yükleme ekranı — bağımsız setInterval ile canlandırılıyor (loop yok)
+    // Yükleme ekranı
     cgTab('preview', document.getElementById('cg-tab-preview'));
     var previewEl = document.getElementById('cg-tab-panel-preview');
     if (previewEl) previewEl.innerHTML =
       '<div style="text-align:center;padding:60px 0 24px" id="cgsp-loading">' +
-        '<div style="font-size:2.2rem;margin-bottom:14px">✍️</div>' +
+        '<div style="font-size:2.2rem;margin-bottom:14px">&#x270D;&#xFE0F;</div>' +
         '<div id="cgsp-elapsed" style="font-size:1rem;font-weight:600;color:rgba(212,175,55,.85)">Yazılıyor...</div>' +
-        '<div style="font-size:.7rem;color:rgba(255,255,255,.28);margin-top:6px">Scout + Brief + Yaz tamamlandı, içerik hazırlanıyor</div>' +
+        '<div style="font-size:.7rem;color:rgba(255,255,255,.28);margin-top:6px">Blog hazırlanıyor, lütfen bekleyin...</div>' +
         '<div style="margin:16px auto 0;width:220px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
           '<div id="cgsp-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:5%"></div>' +
         '</div>' +
       '</div>';
 
-    // Bağımsız ilerleme animasyonu — JS loop değil, hafif setInterval
+    // Bağımsız animasyon — API döngüsüyle hiç ilişkisi yok
     var _writeStart  = Date.now();
-    var _progVal     = 50;
+    var _progVal     = 5;
     var _barEl       = document.getElementById('cgsp-bar');
     var _elapsedEl   = document.getElementById('cgsp-elapsed');
     var _animTimer   = setInterval(function() {
-      _progVal = Math.min(93, _progVal + 1.2);
+      _progVal = Math.min(93, _progVal + 0.8);
       var elapsed = Math.floor((Date.now() - _writeStart) / 1000);
       if (_barEl)     _barEl.style.width = _progVal + '%';
       if (_elapsedEl) _elapsedEl.textContent = 'Yazılıyor... ' + elapsed + 's';
-    }, 500);
+    }, 600);
 
-    // AbortController — kullanıcı "Durdur" basarsa iptal
     var ctrl = new AbortController();
     _cgWriteAbort = ctrl;
 
@@ -4625,7 +4623,7 @@ async function cgWrite(idx) {
         body: JSON.stringify({
           model:      'claude-sonnet-4-6',
           max_tokens: 2000,
-          stream:     false,        // STREAMING YOK — donma imkansız
+          stream:     true,   // Streaming: Edge Function 25s içinde veri göndermeye başlar
           system:     sysPrompt,
           messages:   [{role:'user', content: userMsg}]
         })
@@ -4636,9 +4634,49 @@ async function cgWrite(idx) {
         throw new Error('API '+resp.status+': '+et.slice(0,120));
       }
 
-      var data = await resp.json();
-      if (data.error) throw new Error(data.error);
-      md = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text : '';
+      var reader    = resp.body.getReader();
+      var decoder   = new TextDecoder();
+      var buf       = '';
+      var lastYield = Date.now();
+
+      // Stream okuma döngüsü — DOM güncellemesi YOK, sadece metin biriktiriyoruz
+      outer: while (true) {
+        var chunk;
+        try {
+          chunk = await reader.read();
+        } catch (readErr) {
+          if (readErr.name === 'AbortError') { cgLog('Durduruldu.','warn'); break; }
+          throw readErr;
+        }
+        if (chunk.done) break;
+
+        buf += decoder.decode(chunk.value, {stream: true});
+        var lines = buf.split('\n');
+        buf = lines.pop();
+
+        for (var li = 0; li < lines.length; li++) {
+          var ln = lines[li];
+          if (!ln.startsWith('data:')) continue;
+          var raw = ln.slice(5).trim();
+          if (raw === '[DONE]') break outer;
+          try {
+            var evt = JSON.parse(raw);
+            if (evt.type === 'message_stop') break outer;
+            if (evt.type === 'content_block_delta' &&
+                evt.delta && evt.delta.type === 'text_delta') {
+              md += evt.delta.text;
+            }
+          } catch(e2) {}
+        }
+
+        // Microtask storm önlemi: her 16ms'de setTimeout ile macrotask'a geç.
+        // Bu sayede browser event loop nefes alır — "Sayfa Yanıt Vermiyor" imkansız.
+        var _now = Date.now();
+        if (_now - lastYield >= 16) {
+          lastYield = _now;
+          await new Promise(function(r) { setTimeout(r, 0); });
+        }
+      }
 
     } finally {
       clearInterval(_animTimer);
