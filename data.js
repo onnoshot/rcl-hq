@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-15T15:30:29",
+  "updated_at": "2026-05-15T16:30:32",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 1538,
-      "likes": 19,
+      "views": 1557,
+      "likes": 20,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
     },
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1182,
-      "likes": 15,
+      "views": 1200,
+      "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
     },
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1738,
+      "views": 1739,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -99,10 +99,19 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1415,
+      "views": 1416,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
+    },
+    {
+      "id": "3qQFPZtOHf0",
+      "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
+      "date": "30 Nis 2026",
+      "views": 4658,
+      "likes": 86,
+      "comments": 0,
+      "url": "https://youtu.be/3qQFPZtOHf0"
     },
     {
       "id": "UcdfytnpKEA",
@@ -117,7 +126,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 256,
+      "views": 257,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -139,15 +148,6 @@ const YOUTUBE = {
       "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
-    },
-    {
-      "id": "-mrJ8maR2eo",
-      "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
-      "date": "25 Nis 2026",
-      "views": 368,
-      "likes": 10,
-      "comments": 3,
-      "url": "https://youtu.be/-mrJ8maR2eo"
     }
   ],
   "sub_goal": 10000
