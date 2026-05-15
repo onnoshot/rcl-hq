@@ -5162,7 +5162,10 @@ JSON formatında yanıtla (başka açıklama yok):
   "trending_angle": "güncel ilgi alanı"
 }`;
   try {
+    var ctrl = new AbortController();
+    var tid = setTimeout(function(){ ctrl.abort(); }, 20000);
     var resp = await fetch('/api/chat', {
+      signal: ctrl.signal,
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
         model:'claude-haiku-4-5-20251001', max_tokens:512,
@@ -5170,6 +5173,7 @@ JSON formatında yanıtla (başka açıklama yok):
         system:'SEO uzmanısın. JSON olarak yanıtla.'
       })
     });
+    clearTimeout(tid);
     var data = await resp.json();
     var txt = (data.content && data.content[0]) ? data.content[0].text : '{}';
     var m = txt.match(/\{[\s\S]*\}/);
@@ -5190,7 +5194,10 @@ JSON formatında içerik planı (başka açıklama yok):
   "intro_hook": "..."
 }`;
   try {
+    var ctrl2 = new AbortController();
+    var tid2 = setTimeout(function(){ ctrl2.abort(); }, 20000);
     var resp = await fetch('/api/chat', {
+      signal: ctrl2.signal,
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({
         model:'claude-haiku-4-5-20251001', max_tokens:512,
@@ -5198,6 +5205,7 @@ JSON formatında içerik planı (başka açıklama yok):
         system:'İçerik planlamacısın. JSON olarak yanıtla.'
       })
     });
+    clearTimeout(tid2);
     var data = await resp.json();
     var txt = (data.content && data.content[0]) ? data.content[0].text : '{}';
     var m = txt.match(/\{[\s\S]*\}/);
@@ -5211,7 +5219,9 @@ async function cherryGenerateBlog(agendaIdx) {
   if (!item) { cherryLog('Gundem ogesi bulunamadi.','err'); return; }
   if (item.stage === 'running') { cherryLog('Zaten yaziliyor...','warn'); return; }
   if (_cgCurrentState !== 'idle' && _cgCurrentState !== 'done') {
-    cherryLog('CherryGlow simdi mesgul. Lutfen bekleyin.','warn'); return;
+    // Force reset if stuck for more than 90 seconds
+    cherryLog('Durum sifirlaniyor ve yeniden baslatiliyor...','warn');
+    setCherryState('idle');
   }
 
   cgUpdateAgendaItem(agendaIdx, 'running');
@@ -5256,6 +5266,7 @@ async function cherryGenerateBlog(agendaIdx) {
   lastBlogMd = '';
   var lastUp = 0;
 
+  var _streamOk = false;
   try {
     var resp = await fetch('/api/chat', {
       method:'POST', headers:{'Content-Type':'application/json'},
@@ -5264,10 +5275,19 @@ async function cherryGenerateBlog(agendaIdx) {
         system: sysPrompt, messages:[{role:'user',content:userMsg}]
       })
     });
+    if (!resp.ok) {
+      var errBody = await resp.text().catch(function(){ return 'unknown'; });
+      throw new Error('API ' + resp.status + ': ' + errBody.slice(0,120));
+    }
     var reader = resp.body.getReader(), decoder = new TextDecoder();
     var buf = '';
+    var _streamStart = Date.now();
     while (true) {
-      var _r = await reader.read();
+      // 45-second timeout per read chunk
+      var _r = await Promise.race([
+        reader.read(),
+        new Promise(function(_, rej){ setTimeout(function(){ rej(new Error('Stream timeout (45s)')); }, 45000); })
+      ]);
       if (_r.done) break;
       buf += decoder.decode(_r.value, {stream:true});
       var lines = buf.split('\n');
@@ -5276,7 +5296,7 @@ async function cherryGenerateBlog(agendaIdx) {
         var line = lines[li];
         if (!line.startsWith('data:')) continue;
         var raw = line.slice(5).trim();
-        if (raw === '[DONE]') continue;
+        if (raw === '[DONE]') { _streamOk = true; break; }
         try {
           var evt = JSON.parse(raw);
           if (evt.type === 'content_block_delta' && evt.delta && evt.delta.type === 'text_delta') {
@@ -5294,8 +5314,17 @@ async function cherryGenerateBlog(agendaIdx) {
         } catch(e) {}
       }
     }
+    _streamOk = true;
   } catch(e) {
-    cherryLog('Stream hatasi: ' + e.message,'err');
+    cherryLog('Yazma hatasi: ' + e.message, 'err');
+    if (lastBlogMd.length < 50) {
+      cgAddMessage('cherry', 'Hata olustu: ' + e.message + '. Tekrar denemek ister misin?', 'err');
+      cgSetChips([{label:'Tekrar Dene', act:'cherryGenerateBlog('+agendaIdx+')', hot:true}]);
+      cgUpdateAgendaItem(agendaIdx, 'pending');
+      setCherryState('idle');
+      return;
+    }
+    cherryLog('Kismi icerik kurtarildi (' + lastBlogMd.split(/\s+/).length + ' kelime).', 'warn');
   }
 
   // Final render
