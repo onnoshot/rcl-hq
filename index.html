@@ -4676,12 +4676,12 @@ function setCherryState(s) {
       var seoScore = last ? (last.seo||'--') : '--';
       var title = last ? last.title : 'Blog';
       cgAddMessage('cherry',
-        '"' + title.slice(0,45) + '" tamamlandi! SEO: ' + seoScore + '/100. Yayinlayayim mi?',
+        '"' + title.slice(0,45) + '" hazir! SEO skoru: ' + seoScore + '/100. Shopify\'a yayinlayayim mi?',
         'done', 300);
       cgSetChips([
-        {label:'Evet, Yayinla!', act:'cherryPublishLatest();cgAddMessage("user","Evet yayinla","")', hot:true},
-        {label:'Simdilik Beklet', act:'cgUserSend("Hayir simdilik beklet")'},
-        {label:'Onizle', act:'setCherryTab("preview",document.querySelector(".cg-tab"))'},
+        {label:'✓ Onayla ve Yayinla', act:'cgApproveAndPublish()', hot:true},
+        {label:'Incele', act:'setCherryTab("preview",document.querySelector(".cg-tab.active"))'},
+        {label:'Beklet', act:'cgAddMessage("cherry","Tamam, bekletiyorum. Hazir olunca \'Yayinla\' butonuna bas.","")'},
       ]);
       cgRefreshROI();
     }, 600);
@@ -5329,19 +5329,23 @@ async function cherryGenerateBlog(agendaIdx) {
     cherryLog('Kismi icerik kurtarildi (' + lastBlogMd.split(/\s+/).length + ' kelime).', 'warn');
   }
 
-  // Final render
-  if (bodyEl && _cgActiveTab === 'preview') {
-    bodyEl.innerHTML = enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd));
-  }
+  // Helper: browser'a bir frame ver (donma önleme)
+  function nf() { return new Promise(function(r){ setTimeout(r, 0); }); }
 
-  // Step 4: Score
+  // Step 4: Final HTML render (sonraki frame'de)
+  await nf();
   item.stage = 'scoring';
-  if (stageEl) stageEl.textContent = 'Puanlıyor';
+  if (stageEl) stageEl.textContent = 'Tamamlandi';
+  if (bodyEl) bodyEl.innerHTML = enrichBlogHTML(simpleMarkdownToHTML(lastBlogMd));
+
+  // Step 5: Score (sonraki frame'de)
+  await nf();
   var scoreObj = cherryScore(lastBlogMd, item, intel);
   cgUpdateSeoPanel(scoreObj);
-  cherryLog('SEO skoru: ' + scoreObj.score + '/100 (' + scoreObj.wc + ' kelime)','ok');
+  cherryLog('SEO skoru: ' + scoreObj.score + '/100 (' + scoreObj.wc + ' kelime)', 'ok');
 
-  // Save to brain
+  // Step 6: Brain'e kaydet (sonraki frame'de)
+  await nf();
   brain = cgGetBrain();
   brain.topics_covered = brain.topics_covered || [];
   brain.topics_covered.push({topic:item.topic, date:new Date().toDateString(), score:scoreObj.score});
@@ -5359,7 +5363,6 @@ async function cherryGenerateBlog(agendaIdx) {
   });
   if (brain.history.length > 50) brain.history = brain.history.slice(-50);
   if (!brain.brand) brain.brand = BLOG_SEO.brand_context;
-  // Gunluk istatistikler
   var _dsToday = new Date().toDateString();
   brain.daily_stats = brain.daily_stats || {};
   if (!brain.daily_stats[_dsToday]) brain.daily_stats[_dsToday] = {blogs:0,words:0,published:0,sessions:0};
@@ -5368,9 +5371,10 @@ async function cherryGenerateBlog(agendaIdx) {
   cgSaveBrain(brain);
   _cgHistory = brain.history;
 
-  // Update stats
+  // Step 7: Stats güncelle (sonraki frame'de)
+  await nf();
   var totalWc = brain.history.reduce(function(a,h){return a+(h.wc||0);},0);
-  var avgSeo = Math.round((brain.seo_scores||[]).reduce(function(a,b){return a+b;},0)/((brain.seo_scores||[1]).length));
+  var avgSeo = Math.round((brain.seo_scores||[]).reduce(function(a,b){return a+b;},0)/Math.max(1,(brain.seo_scores||[]).length));
   var statDone = document.getElementById('cg-stat-done');
   var statWords = document.getElementById('cg-stat-words');
   var statSeo = document.getElementById('cg-stat-seo');
@@ -5380,20 +5384,40 @@ async function cherryGenerateBlog(agendaIdx) {
   if (statDone) statDone.textContent = brain.history.length;
   if (statWords) statWords.textContent = (totalWc/1000).toFixed(1)+'K';
   if (statSeo) statSeo.textContent = avgSeo;
-  var done = brain.history.length, total = 5;
-  if (statProg) statProg.textContent = done+' / '+total+' tamamlandi';
-  if (miniFill) miniFill.style.width = Math.min(100,(done/total)*100)+'%';
+  if (statProg) statProg.textContent = brain.history.length+' blog yazildi';
+  if (miniFill) miniFill.style.width = Math.min(100,(brain.history.length/5)*100)+'%';
   var todayCount2 = (brain.topics_covered||[]).filter(function(t){return t.date===new Date().toDateString();}).length;
   if (statToday) statToday.textContent = todayCount2;
 
   cgUpdateAgendaItem(agendaIdx, 'done');
   setCherryState('done');
-  cherryLog('Tamamlandi! "' + (brief.h1||item.topic).slice(0,40) + '"','ok');
+  cherryLog('Tamamlandi! "' + (brief.h1||item.topic).slice(0,40) + '"', 'ok');
+}
 
-  // Auto-publish if toggle is on
-  if (_cgAutoPub) {
-    setTimeout(function() { cherryPublishLatest(); }, 1200);
-  }
+// ── Approve & Publish ─────────────────────────────────────────────────────────
+function cgApproveAndPublish() {
+  cgAddMessage('user', 'Onayla ve yayinla', '', 0);
+  cgAddMessage('cherry', 'Shopify\'a gonderiyorum...', 'task', 300);
+  setTimeout(function() {
+    cherryPublishLatest().then(function() {
+      // publish sonrasi brain'den kontrol et
+      setTimeout(function() {
+        var last = (cgGetBrain().history||[]).slice(-1)[0];
+        if (last && last.published) {
+          cgAddMessage('cherry', '"' + (last.title||'Blog').slice(0,45) + '" Shopify\'da yayinda! Siradaki konuya geceyim mi?', 'ok', 200);
+          cgSetChips([
+            {label:'Evet, devam et', act:'cherryAddAllToAgenda()', hot:true},
+            {label:'Gunluk Rapor', act:'cgDailyReport()'},
+          ]);
+        } else {
+          cgAddMessage('cherry', 'Yayinlama tamamlandi. Log\'u kontrol et.', 'info', 200);
+        }
+      }, 1000);
+    }).catch(function(e) {
+      cgAddMessage('cherry', 'Baglanti hatasi: ' + e.message + '. Tekrar dene.', 'err', 200);
+      cgSetChips([{label:'Tekrar Dene', act:'cgApproveAndPublish()', hot:true}]);
+    });
+  }, 500);
 }
 
 // ── Copy helpers ──────────────────────────────────────────────────────────────
