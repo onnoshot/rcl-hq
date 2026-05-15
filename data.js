@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-15T04:28:32",
+  "updated_at": "2026-05-15T05:28:35",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 3950,
-    "total_views": 1109720,
+    "total_views": 1116685,
     "video_count": 379
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 1361,
+      "views": 1351,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2045,
+      "views": 2047,
       "likes": 25,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1734,
+      "views": 1737,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1412,
+      "views": 1414,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4532,
+      "views": 4531,
       "likes": 72,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -117,8 +117,8 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3693,
-      "likes": 23,
+      "views": 3695,
+      "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
     },
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 577,
+      "views": 580,
       "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
@@ -144,8 +144,8 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 815,
-      "likes": 3,
+      "views": 816,
+      "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
     }
