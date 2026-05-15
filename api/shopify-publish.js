@@ -43,12 +43,18 @@ export default async function handler(req) {
         title,
         body_html,
         published,
-        ...(blogId ? { blog_id: parseInt(blogId) } : {}),
       }
     };
 
+    if (!blogId) {
+      return new Response(JSON.stringify({ error: 'SHOPIFY_BLOG_ID env degiskeni eksik' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+      });
+    }
+
     const resp = await fetch(
-      `https://${store}/admin/api/2024-01/articles.json`,
+      `https://${store}/admin/api/2024-01/blogs/${blogId}/articles.json`,
       {
         method: 'POST',
         headers: {

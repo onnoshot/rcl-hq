@@ -4576,110 +4576,74 @@ async function cgWrite(idx) {
     _cgSt.progress = 50;
     cgRenderActions();
 
-    // ── 3. Stream ─────────────────────────────────────────────────────────────
+    // ── 3. Yaz (streaming YOK — tek istek, tek cevap) ────────────────────────
+    // Stream loop browser'ı dondurur. Basit fetch + await kullanıyoruz.
     _cgSt.phase = 'Yazıyor';
     cgRenderActions();
-    cgLog('Blog yazılıyor (SSE stream)...','info');
+    cgLog('Blog yazılıyor...','info');
 
     var sysPrompt = cgBuildSystemPrompt(item, _cgSt.intel, _cgSt.brief, today, brain);
-    var userMsg   = 'Şimdi yaz:\nKonu: '+item.topic+'\nH1: '+(_cgSt.brief.h1||item.topic)+'\nH2 plan: '+((_cgSt.brief.h2s||[]).join(', '))+'\nHedef kelime: '+(_cgSt.brief.target_wc||1100)+'+\nHook: '+(_cgSt.brief.intro_hook||_cgSt.intel.hook||'');
+    var userMsg   = 'Şimdi yaz:\nKonu: '+item.topic+'\nH1: '+(_cgSt.brief.h1||item.topic)+
+      '\nH2 plan: '+((_cgSt.brief.h2s||[]).join(', '))+
+      '\nHedef kelime: '+(_cgSt.brief.target_wc||1100)+'+\nHook: '+(_cgSt.brief.intro_hook||_cgSt.intel.hook||'');
 
-    // Preview paneli hazırla
+    // Yükleme ekranı — bağımsız setInterval ile canlandırılıyor (loop yok)
     cgTab('preview', document.getElementById('cg-tab-preview'));
     var previewEl = document.getElementById('cg-tab-panel-preview');
     if (previewEl) previewEl.innerHTML =
-      '<div style="text-align:center;padding:50px 0 20px">' +
-        '<div style="font-size:2rem;margin-bottom:12px">✍️</div>' +
-        '<div id="cgsp-wc" style="font-size:1.1rem;font-weight:600;color:rgba(212,175,55,.85);font-variant-numeric:tabular-nums">0 kelime</div>' +
-        '<div style="font-size:.72rem;color:rgba(255,255,255,.3);margin-top:6px">Blog yazılıyor, lütfen bekleyin...</div>' +
-        '<div style="margin:18px auto 0;width:200px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
-          '<div id="cgsp-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:5%;transition:width 1s linear"></div>' +
+      '<div style="text-align:center;padding:60px 0 24px" id="cgsp-loading">' +
+        '<div style="font-size:2.2rem;margin-bottom:14px">✍️</div>' +
+        '<div id="cgsp-elapsed" style="font-size:1rem;font-weight:600;color:rgba(212,175,55,.85)">Yazılıyor...</div>' +
+        '<div style="font-size:.7rem;color:rgba(255,255,255,.28);margin-top:6px">Scout + Brief + Yaz tamamlandı, içerik hazırlanıyor</div>' +
+        '<div style="margin:16px auto 0;width:220px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
+          '<div id="cgsp-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:5%"></div>' +
         '</div>' +
       '</div>';
-    var wcEl  = document.getElementById('cgsp-wc');
-    var barEl = document.getElementById('cgsp-bar');
 
-    // AbortController — hem kullanıcı durdurma hem toplam süre aşımı için
-    var ctrl     = new AbortController();
+    // Bağımsız ilerleme animasyonu — JS loop değil, hafif setInterval
+    var _writeStart  = Date.now();
+    var _progVal     = 50;
+    var _barEl       = document.getElementById('cgsp-bar');
+    var _elapsedEl   = document.getElementById('cgsp-elapsed');
+    var _animTimer   = setInterval(function() {
+      _progVal = Math.min(93, _progVal + 1.2);
+      var elapsed = Math.floor((Date.now() - _writeStart) / 1000);
+      if (_barEl)     _barEl.style.width = _progVal + '%';
+      if (_elapsedEl) _elapsedEl.textContent = 'Yazılıyor... ' + elapsed + 's';
+    }, 500);
+
+    // AbortController — kullanıcı "Durdur" basarsa iptal
+    var ctrl = new AbortController();
     _cgWriteAbort = ctrl;
-    // Toplam 23 saniye — Vercel Edge Function 25s limitinin altında
-    var _totalTimer = setTimeout(function(){ ctrl.abort(); }, 23000);
 
-    var resp = await fetch('/api/chat', {
-      signal: ctrl.signal,
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 2000,   // ~1300 kelime, ~16 saniye — 25s limitine sığar
-        stream: true,
-        system: sysPrompt,
-        messages: [{role:'user', content: userMsg}]
-      })
-    });
+    var md = '';
+    try {
+      var resp = await fetch('/api/chat', {
+        signal: ctrl.signal,
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          model:      'claude-sonnet-4-6',
+          max_tokens: 2000,
+          stream:     false,        // STREAMING YOK — donma imkansız
+          system:     sysPrompt,
+          messages:   [{role:'user', content: userMsg}]
+        })
+      });
 
-    clearTimeout(_totalTimer);
-
-    if (!resp.ok) {
-      var et = await resp.text().catch(function(){return 'unknown';});
-      throw new Error('API '+resp.status+': '+et.slice(0,100));
-    }
-
-    var reader   = resp.body.getReader();
-    var decoder  = new TextDecoder();
-    var buf = '', md = '', charCount = 0, lastUI = 0;
-
-    // Toplam stream süre sınırı — reader.read() başladıktan sonra için
-    var _streamTotalTimer = setTimeout(function(){
-      ctrl.abort();
-    }, 25000);
-
-    outer: while (true) {
-      var chunk;
-      try {
-        chunk = await reader.read();
-      } catch(readErr) {
-        // AbortError: ya kullanıcı durdurdu ya toplam timeout doldu
-        if (readErr.name === 'AbortError') {
-          cgLog('Stream durduruldu.', 'warn');
-          break;
-        }
-        throw readErr;
+      if (!resp.ok) {
+        var et = await resp.text().catch(function(){ return 'unknown'; });
+        throw new Error('API '+resp.status+': '+et.slice(0,120));
       }
-      if (chunk.done) break;
 
-      buf += decoder.decode(chunk.value, {stream: true});
-      var lines = buf.split('\n');
-      buf = lines.pop();
+      var data = await resp.json();
+      if (data.error) throw new Error(data.error);
+      md = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text : '';
 
-      for (var li = 0; li < lines.length; li++) {
-        var ln = lines[li];
-        if (!ln.startsWith('data:')) continue;
-        var raw = ln.slice(5).trim();
-        if (raw === '[DONE]') break outer;
-        try {
-          var evt = JSON.parse(raw);
-          // Anthropic stream bitiş sinyali — [DONE] değil message_stop gönderir
-          if (evt.type === 'message_stop') { break outer; }
-          if (evt.type === 'content_block_delta' &&
-              evt.delta && evt.delta.type === 'text_delta') {
-            md += evt.delta.text;
-            charCount += evt.delta.text.length;
-            // DOM güncelleme: sadece kelime sayısı (çok ucuz)
-            var now = Date.now();
-            if (now - lastUI > 400) {
-              lastUI = now;
-              var wEst = Math.floor(charCount / 5);
-              if (wcEl)  wcEl.textContent  = wEst + ' kelime';
-              if (barEl) barEl.style.width = Math.min(92, 5 + wEst / 15) + '%';
-            }
-          }
-        } catch(e2) {}
-      }
+    } finally {
+      clearInterval(_animTimer);
+      _cgWriteAbort = null;
     }
-
-    clearTimeout(_streamTotalTimer);
-    _cgWriteAbort = null;
 
     if (md.length < 80) throw new Error('Yetersiz içerik ('+md.length+' karakter). Tekrar dene.');
 
