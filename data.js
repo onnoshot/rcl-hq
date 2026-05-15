@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-15T03:28:29",
+  "updated_at": "2026-05-15T04:28:32",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,7 +10,7 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 78213,
+      "views": 78210,
       "watch_hours": 183.3,
       "subs_gained": 191,
       "subs_lost": 106,
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 1351,
+      "views": 1361,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1130,
+      "views": 1138,
       "likes": 13,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4531,
+      "views": 4532,
       "likes": 72,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
