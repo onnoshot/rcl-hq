@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-15T23:13:50",
+  "updated_at": "2026-05-16T00:13:54",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,9 +10,9 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 94472,
-      "watch_hours": 242.6,
-      "subs_gained": 293,
+      "views": 92821,
+      "watch_hours": 239.6,
+      "subs_gained": 289,
       "subs_lost": 144,
       "avg_view_sec": 22
     },
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 664,
-      "likes": 13,
+      "views": 974,
+      "likes": 21,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 1721,
+      "views": 1750,
       "likes": 29,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -117,8 +117,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4752,
-      "likes": 102,
+      "views": 4762,
+      "likes": 104,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3697,
+      "views": 3698,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 586,
+      "views": 587,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
