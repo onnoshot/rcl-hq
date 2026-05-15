@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-15T19:46:44",
+  "updated_at": "2026-05-15T21:13:42",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4010,
     "total_views": 1116685,
-    "video_count": 379
+    "video_count": 380
   },
   "analytics": {
     "last_30d": {
@@ -60,11 +60,20 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "4mX8PsRNBOs",
+      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
+      "date": "15 May 2026",
+      "views": 255,
+      "likes": 4,
+      "comments": 0,
+      "url": "https://youtu.be/4mX8PsRNBOs"
+    },
+    {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 1632,
-      "likes": 25,
+      "views": 1671,
+      "likes": 27,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
     },
@@ -81,7 +90,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2050,
+      "views": 2051,
       "likes": 25,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -108,8 +117,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4708,
-      "likes": 99,
+      "views": 4722,
+      "likes": 98,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -135,19 +144,10 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 584,
+      "views": 586,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
-    },
-    {
-      "id": "bY4UWZ-wEwY",
-      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
-      "date": "26 Nis 2026",
-      "views": 819,
-      "likes": 4,
-      "comments": 0,
-      "url": "https://youtu.be/bY4UWZ-wEwY"
     }
   ],
   "sub_goal": 10000
