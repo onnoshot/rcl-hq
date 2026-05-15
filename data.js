@@ -1,16 +1,16 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-15T22:13:47",
+  "updated_at": "2026-05-15T23:13:50",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4020,
-    "total_views": 1116685,
+    "total_views": 1126450,
     "video_count": 380
   },
   "analytics": {
     "last_30d": {
-      "views": 94498,
+      "views": 94472,
       "watch_hours": 242.6,
       "subs_gained": 293,
       "subs_lost": 144,
@@ -63,17 +63,17 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 389,
-      "likes": 7,
-      "comments": 0,
+      "views": 664,
+      "likes": 13,
+      "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
     },
     {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 1693,
-      "likes": 28,
+      "views": 1721,
+      "likes": 29,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
     },
@@ -117,8 +117,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4722,
-      "likes": 98,
+      "views": 4756,
+      "likes": 102,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
