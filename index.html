@@ -5420,11 +5420,17 @@ function renderCherryPage() {
 }
 
 function initFade() {
-  const obs = new IntersectionObserver(
-    entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); }),
-    {threshold:0.04}
+  // Aktif sayfadaki elemanları hemen görünür yap
+  var activePage = document.querySelector('.page.active');
+  if (activePage) {
+    activePage.querySelectorAll('.fi').forEach(function(el){ el.classList.add('vis'); });
+  }
+  // Diğer sayfalar için observer
+  var obs = new IntersectionObserver(
+    function(entries){ entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('vis'); }); },
+    {threshold:0.01}
   );
-  document.querySelectorAll('.fi').forEach(el => obs.observe(el));
+  document.querySelectorAll('.fi:not(.vis)').forEach(function(el){ obs.observe(el); });
 }
 
 
