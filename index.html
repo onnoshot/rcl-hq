@@ -791,6 +791,36 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cg-grad-num{background:linear-gradient(135deg,#D4AF37,#FFB7C5);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
+/* ── Stats Ribbon v8 ───────────────────────────────────────────────────── */
+.cgv8-stats-ribbon{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:14px 24px;background:rgba(0,0,0,.2);border-bottom:1px solid rgba(255,255,255,.05)}
+.cgv8-stat-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 14px;text-align:center;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;cursor:default}
+.cgv8-stat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,var(--accent,rgba(212,175,55,.15)) 0%,transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
+.cgv8-stat-card:hover{transform:translateY(-4px);border-color:var(--accent,rgba(212,175,55,.3));box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.cgv8-stat-card:hover::before{opacity:1}
+.cgv8-stat-hero{grid-column:span 1;border-color:rgba(52,199,89,.25)!important;background:rgba(52,199,89,.05)!important}
+.cgv8-stat-icon{font-size:1.1rem;margin-bottom:4px;opacity:.7}
+.cgv8-stat-val{font-size:1.6rem;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--accent,#D4AF37),rgba(255,255,255,.8));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:cgv8-count-pulse .5s ease}
+.cgv8-stat-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-top:4px;margin-bottom:6px}
+.cgv8-stat-bar{height:3px;border-radius:3px;overflow:hidden;margin-top:6px}
+.cgv8-stat-fill{height:100%;border-radius:3px;width:0%;transition:width 1.4s cubic-bezier(.34,1.56,.64,1)}
+.cgv8-seo-meter{position:relative;height:4px;background:rgba(255,255,255,.08);border-radius:4px;margin-top:6px;overflow:visible}
+.cgv8-seo-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#FF453A,#FFD60A,#34C759);transition:width 1.4s cubic-bezier(.34,1.56,.64,1);width:0%}
+.cgv8-seo-target{position:absolute;right:10%;top:-4px;width:2px;height:12px;background:rgba(255,255,255,.4);border-radius:1px}
+.cgv8-seo-target::after{content:'90';position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:.48rem;color:rgba(255,255,255,.35);white-space:nowrap}
+
+/* ── Thought Stream ─────────────────────────────────────────────────────── */
+.cgv8-thought-stream{padding:12px 24px;background:rgba(212,175,55,.03);border-bottom:1px solid rgba(212,175,55,.1);display:flex;align-items:center;gap:16px;min-height:54px}
+.cgv8-thought-header{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.cgv8-thought-dot{width:7px;height:7px;border-radius:50%;background:#34C759;animation:cgv8-pulse 1.8s infinite;flex-shrink:0}
+.cgv8-thought-tag{background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);border-radius:8px;padding:2px 8px;font-size:.58rem;color:rgba(212,175,55,.75);letter-spacing:.05em;flex-shrink:0}
+.cgv8-thought-text{flex:1;font-size:.7rem;color:rgba(255,255,255,.5);line-height:1.5;font-style:italic}
+.cgv8-roadmap-mini{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.cgv8-rm-step{font-size:.58rem;padding:3px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.3);white-space:nowrap}
+.cgv8-rm-step.done{background:rgba(52,199,89,.12);border-color:rgba(52,199,89,.3);color:rgba(52,199,89,.8)}
+.cgv8-rm-step.active{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.35);color:rgba(212,175,55,.9);animation:cgv8-glow 2s infinite}
+.cgv8-rm-arrow{font-size:.6rem;color:rgba(255,255,255,.2)}
+@keyframes cgv8-glow{0%,100%{box-shadow:none}50%{box-shadow:0 0 10px rgba(212,175,55,.4)}}
+
 /* ── Cherry Glow Avatar ─────────────────────────────────────────────────── */
 .cgv8-av-wrap{display:flex;align-items:center;gap:14px;margin-bottom:14px;padding:12px 14px;background:rgba(212,175,55,.06);border-radius:14px;border:1px solid rgba(212,175,55,.12)}
 .cgv8-av-svg{width:56px;height:56px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(212,175,55,.35))}
@@ -833,6 +863,15 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cgv8-report-row-label{font-size:.68rem;color:rgba(255,255,255,.5)}
 .cgv8-report-row-val{font-size:.72rem;font-weight:700;color:rgba(212,175,55,.85)}
 .cgv8-pulse-dot{width:8px;height:8px;border-radius:50%;background:#34C759;display:inline-block;margin-right:5px;animation:cgv8-pulse 2s infinite}
+.cgv8-rm-full-step{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;text-align:center;min-width:90px;flex-shrink:0}
+.cgv8-rm-full-step.done{background:rgba(52,199,89,.06);border-color:rgba(52,199,89,.25)}
+.cgv8-rm-full-step.active{background:rgba(212,175,55,.08);border-color:rgba(212,175,55,.3);animation:cgv8-glow 2s infinite}
+.cgv8-rm-phase{font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:3px}
+.cgv8-rm-title{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.75);margin-bottom:3px}
+.cgv8-rm-desc{font-size:.55rem;color:rgba(255,255,255,.3);line-height:1.4}
+.cgv8-rm-full-step.done .cgv8-rm-title{color:rgba(52,199,89,.85)}
+.cgv8-rm-full-step.active .cgv8-rm-title{color:rgba(212,175,55,.85)}
+.cgv8-rm-full-arrow{display:flex;align-items:center;padding:0 6px;color:rgba(255,255,255,.2);font-size:.8rem;flex-shrink:0}
 @keyframes cgv8-count-pulse{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
 @keyframes cgv8-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 @keyframes cgv8-bar-grow{from{height:0}to{height:var(--h)}}
@@ -2091,14 +2130,14 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 
 
-<!-- ═══════════════════ CHERRYGLOW v6 ═══════════════════ -->
+<!-- ═══════════════════ CHERRYGLOW v8 ═══════════════════ -->
 <div class="page" id="page-cherry">
 
 <div class="page-topbar fi">
   <div class="pt-left">
     <div class="pt-title" style="display:flex;align-items:center;gap:10px">
       CherryGlow
-      <span class="cg-version" id="cg-version">v6</span>
+      <span class="cg-version" id="cg-version">v8</span>
     </div>
     <div class="pt-sub" style="font-size:.68rem;opacity:.4">Konu Seç &rarr; Yaz &rarr; Onayla &rarr; Yayınla</div>
   </div>
@@ -2111,16 +2150,62 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   </div>
 </div>
 
-<div class="cg-stats-ribbon">
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-done">0</div><div class="cg-stat-lbl">Blog</div></div>
-  <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-words">0</div><div class="cg-stat-lbl">Kelime</div></div>
-  <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-seo">--</div><div class="cg-stat-lbl">Ort. SEO</div></div>
-  <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-pub">0</div><div class="cg-stat-lbl">Yayınlanan</div></div>
-  <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-today">0</div><div class="cg-stat-lbl">Bugün</div></div>
+<div class="cgv8-stats-ribbon">
+  <div class="cgv8-stat-card" style="--accent:rgba(212,175,55,.8)">
+    <div class="cgv8-stat-icon">&#x270D;</div>
+    <div class="cgv8-stat-val" id="cg-stat-done">0</div>
+    <div class="cgv8-stat-lbl">Toplam Blog</div>
+    <div class="cgv8-stat-bar" style="background:rgba(212,175,55,.25)"><div class="cgv8-stat-fill" id="cgv8-fill-done" style="background:#D4AF37"></div></div>
+  </div>
+  <div class="cgv8-stat-card" style="--accent:rgba(90,200,250,.8)">
+    <div class="cgv8-stat-icon">&#x1F4DD;</div>
+    <div class="cgv8-stat-val" id="cg-stat-words">0</div>
+    <div class="cgv8-stat-lbl">Toplam Kelime</div>
+    <div class="cgv8-stat-bar" style="background:rgba(90,200,250,.15)"><div class="cgv8-stat-fill" id="cgv8-fill-words" style="background:#5AC8FA"></div></div>
+  </div>
+  <div class="cgv8-stat-card cgv8-stat-hero" style="--accent:rgba(52,199,89,.9)">
+    <div class="cgv8-stat-icon">&#x1F3AF;</div>
+    <div class="cgv8-stat-val" id="cg-stat-seo">--</div>
+    <div class="cgv8-stat-lbl">Ort. SEO / 100</div>
+    <div class="cgv8-seo-meter"><div class="cgv8-seo-fill" id="cgv8-seo-fill"></div><div class="cgv8-seo-target">90</div></div>
+  </div>
+  <div class="cgv8-stat-card" style="--accent:rgba(255,183,197,.8)">
+    <div class="cgv8-stat-icon">&#x2B50;</div>
+    <div class="cgv8-stat-val" id="cg-stat-best">--</div>
+    <div class="cgv8-stat-lbl">En Yuksek SEO</div>
+    <div class="cgv8-stat-bar" style="background:rgba(255,183,197,.15)"><div class="cgv8-stat-fill" id="cgv8-fill-best" style="background:#FFB7C5"></div></div>
+  </div>
+  <div class="cgv8-stat-card" style="--accent:rgba(52,199,89,.8)">
+    <div class="cgv8-stat-icon">&#x2705;</div>
+    <div class="cgv8-stat-val" id="cg-stat-pub">0</div>
+    <div class="cgv8-stat-lbl">Yayinlanan</div>
+    <div class="cgv8-stat-bar" style="background:rgba(52,199,89,.15)"><div class="cgv8-stat-fill" id="cgv8-fill-pub" style="background:#34C759"></div></div>
+  </div>
+  <div class="cgv8-stat-card" style="--accent:rgba(191,90,242,.8)">
+    <div class="cgv8-stat-icon">&#x26A1;</div>
+    <div class="cgv8-stat-val" id="cg-stat-today">0</div>
+    <div class="cgv8-stat-lbl">Bugun</div>
+    <div class="cgv8-stat-bar" style="background:rgba(191,90,242,.15)"><div class="cgv8-stat-fill" id="cgv8-fill-today" style="background:#BF5AF2"></div></div>
+  </div>
+</div>
+
+<!-- Cherry Glow Dusunce Akisi -->
+<div id="cgv8-thought-stream" class="cgv8-thought-stream">
+  <div class="cgv8-thought-header">
+    <span class="cgv8-thought-dot"></span>
+    <span style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.6)">Cherry Glow Canli Akis</span>
+    <span class="cgv8-thought-tag" id="cgv8-thought-phase">Hazir</span>
+  </div>
+  <div class="cgv8-thought-text" id="cgv8-thought-text">Retrocameraland.com icin SEO stratejisi hazirliyorum. Hedef: Google organik aramalarda kategori 1. sira, AI arama motorlarinda en cok yonlendirilen analog kamera sitesi.</div>
+  <div class="cgv8-roadmap-mini">
+    <div class="cgv8-rm-step done" title="Tamamlandi">&#x2713; Altyapi</div>
+    <div class="cgv8-rm-arrow">&#x2192;</div>
+    <div class="cgv8-rm-step active" title="Su an">&#x25CF; Icerik</div>
+    <div class="cgv8-rm-arrow">&#x2192;</div>
+    <div class="cgv8-rm-step" title="Sirada">&#x25CB; Otorite</div>
+    <div class="cgv8-rm-arrow">&#x2192;</div>
+    <div class="cgv8-rm-step" title="Hedef"># 1</div>
+  </div>
 </div>
 
 <div class="cg-main-grid">
@@ -2627,7 +2712,7 @@ const SHOPIFY = {
       "price": 7990
     },
     {
-      "name": "Kodak ZX1 "Weather-Resistant"",
+      "name": "Kodak ZX1 'Weather-Resistant'",
       "price": 4900
     }
   ],
@@ -4217,8 +4302,8 @@ function urunProfitCalc() {
 
 
 // ─── CHERRYGLOW v6 — Button-driven, no chat, no freeze ────────────────────────
-const CG_VERSION = 'v6.1.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
-var CG_BRAIN_KEY = 'cg_brain_v5';
+const CG_VERSION = 'v8.0.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
+var CG_BRAIN_KEY = 'cg_brain_v6';
 var CG_USER = {name:'Onur', store:'Retrocameraland', biz:'analog kamera ve vintage fotograf', city:'Istanbul'};
 
 function cgDefaultBrain() {
@@ -4421,20 +4506,39 @@ function cgUpdateAgendaStage(idx, stage) {
 function cgUpdateStats() {
   var brain  = cgGetBrain();
   var hist   = brain.history || [];
-  var scores = brain.seo_scores || [];
+  var scores = (brain.seo_scores || []).filter(function(s){ return typeof s==='number' && !isNaN(s); });
   var pub    = hist.filter(function(h) { return h.published; }).length;
   var today  = (brain.topics_covered || []).filter(function(t) { return t.date === new Date().toDateString(); }).length;
   var tw     = hist.reduce(function(a, h) { return a + (h.wc || 0); }, 0);
   var avgSeo = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : '--';
+  var bestSeo = scores.length ? Math.max.apply(null, scores) : '--';
   function s(id, v) { var e = document.getElementById(id); if (e) e.textContent = v; }
   s('cg-stat-done',  hist.length);
   s('cg-stat-words', tw >= 1000 ? (tw/1000).toFixed(1)+'K' : tw);
   s('cg-stat-seo',   avgSeo);
   s('cg-stat-pub',   pub);
   s('cg-stat-today', today);
+  s('cg-stat-best',  bestSeo);
   var wv = document.getElementById('cg-w-ver');
   if (wv) wv.textContent = CG_VERSION;
+  // Animate stat bars
+  var maxBlogs = 30;
+  cgSetStatFill('cgv8-fill-done',  Math.min(100, (hist.length/maxBlogs)*100));
+  cgSetStatFill('cgv8-fill-words', Math.min(100, (tw/60000)*100));
+  cgSetStatFill('cgv8-fill-pub',   hist.length ? (pub/hist.length)*100 : 0);
+  cgSetStatFill('cgv8-fill-today', Math.min(100, today*20));
+  var seoNum = typeof avgSeo === 'number' ? avgSeo : 0;
+  cgSetStatFill('cgv8-seo-fill', seoNum, true);
+  var bestNum = typeof bestSeo === 'number' ? bestSeo : 0;
+  cgSetStatFill('cgv8-fill-best', bestNum, false);
   cgUpdateWidget(_cgSt.status);
+  cgUpdateAvatar(_cgSt.status === 'writing' ? 'writing' : 'idle', null);
+}
+
+function cgSetStatFill(id, pct, isSeoBar) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  setTimeout(function() { el.style.width = Math.max(0,Math.min(100,pct))+'%'; }, 80);
 }
 
 // ── Tabs ───────────────────────────────────────────────────────────────────────
@@ -4470,6 +4574,91 @@ function cgDownloadHTML() {
   a.href = URL.createObjectURL(new Blob([ta.value], {type:'text/html'}));
   a.download = 'cherryglow-blog.html';
   a.click();
+}
+
+// ── Telegram Notification ──────────────────────────────────────────────────────
+function cgNotifyTelegram(text) {
+  fetch('/api/telegram', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({text: text, parse_mode: 'HTML'})
+  }).catch(function(){});
+}
+
+function cgBuildTelegramBlogMsg(title, seo, wc, url) {
+  var brain = cgGetBrain();
+  var avg = brain.avg_seo || '--';
+  var cnt = (brain.history||[]).length;
+  return (
+    '<b>Cherry Glow Blog Yayinladi! &#x270D;</b>\n\n' +
+    '<b>Baslik:</b> ' + (title||'').slice(0,80) + '\n' +
+    '<b>SEO Puani:</b> ' + seo + '/100 ' + (seo >= 90 ? '&#x2B50;' : seo >= 80 ? '&#x1F44D;' : '') + '\n' +
+    '<b>Kelime Sayisi:</b> ' + wc + '\n' +
+    '<b>Toplam Blog:</b> ' + cnt + ' adet\n' +
+    '<b>Ort. SEO:</b> ' + avg + '\n\n' +
+    '<i>Hedef: retrocameraland.com Google #1 &#x1F3AF;</i>'
+  );
+}
+
+function cgBuildTelegramDailyReport() {
+  var brain = cgGetBrain();
+  var hist  = brain.history || [];
+  var today = new Date().toLocaleDateString('tr-TR');
+  var todayBlogs = hist.filter(function(h){ return h.date && new Date(h.date).toLocaleDateString('tr-TR')===today; });
+  var scores = (brain.seo_scores||[]).filter(function(s){ return typeof s==='number'&&!isNaN(s); });
+  var avg = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
+  var best = scores.length ? Math.max.apply(null,scores) : 0;
+  var learnings = (brain.learnings||[]).slice(-3).map(function(l){ return '  - '+l; }).join('\n') || '  Henuz yok';
+  return (
+    '<b>Cherry Glow Gunluk Rapor</b> (' + today + ')\n\n' +
+    '&#x1F4CA; <b>Genel Durum:</b>\n' +
+    '  Toplam Blog: ' + hist.length + '\n' +
+    '  Bugun Yazilan: ' + todayBlogs.length + '\n' +
+    '  Ort. SEO: ' + avg + '/100\n' +
+    '  En Yuksek: ' + best + '/100\n\n' +
+    '&#x1F4A1; <b>Son Ogrenimler:</b>\n' + learnings + '\n\n' +
+    '&#x1F3AF; <b>Hedef:</b> retrocameraland.com Google ve AI aramalarinda #1\n\n' +
+    '<i>Cherry Glow | rclhq.vercel.app</i>'
+  );
+}
+
+// ── Cherry Glow Thought Stream ─────────────────────────────────────────────────
+var _cgThoughts = [
+  'Retrocameraland.com icin analog kamera SEO stratejisi olusturuyorum. Hedef: kategori birinciligi.',
+  'Film kamera kullanicilari ne ariyor? "analog kamera", "filimli kamera", "vintage kamera" - bunlari takip ediyorum.',
+  'Her blogda 90+ SEO skoru hedefim. Daha uzun icerik, daha fazla internal link, daha guclu H2 yapisi.',
+  'Google AI Overview ve Perplexity referanslarini artirmak icin E-E-A-T sinyallerini guclendir.',
+  'Vintage Kodak, Olympus, Contax kamera kategorilerinde authority kazanmak gerekiyor.',
+  'Blog-to-sale funnel: organik trafik > urun sayfasi > sepet. Bu akisi optimize et.',
+  'Rakip analizine gore retrocameraland.com icin film kamera kategorisinde buyuk firsat var.',
+  'AI arama motorlari (Perplexity, ChatGPT) icin FAQ bolumu ve schema markup sart.',
+  'YouTube ve Instagram iceriklerini blog icine entegre ederek cross-platform trafik artiyorum.',
+  'Hedef: 6 ay icinde organik trafigi 5x artirmak. Su anki strateji dogru yolda.'
+];
+var _cgThoughtIdx = 0;
+
+function cgTickThought() {
+  var el = document.getElementById('cgv8-thought-text');
+  if (!el) return;
+  var brain = cgGetBrain();
+  var custom = [];
+  if ((brain.learnings||[]).length) {
+    var last = brain.learnings[brain.learnings.length-1];
+    custom.push('Ogrendim: ' + last);
+  }
+  var all = _cgThoughts.concat(custom);
+  _cgThoughtIdx = (_cgThoughtIdx + 1) % all.length;
+  el.style.opacity = '0';
+  setTimeout(function() {
+    el.textContent = all[_cgThoughtIdx];
+    el.style.transition = 'opacity 0.8s';
+    el.style.opacity = '1';
+  }, 400);
+}
+
+function cgSetThoughtPhase(phase) {
+  var el = document.getElementById('cgv8-thought-phase');
+  if (el) el.textContent = phase || 'Hazir';
 }
 
 // ── Cherry Glow Avatar SVG ─────────────────────────────────────────────────────
@@ -4646,9 +4835,29 @@ function cgRenderBossPanel() {
     '</div>' +
   '</div>';
 
+  // Roadmap
+  var roadmapSteps = [
+    {phase:'Faz 1', title:'Altyapi', desc:'Brain v8, SEO engine 90+, Groq entegrasyonu', done:true},
+    {phase:'Faz 2', title:'Icerik Uretimi', desc:'30+ blog, kelime otoritesi, H2 yapisi', done: hist.length >= 10, active: hist.length < 10},
+    {phase:'Faz 3', title:'Teknik SEO', desc:'Schema markup, Core Web Vitals, internal link', done:false},
+    {phase:'Faz 4', title:'Link Otorite', desc:'Backlink kampanyasi, PR, partner linkler', done:false},
+    {phase:'Faz 5', title:'AI Arama #1', desc:'E-E-A-T max, Perplexity/ChatGPT referans', done:false}
+  ];
+  var roadmapHTML = '<div class="cgv8-section-head" style="margin-top:16px">Yol Haritasi - Google & AI #1</div>' +
+    '<div style="display:flex;gap:0;margin-bottom:18px;overflow-x:auto;padding:4px 0">' +
+    roadmapSteps.map(function(step, i) {
+      var cls = step.done ? 'cgv8-rm-full-step done' : step.active ? 'cgv8-rm-full-step active' : 'cgv8-rm-full-step';
+      var arrow = i < roadmapSteps.length-1 ? '<div class="cgv8-rm-full-arrow">'+(step.done?'&#x27A1;':'&#x2192;')+'</div>' : '';
+      return '<div class="'+cls+'"><div class="cgv8-rm-phase">'+step.phase+'</div><div class="cgv8-rm-title">'+step.title+'</div><div class="cgv8-rm-desc">'+step.desc+'</div></div>' + arrow;
+    }).join('') + '</div>';
+
+  var tgBtnHTML = '<div style="margin-top:8px;display:flex;gap:8px">' +
+    '<button class="cg-ctrl-btn" onclick="cgSendDailyReport()" style="font-size:.65rem;background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.25);color:rgba(37,211,102,.8)">&#x1F4F1; Telegram Gunluk Rapor</button>' +
+    '</div>';
+
   el.innerHTML = heroHTML +
     '<div class="cgv8-boss-kpis" id="cgv8-kpis-grid">' + kpisHTML + '</div>' +
-    trendHTML + funnelHTML + lrnHTML + reportHTML;
+    trendHTML + roadmapHTML + funnelHTML + lrnHTML + reportHTML + tgBtnHTML;
 
   // Animate KPI counters
   setTimeout(function() {
@@ -5094,7 +5303,11 @@ async function cgPublish() {
       _cgSt.published = true;
       _cgSt.status    = 'done';
       cgSetPill('YAYINLANDI','rgba(52,199,89,.25)');
-      cgLog('✓ Shopify\'da yayınlandı! ID: '+data.article.id,'ok');
+      cgLog('Shopify yayinlandi! ID: '+data.article.id,'ok');
+      // Telegram bildirimi
+      var _seo = _cgSt.scoreObj ? _cgSt.scoreObj.score : 0;
+      var _wc  = _cgSt.scoreObj ? _cgSt.scoreObj.wc   : 0;
+      cgNotifyTelegram(cgBuildTelegramBlogMsg(title, _seo, _wc, ''));
       // update brain history
       var b = cgGetBrain();
       if (b.history && b.history.length) {
@@ -5177,7 +5390,17 @@ function renderCherryPage() {
   cgBuildAgenda();
   cgUpdateStats();
   cgRenderActions();
-  cgLog('CherryGlow '+CG_VERSION+' hazır.','ok');
+  cgLog('CherryGlow '+CG_VERSION+' hazir.','ok');
+  // Start thought ticker
+  if (!window._cgThoughtTimer) {
+    window._cgThoughtTimer = setInterval(cgTickThought, 9000);
+  }
+  cgSetThoughtPhase('Aktif');
+}
+
+function cgSendDailyReport() {
+  cgNotifyTelegram(cgBuildTelegramDailyReport());
+  cgLog('Gunluk rapor Telegram\'a gonderildi.','ok');
 }
 
 function initFade() {
