@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 1591,
+      "views": 1603,
       "likes": 23,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 1930,
+      "views": 1940,
       "likes": 30,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1308,
+      "views": 1309,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
