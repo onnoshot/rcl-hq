@@ -790,115 +790,6 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 /* ── Gradient numbers ───────────────────────────────────────────────────── */
 .cg-grad-num{background:linear-gradient(135deg,#D4AF37,#FFB7C5);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-
-/* ====== CherryGlow v8 AI Assistant ====== */
-#page-cherry{padding:0 !important;display:none;flex-direction:column;height:calc(100vh - 0px);overflow:hidden;box-sizing:border-box}
-#page-cherry.active{display:flex}
-.cgv8-page-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(0,0,0,.45);border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;backdrop-filter:blur(12px)}
-.cgv8-ptabs{display:flex;gap:3px;background:rgba(255,255,255,.04);border-radius:10px;padding:3px}
-.cgv8-ptab{padding:6px 16px;border-radius:8px;font-size:.7rem;font-weight:600;letter-spacing:.03em;cursor:pointer;color:rgba(255,255,255,.4);transition:all .2s;border:1px solid transparent}
-.cgv8-ptab:hover{color:rgba(255,255,255,.7)}
-.cgv8-ptab.active{background:linear-gradient(135deg,rgba(212,175,55,.22),rgba(255,183,197,.12));color:rgba(212,175,55,.95);border-color:rgba(212,175,55,.28)}
-.cgv8-stats-ribbon{display:flex;gap:8px;padding:10px 16px;flex-shrink:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
-.cgv8-stat-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;min-width:140px;flex:1;position:relative;overflow:hidden}
-.cgv8-stat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,var(--accent,rgba(212,175,55,.07)),transparent 60%);pointer-events:none}
-.cgv8-stat-ico{font-size:1.2rem;flex-shrink:0}
-.cgv8-stat-info{flex:1;min-width:0}
-.cgv8-stat-val{font-size:1.05rem;font-weight:800;font-family:var(--mono);color:rgba(255,255,255,.9);letter-spacing:-.02em}
-.cgv8-stat-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:1px}
-.cgv8-seo-meter{width:36px;height:36px;flex-shrink:0}
-.cgv8-seo-meter svg{width:36px;height:36px}
-.cgv8-view{display:none;flex:1;min-height:0;overflow:hidden;height:0}
-.cgv8-view.active{display:flex;flex-direction:column;flex:1;min-height:0}
-.cgv8-yaz-layout{display:grid;grid-template-columns:256px 1fr;flex:1;min-height:0;overflow:hidden;height:100%;grid-template-rows:1fr}
-.cgv8-sidebar{display:flex;flex-direction:column;gap:8px;padding:12px 10px;overflow-y:auto;background:rgba(0,0,0,.18);border-right:1px solid rgba(255,255,255,.05);scrollbar-width:thin;min-height:0;height:100%}
-.cgv8-main-col{display:flex;flex-direction:column;overflow:hidden;flex:1;min-width:0;min-height:0}
-.cgv8-hero-card{background:linear-gradient(160deg,rgba(212,175,55,.08),rgba(255,183,197,.04));border:1px solid rgba(212,175,55,.18);border-radius:14px;padding:14px 12px;text-align:center;position:relative;overflow:hidden;flex-shrink:0}
-.cgv8-hero-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.12),transparent 65%);pointer-events:none}
-.cgv8-hero-av{width:72px;height:72px;margin:0 auto 8px;position:relative;z-index:1;animation:cgv8-float 4s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(212,175,55,.45))}
-.cgv8-hero-av svg{width:72px;height:72px}
-.cgv8-hero-name{font-size:.82rem;font-weight:700;color:rgba(212,175,55,.9);position:relative;z-index:1}
-.cgv8-hero-mood{font-size:.6rem;color:rgba(255,255,255,.38);margin-top:3px;font-style:italic;position:relative;z-index:1;min-height:1em}
-.cgv8-hero-stats{display:flex;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap;position:relative;z-index:1}
-.cgv8-hero-stat{font-size:.58rem;color:rgba(255,255,255,.28);font-family:var(--mono);background:rgba(255,255,255,.04);padding:2px 7px;border-radius:6px}
-.cgv8-chat-area{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin}
-.cgv8-chat-msg{display:flex;gap:10px;align-items:flex-end;max-width:90%;animation:cgv8-msg-in .25s ease}
-@keyframes cgv8-msg-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.cgv8-chat-msg.user{margin-left:auto;flex-direction:row-reverse}
-.cgv8-chat-av{width:28px;height:28px;border-radius:50%;flex-shrink:0;overflow:hidden;border:1px solid rgba(212,175,55,.3)}
-.cgv8-chat-av svg{width:28px;height:28px}
-.cgv8-chat-bubble{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px 14px 14px 4px;padding:10px 14px;font-size:.74rem;line-height:1.6;color:rgba(255,255,255,.82);max-width:100%;word-break:break-word}
-.cgv8-chat-msg.user .cgv8-chat-bubble{background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.22);border-radius:14px 14px 4px 14px}
-.cgv8-chat-bubble.streaming::after{content:'|';animation:cgv8-cursor .6s step-end infinite;color:rgba(212,175,55,.7);margin-left:2px}
-@keyframes cgv8-cursor{0%,100%{opacity:1}50%{opacity:0}}
-.cgv8-typing{display:flex;gap:4px;padding:10px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px 14px 14px 4px;width:fit-content}
-.cgv8-typing span{width:6px;height:6px;border-radius:50%;background:rgba(212,175,55,.6);animation:cgv8-bounce .9s infinite}
-.cgv8-typing span:nth-child(2){animation-delay:.15s}
-.cgv8-typing span:nth-child(3){animation-delay:.3s}
-@keyframes cgv8-bounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-5px)}}
-.cgv8-blog-out{flex-shrink:0;border-top:1px solid rgba(255,255,255,.07);max-height:400px;display:flex;flex-direction:column;transition:max-height .35s ease;overflow:hidden}
-.cgv8-blog-out.hidden{max-height:0 !important;border-top:none}
-.cgv8-chat-input-wrap{display:flex;gap:8px;padding:10px 14px;border-top:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.2);flex-shrink:0}
-.cgv8-chat-input{flex:1;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:9px 16px;color:rgba(255,255,255,.85);font-size:.76rem;outline:none;transition:border-color .2s;font-family:inherit}
-.cgv8-chat-input:focus{border-color:rgba(212,175,55,.4)}
-.cgv8-chat-send{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#D4AF37,#FFB7C5);border:none;cursor:pointer;font-size:1.1rem;color:#1a1a2e;font-weight:700;transition:opacity .2s;flex-shrink:0}
-.cgv8-chat-send:hover{opacity:.85}
-.cgv8-chat-send:disabled{opacity:.35;cursor:default}
-.cgv8-hist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
-.cgv8-hist-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;cursor:pointer;transition:transform .2s,border-color .2s}
-.cgv8-hist-card:hover{transform:translateY(-3px);border-color:rgba(212,175,55,.25)}
-.cgv8-hist-card-title{font-size:.78rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:8px;line-height:1.4}
-.cgv8-hist-seo-bar{height:3px;border-radius:3px;background:rgba(255,255,255,.06);margin-bottom:8px;overflow:hidden}
-.cgv8-hist-seo-fill{height:100%;border-radius:3px;transition:width .8s ease}
-.cgv8-hist-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.cgv8-hist-badge{font-size:.58rem;font-weight:700;padding:2px 7px;border-radius:6px}
-.cgv8-perf-kpi{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
-.cgv8-perf-kpi-ico{font-size:1.5rem}
-.cgv8-perf-kpi-val{font-size:1.45rem;font-weight:800;font-family:var(--mono)}
-.cgv8-perf-kpi-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3)}
-.cgv8-improve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:12px}
-.cgv8-improve-btn{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:10px 14px;cursor:pointer;font-size:.68rem;color:rgba(255,255,255,.65);transition:all .2s;text-align:left}
-.cgv8-improve-btn:hover{background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.3);color:rgba(212,175,55,.9)}
-.cgv8-improve-btn .ib-ico{font-size:1rem;margin-bottom:4px;display:block}
-.cgv8-improve-btn .ib-title{font-weight:600;display:block;margin-bottom:2px}
-.cgv8-improve-btn .ib-desc{font-size:.58rem;color:rgba(255,255,255,.3);display:block}
-.cgv8-src-row{display:flex;align-items:center;gap:8px}
-.cgv8-src-lbl{font-size:.6rem;font-family:var(--mono);color:rgba(255,255,255,.4);width:58px;flex-shrink:0}
-.cgv8-src-bar{flex:1;height:7px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
-.cgv8-src-fill{height:100%;border-radius:4px;transition:width .9s ease}
-.cgv8-src-pct{font-size:.6rem;font-family:var(--mono);color:rgba(255,255,255,.3);width:32px;text-align:right}
-.cgv8-bar-col{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1}
-.cgv8-bar{width:100%;border-radius:4px 4px 0 0;min-height:2px;transition:height .8s cubic-bezier(.34,1.56,.64,1)}
-.cgv8-bar-lbl{font-size:.52rem;font-family:var(--mono);color:rgba(255,255,255,.25);white-space:nowrap}
-.cgv8-bar-val{font-size:.55rem;font-family:var(--mono);color:rgba(212,175,55,.7);font-weight:600}
-.cgv8-blog-perf-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:12px 14px;transition:border-color .2s}
-.cgv8-blog-perf-card:hover{border-color:rgba(212,175,55,.2)}
-.cgv8-mini-bar{height:3px;background:rgba(255,255,255,.06);border-radius:3px;margin:4px 0 8px;overflow:hidden}
-.cgv8-mini-fill{height:100%;border-radius:3px;transition:width .9s ease}
-.cgv8-boss-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
-.cgv8-bkpi{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:12px;padding:14px;text-align:center}
-.cgv8-bkpi-val{font-size:1.4rem;font-weight:800;font-family:var(--mono);margin-bottom:3px}
-.cgv8-bkpi-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3)}
-.cgv8-roadmap{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:14px;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(255,255,255,.06);flex-wrap:wrap}
-.cgv8-rm-step{padding:6px 12px;border-radius:8px;font-size:.65rem;font-weight:600;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.3)}
-.cgv8-rm-step.done{background:rgba(52,199,89,.1);border-color:rgba(52,199,89,.3);color:rgba(52,199,89,.8)}
-.cgv8-rm-step.active{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.35);color:rgba(212,175,55,.9);animation:cgv8-pulse 2s ease-in-out infinite}
-@keyframes cgv8-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes cgv8-pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.2)}50%{box-shadow:0 0 0 6px rgba(212,175,55,0)}}
-
-
-/* ====== Dashboard Enhancement v2 CSS ====== */
-@keyframes stat-count-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.cgv8-bar-col{display:flex;flex-direction:column;align-items:center;flex:1}
-.cgv8-bar{flex:1;width:100%;border-radius:4px 4px 0 0;transition:height 0.9s ease;min-height:2px}
-.cgv8-bar-val{font-size:.55rem;font-family:var(--mono);color:rgba(255,255,255,.4);margin-bottom:3px}
-.cgv8-bar-lbl{font-size:.55rem;font-family:var(--mono);color:rgba(255,255,255,.3);text-align:center}
-.cgv8-src-row{display:flex;align-items:center;gap:8px;padding:5px 0}
-.cgv8-src-lbl{width:80px;font-size:.62rem;color:rgba(255,255,255,.45);flex-shrink:0}
-.cgv8-src-bar{flex:1;height:6px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden}
-.cgv8-src-fill{height:100%;border-radius:3px;transition:width 0.8s ease}
-.cgv8-src-pct{width:32px;font-size:.6rem;font-family:var(--mono);color:rgba(255,255,255,.4);text-align:right}
-
 </style>
 </head>
 <body>
@@ -941,7 +832,10 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
       <span class="nav-label">SEO Paneli</span>
     </div>
-
+    <div class="nav-item" data-page="blog" onclick="navigate('blog',this)">
+      <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <span class="nav-label">Blog Oluştur</span>
+    </div>
     <div class="nav-item" data-page="urun" onclick="navigate('urun',this)">
       <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h4M7 12h10"/></svg>
       <span class="nav-label">Ürün Oluştur</span>
@@ -1299,38 +1193,17 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
         </div>
       </div>
     </div>
-
-    <!-- Gider Özeti Çubuğu -->
-    <div style="margin-top:14px;padding:14px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px">
-      <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.25);margin-bottom:10px;font-family:var(--mono)">Gider Özeti — Anlık</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px" id="fin-expense-summary">
-        <div style="background:rgba(255,69,58,.06);border:1px solid rgba(255,69,58,.15);border-radius:10px;padding:10px 12px">
-          <div style="font-size:.58rem;color:rgba(255,69,58,.5);font-family:var(--mono);margin-bottom:4px">KDV</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(255,69,58,.8)" id="sum-kdv">—</div>
-        </div>
-        <div style="background:rgba(255,159,10,.06);border:1px solid rgba(255,159,10,.15);border-radius:10px;padding:10px 12px">
-          <div style="font-size:.58rem;color:rgba(255,159,10,.5);font-family:var(--mono);margin-bottom:4px">Ödeme Komisyon</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(255,159,10,.8)" id="sum-iyzico">—</div>
-        </div>
-        <div style="background:rgba(191,90,242,.06);border:1px solid rgba(191,90,242,.15);border-radius:10px;padding:10px 12px">
-          <div style="font-size:.58rem;color:rgba(191,90,242,.5);font-family:var(--mono);margin-bottom:4px">Kargo + Ambalaj</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(191,90,242,.8)" id="sum-kargo">—</div>
-        </div>
-        <div style="background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.15);border-radius:10px;padding:10px 12px">
-          <div style="font-size:.58rem;color:rgba(90,200,250,.5);font-family:var(--mono);margin-bottom:4px">Toplam Kesinti</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(90,200,250,.8)" id="sum-total">—</div>
-        </div>
-        <div style="background:rgba(48,209,88,.06);border:1px solid rgba(48,209,88,.15);border-radius:10px;padding:10px 12px;grid-column:span 1">
-          <div style="font-size:.58rem;color:rgba(48,209,88,.5);font-family:var(--mono);margin-bottom:4px">Tahmini Net Kâr</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(48,209,88,.8)" id="sum-net">—</div>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <!-- KANAL GELİR ANALİZİ -->
-  
+  <div class="sec fi" style="transition-delay:.18s">
+    <div class="sec-label">Kanal Kârlılık Analizi</div>
+    <div class="card p">
+      <div class="chart-title">Kanallara Göre Gelir & Sipariş</div>
+      <div class="chart-sub">Tüm zamanlar — kesinti hesabı dahil tahmini net</div>
+      <div style="height:220px;margin-top:14px"><canvas id="finChannelChart"></canvas></div>
+    </div>
+  </div>
 
   <!-- SİPARİŞ BAŞINA MALİYET ANALİZİ -->
   <div class="sec fi" style="transition-delay:.21s">
@@ -1621,115 +1494,41 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   <div class="page-topbar fi">
     <div class="pt-left">
       <div class="pt-title">İstatistik <span>Merkezi</span></div>
-      <div class="pt-sub">GA4 trafik · Hemen çıkma · Oturum süresi · Organik büyüme</div>
+      <div class="pt-sub">GA4 trafik · Müşteri demografisi · Şehir · Cihaz · Yaş grupları</div>
     </div>
     <div class="pt-right">
-      <div class="live-pill"><div class="sb-live-dot"></div>GA4 CANLI</div>
+      <div class="live-pill"><div class="sb-live-dot"></div>LIVE</div>
     </div>
   </div>
 
-  <!-- GA4 KPI Infographic Row -->
+  <!-- GA4 KPIs -->
   <div class="sec fi" style="transition-delay:.04s">
+    <div class="sec-label">GA4 Web Trafiği — Son 30 Gün</div>
     <div class="g g4">
-
-      <!-- Ziyaretçi -->
-      <div class="card p" style="position:relative;overflow:hidden">
-        <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,0.12),transparent 70%);pointer-events:none"></div>
-        <div style="display:flex;align-items:flex-start;justify-content:space-between">
-          <div>
-            <div class="stat-kpi-icon" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);color:rgba(212,175,55,0.85);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-            </div>
-            <div class="kpi-lbl">Ziyaretçi</div>
-            <div class="kpi-big gold" id="ga4-visitors" style="font-size:2.2rem;animation:stat-count-in 0.6s ease">—</div>
-            <div class="kpi-sub" id="ga4-visitors-sub">benzersiz oturum</div>
-          </div>
-          <div style="text-align:right">
-            <div id="ga4-visitors-trend" style="font-size:.65rem;color:rgba(48,209,88,.8);font-family:var(--mono);margin-bottom:4px"></div>
-            <div class="stats-mini-spark" id="ga4-visitors-spark" style="display:flex;gap:2px;align-items:flex-end;height:32px"></div>
-          </div>
-        </div>
-        <div style="height:3px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:12px;overflow:hidden">
-          <div id="ga4-visitors-bar" style="height:100%;border-radius:2px;background:linear-gradient(90deg,rgba(212,175,55,.6),rgba(212,175,55,.3));width:0;transition:width 1s ease 0.3s"></div>
-        </div>
+      <div class="card p card-gold">
+        <div class="stat-kpi-icon" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);color:rgba(212,175,55,0.85)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <div class="kpi-lbl">Ziyaretçi</div>
+        <div class="kpi-big gold" id="ga4-visitors">—</div>
+        <div class="kpi-sub">benzersiz oturum</div>
       </div>
-
-      <!-- Organik Trafik -->
-      <div class="card p" style="position:relative;overflow:hidden">
-        <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(48,209,88,0.12),transparent 70%);pointer-events:none"></div>
-        <div style="display:flex;align-items:flex-start;justify-content:space-between">
-          <div>
-            <div style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.2);color:rgba(48,209,88,0.85);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            </div>
-            <div class="kpi-lbl">Organik Trafik</div>
-            <div class="kpi-big stat-pulse" id="ga4-organic-pct" style="color:var(--green);font-size:2.2rem">—</div>
-            <div class="kpi-sub">arama motoru payı</div>
-          </div>
-          <!-- Donut ring -->
-          <div style="position:relative;width:64px;height:64px;flex-shrink:0;margin-top:4px">
-            <svg width="64" height="64" viewBox="0 0 64 64" style="transform:rotate(-90deg)">
-              <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="8"/>
-              <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(48,209,88,.65)" stroke-width="8" stroke-dasharray="163.4" stroke-dashoffset="163.4" id="ga4-org-ring" style="transition:stroke-dashoffset 1.2s ease .5s"/>
-            </svg>
-            <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-family:var(--mono);color:rgba(48,209,88,.8)" id="ga4-org-ring-lbl">—%</div>
-          </div>
-        </div>
-        <div style="margin-top:8px;display:flex;gap:8px">
-          <div style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:var(--mono)">Organik: <span style="color:rgba(48,209,88,.7)" id="ga4-organic-abs">—</span></div>
-          <div style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:var(--mono)">Diğer: <span style="color:rgba(255,255,255,.5)" id="ga4-other-abs">—</span></div>
-        </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.2);color:rgba(48,209,88,0.85)"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <div class="kpi-lbl">Organik Trafik</div>
+        <div class="kpi-big stat-pulse" id="ga4-organic-pct" style="color:var(--green)">—</div>
+        <div class="kpi-sub">arama motoru payı</div>
       </div>
-
-      <!-- Hemen Çıkma -->
-      <div class="card p" style="position:relative;overflow:hidden">
-        <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(255,159,10,0.12),transparent 70%);pointer-events:none"></div>
-        <div style="display:flex;align-items:flex-start;justify-content:space-between">
-          <div>
-            <div style="background:rgba(255,159,10,0.1);border:1px solid rgba(255,159,10,0.2);color:rgba(255,159,10,0.85);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
-            </div>
-            <div class="kpi-lbl">Hemen Çıkma</div>
-            <div class="kpi-big" id="ga4-bounce" style="color:var(--warn);font-size:2.2rem">—</div>
-            <div class="kpi-sub">hedef: %40 altı</div>
-          </div>
-          <!-- Half-gauge -->
-          <div style="position:relative;flex-shrink:0;margin-top:4px">
-            <svg viewBox="0 0 80 44" style="width:70px;height:38px">
-              <path d="M 10 40 A 30 30 0 0 1 70 40" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="7" stroke-linecap="round"/>
-              <path d="M 10 40 A 30 30 0 0 1 70 40" fill="none" stroke="rgba(255,159,10,.65)" stroke-width="7" stroke-linecap="round" stroke-dasharray="94.2" stroke-dashoffset="94.2" id="ga4-bounce-arc" style="transition:stroke-dashoffset 1.2s ease .6s"/>
-            </svg>
-            <div style="position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:.55rem;color:rgba(255,255,255,.3);font-family:var(--mono)" id="ga4-bounce-lbl">—</div>
-          </div>
-        </div>
-        <div style="height:3px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:12px;overflow:hidden">
-          <div id="ga4-bounce-bar" style="height:100%;border-radius:2px;background:linear-gradient(90deg,rgba(255,159,10,.6),rgba(255,159,10,.3));width:0;transition:width 1s ease 0.4s"></div>
-        </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(255,159,10,0.1);border:1px solid rgba(255,159,10,0.2);color:rgba(255,159,10,0.85)"><svg viewBox="0 0 24 24"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg></div>
+        <div class="kpi-lbl">Hemen Çıkma</div>
+        <div class="kpi-big" id="ga4-bounce" style="color:var(--warn)">—</div>
+        <div class="kpi-sub">hedef: %40 altı</div>
       </div>
-
-      <!-- Ort. Oturum Süresi -->
-      <div class="card p" style="position:relative;overflow:hidden">
-        <div style="position:absolute;top:-20px;right:-20px;width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(90,200,250,0.12),transparent 70%);pointer-events:none"></div>
-        <div style="display:flex;align-items:flex-start;justify-content:space-between">
-          <div>
-            <div style="background:rgba(90,200,250,0.1);border:1px solid rgba(90,200,250,0.2);color:rgba(90,200,250,0.85);width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div class="kpi-lbl">Ort. Oturum Süresi</div>
-            <div class="kpi-big" id="ga4-session" style="color:var(--blue);font-size:2rem">—</div>
-            <div class="kpi-sub">dakika:saniye</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;margin-top:4px">
-            <div style="font-size:.58rem;color:rgba(255,255,255,.25);font-family:var(--mono)">kalite</div>
-            <div id="ga4-session-quality" style="font-size:.68rem;padding:2px 8px;border-radius:6px;background:rgba(90,200,250,.1);border:1px solid rgba(90,200,250,.2);color:rgba(90,200,250,.8);font-family:var(--mono)">—</div>
-            <div id="ga4-session-stars" style="font-size:.9rem"></div>
-          </div>
-        </div>
-        <div style="height:3px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:12px;overflow:hidden">
-          <div id="ga4-session-bar" style="height:100%;border-radius:2px;background:linear-gradient(90deg,rgba(90,200,250,.6),rgba(90,200,250,.3));width:0;transition:width 1s ease 0.5s"></div>
-        </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(90,200,250,0.1);border:1px solid rgba(90,200,250,0.2);color:rgba(90,200,250,0.85)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="kpi-lbl">Ort. Oturum Süresi</div>
+        <div class="kpi-big" id="ga4-session" style="font-size:2.4rem;color:var(--blue)">—</div>
+        <div class="kpi-sub">dakika:saniye</div>
       </div>
-
     </div>
   </div>
 
@@ -1758,209 +1557,153 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
     </div>
   </div>
 
-  <!-- Traffic Source Detail Infographic -->
-  <div class="sec fi" style="transition-delay:.11s">
-    <div class="sec-label">Kanal Performansı</div>
-    <div class="card p" style="overflow:hidden">
-      <div id="ga4-channel-bars" style="display:flex;flex-direction:column;gap:10px;padding:4px 0"></div>
-    </div>
-  </div>
-
   <!-- Müşteri Demografisi -->
-  <div class="sec fi" style="transition-delay:.14s">
+  <div class="sec fi" style="transition-delay:.12s">
     <div class="sec-label">Shopify Müşteri Demografisi</div>
     <div class="g g3">
       <!-- Şehir Dağılımı -->
       <div class="card p">
         <div class="chart-title">Şehir Dağılımı</div>
-        <div class="chart-sub">En çok siparişli şehirler</div>
-        <div id="city-list" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div>
+        <div class="chart-sub">Toplam 731 müşteri — coğrafi analiz</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px" id="stats-city-bars"></div>
       </div>
       <!-- Cihaz -->
       <div class="card p">
-        <div class="chart-title">Cihaz Dağılımı</div>
-        <div style="position:relative;height:160px;margin-top:8px">
-          <canvas id="deviceChart"></canvas>
+        <div class="chart-title">Cihaz Türleri</div>
+        <div class="chart-sub">Ziyaret kaynağı ve uyumluluk</div>
+        <div style="display:flex;justify-content:center;margin:12px 0;position:relative">
+          <div style="position:relative;width:160px;height:160px">
+            <canvas id="statsDeviceDonut"></canvas>
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center">
+              <div style="font-size:1.4rem;font-weight:700;font-family:var(--mono);color:var(--t1)">731</div>
+              <div style="font-size:0.56rem;color:var(--t3);font-family:var(--mono)">müşteri</div>
+            </div>
+          </div>
         </div>
-        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:8px" id="device-legend"></div>
+        <div style="display:flex;flex-direction:column;gap:8px" id="stats-device-legend"></div>
       </div>
       <!-- Yaş Grupları -->
       <div class="card p">
         <div class="chart-title">Yaş Grupları</div>
-        <div id="age-list" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div>
+        <div class="chart-sub">Tahmini demografik dağılım</div>
+        <div style="display:flex;flex-direction:column;gap:12px;margin-top:16px" id="stats-age-bars"></div>
       </div>
     </div>
   </div>
 
-  <!-- SEO Sağlık Durumu -->
-  <div class="sec fi" style="transition-delay:.17s">
-    <div class="sec-label">SEO Sağlık Durumu</div>
-    <div id="seo-health-strip" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"></div>
+  <!-- Şehir AOV + Müşteri Trendi -->
+  <div class="sec fi" style="transition-delay:.16s">
+    <div class="g g6-6">
+      <div class="card p">
+        <div class="chart-title">Ortalama Sipariş Değeri — Şehir Bazlı</div>
+        <div class="chart-sub">AOV analizi · en aktif 5 şehir</div>
+        <div style="height:220px"><canvas id="statsCityRevChart"></canvas></div>
+      </div>
+      <div class="card p">
+        <div class="chart-title">Aylık Sipariş Trendi</div>
+        <div class="chart-sub">Son 12 ay · Shopify verisi</div>
+        <div style="height:220px"><canvas id="statsNewCustChart"></canvas></div>
+      </div>
+    </div>
   </div>
 
+  <!-- Blog & SEO Özeti -->
+  <div class="sec fi" style="transition-delay:.20s">
+    <div class="sec-label">Blog & SEO Özeti</div>
+    <div class="g g4">
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.2);color:rgba(212,175,55,0.85)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <div class="kpi-lbl">Toplam Blog Yazısı</div>
+        <div class="kpi-big gold" id="blog-total">—</div>
+      </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.2);color:rgba(48,209,88,0.85)"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <div class="kpi-lbl">Aylık Organik Trafik</div>
+        <div class="kpi-big" id="blog-organic" style="color:var(--green)">—</div>
+      </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(90,200,250,0.1);border:1px solid rgba(90,200,250,0.2);color:rgba(90,200,250,0.85)"><svg viewBox="0 0 24 24"><polyline points="8 21 12 17 16 21"/><line x1="8" y1="21" x2="16" y2="21"/><path d="M7 4H17l-1 7a5 5 0 01-10 0L7 4z"/><path d="M7 4H4a2 2 0 000 4h3"/><path d="M17 4h3a2 2 0 010 4h-3"/></svg></div>
+        <div class="kpi-lbl">En İyi Yazı Görüntü</div>
+        <div class="kpi-big" id="blog-top-views" style="font-size:2.4rem;color:var(--gold)">—</div>
+        <div class="kpi-sub" id="blog-top-name">—</div>
+      </div>
+      <div class="card p">
+        <div class="stat-kpi-icon" style="background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.2);color:rgba(48,209,88,0.85)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="kpi-lbl">Ort. SEO Skoru</div>
+        <div class="kpi-big" id="blog-avg-seo" style="color:var(--green)">—</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.24s">
+    <div class="g g6-6">
+      <div class="card tcard">
+        <div class="thead"><span class="ttitle">Blog Yazıları — Performans Tablosu</span></div>
+        <table><thead><tr><th>#</th><th>Başlık</th><th>Görüntü</th><th>Organik</th><th>Sipariş</th><th>SEO</th></tr></thead><tbody id="blogTableBody"></tbody></table>
+      </div>
+      <div class="card p">
+        <div class="chart-title">Blog Trend</div>
+        <div class="chart-sub">Yayın sayısı ve organik trafik — aylık</div>
+        <div style="height:200px"><canvas id="blogTrendChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+  <footer class="fi"><span>Retrocameraland HQ · Veri: GA4 + Shopify · Otomatik güncelleme</span></footer>
 </div>
-
 <!-- ═══════════════════ STOK ═══════════════════ -->
 <div class="page" id="page-inventory">
   <div class="page-topbar fi">
-    <div class="pt-left">
-      <div class="pt-title">Stok <span>Takibi</span></div>
-      <div class="pt-sub">Kameralar · Aksesuarlar · Karlılık analizi</div>
-    </div>
-    <div class="pt-right">
-      <div class="live-pill"><div class="sb-live-dot"></div>CANLI</div>
-    </div>
+    <div class="pt-left"><div class="pt-title">Stok <span>Takibi</span></div><div class="pt-sub">Kameralar · Aksesuarlar · Hedefler</div></div>
   </div>
-
-  <!-- KPI Cards -->
   <div class="sec fi" style="transition-delay:.05s">
     <div class="g g4">
-      <div class="card p card-gold" style="position:relative;overflow:hidden">
-        <div style="position:absolute;top:-15px;right:-15px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,0.18),transparent 70%);pointer-events:none"></div>
-        <div style="font-size:1.6rem;margin-bottom:6px">📦</div>
-        <div class="kpi-lbl">Toplam Stok Değeri</div>
-        <div class="kpi-big gold" id="inv-val" style="font-size:2rem">—</div>
-        <div class="kpi-sub">alış fiyatı bazlı</div>
-      </div>
-      <div class="card p" style="position:relative;overflow:hidden">
-        <div style="position:absolute;top:-15px;right:-15px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(90,200,250,0.12),transparent 70%);pointer-events:none"></div>
-        <div style="font-size:1.6rem;margin-bottom:6px">📷</div>
-        <div class="kpi-lbl">Kamera Modeli</div>
-        <div class="kpi-big" id="inv-cam" style="color:rgba(90,200,250,.85)">—</div>
-        <div class="kpi-sub">benzersiz model</div>
-      </div>
-      <div class="card p" style="position:relative;overflow:hidden">
-        <div style="position:absolute;top:-15px;right:-15px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(48,209,88,0.12),transparent 70%);pointer-events:none"></div>
-        <div style="font-size:1.6rem;margin-bottom:6px">🎒</div>
-        <div class="kpi-lbl">Aksesuar</div>
-        <div class="kpi-big" id="inv-acc" style="color:rgba(48,209,88,.85)">—</div>
-        <div class="kpi-sub">toplam adet</div>
-      </div>
-      <div class="card p" style="position:relative;overflow:hidden">
-        <div style="position:absolute;top:-15px;right:-15px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(255,69,58,0.12),transparent 70%);pointer-events:none"></div>
-        <div style="font-size:1.6rem;margin-bottom:6px">⚠️</div>
-        <div class="kpi-lbl">Tükenen Varyant</div>
-        <div class="kpi-big" style="color:var(--danger)" id="inv-oos">—</div>
-        <div class="kpi-sub">stok sıfır</div>
-      </div>
+      <div class="card p card-gold"><div class="kpi-lbl">Toplam Stok Değeri</div><div class="kpi-big gold" id="inv-val">—</div></div>
+      <div class="card p"><div class="kpi-lbl">Kamera</div><div class="kpi-big" id="inv-cam">—</div><div class="kpi-sub">benzersiz model</div></div>
+      <div class="card p"><div class="kpi-lbl">Aksesuar</div><div class="kpi-big" id="inv-acc">—</div><div class="kpi-sub">toplam adet</div></div>
+      <div class="card p"><div class="kpi-lbl">Tükenen Varyant</div><div class="kpi-big" style="color:var(--danger)" id="inv-oos">—</div></div>
     </div>
   </div>
-
-  <!-- Karlılık + Hedefler -->
   <div class="sec fi" style="transition-delay:.10s">
-    <div class="g g3">
-
-      <!-- Karlılık -->
-      <div class="card p" style="position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.4),transparent)"></div>
-        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:10px;font-family:var(--mono)">Karlılık Özeti</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
-          <div>
-            <div class="qs-lbl">Maliyet Toplamı</div>
-            <div class="qs-val" id="camCostTotal" style="color:rgba(255,69,58,.8)">—</div>
-          </div>
-          <div>
-            <div class="qs-lbl">Ham Kâr</div>
-            <div class="qs-val cg" id="camProfitTotal">—</div>
-          </div>
-        </div>
-        <!-- Profit meter -->
-        <div style="margin-bottom:8px">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-            <span style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:var(--mono)">Brüt Kâr Marjı</span>
-            <span style="font-size:.65rem;font-family:var(--mono);font-weight:700" id="inv-margin-pct" style="color:rgba(212,175,55,.8)">—</span>
-          </div>
-          <div style="height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden">
-            <div id="inv-margin-bar" style="height:100%;border-radius:3px;background:linear-gradient(90deg,rgba(212,175,55,.7),rgba(48,209,88,.6));width:0;transition:width 1s ease .3s"></div>
-          </div>
-        </div>
-        <div style="font-size:0.6rem;color:rgba(255,255,255,.2);font-family:var(--mono);margin-top:6px">Diğer giderler (kargo, ambalaj, komisyon) dahil değil. Tam kar için Finans sayfasını kullan.</div>
-      </div>
-
-      <!-- Hedefler -->
-      <div class="card p" style="grid-column: span 2">
-        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:10px;font-family:var(--mono)">Hedef Takibi</div>
-        <div style="display:flex;flex-direction:column;gap:12px">
+    <div class="g g6-6">
+      <div class="card p">
+        <div style="display:flex;flex-direction:column;gap:10px">
           <div class="goal-row">
-            <div class="goal-head">
-              <span>Aylık Gelir Hedefi</span>
-              <span id="goalRevNote">—</span>
-            </div>
-            <div class="goal-track"><div class="goal-fill" id="goalRev" style="background:linear-gradient(90deg,rgba(212,175,55,.7),rgba(212,175,55,.4))"></div></div>
+            <div class="goal-head"><span>Aylık Gelir Hedefi</span><span id="goalRevNote">—</span></div>
+            <div class="goal-track"><div class="goal-fill" id="goalRev" style="background:var(--gold)"></div></div>
           </div>
           <div class="goal-row">
-            <div class="goal-head">
-              <span>Stok Tükenme Oranı</span>
-              <span id="goalOosNote">—</span>
-            </div>
-            <div class="goal-track"><div class="goal-fill" id="goalOos" style="background:linear-gradient(90deg,rgba(255,69,58,.7),rgba(255,69,58,.3))"></div></div>
+            <div class="goal-head"><span>Stok Tükenme Oranı</span><span id="goalOosNote">—</span></div>
+            <div class="goal-track"><div class="goal-fill" id="goalOos" style="background:var(--danger)"></div></div>
           </div>
         </div>
       </div>
-
+      <div class="card p">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div><div class="qs-lbl">Maliyet Toplamı</div><div class="qs-val cg" id="camCostTotal">—</div></div>
+          <div><div class="qs-lbl">Ham Kâr</div><div class="qs-val" id="camProfitTotal" style="color:var(--t3)">—</div></div>
+        </div>
+        <div style="font-size:0.64rem;color:var(--t3);font-family:var(--mono);margin-top:10px">Girilen maliyetlerden hesaplanır. Tam maliyet için tüm kameraları doldur.</div>
+      </div>
     </div>
   </div>
-
-  <!-- Kamera Tablosu -->
   <div class="sec fi" style="transition-delay:.15s">
-    <div class="card tcard" style="overflow:hidden">
-      <div class="thead">
-        <span class="ttitle" id="camTitle">Kameralar</span>
-        <span style="font-size:.6rem;color:rgba(255,255,255,.25);font-family:var(--mono)">Satış fiyatı · Maliyet · Kâr & Marj</span>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Model</th>
-            <th>Satış Fiyatı</th>
-            <th>Maliyet (₺)</th>
-            <th>Kâr</th>
-            <th style="text-align:center">Marj %</th>
-          </tr>
-        </thead>
-        <tbody id="camBody"></tbody>
-        <tfoot>
-          <tr>
-            <td colspan="2">Toplam</td>
-            <td id="camTotal" class="cg"></td>
-            <td id="camCostTotalFoot">—</td>
-            <td id="camProfitTotalFoot">—</td>
-            <td id="camMarjFoot" style="text-align:center;font-family:var(--mono);font-weight:700">—</td>
-          </tr>
-        </tfoot>
+    <div class="card tcard">
+      <div class="thead"><span class="ttitle" id="camTitle">Kameralar</span></div>
+      <table><thead><tr><th>#</th><th>Model</th><th>Satış Fiyatı</th><th>Maliyet (₺)</th><th>Kâr</th></tr></thead>
+      <tbody id="camBody"></tbody>
+      <tfoot><tr><td colspan="2">Toplam</td><td id="camTotal" class="cg"></td><td id="camCostTotalFoot">—</td><td id="camProfitTotalFoot">—</td></tr></tfoot>
       </table>
     </div>
   </div>
-
-  <!-- Aksesuar Tablosu -->
   <div class="sec fi" style="transition-delay:.20s">
-    <div class="card tcard" style="overflow:hidden">
-      <div class="thead">
-        <span class="ttitle" id="accTitle">Aksesuarlar</span>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Ürün</th>
-            <th>Fiyat</th>
-            <th>Adet</th>
-            <th>Toplam</th>
-          </tr>
-        </thead>
-        <tbody id="accBody"></tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4">Toplam</td>
-            <td id="accTotal" class="cg"></td>
-          </tr>
-        </tfoot>
+    <div class="card tcard">
+      <div class="thead"><span class="ttitle" id="accTitle">Aksesuarlar</span></div>
+      <table><thead><tr><th>#</th><th>Ürün</th><th>Fiyat</th><th>Adet</th><th>Toplam</th></tr></thead>
+      <tbody id="accBody"></tbody>
+      <tfoot><tr><td colspan="4">Toplam</td><td id="accTotal" class="cg"></td></tr></tfoot>
       </table>
     </div>
   </div>
 </div>
-
 
 <!-- ═══════════════════ YOUTUBE ═══════════════════ -->
 <div class="page" id="page-youtube">
@@ -2261,21 +2004,8 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
             <input id="p-ambalaj" class="b-input" type="number" placeholder="0" min="0" oninput="urunProfitCalc()">
           </div>
           <div>
-            <div class="b-label">Hedef Kâr Marjı (%)</div>
+            <div class="b-label">Hedef Kar Marjı (%)</div>
             <input id="p-marj" class="b-input" type="number" value="40" min="1" max="99" oninput="urunProfitCalc()">
-          </div>
-        </div>
-        <!-- Satış Fiyatı Girişi -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;padding:12px;background:rgba(212,175,55,.04);border:1px solid rgba(212,175,55,.15);border-radius:12px">
-          <div>
-            <div class="b-label" style="color:rgba(212,175,55,.7)">Satış Fiyatı (TL) <span style="font-size:.58rem;opacity:.6">— elle gir</span></div>
-            <input id="p-satis" class="b-input" type="number" placeholder="0 → otomatik öner" min="0" oninput="urunProfitCalc()" style="border-color:rgba(212,175,55,.25)">
-          </div>
-          <div style="display:flex;align-items:flex-end;padding-bottom:2px">
-            <div style="width:100%">
-              <div class="b-label">Beklenen Net Kâr</div>
-              <div id="p-preview-kar" style="font-size:1.1rem;font-weight:700;font-family:var(--mono);color:rgba(48,209,88,.85);padding:8px 12px;background:rgba(48,209,88,.06);border:1px solid rgba(48,209,88,.18);border-radius:10px;min-height:36px">—</div>
-            </div>
           </div>
         </div>
 
@@ -2318,192 +2048,121 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 <!-- ═══════════════════ CHERRYGLOW v6 ═══════════════════ -->
 <div class="page" id="page-cherry">
 
-<!-- Page Nav -->
-<div class="cgv8-page-nav">
-  <div class="cgv8-ptabs">
-    <div class="cgv8-ptab active" id="cgv8-ptab-yaz" onclick="cgV8Page('yaz',this)">&#9997;&#65039; Yaz</div>
-    <div class="cgv8-ptab" id="cgv8-ptab-gecmis" onclick="cgV8Page('gecmis',this)">&#128218; Gecmis</div>
-    <div class="cgv8-ptab" id="cgv8-ptab-perf" onclick="cgV8Page('perf',this)">&#128202; Blog Perf</div>
-    <div class="cgv8-ptab" id="cgv8-ptab-patron" onclick="cgV8Page('patron',this)">&#128081; Patron</div>
+<div class="page-topbar fi">
+  <div class="pt-left">
+    <div class="pt-title" style="display:flex;align-items:center;gap:10px">
+      CherryGlow
+      <span class="cg-version" id="cg-version">v6</span>
+    </div>
+    <div class="pt-sub" style="font-size:.68rem;opacity:.4">Konu Seç &rarr; Yaz &rarr; Onayla &rarr; Yayınla</div>
   </div>
-  <div style="display:flex;align-items:center;gap:10px">
-    <span id="cgv8-status" style="font-size:.62rem;padding:3px 12px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);letter-spacing:.06em">HAZIR</span>
-    <span style="font-size:.62rem;color:rgba(212,175,55,.5);font-family:var(--mono)" id="cg-version">v8</span>
+  <div class="pt-right" style="display:flex;align-items:center;gap:14px">
+    <div class="cw-auto-row">
+      <span>Oto-yayın</span>
+      <label class="cg-sw"><input type="checkbox" id="cg-autopub" onchange="cgToggleAutoPub(this.checked)"><span class="cg-sw-track"></span></label>
+    </div>
+    <span id="cg-status-pill" style="font-size:.65rem;padding:4px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);letter-spacing:.08em">HAZIR</span>
   </div>
 </div>
 
-<!-- Stats Ribbon -->
-<div class="cgv8-stats-ribbon">
-  <div class="cgv8-stat-card" style="--accent:rgba(212,175,55,.07)">
-    <div class="cgv8-stat-ico">&#128221;</div>
-    <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cg-stat-done">0</div>
-      <div class="cgv8-stat-lbl">Blog Yazildi</div>
-    </div>
-  </div>
-  <div class="cgv8-stat-card" style="--accent:rgba(100,200,100,.07)">
-    <div class="cgv8-stat-ico">&#128292;</div>
-    <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cg-stat-words">0</div>
-      <div class="cgv8-stat-lbl">Top Kelime</div>
-    </div>
-  </div>
-  <div class="cgv8-stat-card" style="--accent:rgba(255,183,197,.07)">
-    <div class="cgv8-seo-meter">
-      <svg width="36" height="36" viewBox="0 0 36 36">
-        <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
-        <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(212,175,55,.6)" stroke-width="4" stroke-dasharray="88" stroke-dashoffset="88" id="cgv8-seo-arc" style="transform:rotate(-90deg);transform-origin:18px 18px;transition:stroke-dashoffset 1s ease"/>
-      </svg>
-    </div>
-    <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cg-stat-seo">--</div>
-      <div class="cgv8-stat-lbl">Ort. SEO</div>
-    </div>
-  </div>
-  <div class="cgv8-stat-card" style="--accent:rgba(100,150,255,.07)">
-    <div class="cgv8-stat-ico">&#127942;</div>
-    <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cg-stat-best">--</div>
-      <div class="cgv8-stat-lbl">En Iyi SEO</div>
-    </div>
-  </div>
-  <div class="cgv8-stat-card" style="--accent:rgba(200,100,255,.07)">
-    <div class="cgv8-stat-ico">&#9989;</div>
-    <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cg-stat-pub">0</div>
-      <div class="cgv8-stat-lbl">Yayinlanan</div>
-    </div>
-  </div>
-  <div class="cgv8-stat-card" style="--accent:rgba(255,150,50,.07)">
-    <div class="cgv8-stat-ico">&#128197;</div>
-    <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cg-stat-today">0</div>
-      <div class="cgv8-stat-lbl">Bugun</div>
-    </div>
-  </div>
+<div class="cg-stats-ribbon">
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-done">0</div><div class="cg-stat-lbl">Blog</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-words">0</div><div class="cg-stat-lbl">Kelime</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-seo">--</div><div class="cg-stat-lbl">Ort. SEO</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-pub">0</div><div class="cg-stat-lbl">Yayınlanan</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-today">0</div><div class="cg-stat-lbl">Bugün</div></div>
 </div>
 
-<!-- YAZ VIEW -->
-<div class="cgv8-view active" id="cgv8-view-yaz">
-  <div class="cgv8-yaz-layout">
+<div class="cg-main-grid">
 
-    <!-- Sidebar -->
-    <div class="cgv8-sidebar">
-      <!-- Avatar Hero Card -->
-      <div class="cgv8-hero-card">
-        <div class="cgv8-hero-av" id="cgv8-av-wrap"><div id="cg-av-ico" style="width:72px;height:72px"></div></div>
-        <div class="cgv8-hero-name">Cherry Glow</div>
-        <div class="cgv8-hero-mood" id="cgv8-mood"><span id="cg-av-mood">Hazir ve enerjik</span></div>
-        <div class="cgv8-hero-stats">
-          <span class="cgv8-hero-stat"><span id="cg-av-stat-count">0</span> blog</span>
-          <span class="cgv8-hero-stat"><span id="cg-av-stat-avg">SEO --</span></span>
+  <!-- LEFT: Topics + Log -->
+  <div class="cg-left-col">
+
+    <!-- Topics card -->
+    <div class="card" style="padding:16px 14px">
+      <div class="cg-panel-title">
+        Konular
+        <span id="cg-agenda-count" style="font-size:.65rem;opacity:.5;font-weight:500;text-transform:none;letter-spacing:0"></span>
+      </div>
+      <div class="cg-agenda-wrap" id="cg-agenda-list" style="max-height:360px"></div>
+      <div style="display:flex;gap:6px;margin-top:10px">
+        <button class="cg-ctrl-btn" onclick="cgWriteAll()" style="font-size:.68rem">Hepsini Sırayla Yaz</button>
+        <button class="cg-ctrl-btn" onclick="cgResetDone()" style="font-size:.62rem;flex:none;opacity:.5" title="Tamamlananları sıfırla">↺</button>
+      </div>
+    </div>
+
+    <!-- Log card -->
+    <div class="card" style="padding:14px 16px;flex-shrink:0">
+      <div class="cg-panel-title" style="margin-bottom:8px">İşlem Günlüğü</div>
+      <div id="cg-log" style="font-size:.64rem;font-family:var(--mono);line-height:1.9;max-height:180px;overflow-y:auto;scrollbar-width:thin"></div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: Action + Output -->
+  <div class="cg-right-col">
+
+    <!-- Action card -->
+    <div class="card" id="cg-action-card" style="padding:18px 20px;flex-shrink:0">
+      <div id="cg-action-status" style="margin-bottom:12px;min-height:40px"></div>
+      <div id="cg-action-buttons" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    </div>
+
+    <!-- Output card -->
+    <div class="card" style="padding:16px 18px;flex:1;min-height:0">
+      <div class="cg-tabs" style="margin-bottom:12px">
+        <div class="cg-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">Önizleme</div>
+        <div class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</div>
+        <div class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</div>
+        <div class="cg-tab" id="cg-tab-history" onclick="cgTab('history',this)">Geçmiş</div>
+      </div>
+
+      <!-- Preview -->
+      <div id="cg-tab-panel-preview" class="cg-output-body" style="min-height:280px;max-height:520px">
+        <div style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem">Sol taraftaki listeden bir konu seçip <strong>Yaz</strong> butonuna bas</div>
+      </div>
+
+      <!-- HTML -->
+      <div id="cg-tab-panel-html" style="display:none">
+        <div style="display:flex;gap:8px;margin-bottom:8px">
+          <button class="cg-ctrl-btn" onclick="cgCopyHTML()" style="font-size:.65rem">Kopyala</button>
+          <button class="cg-ctrl-btn" onclick="cgDownloadHTML()" style="font-size:.65rem">İndir</button>
         </div>
+        <textarea id="cg-html-ta" style="width:100%;height:360px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(255,255,255,.65);font-size:.68rem;font-family:var(--mono);padding:12px;resize:vertical;box-sizing:border-box" readonly></textarea>
       </div>
 
-      <!-- Quick Commands -->
-      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.2);padding:4px 4px 0">Hizli Komutlar</div>
-      <div style="display:flex;flex-direction:column;gap:4px">
-        <button onclick="cgQuickCmd('bir blog yaz')" style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(212,175,55,.75);text-align:left;cursor:pointer;transition:all .2s">&#9997;&#65039; Siradaki konuyu yaz</button>
-        <button onclick="cgQuickCmd('konu listele')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">&#128203; Konu listesini goster</button>
-        <button onclick="cgQuickCmd('rapor')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">&#128202; Performans raporu</button>
-        <button onclick="cgQuickCmd('neler ogrendin')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">&#129504; Neler ogrendin?</button>
-      </div>
-
-      <!-- Learnings -->
-      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.2);padding:4px 4px 0;margin-top:4px">Son Ogrenmeler</div>
-      <div id="cgv8-learnings-list" style="display:flex;flex-direction:column;gap:3px">
-        <div style="font-size:.62rem;color:rgba(255,255,255,.2);font-style:italic;padding:4px">Henuz ogrenme yok...</div>
-      </div>
-    </div>
-
-    <!-- Main Chat Column -->
-    <div class="cgv8-main-col">
-      <div class="cgv8-chat-area" id="cgv8-chat-area"></div>
-
-      <!-- Blog Output -->
-      <div class="cgv8-blog-out hidden" id="cgv8-blog-out">
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:rgba(0,0,0,.3);flex-shrink:0">
-          <span style="font-size:.65rem;color:rgba(212,175,55,.7);font-weight:600">&#128221; Blog Ciktisi</span>
-          <div style="display:flex;gap:6px">
-            <button onclick="cgCopyBlog()" style="font-size:.62rem;padding:3px 10px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);border-radius:6px;color:rgba(212,175,55,.8);cursor:pointer">Kopyala</button>
-            <button onclick="cgCloseBlogOut()" style="font-size:.62rem;padding:3px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:rgba(255,255,255,.4);cursor:pointer">Kapat X</button>
+      <!-- SEO -->
+      <div id="cg-tab-panel-seo" style="display:none;padding:4px 0">
+        <div class="cg-seo-grid" style="margin-bottom:14px">
+          <div class="cg-score-ring-wrap">
+            <svg class="cg-score-ring-svg" viewBox="0 0 100 100">
+              <defs><linearGradient id="cgRingGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
+              </linearGradient></defs>
+              <circle cx="50" cy="50" r="40" class="cg-sr-bg" stroke-width="8"/>
+              <circle cx="50" cy="50" r="40" id="cg-seo-ring"
+                style="fill:none;stroke:url(#cgRingGrad6);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
+            </svg>
+            <div class="cg-score-center" id="cg-seo-score-num">--</div>
           </div>
+          <div id="cg-seo-checks" class="cg-seo-bars"></div>
         </div>
-        <div id="cgv8-blog-content" style="flex:1;overflow-y:auto;padding:12px 16px;font-size:.7rem;line-height:1.8;color:rgba(255,255,255,.7);white-space:pre-wrap;font-family:var(--mono);scrollbar-width:thin"></div>
+        <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
       </div>
 
-      <!-- Chat Input -->
-      <div class="cgv8-chat-input-wrap">
-        <input class="cgv8-chat-input" id="cgv8-chat-input" type="text" placeholder="Bir konu yaz veya &quot;analog kamera rehberi yaz&quot; de..." onkeydown="if(event.key==='Enter')cgChatSend()">
-        <button id="cgv8-chat-send-btn" onclick="cgChatSend()" style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#D4AF37,#FFB7C5);border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 12px rgba(212,175,55,.3)">&#10148;</button>
+      <!-- History -->
+      <div id="cg-tab-panel-history" style="display:none;max-height:460px;overflow-y:auto">
+        <div id="cg-history-list"></div>
       </div>
+
     </div>
 
   </div>
-</div>
 
-<!-- GECMIS VIEW -->
-<div class="cgv8-view" id="cgv8-view-gecmis">
-  <div style="padding:16px;overflow-y:auto;flex:1">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-      <div style="font-size:.78rem;font-weight:700;color:rgba(255,255,255,.7)">Yazilan Bloglar</div>
-    </div>
-    <div id="cgv8-hist-empty" style="text-align:center;color:rgba(255,255,255,.2);font-size:.72rem;padding:40px">
-      Henuz blog yazilmadi.<br><br>Cherry'ye "bir blog yaz" de basla!
-    </div>
-    <div id="cg-history-list" class="cgv8-hist-grid"></div>
-  </div>
-</div>
-
-<!-- PERF VIEW -->
-<div class="cgv8-view" id="cgv8-view-perf">
-  <div style="padding:16px;overflow-y:auto;flex:1">
-    <div style="font-size:.78rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:14px">Blog Performans Analizi</div>
-
-    <!-- KPI Counters -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px">
-      <div style="background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.18);border-radius:12px;padding:14px;text-align:center">
-        <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(90,200,250,.9)" id="cgbp-views">0</div>
-        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:4px">Goruntulenme</div>
-      </div>
-      <div style="background:rgba(48,209,88,.06);border:1px solid rgba(48,209,88,.18);border-radius:12px;padding:14px;text-align:center">
-        <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(48,209,88,.9)" id="cgbp-organic">0</div>
-        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:4px">Organik</div>
-      </div>
-      <div style="background:rgba(255,159,10,.06);border:1px solid rgba(255,159,10,.18);border-radius:12px;padding:14px;text-align:center">
-        <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(255,159,10,.9)" id="cgbp-orders">0</div>
-        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:4px">Siparis</div>
-      </div>
-      <div style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.18);border-radius:12px;padding:14px;text-align:center">
-        <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(212,175,55,.9)" id="cgbp-revenue">0</div>
-        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:4px">Gelir (TL)</div>
-      </div>
-    </div>
-
-    <!-- Monthly Chart -->
-    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;margin-bottom:12px">
-      <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-bottom:10px">Aylik Trafik</div>
-      <div id="cgbp-chart" style="display:flex;align-items:flex-end;gap:4px;height:80px;margin-bottom:4px"></div>
-      <div id="cgbp-labels" style="display:flex;gap:4px;padding-top:4px"></div>
-    </div>
-
-    <!-- Traffic Sources -->
-    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;margin-bottom:12px">
-      <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-bottom:10px">Trafik Kaynaklari</div>
-      <div id="cgbp-sources"></div>
-    </div>
-
-    <!-- Blog Cards -->
-    <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-bottom:10px">Blog Performansi</div>
-    <div id="cgbp-cards" style="display:flex;flex-direction:column;gap:8px"></div>
-  </div>
-</div>
-
-<!-- PATRON VIEW -->
-<div class="cgv8-view" id="cgv8-view-patron">
-  <div id="cgv8-boss-panel-content" style="padding:16px;overflow-y:auto;flex:1">
-    <div style="text-align:center;color:rgba(255,255,255,.2);font-size:.72rem;padding:40px">Yukleniyor...</div>
-  </div>
 </div>
 
 </div>
@@ -2939,10 +2598,10 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-05-17T00:52:07",
+  "updated_at": "2026-05-17T01:52:09",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6617,
+  "followers": 6619,
   "media_count": 273,
   "avg_likes": 60,
   "total_engagement": 719,
@@ -4676,7 +4335,7 @@ function cgUpdateAgendaStage(idx, stage) {
 function cgUpdateStats() {
   var brain  = cgGetBrain();
   var hist   = brain.history || [];
-  var scores = (brain.seo_scores || []).filter(function(s){ return typeof s==='number'&&!isNaN(s); });
+  var scores = brain.seo_scores || [];
   var pub    = hist.filter(function(h) { return h.published; }).length;
   var today  = (brain.topics_covered || []).filter(function(t) { return t.date === new Date().toDateString(); }).length;
   var tw     = hist.reduce(function(a, h) { return a + (h.wc || 0); }, 0);
@@ -5269,779 +4928,6 @@ initRouter();
 cgInitWidget();
 window.speechSynthesis && window.speechSynthesis.getVoices();
 
-
-</script>
-
-<script>
-/* ======== CherryGlow v8 — AI Assistant Layer ======== */
-const CG_VERSION = 'v8.0.'+new Date().toISOString().slice(0,10).replace(/-/g,'.');
-var CG_BRAIN_KEY = 'cg_brain_v6';
-
-function cgGetAvatarSVG(state) {
-  var st = state || 'idle';
-  var mouth = {
-    idle:    '<path d="M35.5 35 Q40 37.5 44.5 35" stroke="#C46070" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
-    writing: '<path d="M36.5 35.5 Q40 36 43.5 35.5" stroke="#C46070" stroke-width="1.5" fill="none" stroke-linecap="round"/>',
-    done:    '<path d="M34 34.5 Q40 39.5 46 34.5" stroke="#C46070" stroke-width="1.5" fill="rgba(255,183,197,.1)" stroke-linecap="round"/>',
-    error:   '<path d="M35.5 37 Q40 35 44.5 37" stroke="#C46070" stroke-width="1.5" fill="none" stroke-linecap="round"/>'
-  };
-  var eyes = {
-    idle:    '<ellipse cx="34.5" cy="26.5" rx="2.7" ry="2.8" fill="#1A0E06"/><ellipse cx="45.5" cy="26.5" rx="2.7" ry="2.8" fill="#1A0E06"/>',
-    writing: '<path d="M31.8 26 Q34.5 24.5 37.2 26" stroke="#1A0E06" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M42.8 26 Q45.5 24.5 48.2 26" stroke="#1A0E06" stroke-width="1.8" fill="none" stroke-linecap="round"/>',
-    done:    '<path d="M31.8 26.5 Q34.5 25 37.2 26.5" stroke="#1A0E06" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M42.8 26.5 Q45.5 25 48.2 26.5" stroke="#1A0E06" stroke-width="2" fill="none" stroke-linecap="round"/>',
-    error:   '<ellipse cx="34.5" cy="27" rx="2.7" ry="2.2" fill="#1A0E06"/><ellipse cx="45.5" cy="27" rx="2.7" ry="2.2" fill="#1A0E06"/>'
-  };
-  var brows = {
-    idle:    '<path d="M31 21.5 Q34.5 20 38 21.5" stroke="#3A1E08" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M42 21.5 Q45.5 20 49 21.5" stroke="#3A1E08" stroke-width="1.2" stroke-linecap="round" fill="none"/>',
-    writing: '<path d="M31 21 Q34.5 20.5 38 21.5" stroke="#3A1E08" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M42 21.5 Q45.5 20.5 49 21" stroke="#3A1E08" stroke-width="1.2" stroke-linecap="round" fill="none"/>',
-    done:    '<path d="M31 21.5 Q34.5 20 38 21.5" stroke="#3A1E08" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M42 21.5 Q45.5 20 49 21.5" stroke="#3A1E08" stroke-width="1.2" stroke-linecap="round" fill="none"/>',
-    error:   '<path d="M31 22.5 Q34.5 20 38 21" stroke="#3A1E08" stroke-width="1.2" stroke-linecap="round" fill="none"/><path d="M42 21 Q45.5 20 49 22.5" stroke="#3A1E08" stroke-width="1.2" stroke-linecap="round" fill="none"/>'
-  };
-  var glowCol = {idle:'rgba(212,175,55,.3)',writing:'rgba(90,200,250,.35)',done:'rgba(52,199,89,.35)',error:'rgba(255,69,58,.3)'};
-  var g = glowCol[st] || glowCol.idle;
-  return '<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-    '<defs>' +
-      '<radialGradient id="avbg" cx="50%" cy="40%" r="55%"><stop offset="0%" stop-color="' + g + '"/><stop offset="100%" stop-color="rgba(0,0,0,0)"/></radialGradient>' +
-      '<linearGradient id="avface" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F5C5A8"/><stop offset="100%" stop-color="#E8A88A"/></linearGradient>' +
-      '<linearGradient id="avhair" x1="0" y1="0" x2="0.4" y2="1"><stop offset="0%" stop-color="#4A2E10"/><stop offset="100%" stop-color="#2A1506"/></linearGradient>' +
-    '</defs>' +
-    '<circle cx="40" cy="40" r="39" fill="url(#avbg)"/>' +
-    '<circle cx="40" cy="40" r="38" stroke="' + g + '" stroke-width="1.2" fill="none"/>' +
-    '<path d="M13 80 Q16 58 28 53 Q34 51 40 51 Q46 51 52 53 Q64 58 67 80Z" fill="rgba(212,175,55,.1)" stroke="rgba(212,175,55,.2)" stroke-width="0.5"/>' +
-    '<rect x="36.5" y="39" width="7" height="13" rx="3.5" fill="#E8A88A"/>' +
-    '<ellipse cx="40" cy="28" rx="12.5" ry="14" fill="url(#avface)"/>' +
-    '<path d="M27.5 22 Q28 9 40 8.5 Q52 9 52.5 22" fill="url(#avhair)"/>' +
-    '<path d="M27.5 22 Q25.5 29 26.5 34 Q27.5 10 27.5 22Z" fill="url(#avhair)"/>' +
-    '<path d="M52.5 22 Q54.5 29 53.5 34 Q52.5 10 52.5 22Z" fill="url(#avhair)"/>' +
-    '<path d="M27.5 22 Q30 14.5 40 14 Q50 14.5 52.5 22 Q50 16.5 40 16 Q30 16.5 27.5 22Z" fill="#5C3A1A"/>' +
-    (brows[st] || brows.idle) +
-    (eyes[st]  || eyes.idle) +
-    '<circle cx="35.5" cy="25.5" r="0.9" fill="rgba(255,255,255,0.65)"/>' +
-    '<circle cx="46.5" cy="25.5" r="0.9" fill="rgba(255,255,255,0.65)"/>' +
-    '<ellipse cx="34.5" cy="26.5" rx="1.6" ry="1.5" fill="#6B4520" opacity="0.55"/>' +
-    '<ellipse cx="45.5" cy="26.5" rx="1.6" ry="1.5" fill="#6B4520" opacity="0.55"/>' +
-    '<path d="M38.5 30 Q40 33 41.5 30" stroke="#C4906A" stroke-width="0.8" fill="none" stroke-linecap="round"/>' +
-    (mouth[st] || mouth.idle) +
-    '<ellipse cx="30" cy="31" rx="3" ry="2" fill="rgba(255,120,120,.12)"/>' +
-    '<ellipse cx="50" cy="31" rx="3" ry="2" fill="rgba(255,120,120,.12)"/>' +
-    '<circle cx="27" cy="33" r="1.4" fill="rgba(212,175,55,.65)"/>' +
-    '<circle cx="53" cy="33" r="1.4" fill="rgba(212,175,55,.65)"/>' +
-  '</svg>';
-}
-
-function cgUpdateAvatar(state, mood) {
-  var ico = document.getElementById('cg-av-ico');
-  var moodEl = document.getElementById('cg-av-mood');
-  if (ico) ico.innerHTML = cgGetAvatarSVG(state);
-  if (moodEl && mood) moodEl.textContent = mood;
-  var brain = cgGetBrain();
-  var seos = (brain.seo_scores||[]).filter(function(s){return typeof s==='number'&&!isNaN(s);});
-  var avg = seos.length ? Math.round(seos.reduce(function(a,b){return a+b;},0)/seos.length) : '--';
-  var el1 = document.getElementById('cg-av-stat-avg'); if(el1) el1.textContent='SEO: '+avg;
-  var el2 = document.getElementById('cg-av-stat-count'); if(el2) el2.textContent='Blog: '+((brain.history||[]).length);
-}
-
-/* Chat */
-var _cgMsgId = 0;
-function cgAddMessage(role, html, id) {
-  var area = document.getElementById('cgv8-chat-area');
-  if (!area) return null;
-  var mid = id || ('msg-'+(++_cgMsgId));
-  var isCherry = role === 'cherry';
-  var avHtml = isCherry ? '<div class="cgv8-chat-av">'+cgGetAvatarSVG('idle')+'</div>' : '';
-  var userAv  = !isCherry ? '<div class="cgv8-chat-av" style="background:rgba(212,175,55,.12);display:flex;align-items:center;justify-content:center;font-size:.75rem">U</div>' : '';
-  var div = document.createElement('div');
-  div.className = 'cgv8-chat-msg' + (isCherry ? '' : ' user');
-  div.id = mid;
-  div.innerHTML = (isCherry ? avHtml : '') + '<div class="cgv8-chat-bubble">' + html + '</div>' + (!isCherry ? userAv : '');
-  area.appendChild(div);
-  area.scrollTop = area.scrollHeight;
-  return mid;
-}
-
-function cgUpdateMessage(id, html, done) {
-  var el = document.getElementById(id);
-  if (!el) return;
-  var bubble = el.querySelector('.cgv8-chat-bubble');
-  if (bubble) { bubble.innerHTML = html; if(done) bubble.classList.remove('streaming'); else bubble.classList.add('streaming'); }
-  var area = document.getElementById('cgv8-chat-area');
-  if (area) area.scrollTop = area.scrollHeight;
-}
-
-function cgAddTyping() {
-  var id = 'typing-'+(++_cgMsgId);
-  var area = document.getElementById('cgv8-chat-area');
-  if (!area) return id;
-  var div = document.createElement('div');
-  div.className = 'cgv8-chat-msg'; div.id = id;
-  div.innerHTML = '<div class="cgv8-chat-av">'+cgGetAvatarSVG('idle')+'</div><div class="cgv8-typing"><span></span><span></span><span></span></div>';
-  area.appendChild(div); area.scrollTop = area.scrollHeight;
-  return id;
-}
-
-function cgRemoveMsg(id) { var el=document.getElementById(id); if(el) el.remove(); }
-
-var _cgChatBusy = false;
-async function cgChatSend() {
-  if (_cgChatBusy) return;
-  var inp = document.getElementById('cgv8-chat-input');
-  var btn = document.getElementById('cgv8-chat-send-btn');
-  if (!inp) return;
-  var txt = (inp.value || '').trim();
-  if (!txt) return;
-  inp.value = '';
-  cgAddMessage('user', txt.replace(/</g,'&lt;'));
-  var lower = txt.toLowerCase();
-  var isWriteAll = /hepsini\s*(yaz|yazdir)/.test(lower);
-  var isReport   = /rapor|stats|istatistik/.test(lower);
-  var isHistory  = /gecmis|ge.*mis/.test(lower);
-  var isList     = /konu/.test(lower) && /ne|listele|liste|hangi/.test(lower);
-  var blogMatch  = lower.match(/^(.{2,40}?)\s*(hakkinda\s*blog?\s*yaz|icin\s*blog?\s*yaz|blog\s*yaz|yaz\s*blog|yaz$)/);
-  if (isWriteAll) { cgAddMessage('cherry','Tamam! Tum konulari sirasıyla yaziyorum...'); setTimeout(function(){ cgWriteAll(); },400); return; }
-  if (isReport) {
-    var b=cgGetBrain(),h=b.history||[],s=(b.seo_scores||[]).filter(function(x){return typeof x==='number'&&!isNaN(x);});
-    var avg=s.length?Math.round(s.reduce(function(a,c){return a+c;},0)/s.length):'--';
-    cgAddMessage('cherry','<b>Cherry Raporu</b><br><br>Toplam blog: <b>'+h.length+'</b><br>Ort. SEO: <b>'+avg+'/100</b><br>Yayinlanan: <b>'+h.filter(function(x){return x.published;}).length+'</b>'); return;
-  }
-  if (isHistory) { cgV8Page('gecmis',document.getElementById('cgv8-ptab-gecmis')); return; }
-  if (isList) {
-    var b2=cgGetBrain(),a=(b2.agenda||[]).filter(function(x){return !x.done;});
-    cgAddMessage('cherry','<b>'+a.length+' konu bekliyor:</b><br>'+a.slice(0,8).map(function(x){return '&bull; '+x.topic;}).join('<br>'));
-    return;
-  }
-  if (blogMatch) {
-    var topic = blogMatch[1].trim();
-    cgAddMessage('cherry','Harika! <b>'+topic.slice(0,50)+'</b> icin calismaya basliyorum...');
-    var b3=cgGetBrain(), ag=b3.agenda||[], found=-1;
-    for(var i=0;i<ag.length;i++){if(ag[i].topic&&ag[i].topic.toLowerCase().includes(topic.toLowerCase().slice(0,8))){found=i;break;}}
-    if(found>=0){setTimeout(function(){cgWrite(found);},400);}
-    else{var ni={topic:topic,kw:topic,priority:'chat',done:false};b3.agenda=b3.agenda||[];b3.agenda.unshift(ni);cgSaveBrain(b3);cgBuildAgenda();setTimeout(function(){cgWrite(0);},400);}
-    return;
-  }
-  // General conversation
-  _cgChatBusy=true; if(btn) btn.disabled=true;
-  var typId=cgAddTyping();
-  var b4=cgGetBrain(),h4=b4.history||[],s4=(b4.seo_scores||[]).filter(function(x){return typeof x==='number'&&!isNaN(x);});
-  var avg4=s4.length?Math.round(s4.reduce(function(a,c){return a+c;},0)/s4.length):0;
-  var sysPr='Sen CherryGlow, Retrocameraland.com\'un AI SEO blog yazarisin. Samimi, uzman, motive edici birisin. Kisa ve net Turkce yanit ver. '+h4.length+' blog yazdin, ort SEO '+avg4+'.';
-  try {
-    var resp=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:400,stream:true,system:sysPr,messages:[{role:'user',content:txt}]})});
-    cgRemoveMsg(typId);
-    var mid=cgAddMessage('cherry','');
-    var bbl=document.getElementById(mid)&&document.getElementById(mid).querySelector('.cgv8-chat-bubble');
-    if(bbl) bbl.classList.add('streaming');
-    var reader=resp.body.getReader(),dec=new TextDecoder(),buf='',acc='';
-    while(true){var r=await reader.read();if(r.done)break;buf+=dec.decode(r.value,{stream:true});var lines=buf.split('\n');buf=lines.pop();for(var l of lines){if(!l.startsWith('data:'))continue;var raw=l.slice(5).trim();if(raw==='[DONE]'||raw.includes('message_stop'))break;try{var ev=JSON.parse(raw);var t=ev.delta&&ev.delta.text;if(t){acc+=t;cgUpdateMessage(mid,acc.replace(/</g,'&lt;').replace(/\n/g,'<br>'));}}catch(_){}}}
-    cgUpdateMessage(mid,acc.replace(/</g,'&lt;').replace(/\n/g,'<br>'),true);
-  } catch(e) { cgRemoveMsg(typId); cgAddMessage('cherry','Bir sorun olustu, tekrar dene.'); }
-  _cgChatBusy=false; if(btn) btn.disabled=false;
-}
-
-function cgV8Page(page, el) {
-  ['yaz','gecmis','perf','patron'].forEach(function(p){
-    var v=document.getElementById('cgv8-view-'+p); var t=document.getElementById('cgv8-ptab-'+p);
-    if(v) v.classList.toggle('active',p===page); if(t) t.classList.toggle('active',p===page);
-  });
-  if(page==='gecmis') cgRenderHistoryPage();
-  if(page==='patron') cgRenderBossPanel();
-  if(page==='perf')   cgRenderBlogPerf();
-}
-
-function cgTab(tab,btn){
-  ['preview','html','seo'].forEach(function(t){
-    var p=document.getElementById('cg-tab-panel-'+t); var b=document.getElementById('cg-tab-'+t);
-    if(p) p.style.display=(t===tab)?'':'none'; if(b) b.classList.toggle('active',t===tab);
-  });
-  if(tab==='html'&&_cgSt&&_cgSt.md){var ta=document.getElementById('cg-html-ta');if(ta)requestAnimationFrame(function(){ta.value=enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));});}
-  if(tab==='seo'&&_cgSt&&_cgSt.scoreObj) cgRenderSeoPanel(_cgSt.scoreObj);
-}
-
-function cgUpdateStats(){
-  var brain=cgGetBrain(),hist=brain.history||[];
-  var seos=(brain.seo_scores||[]).filter(function(s){return typeof s==='number'&&!isNaN(s);});
-  var avg=seos.length?Math.round(seos.reduce(function(a,b){return a+b;},0)/seos.length):'--';
-  var best=seos.length?Math.max.apply(null,seos):'--';
-  var today=new Date().toDateString();
-  var todayC=hist.filter(function(h){return h.date&&new Date(h.date).toDateString()===today;}).length;
-  var pub=hist.filter(function(h){return h.published;}).length;
-  var words=hist.reduce(function(a,h){return a+(h.wc||0);},0);
-  function sv(id,v){var el=document.getElementById(id);if(el)el.textContent=v;}
-  sv('cg-stat-done',hist.length);sv('cg-stat-seo',avg);sv('cg-stat-best',best);sv('cg-stat-pub',pub);sv('cg-stat-today',todayC);
-  sv('cg-stat-words',words>=1000?Math.round(words/1000)+'K':words);
-  var arc=document.getElementById('cgv8-seo-arc');
-  if(arc&&typeof avg==='number'){arc.style.strokeDashoffset=88-(88*Math.min(100,avg)/100);}
-  brain.avg_seo=(typeof avg==='number')?avg:brain.avg_seo;
-  brain.best_seo=(typeof best==='number')?best:brain.best_seo;
-  cgSaveBrain(brain);
-}
-
-function cgAutoLearn(scoreObj,md){
-  if(!scoreObj||!md) return;
-  var brain=cgGetBrain(); brain.learnings=brain.learnings||[];
-  var lessons=[];
-  if(scoreObj.wc>=2400) lessons.push('2400+ kelime yaz, yuksek kelime sayisi SEO artiriyor');
-  if(scoreObj.wc<2000)  lessons.push('Bolumler yetersiz kaldi, her H2 icin 300+ kelime hedefle');
-  if((md.match(/\*\*[^*]+\??\*\*/g)||[]).length>=7) lessons.push('7+ SSS sorusu yaz, PAA siralamasi kazandiriyor');
-  if((md.match(/retrocameraland\.com/g)||[]).length>=3) lessons.push('3+ ic link koy, donusum yolu ac');
-  if(scoreObj.score>=90) lessons.push('Bu yaklasim calisıyor: derinlemesine H2+H3, gercek urun adi, SSS bolumu');
-  lessons.forEach(function(l){
-    if(!brain.learnings.some(function(x){return x.insight===l;}))
-      brain.learnings.push({date:new Date().toISOString().slice(0,10),insight:l,score:scoreObj.score});
-  });
-  if(brain.learnings.length>20) brain.learnings=brain.learnings.slice(-20);
-  cgSaveBrain(brain);
-}
-
-var _cgImproveAreas=[
-  {key:'more_words',ico:'📚',title:'Daha Uzun Yaz',desc:'2800+ kelime hedefle'},
-  {key:'more_research',ico:'🔍',title:'Derin Arastir',desc:'10 rakip analizi yap'},
-  {key:'more_faq',ico:'❓',title:'Daha Fazla SSS',desc:'8+ soru yaz'},
-  {key:'strong_cta',ico:'🎯',title:'Guclu CTA',desc:'Daha ikna edici CTA'},
-  {key:'more_h3',ico:'📋',title:'Daha Iyi Yapilandi',desc:'Her H2 icin 2-3 H3'},
-  {key:'feed_youtube',ico:'▶️',title:'YouTube Beslen',desc:'Trend konular kullan'},
-  {key:'feed_ig',ico:'📷',title:'Instagram Beslen',desc:'Populer hashtag konular'},
-  {key:'feed_web',ico:'🌐',title:'Web Derine Ara',desc:'Daha fazla kaynak tara'},
-  {key:'more_examples',ico:'📸',title:'Daha Fazla Ornek',desc:'Urun modeli ve detay'},
-  {key:'more_eeat',ico:'🏅',title:'E-E-A-T Artir',desc:'Deneyim sinyali guclendir'}
-];
-
-function cgPatronImprove(area){
-  var brain=cgGetBrain(); brain.patron_prefs=brain.patron_prefs||{};
-  brain.patron_prefs[area]=true;
-  brain.learnings=brain.learnings||[];
-  var insight='Patron istegi: '+area.replace(/_/g,' ');
-  if(!brain.learnings.some(function(l){return l.insight===insight;}))
-    brain.learnings.push({date:new Date().toISOString().slice(0,10),insight:insight,patron:true,score:0});
-  cgSaveBrain(brain);
-  var msgs={
-    more_words:'Anlasıldı! Artik 2800+ kelime hedefleyecegim.',
-    more_research:'Tamam! 10 rakibi inceleyerek yazacagim.',
-    more_faq:'Her blogda 8+ SSS sorusu yazacagim.',
-    strong_cta:'CTA larimi daha ikna edici yapiyorum.',
-    more_h3:'Her H2 ye 2-3 H3 ekleyecegim.',
-    feed_youtube:'YouTube trendlerini blog konularima yansitacagim.',
-    feed_ig:'Instagram verilerini kullanacagim.',
-    feed_web:'Daha derin web taramasi yapacagim.',
-    more_examples:'Gercek urun adi ve model numaralari ekleyecegim.',
-    more_eeat:'E-E-A-T sinyallerimi guclendirecegim.'
-  };
-  cgV8Page('yaz',document.getElementById('cgv8-ptab-yaz'));
-  setTimeout(function(){cgAddMessage('cherry',(msgs[area]||'Anlasıldı!')+' Ogrenme kayit edildi! 💪');},200);
-}
-
-function cgRenderBossPanel(){
-  var el=document.getElementById('cgv8-boss-panel-content'); if(!el) return;
-  var brain=cgGetBrain(),hist=brain.history||[];
-  var seos=(brain.seo_scores||[]).filter(function(s){return typeof s==='number'&&!isNaN(s);});
-  var avg=seos.length?Math.round(seos.reduce(function(a,b){return a+b;},0)/seos.length):0;
-  var best=seos.length?Math.round(Math.max.apply(null,seos)):0;
-  var words=hist.reduce(function(a,h){return a+(h.wc||0);},0);
-  var prefs=brain.patron_prefs||{};
-  var learnings=(brain.learnings||[]).slice(-6);
-  el.innerHTML=
-    '<div style="font-size:.95rem;font-weight:700;color:rgba(212,175,55,.9);margin-bottom:14px">Patron Paneli</div>'+
-    '<div class="cgv8-boss-kpi">'+
-      '<div class="cgv8-bkpi"><div class="cgv8-bkpi-val" style="color:#D4AF37">'+hist.length+'</div><div class="cgv8-bkpi-lbl">Blog</div></div>'+
-      '<div class="cgv8-bkpi"><div class="cgv8-bkpi-val" style="color:#34C759">'+avg+'</div><div class="cgv8-bkpi-lbl">Ort. SEO</div></div>'+
-      '<div class="cgv8-bkpi"><div class="cgv8-bkpi-val" style="color:#FFB7C5">'+best+'</div><div class="cgv8-bkpi-lbl">En Yuksek</div></div>'+
-      '<div class="cgv8-bkpi"><div class="cgv8-bkpi-val" style="color:#5AC8FA">'+(words>=1000?Math.round(words/1000)+'K':words)+'</div><div class="cgv8-bkpi-lbl">Kelime</div></div>'+
-    '</div>'+
-    '<div class="cgv8-roadmap">'+
-      '<div class="cgv8-rm-step done">✓ Altyapi</div>'+
-      '<div style="opacity:.2;font-size:.8rem">→</div>'+
-      '<div class="cgv8-rm-step '+(hist.length<10?'active':'done')+'">'+(hist.length<10?'● Icerik':'✓ Icerik')+'</div>'+
-      '<div style="opacity:.2;font-size:.8rem">→</div>'+
-      '<div class="cgv8-rm-step">○ Otorite</div>'+
-      '<div style="opacity:.2;font-size:.8rem">→</div>'+
-      '<div class="cgv8-rm-step">🏆 #1 Google</div>'+
-    '</div>'+
-    (learnings.length?'<div style="margin-bottom:14px"><div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.22);margin-bottom:8px">Cherry\'nin Ogrendikleri</div>'+learnings.map(function(l){return '<div style="font-size:.68rem;color:rgba(255,255,255,.48);padding:5px 0;border-bottom:1px solid rgba(255,255,255,.05)">✓ '+l.insight+'</div>';}).join('')+'</div>':'')+
-    '<div style="font-size:.7rem;font-weight:600;color:rgba(255,255,255,.55);margin-bottom:4px">Cherry\'yi Gelistir</div>'+
-    '<div style="font-size:.6rem;color:rgba(255,255,255,.22);margin-bottom:10px">Begenmedigin alani tikla, bir sonraki blogda odaklansin:</div>'+
-    '<div class="cgv8-improve-grid">'+
-      _cgImproveAreas.map(function(a){
-        var act=prefs[a.key]?' style="border-color:rgba(212,175,55,.4);background:rgba(212,175,55,.07)"':'';
-        return '<div class="cgv8-improve-btn"'+act+' onclick="cgPatronImprove(\''+a.key+'\')"><span class="ib-ico">'+a.ico+'</span><span class="ib-title">'+a.title+'</span><span class="ib-desc">'+a.desc+'</span></div>';
-      }).join('')+
-    '</div>'+
-    '<div style="margin-top:14px"><button class="cg-ctrl-btn" onclick="cgSendDailyReport()" style="font-size:.63rem">Telegram Rapor</button></div>';
-}
-
-function cgRenderHistoryPage(){
-  var el=document.getElementById('cg-history-list'); var emEl=document.getElementById('cgv8-hist-empty');
-  if(!el) return;
-  var hist=(cgGetBrain().history||[]).slice().reverse();
-  if(!hist.length){el.innerHTML='';if(emEl)emEl.style.display='';return;}
-  if(emEl) emEl.style.display='none';
-  el.className='cgv8-hist-grid';
-  el.innerHTML=hist.map(function(item,i){
-    var realIdx=hist.length-1-i,d=item.date?new Date(item.date).toLocaleDateString('tr-TR'):'';
-    var seo=item.seo||0,col=seo>=85?'#34C759':seo>=70?'#D4AF37':'#FF453A';
-    return '<div class="cgv8-hist-card" onclick="cgLoadHistoryChat('+realIdx+')">'+
-      '<div class="cgv8-hist-card-title">'+(item.title||item.topic||'Basliksiz').slice(0,80)+'</div>'+
-      '<div class="cgv8-hist-seo-bar"><div class="cgv8-hist-seo-fill" style="width:'+Math.min(100,seo)+'%;background:'+col+'"></div></div>'+
-      '<div class="cgv8-hist-meta">'+
-        '<span style="font-size:.58rem;color:rgba(255,255,255,.28);font-family:var(--mono)">'+d+'</span>'+
-        '<span style="font-size:.58rem;color:rgba(255,255,255,.28);font-family:var(--mono)">'+(item.wc||0)+' kelime</span>'+
-        '<span class="cgv8-hist-badge" style="color:'+col+';background:'+col.replace(')',',0.12)').replace('rgb(','rgba(')+'">SEO '+seo+'</span>'+
-        (item.published?'<span class="cgv8-hist-badge" style="color:#34C759;background:rgba(52,199,89,.1)">Yayinda</span>':'')+
-      '</div>'+
-    '</div>';
-  }).join('');
-}
-
-function cgLoadHistoryChat(idx){
-  cgLoadHistory(idx);
-  cgV8Page('yaz',document.getElementById('cgv8-ptab-yaz'));
-  var item=(cgGetBrain().history||[])[idx];
-  if(item){document.getElementById('cgv8-blog-out').classList.remove('hidden');cgAddMessage('cherry','<b>'+(item.title||'').slice(0,60)+'</b> yuklendi, SEO: '+item.seo+'/100');}
-}
-
-function cgRenderBlogPerf(){
-  var posts=(typeof BLOG_SEO!=='undefined'&&BLOG_SEO.posts)||[];
-  var monthly=(typeof BLOG_SEO!=='undefined'&&BLOG_SEO.monthly)||[];
-  var sources=(typeof GA4_TRAFFIC!=='undefined'&&GA4_TRAFFIC.sources)||[];
-  var totalV=0,totalO=0,totalOrd=0;
-  posts.forEach(function(p){totalV+=(p.views||0);totalO+=(p.organic||0);totalOrd+=(p.orders||0);});
-  var brain=cgGetBrain(),brainH=brain.history||[];
-  brainH.forEach(function(h){
-    if(!h.title) return;
-    var already=posts.some(function(p){return(p.title||'').slice(0,25)===(h.title||'').slice(0,25);});
-    if(!already){var days=h.date?Math.max(1,Math.floor((Date.now()-new Date(h.date).getTime())/86400000)):1;var sv=Math.round((h.seo||60)*9*days);posts.push({title:h.title,views:sv,organic:Math.round(sv*.54),orders:Math.floor(sv/850),seo:h.seo||0,cherry:true});}
-  });
-  function aC(id,v){var el=document.getElementById(id);if(!el)return;var n=0,step=Math.max(1,Math.floor(v/40)),t=setInterval(function(){n=Math.min(n+step,v);el.textContent=n>=1000?Math.round(n/1000)+'K':n;if(n>=v)clearInterval(t);},25);}
-  setTimeout(function(){aC('cgbp-views',totalV);aC('cgbp-organic',totalO);aC('cgbp-orders',totalOrd);aC('cgbp-revenue',totalOrd*2800);},80);
-  var ch=document.getElementById('cgbp-chart'),lb=document.getElementById('cgbp-labels');
-  if(ch&&monthly.length){var maxV2=Math.max.apply(null,monthly.map(function(m){return m.traffic||0;}))||1;ch.innerHTML=monthly.map(function(m){var p2=Math.round((m.traffic||0)/maxV2*100);return '<div class="cgv8-bar-col"><div class="cgv8-bar-val">'+(m.traffic>=1000?Math.round(m.traffic/1000)+'K':m.traffic||0)+'</div><div class="cgv8-bar" style="height:0;background:linear-gradient(180deg,#D4AF37,rgba(212,175,55,.35))" data-h="'+p2+'%"></div></div>';}).join('');if(lb)lb.innerHTML=monthly.map(function(m){return '<div class="cgv8-bar-lbl" style="flex:1;text-align:center">'+m.label+'</div>';}).join('');setTimeout(function(){ch.querySelectorAll('.cgv8-bar').forEach(function(b){b.style.height=b.getAttribute('data-h');});},150);}
-  var srcEl=document.getElementById('cgbp-sources');
-  if(srcEl&&sources.length){var maxS=Math.max.apply(null,sources.map(function(s){return s.sessions||0;}))||1;srcEl.innerHTML=sources.map(function(s){return '<div class="cgv8-src-row"><div class="cgv8-src-lbl">'+s.name+'</div><div class="cgv8-src-bar"><div class="cgv8-src-fill" style="width:0;background:'+s.color+'" data-w="'+Math.round((s.sessions||0)/maxS*100)+'%"></div></div><div class="cgv8-src-pct">%'+s.pct+'</div></div>';}).join('');setTimeout(function(){srcEl.querySelectorAll('.cgv8-src-fill').forEach(function(b){b.style.width=b.getAttribute('data-w');});},200);}
-  var cardsEl=document.getElementById('cgbp-cards'); if(!cardsEl) return;
-  var maxVP=Math.max.apply(null,posts.map(function(p){return p.views||1;}))||1;
-  cardsEl.innerHTML=posts.map(function(p){var sc=p.seo>=90?'#34C759':p.seo>=75?'#D4AF37':'#FF453A';var vp=Math.round((p.views||0)/maxVP*100);var op=p.views?Math.round((p.organic||0)/(p.views||1)*100):0;return '<div class="cgv8-blog-perf-card"><div style="font-size:.7rem;font-weight:700;color:rgba(255,255,255,.8);margin-bottom:8px;line-height:1.3">'+(p.title||'').slice(0,70)+(p.cherry?'<span style="font-size:.5rem;color:rgba(212,175,55,.55);background:rgba(212,175,55,.08);padding:1px 5px;border-radius:5px;margin-left:4px">Cherry</span>':'')+'</div><div style="display:flex;justify-content:space-between;font-size:.58rem;color:rgba(255,255,255,.3);font-family:var(--mono);margin-bottom:2px"><span>Goruntulenme</span><span style="color:#5AC8FA">'+(p.views||0).toLocaleString('tr-TR')+'</span></div><div class="cgv8-mini-bar"><div class="cgv8-mini-fill" style="width:0;background:#5AC8FA" data-w="'+vp+'%"></div></div><div style="display:flex;justify-content:space-between;font-size:.58rem;color:rgba(255,255,255,.3);font-family:var(--mono);margin-bottom:2px"><span>Organik (%'+op+')</span><span style="color:#30D158">'+(p.organic||0).toLocaleString('tr-TR')+'</span></div><div class="cgv8-mini-bar"><div class="cgv8-mini-fill" style="width:0;background:#30D158" data-w="'+Math.round((p.organic||0)/maxVP*100)+'%"></div></div><div style="display:flex;justify-content:space-between;font-size:.58rem;font-family:var(--mono)"><span style="color:rgba(255,255,255,.3)">Siparis: <b style="color:#FF9F0A">'+(p.orders||0)+'</b></span><span style="color:'+sc+';font-weight:700">SEO '+(p.seo||0)+'</span></div></div>';}).join('');
-  setTimeout(function(){cardsEl.querySelectorAll('.cgv8-mini-fill').forEach(function(b){b.style.width=b.getAttribute('data-w');});},250);
-}
-
-function cgNotifyTelegram(text){fetch('/api/telegram',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:text,parse_mode:'HTML'})}).catch(function(){});}
-function cgBuildTelegramDailyReport(){var b=cgGetBrain(),h=b.history||[],s=(b.seo_scores||[]).filter(function(x){return typeof x==='number'&&!isNaN(x);});var avg=s.length?Math.round(s.reduce(function(a,c){return a+c;},0)/s.length):'--';return '<b>Cherry Raporu</b>\nBlog: '+h.length+'\nSEO ort: '+avg+'\nYayinlanan: '+h.filter(function(x){return x.published;}).length;}
-function cgSendDailyReport(){cgNotifyTelegram(cgBuildTelegramDailyReport());cgLog('Rapor gonderildi.','ok');}
-function cgRetryBetter(){if(_cgSt&&_cgSt.brief)_cgSt.brief.target_wc=Math.max((_cgSt.brief.target_wc||2200)+300,2600);if(_cgSt&&_cgSt.intel)_cgSt.intel.unique_angle=(_cgSt.intel.unique_angle||'')+' Daha derin, daha fazla ornek.';_cgWriting=false;var idx=_cgSt&&_cgSt.item?(_cgSt.item._idx||0):0;cgAddMessage('cherry','Daha yuksek kalite icin yeniden yaziyorum...');setTimeout(function(){cgWrite(idx);},300);}
-
-function cgRenderActions(){
-  var st=_cgSt; if(!st) return;
-  if(st.status==='idle') cgUpdateAvatar('idle','Hazir, gorev bekliyor...');
-  else if(st.status==='writing') cgUpdateAvatar('writing','Yazıyor...');
-  else if(st.status==='done'){
-    cgUpdateAvatar('done','Tamamlandi! SEO: '+(st.scoreObj?st.scoreObj.score:'?')+'/100');
-    document.getElementById('cgv8-blog-out').classList.remove('hidden');
-    cgAutoLearn(st.scoreObj, st.md||'');
-    var pubBtn=document.getElementById('cg-pub-btn');if(pubBtn)pubBtn.textContent=st.published?'Yayinda':'Onayla & Yayinla';
-  }
-  else if(st.status==='error') cgUpdateAvatar('error','Bir sorun oldu...');
-  cgUpdateStats();
-}
-
-function renderCherryPage(){
-  var verEl=document.getElementById('cg-version'); if(verEl) verEl.textContent=CG_VERSION;
-  cgBuildAgenda(); cgUpdateStats(); cgUpdateAvatar('idle','Hazir, gorev bekliyor...');
-  var area=document.getElementById('cgv8-chat-area');
-  if(area&&!area.dataset.init){
-    area.dataset.init='1';
-    var b=cgGetBrain(),h=b.history||[],s=(b.seo_scores||[]).filter(function(x){return typeof x==='number'&&!isNaN(x);});
-    var avg=s.length?Math.round(s.reduce(function(a,c){return a+c;},0)/s.length):'--';
-    var greeting=h.length>0
-      ?'Tekrar merhaba! <b>'+h.length+' blog</b> yazdim, ort. SEO: <b>'+avg+'/100</b>. Ne yazayim?'
-      :'Merhaba! Ben <b>Cherry Glow</b>. Retrocameraland.com icin Google\'da #1 siralamaya ulasacak SEO bloglar yaziyorum.<br><br>Hazir misin? Bir konu sec veya yaz: <i>"analog kamera rehberi yaz"</i>';
-    setTimeout(function(){cgAddMessage('cherry',greeting);},350);
-  }
-}
-
-</script>
-
-<script>
-function cgQuickCmd(cmd){
-  var inp=document.getElementById('cgv8-chat-input');
-  if(inp){inp.value=cmd;cgChatSend();}
-}
-function cgCopyBlog(){
-  var el=document.getElementById('cgv8-blog-content');
-  if(el&&navigator.clipboard){navigator.clipboard.writeText(el.textContent).then(function(){cgAddMessage('cherry','Blog kopyalandi! Shopify editor\u2019une yapistirabilirsin.');});}
-}
-function cgCloseBlogOut(){
-  var el=document.getElementById('cgv8-blog-out');
-  if(el) el.classList.add('hidden');
-}
-function cgUpdateLearnings(){
-  var el=document.getElementById('cgv8-learnings-list'); if(!el) return;
-  var brain=cgGetBrain(),ll=brain.learnings||[];
-  if(!ll.length){el.innerHTML='<div style="font-size:.62rem;color:rgba(255,255,255,.2);font-style:italic;padding:4px">Henuz ogrenme yok...</div>';return;}
-  el.innerHTML=ll.slice(-5).reverse().map(function(l){return '<div style="font-size:.6rem;color:rgba(255,255,255,.38);padding:3px 6px;background:rgba(255,255,255,.03);border-radius:6px;line-height:1.4">&#10003; '+l.insight+'</div>';}).join('');
-}
-function cgUpdateHeroStats(){
-  var brain=cgGetBrain(),h=brain.history||[],s=(brain.seo_scores||[]).filter(function(x){return typeof x==='number';});
-  var avg=s.length?Math.round(s.reduce(function(a,c){return a+c;},0)/s.length):0;
-  var hb=document.getElementById('cgv8-hs-blogs'); if(hb) hb.textContent=h.length+' blog';
-  var hs=document.getElementById('cgv8-hs-seo'); if(hs) hs.textContent='SEO '+(avg||'--');
-}
-// Hook into renderCherryPage to also update hero stats and learnings
-var _origRCP=typeof renderCherryPage==='function'?renderCherryPage:null;
-renderCherryPage=function(){if(_origRCP)_origRCP();cgUpdateHeroStats();cgUpdateLearnings();cgUpdateStats();};
-</script>
-
-<script>
-
-/* ======== Dashboard Enhancement Patch v2 ======== */
-
-/* ---- Stats Page GA4 Infographic Enhancements ---- */
-function statsEnhanceGA4() {
-  var d = (typeof GA4_TRAFFIC !== 'undefined') ? GA4_TRAFFIC : null;
-  if (!d) return;
-
-  // Animate bounce rate gauge
-  var bounce = d.bounce_rate || 0;
-  var bounceArc = document.getElementById('ga4-bounce-arc');
-  var bounceLbl = document.getElementById('ga4-bounce-lbl');
-  var bounceBar = document.getElementById('ga4-bounce-bar');
-  if (bounceArc) {
-    var pct = Math.min(100, bounce) / 100;
-    bounceArc.style.strokeDashoffset = 94.2 - (94.2 * pct);
-    var color = bounce < 40 ? 'rgba(48,209,88,.65)' : bounce < 60 ? 'rgba(255,159,10,.65)' : 'rgba(255,69,58,.65)';
-    bounceArc.style.stroke = color;
-  }
-  if (bounceLbl) bounceLbl.textContent = bounce < 40 ? 'İyi' : bounce < 60 ? 'Orta' : 'Yüksek';
-  if (bounceBar) bounceBar.style.width = Math.min(100, bounce) + '%';
-
-  // Organic donut ring
-  var orgPct = d.organic_pct || 0;
-  var orgRing = document.getElementById('ga4-org-ring');
-  var orgRingLbl = document.getElementById('ga4-org-ring-lbl');
-  var orgAbs = document.getElementById('ga4-organic-abs');
-  var otherAbs = document.getElementById('ga4-other-abs');
-  if (orgRing) {
-    var circumf = 163.4;
-    orgRing.style.strokeDashoffset = circumf - (circumf * orgPct / 100);
-  }
-  if (orgRingLbl) orgRingLbl.textContent = '%' + orgPct;
-  var total = d.sessions || 0;
-  var organic = Math.round(total * orgPct / 100);
-  if (orgAbs) orgAbs.textContent = organic.toLocaleString('tr-TR');
-  if (otherAbs) otherAbs.textContent = (total - organic).toLocaleString('tr-TR');
-
-  // Visitors progress bar
-  var visBar = document.getElementById('ga4-visitors-bar');
-  if (visBar) visBar.style.width = Math.min(100, Math.round((d.sessions || 0) / 300)) + '%';
-
-  // Session quality label
-  var sesSec = d.avg_session_sec || 0;
-  var sesQ = document.getElementById('ga4-session-quality');
-  var sesStars = document.getElementById('ga4-session-stars');
-  var sesBar = document.getElementById('ga4-session-bar');
-  if (sesQ) {
-    var quality = sesSec >= 180 ? 'Mükemmel' : sesSec >= 90 ? 'İyi' : sesSec >= 45 ? 'Orta' : 'Düşük';
-    sesQ.textContent = quality;
-  }
-  if (sesStars) {
-    var stars = sesSec >= 180 ? '⭐⭐⭐' : sesSec >= 90 ? '⭐⭐' : '⭐';
-    sesStars.textContent = stars;
-  }
-  if (sesBar) sesBar.style.width = Math.min(100, Math.round(sesSec / 3)) + '%';
-
-  // Channel bars
-  var chEl = document.getElementById('ga4-channel-bars');
-  if (chEl && d.sources && d.sources.length) {
-    var maxS = Math.max.apply(null, d.sources.map(function(s) { return s.sessions || 0; })) || 1;
-    chEl.innerHTML = d.sources.map(function(s) {
-      var pct = Math.round((s.sessions || 0) / maxS * 100);
-      return '<div style="display:flex;align-items:center;gap:10px">' +
-        '<div style="width:90px;font-size:.65rem;color:rgba(255,255,255,.5);text-align:right;flex-shrink:0">' + (s.name || '') + '</div>' +
-        '<div style="flex:1;height:8px;background:rgba(255,255,255,.05);border-radius:4px;overflow:hidden">' +
-          '<div style="height:100%;border-radius:4px;background:' + (s.color || 'rgba(212,175,55,.5)') + ';width:0;transition:width 0.9s ease 0.2s" data-w="' + pct + '%"></div>' +
-        '</div>' +
-        '<div style="width:60px;font-size:.62rem;font-family:var(--mono);color:rgba(255,255,255,.4)">' + (s.sessions || 0).toLocaleString('tr-TR') + ' (%' + (s.pct || 0) + ')</div>' +
-      '</div>';
-    }).join('');
-    // Animate after render
-    setTimeout(function() {
-      chEl.querySelectorAll('[data-w]').forEach(function(el) {
-        el.style.width = el.getAttribute('data-w');
-      });
-    }, 100);
-  }
-}
-
-// Hook stats page into navigate
-(function() {
-  var _origNav = typeof navigate === 'function' ? navigate : null;
-  if (_origNav) {
-    window.navigate = function(page, el) {
-      _origNav(page, el);
-      if (page === 'stats') {
-        setTimeout(statsEnhanceGA4, 200);
-      }
-    };
-  }
-  // Also auto-call if already on stats page
-  if (document.getElementById('ga4-bounce-arc')) {
-    setTimeout(statsEnhanceGA4, 600);
-  }
-})();
-
-/* ---- Inventory Page: Profit Margin % ---- */
-(function() {
-  var _origRenderInv = typeof renderInventoryPage === 'function' ? renderInventoryPage : null;
-  if (_origRenderInv) {
-    renderInventoryPage = function() {
-      _origRenderInv();
-      invAddMarginColumn();
-      invUpdateMarginCard();
-    };
-  }
-})();
-
-function invAddMarginColumn() {
-  var tbody = document.getElementById('camBody');
-  if (!tbody) return;
-  var rows = tbody.querySelectorAll('tr');
-  rows.forEach(function(row) {
-    var cells = row.querySelectorAll('td');
-    if (cells.length >= 5) {
-      var saleCell = cells[2]; // Satış fiyatı
-      var costCell = cells[3]; // Maliyet
-      var saleStr = saleCell ? saleCell.textContent.replace(/[₺.,\s]/g,'').replace(',','.') : '';
-      var costStr = costCell ? costCell.textContent.replace(/[₺.,\s]/g,'').replace(',','.') : '';
-      var sale = parseFloat(saleStr) || 0;
-      var cost = parseFloat(costStr) || 0;
-      var marj = sale > 0 ? Math.round((sale - cost) / sale * 100) : null;
-      // Add or update margin cell
-      var existingMarj = row.querySelector('.cam-marj-cell');
-      if (!existingMarj) {
-        var td = document.createElement('td');
-        td.className = 'cam-marj-cell';
-        td.style.cssText = 'text-align:center;font-family:var(--mono);font-size:.72rem;font-weight:700';
-        row.appendChild(td);
-      }
-      var marjCell = row.querySelector('.cam-marj-cell');
-      if (marjCell) {
-        if (marj !== null && sale > 0) {
-          var col = marj >= 40 ? 'rgba(48,209,88,.8)' : marj >= 25 ? 'rgba(212,175,55,.8)' : 'rgba(255,69,58,.8)';
-          marjCell.innerHTML = '<span style="color:' + col + ';background:' + col.replace('0.8','0.1') + ';padding:2px 8px;border-radius:6px">%' + marj + '</span>';
-        } else {
-          marjCell.textContent = '—';
-        }
-      }
-    }
-  });
-}
-
-function invUpdateMarginCard() {
-  var totalCostEl = document.getElementById('camCostTotal');
-  var totalRevEl = document.getElementById('camTotal');
-  var marjPctEl = document.getElementById('inv-margin-pct');
-  var marjBarEl = document.getElementById('inv-margin-bar');
-
-  function parseMoney(str) {
-    if (!str) return 0;
-    return parseFloat((str.textContent || '').replace(/[₺.\s]/g,'').replace(',','.')) || 0;
-  }
-  var cost = parseMoney(totalCostEl);
-  var rev = parseMoney(totalRevEl);
-  if (rev > 0 && cost >= 0) {
-    var marj = Math.round((rev - cost) / rev * 100);
-    if (marjPctEl) {
-      var col = marj >= 40 ? 'rgba(48,209,88,.9)' : marj >= 25 ? 'rgba(212,175,55,.9)' : 'rgba(255,69,58,.9)';
-      marjPctEl.textContent = '%' + marj;
-      marjPctEl.style.color = col;
-    }
-    if (marjBarEl) marjBarEl.style.width = Math.min(100, Math.max(0, marj)) + '%';
-  }
-
-  // Also update footer margin
-  var footEl = document.getElementById('camMarjFoot');
-  if (footEl && rev > 0) {
-    var fm = Math.round((rev - cost) / rev * 100);
-    var fcol = fm >= 40 ? 'rgba(48,209,88,.8)' : fm >= 25 ? 'rgba(212,175,55,.8)' : 'rgba(255,69,58,.8)';
-    footEl.innerHTML = '<span style="color:' + fcol + ';font-weight:700">%' + fm + '</span>';
-  }
-}
-
-/* ---- Urun Page: Sales Price Integration ---- */
-(function() {
-  var _origUrunProfit = typeof urunProfitCalc === 'function' ? urunProfitCalc : null;
-  if (_origUrunProfit) {
-    window.urunProfitCalc = function() {
-      _origUrunProfit();
-      urunSatisFiyatiCalc();
-    };
-  }
-})();
-
-function urunSatisFiyatiCalc() {
-  var satisEl = document.getElementById('p-satis');
-  var previewEl = document.getElementById('p-preview-kar');
-  if (!satisEl || !previewEl) return;
-
-  var satis = parseFloat(satisEl.value) || 0;
-  if (satis <= 0) { previewEl.textContent = '—'; previewEl.style.color = 'rgba(48,209,88,.85)'; return; }
-
-  var alis = parseFloat((document.getElementById('p-alis') || {}).value) || 0;
-  var kargo = parseFloat((document.getElementById('p-kargo') || {}).value) || 0;
-  var ambalaj = parseFloat((document.getElementById('p-ambalaj') || {}).value) || 0;
-  var kdvRate = parseFloat((document.getElementById('p-kdv') || {}).value) || 20;
-  var iyzicoRate = parseFloat((document.getElementById('p-iyzico') || {}).value) || 2.65;
-
-  var totalCost = alis + kargo + ambalaj;
-  var kdvAmount = satis * (kdvRate / (100 + kdvRate));
-  var iyzicoAmount = satis * (iyzicoRate / 100);
-  var netGelir = satis - kdvAmount - iyzicoAmount;
-  var netKar = netGelir - totalCost;
-  var marj = satis > 0 ? Math.round(netKar / satis * 100) : 0;
-
-  var col = netKar > 0 ? 'rgba(48,209,88,.85)' : 'rgba(255,69,58,.85)';
-  previewEl.style.color = col;
-  previewEl.innerHTML = '<span style="font-size:1.1rem">' + (netKar >= 0 ? '+' : '') + Math.round(netKar).toLocaleString('tr-TR') + ' ₺</span> <span style="font-size:.65rem;opacity:.6">(%' + marj + ' marj)</span>';
-}
-
-
-/* ---- Finance: Expense Summary Sync ---- */
-function finSyncExpenseSummary() {
-  function copyVal(fromId, toId) {
-    var src = document.getElementById(fromId);
-    var dst = document.getElementById(toId);
-    if (src && dst) dst.textContent = src.textContent || '—';
-  }
-  copyVal('fin-kdv-amount', 'sum-kdv');
-  copyVal('fin-iyzico-amount-total', 'sum-iyzico');
-  copyVal('fin-shipping-total', 'sum-kargo');
-  copyVal('fin-total-cut', 'sum-total');
-  copyVal('fin-net', 'sum-net');
-  // Fallback: sync from whatever fin- elements have data
-  var kdvEl = document.getElementById('fin-kdv-amount');
-  var cutEl = document.getElementById('fin-total-cut');
-  var netEl = document.getElementById('fin-net');
-  var sumTot = document.getElementById('sum-total');
-  var sumNet = document.getElementById('sum-net');
-  if (cutEl && sumTot && cutEl.textContent !== '—') sumTot.textContent = cutEl.textContent;
-  if (netEl && sumNet && netEl.textContent !== '—') sumNet.textContent = netEl.textContent;
-}
-// Auto-call when finance renders
-(function() {
-  var _rFin = typeof renderFinancePage === 'function' ? renderFinancePage : null;
-  if (_rFin) {
-    window.renderFinancePage = function() {
-      _rFin();
-      setTimeout(finSyncExpenseSummary, 300);
-    };
-  }
-})();
-
-/* ---- Finance Page Animation Improvements ---- */
-function finAnimateKPIs() {
-  // Add count-up animation to fin KPI values
-  var targets = [
-    {id:'fin-rev', prefix:'₺'},
-    {id:'fin-net', prefix:'₺'},
-    {id:'fin-total-cut', prefix:'₺'}
-  ];
-  targets.forEach(function(t) {
-    var el = document.getElementById(t.id);
-    if (!el || el.dataset.animated) return;
-    var raw = el.textContent.replace(/[₺.,\s]/g,'');
-    var val = parseFloat(raw);
-    if (isNaN(val) || val === 0) return;
-    el.dataset.animated = '1';
-    var start = 0, duration = 900, startTime = null;
-    function step(ts) {
-      if (!startTime) startTime = ts;
-      var progress = Math.min((ts - startTime) / duration, 1);
-      var ease = 1 - Math.pow(1 - progress, 3);
-      var cur = Math.round(start + ease * val);
-      el.textContent = t.prefix + cur.toLocaleString('tr-TR');
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  });
-}
-
-// Also trigger fin animation on navigate
-(function() {
-  var _origNav2 = typeof navigate === 'function' ? navigate : null;
-  if (_origNav2) {
-    var _prev = window.navigate;
-    window.navigate = function(page, el) {
-      _prev(page, el);
-      if (page === 'finance') setTimeout(finAnimateKPIs, 400);
-      if (page === 'inventory') setTimeout(function() { invAddMarginColumn(); invUpdateMarginCard(); }, 400);
-    };
-  }
-})();
-
-</script>
-
-<script>
-/* ======== CherryGlow Layout & Init Fix ======== */
-(function() {
-  // Ensure Cherry page layout works correctly
-  function cgForceLayout() {
-    var page = document.getElementById('page-cherry');
-    if (!page || !page.classList.contains('active')) return;
-    // Force flex layout
-    page.style.cssText = 'display:flex!important;flex-direction:column;height:calc(100vh);overflow:hidden;padding:0!important';
-    // Force view height
-    var view = document.getElementById('cgv8-view-yaz');
-    if (view && view.classList.contains('active')) {
-      view.style.cssText = 'display:flex!important;flex-direction:column;flex:1;min-height:0;overflow:hidden';
-    }
-    // Force layout grid
-    var layout = view && view.querySelector('.cgv8-yaz-layout');
-    if (layout) {
-      layout.style.cssText = 'display:grid;grid-template-columns:256px 1fr;grid-template-rows:1fr;height:100%;overflow:hidden;flex:1';
-    }
-    // Force main col
-    var mainCol = layout && layout.querySelector('.cgv8-main-col');
-    if (mainCol) {
-      mainCol.style.cssText = 'display:flex;flex-direction:column;overflow:hidden;min-height:0;height:100%';
-    }
-    // Force chat area
-    var chatArea = document.getElementById('cgv8-chat-area');
-    if (chatArea) {
-      chatArea.style.cssText = 'flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;min-height:0';
-    }
-  }
-
-  // Override navigate to ensure Cherry layout is applied
-  var _prevNav = window.navigate;
-  if (_prevNav) {
-    window.navigate = function(page, el) {
-      _prevNav(page, el);
-      if (page === 'cherry') {
-        requestAnimationFrame(function() {
-          cgForceLayout();
-          // Re-init if chat area is empty
-          var area = document.getElementById('cgv8-chat-area');
-          if (area && !area.dataset.init) {
-            if (typeof renderCherryPage === 'function') renderCherryPage();
-          } else if (area && !area.children.length) {
-            // Area exists but no messages - add greeting
-            area.dataset.init = '';
-            if (typeof renderCherryPage === 'function') renderCherryPage();
-          }
-          // Ensure avatar is rendered
-          var avIco = document.getElementById('cg-av-ico');
-          if (avIco && !avIco.innerHTML.trim() && typeof cgGetAvatarSVG === 'function') {
-            avIco.innerHTML = cgGetAvatarSVG('idle');
-          }
-        });
-      }
-    };
-  }
-
-  // Auto-apply if already on cherry page
-  window.addEventListener('load', function() {
-    var hash = window.location.hash.replace('#','');
-    if (hash === 'cherry') {
-      setTimeout(cgForceLayout, 300);
-    }
-  });
-})();
 
 </script>
 </body>
