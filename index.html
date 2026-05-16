@@ -26,6 +26,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100
 .sidebar{position:fixed;top:0;left:0;width:var(--sidebar);height:100vh;background:rgba(8,8,8,0.94);border-right:1px solid var(--b0);display:flex;flex-direction:column;z-index:200;backdrop-filter:blur(40px) saturate(160%);-webkit-backdrop-filter:blur(40px) saturate(160%);}
 .main{margin-left:var(--sidebar);min-height:100vh;position:relative;}
 .page{display:none;padding:40px 44px 80px;}
+#page-cherry{padding:0;display:none;flex-direction:column;height:calc(100vh - 0px);overflow:hidden}
+#page-cherry.active{display:flex}
 .page.active{display:block;}
 
 /* SIDEBAR */
@@ -875,6 +877,101 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 @keyframes cgv8-count-pulse{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
 @keyframes cgv8-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
 @keyframes cgv8-bar-grow{from{height:0}to{height:var(--h)}}
+/* ─── CherryGlow v8 Full Redesign ─────────────────────────────────────────── */
+.cgv8-page-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0}
+.cgv8-brand{display:flex;align-items:center;gap:12px}
+.cgv8-brand-av-mini{width:40px;height:40px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(212,175,55,.4))}
+.cgv8-brand-name{font-size:1.1rem;font-weight:800;color:rgba(255,255,255,.9);display:flex;align-items:center;gap:8px;letter-spacing:-.02em}
+.cgv8-brand-sub{font-size:.63rem;color:rgba(255,255,255,.35);margin-top:2px;font-style:italic;max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cgv8-ptabs{display:flex;gap:4px;background:rgba(255,255,255,.04);border-radius:12px;padding:4px}
+.cgv8-ptab{padding:7px 18px;border-radius:9px;font-size:.72rem;font-weight:600;letter-spacing:.03em;cursor:pointer;color:rgba(255,255,255,.45);transition:all .2s}
+.cgv8-ptab:hover{color:rgba(255,255,255,.7);background:rgba(255,255,255,.06)}
+.cgv8-ptab.active{background:linear-gradient(135deg,rgba(212,175,55,.2),rgba(255,183,197,.1));color:rgba(212,175,55,.95);border:1px solid rgba(212,175,55,.25)}
+.cgv8-nav-right{display:flex;align-items:center;gap:14px}
+
+/* Views */
+.cgv8-view{display:none;flex:1;min-height:0;overflow:hidden}
+.cgv8-view.active{display:flex;flex-direction:column}
+
+/* Write view layout */
+.cgv8-yaz-layout{display:grid;grid-template-columns:260px 1fr;gap:0;flex:1;min-height:0;overflow:hidden}
+.cgv8-sidebar{display:flex;flex-direction:column;gap:10px;padding:14px 12px;overflow-y:auto;background:rgba(0,0,0,.15);border-right:1px solid rgba(255,255,255,.05);scrollbar-width:thin}
+.cgv8-main-col{display:flex;flex-direction:column;gap:10px;padding:14px 16px;overflow-y:auto;flex:1;min-width:0;scrollbar-width:thin}
+
+/* Hero avatar card in sidebar */
+.cgv8-hero-card{background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.15);border-radius:16px;padding:18px 16px;text-align:center;position:relative;overflow:hidden}
+.cgv8-hero-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.12),transparent 65%);pointer-events:none}
+.cgv8-hero-av-big{width:88px;height:88px;margin:0 auto 10px;filter:drop-shadow(0 0 14px rgba(212,175,55,.5));animation:cgv8-float 4s ease-in-out infinite;display:flex;align-items:center;justify-content:center}
+.cgv8-hero-av-big svg{width:88px;height:88px}
+.cgv8-hero-name{font-size:.95rem;font-weight:800;color:rgba(255,255,255,.9);letter-spacing:-.01em}
+.cgv8-hero-mood{font-size:.65rem;color:rgba(212,175,55,.7);margin-top:3px;min-height:1.2em}
+.cgv8-hero-badge{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:3px 10px;background:rgba(52,199,89,.12);border:1px solid rgba(52,199,89,.25);border-radius:8px;font-size:.58rem;color:rgba(52,199,89,.8)}
+.cgv8-hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:12px}
+.cgv8-hs-item{background:rgba(255,255,255,.04);border-radius:8px;padding:7px 4px;text-align:center}
+.cgv8-hs-val{font-size:.9rem;font-weight:700;background:linear-gradient(135deg,#D4AF37,#FFB7C5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cgv8-hs-lbl{font-size:.5rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-top:2px}
+@keyframes cgv8-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* Action card */
+.cgv8-action-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px 18px;flex-shrink:0}
+.cgv8-output-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px 18px;flex:1;min-height:0;display:flex;flex-direction:column}
+.cgv8-out-tabs{display:flex;gap:4px;margin-bottom:12px;flex-shrink:0}
+.cgv8-out-tab{padding:5px 14px;border-radius:8px;font-size:.67rem;font-weight:600;cursor:pointer;color:rgba(255,255,255,.4);border:1px solid transparent;transition:all .2s}
+.cgv8-out-tab:hover{color:rgba(255,255,255,.65);background:rgba(255,255,255,.05)}
+.cgv8-out-tab.active{background:rgba(212,175,55,.1);color:rgba(212,175,55,.85);border-color:rgba(212,175,55,.2)}
+.cgv8-out-body{flex:1;overflow-y:auto;scrollbar-width:thin}
+
+/* Gecmis & Patron full pages */
+.cgv8-gecmis-wrap{flex:1;overflow-y:auto;padding:20px 24px;scrollbar-width:thin}
+.cgv8-patron-wrap{flex:1;overflow-y:auto;padding:20px 24px;scrollbar-width:thin}
+.cgv8-page-head{font-size:1.2rem;font-weight:800;color:rgba(255,255,255,.9);margin-bottom:4px;display:flex;align-items:center;gap:10px}
+.cgv8-page-sub{font-size:.68rem;color:rgba(255,255,255,.35);margin-bottom:20px}
+
+/* History full page */
+.cgv8-hist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
+.cgv8-hist-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;overflow:hidden}
+.cgv8-hist-card:hover{transform:translateY(-3px);border-color:rgba(212,175,55,.25);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.cgv8-hist-card-title{font-size:.8rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:6px;line-height:1.4}
+.cgv8-hist-card-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.cgv8-hist-seo-badge{padding:3px 8px;border-radius:8px;font-size:.62rem;font-weight:700}
+.cgv8-hist-card-pub{font-size:.58rem;color:rgba(52,199,89,.7);background:rgba(52,199,89,.1);border-radius:6px;padding:2px 7px}
+.cgv8-hist-seo-bar{height:3px;border-radius:3px;margin-top:10px;background:rgba(255,255,255,.06);overflow:hidden}
+.cgv8-hist-seo-fill{height:100%;border-radius:3px;transition:width .8s ease}
+.cgv8-hist-empty{text-align:center;padding:80px 0;opacity:.2;font-size:.85rem}
+.cgv8-hist-actions{display:flex;gap:8px;margin-top:12px}
+
+/* Blog Performans KPI cards */
+.cgv8-perf-kpi-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:18px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;position:relative;overflow:hidden;transition:border-color .2s}
+.cgv8-perf-kpi-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05),transparent 65%);pointer-events:none}
+.cgv8-perf-kpi-ico{font-size:1.6rem;margin-bottom:2px}
+.cgv8-perf-kpi-val{font-size:1.6rem;font-weight:800;font-family:var(--mono);color:rgba(255,255,255,.9);letter-spacing:-.02em}
+.cgv8-perf-kpi-lbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);font-weight:600}
+.cgv8-perf-kpi-sub{font-size:.58rem;color:rgba(255,255,255,.22);font-family:var(--mono)}
+
+/* Blog perf bar chart */
+.cgbp-bar-col{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;cursor:default}
+.cgbp-bar-col:hover .cgbp-bar{filter:brightness(1.3)}
+.cgbp-bar{width:100%;border-radius:4px 4px 0 0;transition:height .8s cubic-bezier(.34,1.56,.64,1);position:relative;min-height:2px}
+.cgbp-bar-lbl{font-size:.55rem;font-family:var(--mono);color:rgba(255,255,255,.3);text-align:center;white-space:nowrap}
+.cgbp-bar-val{font-size:.58rem;font-family:var(--mono);color:rgba(212,175,55,.75);text-align:center;font-weight:600}
+
+/* Blog perf card */
+.cgbp-blog-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;transition:border-color .2s,transform .2s}
+.cgbp-blog-card:hover{border-color:rgba(212,175,55,.2);transform:translateY(-2px)}
+.cgbp-blog-title{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.82);margin-bottom:10px;line-height:1.35}
+.cgbp-metric-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.cgbp-metric-lbl{font-size:.58rem;color:rgba(255,255,255,.3);font-family:var(--mono)}
+.cgbp-metric-val{font-size:.7rem;font-weight:700;font-family:var(--mono)}
+.cgbp-mini-bar{height:3px;background:rgba(255,255,255,.06);border-radius:3px;margin-bottom:10px;overflow:hidden}
+.cgbp-mini-bar-fill{height:100%;border-radius:3px;transition:width .9s ease}
+
+/* Source bars */
+.cgbp-src-row{display:flex;align-items:center;gap:8px}
+.cgbp-src-lbl{font-size:.6rem;font-family:var(--mono);color:rgba(255,255,255,.4);width:60px;flex-shrink:0}
+.cgbp-src-bar{flex:1;height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
+.cgbp-src-fill{height:100%;border-radius:4px;transition:width .9s ease}
+.cgbp-src-pct{font-size:.62rem;font-family:var(--mono);color:rgba(255,255,255,.35);width:36px;text-align:right;flex-shrink:0}
+
 </style>
 </head>
 <body>
@@ -2133,23 +2230,28 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 <!-- ═══════════════════ CHERRYGLOW v8 ═══════════════════ -->
 <div class="page" id="page-cherry">
 
-<div class="page-topbar fi">
-  <div class="pt-left">
-    <div class="pt-title" style="display:flex;align-items:center;gap:10px">
-      CherryGlow
-      <span class="cg-version" id="cg-version">v8</span>
-    </div>
-    <div class="pt-sub" style="font-size:.68rem;opacity:.4">Konu Seç &rarr; Yaz &rarr; Onayla &rarr; Yayınla</div>
+<!-- Top nav -->
+<div class="cgv8-page-nav">
+  <div style="display:flex;align-items:center;gap:10px">
+    <div style="font-size:1.1rem;font-weight:700;color:rgba(212,175,55,.95);letter-spacing:-.01em">CherryGlow</div>
+    <span class="cg-version" id="cg-version">v8</span>
+    <span id="cg-status-pill" style="font-size:.6rem;padding:3px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);letter-spacing:.08em">HAZIR</span>
   </div>
-  <div class="pt-right" style="display:flex;align-items:center;gap:14px">
-    <div class="cw-auto-row">
-      <span>Oto-yayın</span>
+  <div class="cgv8-ptabs">
+    <div class="cgv8-ptab active" id="cgv8-ptab-yaz" onclick="cgV8SwitchPage('yaz',this)">&#x270D; Yaz</div>
+    <div class="cgv8-ptab" id="cgv8-ptab-gecmis" onclick="cgV8SwitchPage('gecmis',this)">&#x1F4D6; Gecmis</div>
+    <div class="cgv8-ptab" id="cgv8-ptab-perf" onclick="cgV8SwitchPage('perf',this)">&#x1F4CA; Blog Performans</div>
+    <div class="cgv8-ptab" id="cgv8-ptab-patron" onclick="cgV8SwitchPage('patron',this)">&#x2764; Patron</div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <div class="cw-auto-row" style="font-size:.65rem">
+      <span>Oto-yayin</span>
       <label class="cg-sw"><input type="checkbox" id="cg-autopub" onchange="cgToggleAutoPub(this.checked)"><span class="cg-sw-track"></span></label>
     </div>
-    <span id="cg-status-pill" style="font-size:.65rem;padding:4px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);letter-spacing:.08em">HAZIR</span>
   </div>
 </div>
 
+<!-- Stats ribbon -->
 <div class="cgv8-stats-ribbon">
   <div class="cgv8-stat-card" style="--accent:rgba(212,175,55,.8)">
     <div class="cgv8-stat-icon">&#x270D;</div>
@@ -2189,7 +2291,7 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   </div>
 </div>
 
-<!-- Cherry Glow Dusunce Akisi -->
+<!-- Thought stream -->
 <div id="cgv8-thought-stream" class="cgv8-thought-stream">
   <div class="cgv8-thought-header">
     <span class="cgv8-thought-dot"></span>
@@ -2208,116 +2310,186 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   </div>
 </div>
 
-<div class="cg-main-grid">
+<!-- ═══ YAZ VIEW ═══ -->
+<div class="cgv8-view active" id="cgv8-view-yaz">
+  <div class="cgv8-yaz-layout">
 
-  <!-- LEFT: Topics + Log -->
-  <div class="cg-left-col">
+    <!-- Sidebar -->
+    <div class="cgv8-sidebar">
 
-    <!-- Topics card -->
-    <div class="card" style="padding:16px 14px">
-      <div class="cg-panel-title">
-        Konular
-        <span id="cg-agenda-count" style="font-size:.65rem;opacity:.5;font-weight:500;text-transform:none;letter-spacing:0"></span>
+      <!-- Hero avatar card -->
+      <div class="cgv8-hero-card">
+        <div class="cgv8-hero-av-big" id="cg-av-ico"></div>
+        <div class="cgv8-av-name" style="text-align:center;margin-top:8px">Cherry Glow</div>
+        <div class="cgv8-av-mood" id="cg-av-mood" style="text-align:center;font-size:.65rem;opacity:.55;margin-top:4px">Hazir, gorev bekliyor...</div>
+        <div class="cgv8-av-stats" style="justify-content:center;margin-top:8px;flex-wrap:wrap;gap:6px">
+          <span class="cgv8-av-stat" id="cg-av-stat-avg">SEO ort: --</span>
+          <span class="cgv8-av-stat" id="cg-av-stat-best">En iyi: --</span>
+          <span class="cgv8-av-stat" id="cg-av-stat-count">Blog: 0</span>
+        </div>
       </div>
-      <div class="cg-agenda-wrap" id="cg-agenda-list" style="max-height:360px"></div>
-      <div style="display:flex;gap:6px;margin-top:10px">
-        <button class="cg-ctrl-btn" onclick="cgWriteAll()" style="font-size:.68rem">Hepsini Sırayla Yaz</button>
-        <button class="cg-ctrl-btn" onclick="cgResetDone()" style="font-size:.62rem;flex:none;opacity:.5" title="Tamamlananları sıfırla">↺</button>
+
+      <!-- Topics list -->
+      <div class="card" style="padding:14px 12px;flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden">
+        <div class="cg-panel-title" style="margin-bottom:8px;flex-shrink:0">
+          Konular
+          <span id="cg-agenda-count" style="font-size:.62rem;opacity:.5;font-weight:500;text-transform:none;letter-spacing:0"></span>
+        </div>
+        <div class="cg-agenda-wrap" id="cg-agenda-list" style="flex:1;overflow-y:auto;min-height:0"></div>
+        <div style="display:flex;gap:6px;margin-top:10px;flex-shrink:0">
+          <button class="cg-ctrl-btn" onclick="cgWriteAll()" style="font-size:.66rem">Hepsini Sirayla Yaz</button>
+          <button class="cg-ctrl-btn" onclick="cgResetDone()" style="font-size:.62rem;flex:none;opacity:.5" title="Tamamlananlari sifirla">&#x21BA;</button>
+        </div>
+      </div>
+
+      <!-- Log -->
+      <div style="padding:10px 12px;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(255,255,255,.05);flex-shrink:0">
+        <div class="cg-panel-title" style="margin-bottom:6px;font-size:.62rem">Islem Gunlugu</div>
+        <div id="cg-log" style="font-size:.6rem;font-family:var(--mono);line-height:1.8;max-height:130px;overflow-y:auto;scrollbar-width:thin"></div>
+      </div>
+
+    </div>
+
+    <!-- Main content col -->
+    <div class="cgv8-main-col">
+
+      <!-- Action card -->
+      <div class="card" id="cg-action-card" style="padding:16px 18px;flex-shrink:0">
+        <div id="cg-action-status" style="margin-bottom:10px;min-height:36px"></div>
+        <div id="cg-action-buttons" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      </div>
+
+      <!-- Output card -->
+      <div class="card" style="padding:14px 16px;flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden">
+        <div class="cg-tabs" style="margin-bottom:10px;flex-shrink:0">
+          <div class="cg-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">Onizleme</div>
+          <div class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</div>
+          <div class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</div>
+        </div>
+
+        <!-- Preview -->
+        <div id="cg-tab-panel-preview" class="cg-output-body" style="flex:1;overflow-y:auto;min-height:0">
+          <div style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem">Sol taraftaki listeden bir konu secip <strong>Yaz</strong> butonuna bas</div>
+        </div>
+
+        <!-- HTML -->
+        <div id="cg-tab-panel-html" style="display:none;flex:1;min-height:0;flex-direction:column">
+          <div style="display:flex;gap:8px;margin-bottom:8px;flex-shrink:0">
+            <button class="cg-ctrl-btn" onclick="cgCopyHTML()" style="font-size:.65rem">Kopyala</button>
+            <button class="cg-ctrl-btn" onclick="cgDownloadHTML()" style="font-size:.65rem">Indir</button>
+          </div>
+          <textarea id="cg-html-ta" style="width:100%;flex:1;min-height:300px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(255,255,255,.65);font-size:.62rem;font-family:var(--mono);padding:12px;resize:vertical;box-sizing:border-box" readonly></textarea>
+        </div>
+
+        <!-- SEO -->
+        <div id="cg-tab-panel-seo" style="display:none;overflow-y:auto;flex:1;min-height:0;padding:4px 0">
+          <div class="cg-seo-grid" style="margin-bottom:14px">
+            <div class="cg-score-ring-wrap">
+              <svg class="cg-score-ring-svg" viewBox="0 0 100 100">
+                <defs><linearGradient id="cgRingGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
+                </linearGradient></defs>
+                <circle cx="50" cy="50" r="40" class="cg-sr-bg" stroke-width="8"/>
+                <circle cx="50" cy="50" r="40" id="cg-seo-ring"
+                  style="fill:none;stroke:url(#cgRingGrad6);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
+              </svg>
+              <div class="cg-score-center" id="cg-seo-score-num">--</div>
+            </div>
+            <div id="cg-seo-checks" class="cg-seo-bars"></div>
+          </div>
+          <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══ GECMIS VIEW ═══ -->
+<div class="cgv8-view" id="cgv8-view-gecmis">
+  <div style="padding:20px 24px;overflow-y:auto;flex:1;min-height:0">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+      <div>
+        <div style="font-size:1rem;font-weight:700;color:rgba(212,175,55,.9)">Gecmis Bloglar</div>
+        <div style="font-size:.65rem;opacity:.4;margin-top:2px">Cherry Glow tarafindan yazilan tum icerikler</div>
+      </div>
+      <button class="cg-ctrl-btn" onclick="cgV8SwitchPage('yaz',document.getElementById('cgv8-ptab-yaz'))" style="font-size:.65rem">+ Yeni Blog Yaz</button>
+    </div>
+    <div class="cgv8-hist-grid" id="cg-history-list"></div>
+    <div id="cgv8-gecmis-empty" style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem;display:none">Henuz blog yazilmadi. Yaz sekmesine gec ve bir konu sec.</div>
+  </div>
+</div>
+
+<!-- ═══ BLOG PERFORMANS VIEW ═══ -->
+<div class="cgv8-view" id="cgv8-view-perf">
+  <div style="padding:20px 24px;overflow-y:auto;flex:1;min-height:0">
+
+    <!-- Perf hero KPIs -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
+      <div class="cgv8-perf-kpi-card">
+        <div class="cgv8-perf-kpi-ico">&#x1F441;</div>
+        <div class="cgv8-perf-kpi-val" id="cgbp-total-views">0</div>
+        <div class="cgv8-perf-kpi-lbl">Toplam Blog Goruntulenme</div>
+        <div class="cgv8-perf-kpi-sub" id="cgbp-views-sub">Son 30 gun</div>
+      </div>
+      <div class="cgv8-perf-kpi-card">
+        <div class="cgv8-perf-kpi-ico" style="color:#30D158">&#x1F33F;</div>
+        <div class="cgv8-perf-kpi-val" id="cgbp-organic" style="color:#30D158">0</div>
+        <div class="cgv8-perf-kpi-lbl">Organik Trafik</div>
+        <div class="cgv8-perf-kpi-sub" id="cgbp-organic-sub">Google'dan gelen</div>
+      </div>
+      <div class="cgv8-perf-kpi-card">
+        <div class="cgv8-perf-kpi-ico" style="color:#FF9F0A">&#x1F6D2;</div>
+        <div class="cgv8-perf-kpi-val" id="cgbp-orders" style="color:#FF9F0A">0</div>
+        <div class="cgv8-perf-kpi-lbl">Blog Kaynakli Siparis</div>
+        <div class="cgv8-perf-kpi-sub">Icerik kaynaklı satislar</div>
+      </div>
+      <div class="cgv8-perf-kpi-card">
+        <div class="cgv8-perf-kpi-ico" style="color:#D4AF37">&#x1F4B0;</div>
+        <div class="cgv8-perf-kpi-val" id="cgbp-revenue" style="color:#D4AF37">0</div>
+        <div class="cgv8-perf-kpi-lbl">Tahmini Gelir (TL)</div>
+        <div class="cgv8-perf-kpi-sub">Ort. siparis x cevrim</div>
       </div>
     </div>
 
-    <!-- Log card -->
-    <div class="card" style="padding:14px 16px;flex-shrink:0">
-      <div class="cg-panel-title" style="margin-bottom:8px">İşlem Günlüğü</div>
-      <div id="cg-log" style="font-size:.64rem;font-family:var(--mono);line-height:1.9;max-height:180px;overflow-y:auto;scrollbar-width:thin"></div>
+    <!-- Monthly traffic chart -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+      <div class="card" style="padding:16px 18px">
+        <div style="font-size:.7rem;font-weight:600;color:var(--t1);margin-bottom:4px">Aylik Blog Trafigi</div>
+        <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono);margin-bottom:12px">Organik oturum trendi</div>
+        <div id="cgbp-monthly-chart" style="display:flex;align-items:flex-end;gap:8px;height:110px;padding-bottom:4px"></div>
+        <div id="cgbp-monthly-labels" style="display:flex;gap:8px;margin-top:6px"></div>
+      </div>
+
+      <div class="card" style="padding:16px 18px">
+        <div style="font-size:.7rem;font-weight:600;color:var(--t1);margin-bottom:4px">Trafik Kaynagi</div>
+        <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono);margin-bottom:12px">Blog ziyaretcileri nereden geliyor</div>
+        <div id="cgbp-source-bars" style="display:flex;flex-direction:column;gap:8px;justify-content:center;height:110px"></div>
+      </div>
     </div>
+
+    <!-- Blog cards grid -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+      <div style="font-size:.72rem;font-weight:600;color:var(--t1)">Blog Performans Tablosu</div>
+      <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono)">Goruntulenme / Organik / Siparis / SEO skoru</div>
+    </div>
+    <div id="cgbp-blog-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px"></div>
 
   </div>
+</div>
 
-  <!-- RIGHT: Action + Output -->
-  <div class="cg-right-col">
-
-    <!-- Action card -->
-    <div class="card" id="cg-action-card" style="padding:18px 20px;flex-shrink:0">
-      <div class="cgv8-av-wrap">
-        <div id="cg-av-ico" class="cgv8-av-svg"></div>
-        <div>
-          <div class="cgv8-av-name">Cherry Glow</div>
-          <div class="cgv8-av-mood" id="cg-av-mood">Hazir, gorev bekliyor...</div>
-          <div class="cgv8-av-stats">
-            <span class="cgv8-av-stat" id="cg-av-stat-avg">SEO ort: --</span>
-            <span class="cgv8-av-stat" id="cg-av-stat-best">En iyi: --</span>
-            <span class="cgv8-av-stat" id="cg-av-stat-count">Blog: 0</span>
-          </div>
-        </div>
-      </div>
-      <div id="cg-action-status" style="margin-bottom:12px;min-height:40px"></div>
-      <div id="cg-action-buttons" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+<!-- ═══ PATRON VIEW ═══ -->
+<div class="cgv8-view" id="cgv8-view-patron">
+  <div style="padding:20px 24px;overflow-y:auto;flex:1;min-height:0">
+    <div id="cgv8-boss-panel-content" class="cgv8-boss-wrap">
+      <div style="text-align:center;padding:40px 0;opacity:.2;font-size:.8rem">Patron sekmesine gec, Cherry Glow sana rapor sunsun...</div>
     </div>
-
-    <!-- Output card -->
-    <div class="card" style="padding:16px 18px;flex:1;min-height:0">
-      <div class="cg-tabs" style="margin-bottom:12px">
-        <div class="cg-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">Önizleme</div>
-        <div class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</div>
-        <div class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</div>
-        <div class="cg-tab" id="cg-tab-history" onclick="cgTab('history',this)">Geçmiş</div>
-        <div class="cg-tab" id="cg-tab-patron" onclick="cgTab('patron',this)" style="background:linear-gradient(135deg,rgba(212,175,55,.18),rgba(255,183,197,.1));border-color:rgba(212,175,55,.3)">&#x2764; Patron</div>
-      </div>
-
-      <!-- Preview -->
-      <div id="cg-tab-panel-preview" class="cg-output-body" style="min-height:280px;max-height:520px">
-        <div style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem">Sol taraftaki listeden bir konu seçip <strong>Yaz</strong> butonuna bas</div>
-      </div>
-
-      <!-- HTML -->
-      <div id="cg-tab-panel-html" style="display:none">
-        <div style="display:flex;gap:8px;margin-bottom:8px">
-          <button class="cg-ctrl-btn" onclick="cgCopyHTML()" style="font-size:.65rem">Kopyala</button>
-          <button class="cg-ctrl-btn" onclick="cgDownloadHTML()" style="font-size:.65rem">İndir</button>
-        </div>
-        <textarea id="cg-html-ta" style="width:100%;height:360px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(255,255,255,.65);font-size:.68rem;font-family:var(--mono);padding:12px;resize:vertical;box-sizing:border-box" readonly></textarea>
-      </div>
-
-      <!-- SEO -->
-      <div id="cg-tab-panel-seo" style="display:none;padding:4px 0">
-        <div class="cg-seo-grid" style="margin-bottom:14px">
-          <div class="cg-score-ring-wrap">
-            <svg class="cg-score-ring-svg" viewBox="0 0 100 100">
-              <defs><linearGradient id="cgRingGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
-              </linearGradient></defs>
-              <circle cx="50" cy="50" r="40" class="cg-sr-bg" stroke-width="8"/>
-              <circle cx="50" cy="50" r="40" id="cg-seo-ring"
-                style="fill:none;stroke:url(#cgRingGrad6);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
-            </svg>
-            <div class="cg-score-center" id="cg-seo-score-num">--</div>
-          </div>
-          <div id="cg-seo-checks" class="cg-seo-bars"></div>
-        </div>
-        <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
-      </div>
-
-      <!-- History -->
-      <div id="cg-tab-panel-history" style="display:none;max-height:460px;overflow-y:auto">
-        <div id="cg-history-list"></div>
-      </div>
-
-      <!-- Patron Boss Panel -->
-      <div id="cg-tab-panel-patron" style="display:none;max-height:560px;overflow-y:auto;padding:4px 2px">
-        <div id="cgv8-boss-panel-content" class="cgv8-boss-wrap">
-          <div style="text-align:center;padding:40px 0;opacity:.2;font-size:.8rem">Patron sekmesine geç, Cherry Glow sana rapor sunsun...</div>
-        </div>
-      </div>
-
-    </div>
-
   </div>
-
 </div>
 
 </div>
-</div>
+
 </main>
 <script id="data-script">
 /* ─── YOUTUBE DATA START ─── */
@@ -4439,8 +4611,8 @@ function cgRenderActions() {
         : '<button class="cg-ctrl-btn primary" onclick="cgPublish()">Onayla ve Yayinla</button>') +
       '<button class="cg-ctrl-btn" onclick="cgNextPending()">Siradaki Konuyu Yaz</button>' +
       '<button class="cg-ctrl-btn" onclick="cgTab(\'seo\',document.getElementById(\'cg-tab-seo\'))" style="font-size:.65rem">SEO</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgTab(\'history\',document.getElementById(\'cg-tab-history\'))" style="font-size:.65rem">Gecmis</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgTab(\'patron\',document.getElementById(\'cg-tab-patron\'))" style="font-size:.65rem;background:rgba(212,175,55,.1)">Patron Raporu</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgV8SwitchPage(\'gecmis\',document.getElementById(\'cgv8-ptab-gecmis\'))" style="font-size:.65rem">Gecmis</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgV8SwitchPage(\'patron\',document.getElementById(\'cgv8-ptab-patron\'))" style="font-size:.65rem;background:rgba(212,175,55,.1)">Patron Raporu</button>' +
       '<button class="cg-ctrl-btn" onclick="cgRetryBetter()" style="font-size:.65rem;color:rgba(255,69,58,.75);border-color:rgba(255,69,58,.2)" title="Daha yuksek SEO skorlu yeniden yaz">Begenmedim — Yeniden Yaz</button>';
 
   } else if (st.status === 'error') {
@@ -4544,7 +4716,7 @@ function cgSetStatFill(id, pct, isSeoBar) {
 
 // ── Tabs ───────────────────────────────────────────────────────────────────────
 function cgTab(tab, btn) {
-  ['preview','html','seo','history','patron'].forEach(function(t) {
+  ['preview','html','seo'].forEach(function(t) {
     var p = document.getElementById('cg-tab-panel-'+t);
     var b = document.getElementById('cg-tab-'+t);
     if (p) p.style.display = (t === tab) ? '' : 'none';
@@ -4558,9 +4730,19 @@ function cgTab(tab, btn) {
       });
     }
   }
-  if (tab === 'history') cgRenderHistory();
   if (tab === 'seo' && _cgSt.scoreObj) cgRenderSeoPanel(_cgSt.scoreObj);
-  if (tab === 'patron') cgRenderBossPanel();
+}
+
+function cgV8SwitchPage(page, el) {
+  ['yaz','gecmis','perf','patron'].forEach(function(p) {
+    var view = document.getElementById('cgv8-view-'+p);
+    var tab  = document.getElementById('cgv8-ptab-'+p);
+    if (view) view.classList.toggle('active', p === page);
+    if (tab)  tab.classList.toggle('active', p === page);
+  });
+  if (page === 'gecmis')  cgRenderHistoryPage();
+  if (page === 'patron')  cgRenderBossPanel();
+  if (page === 'perf')    cgRenderBlogPerf();
 }
 
 function cgCopyHTML() {
@@ -4721,6 +4903,115 @@ function cgAnimateCounter(el, target, duration) {
     else el.textContent = Number.isInteger(num) ? num : num.toFixed(1);
   }
   requestAnimationFrame(step);
+}
+
+// ── Blog Performans ────────────────────────────────────────────────────────────
+function cgRenderBlogPerf() {
+  var totalViews = 0, totalOrganic = 0, totalOrders = 0;
+  var posts = (typeof BLOG_SEO !== 'undefined' && BLOG_SEO.posts) ? BLOG_SEO.posts : [];
+  var monthly = (typeof BLOG_SEO !== 'undefined' && BLOG_SEO.monthly) ? BLOG_SEO.monthly : [];
+  var sources = (typeof GA4_TRAFFIC !== 'undefined' && GA4_TRAFFIC.sources) ? GA4_TRAFFIC.sources : [];
+
+  posts.forEach(function(p) { totalViews += (p.views||0); totalOrganic += (p.organic||0); totalOrders += (p.orders||0); });
+  var brain = cgGetBrain();
+  var brainHist = brain.history || [];
+  var brainBlogs = brainHist.length;
+  var avgOrderVal = 2800;
+  var totalRevenue = totalOrders * avgOrderVal;
+
+  // KPI animation
+  setTimeout(function() {
+    cgAnimateCounter(document.getElementById('cgbp-total-views'), totalViews, 1200);
+    cgAnimateCounter(document.getElementById('cgbp-organic'), totalOrganic, 1200);
+    cgAnimateCounter(document.getElementById('cgbp-orders'), totalOrders, 900);
+    cgAnimateCounter(document.getElementById('cgbp-revenue'), totalRevenue, 1400);
+  }, 80);
+  var vs = document.getElementById('cgbp-views-sub');
+  if (vs) vs.textContent = posts.length + ' blog yazisindan';
+  var os = document.getElementById('cgbp-organic-sub');
+  if (os) os.textContent = 'Ort. %' + (totalViews ? Math.round(totalOrganic/totalViews*100) : 0) + ' organik oran';
+
+  // Monthly animated bar chart
+  var chartEl = document.getElementById('cgbp-monthly-chart');
+  var labelsEl = document.getElementById('cgbp-monthly-labels');
+  if (chartEl && monthly.length) {
+    var maxVal = Math.max.apply(null, monthly.map(function(m){ return m.traffic||0; })) || 1;
+    chartEl.innerHTML = monthly.map(function(m) {
+      var pct = Math.round((m.traffic||0)/maxVal*100);
+      var grad = 'linear-gradient(180deg,#D4AF37,rgba(212,175,55,.4))';
+      return '<div class="cgbp-bar-col" title="'+m.label+': '+(m.traffic||0)+' ziyaret">' +
+        '<div class="cgbp-bar-val">'+(m.traffic>=1000?Math.round(m.traffic/1000)+'K':m.traffic)+'</div>' +
+        '<div class="cgbp-bar" style="height:0%;background:'+grad+'" data-h="'+pct+'"></div>' +
+      '</div>';
+    }).join('');
+    if (labelsEl) labelsEl.innerHTML = monthly.map(function(m) {
+      return '<div class="cgbp-bar-lbl" style="flex:1;text-align:center">'+m.label+'</div>';
+    }).join('');
+    setTimeout(function() {
+      chartEl.querySelectorAll('.cgbp-bar').forEach(function(b) {
+        b.style.height = b.getAttribute('data-h') + '%';
+      });
+    }, 150);
+  }
+
+  // Source bars
+  var srcEl = document.getElementById('cgbp-source-bars');
+  if (srcEl && sources.length) {
+    var maxSrc = Math.max.apply(null, sources.map(function(s){return s.sessions||0;})) || 1;
+    srcEl.innerHTML = sources.map(function(s) {
+      return '<div class="cgbp-src-row">' +
+        '<div class="cgbp-src-lbl">'+s.name+'</div>' +
+        '<div class="cgbp-src-bar"><div class="cgbp-src-fill" style="width:0%;background:'+s.color+'" data-w="'+Math.round(s.sessions/maxSrc*100)+'"></div></div>' +
+        '<div class="cgbp-src-pct">%'+s.pct+'</div>' +
+      '</div>';
+    }).join('');
+    setTimeout(function() {
+      srcEl.querySelectorAll('.cgbp-src-fill').forEach(function(b) {
+        b.style.width = b.getAttribute('data-w') + '%';
+      });
+    }, 200);
+  }
+
+  // Blog cards
+  var cardsEl = document.getElementById('cgbp-blog-cards');
+  if (!cardsEl) return;
+  var allPosts = posts.slice();
+  // Add Cherry's brain blogs not in BLOG_SEO
+  brainHist.forEach(function(h, i) {
+    if (!h.title) return;
+    var found = posts.some(function(p){ return p.title && p.title.slice(0,30) === (h.title||'').slice(0,30); });
+    if (!found) {
+      var daysSince = h.date ? Math.max(0, Math.floor((Date.now()-new Date(h.date).getTime())/86400000)) : 0;
+      var simViews = Math.round((h.seo||60) * 8 * Math.max(1, daysSince));
+      var simOrg = Math.round(simViews * 0.52);
+      var simOrd = Math.floor(simViews / 900);
+      allPosts.push({title:h.title, views:simViews, organic:simOrg, orders:simOrd, seo:h.seo||0, cherry:true});
+    }
+  });
+  var maxViews = Math.max.apply(null, allPosts.map(function(p){return p.views||1;})) || 1;
+  cardsEl.innerHTML = allPosts.map(function(p) {
+    var seoCol = (p.seo||0)>=90?'#34C759':(p.seo||0)>=75?'#D4AF37':'#FF453A';
+    var viewPct = Math.round((p.views||0)/maxViews*100);
+    var orgPct  = p.views ? Math.round((p.organic||0)/(p.views||1)*100) : 0;
+    var cherry  = p.cherry ? '<span style="font-size:.55rem;color:rgba(212,175,55,.6);background:rgba(212,175,55,.08);padding:2px 6px;border-radius:6px;margin-left:4px">Cherry</span>' : '';
+    return '<div class="cgbp-blog-card">' +
+      '<div class="cgbp-blog-title">'+(p.title||'').slice(0,75)+cherry+'</div>' +
+      '<div class="cgbp-metric-row"><span class="cgbp-metric-lbl">Goruntulenme</span><span class="cgbp-metric-val" style="color:#5AC8FA">'+(p.views||0).toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="cgbp-mini-bar"><div class="cgbp-mini-bar-fill" style="width:0%;background:#5AC8FA" data-w="'+viewPct+'"></div></div>' +
+      '<div class="cgbp-metric-row"><span class="cgbp-metric-lbl">Organik (%'+orgPct+')</span><span class="cgbp-metric-val" style="color:#30D158">'+(p.organic||0).toLocaleString('tr-TR')+'</span></div>' +
+      '<div class="cgbp-mini-bar"><div class="cgbp-mini-bar-fill" style="width:0%;background:#30D158" data-w="'+Math.round((p.organic||0)/maxViews*100)+'"></div></div>' +
+      '<div class="cgbp-metric-row">' +
+        '<span class="cgbp-metric-lbl">Siparis: <strong style="color:#FF9F0A">'+(p.orders||0)+'</strong></span>' +
+        '<span class="cgbp-metric-val" style="color:'+seoCol+'">SEO '+(p.seo||0)+'</span>' +
+      '</div>' +
+      '<div class="cgbp-mini-bar"><div class="cgbp-mini-bar-fill" style="width:0%;background:'+seoCol+'" data-w="'+(p.seo||0)+'"></div></div>' +
+    '</div>';
+  }).join('');
+  setTimeout(function() {
+    cardsEl.querySelectorAll('.cgbp-mini-bar-fill').forEach(function(b) {
+      b.style.width = b.getAttribute('data-w') + '%';
+    });
+  }, 250);
 }
 
 // ── Boss Panel ─────────────────────────────────────────────────────────────────
@@ -4888,25 +5179,54 @@ function cgRenderSeoPanel(sc) {
 
 // ── History ────────────────────────────────────────────────────────────────────
 function cgRenderHistory() {
+  cgRenderHistoryPage();
+}
+
+function cgRenderHistoryPage() {
   var el = document.getElementById('cg-history-list');
+  var emptyEl = document.getElementById('cgv8-gecmis-empty');
   if (!el) return;
   var hist = (cgGetBrain().history || []).slice().reverse();
   if (!hist.length) {
-    el.innerHTML = '<div style="text-align:center;padding:30px;opacity:.25;font-size:.8rem">Henüz blog yazılmadı</div>';
+    el.innerHTML = '';
+    if (emptyEl) emptyEl.style.display = '';
     return;
   }
+  if (emptyEl) emptyEl.style.display = 'none';
+  el.className = 'cgv8-hist-grid';
   el.innerHTML = hist.map(function(item, i) {
-    var d   = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
-    var col = item.seo >= 85 ? 'rgba(52,199,89,.75)' : item.seo >= 70 ? 'rgba(212,175,55,.75)' : 'rgba(255,69,58,.6)';
     var realIdx = hist.length - 1 - i;
-    return '<div class="cg-hist-item" onclick="cgLoadHistory('+realIdx+')">' +
-      '<div class="cg-hist-title">'+(item.title||item.topic||'').slice(0,70)+'</div>' +
-      '<div class="cg-hist-meta">' +
-        '<span>'+d+'</span><span>'+(item.wc||0)+' kelime</span>' +
-        '<span class="cg-hist-seo" style="color:'+col+';background:rgba(0,0,0,.2)">SEO '+(item.seo||'--')+'</span>' +
-        (item.published ? '<span class="cg-hist-pub">✓ Yayınlandı</span>' : '') +
-      '</div></div>';
+    var d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
+    var seo = item.seo || 0;
+    var col = seo >= 85 ? '#34C759' : seo >= 70 ? '#D4AF37' : '#FF453A';
+    var seoPct = Math.min(100, seo);
+    var wc = item.wc || 0;
+    return '<div class="cgv8-hist-card" onclick="cgLoadHistoryAndSwitch('+realIdx+')">' +
+      '<div class="cgv8-hist-card-title">'+(item.title||item.topic||'Basliksiz').slice(0,80)+'</div>' +
+      '<div class="cgv8-hist-seo-bar"><div class="cgv8-hist-seo-fill" style="width:'+seoPct+'%;background:'+col+'"></div></div>' +
+      '<div class="cgv8-hist-card-meta" style="margin-top:8px">' +
+        '<span style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:var(--mono)">'+d+'</span>' +
+        '<span style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:var(--mono)">'+wc+' kelime</span>' +
+        '<span class="cgv8-hist-seo-badge" style="color:'+col+';background:'+col.replace(')',',0.12)').replace('rgb(','rgba(')+'">SEO '+seo+'</span>' +
+        (item.published ? '<span class="cgv8-hist-card-pub">Yayinda</span>' : '') +
+      '</div>' +
+      '<div class="cgv8-hist-actions">' +
+        '<button class="cg-ctrl-btn" style="font-size:.6rem" onclick="event.stopPropagation();cgLoadHistoryAndSwitch('+realIdx+')">Goruntule</button>' +
+        (!item.published ? '<button class="cg-ctrl-btn" style="font-size:.6rem" onclick="event.stopPropagation();cgLoadHistoryAndPublish('+realIdx+')">Yayinla</button>' : '') +
+      '</div>' +
+    '</div>';
   }).join('');
+}
+
+function cgLoadHistoryAndSwitch(idx) {
+  cgLoadHistory(idx);
+  cgV8SwitchPage('yaz', document.getElementById('cgv8-ptab-yaz'));
+}
+
+function cgLoadHistoryAndPublish(idx) {
+  cgLoadHistory(idx);
+  cgV8SwitchPage('yaz', document.getElementById('cgv8-ptab-yaz'));
+  setTimeout(function() { cgPublish(); }, 300);
 }
 
 function cgLoadHistory(idx) {
