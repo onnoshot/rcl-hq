@@ -792,14 +792,14 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
 /* ====== CherryGlow v8 AI Assistant ====== */
-#page-cherry{padding:0 !important;display:none;flex-direction:column;height:100vh;overflow:hidden}
+#page-cherry{padding:0 !important;display:none;flex-direction:column;height:calc(100vh - 0px);overflow:hidden;box-sizing:border-box}
 #page-cherry.active{display:flex}
 .cgv8-page-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(0,0,0,.45);border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;backdrop-filter:blur(12px)}
 .cgv8-ptabs{display:flex;gap:3px;background:rgba(255,255,255,.04);border-radius:10px;padding:3px}
 .cgv8-ptab{padding:6px 16px;border-radius:8px;font-size:.7rem;font-weight:600;letter-spacing:.03em;cursor:pointer;color:rgba(255,255,255,.4);transition:all .2s;border:1px solid transparent}
 .cgv8-ptab:hover{color:rgba(255,255,255,.7)}
 .cgv8-ptab.active{background:linear-gradient(135deg,rgba(212,175,55,.22),rgba(255,183,197,.12));color:rgba(212,175,55,.95);border-color:rgba(212,175,55,.28)}
-.cgv8-stats-ribbon{display:flex;gap:8px;padding:10px 16px;flex-shrink:0;overflow-x:auto;scrollbar-width:none}
+.cgv8-stats-ribbon{display:flex;gap:8px;padding:10px 16px;flex-shrink:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .cgv8-stat-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;min-width:140px;flex:1;position:relative;overflow:hidden}
 .cgv8-stat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,var(--accent,rgba(212,175,55,.07)),transparent 60%);pointer-events:none}
 .cgv8-stat-ico{font-size:1.2rem;flex-shrink:0}
@@ -808,11 +808,11 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 .cgv8-stat-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:1px}
 .cgv8-seo-meter{width:36px;height:36px;flex-shrink:0}
 .cgv8-seo-meter svg{width:36px;height:36px}
-.cgv8-view{display:none;flex:1;min-height:0;overflow:hidden}
-.cgv8-view.active{display:flex;flex-direction:column}
-.cgv8-yaz-layout{display:grid;grid-template-columns:256px 1fr;flex:1;min-height:0;overflow:hidden}
-.cgv8-sidebar{display:flex;flex-direction:column;gap:8px;padding:12px 10px;overflow-y:auto;background:rgba(0,0,0,.18);border-right:1px solid rgba(255,255,255,.05);scrollbar-width:thin}
-.cgv8-main-col{display:flex;flex-direction:column;overflow:hidden;flex:1;min-width:0}
+.cgv8-view{display:none;flex:1;min-height:0;overflow:hidden;height:0}
+.cgv8-view.active{display:flex;flex-direction:column;flex:1;min-height:0}
+.cgv8-yaz-layout{display:grid;grid-template-columns:256px 1fr;flex:1;min-height:0;overflow:hidden;height:100%;grid-template-rows:1fr}
+.cgv8-sidebar{display:flex;flex-direction:column;gap:8px;padding:12px 10px;overflow-y:auto;background:rgba(0,0,0,.18);border-right:1px solid rgba(255,255,255,.05);scrollbar-width:thin;min-height:0;height:100%}
+.cgv8-main-col{display:flex;flex-direction:column;overflow:hidden;flex:1;min-width:0;min-height:0}
 .cgv8-hero-card{background:linear-gradient(160deg,rgba(212,175,55,.08),rgba(255,183,197,.04));border:1px solid rgba(212,175,55,.18);border-radius:14px;padding:14px 12px;text-align:center;position:relative;overflow:hidden;flex-shrink:0}
 .cgv8-hero-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.12),transparent 65%);pointer-events:none}
 .cgv8-hero-av{width:72px;height:72px;margin:0 auto 8px;position:relative;z-index:1;animation:cgv8-float 4s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(212,175,55,.45))}
@@ -2328,7 +2328,7 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
   </div>
   <div style="display:flex;align-items:center;gap:10px">
     <span id="cgv8-status" style="font-size:.62rem;padding:3px 12px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);letter-spacing:.06em">HAZIR</span>
-    <span style="font-size:.62rem;color:rgba(212,175,55,.5);font-family:var(--mono)">v8</span>
+    <span style="font-size:.62rem;color:rgba(212,175,55,.5);font-family:var(--mono)" id="cg-version">v8</span>
   </div>
 </div>
 
@@ -2349,7 +2349,12 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(255,183,197,.07)">
-    <div class="cgv8-stat-ico">&#127919;</div>
+    <div class="cgv8-seo-meter">
+      <svg width="36" height="36" viewBox="0 0 36 36">
+        <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="4"/>
+        <circle cx="18" cy="18" r="14" fill="none" stroke="rgba(212,175,55,.6)" stroke-width="4" stroke-dasharray="88" stroke-dashoffset="88" id="cgv8-seo-arc" style="transform:rotate(-90deg);transform-origin:18px 18px;transition:stroke-dashoffset 1s ease"/>
+      </svg>
+    </div>
     <div class="cgv8-stat-info">
       <div class="cgv8-stat-val" id="cg-stat-seo">--</div>
       <div class="cgv8-stat-lbl">Ort. SEO</div>
@@ -2386,12 +2391,12 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
     <div class="cgv8-sidebar">
       <!-- Avatar Hero Card -->
       <div class="cgv8-hero-card">
-        <div class="cgv8-hero-av" id="cgv8-av-wrap"></div>
+        <div class="cgv8-hero-av" id="cgv8-av-wrap"><div id="cg-av-ico" style="width:72px;height:72px"></div></div>
         <div class="cgv8-hero-name">Cherry Glow</div>
-        <div class="cgv8-hero-mood" id="cgv8-mood">Hazir ve enerjik</div>
+        <div class="cgv8-hero-mood" id="cgv8-mood"><span id="cg-av-mood">Hazir ve enerjik</span></div>
         <div class="cgv8-hero-stats">
-          <span class="cgv8-hero-stat" id="cgv8-hs-blogs">0 blog</span>
-          <span class="cgv8-hero-stat" id="cgv8-hs-seo">SEO --</span>
+          <span class="cgv8-hero-stat"><span id="cg-av-stat-count">0</span> blog</span>
+          <span class="cgv8-hero-stat"><span id="cg-av-stat-avg">SEO --</span></span>
         </div>
       </div>
 
@@ -4671,7 +4676,7 @@ function cgUpdateAgendaStage(idx, stage) {
 function cgUpdateStats() {
   var brain  = cgGetBrain();
   var hist   = brain.history || [];
-  var scores = brain.seo_scores || [];
+  var scores = (brain.seo_scores || []).filter(function(s){ return typeof s==='number'&&!isNaN(s); });
   var pub    = hist.filter(function(h) { return h.published; }).length;
   var today  = (brain.topics_covered || []).filter(function(t) { return t.date === new Date().toDateString(); }).length;
   var tw     = hist.reduce(function(a, h) { return a + (h.wc || 0); }, 0);
@@ -5967,6 +5972,75 @@ function finAnimateKPIs() {
       if (page === 'inventory') setTimeout(function() { invAddMarginColumn(); invUpdateMarginCard(); }, 400);
     };
   }
+})();
+
+</script>
+
+<script>
+/* ======== CherryGlow Layout & Init Fix ======== */
+(function() {
+  // Ensure Cherry page layout works correctly
+  function cgForceLayout() {
+    var page = document.getElementById('page-cherry');
+    if (!page || !page.classList.contains('active')) return;
+    // Force flex layout
+    page.style.cssText = 'display:flex!important;flex-direction:column;height:calc(100vh);overflow:hidden;padding:0!important';
+    // Force view height
+    var view = document.getElementById('cgv8-view-yaz');
+    if (view && view.classList.contains('active')) {
+      view.style.cssText = 'display:flex!important;flex-direction:column;flex:1;min-height:0;overflow:hidden';
+    }
+    // Force layout grid
+    var layout = view && view.querySelector('.cgv8-yaz-layout');
+    if (layout) {
+      layout.style.cssText = 'display:grid;grid-template-columns:256px 1fr;grid-template-rows:1fr;height:100%;overflow:hidden;flex:1';
+    }
+    // Force main col
+    var mainCol = layout && layout.querySelector('.cgv8-main-col');
+    if (mainCol) {
+      mainCol.style.cssText = 'display:flex;flex-direction:column;overflow:hidden;min-height:0;height:100%';
+    }
+    // Force chat area
+    var chatArea = document.getElementById('cgv8-chat-area');
+    if (chatArea) {
+      chatArea.style.cssText = 'flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;min-height:0';
+    }
+  }
+
+  // Override navigate to ensure Cherry layout is applied
+  var _prevNav = window.navigate;
+  if (_prevNav) {
+    window.navigate = function(page, el) {
+      _prevNav(page, el);
+      if (page === 'cherry') {
+        requestAnimationFrame(function() {
+          cgForceLayout();
+          // Re-init if chat area is empty
+          var area = document.getElementById('cgv8-chat-area');
+          if (area && !area.dataset.init) {
+            if (typeof renderCherryPage === 'function') renderCherryPage();
+          } else if (area && !area.children.length) {
+            // Area exists but no messages - add greeting
+            area.dataset.init = '';
+            if (typeof renderCherryPage === 'function') renderCherryPage();
+          }
+          // Ensure avatar is rendered
+          var avIco = document.getElementById('cg-av-ico');
+          if (avIco && !avIco.innerHTML.trim() && typeof cgGetAvatarSVG === 'function') {
+            avIco.innerHTML = cgGetAvatarSVG('idle');
+          }
+        });
+      }
+    };
+  }
+
+  // Auto-apply if already on cherry page
+  window.addEventListener('load', function() {
+    var hash = window.location.hash.replace('#','');
+    if (hash === 'cherry') {
+      setTimeout(cgForceLayout, 300);
+    }
+  });
 })();
 
 </script>
