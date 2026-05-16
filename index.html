@@ -2147,59 +2147,59 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 <!-- Page Nav -->
 <div class="cgv8-page-nav">
   <div class="cgv8-ptabs">
-    <div class="cgv8-ptab active" onclick="cgV8Page('yaz',this)">✍️ Yaz</div>
-    <div class="cgv8-ptab" onclick="cgV8Page('gecmis',this)">📚 Geçmiş</div>
-    <div class="cgv8-ptab" onclick="cgV8Page('perf',this)">📊 Blog Performans</div>
-    <div class="cgv8-ptab" onclick="cgV8Page('patron',this)">👑 Patron</div>
+    <div class="cgv8-ptab active" id="cgv8-ptab-yaz" onclick="cgV8Page('yaz',this)">&#9997;&#65039; Yaz</div>
+    <div class="cgv8-ptab" id="cgv8-ptab-gecmis" onclick="cgV8Page('gecmis',this)">&#128218; Gecmis</div>
+    <div class="cgv8-ptab" id="cgv8-ptab-perf" onclick="cgV8Page('perf',this)">&#128202; Blog Perf</div>
+    <div class="cgv8-ptab" id="cgv8-ptab-patron" onclick="cgV8Page('patron',this)">&#128081; Patron</div>
   </div>
   <div style="display:flex;align-items:center;gap:10px">
     <span id="cgv8-status" style="font-size:.62rem;padding:3px 12px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);letter-spacing:.06em">HAZIR</span>
-    <span style="font-size:.62rem;color:rgba(212,175,55,.5);font-family:var(--mono)" id="cgv8-ver">v8</span>
+    <span style="font-size:.62rem;color:rgba(212,175,55,.5);font-family:var(--mono)">v8</span>
   </div>
 </div>
 
 <!-- Stats Ribbon -->
-<div class="cgv8-stats-ribbon" id="cgv8-ribbon">
+<div class="cgv8-stats-ribbon">
   <div class="cgv8-stat-card" style="--accent:rgba(212,175,55,.07)">
-    <div class="cgv8-stat-ico">📝</div>
+    <div class="cgv8-stat-ico">&#128221;</div>
     <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cgv8-s-blogs">0</div>
-      <div class="cgv8-stat-lbl">Blog Yazıldı</div>
+      <div class="cgv8-stat-val" id="cg-stat-done">0</div>
+      <div class="cgv8-stat-lbl">Blog Yazildi</div>
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(100,200,100,.07)">
-    <div class="cgv8-stat-ico">🔤</div>
+    <div class="cgv8-stat-ico">&#128292;</div>
     <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cgv8-s-words">0</div>
-      <div class="cgv8-stat-lbl">Ort. Kelime</div>
+      <div class="cgv8-stat-val" id="cg-stat-words">0</div>
+      <div class="cgv8-stat-lbl">Top Kelime</div>
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(255,183,197,.07)">
-    <div class="cgv8-stat-ico">🎯</div>
+    <div class="cgv8-stat-ico">&#127919;</div>
     <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cgv8-s-seo">--</div>
+      <div class="cgv8-stat-val" id="cg-stat-seo">--</div>
       <div class="cgv8-stat-lbl">Ort. SEO</div>
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(100,150,255,.07)">
-    <div class="cgv8-stat-ico">📅</div>
+    <div class="cgv8-stat-ico">&#127942;</div>
     <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cgv8-s-today">0</div>
-      <div class="cgv8-stat-lbl">Bu Ay</div>
+      <div class="cgv8-stat-val" id="cg-stat-best">--</div>
+      <div class="cgv8-stat-lbl">En Iyi SEO</div>
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(200,100,255,.07)">
-    <div class="cgv8-stat-ico">🏆</div>
+    <div class="cgv8-stat-ico">&#9989;</div>
     <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cgv8-s-best">--</div>
-      <div class="cgv8-stat-lbl">En İyi SEO</div>
+      <div class="cgv8-stat-val" id="cg-stat-pub">0</div>
+      <div class="cgv8-stat-lbl">Yayinlanan</div>
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(255,150,50,.07)">
-    <div class="cgv8-stat-ico">🌱</div>
+    <div class="cgv8-stat-ico">&#128197;</div>
     <div class="cgv8-stat-info">
-      <div class="cgv8-stat-val" id="cgv8-s-learn">0</div>
-      <div class="cgv8-stat-lbl">Öğrenme</div>
+      <div class="cgv8-stat-val" id="cg-stat-today">0</div>
+      <div class="cgv8-stat-lbl">Bugun</div>
     </div>
   </div>
 </div>
@@ -2212,43 +2212,42 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
     <div class="cgv8-sidebar">
       <!-- Avatar Hero Card -->
       <div class="cgv8-hero-card">
-        <div class="cgv8-hero-av" id="cgv8-av-wrap"><!-- avatar injected by JS --></div>
+        <div class="cgv8-hero-av" id="cgv8-av-wrap"></div>
         <div class="cgv8-hero-name">Cherry Glow</div>
-        <div class="cgv8-hero-mood" id="cgv8-mood">Hazır ve enerjik ✨</div>
-        <div class="cgv8-hero-stats" id="cgv8-hero-stats">
+        <div class="cgv8-hero-mood" id="cgv8-mood">Hazir ve enerjik</div>
+        <div class="cgv8-hero-stats">
           <span class="cgv8-hero-stat" id="cgv8-hs-blogs">0 blog</span>
           <span class="cgv8-hero-stat" id="cgv8-hs-seo">SEO --</span>
         </div>
       </div>
 
       <!-- Quick Commands -->
-      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.2);padding:4px 4px 0">Hızlı Komutlar</div>
+      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.2);padding:4px 4px 0">Hizli Komutlar</div>
       <div style="display:flex;flex-direction:column;gap:4px">
-        <button onclick="cgQuickCmd('bir blog yaz')" style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(212,175,55,.75);text-align:left;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(212,175,55,.15)'" onmouseout="this.style.background='rgba(212,175,55,.08)'">✍️ Sıradaki konuyu yaz</button>
-        <button onclick="cgQuickCmd('konu listele')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.06)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">📋 Konu listesini göster</button>
-        <button onclick="cgQuickCmd('rapor')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.06)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">📊 Performans raporu</button>
-        <button onclick="cgQuickCmd('neler ogrendin')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.06)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">🧠 Neler öğrendin?</button>
+        <button onclick="cgQuickCmd('bir blog yaz')" style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(212,175,55,.75);text-align:left;cursor:pointer;transition:all .2s">&#9997;&#65039; Siradaki konuyu yaz</button>
+        <button onclick="cgQuickCmd('konu listele')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">&#128203; Konu listesini goster</button>
+        <button onclick="cgQuickCmd('rapor')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">&#128202; Performans raporu</button>
+        <button onclick="cgQuickCmd('neler ogrendin')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">&#129504; Neler ogrendin?</button>
       </div>
 
-      <!-- Learnings Preview -->
-      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.2);padding:4px 4px 0;margin-top:4px">Son Öğrenmeler</div>
+      <!-- Learnings -->
+      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.2);padding:4px 4px 0;margin-top:4px">Son Ogrenmeler</div>
       <div id="cgv8-learnings-list" style="display:flex;flex-direction:column;gap:3px">
-        <div style="font-size:.62rem;color:rgba(255,255,255,.2);font-style:italic;padding:4px">Henüz öğrenme yok...</div>
+        <div style="font-size:.62rem;color:rgba(255,255,255,.2);font-style:italic;padding:4px">Henuz ogrenme yok...</div>
       </div>
     </div>
 
     <!-- Main Chat Column -->
     <div class="cgv8-main-col">
-      <!-- Chat Area -->
       <div class="cgv8-chat-area" id="cgv8-chat-area"></div>
 
-      <!-- Blog Output (hidden by default) -->
+      <!-- Blog Output -->
       <div class="cgv8-blog-out hidden" id="cgv8-blog-out">
         <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:rgba(0,0,0,.3);flex-shrink:0">
-          <span style="font-size:.65rem;color:rgba(212,175,55,.7);font-weight:600">📝 Blog Çıktısı</span>
+          <span style="font-size:.65rem;color:rgba(212,175,55,.7);font-weight:600">&#128221; Blog Ciktisi</span>
           <div style="display:flex;gap:6px">
             <button onclick="cgCopyBlog()" style="font-size:.62rem;padding:3px 10px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);border-radius:6px;color:rgba(212,175,55,.8);cursor:pointer">Kopyala</button>
-            <button onclick="cgCloseBlogOut()" style="font-size:.62rem;padding:3px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:rgba(255,255,255,.4);cursor:pointer">Kapat ✕</button>
+            <button onclick="cgCloseBlogOut()" style="font-size:.62rem;padding:3px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:rgba(255,255,255,.4);cursor:pointer">Kapat X</button>
           </div>
         </div>
         <div id="cgv8-blog-content" style="flex:1;overflow-y:auto;padding:12px 16px;font-size:.7rem;line-height:1.8;color:rgba(255,255,255,.7);white-space:pre-wrap;font-family:var(--mono);scrollbar-width:thin"></div>
@@ -2256,8 +2255,8 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
       <!-- Chat Input -->
       <div class="cgv8-chat-input-wrap">
-        <input class="cgv8-chat-input" id="cgv8-input" type="text" placeholder='Bir konu yaz veya "analog kamera rehberi yaz" de...' onkeydown="if(event.key==='Enter')cgChatSend()">
-        <button onclick="cgChatSend()" class="cgv8-chat-send" style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#D4AF37,#FFB7C5);border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 12px rgba(212,175,55,.3)">➤</button>
+        <input class="cgv8-chat-input" id="cgv8-chat-input" type="text" placeholder="Bir konu yaz veya &quot;analog kamera rehberi yaz&quot; de..." onkeydown="if(event.key==='Enter')cgChatSend()">
+        <button id="cgv8-chat-send-btn" onclick="cgChatSend()" style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#D4AF37,#FFB7C5);border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 0 12px rgba(212,175,55,.3)">&#10148;</button>
       </div>
     </div>
 
@@ -2268,12 +2267,12 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 <div class="cgv8-view" id="cgv8-view-gecmis">
   <div style="padding:16px;overflow-y:auto;flex:1">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-      <div style="font-size:.78rem;font-weight:700;color:rgba(255,255,255,.7)">Yazılan Bloglar</div>
-      <div id="cgv8-hist-count" style="font-size:.62rem;color:rgba(255,255,255,.3)">0 blog</div>
+      <div style="font-size:.78rem;font-weight:700;color:rgba(255,255,255,.7)">Yazilan Bloglar</div>
     </div>
-    <div class="cgv8-hist-grid" id="cgv8-hist-grid">
-      <div style="text-align:center;color:rgba(255,255,255,.2);font-size:.72rem;padding:40px;grid-column:1/-1">Henüz blog yazılmadı.<br><br>Cherry'ye "bir blog yaz" de başla!</div>
+    <div id="cgv8-hist-empty" style="text-align:center;color:rgba(255,255,255,.2);font-size:.72rem;padding:40px">
+      Henuz blog yazilmadi.<br><br>Cherry'ye "bir blog yaz" de basla!
     </div>
+    <div id="cg-history-list" class="cgv8-hist-grid"></div>
   </div>
 </div>
 
@@ -2281,43 +2280,50 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 <div class="cgv8-view" id="cgv8-view-perf">
   <div style="padding:16px;overflow-y:auto;flex:1">
     <div style="font-size:.78rem;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:14px">Blog Performans Analizi</div>
-    <div id="cgv8-perf-content">
-      <div style="text-align:center;color:rgba(255,255,255,.2);font-size:.72rem;padding:40px">Performans verisi için blog yaz!</div>
+
+    <!-- KPI Counters -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px">
+      <div style="background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.18);border-radius:12px;padding:14px;text-align:center">
+        <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(90,200,250,.9)" id="cgbp-views">0</div>
+        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:4px">Goruntulenme</div>
+      </div>
+      <div style="background:rgba(48,209,88,.06);border:1px solid rgba(48,209,88,.18);border-radius:12px;padding:14px;text-align:center">
+        <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(48,209,88,.9)" id="cgbp-organic">0</div>
+        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:4px">Organik</div>
+      </div>
+      <div style="background:rgba(255,159,10,.06);border:1px solid rgba(255,159,10,.18);border-radius:12px;padding:14px;text-align:center">
+        <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(255,159,10,.9)" id="cgbp-orders">0</div>
+        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:4px">Siparis</div>
+      </div>
+      <div style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.18);border-radius:12px;padding:14px;text-align:center">
+        <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(212,175,55,.9)" id="cgbp-revenue">0</div>
+        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-top:4px">Gelir (TL)</div>
+      </div>
     </div>
+
+    <!-- Monthly Chart -->
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;margin-bottom:12px">
+      <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-bottom:10px">Aylik Trafik</div>
+      <div id="cgbp-chart" style="display:flex;align-items:flex-end;gap:4px;height:80px;margin-bottom:4px"></div>
+      <div id="cgbp-labels" style="display:flex;gap:4px;padding-top:4px"></div>
+    </div>
+
+    <!-- Traffic Sources -->
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:14px;margin-bottom:12px">
+      <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-bottom:10px">Trafik Kaynaklari</div>
+      <div id="cgbp-sources"></div>
+    </div>
+
+    <!-- Blog Cards -->
+    <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.28);margin-bottom:10px">Blog Performansi</div>
+    <div id="cgbp-cards" style="display:flex;flex-direction:column;gap:8px"></div>
   </div>
 </div>
 
 <!-- PATRON VIEW -->
 <div class="cgv8-view" id="cgv8-view-patron">
-  <div style="padding:16px;overflow-y:auto;flex:1">
-    <!-- Boss KPI Panel -->
-    <div class="cgv8-boss-kpi" id="cgv8-boss-kpi" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px">
-      <div class="cgv8-bkpi" style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.15);border-radius:12px;padding:14px;text-align:center">
-        <div style="font-size:1.4rem;font-weight:800;font-family:var(--mono);color:rgba(212,175,55,.9)" id="cgv8-pk-blogs">0</div>
-        <div style="font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-top:4px">Toplam Blog</div>
-      </div>
-      <div class="cgv8-bkpi" style="background:rgba(100,200,100,.06);border:1px solid rgba(100,200,100,.15);border-radius:12px;padding:14px;text-align:center">
-        <div style="font-size:1.4rem;font-weight:800;font-family:var(--mono);color:rgba(100,220,100,.9)" id="cgv8-pk-seo">--</div>
-        <div style="font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-top:4px">Ort. SEO</div>
-      </div>
-      <div class="cgv8-bkpi" style="background:rgba(100,150,255,.06);border:1px solid rgba(100,150,255,.15);border-radius:12px;padding:14px;text-align:center">
-        <div style="font-size:1.4rem;font-weight:800;font-family:var(--mono);color:rgba(130,170,255,.9)" id="cgv8-pk-words">0</div>
-        <div style="font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-top:4px">Ort. Kelime</div>
-      </div>
-      <div class="cgv8-bkpi" style="background:rgba(255,150,50,.06);border:1px solid rgba(255,150,50,.15);border-radius:12px;padding:14px;text-align:center">
-        <div style="font-size:1.4rem;font-weight:800;font-family:var(--mono);color:rgba(255,170,80,.9)" id="cgv8-pk-learn">0</div>
-        <div style="font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-top:4px">Öğrenme</div>
-      </div>
-    </div>
-
-    <!-- Roadmap -->
-    <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.25);margin-bottom:8px">Sonraki Adımlar</div>
-    <div id="cgv8-roadmap" style="display:flex;flex-direction:column;gap:4px;margin-bottom:16px"></div>
-
-    <!-- Improvement Buttons -->
-    <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.25);margin-bottom:10px">Cherry'yi Geliştir</div>
-    <div style="font-size:.68rem;color:rgba(255,255,255,.3);margin-bottom:12px">Beğenmediğin bir yönü seç — Cherry bir sonraki blogda bunu uygular.</div>
-    <div class="cgv8-improve-grid" id="cgv8-improve-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px"></div>
+  <div id="cgv8-boss-panel-content" style="padding:16px;overflow-y:auto;flex:1">
+    <div style="text-align:center;color:rgba(255,255,255,.2);font-size:.72rem;padding:40px">Yukleniyor...</div>
   </div>
 </div>
 
@@ -5470,6 +5476,36 @@ function renderCherryPage(){
   }
 }
 
+</script>
+
+<script>
+function cgQuickCmd(cmd){
+  var inp=document.getElementById('cgv8-chat-input');
+  if(inp){inp.value=cmd;cgChatSend();}
+}
+function cgCopyBlog(){
+  var el=document.getElementById('cgv8-blog-content');
+  if(el&&navigator.clipboard){navigator.clipboard.writeText(el.textContent).then(function(){cgAddMessage('cherry','Blog kopyalandi! Shopify editor'une yapistirabilirsin.');});}
+}
+function cgCloseBlogOut(){
+  var el=document.getElementById('cgv8-blog-out');
+  if(el) el.classList.add('hidden');
+}
+function cgUpdateLearnings(){
+  var el=document.getElementById('cgv8-learnings-list'); if(!el) return;
+  var brain=cgGetBrain(),ll=brain.learnings||[];
+  if(!ll.length){el.innerHTML='<div style="font-size:.62rem;color:rgba(255,255,255,.2);font-style:italic;padding:4px">Henuz ogrenme yok...</div>';return;}
+  el.innerHTML=ll.slice(-5).reverse().map(function(l){return '<div style="font-size:.6rem;color:rgba(255,255,255,.38);padding:3px 6px;background:rgba(255,255,255,.03);border-radius:6px;line-height:1.4">&#10003; '+l.insight+'</div>';}).join('');
+}
+function cgUpdateHeroStats(){
+  var brain=cgGetBrain(),h=brain.history||[],s=(brain.seo_scores||[]).filter(function(x){return typeof x==='number';});
+  var avg=s.length?Math.round(s.reduce(function(a,c){return a+c;},0)/s.length):0;
+  var hb=document.getElementById('cgv8-hs-blogs'); if(hb) hb.textContent=h.length+' blog';
+  var hs=document.getElementById('cgv8-hs-seo'); if(hs) hs.textContent='SEO '+(avg||'--');
+}
+// Hook into renderCherryPage to also update hero stats and learnings
+var _origRCP=typeof renderCherryPage==='function'?renderCherryPage:null;
+renderCherryPage=function(){if(_origRCP)_origRCP();cgUpdateHeroStats();cgUpdateLearnings();cgUpdateStats();};
 </script>
 </body>
 </html>
