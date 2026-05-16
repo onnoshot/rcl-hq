@@ -4440,7 +4440,8 @@ function cgRenderActions() {
       '<button class="cg-ctrl-btn" onclick="cgNextPending()">Siradaki Konuyu Yaz</button>' +
       '<button class="cg-ctrl-btn" onclick="cgTab(\'seo\',document.getElementById(\'cg-tab-seo\'))" style="font-size:.65rem">SEO</button>' +
       '<button class="cg-ctrl-btn" onclick="cgTab(\'history\',document.getElementById(\'cg-tab-history\'))" style="font-size:.65rem">Gecmis</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgTab(\'patron\',document.getElementById(\'cg-tab-patron\'))" style="font-size:.65rem;background:rgba(212,175,55,.1)">Patron Raporu</button>';
+      '<button class="cg-ctrl-btn" onclick="cgTab(\'patron\',document.getElementById(\'cg-tab-patron\'))" style="font-size:.65rem;background:rgba(212,175,55,.1)">Patron Raporu</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgRetryBetter()" style="font-size:.65rem;color:rgba(255,69,58,.75);border-color:rgba(255,69,58,.2)" title="Daha yuksek SEO skorlu yeniden yaz">Begenmedim — Yeniden Yaz</button>';
 
   } else if (st.status === 'error') {
     cgUpdateAvatar('error', 'Bir sorun olustu, tekrar deneyecegim...');
@@ -5049,118 +5050,189 @@ async function cgBriefCall(item, intel, today) {
     'claude-haiku-4-5-20251001', 25000);
 }
 
-// ── Phase 4: Build System Prompt (All Skills Applied) ─────────────────────────
+// ── Phase 4: Build System Prompt ──────────────────────────────────────────
 function cgBuildSystemPrompt(item, intel, brief, today, brain) {
-  var covered  = (brain.topics_covered||[]).map(function(t){return t.topic;}).slice(-10).join(', ');
-  var kwList   = [intel.primary_kw||''].concat(intel.secondary_kws||[]).filter(Boolean).join(', ');
-  var lsiList  = (intel.lsi_kws||[]).join(', ');
-  var h2plan   = (brief.h2s||[]).map(function(h,i){return (i+2)+'. ## '+h;}).join('\n');
-  var h3map    = brief.h3_map || {};
-  var h3lines  = Object.keys(h3map).map(function(h2){ return h2+': '+h3map[h2].join(', '); }).join('\n');
-  var faqList  = (intel.faq_questions||[]).map(function(q,i){return (i+1)+'. '+q;}).join('\n');
+  var kw      = intel.primary_kw || item.topic;
+  var secKws  = (intel.secondary_kws||[]).join(', ') || 'yok';
+  var lsiKws  = (intel.lsi_kws||[]).join(', ') || 'yok';
+  var covered = (brain.topics_covered||[]).map(function(t){return t.topic;}).slice(-8).join(', ') || 'yok';
+  var anchor  = intel.internal_link_anchor || 'Retrocameraland';
+  var faqList = (intel.faq_questions||[]).map(function(q,i){return (i+1)+'. '+q;}).join('\n') || 'yok';
+  var h2plan  = (brief.h2s||[]).map(function(h,i){return (i+2)+'. ## '+h+' (min 250 kelime)';}).join('\n');
 
   return (
-    '=== CHERRYGLOW v8 — UZMANLK SISTEM PROMPTU ===\n\n'+
-    'Sen CherryGlow, Retrocameraland.com icin calisıan ozerk SEO blog uzmanisın.\n'+
-    'Hedefin: Google organik aramalarinda kategori #1, Perplexity/ChatGPT referans sitesi.\n\n'+
+    'Sen Retrocameraland.com icin Turkce SEO blog yazan uzman bir yazar ve CherryGlow ajanisın.\n\n'+
 
-    '=== MARKA KIMLIGI ===\n'+
-    'Isim: Retrocameraland\n'+
-    'Uzmanlık: Turkiyenin en kapsamli analog/film kamera magazasi\n'+
-    'Hedef Kitle: Analog fotograf meraklilari, 25-45 yas, estetik odakli\n'+
-    'Ton: Uzman ama sicak — bir fotograf kulubundeki bilgili arkadas gibi yaz\n\n'+
+    '!!! KRITIK KURAL: MINIMUM 2200 KELIME YAZ. HICBIR BOLUMU KISALT. !!!\n'+
+    'Her H2 bolumunde MINIMUM 250 kelime gercek, bilgi dolu icerik yaz.\n'+
+    'Yazarken durup ozet gecme. Tum bolümleri eksiksiz yaz. 2200+ kelime hedef.\n\n'+
 
-    '=== E-E-A-T SINYALLERI (ZORUNLU) ===\n'+
-    '- Gercek deneyim dili: "Koleksiyoncular arasinda...", "Uzun yillar kullananlar biliyor ki..."\n'+
-    '- Spesifik rakam/veri: genel ifade degil, somut bilgi\n'+
-    '- Urun bilgisi: modeller, seri numaralari, piyasa degerleri\n'+
-    '- Uzman gorusu: "Profesyonel fotografcilarin tercih nedeni..."\n\n'+
+    'YASAK: em dash karakteri (her ne sekilde olursa olsun "—") kullanma.\n'+
+    'YASAK: "Bu makale", "Bu rehber", "Bu icerik" gibi jenerik acilislar.\n'+
+    'YASAK: Ingilizce kelimeler (marka isimleri haric).\n\n'+
 
-    '=== ICERIK YAPISI (KESINLIKLE UYU) ===\n'+
-    'H1 (TAM OLARAK): # '+(brief.h1||item.topic)+'\n'+
-    'H2 PLANLAMASI:\n'+h2plan+'\n'+
-    'H3 PLANI: '+h3lines+'\n\n'+
+    'ANA KEYWORD: "'+kw+'"\n'+
+    '  - H1 basliginda: evet\n'+
+    '  - Giris paragrafinda: evet (ilk 50 kelimede)\n'+
+    '  - En az 2 H2 basliginda: evet\n'+
+    '  - Sonuc bolumunde: evet\n'+
+    '  - Toplam: 5-7 kez (naturel, stuffing degil)\n'+
+    'IKINCIL KEYWORDS (naturel dagit): '+secKws+'\n'+
+    'LSI KEYWORDS (naturel dagit): '+lsiKws+'\n\n'+
 
-    '=== KEYWORD STRATEJISI ===\n'+
-    'Ana KW: "'+(intel.primary_kw||'')+'" → H1 basinda + giris paragrafinda + 2 H2 basliginda + sonucta (toplam 4-7x)\n'+
-    'Ikincil KWler: '+kwList+'\n'+
-    'LSI/Semantik: '+lsiList+'\n'+
-    'Rakip Acigi: '+(intel.competitor_gap||'')+'\n'+
-    'Orijinal Aci: '+(intel.unique_angle||'')+'\n\n'+
+    'MARKA: Retrocameraland — Turkiyenin en kapsamli analog ve film kamera magazasi\n'+
+    'TON: Uzman ama sicak. Bir fotograf kulubundeki deneyimli arkadas gibi yaz.\n'+
+    'E-E-A-T: Spesifik model adlari, piyasa degerleri, somut teknik bilgi ver. Gercek deneyim dili kullan.\n\n'+
 
-    '=== ICERIK STANDARTLARI ===\n'+
-    '- Kelime sayisi: '+(brief.target_wc||2200)+'+ (asla daha az yazma)\n'+
-    '- Paragraf: Max 80-100 kelime (okuma kolayligi)\n'+
-    '- Giris (40-50 kelime): "'+( brief.intro_hook||intel.hook||'')+'" ile baslat\n'+
-    '- Mid-CTA: "'+( brief.cta_mid||'Retrocameraland koleksiyonunu incele')+'" seklinde naturel yerlestir\n'+
-    '- Son-CTA: "'+( brief.cta_end||'Retrocameraland magazasini ziyaret et')+'" ile bitir\n\n'+
+    'ICERIK PLANI (sirayla yaz):\n'+
+    '1. # [H1 basligi] (ana keyword baslangicta)\n'+
+    '2. Giris paragraf (50-70 kelime, guclu kanca)\n'+
+    h2plan+'\n'+
+    'Son-1. ## Sik Sorulan Sorular\n'+
+    '  FAQ SORULARI:\n'+faqList+'\n'+
+    '  Her soruya 60-80 kelimelik, spesifik, bilgi dolu yanit ver.\n'+
+    'Son. ## Sonuc ve Tavsiye (100+ kelime, retrocameraland.com CTA ile bitir)\n\n'+
 
-    '=== FAQ BOLUMU (ZORUNLU) ===\n'+
-    'Blogun sonuna dogru ## Sık Sorulan Sorular basligi ekle:\n'+faqList+'\n'+
-    'Her soruya 40-60 kelimelik, spesifik yanit yaz.\n\n'+
+    'INTERNAL LINK: "'+anchor+'" anchor textiyle retrocameraland.com baglantisini naturel yerlestir.\n'+
+    'ONCEKI KONULAR (tekrarlama): '+covered+'\n\n'+
 
-    '=== INTERNAL LINK ===\n'+
-    'Dogal yerlere retrocameraland.com baglantisi yerlestir (anchor: '+(intel.internal_link_anchor||'Retrocameraland')+').\n\n'+
-
-    '=== YASAK ===\n'+
-    '- Jenerik ifadeler: "Bu makale sizi aydinlatacak", "Herkes biliyor ki..."\n'+
-    '- Keyword stuffing\n'+
-    '- Kopyalama veya genel bilgi tekrari\n'+
-    '- Ingilizce kelime (markalar haric)\n'+
-    '- Onceki konular (tekrar): '+(covered||'yok')+'\n\n'+
-
-    '=== URETIM KURALI ===\n'+
-    'SADECE markdown blogunu yaz. Aciklama, on not, son not YASAK. Ilk satir H1 olmali.'
+    'CIKTI: Sadece markdown blog. Aciklama yok. Ilk satir H1 olmali.'
   );
 }
 
-// ── Phase 5: Scoring (12-criteria, 90+ target) ────────────────────────────────
+// ── Streaming helper ─────────────────────────────────────────────
+async function cgStreamWrite(sysPrompt, userMsg, abortCtrl, onChunk) {
+  var resp = await fetch('/api/chat', {
+    signal: abortCtrl ? abortCtrl.signal : undefined,
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 4000,
+      stream: true,
+      system: sysPrompt,
+      messages: [{role:'user', content: userMsg}]
+    })
+  });
+  if (!resp.ok) {
+    var et = await resp.text().catch(function(){return 'unknown';});
+    throw new Error('API '+resp.status+': '+et.slice(0,120));
+  }
+  var reader = resp.body.getReader();
+  var decoder = new TextDecoder();
+  var buf = '';
+  var text = '';
+  var lastYield = Date.now();
+  outer: while (true) {
+    var chunk;
+    try { chunk = await reader.read(); } catch(e) {
+      if (e.name === 'AbortError') break;
+      throw e;
+    }
+    if (chunk.done) break;
+    buf += decoder.decode(chunk.value, {stream:true});
+    var lines = buf.split('\n');
+    buf = lines.pop();
+    for (var li = 0; li < lines.length; li++) {
+      var ln = lines[li];
+      if (!ln.startsWith('data:')) continue;
+      var raw = ln.slice(5).trim();
+      if (raw === '[DONE]') break outer;
+      try {
+        var evt = JSON.parse(raw);
+        if (evt.type === 'message_stop') break outer;
+        if (evt.type === 'content_block_delta' && evt.delta && evt.delta.type === 'text_delta') {
+          text += evt.delta.text;
+          if (onChunk) onChunk(evt.delta.text);
+        }
+      } catch(e2) {}
+    }
+    var _now = Date.now();
+    if (_now - lastYield >= 16) {
+      lastYield = _now;
+      await new Promise(function(r){setTimeout(r,0);});
+    }
+  }
+  return text;
+}
+
+// ── Phase 5: Scoring (12-criteria, 90+ target) ───────────────────────────────
 function cgScore(md, item, intel) {
   var wc     = md.trim().split(/\s+/).filter(Boolean).length;
   var h1c    = (md.match(/^# .+/mg)||[]).length;
   var h2c    = (md.match(/^## .+/mg)||[]).length;
   var h3c    = (md.match(/^### .+/mg)||[]).length;
-  var kw     = (intel&&intel.primary_kw) ? intel.primary_kw.toLowerCase() : '';
-  var kwd    = kw ? (md.toLowerCase().split(kw).length - 1) : 0;
-  var secKws = (intel&&intel.secondary_kws||[]).filter(function(k){ return md.toLowerCase().indexOf(k.toLowerCase())>=0; }).length;
-  var lsiKws = (intel&&intel.lsi_kws||[]).filter(function(k){ return k && md.toLowerCase().indexOf(k.toLowerCase())>=0; }).length;
-  var hasCTA = /retrocameraland[^a-z]/i.test(md);
+  var mdLow  = md.toLowerCase();
+
+  // Turkish-aware KW detection: check each word in keyword phrase
+  var kw = (intel&&intel.primary_kw) ? intel.primary_kw.toLowerCase() : '';
+  var kwWords = kw.split(/\s+/).filter(Boolean);
+  var kwd = 0;
+  if (kwWords.length > 0) {
+    // Count paragraphs/sentences containing ALL kw words (handles Turkish suffixes)
+    var sentences = mdLow.split(/[.!?\n]+/);
+    for (var si = 0; si < sentences.length; si++) {
+      var s = sentences[si];
+      var allIn = kwWords.every(function(w){ return s.indexOf(w.slice(0, Math.max(4, w.length-2))) >= 0; });
+      if (allIn) kwd++;
+    }
+    // Also exact phrase count
+    var exact = (mdLow.split(kw).length - 1);
+    kwd = Math.max(kwd, exact);
+  }
+
+  // Secondary KWs: Turkish-aware (check stem: first 4+ chars)
+  var secKws = (intel&&intel.secondary_kws||[]).filter(function(k){
+    if (!k || k.length < 3) return false;
+    var stem = k.toLowerCase().slice(0, Math.max(4, k.length - 2));
+    return mdLow.indexOf(stem) >= 0;
+  }).length;
+
+  // LSI KWs: same approach
+  var lsiKws = (intel&&intel.lsi_kws||[]).filter(function(k){
+    if (!k || k.length < 3) return false;
+    var stem = k.toLowerCase().slice(0, Math.max(4, k.length - 2));
+    return mdLow.indexOf(stem) >= 0;
+  }).length;
+
+  var hasCTA = /retrocameraland/i.test(md);
   var cta2   = (md.match(/retrocameraland/gi)||[]).length >= 2;
-  var hasFAQ = /sik sorulan sorular|sss|faqs?/i.test(md);
-  var longPar= md.split(/\n\n/).filter(function(p){return p.split(/\s+/).length>120;}).length;
-  var hasMeta= md.indexOf('**Meta') >= 0 || md.indexOf('meta desc') >= 0 || wc > 1800;
+  var hasFAQ = /s[iy]k sorulan|sss|faq/i.test(md);
+  var longPar= md.split(/\n\n/).filter(function(p){return p.split(/\s+/).length>130;}).length;
   var kwDens = wc > 0 ? (kwd/wc)*100 : 0;
+  var hasDash = /—/.test(md);
 
   var checks = [
-    {key:'h1',    pass:h1c===1,      label:'H1: '+(h1c===1?'OK':'Eksik')},
-    {key:'h2',    pass:h2c>=5,       label:'H2 ('+h2c+'/5+): '+(h2c>=5?'OK':'Az')},
-    {key:'h3',    pass:h3c>=2,       label:'H3 ('+h3c+'/2+): '+(h3c>=2?'OK':'Az')},
-    {key:'wc',    pass:wc>=1800,     label:'Kelime ('+wc+'/1800+): '+(wc>=1800?'OK':'Az')},
-    {key:'kwd',   pass:kwDens>=0.4&&kwDens<=1.8, label:'KW yogunluk %'+(kwDens.toFixed(1))+': '+(kwDens>=0.4&&kwDens<=1.8?'OK':'Dis')},
-    {key:'seckw', pass:secKws>=3,    label:'Ikincil KW ('+secKws+'/3+): '+(secKws>=3?'OK':'Az')},
-    {key:'lsi',   pass:lsiKws>=2,    label:'LSI KW ('+lsiKws+'/2+): '+(lsiKws>=2?'OK':'Az')},
-    {key:'cta',   pass:hasCTA,       label:'CTA: '+(hasCTA?'Var':'Yok')},
-    {key:'cta2',  pass:cta2,         label:'Marka 2x+: '+(cta2?'OK':'Az')},
-    {key:'faq',   pass:hasFAQ,       label:'FAQ bolumu: '+(hasFAQ?'Var':'Yok')},
-    {key:'par',   pass:longPar===0,  label:'Paragraf uzunlugu: '+(longPar===0?'OK':longPar+' uzun')},
-    {key:'depth', pass:wc>=2000,     label:'Derinlik ('+wc+'/2000+): '+(wc>=2000?'OK':'Artir')}
+    {key:'h1',    pass:h1c===1,               label:'H1: '+(h1c===1?'OK':'Eksik')},
+    {key:'h2',    pass:h2c>=5,                label:'H2 ('+h2c+'/5+): '+(h2c>=5?'OK':'Az')},
+    {key:'h3',    pass:h3c>=2,                label:'H3 ('+h3c+'/2+): '+(h3c>=2?'OK':'Az')},
+    {key:'wc',    pass:wc>=1800,              label:'Kelime ('+wc+'/1800+): '+(wc>=1800?'OK':'Az')},
+    {key:'kwd',   pass:kwd>=4&&kwd<=15,       label:'KW ('+kwd+'x): '+(kwd>=4&&kwd<=15?'OK':'Az')},
+    {key:'seckw', pass:secKws>=3,             label:'Ikincil KW ('+secKws+'/3+): '+(secKws>=3?'OK':'Az')},
+    {key:'lsi',   pass:lsiKws>=2,             label:'LSI KW ('+lsiKws+'/2+): '+(lsiKws>=2?'OK':'Az')},
+    {key:'cta',   pass:hasCTA,                label:'CTA: '+(hasCTA?'Var':'Yok')},
+    {key:'cta2',  pass:cta2,                  label:'Marka 2x+: '+(cta2?'OK':'Az')},
+    {key:'faq',   pass:hasFAQ,                label:'FAQ bolumu: '+(hasFAQ?'Var':'Yok')},
+    {key:'par',   pass:longPar===0,            label:'Paragraf uzunlugu: '+(longPar===0?'OK':longPar+' uzun')},
+    {key:'dash',  pass:!hasDash,              label:'Em dash: '+(!hasDash?'Yok (OK)':'Var (Uyari)')}
   ];
 
   var score = 0;
-  if (h1c===1)                      score += 10;
+  if (h1c===1)                     score += 10;
   if (h2c>=6) score += 14; else if (h2c>=5) score += 11; else if (h2c>=3) score += 7;
   if (h3c>=4) score += 6;  else if (h3c>=2) score += 4;
-  if (wc>=2200) score += 18; else if (wc>=1800) score += 14; else if (wc>=1200) score += 9; else if (wc>=800) score += 5;
-  if (kwDens>=0.4&&kwDens<=1.8) score += 12; else if (kwd>=2) score += 6;
-  if (secKws>=5) score += 9; else if (secKws>=3) score += 6; else if (secKws>=1) score += 3;
+  if (wc>=2200) score += 20; else if (wc>=1800) score += 15; else if (wc>=1200) score += 9; else if (wc>=800) score += 4;
+  if (kwd>=4&&kwd<=15) score += 12; else if (kwd>=2) score += 6;
+  if (secKws>=5) score += 10; else if (secKws>=3) score += 7; else if (secKws>=1) score += 3;
   if (lsiKws>=3) score += 5; else if (lsiKws>=2) score += 3;
   if (cta2)  score += 8; else if (hasCTA) score += 5;
   if (hasFAQ) score += 10;
   if (longPar===0) score += 5; else if (longPar<=2) score += 2;
-  if (wc>=2000) score += 3;
+  if (!hasDash) score += 0; // no penalty, bonus tracked via check
 
   return {score: Math.min(100,score), checks: checks, wc: wc};
 }
+
 
 // ── Main write pipeline ────────────────────────────────────────────────────────
 async function cgWrite(idx) {
@@ -5213,125 +5285,100 @@ async function cgWrite(idx) {
     _cgSt.progress = 55;
     cgRenderActions();
 
-    // ── 3. Yaz ───────────────────────────────────────────────────────────────
+    // ── 3. Blog yaz (bolum bolum — her parca 1000+ kelime) ──────────────────
     _cgSt.phase = 'Faz 3 — Uzman Blog Yazisi';
     cgRenderActions();
-    cgLog('E-E-A-T blog yaziliyor... (2200+ kelime hedef)', 'info');
+    cgLog('Blog bolum bolum yaziliyor... (2200+ kelime hedef)', 'info');
     cgSetThoughtPhase('Yazıyor');
 
     var sysPrompt = cgBuildSystemPrompt(item, _cgSt.intel, _cgSt.brief, today, brain);
-    var faqBlock  = ((_cgSt.intel.faq_questions||[]).length>0)
-      ? '\nFAQ Sorulari (mutlaka dahil et): '+(_cgSt.intel.faq_questions||[]).join(' | ')
-      : '';
-    var userMsg   =
-      'SIMDI YAZ — sadece markdown blog, aciklama yok:\n'+
-      'Konu: '+item.topic+'\n'+
-      'H1: '+(_cgSt.brief.h1||item.topic)+'\n'+
-      'H2 Plan: '+((_cgSt.brief.h2s||[]).join(' | '))+'\n'+
-      'Hedef Kelime: '+(_cgSt.brief.target_wc||2200)+'+\n'+
-      'Hook: '+(_cgSt.brief.intro_hook||_cgSt.intel.hook||'')+
-      faqBlock;
+    var h2s  = _cgSt.brief.h2s || [];
+    var midH = Math.ceil(h2s.length / 2);
+    var part1H2s = h2s.slice(0, midH);
+    var part2H2s = h2s.slice(midH);
+    var faqQs  = (_cgSt.intel.faq_questions||[]).join(' | ') || 'yok';
+    var hook   = _cgSt.brief.intro_hook || _cgSt.intel.hook || '';
+    var h1title= _cgSt.brief.h1 || item.topic;
+    var kw     = _cgSt.intel.primary_kw || item.topic;
 
-    // Yükleme ekranı
+    // Part 1 message: H1 + intro + first half H2s
+    var msg1 =
+      'Konuyu YAZ. SADECE markdown. Hic aciklama ekleme.\n\n'+
+      'H1 BASLIGI: # '+h1title+'\n'+
+      'GIRIS (50-70 kelime): "'+hook+'" ile baslat. Ana keyword "'+kw+'" giris paragrafinda kullan.\n\n'+
+      'SIRADAKI H2 BOLUMLERI (her birinde MINIMUM 250 kelime yaz):\n'+
+      part1H2s.map(function(h,i){ return (i+1)+'. ## '+h; }).join('\n')+'\n\n'+
+      'Her H2 altinda H3 altbasliklar kullan. Her H2 icin gercek, bilgi dolu paragraflar yaz.\n'+
+      'Ana keyword "'+kw+'" dogal kullan. CIKART: --- veya --- isareti KULLANMA.';
+
+    // Part 2 message: remaining H2s + FAQ + conclusion
+    var msg2 =
+      'ONCEKI BLOGU DEVAM ETTIR. Sadece markdown. Hic aciklama ekleme.\n\n'+
+      'SIRADAKI H2 BOLUMLERI (her birinde MINIMUM 250 kelime yaz):\n'+
+      part2H2s.map(function(h,i){ return (i+1)+'. ## '+h; }).join('\n')+'\n\n'+
+      '## Sik Sorulan Sorular\n'+
+      'Asagidaki 5 soruya her biri 70-90 kelimelik yanit ver:\n'+faqQs+'\n\n'+
+      '## Sonuc ve Tavsiye\n'+
+      '100+ kelimelik sonuc yaz. retrocameraland.com baglantisi ekle ve okuyucuyu yonlendir.\n'+
+      'YASAK: — karakteri kullanma.';
+
+    // Yukleme ekrani
     cgTab('preview', document.getElementById('cg-tab-preview'));
     var previewEl = document.getElementById('cg-tab-panel-preview');
     if (previewEl) previewEl.innerHTML =
       '<div style="text-align:center;padding:60px 0 24px" id="cgsp-loading">' +
-        '<div style="font-size:2.2rem;margin-bottom:14px">&#x270D;&#xFE0F;</div>' +
-        '<div id="cgsp-elapsed" style="font-size:1rem;font-weight:600;color:rgba(212,175,55,.85)">Yazılıyor...</div>' +
-        '<div style="font-size:.7rem;color:rgba(255,255,255,.28);margin-top:6px">Blog hazırlanıyor, lütfen bekleyin...</div>' +
+        '<div style="font-size:2.2rem;margin-bottom:14px">&#x270D;</div>' +
+        '<div id="cgsp-elapsed" style="font-size:1rem;font-weight:600;color:rgba(212,175,55,.85)">Bolum 1/2 yaziliyor...</div>' +
+        '<div style="font-size:.7rem;color:rgba(255,255,255,.28);margin-top:6px">2200+ kelime hedef, tam icerik bekleniyor...</div>' +
         '<div style="margin:16px auto 0;width:220px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
           '<div id="cgsp-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:5%"></div>' +
         '</div>' +
       '</div>';
 
-    // Bağımsız animasyon — API döngüsüyle hiç ilişkisi yok
     var _writeStart  = Date.now();
     var _progVal     = 5;
     var _barEl       = document.getElementById('cgsp-bar');
     var _elapsedEl   = document.getElementById('cgsp-elapsed');
     var _animTimer   = setInterval(function() {
-      _progVal = Math.min(93, _progVal + 0.8);
+      _progVal = Math.min(92, _progVal + 0.5);
       var elapsed = Math.floor((Date.now() - _writeStart) / 1000);
       if (_barEl)     _barEl.style.width = _progVal + '%';
-      if (_elapsedEl) _elapsedEl.textContent = 'Yazılıyor... ' + elapsed + 's';
-    }, 600);
+      if (_elapsedEl && _progVal < 50) _elapsedEl.textContent = 'Bolum 1/2: ' + elapsed + 's';
+      else if (_elapsedEl) _elapsedEl.textContent = 'Bolum 2/2: ' + elapsed + 's';
+    }, 800);
 
     var ctrl = new AbortController();
     _cgWriteAbort = ctrl;
 
     var md = '';
     try {
-      var resp = await fetch('/api/chat', {
-        signal: ctrl.signal,
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          model:      'claude-sonnet-4-6',
-          max_tokens: 4000,
-          stream:     true,
-          system:     sysPrompt,
-          messages:   [{role:'user', content: userMsg}]
-        })
-      });
+      // Part 1
+      cgLog('Parca 1/2 yaziliyor (giris + ilk '+part1H2s.length+' bolum)...', 'info');
+      var md1 = await cgStreamWrite(sysPrompt, msg1, ctrl, null);
+      md = md1;
+      if (previewEl) previewEl.innerHTML =
+        '<div style="text-align:center;padding:20px 0;font-size:.75rem;color:rgba(212,175,55,.6)">Bolum 2/2 yaziliyor...</div>' +
+        simpleMarkdownToHTML(md1);
+      cgLog('Parca 1/2 OK: '+ md1.trim().split(/\s+/).length +' kelime', 'ok');
 
-      if (!resp.ok) {
-        var et = await resp.text().catch(function(){ return 'unknown'; });
-        throw new Error('API '+resp.status+': '+et.slice(0,120));
-      }
-
-      var reader    = resp.body.getReader();
-      var decoder   = new TextDecoder();
-      var buf       = '';
-      var lastYield = Date.now();
-
-      // Stream okuma döngüsü — DOM güncellemesi YOK, sadece metin biriktiriyoruz
-      outer: while (true) {
-        var chunk;
-        try {
-          chunk = await reader.read();
-        } catch (readErr) {
-          if (readErr.name === 'AbortError') { cgLog('Durduruldu.','warn'); break; }
-          throw readErr;
-        }
-        if (chunk.done) break;
-
-        buf += decoder.decode(chunk.value, {stream: true});
-        var lines = buf.split('\n');
-        buf = lines.pop();
-
-        for (var li = 0; li < lines.length; li++) {
-          var ln = lines[li];
-          if (!ln.startsWith('data:')) continue;
-          var raw = ln.slice(5).trim();
-          if (raw === '[DONE]') break outer;
-          try {
-            var evt = JSON.parse(raw);
-            if (evt.type === 'message_stop') break outer;
-            if (evt.type === 'content_block_delta' &&
-                evt.delta && evt.delta.type === 'text_delta') {
-              md += evt.delta.text;
-            }
-          } catch(e2) {}
-        }
-
-        // Microtask storm önlemi: her 16ms'de setTimeout ile macrotask'a geç.
-        // Bu sayede browser event loop nefes alır — "Sayfa Yanıt Vermiyor" imkansız.
-        var _now = Date.now();
-        if (_now - lastYield >= 16) {
-          lastYield = _now;
-          await new Promise(function(r) { setTimeout(r, 0); });
-        }
-      }
+      // Part 2
+      await new Promise(function(r){setTimeout(r,300);});
+      cgLog('Parca 2/2 yaziliyor (kalan bolumler + FAQ + sonuc)...', 'info');
+      var md2 = await cgStreamWrite(sysPrompt, msg2, ctrl, null);
+      md = md1 + '\n\n' + md2;
+      cgLog('Parca 2/2 OK: '+ md2.trim().split(/\s+/).length +' kelime. Toplam: '+ md.trim().split(/\s+/).length, 'ok');
 
     } finally {
       clearInterval(_animTimer);
       _cgWriteAbort = null;
     }
 
-    if (md.length < 80) throw new Error('Yetersiz içerik ('+md.length+' karakter). Tekrar dene.');
+    // Strip em-dashes if any slipped through
+    md = md.replace(/\u2014/g, ',').replace(/\u2013/g, ',').replace(/ — /g, ', ');
 
-    // ── 4. Post-process: her ağır işlem ayrı frame'de ──────────────────────────
+    if (md.trim().split(/\s+/).length < 200) throw new Error('Yetersiz icerik. Tekrar dene.');
+
+        // ── 4. Post-process: her ağır işlem ayrı frame'de ──────────────────────────
     // Frame 1: preview render (sadece simpleMarkdownToHTML, enrichBlogHTML değil)
     await new Promise(function(r){ requestAnimationFrame(r); });
     if (previewEl) previewEl.innerHTML = simpleMarkdownToHTML(md);
@@ -5445,6 +5492,33 @@ function cgNextPending() {
   var next = _cgAgenda.findIndex(function(a){ return a.stage === 'pending'; });
   if (next >= 0) cgWrite(next);
   else cgLog('Yazılacak konu kalmadı.','warn');
+}
+
+// ── Retry with higher standard ────────────────────────────────────────────────
+async function cgRetryBetter() {
+  if (!_cgSt.item) { cgLog('Yeniden yazilacak konu yok.','warn'); return; }
+  var prevScore = _cgSt.scoreObj ? _cgSt.scoreObj.score : 0;
+  cgLog('Begenmedim: daha yuksek SEO hedefiyle yeniden yaziliyor (onceki skor: '+prevScore+')...','info');
+
+  // Boost brief — increase target wc
+  if (_cgSt.brief) {
+    _cgSt.brief.target_wc = Math.max((_cgSt.brief.target_wc||2200) + 300, 2500);
+    if (_cgSt.brief.intro_hook) _cgSt.brief.intro_hook = '';
+  }
+  // Boost intel — add retry signal
+  if (_cgSt.intel) {
+    _cgSt.intel._retry = (_cgSt.intel._retry||0) + 1;
+    _cgSt.intel.unique_angle = (_cgSt.intel.unique_angle||'') + ' Daha derin, daha fazla ornek, daha spesifik bilgi ver.';
+  }
+
+  var savedIdx = _cgSt.idx;
+  _cgSt.md        = '';
+  _cgSt.scoreObj  = null;
+  _cgSt.published = false;
+  _cgSt.error     = '';
+  _cgWriting      = false;
+
+  await cgWrite(savedIdx);
 }
 
 function cgWriteAll() {
