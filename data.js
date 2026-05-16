@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-16T22:53:25",
+  "updated_at": "2026-05-16T23:53:28",
   "period_30d": {
     "revenue": 126800,
     "orders": 10,
@@ -172,7 +172,7 @@ const SHOPIFY = {
     "orders": 65,
     "aov": 12107
   },
-  "customers_total": 746,
+  "customers_total": 748,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -366,6 +366,10 @@ const SHOPIFY = {
       "price": 9490
     },
     {
+      "name": "Olympus Stylus 790 SW",
+      "price": 9490
+    },
+    {
       "name": "Olympus SZ-10",
       "price": 9490
     },
@@ -417,7 +421,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 84
+  "out_of_stock": 83
 };
 /* ─── SHOPIFY DATA END ─── */
 
