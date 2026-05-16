@@ -790,6 +790,184 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 /* ── Gradient numbers ───────────────────────────────────────────────────── */
 .cg-grad-num{background:linear-gradient(135deg,#D4AF37,#FFB7C5);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+/* ═════════════════════ CherryGlow v8 ═════════════════════ */
+.cgv8-page{padding:24px 28px 60px;}
+.cgv8-hdr{display:flex;align-items:center;gap:14px;margin-bottom:22px;flex-wrap:wrap;}
+.cgv8-brand{display:flex;align-items:center;gap:10px;}
+.cgv8-brand-ico{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,rgba(212,175,55,.18),rgba(255,183,197,.1));display:flex;align-items:center;justify-content:center;font-size:1.15rem;border:1px solid rgba(212,175,55,.2);flex-shrink:0;}
+.cgv8-brand-name{font-size:1.05rem;font-weight:700;color:var(--t1);letter-spacing:-.02em;}
+.cgv8-brand-ver{font-size:.57rem;font-family:var(--mono);color:rgba(212,175,55,.55);padding:2px 7px;border-radius:5px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.14);margin-left:5px;vertical-align:middle;}
+.cgv8-tagline{font-size:.59rem;color:var(--t3);font-family:var(--mono);margin-top:1px;}
+.cgv8-hdr-stats{display:flex;gap:20px;flex:1;justify-content:center;flex-wrap:wrap;}
+.cgv8-hstat{display:flex;flex-direction:column;align-items:center;gap:1px;}
+.cgv8-hstat b{font-size:1.05rem;font-weight:700;color:var(--t1);font-family:var(--mono);font-variant-numeric:tabular-nums;}
+.cgv8-hstat span{font-size:.51rem;color:var(--t3);text-transform:uppercase;letter-spacing:.09em;}
+.cgv8-hdr-right{display:flex;align-items:center;gap:10px;margin-left:auto;}
+.cgv8-pill{font-size:.58rem;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);letter-spacing:.1em;color:var(--t2);}
+.cgv8-grid{display:grid;grid-template-columns:270px 1fr;gap:14px;}
+/* Left */
+.cgv8-left{display:flex;flex-direction:column;gap:12px;}
+/* Agent card */
+.cgv8-agent{border-radius:20px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025);backdrop-filter:blur(14px);padding:20px 16px 16px;position:relative;overflow:hidden;transition:border-color .5s,background .5s;}
+.cgv8-agent::before{content:'';position:absolute;top:-70px;left:50%;transform:translateX(-50%);width:220px;height:130px;border-radius:50%;opacity:0;pointer-events:none;transition:opacity .6s;}
+.cgv8-agent.writing{border-color:rgba(212,175,55,.3);background:rgba(212,175,55,.045);}
+.cgv8-agent.writing::before{background:radial-gradient(ellipse,rgba(212,175,55,.18),transparent 70%);opacity:1;}
+.cgv8-agent.done{border-color:rgba(48,209,88,.28);background:rgba(48,209,88,.04);}
+.cgv8-agent.done::before{background:radial-gradient(ellipse,rgba(48,209,88,.15),transparent 70%);opacity:1;}
+.cgv8-agent.error{border-color:rgba(255,69,58,.24);}
+.cgv8-agent.error::before{background:radial-gradient(ellipse,rgba(255,69,58,.12),transparent 70%);opacity:1;}
+/* Avatar */
+.cgv8-av{position:relative;width:58px;height:58px;margin:0 auto 12px;}
+.cgv8-av-glow{position:absolute;inset:-14px;border-radius:50%;opacity:0;transition:opacity .5s;pointer-events:none;}
+.cgv8-agent.writing .cgv8-av-glow{background:radial-gradient(circle,rgba(212,175,55,.22),transparent 60%);opacity:1;}
+.cgv8-agent.done .cgv8-av-glow{background:radial-gradient(circle,rgba(48,209,88,.18),transparent 60%);opacity:1;}
+.cgv8-av-ring{position:absolute;inset:-5px;border-radius:50%;border:1.5px solid rgba(212,175,55,.28);animation:cgv8-idle-ring 4s ease-in-out infinite;}
+.cgv8-agent.writing .cgv8-av-ring{border-color:rgba(212,175,55,.9);animation:cgv8-spin-ring .8s linear infinite;}
+.cgv8-agent.done .cgv8-av-ring{border-color:rgba(48,209,88,.8);animation:cgv8-done-ring 2.2s ease-in-out infinite;}
+.cgv8-agent.error .cgv8-av-ring{border-color:rgba(255,69,58,.7);animation:cgv8-err-shake .35s ease 2;}
+.cgv8-av-core{position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.5);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;font-size:1.6rem;border:1px solid rgba(255,255,255,.08);transition:transform .4s;}
+.cgv8-agent.done .cgv8-av-core{animation:cgv8-pop .5s cubic-bezier(.34,1.56,.64,1);}
+/* Agent text */
+.cgv8-ag-lbl{font-size:.49rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(212,175,55,.42);font-family:var(--mono);text-align:center;margin-bottom:7px;}
+.cgv8-ag-msg{font-size:.9rem;font-weight:600;color:var(--t1);text-align:center;line-height:1.4;transition:opacity .25s;}
+.cgv8-ag-sub{font-size:.67rem;color:var(--t3);text-align:center;line-height:1.65;margin-top:4px;}
+.cgv8-ag-meta{font-size:.59rem;font-family:var(--mono);color:rgba(212,175,55,.62);text-align:center;margin-top:7px;line-height:1.6;}
+/* Phase strip */
+.cgv8-phases{display:flex;align-items:center;justify-content:center;margin:12px 0 3px;}
+.cgv8-ph{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:42px;}
+.cgv8-ph span{font-size:.44rem;color:var(--t3);letter-spacing:.04em;}
+.cgv8-ph-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.13);transition:all .35s cubic-bezier(.34,1.56,.64,1);}
+.cgv8-ph.active .cgv8-ph-dot{background:var(--gold);box-shadow:0 0 9px rgba(212,175,55,.65);animation:cgv8-ph-pulse 1.6s ease-in-out infinite;}
+.cgv8-ph.active span{color:var(--gold);}
+.cgv8-ph.done .cgv8-ph-dot{background:var(--green);box-shadow:0 0 5px rgba(48,209,88,.4);}
+.cgv8-ph.done span{color:var(--green);}
+.cgv8-ph-line{flex:1;height:1px;background:rgba(255,255,255,.09);min-width:14px;transition:background .4s;}
+.cgv8-ph.done + .cgv8-ph-line{background:rgba(48,209,88,.3);}
+/* Progress */
+.cgv8-prog{position:relative;height:4px;background:rgba(255,255,255,.07);border-radius:4px;margin:10px 0 2px;overflow:hidden;}
+.cgv8-prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),#FFB7C5);border-radius:4px;transition:width .55s cubic-bezier(.22,1,.36,1);}
+.cgv8-prog-pct{font-size:.5rem;font-family:var(--mono);color:var(--gold);text-align:right;margin-top:2px;}
+/* Live word count */
+.cgv8-lwc{text-align:center;margin-top:10px;padding:8px 0 2px;}
+.cgv8-lwc-num{font-size:1.65rem;font-weight:700;font-family:var(--mono);color:var(--t1);display:block;font-variant-numeric:tabular-nums;letter-spacing:-.02em;}
+.cgv8-lwc-lbl{font-size:.57rem;color:var(--t3);}
+.cgv8-lwc-bar{height:2px;background:rgba(255,255,255,.07);border-radius:2px;margin-top:6px;overflow:hidden;}
+.cgv8-lwc-fill{height:100%;background:linear-gradient(90deg,rgba(212,175,55,.55),rgba(255,183,197,.45));transition:width .35s ease;}
+/* Agent buttons */
+.cgv8-btns{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-top:12px;}
+.cg-btn-primary{padding:9px 18px;border-radius:10px;border:1px solid rgba(212,175,55,.38);background:linear-gradient(135deg,rgba(212,175,55,.18),rgba(255,183,197,.08));color:var(--gold);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .22s;letter-spacing:.02em;}
+.cg-btn-primary:hover{background:linear-gradient(135deg,rgba(212,175,55,.3),rgba(255,183,197,.18));box-shadow:0 0 20px rgba(212,175,55,.14);}
+.cg-btn-secondary{padding:9px 15px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--t2);font-size:.7rem;cursor:pointer;transition:all .18s;}
+.cg-btn-secondary:hover{background:rgba(255,255,255,.09);color:var(--t1);}
+.cg-btn-ghost{padding:7px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:var(--t3);font-size:.65rem;cursor:pointer;transition:all .18s;}
+.cg-btn-ghost:hover{background:rgba(255,255,255,.07);color:var(--t2);}
+.cg-btn-icon-sm{padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:var(--t3);font-size:.75rem;cursor:pointer;transition:all .18s;flex:none;}
+.cg-btn-icon-sm:hover{color:var(--t2);}
+/* Topics */
+.cgv8-topics{border-radius:16px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.022);padding:12px 12px 10px;}
+.cgv8-topics-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.cgv8-topics-hd-t{font-size:.59rem;font-weight:600;color:var(--t2);text-transform:uppercase;letter-spacing:.09em;}
+.cgv8-topics-cnt{font-size:.57rem;color:var(--t3);font-family:var(--mono);}
+.cgv8-search{width:100%;padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.3);color:var(--t1);font-size:.68rem;margin-bottom:7px;outline:none;transition:border-color .2s;box-sizing:border-box;}
+.cgv8-search:focus{border-color:rgba(212,175,55,.3);}
+.cgv8-topic-list{max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:1px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.06) transparent;}
+.cgv8-topic{display:flex;align-items:center;gap:7px;padding:5px 7px;border-radius:7px;transition:background .15s;border:1px solid transparent;}
+.cgv8-topic:hover:not(.done){background:rgba(255,255,255,.03);}
+.cgv8-topic.running{background:rgba(212,175,55,.06);border-color:rgba(212,175,55,.15);}
+.cgv8-topic.done{opacity:.35;}
+.cgv8-topic-cat{font-size:.43rem;padding:2px 5px;border-radius:4px;background:rgba(255,255,255,.05);color:var(--t3);font-family:var(--mono);flex-shrink:0;letter-spacing:.04em;}
+.cgv8-topic-name{flex:1;font-size:.67rem;color:var(--t1);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.cgv8-topic.done .cgv8-topic-name{text-decoration:line-through;color:var(--t3);}
+.cgv8-topic-act{flex-shrink:0;}
+.cgv8-topic-btn{font-size:.52rem;padding:3px 8px;border-radius:5px;border:1px solid rgba(212,175,55,.24);background:rgba(212,175,55,.06);color:var(--gold);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.cgv8-topic-btn:hover{background:rgba(212,175,55,.16);}
+.cgv8-topic-done-mark{font-size:.62rem;color:rgba(48,209,88,.6);}
+.cgv8-topic-running{font-size:.57rem;color:var(--gold);animation:cgv8-blink 1s ease-in-out infinite;}
+.cgv8-topics-foot{display:flex;gap:6px;margin-top:9px;}
+.cgv8-bulk{margin-top:8px;padding:7px 10px;border-radius:8px;background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.12);}
+.cgv8-bulk-track{height:3px;background:rgba(255,255,255,.07);border-radius:3px;margin-bottom:5px;overflow:hidden;}
+.cgv8-bulk-fill{height:100%;background:linear-gradient(90deg,var(--gold),#FFB7C5);transition:width .5s;}
+.cgv8-bulk-info{display:flex;justify-content:space-between;align-items:center;font-size:.57rem;color:var(--t3);}
+.cgv8-bulk-info button{background:none;border:none;color:var(--t3);cursor:pointer;padding:0;font-size:.68rem;}
+/* Log */
+.cgv8-log{border-radius:12px;border:1px solid rgba(255,255,255,.06);background:rgba(0,0,0,.2);padding:10px 12px;}
+.cgv8-log-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;}
+.cgv8-log-hd-t{font-size:.55rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);}
+.cgv8-log-live{font-size:.47rem;padding:1px 6px;border-radius:3px;background:rgba(48,209,88,.12);color:rgba(48,209,88,.8);letter-spacing:.08em;animation:cgv8-blink 2s ease-in-out infinite;}
+.cgv8-log-body{font-size:.6rem;font-family:var(--mono);max-height:120px;overflow-y:auto;scrollbar-width:thin;}
+/* Right */
+.cgv8-right{display:flex;flex-direction:column;gap:12px;}
+.cgv8-ws-tabs{display:flex;gap:4px;padding:4px;background:rgba(0,0,0,.3);border-radius:14px;border:1px solid rgba(255,255,255,.06);}
+.cgv8-ws-tab{flex:1;padding:8px 8px;border:none;border-radius:10px;background:transparent;color:var(--t3);font-size:.64rem;font-weight:500;cursor:pointer;transition:all .22s;display:flex;align-items:center;justify-content:center;gap:4px;}
+.cgv8-ws-tab svg{width:12px;height:12px;flex-shrink:0;stroke:currentColor;fill:none;}
+.cgv8-ws-tab.active{background:rgba(255,255,255,.09);color:var(--t1);box-shadow:0 1px 4px rgba(0,0,0,.45);}
+.cgv8-ws-tab:hover:not(.active){color:var(--t2);}
+.cgv8-panel{border-radius:18px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.022);padding:18px;min-height:480px;}
+.cgv8-inner-tabs{display:flex;gap:0;margin-bottom:14px;border-bottom:1px solid rgba(255,255,255,.06);}
+.cgv8-inner-tab{padding:6px 14px;border:none;background:transparent;color:var(--t3);font-size:.65rem;cursor:pointer;border-bottom:2px solid transparent;transition:all .18s;font-weight:500;margin-bottom:-1px;}
+.cgv8-inner-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
+.cgv8-inner-tab:hover:not(.active){color:var(--t2);}
+.cgv8-preview{min-height:240px;max-height:520px;overflow-y:auto;font-size:.82rem;line-height:1.8;color:rgba(255,255,255,.78);scrollbar-width:thin;}
+.cgv8-preview h1{font-size:1.1rem;font-weight:700;color:white;margin:0 0 10px;}
+.cgv8-preview h2{font-size:.92rem;font-weight:600;color:rgba(255,255,255,.88);margin:16px 0 7px;}
+.cgv8-preview p{margin:0 0 11px;}.cgv8-preview ul,.cgv8-preview ol{margin:0 0 11px;padding-left:18px;}
+.cgv8-preview strong{color:rgba(255,255,255,.95);}
+.cgv8-empty{text-align:center;padding:60px 24px;}
+.cgv8-empty-ico{font-size:2rem;opacity:.25;margin-bottom:12px;}
+.cgv8-empty-txt{font-size:.74rem;color:var(--t3);line-height:1.7;}
+.cgv8-code-ta{width:100%;height:380px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(255,255,255,.65);font-size:.66rem;font-family:var(--mono);padding:12px;resize:vertical;box-sizing:border-box;}
+.cgv8-seo-grid{display:grid;grid-template-columns:110px 1fr;gap:16px;margin-bottom:14px;}
+.cgv8-kw-cloud{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px;}
+.cgv8-kw-tag{font-size:.57rem;padding:3px 8px;border-radius:6px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.17);color:rgba(212,175,55,.8);}
+/* Analytics */
+.cgv8-an{display:flex;flex-direction:column;gap:14px;}
+.cgv8-an-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.cgv8-an-card{border-radius:14px;border:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.2);padding:14px 16px;}
+.cgv8-an-card.full{grid-column:1/-1;}
+.cgv8-an-title{font-size:.53rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:10px;}
+.cgv8-an-big{font-size:1.75rem;font-weight:700;font-family:var(--mono);color:var(--t1);font-variant-numeric:tabular-nums;line-height:1.1;}
+.cgv8-an-sub{font-size:.57rem;color:var(--t3);margin-top:3px;}
+.cgv8-an-up{color:var(--green);font-size:.58rem;margin-top:5px;}
+.cgv8-an-down{color:var(--danger);font-size:.58rem;margin-top:5px;}
+.cgv8-seo-chart{display:flex;align-items:flex-end;gap:5px;height:90px;overflow-x:auto;scrollbar-width:none;padding-top:10px;}
+.cgv8-seo-bwrap{display:flex;flex-direction:column;align-items:center;gap:3px;flex-shrink:0;cursor:pointer;}
+.cgv8-seo-bar{width:18px;border-radius:3px 3px 0 0;min-height:4px;transition:height .7s cubic-bezier(.22,1,.36,1);}
+.cgv8-seo-bval{font-size:.45rem;font-family:var(--mono);color:var(--t3);}
+.cgv8-seo-blbl{font-size:.39rem;color:var(--t3);max-width:26px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:center;}
+.cgv8-funnel{display:flex;flex-direction:column;gap:8px;}
+.cgv8-funnel-step{display:flex;align-items:center;gap:8px;}
+.cgv8-funnel-lbl{font-size:.57rem;color:var(--t2);min-width:90px;}
+.cgv8-funnel-bar{flex:1;height:18px;border-radius:4px;background:rgba(255,255,255,.05);overflow:hidden;}
+.cgv8-funnel-fill{height:100%;border-radius:4px;transition:width 1.2s cubic-bezier(.22,1,.36,1);}
+.cgv8-funnel-val{font-size:.59rem;font-family:var(--mono);color:var(--t1);min-width:55px;text-align:right;}
+.cgv8-insights{border-radius:14px;border:1px solid rgba(212,175,55,.14);background:rgba(212,175,55,.03);padding:14px 16px;}
+.cgv8-insights-hd{display:flex;align-items:center;gap:7px;margin-bottom:10px;}
+.cgv8-insights-ico{font-size:.9rem;}
+.cgv8-insights-tit{font-size:.59rem;font-weight:600;color:rgba(212,175,55,.8);}
+.cgv8-insight{display:flex;align-items:flex-start;gap:7px;margin-bottom:9px;font-size:.67rem;line-height:1.65;color:var(--t2);}
+.cgv8-insight::before{content:'→';color:var(--gold);flex-shrink:0;}
+/* History */
+.cgv8-hist-list{display:flex;flex-direction:column;gap:8px;max-height:510px;overflow-y:auto;scrollbar-width:thin;}
+.cgv8-hist-card{border-radius:12px;border:1px solid rgba(255,255,255,.07);background:rgba(0,0,0,.18);padding:12px 14px;cursor:pointer;transition:all .2s;animation:cgv8-slide-in .25s ease both;}
+.cgv8-hist-card:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.12);transform:translateX(2px);}
+.cgv8-hist-title{font-size:.74rem;font-weight:600;color:var(--t1);margin-bottom:6px;line-height:1.35;}
+.cgv8-hist-meta{display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+.cgv8-hist-tag{font-size:.51rem;padding:2px 6px;border-radius:4px;background:rgba(255,255,255,.05);color:var(--t3);}
+.cgv8-hist-seo{font-size:.53rem;padding:2px 7px;border-radius:4px;font-family:var(--mono);}
+.cgv8-hist-pub{font-size:.51rem;padding:2px 6px;border-radius:4px;background:rgba(48,209,88,.1);color:rgba(48,209,88,.8);}
+/* Confetti */
+.cgv8-confetti-p{position:fixed;pointer-events:none;z-index:9999;border-radius:2px;}
+/* Keyframes */
+@keyframes cgv8-idle-ring{0%,100%{opacity:.3;transform:scale(1);}50%{opacity:.75;transform:scale(1.04);}}
+@keyframes cgv8-spin-ring{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+@keyframes cgv8-done-ring{0%,100%{transform:scale(1);opacity:.7;}50%{transform:scale(1.12);opacity:1;}}
+@keyframes cgv8-err-shake{0%,100%{transform:translateX(0);}25%{transform:translateX(-5px);}75%{transform:translateX(5px);}}
+@keyframes cgv8-pop{0%{transform:scale(1);}40%{transform:scale(1.2);}70%{transform:scale(.93);}100%{transform:scale(1);}}
+@keyframes cgv8-ph-pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.55);}50%{box-shadow:0 0 0 6px rgba(212,175,55,0);}}
+@keyframes cgv8-blink{0%,100%{opacity:.8;}50%{opacity:.3;}}
+@keyframes cgv8-slide-in{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+@keyframes cgv8-confetti-fall{0%{transform:translateY(-20px) rotate(0deg);opacity:1;}100%{transform:translateY(110vh) rotate(720deg);opacity:0;}}
+
 </style>
 </head>
 <body>
@@ -2045,128 +2223,184 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 
 
-<!-- ═══════════════════ CHERRYGLOW v6 ═══════════════════ -->
+<!-- ═══════════════════ CHERRYGLOW v8 ═══════════════════ -->
 <div class="page" id="page-cherry">
+<div class="cgv8-page">
 
-<div class="page-topbar fi">
-  <div class="pt-left">
-    <div class="pt-title" style="display:flex;align-items:center;gap:10px">
-      CherryGlow
-      <span class="cg-version" id="cg-version">v6</span>
+<!-- Header -->
+<div class="cgv8-hdr fi">
+  <div class="cgv8-brand">
+    <div class="cgv8-brand-ico">&#x1F352;</div>
+    <div>
+      <div class="cgv8-brand-name">CherryGlow <span class="cgv8-brand-ver" id="cg-version">v8</span></div>
+      <div class="cgv8-tagline" id="cg-mood-tag">haz&#x131;r &middot; bekliyor</div>
     </div>
-    <div class="pt-sub" style="font-size:.68rem;opacity:.4">Konu Seç &rarr; Yaz &rarr; Onayla &rarr; Yayınla</div>
   </div>
-  <div class="pt-right" style="display:flex;align-items:center;gap:14px">
-    <div class="cw-auto-row">
-      <span>Oto-yayın</span>
-      <label class="cg-sw"><input type="checkbox" id="cg-autopub" onchange="cgToggleAutoPub(this.checked)"><span class="cg-sw-track"></span></label>
-    </div>
-    <span id="cg-status-pill" style="font-size:.65rem;padding:4px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);letter-spacing:.08em">HAZIR</span>
+  <div class="cgv8-hdr-stats">
+    <div class="cgv8-hstat"><b id="cg-stat-done">0</b><span>blog</span></div>
+    <div class="cgv8-hstat"><b id="cg-stat-seo">--</b><span>ort. seo</span></div>
+    <div class="cgv8-hstat"><b id="cg-stat-pub">0</b><span>yay&#x131;n</span></div>
+    <div class="cgv8-hstat"><b id="cg-stat-words">0</b><span>kelime</span></div>
+    <div class="cgv8-hstat"><b id="cg-stat-today">0</b><span>bug&#xFC;n</span></div>
+  </div>
+  <div class="cgv8-hdr-right">
+    <span style="font-size:.61rem;color:var(--t3)">Oto-yay&#x131;n</span>
+    <label class="cg-sw"><input type="checkbox" id="cg-autopub" onchange="cgToggleAutoPub(this.checked)"><span class="cg-sw-track"></span></label>
+    <span class="cgv8-pill" id="cg-status-pill">HAZIR</span>
   </div>
 </div>
 
-<div class="cg-stats-ribbon">
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-done">0</div><div class="cg-stat-lbl">Blog</div></div>
-  <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-words">0</div><div class="cg-stat-lbl">Kelime</div></div>
-  <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-seo">--</div><div class="cg-stat-lbl">Ort. SEO</div></div>
-  <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-pub">0</div><div class="cg-stat-lbl">Yayınlanan</div></div>
-  <div class="cg-stat-sep"></div>
-  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-today">0</div><div class="cg-stat-lbl">Bugün</div></div>
-</div>
+<!-- Main grid -->
+<div class="cgv8-grid">
 
-<div class="cg-main-grid">
+  <!-- LEFT -->
+  <div class="cgv8-left">
 
-  <!-- LEFT: Topics + Log -->
-  <div class="cg-left-col">
-
-    <!-- Topics card -->
-    <div class="card" style="padding:16px 14px">
-      <div class="cg-panel-title">
-        Konular
-        <span id="cg-agenda-count" style="font-size:.65rem;opacity:.5;font-weight:500;text-transform:none;letter-spacing:0"></span>
+    <!-- Agent card -->
+    <div class="cgv8-agent" id="cg-agent-card">
+      <div class="cgv8-av">
+        <div class="cgv8-av-glow"></div>
+        <div class="cgv8-av-ring"></div>
+        <div class="cgv8-av-core" id="cg-av-icon">&#x2728;</div>
       </div>
-      <div class="cg-agenda-wrap" id="cg-agenda-list" style="max-height:360px"></div>
-      <div style="display:flex;gap:6px;margin-top:10px">
-        <button class="cg-ctrl-btn" onclick="cgWriteAll()" style="font-size:.68rem">Hepsini Sırayla Yaz</button>
-        <button class="cg-ctrl-btn" onclick="cgResetDone()" style="font-size:.62rem;flex:none;opacity:.5" title="Tamamlananları sıfırla">↺</button>
+      <div class="cgv8-ag-lbl">CherryGlow AI</div>
+      <div class="cgv8-ag-msg" id="cg-agent-msg">Bug&#xFC;n ne yazal&#x131;m?</div>
+      <div class="cgv8-ag-sub" id="cg-agent-sub">Bir konu se&#xE7;, hemen i&#x15F;e koyulay&#x131;m.</div>
+      <div class="cgv8-ag-meta" id="cg-agent-meta"></div>
+      <!-- Phase strip -->
+      <div class="cgv8-phases" id="cg-phase-strip" style="display:none">
+        <div class="cgv8-ph" id="cg-ph-scout"><div class="cgv8-ph-dot"></div><span>Scout</span></div>
+        <div class="cgv8-ph-line"></div>
+        <div class="cgv8-ph" id="cg-ph-brief"><div class="cgv8-ph-dot"></div><span>Brief</span></div>
+        <div class="cgv8-ph-line"></div>
+        <div class="cgv8-ph" id="cg-ph-write"><div class="cgv8-ph-dot"></div><span>Yaz</span></div>
+        <div class="cgv8-ph-line"></div>
+        <div class="cgv8-ph" id="cg-ph-editor"><div class="cgv8-ph-dot"></div><span>Edit&#xF6;r</span></div>
+      </div>
+      <!-- Progress -->
+      <div id="cg-ag-prog" style="display:none">
+        <div class="cgv8-prog"><div class="cgv8-prog-fill" id="cg-ag-prog-fill" style="width:5%"></div></div>
+        <div class="cgv8-prog-pct" id="cg-prog-pct">5%</div>
+      </div>
+      <!-- Live word count -->
+      <div class="cgv8-lwc" id="cg-live-wc" style="display:none">
+        <span class="cgv8-lwc-num" id="cg-live-wc-num">0</span>
+        <span class="cgv8-lwc-lbl"> kelime yaz&#x131;ld&#x131;</span>
+        <div class="cgv8-lwc-bar"><div class="cgv8-lwc-fill" id="cg-live-wc-fill" style="width:0%"></div></div>
+      </div>
+      <!-- Buttons -->
+      <div class="cgv8-btns" id="cg-action-buttons"></div>
+    </div>
+
+    <!-- Topics -->
+    <div class="cgv8-topics">
+      <div class="cgv8-topics-hd">
+        <span class="cgv8-topics-hd-t">Konular</span>
+        <span class="cgv8-topics-cnt" id="cg-agenda-count"></span>
+      </div>
+      <input class="cgv8-search" id="cg-queue-search" placeholder="Konu ara..." oninput="cgFilterAgenda(this.value)">
+      <div class="cgv8-topic-list" id="cg-agenda-list"></div>
+      <div class="cgv8-topics-foot">
+        <button class="cg-btn-ghost" onclick="cgWriteAll()">Hepsini S&#x131;raya Al</button>
+        <button class="cg-btn-icon-sm" onclick="cgResetDone()" title="S&#x131;f&#x131;rla">&#x21BA;</button>
+      </div>
+      <div class="cgv8-bulk" id="cg-bulk-bar" style="display:none">
+        <div class="cgv8-bulk-track"><div class="cgv8-bulk-fill" id="cg-bulk-fill"></div></div>
+        <div class="cgv8-bulk-info"><span id="cg-bulk-label">0 konu</span><button onclick="cgAbortWrite()">&#x2715;</button></div>
       </div>
     </div>
 
-    <!-- Log card -->
-    <div class="card" style="padding:14px 16px;flex-shrink:0">
-      <div class="cg-panel-title" style="margin-bottom:8px">İşlem Günlüğü</div>
-      <div id="cg-log" style="font-size:.64rem;font-family:var(--mono);line-height:1.9;max-height:180px;overflow-y:auto;scrollbar-width:thin"></div>
+    <!-- Log -->
+    <div class="cgv8-log">
+      <div class="cgv8-log-hd">
+        <span class="cgv8-log-hd-t">&#x1F4CB; Aktivite</span>
+        <span class="cgv8-log-live">LIVE</span>
+      </div>
+      <div class="cgv8-log-body" id="cg-log"></div>
     </div>
 
   </div>
 
-  <!-- RIGHT: Action + Output -->
-  <div class="cg-right-col">
+  <!-- RIGHT -->
+  <div class="cgv8-right">
 
-    <!-- Action card -->
-    <div class="card" id="cg-action-card" style="padding:18px 20px;flex-shrink:0">
-      <div id="cg-action-status" style="margin-bottom:12px;min-height:40px"></div>
-      <div id="cg-action-buttons" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    <!-- Workspace tabs -->
+    <div class="cgv8-ws-tabs">
+      <button class="cgv8-ws-tab active" id="cgv8-tab-write" onclick="cgV8Tab('write',this)">
+        <svg viewBox="0 0 20 20"><path d="M3 17v-3.5l9.5-9.5 3.75 3.75-9.5 9.5H3z" stroke-width="1.5" stroke-linejoin="round"/></svg>
+        &#xC7;al&#x131;&#x15F;ma
+      </button>
+      <button class="cgv8-ws-tab" id="cgv8-tab-analytics" onclick="cgV8Tab('analytics',this)">
+        <svg viewBox="0 0 20 20"><polyline points="3,14 7,10 10,13 14,8 17,10" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Analitik
+      </button>
+      <button class="cgv8-ws-tab" id="cgv8-tab-history" onclick="cgV8Tab('history',this)">
+        <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" stroke-width="1.5"/><polyline points="10,7 10,10 12,12" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Ge&#xE7;mi&#x15F;
+      </button>
     </div>
 
-    <!-- Output card -->
-    <div class="card" style="padding:16px 18px;flex:1;min-height:0">
-      <div class="cg-tabs" style="margin-bottom:12px">
-        <div class="cg-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">Önizleme</div>
-        <div class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</div>
-        <div class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</div>
-        <div class="cg-tab" id="cg-tab-history" onclick="cgTab('history',this)">Geçmiş</div>
+    <!-- WRITE PANEL -->
+    <div class="cgv8-panel" id="cgv8-panel-write">
+      <div class="cgv8-inner-tabs">
+        <button class="cgv8-inner-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">&#x1F4C4; &#xD6;nizleme</button>
+        <button class="cgv8-inner-tab" id="cg-tab-html" onclick="cgTab('html',this)">&#x3C;/&#x3E; HTML</button>
+        <button class="cgv8-inner-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">&#x25CE; SEO</button>
       </div>
-
-      <!-- Preview -->
-      <div id="cg-tab-panel-preview" class="cg-output-body" style="min-height:280px;max-height:520px">
-        <div style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem">Sol taraftaki listeden bir konu seçip <strong>Yaz</strong> butonuna bas</div>
-      </div>
-
-      <!-- HTML -->
-      <div id="cg-tab-panel-html" style="display:none">
-        <div style="display:flex;gap:8px;margin-bottom:8px">
-          <button class="cg-ctrl-btn" onclick="cgCopyHTML()" style="font-size:.65rem">Kopyala</button>
-          <button class="cg-ctrl-btn" onclick="cgDownloadHTML()" style="font-size:.65rem">İndir</button>
+      <div id="cg-tab-panel-preview" class="cgv8-preview">
+        <div class="cgv8-empty">
+          <div class="cgv8-empty-ico">&#x270D;&#xFE0F;</div>
+          <div class="cgv8-empty-txt">CherryGlow haz&#x131;r &mdash; soldaki listeden bir konu se&#xE7; ve ba&#x15F;layal&#x131;m!</div>
         </div>
-        <textarea id="cg-html-ta" style="width:100%;height:360px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(255,255,255,.65);font-size:.68rem;font-family:var(--mono);padding:12px;resize:vertical;box-sizing:border-box" readonly></textarea>
       </div>
-
-      <!-- SEO -->
+      <div id="cg-tab-panel-html" style="display:none">
+        <div style="display:flex;gap:7px;margin-bottom:10px">
+          <button class="cg-btn-ghost" onclick="cgCopyHTML()">Kopyala</button>
+          <button class="cg-btn-ghost" onclick="cgDownloadHTML()">&#x130;ndir</button>
+        </div>
+        <textarea id="cg-html-ta" class="cgv8-code-ta" readonly></textarea>
+      </div>
       <div id="cg-tab-panel-seo" style="display:none;padding:4px 0">
-        <div class="cg-seo-grid" style="margin-bottom:14px">
+        <div class="cgv8-seo-grid">
           <div class="cg-score-ring-wrap">
             <svg class="cg-score-ring-svg" viewBox="0 0 100 100">
-              <defs><linearGradient id="cgRingGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+              <defs><linearGradient id="cgRingGrad8" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
               </linearGradient></defs>
               <circle cx="50" cy="50" r="40" class="cg-sr-bg" stroke-width="8"/>
               <circle cx="50" cy="50" r="40" id="cg-seo-ring"
-                style="fill:none;stroke:url(#cgRingGrad6);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
+                style="fill:none;stroke:url(#cgRingGrad8);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
             </svg>
             <div class="cg-score-center" id="cg-seo-score-num">--</div>
           </div>
           <div id="cg-seo-checks" class="cg-seo-bars"></div>
         </div>
-        <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
+        <div class="cgv8-kw-cloud" id="cg-kw-cloud"></div>
+        <div id="cg-serp-snippets" style="margin-top:12px"></div>
       </div>
+    </div>
 
-      <!-- History -->
-      <div id="cg-tab-panel-history" style="display:none;max-height:460px;overflow-y:auto">
-        <div id="cg-history-list"></div>
+    <!-- ANALYTICS PANEL -->
+    <div class="cgv8-panel" id="cgv8-panel-analytics" style="display:none">
+      <div id="cgv8-an-content" class="cgv8-an">
+        <div style="text-align:center;padding:50px 20px;color:var(--t3)">
+          <div style="font-size:1.5rem;margin-bottom:10px;opacity:.3">&#x1F4CA;</div>
+          <div style="font-size:.76rem">Analitik y&#xFC;kleniyor...</div>
+        </div>
       </div>
+    </div>
 
+    <!-- HISTORY PANEL -->
+    <div class="cgv8-panel" id="cgv8-panel-history" style="display:none">
+      <div class="cgv8-hist-list" id="cg-history-list"></div>
     </div>
 
   </div>
 
 </div>
+</div>
+</div>
 
-</div>
-</div>
 </main>
 <script id="data-script">
 /* ─── YOUTUBE DATA START ─── */
@@ -4194,6 +4428,22 @@ var _cgAgenda = [];
 var _cgAutoPub = false;
 var _cgWriting = false;
 var _cgWriteAbort = null;
+var _cgLiveMd = '';
+
+var CG_PHASE_MSGS = {
+  'Hazırlanıyor':          ['✨', 'Hazırlanıyorum...', 'Birazdan başlıyorum.'],
+  'Scout — KW Analizi':    ['🔍', 'Rakipleri inceliyorum...', 'SERP analizi yapıyorum...'],
+  'Brief — İçerik Planı':  ['📋', 'İçerik planı yapıyorum...', 'Başlıklar organize ediliyor...'],
+  'Yazıyor':               ['✍️', 'Yazıyorum...', 'Sonnet 4.6 kalemi eline aldı...'],
+  'Editor — SEO':          ['🔎', 'Son rötuşları yapıyorum...', 'SEO puanı kontrol ediliyor...']
+};
+var CG_PHASE_MAP = {
+  'Hazırlanıyor': 0,
+  'Scout — KW Analizi': 0,
+  'Brief — İçerik Planı': 1,
+  'Yazıyor': 2,
+  'Editor — SEO': 3
+};
 
 // ── Log ───────────────────────────────────────────────────────────────────────
 var _cgLogs = [];
@@ -4225,61 +4475,91 @@ function cgSetPill(label, bg) {
 
 // ── Render actions ────────────────────────────────────────────────────────────
 function cgRenderActions() {
-  var sEl = document.getElementById('cg-action-status');
-  var bEl = document.getElementById('cg-action-buttons');
-  if (!sEl || !bEl) return;
-
+  var card    = document.getElementById(‘cg-agent-card’);
+  var msgEl   = document.getElementById(‘cg-agent-msg’);
+  var subEl   = document.getElementById(‘cg-agent-sub’);
+  var metaEl  = document.getElementById(‘cg-agent-meta’);
+  var moodEl  = document.getElementById(‘cg-mood-tag’);
+  var bEl     = document.getElementById(‘cg-action-buttons’);
+  var progWrap= document.getElementById(‘cg-ag-prog’);
+  var progFill= document.getElementById(‘cg-ag-prog-fill’);
+  var progPct = document.getElementById(‘cg-prog-pct’);
+  var avIco   = document.getElementById(‘cg-av-icon’);
+  if (!bEl) return;
   var st = _cgSt;
 
-  if (st.status === 'idle') {
-    sEl.innerHTML = '<div style="font-size:.82rem;color:rgba(255,255,255,.4);padding:6px 0">Sol taraftaki listeden bir konu seç ve <strong style="color:rgba(212,175,55,.75)">Yaz</strong> butonuna tıkla &mdash; ya da tümünü sırayla yaz.</div>';
-    bEl.innerHTML = '';
+  if (st.status === ‘idle’) {
+    if (card)   card.className = ‘cgv8-agent’;
+    if (avIco)  avIco.textContent = ‘✨’;
+    if (msgEl)  msgEl.textContent = ‘Bugün ne yazalım?’;
+    if (subEl)  subEl.textContent = ‘Bir konu seç, hemen işe koyulurum.’;
+    if (metaEl) metaEl.textContent = ‘’;
+    if (moodEl) moodEl.textContent = ‘hazır · bekliyor’;
+    if (progWrap) progWrap.style.display = ‘none’;
+    cgHideLiveWC();
+    cgClearPhases();
+    bEl.innerHTML = ‘’;
 
-  } else if (st.status === 'writing') {
-    var topic = st.item ? st.item.topic : '';
-    var kwLine = (st.intel && st.intel.primary_kw)
-      ? '<div style="font-size:.7rem;color:rgba(212,175,55,.65);margin-top:4px">KW: '
-        + [st.intel.primary_kw].concat((st.intel.secondary_kws||[]).slice(0,3)).join(' · ')
-        + '</div>' : '';
-    var h1Line = (st.brief && st.brief.h1)
-      ? '<div style="font-size:.7rem;color:rgba(255,255,255,.38);margin-top:3px">Başlık: ' + st.brief.h1.slice(0,60) + '</div>' : '';
-    var prog = st.progress || 10;
-    sEl.innerHTML =
-      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.55);margin-bottom:5px">' + (st.phase || 'Hazırlanıyor') + '</div>' +
-      '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + topic.slice(0,65) + '</div>' +
-      kwLine + h1Line +
-      '<div style="margin-top:10px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
-        '<div id="cg-prog-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:'+prog+'%;transition:width .6s"></div>' +
-      '</div>';
-    bEl.innerHTML = '<button class="cg-ctrl-btn" onclick="cgAbortWrite()" style="color:rgba(255,69,58,.75);border-color:rgba(255,69,58,.2)">Durdur</button>';
+  } else if (st.status === ‘writing’) {
+    if (card) card.className = ‘cgv8-agent writing’;
+    var phase = st.phase || ‘Hazırlanıyor’;
+    var pm = CG_PHASE_MSGS[phase] || [‘⚙️’, ‘Çalışıyorum...’, phase];
+    if (avIco)  avIco.textContent = pm[0];
+    if (msgEl)  msgEl.textContent = pm[1];
+    if (subEl)  subEl.textContent = pm[2];
+    if (metaEl) metaEl.textContent = st.item ? st.item.topic.slice(0, 50) : ‘’;
+    if (moodEl) moodEl.textContent = ‘yazıyor · ‘ + (st.progress || 10) + ‘%’;
+    cgSyncPhaseStrip(phase);
+    if (progWrap) progWrap.style.display = ‘’;
+    if (progFill) progFill.style.width = (st.progress || 10) + ‘%’;
+    if (progPct)  progPct.textContent   = (st.progress || 10) + ‘%’;
+    if (phase === ‘Yazıyor’) {
+      var wcount = _cgLiveMd ? _cgLiveMd.split(/\s+/).filter(Boolean).length : 0;
+      cgUpdateLiveWC(wcount, (st.brief && st.brief.target_wc) || 1100);
+    }
+    bEl.innerHTML = ‘<button class="cg-btn-secondary" onclick="cgAbortWrite()" style="color:rgba(255,69,58,.85);border-color:rgba(255,69,58,.22)">Durdur</button>’;
 
-  } else if (st.status === 'done') {
+  } else if (st.status === ‘done’) {
+    if (card) card.className = ‘cgv8-agent done’;
+    if (avIco) avIco.textContent = ‘🎉’;
     var wc  = st.scoreObj ? st.scoreObj.wc    : 0;
-    var seo = st.scoreObj ? st.scoreObj.score : '--';
-    var title = (st.brief && st.brief.h1) ? st.brief.h1 : (st.item ? st.item.topic : '');
-    sEl.innerHTML =
-      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(52,199,89,.7);margin-bottom:5px">✓ TAMAMLANDI</div>' +
-      '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + title.slice(0,65) + '</div>' +
-      '<div style="font-size:.72rem;color:rgba(255,255,255,.38);margin-top:4px">' + wc + ' kelime · SEO: ' + seo + '/100</div>';
+    var seo = st.scoreObj ? st.scoreObj.score : ‘--’;
+    var title = (st.brief && st.brief.h1) ? st.brief.h1 : (st.item ? st.item.topic : ‘’);
+    if (msgEl)  msgEl.textContent = ‘Bitti! Beğendin mi? 😊’;
+    if (subEl)  subEl.textContent = wc + ‘ kelime · SEO ‘ + seo + ‘/100’;
+    if (metaEl) metaEl.textContent = title.slice(0, 55);
+    if (moodEl) moodEl.textContent = ‘tamamlandı · SEO ‘ + seo;
+    if (progWrap) progWrap.style.display = ‘none’;
+    cgHideLiveWC();
     bEl.innerHTML =
       (st.published
-        ? '<button class="cg-ctrl-btn" style="color:rgba(52,199,89,.75);border-color:rgba(52,199,89,.25);cursor:default">✓ Shopify’da Yayınlandı</button>'
-        : '<button class="cg-ctrl-btn primary" onclick="cgPublish()">✓ Onayla ve Yayınla</button>') +
-      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Sıradaki Konuyu Yaz</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgTab(\'seo\',document.getElementById(\'cg-tab-seo\'))" style="font-size:.65rem">SEO</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgTab(\'history\',document.getElementById(\'cg-tab-history\'))" style="font-size:.65rem">Geçmiş</button>';
+        ? ‘<button class="cg-btn-primary" style="color:rgba(52,199,89,.9);border-color:rgba(52,199,89,.3);cursor:default">✓ Shopify\’da Yayınlandı</button>’
+        : ‘<button class="cg-btn-primary" onclick="cgPublish()">✅ Onayla ve Yayınla</button>’) +
+      ‘<button class="cg-btn-secondary" onclick="cgNextPending()">Sıradakini Yaz ›</button>’ +
+      ‘<button class="cg-btn-ghost" onclick="cgV8Tab(\’analytics\’,document.getElementById(\’cgv8-tab-analytics\’))">Analitik</button>’ +
+      ‘<button class="cg-btn-ghost" onclick="cgTab(\’seo\’,document.getElementById(\’cg-tab-seo\’))">SEO</button>’;
 
-  } else if (st.status === 'error') {
-    sEl.innerHTML =
-      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,69,58,.75);margin-bottom:5px">⚠ HATA</div>' +
-      '<div style="font-size:.8rem;color:rgba(255,255,255,.6)">' + (st.error || 'Bilinmeyen hata') + '</div>';
+  } else if (st.status === ‘error’) {
+    if (card) card.className = ‘cgv8-agent error’;
+    if (avIco)  avIco.textContent = ‘😓’;
+    if (msgEl)  msgEl.textContent = ‘Bir sorun çıktı...’;
+    if (subEl)  subEl.textContent = st.error || ‘Bilinmeyen hata’;
+    if (metaEl) metaEl.textContent = ‘’;
+    if (moodEl) moodEl.textContent = ‘hata · tekrar dene’;
+    if (progWrap) progWrap.style.display = ‘none’;
+    cgHideLiveWC();
     bEl.innerHTML =
-      '<button class="cg-ctrl-btn primary" onclick="cgRetry()">Tekrar Dene</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Bu Konuyu Atla</button>';
+      ‘<button class="cg-btn-primary" onclick="cgRetry()">Tekrar Dene</button>’ +
+      ‘<button class="cg-btn-secondary" onclick="cgNextPending()">Bu Konuyu Atla</button>’;
 
-  } else if (st.status === 'publishing') {
-    sEl.innerHTML = '<div style="font-size:.85rem;color:rgba(212,175,55,.8)">Shopify’a gönderiliyor...</div>';
-    bEl.innerHTML = '';
+  } else if (st.status === ‘publishing’) {
+    if (card) card.className = ‘cgv8-agent writing’;
+    if (avIco)  avIco.textContent = ‘📤’;
+    if (msgEl)  msgEl.textContent = ‘Shopify\’a gönderiyorum...’;
+    if (subEl)  subEl.textContent = ‘Blog yayınlanıyor, bekleyin.’;
+    if (metaEl) metaEl.textContent = ‘’;
+    if (moodEl) moodEl.textContent = ‘yayınlıyor...’;
+    bEl.innerHTML = ‘’;
   }
 }
 
@@ -4310,15 +4590,16 @@ function cgRenderAgenda() {
   el.innerHTML = _cgAgenda.map(function(item, idx) {
     var running = item.stage === 'running';
     var done    = item.stage === 'done';
-    var bg  = done    ? 'rgba(52,199,89,.03)'    : running ? 'rgba(212,175,55,.06)' : 'rgba(255,255,255,.025)';
-    var bdr = done    ? 'rgba(52,199,89,.12)'    : running ? 'rgba(212,175,55,.3)'  : 'rgba(255,255,255,.055)';
-    var badge = done    ? '<span style="font-size:.6rem;color:rgba(52,199,89,.6)">✓</span>'
-              : running ? '<span style="font-size:.6rem;color:#D4AF37">●</span>'
-              : '<button onclick="cgWrite('+idx+')" style="font-size:.58rem;padding:3px 9px;border-radius:6px;border:1px solid rgba(212,175,55,.3);background:rgba(212,175,55,.08);color:rgba(212,175,55,.85);cursor:pointer;white-space:nowrap">Yaz</button>';
-    return '<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:'+bg+';border:1px solid '+bdr+';margin-bottom:5px'+(done?';opacity:.42':'')+'">'+
-      '<span style="font-size:.52rem;padding:2px 6px;border-radius:5px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.15);color:rgba(212,175,55,.6);flex-shrink:0">'+item.cat+'</span>'+
-      '<span style="flex:1;font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.35">'+item.topic.slice(0,55)+'</span>'+
-      badge+
+    var cls = 'cgv8-topic' + (done ? ' done' : running ? ' running' : '');
+    var badge = done
+      ? '<span class="cgv8-topic-done-mark">✓</span>'
+      : running
+      ? '<span class="cgv8-topic-running">●</span>'
+      : '<button class="cgv8-topic-btn" onclick="cgWrite(' + idx + ')">Yaz</button>';
+    return '<div class="' + cls + '">' +
+      '<span class="cgv8-topic-cat">' + item.cat + '</span>' +
+      '<span class="cgv8-topic-name">' + item.topic.slice(0, 55) + '</span>' +
+      '<span class="cgv8-topic-act">' + badge + '</span>' +
       '</div>';
   }).join('');
 }
@@ -4329,13 +4610,14 @@ function cgUpdateAgendaStage(idx, stage) {
 
 // ── Stats ──────────────────────────────────────────────────────────────────────
 function cgUpdateStats() {
-  var brain  = cgGetBrain();
-  var hist   = brain.history || [];
-  var scores = brain.seo_scores || [];
-  var pub    = hist.filter(function(h) { return h.published; }).length;
-  var today  = (brain.topics_covered || []).filter(function(t) { return t.date === new Date().toDateString(); }).length;
-  var tw     = hist.reduce(function(a, h) { return a + (h.wc || 0); }, 0);
-  var avgSeo = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : '--';
+  var brain     = cgGetBrain();
+  var hist      = brain.history || [];
+  var rawScores = brain.seo_scores || [];
+  var pub       = hist.filter(function(h) { return h.published; }).length;
+  var today     = (brain.topics_covered || []).filter(function(t) { return t.date === new Date().toDateString(); }).length;
+  var tw        = hist.reduce(function(a, h) { return a + (h.wc || 0); }, 0);
+  var validScores = rawScores.filter(function(s) { return typeof s === 'number' && !isNaN(s); });
+  var avgSeo    = validScores.length ? Math.round(validScores.reduce(function(a,b){return a+b;},0)/validScores.length) : '--';
   function s(id, v) { var e = document.getElementById(id); if (e) e.textContent = v; }
   s('cg-stat-done',  hist.length);
   s('cg-stat-words', tw >= 1000 ? (tw/1000).toFixed(1)+'K' : tw);
@@ -4349,7 +4631,7 @@ function cgUpdateStats() {
 
 // ── Tabs ───────────────────────────────────────────────────────────────────────
 function cgTab(tab, btn) {
-  ['preview','html','seo','history'].forEach(function(t) {
+  ['preview','html','seo'].forEach(function(t) {
     var p = document.getElementById('cg-tab-panel-'+t);
     var b = document.getElementById('cg-tab-'+t);
     if (p) p.style.display = (t === tab) ? '' : 'none';
@@ -4358,13 +4640,12 @@ function cgTab(tab, btn) {
   if (tab === 'html' && _cgSt.md) {
     var ta = document.getElementById('cg-html-ta');
     if (ta) {
-      // enrichBlogHTML geciktirilmiş çalıştırılıyor (heavy operation)
       requestAnimationFrame(function(){
         ta.value = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
       });
     }
   }
-  if (tab === 'history') cgRenderHistory();
+  if (tab === 'history') { cgV8Tab('history', document.getElementById('cgv8-tab-history')); return; }
   if (tab === 'seo' && _cgSt.scoreObj) cgRenderSeoPanel(_cgSt.scoreObj);
 }
 
@@ -4395,7 +4676,7 @@ function cgRenderSeoPanel(sc) {
   }).join('');
   if (kwEl && _cgSt.intel) {
     var kws = [_cgSt.intel.primary_kw].concat(_cgSt.intel.secondary_kws || []).filter(Boolean);
-    kwEl.innerHTML = kws.map(function(k) { return '<span class="cg-kw-tag">'+k+'</span>'; }).join('');
+    kwEl.innerHTML = kws.map(function(k) { return '<span class="cgv8-kw-tag">'+k+'</span>'; }).join('');
   }
 }
 
@@ -4405,20 +4686,25 @@ function cgRenderHistory() {
   if (!el) return;
   var hist = (cgGetBrain().history || []).slice().reverse();
   if (!hist.length) {
-    el.innerHTML = '<div style="text-align:center;padding:30px;opacity:.25;font-size:.8rem">Henüz blog yazılmadı</div>';
+    el.innerHTML = '<div style="text-align:center;padding:40px;opacity:.25;font-size:.82rem">Henüz blog yazılmadı</div>';
     return;
   }
   el.innerHTML = hist.map(function(item, i) {
     var d   = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
-    var col = item.seo >= 85 ? 'rgba(52,199,89,.75)' : item.seo >= 70 ? 'rgba(212,175,55,.75)' : 'rgba(255,69,58,.6)';
+    var seo = item.seo || 0;
+    var seoCol = seo >= 85 ? 'rgba(52,199,89,.85)' : seo >= 70 ? 'rgba(212,175,55,.85)' : 'rgba(255,69,58,.75)';
     var realIdx = hist.length - 1 - i;
-    return '<div class="cg-hist-item" onclick="cgLoadHistory('+realIdx+')">' +
-      '<div class="cg-hist-title">'+(item.title||item.topic||'').slice(0,70)+'</div>' +
-      '<div class="cg-hist-meta">' +
-        '<span>'+d+'</span><span>'+(item.wc||0)+' kelime</span>' +
-        '<span class="cg-hist-seo" style="color:'+col+';background:rgba(0,0,0,.2)">SEO '+(item.seo||'--')+'</span>' +
-        (item.published ? '<span class="cg-hist-pub">✓ Yayınlandı</span>' : '') +
-      '</div></div>';
+    var estTraffic = seo >= 90 ? 320 : seo >= 80 ? 130 : seo >= 70 ? 50 : seo >= 60 ? 20 : 8;
+    return '<div class="cgv8-hist-card" onclick="cgLoadHistory(' + realIdx + ')">' +
+      '<div class="cgv8-hist-title">' + (item.title || item.topic || '').slice(0, 65) + '</div>' +
+      '<div class="cgv8-hist-meta">' +
+        '<span class="cgv8-hist-tag">' + d + '</span>' +
+        '<span class="cgv8-hist-tag">' + (item.wc || 0) + ' kelime</span>' +
+        '<span class="cgv8-hist-seo" style="color:' + seoCol + ';background:rgba(0,0,0,.2)">SEO ' + (item.seo || '--') + '</span>' +
+        '<span class="cgv8-hist-tag" style="color:rgba(90,200,250,.7)">~' + estTraffic + ' ziyaretçi/ay</span>' +
+        (item.published ? '<span class="cgv8-hist-pub">✓ Yayında</span>' : '') +
+      '</div>' +
+    '</div>';
   }).join('');
 }
 
@@ -4434,8 +4720,158 @@ function cgLoadHistory(idx) {
   if (p) p.innerHTML = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
   cgRenderSeoPanel(_cgSt.scoreObj);
   cgRenderActions();
+  cgV8Tab('write', document.getElementById('cgv8-tab-write'));
   cgTab('preview', document.getElementById('cg-tab-preview'));
-  cgLog('Geçmişten yüklendi: '+(item.title||'').slice(0,40), 'info');
+  cgLog('Geçmişten yüklendi: ' + (item.title || '').slice(0, 40), 'info');
+}
+
+// ── cgV8Tab — workspace tab switcher ──────────────────────────────────────────
+function cgV8Tab(tab, btn) {
+  ['write','analytics','history'].forEach(function(t) {
+    var p = document.getElementById('cgv8-panel-'+t);
+    var b = document.getElementById('cgv8-tab-'+t);
+    if (p) p.style.display = (t === tab) ? '' : 'none';
+    if (b) b.classList.toggle('active', t === tab);
+  });
+  if (tab === 'history')   cgRenderHistory();
+  if (tab === 'analytics') cgRenderAnalytics();
+}
+
+// ── Phase strip ───────────────────────────────────────────────────────────────
+function cgSyncPhaseStrip(phase) {
+  var strip = document.getElementById('cg-phase-strip');
+  if (!strip) return;
+  strip.style.display = '';
+  var idx = CG_PHASE_MAP[phase] !== undefined ? CG_PHASE_MAP[phase] : -1;
+  ['cg-ph-scout','cg-ph-brief','cg-ph-write','cg-ph-editor'].forEach(function(id, i) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.className = 'cgv8-ph' + (i < idx ? ' done' : i === idx ? ' active' : '');
+  });
+}
+
+function cgClearPhases() {
+  var strip = document.getElementById('cg-phase-strip');
+  if (strip) strip.style.display = 'none';
+}
+
+// ── Live word count ───────────────────────────────────────────────────────────
+function cgUpdateLiveWC(wc, target) {
+  var el   = document.getElementById('cg-live-wc');
+  var num  = document.getElementById('cg-live-wc-num');
+  var fill = document.getElementById('cg-live-wc-fill');
+  if (!el) return;
+  el.style.display = '';
+  if (num)  num.textContent = wc;
+  var pct = Math.min(100, Math.round(wc / (target || 1100) * 100));
+  if (fill) fill.style.width = pct + '%';
+}
+
+function cgHideLiveWC() {
+  var el = document.getElementById('cg-live-wc');
+  if (el) el.style.display = 'none';
+}
+
+// ── Confetti celebration ──────────────────────────────────────────────────────
+function cgCelebrate() {
+  var colors = ['#D4AF37','#FFB7C5','#30D158','#5AC8FA','#FF9F0A','#BF5AF2'];
+  for (var i = 0; i < 60; i++) {
+    (function(delay) {
+      setTimeout(function() {
+        var el = document.createElement('div');
+        el.className = 'cgv8-confetti-p';
+        el.style.left      = Math.random() * 100 + 'vw';
+        el.style.top       = '-10px';
+        el.style.width     = (5 + Math.random() * 9) + 'px';
+        el.style.height    = (5 + Math.random() * 9) + 'px';
+        el.style.background = colors[Math.floor(Math.random() * colors.length)];
+        el.style.animation  = 'cgv8-confetti-fall ' + (1.8 + Math.random() * 2.2) + 's ease-in forwards';
+        document.body.appendChild(el);
+        setTimeout(function() { if (el.parentNode) el.remove(); }, 5000);
+      }, delay);
+    })(i * 55);
+  }
+}
+
+// ── Analytics rendering ───────────────────────────────────────────────────────
+function cgFunnelRow(label, value, color, max) {
+  var pct = max ? Math.round(value / max * 100) : 100;
+  return '<div class="cgv8-funnel-step">' +
+    '<div class="cgv8-funnel-lbl">' + label + '</div>' +
+    '<div class="cgv8-funnel-bar"><div class="cgv8-funnel-fill" style="width:' + pct + '%;background:' + color + '"></div></div>' +
+    '<div class="cgv8-funnel-val">' + value + '</div>' +
+  '</div>';
+}
+
+function cgRenderAnalytics() {
+  var el = document.getElementById('cgv8-an-content');
+  if (!el) return;
+  var brain = cgGetBrain();
+  var hist  = brain.history || [];
+  var rawScores   = brain.seo_scores || [];
+  var validScores = rawScores.filter(function(s) { return typeof s === 'number' && !isNaN(s); });
+  var avgSeo   = validScores.length ? Math.round(validScores.reduce(function(a,b){return a+b;},0)/validScores.length) : 0;
+  var totalWC  = hist.reduce(function(a,h){return a+(h.wc||0);},0);
+  var pubCount = hist.filter(function(h){return h.published;}).length;
+
+  var estTrafficTotal = hist.reduce(function(a, h) {
+    var s = h.seo || 0;
+    return a + (s>=90?320 : s>=80?130 : s>=70?50 : s>=60?20 : 8);
+  }, 0);
+  var estSales = Math.round(estTrafficTotal * 0.018);
+
+  var kpiHtml = '<div class="cgv8-an-row">' +
+    '<div class="cgv8-an-card"><div class="cgv8-an-big">' + estTrafficTotal + '</div><div class="cgv8-an-title" style="margin-top:4px">Tahmini Aylık Ziyaret</div></div>' +
+    '<div class="cgv8-an-card"><div class="cgv8-an-big" style="color:rgba(52,199,89,.9)">' + estSales + '</div><div class="cgv8-an-title" style="margin-top:4px">Tahmini Satış (×%1.8)</div></div>' +
+    '<div class="cgv8-an-card"><div class="cgv8-an-big" style="color:rgba(212,175,55,.9)">' + avgSeo + '</div><div class="cgv8-an-title" style="margin-top:4px">Ort. SEO Puanı</div></div>' +
+    '<div class="cgv8-an-card"><div class="cgv8-an-big" style="color:rgba(90,200,250,.9)">' + (totalWC>=1000?(totalWC/1000).toFixed(1)+'K':totalWC) + '</div><div class="cgv8-an-title" style="margin-top:4px">Toplam Kelime</div></div>' +
+  '</div>';
+
+  var chartData = hist.slice(-8);
+  var bars = chartData.map(function(h) {
+    var s   = h.seo || 0;
+    var ht  = Math.max(4, Math.round(s / 100 * 80));
+    var col = s>=85?'rgba(52,199,89,.75)':s>=70?'rgba(212,175,55,.75)':'rgba(255,69,58,.65)';
+    var lbl = (h.title||h.topic||'').slice(0,12);
+    return '<div class="cgv8-seo-bwrap">' +
+      '<div class="cgv8-seo-bval">' + s + '</div>' +
+      '<div class="cgv8-seo-bar" style="height:' + ht + 'px;background:' + col + '"></div>' +
+      '<div class="cgv8-seo-blbl">' + lbl + '</div>' +
+    '</div>';
+  }).join('');
+  var chartHtml = '<div class="cgv8-an-card full" style="grid-column:1/-1">' +
+    '<div class="cgv8-an-title">Blog SEO Puanları</div>' +
+    '<div class="cgv8-seo-chart">' + (bars || '<div style="opacity:.25;font-size:.75rem;margin:auto">Henüz blog yazılmadı</div>') + '</div>' +
+  '</div>';
+
+  var visits     = estTrafficTotal || 0;
+  var engaged    = Math.round(visits * 0.42);
+  var interested = Math.round(engaged * 0.28);
+  var bought     = Math.round(interested * 0.15);
+  var funnelHtml = '<div class="cgv8-an-card full" style="grid-column:1/-1">' +
+    '<div class="cgv8-an-title">Trafik → Satış Hunisi</div>' +
+    '<div class="cgv8-funnel">' +
+      cgFunnelRow('Blog Ziyareti', visits, 'rgba(90,200,250,.55)', visits||1) +
+      cgFunnelRow('İlgili Okuyucu', engaged, 'rgba(212,175,55,.55)', visits||1) +
+      cgFunnelRow('Ürün İnceler', interested, 'rgba(255,159,10,.55)', visits||1) +
+      cgFunnelRow('Satın Alır', bought, 'rgba(52,199,89,.7)', visits||1) +
+    '</div>' +
+  '</div>';
+
+  var insightMsg = hist.length === 0
+    ? 'Henüz yeterli veri yok. İlk bloğu yaz ve analizler burada görünecek!'
+    : avgSeo >= 85 ? '✨ Harika iş! Ort. SEO ' + avgSeo + ' — bu bloglar Google\'da güçlü sıralanır.'
+    : avgSeo >= 70 ? '📈 İyi gidiyoruz! Daha uzun içerik ve H2 bölümleriyle SEO\'yu artırabilirsin.'
+    : '💡 SEO puanı ' + avgSeo + '. Anahtar kelime yoğunluğunu ve içerik uzunluğunu artır.';
+  if (pubCount < hist.length && hist.length > 0) {
+    insightMsg += ' · ' + (hist.length - pubCount) + ' blog hâlâ yayınlanmadı — yayınlayarak trafiği başlat!';
+  }
+  var insightHtml = '<div class="cgv8-insights" style="grid-column:1/-1">' +
+    '<div class="cgv8-insights-hd"><span class="cgv8-insights-ico">🍒</span><span class="cgv8-insights-tit">CherryGlow İçgörüleri</span></div>' +
+    '<div class="cgv8-insight">' + insightMsg + '</div>' +
+  '</div>';
+
+  el.innerHTML = kpiHtml + '<div class="cgv8-an-row" style="margin-top:8px">' + chartHtml + funnelHtml + insightHtml + '</div>';
 }
 
 // ── API helpers ────────────────────────────────────────────────────────────────
@@ -4575,6 +5011,7 @@ async function cgWrite(idx) {
     // ── 3. Yaz (streaming + macrotask yield — hem timeout yok hem donma yok) ───
     _cgSt.phase = 'Yazıyor';
     cgRenderActions();
+    cgUpdateLiveWC(0, (_cgSt.brief && _cgSt.brief.target_wc) || 1100);
     cgLog('Blog yazılıyor...','info');
 
     var sysPrompt = cgBuildSystemPrompt(item, _cgSt.intel, _cgSt.brief, today, brain);
@@ -4596,15 +5033,23 @@ async function cgWrite(idx) {
       '</div>';
 
     // Bağımsız animasyon — API döngüsüyle hiç ilişkisi yok
+    _cgLiveMd = '';
     var _writeStart  = Date.now();
     var _progVal     = 5;
     var _barEl       = document.getElementById('cgsp-bar');
     var _elapsedEl   = document.getElementById('cgsp-elapsed');
+    var _targetWC    = (_cgSt.brief && _cgSt.brief.target_wc) || 1100;
     var _animTimer   = setInterval(function() {
       _progVal = Math.min(93, _progVal + 0.8);
       var elapsed = Math.floor((Date.now() - _writeStart) / 1000);
       if (_barEl)     _barEl.style.width = _progVal + '%';
       if (_elapsedEl) _elapsedEl.textContent = 'Yazılıyor... ' + elapsed + 's';
+      var liveWC = _cgLiveMd ? _cgLiveMd.split(/\s+/).filter(Boolean).length : 0;
+      cgUpdateLiveWC(liveWC, _targetWC);
+      var pf = document.getElementById('cg-ag-prog-fill');
+      var pp = document.getElementById('cg-prog-pct');
+      if (pf) pf.style.width = _progVal + '%';
+      if (pp) pp.textContent = Math.round(_progVal) + '%';
     }, 600);
 
     var ctrl = new AbortController();
@@ -4661,6 +5106,7 @@ async function cgWrite(idx) {
             if (evt.type === 'content_block_delta' &&
                 evt.delta && evt.delta.type === 'text_delta') {
               md += evt.delta.text;
+              _cgLiveMd = md;
             }
           } catch(e2) {}
         }
@@ -4732,7 +5178,9 @@ async function cgWrite(idx) {
 
     _cgSt.status   = 'done';
     _cgSt.progress = 100;
+    _cgLiveMd      = '';
     cgSetPill('TAMAM', 'rgba(52,199,89,.25)');
+    cgCelebrate();
     cgRenderActions();
     cgLog('✓ Tamamlandı! "'+(_cgSt.brief.h1||item.topic).slice(0,40)+'" — '+_cgSt.scoreObj.wc+' kelime, SEO '+_cgSt.scoreObj.score,'ok');
 
