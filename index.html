@@ -2493,7 +2493,7 @@ const YOUTUBE = {
     },
     {
       "id": "-Ig3lgUcm8c",
-      "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
+      "title": "TÜRKİYE'NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
       "views": 2064,
       "likes": 25,
@@ -4475,91 +4475,91 @@ function cgSetPill(label, bg) {
 
 // ── Render actions ────────────────────────────────────────────────────────────
 function cgRenderActions() {
-  var card    = document.getElementById(‘cg-agent-card’);
-  var msgEl   = document.getElementById(‘cg-agent-msg’);
-  var subEl   = document.getElementById(‘cg-agent-sub’);
-  var metaEl  = document.getElementById(‘cg-agent-meta’);
-  var moodEl  = document.getElementById(‘cg-mood-tag’);
-  var bEl     = document.getElementById(‘cg-action-buttons’);
-  var progWrap= document.getElementById(‘cg-ag-prog’);
-  var progFill= document.getElementById(‘cg-ag-prog-fill’);
-  var progPct = document.getElementById(‘cg-prog-pct’);
-  var avIco   = document.getElementById(‘cg-av-icon’);
+  var card    = document.getElementById('cg-agent-card');
+  var msgEl   = document.getElementById('cg-agent-msg');
+  var subEl   = document.getElementById('cg-agent-sub');
+  var metaEl  = document.getElementById('cg-agent-meta');
+  var moodEl  = document.getElementById('cg-mood-tag');
+  var bEl     = document.getElementById('cg-action-buttons');
+  var progWrap= document.getElementById('cg-ag-prog');
+  var progFill= document.getElementById('cg-ag-prog-fill');
+  var progPct = document.getElementById('cg-prog-pct');
+  var avIco   = document.getElementById('cg-av-icon');
   if (!bEl) return;
   var st = _cgSt;
 
-  if (st.status === ‘idle’) {
-    if (card)   card.className = ‘cgv8-agent’;
-    if (avIco)  avIco.textContent = ‘✨’;
-    if (msgEl)  msgEl.textContent = ‘Bugün ne yazalım?’;
-    if (subEl)  subEl.textContent = ‘Bir konu seç, hemen işe koyulurum.’;
-    if (metaEl) metaEl.textContent = ‘’;
-    if (moodEl) moodEl.textContent = ‘hazır · bekliyor’;
-    if (progWrap) progWrap.style.display = ‘none’;
+  if (st.status === 'idle') {
+    if (card)   card.className = 'cgv8-agent';
+    if (avIco)  avIco.textContent = '✨';
+    if (msgEl)  msgEl.textContent = 'Bugün ne yazalım?';
+    if (subEl)  subEl.textContent = 'Bir konu seç, hemen işe koyulurum.';
+    if (metaEl) metaEl.textContent = '';
+    if (moodEl) moodEl.textContent = 'hazır · bekliyor';
+    if (progWrap) progWrap.style.display = 'none';
     cgHideLiveWC();
     cgClearPhases();
-    bEl.innerHTML = ‘’;
+    bEl.innerHTML = '';
 
-  } else if (st.status === ‘writing’) {
-    if (card) card.className = ‘cgv8-agent writing’;
-    var phase = st.phase || ‘Hazırlanıyor’;
-    var pm = CG_PHASE_MSGS[phase] || [‘⚙️’, ‘Çalışıyorum...’, phase];
+  } else if (st.status === 'writing') {
+    if (card) card.className = 'cgv8-agent writing';
+    var phase = st.phase || 'Hazırlanıyor';
+    var pm = CG_PHASE_MSGS[phase] || ['⚙️', 'Çalışıyorum...', phase];
     if (avIco)  avIco.textContent = pm[0];
     if (msgEl)  msgEl.textContent = pm[1];
     if (subEl)  subEl.textContent = pm[2];
-    if (metaEl) metaEl.textContent = st.item ? st.item.topic.slice(0, 50) : ‘’;
-    if (moodEl) moodEl.textContent = ‘yazıyor · ‘ + (st.progress || 10) + ‘%’;
+    if (metaEl) metaEl.textContent = st.item ? st.item.topic.slice(0, 50) : '';
+    if (moodEl) moodEl.textContent = 'yazıyor · ' + (st.progress || 10) + '%';
     cgSyncPhaseStrip(phase);
-    if (progWrap) progWrap.style.display = ‘’;
-    if (progFill) progFill.style.width = (st.progress || 10) + ‘%’;
-    if (progPct)  progPct.textContent   = (st.progress || 10) + ‘%’;
-    if (phase === ‘Yazıyor’) {
+    if (progWrap) progWrap.style.display = '';
+    if (progFill) progFill.style.width = (st.progress || 10) + '%';
+    if (progPct)  progPct.textContent   = (st.progress || 10) + '%';
+    if (phase === 'Yazıyor') {
       var wcount = _cgLiveMd ? _cgLiveMd.split(/\s+/).filter(Boolean).length : 0;
       cgUpdateLiveWC(wcount, (st.brief && st.brief.target_wc) || 1100);
     }
-    bEl.innerHTML = ‘<button class="cg-btn-secondary" onclick="cgAbortWrite()" style="color:rgba(255,69,58,.85);border-color:rgba(255,69,58,.22)">Durdur</button>’;
+    bEl.innerHTML = '<button class="cg-btn-secondary" onclick="cgAbortWrite()" style="color:rgba(255,69,58,.85);border-color:rgba(255,69,58,.22)">Durdur</button>';
 
-  } else if (st.status === ‘done’) {
-    if (card) card.className = ‘cgv8-agent done’;
-    if (avIco) avIco.textContent = ‘🎉’;
+  } else if (st.status === 'done') {
+    if (card) card.className = 'cgv8-agent done';
+    if (avIco) avIco.textContent = '🎉';
     var wc  = st.scoreObj ? st.scoreObj.wc    : 0;
-    var seo = st.scoreObj ? st.scoreObj.score : ‘--’;
-    var title = (st.brief && st.brief.h1) ? st.brief.h1 : (st.item ? st.item.topic : ‘’);
-    if (msgEl)  msgEl.textContent = ‘Bitti! Beğendin mi? 😊’;
-    if (subEl)  subEl.textContent = wc + ‘ kelime · SEO ‘ + seo + ‘/100’;
+    var seo = st.scoreObj ? st.scoreObj.score : '--';
+    var title = (st.brief && st.brief.h1) ? st.brief.h1 : (st.item ? st.item.topic : '');
+    if (msgEl)  msgEl.textContent = 'Bitti! Beğendin mi? 😊';
+    if (subEl)  subEl.textContent = wc + ' kelime · SEO ' + seo + '/100';
     if (metaEl) metaEl.textContent = title.slice(0, 55);
-    if (moodEl) moodEl.textContent = ‘tamamlandı · SEO ‘ + seo;
-    if (progWrap) progWrap.style.display = ‘none’;
+    if (moodEl) moodEl.textContent = 'tamamlandı · SEO ' + seo;
+    if (progWrap) progWrap.style.display = 'none';
     cgHideLiveWC();
     bEl.innerHTML =
       (st.published
-        ? ‘<button class="cg-btn-primary" style="color:rgba(52,199,89,.9);border-color:rgba(52,199,89,.3);cursor:default">✓ Shopify\’da Yayınlandı</button>’
-        : ‘<button class="cg-btn-primary" onclick="cgPublish()">✅ Onayla ve Yayınla</button>’) +
-      ‘<button class="cg-btn-secondary" onclick="cgNextPending()">Sıradakini Yaz ›</button>’ +
-      ‘<button class="cg-btn-ghost" onclick="cgV8Tab(\’analytics\’,document.getElementById(\’cgv8-tab-analytics\’))">Analitik</button>’ +
-      ‘<button class="cg-btn-ghost" onclick="cgTab(\’seo\’,document.getElementById(\’cg-tab-seo\’))">SEO</button>’;
+        ? '<button class="cg-btn-primary" style="color:rgba(52,199,89,.9);border-color:rgba(52,199,89,.3);cursor:default">✓ Shopify\'da Yayınlandı</button>'
+        : '<button class="cg-btn-primary" onclick="cgPublish()">✅ Onayla ve Yayınla</button>') +
+      '<button class="cg-btn-secondary" onclick="cgNextPending()">Sıradakini Yaz ›</button>' +
+      '<button class="cg-btn-ghost" onclick="cgV8Tab(\'analytics\',document.getElementById(\'cgv8-tab-analytics\'))">Analitik</button>' +
+      '<button class="cg-btn-ghost" onclick="cgTab(\'seo\',document.getElementById(\'cg-tab-seo\'))">SEO</button>';
 
-  } else if (st.status === ‘error’) {
-    if (card) card.className = ‘cgv8-agent error’;
-    if (avIco)  avIco.textContent = ‘😓’;
-    if (msgEl)  msgEl.textContent = ‘Bir sorun çıktı...’;
-    if (subEl)  subEl.textContent = st.error || ‘Bilinmeyen hata’;
-    if (metaEl) metaEl.textContent = ‘’;
-    if (moodEl) moodEl.textContent = ‘hata · tekrar dene’;
-    if (progWrap) progWrap.style.display = ‘none’;
+  } else if (st.status === 'error') {
+    if (card) card.className = 'cgv8-agent error';
+    if (avIco)  avIco.textContent = '😓';
+    if (msgEl)  msgEl.textContent = 'Bir sorun çıktı...';
+    if (subEl)  subEl.textContent = st.error || 'Bilinmeyen hata';
+    if (metaEl) metaEl.textContent = '';
+    if (moodEl) moodEl.textContent = 'hata · tekrar dene';
+    if (progWrap) progWrap.style.display = 'none';
     cgHideLiveWC();
     bEl.innerHTML =
-      ‘<button class="cg-btn-primary" onclick="cgRetry()">Tekrar Dene</button>’ +
-      ‘<button class="cg-btn-secondary" onclick="cgNextPending()">Bu Konuyu Atla</button>’;
+      '<button class="cg-btn-primary" onclick="cgRetry()">Tekrar Dene</button>' +
+      '<button class="cg-btn-secondary" onclick="cgNextPending()">Bu Konuyu Atla</button>';
 
-  } else if (st.status === ‘publishing’) {
-    if (card) card.className = ‘cgv8-agent writing’;
-    if (avIco)  avIco.textContent = ‘📤’;
-    if (msgEl)  msgEl.textContent = ‘Shopify\’a gönderiyorum...’;
-    if (subEl)  subEl.textContent = ‘Blog yayınlanıyor, bekleyin.’;
-    if (metaEl) metaEl.textContent = ‘’;
-    if (moodEl) moodEl.textContent = ‘yayınlıyor...’;
-    bEl.innerHTML = ‘’;
+  } else if (st.status === 'publishing') {
+    if (card) card.className = 'cgv8-agent writing';
+    if (avIco)  avIco.textContent = '📤';
+    if (msgEl)  msgEl.textContent = 'Shopify\'a gönderiyorum...';
+    if (subEl)  subEl.textContent = 'Blog yayınlanıyor, bekleyin.';
+    if (metaEl) metaEl.textContent = '';
+    if (moodEl) moodEl.textContent = 'yayınlıyor...';
+    bEl.innerHTML = '';
   }
 }
 
