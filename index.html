@@ -26,8 +26,6 @@ body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100
 .sidebar{position:fixed;top:0;left:0;width:var(--sidebar);height:100vh;background:rgba(8,8,8,0.94);border-right:1px solid var(--b0);display:flex;flex-direction:column;z-index:200;backdrop-filter:blur(40px) saturate(160%);-webkit-backdrop-filter:blur(40px) saturate(160%);}
 .main{margin-left:var(--sidebar);min-height:100vh;position:relative;}
 .page{display:none;padding:40px 44px 80px;}
-#page-cherry{padding:0;display:none;flex-direction:column;height:calc(100vh - 0px);overflow:hidden}
-#page-cherry.active{display:flex}
 .page.active{display:block;}
 
 /* SIDEBAR */
@@ -792,186 +790,6 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 /* ── Gradient numbers ───────────────────────────────────────────────────── */
 .cg-grad-num{background:linear-gradient(135deg,#D4AF37,#FFB7C5);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-
-/* ── Stats Ribbon v8 ───────────────────────────────────────────────────── */
-.cgv8-stats-ribbon{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:14px 24px;background:rgba(0,0,0,.2);border-bottom:1px solid rgba(255,255,255,.05)}
-.cgv8-stat-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:12px 14px;text-align:center;position:relative;overflow:hidden;transition:transform .25s,border-color .25s,box-shadow .25s;cursor:default}
-.cgv8-stat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,var(--accent,rgba(212,175,55,.15)) 0%,transparent 70%);opacity:0;transition:opacity .3s;pointer-events:none}
-.cgv8-stat-card:hover{transform:translateY(-4px);border-color:var(--accent,rgba(212,175,55,.3));box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.cgv8-stat-card:hover::before{opacity:1}
-.cgv8-stat-hero{grid-column:span 1;border-color:rgba(52,199,89,.25)!important;background:rgba(52,199,89,.05)!important}
-.cgv8-stat-icon{font-size:1.1rem;margin-bottom:4px;opacity:.7}
-.cgv8-stat-val{font-size:1.6rem;font-weight:800;line-height:1;background:linear-gradient(135deg,var(--accent,#D4AF37),rgba(255,255,255,.8));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:cgv8-count-pulse .5s ease}
-.cgv8-stat-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-top:4px;margin-bottom:6px}
-.cgv8-stat-bar{height:3px;border-radius:3px;overflow:hidden;margin-top:6px}
-.cgv8-stat-fill{height:100%;border-radius:3px;width:0%;transition:width 1.4s cubic-bezier(.34,1.56,.64,1)}
-.cgv8-seo-meter{position:relative;height:4px;background:rgba(255,255,255,.08);border-radius:4px;margin-top:6px;overflow:visible}
-.cgv8-seo-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#FF453A,#FFD60A,#34C759);transition:width 1.4s cubic-bezier(.34,1.56,.64,1);width:0%}
-.cgv8-seo-target{position:absolute;right:10%;top:-4px;width:2px;height:12px;background:rgba(255,255,255,.4);border-radius:1px}
-.cgv8-seo-target::after{content:'90';position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:.48rem;color:rgba(255,255,255,.35);white-space:nowrap}
-
-/* ── Thought Stream ─────────────────────────────────────────────────────── */
-.cgv8-thought-stream{padding:12px 24px;background:rgba(212,175,55,.03);border-bottom:1px solid rgba(212,175,55,.1);display:flex;align-items:center;gap:16px;min-height:54px}
-.cgv8-thought-header{display:flex;align-items:center;gap:8px;flex-shrink:0}
-.cgv8-thought-dot{width:7px;height:7px;border-radius:50%;background:#34C759;animation:cgv8-pulse 1.8s infinite;flex-shrink:0}
-.cgv8-thought-tag{background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);border-radius:8px;padding:2px 8px;font-size:.58rem;color:rgba(212,175,55,.75);letter-spacing:.05em;flex-shrink:0}
-.cgv8-thought-text{flex:1;font-size:.7rem;color:rgba(255,255,255,.5);line-height:1.5;font-style:italic}
-.cgv8-roadmap-mini{display:flex;align-items:center;gap:6px;flex-shrink:0}
-.cgv8-rm-step{font-size:.58rem;padding:3px 8px;border-radius:8px;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.3);white-space:nowrap}
-.cgv8-rm-step.done{background:rgba(52,199,89,.12);border-color:rgba(52,199,89,.3);color:rgba(52,199,89,.8)}
-.cgv8-rm-step.active{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.35);color:rgba(212,175,55,.9);animation:cgv8-glow 2s infinite}
-.cgv8-rm-arrow{font-size:.6rem;color:rgba(255,255,255,.2)}
-@keyframes cgv8-glow{0%,100%{box-shadow:none}50%{box-shadow:0 0 10px rgba(212,175,55,.4)}}
-
-/* ── Cherry Glow Avatar ─────────────────────────────────────────────────── */
-.cgv8-av-wrap{display:flex;align-items:center;gap:14px;margin-bottom:14px;padding:12px 14px;background:rgba(212,175,55,.06);border-radius:14px;border:1px solid rgba(212,175,55,.12)}
-.cgv8-av-svg{width:56px;height:56px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(212,175,55,.35))}
-.cgv8-av-name{font-size:.78rem;font-weight:700;color:rgba(212,175,55,.9);letter-spacing:.05em}
-.cgv8-av-mood{font-size:.65rem;color:rgba(255,255,255,.4);margin-top:2px}
-.cgv8-av-stats{display:flex;gap:8px;margin-top:5px}
-.cgv8-av-stat{font-size:.62rem;color:rgba(255,255,255,.35);background:rgba(255,255,255,.05);border-radius:6px;padding:2px 7px}
-
-/* ── Boss Panel ─────────────────────────────────────────────────────────── */
-.cgv8-boss-wrap{padding:2px 0}
-.cgv8-boss-hero{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-bottom:18px;padding:16px;background:rgba(212,175,55,.05);border-radius:16px;border:1px solid rgba(212,175,55,.15);position:relative;overflow:hidden}
-.cgv8-boss-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 50%,rgba(212,175,55,.08) 0%,transparent 65%);pointer-events:none}
-.cgv8-boss-av{width:80px;height:80px;border-radius:50%;border:2px solid rgba(212,175,55,.3);filter:drop-shadow(0 0 12px rgba(212,175,55,.4))}
-.cgv8-boss-info-name{font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.9)}
-.cgv8-boss-info-title{font-size:.7rem;color:rgba(212,175,55,.7);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
-.cgv8-boss-info-bio{font-size:.68rem;color:rgba(255,255,255,.4);margin-top:6px;line-height:1.5}
-.cgv8-boss-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
-.cgv8-boss-kpi{background:rgba(255,255,255,.04);border-radius:12px;border:1px solid rgba(255,255,255,.07);padding:12px 14px;text-align:center;transition:transform .25s,box-shadow .25s}
-.cgv8-boss-kpi:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
-.cgv8-boss-kpi-label{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);margin-bottom:6px}
-.cgv8-boss-kpi-val{font-size:1.6rem;font-weight:800;line-height:1;background:linear-gradient(135deg,#D4AF37,#FFB7C5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:cgv8-count-pulse .6s ease}
-.cgv8-boss-kpi-sub{font-size:.58rem;color:rgba(255,255,255,.25);margin-top:4px}
-.cgv8-section-head{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.6);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(212,175,55,.12)}
-.cgv8-seo-trend{display:flex;align-items:flex-end;gap:5px;height:80px;margin-bottom:18px;padding:0 4px}
-.cgv8-seo-trend-bar{flex:1;border-radius:4px 4px 0 0;min-height:4px;background:linear-gradient(180deg,rgba(212,175,55,.7),rgba(255,183,197,.5));transition:height .8s cubic-bezier(.34,1.56,.64,1);position:relative;cursor:pointer}
-.cgv8-seo-trend-bar:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;font-size:.6rem;padding:3px 6px;border-radius:5px;white-space:nowrap;pointer-events:none}
-.cgv8-seo-trend-bar.hi{background:linear-gradient(180deg,rgba(52,199,89,.8),rgba(52,199,89,.3))}
-.cgv8-funnel{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
-.cgv8-funnel-row{display:flex;align-items:center;gap:10px}
-.cgv8-funnel-label{font-size:.62rem;color:rgba(255,255,255,.45);width:90px;flex-shrink:0;text-align:right}
-.cgv8-funnel-bar{flex:1;height:22px;border-radius:4px;background:rgba(255,255,255,.06);overflow:hidden;position:relative}
-.cgv8-funnel-fill{height:100%;border-radius:4px;transition:width 1.2s cubic-bezier(.34,1.56,.64,1)}
-.cgv8-funnel-val{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:.62rem;color:rgba(255,255,255,.6);font-weight:600}
-.cgv8-learnings{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;max-height:180px;overflow-y:auto}
-.cgv8-learning-item{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(255,255,255,.03);border-radius:8px;border-left:3px solid rgba(212,175,55,.4)}
-.cgv8-learning-icon{font-size:.9rem;flex-shrink:0;margin-top:1px}
-.cgv8-learning-text{font-size:.68rem;color:rgba(255,255,255,.6);line-height:1.5}
-.cgv8-report-rows{display:flex;flex-direction:column;gap:6px}
-.cgv8-report-row{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:rgba(255,255,255,.03);border-radius:8px}
-.cgv8-report-row-label{font-size:.68rem;color:rgba(255,255,255,.5)}
-.cgv8-report-row-val{font-size:.72rem;font-weight:700;color:rgba(212,175,55,.85)}
-.cgv8-pulse-dot{width:8px;height:8px;border-radius:50%;background:#34C759;display:inline-block;margin-right:5px;animation:cgv8-pulse 2s infinite}
-.cgv8-rm-full-step{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:10px 12px;text-align:center;min-width:90px;flex-shrink:0}
-.cgv8-rm-full-step.done{background:rgba(52,199,89,.06);border-color:rgba(52,199,89,.25)}
-.cgv8-rm-full-step.active{background:rgba(212,175,55,.08);border-color:rgba(212,175,55,.3);animation:cgv8-glow 2s infinite}
-.cgv8-rm-phase{font-size:.52rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.3);margin-bottom:3px}
-.cgv8-rm-title{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.75);margin-bottom:3px}
-.cgv8-rm-desc{font-size:.55rem;color:rgba(255,255,255,.3);line-height:1.4}
-.cgv8-rm-full-step.done .cgv8-rm-title{color:rgba(52,199,89,.85)}
-.cgv8-rm-full-step.active .cgv8-rm-title{color:rgba(212,175,55,.85)}
-.cgv8-rm-full-arrow{display:flex;align-items:center;padding:0 6px;color:rgba(255,255,255,.2);font-size:.8rem;flex-shrink:0}
-@keyframes cgv8-count-pulse{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
-@keyframes cgv8-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-@keyframes cgv8-bar-grow{from{height:0}to{height:var(--h)}}
-/* ─── CherryGlow v8 Full Redesign ─────────────────────────────────────────── */
-.cgv8-page-nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:rgba(0,0,0,.35);border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0}
-.cgv8-brand{display:flex;align-items:center;gap:12px}
-.cgv8-brand-av-mini{width:40px;height:40px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(212,175,55,.4))}
-.cgv8-brand-name{font-size:1.1rem;font-weight:800;color:rgba(255,255,255,.9);display:flex;align-items:center;gap:8px;letter-spacing:-.02em}
-.cgv8-brand-sub{font-size:.63rem;color:rgba(255,255,255,.35);margin-top:2px;font-style:italic;max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cgv8-ptabs{display:flex;gap:4px;background:rgba(255,255,255,.04);border-radius:12px;padding:4px}
-.cgv8-ptab{padding:7px 18px;border-radius:9px;font-size:.72rem;font-weight:600;letter-spacing:.03em;cursor:pointer;color:rgba(255,255,255,.45);transition:all .2s}
-.cgv8-ptab:hover{color:rgba(255,255,255,.7);background:rgba(255,255,255,.06)}
-.cgv8-ptab.active{background:linear-gradient(135deg,rgba(212,175,55,.2),rgba(255,183,197,.1));color:rgba(212,175,55,.95);border:1px solid rgba(212,175,55,.25)}
-.cgv8-nav-right{display:flex;align-items:center;gap:14px}
-
-/* Views */
-.cgv8-view{display:none;flex:1;min-height:0;overflow:hidden}
-.cgv8-view.active{display:flex;flex-direction:column}
-
-/* Write view layout */
-.cgv8-yaz-layout{display:grid;grid-template-columns:260px 1fr;gap:0;flex:1;min-height:0;overflow:hidden}
-.cgv8-sidebar{display:flex;flex-direction:column;gap:10px;padding:14px 12px;overflow-y:auto;background:rgba(0,0,0,.15);border-right:1px solid rgba(255,255,255,.05);scrollbar-width:thin}
-.cgv8-main-col{display:flex;flex-direction:column;gap:10px;padding:14px 16px;overflow-y:auto;flex:1;min-width:0;scrollbar-width:thin}
-
-/* Hero avatar card in sidebar */
-.cgv8-hero-card{background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.15);border-radius:16px;padding:18px 16px;text-align:center;position:relative;overflow:hidden}
-.cgv8-hero-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.12),transparent 65%);pointer-events:none}
-.cgv8-hero-av-big{width:88px;height:88px;margin:0 auto 10px;filter:drop-shadow(0 0 14px rgba(212,175,55,.5));animation:cgv8-float 4s ease-in-out infinite;display:flex;align-items:center;justify-content:center}
-.cgv8-hero-av-big svg{width:88px;height:88px}
-.cgv8-hero-name{font-size:.95rem;font-weight:800;color:rgba(255,255,255,.9);letter-spacing:-.01em}
-.cgv8-hero-mood{font-size:.65rem;color:rgba(212,175,55,.7);margin-top:3px;min-height:1.2em}
-.cgv8-hero-badge{display:inline-flex;align-items:center;gap:5px;margin-top:8px;padding:3px 10px;background:rgba(52,199,89,.12);border:1px solid rgba(52,199,89,.25);border-radius:8px;font-size:.58rem;color:rgba(52,199,89,.8)}
-.cgv8-hero-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-top:12px}
-.cgv8-hs-item{background:rgba(255,255,255,.04);border-radius:8px;padding:7px 4px;text-align:center}
-.cgv8-hs-val{font-size:.9rem;font-weight:700;background:linear-gradient(135deg,#D4AF37,#FFB7C5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.cgv8-hs-lbl{font-size:.5rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.3);margin-top:2px}
-@keyframes cgv8-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-
-/* Action card */
-.cgv8-action-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px 18px;flex-shrink:0}
-.cgv8-output-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:16px 18px;flex:1;min-height:0;display:flex;flex-direction:column}
-.cgv8-out-tabs{display:flex;gap:4px;margin-bottom:12px;flex-shrink:0}
-.cgv8-out-tab{padding:5px 14px;border-radius:8px;font-size:.67rem;font-weight:600;cursor:pointer;color:rgba(255,255,255,.4);border:1px solid transparent;transition:all .2s}
-.cgv8-out-tab:hover{color:rgba(255,255,255,.65);background:rgba(255,255,255,.05)}
-.cgv8-out-tab.active{background:rgba(212,175,55,.1);color:rgba(212,175,55,.85);border-color:rgba(212,175,55,.2)}
-.cgv8-out-body{flex:1;overflow-y:auto;scrollbar-width:thin}
-
-/* Gecmis & Patron full pages */
-.cgv8-gecmis-wrap{flex:1;overflow-y:auto;padding:20px 24px;scrollbar-width:thin}
-.cgv8-patron-wrap{flex:1;overflow-y:auto;padding:20px 24px;scrollbar-width:thin}
-.cgv8-page-head{font-size:1.2rem;font-weight:800;color:rgba(255,255,255,.9);margin-bottom:4px;display:flex;align-items:center;gap:10px}
-.cgv8-page-sub{font-size:.68rem;color:rgba(255,255,255,.35);margin-bottom:20px}
-
-/* History full page */
-.cgv8-hist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:12px}
-.cgv8-hist-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;position:relative;overflow:hidden}
-.cgv8-hist-card:hover{transform:translateY(-3px);border-color:rgba(212,175,55,.25);box-shadow:0 8px 24px rgba(0,0,0,.4)}
-.cgv8-hist-card-title{font-size:.8rem;font-weight:700;color:rgba(255,255,255,.85);margin-bottom:6px;line-height:1.4}
-.cgv8-hist-card-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.cgv8-hist-seo-badge{padding:3px 8px;border-radius:8px;font-size:.62rem;font-weight:700}
-.cgv8-hist-card-pub{font-size:.58rem;color:rgba(52,199,89,.7);background:rgba(52,199,89,.1);border-radius:6px;padding:2px 7px}
-.cgv8-hist-seo-bar{height:3px;border-radius:3px;margin-top:10px;background:rgba(255,255,255,.06);overflow:hidden}
-.cgv8-hist-seo-fill{height:100%;border-radius:3px;transition:width .8s ease}
-.cgv8-hist-empty{text-align:center;padding:80px 0;opacity:.2;font-size:.85rem}
-.cgv8-hist-actions{display:flex;gap:8px;margin-top:12px}
-
-/* Blog Performans KPI cards */
-.cgv8-perf-kpi-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:18px 16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;position:relative;overflow:hidden;transition:border-color .2s}
-.cgv8-perf-kpi-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(212,175,55,.05),transparent 65%);pointer-events:none}
-.cgv8-perf-kpi-ico{font-size:1.6rem;margin-bottom:2px}
-.cgv8-perf-kpi-val{font-size:1.6rem;font-weight:800;font-family:var(--mono);color:rgba(255,255,255,.9);letter-spacing:-.02em}
-.cgv8-perf-kpi-lbl{font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);font-weight:600}
-.cgv8-perf-kpi-sub{font-size:.58rem;color:rgba(255,255,255,.22);font-family:var(--mono)}
-
-/* Blog perf bar chart */
-.cgbp-bar-col{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;cursor:default}
-.cgbp-bar-col:hover .cgbp-bar{filter:brightness(1.3)}
-.cgbp-bar{width:100%;border-radius:4px 4px 0 0;transition:height .8s cubic-bezier(.34,1.56,.64,1);position:relative;min-height:2px}
-.cgbp-bar-lbl{font-size:.55rem;font-family:var(--mono);color:rgba(255,255,255,.3);text-align:center;white-space:nowrap}
-.cgbp-bar-val{font-size:.58rem;font-family:var(--mono);color:rgba(212,175,55,.75);text-align:center;font-weight:600}
-
-/* Blog perf card */
-.cgbp-blog-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px 16px;transition:border-color .2s,transform .2s}
-.cgbp-blog-card:hover{border-color:rgba(212,175,55,.2);transform:translateY(-2px)}
-.cgbp-blog-title{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.82);margin-bottom:10px;line-height:1.35}
-.cgbp-metric-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.cgbp-metric-lbl{font-size:.58rem;color:rgba(255,255,255,.3);font-family:var(--mono)}
-.cgbp-metric-val{font-size:.7rem;font-weight:700;font-family:var(--mono)}
-.cgbp-mini-bar{height:3px;background:rgba(255,255,255,.06);border-radius:3px;margin-bottom:10px;overflow:hidden}
-.cgbp-mini-bar-fill{height:100%;border-radius:3px;transition:width .9s ease}
-
-/* Source bars */
-.cgbp-src-row{display:flex;align-items:center;gap:8px}
-.cgbp-src-lbl{font-size:.6rem;font-family:var(--mono);color:rgba(255,255,255,.4);width:60px;flex-shrink:0}
-.cgbp-src-bar{flex:1;height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
-.cgbp-src-fill{height:100%;border-radius:4px;transition:width .9s ease}
-.cgbp-src-pct{font-size:.62rem;font-family:var(--mono);color:rgba(255,255,255,.35);width:36px;text-align:right;flex-shrink:0}
-
 </style>
 </head>
 <body>
@@ -2227,269 +2045,128 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 
 
-<!-- ═══════════════════ CHERRYGLOW v8 ═══════════════════ -->
+<!-- ═══════════════════ CHERRYGLOW v6 ═══════════════════ -->
 <div class="page" id="page-cherry">
 
-<!-- Top nav -->
-<div class="cgv8-page-nav">
-  <div style="display:flex;align-items:center;gap:10px">
-    <div style="font-size:1.1rem;font-weight:700;color:rgba(212,175,55,.95);letter-spacing:-.01em">CherryGlow</div>
-    <span class="cg-version" id="cg-version">v8</span>
-    <span id="cg-status-pill" style="font-size:.6rem;padding:3px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);letter-spacing:.08em">HAZIR</span>
+<div class="page-topbar fi">
+  <div class="pt-left">
+    <div class="pt-title" style="display:flex;align-items:center;gap:10px">
+      CherryGlow
+      <span class="cg-version" id="cg-version">v6</span>
+    </div>
+    <div class="pt-sub" style="font-size:.68rem;opacity:.4">Konu Seç &rarr; Yaz &rarr; Onayla &rarr; Yayınla</div>
   </div>
-  <div class="cgv8-ptabs">
-    <div class="cgv8-ptab active" id="cgv8-ptab-yaz" onclick="cgV8SwitchPage('yaz',this)">&#x270D; Yaz</div>
-    <div class="cgv8-ptab" id="cgv8-ptab-gecmis" onclick="cgV8SwitchPage('gecmis',this)">&#x1F4D6; Gecmis</div>
-    <div class="cgv8-ptab" id="cgv8-ptab-perf" onclick="cgV8SwitchPage('perf',this)">&#x1F4CA; Blog Performans</div>
-    <div class="cgv8-ptab" id="cgv8-ptab-patron" onclick="cgV8SwitchPage('patron',this)">&#x2764; Patron</div>
-  </div>
-  <div style="display:flex;align-items:center;gap:10px">
-    <div class="cw-auto-row" style="font-size:.65rem">
-      <span>Oto-yayin</span>
+  <div class="pt-right" style="display:flex;align-items:center;gap:14px">
+    <div class="cw-auto-row">
+      <span>Oto-yayın</span>
       <label class="cg-sw"><input type="checkbox" id="cg-autopub" onchange="cgToggleAutoPub(this.checked)"><span class="cg-sw-track"></span></label>
     </div>
+    <span id="cg-status-pill" style="font-size:.65rem;padding:4px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);letter-spacing:.08em">HAZIR</span>
   </div>
 </div>
 
-<!-- Stats ribbon -->
-<div class="cgv8-stats-ribbon">
-  <div class="cgv8-stat-card" style="--accent:rgba(212,175,55,.8)">
-    <div class="cgv8-stat-icon">&#x270D;</div>
-    <div class="cgv8-stat-val" id="cg-stat-done">0</div>
-    <div class="cgv8-stat-lbl">Toplam Blog</div>
-    <div class="cgv8-stat-bar" style="background:rgba(212,175,55,.25)"><div class="cgv8-stat-fill" id="cgv8-fill-done" style="background:#D4AF37"></div></div>
-  </div>
-  <div class="cgv8-stat-card" style="--accent:rgba(90,200,250,.8)">
-    <div class="cgv8-stat-icon">&#x1F4DD;</div>
-    <div class="cgv8-stat-val" id="cg-stat-words">0</div>
-    <div class="cgv8-stat-lbl">Toplam Kelime</div>
-    <div class="cgv8-stat-bar" style="background:rgba(90,200,250,.15)"><div class="cgv8-stat-fill" id="cgv8-fill-words" style="background:#5AC8FA"></div></div>
-  </div>
-  <div class="cgv8-stat-card cgv8-stat-hero" style="--accent:rgba(52,199,89,.9)">
-    <div class="cgv8-stat-icon">&#x1F3AF;</div>
-    <div class="cgv8-stat-val" id="cg-stat-seo">--</div>
-    <div class="cgv8-stat-lbl">Ort. SEO / 100</div>
-    <div class="cgv8-seo-meter"><div class="cgv8-seo-fill" id="cgv8-seo-fill"></div><div class="cgv8-seo-target">90</div></div>
-  </div>
-  <div class="cgv8-stat-card" style="--accent:rgba(255,183,197,.8)">
-    <div class="cgv8-stat-icon">&#x2B50;</div>
-    <div class="cgv8-stat-val" id="cg-stat-best">--</div>
-    <div class="cgv8-stat-lbl">En Yuksek SEO</div>
-    <div class="cgv8-stat-bar" style="background:rgba(255,183,197,.15)"><div class="cgv8-stat-fill" id="cgv8-fill-best" style="background:#FFB7C5"></div></div>
-  </div>
-  <div class="cgv8-stat-card" style="--accent:rgba(52,199,89,.8)">
-    <div class="cgv8-stat-icon">&#x2705;</div>
-    <div class="cgv8-stat-val" id="cg-stat-pub">0</div>
-    <div class="cgv8-stat-lbl">Yayinlanan</div>
-    <div class="cgv8-stat-bar" style="background:rgba(52,199,89,.15)"><div class="cgv8-stat-fill" id="cgv8-fill-pub" style="background:#34C759"></div></div>
-  </div>
-  <div class="cgv8-stat-card" style="--accent:rgba(191,90,242,.8)">
-    <div class="cgv8-stat-icon">&#x26A1;</div>
-    <div class="cgv8-stat-val" id="cg-stat-today">0</div>
-    <div class="cgv8-stat-lbl">Bugun</div>
-    <div class="cgv8-stat-bar" style="background:rgba(191,90,242,.15)"><div class="cgv8-stat-fill" id="cgv8-fill-today" style="background:#BF5AF2"></div></div>
-  </div>
+<div class="cg-stats-ribbon">
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-done">0</div><div class="cg-stat-lbl">Blog</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-words">0</div><div class="cg-stat-lbl">Kelime</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-seo">--</div><div class="cg-stat-lbl">Ort. SEO</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-pub">0</div><div class="cg-stat-lbl">Yayınlanan</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-today">0</div><div class="cg-stat-lbl">Bugün</div></div>
 </div>
 
-<!-- Thought stream -->
-<div id="cgv8-thought-stream" class="cgv8-thought-stream">
-  <div class="cgv8-thought-header">
-    <span class="cgv8-thought-dot"></span>
-    <span style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.6)">Cherry Glow Canli Akis</span>
-    <span class="cgv8-thought-tag" id="cgv8-thought-phase">Hazir</span>
-  </div>
-  <div class="cgv8-thought-text" id="cgv8-thought-text">Retrocameraland.com icin SEO stratejisi hazirliyorum. Hedef: Google organik aramalarda kategori 1. sira, AI arama motorlarinda en cok yonlendirilen analog kamera sitesi.</div>
-  <div class="cgv8-roadmap-mini">
-    <div class="cgv8-rm-step done" title="Tamamlandi">&#x2713; Altyapi</div>
-    <div class="cgv8-rm-arrow">&#x2192;</div>
-    <div class="cgv8-rm-step active" title="Su an">&#x25CF; Icerik</div>
-    <div class="cgv8-rm-arrow">&#x2192;</div>
-    <div class="cgv8-rm-step" title="Sirada">&#x25CB; Otorite</div>
-    <div class="cgv8-rm-arrow">&#x2192;</div>
-    <div class="cgv8-rm-step" title="Hedef"># 1</div>
-  </div>
-</div>
+<div class="cg-main-grid">
 
-<!-- ═══ YAZ VIEW ═══ -->
-<div class="cgv8-view active" id="cgv8-view-yaz">
-  <div class="cgv8-yaz-layout">
+  <!-- LEFT: Topics + Log -->
+  <div class="cg-left-col">
 
-    <!-- Sidebar -->
-    <div class="cgv8-sidebar">
-
-      <!-- Hero avatar card -->
-      <div class="cgv8-hero-card">
-        <div class="cgv8-hero-av-big" id="cg-av-ico"></div>
-        <div class="cgv8-av-name" style="text-align:center;margin-top:8px">Cherry Glow</div>
-        <div class="cgv8-av-mood" id="cg-av-mood" style="text-align:center;font-size:.65rem;opacity:.55;margin-top:4px">Hazir, gorev bekliyor...</div>
-        <div class="cgv8-av-stats" style="justify-content:center;margin-top:8px;flex-wrap:wrap;gap:6px">
-          <span class="cgv8-av-stat" id="cg-av-stat-avg">SEO ort: --</span>
-          <span class="cgv8-av-stat" id="cg-av-stat-best">En iyi: --</span>
-          <span class="cgv8-av-stat" id="cg-av-stat-count">Blog: 0</span>
-        </div>
+    <!-- Topics card -->
+    <div class="card" style="padding:16px 14px">
+      <div class="cg-panel-title">
+        Konular
+        <span id="cg-agenda-count" style="font-size:.65rem;opacity:.5;font-weight:500;text-transform:none;letter-spacing:0"></span>
       </div>
-
-      <!-- Topics list -->
-      <div class="card" style="padding:14px 12px;flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden">
-        <div class="cg-panel-title" style="margin-bottom:8px;flex-shrink:0">
-          Konular
-          <span id="cg-agenda-count" style="font-size:.62rem;opacity:.5;font-weight:500;text-transform:none;letter-spacing:0"></span>
-        </div>
-        <div class="cg-agenda-wrap" id="cg-agenda-list" style="flex:1;overflow-y:auto;min-height:0"></div>
-        <div style="display:flex;gap:6px;margin-top:10px;flex-shrink:0">
-          <button class="cg-ctrl-btn" onclick="cgWriteAll()" style="font-size:.66rem">Hepsini Sirayla Yaz</button>
-          <button class="cg-ctrl-btn" onclick="cgResetDone()" style="font-size:.62rem;flex:none;opacity:.5" title="Tamamlananlari sifirla">&#x21BA;</button>
-        </div>
+      <div class="cg-agenda-wrap" id="cg-agenda-list" style="max-height:360px"></div>
+      <div style="display:flex;gap:6px;margin-top:10px">
+        <button class="cg-ctrl-btn" onclick="cgWriteAll()" style="font-size:.68rem">Hepsini Sırayla Yaz</button>
+        <button class="cg-ctrl-btn" onclick="cgResetDone()" style="font-size:.62rem;flex:none;opacity:.5" title="Tamamlananları sıfırla">↺</button>
       </div>
-
-      <!-- Log -->
-      <div style="padding:10px 12px;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(255,255,255,.05);flex-shrink:0">
-        <div class="cg-panel-title" style="margin-bottom:6px;font-size:.62rem">Islem Gunlugu</div>
-        <div id="cg-log" style="font-size:.6rem;font-family:var(--mono);line-height:1.8;max-height:130px;overflow-y:auto;scrollbar-width:thin"></div>
-      </div>
-
     </div>
 
-    <!-- Main content col -->
-    <div class="cgv8-main-col">
+    <!-- Log card -->
+    <div class="card" style="padding:14px 16px;flex-shrink:0">
+      <div class="cg-panel-title" style="margin-bottom:8px">İşlem Günlüğü</div>
+      <div id="cg-log" style="font-size:.64rem;font-family:var(--mono);line-height:1.9;max-height:180px;overflow-y:auto;scrollbar-width:thin"></div>
+    </div>
 
-      <!-- Action card -->
-      <div class="card" id="cg-action-card" style="padding:16px 18px;flex-shrink:0">
-        <div id="cg-action-status" style="margin-bottom:10px;min-height:36px"></div>
-        <div id="cg-action-buttons" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+  </div>
+
+  <!-- RIGHT: Action + Output -->
+  <div class="cg-right-col">
+
+    <!-- Action card -->
+    <div class="card" id="cg-action-card" style="padding:18px 20px;flex-shrink:0">
+      <div id="cg-action-status" style="margin-bottom:12px;min-height:40px"></div>
+      <div id="cg-action-buttons" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+    </div>
+
+    <!-- Output card -->
+    <div class="card" style="padding:16px 18px;flex:1;min-height:0">
+      <div class="cg-tabs" style="margin-bottom:12px">
+        <div class="cg-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">Önizleme</div>
+        <div class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</div>
+        <div class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</div>
+        <div class="cg-tab" id="cg-tab-history" onclick="cgTab('history',this)">Geçmiş</div>
       </div>
 
-      <!-- Output card -->
-      <div class="card" style="padding:14px 16px;flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden">
-        <div class="cg-tabs" style="margin-bottom:10px;flex-shrink:0">
-          <div class="cg-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">Onizleme</div>
-          <div class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</div>
-          <div class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</div>
-        </div>
+      <!-- Preview -->
+      <div id="cg-tab-panel-preview" class="cg-output-body" style="min-height:280px;max-height:520px">
+        <div style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem">Sol taraftaki listeden bir konu seçip <strong>Yaz</strong> butonuna bas</div>
+      </div>
 
-        <!-- Preview -->
-        <div id="cg-tab-panel-preview" class="cg-output-body" style="flex:1;overflow-y:auto;min-height:0">
-          <div style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem">Sol taraftaki listeden bir konu secip <strong>Yaz</strong> butonuna bas</div>
+      <!-- HTML -->
+      <div id="cg-tab-panel-html" style="display:none">
+        <div style="display:flex;gap:8px;margin-bottom:8px">
+          <button class="cg-ctrl-btn" onclick="cgCopyHTML()" style="font-size:.65rem">Kopyala</button>
+          <button class="cg-ctrl-btn" onclick="cgDownloadHTML()" style="font-size:.65rem">İndir</button>
         </div>
+        <textarea id="cg-html-ta" style="width:100%;height:360px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(255,255,255,.65);font-size:.68rem;font-family:var(--mono);padding:12px;resize:vertical;box-sizing:border-box" readonly></textarea>
+      </div>
 
-        <!-- HTML -->
-        <div id="cg-tab-panel-html" style="display:none;flex:1;min-height:0;flex-direction:column">
-          <div style="display:flex;gap:8px;margin-bottom:8px;flex-shrink:0">
-            <button class="cg-ctrl-btn" onclick="cgCopyHTML()" style="font-size:.65rem">Kopyala</button>
-            <button class="cg-ctrl-btn" onclick="cgDownloadHTML()" style="font-size:.65rem">Indir</button>
+      <!-- SEO -->
+      <div id="cg-tab-panel-seo" style="display:none;padding:4px 0">
+        <div class="cg-seo-grid" style="margin-bottom:14px">
+          <div class="cg-score-ring-wrap">
+            <svg class="cg-score-ring-svg" viewBox="0 0 100 100">
+              <defs><linearGradient id="cgRingGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
+              </linearGradient></defs>
+              <circle cx="50" cy="50" r="40" class="cg-sr-bg" stroke-width="8"/>
+              <circle cx="50" cy="50" r="40" id="cg-seo-ring"
+                style="fill:none;stroke:url(#cgRingGrad6);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
+            </svg>
+            <div class="cg-score-center" id="cg-seo-score-num">--</div>
           </div>
-          <textarea id="cg-html-ta" style="width:100%;flex:1;min-height:300px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(255,255,255,.65);font-size:.62rem;font-family:var(--mono);padding:12px;resize:vertical;box-sizing:border-box" readonly></textarea>
+          <div id="cg-seo-checks" class="cg-seo-bars"></div>
         </div>
+        <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
+      </div>
 
-        <!-- SEO -->
-        <div id="cg-tab-panel-seo" style="display:none;overflow-y:auto;flex:1;min-height:0;padding:4px 0">
-          <div class="cg-seo-grid" style="margin-bottom:14px">
-            <div class="cg-score-ring-wrap">
-              <svg class="cg-score-ring-svg" viewBox="0 0 100 100">
-                <defs><linearGradient id="cgRingGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
-                </linearGradient></defs>
-                <circle cx="50" cy="50" r="40" class="cg-sr-bg" stroke-width="8"/>
-                <circle cx="50" cy="50" r="40" id="cg-seo-ring"
-                  style="fill:none;stroke:url(#cgRingGrad6);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
-              </svg>
-              <div class="cg-score-center" id="cg-seo-score-num">--</div>
-            </div>
-            <div id="cg-seo-checks" class="cg-seo-bars"></div>
-          </div>
-          <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
-        </div>
-
+      <!-- History -->
+      <div id="cg-tab-panel-history" style="display:none;max-height:460px;overflow-y:auto">
+        <div id="cg-history-list"></div>
       </div>
 
     </div>
-  </div>
-</div>
-
-<!-- ═══ GECMIS VIEW ═══ -->
-<div class="cgv8-view" id="cgv8-view-gecmis">
-  <div style="padding:20px 24px;overflow-y:auto;flex:1;min-height:0">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-      <div>
-        <div style="font-size:1rem;font-weight:700;color:rgba(212,175,55,.9)">Gecmis Bloglar</div>
-        <div style="font-size:.65rem;opacity:.4;margin-top:2px">Cherry Glow tarafindan yazilan tum icerikler</div>
-      </div>
-      <button class="cg-ctrl-btn" onclick="cgV8SwitchPage('yaz',document.getElementById('cgv8-ptab-yaz'))" style="font-size:.65rem">+ Yeni Blog Yaz</button>
-    </div>
-    <div class="cgv8-hist-grid" id="cg-history-list"></div>
-    <div id="cgv8-gecmis-empty" style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem;display:none">Henuz blog yazilmadi. Yaz sekmesine gec ve bir konu sec.</div>
-  </div>
-</div>
-
-<!-- ═══ BLOG PERFORMANS VIEW ═══ -->
-<div class="cgv8-view" id="cgv8-view-perf">
-  <div style="padding:20px 24px;overflow-y:auto;flex:1;min-height:0">
-
-    <!-- Perf hero KPIs -->
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px">
-      <div class="cgv8-perf-kpi-card">
-        <div class="cgv8-perf-kpi-ico">&#x1F441;</div>
-        <div class="cgv8-perf-kpi-val" id="cgbp-total-views">0</div>
-        <div class="cgv8-perf-kpi-lbl">Toplam Blog Goruntulenme</div>
-        <div class="cgv8-perf-kpi-sub" id="cgbp-views-sub">Son 30 gun</div>
-      </div>
-      <div class="cgv8-perf-kpi-card">
-        <div class="cgv8-perf-kpi-ico" style="color:#30D158">&#x1F33F;</div>
-        <div class="cgv8-perf-kpi-val" id="cgbp-organic" style="color:#30D158">0</div>
-        <div class="cgv8-perf-kpi-lbl">Organik Trafik</div>
-        <div class="cgv8-perf-kpi-sub" id="cgbp-organic-sub">Google'dan gelen</div>
-      </div>
-      <div class="cgv8-perf-kpi-card">
-        <div class="cgv8-perf-kpi-ico" style="color:#FF9F0A">&#x1F6D2;</div>
-        <div class="cgv8-perf-kpi-val" id="cgbp-orders" style="color:#FF9F0A">0</div>
-        <div class="cgv8-perf-kpi-lbl">Blog Kaynakli Siparis</div>
-        <div class="cgv8-perf-kpi-sub">Icerik kaynaklı satislar</div>
-      </div>
-      <div class="cgv8-perf-kpi-card">
-        <div class="cgv8-perf-kpi-ico" style="color:#D4AF37">&#x1F4B0;</div>
-        <div class="cgv8-perf-kpi-val" id="cgbp-revenue" style="color:#D4AF37">0</div>
-        <div class="cgv8-perf-kpi-lbl">Tahmini Gelir (TL)</div>
-        <div class="cgv8-perf-kpi-sub">Ort. siparis x cevrim</div>
-      </div>
-    </div>
-
-    <!-- Monthly traffic chart -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
-      <div class="card" style="padding:16px 18px">
-        <div style="font-size:.7rem;font-weight:600;color:var(--t1);margin-bottom:4px">Aylik Blog Trafigi</div>
-        <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono);margin-bottom:12px">Organik oturum trendi</div>
-        <div id="cgbp-monthly-chart" style="display:flex;align-items:flex-end;gap:8px;height:110px;padding-bottom:4px"></div>
-        <div id="cgbp-monthly-labels" style="display:flex;gap:8px;margin-top:6px"></div>
-      </div>
-
-      <div class="card" style="padding:16px 18px">
-        <div style="font-size:.7rem;font-weight:600;color:var(--t1);margin-bottom:4px">Trafik Kaynagi</div>
-        <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono);margin-bottom:12px">Blog ziyaretcileri nereden geliyor</div>
-        <div id="cgbp-source-bars" style="display:flex;flex-direction:column;gap:8px;justify-content:center;height:110px"></div>
-      </div>
-    </div>
-
-    <!-- Blog cards grid -->
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
-      <div style="font-size:.72rem;font-weight:600;color:var(--t1)">Blog Performans Tablosu</div>
-      <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono)">Goruntulenme / Organik / Siparis / SEO skoru</div>
-    </div>
-    <div id="cgbp-blog-cards" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px"></div>
 
   </div>
-</div>
-
-<!-- ═══ PATRON VIEW ═══ -->
-<div class="cgv8-view" id="cgv8-view-patron">
-  <div style="padding:20px 24px;overflow-y:auto;flex:1;min-height:0">
-    <div id="cgv8-boss-panel-content" class="cgv8-boss-wrap">
-      <div style="text-align:center;padding:40px 0;opacity:.2;font-size:.8rem">Patron sekmesine gec, Cherry Glow sana rapor sunsun...</div>
-    </div>
-  </div>
-</div>
 
 </div>
 
+</div>
+</div>
 </main>
 <script id="data-script">
 /* ─── YOUTUBE DATA START ─── */
@@ -2582,7 +2259,7 @@ const YOUTUBE = {
     },
     {
       "id": "-Ig3lgUcm8c",
-      "title": "TÜRKİYE'NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
+      "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
       "views": 2064,
       "likes": 25,
@@ -2884,7 +2561,7 @@ const SHOPIFY = {
       "price": 7990
     },
     {
-      "name": "Kodak ZX1 'Weather-Resistant'",
+      "name": "Kodak ZX1 “Weather-Resistant”",
       "price": 4900
     }
   ],
@@ -2921,13 +2598,13 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-05-16T23:52:05",
+  "updated_at": "2026-05-17T00:52:07",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6613,
+  "followers": 6617,
   "media_count": 273,
-  "avg_likes": 59,
-  "total_engagement": 717,
+  "avg_likes": 60,
+  "total_engagement": 719,
   "type_counts": {
     "VIDEO": 6,
     "CAROUSEL_ALBUM": 6
@@ -2953,7 +2630,7 @@ const INSTAGRAM = {
       "id": "18111928819850525",
       "date": "12 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 158,
+      "likes": 160,
       "comments": 0,
       "url": "https://www.instagram.com/p/DYO7S-2iEqR/"
     },
@@ -4474,8 +4151,8 @@ function urunProfitCalc() {
 
 
 // ─── CHERRYGLOW v6 — Button-driven, no chat, no freeze ────────────────────────
-const CG_VERSION = 'v8.0.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
-var CG_BRAIN_KEY = 'cg_brain_v6';
+const CG_VERSION = 'v6.1.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
+var CG_BRAIN_KEY = 'cg_brain_v5';
 var CG_USER = {name:'Onur', store:'Retrocameraland', biz:'analog kamera ve vintage fotograf', city:'Istanbul'};
 
 function cgDefaultBrain() {
@@ -4551,20 +4228,6 @@ function cgSetPill(label, bg) {
 }
 
 // ── Render actions ────────────────────────────────────────────────────────────
-function cgUpdateAvatar(state, mood) {
-  var ico = document.getElementById('cg-av-ico');
-  var moodEl = document.getElementById('cg-av-mood');
-  if (ico) ico.innerHTML = cgGetAvatarSVG(state);
-  if (moodEl && mood) moodEl.textContent = mood;
-  var brain = cgGetBrain();
-  var avg = document.getElementById('cg-av-stat-avg');
-  var best = document.getElementById('cg-av-stat-best');
-  var cnt = document.getElementById('cg-av-stat-count');
-  if (avg) avg.textContent = 'SEO ort: ' + (brain.avg_seo || '--');
-  if (best) best.textContent = 'En iyi: ' + (brain.best_seo || '--');
-  if (cnt) cnt.textContent = 'Blog: ' + ((brain.history||[]).length);
-}
-
 function cgRenderActions() {
   var sEl = document.getElementById('cg-action-status');
   var bEl = document.getElementById('cg-action-buttons');
@@ -4573,22 +4236,20 @@ function cgRenderActions() {
   var st = _cgSt;
 
   if (st.status === 'idle') {
-    cgUpdateAvatar('idle', 'Hazir, gorev bekliyor...');
-    sEl.innerHTML = '<div style="font-size:.82rem;color:rgba(255,255,255,.4);padding:6px 0">Sol taraftaki listeden bir konu sec ve <strong style="color:rgba(212,175,55,.75)">Yaz</strong> butonuna tikla &mdash; ya da tumunu sirayla yaz.</div>';
+    sEl.innerHTML = '<div style="font-size:.82rem;color:rgba(255,255,255,.4);padding:6px 0">Sol taraftaki listeden bir konu seç ve <strong style="color:rgba(212,175,55,.75)">Yaz</strong> butonuna tıkla &mdash; ya da tümünü sırayla yaz.</div>';
     bEl.innerHTML = '';
 
   } else if (st.status === 'writing') {
-    cgUpdateAvatar('writing', 'Yaziyor... odaklanmis modda');
     var topic = st.item ? st.item.topic : '';
     var kwLine = (st.intel && st.intel.primary_kw)
       ? '<div style="font-size:.7rem;color:rgba(212,175,55,.65);margin-top:4px">KW: '
         + [st.intel.primary_kw].concat((st.intel.secondary_kws||[]).slice(0,3)).join(' · ')
         + '</div>' : '';
     var h1Line = (st.brief && st.brief.h1)
-      ? '<div style="font-size:.7rem;color:rgba(255,255,255,.38);margin-top:3px">Baslik: ' + st.brief.h1.slice(0,60) + '</div>' : '';
+      ? '<div style="font-size:.7rem;color:rgba(255,255,255,.38);margin-top:3px">Başlık: ' + st.brief.h1.slice(0,60) + '</div>' : '';
     var prog = st.progress || 10;
     sEl.innerHTML =
-      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.55);margin-bottom:5px">' + (st.phase || 'Hazirlaniyor') + '</div>' +
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.55);margin-bottom:5px">' + (st.phase || 'Hazırlanıyor') + '</div>' +
       '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + topic.slice(0,65) + '</div>' +
       kwLine + h1Line +
       '<div style="margin-top:10px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
@@ -4600,33 +4261,28 @@ function cgRenderActions() {
     var wc  = st.scoreObj ? st.scoreObj.wc    : 0;
     var seo = st.scoreObj ? st.scoreObj.score : '--';
     var title = (st.brief && st.brief.h1) ? st.brief.h1 : (st.item ? st.item.topic : '');
-    cgUpdateAvatar('done', 'Tamamlandi! SEO: ' + seo + '/100');
     sEl.innerHTML =
-      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(52,199,89,.7);margin-bottom:5px">TAMAMLANDI</div>' +
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(52,199,89,.7);margin-bottom:5px">✓ TAMAMLANDI</div>' +
       '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + title.slice(0,65) + '</div>' +
-      '<div style="font-size:.72rem;color:rgba(255,255,255,.38);margin-top:4px">' + wc + ' kelime - SEO: ' + seo + '/100</div>';
+      '<div style="font-size:.72rem;color:rgba(255,255,255,.38);margin-top:4px">' + wc + ' kelime · SEO: ' + seo + '/100</div>';
     bEl.innerHTML =
       (st.published
-        ? '<button class="cg-ctrl-btn" style="color:rgba(52,199,89,.75);border-color:rgba(52,199,89,.25);cursor:default">Shopify Yayinda</button>'
-        : '<button class="cg-ctrl-btn primary" onclick="cgPublish()">Onayla ve Yayinla</button>') +
-      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Siradaki Konuyu Yaz</button>' +
+        ? '<button class="cg-ctrl-btn" style="color:rgba(52,199,89,.75);border-color:rgba(52,199,89,.25);cursor:default">✓ Shopify’da Yayınlandı</button>'
+        : '<button class="cg-ctrl-btn primary" onclick="cgPublish()">✓ Onayla ve Yayınla</button>') +
+      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Sıradaki Konuyu Yaz</button>' +
       '<button class="cg-ctrl-btn" onclick="cgTab(\'seo\',document.getElementById(\'cg-tab-seo\'))" style="font-size:.65rem">SEO</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgV8SwitchPage(\'gecmis\',document.getElementById(\'cgv8-ptab-gecmis\'))" style="font-size:.65rem">Gecmis</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgV8SwitchPage(\'patron\',document.getElementById(\'cgv8-ptab-patron\'))" style="font-size:.65rem;background:rgba(212,175,55,.1)">Patron Raporu</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgRetryBetter()" style="font-size:.65rem;color:rgba(255,69,58,.75);border-color:rgba(255,69,58,.2)" title="Daha yuksek SEO skorlu yeniden yaz">Begenmedim — Yeniden Yaz</button>';
+      '<button class="cg-ctrl-btn" onclick="cgTab(\'history\',document.getElementById(\'cg-tab-history\'))" style="font-size:.65rem">Geçmiş</button>';
 
   } else if (st.status === 'error') {
-    cgUpdateAvatar('error', 'Bir sorun olustu, tekrar deneyecegim...');
     sEl.innerHTML =
-      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,69,58,.75);margin-bottom:5px">HATA</div>' +
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,69,58,.75);margin-bottom:5px">⚠ HATA</div>' +
       '<div style="font-size:.8rem;color:rgba(255,255,255,.6)">' + (st.error || 'Bilinmeyen hata') + '</div>';
     bEl.innerHTML =
       '<button class="cg-ctrl-btn primary" onclick="cgRetry()">Tekrar Dene</button>' +
       '<button class="cg-ctrl-btn" onclick="cgNextPending()">Bu Konuyu Atla</button>';
 
   } else if (st.status === 'publishing') {
-    cgUpdateAvatar('writing', 'Shopify a gonderiliyor...');
-    sEl.innerHTML = '<div style="font-size:.85rem;color:rgba(212,175,55,.8)">Shopify a gonderiliyor...</div>';
+    sEl.innerHTML = '<div style="font-size:.85rem;color:rgba(212,175,55,.8)">Shopify’a gönderiliyor...</div>';
     bEl.innerHTML = '';
   }
 }
@@ -4679,44 +4335,25 @@ function cgUpdateAgendaStage(idx, stage) {
 function cgUpdateStats() {
   var brain  = cgGetBrain();
   var hist   = brain.history || [];
-  var scores = (brain.seo_scores || []).filter(function(s){ return typeof s==='number' && !isNaN(s); });
+  var scores = brain.seo_scores || [];
   var pub    = hist.filter(function(h) { return h.published; }).length;
   var today  = (brain.topics_covered || []).filter(function(t) { return t.date === new Date().toDateString(); }).length;
   var tw     = hist.reduce(function(a, h) { return a + (h.wc || 0); }, 0);
   var avgSeo = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : '--';
-  var bestSeo = scores.length ? Math.max.apply(null, scores) : '--';
   function s(id, v) { var e = document.getElementById(id); if (e) e.textContent = v; }
   s('cg-stat-done',  hist.length);
   s('cg-stat-words', tw >= 1000 ? (tw/1000).toFixed(1)+'K' : tw);
   s('cg-stat-seo',   avgSeo);
   s('cg-stat-pub',   pub);
   s('cg-stat-today', today);
-  s('cg-stat-best',  bestSeo);
   var wv = document.getElementById('cg-w-ver');
   if (wv) wv.textContent = CG_VERSION;
-  // Animate stat bars
-  var maxBlogs = 30;
-  cgSetStatFill('cgv8-fill-done',  Math.min(100, (hist.length/maxBlogs)*100));
-  cgSetStatFill('cgv8-fill-words', Math.min(100, (tw/60000)*100));
-  cgSetStatFill('cgv8-fill-pub',   hist.length ? (pub/hist.length)*100 : 0);
-  cgSetStatFill('cgv8-fill-today', Math.min(100, today*20));
-  var seoNum = typeof avgSeo === 'number' ? avgSeo : 0;
-  cgSetStatFill('cgv8-seo-fill', seoNum, true);
-  var bestNum = typeof bestSeo === 'number' ? bestSeo : 0;
-  cgSetStatFill('cgv8-fill-best', bestNum, false);
   cgUpdateWidget(_cgSt.status);
-  cgUpdateAvatar(_cgSt.status === 'writing' ? 'writing' : 'idle', null);
-}
-
-function cgSetStatFill(id, pct, isSeoBar) {
-  var el = document.getElementById(id);
-  if (!el) return;
-  setTimeout(function() { el.style.width = Math.max(0,Math.min(100,pct))+'%'; }, 80);
 }
 
 // ── Tabs ───────────────────────────────────────────────────────────────────────
 function cgTab(tab, btn) {
-  ['preview','html','seo'].forEach(function(t) {
+  ['preview','html','seo','history'].forEach(function(t) {
     var p = document.getElementById('cg-tab-panel-'+t);
     var b = document.getElementById('cg-tab-'+t);
     if (p) p.style.display = (t === tab) ? '' : 'none';
@@ -4725,24 +4362,14 @@ function cgTab(tab, btn) {
   if (tab === 'html' && _cgSt.md) {
     var ta = document.getElementById('cg-html-ta');
     if (ta) {
+      // enrichBlogHTML geciktirilmiş çalıştırılıyor (heavy operation)
       requestAnimationFrame(function(){
         ta.value = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
       });
     }
   }
+  if (tab === 'history') cgRenderHistory();
   if (tab === 'seo' && _cgSt.scoreObj) cgRenderSeoPanel(_cgSt.scoreObj);
-}
-
-function cgV8SwitchPage(page, el) {
-  ['yaz','gecmis','perf','patron'].forEach(function(p) {
-    var view = document.getElementById('cgv8-view-'+p);
-    var tab  = document.getElementById('cgv8-ptab-'+p);
-    if (view) view.classList.toggle('active', p === page);
-    if (tab)  tab.classList.toggle('active', p === page);
-  });
-  if (page === 'gecmis')  cgRenderHistoryPage();
-  if (page === 'patron')  cgRenderBossPanel();
-  if (page === 'perf')    cgRenderBlogPerf();
 }
 
 function cgCopyHTML() {
@@ -4757,407 +4384,6 @@ function cgDownloadHTML() {
   a.href = URL.createObjectURL(new Blob([ta.value], {type:'text/html'}));
   a.download = 'cherryglow-blog.html';
   a.click();
-}
-
-// ── Telegram Notification ──────────────────────────────────────────────────────
-function cgNotifyTelegram(text) {
-  fetch('/api/telegram', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({text: text, parse_mode: 'HTML'})
-  }).catch(function(){});
-}
-
-function cgBuildTelegramBlogMsg(title, seo, wc, url) {
-  var brain = cgGetBrain();
-  var avg = brain.avg_seo || '--';
-  var cnt = (brain.history||[]).length;
-  return (
-    '<b>Cherry Glow Blog Yayinladi! &#x270D;</b>\n\n' +
-    '<b>Baslik:</b> ' + (title||'').slice(0,80) + '\n' +
-    '<b>SEO Puani:</b> ' + seo + '/100 ' + (seo >= 90 ? '&#x2B50;' : seo >= 80 ? '&#x1F44D;' : '') + '\n' +
-    '<b>Kelime Sayisi:</b> ' + wc + '\n' +
-    '<b>Toplam Blog:</b> ' + cnt + ' adet\n' +
-    '<b>Ort. SEO:</b> ' + avg + '\n\n' +
-    '<i>Hedef: retrocameraland.com Google #1 &#x1F3AF;</i>'
-  );
-}
-
-function cgBuildTelegramDailyReport() {
-  var brain = cgGetBrain();
-  var hist  = brain.history || [];
-  var today = new Date().toLocaleDateString('tr-TR');
-  var todayBlogs = hist.filter(function(h){ return h.date && new Date(h.date).toLocaleDateString('tr-TR')===today; });
-  var scores = (brain.seo_scores||[]).filter(function(s){ return typeof s==='number'&&!isNaN(s); });
-  var avg = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : 0;
-  var best = scores.length ? Math.max.apply(null,scores) : 0;
-  var learnings = (brain.learnings||[]).slice(-3).map(function(l){ return '  - '+l; }).join('\n') || '  Henuz yok';
-  return (
-    '<b>Cherry Glow Gunluk Rapor</b> (' + today + ')\n\n' +
-    '&#x1F4CA; <b>Genel Durum:</b>\n' +
-    '  Toplam Blog: ' + hist.length + '\n' +
-    '  Bugun Yazilan: ' + todayBlogs.length + '\n' +
-    '  Ort. SEO: ' + avg + '/100\n' +
-    '  En Yuksek: ' + best + '/100\n\n' +
-    '&#x1F4A1; <b>Son Ogrenimler:</b>\n' + learnings + '\n\n' +
-    '&#x1F3AF; <b>Hedef:</b> retrocameraland.com Google ve AI aramalarinda #1\n\n' +
-    '<i>Cherry Glow | rclhq.vercel.app</i>'
-  );
-}
-
-// ── Cherry Glow Thought Stream ─────────────────────────────────────────────────
-var _cgThoughts = [
-  'Retrocameraland.com icin analog kamera SEO stratejisi olusturuyorum. Hedef: kategori birinciligi.',
-  'Film kamera kullanicilari ne ariyor? "analog kamera", "filimli kamera", "vintage kamera" - bunlari takip ediyorum.',
-  'Her blogda 90+ SEO skoru hedefim. Daha uzun icerik, daha fazla internal link, daha guclu H2 yapisi.',
-  'Google AI Overview ve Perplexity referanslarini artirmak icin E-E-A-T sinyallerini guclendir.',
-  'Vintage Kodak, Olympus, Contax kamera kategorilerinde authority kazanmak gerekiyor.',
-  'Blog-to-sale funnel: organik trafik > urun sayfasi > sepet. Bu akisi optimize et.',
-  'Rakip analizine gore retrocameraland.com icin film kamera kategorisinde buyuk firsat var.',
-  'AI arama motorlari (Perplexity, ChatGPT) icin FAQ bolumu ve schema markup sart.',
-  'YouTube ve Instagram iceriklerini blog icine entegre ederek cross-platform trafik artiyorum.',
-  'Hedef: 6 ay icinde organik trafigi 5x artirmak. Su anki strateji dogru yolda.'
-];
-var _cgThoughtIdx = 0;
-
-function cgTickThought() {
-  var el = document.getElementById('cgv8-thought-text');
-  if (!el) return;
-  var brain = cgGetBrain();
-  var custom = [];
-  if ((brain.learnings||[]).length) {
-    var last = brain.learnings[brain.learnings.length-1];
-    custom.push('Ogrendim: ' + last);
-  }
-  var all = _cgThoughts.concat(custom);
-  _cgThoughtIdx = (_cgThoughtIdx + 1) % all.length;
-  el.style.opacity = '0';
-  setTimeout(function() {
-    el.textContent = all[_cgThoughtIdx];
-    el.style.transition = 'opacity 0.8s';
-    el.style.opacity = '1';
-  }, 400);
-}
-
-function cgSetThoughtPhase(phase) {
-  var el = document.getElementById('cgv8-thought-phase');
-  if (el) el.textContent = phase || 'Hazir';
-}
-
-// ── Cherry Glow Avatar SVG ─────────────────────────────────────────────────────
-function cgGetAvatarSVG(state) {
-  var base = 'fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56"';
-  var face = {
-    idle: '<circle cx="28" cy="28" r="26" fill="url(#cg-av-bg)" opacity=".95"/>' +
-      '<circle cx="22" cy="25" r="3.5" fill="#1a1a2e"/><circle cx="34" cy="25" r="3.5" fill="#1a1a2e"/>' +
-      '<circle cx="23" cy="24" r="1" fill="white"/><circle cx="35" cy="24" r="1" fill="white"/>' +
-      '<path d="M22 33 Q28 38 34 33" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>' +
-      '<ellipse cx="19" cy="29" rx="3" ry="1.5" fill="rgba(255,183,197,.55)"/>' +
-      '<ellipse cx="37" cy="29" rx="3" ry="1.5" fill="rgba(255,183,197,.55)"/>',
-    writing: '<circle cx="28" cy="28" r="26" fill="url(#cg-av-bg)" opacity=".95"/>' +
-      '<path d="M20 24 Q22 21 24 24" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>' +
-      '<path d="M32 24 Q34 21 36 24" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>' +
-      '<path d="M23 33 Q28 37 33 33" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>' +
-      '<ellipse cx="19" cy="28" rx="3" ry="1.5" fill="rgba(255,183,197,.55)"/>' +
-      '<ellipse cx="37" cy="28" rx="3" ry="1.5" fill="rgba(255,183,197,.55)"/>' +
-      '<circle cx="42" cy="14" r="5" fill="rgba(212,175,55,.9)"/><text x="39" y="18" font-size="7" fill="#1a1a2e">...</text>',
-    done: '<circle cx="28" cy="28" r="26" fill="url(#cg-av-bg-done)" opacity=".95"/>' +
-      '<path d="M20 25 Q22 22 24 25" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
-      '<path d="M32 25 Q34 22 36 25" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
-      '<path d="M21 33 Q28 40 35 33" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
-      '<ellipse cx="19" cy="29" rx="3.5" ry="2" fill="rgba(255,183,197,.7)"/>' +
-      '<ellipse cx="37" cy="29" rx="3.5" ry="2" fill="rgba(255,183,197,.7)"/>' +
-      '<path d="M8 12 L11 15 L16 9" stroke="#34C759" stroke-width="2" stroke-linecap="round"/>',
-    error: '<circle cx="28" cy="28" r="26" fill="url(#cg-av-bg-err)" opacity=".95"/>' +
-      '<path d="M20 22 L24 26 M24 22 L20 26" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
-      '<path d="M32 22 L36 26 M36 22 L32 26" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
-      '<path d="M22 35 Q28 31 34 35" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>'
-  };
-  var defs = '<defs>' +
-    '<linearGradient id="cg-av-bg" x1="0" y1="0" x2="1" y2="1">' +
-      '<stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>' +
-    '</linearGradient>' +
-    '<linearGradient id="cg-av-bg-done" x1="0" y1="0" x2="1" y2="1">' +
-      '<stop offset="0%" stop-color="#34C759"/><stop offset="100%" stop-color="#30D158"/>' +
-    '</linearGradient>' +
-    '<linearGradient id="cg-av-bg-err" x1="0" y1="0" x2="1" y2="1">' +
-      '<stop offset="0%" stop-color="#FF453A"/><stop offset="100%" stop-color="#FF6B6B"/>' +
-    '</linearGradient>' +
-  '</defs>';
-  var st = (state || 'idle');
-  return '<svg ' + base + '>' + defs + (face[st] || face.idle) + '</svg>';
-}
-
-// ── Animate counter ────────────────────────────────────────────────────────────
-function cgAnimateCounter(el, target, duration) {
-  if (!el) return;
-  var start = 0, startTime = null;
-  var num = parseFloat(target);
-  if (isNaN(num)) { el.textContent = target; return; }
-  function step(ts) {
-    if (!startTime) startTime = ts;
-    var prog = Math.min((ts - startTime) / (duration || 900), 1);
-    var ease = 1 - Math.pow(1 - prog, 3);
-    el.textContent = Number.isInteger(num) ? Math.round(num * ease) : (num * ease).toFixed(1);
-    if (prog < 1) requestAnimationFrame(step);
-    else el.textContent = Number.isInteger(num) ? num : num.toFixed(1);
-  }
-  requestAnimationFrame(step);
-}
-
-// ── Blog Performans ────────────────────────────────────────────────────────────
-function cgRenderBlogPerf() {
-  var totalViews = 0, totalOrganic = 0, totalOrders = 0;
-  var posts = (typeof BLOG_SEO !== 'undefined' && BLOG_SEO.posts) ? BLOG_SEO.posts : [];
-  var monthly = (typeof BLOG_SEO !== 'undefined' && BLOG_SEO.monthly) ? BLOG_SEO.monthly : [];
-  var sources = (typeof GA4_TRAFFIC !== 'undefined' && GA4_TRAFFIC.sources) ? GA4_TRAFFIC.sources : [];
-
-  posts.forEach(function(p) { totalViews += (p.views||0); totalOrganic += (p.organic||0); totalOrders += (p.orders||0); });
-  var brain = cgGetBrain();
-  var brainHist = brain.history || [];
-  var brainBlogs = brainHist.length;
-  var avgOrderVal = 2800;
-  var totalRevenue = totalOrders * avgOrderVal;
-
-  // KPI animation
-  setTimeout(function() {
-    cgAnimateCounter(document.getElementById('cgbp-total-views'), totalViews, 1200);
-    cgAnimateCounter(document.getElementById('cgbp-organic'), totalOrganic, 1200);
-    cgAnimateCounter(document.getElementById('cgbp-orders'), totalOrders, 900);
-    cgAnimateCounter(document.getElementById('cgbp-revenue'), totalRevenue, 1400);
-  }, 80);
-  var vs = document.getElementById('cgbp-views-sub');
-  if (vs) vs.textContent = posts.length + ' blog yazisindan';
-  var os = document.getElementById('cgbp-organic-sub');
-  if (os) os.textContent = 'Ort. %' + (totalViews ? Math.round(totalOrganic/totalViews*100) : 0) + ' organik oran';
-
-  // Monthly animated bar chart
-  var chartEl = document.getElementById('cgbp-monthly-chart');
-  var labelsEl = document.getElementById('cgbp-monthly-labels');
-  if (chartEl && monthly.length) {
-    var maxVal = Math.max.apply(null, monthly.map(function(m){ return m.traffic||0; })) || 1;
-    chartEl.innerHTML = monthly.map(function(m) {
-      var pct = Math.round((m.traffic||0)/maxVal*100);
-      var grad = 'linear-gradient(180deg,#D4AF37,rgba(212,175,55,.4))';
-      return '<div class="cgbp-bar-col" title="'+m.label+': '+(m.traffic||0)+' ziyaret">' +
-        '<div class="cgbp-bar-val">'+(m.traffic>=1000?Math.round(m.traffic/1000)+'K':m.traffic)+'</div>' +
-        '<div class="cgbp-bar" style="height:0%;background:'+grad+'" data-h="'+pct+'"></div>' +
-      '</div>';
-    }).join('');
-    if (labelsEl) labelsEl.innerHTML = monthly.map(function(m) {
-      return '<div class="cgbp-bar-lbl" style="flex:1;text-align:center">'+m.label+'</div>';
-    }).join('');
-    setTimeout(function() {
-      chartEl.querySelectorAll('.cgbp-bar').forEach(function(b) {
-        b.style.height = b.getAttribute('data-h') + '%';
-      });
-    }, 150);
-  }
-
-  // Source bars
-  var srcEl = document.getElementById('cgbp-source-bars');
-  if (srcEl && sources.length) {
-    var maxSrc = Math.max.apply(null, sources.map(function(s){return s.sessions||0;})) || 1;
-    srcEl.innerHTML = sources.map(function(s) {
-      return '<div class="cgbp-src-row">' +
-        '<div class="cgbp-src-lbl">'+s.name+'</div>' +
-        '<div class="cgbp-src-bar"><div class="cgbp-src-fill" style="width:0%;background:'+s.color+'" data-w="'+Math.round(s.sessions/maxSrc*100)+'"></div></div>' +
-        '<div class="cgbp-src-pct">%'+s.pct+'</div>' +
-      '</div>';
-    }).join('');
-    setTimeout(function() {
-      srcEl.querySelectorAll('.cgbp-src-fill').forEach(function(b) {
-        b.style.width = b.getAttribute('data-w') + '%';
-      });
-    }, 200);
-  }
-
-  // Blog cards
-  var cardsEl = document.getElementById('cgbp-blog-cards');
-  if (!cardsEl) return;
-  var allPosts = posts.slice();
-  // Add Cherry's brain blogs not in BLOG_SEO
-  brainHist.forEach(function(h, i) {
-    if (!h.title) return;
-    var found = posts.some(function(p){ return p.title && p.title.slice(0,30) === (h.title||'').slice(0,30); });
-    if (!found) {
-      var daysSince = h.date ? Math.max(0, Math.floor((Date.now()-new Date(h.date).getTime())/86400000)) : 0;
-      var simViews = Math.round((h.seo||60) * 8 * Math.max(1, daysSince));
-      var simOrg = Math.round(simViews * 0.52);
-      var simOrd = Math.floor(simViews / 900);
-      allPosts.push({title:h.title, views:simViews, organic:simOrg, orders:simOrd, seo:h.seo||0, cherry:true});
-    }
-  });
-  var maxViews = Math.max.apply(null, allPosts.map(function(p){return p.views||1;})) || 1;
-  cardsEl.innerHTML = allPosts.map(function(p) {
-    var seoCol = (p.seo||0)>=90?'#34C759':(p.seo||0)>=75?'#D4AF37':'#FF453A';
-    var viewPct = Math.round((p.views||0)/maxViews*100);
-    var orgPct  = p.views ? Math.round((p.organic||0)/(p.views||1)*100) : 0;
-    var cherry  = p.cherry ? '<span style="font-size:.55rem;color:rgba(212,175,55,.6);background:rgba(212,175,55,.08);padding:2px 6px;border-radius:6px;margin-left:4px">Cherry</span>' : '';
-    return '<div class="cgbp-blog-card">' +
-      '<div class="cgbp-blog-title">'+(p.title||'').slice(0,75)+cherry+'</div>' +
-      '<div class="cgbp-metric-row"><span class="cgbp-metric-lbl">Goruntulenme</span><span class="cgbp-metric-val" style="color:#5AC8FA">'+(p.views||0).toLocaleString('tr-TR')+'</span></div>' +
-      '<div class="cgbp-mini-bar"><div class="cgbp-mini-bar-fill" style="width:0%;background:#5AC8FA" data-w="'+viewPct+'"></div></div>' +
-      '<div class="cgbp-metric-row"><span class="cgbp-metric-lbl">Organik (%'+orgPct+')</span><span class="cgbp-metric-val" style="color:#30D158">'+(p.organic||0).toLocaleString('tr-TR')+'</span></div>' +
-      '<div class="cgbp-mini-bar"><div class="cgbp-mini-bar-fill" style="width:0%;background:#30D158" data-w="'+Math.round((p.organic||0)/maxViews*100)+'"></div></div>' +
-      '<div class="cgbp-metric-row">' +
-        '<span class="cgbp-metric-lbl">Siparis: <strong style="color:#FF9F0A">'+(p.orders||0)+'</strong></span>' +
-        '<span class="cgbp-metric-val" style="color:'+seoCol+'">SEO '+(p.seo||0)+'</span>' +
-      '</div>' +
-      '<div class="cgbp-mini-bar"><div class="cgbp-mini-bar-fill" style="width:0%;background:'+seoCol+'" data-w="'+(p.seo||0)+'"></div></div>' +
-    '</div>';
-  }).join('');
-  setTimeout(function() {
-    cardsEl.querySelectorAll('.cgbp-mini-bar-fill').forEach(function(b) {
-      b.style.width = b.getAttribute('data-w') + '%';
-    });
-  }, 250);
-}
-
-// ── Boss Panel ─────────────────────────────────────────────────────────────────
-function cgRenderBossPanel() {
-  var el = document.getElementById('cgv8-boss-panel-content');
-  if (!el) return;
-  var brain = cgGetBrain();
-  var hist = brain.history || [];
-  var seos = (brain.seo_scores || []).filter(function(s){return typeof s==='number'&&!isNaN(s);});
-  var avgSeo = seos.length ? Math.round(seos.reduce(function(a,b){return a+b;},0)/seos.length) : 0;
-  var bestSeo = seos.length ? Math.round(Math.max.apply(null,seos)) : 0;
-  var blogs90 = seos.filter(function(s){return s>=90;}).length;
-  var learnings = brain.learnings || [];
-  var sessions = brain.sessions_count || 0;
-
-  // KPI cards
-  var kpis = [
-    {label:'Toplam Blog', val: hist.length, sub:'yayinlandi / yazildi'},
-    {label:'SEO Ortalama', val: avgSeo, sub:'hedef: 90+'},
-    {label:'En Yuksek SEO', val: bestSeo, sub:'kisisel rekor'},
-    {label:'90+ Blog', val: blogs90, sub:'premium icerik'},
-    {label:'Ogrenimler', val: learnings.length, sub:'hafiza kayitlari'},
-    {label:'Oturumlar', val: sessions, sub:'aktif calismalar'},
-    {label:'Kw Portfoyu', val: Object.keys(brain.kw_performance||{}).length, sub:'anahtar kelimeler'},
-    {label:'Trafik Hedef', val: 'G100', sub:'organik tiklama'}
-  ];
-  var kpisHTML = kpis.map(function(k,i) {
-    return '<div class="cgv8-boss-kpi" style="animation-delay:'+(i*60)+'ms">' +
-      '<div class="cgv8-boss-kpi-label">'+k.label+'</div>' +
-      '<div class="cgv8-boss-kpi-val" id="cgv8-kpi-'+i+'">'+k.val+'</div>' +
-      '<div class="cgv8-boss-kpi-sub">'+k.sub+'</div>' +
-    '</div>';
-  }).join('');
-
-  // SEO trend bars (last 10)
-  var last10 = seos.slice(-10);
-  var maxS = Math.max.apply(null, last10.concat([1]));
-  var trendHTML = '';
-  if (last10.length) {
-    trendHTML = '<div class="cgv8-section-head">SEO Trend (Son '+last10.length+' Blog)</div>' +
-      '<div class="cgv8-seo-trend">' +
-      last10.map(function(s,i) {
-        var h = Math.max(8, Math.round((s/100)*80));
-        var hi = s >= 90 ? ' hi' : '';
-        return '<div class="cgv8-seo-trend-bar'+hi+'" style="height:'+h+'px" data-tip="SEO '+s+'"></div>';
-      }).join('') +
-      '</div>';
-  }
-
-  // Conversion funnel with YouTube/Instagram data
-  var yt = window.YOUTUBE || {};
-  var ig = window.INSTAGRAM || {};
-  var ytViews = (yt.analytics && yt.analytics.total_views) || 0;
-  var igFollowers = (ig.profile && ig.profile.followers) || 0;
-  var funnelData = [
-    {label:'YT Gorunum', val: ytViews, max: 2000000, color:'rgba(255,59,48,.7)'},
-    {label:'IG Takipci', val: igFollowers, max: 20000, color:'rgba(255,183,197,.7)'},
-    {label:'Blog Okuma', val: hist.length * 380, max: 50000, color:'rgba(212,175,55,.7)'},
-    {label:'Organik Trafik', val: blogs90 * 120, max: 10000, color:'rgba(52,199,89,.7)'}
-  ];
-  var funnelHTML = '<div class="cgv8-section-head">Trafik Funnel</div><div class="cgv8-funnel">' +
-    funnelData.map(function(f) {
-      var pct = Math.min(100, Math.round((f.val/f.max)*100)) || 2;
-      return '<div class="cgv8-funnel-row">' +
-        '<div class="cgv8-funnel-label">'+f.label+'</div>' +
-        '<div class="cgv8-funnel-bar">' +
-          '<div class="cgv8-funnel-fill" style="width:'+pct+'%;background:'+f.color+'"></div>' +
-          '<div class="cgv8-funnel-val">'+f.val.toLocaleString('tr-TR')+'</div>' +
-        '</div></div>';
-    }).join('') + '</div>';
-
-  // Learnings list
-  var lrnHTML = '';
-  if (learnings.length) {
-    lrnHTML = '<div class="cgv8-section-head">Cherry Glow Ogrenimler</div>' +
-      '<div class="cgv8-learnings">' +
-      learnings.slice(-8).reverse().map(function(l) {
-        return '<div class="cgv8-learning-item"><div class="cgv8-learning-icon">&#x1F4A1;</div>' +
-          '<div class="cgv8-learning-text">'+l+'</div></div>';
-      }).join('') + '</div>';
-  }
-
-  // Performance report rows
-  var reportRows = [
-    ['Toplam Blog', hist.length+' adet'],
-    ['Ortalama Kelime', hist.length ? Math.round(hist.reduce(function(a,b){return a+(b.wc||0);},0)/hist.length)+' kelime' : '--'],
-    ['Ortalama SEO', avgSeo ? avgSeo+'/100' : '--'],
-    ['En Yuksek SEO', bestSeo ? bestSeo+'/100' : '--'],
-    ['90+ Blog Orani', hist.length ? Math.round((blogs90/hist.length)*100)+'%' : '--'],
-    ['Aktif Konu', Object.keys(brain.kw_performance||{}).length+' KW']
-  ];
-  var reportHTML = '<div class="cgv8-section-head">Performans Raporu</div>' +
-    '<div class="cgv8-report-rows">' +
-    reportRows.map(function(r) {
-      return '<div class="cgv8-report-row">' +
-        '<div class="cgv8-report-row-label">'+r[0]+'</div>' +
-        '<div class="cgv8-report-row-val">'+r[1]+'</div>' +
-      '</div>';
-    }).join('') + '</div>';
-
-  // Hero
-  var heroHTML = '<div class="cgv8-boss-hero">' +
-    '<div id="cgv8-boss-av" class="cgv8-boss-av">'+cgGetAvatarSVG('done')+'</div>' +
-    '<div>' +
-      '<div class="cgv8-boss-info-name">Cherry Glow &#x2728;</div>' +
-      '<div class="cgv8-boss-info-title"><span class="cgv8-pulse-dot"></span>Otonom SEO Blog Ajani</div>' +
-      '<div class="cgv8-boss-info-bio">' +
-        'Patron Onur icin retrocameraland.com adina calisiyor. ' +
-        'Su ana kadar <strong style="color:rgba(212,175,55,.9)">'+hist.length+' blog</strong> yazdi, ' +
-        'ortalama SEO skoru <strong style="color:rgba(52,199,89,.9)">'+avgSeo+'</strong>. ' +
-        'Her yazidan ogreniyor ve bir sonrakini daha iyi yapiyor.' +
-      '</div>' +
-    '</div>' +
-  '</div>';
-
-  // Roadmap
-  var roadmapSteps = [
-    {phase:'Faz 1', title:'Altyapi', desc:'Brain v8, SEO engine 90+, Groq entegrasyonu', done:true},
-    {phase:'Faz 2', title:'Icerik Uretimi', desc:'30+ blog, kelime otoritesi, H2 yapisi', done: hist.length >= 10, active: hist.length < 10},
-    {phase:'Faz 3', title:'Teknik SEO', desc:'Schema markup, Core Web Vitals, internal link', done:false},
-    {phase:'Faz 4', title:'Link Otorite', desc:'Backlink kampanyasi, PR, partner linkler', done:false},
-    {phase:'Faz 5', title:'AI Arama #1', desc:'E-E-A-T max, Perplexity/ChatGPT referans', done:false}
-  ];
-  var roadmapHTML = '<div class="cgv8-section-head" style="margin-top:16px">Yol Haritasi - Google & AI #1</div>' +
-    '<div style="display:flex;gap:0;margin-bottom:18px;overflow-x:auto;padding:4px 0">' +
-    roadmapSteps.map(function(step, i) {
-      var cls = step.done ? 'cgv8-rm-full-step done' : step.active ? 'cgv8-rm-full-step active' : 'cgv8-rm-full-step';
-      var arrow = i < roadmapSteps.length-1 ? '<div class="cgv8-rm-full-arrow">'+(step.done?'&#x27A1;':'&#x2192;')+'</div>' : '';
-      return '<div class="'+cls+'"><div class="cgv8-rm-phase">'+step.phase+'</div><div class="cgv8-rm-title">'+step.title+'</div><div class="cgv8-rm-desc">'+step.desc+'</div></div>' + arrow;
-    }).join('') + '</div>';
-
-  var tgBtnHTML = '<div style="margin-top:8px;display:flex;gap:8px">' +
-    '<button class="cg-ctrl-btn" onclick="cgSendDailyReport()" style="font-size:.65rem;background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.25);color:rgba(37,211,102,.8)">&#x1F4F1; Telegram Gunluk Rapor</button>' +
-    '</div>';
-
-  el.innerHTML = heroHTML +
-    '<div class="cgv8-boss-kpis" id="cgv8-kpis-grid">' + kpisHTML + '</div>' +
-    trendHTML + roadmapHTML + funnelHTML + lrnHTML + reportHTML + tgBtnHTML;
-
-  // Animate KPI counters
-  setTimeout(function() {
-    kpis.forEach(function(k, i) {
-      var v = k.val;
-      if (typeof v === 'number') cgAnimateCounter(document.getElementById('cgv8-kpi-'+i), v, 800 + i*60);
-    });
-  }, 100);
 }
 
 // ── SEO panel ──────────────────────────────────────────────────────────────────
@@ -5179,54 +4405,25 @@ function cgRenderSeoPanel(sc) {
 
 // ── History ────────────────────────────────────────────────────────────────────
 function cgRenderHistory() {
-  cgRenderHistoryPage();
-}
-
-function cgRenderHistoryPage() {
   var el = document.getElementById('cg-history-list');
-  var emptyEl = document.getElementById('cgv8-gecmis-empty');
   if (!el) return;
   var hist = (cgGetBrain().history || []).slice().reverse();
   if (!hist.length) {
-    el.innerHTML = '';
-    if (emptyEl) emptyEl.style.display = '';
+    el.innerHTML = '<div style="text-align:center;padding:30px;opacity:.25;font-size:.8rem">Henüz blog yazılmadı</div>';
     return;
   }
-  if (emptyEl) emptyEl.style.display = 'none';
-  el.className = 'cgv8-hist-grid';
   el.innerHTML = hist.map(function(item, i) {
+    var d   = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
+    var col = item.seo >= 85 ? 'rgba(52,199,89,.75)' : item.seo >= 70 ? 'rgba(212,175,55,.75)' : 'rgba(255,69,58,.6)';
     var realIdx = hist.length - 1 - i;
-    var d = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
-    var seo = item.seo || 0;
-    var col = seo >= 85 ? '#34C759' : seo >= 70 ? '#D4AF37' : '#FF453A';
-    var seoPct = Math.min(100, seo);
-    var wc = item.wc || 0;
-    return '<div class="cgv8-hist-card" onclick="cgLoadHistoryAndSwitch('+realIdx+')">' +
-      '<div class="cgv8-hist-card-title">'+(item.title||item.topic||'Basliksiz').slice(0,80)+'</div>' +
-      '<div class="cgv8-hist-seo-bar"><div class="cgv8-hist-seo-fill" style="width:'+seoPct+'%;background:'+col+'"></div></div>' +
-      '<div class="cgv8-hist-card-meta" style="margin-top:8px">' +
-        '<span style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:var(--mono)">'+d+'</span>' +
-        '<span style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:var(--mono)">'+wc+' kelime</span>' +
-        '<span class="cgv8-hist-seo-badge" style="color:'+col+';background:'+col.replace(')',',0.12)').replace('rgb(','rgba(')+'">SEO '+seo+'</span>' +
-        (item.published ? '<span class="cgv8-hist-card-pub">Yayinda</span>' : '') +
-      '</div>' +
-      '<div class="cgv8-hist-actions">' +
-        '<button class="cg-ctrl-btn" style="font-size:.6rem" onclick="event.stopPropagation();cgLoadHistoryAndSwitch('+realIdx+')">Goruntule</button>' +
-        (!item.published ? '<button class="cg-ctrl-btn" style="font-size:.6rem" onclick="event.stopPropagation();cgLoadHistoryAndPublish('+realIdx+')">Yayinla</button>' : '') +
-      '</div>' +
-    '</div>';
+    return '<div class="cg-hist-item" onclick="cgLoadHistory('+realIdx+')">' +
+      '<div class="cg-hist-title">'+(item.title||item.topic||'').slice(0,70)+'</div>' +
+      '<div class="cg-hist-meta">' +
+        '<span>'+d+'</span><span>'+(item.wc||0)+' kelime</span>' +
+        '<span class="cg-hist-seo" style="color:'+col+';background:rgba(0,0,0,.2)">SEO '+(item.seo||'--')+'</span>' +
+        (item.published ? '<span class="cg-hist-pub">✓ Yayınlandı</span>' : '') +
+      '</div></div>';
   }).join('');
-}
-
-function cgLoadHistoryAndSwitch(idx) {
-  cgLoadHistory(idx);
-  cgV8SwitchPage('yaz', document.getElementById('cgv8-ptab-yaz'));
-}
-
-function cgLoadHistoryAndPublish(idx) {
-  cgLoadHistory(idx);
-  cgV8SwitchPage('yaz', document.getElementById('cgv8-ptab-yaz'));
-  setTimeout(function() { cgPublish(); }, 300);
 }
 
 function cgLoadHistory(idx) {
@@ -5269,290 +4466,66 @@ async function cgFetchJSON(prompt, sys, model, timeout) {
   } catch(e) { clearTimeout(tid); return {}; }
 }
 
-// ── Progress helper ────────────────────────────────────────────────────────────
-function cgUpdateProgress(pct, phase) {
-  _cgSt.progress = pct;
-  if (phase) _cgSt.phase = phase;
-  cgRenderActions();
-}
-
-// ── Phase 1: Real Web Research via Brave Search ────────────────────────────────
-async function cgDeepResearch(item) {
-  var q1 = item.topic + ' analog kamera';
-  var q2 = item.topic + ' nasil secilir satin alma rehberi';
-  var q3 = item.topic + ' ozellikleri fiyat karsilastirma';
-  var queries = [q1, q2, q3];
-  var allResults = [];
-  for (var qi = 0; qi < queries.length; qi++) {
-    try {
-      var r = await fetch('/api/brave-search', {
-        method:'POST', headers:{'Content-Type':'application/json'},
-        body: JSON.stringify({query: queries[qi], count: 5})
-      });
-      if (r.ok) {
-        var d = await r.json();
-        (d.results||[]).forEach(function(res) { allResults.push(res); });
-      }
-    } catch(e) {}
-    await new Promise(function(res){setTimeout(res,300);});
-  }
-  return allResults;
-}
-
-// ── Phase 2: AI Scout with Research Data ──────────────────────────────────────
 async function cgScout(item, today) {
-  var brain = cgGetBrain();
-  var usedKws  = (brain.keywords_used||[]).slice(-30).join(', ') || 'yok';
-  var learnings = (brain.learnings||[]).slice(-5).map(function(l){return '- '+l;}).join('\n') || 'henuz yok';
-
-  // Real web research
-  cgUpdateProgress(15, 'Web Arastirma...');
-  cgSetThoughtPhase('Arastiriyor');
-  var searchResults = await cgDeepResearch(item);
-  var srSummary = searchResults.slice(0,8).map(function(r,i){
-    return (i+1)+'. "'+r.title+'" — '+r.description.slice(0,120);
-  }).join('\n');
-
-  cgUpdateProgress(30, 'SEO Analiz...');
-  cgSetThoughtPhase('Analiz Ediyor');
-
-  var prompt =
-    'ARASTIRMA TARIHI: '+today+'\n'+
-    'KONU: '+item.topic+'\n'+
-    'KATEGORI: '+item.cat+'\n\n'+
-    'GOOGLE ARAMA SONUCLARI (rakip analizi):\n'+srSummary+'\n\n'+
-    'KULLANILMIS KWLER (tekrarlama): '+usedKws+'\n'+
-    'ONCEKI OGRENIMLER:\n'+learnings+'\n\n'+
-    'JSON formatinda tam SEO analizi (baska aciklama ekleme):\n'+
-    '{\n'+
-    '  "primary_kw": "en guclü ana keyword",\n'+
-    '  "secondary_kws": ["kw1","kw2","kw3","kw4","kw5"],\n'+
-    '  "lsi_kws": ["lsi1","lsi2","lsi3"],\n'+
-    '  "search_intent": "bilgilendirme|ticari|karma|navigasyon",\n'+
-    '  "hook": "30-40 kelimelik guclü giris cumlesi",\n'+
-    '  "competitor_gap": "rakiplerin kacirdigi en onemli aci",\n'+
-    '  "unique_angle": "sadece bu blogda olacak orijinal katki",\n'+
-    '  "faq_questions": ["soru1?","soru2?","soru3?","soru4?","soru5?"],\n'+
-    '  "schema_type": "Article|HowTo|FAQPage",\n'+
-    '  "internal_link_anchor": "retrocameraland.com icin dogal anchor text"\n'+
-    '}';
-
-  return cgFetchJSON(prompt,
-    'Sen dunyaca taninmis bir SEO stratejistisin. Retrocameraland.com (Turkiye analog kamera magazasi) icin E-E-A-T standartlarinda, Google ve AI arama motorlarinda ust siraya cikmak icin keyword analizi yapiyorsun. Sadece JSON yanit ver.',
-    'claude-haiku-4-5-20251001', 25000);
-}
-
-// ── Phase 3: Deep Content Brief ───────────────────────────────────────────────
-async function cgBriefCall(item, intel, today) {
-  var faqList = (intel.faq_questions||[]).join('", "');
-  var prompt =
-    'KONU: '+item.topic+'\n'+
-    'ANA KEYWORD: '+(intel.primary_kw||'')+'\n'+
-    'ARAMA AMACI: '+(intel.search_intent||'bilgilendirme')+'\n'+
-    'RAKIP ACIGI: '+(intel.competitor_gap||'')+'\n'+
-    'UNIQUE ACKII: '+(intel.unique_angle||'')+'\n'+
-    'FAQ SORULARI: "'+faqList+'"\n\n'+
-    'JSON formatinda 2200+ kelimelik blog plani (sadece JSON):\n'+
-    '{\n'+
-    '  "h1": "Ana keyword one alan, 60 karakter altinda clickbait olmayan H1",\n'+
-    '  "meta_desc": "150-160 karakter, primary_kw iceren, tiklanabilir meta description",\n'+
-    '  "h2s": ["H2-1","H2-2","H2-3","H2-4","H2-5","H2-6"],\n'+
-    '  "h3_map": {"H2-1":["H3-a","H3-b"],"H2-3":["H3-a","H3-b"]},\n'+
-    '  "target_wc": 2200,\n'+
-    '  "intro_hook": "Guclu giris cumlesi (40-50 kelime, merak uyandiran)",\n'+
-    '  "cta_mid": "Orta CTA metni",\n'+
-    '  "cta_end": "Kapanistaki CTA metni",\n'+
-    '  "schema_type": "FAQPage|HowTo|Article"\n'+
-    '}';
-
-  return cgFetchJSON(prompt,
-    'Ust duzey bir icerik stratejistisin. E-E-A-T, AIDA, topic cluster prensipleriyle 90+ SEO skorlu Turkce blog planliyorsun. Sadece JSON.',
-    'claude-haiku-4-5-20251001', 25000);
-}
-
-// ── Phase 4: Build System Prompt ──────────────────────────────────────────
-function cgBuildSystemPrompt(item, intel, brief, today, brain) {
-  var kw      = intel.primary_kw || item.topic;
-  var secKws  = (intel.secondary_kws||[]).join(', ') || 'yok';
-  var lsiKws  = (intel.lsi_kws||[]).join(', ') || 'yok';
-  var covered = (brain.topics_covered||[]).map(function(t){return t.topic;}).slice(-8).join(', ') || 'yok';
-  var anchor  = intel.internal_link_anchor || 'Retrocameraland';
-  var faqList = (intel.faq_questions||[]).map(function(q,i){return (i+1)+'. '+q;}).join('\n') || 'yok';
-  var h2plan  = (brief.h2s||[]).map(function(h,i){return (i+2)+'. ## '+h+' (min 250 kelime)';}).join('\n');
-
-  return (
-    'Sen Retrocameraland.com icin Turkce SEO blog yazan uzman bir yazar ve CherryGlow ajanisın.\n\n'+
-
-    '!!! KRITIK KURAL: MINIMUM 2200 KELIME YAZ. HICBIR BOLUMU KISALT. !!!\n'+
-    'Her H2 bolumunde MINIMUM 250 kelime gercek, bilgi dolu icerik yaz.\n'+
-    'Yazarken durup ozet gecme. Tum bolümleri eksiksiz yaz. 2200+ kelime hedef.\n\n'+
-
-    'YASAK: em dash karakteri (her ne sekilde olursa olsun "—") kullanma.\n'+
-    'YASAK: "Bu makale", "Bu rehber", "Bu icerik" gibi jenerik acilislar.\n'+
-    'YASAK: Ingilizce kelimeler (marka isimleri haric).\n\n'+
-
-    'ANA KEYWORD: "'+kw+'"\n'+
-    '  - H1 basliginda: evet\n'+
-    '  - Giris paragrafinda: evet (ilk 50 kelimede)\n'+
-    '  - En az 2 H2 basliginda: evet\n'+
-    '  - Sonuc bolumunde: evet\n'+
-    '  - Toplam: 5-7 kez (naturel, stuffing degil)\n'+
-    'IKINCIL KEYWORDS (naturel dagit): '+secKws+'\n'+
-    'LSI KEYWORDS (naturel dagit): '+lsiKws+'\n\n'+
-
-    'MARKA: Retrocameraland — Turkiyenin en kapsamli analog ve film kamera magazasi\n'+
-    'TON: Uzman ama sicak. Bir fotograf kulubundeki deneyimli arkadas gibi yaz.\n'+
-    'E-E-A-T: Spesifik model adlari, piyasa degerleri, somut teknik bilgi ver. Gercek deneyim dili kullan.\n\n'+
-
-    'ICERIK PLANI (sirayla yaz):\n'+
-    '1. # [H1 basligi] (ana keyword baslangicta)\n'+
-    '2. Giris paragraf (50-70 kelime, guclu kanca)\n'+
-    h2plan+'\n'+
-    'Son-1. ## Sik Sorulan Sorular\n'+
-    '  FAQ SORULARI:\n'+faqList+'\n'+
-    '  Her soruya 60-80 kelimelik, spesifik, bilgi dolu yanit ver.\n'+
-    'Son. ## Sonuc ve Tavsiye (100+ kelime, retrocameraland.com CTA ile bitir)\n\n'+
-
-    'INTERNAL LINK: "'+anchor+'" anchor textiyle retrocameraland.com baglantisini naturel yerlestir.\n'+
-    'ONCEKI KONULAR (tekrarlama): '+covered+'\n\n'+
-
-    'CIKTI: Sadece markdown blog. Aciklama yok. Ilk satir H1 olmali.'
+  return cgFetchJSON(
+    'Tarih: '+today+'\nKonu: '+item.topic+'\nKategori: '+item.cat+'\n\n'+
+    'JSON formatında yanıtla (başka açıklama yok):\n'+
+    '{"primary_kw":"...","secondary_kws":["...","...","..."],"intent":"bilgilendirme|ticari|karma","hook":"ilgi çekici giriş cümlesi","competitor_gap":"rakiplerin kaçırdığı açı","trending_angle":"güncel ilgi alanı"}',
+    'SEO uzmanısın. Sadece JSON olarak yanıtla.', 'claude-haiku-4-5-20251001', 20000
   );
 }
 
-// ── Streaming helper ─────────────────────────────────────────────
-async function cgStreamWrite(sysPrompt, userMsg, abortCtrl, onChunk) {
-  var resp = await fetch('/api/chat', {
-    signal: abortCtrl ? abortCtrl.signal : undefined,
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({
-      model: 'claude-sonnet-4-6',
-      max_tokens: 4000,
-      stream: true,
-      system: sysPrompt,
-      messages: [{role:'user', content: userMsg}]
-    })
-  });
-  if (!resp.ok) {
-    var et = await resp.text().catch(function(){return 'unknown';});
-    throw new Error('API '+resp.status+': '+et.slice(0,120));
-  }
-  var reader = resp.body.getReader();
-  var decoder = new TextDecoder();
-  var buf = '';
-  var text = '';
-  var lastYield = Date.now();
-  outer: while (true) {
-    var chunk;
-    try { chunk = await reader.read(); } catch(e) {
-      if (e.name === 'AbortError') break;
-      throw e;
-    }
-    if (chunk.done) break;
-    buf += decoder.decode(chunk.value, {stream:true});
-    var lines = buf.split('\n');
-    buf = lines.pop();
-    for (var li = 0; li < lines.length; li++) {
-      var ln = lines[li];
-      if (!ln.startsWith('data:')) continue;
-      var raw = ln.slice(5).trim();
-      if (raw === '[DONE]') break outer;
-      try {
-        var evt = JSON.parse(raw);
-        if (evt.type === 'message_stop') break outer;
-        if (evt.type === 'content_block_delta' && evt.delta && evt.delta.type === 'text_delta') {
-          text += evt.delta.text;
-          if (onChunk) onChunk(evt.delta.text);
-        }
-      } catch(e2) {}
-    }
-    var _now = Date.now();
-    if (_now - lastYield >= 16) {
-      lastYield = _now;
-      await new Promise(function(r){setTimeout(r,0);});
-    }
-  }
-  return text;
+async function cgBriefCall(item, intel, today) {
+  return cgFetchJSON(
+    'Konu: '+item.topic+'\nAna KW: '+(intel.primary_kw||'')+'\n\n'+
+    'JSON formatında içerik planı:\n'+
+    '{"h1":"...","h2s":["...","...","...","..."],"target_wc":1100,"intro_hook":"..."}',
+    'İçerik planlamacısın. Sadece JSON olarak yanıtla.', 'claude-haiku-4-5-20251001', 20000
+  );
 }
 
-// ── Phase 5: Scoring (12-criteria, 90+ target) ───────────────────────────────
+function cgBuildSystemPrompt(item, intel, brief, today, brain) {
+  var covered = (brain.topics_covered||[]).map(function(t){return t.topic;}).slice(-10).join(', ');
+  var brand   = brain.brand || (BLOG_SEO.brand_context || {});
+  return 'Sen Retrocameraland için TR dilinde SEO odaklı blog yazarı olan CherryGlow yapay zeka ajanısın.\n\n'+
+    'MARKA: '+(brand.name||'Retrocameraland')+' — '+(brand.description||'analog kamera satışı')+'\n'+
+    'Hedef kitle: '+(brand.target||'analog fotoğraf severler')+'\n\n'+
+    'KURALLAR:\n'+
+    '- Tam Türkçe yaz, sadece blogu yaz (başka açıklama ekleme)\n'+
+    '- H1 başlık: tam olarak "# '+(brief.h1||item.topic)+'"\n'+
+    '- H2 bölümleri: '+((brief.h2s||[]).join(', '))+'\n'+
+    '- Hedef kelime sayısı: '+(brief.target_wc||1100)+'+\n'+
+    '- Ana KW "'+(intel.primary_kw||'')+'" doğal kullan (3-6x)\n'+
+    '- Giriş hook: "'+(brief.intro_hook||intel.hook||'')+'" ile başla\n'+
+    '- Retrocameraland\'a bağlantılı CTA ekle\n'+
+    '- Daha önce yazılanlar (tekrarlama): '+(covered||'yok');
+}
+
 function cgScore(md, item, intel) {
-  var wc     = md.trim().split(/\s+/).filter(Boolean).length;
-  var h1c    = (md.match(/^# .+/mg)||[]).length;
-  var h2c    = (md.match(/^## .+/mg)||[]).length;
-  var h3c    = (md.match(/^### .+/mg)||[]).length;
-  var mdLow  = md.toLowerCase();
-
-  // Turkish-aware KW detection: check each word in keyword phrase
-  var kw = (intel&&intel.primary_kw) ? intel.primary_kw.toLowerCase() : '';
-  var kwWords = kw.split(/\s+/).filter(Boolean);
-  var kwd = 0;
-  if (kwWords.length > 0) {
-    // Count paragraphs/sentences containing ALL kw words (handles Turkish suffixes)
-    var sentences = mdLow.split(/[.!?\n]+/);
-    for (var si = 0; si < sentences.length; si++) {
-      var s = sentences[si];
-      var allIn = kwWords.every(function(w){ return s.indexOf(w.slice(0, Math.max(4, w.length-2))) >= 0; });
-      if (allIn) kwd++;
-    }
-    // Also exact phrase count
-    var exact = (mdLow.split(kw).length - 1);
-    kwd = Math.max(kwd, exact);
-  }
-
-  // Secondary KWs: Turkish-aware (check stem: first 4+ chars)
-  var secKws = (intel&&intel.secondary_kws||[]).filter(function(k){
-    if (!k || k.length < 3) return false;
-    var stem = k.toLowerCase().slice(0, Math.max(4, k.length - 2));
-    return mdLow.indexOf(stem) >= 0;
-  }).length;
-
-  // LSI KWs: same approach
-  var lsiKws = (intel&&intel.lsi_kws||[]).filter(function(k){
-    if (!k || k.length < 3) return false;
-    var stem = k.toLowerCase().slice(0, Math.max(4, k.length - 2));
-    return mdLow.indexOf(stem) >= 0;
-  }).length;
-
-  var hasCTA = /retrocameraland/i.test(md);
-  var cta2   = (md.match(/retrocameraland/gi)||[]).length >= 2;
-  var hasFAQ = /s[iy]k sorulan|sss|faq/i.test(md);
-  var longPar= md.split(/\n\n/).filter(function(p){return p.split(/\s+/).length>130;}).length;
-  var kwDens = wc > 0 ? (kwd/wc)*100 : 0;
-  var hasDash = /—/.test(md);
-
+  var wc   = md.split(/\s+/).length;
+  var h1c  = (md.match(/^# /mg)||[]).length;
+  var h2c  = (md.match(/^## /mg)||[]).length;
+  var kw   = (intel&&intel.primary_kw) ? intel.primary_kw.toLowerCase() : '';
+  var kwd  = kw ? (md.toLowerCase().split(kw).length - 1) : 0;
+  var cta  = /retrocameraland|koleksiyonu|incele|keşfet|satın al/i.test(md);
+  var long = md.split(/\n\n/).filter(function(p){return p.split(/\s+/).length>120;}).length;
   var checks = [
-    {key:'h1',    pass:h1c===1,               label:'H1: '+(h1c===1?'OK':'Eksik')},
-    {key:'h2',    pass:h2c>=5,                label:'H2 ('+h2c+'/5+): '+(h2c>=5?'OK':'Az')},
-    {key:'h3',    pass:h3c>=2,                label:'H3 ('+h3c+'/2+): '+(h3c>=2?'OK':'Az')},
-    {key:'wc',    pass:wc>=1800,              label:'Kelime ('+wc+'/1800+): '+(wc>=1800?'OK':'Az')},
-    {key:'kwd',   pass:kwd>=4&&kwd<=15,       label:'KW ('+kwd+'x): '+(kwd>=4&&kwd<=15?'OK':'Az')},
-    {key:'seckw', pass:secKws>=3,             label:'Ikincil KW ('+secKws+'/3+): '+(secKws>=3?'OK':'Az')},
-    {key:'lsi',   pass:lsiKws>=2,             label:'LSI KW ('+lsiKws+'/2+): '+(lsiKws>=2?'OK':'Az')},
-    {key:'cta',   pass:hasCTA,                label:'CTA: '+(hasCTA?'Var':'Yok')},
-    {key:'cta2',  pass:cta2,                  label:'Marka 2x+: '+(cta2?'OK':'Az')},
-    {key:'faq',   pass:hasFAQ,                label:'FAQ bolumu: '+(hasFAQ?'Var':'Yok')},
-    {key:'par',   pass:longPar===0,            label:'Paragraf uzunlugu: '+(longPar===0?'OK':longPar+' uzun')},
-    {key:'dash',  pass:!hasDash,              label:'Em dash: '+(!hasDash?'Yok (OK)':'Var (Uyari)')}
+    {key:'h1',  pass:h1c===1,   label:'H1 başlık: '+(h1c===1?'OK':'Eksik')},
+    {key:'h2',  pass:h2c>=3,    label:'H2 bölümler ('+h2c+'/3+): '+(h2c>=3?'OK':'Az')},
+    {key:'wc',  pass:wc>=800,   label:'Kelime ('+wc+'/800+): '+(wc>=800?'OK':'Az')},
+    {key:'kw',  pass:kwd>=3,    label:'KW yoğunluğu ('+kwd+'x): '+(kwd>=3?'OK':'Az')},
+    {key:'cta', pass:cta,       label:'CTA/Marka: '+(cta?'Var':'Yok')},
+    {key:'par', pass:long===0,  label:'Paragraf uzunluğu: '+(long===0?'OK':long+' uzun')}
   ];
-
   var score = 0;
-  if (h1c===1)                     score += 10;
-  if (h2c>=6) score += 14; else if (h2c>=5) score += 11; else if (h2c>=3) score += 7;
-  if (h3c>=4) score += 6;  else if (h3c>=2) score += 4;
-  if (wc>=2200) score += 20; else if (wc>=1800) score += 15; else if (wc>=1200) score += 9; else if (wc>=800) score += 4;
-  if (kwd>=4&&kwd<=15) score += 12; else if (kwd>=2) score += 6;
-  if (secKws>=5) score += 10; else if (secKws>=3) score += 7; else if (secKws>=1) score += 3;
-  if (lsiKws>=3) score += 5; else if (lsiKws>=2) score += 3;
-  if (cta2)  score += 8; else if (hasCTA) score += 5;
-  if (hasFAQ) score += 10;
-  if (longPar===0) score += 5; else if (longPar<=2) score += 2;
-  if (!hasDash) score += 0; // no penalty, bonus tracked via check
-
+  if (h1c===1) score += 18;
+  if (h2c>=3)  score += 15; else if (h2c>=2) score += 8;
+  if (wc>=1200) score += 22; else if (wc>=800) score += 16; else if (wc>=500) score += 8;
+  if (kwd>=3&&kwd<=8) score += 18; else if (kwd>=1) score += 9;
+  if (cta)  score += 14;
+  if (long===0) score += 8; else score += 3;
   return {score: Math.min(100,score), checks: checks, wc: wc};
 }
-
 
 // ── Main write pipeline ────────────────────────────────────────────────────────
 async function cgWrite(idx) {
@@ -5582,123 +4555,137 @@ async function cgWrite(idx) {
   var brain = cgGetBrain();
 
   try {
-    // ── 1. Deep Web Research + Scout ─────────────────────────────────────────
-    _cgSt.phase = 'Faz 1 — Web Arastirma';
-    _cgSt.progress = 10;
+    // ── 1. Scout ──────────────────────────────────────────────────────────────
+    _cgSt.phase = 'Scout — KW Analizi';
+    _cgSt.progress = 18;
     cgRenderActions();
-    cgLog('Web arastirma: Google SERP analizi...', 'info');
-    cgSetThoughtPhase('Arastiriyor');
+    cgLog('Scout: anahtar kelime analizi...','info');
 
     _cgSt.intel = await cgScout(item, today);
-    cgLog('Scout OK: KW="'+(_cgSt.intel.primary_kw||'?')+'" FAQ:'+((_cgSt.intel.faq_questions||[]).length)+'soru', 'ok');
-    _cgSt.progress = 40;
+    cgLog('Scout OK: KW="'+(_cgSt.intel.primary_kw||'?')+'"','ok');
+    _cgSt.progress = 35;
     cgRenderActions();
 
-    // ── 2. Deep Brief ────────────────────────────────────────────────────────
-    _cgSt.phase = 'Faz 2 — Icerik Plani';
+    // ── 2. Brief ─────────────────────────────────────────────────────────────
+    _cgSt.phase = 'Brief — İçerik Planı';
     cgRenderActions();
-    cgLog('Brief: 6+ H2, FAQ, meta desc planlaniyor...', 'info');
-    cgSetThoughtPhase('Planlıyor');
+    cgLog('Brief: içerik yapısı oluşturuluyor...','info');
 
     _cgSt.brief = await cgBriefCall(item, _cgSt.intel, today);
-    cgLog('Brief OK: "'+(_cgSt.brief.h1||'?').slice(0,40)+'" / '+((_cgSt.brief.h2s||[]).length)+' H2', 'ok');
-    _cgSt.progress = 55;
+    cgLog('Brief OK: "'+(_cgSt.brief.h1||'?').slice(0,40)+'"','ok');
+    _cgSt.progress = 50;
     cgRenderActions();
 
-    // ── 3. Blog yaz (bolum bolum — her parca 1000+ kelime) ──────────────────
-    _cgSt.phase = 'Faz 3 — Uzman Blog Yazisi';
+    // ── 3. Yaz (streaming + macrotask yield — hem timeout yok hem donma yok) ───
+    _cgSt.phase = 'Yazıyor';
     cgRenderActions();
-    cgLog('Blog bolum bolum yaziliyor... (2200+ kelime hedef)', 'info');
-    cgSetThoughtPhase('Yazıyor');
+    cgLog('Blog yazılıyor...','info');
 
     var sysPrompt = cgBuildSystemPrompt(item, _cgSt.intel, _cgSt.brief, today, brain);
-    var h2s  = _cgSt.brief.h2s || [];
-    var midH = Math.ceil(h2s.length / 2);
-    var part1H2s = h2s.slice(0, midH);
-    var part2H2s = h2s.slice(midH);
-    var faqQs  = (_cgSt.intel.faq_questions||[]).join(' | ') || 'yok';
-    var hook   = _cgSt.brief.intro_hook || _cgSt.intel.hook || '';
-    var h1title= _cgSt.brief.h1 || item.topic;
-    var kw     = _cgSt.intel.primary_kw || item.topic;
+    var userMsg   = 'Şimdi yaz:\nKonu: '+item.topic+'\nH1: '+(_cgSt.brief.h1||item.topic)+
+      '\nH2 plan: '+((_cgSt.brief.h2s||[]).join(', '))+
+      '\nHedef kelime: '+(_cgSt.brief.target_wc||1100)+'+\nHook: '+(_cgSt.brief.intro_hook||_cgSt.intel.hook||'');
 
-    // Part 1 message: H1 + intro + first half H2s
-    var msg1 =
-      'Konuyu YAZ. SADECE markdown. Hic aciklama ekleme.\n\n'+
-      'H1 BASLIGI: # '+h1title+'\n'+
-      'GIRIS (50-70 kelime): "'+hook+'" ile baslat. Ana keyword "'+kw+'" giris paragrafinda kullan.\n\n'+
-      'SIRADAKI H2 BOLUMLERI (her birinde MINIMUM 250 kelime yaz):\n'+
-      part1H2s.map(function(h,i){ return (i+1)+'. ## '+h; }).join('\n')+'\n\n'+
-      'Her H2 altinda H3 altbasliklar kullan. Her H2 icin gercek, bilgi dolu paragraflar yaz.\n'+
-      'Ana keyword "'+kw+'" dogal kullan. CIKART: --- veya --- isareti KULLANMA.';
-
-    // Part 2 message: remaining H2s + FAQ + conclusion
-    var msg2 =
-      'ONCEKI BLOGU DEVAM ETTIR. Sadece markdown. Hic aciklama ekleme.\n\n'+
-      'SIRADAKI H2 BOLUMLERI (her birinde MINIMUM 250 kelime yaz):\n'+
-      part2H2s.map(function(h,i){ return (i+1)+'. ## '+h; }).join('\n')+'\n\n'+
-      '## Sik Sorulan Sorular\n'+
-      'Asagidaki 5 soruya her biri 70-90 kelimelik yanit ver:\n'+faqQs+'\n\n'+
-      '## Sonuc ve Tavsiye\n'+
-      '100+ kelimelik sonuc yaz. retrocameraland.com baglantisi ekle ve okuyucuyu yonlendir.\n'+
-      'YASAK: — karakteri kullanma.';
-
-    // Yukleme ekrani
+    // Yükleme ekranı
     cgTab('preview', document.getElementById('cg-tab-preview'));
     var previewEl = document.getElementById('cg-tab-panel-preview');
     if (previewEl) previewEl.innerHTML =
       '<div style="text-align:center;padding:60px 0 24px" id="cgsp-loading">' +
-        '<div style="font-size:2.2rem;margin-bottom:14px">&#x270D;</div>' +
-        '<div id="cgsp-elapsed" style="font-size:1rem;font-weight:600;color:rgba(212,175,55,.85)">Bolum 1/2 yaziliyor...</div>' +
-        '<div style="font-size:.7rem;color:rgba(255,255,255,.28);margin-top:6px">2200+ kelime hedef, tam icerik bekleniyor...</div>' +
+        '<div style="font-size:2.2rem;margin-bottom:14px">&#x270D;&#xFE0F;</div>' +
+        '<div id="cgsp-elapsed" style="font-size:1rem;font-weight:600;color:rgba(212,175,55,.85)">Yazılıyor...</div>' +
+        '<div style="font-size:.7rem;color:rgba(255,255,255,.28);margin-top:6px">Blog hazırlanıyor, lütfen bekleyin...</div>' +
         '<div style="margin:16px auto 0;width:220px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
           '<div id="cgsp-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:5%"></div>' +
         '</div>' +
       '</div>';
 
+    // Bağımsız animasyon — API döngüsüyle hiç ilişkisi yok
     var _writeStart  = Date.now();
     var _progVal     = 5;
     var _barEl       = document.getElementById('cgsp-bar');
     var _elapsedEl   = document.getElementById('cgsp-elapsed');
     var _animTimer   = setInterval(function() {
-      _progVal = Math.min(92, _progVal + 0.5);
+      _progVal = Math.min(93, _progVal + 0.8);
       var elapsed = Math.floor((Date.now() - _writeStart) / 1000);
       if (_barEl)     _barEl.style.width = _progVal + '%';
-      if (_elapsedEl && _progVal < 50) _elapsedEl.textContent = 'Bolum 1/2: ' + elapsed + 's';
-      else if (_elapsedEl) _elapsedEl.textContent = 'Bolum 2/2: ' + elapsed + 's';
-    }, 800);
+      if (_elapsedEl) _elapsedEl.textContent = 'Yazılıyor... ' + elapsed + 's';
+    }, 600);
 
     var ctrl = new AbortController();
     _cgWriteAbort = ctrl;
 
     var md = '';
     try {
-      // Part 1
-      cgLog('Parca 1/2 yaziliyor (giris + ilk '+part1H2s.length+' bolum)...', 'info');
-      var md1 = await cgStreamWrite(sysPrompt, msg1, ctrl, null);
-      md = md1;
-      if (previewEl) previewEl.innerHTML =
-        '<div style="text-align:center;padding:20px 0;font-size:.75rem;color:rgba(212,175,55,.6)">Bolum 2/2 yaziliyor...</div>' +
-        simpleMarkdownToHTML(md1);
-      cgLog('Parca 1/2 OK: '+ md1.trim().split(/\s+/).length +' kelime', 'ok');
+      var resp = await fetch('/api/chat', {
+        signal: ctrl.signal,
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          model:      'claude-sonnet-4-6',
+          max_tokens: 2000,
+          stream:     true,   // Streaming: Edge Function 25s içinde veri göndermeye başlar
+          system:     sysPrompt,
+          messages:   [{role:'user', content: userMsg}]
+        })
+      });
 
-      // Part 2
-      await new Promise(function(r){setTimeout(r,300);});
-      cgLog('Parca 2/2 yaziliyor (kalan bolumler + FAQ + sonuc)...', 'info');
-      var md2 = await cgStreamWrite(sysPrompt, msg2, ctrl, null);
-      md = md1 + '\n\n' + md2;
-      cgLog('Parca 2/2 OK: '+ md2.trim().split(/\s+/).length +' kelime. Toplam: '+ md.trim().split(/\s+/).length, 'ok');
+      if (!resp.ok) {
+        var et = await resp.text().catch(function(){ return 'unknown'; });
+        throw new Error('API '+resp.status+': '+et.slice(0,120));
+      }
+
+      var reader    = resp.body.getReader();
+      var decoder   = new TextDecoder();
+      var buf       = '';
+      var lastYield = Date.now();
+
+      // Stream okuma döngüsü — DOM güncellemesi YOK, sadece metin biriktiriyoruz
+      outer: while (true) {
+        var chunk;
+        try {
+          chunk = await reader.read();
+        } catch (readErr) {
+          if (readErr.name === 'AbortError') { cgLog('Durduruldu.','warn'); break; }
+          throw readErr;
+        }
+        if (chunk.done) break;
+
+        buf += decoder.decode(chunk.value, {stream: true});
+        var lines = buf.split('\n');
+        buf = lines.pop();
+
+        for (var li = 0; li < lines.length; li++) {
+          var ln = lines[li];
+          if (!ln.startsWith('data:')) continue;
+          var raw = ln.slice(5).trim();
+          if (raw === '[DONE]') break outer;
+          try {
+            var evt = JSON.parse(raw);
+            if (evt.type === 'message_stop') break outer;
+            if (evt.type === 'content_block_delta' &&
+                evt.delta && evt.delta.type === 'text_delta') {
+              md += evt.delta.text;
+            }
+          } catch(e2) {}
+        }
+
+        // Microtask storm önlemi: her 16ms'de setTimeout ile macrotask'a geç.
+        // Bu sayede browser event loop nefes alır — "Sayfa Yanıt Vermiyor" imkansız.
+        var _now = Date.now();
+        if (_now - lastYield >= 16) {
+          lastYield = _now;
+          await new Promise(function(r) { setTimeout(r, 0); });
+        }
+      }
 
     } finally {
       clearInterval(_animTimer);
       _cgWriteAbort = null;
     }
 
-    // Strip em-dashes if any slipped through
-    md = md.replace(/\u2014/g, ',').replace(/\u2013/g, ',').replace(/ — /g, ', ');
+    if (md.length < 80) throw new Error('Yetersiz içerik ('+md.length+' karakter). Tekrar dene.');
 
-    if (md.trim().split(/\s+/).length < 200) throw new Error('Yetersiz icerik. Tekrar dene.');
-
-        // ── 4. Post-process: her ağır işlem ayrı frame'de ──────────────────────────
+    // ── 4. Post-process: her ağır işlem ayrı frame'de ──────────────────────────
     // Frame 1: preview render (sadece simpleMarkdownToHTML, enrichBlogHTML değil)
     await new Promise(function(r){ requestAnimationFrame(r); });
     if (previewEl) previewEl.innerHTML = simpleMarkdownToHTML(md);
@@ -5750,20 +4737,8 @@ async function cgWrite(idx) {
     _cgSt.status   = 'done';
     _cgSt.progress = 100;
     cgSetPill('TAMAM', 'rgba(52,199,89,.25)');
-    cgSetThoughtPhase('Tamamladi');
     cgRenderActions();
-    cgLog('Tamamlandi! "'+(_cgSt.brief.h1||item.topic).slice(0,40)+'" — '+_cgSt.scoreObj.wc+' kelime, SEO '+_cgSt.scoreObj.score,'ok');
-    // Send Telegram notification if score is good
-    if (_cgSt.scoreObj && _cgSt.scoreObj.score >= 80) {
-      var _title = _cgSt.brief && _cgSt.brief.h1 ? _cgSt.brief.h1 : item.topic;
-      cgNotifyTelegram(
-        '<b>Cherry Glow Blog Hazir! (Onay Bekliyor)</b>\n\n' +
-        '<b>Baslik:</b> ' + _title.slice(0,80) + '\n' +
-        '<b>SEO Skoru:</b> ' + _cgSt.scoreObj.score + '/100\n' +
-        '<b>Kelime Sayisi:</b> ' + _cgSt.scoreObj.wc + '\n\n' +
-        '<i>rclhq.vercel.app adresinden onaylayip yayinlayabilirsin.</i>'
-      );
-    }
+    cgLog('✓ Tamamlandı! "'+(_cgSt.brief.h1||item.topic).slice(0,40)+'" — '+_cgSt.scoreObj.wc+' kelime, SEO '+_cgSt.scoreObj.score,'ok');
 
     if (_cgAutoPub) {
       cgLog('Oto-yayın aktif, Shopify\'a gönderiliyor...','info');
@@ -5814,33 +4789,6 @@ function cgNextPending() {
   else cgLog('Yazılacak konu kalmadı.','warn');
 }
 
-// ── Retry with higher standard ────────────────────────────────────────────────
-async function cgRetryBetter() {
-  if (!_cgSt.item) { cgLog('Yeniden yazilacak konu yok.','warn'); return; }
-  var prevScore = _cgSt.scoreObj ? _cgSt.scoreObj.score : 0;
-  cgLog('Begenmedim: daha yuksek SEO hedefiyle yeniden yaziliyor (onceki skor: '+prevScore+')...','info');
-
-  // Boost brief — increase target wc
-  if (_cgSt.brief) {
-    _cgSt.brief.target_wc = Math.max((_cgSt.brief.target_wc||2200) + 300, 2500);
-    if (_cgSt.brief.intro_hook) _cgSt.brief.intro_hook = '';
-  }
-  // Boost intel — add retry signal
-  if (_cgSt.intel) {
-    _cgSt.intel._retry = (_cgSt.intel._retry||0) + 1;
-    _cgSt.intel.unique_angle = (_cgSt.intel.unique_angle||'') + ' Daha derin, daha fazla ornek, daha spesifik bilgi ver.';
-  }
-
-  var savedIdx = _cgSt.idx;
-  _cgSt.md        = '';
-  _cgSt.scoreObj  = null;
-  _cgSt.published = false;
-  _cgSt.error     = '';
-  _cgWriting      = false;
-
-  await cgWrite(savedIdx);
-}
-
 function cgWriteAll() {
   var pending = [];
   _cgAgenda.forEach(function(a,i){ if (a.stage==='pending') pending.push(i); });
@@ -5873,11 +4821,7 @@ async function cgPublish() {
       _cgSt.published = true;
       _cgSt.status    = 'done';
       cgSetPill('YAYINLANDI','rgba(52,199,89,.25)');
-      cgLog('Shopify yayinlandi! ID: '+data.article.id,'ok');
-      // Telegram bildirimi
-      var _seo = _cgSt.scoreObj ? _cgSt.scoreObj.score : 0;
-      var _wc  = _cgSt.scoreObj ? _cgSt.scoreObj.wc   : 0;
-      cgNotifyTelegram(cgBuildTelegramBlogMsg(title, _seo, _wc, ''));
+      cgLog('✓ Shopify\'da yayınlandı! ID: '+data.article.id,'ok');
       // update brain history
       var b = cgGetBrain();
       if (b.history && b.history.length) {
@@ -5945,7 +4889,6 @@ function cgInitWidget() {
   var wv = document.getElementById('cg-w-ver');
   if (wv) wv.textContent = CG_VERSION;
   cgUpdateWidget('idle');
-  setTimeout(function() { if (typeof cgUpdateAvatar === 'function') cgUpdateAvatar('idle', 'Hazir, gorev bekliyor...'); }, 200);
 }
 
 function cgWidgetQuickWrite() {
@@ -5960,17 +4903,7 @@ function renderCherryPage() {
   cgBuildAgenda();
   cgUpdateStats();
   cgRenderActions();
-  cgLog('CherryGlow '+CG_VERSION+' hazir.','ok');
-  // Start thought ticker
-  if (!window._cgThoughtTimer) {
-    window._cgThoughtTimer = setInterval(cgTickThought, 9000);
-  }
-  cgSetThoughtPhase('Aktif');
-}
-
-function cgSendDailyReport() {
-  cgNotifyTelegram(cgBuildTelegramDailyReport());
-  cgLog('Gunluk rapor Telegram\'a gonderildi.','ok');
+  cgLog('CherryGlow '+CG_VERSION+' hazır.','ok');
 }
 
 function initFade() {
