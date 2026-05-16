@@ -4152,8 +4152,10 @@ var CG_BRAIN_KEY = 'cg_brain_v5';
 var CG_USER = {name:'Onur', store:'Retrocameraland', biz:'analog kamera ve vintage fotograf', city:'Istanbul'};
 
 function cgDefaultBrain() {
-  return {v:5, user:CG_USER, sessions_count:0, current_session:null,
-    topics_covered:[], seo_scores:[], history:[], keywords_used:[], last_active:'', daily_stats:{}};
+  return {v:6, user:CG_USER, sessions_count:0, current_session:null,
+    topics_covered:[], seo_scores:[], history:[], keywords_used:[], last_active:'',
+    daily_stats:{}, learnings:[], kw_performance:{}, site_context:null,
+    avg_seo:0, best_seo:0, cherry_mood:'curious'};
 }
 
 function cgGetBrain() {
@@ -4161,7 +4163,13 @@ function cgGetBrain() {
     var raw = localStorage.getItem(CG_BRAIN_KEY);
     if (!raw) return cgDefaultBrain();
     var b = JSON.parse(raw);
-    return (b && typeof b === 'object') ? b : cgDefaultBrain();
+    if (!b || typeof b !== 'object') return cgDefaultBrain();
+    if (!b.learnings) b.learnings = [];
+    if (!b.kw_performance) b.kw_performance = {};
+    if (!b.cherry_mood) b.cherry_mood = 'curious';
+    if (!b.avg_seo) b.avg_seo = 0;
+    if (!b.best_seo) b.best_seo = 0;
+    return b;
   } catch(e) { return cgDefaultBrain(); }
 }
 
@@ -4463,64 +4471,92 @@ async function cgFetchJSON(prompt, sys, model, timeout) {
 }
 
 async function cgScout(item, today) {
+  var brain = cgGetBrain();
+  var usedKws = (brain.keywords_used || []).slice(-30).join(', ') || 'yok';
+  var learnings = (brain.learnings || []).slice(-5).map(function(l){return '- '+l;}).join('\n') || 'henuz yok';
   return cgFetchJSON(
-    'Tarih: '+today+'\nKonu: '+item.topic+'\nKategori: '+item.cat+'\n\n'+
-    'JSON formatında yanıtla (başka açıklama yok):\n'+
-    '{"primary_kw":"...","secondary_kws":["...","...","..."],"intent":"bilgilendirme|ticari|karma","hook":"ilgi çekici giriş cümlesi","competitor_gap":"rakiplerin kaçırdığı açı","trending_angle":"güncel ilgi alanı"}',
-    'SEO uzmanısın. Sadece JSON olarak yanıtla.', 'claude-haiku-4-5-20251001', 20000
+    'Tarih: '+today+'\nKonu: '+item.topic+'\nKategori: '+item.cat+'\n'+
+    'Kullanilmis KW (tekrarlama): '+usedKws+'\n'+
+    'Onceki ogrenimler:\n'+learnings+'\n\n'+
+    'JSON formatinda yanit (baska aciklama yok):\n'+
+    '{"primary_kw":"uzun kuyruklu ozgun KW","secondary_kws":["...","...","...","..."],"intent":"bilgilendirme|ticari|karma","hook":"guclu ilk cumle","competitor_gap":"rakiplerin kacirdigi aci","trending_angle":"guncel aci","target_wc":1400,"h2_count":5}',
+    'Retrocameraland icin SEO uzmanisin. Hedef: 90+ SEO puan. Sadece JSON yanit.',
+    'claude-haiku-4-5-20251001', 25000
   );
 }
 
 async function cgBriefCall(item, intel, today) {
+  var twc = intel.target_wc || 1400;
+  var h2n = intel.h2_count || 5;
   return cgFetchJSON(
-    'Konu: '+item.topic+'\nAna KW: '+(intel.primary_kw||'')+'\n\n'+
-    'JSON formatında içerik planı:\n'+
-    '{"h1":"...","h2s":["...","...","...","..."],"target_wc":1100,"intro_hook":"..."}',
-    'İçerik planlamacısın. Sadece JSON olarak yanıtla.', 'claude-haiku-4-5-20251001', 20000
+    'Konu: '+item.topic+'\nAna KW: '+(intel.primary_kw||'')+'\n'+
+    'Ikincil KW: '+((intel.secondary_kws||[]).join(', '))+'\n'+
+    'SEO hedefi: 90+/100. '+h2n+' H2, '+twc+'+ kelime.\n'+
+    'JSON formatinda icerik plani:\n'+
+    '{"h1":"Ana KW iceren baslik","h2s":["...","...","...","...","..."],"target_wc":'+twc+',"intro_hook":"guclu ilk cumle","meta_desc":"160 karakter meta","focus_angle":"ayirt edici aci"}',
+    'Icerik stratejisti ve SEO uzmanisin. Sadece JSON yanit.', 'claude-haiku-4-5-20251001', 22000
   );
 }
 
 function cgBuildSystemPrompt(item, intel, brief, today, brain) {
-  var covered = (brain.topics_covered||[]).map(function(t){return t.topic;}).slice(-10).join(', ');
-  var brand   = brain.brand || (BLOG_SEO.brand_context || {});
-  return 'Sen Retrocameraland için TR dilinde SEO odaklı blog yazarı olan CherryGlow yapay zeka ajanısın.\n\n'+
-    'MARKA: '+(brand.name||'Retrocameraland')+' — '+(brand.description||'analog kamera satışı')+'\n'+
-    'Hedef kitle: '+(brand.target||'analog fotoğraf severler')+'\n\n'+
-    'KURALLAR:\n'+
-    '- Tam Türkçe yaz, sadece blogu yaz (başka açıklama ekleme)\n'+
-    '- H1 başlık: tam olarak "# '+(brief.h1||item.topic)+'"\n'+
-    '- H2 bölümleri: '+((brief.h2s||[]).join(', '))+'\n'+
-    '- Hedef kelime sayısı: '+(brief.target_wc||1100)+'+\n'+
-    '- Ana KW "'+(intel.primary_kw||'')+'" doğal kullan (3-6x)\n'+
-    '- Giriş hook: "'+(brief.intro_hook||intel.hook||'')+'" ile başla\n'+
-    '- Retrocameraland\'a bağlantılı CTA ekle\n'+
-    '- Daha önce yazılanlar (tekrarlama): '+(covered||'yok');
+  var covered  = (brain.topics_covered||[]).map(function(t){return t.topic;}).slice(-15).join(', ');
+  var brand    = brain.brand || (BLOG_SEO.brand_context || {});
+  var learnings = (brain.learnings||[]).slice(-6).map(function(l){return '  - '+l;}).join('\n') || '  - Henuz birikmedi';
+  var h2list   = (brief.h2s||[]).map(function(h,i){return '  '+(i+2)+'. ## '+h;}).join('\n');
+  return 'Sen Cherry Glow\'sun. Retrocameraland icin Turkce SEO blog yaziyorsun.\n'+
+    'Patronun Onur. Her blogda SEO 90+/100 zorunlu.\n\n'+
+    'MARKA: '+(brand.name||'Retrocameraland')+' — '+(brand.description||'analog kamera & vintage fotograf')+'\n'+
+    'Hedef kitle: '+(brand.target||'analog fotograf severler, koleksiyoncular')+'\n\n'+
+    '=== SEO 90+ ZORUNLU KURALLAR ===\n'+
+    '1. YALNIZCA Turkce yaz — baska aciklama ekleme\n'+
+    '2. H1: tam olarak "# '+(brief.h1||item.topic)+'"\n'+
+    '3. H2 sirasi:\n'+h2list+'\n'+
+    '4. Kelime sayisi: '+(brief.target_wc||1400)+'+ (az olursa puan duşer)\n'+
+    '5. Ana KW "'+(intel.primary_kw||'')+'" → giris + 2 H2 + sonucta kullan (4-7x)\n'+
+    '6. Ikincil KW: '+((intel.secondary_kws||[]).slice(0,4).join(', '))+' — dogal dagit\n'+
+    '7. Her H2 alti MIN 150 kelime\n'+
+    '8. Giris: "'+(brief.intro_hook||intel.hook||'')+'" ile basla\n'+
+    '9. Sonucta retrocameraland.com\'a guclu CTA ekle\n\n'+
+    'OGRENILEN DERSLER:\n'+learnings+'\n\n'+
+    'DAHA ONCE YAZILDI (tekrarlama yasak):\n  '+(covered||'henuz yok')+'\n\n'+
+    'Blogu yaz — sadece markdown, baska hicbir sey ekleme.';
 }
 
 function cgScore(md, item, intel) {
-  var wc   = md.split(/\s+/).length;
+  var wc   = md.trim().split(/\s+/).filter(Boolean).length;
   var h1c  = (md.match(/^# /mg)||[]).length;
   var h2c  = (md.match(/^## /mg)||[]).length;
+  var h3c  = (md.match(/^### /mg)||[]).length;
   var kw   = (intel&&intel.primary_kw) ? intel.primary_kw.toLowerCase() : '';
   var kwd  = kw ? (md.toLowerCase().split(kw).length - 1) : 0;
-  var cta  = /retrocameraland|koleksiyonu|incele|keşfet|satın al/i.test(md);
-  var long = md.split(/\n\n/).filter(function(p){return p.split(/\s+/).length>120;}).length;
+  var cta  = /retrocameraland/i.test(md);
+  var link = /retrocameraland\.com/i.test(md);
+  var long = md.split(/\n\n/).filter(function(p){return p.trim().split(/\s+/).length>130;}).length;
+  var hasIntro = (md.split(/\n/)[2]||'').length > 60;
+  var secKws = (intel&&intel.secondary_kws||[]).filter(function(k){return k&&md.toLowerCase().indexOf(k.toLowerCase())>=0;}).length;
   var checks = [
-    {key:'h1',  pass:h1c===1,   label:'H1 başlık: '+(h1c===1?'OK':'Eksik')},
-    {key:'h2',  pass:h2c>=3,    label:'H2 bölümler ('+h2c+'/3+): '+(h2c>=3?'OK':'Az')},
-    {key:'wc',  pass:wc>=800,   label:'Kelime ('+wc+'/800+): '+(wc>=800?'OK':'Az')},
-    {key:'kw',  pass:kwd>=3,    label:'KW yoğunluğu ('+kwd+'x): '+(kwd>=3?'OK':'Az')},
-    {key:'cta', pass:cta,       label:'CTA/Marka: '+(cta?'Var':'Yok')},
-    {key:'par', pass:long===0,  label:'Paragraf uzunluğu: '+(long===0?'OK':long+' uzun')}
+    {key:'h1',   pass:h1c===1,       label:'H1: '+(h1c===1?'OK':'Eksik')},
+    {key:'h2',   pass:h2c>=4,        label:'H2 ('+h2c+'/4+): '+(h2c>=4?'OK':'Az')},
+    {key:'wc',   pass:wc>=1200,      label:'Kelime ('+wc+'): '+(wc>=1200?'OK':wc>=800?'Az':'Eksik')},
+    {key:'kw',   pass:kwd>=4&&kwd<=9,label:'Ana KW ('+kwd+'x): '+(kwd>=4&&kwd<=9?'OK':kwd<4?'Az':'Fazla')},
+    {key:'kw2',  pass:secKws>=2,     label:'Ikincil KW ('+secKws+'): '+(secKws>=2?'OK':'Az')},
+    {key:'cta',  pass:cta,           label:'Marka: '+(cta?'OK':'Yok')},
+    {key:'link', pass:link,          label:'Alan adi: '+(link?'OK':'Yok')},
+    {key:'par',  pass:long===0,      label:'Paragraf: '+(long===0?'OK':long+' uzun')},
+    {key:'h3',   pass:h3c>=2,        label:'H3 ('+h3c+'/2+): '+(h3c>=2?'OK':'Az')}
   ];
   var score = 0;
-  if (h1c===1) score += 18;
-  if (h2c>=3)  score += 15; else if (h2c>=2) score += 8;
-  if (wc>=1200) score += 22; else if (wc>=800) score += 16; else if (wc>=500) score += 8;
-  if (kwd>=3&&kwd<=8) score += 18; else if (kwd>=1) score += 9;
-  if (cta)  score += 14;
-  if (long===0) score += 8; else score += 3;
-  return {score: Math.min(100,score), checks: checks, wc: wc};
+  if (h1c===1)          score += 14;
+  if (h2c>=5)           score += 14; else if (h2c>=4) score += 10; else if (h2c>=3) score += 6;
+  if (wc>=1400)         score += 16; else if (wc>=1200) score += 12; else if (wc>=900) score += 8; else if (wc>=600) score += 4;
+  if (kwd>=4&&kwd<=8)   score += 14; else if (kwd>=3) score += 9; else if (kwd>=1) score += 4;
+  if (secKws>=3)        score += 10; else if (secKws>=2) score += 7; else if (secKws>=1) score += 3;
+  if (cta)              score += 10;
+  if (link)             score += 8;
+  if (long===0)         score += 6; else if (long<=1) score += 3;
+  if (h3c>=2)           score += 4; else if (h3c>=1) score += 2;
+  if (hasIntro)         score += 4;
+  return {score: Math.min(100, score), checks: checks, wc: wc};
 }
 
 // ── Main write pipeline ────────────────────────────────────────────────────────
@@ -4718,6 +4754,12 @@ async function cgWrite(idx) {
       }).slice(-20);
     }
     if (!b.brand && BLOG_SEO.brand_context) b.brand = BLOG_SEO.brand_context;
+    var allSc = (b.seo_scores||[]).filter(function(s){return typeof s==='number'&&!isNaN(s);});
+    if (allSc.length) { b.avg_seo=Math.round(allSc.reduce(function(a,c){return a+c;},0)/allSc.length); b.best_seo=Math.max.apply(null,allSc); }
+    if (_cgSt.scoreObj && _cgSt.scoreObj.score >= 80) {
+      var _lrn = 'Blog "'+((_cgSt.brief&&_cgSt.brief.h1)||item.topic).slice(0,35)+'" SEO:'+_cgSt.scoreObj.score+' KW:'+(_cgSt.intel&&_cgSt.intel.primary_kw||'?')+' '+_cgSt.scoreObj.wc+'k';
+      b.learnings = (b.learnings||[]).concat([_lrn]).slice(-20);
+    }
     var ds = new Date().toDateString();
     b.daily_stats = b.daily_stats || {};
     if (!b.daily_stats[ds]) b.daily_stats[ds] = {blogs:0, words:0, published:0};
