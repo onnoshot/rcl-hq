@@ -790,6 +790,52 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 /* ── Gradient numbers ───────────────────────────────────────────────────── */
 .cg-grad-num{background:linear-gradient(135deg,#D4AF37,#FFB7C5);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* ── Cherry Glow Avatar ─────────────────────────────────────────────────── */
+.cgv8-av-wrap{display:flex;align-items:center;gap:14px;margin-bottom:14px;padding:12px 14px;background:rgba(212,175,55,.06);border-radius:14px;border:1px solid rgba(212,175,55,.12)}
+.cgv8-av-svg{width:56px;height:56px;flex-shrink:0;filter:drop-shadow(0 0 8px rgba(212,175,55,.35))}
+.cgv8-av-name{font-size:.78rem;font-weight:700;color:rgba(212,175,55,.9);letter-spacing:.05em}
+.cgv8-av-mood{font-size:.65rem;color:rgba(255,255,255,.4);margin-top:2px}
+.cgv8-av-stats{display:flex;gap:8px;margin-top:5px}
+.cgv8-av-stat{font-size:.62rem;color:rgba(255,255,255,.35);background:rgba(255,255,255,.05);border-radius:6px;padding:2px 7px}
+
+/* ── Boss Panel ─────────────────────────────────────────────────────────── */
+.cgv8-boss-wrap{padding:2px 0}
+.cgv8-boss-hero{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-bottom:18px;padding:16px;background:rgba(212,175,55,.05);border-radius:16px;border:1px solid rgba(212,175,55,.15);position:relative;overflow:hidden}
+.cgv8-boss-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 50%,rgba(212,175,55,.08) 0%,transparent 65%);pointer-events:none}
+.cgv8-boss-av{width:80px;height:80px;border-radius:50%;border:2px solid rgba(212,175,55,.3);filter:drop-shadow(0 0 12px rgba(212,175,55,.4))}
+.cgv8-boss-info-name{font-size:1.1rem;font-weight:700;color:rgba(255,255,255,.9)}
+.cgv8-boss-info-title{font-size:.7rem;color:rgba(212,175,55,.7);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+.cgv8-boss-info-bio{font-size:.68rem;color:rgba(255,255,255,.4);margin-top:6px;line-height:1.5}
+.cgv8-boss-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+.cgv8-boss-kpi{background:rgba(255,255,255,.04);border-radius:12px;border:1px solid rgba(255,255,255,.07);padding:12px 14px;text-align:center;transition:transform .25s,box-shadow .25s}
+.cgv8-boss-kpi:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.cgv8-boss-kpi-label{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.35);margin-bottom:6px}
+.cgv8-boss-kpi-val{font-size:1.6rem;font-weight:800;line-height:1;background:linear-gradient(135deg,#D4AF37,#FFB7C5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:cgv8-count-pulse .6s ease}
+.cgv8-boss-kpi-sub{font-size:.58rem;color:rgba(255,255,255,.25);margin-top:4px}
+.cgv8-section-head{font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.6);margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(212,175,55,.12)}
+.cgv8-seo-trend{display:flex;align-items:flex-end;gap:5px;height:80px;margin-bottom:18px;padding:0 4px}
+.cgv8-seo-trend-bar{flex:1;border-radius:4px 4px 0 0;min-height:4px;background:linear-gradient(180deg,rgba(212,175,55,.7),rgba(255,183,197,.5));transition:height .8s cubic-bezier(.34,1.56,.64,1);position:relative;cursor:pointer}
+.cgv8-seo-trend-bar:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 5px);left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;font-size:.6rem;padding:3px 6px;border-radius:5px;white-space:nowrap;pointer-events:none}
+.cgv8-seo-trend-bar.hi{background:linear-gradient(180deg,rgba(52,199,89,.8),rgba(52,199,89,.3))}
+.cgv8-funnel{display:flex;flex-direction:column;gap:6px;margin-bottom:18px}
+.cgv8-funnel-row{display:flex;align-items:center;gap:10px}
+.cgv8-funnel-label{font-size:.62rem;color:rgba(255,255,255,.45);width:90px;flex-shrink:0;text-align:right}
+.cgv8-funnel-bar{flex:1;height:22px;border-radius:4px;background:rgba(255,255,255,.06);overflow:hidden;position:relative}
+.cgv8-funnel-fill{height:100%;border-radius:4px;transition:width 1.2s cubic-bezier(.34,1.56,.64,1)}
+.cgv8-funnel-val{position:absolute;right:8px;top:50%;transform:translateY(-50%);font-size:.62rem;color:rgba(255,255,255,.6);font-weight:600}
+.cgv8-learnings{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;max-height:180px;overflow-y:auto}
+.cgv8-learning-item{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;background:rgba(255,255,255,.03);border-radius:8px;border-left:3px solid rgba(212,175,55,.4)}
+.cgv8-learning-icon{font-size:.9rem;flex-shrink:0;margin-top:1px}
+.cgv8-learning-text{font-size:.68rem;color:rgba(255,255,255,.6);line-height:1.5}
+.cgv8-report-rows{display:flex;flex-direction:column;gap:6px}
+.cgv8-report-row{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;background:rgba(255,255,255,.03);border-radius:8px}
+.cgv8-report-row-label{font-size:.68rem;color:rgba(255,255,255,.5)}
+.cgv8-report-row-val{font-size:.72rem;font-weight:700;color:rgba(212,175,55,.85)}
+.cgv8-pulse-dot{width:8px;height:8px;border-radius:50%;background:#34C759;display:inline-block;margin-right:5px;animation:cgv8-pulse 2s infinite}
+@keyframes cgv8-count-pulse{0%{transform:scale(1)}40%{transform:scale(1.12)}100%{transform:scale(1)}}
+@keyframes cgv8-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+@keyframes cgv8-bar-grow{from{height:0}to{height:var(--h)}}
 </style>
 </head>
 <body>
@@ -2108,6 +2154,18 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
     <!-- Action card -->
     <div class="card" id="cg-action-card" style="padding:18px 20px;flex-shrink:0">
+      <div class="cgv8-av-wrap">
+        <div id="cg-av-ico" class="cgv8-av-svg"></div>
+        <div>
+          <div class="cgv8-av-name">Cherry Glow</div>
+          <div class="cgv8-av-mood" id="cg-av-mood">Hazir, gorev bekliyor...</div>
+          <div class="cgv8-av-stats">
+            <span class="cgv8-av-stat" id="cg-av-stat-avg">SEO ort: --</span>
+            <span class="cgv8-av-stat" id="cg-av-stat-best">En iyi: --</span>
+            <span class="cgv8-av-stat" id="cg-av-stat-count">Blog: 0</span>
+          </div>
+        </div>
+      </div>
       <div id="cg-action-status" style="margin-bottom:12px;min-height:40px"></div>
       <div id="cg-action-buttons" style="display:flex;gap:8px;flex-wrap:wrap"></div>
     </div>
@@ -2119,6 +2177,7 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
         <div class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</div>
         <div class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</div>
         <div class="cg-tab" id="cg-tab-history" onclick="cgTab('history',this)">Geçmiş</div>
+        <div class="cg-tab" id="cg-tab-patron" onclick="cgTab('patron',this)" style="background:linear-gradient(135deg,rgba(212,175,55,.18),rgba(255,183,197,.1));border-color:rgba(212,175,55,.3)">&#x2764; Patron</div>
       </div>
 
       <!-- Preview -->
@@ -2157,6 +2216,13 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
       <!-- History -->
       <div id="cg-tab-panel-history" style="display:none;max-height:460px;overflow-y:auto">
         <div id="cg-history-list"></div>
+      </div>
+
+      <!-- Patron Boss Panel -->
+      <div id="cg-tab-panel-patron" style="display:none;max-height:560px;overflow-y:auto;padding:4px 2px">
+        <div id="cgv8-boss-panel-content" class="cgv8-boss-wrap">
+          <div style="text-align:center;padding:40px 0;opacity:.2;font-size:.8rem">Patron sekmesine geç, Cherry Glow sana rapor sunsun...</div>
+        </div>
       </div>
 
     </div>
@@ -2259,7 +2325,7 @@ const YOUTUBE = {
     },
     {
       "id": "-Ig3lgUcm8c",
-      "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
+      "title": "TÜRKİYE'NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
       "views": 2064,
       "likes": 25,
@@ -2561,7 +2627,7 @@ const SHOPIFY = {
       "price": 7990
     },
     {
-      "name": "Kodak ZX1 “Weather-Resistant”",
+      "name": "Kodak ZX1 "Weather-Resistant"",
       "price": 4900
     }
   ],
@@ -4228,6 +4294,20 @@ function cgSetPill(label, bg) {
 }
 
 // ── Render actions ────────────────────────────────────────────────────────────
+function cgUpdateAvatar(state, mood) {
+  var ico = document.getElementById('cg-av-ico');
+  var moodEl = document.getElementById('cg-av-mood');
+  if (ico) ico.innerHTML = cgGetAvatarSVG(state);
+  if (moodEl && mood) moodEl.textContent = mood;
+  var brain = cgGetBrain();
+  var avg = document.getElementById('cg-av-stat-avg');
+  var best = document.getElementById('cg-av-stat-best');
+  var cnt = document.getElementById('cg-av-stat-count');
+  if (avg) avg.textContent = 'SEO ort: ' + (brain.avg_seo || '--');
+  if (best) best.textContent = 'En iyi: ' + (brain.best_seo || '--');
+  if (cnt) cnt.textContent = 'Blog: ' + ((brain.history||[]).length);
+}
+
 function cgRenderActions() {
   var sEl = document.getElementById('cg-action-status');
   var bEl = document.getElementById('cg-action-buttons');
@@ -4236,20 +4316,22 @@ function cgRenderActions() {
   var st = _cgSt;
 
   if (st.status === 'idle') {
-    sEl.innerHTML = '<div style="font-size:.82rem;color:rgba(255,255,255,.4);padding:6px 0">Sol taraftaki listeden bir konu seç ve <strong style="color:rgba(212,175,55,.75)">Yaz</strong> butonuna tıkla &mdash; ya da tümünü sırayla yaz.</div>';
+    cgUpdateAvatar('idle', 'Hazir, gorev bekliyor...');
+    sEl.innerHTML = '<div style="font-size:.82rem;color:rgba(255,255,255,.4);padding:6px 0">Sol taraftaki listeden bir konu sec ve <strong style="color:rgba(212,175,55,.75)">Yaz</strong> butonuna tikla &mdash; ya da tumunu sirayla yaz.</div>';
     bEl.innerHTML = '';
 
   } else if (st.status === 'writing') {
+    cgUpdateAvatar('writing', 'Yaziyor... odaklanmis modda');
     var topic = st.item ? st.item.topic : '';
     var kwLine = (st.intel && st.intel.primary_kw)
       ? '<div style="font-size:.7rem;color:rgba(212,175,55,.65);margin-top:4px">KW: '
         + [st.intel.primary_kw].concat((st.intel.secondary_kws||[]).slice(0,3)).join(' · ')
         + '</div>' : '';
     var h1Line = (st.brief && st.brief.h1)
-      ? '<div style="font-size:.7rem;color:rgba(255,255,255,.38);margin-top:3px">Başlık: ' + st.brief.h1.slice(0,60) + '</div>' : '';
+      ? '<div style="font-size:.7rem;color:rgba(255,255,255,.38);margin-top:3px">Baslik: ' + st.brief.h1.slice(0,60) + '</div>' : '';
     var prog = st.progress || 10;
     sEl.innerHTML =
-      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.55);margin-bottom:5px">' + (st.phase || 'Hazırlanıyor') + '</div>' +
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.55);margin-bottom:5px">' + (st.phase || 'Hazirlaniyor') + '</div>' +
       '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + topic.slice(0,65) + '</div>' +
       kwLine + h1Line +
       '<div style="margin-top:10px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
@@ -4261,28 +4343,32 @@ function cgRenderActions() {
     var wc  = st.scoreObj ? st.scoreObj.wc    : 0;
     var seo = st.scoreObj ? st.scoreObj.score : '--';
     var title = (st.brief && st.brief.h1) ? st.brief.h1 : (st.item ? st.item.topic : '');
+    cgUpdateAvatar('done', 'Tamamlandi! SEO: ' + seo + '/100');
     sEl.innerHTML =
-      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(52,199,89,.7);margin-bottom:5px">✓ TAMAMLANDI</div>' +
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(52,199,89,.7);margin-bottom:5px">TAMAMLANDI</div>' +
       '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + title.slice(0,65) + '</div>' +
-      '<div style="font-size:.72rem;color:rgba(255,255,255,.38);margin-top:4px">' + wc + ' kelime · SEO: ' + seo + '/100</div>';
+      '<div style="font-size:.72rem;color:rgba(255,255,255,.38);margin-top:4px">' + wc + ' kelime - SEO: ' + seo + '/100</div>';
     bEl.innerHTML =
       (st.published
-        ? '<button class="cg-ctrl-btn" style="color:rgba(52,199,89,.75);border-color:rgba(52,199,89,.25);cursor:default">✓ Shopify’da Yayınlandı</button>'
-        : '<button class="cg-ctrl-btn primary" onclick="cgPublish()">✓ Onayla ve Yayınla</button>') +
-      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Sıradaki Konuyu Yaz</button>' +
+        ? '<button class="cg-ctrl-btn" style="color:rgba(52,199,89,.75);border-color:rgba(52,199,89,.25);cursor:default">Shopify Yayinda</button>'
+        : '<button class="cg-ctrl-btn primary" onclick="cgPublish()">Onayla ve Yayinla</button>') +
+      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Siradaki Konuyu Yaz</button>' +
       '<button class="cg-ctrl-btn" onclick="cgTab(\'seo\',document.getElementById(\'cg-tab-seo\'))" style="font-size:.65rem">SEO</button>' +
-      '<button class="cg-ctrl-btn" onclick="cgTab(\'history\',document.getElementById(\'cg-tab-history\'))" style="font-size:.65rem">Geçmiş</button>';
+      '<button class="cg-ctrl-btn" onclick="cgTab(\'history\',document.getElementById(\'cg-tab-history\'))" style="font-size:.65rem">Gecmis</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgTab(\'patron\',document.getElementById(\'cg-tab-patron\'))" style="font-size:.65rem;background:rgba(212,175,55,.1)">Patron Raporu</button>';
 
   } else if (st.status === 'error') {
+    cgUpdateAvatar('error', 'Bir sorun olustu, tekrar deneyecegim...');
     sEl.innerHTML =
-      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,69,58,.75);margin-bottom:5px">⚠ HATA</div>' +
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,69,58,.75);margin-bottom:5px">HATA</div>' +
       '<div style="font-size:.8rem;color:rgba(255,255,255,.6)">' + (st.error || 'Bilinmeyen hata') + '</div>';
     bEl.innerHTML =
       '<button class="cg-ctrl-btn primary" onclick="cgRetry()">Tekrar Dene</button>' +
       '<button class="cg-ctrl-btn" onclick="cgNextPending()">Bu Konuyu Atla</button>';
 
   } else if (st.status === 'publishing') {
-    sEl.innerHTML = '<div style="font-size:.85rem;color:rgba(212,175,55,.8)">Shopify’a gönderiliyor...</div>';
+    cgUpdateAvatar('writing', 'Shopify a gonderiliyor...');
+    sEl.innerHTML = '<div style="font-size:.85rem;color:rgba(212,175,55,.8)">Shopify a gonderiliyor...</div>';
     bEl.innerHTML = '';
   }
 }
@@ -4353,7 +4439,7 @@ function cgUpdateStats() {
 
 // ── Tabs ───────────────────────────────────────────────────────────────────────
 function cgTab(tab, btn) {
-  ['preview','html','seo','history'].forEach(function(t) {
+  ['preview','html','seo','history','patron'].forEach(function(t) {
     var p = document.getElementById('cg-tab-panel-'+t);
     var b = document.getElementById('cg-tab-'+t);
     if (p) p.style.display = (t === tab) ? '' : 'none';
@@ -4362,7 +4448,6 @@ function cgTab(tab, btn) {
   if (tab === 'html' && _cgSt.md) {
     var ta = document.getElementById('cg-html-ta');
     if (ta) {
-      // enrichBlogHTML geciktirilmiş çalıştırılıyor (heavy operation)
       requestAnimationFrame(function(){
         ta.value = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
       });
@@ -4370,6 +4455,7 @@ function cgTab(tab, btn) {
   }
   if (tab === 'history') cgRenderHistory();
   if (tab === 'seo' && _cgSt.scoreObj) cgRenderSeoPanel(_cgSt.scoreObj);
+  if (tab === 'patron') cgRenderBossPanel();
 }
 
 function cgCopyHTML() {
@@ -4384,6 +4470,193 @@ function cgDownloadHTML() {
   a.href = URL.createObjectURL(new Blob([ta.value], {type:'text/html'}));
   a.download = 'cherryglow-blog.html';
   a.click();
+}
+
+// ── Cherry Glow Avatar SVG ─────────────────────────────────────────────────────
+function cgGetAvatarSVG(state) {
+  var base = 'fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56"';
+  var face = {
+    idle: '<circle cx="28" cy="28" r="26" fill="url(#cg-av-bg)" opacity=".95"/>' +
+      '<circle cx="22" cy="25" r="3.5" fill="#1a1a2e"/><circle cx="34" cy="25" r="3.5" fill="#1a1a2e"/>' +
+      '<circle cx="23" cy="24" r="1" fill="white"/><circle cx="35" cy="24" r="1" fill="white"/>' +
+      '<path d="M22 33 Q28 38 34 33" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>' +
+      '<ellipse cx="19" cy="29" rx="3" ry="1.5" fill="rgba(255,183,197,.55)"/>' +
+      '<ellipse cx="37" cy="29" rx="3" ry="1.5" fill="rgba(255,183,197,.55)"/>',
+    writing: '<circle cx="28" cy="28" r="26" fill="url(#cg-av-bg)" opacity=".95"/>' +
+      '<path d="M20 24 Q22 21 24 24" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>' +
+      '<path d="M32 24 Q34 21 36 24" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>' +
+      '<path d="M23 33 Q28 37 33 33" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>' +
+      '<ellipse cx="19" cy="28" rx="3" ry="1.5" fill="rgba(255,183,197,.55)"/>' +
+      '<ellipse cx="37" cy="28" rx="3" ry="1.5" fill="rgba(255,183,197,.55)"/>' +
+      '<circle cx="42" cy="14" r="5" fill="rgba(212,175,55,.9)"/><text x="39" y="18" font-size="7" fill="#1a1a2e">...</text>',
+    done: '<circle cx="28" cy="28" r="26" fill="url(#cg-av-bg-done)" opacity=".95"/>' +
+      '<path d="M20 25 Q22 22 24 25" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
+      '<path d="M32 25 Q34 22 36 25" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
+      '<path d="M21 33 Q28 40 35 33" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
+      '<ellipse cx="19" cy="29" rx="3.5" ry="2" fill="rgba(255,183,197,.7)"/>' +
+      '<ellipse cx="37" cy="29" rx="3.5" ry="2" fill="rgba(255,183,197,.7)"/>' +
+      '<path d="M8 12 L11 15 L16 9" stroke="#34C759" stroke-width="2" stroke-linecap="round"/>',
+    error: '<circle cx="28" cy="28" r="26" fill="url(#cg-av-bg-err)" opacity=".95"/>' +
+      '<path d="M20 22 L24 26 M24 22 L20 26" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
+      '<path d="M32 22 L36 26 M36 22 L32 26" stroke="#1a1a2e" stroke-width="2" stroke-linecap="round"/>' +
+      '<path d="M22 35 Q28 31 34 35" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>'
+  };
+  var defs = '<defs>' +
+    '<linearGradient id="cg-av-bg" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>' +
+    '</linearGradient>' +
+    '<linearGradient id="cg-av-bg-done" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0%" stop-color="#34C759"/><stop offset="100%" stop-color="#30D158"/>' +
+    '</linearGradient>' +
+    '<linearGradient id="cg-av-bg-err" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop offset="0%" stop-color="#FF453A"/><stop offset="100%" stop-color="#FF6B6B"/>' +
+    '</linearGradient>' +
+  '</defs>';
+  var st = (state || 'idle');
+  return '<svg ' + base + '>' + defs + (face[st] || face.idle) + '</svg>';
+}
+
+// ── Animate counter ────────────────────────────────────────────────────────────
+function cgAnimateCounter(el, target, duration) {
+  if (!el) return;
+  var start = 0, startTime = null;
+  var num = parseFloat(target);
+  if (isNaN(num)) { el.textContent = target; return; }
+  function step(ts) {
+    if (!startTime) startTime = ts;
+    var prog = Math.min((ts - startTime) / (duration || 900), 1);
+    var ease = 1 - Math.pow(1 - prog, 3);
+    el.textContent = Number.isInteger(num) ? Math.round(num * ease) : (num * ease).toFixed(1);
+    if (prog < 1) requestAnimationFrame(step);
+    else el.textContent = Number.isInteger(num) ? num : num.toFixed(1);
+  }
+  requestAnimationFrame(step);
+}
+
+// ── Boss Panel ─────────────────────────────────────────────────────────────────
+function cgRenderBossPanel() {
+  var el = document.getElementById('cgv8-boss-panel-content');
+  if (!el) return;
+  var brain = cgGetBrain();
+  var hist = brain.history || [];
+  var seos = (brain.seo_scores || []).filter(function(s){return typeof s==='number'&&!isNaN(s);});
+  var avgSeo = seos.length ? Math.round(seos.reduce(function(a,b){return a+b;},0)/seos.length) : 0;
+  var bestSeo = seos.length ? Math.round(Math.max.apply(null,seos)) : 0;
+  var blogs90 = seos.filter(function(s){return s>=90;}).length;
+  var learnings = brain.learnings || [];
+  var sessions = brain.sessions_count || 0;
+
+  // KPI cards
+  var kpis = [
+    {label:'Toplam Blog', val: hist.length, sub:'yayinlandi / yazildi'},
+    {label:'SEO Ortalama', val: avgSeo, sub:'hedef: 90+'},
+    {label:'En Yuksek SEO', val: bestSeo, sub:'kisisel rekor'},
+    {label:'90+ Blog', val: blogs90, sub:'premium icerik'},
+    {label:'Ogrenimler', val: learnings.length, sub:'hafiza kayitlari'},
+    {label:'Oturumlar', val: sessions, sub:'aktif calismalar'},
+    {label:'Kw Portfoyu', val: Object.keys(brain.kw_performance||{}).length, sub:'anahtar kelimeler'},
+    {label:'Trafik Hedef', val: 'G100', sub:'organik tiklama'}
+  ];
+  var kpisHTML = kpis.map(function(k,i) {
+    return '<div class="cgv8-boss-kpi" style="animation-delay:'+(i*60)+'ms">' +
+      '<div class="cgv8-boss-kpi-label">'+k.label+'</div>' +
+      '<div class="cgv8-boss-kpi-val" id="cgv8-kpi-'+i+'">'+k.val+'</div>' +
+      '<div class="cgv8-boss-kpi-sub">'+k.sub+'</div>' +
+    '</div>';
+  }).join('');
+
+  // SEO trend bars (last 10)
+  var last10 = seos.slice(-10);
+  var maxS = Math.max.apply(null, last10.concat([1]));
+  var trendHTML = '';
+  if (last10.length) {
+    trendHTML = '<div class="cgv8-section-head">SEO Trend (Son '+last10.length+' Blog)</div>' +
+      '<div class="cgv8-seo-trend">' +
+      last10.map(function(s,i) {
+        var h = Math.max(8, Math.round((s/100)*80));
+        var hi = s >= 90 ? ' hi' : '';
+        return '<div class="cgv8-seo-trend-bar'+hi+'" style="height:'+h+'px" data-tip="SEO '+s+'"></div>';
+      }).join('') +
+      '</div>';
+  }
+
+  // Conversion funnel with YouTube/Instagram data
+  var yt = window.YOUTUBE || {};
+  var ig = window.INSTAGRAM || {};
+  var ytViews = (yt.analytics && yt.analytics.total_views) || 0;
+  var igFollowers = (ig.profile && ig.profile.followers) || 0;
+  var funnelData = [
+    {label:'YT Gorunum', val: ytViews, max: 2000000, color:'rgba(255,59,48,.7)'},
+    {label:'IG Takipci', val: igFollowers, max: 20000, color:'rgba(255,183,197,.7)'},
+    {label:'Blog Okuma', val: hist.length * 380, max: 50000, color:'rgba(212,175,55,.7)'},
+    {label:'Organik Trafik', val: blogs90 * 120, max: 10000, color:'rgba(52,199,89,.7)'}
+  ];
+  var funnelHTML = '<div class="cgv8-section-head">Trafik Funnel</div><div class="cgv8-funnel">' +
+    funnelData.map(function(f) {
+      var pct = Math.min(100, Math.round((f.val/f.max)*100)) || 2;
+      return '<div class="cgv8-funnel-row">' +
+        '<div class="cgv8-funnel-label">'+f.label+'</div>' +
+        '<div class="cgv8-funnel-bar">' +
+          '<div class="cgv8-funnel-fill" style="width:'+pct+'%;background:'+f.color+'"></div>' +
+          '<div class="cgv8-funnel-val">'+f.val.toLocaleString('tr-TR')+'</div>' +
+        '</div></div>';
+    }).join('') + '</div>';
+
+  // Learnings list
+  var lrnHTML = '';
+  if (learnings.length) {
+    lrnHTML = '<div class="cgv8-section-head">Cherry Glow Ogrenimler</div>' +
+      '<div class="cgv8-learnings">' +
+      learnings.slice(-8).reverse().map(function(l) {
+        return '<div class="cgv8-learning-item"><div class="cgv8-learning-icon">&#x1F4A1;</div>' +
+          '<div class="cgv8-learning-text">'+l+'</div></div>';
+      }).join('') + '</div>';
+  }
+
+  // Performance report rows
+  var reportRows = [
+    ['Toplam Blog', hist.length+' adet'],
+    ['Ortalama Kelime', hist.length ? Math.round(hist.reduce(function(a,b){return a+(b.wc||0);},0)/hist.length)+' kelime' : '--'],
+    ['Ortalama SEO', avgSeo ? avgSeo+'/100' : '--'],
+    ['En Yuksek SEO', bestSeo ? bestSeo+'/100' : '--'],
+    ['90+ Blog Orani', hist.length ? Math.round((blogs90/hist.length)*100)+'%' : '--'],
+    ['Aktif Konu', Object.keys(brain.kw_performance||{}).length+' KW']
+  ];
+  var reportHTML = '<div class="cgv8-section-head">Performans Raporu</div>' +
+    '<div class="cgv8-report-rows">' +
+    reportRows.map(function(r) {
+      return '<div class="cgv8-report-row">' +
+        '<div class="cgv8-report-row-label">'+r[0]+'</div>' +
+        '<div class="cgv8-report-row-val">'+r[1]+'</div>' +
+      '</div>';
+    }).join('') + '</div>';
+
+  // Hero
+  var heroHTML = '<div class="cgv8-boss-hero">' +
+    '<div id="cgv8-boss-av" class="cgv8-boss-av">'+cgGetAvatarSVG('done')+'</div>' +
+    '<div>' +
+      '<div class="cgv8-boss-info-name">Cherry Glow &#x2728;</div>' +
+      '<div class="cgv8-boss-info-title"><span class="cgv8-pulse-dot"></span>Otonom SEO Blog Ajani</div>' +
+      '<div class="cgv8-boss-info-bio">' +
+        'Patron Onur icin retrocameraland.com adina calisiyor. ' +
+        'Su ana kadar <strong style="color:rgba(212,175,55,.9)">'+hist.length+' blog</strong> yazdi, ' +
+        'ortalama SEO skoru <strong style="color:rgba(52,199,89,.9)">'+avgSeo+'</strong>. ' +
+        'Her yazidan ogreniyor ve bir sonrakini daha iyi yapiyor.' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+
+  el.innerHTML = heroHTML +
+    '<div class="cgv8-boss-kpis" id="cgv8-kpis-grid">' + kpisHTML + '</div>' +
+    trendHTML + funnelHTML + lrnHTML + reportHTML;
+
+  // Animate KPI counters
+  setTimeout(function() {
+    kpis.forEach(function(k, i) {
+      var v = k.val;
+      if (typeof v === 'number') cgAnimateCounter(document.getElementById('cgv8-kpi-'+i), v, 800 + i*60);
+    });
+  }, 100);
 }
 
 // ── SEO panel ──────────────────────────────────────────────────────────────────
@@ -4889,6 +5162,7 @@ function cgInitWidget() {
   var wv = document.getElementById('cg-w-ver');
   if (wv) wv.textContent = CG_VERSION;
   cgUpdateWidget('idle');
+  setTimeout(function() { if (typeof cgUpdateAvatar === 'function') cgUpdateAvatar('idle', 'Hazir, gorev bekliyor...'); }, 200);
 }
 
 function cgWidgetQuickWrite() {
