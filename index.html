@@ -790,116 +790,6 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 /* ── Gradient numbers ───────────────────────────────────────────────────── */
 .cg-grad-num{background:linear-gradient(135deg,#D4AF37,#FFB7C5);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-
-/* ─── CherryGlow v7 Redesign ──────────────────────────────────────────────── */
-
-/* Header */
-.cg-hdr{display:flex;align-items:center;justify-content:space-between;padding:0 28px 22px;gap:16px;flex-wrap:wrap;}
-.cg-hdr-left{display:flex;align-items:center;gap:10px;}
-.cg-wordmark{font-size:1.05rem;font-weight:700;color:var(--cg-t1);letter-spacing:-.01em;}
-.cg-vbadge{display:inline-flex;align-items:center;padding:2px 8px;background:var(--cg-gold-dim);border:1px solid rgba(212,175,55,.2);border-radius:6px;font-size:.54rem;color:rgba(212,175,55,.6);font-family:var(--cg-mono);}
-.cg-hdr-stats{display:flex;align-items:center;gap:18px;}
-.cg-hstat{display:flex;align-items:baseline;gap:5px;}
-.cg-hstat b{font-size:.88rem;font-weight:700;font-family:var(--cg-mono);color:var(--cg-gold);}
-.cg-hstat span{font-size:.5rem;text-transform:uppercase;letter-spacing:.1em;color:var(--cg-t3);}
-.cg-hdr-right{display:flex;align-items:center;gap:10px;}
-.cg-auto-lbl{font-size:.6rem;color:var(--cg-t3);}
-.cg-pill{display:inline-flex;padding:4px 12px;border-radius:7px;font-size:.58rem;font-family:var(--cg-mono);letter-spacing:.07em;border:1px solid var(--cg-border);background:rgba(255,255,255,.03);color:var(--cg-t2);}
-
-/* Grid */
-.cg-grid{display:grid;grid-template-columns:260px 1fr;gap:18px;padding:0 28px 36px;}
-@media(max-width:960px){.cg-grid{grid-template-columns:1fr;}}
-
-/* Topics column */
-.cg-topics-col{display:flex;flex-direction:column;gap:8px;}
-.cg-topics-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:2px;}
-.cg-topics-hd>span{font-size:.58rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cg-t3);}
-.cg-topics-count{font-size:.58rem;color:var(--cg-t3);opacity:.6;}
-.cg-search{background:rgba(255,255,255,.04);border:1px solid var(--cg-border);border-radius:9px;padding:8px 12px;color:var(--cg-t1);font-size:.76rem;outline:none;width:100%;transition:border-color .2s;box-sizing:border-box;}
-.cg-search:focus{border-color:var(--cg-gold-glow);}
-.cg-search::placeholder{color:var(--cg-t3);}
-.cg-topic-list{display:flex;flex-direction:column;gap:1px;max-height:370px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.05) transparent;}
-.cg-topic-item{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:8px;transition:background .15s;border:1px solid transparent;}
-.cg-topic-item:hover:not(.done){background:rgba(255,255,255,.035);}
-.cg-topic-item.running{background:rgba(212,175,55,.06);border-color:rgba(212,175,55,.18);}
-.cg-topic-item.done{opacity:.35;}
-.cg-topic-cat{font-size:.48rem;padding:2px 5px;border-radius:4px;background:rgba(255,255,255,.05);color:var(--cg-t3);font-family:var(--cg-mono);flex-shrink:0;letter-spacing:.04em;}
-.cg-topic-name{flex:1;font-size:.71rem;color:var(--cg-t1);line-height:1.3;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.cg-topic-item.done .cg-topic-name{text-decoration:line-through;color:var(--cg-t3);}
-.cg-topic-act{flex-shrink:0;}
-.cg-topic-btn{font-size:.56rem;padding:3px 9px;border-radius:6px;border:1px solid rgba(212,175,55,.28);background:rgba(212,175,55,.07);color:var(--cg-gold);cursor:pointer;transition:all .15s;white-space:nowrap;}
-.cg-topic-btn:hover{background:rgba(212,175,55,.18);}
-.cg-topic-done{font-size:.64rem;color:rgba(52,199,89,.6);}
-.cg-topic-run{font-size:.6rem;color:var(--cg-gold);animation:cg-status-pulse 1.2s infinite;}
-.cg-topics-foot{display:flex;gap:6px;}
-.cg-btn-ghost{flex:1;padding:8px 10px;border-radius:8px;border:1px solid var(--cg-border);background:rgba(255,255,255,.03);color:var(--cg-t2);font-size:.67rem;cursor:pointer;transition:all .17s;}
-.cg-btn-ghost:hover{background:rgba(255,255,255,.07);color:var(--cg-t1);}
-.cg-btn-icon-sm{padding:8px 12px;border-radius:8px;border:1px solid var(--cg-border);background:rgba(255,255,255,.03);color:var(--cg-t3);font-size:.78rem;cursor:pointer;transition:all .17s;flex-shrink:0;}
-.cg-btn-icon-sm:hover{color:var(--cg-t1);}
-
-/* Bulk */
-.cg-bulk{padding:9px 12px;border-radius:10px;background:rgba(212,175,55,.05);border:1px solid rgba(212,175,55,.14);}
-.cg-bulk-track{height:2px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:7px;}
-.cg-bulk-fill{height:100%;background:linear-gradient(90deg,var(--cg-gold),#FFB7C5);border-radius:2px;transition:width .5s;width:0%;}
-.cg-bulk-info{display:flex;align-items:center;justify-content:space-between;font-size:.6rem;color:rgba(212,175,55,.7);font-family:var(--cg-mono);}
-.cg-bulk-info button{background:none;border:none;color:var(--cg-t3);cursor:pointer;font-size:.7rem;padding:0;}
-
-/* Log */
-.cg-log-card{padding:12px 14px;border-radius:11px;background:rgba(255,255,255,.018);border:1px solid var(--cg-border);}
-.cg-log-hd{font-size:.52rem;text-transform:uppercase;letter-spacing:.14em;color:var(--cg-t3);margin-bottom:7px;opacity:.55;}
-.cg-log-body{font-size:.6rem;font-family:var(--cg-mono);line-height:1.9;max-height:140px;overflow-y:auto;scrollbar-width:thin;}
-
-/* Workspace */
-.cg-workspace{display:flex;flex-direction:column;gap:14px;}
-
-/* Phase strip */
-.cg-phase-strip{display:flex;align-items:center;padding:11px 20px;border-radius:12px;background:rgba(255,255,255,.02);border:1px solid var(--cg-border);}
-.cg-ph-node{display:flex;align-items:center;gap:6px;flex:1;justify-content:center;}
-.cg-ph-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.1);transition:all .4s cubic-bezier(.16,1,.3,1);flex-shrink:0;}
-.cg-ph-node span{font-size:.6rem;color:var(--cg-t3);font-family:var(--cg-mono);transition:color .3s;letter-spacing:.04em;}
-.cg-ph-node.active .cg-ph-dot{background:var(--cg-gold);box-shadow:0 0 10px rgba(212,175,55,.55);animation:cg-pulse-ring 1.8s infinite;}
-.cg-ph-node.active span{color:rgba(212,175,55,.9);}
-.cg-ph-node.done .cg-ph-dot{background:var(--cg-green);}
-.cg-ph-node.done span{color:rgba(52,199,89,.65);}
-.cg-ph-line{flex:0 0 32px;height:1px;background:rgba(255,255,255,.07);}
-
-/* Agent card */
-@keyframes cg-agent-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.cg-agent{display:flex;align-items:flex-start;gap:18px;padding:22px 24px;border-radius:16px;background:rgba(255,255,255,.025);border:1px solid var(--cg-border);transition:border-color .45s,background .45s,box-shadow .45s;position:relative;overflow:hidden;}
-.cg-agent::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,rgba(212,175,55,.04) 0%,transparent 60%);opacity:0;transition:opacity .4s;}
-.cg-agent.writing{border-color:rgba(212,175,55,.25);background:rgba(212,175,55,.04);}
-.cg-agent.writing::before{opacity:1;}
-.cg-agent.done{border-color:rgba(52,199,89,.22);background:rgba(52,199,89,.03);}
-.cg-agent.error{border-color:rgba(255,69,58,.18);background:rgba(255,69,58,.03);}
-
-/* Avatar */
-.cg-agent-avatar{position:relative;width:52px;height:52px;flex-shrink:0;}
-.cg-av-ring{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(212,175,55,.2);transition:border-color .4s,box-shadow .4s;}
-.cg-av-core{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,rgba(212,175,55,.2),rgba(255,183,197,.12));display:flex;align-items:center;justify-content:center;font-size:17px;transition:all .4s;user-select:none;}
-.cg-agent.writing .cg-av-ring{border-color:rgba(212,175,55,.55);box-shadow:0 0 16px rgba(212,175,55,.2);animation:cg-pulse-ring 2s infinite;}
-.cg-agent.done .cg-av-ring{border-color:rgba(52,199,89,.45);}
-.cg-agent.error .cg-av-ring{border-color:rgba(255,69,58,.35);}
-
-/* Agent text */
-.cg-agent-body{flex:1;min-width:0;}
-.cg-agent-msg{font-size:.98rem;font-weight:600;color:var(--cg-t1);margin-bottom:5px;line-height:1.35;transition:opacity .25s;}
-.cg-agent-sub{font-size:.73rem;color:var(--cg-t3);line-height:1.55;margin-bottom:0;}
-.cg-agent-meta{font-size:.65rem;font-family:var(--cg-mono);color:rgba(212,175,55,.65);margin-top:7px;line-height:1.5;}
-.cg-ag-prog{height:2px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-top:12px;}
-.cg-ag-prog-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--cg-gold),#FFB7C5);transition:width .7s cubic-bezier(.16,1,.3,1);}
-.cg-agent-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;}
-.cg-btn-primary{padding:9px 20px;border-radius:10px;border:1px solid rgba(212,175,55,.38);background:linear-gradient(135deg,rgba(212,175,55,.18),rgba(255,183,197,.08));color:var(--cg-gold);font-size:.74rem;font-weight:600;cursor:pointer;transition:all .22s;letter-spacing:.02em;}
-.cg-btn-primary:hover{background:linear-gradient(135deg,rgba(212,175,55,.3),rgba(255,183,197,.16));box-shadow:0 0 18px rgba(212,175,55,.12);}
-.cg-btn-secondary{padding:9px 16px;border-radius:10px;border:1px solid var(--cg-border);background:rgba(255,255,255,.04);color:var(--cg-t2);font-size:.72rem;cursor:pointer;transition:all .18s;}
-.cg-btn-secondary:hover{background:rgba(255,255,255,.08);color:var(--cg-t1);}
-.cg-btn-danger{padding:9px 16px;border-radius:10px;border:1px solid rgba(255,69,58,.2);background:rgba(255,69,58,.06);color:var(--cg-red);font-size:.72rem;cursor:pointer;transition:all .18s;}
-
-/* Output card */
-.cg-output-card{border-radius:14px;background:rgba(255,255,255,.02);border:1px solid var(--cg-border);padding:18px 20px;}
-.cg-code-ta{width:100%;height:340px;background:rgba(0,0,0,.3);border:1px solid var(--cg-border);border-radius:9px;color:rgba(255,255,255,.6);font-size:.65rem;font-family:var(--cg-mono);padding:12px;resize:vertical;box-sizing:border-box;outline:none;}
-.cg-output-empty{text-align:center;padding:50px 0;opacity:.16;font-size:.82rem;}
-
-@media(max-width:600px){.cg-hdr{padding:0 18px 18px;}.cg-hdr-stats{display:none;}.cg-grid{padding:0 18px 28px;}}
 </style>
 </head>
 <body>
@@ -2155,139 +2045,127 @@ footer{border-top:1px solid var(--b0);padding:22px 0 0;font-size:0.62rem;color:v
 
 
 
-<!-- ═══════════════════ CHERRYGLOW v7 ═══════════════════ -->
+<!-- ═══════════════════ CHERRYGLOW v6 ═══════════════════ -->
 <div class="page" id="page-cherry">
 
-<!-- Header -->
-<div class="cg-hdr fi">
-  <div class="cg-hdr-left">
-    <span class="cg-wordmark">CherryGlow</span>
-    <span class="cg-vbadge" id="cg-version">v7</span>
+<div class="page-topbar fi">
+  <div class="pt-left">
+    <div class="pt-title" style="display:flex;align-items:center;gap:10px">
+      CherryGlow
+      <span class="cg-version" id="cg-version">v6</span>
+    </div>
+    <div class="pt-sub" style="font-size:.68rem;opacity:.4">Konu Seç &rarr; Yaz &rarr; Onayla &rarr; Yayınla</div>
   </div>
-  <div class="cg-hdr-stats">
-    <div class="cg-hstat"><b id="cg-stat-done">0</b><span>blog</span></div>
-    <div class="cg-hstat"><b id="cg-stat-seo">--</b><span>ort. seo</span></div>
-    <div class="cg-hstat"><b id="cg-stat-pub">0</b><span>yayınlanan</span></div>
-    <div class="cg-hstat"><b id="cg-stat-words">0</b><span>kelime</span></div>
-    <div class="cg-hstat"><b id="cg-stat-today">0</b><span>bugün</span></div>
-  </div>
-  <div class="cg-hdr-right">
-    <span class="cg-auto-lbl">Oto-yayın</span>
-    <label class="cg-sw"><input type="checkbox" id="cg-autopub" onchange="cgToggleAutoPub(this.checked)"><span class="cg-sw-track"></span></label>
-    <span class="cg-pill" id="cg-status-pill">HAZIR</span>
+  <div class="pt-right" style="display:flex;align-items:center;gap:14px">
+    <div class="cw-auto-row">
+      <span>Oto-yayın</span>
+      <label class="cg-sw"><input type="checkbox" id="cg-autopub" onchange="cgToggleAutoPub(this.checked)"><span class="cg-sw-track"></span></label>
+    </div>
+    <span id="cg-status-pill" style="font-size:.65rem;padding:4px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);letter-spacing:.08em">HAZIR</span>
   </div>
 </div>
 
-<!-- Main grid -->
-<div class="cg-grid">
+<div class="cg-stats-ribbon">
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-done">0</div><div class="cg-stat-lbl">Blog</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-words">0</div><div class="cg-stat-lbl">Kelime</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-seo">--</div><div class="cg-stat-lbl">Ort. SEO</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-pub">0</div><div class="cg-stat-lbl">Yayınlanan</div></div>
+  <div class="cg-stat-sep"></div>
+  <div class="cg-stat-item"><div class="cg-stat-val" id="cg-stat-today">0</div><div class="cg-stat-lbl">Bugün</div></div>
+</div>
 
-  <!-- LEFT: Topics column -->
-  <div class="cg-topics-col fi" style="transition-delay:.06s">
+<div class="cg-main-grid">
 
-    <div class="cg-topics-hd">
-      <span>Konular</span>
-      <span id="cg-agenda-count" class="cg-topics-count"></span>
+  <!-- LEFT: Topics + Log -->
+  <div class="cg-left-col">
+
+    <!-- Topics card -->
+    <div class="card" style="padding:16px 14px">
+      <div class="cg-panel-title">
+        Konular
+        <span id="cg-agenda-count" style="font-size:.65rem;opacity:.5;font-weight:500;text-transform:none;letter-spacing:0"></span>
+      </div>
+      <div class="cg-agenda-wrap" id="cg-agenda-list" style="max-height:360px"></div>
+      <div style="display:flex;gap:6px;margin-top:10px">
+        <button class="cg-ctrl-btn" onclick="cgWriteAll()" style="font-size:.68rem">Hepsini Sırayla Yaz</button>
+        <button class="cg-ctrl-btn" onclick="cgResetDone()" style="font-size:.62rem;flex:none;opacity:.5" title="Tamamlananları sıfırla">↺</button>
+      </div>
     </div>
 
-    <input class="cg-search" id="cg-queue-search" placeholder="Konu ara..." oninput="cgFilterAgenda(this.value)">
-    <div class="cg-topic-list" id="cg-agenda-list"></div>
-
-    <div class="cg-topics-foot">
-      <button class="cg-btn-ghost" onclick="cgWriteAll()">Hepsini Sıraya Al</button>
-      <button class="cg-btn-icon-sm" onclick="cgResetDone()" title="Sıfırla">&#x21BA;</button>
-    </div>
-
-    <div class="cg-bulk" id="cg-bulk-bar" style="display:none">
-      <div class="cg-bulk-track"><div class="cg-bulk-fill" id="cg-bulk-fill"></div></div>
-      <div class="cg-bulk-info"><span id="cg-bulk-label">0 konu</span><button onclick="cgAbortWrite()">&#x2715;</button></div>
-    </div>
-
-    <div class="cg-log-card">
-      <div class="cg-log-hd">Günlük</div>
-      <div class="cg-log-body" id="cg-log"></div>
+    <!-- Log card -->
+    <div class="card" style="padding:14px 16px;flex-shrink:0">
+      <div class="cg-panel-title" style="margin-bottom:8px">İşlem Günlüğü</div>
+      <div id="cg-log" style="font-size:.64rem;font-family:var(--mono);line-height:1.9;max-height:180px;overflow-y:auto;scrollbar-width:thin"></div>
     </div>
 
   </div>
 
-  <!-- RIGHT: Workspace -->
-  <div class="cg-workspace fi" style="transition-delay:.1s">
+  <!-- RIGHT: Action + Output -->
+  <div class="cg-right-col">
 
-    <!-- Phase strip -->
-    <div class="cg-phase-strip">
-      <div class="cg-ph-node" id="cg-ph-scout"><div class="cg-ph-dot"></div><span>Scout</span></div>
-      <div class="cg-ph-line"></div>
-      <div class="cg-ph-node" id="cg-ph-brief"><div class="cg-ph-dot"></div><span>Brief</span></div>
-      <div class="cg-ph-line"></div>
-      <div class="cg-ph-node" id="cg-ph-write"><div class="cg-ph-dot"></div><span>Yaz</span></div>
-      <div class="cg-ph-line"></div>
-      <div class="cg-ph-node" id="cg-ph-editor"><div class="cg-ph-dot"></div><span>Editor</span></div>
-    </div>
-
-    <!-- Agent card -->
-    <div class="cg-agent" id="cg-agent-card">
-      <div class="cg-agent-avatar" id="cg-agent-avatar">
-        <div class="cg-av-ring"></div>
-        <div class="cg-av-core" id="cg-av-icon">&#x2728;</div>
-      </div>
-      <div class="cg-agent-body">
-        <div class="cg-agent-msg" id="cg-agent-msg">Bugün ne yazalım?</div>
-        <div class="cg-agent-sub" id="cg-agent-sub">Bir konu seç, hemen işe koyulayım.</div>
-        <div class="cg-agent-meta" id="cg-agent-meta"></div>
-        <div class="cg-ag-prog" id="cg-ag-prog" style="display:none">
-          <div class="cg-ag-prog-fill" id="cg-ag-prog-fill" style="width:5%"></div>
-        </div>
-        <div class="cg-agent-btns" id="cg-action-buttons"></div>
-      </div>
+    <!-- Action card -->
+    <div class="card" id="cg-action-card" style="padding:18px 20px;flex-shrink:0">
+      <div id="cg-action-status" style="margin-bottom:12px;min-height:40px"></div>
+      <div id="cg-action-buttons" style="display:flex;gap:8px;flex-wrap:wrap"></div>
     </div>
 
     <!-- Output card -->
-    <div class="cg-output-card">
-      <div class="cg-tabs" style="margin-bottom:14px">
-        <button class="cg-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">&#x1F4C4; Önizleme</button>
-        <button class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</button>
-        <button class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</button>
-        <button class="cg-tab" id="cg-tab-history" onclick="cgTab('history',this)">Geçmiş</button>
+    <div class="card" style="padding:16px 18px;flex:1;min-height:0">
+      <div class="cg-tabs" style="margin-bottom:12px">
+        <div class="cg-tab active" id="cg-tab-preview" onclick="cgTab('preview',this)">Önizleme</div>
+        <div class="cg-tab" id="cg-tab-html" onclick="cgTab('html',this)">HTML</div>
+        <div class="cg-tab" id="cg-tab-seo" onclick="cgTab('seo',this)">SEO</div>
+        <div class="cg-tab" id="cg-tab-history" onclick="cgTab('history',this)">Geçmiş</div>
       </div>
 
-      <div id="cg-tab-panel-preview" class="cg-output-body">
-        <div class="cg-output-empty">Henüz bir blog yazılmadı &#x2014; sol taraftan konu seç</div>
+      <!-- Preview -->
+      <div id="cg-tab-panel-preview" class="cg-output-body" style="min-height:280px;max-height:520px">
+        <div style="text-align:center;padding:60px 0;opacity:.2;font-size:.85rem">Sol taraftaki listeden bir konu seçip <strong>Yaz</strong> butonuna bas</div>
       </div>
 
+      <!-- HTML -->
       <div id="cg-tab-panel-html" style="display:none">
-        <div style="display:flex;gap:8px;margin-bottom:10px">
-          <button class="cg-btn-ghost" onclick="cgCopyHTML()">Kopyala</button>
-          <button class="cg-btn-ghost" onclick="cgDownloadHTML()">İndir</button>
+        <div style="display:flex;gap:8px;margin-bottom:8px">
+          <button class="cg-ctrl-btn" onclick="cgCopyHTML()" style="font-size:.65rem">Kopyala</button>
+          <button class="cg-ctrl-btn" onclick="cgDownloadHTML()" style="font-size:.65rem">İndir</button>
         </div>
-        <textarea id="cg-html-ta" class="cg-code-ta" readonly></textarea>
+        <textarea id="cg-html-ta" style="width:100%;height:360px;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.08);border-radius:10px;color:rgba(255,255,255,.65);font-size:.68rem;font-family:var(--mono);padding:12px;resize:vertical;box-sizing:border-box" readonly></textarea>
       </div>
 
+      <!-- SEO -->
       <div id="cg-tab-panel-seo" style="display:none;padding:4px 0">
         <div class="cg-seo-grid" style="margin-bottom:14px">
           <div class="cg-score-ring-wrap">
             <svg class="cg-score-ring-svg" viewBox="0 0 100 100">
-              <defs><linearGradient id="cgRingGrad7" x1="0%" y1="0%" x2="100%" y2="100%">
+              <defs><linearGradient id="cgRingGrad6" x1="0%" y1="0%" x2="100%" y2="100%">
                 <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#FFB7C5"/>
               </linearGradient></defs>
               <circle cx="50" cy="50" r="40" class="cg-sr-bg" stroke-width="8"/>
               <circle cx="50" cy="50" r="40" id="cg-seo-ring"
-                style="fill:none;stroke:url(#cgRingGrad7);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
+                style="fill:none;stroke:url(#cgRingGrad6);stroke-width:8;stroke-linecap:round;stroke-dasharray:251;stroke-dashoffset:251;transform:rotate(-90deg);transform-origin:center;transition:stroke-dashoffset 1s ease"/>
             </svg>
             <div class="cg-score-center" id="cg-seo-score-num">--</div>
           </div>
-          <div id="cg-seo-checks" style="display:flex;flex-direction:column;gap:5px"></div>
+          <div id="cg-seo-checks" class="cg-seo-bars"></div>
         </div>
         <div class="cg-kw-cloud" id="cg-kw-cloud"></div>
-        <div id="cg-serp-snippets" style="margin-top:10px"></div>
       </div>
 
-      <div id="cg-tab-panel-history" style="display:none">
+      <!-- History -->
+      <div id="cg-tab-panel-history" style="display:none;max-height:460px;overflow-y:auto">
         <div id="cg-history-list"></div>
       </div>
+
     </div>
 
   </div>
+
 </div>
 
+</div>
 </div>
 </main>
 <script id="data-script">
@@ -2716,10 +2594,10 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-05-16T21:52:01",
+  "updated_at": "2026-05-16T22:52:03",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6603,
+  "followers": 6607,
   "media_count": 273,
   "avg_likes": 59,
   "total_engagement": 715,
@@ -4268,659 +4146,759 @@ function urunProfitCalc() {
 }
 
 
-// ─── CHERRYGLOW v7 — 4-Phase Pipeline: Scout → Brief → Write → Editor ─────────
-const CG_VERSION = 'v7.0';
-const CG_BRAIN_KEY = 'cg_brain_v5';
+// ─── CHERRYGLOW v6 — Button-driven, no chat, no freeze ────────────────────────
+const CG_VERSION = 'v6.1.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
+var CG_BRAIN_KEY = 'cg_brain_v5';
+var CG_USER = {name:'Onur', store:'Retrocameraland', biz:'analog kamera ve vintage fotograf', city:'Istanbul'};
 
 function cgDefaultBrain() {
-  return {v:5, sessions_count:0, topics_covered:[], seo_scores:[], history:[], keywords_used:[], last_active:'', daily_stats:{}};
+  return {v:5, user:CG_USER, sessions_count:0, current_session:null,
+    topics_covered:[], seo_scores:[], history:[], keywords_used:[], last_active:'', daily_stats:{}};
 }
 
 function cgGetBrain() {
   try {
-    const raw = localStorage.getItem(CG_BRAIN_KEY);
+    var raw = localStorage.getItem(CG_BRAIN_KEY);
     if (!raw) return cgDefaultBrain();
-    const b = JSON.parse(raw);
+    var b = JSON.parse(raw);
     return (b && typeof b === 'object') ? b : cgDefaultBrain();
   } catch(e) { return cgDefaultBrain(); }
 }
 
-let _cgSaveTimer = null;
+var _cgSaveTimer = null;
 function cgSaveBrain(b) {
   clearTimeout(_cgSaveTimer);
-  const snap = JSON.stringify(b);
-  _cgSaveTimer = setTimeout(() => { try { localStorage.setItem(CG_BRAIN_KEY, snap); } catch(e) {} }, 600);
+  var snap = JSON.stringify(b);
+  _cgSaveTimer = setTimeout(function() {
+    try { localStorage.setItem(CG_BRAIN_KEY, snap); } catch(e) {}
+  }, 600);
 }
 
-// ── State ──────────────────────────────────────────────────────────────────────
-let _cgSt = {
-  status:'idle', idx:-1, item:null, serp:null, intel:null, brief:null,
-  md:'', scoreObj:null, error:'', published:false, writeQueue:[],
-  phase:'', progress:0
+// ── State object ──────────────────────────────────────────────────────────────
+var _cgSt = {
+  status: 'idle',   // idle | writing | done | error | publishing
+  idx: -1,
+  item: null,
+  intel: null,
+  brief: null,
+  md: '',
+  scoreObj: null,
+  error: '',
+  published: false,
+  writeQueue: [],
+  phase: '',
+  progress: 0
 };
-let _cgAgenda = [], _cgAgendaFiltered = [];
-let _cgAutoPub = false, _cgWriting = false, _cgWriteAbort = null, _cgQueueTotal = 0;
 
-// ── Log ────────────────────────────────────────────────────────────────────────
-const _cgLogs = [];
+var _cgAgenda = [];
+var _cgAutoPub = false;
+var _cgWriting = false;
+var _cgWriteAbort = null;
+
+// ── Log ───────────────────────────────────────────────────────────────────────
+var _cgLogs = [];
 function cgLog(msg, type) {
-  _cgLogs.push({ts:Date.now(), msg, type:type||''});
-  if (_cgLogs.length > 80) _cgLogs.splice(0, _cgLogs.length - 80);
-  const el = document.getElementById('cg-log');
+  _cgLogs.push({ts: Date.now(), msg: msg, type: type || ''});
+  if (_cgLogs.length > 80) _cgLogs = _cgLogs.slice(-80);
+  var el = document.getElementById('cg-log');
   if (!el) return;
-  el.innerHTML = _cgLogs.slice(-20).map(l => {
-    const t = new Date(l.ts).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-    const c = l.type==='ok'?'rgba(52,199,89,.8)':l.type==='err'?'rgba(255,69,58,.8)':l.type==='warn'?'rgba(255,159,10,.8)':l.type==='info'?'rgba(90,200,250,.7)':'rgba(255,255,255,.3)';
-    return `<div style="color:${c}"><span style="opacity:.25;margin-right:5px">${t}</span>${l.msg.replace(/</g,'&lt;')}</div>`;
+  var lines = _cgLogs.slice(-22);
+  el.innerHTML = lines.map(function(l) {
+    var t = new Date(l.ts).toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit', second:'2-digit'});
+    var c = l.type === 'ok'   ? 'rgba(52,199,89,.75)'  :
+            l.type === 'err'  ? 'rgba(255,69,58,.75)'  :
+            l.type === 'warn' ? 'rgba(255,149,0,.75)'  :
+            l.type === 'info' ? 'rgba(90,200,250,.65)' : 'rgba(255,255,255,.35)';
+    return '<div style="color:'+c+';padding:1px 0"><span style="opacity:.25;margin-right:5px">'+t+'</span>'+l.msg+'</div>';
   }).join('');
   el.scrollTop = el.scrollHeight;
 }
 
-// ── Pipeline phase UI ──────────────────────────────────────────────────────────
-function cgSetPhase(phase) {
-  const order = {scout:0, brief:1, write:2, editor:3};
-  const cur = phase!=null ? (order[phase]??-1) : -1;
-  ['scout','brief','write','editor'].forEach((p, i) => {
-    const el = document.getElementById('cg-ph-'+p);
-    if (!el) return;
-    el.classList.remove('active','done','error');
-    if (i < cur)       el.classList.add('done');
-    else if (i===cur)  el.classList.add('active');
-  });
-}
-function cgClearPhases() { cgSetPhase(null); }
-
-// ── Status pill ────────────────────────────────────────────────────────────────
-function cgSetPill(label) {
-  const el = document.getElementById('cg-status-pill');
-  if (el) el.textContent = label;
+// ── Status pill ───────────────────────────────────────────────────────────────
+function cgSetPill(label, bg) {
+  var el = document.getElementById('cg-status-pill');
+  if (!el) return;
+  el.textContent = label;
+  if (bg) { el.style.background = bg; el.style.borderColor = bg.replace(/[\d.]+\)$/, '.4)'); }
+  else { el.style.background = 'rgba(255,255,255,.05)'; el.style.borderColor = 'rgba(255,255,255,.1)'; }
 }
 
-// ── Brave Search ───────────────────────────────────────────────────────────────
-async function cgBraveSearch(query, count) {
-  try {
-    const resp = await fetch('/api/brave-search', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({query, count:count||8}),
-      signal: AbortSignal.timeout(12000)
-    });
-    const data = await resp.json();
-    return data.results || [];
-  } catch(e) { cgLog('Brave: '+e.message.slice(0,50),'warn'); return []; }
-}
-
-// ── API JSON helper ────────────────────────────────────────────────────────────
-async function cgFetchJSON(prompt, sys, model, maxTok, timeout) {
-  const ctrl = new AbortController();
-  const tid  = setTimeout(() => ctrl.abort(), timeout||25000);
-  try {
-    const resp = await fetch('/api/chat', {
-      signal:ctrl.signal, method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({model:model||'claude-haiku-4-5-20251001', max_tokens:maxTok||768,
-        messages:[{role:'user',content:prompt}], system:sys||'Sadece JSON olarak yanıtla.'})
-    });
-    clearTimeout(tid);
-    const data = await resp.json();
-    const txt  = data.content?.[0]?.text || '{}';
-    const m    = txt.match(/\{[\s\S]*\}/);
-    return m ? JSON.parse(m[0]) : {};
-  } catch(e) { clearTimeout(tid); return {}; }
-}
-
-// ── RCL Context ────────────────────────────────────────────────────────────────
-function cgBuildRCLContext() {
-  const cameras = (SHOPIFY.cameras||[]).slice(0,18)
-    .map(c => c.title + (c.price ? ' ' + Math.round(c.price/100) + '₺' : '')).join(' | ');
-  const ytSubs  = (YOUTUBE.channel.subscribers||0).toLocaleString('tr-TR');
-  const ytViews = (YOUTUBE.analytics?.last_30d?.views||0).toLocaleString('tr-TR');
-  const topVids = (YOUTUBE.videos||[]).slice(0,4).map(v=>`"${v.title}" (${v.views} görüntüleme)`).join('; ');
-  const igFoll  = (INSTAGRAM.profile?.followers||0).toLocaleString('tr-TR');
-  const igEng   = ((INSTAGRAM.analytics?.last_30d?.avg_engagement_rate||0)*100).toFixed(1);
-  const brain   = cgGetBrain();
-  const pastBlogs = (brain.history||[]).slice(-8).filter(h=>h.title).map(h=>`"${h.title}"`).join(', ');
-  const internalLinks = (brain.history||[]).slice(-5).filter(h=>h.title&&h.published)
-    .map(h=>`[${h.title}](https://retrocameraland.com/blogs/news/${h.title.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,'')})`)
-    .join(', ');
-  return {cameras, ytSubs, ytViews, topVids, igFoll, igEng, pastBlogs, internalLinks};
-}
-
-// ── Phase 1: Scout ─────────────────────────────────────────────────────────────
-async function cgScout(item, today) {
-  const [serpA, serpB] = await Promise.all([
-    cgBraveSearch(item.topic + ' blog TR'),
-    cgBraveSearch(item.topic + ' kamera rehber')
-  ]);
-  const serp = [...serpA, ...serpB].slice(0,8);
-  _cgSt.serp = serp;
-  const serpCtx = serp.slice(0,6).map(r=>`- ${r.title}: ${r.description||''}`).join('\n');
-
-  return cgFetchJSON(
-    `Tarih: ${today}\nKonu: ${item.topic}\nKategori: ${item.cat}\n\nSERP Sonuçları:\n${serpCtx||'Veri yok'}\n\nJSON:\n{"primary_kw":"ana KW (Türkçe)","secondary_kws":["kw2","kw3","kw4","kw5"],"lsi_kws":["semantik1","semantik2","semantik3"],"search_intent":"bilgilendirme|ticari|karma","serp_gap":"rakiplerin eksik bıraktığı açı","hook":"okuyucuyu yakalayan ilk cümle (TR)"}`,
-    'SEO uzmanısın. Sadece JSON.', 'claude-haiku-4-5-20251001', 512, 25000
-  );
-}
-
-// ── Phase 2: Brief ─────────────────────────────────────────────────────────────
-async function cgBriefCall(item, intel, today) {
-  const serpTitles = (_cgSt.serp||[]).slice(0,5).map(r=>`- ${r.title}`).join('\n');
-  return cgFetchJSON(
-    `Konu: ${item.topic}\nAna KW: ${intel.primary_kw||item.topic}\nSecondary KWs: ${(intel.secondary_kws||[]).join(', ')}\nLSI KWs: ${(intel.lsi_kws||[]).join(', ')}\nRakip başlıklar:\n${serpTitles}\n\nJSON:\n{"h1":"SEO H1 başlık (60 kar altı, ana KW içersin)","meta_desc":"155 karakter meta açıklama","h2s":["H2-1","H2-2","H2-3","H2-4","H2-5"],"target_wc":1600,"intro_hook":"giriş hook cümlesi","faq_questions":["SSS soru 1","SSS soru 2","SSS soru 3"]}`,
-    'İçerik stratejisti. Sadece JSON.', 'claude-haiku-4-5-20251001', 768, 25000
-  );
-}
-
-// ── System prompt (full RCL context) ──────────────────────────────────────────
-function cgBuildSystemPrompt(item, intel, brief) {
-  const ctx = cgBuildRCLContext();
-  return `Sen Retrocameraland'ın resmi blog yazarısın — CherryGlow v7 AI.
-
-MARKA: Retrocameraland (retrocameraland.com) — Y2K/analog dijital kameral, vintage fotoğraf
-Hedef kitle: 18-35 yaş, estetik & nostalji meraklıları, Türkiye
-YouTube: ${ctx.ytSubs} abone · Son 30g: ${ctx.ytViews} görüntüleme · Top videolar: ${ctx.topVids}
-Instagram: ${ctx.igFoll} takipçi · %${ctx.igEng} etkileşim
-Satılan ürünler: ${ctx.cameras}
-Önceki bloglar (iç link için): ${ctx.pastBlogs||'yok'}
-
-SEO KURALLARI — HEPSİNE UY (SEO skoru 90+ için):
-1. H1: Tam olarak 1 adet "# ${brief.h1||item.topic}"
-2. H2: En az 5 adet "## " başlığı — plan: ${(brief.h2s||[]).join(' | ')}
-3. Kelime sayısı: EN AZ 1600 kelime
-4. Ana KW "${intel.primary_kw||''}" → 4-7 kez doğal kullan
-5. İkincil KWler: ${(intel.secondary_kws||[]).join(', ')} → her biri 1-2 kez
-6. LSI KWler: ${(intel.lsi_kws||[]).join(', ')} → geç
-7. SSS bölümü: "## Sık Sorulan Sorular" → ${(brief.faq_questions||['SSS 1','SSS 2','SSS 3']).join(' | ')}
-8. CTA: Blog sonunda Retrocameraland ürünlerine yönlendirme
-9. İç linkler: ${ctx.internalLinks||'Retrocameraland blog yazılarına link'}
-10. Paragraflar: maks 80 kelime — uzun paragrafları böl
-11. Bold: Önemli kavramları **kalın** yap (en az 5 kez)
-12. Listeler: En az 2 madde listesi ("- " ile)
-
-YAZI TARZI: Dostane Türkçe, teknik bilgi + duygusal bağ, kişisel anı tarzı giriş.
-RAKIP AÇIĞI: "${intel.serp_gap||''}" — bunu ele al, rakiplerden iyi yaz.
-
-FORMAT: Sadece Markdown. Açıklama yok, not yok. Hemen # H1 başlığıyla başla.`;
-}
-
-// ── Phase 3: Streaming write ───────────────────────────────────────────────────
-async function cgStreamWrite(sysPrompt, userMsg) {
-  const ctrl = new AbortController();
-  _cgWriteAbort = ctrl;
-  const resp = await fetch('/api/chat', {
-    signal:ctrl.signal, method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({model:'claude-sonnet-4-6', max_tokens:3000, stream:true, system:sysPrompt, messages:[{role:'user',content:userMsg}]})
-  });
-  if (!resp.ok) { const et = await resp.text().catch(()=>'?'); throw new Error(`API ${resp.status}: ${et.slice(0,100)}`); }
-  const reader = resp.body.getReader();
-  const decoder = new TextDecoder();
-  let buf='', md='', lastYield=Date.now();
-  outer: while(true) {
-    let chunk;
-    try { chunk = await reader.read(); } catch(e) { if(e.name==='AbortError') break; throw e; }
-    if (chunk.done) break;
-    buf += decoder.decode(chunk.value, {stream:true});
-    const lines = buf.split('\n'); buf = lines.pop();
-    for (const ln of lines) {
-      if (!ln.startsWith('data:')) continue;
-      const raw = ln.slice(5).trim();
-      if (raw==='[DONE]') break outer;
-      try {
-        const evt = JSON.parse(raw);
-        if (evt.type==='message_stop') break outer;
-        if (evt.type==='content_block_delta' && evt.delta?.type==='text_delta') md += evt.delta.text;
-      } catch(e2) {}
-    }
-    const now = Date.now();
-    if (now - lastYield >= 16) { lastYield = now; await new Promise(r=>setTimeout(r,0)); }
-  }
-  _cgWriteAbort = null;
-  return md;
-}
-
-// ── Phase 4: Editor pass ───────────────────────────────────────────────────────
-async function cgEditorPass(md, intel, brief) {
-  const sc = cgScore(md, intel);
-  if (sc.score >= 88) { cgLog(`Editor atlandı (SEO ${sc.score} yeterli)`,'info'); return md; }
-  const weak = sc.checks.filter(c=>!c.pass).map(c=>c.label).join(', ');
-  try {
-    const resp = await fetch('/api/chat', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model:'claude-sonnet-4-6', max_tokens:3500,
-        system:'SEO editörüsün. Sadece düzeltilmiş Markdown döndür. Açıklama ekleme.',
-        messages:[{role:'user',content:`Bu Türkçe blogu SEO açısından güçlendir.\n\nEKSİKLER: ${weak}\nAna KW: "${intel.primary_kw}"\nHedef: ${brief.target_wc||1600}+ kelime\n\nYAPILACAKLAR:\n- H2 sayısı < 5 ise yeni H2 bölüm ekle\n- Kelime azsa ilgili içerik ekle (ürün tavsiyeleri, ipuçları)\n- SSS bölümü yoksa ekle (## Sık Sorulan Sorular)\n- CTA yoksa ekle\n- KW yoğunluğu düşükse doğal şekilde artır\n\nBLOG:\n${md.slice(0,4500)}\n\nDüzeltilmiş versiyonu döndür:`}]
-      }),
-      signal: AbortSignal.timeout(40000)
-    });
-    const data = await resp.json();
-    const improved = data.content?.[0]?.text || '';
-    if (improved.length > md.length * 0.5) {
-      const newWc = improved.split(/\s+/).filter(Boolean).length;
-      cgLog(`Editor ✓ +${newWc - sc.wc} kelime`,'ok');
-      return improved;
-    }
-  } catch(e) { cgLog('Editor atlandı: '+e.message.slice(0,50),'warn'); }
-  return md;
-}
-
-// ── SEO Scoring — target 90+ ───────────────────────────────────────────────────
-function cgScore(md, intel) {
-  const wc    = md.split(/\s+/).filter(Boolean).length;
-  const h1c   = (md.match(/^# /mg)||[]).length;
-  const h2c   = (md.match(/^## /mg)||[]).length;
-  const kw    = (intel?.primary_kw||'').toLowerCase();
-  const kwd   = kw ? md.toLowerCase().split(kw).length-1 : 0;
-  const hasCTA  = /retrocameraland|koleksiyonu|incele|keşfet|satın al|mağazamız/i.test(md);
-  const hasFAQ  = /sık sorulan|s\.s\.s\.|## sorular/i.test(md);
-  const hasList = /^[\-\*] /m.test(md);
-  const hasBold = /\*\*[^*]+\*\*/.test(md);
-  const hasLink = /\[.+\]\(https?:\/\//i.test(md);
-  const longPar = md.split(/\n\n/).filter(p=>p.split(/\s+/).length>90).length;
-
-  const checks = [
-    {key:'h1',   pass:h1c===1,     label:`H1 başlık (${h1c}/1)`},
-    {key:'h2',   pass:h2c>=5,      label:`H2 bölümler (${h2c}/5+)`},
-    {key:'wc',   pass:wc>=1500,    label:`Kelime (${wc}/1500+)`},
-    {key:'kw',   pass:kwd>=4,      label:`KW yoğunluğu (${kwd}x/4+)`},
-    {key:'cta',  pass:hasCTA,      label:'CTA/Marka bağlantısı'},
-    {key:'faq',  pass:hasFAQ,      label:'SSS bölümü'},
-    {key:'list', pass:hasList,     label:'Liste kullanımı'},
-    {key:'bold', pass:hasBold,     label:'Bold vurgu'},
-    {key:'link', pass:hasLink,     label:'İç/dış link'},
-    {key:'par',  pass:longPar===0, label:`Paragraf uzunluğu${longPar>0?' ('+longPar+' uzun)':''}`},
-  ];
-
-  let score=0;
-  if (h1c===1)     score+=12;
-  if (h2c>=5)      score+=18; else if (h2c>=3) score+=10;
-  if (wc>=1600)    score+=22; else if (wc>=1200) score+=15; else if (wc>=800) score+=8;
-  if (kwd>=4&&kwd<=9) score+=18; else if (kwd>=2) score+=10; else if (kwd>=1) score+=5;
-  if (hasCTA)      score+=10;
-  if (hasFAQ)      score+=8;
-  if (hasList)     score+=4;
-  if (hasBold)     score+=3;
-  if (hasLink)     score+=4;
-  if (longPar===0) score+=4; else score+=1;
-
-  return {score:Math.min(100,score), checks, wc};
-}
-
-// ── Main write pipeline ────────────────────────────────────────────────────────
-async function cgWrite(idx) {
-  const item = _cgAgenda[idx];
-  if (!item) { cgLog('Konu bulunamadı.','err'); return; }
-  if (_cgWriting) { cgLog('Zaten yazılıyor.','warn'); return; }
-
-  _cgWriting = true;
-  Object.assign(_cgSt, {status:'writing',idx,item,serp:null,intel:null,brief:null,md:'',scoreObj:null,error:'',published:false,phase:'Hazırlanıyor',progress:5});
-  cgUpdateAgendaStage(idx,'running');
-  cgSetPill('YAZIYOR');
-  cgClearPhases();
-  cgRenderActions();
-  cgLog('Başlıyor: '+item.topic.slice(0,50),'info');
-
-  const today = new Date().toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-  cgTab('preview',document.getElementById('cg-tab-preview'));
-  const previewEl = document.getElementById('cg-tab-panel-preview');
-
-  function setLoading(label, prog) {
-    _cgSt.progress=prog; _cgSt.phase=label; cgRenderActions();
-    if (previewEl) previewEl.innerHTML = `<div style="text-align:center;padding:50px 20px"><div style="width:32px;height:32px;border:2px solid rgba(212,175,55,.2);border-top-color:var(--cg-gold);border-radius:50%;animation:cg-spin .8s linear infinite;margin:0 auto 16px"></div><div style="font-size:.82rem;font-weight:600;color:rgba(212,175,55,.85)">${label}</div><div style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:6px">${item.topic.slice(0,60)}</div><div style="margin:14px auto 0;width:200px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden"><div style="height:100%;background:linear-gradient(90deg,var(--cg-gold),#FFB7C5);width:${prog}%;transition:width .6s;border-radius:4px"></div></div></div>`;
-  }
-
-  try {
-    // Phase 1: Scout
-    setLoading('Scout — SERP & KW Analizi', 12);
-    cgSetPhase('scout');
-    cgLog('Scout: Brave Search + KW analizi...','info');
-    _cgSt.intel = await cgScout(item, today);
-    cgLog(`Scout ✓ KW="${_cgSt.intel.primary_kw||'?'}" gap="${(_cgSt.intel.serp_gap||'').slice(0,40)}"`, 'ok');
-
-    // Phase 2: Brief
-    setLoading('Brief — İçerik Planı', 30);
-    cgSetPhase('brief');
-    cgLog('Brief: içerik planı...','info');
-    _cgSt.brief = await cgBriefCall(item, _cgSt.intel, today);
-    cgLog(`Brief ✓ "${(_cgSt.brief.h1||'?').slice(0,45)}"`, 'ok');
-
-    // Phase 3: Write
-    setLoading('Yazıyor — Sonnet 4.6', 50);
-    cgSetPhase('write');
-    cgLog('Blog yazılıyor (streaming)...','info');
-
-    const writeStart = Date.now();
-    let animProg = 50;
-    const animTimer = setInterval(() => {
-      animProg = Math.min(84, animProg + 0.4);
-      const elapsed = Math.floor((Date.now()-writeStart)/1000);
-      if (previewEl) {
-        const bar = previewEl.querySelector('div[style*="var(--cg-gold)"]');
-        const lbl = previewEl.querySelector('div[style*=".82rem"]');
-        if (bar) bar.style.width = animProg+'%';
-        if (lbl) lbl.textContent = `Yazılıyor... ${elapsed}s`;
-      }
-    }, 900);
-
-    const sysPrompt = cgBuildSystemPrompt(item, _cgSt.intel, _cgSt.brief);
-    const userMsg = `Şimdi yaz:\nKonu: ${item.topic}\nH1: ${_cgSt.brief.h1||item.topic}\nH2 planı: ${(_cgSt.brief.h2s||[]).join(' | ')}\nSSS: ${(_cgSt.brief.faq_questions||[]).join(' | ')}\nHedef: ${_cgSt.brief.target_wc||1600}+ kelime\nHook: ${_cgSt.brief.intro_hook||_cgSt.intel.hook||''}`;
-
-    let md = '';
-    try { md = await cgStreamWrite(sysPrompt, userMsg); }
-    finally { clearInterval(animTimer); _cgWriteAbort = null; }
-
-    if (md.length < 100) throw new Error('Yetersiz içerik ('+md.length+' karakter).');
-
-    // Phase 4: Editor
-    setLoading('Editor — SEO Optimizasyonu', 88);
-    cgSetPhase('editor');
-    cgLog('Editor pass: SEO kontrolü...','info');
-    md = await cgEditorPass(md, _cgSt.intel, _cgSt.brief);
-
-    // Post-process
-    await new Promise(r=>requestAnimationFrame(r));
-    if (previewEl) previewEl.innerHTML = simpleMarkdownToHTML(md);
-    await new Promise(r=>requestAnimationFrame(r));
-    _cgSt.scoreObj = cgScore(md, _cgSt.intel);
-    _cgSt.md = md;
-
-    // Save brain
-    await new Promise(r=>requestAnimationFrame(r));
-    const b = cgGetBrain();
-    b.topics_covered = b.topics_covered||[];
-    b.topics_covered.push({topic:item.topic, date:new Date().toDateString(), score:_cgSt.scoreObj.score});
-    b.keywords_used = (b.keywords_used||[]).concat(_cgSt.intel.secondary_kws||[]);
-    b.seo_scores    = (b.seo_scores||[]).concat([_cgSt.scoreObj.score]);
-    b.history       = b.history||[];
-    b.history.push({title:_cgSt.brief.h1||item.topic, topic:item.topic, md, seo:_cgSt.scoreObj.score, wc:_cgSt.scoreObj.wc, date:new Date().toISOString(), published:false});
-    if (b.history.length > 20) b.history = b.history.map((h,i)=>i<b.history.length-10?{title:h.title,topic:h.topic,seo:h.seo,wc:h.wc,date:h.date,published:h.published}:h).slice(-20);
-    const ds = new Date().toDateString();
-    b.daily_stats = b.daily_stats||{};
-    if (!b.daily_stats[ds]) b.daily_stats[ds]={blogs:0,words:0,published:0};
-    b.daily_stats[ds].blogs++; b.daily_stats[ds].words+=_cgSt.scoreObj.wc;
-    cgSaveBrain(b);
-
-    await new Promise(r=>setTimeout(r,0));
-    cgUpdateAgendaStage(idx,'done');
-    cgRenderSeoPanel(_cgSt.scoreObj);
-    cgUpdateStats();
-    cgClearPhases();
-
-    _cgSt.status='done'; _cgSt.progress=100;
-    cgSetPill('TAMAM');
-    cgRenderActions();
-    cgUpdateBulkBar();
-    cgLog(`✓ "${(_cgSt.brief.h1||item.topic).slice(0,50)}" — ${_cgSt.scoreObj.wc} kelime · SEO ${_cgSt.scoreObj.score}`,'ok');
-
-    if (_cgAutoPub) { setTimeout(cgPublish,500); return; }
-    if (_cgSt.writeQueue?.length>0) { const nxt=_cgSt.writeQueue.shift(); setTimeout(()=>cgWrite(nxt),1500); }
-
-  } catch(e) {
-    if (e.name==='AbortError') { _cgSt.status='idle'; cgSetPill('HAZIR'); cgUpdateAgendaStage(idx,'pending'); }
-    else { _cgSt.status='error'; _cgSt.error=e.message.slice(0,120); cgSetPill('HATA'); cgUpdateAgendaStage(idx,'pending'); cgLog('Hata: '+e.message.slice(0,80),'err'); }
-    _cgSt.writeQueue=[]; cgClearPhases(); cgRenderActions(); cgUpdateBulkBar();
-  } finally { _cgWriting=false; _cgWriteAbort=null; }
-}
-
-function cgAbortWrite() { if (_cgWriteAbort) _cgWriteAbort.abort(); _cgSt.writeQueue=[]; cgUpdateBulkBar(); cgLog('Durduruldu.','warn'); }
-function cgRetry() { if (_cgSt.idx>=0) cgWrite(_cgSt.idx); else cgNextPending(); }
-function cgNextPending() { const n=_cgAgenda.findIndex(a=>a.stage==='pending'); if(n>=0) cgWrite(n); else cgLog('Yazılacak konu kalmadı.','warn'); }
-
-function cgWriteAll() {
-  const pending = _cgAgenda.reduce((acc,a,i)=>{if(a.stage==='pending')acc.push(i);return acc;},[]);
-  if (!pending.length) { cgLog('Yazılacak konu yok.','warn'); return; }
-  _cgSt.writeQueue=pending.slice(1); _cgQueueTotal=pending.length;
-  cgUpdateBulkBar(); cgWrite(pending[0]);
-  cgLog(`${pending.length} konu sıraya alındı.`,'info');
-}
-
-function cgUpdateBulkBar() {
-  const bar=document.getElementById('cg-bulk-bar'), fill=document.getElementById('cg-bulk-fill'), lbl=document.getElementById('cg-bulk-label');
-  const remaining=_cgSt.writeQueue?.length||0;
-  if (!bar) return;
-  if (remaining>0||(_cgWriting&&_cgQueueTotal>1)) {
-    bar.style.display='';
-    const done=_cgQueueTotal-remaining-(_cgWriting?1:0);
-    const pct=_cgQueueTotal>0?Math.round(done/_cgQueueTotal*100):0;
-    if (fill) fill.style.width=pct+'%';
-    if (lbl) lbl.textContent=`Kuyrukta ${remaining} konu — ${done}/${_cgQueueTotal} tamamlandı`;
-  } else { bar.style.display='none'; _cgQueueTotal=0; }
-}
-
-// ── Render actions ─────────────────────────────────────────────────────────────
-const CG_PHASE_MSGS = {
-  'Hazırlanıyor':    ['✨', 'Hazırlanıyorum...', 'Birazdan başlıyorum.'],
-  'Scout — SERP & KW Analizi': ['🔍', 'Rakipleri inceliyorum...', 'SERP analizi + anahtar kelime araştırması yapıyorum.'],
-  'Brief — İçerik Planı':      ['📋', 'İçerik planı yapıyorum...', 'Başlıklar, SSS soruları ve strateji belirleniyor.'],
-  'Yazıyor — Sonnet 4.6':      ['✍️', 'Yazıyorum...', 'Sonnet 4.6 kalemi eline aldı, kelimeler akıyor.'],
-  'Editor — SEO Optimizasyonu':['🔎', 'Son rötuşları yapıyorum...', 'SEO puanı kontrol ediliyor, eksikler tamamlanıyor.'],
-};
-
+// ── Render actions ────────────────────────────────────────────────────────────
 function cgRenderActions() {
-  const card = document.getElementById('cg-agent-card');
-  const msgEl = document.getElementById('cg-agent-msg');
-  const subEl = document.getElementById('cg-agent-sub');
-  const metaEl = document.getElementById('cg-agent-meta');
-  const progWrap = document.getElementById('cg-ag-prog');
-  const progFill = document.getElementById('cg-ag-prog-fill');
-  const bEl = document.getElementById('cg-action-buttons');
-  const avEl = document.getElementById('cg-av-icon');
-  if (!msgEl || !bEl) return;
-  const st = _cgSt;
+  var sEl = document.getElementById('cg-action-status');
+  var bEl = document.getElementById('cg-action-buttons');
+  if (!sEl || !bEl) return;
 
-  const set = (icon, msg, sub, meta, prog, btns) => {
-    if (avEl)   avEl.textContent = icon;
-    if (msgEl)  msgEl.textContent = msg;
-    if (subEl)  subEl.textContent = sub;
-    if (metaEl) metaEl.innerHTML = meta||'';
-    if (progWrap) progWrap.style.display = prog!=null ? '' : 'none';
-    if (progFill && prog!=null) progFill.style.width = prog+'%';
-    if (bEl) bEl.innerHTML = btns||'';
-  };
+  var st = _cgSt;
 
-  if (card) card.classList.remove('writing','done','error','publishing');
+  if (st.status === 'idle') {
+    sEl.innerHTML = '<div style="font-size:.82rem;color:rgba(255,255,255,.4);padding:6px 0">Sol taraftaki listeden bir konu seç ve <strong style="color:rgba(212,175,55,.75)">Yaz</strong> butonuna tıkla &mdash; ya da tümünü sırayla yaz.</div>';
+    bEl.innerHTML = '';
 
-  if (st.status==='idle') {
-    set('✨','Bugün ne yazalım?','Bir konu seç, hemen işe koyulayım.','',null,'');
+  } else if (st.status === 'writing') {
+    var topic = st.item ? st.item.topic : '';
+    var kwLine = (st.intel && st.intel.primary_kw)
+      ? '<div style="font-size:.7rem;color:rgba(212,175,55,.65);margin-top:4px">KW: '
+        + [st.intel.primary_kw].concat((st.intel.secondary_kws||[]).slice(0,3)).join(' · ')
+        + '</div>' : '';
+    var h1Line = (st.brief && st.brief.h1)
+      ? '<div style="font-size:.7rem;color:rgba(255,255,255,.38);margin-top:3px">Başlık: ' + st.brief.h1.slice(0,60) + '</div>' : '';
+    var prog = st.progress || 10;
+    sEl.innerHTML =
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.55);margin-bottom:5px">' + (st.phase || 'Hazırlanıyor') + '</div>' +
+      '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + topic.slice(0,65) + '</div>' +
+      kwLine + h1Line +
+      '<div style="margin-top:10px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
+        '<div id="cg-prog-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:'+prog+'%;transition:width .6s"></div>' +
+      '</div>';
+    bEl.innerHTML = '<button class="cg-ctrl-btn" onclick="cgAbortWrite()" style="color:rgba(255,69,58,.75);border-color:rgba(255,69,58,.2)">Durdur</button>';
 
-  } else if (st.status==='writing') {
-    if (card) card.classList.add('writing');
-    const phInfo = CG_PHASE_MSGS[st.phase] || ['⚡', st.phase||'Çalışıyorum...', (st.item?.topic||'').slice(0,65)];
-    const kwMeta = st.intel?.primary_kw ? `KW: ${[st.intel.primary_kw,...(st.intel.secondary_kws||[]).slice(0,2)].join(' · ')}` : '';
-    const h1Meta = st.brief?.h1 ? st.brief.h1.slice(0,70) : '';
-    const metaLines = [kwMeta, h1Meta].filter(Boolean).join('<br>');
-    set(phInfo[0], phInfo[1], phInfo[2], metaLines, st.progress||5,
-      `<button class="cg-btn-secondary" onclick="cgAbortWrite()">&#x2715; Durdur</button>`);
-
-  } else if (st.status==='done') {
-    if (card) card.classList.add('done');
-    const seo = st.scoreObj?.score||'--', wc = st.scoreObj?.wc||0;
-    const seoCol = seo>=90?'var(--cg-green)':seo>=75?'var(--cg-warn)':'var(--cg-red)';
-    const title = st.brief?.h1||st.item?.topic||'';
-    set('✅','Bitti! Beğendin mi?', title.slice(0,70),
-      `${wc} kelime &nbsp;·&nbsp; <span style="color:${seoCol}">SEO ${seo}/100</span>`, 100,
+  } else if (st.status === 'done') {
+    var wc  = st.scoreObj ? st.scoreObj.wc    : 0;
+    var seo = st.scoreObj ? st.scoreObj.score : '--';
+    var title = (st.brief && st.brief.h1) ? st.brief.h1 : (st.item ? st.item.topic : '');
+    sEl.innerHTML =
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(52,199,89,.7);margin-bottom:5px">✓ TAMAMLANDI</div>' +
+      '<div style="font-size:.88rem;color:rgba(255,255,255,.88);font-weight:600;line-height:1.3">' + title.slice(0,65) + '</div>' +
+      '<div style="font-size:.72rem;color:rgba(255,255,255,.38);margin-top:4px">' + wc + ' kelime · SEO: ' + seo + '/100</div>';
+    bEl.innerHTML =
       (st.published
-        ? `<button class="cg-btn-primary" style="opacity:.55;cursor:default">&#x2713; Shopify'da Yayınlandı</button>`
-        : `<button class="cg-btn-primary" onclick="cgPublish()">&#x2713; Onayla ve Yayınla</button>`)
-      + `<button class="cg-btn-secondary" onclick="cgNextPending()">Sıradakini Yaz</button>`
-      + `<button class="cg-btn-ghost" onclick="cgTab('seo',document.getElementById('cg-tab-seo'))">SEO</button>`);
+        ? '<button class="cg-ctrl-btn" style="color:rgba(52,199,89,.75);border-color:rgba(52,199,89,.25);cursor:default">✓ Shopify’da Yayınlandı</button>'
+        : '<button class="cg-ctrl-btn primary" onclick="cgPublish()">✓ Onayla ve Yayınla</button>') +
+      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Sıradaki Konuyu Yaz</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgTab(\'seo\',document.getElementById(\'cg-tab-seo\'))" style="font-size:.65rem">SEO</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgTab(\'history\',document.getElementById(\'cg-tab-history\'))" style="font-size:.65rem">Geçmiş</button>';
 
-  } else if (st.status==='error') {
-    if (card) card.classList.add('error');
-    set('😓','Hay aksi, bir şeyler ters gitti.', (st.error||'Bilinmeyen hata').slice(0,100), '', null,
-      `<button class="cg-btn-primary" onclick="cgRetry()">Tekrar Dene</button>`
-      + `<button class="cg-btn-secondary" onclick="cgNextPending()">Konuyu Atla</button>`);
+  } else if (st.status === 'error') {
+    sEl.innerHTML =
+      '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,69,58,.75);margin-bottom:5px">⚠ HATA</div>' +
+      '<div style="font-size:.8rem;color:rgba(255,255,255,.6)">' + (st.error || 'Bilinmeyen hata') + '</div>';
+    bEl.innerHTML =
+      '<button class="cg-ctrl-btn primary" onclick="cgRetry()">Tekrar Dene</button>' +
+      '<button class="cg-ctrl-btn" onclick="cgNextPending()">Bu Konuyu Atla</button>';
 
-  } else if (st.status==='publishing') {
-    if (card) card.classList.add('writing');
-    set('📤', "Shopify'a gönderiyorum...", 'Blog yayına hazırlanıyor.', '', 95, '');
+  } else if (st.status === 'publishing') {
+    sEl.innerHTML = '<div style="font-size:.85rem;color:rgba(212,175,55,.8)">Shopify’a gönderiliyor...</div>';
+    bEl.innerHTML = '';
   }
 }
 
-// ── Agenda ─────────────────────────────────────────────────────────────────────
+// ── Agenda ────────────────────────────────────────────────────────────────────
 function cgBuildAgenda() {
-  const brain=cgGetBrain(), covered=(brain.topics_covered||[]).map(t=>t.topic);
-  _cgAgenda=[];
-  for (const cat of Object.keys(BLOG_TOPICS))
-    for (const t of BLOG_TOPICS[cat])
-      _cgAgenda.push({cat, topic:t.topic, done:covered.includes(t.topic), stage:covered.includes(t.topic)?'done':'pending'});
-  _cgAgendaFiltered=[..._cgAgenda];
-  cgRenderAgenda();
-}
-
-function cgFilterAgenda(q) {
-  const lq=(q||'').toLowerCase().trim();
-  _cgAgendaFiltered = lq ? _cgAgenda.filter(a=>a.topic.toLowerCase().includes(lq)||a.cat.toLowerCase().includes(lq)) : [..._cgAgenda];
+  var brain = cgGetBrain();
+  var covered = (brain.topics_covered || []).map(function(t) { return t.topic; });
+  _cgAgenda = [];
+  var keys = Object.keys(BLOG_TOPICS);
+  for (var ki = 0; ki < keys.length; ki++) {
+    var cat = keys[ki];
+    var topics = BLOG_TOPICS[cat];
+    for (var ti = 0; ti < topics.length; ti++) {
+      var t = topics[ti];
+      var done = covered.indexOf(t.topic) >= 0;
+      _cgAgenda.push({cat: cat, topic: t.topic, done: done, stage: done ? 'done' : 'pending'});
+    }
+  }
   cgRenderAgenda();
 }
 
 function cgRenderAgenda() {
-  const el=document.getElementById('cg-agenda-list'), cnt=document.getElementById('cg-agenda-count');
+  var el  = document.getElementById('cg-agenda-list');
+  var cnt = document.getElementById('cg-agenda-count');
   if (!el) return;
-  const pending=_cgAgenda.filter(a=>a.stage==='pending').length;
-  if (cnt) cnt.textContent=pending+' konu';
-  el.innerHTML = _cgAgendaFiltered.map(item => {
-    const realIdx=_cgAgenda.indexOf(item), running=item.stage==='running', done=item.stage==='done';
-    const act = done
-      ? `<span class="cg-topic-done">&#x2713;</span>`
-      : running
-        ? `<span class="cg-topic-run">&#x25CF;</span>`
-        : `<button class="cg-topic-btn" onclick="cgWrite(${realIdx})">Yaz</button>`;
-    return `<div class="cg-topic-item${done?' done':running?' running':''}"><span class="cg-topic-cat">${item.cat}</span><span class="cg-topic-name">${item.topic.slice(0,55)}</span><span class="cg-topic-act">${act}</span></div>`;
+  var pending = _cgAgenda.filter(function(a) { return a.stage === 'pending'; }).length;
+  if (cnt) cnt.textContent = pending + ' konu bekliyor';
+  el.innerHTML = _cgAgenda.map(function(item, idx) {
+    var running = item.stage === 'running';
+    var done    = item.stage === 'done';
+    var bg  = done    ? 'rgba(52,199,89,.03)'    : running ? 'rgba(212,175,55,.06)' : 'rgba(255,255,255,.025)';
+    var bdr = done    ? 'rgba(52,199,89,.12)'    : running ? 'rgba(212,175,55,.3)'  : 'rgba(255,255,255,.055)';
+    var badge = done    ? '<span style="font-size:.6rem;color:rgba(52,199,89,.6)">✓</span>'
+              : running ? '<span style="font-size:.6rem;color:#D4AF37">●</span>'
+              : '<button onclick="cgWrite('+idx+')" style="font-size:.58rem;padding:3px 9px;border-radius:6px;border:1px solid rgba(212,175,55,.3);background:rgba(212,175,55,.08);color:rgba(212,175,55,.85);cursor:pointer;white-space:nowrap">Yaz</button>';
+    return '<div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:'+bg+';border:1px solid '+bdr+';margin-bottom:5px'+(done?';opacity:.42':'')+'">'+
+      '<span style="font-size:.52rem;padding:2px 6px;border-radius:5px;background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.15);color:rgba(212,175,55,.6);flex-shrink:0">'+item.cat+'</span>'+
+      '<span style="flex:1;font-size:.74rem;color:rgba(255,255,255,.8);line-height:1.35">'+item.topic.slice(0,55)+'</span>'+
+      badge+
+      '</div>';
   }).join('');
 }
 
 function cgUpdateAgendaStage(idx, stage) {
-  if (_cgAgenda[idx]) { _cgAgenda[idx].stage=stage; cgRenderAgenda(); }
+  if (_cgAgenda[idx]) { _cgAgenda[idx].stage = stage; cgRenderAgenda(); }
 }
 
 // ── Stats ──────────────────────────────────────────────────────────────────────
 function cgUpdateStats() {
-  const b=cgGetBrain(), hist=b.history||[], scores=b.seo_scores||[];
-  const pub=hist.filter(h=>h.published).length;
-  const today=(b.topics_covered||[]).filter(t=>t.date===new Date().toDateString()).length;
-  const tw=hist.reduce((a,h)=>a+(h.wc||0),0);
-  const validScores=scores.map(Number).filter(n=>!isNaN(n)&&n>0);
-  const avgSeo=validScores.length?Math.round(validScores.reduce((a,b)=>a+b,0)/validScores.length):'--';
-  const s=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  s('cg-stat-done',hist.length); s('cg-stat-words',tw>=1000?(tw/1000).toFixed(1)+'K':tw);
-  s('cg-stat-seo',avgSeo); s('cg-stat-pub',pub); s('cg-stat-today',today);
-  const wv=document.getElementById('cg-w-ver'); if(wv) wv.textContent=CG_VERSION;
+  var brain  = cgGetBrain();
+  var hist   = brain.history || [];
+  var scores = brain.seo_scores || [];
+  var pub    = hist.filter(function(h) { return h.published; }).length;
+  var today  = (brain.topics_covered || []).filter(function(t) { return t.date === new Date().toDateString(); }).length;
+  var tw     = hist.reduce(function(a, h) { return a + (h.wc || 0); }, 0);
+  var avgSeo = scores.length ? Math.round(scores.reduce(function(a,b){return a+b;},0)/scores.length) : '--';
+  function s(id, v) { var e = document.getElementById(id); if (e) e.textContent = v; }
+  s('cg-stat-done',  hist.length);
+  s('cg-stat-words', tw >= 1000 ? (tw/1000).toFixed(1)+'K' : tw);
+  s('cg-stat-seo',   avgSeo);
+  s('cg-stat-pub',   pub);
+  s('cg-stat-today', today);
+  var wv = document.getElementById('cg-w-ver');
+  if (wv) wv.textContent = CG_VERSION;
   cgUpdateWidget(_cgSt.status);
 }
 
 // ── Tabs ───────────────────────────────────────────────────────────────────────
 function cgTab(tab, btn) {
-  ['preview','html','seo','history'].forEach(t=>{
-    const p=document.getElementById('cg-tab-panel-'+t), b=document.getElementById('cg-tab-'+t);
-    if(p) p.style.display=(t===tab)?'':'none';
-    if(b) b.classList.toggle('active',t===tab);
+  ['preview','html','seo','history'].forEach(function(t) {
+    var p = document.getElementById('cg-tab-panel-'+t);
+    var b = document.getElementById('cg-tab-'+t);
+    if (p) p.style.display = (t === tab) ? '' : 'none';
+    if (b) b.classList.toggle('active', t === tab);
   });
-  if (tab==='html'&&_cgSt.md) requestAnimationFrame(()=>{const ta=document.getElementById('cg-html-ta');if(ta)ta.value=enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));});
-  if (tab==='history') cgRenderHistory();
-  if (tab==='seo'&&_cgSt.scoreObj) cgRenderSeoPanel(_cgSt.scoreObj);
+  if (tab === 'html' && _cgSt.md) {
+    var ta = document.getElementById('cg-html-ta');
+    if (ta) {
+      // enrichBlogHTML geciktirilmiş çalıştırılıyor (heavy operation)
+      requestAnimationFrame(function(){
+        ta.value = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
+      });
+    }
+  }
+  if (tab === 'history') cgRenderHistory();
+  if (tab === 'seo' && _cgSt.scoreObj) cgRenderSeoPanel(_cgSt.scoreObj);
 }
 
 function cgCopyHTML() {
-  const ta=document.getElementById('cg-html-ta');
-  if(ta?.value) navigator.clipboard.writeText(ta.value).then(()=>cgLog('HTML kopyalandı.','ok'));
-}
-function cgDownloadHTML() {
-  const ta=document.getElementById('cg-html-ta');
-  if(!ta?.value) return;
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([ta.value],{type:'text/html'}));
-  a.download='cherryglow-blog.html'; a.click();
+  var ta = document.getElementById('cg-html-ta');
+  if (ta && ta.value) navigator.clipboard.writeText(ta.value).then(function() { cgLog('HTML kopyalandı.','ok'); });
 }
 
-// ── SEO panel ─────────────────────────────────────────────────────────────────
+function cgDownloadHTML() {
+  var ta = document.getElementById('cg-html-ta');
+  if (!ta || !ta.value) return;
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([ta.value], {type:'text/html'}));
+  a.download = 'cherryglow-blog.html';
+  a.click();
+}
+
+// ── SEO panel ──────────────────────────────────────────────────────────────────
 function cgRenderSeoPanel(sc) {
-  const ring=document.getElementById('cg-seo-ring'), num=document.getElementById('cg-seo-score-num');
-  const chks=document.getElementById('cg-seo-checks'), kwEl=document.getElementById('cg-kw-cloud'), serpEl=document.getElementById('cg-serp-snippets');
-  if (ring) ring.style.strokeDashoffset=(251-251*sc.score/100);
-  if (num)  { num.textContent=sc.score; num.style.color=sc.score>=90?'var(--cg-green)':sc.score>=75?'var(--cg-warn)':'var(--cg-red)'; }
-  if (chks) chks.innerHTML=(sc.checks||[]).map(c=>`<div class="cg-seo-check ${c.pass?'pass':'fail'}">${c.label}</div>`).join('');
-  if (kwEl&&_cgSt.intel) {
-    const kws=[_cgSt.intel.primary_kw,...(_cgSt.intel.secondary_kws||[]),...(_cgSt.intel.lsi_kws||[])].filter(Boolean);
-    kwEl.innerHTML=kws.map(k=>`<span class="cg-kw-tag">${k}</span>`).join('');
-  }
-  if (serpEl&&_cgSt.serp?.length) {
-    serpEl.innerHTML='<div style="font-size:.6rem;color:var(--cg-t3);letter-spacing:.08em;margin-bottom:6px">SERP SONUÇLARI</div>'+
-      _cgSt.serp.slice(0,5).map(r=>`<div class="cg-serp-item"><div class="cg-serp-title">${r.title}</div><div class="cg-serp-url">${r.url.slice(0,60)}</div><div class="cg-serp-desc">${(r.description||'').slice(0,100)}</div></div>`).join('');
+  var ring = document.getElementById('cg-seo-ring');
+  var num  = document.getElementById('cg-seo-score-num');
+  var chks = document.getElementById('cg-seo-checks');
+  var kwEl = document.getElementById('cg-kw-cloud');
+  if (ring) ring.style.strokeDashoffset = (251 - 251 * sc.score / 100);
+  if (num)  num.textContent = sc.score;
+  if (chks) chks.innerHTML = (sc.checks || []).map(function(c) {
+    return '<div class="cg-seo-check '+(c.pass?'pass':'fail')+'">'+c.label+'</div>';
+  }).join('');
+  if (kwEl && _cgSt.intel) {
+    var kws = [_cgSt.intel.primary_kw].concat(_cgSt.intel.secondary_kws || []).filter(Boolean);
+    kwEl.innerHTML = kws.map(function(k) { return '<span class="cg-kw-tag">'+k+'</span>'; }).join('');
   }
 }
 
 // ── History ────────────────────────────────────────────────────────────────────
 function cgRenderHistory() {
-  const el=document.getElementById('cg-history-list');
+  var el = document.getElementById('cg-history-list');
   if (!el) return;
-  const hist=(cgGetBrain().history||[]).slice().reverse();
-  if (!hist.length) { el.innerHTML='<div style="text-align:center;padding:30px;opacity:.2;font-size:.8rem">Henüz blog yazılmadı</div>'; return; }
-  el.innerHTML=hist.map((item,i)=>{
-    const realIdx=hist.length-1-i, d=item.date?new Date(item.date).toLocaleDateString('tr-TR'):'';
-    const col=item.seo>=90?'rgba(52,199,89,.8)':item.seo>=75?'rgba(255,159,10,.8)':'rgba(255,69,58,.65)';
-    return `<div class="cg-hist-item" onclick="cgLoadHistory(${realIdx})"><div class="cg-hist-title">${(item.title||item.topic||'').slice(0,70)}</div><div class="cg-hist-meta"><span>${d}</span><span>${item.wc||0} kelime</span><span class="cg-hist-seo" style="color:${col};background:rgba(0,0,0,.2)">SEO ${item.seo||'--'}</span>${item.published?'<span class="cg-hist-pub">✓ Yayınlandı</span>':''}</div></div>`;
+  var hist = (cgGetBrain().history || []).slice().reverse();
+  if (!hist.length) {
+    el.innerHTML = '<div style="text-align:center;padding:30px;opacity:.25;font-size:.8rem">Henüz blog yazılmadı</div>';
+    return;
+  }
+  el.innerHTML = hist.map(function(item, i) {
+    var d   = item.date ? new Date(item.date).toLocaleDateString('tr-TR') : '';
+    var col = item.seo >= 85 ? 'rgba(52,199,89,.75)' : item.seo >= 70 ? 'rgba(212,175,55,.75)' : 'rgba(255,69,58,.6)';
+    var realIdx = hist.length - 1 - i;
+    return '<div class="cg-hist-item" onclick="cgLoadHistory('+realIdx+')">' +
+      '<div class="cg-hist-title">'+(item.title||item.topic||'').slice(0,70)+'</div>' +
+      '<div class="cg-hist-meta">' +
+        '<span>'+d+'</span><span>'+(item.wc||0)+' kelime</span>' +
+        '<span class="cg-hist-seo" style="color:'+col+';background:rgba(0,0,0,.2)">SEO '+(item.seo||'--')+'</span>' +
+        (item.published ? '<span class="cg-hist-pub">✓ Yayınlandı</span>' : '') +
+      '</div></div>';
   }).join('');
 }
 
 function cgLoadHistory(idx) {
-  const item=(cgGetBrain().history||[])[idx]; if (!item) return;
-  _cgSt.md=item.md||''; _cgSt.brief={h1:item.title}; _cgSt.scoreObj={score:item.seo||0,wc:item.wc||0,checks:[]};
-  _cgSt.published=!!item.published; _cgSt.status='done';
-  const p=document.getElementById('cg-tab-panel-preview');
-  if (p) p.innerHTML=_cgSt.md?simpleMarkdownToHTML(_cgSt.md):'<div style="opacity:.3;padding:30px;text-align:center">Blog içeriği bulunamadı</div>';
-  cgRenderSeoPanel(_cgSt.scoreObj); cgRenderActions();
-  cgTab('preview',document.getElementById('cg-tab-preview'));
-  cgLog('Geçmişten yüklendi: '+(item.title||'').slice(0,40),'info');
+  var item = (cgGetBrain().history || [])[idx];
+  if (!item) return;
+  _cgSt.md        = item.md || '';
+  _cgSt.brief     = {h1: item.title};
+  _cgSt.scoreObj  = {score: item.seo || 0, wc: item.wc || 0, checks: []};
+  _cgSt.published = !!item.published;
+  _cgSt.status    = 'done';
+  var p = document.getElementById('cg-tab-panel-preview');
+  if (p) p.innerHTML = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
+  cgRenderSeoPanel(_cgSt.scoreObj);
+  cgRenderActions();
+  cgTab('preview', document.getElementById('cg-tab-preview'));
+  cgLog('Geçmişten yüklendi: '+(item.title||'').slice(0,40), 'info');
+}
+
+// ── API helpers ────────────────────────────────────────────────────────────────
+async function cgFetchJSON(prompt, sys, model, timeout) {
+  var ctrl = new AbortController();
+  var tid  = setTimeout(function() { ctrl.abort(); }, timeout || 20000);
+  try {
+    var resp = await fetch('/api/chat', {
+      signal: ctrl.signal,
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        model: model || 'claude-haiku-4-5-20251001',
+        max_tokens: 512,
+        messages: [{role:'user', content: prompt}],
+        system: sys || 'JSON olarak yanıtla.'
+      })
+    });
+    clearTimeout(tid);
+    var data = await resp.json();
+    var txt  = (data.content && data.content[0]) ? data.content[0].text : '{}';
+    var m    = txt.match(/\{[\s\S]*\}/);
+    return m ? JSON.parse(m[0]) : {};
+  } catch(e) { clearTimeout(tid); return {}; }
+}
+
+async function cgScout(item, today) {
+  return cgFetchJSON(
+    'Tarih: '+today+'\nKonu: '+item.topic+'\nKategori: '+item.cat+'\n\n'+
+    'JSON formatında yanıtla (başka açıklama yok):\n'+
+    '{"primary_kw":"...","secondary_kws":["...","...","..."],"intent":"bilgilendirme|ticari|karma","hook":"ilgi çekici giriş cümlesi","competitor_gap":"rakiplerin kaçırdığı açı","trending_angle":"güncel ilgi alanı"}',
+    'SEO uzmanısın. Sadece JSON olarak yanıtla.', 'claude-haiku-4-5-20251001', 20000
+  );
+}
+
+async function cgBriefCall(item, intel, today) {
+  return cgFetchJSON(
+    'Konu: '+item.topic+'\nAna KW: '+(intel.primary_kw||'')+'\n\n'+
+    'JSON formatında içerik planı:\n'+
+    '{"h1":"...","h2s":["...","...","...","..."],"target_wc":1100,"intro_hook":"..."}',
+    'İçerik planlamacısın. Sadece JSON olarak yanıtla.', 'claude-haiku-4-5-20251001', 20000
+  );
+}
+
+function cgBuildSystemPrompt(item, intel, brief, today, brain) {
+  var covered = (brain.topics_covered||[]).map(function(t){return t.topic;}).slice(-10).join(', ');
+  var brand   = brain.brand || (BLOG_SEO.brand_context || {});
+  return 'Sen Retrocameraland için TR dilinde SEO odaklı blog yazarı olan CherryGlow yapay zeka ajanısın.\n\n'+
+    'MARKA: '+(brand.name||'Retrocameraland')+' — '+(brand.description||'analog kamera satışı')+'\n'+
+    'Hedef kitle: '+(brand.target||'analog fotoğraf severler')+'\n\n'+
+    'KURALLAR:\n'+
+    '- Tam Türkçe yaz, sadece blogu yaz (başka açıklama ekleme)\n'+
+    '- H1 başlık: tam olarak "# '+(brief.h1||item.topic)+'"\n'+
+    '- H2 bölümleri: '+((brief.h2s||[]).join(', '))+'\n'+
+    '- Hedef kelime sayısı: '+(brief.target_wc||1100)+'+\n'+
+    '- Ana KW "'+(intel.primary_kw||'')+'" doğal kullan (3-6x)\n'+
+    '- Giriş hook: "'+(brief.intro_hook||intel.hook||'')+'" ile başla\n'+
+    '- Retrocameraland\'a bağlantılı CTA ekle\n'+
+    '- Daha önce yazılanlar (tekrarlama): '+(covered||'yok');
+}
+
+function cgScore(md, item, intel) {
+  var wc   = md.split(/\s+/).length;
+  var h1c  = (md.match(/^# /mg)||[]).length;
+  var h2c  = (md.match(/^## /mg)||[]).length;
+  var kw   = (intel&&intel.primary_kw) ? intel.primary_kw.toLowerCase() : '';
+  var kwd  = kw ? (md.toLowerCase().split(kw).length - 1) : 0;
+  var cta  = /retrocameraland|koleksiyonu|incele|keşfet|satın al/i.test(md);
+  var long = md.split(/\n\n/).filter(function(p){return p.split(/\s+/).length>120;}).length;
+  var checks = [
+    {key:'h1',  pass:h1c===1,   label:'H1 başlık: '+(h1c===1?'OK':'Eksik')},
+    {key:'h2',  pass:h2c>=3,    label:'H2 bölümler ('+h2c+'/3+): '+(h2c>=3?'OK':'Az')},
+    {key:'wc',  pass:wc>=800,   label:'Kelime ('+wc+'/800+): '+(wc>=800?'OK':'Az')},
+    {key:'kw',  pass:kwd>=3,    label:'KW yoğunluğu ('+kwd+'x): '+(kwd>=3?'OK':'Az')},
+    {key:'cta', pass:cta,       label:'CTA/Marka: '+(cta?'Var':'Yok')},
+    {key:'par', pass:long===0,  label:'Paragraf uzunluğu: '+(long===0?'OK':long+' uzun')}
+  ];
+  var score = 0;
+  if (h1c===1) score += 18;
+  if (h2c>=3)  score += 15; else if (h2c>=2) score += 8;
+  if (wc>=1200) score += 22; else if (wc>=800) score += 16; else if (wc>=500) score += 8;
+  if (kwd>=3&&kwd<=8) score += 18; else if (kwd>=1) score += 9;
+  if (cta)  score += 14;
+  if (long===0) score += 8; else score += 3;
+  return {score: Math.min(100,score), checks: checks, wc: wc};
+}
+
+// ── Main write pipeline ────────────────────────────────────────────────────────
+async function cgWrite(idx) {
+  var item = _cgAgenda[idx];
+  if (!item) { cgLog('Konu bulunamadı.','err'); return; }
+  if (_cgWriting) { cgLog('Zaten yazılıyor, bekle.','warn'); return; }
+
+  _cgWriting   = true;
+  _cgSt.status = 'writing';
+  _cgSt.idx    = idx;
+  _cgSt.item   = item;
+  _cgSt.intel  = null;
+  _cgSt.brief  = null;
+  _cgSt.md     = '';
+  _cgSt.scoreObj  = null;
+  _cgSt.error     = '';
+  _cgSt.published = false;
+  _cgSt.phase     = 'Hazırlanıyor';
+  _cgSt.progress  = 10;
+
+  cgUpdateAgendaStage(idx, 'running');
+  cgSetPill('YAZIYOR', 'rgba(212,175,55,.25)');
+  cgRenderActions();
+  cgLog('Başlıyor: '+item.topic.slice(0,40), 'info');
+
+  var today = new Date().toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  var brain = cgGetBrain();
+
+  try {
+    // ── 1. Scout ──────────────────────────────────────────────────────────────
+    _cgSt.phase = 'Scout — KW Analizi';
+    _cgSt.progress = 18;
+    cgRenderActions();
+    cgLog('Scout: anahtar kelime analizi...','info');
+
+    _cgSt.intel = await cgScout(item, today);
+    cgLog('Scout OK: KW="'+(_cgSt.intel.primary_kw||'?')+'"','ok');
+    _cgSt.progress = 35;
+    cgRenderActions();
+
+    // ── 2. Brief ─────────────────────────────────────────────────────────────
+    _cgSt.phase = 'Brief — İçerik Planı';
+    cgRenderActions();
+    cgLog('Brief: içerik yapısı oluşturuluyor...','info');
+
+    _cgSt.brief = await cgBriefCall(item, _cgSt.intel, today);
+    cgLog('Brief OK: "'+(_cgSt.brief.h1||'?').slice(0,40)+'"','ok');
+    _cgSt.progress = 50;
+    cgRenderActions();
+
+    // ── 3. Yaz (streaming + macrotask yield — hem timeout yok hem donma yok) ───
+    _cgSt.phase = 'Yazıyor';
+    cgRenderActions();
+    cgLog('Blog yazılıyor...','info');
+
+    var sysPrompt = cgBuildSystemPrompt(item, _cgSt.intel, _cgSt.brief, today, brain);
+    var userMsg   = 'Şimdi yaz:\nKonu: '+item.topic+'\nH1: '+(_cgSt.brief.h1||item.topic)+
+      '\nH2 plan: '+((_cgSt.brief.h2s||[]).join(', '))+
+      '\nHedef kelime: '+(_cgSt.brief.target_wc||1100)+'+\nHook: '+(_cgSt.brief.intro_hook||_cgSt.intel.hook||'');
+
+    // Yükleme ekranı
+    cgTab('preview', document.getElementById('cg-tab-preview'));
+    var previewEl = document.getElementById('cg-tab-panel-preview');
+    if (previewEl) previewEl.innerHTML =
+      '<div style="text-align:center;padding:60px 0 24px" id="cgsp-loading">' +
+        '<div style="font-size:2.2rem;margin-bottom:14px">&#x270D;&#xFE0F;</div>' +
+        '<div id="cgsp-elapsed" style="font-size:1rem;font-weight:600;color:rgba(212,175,55,.85)">Yazılıyor...</div>' +
+        '<div style="font-size:.7rem;color:rgba(255,255,255,.28);margin-top:6px">Blog hazırlanıyor, lütfen bekleyin...</div>' +
+        '<div style="margin:16px auto 0;width:220px;height:3px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden">' +
+          '<div id="cgsp-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:5%"></div>' +
+        '</div>' +
+      '</div>';
+
+    // Bağımsız animasyon — API döngüsüyle hiç ilişkisi yok
+    var _writeStart  = Date.now();
+    var _progVal     = 5;
+    var _barEl       = document.getElementById('cgsp-bar');
+    var _elapsedEl   = document.getElementById('cgsp-elapsed');
+    var _animTimer   = setInterval(function() {
+      _progVal = Math.min(93, _progVal + 0.8);
+      var elapsed = Math.floor((Date.now() - _writeStart) / 1000);
+      if (_barEl)     _barEl.style.width = _progVal + '%';
+      if (_elapsedEl) _elapsedEl.textContent = 'Yazılıyor... ' + elapsed + 's';
+    }, 600);
+
+    var ctrl = new AbortController();
+    _cgWriteAbort = ctrl;
+
+    var md = '';
+    try {
+      var resp = await fetch('/api/chat', {
+        signal: ctrl.signal,
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          model:      'claude-sonnet-4-6',
+          max_tokens: 2000,
+          stream:     true,   // Streaming: Edge Function 25s içinde veri göndermeye başlar
+          system:     sysPrompt,
+          messages:   [{role:'user', content: userMsg}]
+        })
+      });
+
+      if (!resp.ok) {
+        var et = await resp.text().catch(function(){ return 'unknown'; });
+        throw new Error('API '+resp.status+': '+et.slice(0,120));
+      }
+
+      var reader    = resp.body.getReader();
+      var decoder   = new TextDecoder();
+      var buf       = '';
+      var lastYield = Date.now();
+
+      // Stream okuma döngüsü — DOM güncellemesi YOK, sadece metin biriktiriyoruz
+      outer: while (true) {
+        var chunk;
+        try {
+          chunk = await reader.read();
+        } catch (readErr) {
+          if (readErr.name === 'AbortError') { cgLog('Durduruldu.','warn'); break; }
+          throw readErr;
+        }
+        if (chunk.done) break;
+
+        buf += decoder.decode(chunk.value, {stream: true});
+        var lines = buf.split('\n');
+        buf = lines.pop();
+
+        for (var li = 0; li < lines.length; li++) {
+          var ln = lines[li];
+          if (!ln.startsWith('data:')) continue;
+          var raw = ln.slice(5).trim();
+          if (raw === '[DONE]') break outer;
+          try {
+            var evt = JSON.parse(raw);
+            if (evt.type === 'message_stop') break outer;
+            if (evt.type === 'content_block_delta' &&
+                evt.delta && evt.delta.type === 'text_delta') {
+              md += evt.delta.text;
+            }
+          } catch(e2) {}
+        }
+
+        // Microtask storm önlemi: her 16ms'de setTimeout ile macrotask'a geç.
+        // Bu sayede browser event loop nefes alır — "Sayfa Yanıt Vermiyor" imkansız.
+        var _now = Date.now();
+        if (_now - lastYield >= 16) {
+          lastYield = _now;
+          await new Promise(function(r) { setTimeout(r, 0); });
+        }
+      }
+
+    } finally {
+      clearInterval(_animTimer);
+      _cgWriteAbort = null;
+    }
+
+    if (md.length < 80) throw new Error('Yetersiz içerik ('+md.length+' karakter). Tekrar dene.');
+
+    // ── 4. Post-process: her ağır işlem ayrı frame'de ──────────────────────────
+    // Frame 1: preview render (sadece simpleMarkdownToHTML, enrichBlogHTML değil)
+    await new Promise(function(r){ requestAnimationFrame(r); });
+    if (previewEl) previewEl.innerHTML = simpleMarkdownToHTML(md);
+
+    // Frame 2: SEO skoru hesapla
+    await new Promise(function(r){ requestAnimationFrame(r); });
+    _cgSt.scoreObj = cgScore(md, item, _cgSt.intel);
+
+    // Frame 3: brain kaydet
+    await new Promise(function(r){ requestAnimationFrame(r); });
+    var b = cgGetBrain();
+    b.topics_covered = b.topics_covered || [];
+    b.topics_covered.push({topic:item.topic, date:new Date().toDateString(), score:_cgSt.scoreObj.score});
+    b.keywords_used  = (b.keywords_used||[]).concat(_cgSt.intel.secondary_kws||[]);
+    b.seo_scores     = (b.seo_scores||[]).concat([_cgSt.scoreObj.score]);
+    b.history        = b.history || [];
+    b.history.push({
+      title: _cgSt.brief.h1 || item.topic,
+      topic: item.topic,
+      md:    md,
+      seo:   _cgSt.scoreObj.score,
+      wc:    _cgSt.scoreObj.wc,
+      date:  new Date().toISOString(),
+      published: false
+    });
+    // history büyüklüğünü sınırla — JSON.stringify yavaşlamasın
+    if (b.history.length > 20) {
+      // Eski kayıtlardan markdown'ı sil, sadece metadata sakla
+      b.history = b.history.map(function(h, i) {
+        if (i < b.history.length - 10) {
+          return {title:h.title, topic:h.topic, seo:h.seo, wc:h.wc, date:h.date, published:h.published};
+        }
+        return h;
+      }).slice(-20);
+    }
+    if (!b.brand && BLOG_SEO.brand_context) b.brand = BLOG_SEO.brand_context;
+    var ds = new Date().toDateString();
+    b.daily_stats = b.daily_stats || {};
+    if (!b.daily_stats[ds]) b.daily_stats[ds] = {blogs:0, words:0, published:0};
+    b.daily_stats[ds].blogs++;
+    b.daily_stats[ds].words += _cgSt.scoreObj.wc;
+    cgSaveBrain(b);
+
+    await new Promise(function(r){setTimeout(r,0);});
+    cgUpdateAgendaStage(idx, 'done');
+    cgRenderSeoPanel(_cgSt.scoreObj);
+    cgUpdateStats();
+
+    _cgSt.status   = 'done';
+    _cgSt.progress = 100;
+    cgSetPill('TAMAM', 'rgba(52,199,89,.25)');
+    cgRenderActions();
+    cgLog('✓ Tamamlandı! "'+(_cgSt.brief.h1||item.topic).slice(0,40)+'" — '+_cgSt.scoreObj.wc+' kelime, SEO '+_cgSt.scoreObj.score,'ok');
+
+    if (_cgAutoPub) {
+      cgLog('Oto-yayın aktif, Shopify\'a gönderiliyor...','info');
+      setTimeout(cgPublish, 500);
+      return;
+    }
+
+    // Next in queue (write all)
+    if (_cgSt.writeQueue && _cgSt.writeQueue.length > 0) {
+      var nextIdx = _cgSt.writeQueue.shift();
+      setTimeout(function(){ cgWrite(nextIdx); }, 1500);
+    }
+
+  } catch(e) {
+    if (e.name === 'AbortError') {
+      _cgSt.status = 'idle';
+      cgSetPill('HAZIR', '');
+      cgUpdateAgendaStage(idx, 'pending');
+    } else {
+      _cgSt.status = 'error';
+      _cgSt.error  = e.message.slice(0,120);
+      cgSetPill('HATA', 'rgba(255,69,58,.2)');
+      cgUpdateAgendaStage(idx, 'pending');
+      cgLog('Hata: '+e.message.slice(0,80),'err');
+    }
+    _cgSt.writeQueue = [];
+    cgRenderActions();
+  } finally {
+    _cgWriting    = false;
+    _cgWriteAbort = null;
+  }
+}
+
+function cgAbortWrite() {
+  if (_cgWriteAbort) _cgWriteAbort.abort();
+  _cgSt.writeQueue = [];
+  cgLog('Durdurma isteği gönderildi.','warn');
+}
+
+function cgRetry() {
+  if (_cgSt.idx >= 0) cgWrite(_cgSt.idx);
+  else cgNextPending();
+}
+
+function cgNextPending() {
+  var next = _cgAgenda.findIndex(function(a){ return a.stage === 'pending'; });
+  if (next >= 0) cgWrite(next);
+  else cgLog('Yazılacak konu kalmadı.','warn');
+}
+
+function cgWriteAll() {
+  var pending = [];
+  _cgAgenda.forEach(function(a,i){ if (a.stage==='pending') pending.push(i); });
+  if (!pending.length) { cgLog('Yazılacak konu yok.','warn'); return; }
+  _cgSt.writeQueue = pending.slice(1);
+  cgWrite(pending[0]);
+  cgLog((pending.length)+' konu sıraya alındı.','info');
 }
 
 // ── Publish ────────────────────────────────────────────────────────────────────
 async function cgPublish() {
   if (!_cgSt.md) { cgLog('Yayınlanacak blog yok.','warn'); return; }
-  const prev=_cgSt.status; _cgSt.status='publishing'; cgSetPill('YAYINLANIYOR'); cgRenderActions();
-  cgLog("Shopify'a gönderiliyor...",'info');
-  const pubHtml=enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
-  const title=_cgSt.brief?.h1||_cgSt.item?.topic||'CherryGlow Blog';
+  var prevStatus  = _cgSt.status;
+  _cgSt.status    = 'publishing';
+  cgSetPill('YAYINLANIYOR','rgba(90,200,250,.25)');
+  cgRenderActions();
+  cgLog('Shopify\'a gönderiliyor...','info');
+
+  // enrichBlogHTML senkron ama yavaş değil — async wrapper ile call
+  var _pubHtml = enrichBlogHTML(simpleMarkdownToHTML(_cgSt.md));
+  var title = (_cgSt.brief&&_cgSt.brief.h1) ? _cgSt.brief.h1 : (_cgSt.item ? _cgSt.item.topic : 'CherryGlow Blog');
+
   try {
-    const resp=await fetch('/api/shopify-publish',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title,body_html:pubHtml,published:true})});
-    const data=await resp.json();
-    if (data.article?.id) {
-      _cgSt.published=true; _cgSt.status='done'; cgSetPill('YAYINLANDI');
-      cgLog("✓ Shopify'da yayınlandı! ID: "+data.article.id,'ok');
-      const b=cgGetBrain();
-      if (b.history?.length) for(let i=b.history.length-1;i>=0;i--) { if(b.history[i].topic===_cgSt.item?.topic){b.history[i].published=true;b.history[i].shopify_id=data.article.id;break;} }
-      cgSaveBrain(b); cgUpdateStats();
-      if (_cgSt.writeQueue?.length>0) { const nxt=_cgSt.writeQueue.shift(); setTimeout(()=>cgWrite(nxt),1500); return; }
-    } else throw new Error(data.error||JSON.stringify(data).slice(0,80));
-  } catch(e) { _cgSt.status=prev==='done'?'done':'error'; _cgSt.error='Yayınlama: '+e.message.slice(0,80); cgSetPill('HATA'); cgLog('Yayınlama hatası: '+e.message.slice(0,80),'err'); }
+    var resp = await fetch('/api/shopify-publish', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({title:title, body_html:_pubHtml, published:true})
+    });
+    var data = await resp.json();
+    if (data.article && data.article.id) {
+      _cgSt.published = true;
+      _cgSt.status    = 'done';
+      cgSetPill('YAYINLANDI','rgba(52,199,89,.25)');
+      cgLog('✓ Shopify\'da yayınlandı! ID: '+data.article.id,'ok');
+      // update brain history
+      var b = cgGetBrain();
+      if (b.history && b.history.length) {
+        for (var i = b.history.length-1; i >= 0; i--) {
+          if (b.history[i].topic === (_cgSt.item ? _cgSt.item.topic : null)) {
+            b.history[i].published  = true;
+            b.history[i].shopify_id = data.article.id;
+            break;
+          }
+        }
+        cgSaveBrain(b);
+      }
+      cgUpdateStats();
+      // continue queue if write-all mode
+      if (_cgSt.writeQueue && _cgSt.writeQueue.length > 0) {
+        var nextIdx = _cgSt.writeQueue.shift();
+        setTimeout(function(){ cgWrite(nextIdx); }, 1500);
+        return;
+      }
+    } else {
+      throw new Error(data.error || JSON.stringify(data).slice(0,80));
+    }
+  } catch(e) {
+    _cgSt.status = prevStatus === 'done' ? 'done' : 'error';
+    _cgSt.error  = 'Yayınlama hatası: '+e.message.slice(0,80);
+    cgSetPill('HATA','rgba(255,69,58,.2)');
+    cgLog('Yayınlama hatası: '+e.message.slice(0,80),'err');
+  }
   cgRenderActions();
 }
 
-// ── Helpers ────────────────────────────────────────────────────────────────────
+// ── Reset / helpers ────────────────────────────────────────────────────────────
 function cgResetDone() {
   if (!confirm('Tamamlanan konuları sıfırlamak istiyor musunuz?')) return;
-  const b=cgGetBrain(); b.topics_covered=[]; cgSaveBrain(b); cgBuildAgenda(); cgLog('Sıfırlandı.','warn');
+  var b = cgGetBrain();
+  b.topics_covered = [];
+  cgSaveBrain(b);
+  cgBuildAgenda();
+  cgLog('Tamamlanan konular sıfırlandı.','warn');
 }
-function cgToggleAutoPub(checked) { _cgAutoPub=checked; cgLog('Oto-yayın: '+(checked?'AÇIK':'KAPALI'),'info'); }
 
-// ── Widget ────────────────────────────────────────────────────────────────────
+function cgToggleAutoPub(checked) {
+  _cgAutoPub = checked;
+  cgLog('Oto-yayın: '+(checked?'AÇIK':'KAPALI'),'info');
+}
+
+// ── Widget (overview sidebar) ──────────────────────────────────────────────────
 function cgUpdateWidget(state) {
-  const dot=document.getElementById('cw-dot'), txt=document.getElementById('cw-state-text'), sub=document.getElementById('cw-state-sub');
-  const cols={idle:'rgba(52,199,89,.7)',writing:'rgba(212,175,55,.9)',done:'rgba(52,199,89,.9)',error:'rgba(255,69,58,.7)',publishing:'rgba(90,200,250,.7)'};
-  const lbls={idle:'Bekliyor',writing:'Blog yazıyor...',done:'Tamamlandı!',error:'Hata oluştu',publishing:'Yayınlanıyor...'};
-  const subs={idle:'Blog yazmaya hazır',writing:'4 aşamalı pipeline aktif',done:'Blog tamamlandı',error:'Bir sorun oluştu',publishing:"Shopify'a gönderiliyor"};
-  const col=cols[state]||'rgba(150,150,150,.5)';
-  if (dot) { dot.style.background=col; dot.style.boxShadow='0 0 8px '+col; }
-  if (txt) txt.textContent=lbls[state]||state;
-  if (sub) sub.textContent=subs[state]||'';
-  document.querySelectorAll('.cw-wb').forEach(b=>b.classList.toggle('active',state==='writing'||state==='publishing'));
+  var dot = document.getElementById('cw-state-dot');
+  var txt = document.getElementById('cw-state-text');
+  var sub = document.getElementById('cw-state-sub');
+  var cols  = {idle:'rgba(52,199,89,.7)', writing:'rgba(212,175,55,.8)', done:'rgba(52,199,89,.9)', error:'rgba(255,69,58,.7)', publishing:'rgba(90,200,250,.7)'};
+  var lbls  = {idle:'Bekliyor', writing:'Blog yazıyor...', done:'Tamamlandı!', error:'Hata oluştu', publishing:'Yayınlanıyor...'};
+  var subs  = {idle:'Blog yazmaya hazır', writing:'Yapay zeka yazıyor', done:'Blog tamamlandı', error:'Bir sorun oluştu', publishing:'Shopify\'a gönderiliyor'};
+  var col = cols[state] || 'rgba(150,150,150,.5)';
+  if (dot) { dot.style.background = col; dot.style.boxShadow = '0 0 8px '+col; }
+  if (txt) txt.textContent = lbls[state] || state;
+  if (sub) sub.textContent = subs[state] || '';
+  document.querySelectorAll('.cw-wb').forEach(function(b){
+    b.classList.toggle('active', state==='writing'||state==='publishing');
+  });
 }
 
-function cgInitWidget() { const wv=document.getElementById('cg-w-ver'); if(wv) wv.textContent=CG_VERSION; cgUpdateWidget('idle'); }
-function cgWidgetQuickWrite() { navigate('cherry',document.querySelector('[data-page=cherry]')); setTimeout(cgNextPending,400); }
+function cgInitWidget() {
+  var wv = document.getElementById('cg-w-ver');
+  if (wv) wv.textContent = CG_VERSION;
+  cgUpdateWidget('idle');
+}
+
+function cgWidgetQuickWrite() {
+  navigate('cherry', document.querySelector('[data-page=cherry]'));
+  setTimeout(cgNextPending, 400);
+}
 
 // ── Page init ──────────────────────────────────────────────────────────────────
 function renderCherryPage() {
-  const verEl=document.getElementById('cg-version'); if(verEl) verEl.textContent=CG_VERSION;
-  cgBuildAgenda(); cgUpdateStats(); cgRenderActions();
+  var verEl = document.getElementById('cg-version');
+  if (verEl) verEl.textContent = CG_VERSION;
+  cgBuildAgenda();
+  cgUpdateStats();
+  cgRenderActions();
   cgLog('CherryGlow '+CG_VERSION+' hazır.','ok');
 }
 
