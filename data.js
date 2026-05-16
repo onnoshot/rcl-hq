@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-16T04:14:06",
+  "updated_at": "2026-05-16T15:53:03",
   "period_30d": {
-    "revenue": 108160,
-    "orders": 9,
-    "aov": 12018
+    "revenue": 126800,
+    "orders": 10,
+    "aov": 12680
   },
   "period_90d": {
-    "revenue": 202450,
-    "orders": 17,
-    "aov": 11909
+    "revenue": 221090,
+    "orders": 18,
+    "aov": 12283
   },
   "period_year": {
-    "revenue": 768335,
-    "orders": 64,
-    "aov": 12005
+    "revenue": 786975,
+    "orders": 65,
+    "aov": 12107
   },
-  "customers_total": 741,
+  "customers_total": 744,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     56890,
     46450,
     65320,
-    67200
+    85840
   ],
   "monthly_orders": [
     0,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     6,
     4,
     6,
-    5
+    6
   ],
   "channels": [
     {
@@ -222,8 +222,8 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 25,
       "rev": 331550,
-      "order_pct": 39.1,
-      "rev_pct": 43.2
+      "order_pct": 38.5,
+      "rev_pct": 42.1
     },
     {
       "name": "Google",
@@ -231,17 +231,17 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 20,
       "rev": 224166,
-      "order_pct": 31.2,
-      "rev_pct": 29.2
+      "order_pct": 30.8,
+      "rev_pct": 28.5
     },
     {
       "name": "Instagram",
       "icon": "📸",
       "color": "#BF5AF2",
-      "orders": 17,
-      "rev": 193389,
-      "order_pct": 26.6,
-      "rev_pct": 25.2
+      "orders": 18,
+      "rev": 212029,
+      "order_pct": 27.7,
+      "rev_pct": 26.9
     },
     {
       "name": "YouTube",
@@ -249,7 +249,7 @@ const SHOPIFY = {
       "color": "#FF453A",
       "orders": 1,
       "rev": 9990,
-      "order_pct": 1.6,
+      "order_pct": 1.5,
       "rev_pct": 1.3
     },
     {
@@ -258,11 +258,15 @@ const SHOPIFY = {
       "color": "#5AC8FA",
       "orders": 1,
       "rev": 9240,
-      "order_pct": 1.6,
+      "order_pct": 1.5,
       "rev_pct": 1.2
     }
   ],
   "recent_orders": [
+    {
+      "date": "16 May 2026",
+      "amount": 18640
+    },
     {
       "date": "12 May 2026",
       "amount": 15490
@@ -298,17 +302,9 @@ const SHOPIFY = {
     {
       "date": "17 Nis 2026",
       "amount": 14490
-    },
-    {
-      "date": "10 Nis 2026",
-      "amount": 12490
     }
   ],
   "cameras": [
-    {
-      "name": "Fujifilm FinePix Z90",
-      "price": 18490
-    },
     {
       "name": "Fujifilm FinePix Z700 EXR",
       "price": 15490
@@ -421,7 +417,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 83
+  "out_of_stock": 84
 };
 /* ─── SHOPIFY DATA END ─── */
 
