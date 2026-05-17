@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-17T03:53:43",
+  "updated_at": "2026-05-17T15:48:27",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4010,
-    "total_views": 1134675,
-    "video_count": 380
+    "subscribers": 4020,
+    "total_views": 1136022,
+    "video_count": 381
   },
   "analytics": {
     "last_30d": {
@@ -60,11 +60,20 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "GULk4atiPqo",
+      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
+      "date": "17 May 2026",
+      "views": 349,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/GULk4atiPqo"
+    },
+    {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 1699,
-      "likes": 24,
+      "views": 1800,
+      "likes": 26,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
     },
@@ -72,8 +81,8 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2020,
-      "likes": 31,
+      "views": 2083,
+      "likes": 34,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
     },
@@ -81,8 +90,8 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1326,
-      "likes": 15,
+      "views": 1343,
+      "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
     },
@@ -90,7 +99,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2067,
+      "views": 2071,
       "likes": 25,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -99,8 +108,8 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1754,
-      "likes": 30,
+      "views": 1756,
+      "likes": 31,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
     },
@@ -108,7 +117,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1432,
+      "views": 1434,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -117,7 +126,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4774,
+      "views": 4775,
       "likes": 101,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -139,15 +148,6 @@ const YOUTUBE = {
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
-    },
-    {
-      "id": "U0c_YNzbRHE",
-      "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
-      "date": "29 Nis 2026",
-      "views": 606,
-      "likes": 7,
-      "comments": 0,
-      "url": "https://youtu.be/U0c_YNzbRHE"
     }
   ],
   "sub_goal": 10000
