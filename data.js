@@ -423,23 +423,31 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-05-17T03:52:14",
+  "updated_at": "2026-05-17T15:46:56",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6619,
-  "media_count": 273,
+  "followers": 6681,
+  "media_count": 274,
   "avg_likes": 60,
-  "total_engagement": 722,
+  "total_engagement": 726,
   "type_counts": {
     "VIDEO": 6,
     "CAROUSEL_ALBUM": 6
   },
   "posts": [
     {
+      "id": "18350297056245743",
+      "date": "17 May 2026",
+      "type": "VIDEO",
+      "likes": 14,
+      "comments": 0,
+      "url": "https://www.instagram.com/reel/DYbksJ8IMR0/"
+    },
+    {
       "id": "17893027623467079",
       "date": "15 May 2026",
       "type": "VIDEO",
-      "likes": 46,
+      "likes": 49,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DYXlpS6IXnV/"
     },
@@ -447,7 +455,7 @@ const INSTAGRAM = {
       "id": "18115202152809089",
       "date": "13 May 2026",
       "type": "VIDEO",
-      "likes": 66,
+      "likes": 70,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DYSX0DmIHwf/"
     },
@@ -455,7 +463,7 @@ const INSTAGRAM = {
       "id": "18111928819850525",
       "date": "12 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 162,
+      "likes": 166,
       "comments": 0,
       "url": "https://www.instagram.com/p/DYO7S-2iEqR/"
     },
@@ -471,7 +479,7 @@ const INSTAGRAM = {
       "id": "18026696300819171",
       "date": "4 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 150,
+      "likes": 151,
       "comments": 1,
       "url": "https://www.instagram.com/p/DX7GlPLiAB_/"
     },
@@ -487,7 +495,7 @@ const INSTAGRAM = {
       "id": "18087255242609116",
       "date": "1 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 38,
+      "likes": 39,
       "comments": 0,
       "url": "https://www.instagram.com/p/DXzUTTwCGGw/"
     },
@@ -495,7 +503,7 @@ const INSTAGRAM = {
       "id": "17886431487378731",
       "date": "29 Nis 2026",
       "type": "VIDEO",
-      "likes": 45,
+      "likes": 46,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DXtbzXmIYYx/"
     },
@@ -522,14 +530,6 @@ const INSTAGRAM = {
       "likes": 46,
       "comments": 0,
       "url": "https://www.instagram.com/p/DXjGTiHiCAA/"
-    },
-    {
-      "id": "18086971511203373",
-      "date": "20 Nis 2026",
-      "type": "VIDEO",
-      "likes": 23,
-      "comments": 1,
-      "url": "https://www.instagram.com/reel/DXXAHRCI7gE/"
     }
   ],
   "follower_goal": 10000
