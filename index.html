@@ -3882,7 +3882,7 @@ function navigate(page, navEl) {
   window.location.hash = page;
   if (page === 'finance') { renderFinancePage(); if (typeof renderCOGSList === 'function') setTimeout(renderCOGSList, 100); }
   if (page === 'stats') renderStatsPage();
-  if (page === 'seo') renderSEOPage();
+  if (page === 'seo') { renderSEOPage(); setTimeout(function(){ if(typeof renderROISection==='function') renderROISection(); }, 50); }
   if (page === 'blog') renderBlogPage();
   if (page === 'urun') renderUrunPage();
   if (page === 'blog-detay') renderBlogDetayPage();
