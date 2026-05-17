@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 355,
+      "views": 356,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 1869,
-      "likes": 27,
+      "views": 1881,
+      "likes": 28,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
     },
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2127,
+      "views": 2129,
       "likes": 33,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4777,
+      "views": 4778,
       "likes": 102,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3712,
+      "views": 3713,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 272,
+      "views": 274,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
