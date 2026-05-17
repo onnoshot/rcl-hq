@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-17T21:48:52",
+  "updated_at": "2026-05-17T22:48:55",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 104367,
-      "watch_hours": 292.3,
-      "subs_gained": 411,
-      "subs_lost": 189,
-      "avg_view_sec": 25
+      "views": 116326,
+      "watch_hours": 344.9,
+      "subs_gained": 510,
+      "subs_lost": 237,
+      "avg_view_sec": 27
     },
-    "watch_hours_year": 3113.7,
-    "watch_hours_year_long": 1684.5,
-    "watch_hours_year_shorts": 1429.2,
+    "watch_hours_year": 3166.6,
+    "watch_hours_year_long": 1723.5,
+    "watch_hours_year_shorts": 1443.1,
     "monthly": [
       {
         "label": "Ara 25",
@@ -46,15 +46,15 @@ const YOUTUBE = {
       },
       {
         "label": "Nis 26",
-        "views": 103690,
-        "watch_min": 21725,
+        "views": 103647,
+        "watch_min": 21722,
         "subs_gained": 136
       },
       {
         "label": "May 26",
-        "views": 62894,
-        "watch_min": 11605,
-        "subs_gained": 318
+        "views": 74833,
+        "watch_min": 14766,
+        "subs_gained": 417
       }
     ]
   },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 1861,
+      "views": 1869,
       "likes": 27,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1361,
+      "views": 1363,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 267,
+      "views": 272,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
