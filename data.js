@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-17T23:49:00",
+  "updated_at": "2026-05-18T00:49:04",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,10 +10,10 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 116326,
-      "watch_hours": 344.9,
-      "subs_gained": 510,
-      "subs_lost": 237,
+      "views": 114443,
+      "watch_hours": 341.1,
+      "subs_gained": 509,
+      "subs_lost": 236,
       "avg_view_sec": 27
     },
     "watch_hours_year": 3166.6,
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 354,
+      "views": 355,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/GULk4atiPqo"
