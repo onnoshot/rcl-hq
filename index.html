@@ -6062,15 +6062,8 @@ renderProfit();
 renderYouTube();
 renderInstagram();
 initFade();
-initRouter();
-cgInitWidget();
-window.speechSynthesis && window.speechSynthesis.getVoices();
 
-
-</script>
-
-<script>
-/* ======== İçerik ROI Analizi ======== */
+// ── İçerik ROI Analizi ──────────────────────────────────────
 var roiSortKey = 'roi';
 
 function renderROISection() {
@@ -6080,9 +6073,7 @@ function renderROISection() {
   var DEFAULT_HOURS = 3;
   var stored = {};
   try { stored = JSON.parse(localStorage.getItem('roi_hours') || '{}'); } catch(e) {}
-
   var maxViews = Math.max.apply(null, posts.map(function(x){ return x.views; }));
-
   var enriched = posts.map(function(p, i) {
     var hours = parseFloat(stored[i]) || DEFAULT_HOURS;
     var orgPct = p.views > 0 ? Math.round(p.organic / p.views * 100) : 0;
@@ -6100,18 +6091,15 @@ function renderROISection() {
     else                                    oneri = '<span style="color:rgba(255,255,255,.25);font-size:.62rem">İzle</span>';
     return Object.assign({}, p, { i:i, hours:hours, orgPct:orgPct, revenue:revenue, roi:roi, roiPuan:roiPuan, oneri:oneri });
   });
-
   var sorted = enriched.slice().sort(function(a,b){
     if (roiSortKey === 'seo')    return b.seo - a.seo;
     if (roiSortKey === 'views')  return b.views - a.views;
     if (roiSortKey === 'orders') return b.orders - a.orders;
     return b.roi - a.roi;
   });
-
   var totalRev = enriched.reduce(function(s,p){ return s+p.revenue; }, 0);
   var avgRoi   = Math.round(enriched.reduce(function(s,p){ return s+p.roi; }, 0) / enriched.length);
   var best     = enriched.reduce(function(b,p){ return p.roi > b.roi ? p : b; }, enriched[0]);
-
   function fmtTLK(v){ return v >= 1000 ? '₺' + Math.round(v/1000) + 'K' : '₺' + v; }
   var el;
   el = document.getElementById('roi-best-val');   if(el) el.textContent = fmtTLK(best.roi);
@@ -6119,7 +6107,6 @@ function renderROISection() {
   el = document.getElementById('roi-total-rev');  if(el) el.textContent = fmtTLK(totalRev);
   el = document.getElementById('roi-avg');        if(el) el.textContent = fmtTLK(avgRoi) + '/saat';
   el = document.getElementById('roi-aov-display');if(el) el.textContent = '₺' + aov.toLocaleString('tr-TR');
-
   el = document.getElementById('roi-tbody');
   if (el) {
     el.innerHTML = sorted.map(function(p, rank){
@@ -6145,7 +6132,6 @@ function renderROISection() {
         '</tr>';
     }).join('');
   }
-
   var incPosts    = enriched.filter(function(p){ return /İnceleme|inceleme/i.test(p.title); });
   var rehberPosts = enriched.filter(function(p){ return /Rehber|rehber/i.test(p.title); });
   var incAvg    = incPosts.length    ? Math.round(incPosts.reduce(function(s,p){return s+p.roi;},0)/incPosts.length) : 0;
@@ -6154,7 +6140,6 @@ function renderROISection() {
   var bestFmtRoi = Math.max(incAvg, rehberAvg);
   el = document.getElementById('roi-insight-best');
   if(el) el.innerHTML = '<strong style="color:rgba(48,209,88,.85)">' + bestFmt + '</strong> yazılar ort. ' + fmtTLK(bestFmtRoi) + '/saat ROI üretiyor — en karlı format. Yeni yazıları bu tipte planla.';
-
   var noOrderHigh = enriched.filter(function(p){ return p.orders === 0 && p.views >= 980; });
   el = document.getElementById('roi-insight-update');
   if(el) {
@@ -6165,7 +6150,6 @@ function renderROISection() {
       el.innerHTML = 'Yüksek trafikli yazılarda dönüşüm mevcut. İçerikleri 6 ayda bir güncellemeye devam et.';
     }
   }
-
   var highOrgNoOrder = enriched.filter(function(p){ return p.orgPct >= 50 && p.orders === 0; });
   el = document.getElementById('roi-insight-opp');
   if(el) {
@@ -6201,7 +6185,16 @@ function roiSort(key, btn) {
   }
   renderROISection();
 }
+// ──────────────────────────────────────────────────────────
+
+initRouter();
+cgInitWidget();
+window.speechSynthesis && window.speechSynthesis.getVoices();
+
+
 </script>
+
+
 
 <script>
 /* ======== Blog Analiz Sayfası ======== */
