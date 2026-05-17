@@ -6070,6 +6070,140 @@ window.speechSynthesis && window.speechSynthesis.getVoices();
 </script>
 
 <script>
+/* ======== İçerik ROI Analizi ======== */
+var roiSortKey = 'roi';
+
+function renderROISection() {
+  var aov = (SHOPIFY && SHOPIFY.period_30d) ? SHOPIFY.period_30d.aov : 12000;
+  var posts = (BLOG_SEO && BLOG_SEO.posts) ? BLOG_SEO.posts : [];
+  if (!posts.length) return;
+  var DEFAULT_HOURS = 3;
+  var stored = {};
+  try { stored = JSON.parse(localStorage.getItem('roi_hours') || '{}'); } catch(e) {}
+
+  var maxViews = Math.max.apply(null, posts.map(function(x){ return x.views; }));
+
+  var enriched = posts.map(function(p, i) {
+    var hours = parseFloat(stored[i]) || DEFAULT_HOURS;
+    var orgPct = p.views > 0 ? Math.round(p.organic / p.views * 100) : 0;
+    var revenue = p.orders * aov;
+    var roi = hours > 0 ? Math.round(revenue / hours) : 0;
+    var viewScore  = maxViews > 0 ? (p.views / maxViews) * 30 : 0;
+    var orderScore = Math.min(p.orders / 5 * 30, 30);
+    var seoScore   = (p.seo / 100) * 25;
+    var roiScore   = Math.min(roi / 50000 * 15, 15);
+    var roiPuan    = Math.round(viewScore + orderScore + seoScore + roiScore);
+    var oneri;
+    if (p.orders === 0 && p.views > 1500) oneri = '<span style="color:#FF9F0A;font-size:.62rem">CTA Ekle</span>';
+    else if (p.seo < 80 && p.views > 800)  oneri = '<span style="color:#5AC8FA;font-size:.62rem">SEO İyileştir</span>';
+    else if (p.orders >= 3)                 oneri = '<span style="color:#30D158;font-size:.62rem">Genişlet</span>';
+    else                                    oneri = '<span style="color:rgba(255,255,255,.25);font-size:.62rem">İzle</span>';
+    return Object.assign({}, p, { i:i, hours:hours, orgPct:orgPct, revenue:revenue, roi:roi, roiPuan:roiPuan, oneri:oneri });
+  });
+
+  var sorted = enriched.slice().sort(function(a,b){
+    if (roiSortKey === 'seo')    return b.seo - a.seo;
+    if (roiSortKey === 'views')  return b.views - a.views;
+    if (roiSortKey === 'orders') return b.orders - a.orders;
+    return b.roi - a.roi;
+  });
+
+  var totalRev = enriched.reduce(function(s,p){ return s+p.revenue; }, 0);
+  var avgRoi   = Math.round(enriched.reduce(function(s,p){ return s+p.roi; }, 0) / enriched.length);
+  var best     = enriched.reduce(function(b,p){ return p.roi > b.roi ? p : b; }, enriched[0]);
+
+  function fmtTLK(v){ return v >= 1000 ? '₺' + Math.round(v/1000) + 'K' : '₺' + v; }
+  var el;
+  el = document.getElementById('roi-best-val');   if(el) el.textContent = fmtTLK(best.roi);
+  el = document.getElementById('roi-best-title'); if(el) el.textContent = (best.title||'').substring(0,32) + '…';
+  el = document.getElementById('roi-total-rev');  if(el) el.textContent = fmtTLK(totalRev);
+  el = document.getElementById('roi-avg');        if(el) el.textContent = fmtTLK(avgRoi) + '/saat';
+  el = document.getElementById('roi-aov-display');if(el) el.textContent = '₺' + aov.toLocaleString('tr-TR');
+
+  el = document.getElementById('roi-tbody');
+  if (el) {
+    el.innerHTML = sorted.map(function(p, rank){
+      var roiCol = p.roi > 30000 ? '#30D158' : p.roi > 10000 ? '#D4AF37' : 'rgba(255,255,255,.45)';
+      var barW   = Math.min(100, p.roiPuan);
+      var barCol = barW >= 70 ? '#30D158' : barW >= 45 ? '#D4AF37' : '#FF9F0A';
+      return '<tr>' +
+        '<td style="opacity:.35">' + (rank+1) + '</td>' +
+        '<td style="font-weight:500;color:rgba(255,255,255,.82);max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">' + p.title + '</td>' +
+        '<td style="font-family:var(--mono)">' + p.views.toLocaleString('tr-TR') + '</td>' +
+        '<td style="font-family:var(--mono);color:rgba(48,209,88,.8)">%' + p.orgPct + '</td>' +
+        '<td style="font-family:var(--mono);text-align:center">' + p.orders + '</td>' +
+        '<td style="font-family:var(--mono);color:rgba(212,175,55,.8)">' + fmtTLK(p.revenue) + '</td>' +
+        '<td><input type="number" min="0.5" max="20" step="0.5" value="' + p.hours + '" ' +
+          'onchange="roiHoursChange(' + p.i + ',this.value)" ' +
+          'style="width:58px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:5px;color:rgba(255,255,255,.7);padding:3px 6px;font-size:.68rem;font-family:var(--mono);text-align:center"></td>' +
+        '<td style="font-family:var(--mono);color:' + roiCol + ';font-weight:600">' + fmtTLK(p.roi) + '</td>' +
+        '<td><div style="display:flex;align-items:center;gap:5px">' +
+          '<div style="flex:1;height:4px;background:rgba(255,255,255,.08);border-radius:2px">' +
+            '<div style="width:' + barW + '%;height:100%;background:' + barCol + ';border-radius:2px;transition:width .6s ease"></div></div>' +
+          '<span style="font-size:.6rem;font-family:var(--mono);color:' + barCol + ';min-width:22px">' + barW + '</span></div></td>' +
+        '<td>' + p.oneri + '</td>' +
+        '</tr>';
+    }).join('');
+  }
+
+  var incPosts    = enriched.filter(function(p){ return /İnceleme|inceleme/i.test(p.title); });
+  var rehberPosts = enriched.filter(function(p){ return /Rehber|rehber/i.test(p.title); });
+  var incAvg    = incPosts.length    ? Math.round(incPosts.reduce(function(s,p){return s+p.roi;},0)/incPosts.length) : 0;
+  var rehberAvg = rehberPosts.length ? Math.round(rehberPosts.reduce(function(s,p){return s+p.roi;},0)/rehberPosts.length) : 0;
+  var bestFmt = incAvg >= rehberAvg ? 'İnceleme' : 'Rehber';
+  var bestFmtRoi = Math.max(incAvg, rehberAvg);
+  el = document.getElementById('roi-insight-best');
+  if(el) el.innerHTML = '<strong style="color:rgba(48,209,88,.85)">' + bestFmt + '</strong> yazılar ort. ' + fmtTLK(bestFmtRoi) + '/saat ROI üretiyor — en karlı format. Yeni yazıları bu tipte planla.';
+
+  var noOrderHigh = enriched.filter(function(p){ return p.orders === 0 && p.views >= 980; });
+  el = document.getElementById('roi-insight-update');
+  if(el) {
+    if (noOrderHigh.length) {
+      el.innerHTML = '<strong style="color:rgba(255,159,10,.85)">"' + noOrderHigh[0].title.substring(0,28) + '…"</strong> ' +
+        noOrderHigh[0].views.toLocaleString('tr-TR') + ' görüntülenme, 0 sipariş. Ürün linki ve güçlü CTA ekle.';
+    } else {
+      el.innerHTML = 'Yüksek trafikli yazılarda dönüşüm mevcut. İçerikleri 6 ayda bir güncellemeye devam et.';
+    }
+  }
+
+  var highOrgNoOrder = enriched.filter(function(p){ return p.orgPct >= 50 && p.orders === 0; });
+  el = document.getElementById('roi-insight-opp');
+  if(el) {
+    if (highOrgNoOrder.length) {
+      el.innerHTML = '<strong style="color:rgba(90,200,250,.85)">' + highOrgNoOrder.length + ' yazı</strong> %50+ organik trafik alıyor ama sipariş üretmiyor. Bu sayfalara ürün karşılaştırma tablosu ve CTA ekle.';
+    } else {
+      el.innerHTML = 'Organik trafik iyi dönüşüm üretiyor. Yeni anahtar kelime grupları için içerik planla.';
+    }
+  }
+}
+
+function roiHoursChange(idx, val) {
+  var stored = {};
+  try { stored = JSON.parse(localStorage.getItem('roi_hours') || '{}'); } catch(e) {}
+  stored[idx] = parseFloat(val) || 3;
+  localStorage.setItem('roi_hours', JSON.stringify(stored));
+  renderROISection();
+}
+
+function roiSort(key, btn) {
+  roiSortKey = key;
+  document.querySelectorAll('.roi-sort-btn').forEach(function(b) {
+    b.style.background    = 'rgba(255,255,255,.05)';
+    b.style.borderColor   = 'rgba(255,255,255,.1)';
+    b.style.color         = 'rgba(255,255,255,.4)';
+    b.classList.remove('active');
+  });
+  if (btn) {
+    btn.style.background  = 'rgba(212,175,55,.12)';
+    btn.style.borderColor = 'rgba(212,175,55,.25)';
+    btn.style.color       = 'rgba(212,175,55,.8)';
+    btn.classList.add('active');
+  }
+  renderROISection();
+}
+</script>
+
+<script>
 /* ======== Blog Analiz Sayfası ======== */
 function renderBlogDetayPage() {
   var posts = (BLOG_SEO && BLOG_SEO.posts) ? [...BLOG_SEO.posts] : [];
