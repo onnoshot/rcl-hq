@@ -46,6 +46,155 @@ window.mkGrad = function(ctx, h, c1, c2, alpha1, alpha2) {
   g.addColorStop(1, c2 ? c2.replace(')', ','+(alpha2||0)+')').replace('rgb','rgba') : c1.replace(')',',0)').replace('rgb','rgba'));
   return g;
 };
+
+// ─── BOTTOM NAV MORE MENU ─────────────────────────────────────
+function toggleMoreMenu() {
+  const overlay = document.getElementById('bn-more-overlay');
+  const backdrop = document.getElementById('bn-more-backdrop');
+  if (!overlay) return;
+  const isOpen = overlay.classList.contains('open');
+  if (isOpen) { closeMoreMenu(); } else {
+    overlay.style.display = 'block';
+    backdrop.style.display = 'block';
+    requestAnimationFrame(() => overlay.classList.add('open'));
+  }
+}
+function closeMoreMenu() {
+  const overlay = document.getElementById('bn-more-overlay');
+  const backdrop = document.getElementById('bn-more-backdrop');
+  if (!overlay) return;
+  overlay.classList.remove('open');
+  backdrop.classList.remove('open');
+  setTimeout(() => { overlay.style.display = 'none'; backdrop.style.display = 'none'; }, 300);
+}
+
+// ─── COGS STOK BAZLI HESAPLAMA ────────────────────────────────
+function renderCOGSList() {
+  const cams = SHOPIFY.cameras || [];
+  const costs = loadCamCosts();
+  const tbody = document.getElementById('cogs-cam-tbody');
+  if (!tbody) return;
+
+  tbody.innerHTML = cams.map((cam, i) => {
+    const cost = costs[cam.name] || '';
+    const sale = cam.price || 0;
+    const marj = (cost > 0 && sale > 0) ? Math.round((sale - cost) / sale * 100) : null;
+    const marjColor = marj === null ? 'var(--t3)' : marj >= 40 ? 'rgba(48,209,88,.8)' : marj >= 25 ? 'rgba(212,175,55,.8)' : 'rgba(255,69,58,.8)';
+    return `<tr style="border-bottom:1px solid rgba(255,255,255,.04)">
+      <td style="padding:7px 10px;font-size:.7rem;color:var(--t1)">${cam.name}</td>
+      <td style="padding:7px 10px;text-align:right;font-size:.68rem;font-family:var(--mono);color:var(--gold)">₺${fmt(sale)}</td>
+      <td style="padding:7px 10px;text-align:right">
+        <input type="number" class="cogs-cost-input" data-cam="${cam.name.replace(/"/g,'&quot;')}"
+          value="${cost}" placeholder="—"
+          style="width:90px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:rgba(191,90,242,.9);font-family:var(--mono);font-size:.7rem;padding:4px 8px;text-align:right;outline:none"
+          oninput="updateCOGSRow(this,'${cam.name.replace(/'/g,"\'")}',${sale})">
+      </td>
+      <td style="padding:7px 10px;text-align:right;font-size:.68rem;font-family:var(--mono);color:${marjColor}" id="cogs-marj-${i}">${marj !== null ? '%' + marj : '—'}</td>
+    </tr>`;
+  }).join('');
+
+  updateCOGSTotals();
+}
+
+function updateCOGSRow(input, camName, salePrice) {
+  const cost = parseFloat(input.value) || 0;
+  const idx = Array.from(document.querySelectorAll('.cogs-cost-input')).indexOf(input);
+  const marjEl = document.getElementById('cogs-marj-' + idx);
+  if (marjEl) {
+    if (cost > 0 && salePrice > 0) {
+      const marj = Math.round((salePrice - cost) / salePrice * 100);
+      marjEl.textContent = '%' + marj;
+      marjEl.style.color = marj >= 40 ? 'rgba(48,209,88,.8)' : marj >= 25 ? 'rgba(212,175,55,.8)' : 'rgba(255,69,58,.8)';
+    } else {
+      marjEl.textContent = '—';
+      marjEl.style.color = 'var(--t3)';
+    }
+  }
+  updateCOGSTotals();
+}
+
+function updateCOGSTotals() {
+  const cams = SHOPIFY.cameras || [];
+  const inputs = document.querySelectorAll('.cogs-cost-input');
+  let saleTot = 0, costTot = 0, filledCount = 0;
+  cams.forEach((cam, i) => {
+    const inp = inputs[i];
+    const cost = inp ? (parseFloat(inp.value) || 0) : 0;
+    saleTot += cam.price || 0;
+    if (cost > 0) { costTot += cost; filledCount++; }
+  });
+  const margin = saleTot > 0 ? Math.round((saleTot - costTot) / saleTot * 100) : 0;
+  const mColor = margin >= 40 ? 'rgba(48,209,88,.8)' : margin >= 25 ? 'rgba(212,175,55,.8)' : 'rgba(255,69,58,.8)';
+  const setEl = (id, val) => { const e=document.getElementById(id); if(e) e.textContent=val; };
+  setEl('cogs-sale-total', '₺' + fmt(saleTot));
+  setEl('cogs-cost-total', costTot > 0 ? '₺' + fmt(costTot) : '—');
+  setEl('cogs-avg-margin', costTot > 0 ? '<span style="color:' + mColor + '">%' + margin + '</span>' : '—');
+  setEl('cogs-filled-count', filledCount);
+  setEl('cogs-total-count', cams.length);
+  // Update the mini KPI
+  setEl('fin-avg-margin-pct', costTot > 0 ? '%' + margin + ' ortalama marj' : 'Maliyet girilmedi');
+  if (document.getElementById('fin-avg-margin-pct')) {
+    const el = document.getElementById('fin-avg-margin-pct');
+    if (el) el.style.color = costTot > 0 ? mColor : 'var(--t3)';
+  }
+  // Re-render finance KPIs with updated costs
+  if (typeof renderFinancePage === 'function') renderFinancePage();
+}
+
+function cogsAutoFill() {
+  const ratio = parseFloat(document.getElementById('cogs-ratio')?.value) || 60;
+  document.querySelectorAll('.cogs-cost-input').forEach(inp => {
+    const cam = SHOPIFY.cameras?.find(c => c.name === inp.dataset.cam);
+    if (cam) {
+      inp.value = Math.round(cam.price * ratio / 100);
+      const idx = Array.from(document.querySelectorAll('.cogs-cost-input')).indexOf(inp);
+      updateCOGSRow(inp, cam.name, cam.price);
+    }
+  });
+}
+
+function cogsSave() {
+  const costs = {};
+  document.querySelectorAll('.cogs-cost-input').forEach(inp => {
+    const v = parseFloat(inp.value) || 0;
+    if (v > 0) costs[inp.dataset.cam] = v;
+  });
+  localStorage.setItem('rcl_cam_costs', JSON.stringify(costs));
+  const btn = event?.target?.closest('button');
+  if (btn) { const o=btn.innerHTML; btn.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Kaydedildi'; setTimeout(()=>{btn.innerHTML=o;},1800); }
+}
+
+function cogsReset() {
+  if (!confirm('Tüm kamera maliyetleri sıfırlansın mı?')) return;
+  localStorage.removeItem('rcl_cam_costs');
+  document.querySelectorAll('.cogs-cost-input').forEach(inp => { inp.value = ''; });
+  updateCOGSTotals();
+}
+
+// ─── SEO HEALTH STRIP ─────────────────────────────────────────
+function renderSEOHealthStrip() {
+  const el = document.getElementById('seo-health-strip');
+  if (!el) return;
+  const kpi = GA4_TRAFFIC.kpi_30d;
+  const items = [
+    { label:'Hemen Çıkma', value:'%'+kpi.bounce_rate, status: kpi.bounce_rate<40?'ok':kpi.bounce_rate<60?'warn':'bad', note: kpi.bounce_rate<40?'Hedef altı':'Optimize et' },
+    { label:'Organik Pay', value:'%'+kpi.organic_pct, status: kpi.organic_pct>50?'ok':kpi.organic_pct>30?'warn':'bad', note: kpi.organic_pct>50?'Güçlü':'Artır' },
+    { label:'Oturum Süresi', value: Math.floor(kpi.avg_session_sec/60)+':'+(kpi.avg_session_sec%60).toString().padStart(2,'0'), status: kpi.avg_session_sec>=120?'ok':kpi.avg_session_sec>=60?'warn':'bad', note: kpi.avg_session_sec>=120?'İyi':'Düşük' },
+    { label:'Aylık Ziyaret', value: fmt(kpi.visitors), status:'ok', note:'Son 30 gün' },
+    { label:'Blog Yazısı', value: BLOG_SEO.total_posts, status:'ok', note:'Toplam içerik' },
+    { label:'Ort. SEO Skoru', value: Math.round(BLOG_SEO.posts.reduce((s,p)=>s+p.seo,0)/BLOG_SEO.posts.length), status:'ok', note:'/100 puan' },
+  ];
+  const sc = {ok:'rgba(48,209,88,.7)',warn:'rgba(255,159,10,.7)',bad:'rgba(255,69,58,.7)'};
+  const bg = {ok:'rgba(48,209,88,.06)',warn:'rgba(255,159,10,.06)',bad:'rgba(255,69,58,.06)'};
+  const bd = {ok:'rgba(48,209,88,.15)',warn:'rgba(255,159,10,.15)',bad:'rgba(255,69,58,.15)'};
+  el.innerHTML = items.map(it => `
+    <div style="padding:12px 14px;background:${bg[it.status]};border:1px solid ${bd[it.status]};border-radius:12px">
+      <div style="font-size:.58rem;color:rgba(255,255,255,.3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">${it.label}</div>
+      <div style="font-size:1.2rem;font-weight:700;font-family:var(--mono);color:${sc[it.status]};line-height:1">${it.value}</div>
+      <div style="font-size:.6rem;color:rgba(255,255,255,.3);font-family:var(--mono);margin-top:4px">${it.note}</div>
+    </div>`).join('');
+}
+
 </script>
 <style id="css-main">
 /* ═══════════════════════════════════════════════════════════════
@@ -609,6 +758,69 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
   .kpi-big{font-size:1.8rem;}
   .g5{grid-template-columns:repeat(2,1fr);}
   .film-digit{font-size:1.2rem;padding:2px 5px;}
+}
+
+
+/* ── Bottom Navigation (App-style) ── */
+.bottom-nav {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  height: 60px;
+  background: rgba(10,15,26,0.96);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-top: 1px solid rgba(255,255,255,0.08);
+  z-index: 300;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 4px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+.bn-item {
+  display: flex; flex-direction: column; align-items: center;
+  gap: 2px; padding: 8px 6px; cursor: pointer;
+  color: rgba(255,255,255,0.3);
+  border-radius: 10px; transition: color 0.18s, background 0.18s;
+  min-width: 44px; flex: 1; max-width: 72px;
+  -webkit-tap-highlight-color: transparent;
+}
+.bn-item.active { color: var(--gold); background: rgba(212,175,55,0.1); }
+.bn-item svg { display: block; }
+.bn-lbl { font-size: 0.46rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; margin-top: 1px; }
+/* More menu overlay */
+.bn-more-overlay {
+  display: none; position: fixed; bottom: 60px; left: 0; right: 0;
+  background: rgba(10,15,26,0.98); border-top: 1px solid rgba(255,255,255,0.08);
+  z-index: 299; padding: 16px 12px;
+  border-radius: 20px 20px 0 0;
+  backdrop-filter: blur(20px);
+  transform: translateY(100%); transition: transform 0.28s cubic-bezier(.32,.72,0,1);
+}
+.bn-more-overlay.open { transform: translateY(0); display: block; }
+.bn-more-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;
+}
+.bn-more-item {
+  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  padding: 12px 6px; border-radius: 12px; cursor: pointer;
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+  color: rgba(255,255,255,0.5); transition: all 0.18s;
+  -webkit-tap-highlight-color: transparent;
+}
+.bn-more-item:active { background: rgba(255,255,255,0.09); }
+.bn-more-item.active { color: var(--gold); background: rgba(212,175,55,0.1); border-color: rgba(212,175,55,0.2); }
+.bn-more-lbl { font-size: 0.58rem; font-family: var(--mono); text-align: center; }
+.bn-more-backdrop { display:none; position:fixed; inset:0; z-index:298; }
+.bn-more-backdrop.open { display:block; }
+
+@media(max-width:900px) {
+  .bottom-nav { display: flex; }
+  .sidebar { display: none !important; }
+  .page-main { margin-left: 0 !important; padding-bottom: calc(68px + env(safe-area-inset-bottom,0px)) !important; }
+}
+@media(min-width:901px) {
+  .bottom-nav, .bn-more-overlay, .bn-more-backdrop { display: none !important; }
 }
 
 /* ── CherryGlow v5.1 ────────────────────────────────────────────────────────── */
@@ -1508,34 +1720,80 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
         </div>
       </div>
 
-      <!-- Ürün Maliyeti & Kâr -->
+      <!-- Ürün Maliyeti & Kâr (mini KPI) -->
       <div class="card p">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
-          <div style="width:36px;height:36px;border-radius:10px;background:rgba(191,90,242,0.1);border:1px solid rgba(191,90,242,0.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4l-9-5.19"/><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-          <div><div style="font-size:0.82rem;font-weight:600;color:var(--t1)">Ürün Maliyeti (COGS)</div><div style="font-size:0.64rem;color:var(--t3);font-family:var(--mono)">Kamera maliyetleri</div></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(191,90,242,0.1);border:1px solid rgba(191,90,242,0.2);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+          <div><div style="font-size:0.82rem;font-weight:600;color:var(--t1)">COGS Özeti</div><div style="font-size:0.64rem;color:var(--t3);font-family:var(--mono)">Stok kamera maliyetlerinden</div></div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:10px">
-          <div>
-            <div class="cost-field-label" style="margin-bottom:6px">Özel Ortalama Maliyet (₺) — boş bırakırsan stok maliyeti kullanılır</div>
-            <input class="cost-field-input" id="cfg-avg-cost" type="number" placeholder="Otomatik (stoktan)" style="width:100%" oninput="renderFinancePage()">
-          </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
             <div style="padding:10px 12px;background:rgba(191,90,242,0.06);border:1px solid rgba(191,90,242,0.15);border-radius:9px">
-              <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">COGS</div>
-              <div style="font-size:0.9rem;font-family:var(--mono);font-weight:700;color:var(--purple)" id="fin-cogs">—</div>
+              <div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">Dönem COGS</div>
+              <div style="font-size:0.88rem;font-family:var(--mono);font-weight:700;color:var(--purple)" id="fin-cogs">—</div>
             </div>
             <div style="padding:10px 12px;background:rgba(48,209,88,0.06);border:1px solid rgba(48,209,88,0.15);border-radius:9px">
-              <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">Brüt Kâr</div>
-              <div style="font-size:0.9rem;font-family:var(--mono);font-weight:700;color:var(--green)" id="fin-gross-profit">—</div>
+              <div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">Brüt Kâr</div>
+              <div style="font-size:0.88rem;font-family:var(--mono);font-weight:700;color:var(--green)" id="fin-gross-profit">—</div>
             </div>
           </div>
           <div style="padding:10px 12px;background:rgba(255,255,255,0.03);border-radius:9px">
-            <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-bottom:6px">BAŞABAŞ NOKTASI (aylık)</div>
-            <div style="font-size:0.86rem;font-family:var(--mono);font-weight:700;color:var(--gold)" id="fin-breakeven">—</div>
-            <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-top:3px" id="fin-breakeven-sub">—</div>
+            <div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">BAŞABAŞ NOKTASI (aylık)</div>
+            <div style="font-size:0.82rem;font-family:var(--mono);font-weight:700;color:var(--gold)" id="fin-breakeven">—</div>
+            <div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono);margin-top:3px" id="fin-breakeven-sub">—</div>
+          </div>
+          <div style="padding:8px 12px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.15);border-radius:9px">
+            <div style="font-size:0.58rem;color:rgba(212,175,55,.5);font-family:var(--mono);margin-bottom:3px">Ortalama Stok Maliyet Oranı</div>
+            <div style="font-size:0.82rem;font-family:var(--mono);font-weight:700;color:var(--gold)" id="fin-avg-margin-pct">—</div>
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Stok Bazlı COGS Hesaplama -->
+    <div class="card p" style="margin-top:14px">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+        <div style="display:flex;align-items:center;gap:10px">
+          <div style="width:36px;height:36px;border-radius:10px;background:rgba(191,90,242,0.1);border:1px solid rgba(191,90,242,0.2);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(191,90,242,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+          <div>
+            <div style="font-size:0.84rem;font-weight:600;color:var(--t1)">Stok Kamera Maliyetleri</div>
+            <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono)">Her kamera için alış maliyetini gir — COGS otomatik hesaplanır</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:6px;padding:6px 10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:8px">
+            <span style="font-size:0.64rem;color:var(--t3);font-family:var(--mono);white-space:nowrap">Oran %</span>
+            <input id="cogs-ratio" type="number" value="60" min="5" max="95" style="width:46px;background:transparent;border:none;color:var(--gold);font-family:var(--mono);font-size:0.78rem;font-weight:700;outline:none;text-align:center" title="Satış fiyatının yüzdesi olarak alış maliyeti">
+          </div>
+          <button onclick="cogsAutoFill()" style="display:flex;align-items:center;gap:5px;padding:7px 13px;background:rgba(212,175,55,0.1);border:1px solid rgba(212,175,55,0.3);border-radius:8px;color:rgba(212,175,55,.85);font-size:0.72rem;font-family:var(--mono);cursor:pointer;white-space:nowrap;transition:all .2s" onmouseover="this.style.background='rgba(212,175,55,0.18)'" onmouseout="this.style.background='rgba(212,175,55,0.1)'"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg> Otomatik Doldur</button>
+          <button onclick="cogsSave()" style="display:flex;align-items:center;gap:5px;padding:7px 13px;background:rgba(48,209,88,0.1);border:1px solid rgba(48,209,88,0.3);border-radius:8px;color:rgba(48,209,88,.85);font-size:0.72rem;font-family:var(--mono);cursor:pointer;white-space:nowrap;transition:all .2s" onmouseover="this.style.background='rgba(48,209,88,0.18)'" onmouseout="this.style.background='rgba(48,209,88,0.1)'"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg> Kaydet</button>
+          <button onclick="cogsReset()" style="display:flex;align-items:center;gap:5px;padding:7px 13px;background:rgba(255,69,58,0.07);border:1px solid rgba(255,69,58,0.2);border-radius:8px;color:rgba(255,69,58,.7);font-size:0.72rem;font-family:var(--mono);cursor:pointer;white-space:nowrap;transition:all .2s" onmouseover="this.style.background='rgba(255,69,58,0.14)'" onmouseout="this.style.background='rgba(255,69,58,0.07)'"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/></svg> Sıfırla</button>
+        </div>
+      </div>
+
+      <!-- Camera cost table -->
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse">
+          <thead>
+            <tr style="border-bottom:1px solid rgba(255,255,255,.07)">
+              <th style="text-align:left;padding:6px 10px;font-size:.6rem;color:var(--t3);font-family:var(--mono);font-weight:500;text-transform:uppercase">Kamera Modeli</th>
+              <th style="text-align:right;padding:6px 10px;font-size:.6rem;color:var(--t3);font-family:var(--mono);font-weight:500;text-transform:uppercase;white-space:nowrap">Satış Fiyatı</th>
+              <th style="text-align:right;padding:6px 10px;font-size:.6rem;color:var(--t3);font-family:var(--mono);font-weight:500;text-transform:uppercase;white-space:nowrap">Alış Maliyeti (₺)</th>
+              <th style="text-align:right;padding:6px 10px;font-size:.6rem;color:var(--t3);font-family:var(--mono);font-weight:500;text-transform:uppercase">Marj</th>
+            </tr>
+          </thead>
+          <tbody id="cogs-cam-tbody"></tbody>
+          <tfoot>
+            <tr style="border-top:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.02)">
+              <td style="padding:8px 10px;font-size:.68rem;font-weight:600;color:var(--t2);font-family:var(--mono)">Toplam (<span id="cogs-filled-count">0</span>/<span id="cogs-total-count">0</span> kamera)</td>
+              <td style="padding:8px 10px;text-align:right;font-size:.72rem;font-weight:700;color:var(--gold);font-family:var(--mono)" id="cogs-sale-total">—</td>
+              <td style="padding:8px 10px;text-align:right;font-size:.72rem;font-weight:700;color:var(--purple);font-family:var(--mono)" id="cogs-cost-total">—</td>
+              <td style="padding:8px 10px;text-align:right;font-size:.72rem;font-weight:700;font-family:var(--mono)" id="cogs-avg-margin">—</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+      <div style="font-size:.58rem;color:rgba(255,255,255,.18);font-family:var(--mono);margin-top:8px">Maliyetler tarayıcı belleğine (localStorage) kaydedilir. COGS hesaplaması tüm aktif siparişlere bölünür.</div>
     </div>
 
     <!-- Gider Özeti Çubuğu -->
@@ -2012,20 +2270,22 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
       <div class="card p">
         <div class="chart-title">Şehir Dağılımı</div>
         <div class="chart-sub">En çok siparişli şehirler</div>
-        <div id="city-list" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div>
+        <div id="stats-city-bars" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div>
+        <div style="height:110px;margin-top:10px"><canvas id="statsCityRevChart"></canvas></div>
       </div>
       <!-- Cihaz -->
       <div class="card p">
         <div class="chart-title">Cihaz Dağılımı</div>
         <div style="position:relative;height:160px;margin-top:8px">
-          <canvas id="deviceChart"></canvas>
+          <canvas id="statsDeviceDonut"></canvas>
         </div>
-        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:8px" id="device-legend"></div>
+        <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:8px" id="stats-device-legend"></div>
       </div>
       <!-- Yaş Grupları -->
       <div class="card p">
         <div class="chart-title">Yaş Grupları</div>
-        <div id="age-list" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div>
+        <div style="height:90px;margin-top:8px;margin-bottom:8px"><canvas id="statsNewCustChart"></canvas></div>
+        <div id="stats-age-bars" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div>
       </div>
     </div>
   </div>
@@ -3364,13 +3624,21 @@ function navigate(page, navEl) {
   const target = document.getElementById('page-'+page);
   if (target) { target.classList.add('active'); initFade(); }
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  if (navEl) navEl.classList.add('active');
-  else {
+  // Sync bottom nav
+  document.querySelectorAll('.bn-item[data-page]').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.bn-more-item[data-page]').forEach(n => n.classList.remove('active'));
+  const bnMatch = document.querySelector(`.bn-item[data-page="${page}"]`);
+  if (bnMatch) bnMatch.classList.add('active');
+  const bnMoreMatch = document.querySelector(`.bn-more-item[data-page="${page}"]`);
+  if (bnMoreMatch) bnMoreMatch.classList.add('active');
+  if (navEl && navEl.classList.contains('bn-item')) { /* already handled */ }
+  else if (navEl) navEl.classList.add('active');
+  if (!navEl) {
     const match = document.querySelector(`.nav-item[data-page="${page}"]`);
     if (match) match.classList.add('active');
   }
   window.location.hash = page;
-  if (page === 'finance') renderFinancePage();
+  if (page === 'finance') { renderFinancePage(); if (typeof renderCOGSList === 'function') setTimeout(renderCOGSList, 100); }
   if (page === 'stats') renderStatsPage();
   if (page === 'seo') renderSEOPage();
   if (page === 'blog') renderBlogPage();
@@ -3697,9 +3965,12 @@ function renderFinancePage() {
   const kargo = orders * kargo_tl;
   const kutu  = orders * kutu_tl;
 
-  const camCosts = loadCamCosts(), camEntries = Object.values(camCosts).filter(v=>v>0);
-  const customAvg = parseFloat(document.getElementById('cfg-avg-cost')?.value) || 0;
-  const avgCamCost = customAvg > 0 ? customAvg : (camEntries.length > 0 ? Math.round(camEntries.reduce((s,v)=>s+v,0)/camEntries.length) : 0);
+  const camCosts = loadCamCosts();
+  const cams = SHOPIFY.cameras || [];
+  // Use per-camera costs from stock list
+  const camEntries = cams.map(c => camCosts[c.name] || 0).filter(v => v > 0);
+  const avgCamCost = camEntries.length > 0 ? Math.round(camEntries.reduce((s,v)=>s+v,0)/camEntries.length) : 0;
+  const totalStockCost = cams.reduce((s,c) => s + (camCosts[c.name]||0), 0);
   const cogs = avgCamCost * orders;
 
   const totalCut = kdv + iyzico + shopifyFee + kargo + kutu + cogs;
@@ -3853,6 +4124,8 @@ function renderFinancePage() {
 function renderStatsPage() {
   renderGA4Traffic();
   renderBlogSEO();
+  if (typeof renderSEOHealthStrip === "function") renderSEOHealthStrip();
+  setTimeout(statsEnhanceGA4, 300);
 
   // Şehir dağılımı
   const cities = [
@@ -6304,5 +6577,62 @@ function finAnimateKPIs() {
 })();
 
 </script>
+
+<!-- ── Bottom Navigation ── -->
+<nav class="bottom-nav" id="bottom-nav">
+  <div class="bn-item active" data-page="overview" onclick="navigate('overview',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+    <span class="bn-lbl">Ana Sayfa</span>
+  </div>
+  <div class="bn-item" data-page="finance" onclick="navigate('finance',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+    <span class="bn-lbl">Finans</span>
+  </div>
+  <div class="bn-item" data-page="inventory" onclick="navigate('inventory',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+    <span class="bn-lbl">Stok</span>
+  </div>
+  <div class="bn-item" data-page="stats" onclick="navigate('stats',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    <span class="bn-lbl">İstatistik</span>
+  </div>
+  <div class="bn-item" data-page="youtube" onclick="navigate('youtube',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+    <span class="bn-lbl">YouTube</span>
+  </div>
+  <div class="bn-item" id="bn-more-btn" onclick="toggleMoreMenu()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg>
+    <span class="bn-lbl">Daha Fazla</span>
+  </div>
+</nav>
+
+<!-- More menu overlay -->
+<div class="bn-more-backdrop" id="bn-more-backdrop" onclick="closeMoreMenu()"></div>
+<div class="bn-more-overlay" id="bn-more-overlay">
+  <div style="font-size:.55rem;color:rgba(255,255,255,.25);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;text-align:center">Diğer Sayfalar</div>
+  <div class="bn-more-grid">
+    <div class="bn-more-item" data-page="instagram" onclick="navigate('instagram');closeMoreMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      <span class="bn-more-lbl">Instagram</span>
+    </div>
+    <div class="bn-more-item" data-page="seo" onclick="navigate('seo');closeMoreMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span class="bn-more-lbl">SEO</span>
+    </div>
+    <div class="bn-more-item" data-page="blog" onclick="navigate('blog');closeMoreMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      <span class="bn-more-lbl">Blog</span>
+    </div>
+    <div class="bn-more-item" data-page="urun" onclick="navigate('urun');closeMoreMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+      <span class="bn-more-lbl">Ürün</span>
+    </div>
+    <div class="bn-more-item" data-page="cherry" onclick="navigate('cherry');closeMoreMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      <span class="bn-more-lbl">Cherry AI</span>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
