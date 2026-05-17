@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-14T18:23:17",
+  "updated_at": "2026-05-17T02:53:40",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 3940,
-    "total_views": 1102730,
-    "video_count": 378
+    "subscribers": 4020,
+    "total_views": 1134675,
+    "video_count": 380
   },
   "analytics": {
     "last_30d": {
-      "views": 72441,
-      "watch_hours": 164.6,
-      "subs_gained": 167,
-      "subs_lost": 107,
-      "avg_view_sec": 18
+      "views": 104387,
+      "watch_hours": 292.2,
+      "subs_gained": 411,
+      "subs_lost": 189,
+      "avg_view_sec": 25
     },
-    "watch_hours_year": 2976.0,
-    "watch_hours_year_long": 1589.6,
-    "watch_hours_year_shorts": 1386.4,
+    "watch_hours_year": 3113.7,
+    "watch_hours_year_long": 1684.5,
+    "watch_hours_year_shorts": 1429.2,
     "monthly": [
       {
         "label": "Ara 25",
@@ -46,25 +46,43 @@ const YOUTUBE = {
       },
       {
         "label": "Nis 26",
-        "views": 103716,
-        "watch_min": 21729,
+        "views": 103690,
+        "watch_min": 21725,
         "subs_gained": 136
       },
       {
         "label": "May 26",
-        "views": 25882,
-        "watch_min": 3349,
-        "subs_gained": 66
+        "views": 62894,
+        "watch_min": 11605,
+        "subs_gained": 318
       }
     ]
   },
   "videos": [
     {
+      "id": "4mX8PsRNBOs",
+      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
+      "date": "15 May 2026",
+      "views": 1661,
+      "likes": 24,
+      "comments": 1,
+      "url": "https://youtu.be/4mX8PsRNBOs"
+    },
+    {
+      "id": "TvPGsbRhSmQ",
+      "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
+      "date": "14 May 2026",
+      "views": 2020,
+      "likes": 31,
+      "comments": 0,
+      "url": "https://youtu.be/TvPGsbRhSmQ"
+    },
+    {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1071,
-      "likes": 11,
+      "views": 1326,
+      "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
     },
@@ -72,7 +90,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2041,
+      "views": 2064,
       "likes": 25,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -81,7 +99,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1725,
+      "views": 1753,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -90,7 +108,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1410,
+      "views": 1431,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -99,8 +117,8 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4473,
-      "likes": 64,
+      "views": 4771,
+      "likes": 101,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -108,8 +126,8 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3687,
-      "likes": 22,
+      "views": 3709,
+      "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
     },
@@ -117,7 +135,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 245,
+      "views": 265,
       "likes": 12,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -126,28 +144,10 @@ const YOUTUBE = {
       "id": "U0c_YNzbRHE",
       "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
       "date": "29 Nis 2026",
-      "views": 576,
-      "likes": 6,
+      "views": 603,
+      "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/U0c_YNzbRHE"
-    },
-    {
-      "id": "bY4UWZ-wEwY",
-      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
-      "date": "26 Nis 2026",
-      "views": 810,
-      "likes": 3,
-      "comments": 0,
-      "url": "https://youtu.be/bY4UWZ-wEwY"
-    },
-    {
-      "id": "-mrJ8maR2eo",
-      "title": "Canon PowerShot SD400: 2026'da Herkes Peşinde! Y2K Dijital K",
-      "date": "25 Nis 2026",
-      "views": 296,
-      "likes": 9,
-      "comments": 3,
-      "url": "https://youtu.be/-mrJ8maR2eo"
     }
   ],
   "sub_goal": 10000
@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-14T18:24:20",
+  "updated_at": "2026-05-17T02:53:39",
   "period_30d": {
-    "revenue": 126650,
-    "orders": 10,
-    "aov": 12665
+    "revenue": 136040,
+    "orders": 11,
+    "aov": 12367
   },
   "period_90d": {
-    "revenue": 220940,
+    "revenue": 216840,
     "orders": 18,
-    "aov": 12274
+    "aov": 12047
   },
   "period_year": {
-    "revenue": 786825,
-    "orders": 65,
-    "aov": 12105
+    "revenue": 796215,
+    "orders": 66,
+    "aov": 12064
   },
-  "customers_total": 728,
+  "customers_total": 750,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     56890,
     46450,
     65320,
-    85690
+    95080
   ],
   "monthly_orders": [
     0,
@@ -213,17 +213,17 @@ const SHOPIFY = {
     6,
     4,
     6,
-    6
+    7
   ],
   "channels": [
     {
       "name": "Direkt",
       "icon": "🔗",
       "color": "#F5A623",
-      "orders": 25,
-      "rev": 331550,
-      "order_pct": 38.5,
-      "rev_pct": 42.1
+      "orders": 26,
+      "rev": 340790,
+      "order_pct": 39.4,
+      "rev_pct": 42.8
     },
     {
       "name": "Google",
@@ -231,26 +231,17 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 20,
       "rev": 224166,
-      "order_pct": 30.8,
-      "rev_pct": 28.5
+      "order_pct": 30.3,
+      "rev_pct": 28.2
     },
     {
       "name": "Instagram",
       "icon": "📸",
       "color": "#BF5AF2",
-      "orders": 17,
-      "rev": 193389,
-      "order_pct": 26.2,
-      "rev_pct": 24.6
-    },
-    {
-      "name": "Diğer",
-      "icon": "•",
-      "color": "#8E8E93",
-      "orders": 1,
-      "rev": 18490,
-      "order_pct": 1.5,
-      "rev_pct": 2.3
+      "orders": 18,
+      "rev": 212029,
+      "order_pct": 27.3,
+      "rev_pct": 26.6
     },
     {
       "name": "YouTube",
@@ -273,8 +264,12 @@ const SHOPIFY = {
   ],
   "recent_orders": [
     {
-      "date": "14 May 2026",
-      "amount": 18490
+      "date": "17 May 2026",
+      "amount": 9240
+    },
+    {
+      "date": "16 May 2026",
+      "amount": 18640
     },
     {
       "date": "12 May 2026",
@@ -307,17 +302,9 @@ const SHOPIFY = {
     {
       "date": "18 Nis 2026",
       "amount": 8490
-    },
-    {
-      "date": "17 Nis 2026",
-      "amount": 14490
     }
   ],
   "cameras": [
-    {
-      "name": "Fujifilm FinePix Z90",
-      "price": 18490
-    },
     {
       "name": "Fujifilm FinePix Z700 EXR",
       "price": 15490
@@ -379,10 +366,6 @@ const SHOPIFY = {
       "price": 9490
     },
     {
-      "name": "Olympus Stylus 790 SW",
-      "price": 9490
-    },
-    {
       "name": "Olympus SZ-10",
       "price": 9490
     },
@@ -434,29 +417,37 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 82
+  "out_of_stock": 84
 };
 /* ─── SHOPIFY DATA END ─── */
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-05-14T18:17:45",
+  "updated_at": "2026-05-17T02:52:12",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6429,
-  "media_count": 272,
-  "avg_likes": 55,
-  "total_engagement": 668,
+  "followers": 6619,
+  "media_count": 273,
+  "avg_likes": 60,
+  "total_engagement": 720,
   "type_counts": {
-    "VIDEO": 5,
-    "CAROUSEL_ALBUM": 7
+    "VIDEO": 6,
+    "CAROUSEL_ALBUM": 6
   },
   "posts": [
+    {
+      "id": "17893027623467079",
+      "date": "15 May 2026",
+      "type": "VIDEO",
+      "likes": 46,
+      "comments": 0,
+      "url": "https://www.instagram.com/reel/DYXlpS6IXnV/"
+    },
     {
       "id": "18115202152809089",
       "date": "13 May 2026",
       "type": "VIDEO",
-      "likes": 61,
+      "likes": 66,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DYSX0DmIHwf/"
     },
@@ -464,7 +455,7 @@ const INSTAGRAM = {
       "id": "18111928819850525",
       "date": "12 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 142,
+      "likes": 160,
       "comments": 0,
       "url": "https://www.instagram.com/p/DYO7S-2iEqR/"
     },
@@ -472,7 +463,7 @@ const INSTAGRAM = {
       "id": "18115773172749112",
       "date": "8 May 2026",
       "type": "VIDEO",
-      "likes": 28,
+      "likes": 30,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DYFcSJjIRhu/"
     },
@@ -480,7 +471,7 @@ const INSTAGRAM = {
       "id": "18026696300819171",
       "date": "4 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 143,
+      "likes": 150,
       "comments": 1,
       "url": "https://www.instagram.com/p/DX7GlPLiAB_/"
     },
@@ -528,7 +519,7 @@ const INSTAGRAM = {
       "id": "18089660810248856",
       "date": "25 Nis 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 45,
+      "likes": 46,
       "comments": 0,
       "url": "https://www.instagram.com/p/DXjGTiHiCAA/"
     },
@@ -539,14 +530,6 @@ const INSTAGRAM = {
       "likes": 23,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DXXAHRCI7gE/"
-    },
-    {
-      "id": "18042760670777322",
-      "date": "19 Nis 2026",
-      "type": "CAROUSEL_ALBUM",
-      "likes": 27,
-      "comments": 0,
-      "url": "https://www.instagram.com/p/DXUL5lEiOjj/"
     }
   ],
   "follower_goal": 10000
