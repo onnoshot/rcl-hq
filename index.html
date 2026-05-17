@@ -3126,6 +3126,128 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 
 </div>
 </div>
+<!-- ═══════════════════ BLOG ANALİZ SAYFASI ═══════════════════ -->
+<div class="page" id="page-blog-detay">
+  <div class="page-topbar fi">
+    <div class="pt-left">
+      <div class="pt-title">Blog Analiz Merkezi</div>
+      <div class="pt-sub" id="bd-upd-label">Tüm blog performans verileri</div>
+    </div>
+    <div class="pt-right">
+      <select id="bd-sort-sel" onchange="renderBlogDetayPage()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--t1);font-size:.65rem;padding:5px 10px;border-radius:8px;font-family:var(--mono)">
+        <option value="views">Görüntülenme</option>
+        <option value="organic">Organik</option>
+        <option value="seo">SEO Skoru</option>
+        <option value="orders">Sipariş</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- KPI Cards -->
+  <div class="sec fi" style="transition-delay:.05s">
+    <div class="g g4">
+      <div class="card p">
+        <div class="kpi-lbl">Toplam Blog</div>
+        <div class="kpi-big" id="bd-total">—</div>
+        <div class="kpi-sub" id="bd-total-sub">yayında</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Ort. SEO Skoru</div>
+        <div class="kpi-big gold" id="bd-avg-seo">—</div>
+        <div class="kpi-sub">/100 puan</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Aylık Organik</div>
+        <div class="kpi-big" style="color:var(--green)" id="bd-organic">—</div>
+        <div class="kpi-sub">ziyaretçi</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">En İyi Blog</div>
+        <div class="kpi-big" style="color:#5AC8FA;font-size:1.1rem" id="bd-top-views">—</div>
+        <div class="kpi-sub" id="bd-top-title" style="max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">görüntülenme</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="sec fi" style="transition-delay:.1s">
+    <div class="g" style="grid-template-columns:1fr 1fr;gap:14px">
+
+      <!-- SEO Dağılımı -->
+      <div class="card p">
+        <div class="sec-label" style="margin-bottom:14px">SEO Skor Dağılımı</div>
+        <div id="bd-seo-dist" style="display:flex;flex-direction:column;gap:10px"></div>
+        <div style="display:flex;gap:14px;margin-top:14px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:5px;font-size:.6rem;color:rgba(255,255,255,.5)"><div style="width:8px;height:8px;border-radius:2px;background:var(--green)"></div>≥90 Mükemmel</div>
+          <div style="display:flex;align-items:center;gap:5px;font-size:.6rem;color:rgba(255,255,255,.5)"><div style="width:8px;height:8px;border-radius:2px;background:var(--warn)"></div>75–89 İyi</div>
+          <div style="display:flex;align-items:center;gap:5px;font-size:.6rem;color:rgba(255,255,255,.5)"><div style="width:8px;height:8px;border-radius:2px;background:var(--danger)"></div>&lt;75 Geliştirilmeli</div>
+        </div>
+      </div>
+
+      <!-- Aylık Trafik Trendi -->
+      <div class="card p">
+        <div class="sec-label" style="margin-bottom:14px">Aylık Trafik Trendi</div>
+        <div id="bd-monthly-chart" style="display:flex;align-items:flex-end;gap:6px;height:110px;padding-bottom:4px"></div>
+        <div id="bd-monthly-labels" style="display:flex;gap:6px;margin-top:4px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Performance Stats -->
+  <div class="sec fi" style="transition-delay:.15s">
+    <div class="g" style="grid-template-columns:repeat(3,1fr);gap:14px">
+      <div class="card p" style="text-align:center">
+        <div style="font-size:.6rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">90+ SEO Oranı</div>
+        <div class="kpi-big" style="color:var(--green);font-size:1.6rem" id="bd-pct-90">—</div>
+        <div style="font-size:.62rem;color:rgba(255,255,255,.3)">mükemmel blog</div>
+      </div>
+      <div class="card p" style="text-align:center">
+        <div style="font-size:.6rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Ort. Hemen Çıkma</div>
+        <div class="kpi-big" style="color:var(--warn);font-size:1.6rem" id="bd-avg-bounce">—</div>
+        <div style="font-size:.62rem;color:rgba(255,255,255,.3)">hedef: &lt;60%</div>
+      </div>
+      <div class="card p" style="text-align:center">
+        <div style="font-size:.6rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Ort. Sayfa Süresi</div>
+        <div class="kpi-big" style="color:#5AC8FA;font-size:1.6rem" id="bd-avg-dur">—</div>
+        <div style="font-size:.62rem;color:rgba(255,255,255,.3)">hedef: &gt;3dk</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Blog Table -->
+  <div class="sec fi" style="transition-delay:.2s">
+    <div class="card p" style="overflow:hidden">
+      <div class="sec-label" style="margin-bottom:14px">Tüm Blog Performansı</div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:.68rem">
+          <thead>
+            <tr style="color:rgba(255,255,255,.35);font-size:.6rem;text-transform:uppercase;letter-spacing:.07em">
+              <th style="padding:6px 8px;text-align:left;white-space:nowrap">#</th>
+              <th style="padding:6px 8px;text-align:left;cursor:pointer" onclick="document.getElementById('bd-sort-sel').value='views';renderBlogDetayPage()">Başlık</th>
+              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='views';renderBlogDetayPage()">Görüntülenme ↕</th>
+              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='organic';renderBlogDetayPage()">Organik ↕</th>
+              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='views';renderBlogDetayPage()">Hemen Çıkma</th>
+              <th style="padding:6px 8px;text-align:right;white-space:nowrap">Sayfa Süresi</th>
+              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='orders';renderBlogDetayPage()">Sipariş ↕</th>
+              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='seo';renderBlogDetayPage()">SEO ↕</th>
+            </tr>
+          </thead>
+          <tbody id="bd-table-body" style="color:var(--t1)"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Performers Infographic -->
+  <div class="sec fi" style="transition-delay:.25s">
+    <div class="card p">
+      <div class="sec-label" style="margin-bottom:14px">Organik Trafik Payı — Top 8</div>
+      <div id="bd-top-bars" style="display:flex;flex-direction:column;gap:8px"></div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══════════════════ /BLOG ANALİZ SAYFASI ═══════════════════ -->
 </main>
 <script id="data-script">
 /* ─── YOUTUBE DATA START ─── */
@@ -6852,128 +6974,6 @@ function finAnimateKPIs() {
 
 </script>
 <!-- ── Bottom Navigation ── -->
-<!-- ═══════════════════ BLOG ANALİZ SAYFASI ═══════════════════ -->
-<div class="page" id="page-blog-detay">
-  <div class="page-topbar fi">
-    <div class="pt-left">
-      <div class="pt-title">Blog Analiz Merkezi</div>
-      <div class="pt-sub" id="bd-upd-label">Tüm blog performans verileri</div>
-    </div>
-    <div class="pt-right">
-      <select id="bd-sort-sel" onchange="renderBlogDetayPage()" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--t1);font-size:.65rem;padding:5px 10px;border-radius:8px;font-family:var(--mono)">
-        <option value="views">Görüntülenme</option>
-        <option value="organic">Organik</option>
-        <option value="seo">SEO Skoru</option>
-        <option value="orders">Sipariş</option>
-      </select>
-    </div>
-  </div>
-
-  <!-- KPI Cards -->
-  <div class="sec fi" style="transition-delay:.05s">
-    <div class="g g4">
-      <div class="card p">
-        <div class="kpi-lbl">Toplam Blog</div>
-        <div class="kpi-big" id="bd-total">—</div>
-        <div class="kpi-sub" id="bd-total-sub">yayında</div>
-      </div>
-      <div class="card p">
-        <div class="kpi-lbl">Ort. SEO Skoru</div>
-        <div class="kpi-big gold" id="bd-avg-seo">—</div>
-        <div class="kpi-sub">/100 puan</div>
-      </div>
-      <div class="card p">
-        <div class="kpi-lbl">Aylık Organik</div>
-        <div class="kpi-big" style="color:var(--green)" id="bd-organic">—</div>
-        <div class="kpi-sub">ziyaretçi</div>
-      </div>
-      <div class="card p">
-        <div class="kpi-lbl">En İyi Blog</div>
-        <div class="kpi-big" style="color:#5AC8FA;font-size:1.1rem" id="bd-top-views">—</div>
-        <div class="kpi-sub" id="bd-top-title" style="max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">görüntülenme</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Charts Row -->
-  <div class="sec fi" style="transition-delay:.1s">
-    <div class="g" style="grid-template-columns:1fr 1fr;gap:14px">
-
-      <!-- SEO Dağılımı -->
-      <div class="card p">
-        <div class="sec-label" style="margin-bottom:14px">SEO Skor Dağılımı</div>
-        <div id="bd-seo-dist" style="display:flex;flex-direction:column;gap:10px"></div>
-        <div style="display:flex;gap:14px;margin-top:14px;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:5px;font-size:.6rem;color:rgba(255,255,255,.5)"><div style="width:8px;height:8px;border-radius:2px;background:var(--green)"></div>≥90 Mükemmel</div>
-          <div style="display:flex;align-items:center;gap:5px;font-size:.6rem;color:rgba(255,255,255,.5)"><div style="width:8px;height:8px;border-radius:2px;background:var(--warn)"></div>75–89 İyi</div>
-          <div style="display:flex;align-items:center;gap:5px;font-size:.6rem;color:rgba(255,255,255,.5)"><div style="width:8px;height:8px;border-radius:2px;background:var(--danger)"></div>&lt;75 Geliştirilmeli</div>
-        </div>
-      </div>
-
-      <!-- Aylık Trafik Trendi -->
-      <div class="card p">
-        <div class="sec-label" style="margin-bottom:14px">Aylık Trafik Trendi</div>
-        <div id="bd-monthly-chart" style="display:flex;align-items:flex-end;gap:6px;height:110px;padding-bottom:4px"></div>
-        <div id="bd-monthly-labels" style="display:flex;gap:6px;margin-top:4px"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Performance Stats -->
-  <div class="sec fi" style="transition-delay:.15s">
-    <div class="g" style="grid-template-columns:repeat(3,1fr);gap:14px">
-      <div class="card p" style="text-align:center">
-        <div style="font-size:.6rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">90+ SEO Oranı</div>
-        <div class="kpi-big" style="color:var(--green);font-size:1.6rem" id="bd-pct-90">—</div>
-        <div style="font-size:.62rem;color:rgba(255,255,255,.3)">mükemmel blog</div>
-      </div>
-      <div class="card p" style="text-align:center">
-        <div style="font-size:.6rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Ort. Hemen Çıkma</div>
-        <div class="kpi-big" style="color:var(--warn);font-size:1.6rem" id="bd-avg-bounce">—</div>
-        <div style="font-size:.62rem;color:rgba(255,255,255,.3)">hedef: &lt;60%</div>
-      </div>
-      <div class="card p" style="text-align:center">
-        <div style="font-size:.6rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Ort. Sayfa Süresi</div>
-        <div class="kpi-big" style="color:#5AC8FA;font-size:1.6rem" id="bd-avg-dur">—</div>
-        <div style="font-size:.62rem;color:rgba(255,255,255,.3)">hedef: &gt;3dk</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Blog Table -->
-  <div class="sec fi" style="transition-delay:.2s">
-    <div class="card p" style="overflow:hidden">
-      <div class="sec-label" style="margin-bottom:14px">Tüm Blog Performansı</div>
-      <div style="overflow-x:auto">
-        <table style="width:100%;border-collapse:collapse;font-size:.68rem">
-          <thead>
-            <tr style="color:rgba(255,255,255,.35);font-size:.6rem;text-transform:uppercase;letter-spacing:.07em">
-              <th style="padding:6px 8px;text-align:left;white-space:nowrap">#</th>
-              <th style="padding:6px 8px;text-align:left;cursor:pointer" onclick="document.getElementById('bd-sort-sel').value='views';renderBlogDetayPage()">Başlık</th>
-              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='views';renderBlogDetayPage()">Görüntülenme ↕</th>
-              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='organic';renderBlogDetayPage()">Organik ↕</th>
-              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='views';renderBlogDetayPage()">Hemen Çıkma</th>
-              <th style="padding:6px 8px;text-align:right;white-space:nowrap">Sayfa Süresi</th>
-              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='orders';renderBlogDetayPage()">Sipariş ↕</th>
-              <th style="padding:6px 8px;text-align:right;cursor:pointer;white-space:nowrap" onclick="document.getElementById('bd-sort-sel').value='seo';renderBlogDetayPage()">SEO ↕</th>
-            </tr>
-          </thead>
-          <tbody id="bd-table-body" style="color:var(--t1)"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- Top Performers Infographic -->
-  <div class="sec fi" style="transition-delay:.25s">
-    <div class="card p">
-      <div class="sec-label" style="margin-bottom:14px">Organik Trafik Payı — Top 8</div>
-      <div id="bd-top-bars" style="display:flex;flex-direction:column;gap:8px"></div>
-    </div>
-  </div>
-
-</div>
-<!-- ═══════════════════ /BLOG ANALİZ SAYFASI ═══════════════════ -->
 
 <nav class="bottom-nav" id="bottom-nav">
   <div class="bn-item active" data-page="overview" onclick="navigate('overview',this)">
