@@ -765,17 +765,18 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 .bottom-nav {
   display: none;
   position: fixed;
-  bottom: 0; left: 0; right: 0;
+  bottom: 16px; left: 12px; right: 12px;
   height: 60px;
-  background: rgba(10,15,26,0.96);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border-top: 1px solid rgba(255,255,255,0.08);
+  background: rgba(10,15,26,0.97);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 22px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.48), 0 2px 8px rgba(0,0,0,0.32), inset 0 1px 0 rgba(255,255,255,0.07);
   z-index: 300;
   align-items: center;
   justify-content: space-around;
   padding: 0 4px;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 .bn-item {
   display: flex; flex-direction: column; align-items: center;
@@ -790,12 +791,12 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 .bn-lbl { font-size: 0.46rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1; margin-top: 1px; }
 /* More menu overlay */
 .bn-more-overlay {
-  display: none; position: fixed; bottom: 60px; left: 0; right: 0;
-  background: rgba(10,15,26,0.98); border-top: 1px solid rgba(255,255,255,0.08);
+  display: none; position: fixed; bottom: 92px; left: 12px; right: 12px;
+  background: rgba(10,15,26,0.98); border: 1px solid rgba(255,255,255,0.08);
   z-index: 299; padding: 16px 12px;
-  border-radius: 20px 20px 0 0;
-  backdrop-filter: blur(20px);
-  transform: translateY(100%); transition: transform 0.28s cubic-bezier(.32,.72,0,1);
+  border-radius: 20px;
+  backdrop-filter: blur(24px) saturate(180%);
+  transform: translateY(120%); transition: transform 0.3s cubic-bezier(.32,.72,0,1);
 }
 .bn-more-overlay.open { transform: translateY(0); display: block; }
 .bn-more-grid {
@@ -817,7 +818,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 @media(max-width:900px) {
   .bottom-nav { display: flex; }
   .sidebar { display: none !important; }
-  .page-main { margin-left: 0 !important; padding-bottom: calc(68px + env(safe-area-inset-bottom,0px)) !important; }
+  .main { margin-left: 0 !important; padding-bottom: calc(96px + env(safe-area-inset-bottom,0px)) !important; }
 }
 @media(min-width:901px) {
   .bottom-nav, .bn-more-overlay, .bn-more-backdrop { display: none !important; }
@@ -1869,6 +1870,37 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
       </div>
     </div>
   </div>
+  <!-- Aylık Organik Trafik Grafiği -->
+  <div class="sec fi" style="transition-delay:.09s">
+    <div class="sec-label">Aylık Organik Trafik — 6 Aylık Trend</div>
+    <div class="card p">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px;flex-wrap:wrap;gap:8px">
+        <div>
+          <div class="chart-title" style="margin:0">Organik Oturum Trendi</div>
+          <div class="chart-sub">GA4 organik arama kaynaklı oturumlar</div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:center">
+          <div style="display:flex;align-items:center;gap:5px"><div style="width:20px;height:2px;background:rgba(48,209,88,0.8);border-radius:2px"></div><span style="font-size:.6rem;color:var(--t3);font-family:var(--mono)">Organik</span></div>
+          <div style="display:flex;align-items:center;gap:5px"><div style="width:20px;height:2px;background:rgba(90,200,250,0.6);border-radius:2px;border-style:dashed"></div><span style="font-size:.6rem;color:var(--t3);font-family:var(--mono)">Tüm Oturumlar</span></div>
+        </div>
+      </div>
+      <div style="height:220px"><canvas id="seoOrganicTrend"></canvas></div>
+      <div style="display:flex;justify-content:space-around;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.05)">
+        <div style="text-align:center">
+          <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono);margin-bottom:3px">TOPLAM ORGANİK</div>
+          <div style="font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--green)" id="seo-total-organic-6m">—</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono);margin-bottom:3px">ORTAlAMA ORAN</div>
+          <div style="font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--gold)" id="seo-avg-organic-rate">—</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono);margin-bottom:3px">EN İYİ AY</div>
+          <div style="font-size:1.1rem;font-weight:700;font-family:var(--mono);color:var(--blue)" id="seo-best-month">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
   <!-- SERP Fırsatları -->
   <div class="sec fi" style="transition-delay:.10s">
     <div class="sec-label">SERP Fırsatları & İçerik Optimizasyonu</div>
@@ -1912,22 +1944,56 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
     </div>
   </div>
   <div class="sec fi" style="transition-delay:.25s">
-    <div class="g g6-6">
+    <div class="sec-label">Blog İçerik Trendi & Oturum Kalitesi</div>
+    <div class="card p">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px;flex-wrap:wrap;gap:10px">
+        <div>
+          <div class="chart-title" style="margin:0">Blog Trend</div>
+          <div class="chart-sub">Yayın sayısı ve organik trafik — aylık</div>
+        </div>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:12px;border-radius:3px;background:rgba(212,175,55,0.55)"></div><span style="font-size:.6rem;color:var(--t3);font-family:var(--mono)">Blog Yazısı</span></div>
+          <div style="display:flex;align-items:center;gap:5px"><div style="width:12px;height:12px;border-radius:3px;background:rgba(48,209,88,0.4)"></div><span style="font-size:.6rem;color:var(--t3);font-family:var(--mono)">Trafik</span></div>
+        </div>
+      </div>
+      <div style="height:260px"><canvas id="seoBlogTrend"></canvas></div>
+      <!-- Mini KPIs below chart -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.05)">
+        <div style="text-align:center">
+          <div style="font-size:.58rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">TOPLAM YAZI</div>
+          <div style="font-size:1.3rem;font-weight:700;font-family:var(--mono);color:var(--gold)" id="seo-blog-total-posts">—</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:.58rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">TOPLAM TRAFİK</div>
+          <div style="font-size:1.3rem;font-weight:700;font-family:var(--mono);color:var(--green)" id="seo-blog-total-traffic">—</div>
+        </div>
+        <div style="text-align:center">
+          <div style="font-size:.58rem;color:var(--t3);font-family:var(--mono);margin-bottom:4px">EN İYİ AY</div>
+          <div style="font-size:1.3rem;font-weight:700;font-family:var(--mono);color:var(--blue)" id="seo-blog-best-month">—</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Oturum Kalitesi — full width row -->
+  <div class="sec fi" style="transition-delay:.28s">
+    <div class="sec-label">Oturum Kalitesi & Trafik Sağlığı (30 Gün)</div>
+    <div class="g g3">
       <div class="card p">
-        <div class="chart-title">Blog Trend</div>
-        <div class="chart-sub">Yayın sayısı ve trafik — aylık</div>
-        <div style="height:200px"><canvas id="seoBlogTrend"></canvas></div>
+        <div class="kpi-lbl" style="margin-bottom:12px">Hemen Çıkma Oranı</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:0.74rem;color:var(--warn);font-family:var(--mono);font-weight:700" id="seo-bounce">—</span><span style="font-size:0.6rem;color:var(--t3);font-family:var(--mono)">hedef: &lt;40%</span></div>
+        <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div id="seo-bounce-bar" style="height:100%;background:var(--warn);border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)"></div></div>
+        <div style="font-size:0.6rem;color:var(--t3);font-family:var(--mono);margin-top:8px">Düşük oran = kaliteli ziyaret</div>
       </div>
       <div class="card p">
-        <div class="kpi-lbl" style="margin-bottom:14px">Oturum Kalitesi (30 gün)</div>
-        <div style="display:flex;flex-direction:column;gap:14px">
-          <div><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:0.7rem;color:var(--t2);font-family:var(--mono)">Hemen Çıkma Oranı</span><span style="font-size:0.7rem;color:var(--warn);font-family:var(--mono)" id="seo-bounce">—</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div id="seo-bounce-bar" style="height:100%;background:var(--warn);border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)"></div></div></div>
-          <div><div style="display:flex;justify-content:space-between;margin-bottom:5px"><span style="font-size:0.7rem;color:var(--t2);font-family:var(--mono)">Organik Trafik Oranı</span><span style="font-size:0.7rem;color:var(--green);font-family:var(--mono)" id="seo-org-bar-lbl">—</span></div><div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div id="seo-org-bar" style="height:100%;background:var(--green);border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)"></div></div></div>
-          <div style="margin-top:8px;padding:12px;background:rgba(255,255,255,0.02);border-radius:10px;border:1px solid var(--b0)">
-            <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono);margin-bottom:6px">ORT. OTURUM SÜRESİ</div>
-            <div style="font-size:1.6rem;font-weight:700;font-family:var(--mono);color:var(--t1)" id="seo-session">—</div>
-          </div>
-        </div>
+        <div class="kpi-lbl" style="margin-bottom:12px">Organik Trafik Oranı</div>
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px"><span style="font-size:0.74rem;color:var(--green);font-family:var(--mono);font-weight:700" id="seo-org-bar-lbl">—</span><span style="font-size:0.6rem;color:var(--t3);font-family:var(--mono)">hedef: &gt;50%</span></div>
+        <div style="height:4px;background:rgba(255,255,255,0.06);border-radius:2px;overflow:hidden"><div id="seo-org-bar" style="height:100%;background:var(--green);border-radius:2px;width:0;transition:width 1.2s cubic-bezier(.16,1,.3,1)"></div></div>
+        <div style="font-size:0.6rem;color:var(--t3);font-family:var(--mono);margin-top:8px">Arama motoru güveni</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl" style="margin-bottom:12px">Ort. Oturum Süresi</div>
+        <div style="font-size:1.8rem;font-weight:700;font-family:var(--mono);color:var(--t1);margin-bottom:4px" id="seo-session">—</div>
+        <div style="font-size:0.6rem;color:var(--t3);font-family:var(--mono)">hedef: 2:00+ dakika</div>
       </div>
     </div>
   </div>
@@ -4243,9 +4309,28 @@ function renderSEOPage() {
   const stEl = document.getElementById('seoBlogTable');
   if(stEl) stEl.innerHTML=[...BLOG_SEO.posts].sort((a,b)=>b.views-a.views).map((p,i)=>{const sc=p.seo>=90?'var(--green)':p.seo>=75?'var(--warn)':'var(--danger)';return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.70rem;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${p.title}">${p.title}</td><td class="cg">${fmt(p.views)}</td><td style="color:var(--green);font-family:var(--mono)">${fmt(p.organic)}</td><td class="cd">${p.orders}</td><td style="font-family:var(--mono);font-size:0.76rem;font-weight:600;color:${sc}">${p.seo}</td></tr>`;}).join('');
 
-  // Blog trend chart
+  // ── Organic traffic line chart ───────────────────────────────────────────
+  const gm = GA4_TRAFFIC.monthly;
+  const totalOrg6m = gm.reduce((s,m)=>s+(m.organic||0),0);
+  const avgOrgRate6m = Math.round(gm.reduce((s,m)=>s+((m.sessions||0)>0?(m.organic/m.sessions*100):0),0)/gm.length);
+  const bestMonthOrg = gm.reduce((best,m)=>m.organic>best.organic?m:best,gm[0]);
+  const tot6mEl=document.getElementById('seo-total-organic-6m'); if(tot6mEl) tot6mEl.textContent=fmt(totalOrg6m);
+  const avgRateEl=document.getElementById('seo-avg-organic-rate'); if(avgRateEl) avgRateEl.textContent='%'+avgOrgRate6m;
+  const bestMEl=document.getElementById('seo-best-month'); if(bestMEl) bestMEl.textContent=bestMonthOrg.label;
+  mkChart('seoOrganicTrend',{type:'line',data:{labels:gm.map(m=>m.label),datasets:[
+    {label:'Organik',data:gm.map(m=>m.organic),borderColor:'rgba(48,209,88,0.85)',borderWidth:2.5,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:'rgba(48,209,88,0.9)',fill:true,backgroundColor:(ctx)=>{const c=ctx.chart.ctx,g=c.createLinearGradient(0,0,0,ctx.chart.height);g.addColorStop(0,'rgba(48,209,88,0.28)');g.addColorStop(1,'rgba(48,209,88,0.02)');return g;},tension:0.4},
+    {label:'Tüm Oturumlar',data:gm.map(m=>m.sessions),borderColor:'rgba(90,200,250,0.5)',borderWidth:1.5,borderDash:[5,4],pointRadius:3,pointHoverRadius:5,pointBackgroundColor:'rgba(90,200,250,0.7)',fill:false,tension:0.4}
+  ]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(48,209,88,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.65)',padding:12,bodyFont:{family:'-apple-system',size:11},callbacks:{label:ctx=>`  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'rgba(255,255,255,0.3)',callback:v=>v>=1000?Math.round(v/1000)+'K':v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1000,easing:'easeOutQuart'}}});
+
+  // ── Blog trend chart (expanded) ───────────────────────────────────────────
   const bm = BLOG_SEO.monthly;
-  mkChart('seoBlogTrend',{type:'bar',data:{labels:bm.map(m=>m.label),datasets:[{label:'Blog',data:bm.map(m=>m.posts),backgroundColor:'rgba(212,175,55,0.55)',borderColor:'#D4AF37',borderWidth:1,borderRadius:5,yAxisID:'y1'},{label:'Trafik',data:bm.map(m=>m.traffic),backgroundColor:'rgba(48,209,88,0.18)',borderColor:'rgba(48,209,88,0.65)',borderWidth:1.5,borderRadius:5,yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y1:{position:'left',ticks:{font:{family:'-apple-system',size:9},color:'#D4AF37',stepSize:1},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y2:{position:'right',ticks:{font:{family:'-apple-system',size:9},color:'#30D158',callback:v=>v>=1000?fmt(v/1000)+'K':v},grid:{display:false},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*60}}});
+  const totalBlogPosts = bm.reduce((s,m)=>s+(m.posts||0),0);
+  const totalBlogTraffic = bm.reduce((s,m)=>s+(m.traffic||0),0);
+  const bestBlogMonth = bm.reduce((best,m)=>m.traffic>best.traffic?m:best,bm[0]);
+  const btpEl=document.getElementById('seo-blog-total-posts'); if(btpEl) btpEl.textContent=BLOG_SEO.total_posts||totalBlogPosts;
+  const bttEl=document.getElementById('seo-blog-total-traffic'); if(bttEl) bttEl.textContent=fmt(totalBlogTraffic);
+  const bbmEl=document.getElementById('seo-blog-best-month'); if(bbmEl) bbmEl.textContent=bestBlogMonth.label;
+  mkChart('seoBlogTrend',{type:'bar',data:{labels:bm.map(m=>m.label),datasets:[{label:'Blog',data:bm.map(m=>m.posts),backgroundColor:'rgba(212,175,55,0.55)',borderColor:'#D4AF37',borderWidth:1,borderRadius:6,yAxisID:'y1'},{label:'Trafik',data:bm.map(m=>m.traffic),type:'line',borderColor:'rgba(48,209,88,0.75)',borderWidth:2.5,pointRadius:4,pointHoverRadius:6,pointBackgroundColor:'rgba(48,209,88,0.9)',fill:true,backgroundColor:(ctx)=>{const c=ctx.chart.ctx,g=c.createLinearGradient(0,0,0,ctx.chart.height);g.addColorStop(0,'rgba(48,209,88,0.18)');g.addColorStop(1,'rgba(48,209,88,0.02)');return g;},tension:0.4,yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y1:{position:'left',ticks:{font:{family:'-apple-system',size:9},color:'#D4AF37',stepSize:1},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y2:{position:'right',ticks:{font:{family:'-apple-system',size:9},color:'#30D158',callback:v=>v>=1000?fmt(v/1000)+'K':v},grid:{display:false},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*60}}});
 
   // Oturum kalitesi (GA4 verisi — sadece içerik KPI olarak)
   const kpi = GA4_TRAFFIC.kpi_30d;
@@ -6596,9 +6681,9 @@ function finAnimateKPIs() {
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
     <span class="bn-lbl">İstatistik</span>
   </div>
-  <div class="bn-item" data-page="youtube" onclick="navigate('youtube',this)">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-    <span class="bn-lbl">YouTube</span>
+  <div class="bn-item" data-page="seo" onclick="navigate('seo',this)">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span class="bn-lbl">SEO</span>
   </div>
   <div class="bn-item" id="bn-more-btn" onclick="toggleMoreMenu()">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/></svg>
@@ -6615,9 +6700,9 @@ function finAnimateKPIs() {
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
       <span class="bn-more-lbl">Instagram</span>
     </div>
-    <div class="bn-more-item" data-page="seo" onclick="navigate('seo');closeMoreMenu()">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <span class="bn-more-lbl">SEO</span>
+    <div class="bn-more-item" data-page="youtube" onclick="navigate('youtube');closeMoreMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+      <span class="bn-more-lbl">YouTube</span>
     </div>
     <div class="bn-more-item" data-page="blog" onclick="navigate('blog');closeMoreMenu()">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
