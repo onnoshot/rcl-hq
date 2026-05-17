@@ -1784,7 +1784,14 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
   </div>
 
   <!-- KANAL GELİR ANALİZİ -->
-  
+  <div class="sec fi" style="transition-delay:.18s">
+    <div class="sec-label">Kanal Gelir & Sipariş Karşılaştırması</div>
+    <div class="card p">
+      <div class="chart-title">Kanal Bazlı Performans</div>
+      <div class="chart-sub">Gelir ve sipariş dağılımı — kanallara göre</div>
+      <div style="height:220px;margin-top:12px"><canvas id="finChannelChart"></canvas></div>
+    </div>
+  </div>
 
   <!-- SİPARİŞ BAŞINA MALİYET ANALİZİ -->
   <div class="sec fi" style="transition-delay:.21s">
@@ -2289,11 +2296,12 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
   <div class="sec fi" style="transition-delay:.14s">
     <div class="sec-label">Shopify Müşteri Demografisi</div>
     <div class="g g3">
-      <!-- Şehir Dağılımı -->
+      <!-- Şehir Dağılımı + AOV chart -->
       <div class="card p">
         <div class="chart-title">Şehir Dağılımı</div>
         <div class="chart-sub">En çok siparişli şehirler</div>
         <div id="stats-city-bars" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div>
+        <div style="height:120px;margin-top:12px"><canvas id="statsCityRevChart"></canvas></div>
       </div>
       <!-- Cihaz -->
       <div class="card p">
@@ -2303,10 +2311,14 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
         </div>
         <div style="display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:8px" id="stats-device-legend"></div>
       </div>
-      <!-- Yaş Grupları -->
+      <!-- Yaş + Sipariş Trendi -->
       <div class="card p">
         <div class="chart-title">Yaş Grupları</div>
         <div id="stats-age-bars" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.05)">
+          <div class="chart-sub" style="margin-bottom:6px">Aylık Sipariş Trendi</div>
+          <div style="height:80px"><canvas id="statsNewCustChart"></canvas></div>
+        </div>
       </div>
     </div>
   </div>
@@ -2315,6 +2327,47 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
   <div class="sec fi" style="transition-delay:.17s">
     <div class="sec-label">SEO Sağlık Durumu</div>
     <div id="seo-health-strip" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:8px"></div>
+  </div>
+
+  <!-- Blog SEO Özeti -->
+  <div class="sec fi" style="transition-delay:.20s">
+    <div class="sec-label">Blog & İçerik Performansı</div>
+    <div class="g g4" style="margin-bottom:12px">
+      <div class="card p">
+        <div class="kpi-lbl">Toplam Blog Yazısı</div>
+        <div class="kpi-big gold" id="blog-total">—</div>
+        <div class="kpi-sub">yayınlanan içerik</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Aylık Organik</div>
+        <div class="kpi-big" style="color:var(--green)" id="blog-organic">—</div>
+        <div class="kpi-sub">blog kaynaklı ziyaret</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">En İyi Yazı</div>
+        <div class="kpi-big" style="color:var(--blue);font-size:1.8rem" id="blog-top-views">—</div>
+        <div class="kpi-sub" id="blog-top-name">görüntülenme</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Ort. SEO Skoru</div>
+        <div class="kpi-big" style="color:var(--green)" id="blog-avg-seo">—</div>
+        <div class="kpi-sub">hedef: 90+</div>
+      </div>
+    </div>
+    <div class="g g8-4">
+      <div class="card p">
+        <div class="chart-title">Blog Trend</div>
+        <div class="chart-sub">Yayın & trafik — aylık</div>
+        <div style="height:180px"><canvas id="blogTrendChart"></canvas></div>
+      </div>
+      <div class="card tcard">
+        <div class="thead"><span class="ttitle">Blog Yazıları</span></div>
+        <div class="table-scroll"><table>
+          <thead><tr><th>#</th><th>Başlık</th><th>Görüntülenme</th><th>Organik</th><th>Sipariş</th><th>SEO</th></tr></thead>
+          <tbody id="blogTableBody"></tbody>
+        </table></div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -2840,10 +2893,10 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 <!-- Page Nav -->
 <div class="cgv8-page-nav">
   <div class="cgv8-ptabs">
-    <div class="cgv8-ptab active" id="cgv8-ptab-yaz" onclick="cgV8Page('yaz',this)">&#9997;&#65039; Yaz</div>
-    <div class="cgv8-ptab" id="cgv8-ptab-gecmis" onclick="cgV8Page('gecmis',this)">&#128218; Gecmis</div>
-    <div class="cgv8-ptab" id="cgv8-ptab-perf" onclick="cgV8Page('perf',this)">&#128202; Blog Perf</div>
-    <div class="cgv8-ptab" id="cgv8-ptab-patron" onclick="cgV8Page('patron',this)">&#128081; Patron</div>
+    <div class="cgv8-ptab active" id="cgv8-ptab-yaz" onclick="cgV8Page('yaz',this)">Yaz</div>
+    <div class="cgv8-ptab" id="cgv8-ptab-gecmis" onclick="cgV8Page('gecmis',this)">Geçmiş</div>
+    <div class="cgv8-ptab" id="cgv8-ptab-perf" onclick="cgV8Page('perf',this)">Blog Perf</div>
+    <div class="cgv8-ptab" id="cgv8-ptab-patron" onclick="cgV8Page('patron',this)">Patron</div>
   </div>
   <div style="display:flex;align-items:center;gap:10px">
     <span id="cgv8-status" style="font-size:.62rem;padding:3px 12px;border-radius:8px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);letter-spacing:.06em">HAZIR</span>
@@ -2854,14 +2907,14 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 <!-- Stats Ribbon -->
 <div class="cgv8-stats-ribbon">
   <div class="cgv8-stat-card" style="--accent:rgba(212,175,55,.07)">
-    <div class="cgv8-stat-ico">&#128221;</div>
+    <div class="cgv8-stat-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
     <div class="cgv8-stat-info">
       <div class="cgv8-stat-val" id="cg-stat-done">0</div>
       <div class="cgv8-stat-lbl">Blog Yazildi</div>
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(100,200,100,.07)">
-    <div class="cgv8-stat-ico">&#128292;</div>
+    <div class="cgv8-stat-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div>
     <div class="cgv8-stat-info">
       <div class="cgv8-stat-val" id="cg-stat-words">0</div>
       <div class="cgv8-stat-lbl">Top Kelime</div>
@@ -2880,21 +2933,21 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(100,150,255,.07)">
-    <div class="cgv8-stat-ico">&#127942;</div>
+    <div class="cgv8-stat-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></div>
     <div class="cgv8-stat-info">
       <div class="cgv8-stat-val" id="cg-stat-best">--</div>
       <div class="cgv8-stat-lbl">En Iyi SEO</div>
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(200,100,255,.07)">
-    <div class="cgv8-stat-ico">&#9989;</div>
+    <div class="cgv8-stat-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
     <div class="cgv8-stat-info">
       <div class="cgv8-stat-val" id="cg-stat-pub">0</div>
       <div class="cgv8-stat-lbl">Yayinlanan</div>
     </div>
   </div>
   <div class="cgv8-stat-card" style="--accent:rgba(255,150,50,.07)">
-    <div class="cgv8-stat-ico">&#128197;</div>
+    <div class="cgv8-stat-ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
     <div class="cgv8-stat-info">
       <div class="cgv8-stat-val" id="cg-stat-today">0</div>
       <div class="cgv8-stat-lbl">Bugun</div>
@@ -2922,10 +2975,10 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
       <!-- Quick Commands -->
       <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.2);padding:4px 4px 0">Hizli Komutlar</div>
       <div style="display:flex;flex-direction:column;gap:4px">
-        <button onclick="cgQuickCmd('bir blog yaz')" style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(212,175,55,.75);text-align:left;cursor:pointer;transition:all .2s">&#9997;&#65039; Siradaki konuyu yaz</button>
-        <button onclick="cgQuickCmd('konu listele')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">&#128203; Konu listesini goster</button>
-        <button onclick="cgQuickCmd('rapor')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">&#128202; Performans raporu</button>
-        <button onclick="cgQuickCmd('neler ogrendin')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">&#129504; Neler ogrendin?</button>
+        <button onclick="cgQuickCmd('bir blog yaz')" style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(212,175,55,.75);text-align:left;cursor:pointer;transition:all .2s">Sıradaki konuyu yaz</button>
+        <button onclick="cgQuickCmd('konu listele')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">Konu listesini göster</button>
+        <button onclick="cgQuickCmd('rapor')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">Performans raporu</button>
+        <button onclick="cgQuickCmd('neler ogrendin')" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(255,255,255,.4);text-align:left;cursor:pointer;transition:all .2s">Neler öğrendin?</button>
       </div>
 
       <!-- Learnings -->
@@ -2942,7 +2995,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
       <!-- Blog Output -->
       <div class="cgv8-blog-out hidden" id="cgv8-blog-out">
         <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:rgba(0,0,0,.3);flex-shrink:0">
-          <span style="font-size:.65rem;color:rgba(212,175,55,.7);font-weight:600">&#128221; Blog Ciktisi</span>
+          <span style="font-size:.65rem;color:rgba(212,175,55,.7);font-weight:600">Blog Çıktısı</span>
           <div style="display:flex;gap:6px">
             <button onclick="cgCopyBlog()" style="font-size:.62rem;padding:3px 10px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);border-radius:6px;color:rgba(212,175,55,.8);cursor:pointer">Kopyala</button>
             <button onclick="cgCloseBlogOut()" style="font-size:.62rem;padding:3px 10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:6px;color:rgba(255,255,255,.4);cursor:pointer">Kapat X</button>
@@ -3808,25 +3861,29 @@ function renderInventory() {
 // ─── PROFIT ───────────────────────────────────────────────
 const COST_DEFAULTS={kargo_tl:300,kutu_tl:100,iyzico_pct:2.35,shopify_pct:2.0};
 function loadCostCfg(){try{const s=localStorage.getItem('rcl_cost_cfg');return s?{...COST_DEFAULTS,...JSON.parse(s)}:{...COST_DEFAULTS};}catch{return{...COST_DEFAULTS};}}
-function saveCostCfg(){localStorage.setItem('rcl_cost_cfg',JSON.stringify({kargo_tl:parseFloat(document.getElementById('cfg-kargo')?.value)||0,kutu_tl:parseFloat(document.getElementById('cfg-kutu')?.value)||0,iyzico_pct:parseFloat(document.getElementById('cfg-iyzico')?.value)||0,shopify_pct:parseFloat(document.getElementById('cfg-shopify')?.value)||0}));}
-function initCostCfg(){const c=loadCostCfg();const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v;};set('cfg-kargo',c.kargo_tl);set('cfg-kutu',c.kutu_tl);set('cfg-iyzico',c.iyzico_pct);set('cfg-shopify',c.shopify_pct);}
+function saveCostCfg(){const g=id=>parseFloat(document.getElementById(id)?.value)||0;localStorage.setItem('rcl_cost_cfg',JSON.stringify({kargo_tl:g('cfg-kargo2')||g('cfg-kargo'),kutu_tl:g('cfg-kutu2')||g('cfg-kutu'),iyzico_pct:g('cfg-iyzico2')||g('cfg-iyzico'),shopify_pct:g('cfg-shopify2')||g('cfg-shopify')}));}
+function initCostCfg(){const c=loadCostCfg();const set=(id,v)=>{const el=document.getElementById(id);if(el&&!el.value)el.value=v;};set('cfg-kargo2',c.kargo_tl);set('cfg-kutu2',c.kutu_tl);set('cfg-iyzico2',c.iyzico_pct);set('cfg-shopify2',c.shopify_pct);}
 
 function renderProfit() {
-  const kargo_tl = parseFloat(document.getElementById('cfg-kargo')?.value)||0;
-  const kutu_tl  = parseFloat(document.getElementById('cfg-kutu')?.value)||0;
-  const iyzico_pct = parseFloat(document.getElementById('cfg-iyzico')?.value)||0;
-  const shopify_pct = parseFloat(document.getElementById('cfg-shopify')?.value)||0;
+  const get = id => parseFloat(document.getElementById(id)?.value) || 0;
+  const kargo_tl = get('cfg-kargo2') || get('cfg-kargo');
+  const kutu_tl  = get('cfg-kutu2')  || get('cfg-kutu');
+  const iyzico_pct = get('cfg-iyzico2') || get('cfg-iyzico');
+  const shopify_pct = get('cfg-shopify2') || get('cfg-shopify');
   const d = SHOPIFY[`period_${period}`]||SHOPIFY.period_30d;
   const rev=d.revenue, orders=d.orders;
   const periodLbl={'30d':'Son 30 gün','90d':'Son 90 gün','year':'Son 12 ay'};
-  const ppl=document.getElementById('profit-period-lbl'); if(ppl) ppl.textContent=periodLbl[period]+' · '+orders+' sipariş';
+  const ppl=document.getElementById('profit-period-lbl') || document.getElementById('fin-period-compare'); // legacy compat
   const kdv=Math.round(rev/6), iyzico=Math.round(rev*iyzico_pct/100), shopifyFee=Math.round(rev*shopify_pct/100), kargo=orders*kargo_tl, kutu=orders*kutu_tl;
   const camCosts=loadCamCosts(), camEntries=Object.values(camCosts).filter(v=>v>0);
   const avgCamCost=camEntries.length>0?Math.round(camEntries.reduce((s,v)=>s+v,0)/camEntries.length):0;
   const cogs=avgCamCost*orders;
   const totalCost=kdv+iyzico+shopifyFee+kargo+kutu+cogs, net=rev-totalCost, margin=rev>0?(net/rev*100).toFixed(1):0;
-  const netEl=document.getElementById('profit-net'); if(netEl){netEl.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));netEl.style.color=net>=0?'var(--green)':'var(--danger)';}
-  const margEl=document.getElementById('profit-margin'); if(margEl){margEl.textContent='%'+margin;margEl.style.color=margin>=30?'var(--green)':margin>=15?'var(--warn)':'var(--danger)';}
+  // Update fin-net and fin-margin-lbl (existing finance page elements)
+  const netEl=document.getElementById('profit-net') || document.getElementById('fin-net');
+  if(netEl){netEl.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));netEl.style.color=net>=0?'var(--green)':'var(--danger)';}
+  const margEl=document.getElementById('profit-margin') || document.getElementById('fin-margin-lbl');
+  if(margEl){margEl.textContent='%'+margin;margEl.style.color=margin>=30?'var(--green)':margin>=15?'var(--warn)':'var(--danger)';}
   const rows=[{lbl:'Brüt Gelir',val:rev,color:'var(--gold)',sign:'+'},{lbl:'KDV %20 (dahil)',val:-kdv,color:'var(--danger)',sign:'-'},{lbl:`Iyzico %${iyzico_pct}`,val:-iyzico,color:'var(--warn)',sign:'-'},{lbl:`Shopify %${shopify_pct}`,val:-shopifyFee,color:'var(--warn)',sign:'-'},{lbl:`Kargo (${orders}×₺${kargo_tl})`,val:-kargo,color:'var(--t2)',sign:'-'},{lbl:`Kutu (${orders}×₺${kutu_tl})`,val:-kutu,color:'var(--t2)',sign:'-'},{lbl:avgCamCost>0?`Ürün (ort.₺${fmt(avgCamCost)}×${orders})`:'Ürün (maliyet girilmedi)',val:-cogs,color:avgCamCost>0?'var(--purple)':'var(--t3)',sign:'-'}];
   const pb=document.getElementById('profit-breakdown');
   if(pb) pb.innerHTML=rows.map(r=>`<div class="profit-row"><span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${r.lbl}</span><span style="font-family:var(--mono);font-size:0.82rem;font-weight:600;color:${r.color}">${r.sign}₺${fmt(Math.abs(r.val))}</span></div>`).join('')+`<div class="profit-row profit-total"><span style="font-size:0.72rem;color:var(--t1);font-family:var(--mono);font-weight:600">Net Kâr</span><span style="font-family:var(--mono);font-size:0.9rem;font-weight:700;color:${net>=0?'var(--green)':'var(--danger)'}">${net>=0?'+':'-'}₺${fmt(Math.abs(net))}</span></div>`;
@@ -4035,6 +4092,13 @@ function renderFinancePage() {
     ['fin-shopify-total', shopifyFee, `₺${fmt(rev)} × %${shopify_pct}`],
   ];
   hints.forEach(([id, val, hint]) => { const el=document.getElementById(id); if(el) el.textContent = val>0 ? `₺${fmt(val)} toplam · ${hint}` : hint; });
+
+  // Expense summary quick cards
+  const skEl=document.getElementById('sum-kdv'); if(skEl) skEl.textContent='₺'+fmt(kdv);
+  const siEl=document.getElementById('sum-iyzico'); if(siEl) siEl.textContent='₺'+fmt(iyzico+shopifyFee);
+  const skgEl=document.getElementById('sum-kargo'); if(skgEl) skgEl.textContent='₺'+fmt(kargo+kutu);
+  const stEl=document.getElementById('sum-total'); if(stEl) stEl.textContent='₺'+fmt(totalCut);
+  const snEl=document.getElementById('sum-net'); if(snEl){snEl.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));snEl.style.color=net>=0?'var(--green)':'var(--danger)';}
 
   // COGS & Başabaş
   const fcogs = document.getElementById('fin-cogs'); if(fcogs) fcogs.textContent = avgCamCost>0?'₺'+fmt(cogs):'Maliyet girilmedi';
@@ -6253,8 +6317,8 @@ function cgUpdateLearnings(){
 function cgUpdateHeroStats(){
   var brain=cgGetBrain(),h=brain.history||[],s=(brain.seo_scores||[]).filter(function(x){return typeof x==='number';});
   var avg=s.length?Math.round(s.reduce(function(a,c){return a+c;},0)/s.length):0;
-  var hb=document.getElementById('cgv8-hs-blogs'); if(hb) hb.textContent=h.length+' blog';
-  var hs=document.getElementById('cgv8-hs-seo'); if(hs) hs.textContent='SEO '+(avg||'--');
+  var hb=document.getElementById('cgv8-hs-blogs')||document.getElementById('cg-av-stat-count'); if(hb) hb.textContent=h.length;
+  var hs=document.getElementById('cgv8-hs-seo')||document.getElementById('cg-av-stat-avg'); if(hs) hs.textContent='SEO '+(avg||'--');
 }
 // Hook into renderCherryPage to also update hero stats and learnings
 var _origRCP=typeof renderCherryPage==='function'?renderCherryPage:null;
