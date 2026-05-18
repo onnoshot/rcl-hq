@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-18T10:49:38",
+  "updated_at": "2026-05-18T11:49:40",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 1931,
+      "views": 1928,
       "likes": 29,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2242,
+      "views": 2258,
       "likes": 35,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3714,
+      "views": 3715,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
