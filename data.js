@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-18T09:49:34",
+  "updated_at": "2026-05-18T10:49:38",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 1926,
+      "views": 1931,
       "likes": 29,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4779,
+      "views": 4778,
       "likes": 102,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
