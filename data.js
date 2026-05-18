@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-18T15:49:48",
+  "updated_at": "2026-05-18T16:49:50",
   "period_30d": {
-    "revenue": 113060,
-    "orders": 9,
-    "aov": 12562
+    "revenue": 125550,
+    "orders": 10,
+    "aov": 12555
   },
   "period_90d": {
-    "revenue": 216840,
-    "orders": 18,
-    "aov": 12047
+    "revenue": 229330,
+    "orders": 19,
+    "aov": 12070
   },
   "period_year": {
-    "revenue": 796215,
-    "orders": 66,
-    "aov": 12064
+    "revenue": 808705,
+    "orders": 67,
+    "aov": 12070
   },
-  "customers_total": 759,
+  "customers_total": 761,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     39470,
     46450,
     65320,
-    95080
+    107570
   ],
   "monthly_orders": [
     0,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     3,
     4,
     6,
-    7
+    8
   ],
   "channels": [
     {
@@ -222,17 +222,17 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 26,
       "rev": 340790,
-      "order_pct": 39.4,
-      "rev_pct": 42.8
+      "order_pct": 38.8,
+      "rev_pct": 42.1
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 20,
-      "rev": 224166,
-      "order_pct": 30.3,
-      "rev_pct": 28.2
+      "orders": 21,
+      "rev": 236656,
+      "order_pct": 31.3,
+      "rev_pct": 29.3
     },
     {
       "name": "Instagram",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 18,
       "rev": 212029,
-      "order_pct": 27.3,
-      "rev_pct": 26.6
+      "order_pct": 26.9,
+      "rev_pct": 26.2
     },
     {
       "name": "YouTube",
@@ -250,7 +250,7 @@ const SHOPIFY = {
       "orders": 1,
       "rev": 9990,
       "order_pct": 1.5,
-      "rev_pct": 1.3
+      "rev_pct": 1.2
     },
     {
       "name": "AI / Arama",
@@ -259,10 +259,14 @@ const SHOPIFY = {
       "orders": 1,
       "rev": 9240,
       "order_pct": 1.5,
-      "rev_pct": 1.2
+      "rev_pct": 1.1
     }
   ],
   "recent_orders": [
+    {
+      "date": "18 May 2026",
+      "amount": 12490
+    },
     {
       "date": "17 May 2026",
       "amount": 9240
@@ -298,20 +302,12 @@ const SHOPIFY = {
     {
       "date": "26 Nis 2026",
       "amount": 9990
-    },
-    {
-      "date": "18 Nis 2026",
-      "amount": 8490
     }
   ],
   "cameras": [
     {
       "name": "Fujifilm FinePix Z700 EXR",
       "price": 15490
-    },
-    {
-      "name": "Canon PowerShot SD400",
-      "price": 12490
     },
     {
       "name": "Lumix DMC-FT10",
@@ -417,7 +413,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 84
+  "out_of_stock": 85
 };
 /* ─── SHOPIFY DATA END ─── */
 
