@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-19T19:05:57",
+  "updated_at": "2026-05-19T23:22:12",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 112520,
-      "watch_hours": 340.0,
-      "subs_gained": 506,
-      "subs_lost": 240,
+      "views": 115218,
+      "watch_hours": 345.6,
+      "subs_gained": 509,
+      "subs_lost": 241,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3171.9,
-    "watch_hours_year_long": 1725.1,
-    "watch_hours_year_shorts": 1446.8,
+    "watch_hours_year": 3177.5,
+    "watch_hours_year_long": 1726.7,
+    "watch_hours_year_shorts": 1450.8,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 76985,
-        "watch_min": 15100,
-        "subs_gained": 419
+        "views": 79700,
+        "watch_min": 15432,
+        "subs_gained": 422
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 386,
+      "views": 389,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2108,
+      "views": 2123,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2588,
+      "views": 2593,
       "likes": 38,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1388,
+      "views": 1391,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2091,
+      "views": 2094,
       "likes": 25,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1777,
+      "views": 1781,
       "likes": 31,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1448,
+      "views": 1451,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4790,
+      "views": 4792,
       "likes": 102,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3725,
+      "views": 3728,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
