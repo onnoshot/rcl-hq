@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-19T17:05:48",
+  "updated_at": "2026-05-19T18:05:52",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4020,
-    "total_views": 1140920,
+    "total_views": 1141628,
     "video_count": 381
   },
   "analytics": {
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2102,
+      "views": 2103,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -127,7 +127,7 @@ const YOUTUBE = {
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
       "views": 4789,
-      "likes": 103,
+      "likes": 102,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 288,
+      "views": 289,
       "likes": 13,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
