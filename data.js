@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-19T23:05:40",
+  "updated_at": "2026-05-20T17:19:44",
   "period_30d": {
-    "revenue": 125550,
-    "orders": 10,
-    "aov": 12555
+    "revenue": 135040,
+    "orders": 11,
+    "aov": 12276
   },
   "period_90d": {
-    "revenue": 229330,
-    "orders": 19,
-    "aov": 12070
+    "revenue": 238820,
+    "orders": 20,
+    "aov": 11941
   },
   "period_year": {
-    "revenue": 808705,
-    "orders": 67,
-    "aov": 12070
+    "revenue": 818195,
+    "orders": 68,
+    "aov": 12032
   },
-  "customers_total": 764,
+  "customers_total": 765,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     39470,
     46450,
     65320,
-    107570
+    117060
   ],
   "monthly_orders": [
     0,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     3,
     4,
     6,
-    8
+    9
   ],
   "channels": [
     {
@@ -222,8 +222,8 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 26,
       "rev": 340790,
-      "order_pct": 38.8,
-      "rev_pct": 42.1
+      "order_pct": 38.2,
+      "rev_pct": 41.7
     },
     {
       "name": "Google",
@@ -231,17 +231,17 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 21,
       "rev": 236656,
-      "order_pct": 31.3,
-      "rev_pct": 29.3
+      "order_pct": 30.9,
+      "rev_pct": 28.9
     },
     {
       "name": "Instagram",
       "icon": "📸",
       "color": "#BF5AF2",
-      "orders": 18,
-      "rev": 212029,
-      "order_pct": 26.9,
-      "rev_pct": 26.2
+      "orders": 19,
+      "rev": 221519,
+      "order_pct": 27.9,
+      "rev_pct": 27.1
     },
     {
       "name": "YouTube",
@@ -263,6 +263,10 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "20 May 2026",
+      "amount": 9490
+    },
     {
       "date": "18 May 2026",
       "amount": 12490
@@ -298,10 +302,6 @@ const SHOPIFY = {
     {
       "date": "29 Nis 2026",
       "amount": 7990
-    },
-    {
-      "date": "26 Nis 2026",
-      "amount": 9990
     }
   ],
   "cameras": [
@@ -362,10 +362,6 @@ const SHOPIFY = {
       "price": 9490
     },
     {
-      "name": "Olympus SZ-10",
-      "price": 9490
-    },
-    {
       "name": "HP Photosmart R827",
       "price": 8900
     },
@@ -413,7 +409,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 85
+  "out_of_stock": 86
 };
 /* ─── SHOPIFY DATA END ─── */
 
