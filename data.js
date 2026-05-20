@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-20T23:22:30",
+  "updated_at": "2026-05-21T00:22:32",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,10 +10,10 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 114942,
-      "watch_hours": 345.6,
-      "subs_gained": 511,
-      "subs_lost": 242,
+      "views": 111199,
+      "watch_hours": 338.9,
+      "subs_gained": 509,
+      "subs_lost": 240,
       "avg_view_sec": 27
     },
     "watch_hours_year": 3182.2,
@@ -60,10 +60,28 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "GULk4atiPqo",
+      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
+      "date": "17 May 2026",
+      "views": 395,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/GULk4atiPqo"
+    },
+    {
+      "id": "4mX8PsRNBOs",
+      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
+      "date": "15 May 2026",
+      "views": 2132,
+      "likes": 34,
+      "comments": 1,
+      "url": "https://youtu.be/4mX8PsRNBOs"
+    },
+    {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2616,
+      "views": 2618,
       "likes": 39,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -81,7 +99,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2097,
+      "views": 2098,
       "likes": 25,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -130,24 +148,6 @@ const YOUTUBE = {
       "likes": 13,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
-    },
-    {
-      "id": "U0c_YNzbRHE",
-      "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
-      "date": "29 Nis 2026",
-      "views": 620,
-      "likes": 7,
-      "comments": 0,
-      "url": "https://youtu.be/U0c_YNzbRHE"
-    },
-    {
-      "id": "bY4UWZ-wEwY",
-      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
-      "date": "26 Nis 2026",
-      "views": 868,
-      "likes": 6,
-      "comments": 0,
-      "url": "https://youtu.be/bY4UWZ-wEwY"
     }
   ],
   "sub_goal": 10000
