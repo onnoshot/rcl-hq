@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-20T19:59:51",
+  "updated_at": "2026-05-20T23:22:28",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 112807,
-      "watch_hours": 340.8,
-      "subs_gained": 508,
-      "subs_lost": 239,
+      "views": 114942,
+      "watch_hours": 345.6,
+      "subs_gained": 511,
+      "subs_lost": 242,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3177.5,
-    "watch_hours_year_long": 1726.7,
-    "watch_hours_year_shorts": 1450.8,
+    "watch_hours_year": 3182.2,
+    "watch_hours_year_long": 1728.2,
+    "watch_hours_year_shorts": 1454.0,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 79633,
-        "watch_min": 15433,
-        "subs_gained": 422
+        "views": 81768,
+        "watch_min": 15720,
+        "subs_gained": 425
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 391,
+      "views": 392,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2126,
+      "views": 2127,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2612,
+      "views": 2616,
       "likes": 39,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -90,8 +90,8 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1395,
-      "likes": 16,
+      "views": 1400,
+      "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
     },
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 292,
+      "views": 293,
       "likes": 13,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
