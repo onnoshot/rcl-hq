@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-21T15:50:03",
+  "updated_at": "2026-05-21T16:50:05",
   "period_30d": {
     "revenue": 135040,
     "orders": 12,
@@ -326,10 +326,6 @@ const SHOPIFY = {
       "price": 11490
     },
     {
-      "name": "Nikon Coolpix S52c",
-      "price": 11490
-    },
-    {
       "name": "Konica Minolta DiMAGE X50",
       "price": 10990
     },
@@ -409,7 +405,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 86
+  "out_of_stock": 87
 };
 /* ─── SHOPIFY DATA END ─── */
 
