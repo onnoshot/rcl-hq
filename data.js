@@ -156,21 +156,21 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-21T18:50:16",
+  "updated_at": "2026-05-21T19:50:19",
   "period_30d": {
-    "revenue": 135040,
-    "orders": 12,
-    "aov": 11253
+    "revenue": 146280,
+    "orders": 13,
+    "aov": 11252
   },
   "period_90d": {
-    "revenue": 238820,
-    "orders": 21,
-    "aov": 11372
+    "revenue": 250060,
+    "orders": 22,
+    "aov": 11366
   },
   "period_year": {
-    "revenue": 818195,
-    "orders": 69,
-    "aov": 11858
+    "revenue": 829435,
+    "orders": 70,
+    "aov": 11849
   },
   "customers_total": 767,
   "monthly_labels": [
@@ -199,7 +199,7 @@ const SHOPIFY = {
     39470,
     46450,
     65320,
-    117060
+    128300
   ],
   "monthly_orders": [
     0,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     3,
     4,
     6,
-    10
+    11
   ],
   "channels": [
     {
@@ -222,8 +222,8 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 27,
       "rev": 340790,
-      "order_pct": 39.1,
-      "rev_pct": 41.7
+      "order_pct": 38.6,
+      "rev_pct": 41.1
     },
     {
       "name": "Google",
@@ -231,17 +231,17 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 21,
       "rev": 236656,
-      "order_pct": 30.4,
-      "rev_pct": 28.9
+      "order_pct": 30.0,
+      "rev_pct": 28.5
     },
     {
       "name": "Instagram",
       "icon": "📸",
       "color": "#BF5AF2",
-      "orders": 19,
-      "rev": 221519,
-      "order_pct": 27.5,
-      "rev_pct": 27.1
+      "orders": 20,
+      "rev": 232759,
+      "order_pct": 28.6,
+      "rev_pct": 28.1
     },
     {
       "name": "YouTube",
@@ -263,6 +263,10 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "21 May 2026",
+      "amount": 11240
+    },
     {
       "date": "21 May 2026",
       "amount": 0
@@ -298,10 +302,6 @@ const SHOPIFY = {
     {
       "date": "4 May 2026",
       "amount": 10490
-    },
-    {
-      "date": "2 May 2026",
-      "amount": 15490
     }
   ],
   "cameras": [
