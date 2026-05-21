@@ -156,21 +156,21 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-21T14:49:59",
+  "updated_at": "2026-05-21T15:50:01",
   "period_30d": {
     "revenue": 135040,
-    "orders": 11,
-    "aov": 12276
+    "orders": 12,
+    "aov": 11253
   },
   "period_90d": {
     "revenue": 238820,
-    "orders": 20,
-    "aov": 11941
+    "orders": 21,
+    "aov": 11372
   },
   "period_year": {
     "revenue": 818195,
-    "orders": 68,
-    "aov": 12032
+    "orders": 69,
+    "aov": 11858
   },
   "customers_total": 767,
   "monthly_labels": [
@@ -213,16 +213,16 @@ const SHOPIFY = {
     3,
     4,
     6,
-    9
+    10
   ],
   "channels": [
     {
       "name": "Direkt",
       "icon": "🔗",
       "color": "#F5A623",
-      "orders": 26,
+      "orders": 27,
       "rev": 340790,
-      "order_pct": 38.2,
+      "order_pct": 39.1,
       "rev_pct": 41.7
     },
     {
@@ -231,7 +231,7 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 21,
       "rev": 236656,
-      "order_pct": 30.9,
+      "order_pct": 30.4,
       "rev_pct": 28.9
     },
     {
@@ -240,7 +240,7 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 19,
       "rev": 221519,
-      "order_pct": 27.9,
+      "order_pct": 27.5,
       "rev_pct": 27.1
     },
     {
@@ -249,7 +249,7 @@ const SHOPIFY = {
       "color": "#FF453A",
       "orders": 1,
       "rev": 9990,
-      "order_pct": 1.5,
+      "order_pct": 1.4,
       "rev_pct": 1.2
     },
     {
@@ -258,11 +258,15 @@ const SHOPIFY = {
       "color": "#5AC8FA",
       "orders": 1,
       "rev": 9240,
-      "order_pct": 1.5,
+      "order_pct": 1.4,
       "rev_pct": 1.1
     }
   ],
   "recent_orders": [
+    {
+      "date": "21 May 2026",
+      "amount": 0
+    },
     {
       "date": "20 May 2026",
       "amount": 9490
@@ -298,10 +302,6 @@ const SHOPIFY = {
     {
       "date": "2 May 2026",
       "amount": 15490
-    },
-    {
-      "date": "29 Nis 2026",
-      "amount": 7990
     }
   ],
   "cameras": [
@@ -399,13 +399,13 @@ const SHOPIFY = {
       "qty": 2
     },
     {
-      "name": "Universal Kamera Batarya Şarj Cihazı",
-      "price": 590,
-      "qty": 2
-    },
-    {
       "name": "Ulanzi VLOG Tripod",
       "price": 990,
+      "qty": 1
+    },
+    {
+      "name": "Universal Kamera Batarya Şarj Cihazı",
+      "price": 590,
       "qty": 1
     }
   ],
