@@ -69,15 +69,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/GULk4atiPqo"
     },
     {
-      "id": "4mX8PsRNBOs",
-      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
-      "date": "15 May 2026",
-      "views": 2139,
-      "likes": 34,
-      "comments": 1,
-      "url": "https://youtu.be/4mX8PsRNBOs"
-    },
-    {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
@@ -148,6 +139,15 @@ const YOUTUBE = {
       "likes": 13,
       "comments": 2,
       "url": "https://youtu.be/dFixvsNLQ_k"
+    },
+    {
+      "id": "U0c_YNzbRHE",
+      "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
+      "date": "29 Nis 2026",
+      "views": 630,
+      "likes": 7,
+      "comments": 0,
+      "url": "https://youtu.be/U0c_YNzbRHE"
     }
   ],
   "sub_goal": 10000
