@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-22T06:51:07",
+  "updated_at": "2026-05-22T07:51:10",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4010,
-    "total_views": 1145609,
+    "total_views": 1144156,
     "video_count": 381
   },
   "analytics": {
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2644,
+      "views": 2646,
       "likes": 39,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
