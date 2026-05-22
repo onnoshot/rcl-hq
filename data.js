@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-22T19:02:21",
+  "updated_at": "2026-05-23T00:01:15",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4010,
-    "total_views": 1145609,
-    "video_count": 381
+    "total_views": 1146021,
+    "video_count": 382
   },
   "analytics": {
     "last_30d": {
-      "views": 110932,
-      "watch_hours": 338.5,
+      "views": 110582,
+      "watch_hours": 337.6,
       "subs_gained": 506,
-      "subs_lost": 238,
+      "subs_lost": 239,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3186.2,
-    "watch_hours_year_long": 1729.8,
-    "watch_hours_year_shorts": 1456.4,
+    "watch_hours_year": 3189.3,
+    "watch_hours_year_long": 1730.7,
+    "watch_hours_year_shorts": 1458.6,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,13 +52,22 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 83448,
-        "watch_min": 15948,
-        "subs_gained": 425
+        "views": 84946,
+        "watch_min": 16136,
+        "subs_gained": 426
       }
     ]
   },
   "videos": [
+    {
+      "id": "2r7TMYA4kTw",
+      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
+      "date": "22 May 2026",
+      "views": 6,
+      "likes": 1,
+      "comments": 0,
+      "url": "https://youtu.be/2r7TMYA4kTw"
+    },
     {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
@@ -72,7 +81,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2142,
+      "views": 2143,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -81,7 +90,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2654,
+      "views": 2655,
       "likes": 39,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -139,15 +148,6 @@ const YOUTUBE = {
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
-    },
-    {
-      "id": "dFixvsNLQ_k",
-      "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
-      "date": "29 Nis 2026",
-      "views": 298,
-      "likes": 13,
-      "comments": 2,
-      "url": "https://youtu.be/dFixvsNLQ_k"
     }
   ],
   "sub_goal": 10000
