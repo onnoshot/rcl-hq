@@ -427,10 +427,10 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-05-22T03:48:25",
+  "updated_at": "2026-05-22T04:48:26",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6836,
+  "followers": 6835,
   "media_count": 274,
   "avg_likes": 66,
   "total_engagement": 791,
