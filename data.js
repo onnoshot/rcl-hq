@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-24T18:55:31",
+  "updated_at": "2026-05-24T19:55:34",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 426,
+      "views": 427,
       "likes": 3,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1419,
+      "views": 1420,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2115,
+      "views": 2117,
       "likes": 25,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1803,
+      "views": 1804,
       "likes": 31,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1468,
+      "views": 1469,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4808,
+      "views": 4809,
       "likes": 103,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
