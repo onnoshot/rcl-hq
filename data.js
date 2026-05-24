@@ -427,13 +427,13 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-05-24T03:54:15",
+  "updated_at": "2026-05-24T18:48:05",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6824,
+  "followers": 6818,
   "media_count": 275,
-  "avg_likes": 64,
-  "total_engagement": 778,
+  "avg_likes": 66,
+  "total_engagement": 790,
   "type_counts": {
     "VIDEO": 7,
     "CAROUSEL_ALBUM": 5
@@ -443,7 +443,7 @@ const INSTAGRAM = {
       "id": "17939306271239461",
       "date": "22 May 2026",
       "type": "VIDEO",
-      "likes": 24,
+      "likes": 25,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DYouo-ro_AW/"
     },
@@ -451,7 +451,7 @@ const INSTAGRAM = {
       "id": "18350297056245743",
       "date": "17 May 2026",
       "type": "VIDEO",
-      "likes": 29,
+      "likes": 31,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DYbksJ8IMR0/"
     },
@@ -459,7 +459,7 @@ const INSTAGRAM = {
       "id": "17893027623467079",
       "date": "15 May 2026",
       "type": "VIDEO",
-      "likes": 51,
+      "likes": 54,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DYXlpS6IXnV/"
     },
@@ -467,7 +467,7 @@ const INSTAGRAM = {
       "id": "18115202152809089",
       "date": "13 May 2026",
       "type": "VIDEO",
-      "likes": 77,
+      "likes": 78,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DYSX0DmIHwf/"
     },
@@ -475,7 +475,7 @@ const INSTAGRAM = {
       "id": "18111928819850525",
       "date": "12 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 202,
+      "likes": 204,
       "comments": 0,
       "url": "https://www.instagram.com/p/DYO7S-2iEqR/"
     },
@@ -483,7 +483,7 @@ const INSTAGRAM = {
       "id": "18115773172749112",
       "date": "8 May 2026",
       "type": "VIDEO",
-      "likes": 32,
+      "likes": 33,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DYFcSJjIRhu/"
     },
@@ -499,7 +499,7 @@ const INSTAGRAM = {
       "id": "18101736734047012",
       "date": "2 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 15,
+      "likes": 16,
       "comments": 0,
       "url": "https://www.instagram.com/p/DX1_HlAiJdh/"
     },
@@ -523,7 +523,7 @@ const INSTAGRAM = {
       "id": "17920167630337696",
       "date": "27 Nis 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 56,
+      "likes": 57,
       "comments": 1,
       "url": "https://www.instagram.com/p/DXn7XV6CJoH/"
     },
