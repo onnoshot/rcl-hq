@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-24T21:55:42",
+  "updated_at": "2026-05-24T22:55:45",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 109379,
-      "watch_hours": 335.4,
-      "subs_gained": 504,
+      "views": 110754,
+      "watch_hours": 338.9,
+      "subs_gained": 505,
       "subs_lost": 242,
-      "avg_view_sec": 28
+      "avg_view_sec": 27
     },
-    "watch_hours_year": 3192.1,
-    "watch_hours_year_long": 1731.8,
-    "watch_hours_year_shorts": 1460.3,
+    "watch_hours_year": 3195.5,
+    "watch_hours_year_long": 1733.3,
+    "watch_hours_year_shorts": 1462.2,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 86193,
-        "watch_min": 16299,
-        "subs_gained": 427
+        "views": 87568,
+        "watch_min": 16508,
+        "subs_gained": 428
       }
     ]
   },
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1420,
+      "views": 1421,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
