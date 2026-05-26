@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-26T13:55:48",
+  "updated_at": "2026-05-26T14:55:53",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 118,
+      "views": 119,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 443,
+      "views": 444,
       "likes": 3,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2186,
+      "views": 2190,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2696,
+      "views": 2698,
       "likes": 40,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
