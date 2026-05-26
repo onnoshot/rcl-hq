@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-26T19:25:27",
+  "updated_at": "2026-05-26T20:25:30",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -59,6 +59,33 @@ const YOUTUBE = {
     ]
   },
   "videos": [
+    {
+      "id": "2r7TMYA4kTw",
+      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
+      "date": "22 May 2026",
+      "views": 120,
+      "likes": 5,
+      "comments": 0,
+      "url": "https://youtu.be/2r7TMYA4kTw"
+    },
+    {
+      "id": "GULk4atiPqo",
+      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
+      "date": "17 May 2026",
+      "views": 445,
+      "likes": 3,
+      "comments": 1,
+      "url": "https://youtu.be/GULk4atiPqo"
+    },
+    {
+      "id": "4mX8PsRNBOs",
+      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
+      "date": "15 May 2026",
+      "views": 2192,
+      "likes": 34,
+      "comments": 1,
+      "url": "https://youtu.be/4mX8PsRNBOs"
+    },
     {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
@@ -121,33 +148,6 @@ const YOUTUBE = {
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
-    },
-    {
-      "id": "dFixvsNLQ_k",
-      "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
-      "date": "29 Nis 2026",
-      "views": 311,
-      "likes": 14,
-      "comments": 2,
-      "url": "https://youtu.be/dFixvsNLQ_k"
-    },
-    {
-      "id": "U0c_YNzbRHE",
-      "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
-      "date": "29 Nis 2026",
-      "views": 656,
-      "likes": 7,
-      "comments": 0,
-      "url": "https://youtu.be/U0c_YNzbRHE"
-    },
-    {
-      "id": "bY4UWZ-wEwY",
-      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
-      "date": "26 Nis 2026",
-      "views": 901,
-      "likes": 7,
-      "comments": 0,
-      "url": "https://youtu.be/bY4UWZ-wEwY"
     }
   ],
   "sub_goal": 10000
