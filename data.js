@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2185,
+      "views": 2186,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
