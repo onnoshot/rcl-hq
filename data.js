@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-26T06:55:24",
+  "updated_at": "2026-05-26T07:55:27",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4020,
-    "total_views": 1151612,
+    "total_views": 1152888,
     "video_count": 382
   },
   "analytics": {
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4817,
+      "views": 4816,
       "likes": 103,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
