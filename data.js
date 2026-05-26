@@ -1,17 +1,17 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-26T14:55:53",
+  "updated_at": "2026-05-26T19:25:26",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4020,
-    "total_views": 1152888,
+    "total_views": 1153596,
     "video_count": 382
   },
   "analytics": {
     "last_30d": {
-      "views": 108098,
-      "watch_hours": 331.3,
+      "views": 108088,
+      "watch_hours": 331.6,
       "subs_gained": 496,
       "subs_lost": 232,
       "avg_view_sec": 28
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 119,
+      "views": 120,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 444,
+      "views": 445,
       "likes": 3,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2190,
+      "views": 2192,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2698,
+      "views": 2699,
       "likes": 40,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1441,
+      "views": 1442,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
