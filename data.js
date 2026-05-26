@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-26T21:25:33",
+  "updated_at": "2026-05-26T22:31:10",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 108088,
-      "watch_hours": 331.6,
-      "subs_gained": 496,
+      "views": 110465,
+      "watch_hours": 336.8,
+      "subs_gained": 498,
       "subs_lost": 232,
-      "avg_view_sec": 28
+      "avg_view_sec": 27
     },
-    "watch_hours_year": 3199.6,
-    "watch_hours_year_long": 1734.9,
-    "watch_hours_year_shorts": 1464.8,
+    "watch_hours_year": 3205.1,
+    "watch_hours_year_long": 1736.8,
+    "watch_hours_year_shorts": 1468.3,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 89423,
-        "watch_min": 16754,
-        "subs_gained": 432
+        "views": 91790,
+        "watch_min": 17080,
+        "subs_gained": 434
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 121,
+      "views": 122,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 445,
+      "views": 446,
       "likes": 3,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2192,
+      "views": 2193,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1442,
+      "views": 1444,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
