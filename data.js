@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-29T04:07:39",
+  "updated_at": "2026-05-30T17:10:16",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4020,
-    "total_views": 1157107,
+    "subscribers": 4030,
+    "total_views": 1161454,
     "video_count": 382
   },
   "analytics": {
     "last_30d": {
-      "views": 107419,
-      "watch_hours": 324.6,
-      "subs_gained": 480,
-      "subs_lost": 220,
+      "views": 105678,
+      "watch_hours": 318.1,
+      "subs_gained": 472,
+      "subs_lost": 215,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3213.2,
-    "watch_hours_year_long": 1739.6,
-    "watch_hours_year_shorts": 1473.7,
+    "watch_hours_year": 3216.9,
+    "watch_hours_year_long": 1740.6,
+    "watch_hours_year_shorts": 1476.3,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 95476,
-        "watch_min": 17572,
-        "subs_gained": 438
+        "views": 97288,
+        "watch_min": 17792,
+        "subs_gained": 439
       }
     ]
   },
@@ -63,16 +63,16 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 145,
+      "views": 158,
       "likes": 5,
-      "comments": 0,
+      "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
     },
     {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 468,
+      "views": 481,
       "likes": 3,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2220,
+      "views": 2238,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2731,
+      "views": 2757,
       "likes": 41,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1470,
+      "views": 1481,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2141,
+      "views": 2150,
       "likes": 25,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1830,
+      "views": 1839,
       "likes": 32,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1489,
+      "views": 1497,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4830,
+      "views": 4845,
       "likes": 103,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "UcdfytnpKEA",
       "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
       "date": "29 Nis 2026",
-      "views": 3759,
+      "views": 3768,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
