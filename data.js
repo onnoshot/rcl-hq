@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-31T11:49:00",
+  "updated_at": "2026-05-31T20:08:49",
   "period_30d": {
-    "revenue": 128300,
-    "orders": 11,
-    "aov": 11664
+    "revenue": 139290,
+    "orders": 12,
+    "aov": 11608
   },
   "period_90d": {
-    "revenue": 240070,
-    "orders": 21,
-    "aov": 11432
+    "revenue": 251060,
+    "orders": 22,
+    "aov": 11412
   },
   "period_year": {
-    "revenue": 829435,
-    "orders": 70,
-    "aov": 11849
+    "revenue": 840425,
+    "orders": 71,
+    "aov": 11837
   },
-  "customers_total": 791,
+  "customers_total": 794,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     39470,
     46450,
     65320,
-    128300
+    139290
   ],
   "monthly_orders": [
     0,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     3,
     4,
     6,
-    11
+    12
   ],
   "channels": [
     {
@@ -222,17 +222,17 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 27,
       "rev": 340790,
-      "order_pct": 38.6,
-      "rev_pct": 41.1
+      "order_pct": 38.0,
+      "rev_pct": 40.5
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 21,
-      "rev": 236656,
-      "order_pct": 30.0,
-      "rev_pct": 28.5
+      "orders": 22,
+      "rev": 247646,
+      "order_pct": 31.0,
+      "rev_pct": 29.5
     },
     {
       "name": "Instagram",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 20,
       "rev": 232759,
-      "order_pct": 28.6,
-      "rev_pct": 28.1
+      "order_pct": 28.2,
+      "rev_pct": 27.7
     },
     {
       "name": "YouTube",
@@ -263,6 +263,10 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "31 May 2026",
+      "amount": 10990
+    },
     {
       "date": "21 May 2026",
       "amount": 11240
@@ -298,10 +302,6 @@ const SHOPIFY = {
     {
       "date": "9 May 2026",
       "amount": 11240
-    },
-    {
-      "date": "4 May 2026",
-      "amount": 10490
     }
   ],
   "cameras": [
@@ -340,10 +340,6 @@ const SHOPIFY = {
     {
       "name": "Fujifilm FinePix 4700 Zoom",
       "price": 11490
-    },
-    {
-      "name": "Konica Minolta DiMAGE X50",
-      "price": 10990
     },
     {
       "name": "Kodak EasyShare V603",
@@ -421,7 +417,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 87
+  "out_of_stock": 88
 };
 /* ─── SHOPIFY DATA END ─── */
 
