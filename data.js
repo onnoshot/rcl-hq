@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-05-30T23:42:01",
+  "updated_at": "2026-05-31T11:49:00",
   "period_30d": {
     "revenue": 128300,
     "orders": 11,
@@ -172,7 +172,7 @@ const SHOPIFY = {
     "orders": 70,
     "aov": 11849
   },
-  "customers_total": 790,
+  "customers_total": 791,
   "monthly_labels": [
     "Haz 25",
     "Tem 25",
@@ -427,13 +427,13 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-05-30T23:39:29",
+  "updated_at": "2026-05-31T11:48:59",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6820,
+  "followers": 6822,
   "media_count": 276,
-  "avg_likes": 69,
-  "total_engagement": 837,
+  "avg_likes": 70,
+  "total_engagement": 839,
   "type_counts": {
     "CAROUSEL_ALBUM": 6,
     "VIDEO": 6
@@ -443,7 +443,7 @@ const INSTAGRAM = {
       "id": "18006381323860691",
       "date": "24 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 74,
+      "likes": 75,
       "comments": 1,
       "url": "https://www.instagram.com/p/DYu1jKZiNVD/"
     },
@@ -459,7 +459,7 @@ const INSTAGRAM = {
       "id": "18350297056245743",
       "date": "17 May 2026",
       "type": "VIDEO",
-      "likes": 31,
+      "likes": 32,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DYbksJ8IMR0/"
     },
