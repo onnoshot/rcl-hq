@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-05-31T21:08:54",
+  "updated_at": "2026-05-31T22:08:57",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 99855,
-      "watch_hours": 302.1,
-      "subs_gained": 445,
+      "views": 102462,
+      "watch_hours": 307.0,
+      "subs_gained": 447,
       "subs_lost": 196,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3222.2,
-    "watch_hours_year_long": 1741.9,
-    "watch_hours_year_shorts": 1480.3,
+    "watch_hours_year": 3227.2,
+    "watch_hours_year_long": 1743.1,
+    "watch_hours_year_shorts": 1484.0,
     "monthly": [
       {
         "label": "Ara 25",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 99883,
-        "watch_min": 18115,
-        "subs_gained": 445
+        "views": 102490,
+        "watch_min": 18410,
+        "subs_gained": 447
       }
     ]
   },
