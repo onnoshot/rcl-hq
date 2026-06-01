@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-01T21:06:13",
+  "updated_at": "2026-06-01T22:06:16",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 97479,
-      "watch_hours": 292.6,
-      "subs_gained": 407,
-      "subs_lost": 176,
-      "avg_view_sec": 27
+      "views": 99790,
+      "watch_hours": 297.9,
+      "subs_gained": 413,
+      "subs_lost": 177,
+      "avg_view_sec": 26
     },
-    "watch_hours_year": 3227.2,
-    "watch_hours_year_long": 1743.1,
-    "watch_hours_year_shorts": 1484.0,
+    "watch_hours_year": 3232.4,
+    "watch_hours_year_long": 1744.8,
+    "watch_hours_year_shorts": 1487.5,
     "monthly": [
       {
         "label": "Oca 26",
@@ -46,9 +46,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 102485,
-        "watch_min": 18411,
-        "subs_gained": 447
+        "views": 104796,
+        "watch_min": 18724,
+        "subs_gained": 453
       }
     ]
   },
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 178,
+      "views": 181,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -66,7 +66,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 501,
+      "views": 502,
       "likes": 4,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -75,7 +75,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2263,
+      "views": 2264,
       "likes": 35,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -84,7 +84,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2780,
+      "views": 2782,
       "likes": 42,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -129,7 +129,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4857,
+      "views": 4858,
       "likes": 104,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
