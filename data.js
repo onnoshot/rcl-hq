@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-01T18:29:16",
+  "updated_at": "2026-06-01T20:06:10",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4030,
-    "total_views": 1166561,
+    "total_views": 1167192,
     "video_count": 382
   },
   "analytics": {
@@ -67,7 +67,7 @@ const YOUTUBE = {
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
       "views": 500,
-      "likes": 3,
+      "likes": 4,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
     },
@@ -85,7 +85,7 @@ const YOUTUBE = {
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
       "views": 2779,
-      "likes": 41,
+      "likes": 42,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
     },
@@ -93,7 +93,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1502,
+      "views": 1503,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -130,7 +130,7 @@ const YOUTUBE = {
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
       "views": 4857,
-      "likes": 103,
+      "likes": 104,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
     },
