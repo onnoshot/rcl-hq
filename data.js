@@ -81,15 +81,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/4mX8PsRNBOs"
     },
     {
-      "id": "TvPGsbRhSmQ",
-      "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
-      "date": "14 May 2026",
-      "views": 2788,
-      "likes": 42,
-      "comments": 0,
-      "url": "https://youtu.be/TvPGsbRhSmQ"
-    },
-    {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
@@ -142,6 +133,15 @@ const YOUTUBE = {
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
+    },
+    {
+      "id": "dFixvsNLQ_k",
+      "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
+      "date": "29 Nis 2026",
+      "views": 338,
+      "likes": 14,
+      "comments": 2,
+      "url": "https://youtu.be/dFixvsNLQ_k"
     }
   ],
   "sub_goal": 10000
