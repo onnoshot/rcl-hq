@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-02T21:08:02",
+  "updated_at": "2026-06-02T22:08:07",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 97396,
-      "watch_hours": 292.9,
-      "subs_gained": 407,
-      "subs_lost": 174,
-      "avg_view_sec": 27
+      "views": 99981,
+      "watch_hours": 298.7,
+      "subs_gained": 410,
+      "subs_lost": 178,
+      "avg_view_sec": 26
     },
-    "watch_hours_year": 3232.4,
-    "watch_hours_year_long": 1744.8,
-    "watch_hours_year_shorts": 1487.5,
+    "watch_hours_year": 3238.2,
+    "watch_hours_year_long": 1746.8,
+    "watch_hours_year_shorts": 1491.4,
     "monthly": [
       {
         "label": "Oca 26",
@@ -46,9 +46,9 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 104790,
-        "watch_min": 18724,
-        "subs_gained": 453
+        "views": 107375,
+        "watch_min": 19074,
+        "subs_gained": 456
       }
     ]
   },
@@ -79,6 +79,15 @@ const YOUTUBE = {
       "likes": 35,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
+    },
+    {
+      "id": "TvPGsbRhSmQ",
+      "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
+      "date": "14 May 2026",
+      "views": 2788,
+      "likes": 42,
+      "comments": 0,
+      "url": "https://youtu.be/TvPGsbRhSmQ"
     },
     {
       "id": "LHg76IQG7aw",
@@ -133,15 +142,6 @@ const YOUTUBE = {
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/UcdfytnpKEA"
-    },
-    {
-      "id": "dFixvsNLQ_k",
-      "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
-      "date": "29 Nis 2026",
-      "views": 338,
-      "likes": 14,
-      "comments": 2,
-      "url": "https://youtu.be/dFixvsNLQ_k"
     }
   ],
   "sub_goal": 10000
