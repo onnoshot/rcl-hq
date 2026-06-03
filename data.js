@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-04T02:25:31",
+  "updated_at": "2026-06-04T02:42:07",
   "period_30d": {
     "revenue": 113310,
     "orders": 10,
@@ -306,11 +306,6 @@ const SHOPIFY = {
   ],
   "cameras": [
     {
-      "name": "Canon G7X Mark III",
-      "price": 71490,
-      "cost": 50000
-    },
-    {
       "name": "Panasonic Lumix DC-TZ91",
       "price": 28490
     },
@@ -428,7 +423,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 87
+  "out_of_stock": 88
 };
 /* ─── SHOPIFY DATA END ─── */
 

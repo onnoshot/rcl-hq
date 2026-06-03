@@ -522,11 +522,11 @@ tfoot td{border-top:1px solid rgba(255,59,48,0.12);color:var(--gold);font-weight
 .fin-kpi{background:rgba(255,255,255,0.038);border:1px solid rgba(255,255,255,0.075);border-radius:var(--r);padding:26px 28px;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);}
 .fin-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);pointer-events:none;}
 .fin-kpi:hover{transform:translateY(-2px);box-shadow:0 14px 52px rgba(0,0,0,0.5);}
-.fin-kpi-gold{background:linear-gradient(135deg,rgba(212,175,55,0.13),rgba(245,158,11,0.06));border-color:rgba(212,175,55,0.26);}
-.fin-kpi-gold::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,0.55),transparent);}
-.fin-kpi-green{background:linear-gradient(135deg,rgba(0,214,143,0.12),rgba(0,194,217,0.06));border-color:rgba(0,214,143,0.24);}
-.fin-kpi-green::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,214,143,0.45),transparent);}
-.fin-kpi-red{border-color:rgba(255,77,106,0.2);}
+.fin-kpi-gold{background:linear-gradient(135deg,rgba(255,59,48,0.12),rgba(255,69,58,0.05));border-color:rgba(255,59,48,0.24);}
+.fin-kpi-gold::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,59,48,0.5),transparent);}
+.fin-kpi-green{background:linear-gradient(135deg,rgba(48,209,88,0.10),rgba(100,210,255,0.05));border-color:rgba(48,209,88,0.22);}
+.fin-kpi-green::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(48,209,88,0.4),transparent);}
+.fin-kpi-red{background:linear-gradient(135deg,rgba(255,69,58,0.08),rgba(255,159,10,0.03));border-color:rgba(255,69,58,0.20);}
 .fin-kpi-label{font-size:0.59rem;text-transform:uppercase;letter-spacing:0.2em;color:var(--t3);margin-bottom:9px;font-weight:600;}
 .fin-kpi-value{font-size:2.9rem;font-weight:700;letter-spacing:-0.05em;line-height:1;margin-bottom:7px;font-variant-numeric:tabular-nums;}
 .fin-kpi-sub{font-size:0.64rem;color:var(--t3);}
@@ -551,7 +551,7 @@ tfoot td{border-top:1px solid rgba(255,59,48,0.12);color:var(--gold);font-weight
 .cost-field{display:flex;flex-direction:column;gap:5px;}
 .cost-field-label{font-size:0.55rem;text-transform:uppercase;letter-spacing:0.16em;color:var(--t3);font-weight:600;}
 .cost-field-input{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);border-radius:var(--r-xs);color:var(--t1);font-size:0.87rem;padding:9px 13px;outline:none;transition:border-color .2s,background .2s;-moz-appearance:textfield;text-align:right;width:100%;}
-.cost-field-input:focus{border-color:rgba(212,175,55,0.45);background:rgba(255,255,255,0.07);}
+.cost-field-input:focus{border-color:rgba(255,59,48,0.45);background:rgba(255,255,255,0.07);box-shadow:0 0 0 3px rgba(255,59,48,0.07);}
 .cost-field-input::-webkit-inner-spin-button,.cost-field-input::-webkit-outer-spin-button{opacity:.3;}
 .cost-field-hint{font-size:0.55rem;color:var(--t3);}
 
@@ -573,9 +573,9 @@ tfoot td{border-top:1px solid rgba(255,59,48,0.12);color:var(--gold);font-weight
 
 /* ─── PERIOD COMPARE ─── */
 .period-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
-.pc-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:var(--r-sm);padding:14px;transition:border-color .2s;}
-.pc-card:hover{border-color:rgba(212,175,55,0.2);}
-.pc-card.selected{border-color:rgba(212,175,55,0.35);background:rgba(212,175,55,0.05);}
+.pc-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:var(--r-sm);padding:16px;transition:all .25s cubic-bezier(.16,1,.3,1);cursor:pointer;}
+.pc-card:hover{border-color:rgba(255,59,48,0.22);transform:translateY(-1px);background:rgba(255,255,255,0.05);}
+.pc-card.selected{border-color:rgba(255,59,48,0.38);background:rgba(255,59,48,0.06);box-shadow:0 0 24px rgba(255,59,48,0.08);}
 .pc-period{font-size:0.58rem;text-transform:uppercase;letter-spacing:0.13em;color:var(--t3);margin-bottom:8px;}
 .pc-rev{font-size:1.35rem;font-weight:700;color:var(--gold);margin-bottom:3px;font-variant-numeric:tabular-nums;}
 .pc-sub{font-size:0.61rem;color:var(--t3);}
@@ -3487,7 +3487,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-04T02:25:31",
+  "updated_at": "2026-06-04T02:42:07",
   "period_30d": {
     "revenue": 113310,
     "orders": 10,
@@ -3637,11 +3637,6 @@ const SHOPIFY = {
   ],
   "cameras": [
     {
-      "name": "Canon G7X Mark III",
-      "price": 71490,
-      "cost": 50000
-    },
-    {
       "name": "Panasonic Lumix DC-TZ91",
       "price": 28490
     },
@@ -3759,7 +3754,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 87
+  "out_of_stock": 88
 };
 /* ─── SHOPIFY DATA END ─── */
 
@@ -4084,8 +4079,8 @@ function renderFinanceKPIs() {
 function renderRevenueChart() {
   const grad = document.getElementById('revenueChart')?.getContext('2d')?.createLinearGradient(0,0,0,240);
   if (!grad) return;
-  grad.addColorStop(0,'rgba(212,175,55,0.28)'); grad.addColorStop(1,'rgba(212,175,55,0)');
-  mkChart('revenueChart',{type:'line',data:{labels:SHOPIFY.monthly_labels,datasets:[{data:SHOPIFY.monthly_revenue,borderColor:'#D4AF37',borderWidth:2,fill:true,backgroundColor:grad,tension:0.4,pointRadius:0,pointHoverRadius:5,pointHoverBackgroundColor:'#D4AF37',pointHoverBorderColor:'#000',pointHoverBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>[`  Gelir: ${fmtTL(ctx.parsed.y)}`,`  Sipariş: ${SHOPIFY.monthly_orders[ctx.dataIndex]}`]},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:14,titleFont:{family:'-apple-system',size:11},bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1200,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
+  grad.addColorStop(0,'rgba(255,59,48,0.26)'); grad.addColorStop(1,'rgba(255,59,48,0)');
+  mkChart('revenueChart',{type:'line',data:{labels:SHOPIFY.monthly_labels,datasets:[{data:SHOPIFY.monthly_revenue,borderColor:'#FF3B30',borderWidth:2,fill:true,backgroundColor:grad,tension:0.4,pointRadius:0,pointHoverRadius:5,pointHoverBackgroundColor:'#FF3B30',pointHoverBorderColor:'#000',pointHoverBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>[`  Gelir: ${fmtTL(ctx.parsed.y)}`,`  Sipariş: ${SHOPIFY.monthly_orders[ctx.dataIndex]}`]},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,59,48,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:14,titleFont:{family:'-apple-system',size:11},bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1200,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
 }
 
 function renderFinanceCharts() {
@@ -4194,16 +4189,19 @@ function renderProfit() {
   const periodLbl={'30d':'Son 30 gün','90d':'Son 90 gün','year':'Son 12 ay'};
   const ppl=document.getElementById('profit-period-lbl'); if(ppl) ppl.textContent=periodLbl[period]+' · '+orders+' sipariş';
   const kdv=Math.round(rev/6), iyzico=Math.round(rev*iyzico_pct/100), shopifyFee=Math.round(rev*shopify_pct/100), kargo=orders*kargo_tl, kutu=orders*kutu_tl;
-  const camCosts=loadCamCosts(), camEntries=Object.values(camCosts).filter(v=>v>0);
-  const avgCamCost=camEntries.length>0?Math.round(camEntries.reduce((s,v)=>s+v,0)/camEntries.length):0;
-  const cogs=avgCamCost*orders;
+  const camCosts=loadCamCosts();
+  const camsWC=(SHOPIFY.cameras||[]).filter(c=>camCosts[c.name]>0);
+  const totStCost=camsWC.reduce((s,c)=>s+camCosts[c.name],0);
+  const totStPrice=camsWC.reduce((s,c)=>s+c.price,0);
+  const cRatio=totStPrice>0?totStCost/totStPrice:0;
+  const cogs=camsWC.length>0?Math.round(rev*cRatio):0;
   const totalCost=kdv+iyzico+shopifyFee+kargo+kutu+cogs, net=rev-totalCost, margin=rev>0?(net/rev*100).toFixed(1):0;
   const netEl=document.getElementById('profit-net'); if(netEl){netEl.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));netEl.style.color=net>=0?'var(--green)':'var(--danger)';}
   const margEl=document.getElementById('profit-margin'); if(margEl){margEl.textContent='%'+margin;margEl.style.color=margin>=30?'var(--green)':margin>=15?'var(--warn)':'var(--danger)';}
-  const rows=[{lbl:'Brüt Gelir',val:rev,color:'var(--gold)',sign:'+'},{lbl:'KDV %20 (dahil)',val:-kdv,color:'var(--danger)',sign:'-'},{lbl:`Iyzico %${iyzico_pct}`,val:-iyzico,color:'var(--warn)',sign:'-'},{lbl:`Shopify %${shopify_pct}`,val:-shopifyFee,color:'var(--warn)',sign:'-'},{lbl:`Kargo (${orders}×₺${kargo_tl})`,val:-kargo,color:'var(--t2)',sign:'-'},{lbl:`Kutu (${orders}×₺${kutu_tl})`,val:-kutu,color:'var(--t2)',sign:'-'},{lbl:avgCamCost>0?`Ürün (ort.₺${fmt(avgCamCost)}×${orders})`:'Ürün (maliyet girilmedi)',val:-cogs,color:avgCamCost>0?'var(--purple)':'var(--t3)',sign:'-'}];
+  const rows=[{lbl:'Brüt Gelir',val:rev,color:'var(--gold)',sign:'+'},{lbl:'KDV %20 (dahil)',val:-kdv,color:'var(--danger)',sign:'-'},{lbl:`Iyzico %${iyzico_pct}`,val:-iyzico,color:'var(--warn)',sign:'-'},{lbl:`Shopify %${shopify_pct}`,val:-shopifyFee,color:'var(--warn)',sign:'-'},{lbl:`Kargo (${orders}×₺${kargo_tl})`,val:-kargo,color:'var(--t2)',sign:'-'},{lbl:`Kutu (${orders}×₺${kutu_tl})`,val:-kutu,color:'var(--t2)',sign:'-'},{lbl:camsWC.length>0?`COGS (%${(cRatio*100).toFixed(0)} ağırlıklı)`:'Ürün (maliyet girilmedi)',val:-cogs,color:camsWC.length>0?'var(--purple)':'var(--t3)',sign:'-'}];
   const pb=document.getElementById('profit-breakdown');
   if(pb) pb.innerHTML=rows.map(r=>`<div class="profit-row"><span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${r.lbl}</span><span style="font-family:var(--mono);font-size:0.82rem;font-weight:600;color:${r.color}">${r.sign}₺${fmt(Math.abs(r.val))}</span></div>`).join('')+`<div class="profit-row profit-total"><span style="font-size:0.72rem;color:var(--t1);font-family:var(--mono);font-weight:600">Net Kâr</span><span style="font-family:var(--mono);font-size:0.9rem;font-weight:700;color:${net>=0?'var(--green)':'var(--danger)'}">${net>=0?'+':'-'}₺${fmt(Math.abs(net))}</span></div>`;
-  const pills=[{lbl:'KDV',val:kdv,c:'var(--danger)'},{lbl:'Iyzico',val:iyzico,c:'var(--warn)'},{lbl:'Shopify',val:shopifyFee,c:'var(--warn)'},{lbl:'Kargo',val:kargo,c:'var(--t2)'},{lbl:'Kutu',val:kutu,c:'var(--t2)'},{lbl:'Ürün',val:cogs,c:avgCamCost>0?'var(--purple)':'var(--t3)'}];
+  const pills=[{lbl:'KDV',val:kdv,c:'var(--danger)'},{lbl:'Iyzico',val:iyzico,c:'var(--warn)'},{lbl:'Shopify',val:shopifyFee,c:'var(--warn)'},{lbl:'Kargo',val:kargo,c:'var(--t2)'},{lbl:'Kutu',val:kutu,c:'var(--t2)'},{lbl:'COGS',val:cogs,c:camsWC.length>0?'var(--purple)':'var(--t3)'}];
   const pcs=document.getElementById('profit-cost-summary');
   if(pcs) pcs.innerHTML=pills.map(p=>`<div style="padding:6px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07)"><div style="font-size:0.59rem;font-family:var(--mono);color:var(--t3);letter-spacing:0.1em;text-transform:uppercase">${p.lbl}</div><div style="font-size:0.82rem;font-family:var(--mono);font-weight:600;color:${p.c};margin-top:2px">₺${fmt(p.val)}</div></div>`).join('');
   const pn=document.getElementById('profit-note'); if(pn) pn.textContent='₺'+fmt(totalCost)+' toplam maliyet';
@@ -4361,11 +4359,20 @@ function renderFinancePage() {
 
   const camCosts = loadCamCosts();
   const cams = SHOPIFY.cameras || [];
-  // Use per-camera costs from stock list
-  const camEntries = cams.map(c => camCosts[c.name] || 0).filter(v => v > 0);
-  const avgCamCost = camEntries.length > 0 ? Math.round(camEntries.reduce((s,v)=>s+v,0)/camEntries.length) : 0;
-  const totalStockCost = cams.reduce((s,c) => s + (camCosts[c.name]||0), 0);
-  const cogs = avgCamCost * orders;
+
+  // Fiyat ağırlıklı maliyet oranı hesaplama
+  // Basit ortalama yerine: toplam_maliyet / toplam_satış_fiyatı oranını gelire uygula.
+  // Bu yöntem, pahalı kameraların (Canon G7X gibi) basit ortalamayı aşırı çekmesini önler.
+  const camsWithCost = cams.filter(c => camCosts[c.name] > 0);
+  const totalStockCost  = camsWithCost.reduce((s,c) => s + camCosts[c.name], 0);
+  const totalStockPrice = camsWithCost.reduce((s,c) => s + c.price, 0);
+  const costRatio = totalStockPrice > 0 ? totalStockCost / totalStockPrice : 0;
+  // COGS = gelir × maliyet oranı (tahmini — sipariş bazlı kırılım olmadığında)
+  const cogs = camsWithCost.length > 0 ? Math.round(rev * costRatio) : 0;
+  // Basit ortalama (gösterim amaçlı)
+  const avgCamCost = camsWithCost.length > 0
+    ? Math.round(camsWithCost.reduce((s,c) => s + camCosts[c.name], 0) / camsWithCost.length)
+    : 0;
 
   const totalCut = kdv + iyzico + shopifyFee + kargo + kutu + cogs;
   const net = rev - totalCut;
@@ -4409,7 +4416,13 @@ function renderFinancePage() {
   hints.forEach(([id, val, hint]) => { const el=document.getElementById(id); if(el) el.textContent = val>0 ? `₺${fmt(val)} toplam · ${hint}` : hint; });
 
   // COGS & Başabaş
-  const fcogs = document.getElementById('fin-cogs'); if(fcogs) fcogs.textContent = avgCamCost>0?'₺'+fmt(cogs):'Maliyet girilmedi';
+  const fcogs = document.getElementById('fin-cogs');
+  if(fcogs) {
+    if(camsWithCost.length > 0) {
+      fcogs.textContent = '₺'+fmt(cogs);
+      fcogs.title = `${camsWithCost.length} kameranın ağırlıklı maliyet oranı %${(costRatio*100).toFixed(1)} × ₺${fmt(rev)} gelir`;
+    } else { fcogs.textContent = 'Maliyet girilmedi'; }
+  }
   const fgp = document.getElementById('fin-gross-profit'); if(fgp){const gp=rev-cogs-kdv;fgp.textContent='₺'+fmt(Math.max(gp,0));fgp.style.color=gp>=0?'var(--green)':'var(--danger)';}
   const fbe = document.getElementById('fin-breakeven');
   const fbes = document.getElementById('fin-breakeven-sub');
@@ -4431,13 +4444,13 @@ function renderFinancePage() {
   // ── Waterfall ──
   const wfSub = document.getElementById('fin-wf-sub'); if(wfSub) wfSub.textContent=periodLbl[finPeriod]+' · '+orders+' sipariş';
   const wfData = [
-    {label:'Brüt Gelir', val:rev, color:'#D4AF37', type:'start'},
+    {label:'Brüt Gelir', val:rev, color:'#FF3B30', type:'start'},
     {label:`KDV %${kdvRate}`, val:-kdv, color:'#FF453A', type:'minus'},
     {label:`Iyzico %${iyzico_pct}`, val:-iyzico, color:'#FF9F0A', type:'minus'},
     {label:`Shopify %${shopify_pct}`, val:-shopifyFee, color:'#FF9F0A', type:'minus'},
     {label:`Kargo (${orders}×₺${kargo_tl})`, val:-kargo, color:'#6E6E73', type:'minus'},
     {label:`Kutu (${orders}×₺${kutu_tl})`, val:-kutu, color:'#6E6E73', type:'minus'},
-    {label:avgCamCost>0?`COGS (${orders}×₺${fmt(avgCamCost)})`:'COGS (girilmedi)', val:-cogs, color:'#BF5AF2', type:'minus'},
+    {label:camsWithCost.length>0?`COGS (%${(costRatio*100).toFixed(0)} × gelir)`:'COGS (maliyet girilmedi)', val:-cogs, color:'#BF5AF2', type:'minus'},
     {label:'Net Kâr', val:net, color:net>=0?'#30D158':'#FF453A', type:'total'},
   ];
   const maxVal = rev;
@@ -4460,6 +4473,13 @@ function renderFinancePage() {
     setTimeout(() => {
       document.querySelectorAll('.wf-bar-fill[data-w]').forEach(b => { b.style.width = b.dataset.w + '%'; });
     }, 200);
+  }
+
+  // ── Gider Özeti (sum-* kartları doğrudan doldur) ──
+  { const s=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent='₺'+fmt(v);};
+    s('sum-kdv',kdv); s('sum-iyzico',iyzico+shopifyFee); s('sum-kargo',kargo+kutu); s('sum-total',totalCut);
+    const sn=document.getElementById('sum-net');
+    if(sn){sn.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));sn.style.color=net>=0?'rgba(48,209,88,.85)':'rgba(255,69,58,.85)';}
   }
 
   // ── Maliyet Dağılımı Donut ──
@@ -4485,7 +4505,8 @@ function renderFinancePage() {
     sparkEl.innerHTML = revData.map((v,i) => {
       const h = maxSpark > 0 ? Math.max(Math.round(v/maxSpark*36), 3) : 3;
       const isLast = i === revData.length-1;
-      return `<div class="spark-bar" style="height:${h}px;background:${isLast?'#D4AF37':i===revData.indexOf(Math.max(...revData))?'rgba(212,175,55,0.7)':'rgba(212,175,55,0.25)'}"></div>`;
+      const maxIdx = revData.indexOf(Math.max(...revData));
+      return `<div class="spark-bar" style="height:${h}px;background:${isLast?'#FF3B30':i===maxIdx?'rgba(255,59,48,0.65)':'rgba(255,59,48,0.22)'}"></div>`;
     }).join('');
   }
 
@@ -4499,8 +4520,8 @@ function renderFinancePage() {
   // ── Gelir Trend Chart ──
   if (document.getElementById('finRevChart')) {
     const grad = document.getElementById('finRevChart').getContext('2d').createLinearGradient(0,0,0,240);
-    grad.addColorStop(0,'rgba(212,175,55,0.3)'); grad.addColorStop(1,'rgba(212,175,55,0)');
-    mkChart('finRevChart',{type:'line',data:{labels:SHOPIFY.monthly_labels,datasets:[{data:SHOPIFY.monthly_revenue,borderColor:'#D4AF37',borderWidth:2.5,fill:true,backgroundColor:grad,tension:0.4,pointRadius:SHOPIFY.monthly_revenue.map((_,i)=>i===SHOPIFY.monthly_revenue.length-1?6:0),pointBackgroundColor:'#D4AF37',pointBorderColor:'#000',pointBorderWidth:2,pointHoverRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>[`  Gelir: ${fmtTL(ctx.parsed.y)}`,`  Sipariş: ${SHOPIFY.monthly_orders[ctx.dataIndex]}`]},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.35)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:14,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1200,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
+    grad.addColorStop(0,'rgba(255,59,48,0.28)'); grad.addColorStop(1,'rgba(255,59,48,0)');
+    mkChart('finRevChart',{type:'line',data:{labels:SHOPIFY.monthly_labels,datasets:[{data:SHOPIFY.monthly_revenue,borderColor:'#FF3B30',borderWidth:2.5,fill:true,backgroundColor:grad,tension:0.4,pointRadius:SHOPIFY.monthly_revenue.map((_,i)=>i===SHOPIFY.monthly_revenue.length-1?6:0),pointBackgroundColor:'#FF3B30',pointBorderColor:'#000',pointBorderWidth:2,pointHoverRadius:6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>[`  Gelir: ${fmtTL(ctx.parsed.y)}`,`  Sipariş: ${SHOPIFY.monthly_orders[ctx.dataIndex]}`]},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,59,48,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:14,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1200,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
   }
 
   // ── Son Siparişler ──
@@ -7130,24 +7151,8 @@ function urunSatisFiyatiCalc() {
 
 /* ---- Finance: Expense Summary Sync ---- */
 function finSyncExpenseSummary() {
-  function copyVal(fromId, toId) {
-    var src = document.getElementById(fromId);
-    var dst = document.getElementById(toId);
-    if (src && dst) dst.textContent = src.textContent || '—';
-  }
-  copyVal('fin-kdv-amount', 'sum-kdv');
-  copyVal('fin-iyzico-amount-total', 'sum-iyzico');
-  copyVal('fin-shipping-total', 'sum-kargo');
-  copyVal('fin-total-cut', 'sum-total');
-  copyVal('fin-net', 'sum-net');
-  // Fallback: sync from whatever fin- elements have data
-  var kdvEl = document.getElementById('fin-kdv-amount');
-  var cutEl = document.getElementById('fin-total-cut');
-  var netEl = document.getElementById('fin-net');
-  var sumTot = document.getElementById('sum-total');
-  var sumNet = document.getElementById('sum-net');
-  if (cutEl && sumTot && cutEl.textContent !== '—') sumTot.textContent = cutEl.textContent;
-  if (netEl && sumNet && netEl.textContent !== '—') sumNet.textContent = netEl.textContent;
+  // sum-* elemanları artık renderFinancePage() içinde doğrudan hesaplanan değerlerle dolduruluyor.
+  // Bu fonksiyon geriye dönük uyumluluk için boş bırakıldı.
 }
 // Auto-call when finance renders
 (function() {
