@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 193,
+      "views": 195,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 514,
+      "views": 515,
       "likes": 4,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1517,
+      "views": 1518,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
