@@ -252,8 +252,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100
 .sb-logo img{height:34px;width:auto;object-fit:contain;filter:brightness(1.1);}
 .sb-nav{flex:1;overflow-y:auto;overflow-x:hidden;padding:12px 10px;scrollbar-width:none;}
 .sb-nav::-webkit-scrollbar{display:none;}
-.nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;cursor:pointer;transition:all 0.25s cubic-bezier(.16,1,.3,1);color:var(--t3);font-size:0.8rem;font-weight:500;margin-bottom:3px;border:1px solid transparent;user-select:none;white-space:nowrap;overflow:hidden;min-width:0;}
-.nav-item:hover{background:rgba(255,255,255,0.05);color:var(--t2);transform:translateX(2px);}
+.nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;cursor:pointer;transition:all 0.25s cubic-bezier(.16,1,.3,1);color:rgba(255,255,255,0.65);font-size:0.8rem;font-weight:500;margin-bottom:3px;border:1px solid transparent;user-select:none;white-space:nowrap;overflow:hidden;min-width:0;}
+.nav-item:hover{background:rgba(255,255,255,0.05);color:rgba(255,255,255,0.92);transform:translateX(2px);}
 .nav-item.active{background:linear-gradient(135deg,rgba(255,59,48,0.16),rgba(255,59,48,0.06));color:var(--gold);border-color:rgba(255,59,48,0.28);box-shadow:inset 0 0 0 0.5px rgba(255,59,48,0.15),0 0 20px rgba(255,59,48,0.08);}
 .nav-item svg{width:17px;height:17px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
 .nav-item.active svg{stroke:var(--gold);}
@@ -1430,7 +1430,12 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
     </div>
   </nav>
   <div class="sb-footer">
-    <div class="sb-live"><div class="sb-live-dot"></div><span id="sb-upd-time">Güncelleniyor…</span></div>
+    <div class="sb-live" style="margin-bottom:8px"><div class="sb-live-dot"></div><span style="font-size:0.62rem;color:rgba(255,255,255,0.55);font-weight:500">Canlı Veri</span></div>
+    <div id="sb-sources-list" style="display:flex;flex-direction:column;gap:5px;"></div>
+    <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.05)">
+      <div style="font-size:0.55rem;color:rgba(255,255,255,0.2);letter-spacing:0.05em">Son Güncelleme</div>
+      <div id="sb-upd-time" style="font-size:0.64rem;color:rgba(255,255,255,0.55);font-weight:500;margin-top:2px;">—</div>
+    </div>
   </div>
 </aside>
 
@@ -3482,7 +3487,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-04T02:22:34",
+  "updated_at": "2026-06-04T02:25:31",
   "period_30d": {
     "revenue": 113310,
     "orders": 10,
@@ -3633,7 +3638,8 @@ const SHOPIFY = {
   "cameras": [
     {
       "name": "Canon G7X Mark III",
-      "price": 71490
+      "price": 71490,
+      "cost": 50000
     },
     {
       "name": "Panasonic Lumix DC-TZ91",
@@ -3677,11 +3683,13 @@ const SHOPIFY = {
     },
     {
       "name": "Kodak Slice R502",
-      "price": 10490
+      "price": 10490,
+      "cost": 5000
     },
     {
       "name": "Olympus SP-700",
-      "price": 10490
+      "price": 10490,
+      "cost": 5000
     },
     {
       "name": "Sanyo Xacti VPC-HD1",
@@ -3701,7 +3709,8 @@ const SHOPIFY = {
     },
     {
       "name": "HP Photosmart R827",
-      "price": 8900
+      "price": 8900,
+      "cost": 3500
     },
     {
       "name": "Nikon Coolpix 885",
@@ -3709,15 +3718,18 @@ const SHOPIFY = {
     },
     {
       "name": "Traveler DC-830",
-      "price": 8490
+      "price": 8490,
+      "cost": 3100
     },
     {
       "name": "Sony Cybershot DSC-S85",
-      "price": 7990
+      "price": 7990,
+      "cost": 3932
     },
     {
       "name": "Kodak ZX1 “Weather-Resistant”",
-      "price": 4900
+      "price": 4900,
+      "cost": 1680
     }
   ],
   "accessories": [
@@ -3976,8 +3988,52 @@ function initRouter() {
 // ─── HEADER ──────────────────────────────────────────────
 function renderHeader() {
   const upd = new Date(SHOPIFY.updated_at);
-  const t = upd.toLocaleString('tr-TR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
-  ['updateTime','sb-upd-time'].forEach(id => { const el=document.getElementById(id); if(el) el.textContent=t; });
+  function fmtUpd(iso) {
+    if (!iso) return '—';
+    const d = new Date(iso);
+    if (isNaN(d)) return '—';
+    const now = new Date();
+    const diffMin = Math.round((now - d) / 60000);
+    const timeStr = d.toLocaleTimeString('tr-TR', {hour:'2-digit', minute:'2-digit'});
+    if (diffMin < 2) return timeStr + ' · şimdi';
+    if (diffMin < 60) return timeStr + ` · ${diffMin}dk önce`;
+    if (diffMin < 1440) return timeStr + ` · ${Math.round(diffMin/60)}s önce`;
+    return d.toLocaleDateString('tr-TR', {day:'numeric', month:'short'}) + ' ' + timeStr;
+  }
+
+  // Sidebar kaynaklar listesi
+  const sources = [
+    { label: 'Shopify', iso: SHOPIFY.updated_at, color: '#30D158' },
+    { label: 'YouTube', iso: YOUTUBE.updated_at,  color: '#FF3B30' },
+    { label: 'Instagram', iso: INSTAGRAM.updated_at, color: '#BF5AF2' },
+    { label: 'GA4', iso: GA4_TRAFFIC.updated_at, color: '#0A84FF' },
+  ];
+  const srcEl = document.getElementById('sb-sources-list');
+  if (srcEl) {
+    srcEl.innerHTML = sources.map(s => `
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;">
+        <div style="display:flex;align-items:center;gap:5px;">
+          <div style="width:5px;height:5px;border-radius:50%;background:${s.color};flex-shrink:0;box-shadow:0 0 5px ${s.color}66;"></div>
+          <span style="font-size:0.58rem;color:rgba(255,255,255,0.4);">${s.label}</span>
+        </div>
+        <span style="font-size:0.58rem;color:rgba(255,255,255,0.55);font-variant-numeric:tabular-nums;">${fmtUpd(s.iso)}</span>
+      </div>`).join('');
+  }
+
+  // Son güncelleme (en son olan)
+  const latestUpd = sources.reduce((a, b) => {
+    if (!a.iso) return b; if (!b.iso) return a;
+    return new Date(a.iso) > new Date(b.iso) ? a : b;
+  });
+  const updEl = document.getElementById('sb-upd-time');
+  if (updEl) updEl.textContent = fmtUpd(latestUpd.iso);
+
+  const updEl2 = document.getElementById('updateTime');
+  if (updEl2) {
+    const shopifyUpd = new Date(SHOPIFY.updated_at);
+    updEl2.textContent = shopifyUpd.toLocaleString('tr-TR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'});
+  }
+
   const h = new Date().getHours();
   const gr = h<12?'Günaydın':h<18?'İyi günler':'İyi akşamlar';
   const words = [{t:gr+',',gold:false},{t:'Onur.',gold:true}];
@@ -4062,8 +4118,20 @@ function renderChannels() {
 }
 
 // ─── CAMERA COSTS ─────────────────────────────────────────
-function loadCamCosts(){try{const s=localStorage.getItem('rcl_cam_costs');return s?JSON.parse(s):{};}catch{return{};}}
-function saveCamCost(name,val){const d=loadCamCosts();if(val>0)d[name]=val;else delete d[name];localStorage.setItem('rcl_cam_costs',JSON.stringify(d));}
+function loadCamCosts(){
+  // Shopify'dan gelen otomatik maliyetler (cost alanı)
+  const shopifyCosts = {};
+  if (SHOPIFY.cameras) {
+    SHOPIFY.cameras.forEach(c => { if (c.cost) shopifyCosts[c.name] = c.cost; });
+  }
+  // Kullanıcının manuel girdiği değerler (localStorage) override eder
+  try {
+    const manual = localStorage.getItem('rcl_cam_costs');
+    if (manual) return {...shopifyCosts, ...JSON.parse(manual)};
+  } catch(e){}
+  return shopifyCosts;
+}
+function saveCamCost(name,val){const d=loadCamCosts();if(val>0)d[name]=val;else delete d[name];const manual={};SHOPIFY.cameras.forEach(c=>{if(d[c.name]&&(!c.cost||d[c.name]!==c.cost))manual[c.name]=d[c.name];});localStorage.setItem('rcl_cam_costs',JSON.stringify(manual));}
 
 function updateCamTotals() {
   const cams = SHOPIFY.cameras, costs = loadCamCosts();
@@ -4091,7 +4159,12 @@ function renderInventory() {
   const atEl=document.getElementById('accTitle'); if(atEl) atEl.textContent=`Aksesuarlar (${accQty} adet)`;
   const costs=loadCamCosts();
   const cbEl=document.getElementById('camBody');
-  if(cbEl) cbEl.innerHTML=cams.map((c,i)=>{const cost=costs[c.name]||0,kar=cost>0?c.price-cost:null,safeId=c.name.replace(/\W/g,'_');return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${c.name}</td><td class="cg">${fmtTL(c.price)}</td><td><input class="cam-cost-input" type="number" placeholder="gir" value="${cost>0?cost:''}" data-name="${c.name.replace(/"/g,'&quot;')}" oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);updateCamTotals();renderProfit()"></td><td id="kar-${safeId}" style="font-family:var(--mono);color:${kar===null?'var(--t3)':kar>=0?'var(--green)':'var(--danger)'}">${kar===null?'—':fmtTL(kar)}</td></tr>`;}).join('');
+  if(cbEl) cbEl.innerHTML=cams.map((c,i)=>{
+    const cost=costs[c.name]||0,kar=cost>0?c.price-cost:null,safeId=c.name.replace(/\W/g,'_');
+    const isAuto = c.cost && costs[c.name]===c.cost;
+    const badge = isAuto ? `<span title="Shopify'dan otomatik" style="font-size:0.46rem;background:rgba(48,209,88,0.12);color:var(--green);border-radius:4px;padding:1px 4px;margin-left:4px;vertical-align:middle;">AUTO</span>` : '';
+    return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${c.name}</td><td class="cg">${fmtTL(c.price)}</td><td><input class="cam-cost-input" type="number" placeholder="${isAuto?'auto':'gir'}" value="${cost>0?cost:''}" data-name="${c.name.replace(/"/g,'&quot;')}" oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);updateCamTotals();renderProfit()" style="${isAuto?'color:var(--green);':''}">  ${badge}</td><td id="kar-${safeId}" style="font-family:var(--mono);color:${kar===null?'var(--t3)':kar>=0?'var(--green)':'var(--danger)'}">${kar===null?'—':fmtTL(kar)}</td></tr>`;
+  }).join('');
   const ctTotal=document.getElementById('camTotal'); if(ctTotal) ctTotal.textContent=fmtTL(camVal);
   updateCamTotals();
   const abEl=document.getElementById('accBody');

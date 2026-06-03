@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-04T02:22:34",
+  "updated_at": "2026-06-04T02:25:31",
   "period_30d": {
     "revenue": 113310,
     "orders": 10,
@@ -307,7 +307,8 @@ const SHOPIFY = {
   "cameras": [
     {
       "name": "Canon G7X Mark III",
-      "price": 71490
+      "price": 71490,
+      "cost": 50000
     },
     {
       "name": "Panasonic Lumix DC-TZ91",
@@ -351,11 +352,13 @@ const SHOPIFY = {
     },
     {
       "name": "Kodak Slice R502",
-      "price": 10490
+      "price": 10490,
+      "cost": 5000
     },
     {
       "name": "Olympus SP-700",
-      "price": 10490
+      "price": 10490,
+      "cost": 5000
     },
     {
       "name": "Sanyo Xacti VPC-HD1",
@@ -375,7 +378,8 @@ const SHOPIFY = {
     },
     {
       "name": "HP Photosmart R827",
-      "price": 8900
+      "price": 8900,
+      "cost": 3500
     },
     {
       "name": "Nikon Coolpix 885",
@@ -383,15 +387,18 @@ const SHOPIFY = {
     },
     {
       "name": "Traveler DC-830",
-      "price": 8490
+      "price": 8490,
+      "cost": 3100
     },
     {
       "name": "Sony Cybershot DSC-S85",
-      "price": 7990
+      "price": 7990,
+      "cost": 3932
     },
     {
       "name": "Kodak ZX1 “Weather-Resistant”",
-      "price": 4900
+      "price": 4900,
+      "cost": 1680
     }
   ],
   "accessories": [
