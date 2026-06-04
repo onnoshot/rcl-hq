@@ -429,23 +429,31 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-06-04T10:09:56",
+  "updated_at": "2026-06-04T18:48:11",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 6845,
-  "media_count": 278,
-  "avg_likes": 67,
-  "total_engagement": 809,
+  "followers": 6913,
+  "media_count": 279,
+  "avg_likes": 65,
+  "total_engagement": 785,
   "type_counts": {
-    "CAROUSEL_ALBUM": 6,
-    "VIDEO": 6
+    "VIDEO": 6,
+    "CAROUSEL_ALBUM": 6
   },
   "posts": [
+    {
+      "id": "18130050901538120",
+      "date": "4 Haz 2026",
+      "type": "VIDEO",
+      "likes": 18,
+      "comments": 0,
+      "url": "https://www.instagram.com/reel/DZKqrlfoERu/"
+    },
     {
       "id": "18082362938161796",
       "date": "1 Haz 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 26,
+      "likes": 27,
       "comments": 0,
       "url": "https://www.instagram.com/p/DZCPI_ZiJFT/"
     },
@@ -453,7 +461,7 @@ const INSTAGRAM = {
       "id": "18006381323860691",
       "date": "24 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 76,
+      "likes": 77,
       "comments": 1,
       "url": "https://www.instagram.com/p/DYu1jKZiNVD/"
     },
@@ -461,7 +469,7 @@ const INSTAGRAM = {
       "id": "17939306271239461",
       "date": "22 May 2026",
       "type": "VIDEO",
-      "likes": 32,
+      "likes": 34,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DYouo-ro_AW/"
     },
@@ -493,7 +501,7 @@ const INSTAGRAM = {
       "id": "18111928819850525",
       "date": "12 May 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 205,
+      "likes": 206,
       "comments": 0,
       "url": "https://www.instagram.com/p/DYO7S-2iEqR/"
     },
@@ -528,14 +536,6 @@ const INSTAGRAM = {
       "likes": 40,
       "comments": 0,
       "url": "https://www.instagram.com/p/DXzUTTwCGGw/"
-    },
-    {
-      "id": "17886431487378731",
-      "date": "29 Nis 2026",
-      "type": "VIDEO",
-      "likes": 47,
-      "comments": 0,
-      "url": "https://www.instagram.com/reel/DXtbzXmIYYx/"
     }
   ],
   "follower_goal": 10000
