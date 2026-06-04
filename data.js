@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-04T21:57:46",
+  "updated_at": "2026-06-04T22:57:54",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 97968,
-      "watch_hours": 296.1,
-      "subs_gained": 406,
-      "subs_lost": 175,
-      "avg_view_sec": 27
+      "views": 99818,
+      "watch_hours": 300.1,
+      "subs_gained": 407,
+      "subs_lost": 176,
+      "avg_view_sec": 26
     },
-    "watch_hours_year": 3242.8,
-    "watch_hours_year_long": 1748.7,
-    "watch_hours_year_shorts": 1494.1,
+    "watch_hours_year": 3246.8,
+    "watch_hours_year_long": 1750.0,
+    "watch_hours_year_shorts": 1496.9,
     "monthly": [
       {
         "label": "Oca 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Haz 26",
-        "views": 1754,
-        "watch_min": 274,
-        "subs_gained": 3
+        "views": 3604,
+        "watch_min": 516,
+        "subs_gained": 4
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 464,
+      "views": 466,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1521,
+      "views": 1522,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
