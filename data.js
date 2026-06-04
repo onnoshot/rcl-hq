@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-04T20:57:28",
+  "updated_at": "2026-06-04T21:57:44",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,8 +10,8 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 97983,
-      "watch_hours": 295.9,
+      "views": 97968,
+      "watch_hours": 296.1,
       "subs_gained": 406,
       "subs_lost": 175,
       "avg_view_sec": 27
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2298,
+      "views": 2299,
       "likes": 35,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
