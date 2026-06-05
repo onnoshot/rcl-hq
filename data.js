@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-05T20:12:07",
+  "updated_at": "2026-06-05T21:12:11",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4030,
-    "total_views": 1173590,
+    "total_views": 1174929,
     "video_count": 383
   },
   "analytics": {
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2313,
+      "views": 2314,
       "likes": 36,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1524,
+      "views": 1525,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1874,
+      "views": 1875,
       "likes": 32,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1527,
+      "views": 1528,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4872,
+      "views": 4873,
       "likes": 104,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
