@@ -476,27 +476,6 @@ tfoot td{border-top:1px solid rgba(255,59,48,0.12);color:var(--gold);font-weight
 .msg.assistant{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07);color:var(--t2);align-self:flex-start;border-bottom-left-radius:4px;}
 .msg.system{background:rgba(48,209,88,0.06);border:1px solid rgba(48,209,88,0.14);color:var(--green);align-self:center;font-size:0.67rem;text-align:center;max-width:96%;}
 .mamba-input-row{display:flex;gap:7px;}
-/* AI Advisor */
-.ai-qa-btn{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);padding:8px 16px;border-radius:20px;cursor:pointer;font-size:0.78rem;font-family:var(--sans);transition:all .22s;letter-spacing:-0.01em;}
-.ai-qa-btn:hover{background:rgba(255,59,48,0.1);border-color:rgba(255,59,48,0.3);color:var(--gold);}
-.ai-msg-row{display:flex;gap:10px;align-items:flex-start;}
-.ai-msg-row.user{flex-direction:row-reverse;}
-.ai-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:13px;}
-.ai-avatar.bot{background:linear-gradient(135deg,#FF3B30,#FF6B60);}
-.ai-avatar.usr{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);font-size:11px;font-weight:600;}
-.ai-bubble{border-radius:0 14px 14px 14px;padding:12px 16px;max-width:85%;line-height:1.65;font-size:0.84rem;}
-.ai-bubble.bot{background:rgba(255,59,48,0.06);border:1px solid rgba(255,59,48,0.12);color:rgba(255,255,255,0.85);}
-.ai-bubble.usr{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border-radius:14px 0 14px 14px;}
-.ai-bubble .ai-label{font-size:0.64rem;color:rgba(255,59,48,0.5);font-weight:700;letter-spacing:.08em;margin-bottom:5px;text-transform:uppercase;}
-.ai-bubble .ai-label.usr{color:rgba(255,255,255,0.28);}
-.ai-typing{display:flex;gap:4px;align-items:center;padding:4px 0;}
-.ai-typing span{width:6px;height:6px;border-radius:50%;background:rgba(255,59,48,0.5);animation:aiDot 1.2s infinite;}
-.ai-typing span:nth-child(2){animation-delay:.2s;}
-.ai-typing span:nth-child(3){animation-delay:.4s;}
-@keyframes aiDot{0%,80%,100%{transform:scale(.8);opacity:.4;}40%{transform:scale(1.1);opacity:1;}}
-.ai-insight-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:14px 16px;}
-.ai-insight-meta{font-size:0.65rem;color:var(--t3);margin-bottom:5px;}
-.ai-insight-text{font-size:0.8rem;color:var(--t2);line-height:1.6;}
 .mamba-text-input{flex:1;min-width:0;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:100px;color:var(--t1);font-size:0.8rem;padding:11px 18px;outline:none;transition:border-color .22s,box-shadow .22s;font-family:var(--sans);}
 .mamba-text-input:focus{border-color:rgba(255,59,48,0.4);box-shadow:0 0 0 3px rgba(255,59,48,0.08);}
 .mamba-btn{padding:10px 16px;border-radius:100px;border:1px solid;cursor:pointer;font-size:0.75rem;transition:all .22s;display:flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0;font-family:var(--sans);}
@@ -1426,11 +1405,6 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
     <div class="nav-item" data-page="blog-detay" onclick="navigate('blog-detay',this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><path d="M13 13h4M13 17h4"/></svg>
       <span class="nav-label">Blog Analiz</span>
-    </div>
-    <div class="sb-section">Asistan</div>
-    <div class="nav-item" data-page="ai" onclick="navigate('ai',this)" style="border:1px solid rgba(212,175,55,0.15);background:rgba(212,175,55,0.04)">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 014 4v1h1a3 3 0 013 3v5a3 3 0 01-3 3h-1v1a4 4 0 01-8 0v-1H7a3 3 0 01-3-3V10a3 3 0 013-3h1V6a4 4 0 014-4z"/><circle cx="9" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="12" r="1" fill="currentColor" stroke="none"/><path d="M9 16s1 1 3 1 3-1 3-1"/></svg>
-      <span class="nav-label" style="color:rgba(212,175,55,0.9)">Marka Müdürü</span>
     </div>
   </nav>
   <div class="sb-footer">
@@ -3300,56 +3274,6 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </div>
 <!-- ═══════════════════ /BLOG ANALİZ SAYFASI ═══════════════════ -->
 
-<!-- ═══════════════════ AI MARKA MÜDÜRÜ ═══════════════════ -->
-<div class="page" id="page-ai">
-  <div class="page-topbar fi">
-    <div class="pt-left">
-      <div class="pt-title">Marka <span>Müdürü</span></div>
-      <div class="pt-sub">Veriye dayalı yapay zeka strateji asistanı — claude-sonnet-4-6</div>
-    </div>
-    <div class="pt-right" style="gap:8px">
-      <div id="ai-conn-pill" class="live-pill" style="background:rgba(255,149,0,0.12);border-color:rgba(255,149,0,0.2);color:rgba(255,149,0,0.85)">Bağlanıyor…</div>
-      <button onclick="aiClearHistory()" style="background:rgba(255,69,58,0.08);border:1px solid rgba(255,69,58,0.2);color:rgba(255,69,58,0.7);padding:5px 12px;border-radius:8px;cursor:pointer;font-size:0.72rem">Geçmişi Sil</button>
-    </div>
-  </div>
-  <div class="sec fi" style="transition-delay:.04s">
-    <div class="sec-label">Hızlı Analiz</div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px">
-      <button class="ai-qa-btn" onclick="aiQuick('general')">📊 Genel Durum</button>
-      <button class="ai-qa-btn" onclick="aiQuick('sales')">💰 Satış Analizi</button>
-      <button class="ai-qa-btn" onclick="aiQuick('content')">✍️ İçerik Stratejisi</button>
-      <button class="ai-qa-btn" onclick="aiQuick('invest')">🎯 Yatırım Önerileri</button>
-      <button class="ai-qa-btn" onclick="aiQuick('risk')">⚠️ Riskler &amp; Sorunlar</button>
-      <button class="ai-qa-btn" onclick="aiQuick('social')">📱 Sosyal Medya</button>
-      <button class="ai-qa-btn" onclick="aiQuick('next')">🚀 Bu Hafta Ne Yapmalı?</button>
-    </div>
-  </div>
-  <div class="sec fi" style="transition-delay:.08s">
-    <div class="card p" style="display:flex;flex-direction:column;padding:0;overflow:hidden;min-height:480px">
-      <div id="ai-messages" style="flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:14px;min-height:400px;max-height:520px">
-        <div id="ai-welcome" style="display:flex;gap:12px;align-items:flex-start">
-          <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#D4AF37,#B8860B);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:14px">🤖</div>
-          <div style="background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.15);border-radius:0 12px 12px 12px;padding:12px 16px;max-width:85%">
-            <div style="font-size:0.78rem;color:rgba(212,175,55,0.6);margin-bottom:6px;font-weight:600">MARKA MÜDÜRÜ</div>
-            <div style="font-size:0.86rem;color:rgba(255,255,255,0.85);line-height:1.6">Merhaba Onur. Retrocameraland dashboard verilerini okuyorum. Satışlar, içerik, sosyal medya — hepsini görüyorum.<br><br>Ne analiz etmemi istiyorsun?</div>
-          </div>
-        </div>
-      </div>
-      <div style="padding:12px 16px;border-top:1px solid rgba(255,255,255,0.06);display:flex;gap:8px;background:rgba(0,0,0,0.2)">
-        <input id="ai-input" type="text" placeholder="Sor veya aksiyon iste…" autocomplete="off"
-          onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();aiSend();}"
-          style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 14px;color:var(--t1);font-size:0.85rem;outline:none;font-family:inherit">
-        <button id="ai-send-btn" onclick="aiSend()"
-          style="background:linear-gradient(135deg,#D4AF37,#B8860B);border:none;border-radius:10px;padding:10px 18px;color:#1a1208;font-weight:700;font-size:0.82rem;cursor:pointer;white-space:nowrap">Gönder</button>
-      </div>
-    </div>
-  </div>
-  <div class="sec fi" style="transition-delay:.12s">
-    <div class="sec-label">Son Öngörüler</div>
-    <div id="ai-insights-list" style="display:flex;flex-direction:column;gap:8px;margin-top:8px"></div>
-  </div>
-</div>
-<!-- ═══════════════════ /AI MARKA MÜDÜRÜ ═══════════════════ -->
 </main>
 <script id="data-script">
 /* ─── YOUTUBE DATA START ─── */
@@ -3510,7 +3434,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-06T02:02:21",
+  "updated_at": "2026-06-06T02:40:33",
   "period_30d": {
     "revenue": 129800,
     "orders": 11,
@@ -3672,8 +3596,26 @@ const SHOPIFY = {
       "price": 16490
     },
     {
+      "name": "Fujifilm Finepix Z90",
+      "price": 16490
+    },
+    {
       "name": "Fujifilm FinePix Z700 EXR",
       "price": 15490
+    },
+    {
+      "name": "Sony Cybershot DSC-T300",
+      "price": 15490,
+      "cost": 5000
+    },
+    {
+      "name": "Sony Cybershot DSC-W150",
+      "price": 13490,
+      "cost": 5000
+    },
+    {
+      "name": "Canon IXY 1000",
+      "price": 12490
     },
     {
       "name": "Lumix DMC-FT10",
@@ -3692,6 +3634,14 @@ const SHOPIFY = {
       "price": 11490
     },
     {
+      "name": "Panasonic DMC LS70",
+      "price": 11490
+    },
+    {
+      "name": "Casio Exilim EX-Z4",
+      "price": 10490
+    },
+    {
       "name": "Kodak EasyShare V603",
       "price": 10490
     },
@@ -3707,11 +3657,8 @@ const SHOPIFY = {
     },
     {
       "name": "Sanyo Xacti VPC-HD1",
-      "price": 10490
-    },
-    {
-      "name": "Casio Exilim EX-Z4",
-      "price": 9490
+      "price": 10490,
+      "cost": 2200
     },
     {
       "name": "Casio Exilim EX-Z85",
@@ -3983,7 +3930,7 @@ function setPeriod(p, btn) {
 }
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','finance','inventory','youtube','instagram','stats','seo','blog','urun','blog-detay','ai'];
+const PAGES = ['overview','finance','inventory','youtube','instagram','stats','seo','blog','urun','blog-detay'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -4013,7 +3960,6 @@ function navigate(page, navEl) {
   if (page === 'blog') renderBlogPage();
   if (page === 'urun') renderUrunPage();
   if (page === 'blog-detay') renderBlogDetayPage();
-  if (page === 'ai') renderAIAdvisor();
 }
 
 function initRouter() {
@@ -6493,20 +6439,6 @@ function roiSort(key, btn) {
 }
 // ──────────────────────────────────────────────────────────
 
-// ═══ AI MARKA MÜDÜRÜ ═══════════════════════════════════════
-var AI_SERVER='http://127.0.0.1:8765',_aiConnected=false,_aiLoading=false;
-function aiCollectData(){try{return{shopify:typeof SHOPIFY!=='undefined'?SHOPIFY:{},ga4:typeof GA4_TRAFFIC!=='undefined'?GA4_TRAFFIC:{},blog:typeof BLOG_SEO!=='undefined'?BLOG_SEO:{},instagram:typeof INSTAGRAM!=='undefined'?INSTAGRAM:{},youtube:typeof YOUTUBE!=='undefined'?YOUTUBE:{}};}catch(e){return{};}}
-function aiCheckConn(){var pill=document.getElementById('ai-conn-pill');fetch(AI_SERVER+'/health').then(function(r){return r.json();}).then(function(){_aiConnected=true;if(pill){pill.textContent='● Bağlı';pill.style.background='rgba(52,199,89,0.12)';pill.style.borderColor='rgba(52,199,89,0.25)';pill.style.color='rgba(52,199,89,0.9)';}}).catch(function(){_aiConnected=false;if(pill){pill.textContent='✗ Sunucu Kapalı';pill.style.background='rgba(255,69,58,0.1)';pill.style.borderColor='rgba(255,69,58,0.2)';pill.style.color='rgba(255,69,58,0.8)';}});}
-function aiLoadHistory(){fetch(AI_SERVER+'/history').then(function(r){return r.json();}).then(function(d){var h=d.history||[],c=document.getElementById('ai-messages');if(!c)return;var r=h.slice(-20);for(var i=0;i<r.length-1;i+=2){if(r[i]&&r[i+1]){aiAddBubble(r[i].content,'user',false);aiAddBubble(r[i+1].content,'bot',false);}}c.scrollTop=c.scrollHeight;}).catch(function(){});}
-function aiLoadInsights(){fetch(AI_SERVER+'/insights').then(function(r){return r.json();}).then(function(d){var ins=(d.insights||[]).slice(-5).reverse(),el=document.getElementById('ai-insights-list');if(!el)return;if(!ins.length){el.innerHTML='<div style="font-size:0.78rem;color:var(--t3);padding:8px">Henüz kaydedilmiş öngörü yok.</div>';return;}el.innerHTML=ins.map(function(i){var dd=new Date(i.date).toLocaleString('tr-TR',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'});return'<div class="ai-insight-card"><div class="ai-insight-meta">'+dd+' · '+(i.category||'genel')+'</div><div class="ai-insight-text">'+(i.text||'').slice(0,220)+(i.text&&i.text.length>220?'…':'')+'</div></div>';}).join('');}).catch(function(){});}
-function aiAddBubble(text,role,scroll){var c=document.getElementById('ai-messages');if(!c)return;var w=document.getElementById('ai-welcome');if(w)w.remove();var isBot=role==='bot',row=document.createElement('div');row.className='ai-msg-row'+(isBot?'':' user');var f=text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n\n/g,'<br><br>').replace(/\n/g,'<br>');row.innerHTML='<div class="ai-avatar '+(isBot?'bot':'usr')+'">'+(isBot?'🤖':'O')+'</div><div class="ai-bubble '+(isBot?'bot':'usr')+'"><div class="ai-label'+(isBot?'':' usr')+'">'+(isBot?'MARKA MÜDÜRÜ':'SEN')+'</div><div>'+f+'</div></div>';c.appendChild(row);if(scroll!==false)c.scrollTop=c.scrollHeight;return row;}
-function aiShowTyping(){var c=document.getElementById('ai-messages');if(!c)return null;var r=document.createElement('div');r.className='ai-msg-row';r.id='ai-typing-row';r.innerHTML='<div class="ai-avatar bot">🤖</div><div class="ai-bubble bot"><div class="ai-typing"><span></span><span></span><span></span></div></div>';c.appendChild(r);c.scrollTop=c.scrollHeight;return r;}
-function aiSend(){var inp=document.getElementById('ai-input');if(!inp)return;var msg=(inp.value||'').trim();if(!msg||_aiLoading)return;if(!_aiConnected){aiAddBubble('⚠️ Sunucu kapalı. Terminal\'de çalıştır:\npython3 /Users/onnoshot/Downloads/Agentlar/rcl_ai_advisor_server.py','bot');return;}inp.value='';aiAddBubble(msg,'user');_aiLoading=true;var btn=document.getElementById('ai-send-btn');if(btn){btn.disabled=true;btn.textContent='…';}var typing=aiShowTyping();fetch(AI_SERVER+'/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:msg,dashboard_data:aiCollectData(),save_memory:true})}).then(function(r){return r.json();}).then(function(d){if(typing)typing.remove();aiAddBubble(d.error?'❌ Hata: '+d.error:d.reply,'bot');if(!d.error)aiLoadInsights();}).catch(function(e){if(typing)typing.remove();aiAddBubble('❌ Hata: '+e.message,'bot');}).finally(function(){_aiLoading=false;if(btn){btn.disabled=false;btn.textContent='Gönder';}});}
-var _aiQP={general:'Mevcut verilere bakarak retrocameraland\'ın genel durumunu değerlendir. Satışlar, trafik, içerik, sosyal medya — hepsini özetle. Kritik sorunları ve en büyük fırsatı vurgula.',sales:'Satış verilerini analiz et. AOV, conversion rate, kanal dağılımı, aylık trend. Geliri artırmak için en pratik 3 aksiyon ne?',content:'Blog ve SEO verilerine bak. Hangi içerikler en iyi performans veriyor? Organik trafiği 2 kat artırmak için içerik stratejisi ne olmalı?',invest:'Verilere göre şu an en yüksek ROI getirecek yatırım nereye olmalı? Stok, içerik, reklam, sosyal medya — öncelik sırası ne?',risk:'Şu anki verilerde hangi riskler var? Tükenmiş stok, düşük conversion, bounce rate, zayıf kanallar — tüm sorunları listele ve çözüm öner.',social:'Instagram ve YouTube verilerini analiz et. Engagement nasıl? Abone büyümesi yeterli mi? Sosyal medyada büyüme için bu ay ne yapmalı?',next:'Bu hafta en önce hangi 3 aksiyonu yapmalıyım? Verilere göre önceliklendir. Her biri için: aksiyon + beklenen etki + süre.'};
-function aiQuick(t){var p=_aiQP[t];if(!p)return;var i=document.getElementById('ai-input');if(i)i.value=p;aiSend();}
-function aiClearHistory(){if(!confirm('Tüm konuşma geçmişi silinecek?'))return;fetch(AI_SERVER+'/clear',{method:'POST'}).then(function(){var c=document.getElementById('ai-messages');if(c)c.innerHTML='<div class="ai-msg-row"><div class="ai-avatar bot">🤖</div><div class="ai-bubble bot"><div class="ai-label">MARKA MÜDÜRÜ</div><div>Geçmiş silindi. Yeniden başlayalım.</div></div></div>';}).catch(function(){});}
-function renderAIAdvisor(){aiCheckConn();aiLoadHistory();aiLoadInsights();setTimeout(function(){var i=document.getElementById('ai-input');if(i)i.focus();},200);}
-// ═══════════════════════════════════════════════════════════
 
 initRouter();
 cgInitWidget();

@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-06T02:02:21",
+  "updated_at": "2026-06-06T02:40:33",
   "period_30d": {
     "revenue": 129800,
     "orders": 11,
@@ -318,8 +318,26 @@ const SHOPIFY = {
       "price": 16490
     },
     {
+      "name": "Fujifilm Finepix Z90",
+      "price": 16490
+    },
+    {
       "name": "Fujifilm FinePix Z700 EXR",
       "price": 15490
+    },
+    {
+      "name": "Sony Cybershot DSC-T300",
+      "price": 15490,
+      "cost": 5000
+    },
+    {
+      "name": "Sony Cybershot DSC-W150",
+      "price": 13490,
+      "cost": 5000
+    },
+    {
+      "name": "Canon IXY 1000",
+      "price": 12490
     },
     {
       "name": "Lumix DMC-FT10",
@@ -338,6 +356,14 @@ const SHOPIFY = {
       "price": 11490
     },
     {
+      "name": "Panasonic DMC LS70",
+      "price": 11490
+    },
+    {
+      "name": "Casio Exilim EX-Z4",
+      "price": 10490
+    },
+    {
       "name": "Kodak EasyShare V603",
       "price": 10490
     },
@@ -353,11 +379,8 @@ const SHOPIFY = {
     },
     {
       "name": "Sanyo Xacti VPC-HD1",
-      "price": 10490
-    },
-    {
-      "name": "Casio Exilim EX-Z4",
-      "price": 9490
+      "price": 10490,
+      "cost": 2200
     },
     {
       "name": "Casio Exilim EX-Z85",
