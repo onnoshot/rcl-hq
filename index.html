@@ -98,6 +98,7 @@ function renderCOGSList() {
 
 function updateCOGSRow(input, camName, salePrice) {
   const cost = parseFloat(input.value) || 0;
+  setCamCost(camName, cost); // anlık kaydet → her yere yansır
   const idx = Array.from(document.querySelectorAll('.cogs-cost-input')).indexOf(input);
   const marjEl = document.getElementById('cogs-marj-' + idx);
   if (marjEl) {
@@ -110,58 +111,35 @@ function updateCOGSRow(input, camName, salePrice) {
       marjEl.style.color = 'var(--t3)';
     }
   }
-  updateCOGSTotals();
+  recalcAll();
 }
 
 function updateCOGSTotals() {
-  const cams = SHOPIFY.cameras || [];
-  const inputs = document.querySelectorAll('.cogs-cost-input');
-  let saleTot = 0, costTot = 0, filledCount = 0;
-  cams.forEach((cam, i) => {
-    const inp = inputs[i];
-    const cost = inp ? (parseFloat(inp.value) || 0) : 0;
-    saleTot += cam.price || 0;
-    if (cost > 0) { costTot += cost; filledCount++; }
-  });
-  const margin = saleTot > 0 ? Math.round((saleTot - costTot) / saleTot * 100) : 0;
+  // TEK kaynaktan (localStorage) — DOM input taraması yok. Marj = maliyeti girilmiş kameralar üzerinden.
+  const inv = invMetrics(), m = costMetrics();
+  const margin = m.marginPct, has = m.count>0;
   const mColor = margin >= 40 ? 'var(--perf-great)' : margin >= 25 ? 'var(--perf-good)' : margin >= 12 ? 'var(--perf-ok)' : margin >= 0 ? 'var(--perf-warn)' : 'var(--perf-bad)';
   const setEl  = (id, val) => { const e=document.getElementById(id); if(e) e.textContent=val; };
   const setHtml = (id, val) => { const e=document.getElementById(id); if(e) e.innerHTML=val; };
-  setEl('cogs-sale-total', '₺' + fmt(saleTot));
-  setEl('cogs-cost-total', costTot > 0 ? '₺' + fmt(costTot) : '—');
-  // innerHTML kullan — renk span içeriyor
-  setHtml('cogs-avg-margin', costTot > 0 ? '<span style="color:' + mColor + ';font-weight:700">%' + margin + '</span>' : '—');
-  setEl('cogs-filled-count', filledCount);
-  setEl('cogs-total-count', cams.length);
-  // Update the mini KPI
-  setEl('fin-avg-margin-pct', costTot > 0 ? '%' + margin + ' ortalama marj' : 'Maliyet girilmedi');
-  if (document.getElementById('fin-avg-margin-pct')) {
-    const el = document.getElementById('fin-avg-margin-pct');
-    if (el) el.style.color = costTot > 0 ? mColor : 'var(--t3)';
-  }
-  // Re-render finance KPIs with updated costs
-  if (typeof renderFinancePage === 'function') renderFinancePage();
+  setEl('cogs-sale-total', '₺' + fmt(inv.camValue));
+  setEl('cogs-cost-total', has ? '₺' + fmt(m.costTotal) : '—');
+  setHtml('cogs-avg-margin', has ? '<span style="color:' + mColor + ';font-weight:700">%' + margin + '</span>' : '—');
+  setEl('cogs-filled-count', m.count);
+  setEl('cogs-total-count', m.total);
+  setEl('fin-avg-margin-pct', has ? '%' + margin + ' ortalama marj' : 'Maliyet girilmedi');
+  const fEl = document.getElementById('fin-avg-margin-pct');
+  if (fEl) fEl.style.color = has ? mColor : 'var(--t3)';
 }
 
 function cogsAutoFill() {
   const ratio = parseFloat(document.getElementById('cogs-ratio')?.value) || 60;
-  document.querySelectorAll('.cogs-cost-input').forEach(inp => {
-    const cam = SHOPIFY.cameras?.find(c => c.name === inp.dataset.cam);
-    if (cam) {
-      inp.value = Math.round(cam.price * ratio / 100);
-      const idx = Array.from(document.querySelectorAll('.cogs-cost-input')).indexOf(inp);
-      updateCOGSRow(inp, cam.name, cam.price);
-    }
-  });
+  (SHOPIFY.cameras||[]).forEach(cam => setCamCost(cam.name, Math.round((cam.price||0) * ratio / 100)));
+  if (typeof renderCOGSList === 'function') renderCOGSList(); // input değerlerini tazele
+  recalcAll();
 }
 
 function cogsSave() {
-  const costs = {};
-  document.querySelectorAll('.cogs-cost-input').forEach(inp => {
-    const v = parseFloat(inp.value) || 0;
-    if (v > 0) costs[inp.dataset.cam] = v;
-  });
-  localStorage.setItem('rcl_cam_costs', JSON.stringify(costs));
+  // Maliyetler zaten input'ta anlık kaydediliyor; bu buton sadece görsel onay verir.
   const btn = event?.target?.closest('button');
   if (btn) { const o=btn.innerHTML; btn.innerHTML='<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Kaydedildi'; setTimeout(()=>{btn.innerHTML=o;},1800); }
 }
@@ -170,7 +148,7 @@ function cogsReset() {
   if (!confirm('Tüm kamera maliyetleri sıfırlansın mı?')) return;
   localStorage.removeItem('rcl_cam_costs');
   document.querySelectorAll('.cogs-cost-input').forEach(inp => { inp.value = ''; });
-  updateCOGSTotals();
+  recalcAll();
 }
 
 // ─── SEO HEALTH STRIP ─────────────────────────────────────────
@@ -1631,7 +1609,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
           <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:rgba(255,69,58,0.06);border:1px solid rgba(255,69,58,0.14);border-radius:10px">
             <span style="font-size:0.72rem;font-family:var(--mono);color:var(--t2)">KDV Oranı</span>
             <div style="display:flex;align-items:center;gap:8px">
-              <select id="cfg-kdv-rate" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:7px;color:var(--t1);font-family:var(--mono);font-size:0.8rem;padding:5px 10px;outline:none;cursor:pointer" onchange="renderFinancePage()">
+              <select id="cfg-kdv-rate" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.1);border-radius:7px;color:var(--t1);font-family:var(--mono);font-size:0.8rem;padding:5px 10px;outline:none;cursor:pointer" onchange="cfgFromInputs();recalcAll()">
                 <option value="20" selected>%20 (standart)</option>
                 <option value="10">%10 (indirimli)</option>
                 <option value="1">%1 (özel)</option>
@@ -1662,22 +1640,22 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
         <div class="cost-grid">
           <div class="cost-field">
             <div class="cost-field-label">Kargo (₺/sipariş)</div>
-            <input class="cost-field-input" id="cfg-kargo2" type="number" oninput="syncCostCfg();renderFinancePage()">
+            <input class="cost-field-input" id="cfg-kargo2" type="number" oninput="cfgFromInputs();recalcAll()">
             <div class="cost-field-hint" id="fin-kargo-total">—</div>
           </div>
           <div class="cost-field">
             <div class="cost-field-label">Kutu/Paket (₺/sipariş)</div>
-            <input class="cost-field-input" id="cfg-kutu2" type="number" oninput="syncCostCfg();renderFinancePage()">
+            <input class="cost-field-input" id="cfg-kutu2" type="number" oninput="cfgFromInputs();recalcAll()">
             <div class="cost-field-hint" id="fin-kutu-total">—</div>
           </div>
           <div class="cost-field">
             <div class="cost-field-label">Iyzico Komisyon (%)</div>
-            <input class="cost-field-input" id="cfg-iyzico2" type="number" step="0.01" oninput="syncCostCfg();renderFinancePage()">
+            <input class="cost-field-input" id="cfg-iyzico2" type="number" step="0.01" oninput="cfgFromInputs();recalcAll()">
             <div class="cost-field-hint" id="fin-iyzico-total">—</div>
           </div>
           <div class="cost-field">
             <div class="cost-field-label">Shopify Komisyon (%)</div>
-            <input class="cost-field-input" id="cfg-shopify2" type="number" step="0.01" oninput="syncCostCfg();renderFinancePage()">
+            <input class="cost-field-input" id="cfg-shopify2" type="number" step="0.01" oninput="cfgFromInputs();recalcAll()">
             <div class="cost-field-hint" id="fin-shopify-total">—</div>
           </div>
         </div>
@@ -2463,7 +2441,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
         <div style="margin-bottom:8px;color:rgba(212,175,55,.75)"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
         <div class="kpi-lbl">Toplam Stok Değeri</div>
         <div class="kpi-big gold" id="inv-val" style="font-size:2rem">—</div>
-        <div class="kpi-sub">alış fiyatı bazlı</div>
+        <div class="kpi-sub">raf (satış) fiyatı bazlı · kamera+aksesuar</div>
       </div>
       <div class="card p" style="position:relative;overflow:hidden">
         <div style="position:absolute;top:-15px;right:-15px;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,rgba(90,200,250,0.12),transparent 70%);pointer-events:none"></div>
@@ -2904,8 +2882,8 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
             <input id="p-ambalaj" class="b-input" type="number" placeholder="0" min="0" oninput="urunProfitCalc()">
           </div>
           <div>
-            <div class="b-label">Hedef Kâr Marjı (%)</div>
-            <input id="p-marj" class="b-input" type="number" value="40" min="1" max="99" oninput="urunProfitCalc()">
+            <div class="b-label">Hedef Kâr Marjı (%) <span style="font-size:.58rem;opacity:.6">— satış üzerinden net</span></div>
+            <input id="p-marj" class="b-input" type="number" value="40" min="1" max="80" oninput="urunProfitCalc()">
           </div>
         </div>
         <!-- Satış Fiyatı Girişi -->
@@ -4026,6 +4004,74 @@ function renderHeader() {
   if (dEl) dEl.textContent = new Date().toLocaleDateString('tr-TR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
 }
 
+// ═══════════════════════════════════════════════════════════
+// TEK DOĞRU KAYNAK — Mağaza metrikleri & maliyet yapılandırması
+// Tüm sayfalar (anasayfa, stok, finans, ürün) BURADAN okur.
+// Bir yerde değişen değer recalcAll() ile her yere aynı anda yansır.
+// ═══════════════════════════════════════════════════════════
+const COST_CFG_DEFAULTS = { kdv_rate:20, kargo_tl:300, kutu_tl:100, iyzico_pct:2.65, shopify_pct:2.0 };
+function getCfg(){ try{ return {...COST_CFG_DEFAULTS, ...JSON.parse(localStorage.getItem('rcl_cost_cfg')||'{}')}; }catch(e){ return {...COST_CFG_DEFAULTS}; } }
+function setCfg(patch){ const c={...getCfg(), ...patch}; localStorage.setItem('rcl_cost_cfg', JSON.stringify(c)); return c; }
+// KDV-DAHİL fiyatın içindeki KDV tutarı (Türk usulü: raf fiyatı zaten KDV dahil).
+// Örn. %20 KDV'de KDV = fiyat × 20/120 = fiyat/6.
+function kdvOf(amount, rate){ rate=(rate==null?getCfg().kdv_rate:rate); return Math.round(amount*rate/(100+rate)); }
+
+// Stok metrikleri — kamera + aksesuar, raf (satış) fiyatı bazlı. TEK kaynak.
+function invMetrics(){
+  const cams=SHOPIFY.cameras||[], accs=SHOPIFY.accessories||[];
+  const camValue=cams.reduce((s,c)=>s+(+c.price||0),0);
+  const accValue=accs.reduce((s,a)=>s+(+a.price||0)*(+a.qty||0),0);
+  const accUnits=accs.reduce((s,a)=>s+(+a.qty||0),0);
+  return { camValue, accValue, stockValue:camValue+accValue, camCount:cams.length, accUnits, oos:+SHOPIFY.out_of_stock||0 };
+}
+// Maliyet metrikleri — YALNIZ maliyeti girilmiş kameralar (kar/marj aynı küme üzerinden).
+function costMetrics(){
+  const cams=SHOPIFY.cameras||[], costs=loadCamCosts();
+  const withCost=cams.filter(c=>costs[c.name]>0);
+  const saleOfCosted=withCost.reduce((s,c)=>s+(+c.price||0),0);
+  const costTotal=withCost.reduce((s,c)=>s+costs[c.name],0);
+  const profit=saleOfCosted-costTotal;
+  return { withCost, count:withCost.length, total:cams.length, costs,
+           saleOfCosted, costTotal, profit,
+           marginPct: saleOfCosted>0?Math.round(profit/saleOfCosted*100):0,
+           costRatio: saleOfCosted>0?costTotal/saleOfCosted:0 };
+}
+// Kamera maliyetini kalıcı yaz (anlık kaydet) — tüm yüzeyler aynı anahtarı (rcl_cam_costs) kullanır.
+function setCamCost(name, val){
+  let manual={}; try{ manual=JSON.parse(localStorage.getItem('rcl_cam_costs')||'{}'); }catch(e){}
+  if(val>0) manual[name]=val; else delete manual[name];
+  localStorage.setItem('rcl_cam_costs', JSON.stringify(manual));
+}
+// Maliyet config'i finans input'larından oku (input → config tek yönlü).
+function cfgFromInputs(){
+  const g=id=>{const e=document.getElementById(id);return e?parseFloat(e.value):NaN;};
+  const cur=getCfg();
+  setCfg({
+    kdv_rate:    isFinite(g('cfg-kdv-rate'))?g('cfg-kdv-rate'):cur.kdv_rate,
+    kargo_tl:    isFinite(g('cfg-kargo2'))?g('cfg-kargo2'):cur.kargo_tl,
+    kutu_tl:     isFinite(g('cfg-kutu2'))?g('cfg-kutu2'):cur.kutu_tl,
+    iyzico_pct:  isFinite(g('cfg-iyzico2'))?g('cfg-iyzico2'):cur.iyzico_pct,
+    shopify_pct: isFinite(g('cfg-shopify2'))?g('cfg-shopify2'):cur.shopify_pct,
+  });
+}
+// Anasayfa "Stok" kartı — stok/finans ile AYNI değer.
+function ovUpdateStock(){
+  const m=invMetrics(); const el=document.getElementById('ov-inv-val');
+  if(el) el.textContent=fmtTL(m.stockValue)+' · '+m.camCount+' kamera';
+}
+// Tek noktadan tazeleme — tablo input'larını YENİDEN KURMAZ (odak kaybı olmaz),
+// yalnız türetilen sayısal görünümleri günceller. Her input değişiminde çağrılır.
+let _recalcBusy=false;
+function recalcAll(){
+  if(_recalcBusy) return; _recalcBusy=true;
+  try{ ovUpdateStock(); }catch(e){}
+  try{ updateCamTotals(); }catch(e){}
+  try{ if(typeof invUpdateMarginCard==='function') invUpdateMarginCard(); }catch(e){}
+  try{ updateCOGSTotals(); }catch(e){}
+  try{ if(document.getElementById('page-finance')) renderFinancePage(); }catch(e){}
+  _recalcBusy=false;
+}
+
 // ─── OVERVIEW KPIs ────────────────────────────────────────
 function renderKPIs() {
   const d = SHOPIFY.period_30d;
@@ -4036,7 +4082,7 @@ function renderKPIs() {
   // AOV performans rengi
   const aovEl = document.getElementById('s-aov');
   if (aovEl) aovEl.style.color = perfColor(d.aov/1000, [15, 10, 6, 3]); // K cinsinden eşikler
-  const kdv = Math.round(d.revenue/6);
+  const kdv = kdvOf(d.revenue);
   const kdvEl = document.getElementById('s-kdv'); if(kdvEl) kdvEl.textContent='₺'+fmt(kdv);
   const subEl = document.getElementById('s-rev-sub'); if(subEl) subEl.textContent='Son 30 gün toplam';
   // quick links
@@ -4044,11 +4090,7 @@ function renderKPIs() {
   if (ytEl) ytEl.textContent = fmt(YOUTUBE.channel.subscribers)+' abone · '+fmt(YOUTUBE.analytics.last_30d.views)+' izlenme';
   const igEl = document.getElementById('ov-ig-val');
   if (igEl) igEl.textContent = fmt(INSTAGRAM.followers)+' takipçi · '+fmt(INSTAGRAM.avg_likes)+' ort. beğeni';
-  const invEl = document.getElementById('ov-inv-val');
-  if (invEl) {
-    const camVal = SHOPIFY.cameras.reduce((s,c)=>s+c.price,0);
-    invEl.textContent = fmtTL(camVal)+' · '+SHOPIFY.cameras.length+' kamera';
-  }
+  ovUpdateStock(); // anasayfa Stok kartı = stok/finans ile aynı (kamera+aksesuar)
 }
 
 // ─── FINANCE KPIs ─────────────────────────────────────────
@@ -4060,7 +4102,7 @@ function renderFinanceKPIs() {
   counter(document.getElementById('f-aov'), d.aov, '₺');
   const fRevSub = document.getElementById('f-rev-sub'); if(fRevSub) fRevSub.textContent=lbl[period]+' toplam';
   const fOrdSub = document.getElementById('f-ord-sub'); if(fOrdSub) fOrdSub.textContent=d.orders+' sipariş tamamlandı';
-  const kdv=Math.round(d.revenue/6);
+  const kdv=kdvOf(d.revenue);
   const fKdv=document.getElementById('f-kdv'); if(fKdv) fKdv.textContent='₺'+fmt(kdv);
   const fKdvSub=document.getElementById('f-kdv-sub'); if(fKdvSub) fKdvSub.textContent=lbl[period]+' · gelirin 1/6\'sı';
   renderProfit();
@@ -4117,28 +4159,35 @@ function loadCamCosts(){
   } catch(e){}
   return shopifyCosts;
 }
-function saveCamCost(name,val){const d=loadCamCosts();if(val>0)d[name]=val;else delete d[name];const manual={};SHOPIFY.cameras.forEach(c=>{if(d[c.name]&&(!c.cost||d[c.name]!==c.cost))manual[c.name]=d[c.name];});localStorage.setItem('rcl_cam_costs',JSON.stringify(manual));}
+function saveCamCost(name,val){ setCamCost(name,val); } // tek kaynak: setCamCost
 
 function updateCamTotals() {
-  const cams = SHOPIFY.cameras, costs = loadCamCosts();
-  const filled = cams.filter(c=>costs[c.name]>0);
-  const costTot = filled.reduce((s,c)=>s+costs[c.name],0);
-  const saleTot = filled.reduce((s,c)=>s+c.price,0);
-  const ctEl = document.getElementById('camCostTotal'); if(ctEl) ctEl.textContent=costTot>0?fmtTL(costTot):'—';
-  const ctFoot = document.getElementById('camCostTotalFoot'); if(ctFoot) ctFoot.textContent=costTot>0?fmtTL(costTot):'—';
-  const profEl = document.getElementById('camProfitTotal');
-  const profFoot = document.getElementById('camProfitTotalFoot');
-  if(costTot>0){const p=saleTot-costTot;const c=p>=0?'var(--green)':'var(--danger)';if(profEl){profEl.textContent=fmtTL(p);profEl.style.color=c;}if(profFoot){profFoot.textContent=fmtTL(p);profFoot.style.color=c;}}
+  // Maliyet, ham kâr ve brüt marj — HEPSİ aynı küme (maliyeti girilmiş kameralar) üzerinden.
+  const m = costMetrics();
+  const costTot = m.costTotal, has = m.count>0;
+  const setTxt=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+  setTxt('camCostTotal', has?fmtTL(costTot):'—');
+  setTxt('camCostTotalFoot', has?fmtTL(costTot):'—');
+  const profEl=document.getElementById('camProfitTotal'), profFoot=document.getElementById('camProfitTotalFoot');
+  if(has){const c=m.profit>=0?'var(--green)':'var(--danger)';if(profEl){profEl.textContent=fmtTL(m.profit);profEl.style.color=c;}if(profFoot){profFoot.textContent=fmtTL(m.profit);profFoot.style.color=c;}}
   else{if(profEl){profEl.textContent='—';profEl.style.color='';}if(profFoot){profFoot.textContent='—';profFoot.style.color='';}}
-  cams.forEach(c=>{
+  // Brüt kâr marjı (maliyeti girilmiş kameraların satış toplamı üzerinden)
+  const mp = m.marginPct;
+  const mColor = mp>=40?'rgba(48,209,88,.9)':mp>=25?'rgba(212,175,55,.9)':mp>=12?'rgba(255,159,10,.9)':mp>=0?'rgba(255,159,10,.9)':'rgba(255,69,58,.9)';
+  const pctEl=document.getElementById('inv-margin-pct');
+  if(pctEl){ pctEl.textContent=has?'%'+mp:'—'; pctEl.style.color=has?mColor:'var(--t3)'; }
+  const barEl=document.getElementById('inv-margin-bar'); if(barEl) barEl.style.width=(has?Math.min(100,Math.max(0,mp)):0)+'%';
+  const footEl=document.getElementById('camMarjFoot'); if(footEl) footEl.innerHTML=has?'<span style="color:'+mColor+';font-weight:700">%'+mp+'</span>':'—';
+  // Tablodaki her satırın kâr/marj hücresi (yalnız tablo basılıysa)
+  const costs=m.costs;
+  (SHOPIFY.cameras||[]).forEach(c=>{
     const el=document.getElementById('kar-'+c.name.replace(/\W/g,'_'));
     if(!el)return;
     const cost=costs[c.name]||0;
     if(cost>0){
-      const k=c.price-cost;
-      const mp=Math.round(k/c.price*100);
-      const kc=mp>=40?'var(--perf-great)':mp>=25?'var(--perf-good)':mp>=12?'var(--perf-ok)':mp>=0?'var(--perf-warn)':'var(--perf-bad)';
-      el.innerHTML=fmtTL(k)+' <small style="font-size:.65em;opacity:.6">%'+mp+'</small>';
+      const k=c.price-cost, pc=Math.round(k/c.price*100);
+      const kc=pc>=40?'var(--perf-great)':pc>=25?'var(--perf-good)':pc>=12?'var(--perf-ok)':pc>=0?'var(--perf-warn)':'var(--perf-bad)';
+      el.innerHTML=fmtTL(k)+' <small style="font-size:.65em;opacity:.6">%'+pc+'</small>';
       el.style.color=kc;
     }else{el.textContent='—';el.style.color='var(--t3)';}
   });
@@ -4147,11 +4196,12 @@ function updateCamTotals() {
 // ─── INVENTORY ────────────────────────────────────────────
 function renderInventory() {
   const cams=SHOPIFY.cameras, accs=SHOPIFY.accessories;
-  const camVal=cams.reduce((s,c)=>s+c.price,0), accVal=accs.reduce((s,a)=>s+a.price*a.qty,0), accQty=accs.reduce((s,a)=>s+a.qty,0);
-  counter(document.getElementById('inv-val'),camVal+accVal,'₺');
-  const ic=document.getElementById('inv-cam'); if(ic) ic.textContent=cams.length;
+  const m=invMetrics(); // TEK kaynak — anasayfa Stok kartı da aynı değeri kullanır
+  const camVal=m.camValue, accVal=m.accValue, accQty=m.accUnits;
+  counter(document.getElementById('inv-val'),m.stockValue,'₺');
+  const ic=document.getElementById('inv-cam'); if(ic) ic.textContent=m.camCount;
   const ia=document.getElementById('inv-acc'); if(ia) ia.textContent=accQty;
-  const io=document.getElementById('inv-oos'); if(io) io.textContent=SHOPIFY.out_of_stock;
+  const io=document.getElementById('inv-oos'); if(io) io.textContent=m.oos;
   const ctEl=document.getElementById('camTitle'); if(ctEl) ctEl.textContent=`Kameralar (${cams.length})`;
   const atEl=document.getElementById('accTitle'); if(atEl) atEl.textContent=`Aksesuarlar (${accQty} adet)`;
   const costs=loadCamCosts();
@@ -4162,7 +4212,7 @@ function renderInventory() {
     const badge = isAuto ? `<span title="Shopify'dan otomatik" style="font-size:0.46rem;background:rgba(48,209,88,0.12);color:var(--green);border-radius:4px;padding:1px 4px;margin-left:4px;vertical-align:middle;">AUTO</span>` : '';
     const marjPct = cost > 0 ? Math.round((c.price - cost) / c.price * 100) : null;
     const karColor = marjPct === null ? 'var(--t3)' : marjPct >= 40 ? 'var(--perf-great)' : marjPct >= 25 ? 'var(--perf-good)' : marjPct >= 12 ? 'var(--perf-ok)' : marjPct >= 0 ? 'var(--perf-warn)' : 'var(--perf-bad)';
-    return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${c.name}</td><td style="color:rgba(255,255,255,0.85);font-family:var(--mono)">${fmtTL(c.price)}</td><td><input class="cam-cost-input" type="number" placeholder="${isAuto?'auto':'gir'}" value="${cost>0?cost:''}" data-name="${c.name.replace(/"/g,'&quot;')}" oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);updateCamTotals();renderProfit()" style="${isAuto?'color:var(--perf-great);':''}">  ${badge}</td><td id="kar-${safeId}" style="font-family:var(--mono);color:${karColor}">${kar===null?'—':fmtTL(kar)+(marjPct!==null?' <small style="font-size:.65em;opacity:.6">%'+marjPct+'</small>':'')}</td></tr>`;
+    return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${c.name}</td><td style="color:rgba(255,255,255,0.85);font-family:var(--mono)">${fmtTL(c.price)}</td><td><input class="cam-cost-input" type="number" placeholder="${isAuto?'auto':'gir'}" value="${cost>0?cost:''}" data-name="${c.name.replace(/"/g,'&quot;')}" oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);recalcAll()" style="${isAuto?'color:var(--perf-great);':''}">  ${badge}</td><td id="kar-${safeId}" style="font-family:var(--mono);color:${karColor}">${kar===null?'—':fmtTL(kar)+(marjPct!==null?' <small style="font-size:.65em;opacity:.6">%'+marjPct+'</small>':'')}</td></tr>`;
   }).join('');
   const ctTotal=document.getElementById('camTotal'); if(ctTotal) ctTotal.textContent=fmtTL(camVal);
   updateCamTotals();
@@ -4192,7 +4242,7 @@ function renderProfit() {
   const rev=d.revenue, orders=d.orders;
   const periodLbl={'30d':'Son 30 gün','90d':'Son 90 gün','year':'Son 12 ay'};
   const ppl=document.getElementById('profit-period-lbl'); if(ppl) ppl.textContent=periodLbl[period]+' · '+orders+' sipariş';
-  const kdv=Math.round(rev/6), iyzico=Math.round(rev*iyzico_pct/100), shopifyFee=Math.round(rev*shopify_pct/100), kargo=orders*kargo_tl, kutu=orders*kutu_tl;
+  const kdv=kdvOf(rev), iyzico=Math.round(rev*iyzico_pct/100), shopifyFee=Math.round(rev*shopify_pct/100), kargo=orders*kargo_tl, kutu=orders*kutu_tl;
   const camCosts=loadCamCosts();
   const camsWC=(SHOPIFY.cameras||[]).filter(c=>camCosts[c.name]>0);
   const totStCost=camsWC.reduce((s,c)=>s+camCosts[c.name],0);
@@ -4321,8 +4371,10 @@ function syncCostCfg() {
 }
 
 function initFinanceCosts() {
-  const c = loadCostCfg();
-  const set = (id, v) => { const el = document.getElementById(id); if (el && !el.value) el.value = v; };
+  // Tek kaynak (getCfg) → input'ları doldur. Kullanıcı o an yazıyorsa o input'a dokunma (imleç kaymasın).
+  const c = getCfg();
+  const set = (id, v) => { const el = document.getElementById(id); if (el && document.activeElement !== el) el.value = v; };
+  set('cfg-kdv-rate', c.kdv_rate);
   set('cfg-kargo2', c.kargo_tl); set('cfg-kutu2', c.kutu_tl);
   set('cfg-iyzico2', c.iyzico_pct); set('cfg-shopify2', c.shopify_pct);
 }
@@ -4349,12 +4401,10 @@ function renderFinancePage() {
     </div>`;
   }).join('');
 
-  // ── Hero KPIs ──
-  const kdvRate = parseFloat(document.getElementById('cfg-kdv-rate')?.value) || 20;
-  const kargo_tl = parseFloat(document.getElementById('cfg-kargo2')?.value) || 0;
-  const kutu_tl  = parseFloat(document.getElementById('cfg-kutu2')?.value) || 0;
-  const iyzico_pct = parseFloat(document.getElementById('cfg-iyzico2')?.value) || 0;
-  const shopify_pct = parseFloat(document.getElementById('cfg-shopify2')?.value) || 0;
+  // ── Hero KPIs ── (maliyet değerleri TEK kaynaktan: getCfg)
+  const cfg = getCfg();
+  const kdvRate = cfg.kdv_rate, kargo_tl = cfg.kargo_tl, kutu_tl = cfg.kutu_tl,
+        iyzico_pct = cfg.iyzico_pct, shopify_pct = cfg.shopify_pct;
 
   const kdv = Math.round(rev * kdvRate / (100 + kdvRate));
   const iyzico = Math.round(rev * iyzico_pct / 100);
@@ -5489,18 +5539,26 @@ function urunProfitCalc() {
   if (resultEl) resultEl.style.display = 'block';
 
   const totalCost = alis + kargo + ambalaj;
-  // Net factor: after KDV and iyzico commission
-  // P = selling price (KDV included)
-  // net_revenue = P * 100/(100+kdv) - P * iyzico/100
+  // Satış fiyatından elimize NET kalan oran:
+  //   satış KDV dahil → içindeki KDV düşülür (×100/(100+kdv)) → iyzico komisyonu düşülür (−iyzico%)
   const factor = 100/(100+kdvPct) - iyzico/100;
 
+  // Başabaş: net gelir = maliyet  →  fiyat = maliyet / factor (sıfır kâr)
   const pMin = totalCost / factor;
-  const pSuggested = totalCost * (1 + marjPct/100) / factor;
+
+  // "Hedef Kâr Marjı" = SATIŞ fiyatı üzerinden net kâr oranı (net kâr / satış).
+  //   net kâr = fiyat×factor − maliyet ;  net kâr / fiyat = m  →  fiyat = maliyet / (factor − m/100)
+  // Bu tanım, aşağıdaki "Beklenen Net Kâr" önizlemesiyle birebir tutarlıdır.
+  const mFrac = Math.min(marjPct, factor*100 - 1) / 100; // güvenlik: marj, net orandan büyük olamaz
+  const denom = factor - mFrac;
+  const pSuggested = denom > 0.01 ? totalCost / denom : pMin * 2;
 
   const kdvAmount = pSuggested * kdvPct / (100 + kdvPct);
   const iyzicoAmount = pSuggested * iyzico / 100;
   const netGelir = pSuggested - kdvAmount - iyzicoAmount;
   const netKar = netGelir - totalCost;
+  const satisMarj = pSuggested > 0 ? Math.round(netKar / pSuggested * 100) : 0; // satış üzerinden
+  const maliyetUstu = totalCost > 0 ? Math.round(netKar / totalCost * 100) : 0;  // maliyet üzerinden (markup)
 
   const fmt = n => n.toLocaleString('tr-TR', {minimumFractionDigits:0, maximumFractionDigits:0}) + ' ₺';
 
@@ -5508,7 +5566,7 @@ function urunProfitCalc() {
 
   set('p-basbas', fmt(Math.ceil(pMin / 10) * 10));
   set('p-oneri', fmt(Math.ceil(pSuggested / 10) * 10));
-  set('p-marj-label', '%' + marjPct + ' marj');
+  set('p-marj-label', '%' + satisMarj + ' satış marjı · %' + maliyetUstu + ' maliyet üstü');
   set('p-total-maliyet', fmt(totalCost));
   set('p-kdv-amount', '-' + fmt(kdvAmount));
   set('p-iyzico-amount', '-' + fmt(iyzicoAmount));
@@ -6309,7 +6367,9 @@ renderOrders();
 renderChannels();
 renderInventory();
 initCostCfg();
+initFinanceCosts();   // maliyet config input'larını tek kaynaktan doldur
 renderProfit();
+recalcAll();          // tüm sayfalar yüklemede senkron başlasın (Stok/Finans/COGS aynı değer)
 renderYouTube();
 renderInstagram();
 initFade();
@@ -7152,34 +7212,8 @@ function invAddMarginColumn() {
 }
 
 function invUpdateMarginCard() {
-  var totalCostEl = document.getElementById('camCostTotal');
-  var totalRevEl = document.getElementById('camTotal');
-  var marjPctEl = document.getElementById('inv-margin-pct');
-  var marjBarEl = document.getElementById('inv-margin-bar');
-
-  function parseMoney(str) {
-    if (!str) return 0;
-    return parseFloat((str.textContent || '').replace(/[₺.\s]/g,'').replace(',','.')) || 0;
-  }
-  var cost = parseMoney(totalCostEl);
-  var rev = parseMoney(totalRevEl);
-  if (rev > 0 && cost >= 0) {
-    var marj = Math.round((rev - cost) / rev * 100);
-    if (marjPctEl) {
-      var col = marj >= 40 ? 'rgba(48,209,88,.9)' : marj >= 25 ? 'rgba(212,175,55,.9)' : 'rgba(255,69,58,.9)';
-      marjPctEl.textContent = '%' + marj;
-      marjPctEl.style.color = col;
-    }
-    if (marjBarEl) marjBarEl.style.width = Math.min(100, Math.max(0, marj)) + '%';
-  }
-
-  // Also update footer margin
-  var footEl = document.getElementById('camMarjFoot');
-  if (footEl && rev > 0) {
-    var fm = Math.round((rev - cost) / rev * 100);
-    var fcol = fm >= 40 ? 'rgba(48,209,88,.8)' : fm >= 25 ? 'rgba(212,175,55,.8)' : 'rgba(255,69,58,.8)';
-    footEl.innerHTML = '<span style="color:' + fcol + ';font-weight:700">%' + fm + '</span>';
-  }
+  // Marj/kâr artık tek yerde (updateCamTotals) — aynı küme üzerinden hesaplanır.
+  updateCamTotals();
 }
 
 /* ---- Urun Page: Sales Price Integration ---- */
@@ -7212,11 +7246,12 @@ function urunSatisFiyatiCalc() {
   var iyzicoAmount = satis * (iyzicoRate / 100);
   var netGelir = satis - kdvAmount - iyzicoAmount;
   var netKar = netGelir - totalCost;
-  var marj = satis > 0 ? Math.round(netKar / satis * 100) : 0;
+  var marj = satis > 0 ? Math.round(netKar / satis * 100) : 0;             // satış marjı
+  var maliyetUstu = totalCost > 0 ? Math.round(netKar / totalCost * 100) : 0; // maliyet üstü
 
   var col = netKar > 0 ? 'rgba(48,209,88,.85)' : 'rgba(255,69,58,.85)';
   previewEl.style.color = col;
-  previewEl.innerHTML = '<span style="font-size:1.1rem">' + (netKar >= 0 ? '+' : '') + Math.round(netKar).toLocaleString('tr-TR') + ' ₺</span> <span style="font-size:.65rem;opacity:.6">(%' + marj + ' marj)</span>';
+  previewEl.innerHTML = '<span style="font-size:1.1rem">' + (netKar >= 0 ? '+' : '') + Math.round(netKar).toLocaleString('tr-TR') + ' ₺</span> <span style="font-size:.65rem;opacity:.6">(%' + marj + ' satış marjı · %' + maliyetUstu + ' maliyet üstü)</span>';
 }
 
 
