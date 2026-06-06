@@ -4303,12 +4303,18 @@ function updateCamTotals() {
     const el=document.getElementById('kar-'+c.name.replace(/\W/g,'_'));
     if(!el)return;
     const cost=costs[c.name]||0;
+    const marjEl=document.getElementById('marj-'+c.name.replace(/\W/g,'_'));
     if(cost>0){
       const k=c.price-cost, pc=Math.round(k/c.price*100);
       const kc=pc>=40?'var(--perf-great)':pc>=25?'var(--perf-good)':pc>=12?'var(--perf-ok)':pc>=0?'var(--perf-warn)':'var(--perf-bad)';
       el.innerHTML=fmtTL(k)+' <small style="font-size:.65em;opacity:.6">%'+pc+'</small>';
       el.style.color=kc;
-    }else{el.textContent='—';el.style.color='var(--t3)';}
+      if(marjEl){
+        const pcol=pc>=40?'rgba(48,209,88,.9)':pc>=25?'rgba(212,175,55,.9)':'rgba(255,69,58,.9)';
+        const pbg=pc>=40?'rgba(48,209,88,.12)':pc>=25?'rgba(212,175,55,.12)':'rgba(255,69,58,.12)';
+        marjEl.innerHTML='<span style="color:'+pcol+';background:'+pbg+';padding:2px 10px;border-radius:8px;font-weight:700;font-size:.72rem">%'+pc+'</span>';
+      }
+    }else{el.textContent='—';el.style.color='var(--t3)';if(marjEl)marjEl.innerHTML='<span style="color:var(--t3)">—</span>';}
   });
 }
 
@@ -4331,7 +4337,10 @@ function renderInventory() {
     const badge = isAuto ? `<span title="Shopify'dan otomatik" style="font-size:0.46rem;background:rgba(48,209,88,0.12);color:var(--green);border-radius:4px;padding:1px 4px;margin-left:4px;vertical-align:middle;">AUTO</span>` : '';
     const marjPct = cost > 0 ? Math.round((c.price - cost) / c.price * 100) : null;
     const karColor = marjPct === null ? 'var(--t3)' : marjPct >= 40 ? 'var(--perf-great)' : marjPct >= 25 ? 'var(--perf-good)' : marjPct >= 12 ? 'var(--perf-ok)' : marjPct >= 0 ? 'var(--perf-warn)' : 'var(--perf-bad)';
-    return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${c.name}</td><td style="color:rgba(255,255,255,0.85);font-family:var(--mono)">${fmtTL(c.price)}</td><td><input class="cam-cost-input" type="number" placeholder="${isAuto?'auto':'gir'}" value="${cost>0?cost:''}" data-name="${c.name.replace(/"/g,'&quot;')}" oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);recalcAll()" style="${isAuto?'color:var(--perf-great);':''}">  ${badge}</td><td id="kar-${safeId}" style="font-family:var(--mono);color:${karColor}">${kar===null?'—':fmtTL(kar)+(marjPct!==null?' <small style="font-size:.65em;opacity:.6">%'+marjPct+'</small>':'')}</td></tr>`;
+    const marjPill = marjPct===null
+      ? '<span style="color:var(--t3)">—</span>'
+      : '<span style="color:'+(marjPct>=40?'rgba(48,209,88,.9)':marjPct>=25?'rgba(212,175,55,.9)':'rgba(255,69,58,.9)')+';background:'+(marjPct>=40?'rgba(48,209,88,.12)':marjPct>=25?'rgba(212,175,55,.12)':'rgba(255,69,58,.12)')+';padding:2px 10px;border-radius:8px;font-weight:700;font-size:.72rem">%'+marjPct+'</span>';
+    return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${c.name}</td><td style="color:rgba(255,255,255,0.85);font-family:var(--mono)">${fmtTL(c.price)}</td><td><input class="cam-cost-input" type="number" placeholder="${isAuto?'auto':'gir'}" value="${cost>0?cost:''}" data-name="${c.name.replace(/"/g,'&quot;')}" oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);recalcAll()" style="${isAuto?'color:var(--perf-great);':''}">  ${badge}</td><td id="kar-${safeId}" style="font-family:var(--mono);color:${karColor}">${kar===null?'—':fmtTL(kar)+(marjPct!==null?' <small style="font-size:.65em;opacity:.6">%'+marjPct+'</small>':'')}</td><td id="marj-${safeId}" style="text-align:center;font-family:var(--mono)">${marjPill}</td></tr>`;
   }).join('');
   const ctTotal=document.getElementById('camTotal'); if(ctTotal) ctTotal.textContent=fmtTL(camVal);
   updateCamTotals();
@@ -7402,38 +7411,8 @@ function statsEnhanceGA4() {
 })();
 
 function invAddMarginColumn() {
-  var tbody = document.getElementById('camBody');
-  if (!tbody) return;
-  var rows = tbody.querySelectorAll('tr');
-  rows.forEach(function(row) {
-    var cells = row.querySelectorAll('td');
-    if (cells.length >= 5) {
-      var saleCell = cells[2]; // Satış fiyatı
-      var costCell = cells[3]; // Maliyet
-      var saleStr = saleCell ? saleCell.textContent.replace(/[₺.,\s]/g,'').replace(',','.') : '';
-      var costStr = costCell ? costCell.textContent.replace(/[₺.,\s]/g,'').replace(',','.') : '';
-      var sale = parseFloat(saleStr) || 0;
-      var cost = parseFloat(costStr) || 0;
-      var marj = sale > 0 ? Math.round((sale - cost) / sale * 100) : null;
-      // Add or update margin cell
-      var existingMarj = row.querySelector('.cam-marj-cell');
-      if (!existingMarj) {
-        var td = document.createElement('td');
-        td.className = 'cam-marj-cell';
-        td.style.cssText = 'text-align:center;font-family:var(--mono);font-size:.72rem;font-weight:700';
-        row.appendChild(td);
-      }
-      var marjCell = row.querySelector('.cam-marj-cell');
-      if (marjCell) {
-        if (marj !== null && sale > 0) {
-          var col = marj >= 40 ? 'rgba(48,209,88,.8)' : marj >= 25 ? 'rgba(212,175,55,.8)' : 'rgba(255,69,58,.8)';
-          marjCell.innerHTML = '<span style="color:' + col + ';background:' + col.replace('0.8','0.1') + ';padding:2px 8px;border-radius:6px">%' + marj + '</span>';
-        } else {
-          marjCell.textContent = '—';
-        }
-      }
-    }
-  });
+  // Marj % sütunu artık renderInventory satır şablonunda (id="marj-..."), doğru maliyetle.
+  // updateCamTotals her değişimde günceller. Bu fonksiyon geriye dönük uyumluluk için no-op.
 }
 
 function invUpdateMarginCard() {
