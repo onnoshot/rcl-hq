@@ -1419,10 +1419,14 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
           <div class="delta dn" id="s-rev-delta">30 gün</div>
           <div class="kpi-sub" id="s-rev-sub">—</div>
         </div>
-        <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(212,175,55,0.12)">
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(212,175,55,0.12);display:flex;flex-direction:column;gap:8px">
           <div style="display:flex;justify-content:space-between;align-items:center">
-            <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:0.1em">KDV %20</span>
+            <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:0.1em" id="s-kdv-lbl">KDV</span>
             <span style="font-family:var(--mono);font-size:0.88rem;font-weight:600;color:var(--warn)" id="s-kdv">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:0.1em">Net Kâr</span>
+            <span style="font-family:var(--mono);font-size:0.95rem;font-weight:800;color:var(--green)" id="s-net">—</span>
           </div>
         </div>
       </div>
@@ -1443,6 +1447,30 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
       </div>
     </div>
   </div>
+
+  <!-- 30 GÜNLÜK KÂRLILIK -->
+  <div class="sec fi" style="transition-delay:.07s">
+    <div class="sec-label">30 Günlük Kârlılık</div>
+    <div class="card p" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(48,209,88,.4),transparent)"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:18px">
+        <div>
+          <div class="kpi-lbl">Net Kâr (Son 30 Gün)</div>
+          <div class="kpi-big" id="ov-net" style="font-size:2.1rem">—</div>
+          <div class="kpi-sub" id="ov-net-sub">KDV, komisyon, kargo/kutu ve ürün maliyeti düşülmüş</div>
+        </div>
+        <div style="display:flex;gap:22px;flex-wrap:wrap" id="ov-net-kpis"></div>
+      </div>
+      <div style="margin-top:18px">
+        <div style="display:flex;justify-content:space-between;font-size:0.6rem;font-family:var(--mono);color:var(--t3);margin-bottom:6px">
+          <span>Gelirin dağılımı (gider + kâr)</span><span id="ov-net-marj">—</span>
+        </div>
+        <div style="display:flex;height:16px;border-radius:8px;overflow:hidden;background:rgba(255,255,255,0.04);gap:2px" id="ov-net-bar"></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:0.6rem;font-family:var(--mono);color:var(--t3)" id="ov-net-legend"></div>
+      </div>
+    </div>
+  </div>
+
   <div class="sec fi" style="transition-delay:.10s">
     <div class="sec-label">Platform Özeti</div>
     <div class="g g3">
@@ -1591,6 +1619,50 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
           <div style="position:relative;height:150px"><canvas id="finCostDonut"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:1rem;font-weight:700;font-family:var(--mono);color:var(--t1)" id="finCostDonutTotal">—</div><div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono)">kesinti</div></div></div>
           <div style="display:flex;flex-direction:column;gap:8px" id="finCostLegend"></div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AYLIK KÂR ANALİZİ -->
+  <div class="sec fi" style="transition-delay:.13s">
+    <div class="sec-label">Aylık Kâr Analizi — Satıştan Net Kâra</div>
+    <div class="card p" style="margin-bottom:14px">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-bottom:6px">
+        <div>
+          <div class="chart-title" style="margin:0">Aylık Gelir → Net Kâr Zaman Çizelgesi</div>
+          <div class="chart-sub" id="mp-sub">Her aydan KDV, komisyon, kargo/kutu ve ürün maliyeti (COGS) düşülmüş net kâr</div>
+        </div>
+        <div style="display:flex;gap:18px;flex-wrap:wrap" id="mp-kpis"></div>
+      </div>
+      <div style="height:300px;margin-top:12px"><canvas id="monthlyProfitChart"></canvas></div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:0.62rem;font-family:var(--mono);color:var(--t3)">
+        <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#D4AF37;vertical-align:middle;margin-right:4px"></span>Gelir (satış)</span>
+        <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#30D158;vertical-align:middle;margin-right:4px"></span>Net Kâr</span>
+        <span><span style="display:inline-block;width:14px;height:3px;background:#BF5AF2;vertical-align:middle;margin-right:4px"></span>Kâr Marjı %</span>
+        <span style="color:rgba(255,69,58,.7)"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#FF453A;vertical-align:middle;margin-right:4px"></span>Zarar ayları kırmızı</span>
+      </div>
+    </div>
+    <div class="card p">
+      <div class="chart-title" style="margin-bottom:4px">Aylık Detay Tablosu</div>
+      <div class="chart-sub" style="margin-bottom:12px">Satış → vergi ve giderler çıktıktan sonra net kâr · pozitif yeşil, negatif kırmızı</div>
+      <div style="overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-family:var(--mono);min-width:640px">
+          <thead>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.1)">
+              <th style="padding:8px 10px;text-align:left;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Ay</th>
+              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Sipariş</th>
+              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Gelir</th>
+              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">KDV</th>
+              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Komisyon</th>
+              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Kargo+Kutu</th>
+              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">COGS</th>
+              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Net Kâr</th>
+              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Marj</th>
+            </tr>
+          </thead>
+          <tbody id="mp-tbody"></tbody>
+          <tfoot id="mp-tfoot"></tfoot>
+        </table>
       </div>
     </div>
   </div>
@@ -4036,6 +4108,17 @@ function costMetrics(){
            marginPct: saleOfCosted>0?Math.round(profit/saleOfCosted*100):0,
            costRatio: saleOfCosted>0?costTotal/saleOfCosted:0 };
 }
+// Bir dönem için net kâr kırılımı — finans/aylık/anasayfa HEPSİ bunu kullanır (aynı formül = tutarlı marj).
+function periodProfit(d){
+  const cfg=getCfg(), cm=costMetrics();
+  const rev=+((d&&d.revenue))||0, orders=+((d&&d.orders))||0;
+  const kdv=kdvOf(rev, cfg.kdv_rate);
+  const iyzico=Math.round(rev*cfg.iyzico_pct/100), shopify=Math.round(rev*cfg.shopify_pct/100);
+  const komisyon=iyzico+shopify, sabit=orders*(cfg.kargo_tl+cfg.kutu_tl);
+  const cogs=cm.count>0?Math.round(rev*cm.costRatio):0;
+  const gider=komisyon+sabit+cogs, net=rev-kdv-gider, marj=rev>0?Math.round(net/rev*100):0;
+  return { rev, orders, kdv, iyzico, shopify, komisyon, sabit, cogs, gider, net, marj };
+}
 // Kamera maliyetini kalıcı yaz (anlık kaydet) — tüm yüzeyler aynı anahtarı (rcl_cam_costs) kullanır.
 function setCamCost(name, val){
   let manual={}; try{ manual=JSON.parse(localStorage.getItem('rcl_cam_costs')||'{}'); }catch(e){}
@@ -4065,6 +4148,7 @@ let _recalcBusy=false;
 function recalcAll(){
   if(_recalcBusy) return; _recalcBusy=true;
   try{ ovUpdateStock(); }catch(e){}
+  try{ renderOverviewProfit(); }catch(e){}
   try{ updateCamTotals(); }catch(e){}
   try{ if(typeof invUpdateMarginCard==='function') invUpdateMarginCard(); }catch(e){}
   try{ updateCOGSTotals(); }catch(e){}
@@ -4091,6 +4175,41 @@ function renderKPIs() {
   const igEl = document.getElementById('ov-ig-val');
   if (igEl) igEl.textContent = fmt(INSTAGRAM.followers)+' takipçi · '+fmt(INSTAGRAM.avg_likes)+' ort. beğeni';
   ovUpdateStock(); // anasayfa Stok kartı = stok/finans ile aynı (kamera+aksesuar)
+  renderOverviewProfit(); // 30 günlük net kâr (yeşil/kırmızı) + dağılım
+}
+
+// Anasayfa "30 Günlük Kârlılık" — periodProfit ile (finans/aylık ile aynı formül).
+function renderOverviewProfit(){
+  if(typeof SHOPIFY==='undefined' || !SHOPIFY.period_30d) return;
+  const pp=periodProfit(SHOPIFY.period_30d), cfg=getCfg();
+  const netCol=pp.net>=0?'var(--green)':'var(--danger)';
+  const set=(id,txt,col)=>{const e=document.getElementById(id);if(e){e.textContent=txt;if(col)e.style.color=col;}};
+  set('s-kdv-lbl','KDV %'+cfg.kdv_rate);
+  set('s-net',(pp.net>=0?'+₺':'-₺')+fmt(Math.abs(pp.net)),netCol);
+  set('ov-net',(pp.net>=0?'₺':'-₺')+fmt(Math.abs(pp.net)),netCol);
+  set('ov-net-sub',(pp.net>=0?'kâr':'ZARAR')+' · '+pp.orders+' sipariş · tüm gider ve vergi düşülmüş');
+  set('ov-net-marj','Kâr marjı: %'+pp.marj,netCol);
+  const kpis=document.getElementById('ov-net-kpis');
+  if(kpis){
+    const chip=(l,v,c)=>`<div style="text-align:right"><div style="font-size:0.52rem;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono)">${l}</div><div style="font-size:0.92rem;font-weight:700;font-family:var(--mono);color:${c}">${v}</div></div>`;
+    kpis.innerHTML=chip('Gelir',fmtTL(pp.rev),'var(--gold)')+chip('Toplam Gider','₺'+fmt(pp.kdv+pp.gider),'var(--warn)')+chip('Kâr Marjı','%'+pp.marj,netCol);
+  }
+  const segs=[
+    {l:'KDV',v:pp.kdv,c:'#FF453A'},
+    {l:'Komisyon',v:pp.komisyon,c:'#FF9F0A'},
+    {l:'Kargo+Kutu',v:pp.sabit,c:'#8E8E93'},
+    {l:'COGS',v:pp.cogs,c:'#BF5AF2'},
+    {l:'Net Kâr',v:Math.max(pp.net,0),c:'#30D158'},
+  ].filter(s=>s.v>0);
+  const base=segs.reduce((s,x)=>s+x.v,0)||1;
+  const bar=document.getElementById('ov-net-bar'), leg=document.getElementById('ov-net-legend');
+  if(bar){
+    bar.innerHTML=segs.map(s=>`<div class="ov-seg" data-w="${(s.v/base*100).toFixed(1)}" style="width:0;background:${s.c};transition:width .9s cubic-bezier(.16,1,.3,1)" title="${s.l}: ₺${fmt(s.v)}"></div>`).join('');
+    requestAnimationFrame(()=>{bar.querySelectorAll('.ov-seg').forEach(d=>{d.style.width=d.dataset.w+'%';});});
+  }
+  if(leg){
+    leg.innerHTML=segs.map(s=>`<span><span style="display:inline-block;width:9px;height:9px;border-radius:2px;background:${s.c};vertical-align:middle;margin-right:4px"></span>${s.l} ₺${fmt(s.v)} (%${(s.v/base*100).toFixed(0)})</span>`).join('');
+  }
 }
 
 // ─── FINANCE KPIs ─────────────────────────────────────────
@@ -4594,6 +4713,112 @@ function renderFinancePage() {
   if (document.getElementById('finChannelChart')) {
     const ch = SHOPIFY.channels;
     mkChart('finChannelChart',{type:'bar',data:{labels:ch.map(c=>c.name),datasets:[{label:'Gelir',data:ch.map(c=>c.rev),backgroundColor:ch.map(c=>c.color+'55'),borderColor:ch.map(c=>c.color),borderWidth:2,borderRadius:8,yAxisID:'y1'},{label:'Sipariş',data:ch.map(c=>c.orders),backgroundColor:ch.map(c=>c.color+'33'),borderColor:ch.map(c=>c.color+'88'),borderWidth:1,borderRadius:6,type:'bar',yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>ctx.dataset.label==='Gelir'?`  Gelir: ${fmtTL(ctx.parsed.y)}`:`  Sipariş: ${ctx.parsed.y}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y1:{position:'left',ticks:{font:{family:'-apple-system',size:9},color:'#D4AF37',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y2:{position:'right',ticks:{font:{family:'-apple-system',size:9},color:'#A1A1A6'},grid:{display:false},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*80}}});
+  }
+
+  renderMonthlyProfit(); // aylık kâr analizi (tek kaynaktan, aynı net-kâr formülü)
+}
+
+// ─── AYLIK KÂR ANALİZİ ───────────────────────────────────
+// Her ay için: satış → KDV + komisyon + kargo/kutu + COGS düşülür → net kâr.
+// renderFinancePage ile BİREBİR aynı formül (tutarlı kâr oranları).
+function monthlyProfitRows() {
+  const cfg = getCfg(), cm = costMetrics();
+  const labels = SHOPIFY.monthly_labels || [], revs = SHOPIFY.monthly_revenue || [], ords = SHOPIFY.monthly_orders || [];
+  return labels.map((lbl, i) => {
+    const rev = +revs[i] || 0, orders = +ords[i] || 0;
+    const kdv = kdvOf(rev, cfg.kdv_rate);
+    const iyzico = Math.round(rev * cfg.iyzico_pct / 100);
+    const shopify = Math.round(rev * cfg.shopify_pct / 100);
+    const komisyon = iyzico + shopify;
+    const kargo = orders * cfg.kargo_tl, kutu = orders * cfg.kutu_tl, sabit = kargo + kutu;
+    const cogs = cm.count > 0 ? Math.round(rev * cm.costRatio) : 0;
+    const gider = komisyon + sabit + cogs;
+    const net = rev - kdv - gider;
+    const marj = rev > 0 ? Math.round(net / rev * 100) : 0;
+    return { lbl, orders, rev, kdv, iyzico, shopify, komisyon, kargo, kutu, sabit, cogs, gider, net, marj };
+  });
+}
+
+let _mpRevealed = false;
+function renderMonthlyProfit() {
+  if (!document.getElementById('mp-tbody')) return;
+  const rows = monthlyProfitRows();
+  const totRev = rows.reduce((s,r)=>s+r.rev,0), totNet = rows.reduce((s,r)=>s+r.net,0);
+  const avgMarj = totRev>0 ? Math.round(totNet/totRev*100) : 0;
+  const best = rows.reduce((a,b)=> b.net>a.net?b:a, rows[0]||{net:0,lbl:'—'});
+  const money = v => (v>=0?'₺':'-₺') + fmt(Math.abs(v));
+
+  // ── Özet KPI'lar ──
+  const kpiEl = document.getElementById('mp-kpis');
+  if (kpiEl) {
+    const chip = (lbl,val,col)=>`<div style="text-align:right;min-width:90px"><div style="font-size:0.52rem;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono)">${lbl}</div><div style="font-size:0.92rem;font-weight:700;font-family:var(--mono);color:${col}">${val}</div></div>`;
+    kpiEl.innerHTML =
+      chip('12 Ay Gelir', fmtTL(totRev), 'var(--gold)') +
+      chip('12 Ay Net Kâr', money(totNet), totNet>=0?'var(--green)':'var(--danger)') +
+      chip('Ort. Kâr Marjı', '%'+avgMarj, totNet>=0?'var(--green)':'var(--danger)') +
+      chip('En Kârlı Ay', best.lbl, 'var(--t1)');
+  }
+
+  // ── Detay tablo ──
+  const tb = document.getElementById('mp-tbody');
+  const maxNet = Math.max(1, ...rows.map(r=>Math.abs(r.net)));
+  const tdN = (v,col)=>`<td style="padding:8px 10px;text-align:right;font-size:0.7rem;color:${col||'var(--t2)'}">${v}</td>`;
+  tb.innerHTML = rows.map((r,i)=>{
+    const marjCol = r.marj>=25?'var(--perf-great)':r.marj>=15?'var(--perf-good)':r.marj>=5?'var(--perf-ok)':r.marj>=0?'var(--perf-warn)':'var(--perf-bad)';
+    const netCol = r.net>=0?'var(--green)':'var(--danger)';
+    const barW = Math.round(Math.abs(r.net)/maxNet*100);
+    return `<tr class="mp-row" style="border-bottom:1px solid rgba(255,255,255,0.04);opacity:0;transform:translateY(6px)">
+      <td style="padding:8px 10px;font-size:0.7rem;color:var(--t1);font-weight:600">${r.lbl}</td>
+      ${tdN(r.orders,'var(--t3)')}
+      ${tdN(fmtTL(r.rev),'var(--gold)')}
+      ${tdN('-'+fmt(r.kdv),'var(--danger)')}
+      ${tdN('-'+fmt(r.komisyon),'var(--warn)')}
+      ${tdN('-'+fmt(r.sabit),'var(--t3)')}
+      ${tdN(r.cogs>0?'-'+fmt(r.cogs):'—','var(--purple)')}
+      <td style="padding:8px 10px;text-align:right;font-size:0.74rem;font-weight:700;color:${netCol}">
+        <div>${r.net>=0?'+':'-'}₺${fmt(Math.abs(r.net))}</div>
+        <div style="height:3px;background:rgba(255,255,255,0.05);border-radius:2px;margin-top:3px;overflow:hidden"><div class="mp-bar" data-w="${barW}" style="height:100%;width:0;background:${netCol};border-radius:2px;transition:width .9s cubic-bezier(.16,1,.3,1)"></div></div>
+      </td>
+      <td style="padding:8px 10px;text-align:right;font-size:0.72rem;font-weight:700;color:${marjCol}">%${r.marj}</td>
+    </tr>`;
+  }).join('');
+
+  const tf = document.getElementById('mp-tfoot');
+  if (tf) {
+    const sum = k => rows.reduce((s,r)=>s+r[k],0);
+    tf.innerHTML = `<tr style="border-top:2px solid rgba(255,255,255,0.1)">
+      <td style="padding:9px 10px;font-size:0.7rem;color:var(--t1);font-weight:700">TOPLAM</td>
+      ${tdN(sum('orders'),'var(--t2)')}
+      ${tdN(fmtTL(sum('rev')),'var(--gold)')}
+      ${tdN('-'+fmt(sum('kdv')),'var(--danger)')}
+      ${tdN('-'+fmt(sum('komisyon')),'var(--warn)')}
+      ${tdN('-'+fmt(sum('sabit')),'var(--t3)')}
+      ${tdN(sum('cogs')>0?'-'+fmt(sum('cogs')):'—','var(--purple)')}
+      <td style="padding:9px 10px;text-align:right;font-size:0.78rem;font-weight:800;color:${totNet>=0?'var(--green)':'var(--danger)'}">${totNet>=0?'+':'-'}₺${fmt(Math.abs(totNet))}</td>
+      <td style="padding:9px 10px;text-align:right;font-size:0.74rem;font-weight:700;color:${totNet>=0?'var(--green)':'var(--danger)'}">%${avgMarj}</td>
+    </tr>`;
+  }
+
+  // ── Animasyon: ilk gösterimde satırlar sırayla belirsin + net-kâr barı dolsun ──
+  const revealNow = () => {
+    tb.querySelectorAll('.mp-row').forEach((tr,i)=>{
+      setTimeout(()=>{
+        tr.style.transition='opacity .4s ease,transform .4s ease';
+        tr.style.opacity='1'; tr.style.transform='translateY(0)';
+        const b=tr.querySelector('.mp-bar'); if(b) b.style.width=b.dataset.w+'%';
+      }, _mpRevealed?0:i*55);
+    });
+    _mpRevealed = true;
+  };
+  requestAnimationFrame(revealNow);
+
+  // ── Grafik (zaman çizelgesi): Gelir + Net Kâr barları + Marj% çizgisi ──
+  if (document.getElementById('monthlyProfitChart')) {
+    mkChart('monthlyProfitChart',{type:'bar',data:{labels:rows.map(r=>r.lbl),datasets:[
+      {type:'bar',label:'Gelir',data:rows.map(r=>r.rev),backgroundColor:'rgba(212,175,55,0.5)',borderColor:'#D4AF37',borderWidth:1,borderRadius:5,yAxisID:'y',order:3},
+      {type:'bar',label:'Net Kâr',data:rows.map(r=>r.net),backgroundColor:rows.map(r=>r.net>=0?'rgba(48,209,88,0.6)':'rgba(255,69,58,0.6)'),borderColor:rows.map(r=>r.net>=0?'#30D158':'#FF453A'),borderWidth:1,borderRadius:5,yAxisID:'y',order:2},
+      {type:'line',label:'Marj %',data:rows.map(r=>r.marj),borderColor:'#BF5AF2',borderWidth:2,fill:false,tension:0.4,pointRadius:0,pointHoverRadius:5,pointHoverBackgroundColor:'#BF5AF2',yAxisID:'y1',order:1}
+    ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>ctx.dataset.label==='Marj %'?`  Kâr Marjı: %${ctx.parsed.y}`:`  ${ctx.dataset.label}: ${(ctx.parsed.y<0?'-₺'+fmt(-ctx.parsed.y):'₺'+fmt(ctx.parsed.y))}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':(v<=-1000?'-₺'+fmt(-v/1000)+'K':'₺'+v)},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y1:{position:'right',ticks:{font:{family:'-apple-system',size:9},color:'#BF5AF2',callback:v=>'%'+v},grid:{display:false},border:{display:false}}},animation:{duration:1100,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*45},interaction:{mode:'index',intersect:false}}});
   }
 }
 
