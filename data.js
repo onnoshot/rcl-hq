@@ -448,7 +448,7 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-06-06T03:01:38",
+  "updated_at": "2026-06-06T04:01:40",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
   "followers": 7036,
@@ -466,7 +466,9 @@ const INSTAGRAM = {
       "type": "VIDEO",
       "likes": 28,
       "comments": 0,
-      "url": "https://www.instagram.com/reel/DZKqrlfoERu/"
+      "url": "https://www.instagram.com/reel/DZKqrlfoERu/",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/714830428_26982014394791047_8426920815930901021_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=0TwYzb66364Q7kNvwEpYHYU&_nc_oc=Adq0frNsZXFdgz1OE4v8MtvoW7hjK-eL35BufO3g8veeqZA15jMe6UTPosqfzzcIUAs&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&_nc_tpa=Q5bMBQEruoyM38Eqz668MXfH7Jaf7M9QDGER7FPcYccjsWOh3uP3aGz8p2UVr-sx8kdSoLLQ_cuNb259&oh=00_Af_ts4ddmhMLDIaUBa9RUXxVOW1QN2FfPNbQDkXvW2FwgQ&oe=6A294C03",
+      "caption": "she loves taking photographs 🥂📸\n\n🚩 Discover your digital camera at retrocameraland.com 🗺️ #dijitalkamera #y2k #ccd #lumix #photography"
     },
     {
       "id": "18082362938161796",
@@ -474,7 +476,9 @@ const INSTAGRAM = {
       "type": "CAROUSEL_ALBUM",
       "likes": 28,
       "comments": 0,
-      "url": "https://www.instagram.com/p/DZCPI_ZiJFT/"
+      "url": "https://www.instagram.com/p/DZCPI_ZiJFT/",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/710432369_17893527531496139_4424889210621117233_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=HBQQhFPSoCYQ7kNvwHgQBZl&_nc_oc=AdrSGsoFbcEuUsbR6tWSjV4I-_mcoEN3smuvTNHQv5_6kMGkGoCw_pGyPspeS0F2LzQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&oh=00_Af_UrO1Yy4E0ko_z8EHcg2g2B1BlqxPGM8YAFR4u5LlFIw&oe=6A296008",
+      "caption": "shoot first, think never ✨\n\nno rules, no retouching. just you and your camera living its best life 📸\n\n🚩 retrocameraland.com #digitalcamera #y2k #aesthetic"
     },
     {
       "id": "18006381323860691",
@@ -482,7 +486,9 @@ const INSTAGRAM = {
       "type": "CAROUSEL_ALBUM",
       "likes": 79,
       "comments": 1,
-      "url": "https://www.instagram.com/p/DYu1jKZiNVD/"
+      "url": "https://www.instagram.com/p/DYu1jKZiNVD/",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/705988677_17892343674496139_2707241804962707527_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=s-udDJeNiGcQ7kNvwEAR1PR&_nc_oc=AdpJqA91N1KBnBuV5wQmO-FprxeNfPocsN_3HsPddrwdgv3Teo5UKl3qiFkcMdEQmZI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&oh=00_Af_H54UoeAqDHbMuhoPmFY908sjvu-8BjDx0Ya87xcGSow&oe=6A292ADA",
+      "caption": "basic starter kit 🏁 \nretrocameraland x benessocoffee \n\nfujifilm dijital kameran, Ethiopia kahvesi, ray-ban gözlük, kablosuz kulaklık ve deri ceket.\n\n#digicam #coffee #y2k #balat #style"
     },
     {
       "id": "17939306271239461",
@@ -490,7 +496,9 @@ const INSTAGRAM = {
       "type": "VIDEO",
       "likes": 37,
       "comments": 0,
-      "url": "https://www.instagram.com/reel/DYouo-ro_AW/"
+      "url": "https://www.instagram.com/reel/DYouo-ro_AW/",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/706028731_1375927968009248_8971699082304289377_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=kPmxyeEbYLwQ7kNvwFygPVV&_nc_oc=Adr4DfBQUXg1VbUttd83o4dBv0JNV9N5Kp9lwjlXEN9vFiHPO4FocjATNXQYkGVVcFg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&_nc_tpa=Q5bMBQFOH4oMZeyjTovng5brZ9dH6bouc_c7kcnllOhOVW5lK5XcZmO8wylnyLQu6n6WW2UK4zA1IvRQ&oh=00_Af-xwk-52hiASnOF91T5JNs0u9w6SvF0EuGSrWv45eI7Iw&oe=6A2930B3",
+      "caption": "Renklerin peşinde bir yolculuğa hazır mısın? Fujifilm Finepix V10 | Retrocameraland.com’da 📸🇯🇵\n\n#fujifilm #retro #digitalcamera #PhotographyLife #Aesthetic"
     },
     {
       "id": "18350297056245743",
@@ -498,7 +506,9 @@ const INSTAGRAM = {
       "type": "VIDEO",
       "likes": 34,
       "comments": 0,
-      "url": "https://www.instagram.com/reel/DYbksJ8IMR0/"
+      "url": "https://www.instagram.com/reel/DYbksJ8IMR0/",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/700387271_2009929189730607_692241951132775199_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=o_NQKjvxhIwQ7kNvwFwOCo-&_nc_oc=Adqs4RlX4UtrScxLMHaGlhlIT2zpzvnzc0G-aCU51Lc3Ii0q8bWJK5gtdJv1Li_4jWg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&_nc_tpa=Q5bMBQFQUftiRyvgA1H5MzLdrM0arNXXhDnJNLar6ksr_6xadmAmcSUgur94u9MKD4py5SHRzkUthD6e&oh=00_Af8BDHF06cMJzwK9nyg4RnDZvRxxYLwxkuZUwVUNw8q3aQ&oe=6A294E3C",
+      "caption": "kaydet. sakla. hatırla 💌\ndijital günlüğün, senin kadrajından 📸\n\n#digitalcamera #y2k #retroaesthetic"
     },
     {
       "id": "17893027623467079",
@@ -506,7 +516,9 @@ const INSTAGRAM = {
       "type": "VIDEO",
       "likes": 59,
       "comments": 1,
-      "url": "https://www.instagram.com/reel/DYXlpS6IXnV/"
+      "url": "https://www.instagram.com/reel/DYXlpS6IXnV/",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/693350716_2081628912387009_7752369357675903587_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Sjk8Gg-ta-cQ7kNvwHoGQSB&_nc_oc=Adq1yiNt4c-C9ARDj9IatwxDu1umoNPOjEwNsc88neDEiRqCkiIxwmqIHy9Ae5pQjKE&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&_nc_tpa=Q5bMBQF_DD9wtLL2_0YixKpTcseOAbE4EtodE5PdTX37qZDyovuKPfdytGqQ_AZs2oT0nKpxb26YXJvQ&oh=00_Af-tO_oG7KgW72pewa0NGqJcMqQSlrz0xFwehgVJKL24-w&oe=6A2943CE",
+      "caption": "martıların bile kamerada gözü var 👀📸\n#fujifilm #finepix #digitalcamera"
     },
     {
       "id": "18115202152809089",
@@ -514,7 +526,9 @@ const INSTAGRAM = {
       "type": "VIDEO",
       "likes": 83,
       "comments": 1,
-      "url": "https://www.instagram.com/reel/DYSX0DmIHwf/"
+      "url": "https://www.instagram.com/reel/DYSX0DmIHwf/",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/696695791_1902287760484217_1895121579187205840_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=mrw4CFtjLwEQ7kNvwEtLWOw&_nc_oc=AdoGxLBRud1pJlIHeQ68KcHon-5H7CAvYgPHMG7suZ5duLXgxtB-H19DeW20qrFTquc&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&_nc_tpa=Q5bMBQFMmjNG2U4jxIgf19cy-yjWTLbGoqyEN8GUGdlD3yOqn2nJh2Rm3IQ3aCsw5Ws-dgYGA20FGAJO&oh=00_Af9jKfw_MdDdPGBY4WMLmBVVFpvOt-AtqMG3OWBiLyG7lw&oe=6A295A76",
+      "caption": "Fujifilm Finepix Z90 | İkonik retro kameran ile Y2K ruhunu yakala ❣️💌 CCD sensörlü dijital kameralar RetroCameraLand.com ’da 📸 \n\n#digitalcamera #fujifilm #retro #y2k"
     },
     {
       "id": "18111928819850525",
@@ -522,7 +536,9 @@ const INSTAGRAM = {
       "type": "CAROUSEL_ALBUM",
       "likes": 209,
       "comments": 0,
-      "url": "https://www.instagram.com/p/DYO7S-2iEqR/"
+      "url": "https://www.instagram.com/p/DYO7S-2iEqR/",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/688814567_17890452126496139_8611219745926133981_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=8prJf73GUqwQ7kNvwEZ7OSd&_nc_oc=Adox36DZ_85VTX1bATdEYchmsnJdF2F36aUD4eZESzof-5DGulZfCNI8oKNA_EwMa_4&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&oh=00_Af8KUobOTeWb_j8TYuPuex5QLQalXPvKpXNWE0EOXFcHgA&oe=6A2953A2",
+      "caption": "not a photo, a feeling. ccd light diary. brooklynpeltzbeckham 💌📸\n\n#brooklynbeckham #nicolapeltz #digitalcamera"
     },
     {
       "id": "18115773172749112",
@@ -530,7 +546,9 @@ const INSTAGRAM = {
       "type": "VIDEO",
       "likes": 33,
       "comments": 0,
-      "url": "https://www.instagram.com/reel/DYFcSJjIRhu/"
+      "url": "https://www.instagram.com/reel/DYFcSJjIRhu/",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/684118436_3644602499014918_1156033859952493890_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=ClA6LCxTxicQ7kNvwGysI4L&_nc_oc=AdoD_wRfyBsGiB-QoVseBHLo1xGaQ8pfuilSHZFXgwkGe3NM1P5VReJxhosZRQ_mg5U&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&_nc_tpa=Q5bMBQHnrIpdHUSaFuzjng6zy7gxlahgIyvz8vFISFWJ3TJidWZ0cYYO9-3hYBujMv7o0TVV8VtLWVVR&oh=00_Af_JfHNRvWDsm3NU-7pAPpbBI2-VsKc6-E3cKJSMXgyHww&oe=6A29466F",
+      "caption": "Türkiye’nin en büyük savaş gemisi TCG Anadolu L400’ün retro fotoğrafları 😍📸🇹🇷 \n\n#retro #dijitalkamera #tcganadolu #istanbul"
     },
     {
       "id": "18026696300819171",
@@ -538,7 +556,9 @@ const INSTAGRAM = {
       "type": "CAROUSEL_ALBUM",
       "likes": 162,
       "comments": 1,
-      "url": "https://www.instagram.com/p/DX7GlPLiAB_/"
+      "url": "https://www.instagram.com/p/DX7GlPLiAB_/",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/684949933_17889380187496139_2340361766836329108_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=U_ulfD_InNcQ7kNvwFtxa5k&_nc_oc=AdrqjgzlTdRzdAM8FNeJqpQyUeO2skcnPqsNMzJCeME04MRulRIOIeaLupO5f5CQUKI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&oh=00_Af8bw9Zn2YBRjSvWyLj7MkkI3K5lWmzZV7DdBJfxPmuQAA&oe=6A295D0D",
+      "caption": "en özel anları en doğal haliyle kaydet 💘📸 kameranda dijital günlük oluştur 💌 \n\n#digicam #couple #moment"
     },
     {
       "id": "18101736734047012",
@@ -546,7 +566,9 @@ const INSTAGRAM = {
       "type": "CAROUSEL_ALBUM",
       "likes": 16,
       "comments": 0,
-      "url": "https://www.instagram.com/p/DX1_HlAiJdh/"
+      "url": "https://www.instagram.com/p/DX1_HlAiJdh/",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/683651991_17889064737496139_7911733567726347885_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=0eElSdQpo5gQ7kNvwFwAujh&_nc_oc=Adqlqd7ni6vb3keEm8tWu8ztrtAs1XTH_X7xmflfziwGsP1tY_xTuqQwY30BkN7OQ8k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&oh=00_Af-SQwkDH7Gdz8UxMuhz5Z8kkyEcEEtoRyHkj3QMGsDNHg&oe=6A29361E",
+      "caption": "before influencers, there were ad campaigns.\nshop the era → retrocameraland.com\n#nikon #canon #jvc #digitalcamera #ads"
     },
     {
       "id": "18087255242609116",
@@ -554,7 +576,9 @@ const INSTAGRAM = {
       "type": "CAROUSEL_ALBUM",
       "likes": 40,
       "comments": 0,
-      "url": "https://www.instagram.com/p/DXzUTTwCGGw/"
+      "url": "https://www.instagram.com/p/DXzUTTwCGGw/",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/687342083_17888885307496139_842217677173540568_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=ULMD3Q3h5fIQ7kNvwGPYfyD&_nc_oc=AdpuKFUdKyYysfEVcZtV9DvJudO9CPqUR1CJ3d54lKESETzvW22ZuFESxm17oK8z9KU&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=RXoPN_eieaHYpG3NJTVNEw&oh=00_Af_yWz8dPizjMddB1rclawOzRaPu05m7M-169-l1zQ6fiA&oe=6A2947D3",
+      "caption": "moments > megapixels❣️\n.\n.\n.\n.\n#camera #moment #holidays #retro #photo"
     }
   ],
   "follower_goal": 10000
