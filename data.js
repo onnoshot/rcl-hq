@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-07T22:52:13",
+  "updated_at": "2026-06-07T23:52:17",
   "period_30d": {
     "revenue": 169930,
     "orders": 13,
@@ -340,6 +340,10 @@ const SHOPIFY = {
       "price": 11990
     },
     {
+      "name": "Canon IXUS i",
+      "price": 11490
+    },
+    {
       "name": "Casio Exilim EX-Z110",
       "price": 11490
     },
@@ -434,7 +438,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 91
+  "out_of_stock": 90
 };
 /* ─── SHOPIFY DATA END ─── */
 
