@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-07T16:28:09",
+  "updated_at": "2026-06-07T22:51:39",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4040,
-    "total_views": 1178697,
+    "total_views": 1179586,
     "video_count": 383
   },
   "analytics": {
     "last_30d": {
-      "views": 97598,
-      "watch_hours": 295.8,
-      "subs_gained": 405,
-      "subs_lost": 173,
+      "views": 99794,
+      "watch_hours": 300.3,
+      "subs_gained": 410,
+      "subs_lost": 175,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3255.3,
-    "watch_hours_year_long": 1752.6,
-    "watch_hours_year_shorts": 1502.7,
+    "watch_hours_year": 3259.8,
+    "watch_hours_year_long": 1754.1,
+    "watch_hours_year_shorts": 1505.7,
     "monthly": [
       {
         "label": "Oca 26",
@@ -40,7 +40,7 @@ const YOUTUBE = {
       },
       {
         "label": "Nis 26",
-        "views": 103632,
+        "views": 103629,
         "watch_min": 21716,
         "subs_gained": 136
       },
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Haz 26",
-        "views": 7753,
-        "watch_min": 1022,
-        "subs_gained": 6
+        "views": 9949,
+        "watch_min": 1292,
+        "subs_gained": 11
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 672,
+      "views": 679,
       "likes": 13,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 236,
+      "views": 246,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 550,
+      "views": 559,
       "likes": 6,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2336,
+      "views": 2343,
       "likes": 36,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2827,
+      "views": 2831,
       "likes": 42,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1535,
+      "views": 1541,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2197,
+      "views": 2199,
       "likes": 28,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1888,
+      "views": 1892,
       "likes": 32,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1536,
+      "views": 1540,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4882,
+      "views": 4884,
       "likes": 104,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
