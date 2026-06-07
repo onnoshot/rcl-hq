@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-08T00:51:48",
+  "updated_at": "2026-06-08T01:51:50",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 248,
+      "views": 246,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 561,
+      "views": 559,
       "likes": 6,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1544,
+      "views": 1541,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1894,
+      "views": 1892,
       "likes": 32,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4884,
+      "views": 4887,
       "likes": 104,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
