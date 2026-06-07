@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-07T06:55:57",
+  "updated_at": "2026-06-07T15:28:35",
   "period_30d": {
-    "revenue": 129800,
-    "orders": 11,
-    "aov": 11800
+    "revenue": 169930,
+    "orders": 13,
+    "aov": 13072
   },
   "period_90d": {
-    "revenue": 256060,
-    "orders": 22,
-    "aov": 11639
+    "revenue": 296190,
+    "orders": 24,
+    "aov": 12341
   },
   "period_year": {
-    "revenue": 856915,
-    "orders": 72,
-    "aov": 11902
+    "revenue": 897045,
+    "orders": 74,
+    "aov": 12122
   },
-  "customers_total": 823,
+  "customers_total": 831,
   "monthly_labels": [
     "Tem 25",
     "Ağu 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     46450,
     65320,
     139290,
-    16490
+    56620
   ],
   "monthly_orders": [
     1,
@@ -213,17 +213,17 @@ const SHOPIFY = {
     4,
     6,
     12,
-    1
+    3
   ],
   "channels": [
     {
       "name": "Direkt",
       "icon": "🔗",
       "color": "#F5A623",
-      "orders": 28,
-      "rev": 357280,
-      "order_pct": 38.9,
-      "rev_pct": 41.7
+      "orders": 30,
+      "rev": 397410,
+      "order_pct": 40.5,
+      "rev_pct": 44.3
     },
     {
       "name": "Google",
@@ -231,8 +231,8 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 22,
       "rev": 247646,
-      "order_pct": 30.6,
-      "rev_pct": 28.9
+      "order_pct": 29.7,
+      "rev_pct": 27.6
     },
     {
       "name": "Instagram",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 20,
       "rev": 232759,
-      "order_pct": 27.8,
-      "rev_pct": 27.2
+      "order_pct": 27.0,
+      "rev_pct": 25.9
     },
     {
       "name": "YouTube",
@@ -250,7 +250,7 @@ const SHOPIFY = {
       "orders": 1,
       "rev": 9990,
       "order_pct": 1.4,
-      "rev_pct": 1.2
+      "rev_pct": 1.1
     },
     {
       "name": "AI / Arama",
@@ -259,10 +259,18 @@ const SHOPIFY = {
       "orders": 1,
       "rev": 9240,
       "order_pct": 1.4,
-      "rev_pct": 1.1
+      "rev_pct": 1.0
     }
   ],
   "recent_orders": [
+    {
+      "date": "7 Haz 2026",
+      "amount": 28640
+    },
+    {
+      "date": "7 Haz 2026",
+      "amount": 11490
+    },
     {
       "date": "4 Haz 2026",
       "amount": 16490
@@ -294,21 +302,9 @@ const SHOPIFY = {
     {
       "date": "16 May 2026",
       "amount": 18640
-    },
-    {
-      "date": "12 May 2026",
-      "amount": 15490
-    },
-    {
-      "date": "9 May 2026",
-      "amount": 14490
     }
   ],
   "cameras": [
-    {
-      "name": "Panasonic Lumix DC-TZ91",
-      "price": 28490
-    },
     {
       "name": "Olympus VR-340",
       "price": 17990
@@ -342,10 +338,6 @@ const SHOPIFY = {
     {
       "name": "Lumix DMC-FT10",
       "price": 11990
-    },
-    {
-      "name": "Canon IXUS i",
-      "price": 11490
     },
     {
       "name": "Casio Exilim EX-Z110",
@@ -442,7 +434,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 89
+  "out_of_stock": 91
 };
 /* ─── SHOPIFY DATA END ─── */
 
