@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-08T04:52:01",
+  "updated_at": "2026-06-08T04:52:02",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 248,
+      "views": 249,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1544,
+      "views": 1549,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2202,
+      "views": 2203,
       "likes": 28,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1894,
+      "views": 1895,
       "likes": 32,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1541,
+      "views": 1542,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "3qQFPZtOHf0",
       "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
       "date": "30 Nis 2026",
-      "views": 4887,
+      "views": 4888,
       "likes": 104,
       "comments": 0,
       "url": "https://youtu.be/3qQFPZtOHf0"
