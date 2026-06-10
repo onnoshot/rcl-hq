@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-10T06:34:10",
+  "updated_at": "2026-06-10T06:34:11",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4050,
-    "total_views": 1183965,
+    "total_views": 1185212,
     "video_count": 383
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 693,
+      "views": 692,
       "likes": 13,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
