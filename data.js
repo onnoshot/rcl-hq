@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-12T00:58:44",
+  "updated_at": "2026-06-12T00:58:46",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
