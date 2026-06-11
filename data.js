@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-11T21:32:23",
+  "updated_at": "2026-06-11T22:32:27",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 98196,
-      "watch_hours": 297.8,
-      "subs_gained": 410,
+      "views": 100126,
+      "watch_hours": 301.6,
+      "subs_gained": 413,
       "subs_lost": 169,
-      "avg_view_sec": 27
+      "avg_view_sec": 26
     },
-    "watch_hours_year": 3274.2,
-    "watch_hours_year_long": 1758.8,
-    "watch_hours_year_shorts": 1515.4,
+    "watch_hours_year": 3277.9,
+    "watch_hours_year_long": 1759.8,
+    "watch_hours_year_shorts": 1518.1,
     "monthly": [
       {
         "label": "Oca 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Haz 26",
-        "views": 16760,
-        "watch_min": 2157,
-        "subs_gained": 20
+        "views": 18690,
+        "watch_min": 2381,
+        "subs_gained": 23
       }
     ]
   },
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2212,
+      "views": 2213,
       "likes": 28,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
