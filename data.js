@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-11T16:32:01",
+  "updated_at": "2026-06-11T17:32:05",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4050,
-    "total_views": 1186926,
+    "total_views": 1187485,
     "video_count": 383
   },
   "analytics": {
