@@ -1,16 +1,16 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-14T12:10:17",
+  "updated_at": "2026-06-14T21:36:45",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4050,
-    "total_views": 1193258,
+    "total_views": 1193978,
     "video_count": 384
   },
   "analytics": {
     "last_30d": {
-      "views": 66991,
+      "views": 66947,
       "watch_hours": 173.8,
       "subs_gained": 168,
       "subs_lost": 83,
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 23,
+      "views": 33,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 739,
+      "views": 748,
       "likes": 13,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 307,
+      "views": 316,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -90,8 +90,8 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 604,
-      "likes": 6,
+      "views": 616,
+      "likes": 7,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
     },
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2403,
+      "views": 2415,
       "likes": 36,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2870,
+      "views": 2878,
       "likes": 42,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1610,
+      "views": 1620,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2224,
+      "views": 2227,
       "likes": 29,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1937,
+      "views": 1939,
       "likes": 33,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1557,
+      "views": 1559,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
