@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-15T04:36:18",
+  "updated_at": "2026-06-15T13:23:07",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4050,
-    "total_views": 1193978,
+    "total_views": 1195408,
     "video_count": 384
   },
   "analytics": {
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 752,
+      "views": 753,
       "likes": 13,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -114,15 +114,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/TvPGsbRhSmQ"
     },
     {
-      "id": "LHg76IQG7aw",
-      "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
-      "date": "13 May 2026",
-      "views": 1622,
-      "likes": 19,
-      "comments": 0,
-      "url": "https://youtu.be/LHg76IQG7aw"
-    },
-    {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
@@ -148,6 +139,15 @@ const YOUTUBE = {
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
+    },
+    {
+      "id": "3qQFPZtOHf0",
+      "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
+      "date": "30 Nis 2026",
+      "views": 4915,
+      "likes": 104,
+      "comments": 0,
+      "url": "https://youtu.be/3qQFPZtOHf0"
     }
   ],
   "sub_goal": 10000
