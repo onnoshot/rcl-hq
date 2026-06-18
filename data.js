@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-19T00:29:02",
+  "updated_at": "2026-06-19T01:27:24",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,7 +10,7 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 56460,
+      "views": 56499,
       "watch_hours": 122.4,
       "subs_gained": 68,
       "subs_lost": 33,
@@ -52,7 +52,7 @@ const YOUTUBE = {
       },
       {
         "label": "Haz 26",
-        "views": 32572,
+        "views": 32571,
         "watch_min": 4223,
         "subs_gained": 37
       }
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 76,
+      "views": 78,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 646,
+      "views": 649,
       "likes": 7,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2911,
+      "views": 2912,
       "likes": 43,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1648,
+      "views": 1647,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1960,
+      "views": 1963,
       "likes": 33,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "yIrL45HroS8",
       "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
       "date": "6 May 2026",
-      "views": 1578,
+      "views": 1582,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/yIrL45HroS8"
