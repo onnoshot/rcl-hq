@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-18T22:28:55",
+  "updated_at": "2026-06-18T23:27:16",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,7 +10,7 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 58245,
+      "views": 58205,
       "watch_hours": 126.3,
       "subs_gained": 68,
       "subs_lost": 34,
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 74,
+      "views": 76,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 788,
+      "views": 791,
       "likes": 13,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1647,
+      "views": 1648,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2241,
+      "views": 2244,
       "likes": 29,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
