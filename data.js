@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-18T17:28:37",
+  "updated_at": "2026-06-18T18:26:54",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4050,
-    "total_views": 1200085,
+    "total_views": 1201530,
     "video_count": 384
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 72,
+      "views": 71,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1957,
+      "views": 1955,
       "likes": 33,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
