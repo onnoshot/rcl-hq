@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-19T11:15:46",
+  "updated_at": "2026-06-20T19:32:13",
   "period_30d": {
-    "revenue": 98869,
-    "orders": 9,
-    "aov": 10985
+    "revenue": 90629,
+    "orders": 7,
+    "aov": 12947
   },
   "period_90d": {
-    "revenue": 281749,
-    "orders": 24,
-    "aov": 11740
+    "revenue": 294239,
+    "orders": 25,
+    "aov": 11770
   },
   "period_year": {
-    "revenue": 907574,
-    "orders": 76,
-    "aov": 11942
+    "revenue": 920064,
+    "orders": 77,
+    "aov": 11949
   },
-  "customers_total": 860,
+  "customers_total": 863,
   "monthly_labels": [
     "Tem 25",
     "Ağu 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     46450,
     65320,
     139290,
-    67149
+    79639
   ],
   "monthly_orders": [
     1,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     4,
     6,
     12,
-    5
+    6
   ],
   "channels": [
     {
@@ -222,17 +222,17 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 31,
       "rev": 407050,
-      "order_pct": 40.8,
-      "rev_pct": 44.9
+      "order_pct": 40.3,
+      "rev_pct": 44.2
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 23,
-      "rev": 248535,
-      "order_pct": 30.3,
-      "rev_pct": 27.4
+      "orders": 24,
+      "rev": 261025,
+      "order_pct": 31.2,
+      "rev_pct": 28.4
     },
     {
       "name": "Instagram",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 20,
       "rev": 232759,
-      "order_pct": 26.3,
-      "rev_pct": 25.6
+      "order_pct": 26.0,
+      "rev_pct": 25.3
     },
     {
       "name": "YouTube",
@@ -263,6 +263,10 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "19 Haz 2026",
+      "amount": 12490
+    },
     {
       "date": "16 Haz 2026",
       "amount": 9640
@@ -298,10 +302,6 @@ const SHOPIFY = {
     {
       "date": "20 May 2026",
       "amount": 9490
-    },
-    {
-      "date": "18 May 2026",
-      "amount": 12490
     }
   ],
   "cameras": [
@@ -312,10 +312,6 @@ const SHOPIFY = {
     {
       "name": "Olympus VR-340",
       "price": 17990
-    },
-    {
-      "name": "Fujifilm FinePix V10",
-      "price": 16490
     },
     {
       "name": "Fujifilm Finepix Z90",
@@ -334,10 +330,6 @@ const SHOPIFY = {
       "name": "Sony Cybershot DSC-W150",
       "price": 13490,
       "cost": 5000
-    },
-    {
-      "name": "Canon IXY 1000",
-      "price": 12490
     },
     {
       "name": "Lumix DMC-FT10",
@@ -438,7 +430,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 90
+  "out_of_stock": 92
 };
 /* ─── SHOPIFY DATA END ─── */
 
