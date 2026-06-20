@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-20T19:29:43",
+  "updated_at": "2026-06-20T19:31:21",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 443,
+      "views": 460,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 658,
+      "views": 661,
       "likes": 7,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2920,
+      "views": 2922,
       "likes": 43,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -135,19 +135,19 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2247,
+      "views": 2248,
       "likes": 29,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
     },
     {
-      "id": "yIrL45HroS8",
-      "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
-      "date": "6 May 2026",
-      "views": 1587,
-      "likes": 11,
-      "comments": 0,
-      "url": "https://youtu.be/yIrL45HroS8"
+      "id": "VnLTp2ufa6A",
+      "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
+      "date": "7 May 2026",
+      "views": 1966,
+      "likes": 33,
+      "comments": 1,
+      "url": "https://youtu.be/VnLTp2ufa6A"
     }
   ],
   "sub_goal": 10000
