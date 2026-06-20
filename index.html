@@ -1365,6 +1365,10 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
       <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
       <span class="nav-label">Instagram</span>
     </div>
+    <div class="nav-item" data-page="email" onclick="navigate('email',this)">
+      <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      <span class="nav-label">E-posta</span>
+    </div>
     <div class="sb-section">Analitik</div>
     <div class="nav-item" data-page="stats" onclick="navigate('stats',this)">
       <svg viewBox="0 0 24 24"><rect x="18" y="3" width="4" height="18" rx="1"/><rect x="10" y="8" width="4" height="13" rx="1"/><rect x="2" y="13" width="4" height="8" rx="1"/></svg>
@@ -2750,6 +2754,52 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 
 
 
+<!-- ═══════════════════ E-POSTA PAZARLAMA ═══════════════════ -->
+<div class="page" id="page-email">
+  <div class="page-topbar fi">
+    <div class="pt-left"><div class="pt-title" style="color:var(--red)">E-posta Pazarlama</div><div class="pt-sub">Kampanyalar · Açılma · Tıklama</div></div>
+    <div class="pt-right"><div class="live-pill"><div class="sb-live-dot"></div>BREVO</div><span class="upd-time" id="email-upd">—</span></div>
+  </div>
+  <div class="sec fi" style="transition-delay:.05s">
+    <div class="g g4">
+      <div class="card p card-gold">
+        <div class="kpi-lbl">Toplam Gönderim</div>
+        <div class="kpi-big" id="em-sent">—</div>
+        <div class="kpi-sub" id="em-sent-sub">tüm kampanyalar</div>
+      </div>
+      <div class="card p"><div class="kpi-lbl">Ort. Açılma</div><div class="kpi-big" id="em-open">—</div><div class="kpi-sub">teslim edilen başına</div></div>
+      <div class="card p"><div class="kpi-lbl">Ort. Tıklama</div><div class="kpi-big" id="em-click">—</div><div class="kpi-sub">teslim edilen başına</div></div>
+      <div class="card p"><div class="kpi-lbl">Kampanya</div><div class="kpi-big" id="em-camps">—</div><div class="kpi-sub">taslak + gönderilen</div></div>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.10s">
+    <div class="card p">
+      <div class="chart-title">Kampanya Performansı</div>
+      <div class="chart-sub">Açılma % ve Tıklama % (kampanya bazında)</div>
+      <div style="height:260px;margin-top:10px"><canvas id="emailChart"></canvas></div>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.14s">
+    <div class="card tcard">
+      <div class="thead"><span class="ttitle">Kampanyalar</span></div>
+      <table><thead><tr><th>Tarih</th><th>Kampanya</th><th>Durum</th><th>Gönderilen</th><th>Açılma</th><th>Tıklama</th><th>Kod</th></tr></thead><tbody id="emailBody"></tbody></table>
+    </div>
+  </div>
+
+  <!-- Mail önizleme modalı -->
+  <div id="email-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)closeEmailPreview()">
+    <div style="background:#fff;border-radius:18px;overflow:hidden;width:100%;max-width:600px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 30px 90px rgba(0,0,0,.6);animation:page-enter .3s ease">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:#111;color:#fff;flex:none">
+        <span id="email-modal-title" style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Önizleme</span>
+        <span onclick="closeEmailPreview()" style="cursor:pointer;font-size:24px;line-height:1;padding:2px 8px;color:rgba(255,255,255,.7)">&times;</span>
+      </div>
+      <iframe id="email-modal-frame" title="Mail önizleme" style="border:0;width:100%;height:74vh;background:#f2f1ee"></iframe>
+    </div>
+  </div>
+</div>
+
+
+
 <!-- ═══════════════════ ÜRÜN OLUŞTURUCU ═══════════════════ -->
 <div class="page" id="page-urun">
   <div class="page-topbar fi">
@@ -3328,10 +3378,10 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 <script id="data-script">
 /* ─── EMAIL DATA START ─── */
 const EMAIL = {
-  "updated_at": "2026-06-20T22:31:46",
+  "updated_at": "2026-06-20T23:06:20",
   "totals": {
     "campaigns": 2,
-    "sent": 0,
+    "sent": 300,
     "delivered": 0,
     "open_rate": 0.0,
     "click_rate": 0.0,
@@ -3339,23 +3389,9 @@ const EMAIL = {
   },
   "campaigns": [
     {
-      "id": "20260620-haftanin-seckisi",
-      "name": "Haftanın Seçkisi",
-      "subject": "Bu haftanın retro seçkisi, tek adet",
-      "date": "2026-06-20",
-      "status": "draft",
-      "sent": 0,
-      "delivered": 0,
-      "opens": 0,
-      "clicks": 0,
-      "open_rate": 0.0,
-      "click_rate": 0.0,
-      "discount": "RETRO10"
-    },
-    {
       "id": "20260620-hediye-rehberi",
       "name": "Hediye Rehberi",
-      "subject": "Telefon değil, gerçek bir an hediye et",
+      "subject": "Sıradan değil, koleksiyonluk bir hediye",
       "date": "2026-06-20",
       "status": "draft",
       "sent": 0,
@@ -3364,7 +3400,23 @@ const EMAIL = {
       "clicks": 0,
       "open_rate": 0.0,
       "click_rate": 0.0,
-      "discount": null
+      "discount": null,
+      "preview_html": "<!DOCTYPE html><html lang=\"tr\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style>\n  @keyframes rclFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}\n  @keyframes rclPulse{0%,100%{box-shadow:0 6px 20px rgba(255,59,59,.28)}50%{box-shadow:0 10px 32px rgba(255,59,59,.50)}}\n  @keyframes rclShimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}\n  .rcl-wrap{animation:rclFade .7s ease both}\n  .rcl-cta{animation:rclPulse 2.4s ease-in-out infinite}\n  .rcl-card{transition:transform .2s ease} .rcl-card:hover{transform:translateY(-2px)}\n  .rcl-btn-sm{transition:opacity .2s} .rcl-btn-sm:hover{opacity:.82}\n  .rcl-brand{background:linear-gradient(90deg,#ff3b3b,#e9c07e,#ff3b3b);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rclShimmer 4s linear infinite}\n  @media (prefers-reduced-motion:reduce){*{animation:none!important}}\n<\/style><\/head>\n<body style=\"margin:0;background:#f2f1ee;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;\">\n<div class=\"rcl-wrap\" style=\"max-width:580px;margin:0 auto;padding:30px 22px;\">\n  <p style=\"text-align:center;margin:0 0 20px;\"><a href=\"https://retrocameraland.com?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/RetroCameraLand_photo1.png?v=1750024064\" alt=\"Retrocameraland\" height=\"48\" style=\"height:48px;width:auto;display:inline-block;border:0;\"><\/a><\/p>\n  <div style=\"height:14px;background:#1a1a1a;border-radius:6px;margin:0 0 22px;background-image:repeating-linear-gradient(90deg,#1a1a1a 0,#1a1a1a 9px,#f4f1ec 9px,#f4f1ec 15px);\"><\/div>\n  <h1 style=\"font-size:27px;line-height:1.22;margin:0 0 14px;color:#1a1a1a;letter-spacing:-.02em;\">Sıradan değil, koleksiyonluk bir hediye<\/h1>\n  <p style=\"font-size:16px;line-height:1.7;color:#54504a;margin:0 0 8px;\">Üretimi durmuş, her yıl biraz daha değerlenen bir retro kamera, sevdiğin birine verebileceğin en anlamlı hediyelerden biri. Hem elle tutulur bir koleksiyon parçası hem de anıları gerçek bir nesneyle saklama davetiyesi. İşte hediye için en sevdiğimiz, her biri tek adet kameralar.<\/p>\n  \n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #ece7df;border-radius:16px;padding:16px;box-shadow:0 4px 16px rgba(40,30,15,.05);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"150\" valign=\"top\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumiz_tz91_retrocameraland.jpg?v=1779402287\" alt=\"Panasonic Lumix DC-TZ91\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:10px;display:block;border:1px solid #ece7df;\"><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ffe9e9;color:#ff3b3b;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:6px;margin-bottom:8px;\">Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:700;color:#1a1a1a;line-height:1.25;\">Panasonic Lumix DC-TZ91<\/p>\n                <p style=\"margin:0 0 12px;font-size:18px;color:#ff3b3b;font-weight:800;\">28.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/panasonic-lumix-dc-tz91?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\" class=\"rcl-btn-sm\" style=\"background:#1a1a1a;color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #ece7df;border-radius:16px;padding:16px;box-shadow:0 4px 16px rgba(40,30,15,.05);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"150\" valign=\"top\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus_retrocamera_6c48f30e-b083-4fa4-bc6c-dd2d837ffc05.jpg?v=1779402697\" alt=\"Olympus VR-340\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:10px;display:block;border:1px solid #ece7df;\"><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ffe9e9;color:#ff3b3b;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:6px;margin-bottom:8px;\">Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:700;color:#1a1a1a;line-height:1.25;\">Olympus VR-340<\/p>\n                <p style=\"margin:0 0 12px;font-size:18px;color:#ff3b3b;font-weight:800;\">17.990 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/olympus-vr-340?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\" class=\"rcl-btn-sm\" style=\"background:#1a1a1a;color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #ece7df;border-radius:16px;padding:16px;box-shadow:0 4px 16px rgba(40,30,15,.05);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"150\" valign=\"top\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Fujifilm_Finepix_Z90_8c8d60c4-60e6-4122-9bad-9224cae2f990.jpg?v=1780702307\" alt=\"Fujifilm Finepix Z90\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:10px;display:block;border:1px solid #ece7df;\"><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ffe9e9;color:#ff3b3b;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:6px;margin-bottom:8px;\">Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:700;color:#1a1a1a;line-height:1.25;\">Fujifilm Finepix Z90<\/p>\n                <p style=\"margin:0 0 12px;font-size:18px;color:#ff3b3b;font-weight:800;\">16.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/fujifilm-finepix-z90-digicam?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\" class=\"rcl-btn-sm\" style=\"background:#1a1a1a;color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #ece7df;border-radius:16px;padding:16px;box-shadow:0 4px 16px rgba(40,30,15,.05);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"150\" valign=\"top\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm_finepix_z700_digital_camera.jpg?v=1778627201\" alt=\"Fujifilm FinePix Z700 EXR\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:10px;display:block;border:1px solid #ece7df;\"><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ffe9e9;color:#ff3b3b;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:6px;margin-bottom:8px;\">Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:700;color:#1a1a1a;line-height:1.25;\">Fujifilm FinePix Z700 EXR<\/p>\n                <p style=\"margin:0 0 12px;font-size:18px;color:#ff3b3b;font-weight:800;\">15.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/fujifilm-finepix-z700-exr?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\" class=\"rcl-btn-sm\" style=\"background:#1a1a1a;color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table>\n  <table role=\"presentation\" width=\"100%\"><tr><td style=\"text-align:center;padding:20px 0 6px;\">\n    <a href=\"https://retrocameraland.com/collections/dijital-fotograf-makinesi?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\" class=\"rcl-cta\" style=\"background:#1a1a1a;color:#fff;padding:16px 38px;border-radius:10px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;\">Tüm Koleksiyonu Gör &rsaquo;<\/a>\n  <\/td><\/tr><\/table>\n  <div style=\"margin:34px 0 8px;text-align:center;\">\n      <p style=\"margin:0 0 3px;font-size:15px;font-weight:700;color:#1a1a1a;\">Bizi Instagram'da takip et<\/p>\n      <p style=\"margin:0 0 12px;font-size:13px;color:#999;\">@retrocameraland · 7.002 takipçi<\/p>\n      <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DYO7S-2iEqR/?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-1.jpg?v=1781983432\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/reel/DYSX0DmIHwf/?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-2.jpg?v=1781983433\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DYu1jKZiNVD/?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-3.jpg?v=1781983435\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DZS7i4wCCLW/?utm_source=email&utm_medium=brevo&utm_campaign=20260620-hediye-rehberi\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-4.jpg?v=1781983437\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><\/tr><\/table><\/div>\n  <div style=\"height:1px;background:#e5e0d8;margin:28px 0 0;\"><\/div>\n  <div style=\"text-align:center;margin:26px 0 6px;\"><a href=\"https://www.instagram.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Instagram\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Instagram<\/a><a href=\"https://www.youtube.com/@RetroCameraLand?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Youtube\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">YouTube<\/a><a href=\"https://www.tiktok.com/@retrocameraland?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Tiktok\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">TikTok<\/a><a href=\"https://pinterest.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Pinterest\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Pinterest<\/a><a href=\"https://www.linkedin.com/company/retro-camera-land/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=linkedin\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">LinkedIn<\/a><\/div>\n  <p style=\"font-size:12.5px;color:#a8a39a;line-height:1.7;margin:14px 0 0;text-align:center;\">\n    Retrocameraland · <a href=\"https://retrocameraland.com\" style=\"color:#a8a39a;\">retrocameraland.com<\/a><br>\n    Bu e-postayı abonemiz olduğun için aldın · <a href=\"{{ unsubscribe }}\" style=\"color:#bbb;\">Abonelikten çık<\/a><\/p>\n<\/div><\/body><\/html>"
+    },
+    {
+      "id": "20260620-haftanin-seckisi",
+      "name": "Haftanın Seçkisi",
+      "subject": "Koleksiyonluk retro kameralar, tek adet",
+      "date": "2026-06-20",
+      "status": "partial",
+      "sent": 300,
+      "delivered": 0,
+      "opens": 0,
+      "clicks": 0,
+      "open_rate": 0.0,
+      "click_rate": 0.0,
+      "discount": "NEW250",
+      "preview_html": "<!DOCTYPE html><html lang=\"tr\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style>\n  @keyframes rclFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}\n  @keyframes rclPulse{0%,100%{box-shadow:0 6px 20px rgba(255,59,59,.28)}50%{box-shadow:0 10px 32px rgba(255,59,59,.50)}}\n  @keyframes rclShimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}\n  .rcl-wrap{animation:rclFade .7s ease both}\n  .rcl-cta{animation:rclPulse 2.4s ease-in-out infinite}\n  .rcl-card{transition:transform .2s ease} .rcl-card:hover{transform:translateY(-2px)}\n  .rcl-btn-sm{transition:opacity .2s} .rcl-btn-sm:hover{opacity:.82}\n  .rcl-brand{background:linear-gradient(90deg,#ff3b3b,#e9c07e,#ff3b3b);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rclShimmer 4s linear infinite}\n  @media (prefers-reduced-motion:reduce){*{animation:none!important}}\n<\/style><\/head>\n<body style=\"margin:0;background:#f2f1ee;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;\">\n<div class=\"rcl-wrap\" style=\"max-width:580px;margin:0 auto;padding:30px 22px;\">\n  <p style=\"text-align:center;margin:0 0 20px;\"><a href=\"https://retrocameraland.com?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/RetroCameraLand_photo1.png?v=1750024064\" alt=\"Retrocameraland\" height=\"48\" style=\"height:48px;width:auto;display:inline-block;border:0;\"><\/a><\/p>\n  <div style=\"height:14px;background:#1a1a1a;border-radius:6px;margin:0 0 22px;background-image:repeating-linear-gradient(90deg,#1a1a1a 0,#1a1a1a 9px,#f4f1ec 9px,#f4f1ec 15px);\"><\/div>\n  <h1 style=\"font-size:27px;line-height:1.22;margin:0 0 14px;color:#1a1a1a;letter-spacing:-.02em;\">Koleksiyonluk değeri olan kameralar<\/h1>\n  <p style=\"font-size:16px;line-height:1.7;color:#54504a;margin:0 0 8px;\">Sattığımız her retro kamera, üretimi çoktan durmuş ve bulunması her geçen gün zorlaşan bir parça. Bu yüzden sadece fotoğraf çekmek için değil, koleksiyon değeri ve hediye anlamı için de özel. Aşağıdaki seçkinin her biri tek adet; gerçek değerini bilen biri için, ister kendine ister sevdiğin birine.<\/p>\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:22px 0;\"><tr>\n          <td class=\"rcl-coupon\" style=\"text-align:center;background:linear-gradient(135deg,#ff3b3b,#e21f1f);border-radius:14px;padding:20px;\">\n          <p style=\"margin:0 0 5px;color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.92;\">İlk alışverişe özel<\/p>\n          <p style=\"margin:0 0 5px;color:#fff;font-size:30px;font-weight:800;letter-spacing:3px;\">NEW250<\/p>\n          <p style=\"margin:0;color:#fff;font-size:12px;opacity:.85;\">250 TL indirim · Ödeme sepetinde kodu ekle · 30 gün geçerli<\/p><\/td><\/tr><\/table>\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #ece7df;border-radius:16px;padding:16px;box-shadow:0 4px 16px rgba(40,30,15,.05);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"150\" valign=\"top\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumiz_tz91_retrocameraland.jpg?v=1779402287\" alt=\"Panasonic Lumix DC-TZ91\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:10px;display:block;border:1px solid #ece7df;\"><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ffe9e9;color:#ff3b3b;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:6px;margin-bottom:8px;\">Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:700;color:#1a1a1a;line-height:1.25;\">Panasonic Lumix DC-TZ91<\/p>\n                <p style=\"margin:0 0 12px;font-size:18px;color:#ff3b3b;font-weight:800;\">28.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/panasonic-lumix-dc-tz91?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\" class=\"rcl-btn-sm\" style=\"background:#1a1a1a;color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #ece7df;border-radius:16px;padding:16px;box-shadow:0 4px 16px rgba(40,30,15,.05);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"150\" valign=\"top\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus_retrocamera_6c48f30e-b083-4fa4-bc6c-dd2d837ffc05.jpg?v=1779402697\" alt=\"Olympus VR-340\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:10px;display:block;border:1px solid #ece7df;\"><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ffe9e9;color:#ff3b3b;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:6px;margin-bottom:8px;\">Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:700;color:#1a1a1a;line-height:1.25;\">Olympus VR-340<\/p>\n                <p style=\"margin:0 0 12px;font-size:18px;color:#ff3b3b;font-weight:800;\">17.990 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/olympus-vr-340?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\" class=\"rcl-btn-sm\" style=\"background:#1a1a1a;color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #ece7df;border-radius:16px;padding:16px;box-shadow:0 4px 16px rgba(40,30,15,.05);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"150\" valign=\"top\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Fujifilm_Finepix_Z90_8c8d60c4-60e6-4122-9bad-9224cae2f990.jpg?v=1780702307\" alt=\"Fujifilm Finepix Z90\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:10px;display:block;border:1px solid #ece7df;\"><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ffe9e9;color:#ff3b3b;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:6px;margin-bottom:8px;\">Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:700;color:#1a1a1a;line-height:1.25;\">Fujifilm Finepix Z90<\/p>\n                <p style=\"margin:0 0 12px;font-size:18px;color:#ff3b3b;font-weight:800;\">16.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/fujifilm-finepix-z90-digicam?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\" class=\"rcl-btn-sm\" style=\"background:#1a1a1a;color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #ece7df;border-radius:16px;padding:16px;box-shadow:0 4px 16px rgba(40,30,15,.05);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"150\" valign=\"top\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm_finepix_z700_digital_camera.jpg?v=1778627201\" alt=\"Fujifilm FinePix Z700 EXR\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:10px;display:block;border:1px solid #ece7df;\"><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ffe9e9;color:#ff3b3b;font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:4px 9px;border-radius:6px;margin-bottom:8px;\">Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:700;color:#1a1a1a;line-height:1.25;\">Fujifilm FinePix Z700 EXR<\/p>\n                <p style=\"margin:0 0 12px;font-size:18px;color:#ff3b3b;font-weight:800;\">15.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/fujifilm-finepix-z700-exr?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\" class=\"rcl-btn-sm\" style=\"background:#1a1a1a;color:#fff;text-decoration:none;font-size:13px;font-weight:700;padding:11px 20px;border-radius:8px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table>\n  <table role=\"presentation\" width=\"100%\"><tr><td style=\"text-align:center;padding:20px 0 6px;\">\n    <a href=\"https://retrocameraland.com/collections/dijital-fotograf-makinesi?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\" class=\"rcl-cta\" style=\"background:#1a1a1a;color:#fff;padding:16px 38px;border-radius:10px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;\">Tüm Koleksiyonu Gör &rsaquo;<\/a>\n  <\/td><\/tr><\/table>\n  <div style=\"margin:34px 0 8px;text-align:center;\">\n      <p style=\"margin:0 0 3px;font-size:15px;font-weight:700;color:#1a1a1a;\">Bizi Instagram'da takip et<\/p>\n      <p style=\"margin:0 0 12px;font-size:13px;color:#999;\">@retrocameraland · 7.002 takipçi<\/p>\n      <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DYO7S-2iEqR/?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-1.jpg?v=1781983432\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/reel/DYSX0DmIHwf/?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-2.jpg?v=1781983433\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DYu1jKZiNVD/?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-3.jpg?v=1781983435\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DZS7i4wCCLW/?utm_source=email&utm_medium=brevo&utm_campaign=20260620-haftanin-seckisi\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-4.jpg?v=1781983437\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><\/tr><\/table><\/div>\n  <div style=\"height:1px;background:#e5e0d8;margin:28px 0 0;\"><\/div>\n  <div style=\"text-align:center;margin:26px 0 6px;\"><a href=\"https://www.instagram.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Instagram\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Instagram<\/a><a href=\"https://www.youtube.com/@RetroCameraLand?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Youtube\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">YouTube<\/a><a href=\"https://www.tiktok.com/@retrocameraland?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Tiktok\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">TikTok<\/a><a href=\"https://pinterest.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Pinterest\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Pinterest<\/a><a href=\"https://www.linkedin.com/company/retro-camera-land/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=linkedin\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">LinkedIn<\/a><\/div>\n  <p style=\"font-size:12.5px;color:#a8a39a;line-height:1.7;margin:14px 0 0;text-align:center;\">\n    Retrocameraland · <a href=\"https://retrocameraland.com\" style=\"color:#a8a39a;\">retrocameraland.com<\/a><br>\n    Bu e-postayı abonemiz olduğun için aldın · <a href=\"mailto:retrocameraland@gmail.com?subject=Abonelikten%20çıkmak%20istiyorum\" style=\"color:#bbb;\">Abonelikten çık<\/a><\/p>\n<\/div><\/body><\/html>"
     }
   ]
 };
@@ -3808,7 +3860,7 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-06-20T22:19:04",
+  "updated_at": "2026-06-20T23:19:05",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
   "followers": 7002,
@@ -3827,7 +3879,7 @@ const INSTAGRAM = {
       "likes": 11,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DZzz0ATId3D/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/726782685_4537360086585918_7097184926040454410_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=xMzECEAGZrkQ7kNvwGiIGAz&_nc_oc=Adq5D_kgJMieZzBBlgVcVa7E_KbzS2Eu2PlvbhwGncbZ_YLau89fD22FQSeWQuh24JE&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&_nc_tpa=Q5bMBQEnNbvZ-C1xgP747HT2Kf3UaVdLBLSADnLcIYQZ8_NhuEBc9PjI2LB62Wtis8WIx8IsmM79Edhc&oh=00_Af8oC2ws7m-TFpxt0JPVXW-ZeWS5yaBPGeIOTUbbZlEnuQ&oe=6A3CA079",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/726782685_4537360086585918_7097184926040454410_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=xMzECEAGZrkQ7kNvwGiIGAz&_nc_oc=Adq5D_kgJMieZzBBlgVcVa7E_KbzS2Eu2PlvbhwGncbZ_YLau89fD22FQSeWQuh24JE&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&_nc_tpa=Q5bMBQFy4pPBcm1p_M2_QftxPP8DQ3segubM7_nzRBa_jFy2XipcdCN_vEvmUmc0CdArhAzT8McfCKIZ&oh=00_Af-5co0882Z0k7TcXFCfHI1OqVYiNmLmfF3JYG-pLu7Q3Q&oe=6A3CD8B9",
       "caption": "Fotoğraf çekmek hiç bu kadar tatlı olmamıştı 🍊\nDijital kameranı RetroCameraLand.com’da keşfet 📸\n\n⁠#retrocamera #vintagevibes #aestheticvideos #digicam #summervibes"
     },
     {
@@ -3837,7 +3889,7 @@ const INSTAGRAM = {
       "likes": 12,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DZfr1SMo64B/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/721736574_1372629674729819_532175160998543556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=qzZVXz2lfcYQ7kNvwEZD1QP&_nc_oc=AdoUaTKiGXGDf6WQoQibpMGXNaXXAriTaNZ9vmZmmfnNQ5eiZoZoMoWsXIdSiq93lV0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&_nc_tpa=Q5bMBQHBgdj4RRVyIsZ_i2QIWznlutrC1zlHVdHqxsCs7SyXvdWZhZgE-EOtfP-fzAzHulEThYFtRLXP&oh=00_Af_7IrHJuaJa9ZJkjamawswnctwHAVdd3hFOh7OCGqpdiQ&oe=6A3CC238",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/721736574_1372629674729819_532175160998543556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=qzZVXz2lfcYQ7kNvwEZD1QP&_nc_oc=AdoUaTKiGXGDf6WQoQibpMGXNaXXAriTaNZ9vmZmmfnNQ5eiZoZoMoWsXIdSiq93lV0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&_nc_tpa=Q5bMBQGI-OYpjOggTw_gzAHXPeh7MHCDv7sxBnKuo1XF-QwZXUIIAL2tBHY4B1ncHP108QExTLxyX7WN&oh=00_Af8wDG0RgUPc0vN9UPs1_sOd27IN3COHRg3Z_Yl-jPq1rw&oe=6A3CC238",
       "caption": "Küçük anların büyük hisleri 🎞️🤍 Lumix TZ91 Retrocameraland.com’da 📸\n\n#littlebaby #Digicam #VintageVibes #digitalcamera #Y2KStyle"
     },
     {
@@ -3847,7 +3899,7 @@ const INSTAGRAM = {
       "likes": 36,
       "comments": 1,
       "url": "https://www.instagram.com/p/DZck6zXiDag/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/721297008_17895044379496139_2773788616356448899_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=vkaGzLTU2CcQ7kNvwEBP1Td&_nc_oc=AdqHOhq4X1FU-OtJRzlJ7jh3AcFVMd7qBF_1Eyafrwv8gI3c0ULv0RBPEI-OinMsmac&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&oh=00_Af8oTBd-uYk79N1eSHnNUmErNG-felDxkfwYuB41oMYlow&oe=6A3CD222",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/721297008_17895044379496139_2773788616356448899_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=vkaGzLTU2CcQ7kNvwEBP1Td&_nc_oc=AdqHOhq4X1FU-OtJRzlJ7jh3AcFVMd7qBF_1Eyafrwv8gI3c0ULv0RBPEI-OinMsmac&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&oh=00_Af9h3RqEXydgB-2UyF41P_JwL-As5VbflbW7hYuI-o9ezg&oe=6A3CD222",
       "caption": "Own a piece of Y2K 📸 İkonik kameralar, zamanla daha da değerli❣️ Where Y2K lives on Retrocameraland.com 🌍\n\n#digicam #retrolove #aesthetic #compactcamera #colorful"
     },
     {
@@ -3857,7 +3909,7 @@ const INSTAGRAM = {
       "likes": 72,
       "comments": 0,
       "url": "https://www.instagram.com/p/DZS7i4wCCLW/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/718935543_17894504454496139_5750535782999794384_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=NzFHnV6rhz8Q7kNvwF9NX4R&_nc_oc=Adr5OJFi2hsiXg2CKAX-ZNrqoRkTdt7NoXzcLVtfojiwtkhv8fZhwP3MqVK9PGmZTwA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&oh=00_Af9_5iJuXNrO3F1i-7e-d6mG1g9o9snLLCqixcLKivwnRg&oe=6A3CA351",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/718935543_17894504454496139_5750535782999794384_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=NzFHnV6rhz8Q7kNvwF9NX4R&_nc_oc=Adr5OJFi2hsiXg2CKAX-ZNrqoRkTdt7NoXzcLVtfojiwtkhv8fZhwP3MqVK9PGmZTwA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&oh=00_Af81jCVh_mBVmlfvf0aL2e93ZDq4k4f3N4HmSjHuhnaQ4w&oe=6A3CDB91",
       "caption": "Carry your aesthetic, shoot your moments. | Retrocameraland.com 📸 \n\n#digicam #retrocamera #style #aestethic #moment"
     },
     {
@@ -3867,7 +3919,7 @@ const INSTAGRAM = {
       "likes": 38,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DZKqrlfoERu/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/714830428_26982014394791047_8426920815930901021_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=zV_LG614LAIQ7kNvwGUFSZJ&_nc_oc=Adq3fU5iuk3aA77rIIMpzVTca0F75711ZjW-caXmssh2UFXRzUcc-Wv9OoFG6mzhYzk&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&_nc_tpa=Q5bMBQFDkuL-WHPk72WXCLPLFXuETfonK8RkGTqCMCgnskLhsPiyNcDk8W9GGzInBI0YfMAnP0MT3RuR&oh=00_Af9TTb3qcY17jh6irlvYOgrAWXl9TodSCfk9HGMnjrGbIg&oe=6A3CA203",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/714830428_26982014394791047_8426920815930901021_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=zV_LG614LAIQ7kNvwGUFSZJ&_nc_oc=Adq3fU5iuk3aA77rIIMpzVTca0F75711ZjW-caXmssh2UFXRzUcc-Wv9OoFG6mzhYzk&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&_nc_tpa=Q5bMBQG-Uw2OKNLh5oTbONQxTxVMpVJf9lAibaAmas3VmEHoxpLtEa35EFvgnrmCxpQoMF1T5eURBF4k&oh=00_Af8Rm0hEGub_MU4votODtniNHNKHi6yIhK9WPHOgTbnc2Q&oe=6A3CDA43",
       "caption": "she loves taking photographs 🥂📸\n\n🚩 Discover your digital camera at retrocameraland.com 🗺️ #dijitalkamera #y2k #ccd #lumix #photography"
     },
     {
@@ -3877,7 +3929,7 @@ const INSTAGRAM = {
       "likes": 36,
       "comments": 0,
       "url": "https://www.instagram.com/p/DZCPI_ZiJFT/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/710432369_17893527531496139_4424889210621117233_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=CUPhnhLJgpMQ7kNvwFUyOp5&_nc_oc=Adp9NyOMr7HcPganBerxLKf0UA02q05bHh1pIObIyI4K7Oe_0lFSyx_xrP4jaZhHluw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&oh=00_Af9L0xR4GLnsmjyWbMyt6RowPf9GK0d8jdK_huSevnbSHw&oe=6A3CB608",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/710432369_17893527531496139_4424889210621117233_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=CUPhnhLJgpMQ7kNvwFUyOp5&_nc_oc=Adp9NyOMr7HcPganBerxLKf0UA02q05bHh1pIObIyI4K7Oe_0lFSyx_xrP4jaZhHluw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&oh=00_Af9FgfDl9W6YIA9_UAyoBxwQoGhnRsvxa09wjkf2hrR3dA&oe=6A3CB608",
       "caption": "shoot first, think never ✨\n\nno rules, no retouching. just you and your camera living its best life 📸\n\n🚩 retrocameraland.com #digitalcamera #y2k #aesthetic"
     },
     {
@@ -3887,7 +3939,7 @@ const INSTAGRAM = {
       "likes": 82,
       "comments": 1,
       "url": "https://www.instagram.com/p/DYu1jKZiNVD/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/705988677_17892343674496139_2707241804962707527_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Gjcf5eYa8MoQ7kNvwHSuy2T&_nc_oc=Ado_HcKsytOQGrP40HF90pYDbNTN3mCH5rkHDK-NB97iE9mzUo13KnPyxWWfnPygYOs&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&oh=00_Af8JQRyxbVh32yQxwacLTcWUt0UvAj8gywDRh-DlHKFDIA&oe=6A3CB91A",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/705988677_17892343674496139_2707241804962707527_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Gjcf5eYa8MoQ7kNvwHSuy2T&_nc_oc=Ado_HcKsytOQGrP40HF90pYDbNTN3mCH5rkHDK-NB97iE9mzUo13KnPyxWWfnPygYOs&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&oh=00_Af-qhZRAOakUJ2Rr5rD-KyUC3fkWKlKc2jUcz7ZL132YQg&oe=6A3CB91A",
       "caption": "basic starter kit 🏁 \nretrocameraland x benessocoffee \n\nfujifilm dijital kameran, Ethiopia kahvesi, ray-ban gözlük, kablosuz kulaklık ve deri ceket.\n\n#digicam #coffee #y2k #balat #style"
     },
     {
@@ -3897,7 +3949,7 @@ const INSTAGRAM = {
       "likes": 37,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DYouo-ro_AW/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/706028731_1375927968009248_8971699082304289377_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=jaGIk6A4j_kQ7kNvwFCwAeu&_nc_oc=Adru5rxaW0qZApmlhmDRkNFa65DQNcJVcOMGtvIM_UcAcezWqHLj-vKiQP047Axex6Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&_nc_tpa=Q5bMBQH7wqrMeX9YnBUybNWY6bKBBF52_N89UFQVG_VFX8VIpNRLSb0kte9KyoNUvveIoURTiKnRzxo8&oh=00_Af_LqPcwXuvf9WQjCHj8LvIjXz8qv8LDJWt-ReZEzXYcOw&oe=6A3CBEF3",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/706028731_1375927968009248_8971699082304289377_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=jaGIk6A4j_kQ7kNvwFCwAeu&_nc_oc=Adru5rxaW0qZApmlhmDRkNFa65DQNcJVcOMGtvIM_UcAcezWqHLj-vKiQP047Axex6Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&_nc_tpa=Q5bMBQEiCRQZdHZgc3mDnGa6P16HVfB0PXFOI78_HqyTDxH7zfLUySFHoy2IPXhrItOBvVW2lK_kTWgW&oh=00_Af-5WdQ2lc29szHg2lq295W2sodQxvQiB-k7x0P_mjtoYw&oe=6A3CBEF3",
       "caption": "Renklerin peşinde bir yolculuğa hazır mısın? Fujifilm Finepix V10 | Retrocameraland.com’da 📸🇯🇵\n\n#fujifilm #retro #digitalcamera #PhotographyLife #Aesthetic"
     },
     {
@@ -3907,7 +3959,7 @@ const INSTAGRAM = {
       "likes": 35,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DYbksJ8IMR0/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/700387271_2009929189730607_692241951132775199_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=yPs6BszcHIoQ7kNvwGOZxWd&_nc_oc=AdpE-WZatvJIC2uzNLef1ChjUYyEH6BVT-9WKlZlIziLP-iG8V_ySeyoAOrRJMsrAvA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&_nc_tpa=Q5bMBQFlMh0iz9EBy3vNPojnom8uD2_OKFxu4xGIELI_L6Zw5H2NOHpzVwQSfEST2Upa5uoBf0apzDNv&oh=00_Af-oGrZKE5aE4M5QrsXN1Efw2Th3mLMiCwwGRQU-laxocw&oe=6A3CA43C",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/700387271_2009929189730607_692241951132775199_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=yPs6BszcHIoQ7kNvwGOZxWd&_nc_oc=AdpE-WZatvJIC2uzNLef1ChjUYyEH6BVT-9WKlZlIziLP-iG8V_ySeyoAOrRJMsrAvA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&_nc_tpa=Q5bMBQGgUwAIrb00Ifj7mHtU0sCOdbwX-OAMahAXNeOZiiSOazJy5n8IQ69NRXVuenn6iZ0_ngCZhQUq&oh=00_Af-Wyr4MpSg4PbZsKW0GBfCFmCfrGQsYRmu79yS2EAS8rw&oe=6A3CDC7C",
       "caption": "kaydet. sakla. hatırla 💌\ndijital günlüğün, senin kadrajından 📸\n\n#digitalcamera #y2k #retroaesthetic"
     },
     {
@@ -3917,7 +3969,7 @@ const INSTAGRAM = {
       "likes": 61,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DYXlpS6IXnV/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/693350716_2081628912387009_7752369357675903587_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Dx92vs6kMaEQ7kNvwHwymBj&_nc_oc=AdoM5hb2_iWob9xAcuaM5MQgHHZUrQXxaYymkL7Zatw2xZ8Dz5eIrwgDfRy2c2godec&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&_nc_tpa=Q5bMBQGtk17pcNI1Asx4H8WaYcESwCPa6TZ4bAlYi66nYdAmzEQhHN4PWcLurVsVMBB2Keu4NNDYmZXc&oh=00_Af_mECt_mEqv5qZaIeNmfQwl1T0SEbputCvOACG-WZ6HjQ&oe=6A3CD20E",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/693350716_2081628912387009_7752369357675903587_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Dx92vs6kMaEQ7kNvwHwymBj&_nc_oc=AdoM5hb2_iWob9xAcuaM5MQgHHZUrQXxaYymkL7Zatw2xZ8Dz5eIrwgDfRy2c2godec&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&_nc_tpa=Q5bMBQFEWRkA949PAwLStCRpUjENfZyRmOJa4ni9dZZVHUnTYG1ixoEUeWXw66AP5GCK27bRazjQwxnI&oh=00_Af8kkbmCpRaZrxjTPcGCLFpfne4AnnhrXpcyqHBDDUu3nQ&oe=6A3CD20E",
       "caption": "martıların bile kamerada gözü var 👀📸\n#fujifilm #finepix #digitalcamera"
     },
     {
@@ -3927,7 +3979,7 @@ const INSTAGRAM = {
       "likes": 83,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DYSX0DmIHwf/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/696695791_1902287760484217_1895121579187205840_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=-WRiSpFrA7oQ7kNvwExVcyf&_nc_oc=AdqJWyEdX3ipXpOXh-ACSc_aCJppOp8I2_ohHLElQztAqnaokcxSwjs87ponV-t1S54&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&_nc_tpa=Q5bMBQH-iRH-3HiBa4UkEciLeqfrqwIGViUV2PJUD2zTK8x0kb5HR62oNBC7cITz_gNOj6HpX4ffMrRM&oh=00_Af8KHgrpd43Bi-Ogv7FXo_foKfnoC-yW8eT2xezzWlSWwQ&oe=6A3CB076",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/696695791_1902287760484217_1895121579187205840_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=-WRiSpFrA7oQ7kNvwExVcyf&_nc_oc=AdqJWyEdX3ipXpOXh-ACSc_aCJppOp8I2_ohHLElQztAqnaokcxSwjs87ponV-t1S54&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&_nc_tpa=Q5bMBQHGQqAEs0FeGpO2GbgriwgNdcM0C4bZFOBISok7DXf8UJhPuLNDEQMfxczNiYSCH0cCJ61kTHFJ&oh=00_Af8DscrRXA8MIXVgw9NmOAB632IUeHbGTHy1cWs4U3Jrug&oe=6A3CB076",
       "caption": "Fujifilm Finepix Z90 | İkonik retro kameran ile Y2K ruhunu yakala ❣️💌 CCD sensörlü dijital kameralar RetroCameraLand.com ’da 📸 \n\n#digitalcamera #fujifilm #retro #y2k"
     },
     {
@@ -3937,7 +3989,7 @@ const INSTAGRAM = {
       "likes": 213,
       "comments": 0,
       "url": "https://www.instagram.com/p/DYO7S-2iEqR/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/688814567_17890452126496139_8611219745926133981_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Wzpg7G9w5TYQ7kNvwEeeFCi&_nc_oc=AdqDUqFtbQsBNaqC_wk6XpdOETxIkfFWYpH7jJFV9Isy2RUU_60yTAvZhYad9nP_g_k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=hv-ckt76wwnipAgn0btN9Q&oh=00_Af_OzSK2GSYhQnL6jeRUKadIuQEVzq7LGvZSG4TyFQHqgQ&oe=6A3CA9A2",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/688814567_17890452126496139_8611219745926133981_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Wzpg7G9w5TYQ7kNvwEeeFCi&_nc_oc=AdqDUqFtbQsBNaqC_wk6XpdOETxIkfFWYpH7jJFV9Isy2RUU_60yTAvZhYad9nP_g_k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=VrNQld7JTlkw0wSHFsS52g&oh=00_Af_GTvus1kuCp5Akmi0tW_d1xNgjeCK-IZigc__b1bAUfw&oe=6A3CE1E2",
       "caption": "not a photo, a feeling. ccd light diary. brooklynpeltzbeckham 💌📸\n\n#brooklynbeckham #nicolapeltz #digitalcamera"
     }
   ],
@@ -4036,7 +4088,7 @@ function setPeriod(p, btn) {
 }
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','finance','inventory','youtube','instagram','stats','seo','blog','urun','blog-detay'];
+const PAGES = ['overview','finance','inventory','youtube','instagram','email','stats','seo','blog','urun','blog-detay'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -4066,6 +4118,61 @@ function navigate(page, navEl) {
   if (page === 'blog') renderBlogPage();
   if (page === 'urun') renderUrunPage();
   if (page === 'blog-detay') renderBlogDetayPage();
+  if (page === 'email') renderEmail();
+}
+
+function emailPreview(i) {
+  const c = (typeof EMAIL !== 'undefined' && EMAIL.campaigns) ? EMAIL.campaigns[i] : null;
+  if (!c) return;
+  const t = document.getElementById('email-modal-title');
+  if (t) t.textContent = (c.name || '') + ' · ' + (c.subject || '');
+  const f = document.getElementById('email-modal-frame');
+  if (f) f.srcdoc = c.preview_html || '<p style="font-family:sans-serif;padding:50px;text-align:center;color:#999">Önizleme bulunamadı (kampanya henüz oluşturulmadı).</p>';
+  const m = document.getElementById('email-modal');
+  if (m) m.style.display = 'flex';
+}
+function closeEmailPreview() {
+  const m = document.getElementById('email-modal'); if (m) m.style.display = 'none';
+  const f = document.getElementById('email-modal-frame'); if (f) f.srcdoc = '';
+}
+document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeEmailPreview(); });
+
+function renderEmail() {
+  if (typeof EMAIL === 'undefined') return;
+  const t = EMAIL.totals || {};
+  const setT = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  const cs = document.getElementById('em-sent'); if (cs) counter(cs, t.sent || 0);
+  setT('em-open', '%' + (t.open_rate || 0));
+  setT('em-click', '%' + (t.click_rate || 0));
+  const cc = document.getElementById('em-camps'); if (cc) counter(cc, t.campaigns || 0);
+  const upd = document.getElementById('email-upd');
+  if (upd && EMAIL.updated_at) upd.textContent = new Date(EMAIL.updated_at).toLocaleString('tr-TR', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+  const tb = document.getElementById('emailBody');
+  if (tb) {
+    const pill = (bg, col, txt) => `<span style="display:inline-block;padding:3px 9px;border-radius:20px;font-size:.6rem;font-weight:700;background:${bg};color:${col}">${txt}</span>`;
+    const rows = (EMAIL.campaigns || []).map((c, i) => {
+      const st = c.status === 'sent' ? pill('rgba(48,209,88,.14)', 'var(--green)', 'Gönderildi')
+        : c.status === 'partial' ? pill('rgba(255,159,10,.14)', 'var(--warn)', 'Kısmi')
+        : pill('rgba(255,255,255,.08)', 'var(--t3)', 'Taslak');
+      const code = c.discount ? '<span style="font-family:var(--mono);color:var(--red)">' + c.discount + '</span>' : '—';
+      return `<tr onclick="emailPreview(${i})" title="Önizlemeyi aç" style="cursor:pointer">
+        <td>${c.date || '—'}</td>
+        <td><span style="display:inline-flex;align-items:center;gap:6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" style="flex:none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>${c.name || ''}</span><div style="font-size:.6rem;color:var(--t3);margin-left:19px">${(c.subject || '').slice(0,42)}</div></td>
+        <td>${st}</td><td>${c.sent || 0}</td><td>%${c.open_rate || 0}</td><td>%${c.click_rate || 0}</td><td>${code}</td></tr>`;
+    }).join('');
+    tb.innerHTML = rows || '<tr><td colspan="7" style="text-align:center;color:var(--t3);padding:24px">Henüz kampanya gönderilmedi</td></tr>';
+  }
+  if (typeof mkChart === 'function') {
+    const labels = (EMAIL.campaigns || []).map(c => c.name);
+    mkChart('emailChart', {
+      type: 'bar',
+      data: { labels, datasets: [
+        { label: 'Açılma %', data: (EMAIL.campaigns || []).map(c => c.open_rate), backgroundColor: 'rgba(255,69,58,0.82)', borderRadius: 6 },
+        { label: 'Tıklama %', data: (EMAIL.campaigns || []).map(c => c.click_rate), backgroundColor: 'rgba(255,159,10,0.82)', borderRadius: 6 }
+      ] },
+      options: { plugins: { legend: { display: true, labels: { color: 'rgba(255,255,255,0.6)' } } }, scales: { y: { beginAtZero: true } } }
+    });
+  }
 }
 
 function initRouter() {
@@ -6662,6 +6769,7 @@ renderProfit();
 recalcAll();          // tüm sayfalar yüklemede senkron başlasın (Stok/Finans/COGS aynı değer)
 renderYouTube();
 renderInstagram();
+renderEmail();
 initFade();
 
 // ── İçerik ROI Analizi ──────────────────────────────────────
