@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-21T20:28:44",
+  "updated_at": "2026-06-21T22:35:03",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 57346,
-      "watch_hours": 124.7,
-      "subs_gained": 67,
+      "views": 59013,
+      "watch_hours": 129.2,
+      "subs_gained": 69,
       "subs_lost": 29,
       "avg_view_sec": 16
     },
-    "watch_hours_year": 3311.4,
-    "watch_hours_year_long": 1770.6,
-    "watch_hours_year_shorts": 1540.8,
+    "watch_hours_year": 3315.8,
+    "watch_hours_year_long": 1772.5,
+    "watch_hours_year_shorts": 1543.3,
     "monthly": [
       {
         "label": "Oca 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Haz 26",
-        "views": 36217,
-        "watch_min": 4711,
-        "subs_gained": 38
+        "views": 37884,
+        "watch_min": 4980,
+        "subs_gained": 40
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1634,
+      "views": 1640,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2470,
+      "views": 2472,
       "likes": 36,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2935,
+      "views": 2936,
       "likes": 43,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1670,
+      "views": 1672,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/LHg76IQG7aw"
