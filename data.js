@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-23T07:33:05",
+  "updated_at": "2026-06-23T08:32:53",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -145,7 +145,7 @@ const YOUTUBE = {
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
       "views": 1981,
-      "likes": 33,
+      "likes": 32,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
     }
