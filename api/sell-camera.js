@@ -169,11 +169,15 @@ export default async function handler(req, res) {
     const ref = 'RCL-' + id.slice(0, 6).toUpperCase();
 
     const urls = [];
+    // Fotograflar, kayit id'sinden BAGIMSIZ rastgele bir klasorde saklanir;
+    // boylece bir foto URL'i sizsa bile PII kaydinin yolu (submissions/<id>.json)
+    // tahmin edilemez.
+    const photoDir = makeId();
     try {
       for (let i = 0; i < photos.length; i++) {
         const { buffer, mime } = dataUrlToBuffer(photos[i]);
         const ext = mime.includes('png') ? 'png' : (mime.includes('webp') ? 'webp' : 'jpg');
-        const blob = await put(PREFIX + id + '/foto-' + (i + 1) + '.' + ext, buffer, {
+        const blob = await put('photos/' + photoDir + '/foto-' + (i + 1) + '.' + ext, buffer, {
           access: 'public', contentType: mime, addRandomSuffix: true,
         });
         urls.push(blob.url);
