@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-25T15:15:19",
+  "updated_at": "2026-06-25T16:15:23",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -65,7 +65,7 @@ const YOUTUBE = {
       "date": "20 Haz 2026",
       "views": 1734,
       "likes": 18,
-      "comments": 0,
+      "comments": 1,
       "url": "https://youtu.be/8XWAJXORa9c"
     },
     {
