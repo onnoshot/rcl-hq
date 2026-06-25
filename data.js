@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-25T23:15:52",
+  "updated_at": "2026-06-26T00:15:55",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 60965,
-      "watch_hours": 130.6,
-      "subs_gained": 71,
-      "subs_lost": 31,
+      "views": 59232,
+      "watch_hours": 127.0,
+      "subs_gained": 69,
+      "subs_lost": 29,
       "avg_view_sec": 16
     },
-    "watch_hours_year": 3327.3,
-    "watch_hours_year_long": 1776.3,
-    "watch_hours_year_shorts": 1551.0,
+    "watch_hours_year": 3326.7,
+    "watch_hours_year_long": 1776.1,
+    "watch_hours_year_shorts": 1550.5,
     "monthly": [
       {
         "label": "Oca 26",
@@ -60,24 +60,6 @@ const YOUTUBE = {
   },
   "videos": [
     {
-      "id": "8XWAJXORa9c",
-      "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
-      "date": "20 Haz 2026",
-      "views": 1741,
-      "likes": 18,
-      "comments": 1,
-      "url": "https://youtu.be/8XWAJXORa9c"
-    },
-    {
-      "id": "yIrL45HroS8",
-      "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
-      "date": "6 May 2026",
-      "views": 1604,
-      "likes": 11,
-      "comments": 0,
-      "url": "https://youtu.be/yIrL45HroS8"
-    },
-    {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
@@ -87,15 +69,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/dFixvsNLQ_k"
     },
     {
-      "id": "U0c_YNzbRHE",
-      "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
-      "date": "29 Nis 2026",
-      "views": 826,
-      "likes": 7,
-      "comments": 0,
-      "url": "https://youtu.be/U0c_YNzbRHE"
-    },
-    {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
@@ -103,15 +76,6 @@ const YOUTUBE = {
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
-    },
-    {
-      "id": "ie_8TBsWv-Y",
-      "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
-      "date": "20 Nis 2026",
-      "views": 6272,
-      "likes": 99,
-      "comments": 3,
-      "url": "https://youtu.be/ie_8TBsWv-Y"
     },
     {
       "id": "8oUm3q_y6rQ",
@@ -141,13 +105,49 @@ const YOUTUBE = {
       "url": "https://youtu.be/TFYAi9S9wTo"
     },
     {
-      "id": "aoCqpg3l-Zs",
-      "title": "22 Yıllık İkonik CASIO Exilim Fotoğraf Makinesi #digitalcame",
-      "date": "7 Mar 2026",
-      "views": 844,
-      "likes": 11,
-      "comments": 3,
-      "url": "https://youtu.be/aoCqpg3l-Zs"
+      "id": "b6MfXb0bltc",
+      "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
+      "date": "23 Şub 2026",
+      "views": 756,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/b6MfXb0bltc"
+    },
+    {
+      "id": "2-XdDjHscqs",
+      "title": "Küçük Kamerayla Büyük Hatıralar 📸 #kodak #digitalcamera",
+      "date": "20 Şub 2026",
+      "views": 779,
+      "likes": 12,
+      "comments": 0,
+      "url": "https://youtu.be/2-XdDjHscqs"
+    },
+    {
+      "id": "pK3Dc1GAVAU",
+      "title": "Sony Cybershot T500 Dijital Kamera ile her anı kaydet 📸😍 #di",
+      "date": "3 Şub 2026",
+      "views": 2766,
+      "likes": 20,
+      "comments": 4,
+      "url": "https://youtu.be/pK3Dc1GAVAU"
+    },
+    {
+      "id": "u6zBCvWNIEA",
+      "title": "2006’DA ÜRETİLEN SONY CYBERSHOT T9 | Muhteşem Teknoloji!",
+      "date": "24 Oca 2026",
+      "views": 1807,
+      "likes": 17,
+      "comments": 2,
+      "url": "https://youtu.be/u6zBCvWNIEA"
+    },
+    {
+      "id": "hZ5RdQhCzWg",
+      "title": "SONY CYBERSHOT T9 (2006) 📸  #sony #cybershot #digitalcamera",
+      "date": "23 Oca 2026",
+      "views": 46191,
+      "likes": 104,
+      "comments": 2,
+      "url": "https://youtu.be/hZ5RdQhCzWg"
     }
   ],
   "sub_goal": 10000
