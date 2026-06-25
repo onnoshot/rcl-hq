@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-25T22:15:48",
+  "updated_at": "2026-06-25T23:15:51",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,7 +10,7 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 60972,
+      "views": 60965,
       "watch_hours": 130.6,
       "subs_gained": 71,
       "subs_lost": 31,
@@ -52,7 +52,7 @@ const YOUTUBE = {
       },
       {
         "label": "Haz 26",
-        "views": 47326,
+        "views": 47319,
         "watch_min": 6120,
         "subs_gained": 51
       }
@@ -69,85 +69,85 @@ const YOUTUBE = {
       "url": "https://youtu.be/8XWAJXORa9c"
     },
     {
-      "id": "lh4DVJUz1QY",
-      "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
-      "date": "12 Haz 2026",
-      "views": 139,
-      "likes": 2,
+      "id": "yIrL45HroS8",
+      "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
+      "date": "6 May 2026",
+      "views": 1604,
+      "likes": 11,
       "comments": 0,
-      "url": "https://youtu.be/lh4DVJUz1QY"
+      "url": "https://youtu.be/yIrL45HroS8"
     },
     {
-      "id": "HnGR92gHNDY",
-      "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
-      "date": "4 Haz 2026",
-      "views": 876,
-      "likes": 14,
-      "comments": 0,
-      "url": "https://youtu.be/HnGR92gHNDY"
+      "id": "dFixvsNLQ_k",
+      "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
+      "date": "29 Nis 2026",
+      "views": 410,
+      "likes": 15,
+      "comments": 3,
+      "url": "https://youtu.be/dFixvsNLQ_k"
     },
     {
-      "id": "2r7TMYA4kTw",
-      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
-      "date": "22 May 2026",
-      "views": 412,
+      "id": "U0c_YNzbRHE",
+      "title": "Fujifilm Finepix Z110 | Original Special Edition Color 💘 #fu",
+      "date": "29 Nis 2026",
+      "views": 826,
+      "likes": 7,
+      "comments": 0,
+      "url": "https://youtu.be/U0c_YNzbRHE"
+    },
+    {
+      "id": "bY4UWZ-wEwY",
+      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
+      "date": "26 Nis 2026",
+      "views": 1031,
+      "likes": 9,
+      "comments": 0,
+      "url": "https://youtu.be/bY4UWZ-wEwY"
+    },
+    {
+      "id": "ie_8TBsWv-Y",
+      "title": "Dijital kamera ile fotoğraf çektirme sorunsalı 🤣 #digitalcam",
+      "date": "20 Nis 2026",
+      "views": 6272,
+      "likes": 99,
+      "comments": 3,
+      "url": "https://youtu.be/ie_8TBsWv-Y"
+    },
+    {
+      "id": "8oUm3q_y6rQ",
+      "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
+      "date": "18 Nis 2026",
+      "views": 27136,
+      "likes": 130,
+      "comments": 2,
+      "url": "https://youtu.be/8oUm3q_y6rQ"
+    },
+    {
+      "id": "u_2gTtXlJ4g",
+      "title": "Udaipur'un Ruhu: Y2K Dijital Kamera Günlüğü | Canon PowerSho",
+      "date": "26 Mar 2026",
+      "views": 112,
       "likes": 5,
       "comments": 1,
-      "url": "https://youtu.be/2r7TMYA4kTw"
+      "url": "https://youtu.be/u_2gTtXlJ4g"
     },
     {
-      "id": "GULk4atiPqo",
-      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
-      "date": "17 May 2026",
-      "views": 693,
-      "likes": 7,
-      "comments": 1,
-      "url": "https://youtu.be/GULk4atiPqo"
-    },
-    {
-      "id": "4mX8PsRNBOs",
-      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
-      "date": "15 May 2026",
-      "views": 2512,
-      "likes": 37,
-      "comments": 1,
-      "url": "https://youtu.be/4mX8PsRNBOs"
-    },
-    {
-      "id": "TvPGsbRhSmQ",
-      "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
-      "date": "14 May 2026",
-      "views": 2976,
-      "likes": 44,
+      "id": "TFYAi9S9wTo",
+      "title": "Canon Ixus 160 Dijital Fotoğraf Makinesi 📸 Stoklar yenilendi",
+      "date": "25 Mar 2026",
+      "views": 15060,
+      "likes": 8,
       "comments": 0,
-      "url": "https://youtu.be/TvPGsbRhSmQ"
+      "url": "https://youtu.be/TFYAi9S9wTo"
     },
     {
-      "id": "LHg76IQG7aw",
-      "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
-      "date": "13 May 2026",
-      "views": 1700,
-      "likes": 20,
-      "comments": 1,
-      "url": "https://youtu.be/LHg76IQG7aw"
-    },
-    {
-      "id": "-Ig3lgUcm8c",
-      "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
-      "date": "8 May 2026",
-      "views": 2268,
-      "likes": 29,
-      "comments": 6,
-      "url": "https://youtu.be/-Ig3lgUcm8c"
-    },
-    {
-      "id": "VnLTp2ufa6A",
-      "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
-      "date": "7 May 2026",
-      "views": 1988,
-      "likes": 32,
-      "comments": 1,
-      "url": "https://youtu.be/VnLTp2ufa6A"
+      "id": "aoCqpg3l-Zs",
+      "title": "22 Yıllık İkonik CASIO Exilim Fotoğraf Makinesi #digitalcame",
+      "date": "7 Mar 2026",
+      "views": 844,
+      "likes": 11,
+      "comments": 3,
+      "url": "https://youtu.be/aoCqpg3l-Zs"
     }
   ],
   "sub_goal": 10000
