@@ -142,16 +142,21 @@ async function upsertShopifyCustomer(rec) {
   } catch (e) { return { ok: false, error: String(e) }; }
 }
 
+// Blob CDN, ayni URL'i onbellekte tutar; mutable kayitlari okurken
+// cache-bust query'si ekleyerek her zaman taze veri aliriz.
+function bust(url) { return url + (url.includes('?') ? '&' : '?') + '_cb=' + Date.now(); }
+
 async function loadRecord(id) {
   const res = await list({ prefix: PREFIX + id + '.json', limit: 1 });
   const hit = res.blobs.find((x) => x.pathname === PREFIX + id + '.json');
   if (!hit) return null;
-  const r = await fetch(hit.url, { cache: 'no-store' });
+  const r = await fetch(bust(hit.url), { cache: 'no-store' });
   return r.ok ? await r.json() : null;
 }
 async function saveRecord(rec) {
   await put(PREFIX + rec.id + '.json', JSON.stringify(rec), {
-    access: 'public', contentType: 'application/json', addRandomSuffix: false, allowOverwrite: true,
+    access: 'public', contentType: 'application/json', addRandomSuffix: false,
+    allowOverwrite: true, cacheControlMaxAge: 0,
   });
 }
 
@@ -260,7 +265,7 @@ export default async function handler(req, res) {
         const r = await list({ prefix: PREFIX, cursor, limit: 1000 });
         for (const it of r.blobs) {
           if (!it.pathname.endsWith('.json')) continue;
-          try { const j = await fetch(it.url, { cache: 'no-store' }); if (j.ok) out.push(await j.json()); }
+          try { const j = await fetch(bust(it.url), { cache: 'no-store' }); if (j.ok) out.push(await j.json()); }
           catch (e) { /* bozuk kayit atla */ }
         }
         cursor = r.cursor;
