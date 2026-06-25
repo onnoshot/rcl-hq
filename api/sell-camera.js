@@ -79,7 +79,7 @@ async function sendOfferEmail(rec) {
   if (!apiKey || !rec.email || !rec.offer) return { skipped: true };
   const amount = String(rec.offer.amount || '').trim();
   const msg = String(rec.offer.message || '').trim();
-  const base = process.env.RCL_PORTAL_URL || 'https://www.retrocameraland.com/pages/teklif';
+  const base = process.env.RCL_PORTAL_URL || 'https://retrocameraland.com/pages/teklif';
   const portal = base + (base.includes('?') ? '&' : '?') + 'id=' + rec.id + '&t=' + (rec.token || '');
   const e = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const html =
