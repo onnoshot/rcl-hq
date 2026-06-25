@@ -1,0 +1,9 @@
+{
+  "name": "retrocameraland-hq",
+  "version": "1.0.0",
+  "private": true,
+  "description": "RetroCameraLand HQ dashboard + API functions (Vercel)",
+  "dependencies": {
+    "@vercel/blob": "^2.5.0"
+  }
+}
