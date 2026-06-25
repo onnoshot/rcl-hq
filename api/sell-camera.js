@@ -70,6 +70,41 @@ async function notifyTelegram(rec) {
   } catch (e) { /* bildirim hatasi basvuruyu bozmaz */ }
 }
 
+async function sendOfferEmail(rec) {
+  const apiKey = process.env.BREVO_API_KEY;
+  if (!apiKey || !rec.email || !rec.offer) return { skipped: true };
+  const amount = String(rec.offer.amount || '').trim();
+  const msg = String(rec.offer.message || '').trim();
+  const portal = process.env.RCL_PORTAL_URL || 'https://www.retrocameraland.com/pages/basvurularim';
+  const e = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const html =
+    '<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:560px;margin:0 auto;color:#111">' +
+    '<div style="background:#0a0a0b;color:#fff;padding:26px;border-radius:16px 16px 0 0">' +
+    '<div style="font-size:12px;letter-spacing:.18em;color:#FF8A3D;font-weight:700">RETROCAMERALAND</div>' +
+    '<div style="font-size:22px;font-weight:800;margin-top:6px">Kameran icin teklifimiz hazir</div></div>' +
+    '<div style="border:1px solid #eee;border-top:none;border-radius:0 0 16px 16px;padding:26px">' +
+    '<p>Merhaba ' + e(rec.name) + ',</p>' +
+    '<p><b>' + e(rec.model) + '</b> (Ref: ' + e(rec.ref) + ') basvurun icin teklifimiz:</p>' +
+    '<div style="font-size:30px;font-weight:800;color:#FF4D2E;margin:14px 0">' + e(amount) + ' TL</div>' +
+    (msg ? '<p style="background:#f6f6f6;border-radius:10px;padding:14px;white-space:pre-wrap">' + e(msg) + '</p>' : '') +
+    '<a href="' + e(portal) + '" style="display:inline-block;background:#FF4D2E;color:#fff;text-decoration:none;font-weight:700;padding:13px 24px;border-radius:11px;margin-top:10px">Teklifi Goruntule ve Yanitla</a>' +
+    '<p style="color:#888;font-size:13px;margin-top:22px">Sorularin icin bu e-postayi yanitlayabilir veya bizimle iletisime gecebilirsin.</p>' +
+    '</div></div>';
+  try {
+    const r = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: { 'api-key': apiKey, 'Content-Type': 'application/json', accept: 'application/json' },
+      body: JSON.stringify({
+        sender: { name: 'RetroCameraLand', email: process.env.BREVO_SENDER || 'bilgi@retrocameraland.com' },
+        to: [{ email: rec.email, name: rec.name }],
+        subject: 'RetroCameraLand - ' + (rec.model || 'Kamera') + ' icin teklifimiz (' + amount + ' TL)',
+        htmlContent: html,
+      }),
+    });
+    return { ok: r.ok };
+  } catch (e) { return { ok: false, error: String(e) }; }
+}
+
 async function loadRecord(id) {
   const res = await list({ prefix: PREFIX + id + '.json', limit: 1 });
   const hit = res.blobs.find((x) => x.pathname === PREFIX + id + '.json');
@@ -168,6 +203,7 @@ export default async function handler(req, res) {
       if (!cur) return send(res, 404, { error: 'Kayit bulunamadi' });
       if (typeof b.status === 'string') cur.status = b.status;
       if (typeof b.note === 'string') cur.note = b.note;
+      let offerJustSent = false;
       if (b.offer && typeof b.offer === 'object') {
         cur.offer = {
           amount: String(b.offer.amount || '').trim(),
@@ -176,10 +212,18 @@ export default async function handler(req, res) {
           accepted: null,
         };
         cur.status = 'teklif';
+        offerJustSent = true;
+      }
+      // musteri teklifi kabul/red ederse (portal'dan)
+      if (typeof b.acceptOffer === 'boolean' && cur.offer) {
+        cur.offer.accepted = b.acceptOffer;
+        cur.offer.answeredAt = new Date().toISOString();
       }
       cur.updatedAt = new Date().toISOString();
       await saveRecord(cur);
-      return send(res, 200, { ok: true, item: cur });
+      let email = null;
+      if (offerJustSent) email = await sendOfferEmail(cur);
+      return send(res, 200, { ok: true, item: cur, email });
     } catch (e) {
       return send(res, 500, { error: 'Guncellenemedi: ' + (e.message || e) });
     }

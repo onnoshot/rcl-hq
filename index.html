@@ -7913,6 +7913,20 @@ function finAnimateKPIs() {
 #page-alim .alim-savebtn{margin-top:10px;border:none;background:var(--red);color:#fff;border-radius:10px;padding:10px 20px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
 #page-alim .alim-savebtn:hover{filter:brightness(1.1)}
 #page-alim .alim-savebtn:disabled{opacity:.5;cursor:default}
+#page-alim .alim-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 4px}
+#page-alim .alim-wa{display:inline-flex;align-items:center;gap:7px;background:#25D366;color:#0a2e16;border-radius:10px;padding:9px 15px;font-size:.82rem;font-weight:700;text-decoration:none;transition:.2s}
+#page-alim .alim-wa:hover{filter:brightness(1.08);transform:translateY(-1px)}
+#page-alim .alim-actbtn{display:inline-flex;align-items:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:10px;padding:9px 14px;font-size:.8rem;font-weight:600;text-decoration:none;transition:.2s}
+#page-alim .alim-actbtn:hover{background:rgba(255,255,255,.11)}
+#page-alim .alim-member{margin-left:auto;font-size:.7rem;font-weight:700;padding:5px 11px;border-radius:99px;background:rgba(61,220,132,.16);color:#3DDC84}
+#page-alim .alim-member.guest{background:rgba(255,255,255,.08);color:rgba(255,255,255,.5)}
+#page-alim .alim-offerbox{background:rgba(255,77,46,.08);border:1px solid rgba(255,77,46,.25);border-radius:12px;padding:13px 15px;margin:8px 0}
+#page-alim .alim-offeramt{font-size:1.3rem;font-weight:800;color:var(--red)}
+#page-alim .alim-offermsg{font-size:.84rem;color:rgba(255,255,255,.75);margin-top:5px;white-space:pre-wrap}
+#page-alim .alim-offermeta{font-size:.7rem;color:rgba(255,255,255,.45);font-family:var(--mono);margin-top:7px}
+#page-alim .alim-offerform{margin-top:8px}
+#page-alim .alim-offerinp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:11px;color:#fff;padding:12px;font-size:1rem;font-weight:700;font-family:inherit;outline:none;margin-bottom:8px}
+#page-alim .alim-offerinp:focus{border-color:var(--red)}
 #page-alim .alim-lb{display:none;position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
 #page-alim .alim-lb.show{display:flex}
 #page-alim .alim-lb img{max-width:100%;max-height:100%;border-radius:10px}
@@ -8028,9 +8042,28 @@ function finAnimateKPIs() {
     var sbtns=['yeni','inceleniyor','teklif','kapandi'].map(function(s){
       return '<button class="alim-sbtn'+(s===st?' on':'')+'" onclick="alimSetStatus(\''+esc(x.id)+'\',\''+s+'\')">'+STLAB[s]+'</button>';
     }).join('');
+    var digits=(x.phone||'').replace(/\D/g,'');
+    var wa=digits; if(digits.length===11&&digits.charAt(0)==='0') wa='90'+digits.slice(1); else if(digits.length===10) wa='90'+digits;
+    var waText=encodeURIComponent('Merhaba '+(x.name||'')+', RetroCameraLand kamera alim basvurun (Ref: '+(x.ref||'')+' - '+(x.model||'')+') hakkinda yaziyoruz.');
+    var waBtn = wa ? '<a class="alim-wa" href="https://wa.me/'+wa+'?text='+waText+'" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.638 5.422l-.999 3.648 3.86-.969zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg> WhatsApp ile yaz</a>' : '';
+    var callBtn = digits ? '<a class="alim-actbtn" href="tel:'+esc(digits)+'">Ara</a>' : '';
+    var mailBtn = x.email ? '<a class="alim-actbtn" href="mailto:'+esc(x.email)+'">E-posta</a>' : '';
+    var memberBadge = x.memberEmail ? '<span class="alim-member">Uye ✓ '+esc(x.memberEmail)+'</span>' : '<span class="alim-member guest">Misafir</span>';
+    var of=x.offer;
+    var offerBlock =
+      '<div style="margin-top:18px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.6)">Teklif</div>'+
+      (of?'<div class="alim-offerbox"><div class="alim-offeramt">'+esc(of.amount)+' TL</div>'+
+          (of.message?'<div class="alim-offermsg">'+esc(of.message)+'</div>':'')+
+          '<div class="alim-offermeta">Gonderildi: '+fmtDate(of.sentAt)+(of.accepted===true?' · <b style="color:#3DDC84">Musteri KABUL etti</b>':(of.accepted===false?' · <b style="color:#ff7a70">Musteri reddetti</b>':' · yanit bekleniyor'))+'</div></div>':'')+
+      '<div class="alim-offerform">'+
+      '<input id="alim-offer-amt" class="alim-offerinp" type="text" inputmode="numeric" placeholder="Teklif tutari (TL)" value="'+(of?esc(of.amount):'')+'">'+
+      '<textarea id="alim-offer-msg" class="alim-note" placeholder="Musteriye not (opsiyonel)">'+(of&&of.message?esc(of.message):'')+'</textarea>'+
+      '<button class="alim-savebtn" id="alim-offer-send" onclick="alimSendOffer(\''+esc(x.id)+'\')">'+(of?'Teklifi Guncelle + E-posta':'Teklif Gonder + E-posta')+'</button>'+
+      '</div>';
     var body=
       '<div style="font-size:1.3rem;font-weight:800;letter-spacing:-.02em;color:#fff;padding-right:30px">'+esc(x.model||'—')+'</div>'+
       '<div style="font-size:.7rem;font-family:var(--mono);color:rgba(255,255,255,.4);margin-top:3px">'+esc(x.ref||'')+' · '+fmtDate(x.createdAt)+'</div>'+
+      '<div class="alim-actions">'+waBtn+callBtn+mailBtn+memberBadge+'</div>'+
       (photos?'<div class="alim-mgrid">'+photos+'</div>':'')+
       row('Fiyat Beklentisi','<b style="color:var(--red)">'+esc(x.price||'—')+' TL</b>')+
       row('Ad Soyad',esc(x.name))+
@@ -8041,6 +8074,7 @@ function finAnimateKPIs() {
       row('Kasa Durumu',esc(x.condition))+
       row('Orijinal Kutu',esc(x.box))+
       row('Eksik Parça / Not',esc(x.missing))+
+      offerBlock+
       '<div style="margin-top:18px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.6)">Durum</div>'+
       '<div class="alim-statusrow">'+sbtns+'</div>'+
       '<div style="margin-top:6px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.6)">İç Not</div>'+
@@ -8075,6 +8109,18 @@ function finAnimateKPIs() {
     if(!inp) return; if(btn){ btn.disabled=true; btn.textContent='Kaydediliyor…'; }
     patch(id,{note:inp.value},function(j){
       if(btn){ btn.disabled=false; btn.textContent=(j&&j.ok)?'Kaydedildi ✓':'Tekrar Dene'; setTimeout(function(){ if(btn) btn.textContent='Notu Kaydet'; },1800); }
+    });
+  };
+  window.alimSendOffer=function(id){
+    var amt=document.getElementById('alim-offer-amt'); var msg=document.getElementById('alim-offer-msg'); var btn=document.getElementById('alim-offer-send');
+    if(!amt||!amt.value.trim()){ if(amt){ amt.focus(); amt.style.borderColor='#ff7a70'; } return; }
+    if(btn){ btn.disabled=true; btn.textContent='Gonderiliyor…'; }
+    patch(id,{offer:{amount:amt.value.trim(),message:msg?msg.value.trim():''}},function(j){
+      if(btn){ btn.disabled=false;
+        var mailed=j&&j.email&&j.email.ok;
+        btn.textContent=(j&&j.ok)?(mailed?'Gonderildi + e-posta ✓':'Kaydedildi (BREVO_API_KEY yok)'):'Tekrar Dene';
+      }
+      if(j&&j.ok) setTimeout(function(){ alimOpen(id); },1000);
     });
   };
 
