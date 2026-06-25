@@ -8029,7 +8029,10 @@ function finAnimateKPIs() {
         '<div class="alim-price">'+esc(x.price||'—')+' TL</div></div>'+
         (thumbs?'<div class="alim-thumbs">'+thumbs+'</div>':'')+
         '<div class="alim-meta"><span><b>'+esc(x.name||'—')+'</b></span><span>'+esc(x.city||'')+'</span><span>Çalışıyor: <b>'+esc(x.working||'—')+'</b></span></div>'+
-        '<div class="alim-card-foot"><span class="alim-date">'+fmtDate(x.createdAt)+'</span><span class="alim-pill '+st+'">'+esc(STLAB[st]||st)+'</span></div>'+
+        '<div class="alim-card-foot"><span class="alim-date">'+fmtDate(x.createdAt)+'</span><span style="display:flex;gap:6px;align-items:center">'+
+          ((x.offer&&x.offer.accepted===true)?'<span class="alim-pill" style="background:rgba(61,220,132,.18);color:#3DDC84">✓ Kabul</span>':'')+
+          ((x.offer&&x.offer.accepted===false)?'<span class="alim-pill" style="background:rgba(255,69,58,.16);color:#ff7a70">✕ Red</span>':'')+
+          '<span class="alim-pill '+st+'">'+esc(STLAB[st]||st)+'</span></span></div>'+
       '</div>';
     }).join('');
   }

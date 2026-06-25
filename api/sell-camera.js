@@ -146,6 +146,51 @@ async function upsertShopifyCustomer(rec) {
 // cache-bust query'si ekleyerek her zaman taze veri aliriz.
 function bust(url) { return url + (url.includes('?') ? '&' : '?') + '_cb=' + Date.now(); }
 
+// Musteri teklifi kabul/red edince SANA (yoneticiye) e-posta gonder.
+async function notifyAdminOffer(rec, accepted) {
+  const apiKey = process.env.BREVO_API_KEY;
+  const to = process.env.RCL_ADMIN_EMAIL || process.env.BREVO_SENDER || 'bilgi@retrocameraland.com';
+  if (!apiKey) return { skipped: true };
+  const e = (s) => String(s || '-').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const digits = String(rec.phone || '').replace(/\D/g, '');
+  let wa = digits; if (digits.length === 11 && digits[0] === '0') wa = '90' + digits.slice(1); else if (digits.length === 10) wa = '90' + digits;
+  const durum = accepted ? 'KABUL ETTI' : 'REDDETTI';
+  const renk = accepted ? '#15a34a' : '#b91c1c';
+  const html =
+    '<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:540px;margin:0 auto;color:#111">' +
+    '<div style="background:' + renk + ';color:#fff;padding:20px 24px;border-radius:14px 14px 0 0">' +
+    '<div style="font-size:12px;letter-spacing:.14em;opacity:.85">KAMERA ALIM &#183; TEKLIF YANITI</div>' +
+    '<div style="font-size:22px;font-weight:800;margin-top:4px">Musteri teklifini ' + durum + '</div></div>' +
+    '<div style="border:1px solid #eee;border-top:none;border-radius:0 0 14px 14px;padding:22px 24px">' +
+    '<table style="width:100%;border-collapse:collapse;font-size:14px">' +
+    '<tr><td style="color:#888;padding:6px 0">Kamera</td><td style="text-align:right;font-weight:600">' + e(rec.model) + '</td></tr>' +
+    '<tr><td style="color:#888;padding:6px 0">Teklif</td><td style="text-align:right;font-weight:700;color:' + renk + '">' + e(rec.offer && rec.offer.amount) + ' TL</td></tr>' +
+    '<tr><td style="color:#888;padding:6px 0">Ref</td><td style="text-align:right">' + e(rec.ref) + '</td></tr>' +
+    '<tr><td style="color:#888;padding:6px 0">Musteri</td><td style="text-align:right;font-weight:600">' + e(rec.name) + '</td></tr>' +
+    '<tr><td style="color:#888;padding:6px 0">Telefon</td><td style="text-align:right">' + e(rec.phone) + '</td></tr>' +
+    '<tr><td style="color:#888;padding:6px 0">E-posta</td><td style="text-align:right">' + e(rec.email) + '</td></tr>' +
+    '<tr><td style="color:#888;padding:6px 0">Il</td><td style="text-align:right">' + e(rec.city) + '</td></tr>' +
+    '</table>' +
+    (accepted ? '<div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">' +
+      (wa ? '<a href="https://wa.me/' + wa + '" style="background:#25D366;color:#073;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:10px">WhatsApp</a>' : '') +
+      (digits ? '<a href="tel:' + e(digits) + '" style="background:#111;color:#fff;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:10px">Ara</a>' : '') +
+      '<a href="mailto:' + e(rec.email) + '" style="background:#f1f1f1;color:#111;text-decoration:none;font-weight:700;padding:11px 18px;border-radius:10px">E-posta</a>' +
+      '</div><p style="color:#888;font-size:13px;margin-top:16px">Musteri kabul etti &#8212; kargo ve odeme icin iletisime gec.</p>' : '') +
+    '</div></div>';
+  try {
+    const r = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST', headers: { 'api-key': apiKey, 'Content-Type': 'application/json', accept: 'application/json' },
+      body: JSON.stringify({
+        sender: { name: 'RetroCameraLand', email: process.env.BREVO_SENDER || 'bilgi@retrocameraland.com' },
+        to: [{ email: to }],
+        subject: 'Teklif ' + durum + ' - ' + (rec.model || 'Kamera') + ' (' + (rec.offer && rec.offer.amount) + ' TL)',
+        htmlContent: html,
+      }),
+    });
+    return { ok: r.ok };
+  } catch (e) { return { ok: false }; }
+}
+
 async function loadRecord(id) {
   const res = await list({ prefix: PREFIX + id + '.json', limit: 1 });
   const hit = res.blobs.find((x) => x.pathname === PREFIX + id + '.json');
@@ -245,10 +290,14 @@ export default async function handler(req, res) {
       cur.status = b.acceptOffer ? 'kapandi' : cur.status;
       cur.updatedAt = new Date().toISOString();
       await saveRecord(cur);
-      await tgSend('<b>' + (b.acceptOffer ? 'TEKLIF KABUL EDILDI ' : 'TEKLIF REDDEDILDI ') + '</b>\n' +
+      await tgSend('<b>' + (b.acceptOffer ? '✅ TEKLIF KABUL EDILDI' : '❌ TEKLIF REDDEDILDI') + '</b>\n' +
         'Ref: <code>' + cur.ref + '</code>  ' + (cur.model || '') + '\n' +
-        'Tutar: ' + (cur.offer.amount || '') + ' TL\n' +
-        'Musteri: ' + (cur.name || '') + '  ' + (cur.phone || ''));
+        'Tutar: <b>' + (cur.offer.amount || '') + ' TL</b>\n' +
+        'Musteri: ' + (cur.name || '') + '\n' +
+        'Telefon: ' + (cur.phone || '') + '\n' +
+        'E-posta: ' + (cur.email || '') +
+        (b.acceptOffer ? '\n\nKargo/odeme icin iletisime gec.' : ''));
+      await notifyAdminOffer(cur, b.acceptOffer);
       return send(res, 200, { ok: true, item: { id: cur.id, ref: cur.ref, model: cur.model, status: cur.status, offer: cur.offer } });
     } catch (e) { return send(res, 500, { error: 'Yanit kaydedilemedi: ' + (e.message || e) }); }
   }
