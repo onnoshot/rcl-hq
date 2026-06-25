@@ -57,9 +57,15 @@ async function allRecords() {
 }
 
 function owns(rec, email, cid) {
-  return String(rec.email || '').toLowerCase() === email ||
-    String(rec.memberEmail || '').toLowerCase() === email ||
-    (cid && String(rec.shopifyCustomerId || '') === String(cid));
+  // Birincil eslesme: Shopify musteri ID (her basvuruda kayitli) — PCD iznine takilmaz.
+  if (cid && String(rec.shopifyCustomerId || '') === String(cid)) return true;
+  // Ikincil: e-posta (okunabiliyorsa). Bos e-postayla TUM kayitlari eslestirme!
+  if (email) {
+    const e = String(email).toLowerCase();
+    if (String(rec.email || '').toLowerCase() === e) return true;
+    if (String(rec.memberEmail || '').toLowerCase() === e) return true;
+  }
+  return false;
 }
 
 async function readJson(req) {
@@ -79,8 +85,8 @@ export default async function handler(req, res) {
 
   const cid = q.logged_in_customer_id;
   if (!cid) { res.status(200).json({ ok: true, loggedIn: false, items: [] }); return; }
+  // E-posta best-effort (PCD izni yoksa null olabilir); eslesme oncelikle cid ile yapilir.
   const email = await customerEmail(cid);
-  if (!email) { res.status(200).json({ ok: true, loggedIn: true, items: [] }); return; }
 
   // ---- POST: teklife yanit ----
   if (req.method === 'POST') {
