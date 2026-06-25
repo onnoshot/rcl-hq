@@ -49,9 +49,18 @@ function authed(req) {
   return req.headers['x-rcl-key'] === need;
 }
 
-async function notifyTelegram(rec) {
+async function tgSend(text) {
   const token = process.env.TG_BOT_TOKEN, chatId = process.env.TG_CHAT_ID;
   if (!token || !chatId) return;
+  try {
+    await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML', disable_web_page_preview: true }),
+    });
+  } catch (e) { /* bildirim hatasi akisi bozmaz */ }
+}
+
+async function notifyTelegram(rec) {
   const e = (s) => String(s || '-').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const text =
     '<b>Yeni Kamera Alim Basvurusu</b>\n' +
@@ -62,12 +71,7 @@ async function notifyTelegram(rec) {
     'Ad: ' + e(rec.name) + '  Tel: ' + e(rec.phone) + '\n' +
     'E-posta: ' + e(rec.email) + '  Il: ' + e(rec.city) + '\n' +
     'Foto: ' + (rec.photos ? rec.photos.length : 0) + ' adet';
-  try {
-    await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML', disable_web_page_preview: true }),
-    });
-  } catch (e) { /* bildirim hatasi basvuruyu bozmaz */ }
+  await tgSend(text);
 }
 
 async function sendOfferEmail(rec) {
@@ -75,7 +79,8 @@ async function sendOfferEmail(rec) {
   if (!apiKey || !rec.email || !rec.offer) return { skipped: true };
   const amount = String(rec.offer.amount || '').trim();
   const msg = String(rec.offer.message || '').trim();
-  const portal = process.env.RCL_PORTAL_URL || 'https://www.retrocameraland.com/pages/basvurularim';
+  const base = process.env.RCL_PORTAL_URL || 'https://www.retrocameraland.com/pages/teklif';
+  const portal = base + (base.includes('?') ? '&' : '?') + 'id=' + rec.id + '&t=' + (rec.token || '');
   const e = (s) => String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const html =
     '<div style="font-family:-apple-system,Segoe UI,Roboto,sans-serif;max-width:560px;margin:0 auto;color:#111">' +
@@ -194,6 +199,7 @@ export default async function handler(req, res) {
       condition: String(b.condition || '').trim(), missing: String(b.missing || '').trim(),
       photos: urls, source: String(b.source || '').trim(), page: String(b.page || '').trim(),
       memberEmail: b.memberEmail ? String(b.memberEmail).trim().toLowerCase() : '',
+      token: makeId() + makeId(),
       status: 'yeni', note: '', offer: null,
     };
 
@@ -208,7 +214,41 @@ export default async function handler(req, res) {
     return send(res, 200, { ok: true, ref, id });
   }
 
-  // ---- bundan sonrasi korumali ----
+  // ===== MUSTERI (PUBLIC, token ile) =====
+  // Tek basvuru goruntule:  GET ?id=...&t=token
+  if (req.method === 'GET' && req.query && req.query.id && req.query.t) {
+    try {
+      const cur = await loadRecord(String(req.query.id));
+      if (!cur || !cur.token || cur.token !== String(req.query.t)) return send(res, 404, { error: 'Basvuru bulunamadi' });
+      const pub = {
+        id: cur.id, ref: cur.ref, createdAt: cur.createdAt, name: cur.name, model: cur.model, price: cur.price,
+        working: cur.working, condition: cur.condition, box: cur.box, status: cur.status, photos: cur.photos, offer: cur.offer,
+      };
+      return send(res, 200, { ok: true, item: pub });
+    } catch (e) { return send(res, 500, { error: String(e) }); }
+  }
+  // Teklife yanit ver:  PATCH {id, token, acceptOffer:true|false}
+  if (req.method === 'PATCH' && req.body && req.body.token) {
+    let b;
+    try { b = await readJson(req); } catch (e) { return send(res, 400, { error: 'Gecersiz istek' }); }
+    try {
+      const cur = await loadRecord(String(b.id || ''));
+      if (!cur || !cur.token || cur.token !== String(b.token)) return send(res, 404, { error: 'Basvuru bulunamadi' });
+      if (typeof b.acceptOffer !== 'boolean' || !cur.offer) return send(res, 400, { error: 'Yanitlanacak teklif yok' });
+      cur.offer.accepted = b.acceptOffer;
+      cur.offer.answeredAt = new Date().toISOString();
+      cur.status = b.acceptOffer ? 'kapandi' : cur.status;
+      cur.updatedAt = new Date().toISOString();
+      await saveRecord(cur);
+      await tgSend('<b>' + (b.acceptOffer ? 'TEKLIF KABUL EDILDI ' : 'TEKLIF REDDEDILDI ') + '</b>\n' +
+        'Ref: <code>' + cur.ref + '</code>  ' + (cur.model || '') + '\n' +
+        'Tutar: ' + (cur.offer.amount || '') + ' TL\n' +
+        'Musteri: ' + (cur.name || '') + '  ' + (cur.phone || ''));
+      return send(res, 200, { ok: true, item: { id: cur.id, ref: cur.ref, model: cur.model, status: cur.status, offer: cur.offer } });
+    } catch (e) { return send(res, 500, { error: 'Yanit kaydedilemedi: ' + (e.message || e) }); }
+  }
+
+  // ===== ADMIN (korumali) =====
   if (!authed(req)) return send(res, 401, { error: 'Yetkisiz' });
 
   // ---- GET: listele ----
@@ -245,6 +285,7 @@ export default async function handler(req, res) {
       if (typeof b.note === 'string') cur.note = b.note;
       let offerJustSent = false;
       if (b.offer && typeof b.offer === 'object') {
+        if (!cur.token) cur.token = makeId() + makeId(); // eski kayitlara token ekle
         cur.offer = {
           amount: String(b.offer.amount || '').trim(),
           message: String(b.offer.message || '').trim(),
