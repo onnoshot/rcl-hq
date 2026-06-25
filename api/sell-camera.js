@@ -105,6 +105,38 @@ async function sendOfferEmail(rec) {
   } catch (e) { return { ok: false, error: String(e) }; }
 }
 
+// Her basvuruda Shopify musterisini olustur/etiketle (musteri datasi toplama).
+// write_customers scope'u yoksa sessizce atlar; basvuruyu asla bozmaz.
+async function upsertShopifyCustomer(rec) {
+  const store = process.env.SHOPIFY_STORE, token = process.env.SHOPIFY_ACCESS_TOKEN;
+  if (!store || !token) return { skipped: true };
+  const base = 'https://' + store + '/admin/api/2024-01';
+  const H = { 'X-Shopify-Access-Token': token, 'Content-Type': 'application/json' };
+  const note = 'Kamera Alim: ' + rec.model + ' | Beklenti: ' + rec.price + ' TL | Tel: ' + rec.phone + ' | Ref: ' + rec.ref;
+  const parts = (rec.name || '').trim().split(/\s+/);
+  const first = parts.shift() || rec.name || 'Musteri';
+  const last = parts.join(' ');
+  try {
+    const sr = await fetch(base + '/customers/search.json?query=' + encodeURIComponent('email:' + rec.email), { headers: H });
+    const sj = sr.ok ? await sr.json() : { customers: [] };
+    const found = (sj.customers || [])[0];
+    if (found) {
+      const tags = (found.tags ? found.tags + ', ' : '') + 'kamera-satici';
+      await fetch(base + '/customers/' + found.id + '.json', {
+        method: 'PUT', headers: H,
+        body: JSON.stringify({ customer: { id: found.id, tags, note } }),
+      });
+      return { ok: true, id: found.id, existed: true };
+    }
+    const cr = await fetch(base + '/customers.json', {
+      method: 'POST', headers: H,
+      body: JSON.stringify({ customer: { first_name: first, last_name: last, email: rec.email, tags: 'kamera-satici', note } }),
+    });
+    const cj = cr.ok ? await cr.json() : null;
+    return { ok: cr.ok, id: cj && cj.customer ? cj.customer.id : null };
+  } catch (e) { return { ok: false, error: String(e) }; }
+}
+
 async function loadRecord(id) {
   const res = await list({ prefix: PREFIX + id + '.json', limit: 1 });
   const hit = res.blobs.find((x) => x.pathname === PREFIX + id + '.json');
@@ -161,10 +193,14 @@ export default async function handler(req, res) {
       status: 'yeni', note: '', offer: null,
     };
 
+    // Shopify musterisi olustur/etiketle (best-effort) — kaydetmeden once
+    try { const c = await upsertShopifyCustomer(rec); if (c && c.id) rec.shopifyCustomerId = c.id; }
+    catch (e) { /* musteri olusmazsa basvuru yine kaydedilir */ }
+
     try { await saveRecord(rec); }
     catch (e) { return send(res, 500, { error: 'Kayit yazilamadi: ' + (e.message || e) }); }
 
-    notifyTelegram(rec);
+    await notifyTelegram(rec);
     return send(res, 200, { ok: true, ref, id });
   }
 
