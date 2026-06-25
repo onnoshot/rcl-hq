@@ -249,7 +249,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100
 .sb-live{display:flex;align-items:center;gap:7px;font-size:0.62rem;color:var(--t3);}
 .sb-live-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pdot 2.8s infinite;flex-shrink:0;box-shadow:0 0 8px var(--green);}
 @keyframes pdot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.55)}}
-@keyframes page-enter{from{opacity:0;transform:translateY(20px) scale(0.995);}to{opacity:1;transform:none;}}
+@keyframes page-enter{from{opacity:0;transform:translateY(20px) scale(0.995);}to{opacity:1;transform:translateY(0) scale(1);}}
 
 /* ─── PAGE HEADER ─── */
 .ph{padding-bottom:32px;border-bottom:1px solid rgba(255,255,255,0.05);margin-bottom:32px;}
@@ -7915,104 +7915,51 @@ function finAnimateKPIs() {
 #page-alim .alim-fbtn.active{background:var(--red);border-color:var(--red);color:#fff}
 #page-alim .alim-search{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:#fff;border-radius:10px;padding:8px 13px;font-size:.8rem;font-family:inherit;min-width:200px;outline:none}
 #page-alim .alim-search:focus{border-color:var(--red)}
-#page-alim .alim-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(345px,1fr));gap:14px}
-#page-alim .alim-empty{grid-column:1/-1;text-align:center;color:rgba(255,255,255,.42);padding:60px 10px;font-size:.9rem;border:1px dashed rgba(255,255,255,.1);border-radius:18px}
-#page-alim .alim-card{position:relative;display:flex;gap:14px;border:1px solid rgba(255,255,255,.08);background:linear-gradient(150deg,rgba(255,255,255,.052),rgba(255,255,255,.014));border-radius:18px;padding:14px 15px 14px 18px;cursor:pointer;overflow:hidden;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .25s,box-shadow .25s}
-#page-alim .alim-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--ac,var(--red))}
-#page-alim .alim-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22);box-shadow:0 22px 52px -22px rgba(0,0,0,.78)}
-#page-alim .ac-cover{width:78px;height:78px;flex:0 0 auto;border-radius:14px;background:rgba(255,255,255,.05) center/cover no-repeat;border:1px solid rgba(255,255,255,.1);position:relative;display:grid;place-items:center}
-#page-alim .ac-cover.empty::after{content:'';width:24px;height:24px;border-radius:6px;border:2px solid rgba(255,255,255,.18)}
-#page-alim .ac-cover .ac-count{position:absolute;right:5px;bottom:5px;background:rgba(0,0,0,.62);backdrop-filter:blur(6px);font-size:.56rem;font-weight:700;color:#fff;padding:2px 6px;border-radius:6px}
-#page-alim .ac-body{flex:1;min-width:0;display:flex;flex-direction:column}
-#page-alim .ac-r1{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-#page-alim .ac-model{font-size:1.04rem;font-weight:700;color:#fff;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-#page-alim .ac-ref{font-size:.6rem;font-family:var(--mono);color:rgba(255,255,255,.34);margin-top:3px}
-#page-alim .ac-price{font-size:.92rem;font-weight:800;color:var(--red);white-space:nowrap}
-#page-alim .ac-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-#page-alim .ac-chip{display:inline-flex;align-items:center;gap:5px;font-size:.7rem;color:rgba(255,255,255,.64);background:rgba(255,255,255,.05);padding:4px 9px;border-radius:8px;white-space:nowrap;max-width:170px;overflow:hidden;text-overflow:ellipsis}
-#page-alim .ac-chip svg{width:11px;height:11px;opacity:.6;flex:none}
-#page-alim .ac-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:11px}
-#page-alim .ac-date{font-size:.63rem;color:rgba(255,255,255,.32);font-family:var(--mono)}
-#page-alim .ac-badges{display:flex;gap:6px;align-items:center}
-#page-alim .ac-wa{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#25D366;color:#04270f;flex:none;transition:.2s;margin-right:2px}
-#page-alim .ac-wa:hover{filter:brightness(1.1);transform:translateY(-1px)}
-#page-alim .ac-wa svg{width:15px;height:15px}
+#page-alim .alim-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+#page-alim .alim-empty{grid-column:1/-1;text-align:center;color:rgba(255,255,255,.4);padding:48px 10px;font-size:.9rem}
+#page-alim .alim-card{border:1px solid rgba(255,255,255,.09);background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.012));border-radius:16px;padding:15px;cursor:pointer;transition:.22s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+#page-alim .alim-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.2);box-shadow:0 16px 40px -16px rgba(0,0,0,.6)}
+#page-alim .alim-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:11px}
+#page-alim .alim-model{font-size:1rem;font-weight:700;letter-spacing:-.01em;color:#fff;line-height:1.25}
+#page-alim .alim-ref{font-size:.62rem;font-family:var(--mono);color:rgba(255,255,255,.35);margin-top:2px}
+#page-alim .alim-price{font-size:.92rem;font-weight:700;color:var(--red);white-space:nowrap}
+#page-alim .alim-thumbs{display:flex;gap:6px;margin-bottom:11px}
+#page-alim .alim-thumbs img{width:54px;height:54px;border-radius:9px;object-fit:cover;border:1px solid rgba(255,255,255,.1)}
+#page-alim .alim-thumbs .more{width:54px;height:54px;border-radius:9px;background:rgba(255,255,255,.05);display:grid;place-items:center;font-size:.72rem;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.1)}
+#page-alim .alim-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.74rem;color:rgba(255,255,255,.6)}
+#page-alim .alim-meta b{color:rgba(255,255,255,.85);font-weight:600}
+#page-alim .alim-card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:11px;border-top:1px solid rgba(255,255,255,.06)}
+#page-alim .alim-date{font-size:.66rem;color:rgba(255,255,255,.35);font-family:var(--mono)}
 .alim-pill{font-size:.64rem;font-weight:700;padding:4px 10px;border-radius:99px;letter-spacing:.02em;white-space:nowrap}
 .alim-pill.yeni{background:rgba(255,69,58,.16);color:#ff7a70}
 .alim-pill.inceleniyor{background:rgba(10,132,255,.16);color:#5aa8ff}
 .alim-pill.teklif{background:rgba(212,175,55,.16);color:#e0c050}
 .alim-pill.kapandi{background:rgba(255,255,255,.08);color:rgba(255,255,255,.5)}
 /* modal */
-/* Modal body'ye tasinir (bagimsiz popup) -> kendi id'siyle scope edilir, sayfa transform'larindan etkilenmez */
-#alim-modal{display:none;position:fixed;inset:0;z-index:100000;background:rgba(6,6,8,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);align-items:center;justify-content:center;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",sans-serif}
-#alim-modal.show{display:flex;animation:amFade .25s ease}
-@keyframes amFade{from{opacity:0}to{opacity:1}}
-#alim-modal .alim-modal-card{position:relative;width:100%;max-width:760px;max-height:90vh;overflow-y:auto;border:1px solid rgba(255,255,255,.12);border-radius:24px;background:linear-gradient(168deg,rgba(33,33,37,.97),rgba(17,17,19,.99));box-shadow:0 44px 120px -28px rgba(0,0,0,.85);padding:28px 28px 32px;animation:amPop .38s cubic-bezier(.16,1,.3,1)}
-@keyframes amPop{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
-#alim-modal .alim-modal-card::-webkit-scrollbar{width:8px}
-#alim-modal .alim-modal-card::-webkit-scrollbar-thumb{background:rgba(255,255,255,.13);border-radius:8px}
-#alim-modal .alim-modal-x{position:absolute;top:18px;right:20px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);font-size:21px;line-height:1;cursor:pointer;z-index:3;display:grid;place-items:center;transition:.25s}
-#alim-modal .alim-modal-x:hover{background:rgba(255,255,255,.13);color:#fff;transform:rotate(90deg)}
-#alim-modal .am-head{padding-right:40px}
-#alim-modal .am-titlerow{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
-#alim-modal .am-title{font-size:1.55rem;font-weight:800;color:#fff;letter-spacing:-.025em;line-height:1.15}
-#alim-modal .am-sub{font-size:.7rem;font-family:var(--mono);color:rgba(255,255,255,.42);margin-top:5px}
-#alim-modal .am-bigprice{text-align:right;flex:none}
-#alim-modal .am-bigprice .l{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700}
-#alim-modal .am-bigprice .v{font-size:1.4rem;font-weight:800;color:var(--red);white-space:nowrap}
-#alim-modal .am-contact{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:20px 0}
-#alim-modal .am-wa{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#25D366,#1eb858);color:#04270f;border-radius:13px;padding:12px 20px;font-size:.9rem;font-weight:800;text-decoration:none;box-shadow:0 12px 28px -10px rgba(37,211,102,.6);transition:.22s cubic-bezier(.16,1,.3,1)}
-#alim-modal .am-wa:hover{transform:translateY(-2px);box-shadow:0 18px 36px -10px rgba(37,211,102,.72)}
-#alim-modal .am-wa svg{width:18px;height:18px}
-#alim-modal .am-cbtn{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;border-radius:13px;padding:12px 17px;font-size:.85rem;font-weight:600;text-decoration:none;transition:.2s}
-#alim-modal .am-cbtn:hover{background:rgba(255,255,255,.12)}
-#alim-modal .am-cbtn svg{width:15px;height:15px;opacity:.85}
-#alim-modal .am-member{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;padding:8px 14px;border-radius:99px;background:rgba(61,220,132,.16);color:#3DDC84;max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#alim-modal .am-member.guest{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5)}
-#alim-modal .am-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;margin-bottom:22px}
-#alim-modal .am-gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;cursor:zoom-in;border:1px solid rgba(255,255,255,.1);transition:.2s}
-#alim-modal .am-gallery img:hover{transform:scale(1.05);border-color:var(--red)}
-#alim-modal .am-block-t{font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:700;margin:22px 0 11px}
-#alim-modal .am-stepper{display:flex;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02);margin-bottom:4px}
-#alim-modal .am-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 4px;cursor:pointer;border:none;background:none;color:rgba(255,255,255,.45);font-family:inherit;font-size:.7rem;font-weight:600;transition:.2s;border-right:1px solid rgba(255,255,255,.06)}
-#alim-modal .am-step:last-child{border-right:none}
-#alim-modal .am-step:hover{background:rgba(255,255,255,.05);color:#fff}
-#alim-modal .am-step.on{background:var(--red);color:#fff}
-#alim-modal .am-step.done{color:rgba(255,255,255,.82)}
-#alim-modal .am-step-dot{width:23px;height:23px;border-radius:50%;border:1.5px solid currentColor;display:grid;place-items:center;font-size:.68rem;font-weight:700}
-#alim-modal .am-step-dot svg{width:12px;height:12px}
-#alim-modal .am-step.on .am-step-dot{background:#fff;color:var(--red);border-color:#fff}
-#alim-modal .am-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-#alim-modal .am-panel{border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:15px 17px;background:rgba(255,255,255,.022)}
-#alim-modal .am-panel .am-block-t{margin:0 0 9px}
-#alim-modal .am-row{display:flex;justify-content:space-between;gap:12px;padding:8px 0;font-size:.83rem;border-bottom:1px solid rgba(255,255,255,.05)}
-#alim-modal .am-row:last-child{border-bottom:none}
-#alim-modal .am-row .k{color:rgba(255,255,255,.5)}
-#alim-modal .am-row .v{color:#fff;font-weight:600;text-align:right;word-break:break-word}
-#alim-modal .am-row .v a{color:#5aa8ff;text-decoration:none}
-#alim-modal .am-offer{border:1px solid rgba(255,77,46,.28);background:rgba(255,77,46,.07);border-radius:16px;padding:17px;margin-bottom:11px}
-#alim-modal .am-offer.acc{border-color:rgba(61,220,132,.3);background:rgba(61,220,132,.07)}
-#alim-modal .am-offer.rej{border-color:rgba(255,255,255,.12);background:rgba(255,255,255,.03)}
-#alim-modal .am-offer-amt{font-size:1.6rem;font-weight:800;color:var(--red)}
-#alim-modal .am-offer.acc .am-offer-amt{color:#3DDC84}
-#alim-modal .am-offer-msg{font-size:.85rem;color:rgba(255,255,255,.78);margin-top:6px;white-space:pre-wrap}
-#alim-modal .am-offer-meta{font-size:.69rem;color:rgba(255,255,255,.5);font-family:var(--mono);margin-top:11px;display:flex;align-items:center;gap:9px;flex-wrap:wrap}
-#alim-modal .am-tag{font-size:.66rem;font-weight:700;padding:3px 9px;border-radius:99px}
-#alim-modal .am-tag.ok{background:rgba(61,220,132,.18);color:#3DDC84}
-#alim-modal .am-tag.no{background:rgba(255,69,58,.16);color:#ff7a70}
-#alim-modal .am-tag.wait{background:rgba(212,175,55,.16);color:#e0c050}
-#alim-modal .alim-note{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:12px;color:#fff;padding:12px;font-size:.86rem;font-family:inherit;min-height:64px;resize:vertical;outline:none}
-#alim-modal .alim-note:focus{border-color:var(--red)}
-#alim-modal .alim-savebtn{margin-top:11px;border:none;background:linear-gradient(135deg,var(--red),#ff7a4d);color:#fff;border-radius:13px;padding:13px 24px;font-size:.86rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.22s;box-shadow:0 12px 28px -12px rgba(255,69,58,.6)}
-#alim-modal .alim-savebtn:hover{transform:translateY(-1px)}
-#alim-modal .alim-savebtn:disabled{opacity:.5;cursor:default;transform:none}
-#alim-modal .alim-offerinp{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#fff;padding:13px;font-size:1.05rem;font-weight:700;font-family:inherit;outline:none;margin-bottom:9px}
-#alim-modal .alim-offerinp:focus{border-color:var(--red)}
-#alim-modal .alim-pill{font-size:.64rem;font-weight:700;padding:4px 10px;border-radius:99px;letter-spacing:.02em;white-space:nowrap}
-@media(max-width:620px){#alim-modal .am-grid2{grid-template-columns:1fr}#alim-modal .am-title{font-size:1.3rem}#alim-modal .am-member{margin-left:0}#alim-modal .am-contact .am-wa{flex:1 1 100%;justify-content:center}}
-#alim-lb{display:none;position:fixed;inset:0;z-index:100001;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
-#alim-lb.show{display:flex}
-#alim-lb img{max-width:100%;max-height:100%;border-radius:10px}
+#page-alim .alim-modal{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px}
+#page-alim .alim-modal.show{display:flex;animation:page-enter .25s ease}
+#page-alim .alim-modal-card{background:#121214;border:1px solid rgba(255,255,255,.1);border-radius:20px;width:100%;max-width:680px;max-height:90vh;overflow-y:auto;position:relative;padding:26px}
+#page-alim .alim-modal-x{position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(255,255,255,.5);font-size:28px;line-height:1;cursor:pointer;z-index:2}
+#page-alim .alim-modal-x:hover{color:#fff}
+#page-alim .alim-mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin:14px 0}
+#page-alim .alim-mgrid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:zoom-in;border:1px solid rgba(255,255,255,.1);transition:.2s}
+#page-alim .alim-mgrid img:hover{transform:scale(1.04);border-color:var(--red)}
+#page-alim .alim-drow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.84rem}
+#page-alim .alim-drow .k{color:rgba(255,255,255,.5)}
+#page-alim .alim-drow .v{color:#fff;font-weight:500;text-align:right}
+#page-alim .alim-drow .v a{color:#5aa8ff;text-decoration:none}
+#page-alim .alim-statusrow{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 10px}
+#page-alim .alim-sbtn{border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:rgba(255,255,255,.75);border-radius:10px;padding:9px 14px;font-size:.76rem;font-weight:600;cursor:pointer;font-family:inherit;transition:.2s}
+#page-alim .alim-sbtn:hover{background:rgba(255,255,255,.09);color:#fff}
+#page-alim .alim-sbtn.on{background:var(--red);border-color:var(--red);color:#fff}
+#page-alim .alim-note{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:11px;color:#fff;padding:11px;font-size:.84rem;font-family:inherit;min-height:70px;resize:vertical;outline:none;margin-top:6px}
+#page-alim .alim-note:focus{border-color:var(--red)}
+#page-alim .alim-savebtn{margin-top:10px;border:none;background:var(--red);color:#fff;border-radius:10px;padding:10px 20px;font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
+#page-alim .alim-savebtn:hover{filter:brightness(1.1)}
+#page-alim .alim-savebtn:disabled{opacity:.5;cursor:default}
+#page-alim .alim-lb{display:none;position:fixed;inset:0;z-index:10001;background:rgba(0,0,0,.92);align-items:center;justify-content:center;padding:30px;cursor:zoom-out}
+#page-alim .alim-lb.show{display:flex}
+#page-alim .alim-lb img{max-width:100%;max-height:100%;border-radius:10px}
 @media(max-width:600px){#page-alim .alim-list{grid-template-columns:1fr}}
 </style>
 
@@ -8022,17 +7969,6 @@ function finAnimateKPIs() {
   var ENDPOINT = '/api/sell-camera';
   window.ALIM = { items:[], filter:'all', q:'', loaded:false };
   var STLAB = { yeni:'Yeni', inceleniyor:'İnceleniyor', teklif:'Teklif Verildi', kapandi:'Kapandı' };
-  var AC_COL = { yeni:'#ff7a70', inceleniyor:'#5aa8ff', teklif:'#e0c050', kapandi:'rgba(255,255,255,.35)' };
-  var IC_USER='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0112 0v1"/></svg>';
-  var IC_PIN='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-6.4 7-11a7 7 0 10-14 0c0 4.6 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>';
-  var IC_WA='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.638 5.422l-.999 3.648 3.86-.969zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>';
-  var IC_PHONE='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0122 16.92z"/></svg>';
-  var IC_MAIL='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg>';
-  var IC_CHK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
-  // Modal + lightbox'i body'ye tasi: bagimsiz popup, sayfa duzeninden/transform'undan etkilenmez, daima viewport ortasinda
-  (function(){ var m=document.getElementById('alim-modal'), l=document.getElementById('alim-lb');
-    if(m && m.parentNode!==document.body) document.body.appendChild(m);
-    if(l && l.parentNode!==document.body) document.body.appendChild(l); })();
 
   function key(){ try{ return localStorage.getItem('rcl_alim_key')||''; }catch(e){ return ''; } }
   function setKey(k){ try{ localStorage.setItem('rcl_alim_key', k); }catch(e){} }
@@ -8115,28 +8051,15 @@ function finAnimateKPIs() {
     if(!rows.length){ list.innerHTML='<div class="alim-empty">'+(window.ALIM.items.length?'Bu filtreye uygun başvuru yok.':'Henüz başvuru yok.')+'</div>'; return; }
     list.innerHTML=rows.map(function(x){
       var ph=(x.photos||[]);
+      var thumbs=ph.slice(0,3).map(function(u){ return '<img src="'+esc(u)+'" alt="" loading="lazy">'; }).join('');
+      if(ph.length>3) thumbs+='<div class="more">+'+(ph.length-3)+'</div>';
       var st=x.status||'yeni';
-      var cover=ph[0]?'<div class="ac-cover" style="background-image:url('+esc(ph[0])+')">'+(ph.length>1?'<span class="ac-count">'+ph.length+'</span>':'')+'</div>':'<div class="ac-cover empty"></div>';
-      var of=x.offer;
-      var ob='';
-      if(of&&of.accepted===true) ob='<span class="alim-pill" style="background:rgba(61,220,132,.18);color:#3DDC84">Kabul</span>';
-      else if(of&&of.accepted===false) ob='<span class="alim-pill" style="background:rgba(255,69,58,.16);color:#ff7a70">Red</span>';
-      else if(of&&of.accepted===null&&st==='teklif') ob='<span class="alim-pill" style="background:rgba(212,175,55,.16);color:#e0c050">Bekliyor</span>';
-      var cdig=(x.phone||'').replace(/\D/g,'');
-      var cwa=cdig; if(cdig.length===11&&cdig.charAt(0)==='0') cwa='90'+cdig.slice(1); else if(cdig.length===10) cwa='90'+cdig;
-      var cwaTxt=encodeURIComponent('Merhaba '+(x.name||'')+', RetroCameraLand kamera alim basvurun ('+(x.ref||'')+') hakkinda yaziyoruz.');
-      var cwaBtn=cwa?'<a class="ac-wa" href="https://wa.me/'+cwa+'?text='+cwaTxt+'" target="_blank" rel="noopener" title="WhatsApp ile yaz" onclick="event.stopPropagation()">'+IC_WA+'</a>':'';
-      return '<div class="alim-card" style="--ac:'+(AC_COL[st]||'var(--red)')+'" onclick="alimOpen(\''+esc(x.id)+'\')">'+
-        cover+
-        '<div class="ac-body">'+
-          '<div class="ac-r1"><div style="min-width:0"><div class="ac-model">'+esc(x.model||'—')+'</div><div class="ac-ref">'+esc(x.ref||'')+'</div></div><div class="ac-price">'+esc(x.price||'—')+' TL</div></div>'+
-          '<div class="ac-chips">'+
-            '<span class="ac-chip">'+IC_USER+esc(x.name||'—')+'</span>'+
-            (x.city?'<span class="ac-chip">'+IC_PIN+esc(x.city)+'</span>':'')+
-            (x.memberEmail?'<span class="ac-chip" style="background:rgba(61,220,132,.12);color:#3DDC84">Uye</span>':'')+
-          '</div>'+
-          '<div class="ac-foot"><span class="ac-date">'+fmtDate(x.createdAt)+'</span><span class="ac-badges">'+cwaBtn+ob+'<span class="alim-pill '+st+'">'+esc(STLAB[st]||st)+'</span></span></div>'+
-        '</div>'+
+      return '<div class="alim-card" onclick="alimOpen(\''+esc(x.id)+'\')">'+
+        '<div class="alim-card-top"><div><div class="alim-model">'+esc(x.model||'—')+'</div><div class="alim-ref">'+esc(x.ref||'')+'</div></div>'+
+        '<div class="alim-price">'+esc(x.price||'—')+' TL</div></div>'+
+        (thumbs?'<div class="alim-thumbs">'+thumbs+'</div>':'')+
+        '<div class="alim-meta"><span><b>'+esc(x.name||'—')+'</b></span><span>'+esc(x.city||'')+'</span><span>Çalışıyor: <b>'+esc(x.working||'—')+'</b></span></div>'+
+        '<div class="alim-card-foot"><span class="alim-date">'+fmtDate(x.createdAt)+'</span><span class="alim-pill '+st+'">'+esc(STLAB[st]||st)+'</span></div>'+
       '</div>';
     }).join('');
   }
@@ -8144,63 +8067,31 @@ function finAnimateKPIs() {
   window.alimOpen=function(id){
     var x=window.ALIM.items.find(function(i){ return i.id===id; }); if(!x) return;
     var st=x.status||'yeni';
-    var gallery=(x.photos||[]).map(function(u){ return '<img src="'+esc(u)+'" onclick="alimLb(\''+esc(u)+'\')" alt="">'; }).join('');
-    var row=function(k,v){ return v?'<div class="am-row"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>':''; };
-    var STEPS=[['yeni','Yeni'],['inceleniyor','İnceleniyor'],['teklif','Teklif'],['kapandi','Kapandı']];
-    var curIdx=0; for(var si=0;si<STEPS.length;si++){ if(STEPS[si][0]===st){ curIdx=si; break; } }
-    var stepper=STEPS.map(function(s,i){
-      var cls=s[0]===st?'on':(i<curIdx?'done':'');
-      return '<button class="am-step '+cls+'" onclick="alimSetStatus(\''+esc(x.id)+'\',\''+s[0]+'\')"><span class="am-step-dot">'+(i<curIdx?IC_CHK:(i+1))+'</span>'+s[1]+'</button>';
+    var photos=(x.photos||[]).map(function(u){ return '<img src="'+esc(u)+'" onclick="alimLb(\''+esc(u)+'\')" alt="">'; }).join('');
+    var row=function(k,v){ return v?'<div class="alim-drow"><span class="k">'+k+'</span><span class="v">'+v+'</span></div>':''; };
+    var sbtns=['yeni','inceleniyor','teklif','kapandi'].map(function(s){
+      return '<button class="alim-sbtn'+(s===st?' on':'')+'" onclick="alimSetStatus(\''+esc(x.id)+'\',\''+s+'\')">'+STLAB[s]+'</button>';
     }).join('');
-    var digits=(x.phone||'').replace(/\D/g,'');
-    var wa=digits; if(digits.length===11&&digits.charAt(0)==='0') wa='90'+digits.slice(1); else if(digits.length===10) wa='90'+digits;
-    var waText=encodeURIComponent('Merhaba '+(x.name||'')+', RetroCameraLand kamera alim basvurun (Ref: '+(x.ref||'')+' - '+(x.model||'')+') hakkinda yaziyoruz.');
-    var waBtn = wa ? '<a class="am-wa" href="https://wa.me/'+wa+'?text='+waText+'" target="_blank" rel="noopener">'+IC_WA+'WhatsApp ile Yaz</a>' : '';
-    var callBtn = digits ? '<a class="am-cbtn" href="tel:'+esc(digits)+'">'+IC_PHONE+'Ara</a>' : '';
-    var mailBtn = x.email ? '<a class="am-cbtn" href="mailto:'+esc(x.email)+'">'+IC_MAIL+'E-posta</a>' : '';
-    var memberBadge = x.memberEmail ? '<span class="am-member">Uye: '+esc(x.memberEmail)+'</span>' : '<span class="am-member guest">Misafir</span>';
-    var of=x.offer;
-    var offerView='';
-    if(of){
-      var ocls=of.accepted===true?'acc':(of.accepted===false?'rej':'');
-      var otag=of.accepted===true?'<span class="am-tag ok">Müşteri kabul etti</span>':(of.accepted===false?'<span class="am-tag no">Müşteri reddetti</span>':'<span class="am-tag wait">Yanıt bekleniyor</span>');
-      offerView='<div class="am-offer '+ocls+'"><div class="am-offer-amt">'+esc(of.amount)+' TL</div>'+
-        (of.message?'<div class="am-offer-msg">'+esc(of.message)+'</div>':'')+
-        '<div class="am-offer-meta">'+otag+'<span>Gönderildi: '+fmtDate(of.sentAt)+'</span>'+(of.answeredAt?'<span>Yanıt: '+fmtDate(of.answeredAt)+'</span>':'')+'</div></div>';
-    }
-    var offerForm=
-      '<input id="alim-offer-amt" class="alim-offerinp" type="text" inputmode="numeric" placeholder="Teklif tutarı (TL)" value="'+(of?esc(of.amount):'')+'">'+
-      '<textarea id="alim-offer-msg" class="alim-note" placeholder="Müşteriye mesaj (opsiyonel)">'+(of&&of.message?esc(of.message):'')+'</textarea>'+
-      '<button class="alim-savebtn" id="alim-offer-send" onclick="alimSendOffer(\''+esc(x.id)+'\')">'+(of?'Teklifi Güncelle + E-posta':'Teklif Gönder + E-posta')+'</button>';
     var body=
-      '<div class="am-head"><div class="am-titlerow"><div style="min-width:0"><div class="am-title">'+esc(x.model||'—')+'</div><div class="am-sub">'+esc(x.ref||'')+' &middot; '+fmtDate(x.createdAt)+'</div></div>'+
-        '<div class="am-bigprice"><div class="l">Beklenti</div><div class="v">'+esc(x.price||'—')+' TL</div></div></div></div>'+
-      '<div class="am-contact">'+waBtn+callBtn+mailBtn+memberBadge+'</div>'+
-      (gallery?'<div class="am-gallery">'+gallery+'</div>':'')+
-      '<div class="am-block-t">Durum</div><div class="am-stepper">'+stepper+'</div>'+
-      '<div class="am-grid2">'+
-        '<div class="am-panel"><div class="am-block-t">Kamera</div>'+
-          row('Fiyat beklentisi','<b style="color:var(--red)">'+esc(x.price||'—')+' TL</b>')+
-          row('Çalışıyor mu',esc(x.working))+
-          row('Kasa durumu',esc(x.condition))+
-          row('Orijinal kutu',esc(x.box))+
-          row('Eksik parça',esc(x.missing))+
-        '</div>'+
-        '<div class="am-panel"><div class="am-block-t">Müşteri & Gönderim</div>'+
-          row('Ad Soyad',esc(x.name))+
-          row('Telefon','<a href="tel:'+esc(digits)+'">'+esc(x.phone)+'</a>')+
-          row('E-posta','<a href="mailto:'+esc(x.email)+'">'+esc(x.email)+'</a>')+
-          row('Gönderim ili',esc(x.city))+
-          row('Üyelik',x.memberEmail?'<span style="color:#3DDC84">Üye</span>':'Misafir')+
-        '</div>'+
-      '</div>'+
-      '<div class="am-block-t">Teklif</div>'+offerView+offerForm+
-      '<div class="am-block-t">İç Not</div>'+
+      '<div style="font-size:1.3rem;font-weight:800;letter-spacing:-.02em;color:#fff;padding-right:30px">'+esc(x.model||'—')+'</div>'+
+      '<div style="font-size:.7rem;font-family:var(--mono);color:rgba(255,255,255,.4);margin-top:3px">'+esc(x.ref||'')+' · '+fmtDate(x.createdAt)+'</div>'+
+      (photos?'<div class="alim-mgrid">'+photos+'</div>':'')+
+      row('Fiyat Beklentisi','<b style="color:var(--red)">'+esc(x.price||'—')+' TL</b>')+
+      row('Ad Soyad',esc(x.name))+
+      row('Telefon','<a href="tel:'+esc((x.phone||'').replace(/\\s/g,''))+'">'+esc(x.phone)+'</a>')+
+      row('E-posta','<a href="mailto:'+esc(x.email)+'">'+esc(x.email)+'</a>')+
+      row('Gönderim İli',esc(x.city))+
+      row('Çalışıyor mu',esc(x.working))+
+      row('Kasa Durumu',esc(x.condition))+
+      row('Orijinal Kutu',esc(x.box))+
+      row('Eksik Parça / Not',esc(x.missing))+
+      '<div style="margin-top:18px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.6)">Durum</div>'+
+      '<div class="alim-statusrow">'+sbtns+'</div>'+
+      '<div style="margin-top:6px;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.6)">İç Not</div>'+
       '<textarea class="alim-note" id="alim-note-input" placeholder="Bu başvuruyla ilgili notun...">'+esc(x.note||'')+'</textarea>'+
       '<button class="alim-savebtn" id="alim-note-save" onclick="alimSaveNote(\''+esc(x.id)+'\')">Notu Kaydet</button>';
     document.getElementById('alim-modal-body').innerHTML=body;
     document.getElementById('alim-modal').classList.add('show');
-    var mc=document.querySelector('#alim-modal .alim-modal-card'); if(mc) mc.scrollTop=0;
   };
   window.alimCloseModal=function(){ document.getElementById('alim-modal').classList.remove('show'); };
   window.alimLb=function(u){ document.getElementById('alim-lb-img').src=u; document.getElementById('alim-lb').classList.add('show'); };
@@ -8228,18 +8119,6 @@ function finAnimateKPIs() {
     if(!inp) return; if(btn){ btn.disabled=true; btn.textContent='Kaydediliyor…'; }
     patch(id,{note:inp.value},function(j){
       if(btn){ btn.disabled=false; btn.textContent=(j&&j.ok)?'Kaydedildi ✓':'Tekrar Dene'; setTimeout(function(){ if(btn) btn.textContent='Notu Kaydet'; },1800); }
-    });
-  };
-  window.alimSendOffer=function(id){
-    var amt=document.getElementById('alim-offer-amt'); var msg=document.getElementById('alim-offer-msg'); var btn=document.getElementById('alim-offer-send');
-    if(!amt||!amt.value.trim()){ if(amt){ amt.focus(); amt.style.borderColor='#ff7a70'; } return; }
-    if(btn){ btn.disabled=true; btn.textContent='Gonderiliyor…'; }
-    patch(id,{offer:{amount:amt.value.trim(),message:msg?msg.value.trim():''}},function(j){
-      if(btn){ btn.disabled=false;
-        var mailed=j&&j.email&&j.email.ok;
-        btn.textContent=(j&&j.ok)?(mailed?'Gonderildi + e-posta ✓':'Kaydedildi (BREVO_API_KEY yok)'):'Tekrar Dene';
-      }
-      if(j&&j.ok) setTimeout(function(){ alimOpen(id); },1000);
     });
   };
 
