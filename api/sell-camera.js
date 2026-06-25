@@ -1,147 +1,140 @@
-// RetroCameraLand - Kamera On Satin Alim basvuru API
+// RetroCameraLand - Kamera On Satin Alim basvuru API (Node.js serverless)
 // POST (public): Shopify "Kamerani Sat" formundan basvuru alir, fotograflari
 //   Vercel Blob'a yukler, kaydi Blob'a JSON olarak yazar, Telegram'a bildirir.
 // GET (token):   tum basvurulari listeler (HQ dashboard "Kamera Alim" sekmesi).
-// PATCH (token): bir basvurunun durumunu/notunu gunceller.
+// PATCH (token): bir basvurunun durumunu/notunu/teklifini gunceller.
 //
 // Gerekli env: BLOB_READ_WRITE_TOKEN (Vercel Blob otomatik saglar)
 // Opsiyonel:   RCL_ALIM_KEY (dashboard erisim anahtari), TG_BOT_TOKEN, TG_CHAT_ID
 import { put, list } from '@vercel/blob';
+import crypto from 'node:crypto';
 
-export const config = { runtime: 'edge' };
-
-const CORS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, PATCH, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, x-rcl-key',
-};
 const PREFIX = 'submissions/';
 const STATUSES = ['yeni', 'inceleniyor', 'teklif', 'kapandi'];
 
-function json(body, status) {
-  return new Response(JSON.stringify(body), {
-    status: status || 200,
-    headers: { 'Content-Type': 'application/json', ...CORS },
-  });
+function cors(res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-rcl-key');
+}
+function send(res, status, body) {
+  cors(res);
+  res.status(status).setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify(body));
 }
 
 function makeId() {
-  const a = new Uint8Array(8);
-  crypto.getRandomValues(a);
-  return Array.from(a, (b) => b.toString(16).padStart(2, '0')).join('');
+  return crypto.randomBytes(8).toString('hex');
 }
 
-function dataUrlToBytes(dataUrl) {
+function dataUrlToBuffer(dataUrl) {
   const comma = dataUrl.indexOf(',');
   const meta = dataUrl.slice(0, comma);
   const b64 = dataUrl.slice(comma + 1);
   const mime = (meta.match(/data:([^;]+)/) || [])[1] || 'image/jpeg';
-  const bin = atob(b64);
-  const bytes = new Uint8Array(bin.length);
-  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
-  return { bytes, mime };
+  return { buffer: Buffer.from(b64, 'base64'), mime };
+}
+
+async function readJson(req) {
+  if (req.body && typeof req.body === 'object') return req.body;
+  const chunks = [];
+  for await (const c of req) chunks.push(c);
+  const raw = Buffer.concat(chunks).toString('utf8');
+  return raw ? JSON.parse(raw) : {};
 }
 
 function authed(req) {
-  const need = (typeof process !== 'undefined' && process.env.RCL_ALIM_KEY) || '';
+  const need = process.env.RCL_ALIM_KEY || '';
   if (!need) return true; // anahtar tanimli degilse acik (ilk kurulum)
-  return req.headers.get('x-rcl-key') === need;
+  return req.headers['x-rcl-key'] === need;
 }
 
 async function notifyTelegram(rec) {
-  const token = typeof process !== 'undefined' ? process.env.TG_BOT_TOKEN : null;
-  const chatId = typeof process !== 'undefined' ? process.env.TG_CHAT_ID : null;
+  const token = process.env.TG_BOT_TOKEN, chatId = process.env.TG_CHAT_ID;
   if (!token || !chatId) return;
-  const esc = (s) => String(s || '-').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const e = (s) => String(s || '-').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const text =
     '<b>Yeni Kamera Alim Basvurusu</b>\n' +
-    'Ref: <code>' + esc(rec.ref) + '</code>\n' +
-    'Kamera: <b>' + esc(rec.model) + '</b>\n' +
-    'Beklenti: ' + esc(rec.price) + ' TL\n' +
-    'Durum: ' + esc(rec.working) + ' / ' + esc(rec.condition) + '\n' +
-    'Kutu: ' + esc(rec.box) + '\n' +
-    'Ad: ' + esc(rec.name) + '\n' +
-    'Tel: ' + esc(rec.phone) + '\n' +
-    'E-posta: ' + esc(rec.email) + '\n' +
-    'Il: ' + esc(rec.city) + '\n' +
+    'Ref: <code>' + e(rec.ref) + '</code>\n' +
+    'Kamera: <b>' + e(rec.model) + '</b>\n' +
+    'Beklenti: ' + e(rec.price) + ' TL\n' +
+    'Calisiyor: ' + e(rec.working) + ' / ' + e(rec.condition) + '\n' +
+    'Ad: ' + e(rec.name) + '  Tel: ' + e(rec.phone) + '\n' +
+    'E-posta: ' + e(rec.email) + '  Il: ' + e(rec.city) + '\n' +
     'Foto: ' + (rec.photos ? rec.photos.length : 0) + ' adet';
   try {
     await fetch('https://api.telegram.org/bot' + token + '/sendMessage', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'HTML', disable_web_page_preview: true }),
     });
   } catch (e) { /* bildirim hatasi basvuruyu bozmaz */ }
 }
 
-export default async function handler(req) {
-  if (req.method === 'OPTIONS') return new Response(null, { headers: CORS });
+async function loadRecord(id) {
+  const res = await list({ prefix: PREFIX + id + '.json', limit: 1 });
+  const hit = res.blobs.find((x) => x.pathname === PREFIX + id + '.json');
+  if (!hit) return null;
+  const r = await fetch(hit.url, { cache: 'no-store' });
+  return r.ok ? await r.json() : null;
+}
+async function saveRecord(rec) {
+  await put(PREFIX + rec.id + '.json', JSON.stringify(rec), {
+    access: 'public', contentType: 'application/json', addRandomSuffix: false, allowOverwrite: true,
+  });
+}
+
+export default async function handler(req, res) {
+  if (req.method === 'OPTIONS') { cors(res); return res.status(204).end(); }
 
   // ---- POST: yeni basvuru (public) ----
   if (req.method === 'POST') {
     let b;
-    try { b = await req.json(); } catch (e) { return json({ error: 'Gecersiz istek' }, 400); }
+    try { b = await readJson(req); } catch (e) { return send(res, 400, { error: 'Gecersiz istek' }); }
 
-    const required = ['name', 'phone', 'email', 'model', 'price'];
-    for (const k of required) {
-      if (!b[k] || !String(b[k]).trim()) return json({ error: 'Eksik alan: ' + k }, 400);
+    for (const k of ['name', 'phone', 'email', 'model', 'price']) {
+      if (!b[k] || !String(b[k]).trim()) return send(res, 400, { error: 'Eksik alan: ' + k });
     }
     const photos = Array.isArray(b.photos) ? b.photos.filter((p) => typeof p === 'string' && p.startsWith('data:')) : [];
-    if (photos.length < 1) return json({ error: 'En az 1 fotograf gerekli' }, 400);
-    if (photos.length > 10) return json({ error: 'Cok fazla fotograf' }, 400);
+    if (photos.length < 1) return send(res, 400, { error: 'En az 1 fotograf gerekli' });
+    if (photos.length > 10) return send(res, 400, { error: 'Cok fazla fotograf' });
 
     const id = makeId();
     const ref = 'RCL-' + id.slice(0, 6).toUpperCase();
-    const createdAt = new Date().toISOString();
 
-    // fotograflari yukle
     const urls = [];
     try {
       for (let i = 0; i < photos.length; i++) {
-        const { bytes, mime } = dataUrlToBytes(photos[i]);
-        const ext = mime.indexOf('png') >= 0 ? 'png' : (mime.indexOf('webp') >= 0 ? 'webp' : 'jpg');
-        const blob = await put(PREFIX + id + '/foto-' + (i + 1) + '.' + ext, bytes, {
+        const { buffer, mime } = dataUrlToBuffer(photos[i]);
+        const ext = mime.includes('png') ? 'png' : (mime.includes('webp') ? 'webp' : 'jpg');
+        const blob = await put(PREFIX + id + '/foto-' + (i + 1) + '.' + ext, buffer, {
           access: 'public', contentType: mime, addRandomSuffix: true,
         });
         urls.push(blob.url);
       }
     } catch (e) {
-      return json({ error: 'Fotograf yuklenemedi: ' + (e.message || e) }, 500);
+      return send(res, 500, { error: 'Fotograf yuklenemedi: ' + (e.message || e) });
     }
 
     const rec = {
-      id, ref, createdAt,
-      name: String(b.name).trim(),
-      phone: String(b.phone).trim(),
-      email: String(b.email).trim(),
-      city: String(b.city || '').trim(),
-      model: String(b.model).trim(),
-      price: String(b.price).trim(),
-      box: String(b.box || '').trim(),
-      working: String(b.working || '').trim(),
-      condition: String(b.condition || '').trim(),
-      missing: String(b.missing || '').trim(),
-      photos: urls,
-      source: String(b.source || '').trim(),
-      page: String(b.page || '').trim(),
-      status: 'yeni',
-      note: '',
+      id, ref, createdAt: new Date().toISOString(),
+      name: String(b.name).trim(), phone: String(b.phone).trim(), email: String(b.email).trim(),
+      city: String(b.city || '').trim(), model: String(b.model).trim(), price: String(b.price).trim(),
+      box: String(b.box || '').trim(), working: String(b.working || '').trim(),
+      condition: String(b.condition || '').trim(), missing: String(b.missing || '').trim(),
+      photos: urls, source: String(b.source || '').trim(), page: String(b.page || '').trim(),
+      memberEmail: b.memberEmail ? String(b.memberEmail).trim().toLowerCase() : '',
+      status: 'yeni', note: '', offer: null,
     };
 
-    try {
-      await put(PREFIX + id + '.json', JSON.stringify(rec), {
-        access: 'public', contentType: 'application/json', addRandomSuffix: false, allowOverwrite: true,
-      });
-    } catch (e) {
-      return json({ error: 'Kayit yazilamadi: ' + (e.message || e) }, 500);
-    }
+    try { await saveRecord(rec); }
+    catch (e) { return send(res, 500, { error: 'Kayit yazilamadi: ' + (e.message || e) }); }
 
     notifyTelegram(rec);
-    return json({ ok: true, ref, id });
+    return send(res, 200, { ok: true, ref, id });
   }
 
   // ---- bundan sonrasi korumali ----
-  if (!authed(req)) return json({ error: 'Yetkisiz' }, 401);
+  if (!authed(req)) return send(res, 401, { error: 'Yetkisiz' });
 
   // ---- GET: listele ----
   if (req.method === 'GET') {
@@ -149,45 +142,48 @@ export default async function handler(req) {
       const out = [];
       let cursor;
       do {
-        const res = await list({ prefix: PREFIX, cursor, limit: 1000 });
-        for (const it of res.blobs) {
+        const r = await list({ prefix: PREFIX, cursor, limit: 1000 });
+        for (const it of r.blobs) {
           if (!it.pathname.endsWith('.json')) continue;
-          try {
-            const r = await fetch(it.url, { cache: 'no-store' });
-            if (r.ok) out.push(await r.json());
-          } catch (e) { /* tek kayit bozuksa atla */ }
+          try { const j = await fetch(it.url, { cache: 'no-store' }); if (j.ok) out.push(await j.json()); }
+          catch (e) { /* bozuk kayit atla */ }
         }
-        cursor = res.cursor;
+        cursor = r.cursor;
       } while (cursor);
       out.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
-      return json({ ok: true, items: out });
+      return send(res, 200, { ok: true, items: out });
     } catch (e) {
-      return json({ error: 'Liste alinamadi: ' + (e.message || e) }, 500);
+      return send(res, 500, { error: 'Liste alinamadi: ' + (e.message || e) });
     }
   }
 
-  // ---- PATCH: durum/not guncelle ----
+  // ---- PATCH: durum / not / teklif guncelle ----
   if (req.method === 'PATCH') {
     let b;
-    try { b = await req.json(); } catch (e) { return json({ error: 'Gecersiz istek' }, 400); }
-    if (!b.id) return json({ error: 'id gerekli' }, 400);
-    if (b.status && STATUSES.indexOf(b.status) < 0) return json({ error: 'Gecersiz durum' }, 400);
+    try { b = await readJson(req); } catch (e) { return send(res, 400, { error: 'Gecersiz istek' }); }
+    if (!b.id) return send(res, 400, { error: 'id gerekli' });
+    if (b.status && !STATUSES.includes(b.status)) return send(res, 400, { error: 'Gecersiz durum' });
     try {
-      const res = await list({ prefix: PREFIX + b.id + '.json', limit: 1 });
-      const hit = res.blobs.find((x) => x.pathname === PREFIX + b.id + '.json');
-      if (!hit) return json({ error: 'Kayit bulunamadi' }, 404);
-      const cur = await (await fetch(hit.url, { cache: 'no-store' })).json();
+      const cur = await loadRecord(b.id);
+      if (!cur) return send(res, 404, { error: 'Kayit bulunamadi' });
       if (typeof b.status === 'string') cur.status = b.status;
       if (typeof b.note === 'string') cur.note = b.note;
+      if (b.offer && typeof b.offer === 'object') {
+        cur.offer = {
+          amount: String(b.offer.amount || '').trim(),
+          message: String(b.offer.message || '').trim(),
+          sentAt: new Date().toISOString(),
+          accepted: null,
+        };
+        cur.status = 'teklif';
+      }
       cur.updatedAt = new Date().toISOString();
-      await put(PREFIX + b.id + '.json', JSON.stringify(cur), {
-        access: 'public', contentType: 'application/json', addRandomSuffix: false, allowOverwrite: true,
-      });
-      return json({ ok: true, item: cur });
+      await saveRecord(cur);
+      return send(res, 200, { ok: true, item: cur });
     } catch (e) {
-      return json({ error: 'Guncellenemedi: ' + (e.message || e) }, 500);
+      return send(res, 500, { error: 'Guncellenemedi: ' + (e.message || e) });
     }
   }
 
-  return json({ error: 'Method Not Allowed' }, 405);
+  return send(res, 405, { error: 'Method Not Allowed' });
 }
