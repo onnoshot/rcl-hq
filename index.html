@@ -8194,7 +8194,15 @@ function finAnimateKPIs() {
         if(list) list.innerHTML='<div class="alim-empty">Erişim anahtarı gerekli.</div>';
         return null;
       }
-      return r.json();
+      if(r.status===404){
+        if(list) list.innerHTML='<div class="alim-empty">Veri ucu (api/finder-log) henüz yayında değil. Vercel\'e deploy edilince kayıtlar burada görünecek.</div>';
+        return null;
+      }
+      // 404/500 sayfaları HTML döner; JSON.parse çökmeden önce metni güvenle dene.
+      return r.text().then(function(t){
+        try{ return JSON.parse(t); }
+        catch(e){ throw new Error('Veri ucu yayında değil (api/finder-log deploy edilmeli).'); }
+      });
     }).then(function(j){
       if(!j) return;
       if(!j.ok){ if(list) list.innerHTML='<div class="alim-empty">Hata: '+esc(j.error||'liste alınamadı')+'</div>'; return; }
@@ -8202,7 +8210,7 @@ function finAnimateKPIs() {
       var u=document.getElementById('bul-upd'); if(u) u.textContent=fmtDate(new Date().toISOString());
       drawBul();
     }).catch(function(e){
-      if(list) list.innerHTML='<div class="alim-empty">Bağlantı hatası: '+esc(e.message||'')+'</div>';
+      if(list) list.innerHTML='<div class="alim-empty">'+esc(e.message||'Bağlantı hatası')+'</div>';
     });
   }
   function kpis(){
