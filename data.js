@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-26T05:17:45",
+  "updated_at": "2026-06-26T12:41:51",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4060,
-    "total_views": 1216341,
+    "total_views": 1217554,
     "video_count": 384
   },
   "analytics": {
@@ -18,7 +18,7 @@ const YOUTUBE = {
     },
     "watch_hours_year": 3326.7,
     "watch_hours_year_long": 1776.1,
-    "watch_hours_year_shorts": 1550.5,
+    "watch_hours_year_shorts": 1550.6,
     "monthly": [
       {
         "label": "Oca 26",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 148,
+      "views": 149,
       "likes": 2,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2519,
+      "views": 2520,
       "likes": 37,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 2982,
+      "views": 2987,
       "likes": 44,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1704,
+      "views": 1705,
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 1993,
+      "views": 1994,
       "likes": 32,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
