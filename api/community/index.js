@@ -12,7 +12,8 @@ const ROUTES = {
   cameras: cameras.list,         // puana gore sirali kameralar (+marka filtresi)
   brands: cameras.brands,        // marka kategorileri
   camera: cameras.detail,        // kamera detayi + foto karti
-  'camera-vote': cameras.vote,   // kameraya oy
+  'camera-vote': cameras.vote,   // kameraya begeni
+  'camera-waitlist': cameras.waitlist, // bekleme listesi
   'camera-photo': photos.upload, // kameranin kartina foto yukle
   feed: photos.feed,             // global foto akisi
   'photo-like': photos.like,     // foto begen
