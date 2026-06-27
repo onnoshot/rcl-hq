@@ -20,7 +20,11 @@
   ],
   "rewrites": [
     { "source": "/api/community/stats", "destination": "/api/community/index?action=stats" },
+    { "source": "/api/community/sync", "destination": "/api/community/index?action=sync" },
     { "source": "/api/hesabim/community/(.*)", "destination": "/api/community/index?action=$1" }
+  ],
+  "crons": [
+    { "path": "/api/community/sync", "schedule": "0 6 * * *" }
   ],
   "functions": {
     "api/chat.js": {

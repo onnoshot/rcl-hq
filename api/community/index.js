@@ -7,6 +7,7 @@ import * as photos from '../../lib/community/photos.js';
 import * as profile from '../../lib/community/profile.js';
 import * as feedback from '../../lib/community/feedback.js';
 import * as quests from '../../lib/community/quests.js';
+import * as sync from '../../lib/community/sync.js';
 
 const ROUTES = {
   session: session.run,
@@ -24,6 +25,7 @@ const ROUTES = {
   feedback: feedback.submit,     // Time Capsule geri bildirim
   stats: feedback.stats,         // dashboard istatistik (RCL_ALIM_KEY)
   quests: quests.get,            // gorev / rozet sistemi
+  sync: sync.run,                // Shopify urunleri -> cameras (cron / RCL_ALIM_KEY)
 };
 
 export default async function handler(req, res) {
