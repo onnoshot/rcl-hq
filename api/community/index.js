@@ -1,30 +1,26 @@
-// RetroCameraLand Topluluk - TEK dispatcher fonksiyon (Vercel Hobby 12-fonksiyon limiti icin).
-// Tum community mantigi /lib/community/*.js icinde (fonksiyon sayilmaz). vercel.json rewrite'lari
-// /apps/hesabim/community/* isteklerini buraya action parametresiyle yonlendirir.
-import * as award from '../../lib/community/award.js';
-import * as discourseSso from '../../lib/community/discourse-sso.js';
-import * as feed from '../../lib/community/feed.js';
-import * as leaderboard from '../../lib/community/leaderboard.js';
-import * as moderate from '../../lib/community/moderate.js';
-import * as page from '../../lib/community/page.js';
-import * as profile from '../../lib/community/profile.js';
+// RetroCameraLand Topluluk v2 - TEK dispatcher fonksiyon (Vercel Hobby 12-fonksiyon limiti).
+// Tum mantik /lib/community/*.js icinde. vercel.json rewrite'lari
+// /apps/hesabim/community/<action> -> /api/community/index?action=<action> yonlendirir.
 import * as session from '../../lib/community/session.js';
-import * as sitemap from '../../lib/community/sitemap.js';
-import * as upload from '../../lib/community/upload.js';
-import * as vote from '../../lib/community/vote.js';
+import * as cameras from '../../lib/community/cameras.js';
+import * as photos from '../../lib/community/photos.js';
+import * as profile from '../../lib/community/profile.js';
+import * as feedback from '../../lib/community/feedback.js';
 
 const ROUTES = {
   session: session.run,
-  feed: feed.run,
-  vote: vote.run,
-  upload: upload.run,
-  profile: profile.run,
-  leaderboard: leaderboard.run,
-  sitemap: sitemap.run,
-  'discourse-sso': discourseSso.run,
-  page: page.run,
-  moderate: moderate.run,
-  award: award.run,
+  cameras: cameras.list,         // puana gore sirali kameralar (+marka filtresi)
+  brands: cameras.brands,        // marka kategorileri
+  camera: cameras.detail,        // kamera detayi + foto karti
+  'camera-vote': cameras.vote,   // kameraya oy
+  'camera-photo': photos.upload, // kameranin kartina foto yukle
+  feed: photos.feed,             // global foto akisi
+  'photo-like': photos.like,     // foto begen
+  comments: photos.comments,     // foto yorumlari (GET/POST)
+  profile: profile.get,          // kullanici profili
+  'my-camera': profile.addCamera,// profile kamera ekle/cikar
+  feedback: feedback.submit,     // Time Capsule geri bildirim
+  stats: feedback.stats,         // dashboard istatistik (RCL_ALIM_KEY)
 };
 
 export default async function handler(req, res) {

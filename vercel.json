@@ -19,11 +19,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/hesabim/community/profil/(.*)",  "destination": "/api/community/index?action=page&type=profil&seg=$1" },
-    { "source": "/api/hesabim/community/foto/(.*)",    "destination": "/api/community/index?action=page&type=foto&seg=$1" },
-    { "source": "/api/hesabim/community/yarisma/(.*)", "destination": "/api/community/index?action=page&type=yarisma&seg=$1" },
-    { "source": "/api/community/moderate", "destination": "/api/community/index?action=moderate" },
-    { "source": "/api/community/award",    "destination": "/api/community/index?action=award" },
+    { "source": "/api/community/stats", "destination": "/api/community/index?action=stats" },
     { "source": "/api/hesabim/community/(.*)", "destination": "/api/community/index?action=$1" }
   ],
   "functions": {
