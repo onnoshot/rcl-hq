@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-28T02:11:34",
+  "updated_at": "2026-06-28T02:57:36",
   "period_30d": {
     "revenue": 90629,
     "orders": 7,
@@ -310,21 +310,42 @@ const SHOPIFY = {
       "price": 28490
     },
     {
+      "name": "Olympus PEN E-PL1",
+      "price": 18490
+    },
+    {
       "name": "Olympus VR-340",
       "price": 17990
+    },
+    {
+      "name": "Canon Powershot ELPH 300 HS",
+      "price": 17490
     },
     {
       "name": "Fujifilm Finepix Z90",
       "price": 16490
     },
     {
+      "name": "Sony Cybershot DSC-T20",
+      "price": 16490,
+      "cost": 7000
+    },
+    {
       "name": "Fujifilm FinePix Z700 EXR",
+      "price": 15490
+    },
+    {
+      "name": "Samsung NX2000",
       "price": 15490
     },
     {
       "name": "Sony Cybershot DSC-T300",
       "price": 15490,
       "cost": 5000
+    },
+    {
+      "name": "Fujifilm FinePix Z700EXR",
+      "price": 14490
     },
     {
       "name": "Sony Cybershot DSC-W150",
@@ -350,6 +371,11 @@ const SHOPIFY = {
     {
       "name": "Panasonic DMC LS70",
       "price": 11490
+    },
+    {
+      "name": "Sanyo Xacti CG20",
+      "price": 11490,
+      "cost": 4000
     },
     {
       "name": "Casio Exilim EX-Z4",
@@ -430,7 +456,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 92
+  "out_of_stock": 90
 };
 /* ─── SHOPIFY DATA END ─── */
 
