@@ -6,6 +6,7 @@ import * as cameras from '../../lib/community/cameras.js';
 import * as photos from '../../lib/community/photos.js';
 import * as profile from '../../lib/community/profile.js';
 import * as feedback from '../../lib/community/feedback.js';
+import * as quests from '../../lib/community/quests.js';
 
 const ROUTES = {
   session: session.run,
@@ -22,6 +23,7 @@ const ROUTES = {
   'my-camera': profile.addCamera,// profile kamera ekle/cikar
   feedback: feedback.submit,     // Time Capsule geri bildirim
   stats: feedback.stats,         // dashboard istatistik (RCL_ALIM_KEY)
+  quests: quests.get,            // gorev / rozet sistemi
 };
 
 export default async function handler(req, res) {
