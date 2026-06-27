@@ -21,6 +21,7 @@ const ROUTES = {
   'photo-like': photos.like,     // foto begen
   comments: photos.comments,     // foto yorumlari (GET/POST)
   profile: profile.get,          // kullanici profili
+  'profile-update': profile.update, // profil duzenle (avatar + kullanici adi + isim)
   'my-camera': profile.addCamera,// profile kamera ekle/cikar
   feedback: feedback.submit,     // Time Capsule geri bildirim
   stats: feedback.stats,         // dashboard istatistik (RCL_ALIM_KEY)
