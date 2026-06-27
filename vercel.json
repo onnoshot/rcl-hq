@@ -19,13 +19,12 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/hesabim/community/profil/(.*)",  "destination": "/api/community/page?type=profil&seg=$1" },
-    { "source": "/api/hesabim/community/foto/(.*)",    "destination": "/api/community/page?type=foto&seg=$1" },
-    { "source": "/api/hesabim/community/yarisma/(.*)", "destination": "/api/community/page?type=yarisma&seg=$1" },
-    { "source": "/api/hesabim/community/(.*)",         "destination": "/api/community/$1" },
-    { "source": "/api/community/profil/(.*)",  "destination": "/api/community/page?type=profil&seg=$1" },
-    { "source": "/api/community/foto/(.*)",    "destination": "/api/community/page?type=foto&seg=$1" },
-    { "source": "/api/community/yarisma/(.*)", "destination": "/api/community/page?type=yarisma&seg=$1" }
+    { "source": "/api/hesabim/community/profil/(.*)",  "destination": "/api/community/index?action=page&type=profil&seg=$1" },
+    { "source": "/api/hesabim/community/foto/(.*)",    "destination": "/api/community/index?action=page&type=foto&seg=$1" },
+    { "source": "/api/hesabim/community/yarisma/(.*)", "destination": "/api/community/index?action=page&type=yarisma&seg=$1" },
+    { "source": "/api/community/moderate", "destination": "/api/community/index?action=moderate" },
+    { "source": "/api/community/award",    "destination": "/api/community/index?action=award" },
+    { "source": "/api/hesabim/community/(.*)", "destination": "/api/community/index?action=$1" }
   ],
   "functions": {
     "api/chat.js": {
@@ -34,7 +33,7 @@
     "api/shopify-publish.js": {
       "maxDuration": 15
     },
-    "api/community/upload.js": {
+    "api/community/index.js": {
       "maxDuration": 30
     }
   }
