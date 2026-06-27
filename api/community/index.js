@@ -8,6 +8,7 @@ import * as profile from '../../lib/community/profile.js';
 import * as feedback from '../../lib/community/feedback.js';
 import * as quests from '../../lib/community/quests.js';
 import * as sync from '../../lib/community/sync.js';
+import * as admin from '../../lib/community/admin.js';
 
 const ROUTES = {
   session: session.run,
@@ -21,12 +22,18 @@ const ROUTES = {
   'photo-like': photos.like,     // foto begen
   comments: photos.comments,     // foto yorumlari (GET/POST)
   profile: profile.get,          // kullanici profili
-  'profile-update': profile.update, // profil duzenle (avatar + kullanici adi + isim)
+  'profile-update': profile.update, // profil duzenle (avatar + kullanici adi + isim + linkler + gorunurluk)
   'my-camera': profile.addCamera,// profile kamera ekle/cikar
+  'photo-manage': photos.manage, // uye kendi anisini sil/duzenle
   feedback: feedback.submit,     // Time Capsule geri bildirim
   stats: feedback.stats,         // dashboard istatistik (RCL_ALIM_KEY)
   quests: quests.get,            // gorev / rozet sistemi
   sync: sync.run,                // Shopify urunleri -> cameras (cron / RCL_ALIM_KEY)
+  admin: admin.overview,         // yonetim: genel bakis (RCL_ALIM_KEY)
+  'admin-users': admin.users,    // yonetim: kullanicilar
+  'admin-waitlist': admin.waitlist, // yonetim: bekleme listesi (kim hangi kamerayi)
+  'admin-photos': admin.photos,  // yonetim: anilar (moderasyon)
+  'admin-photo': admin.photoAction, // yonetim: ani sil/duzenle
 };
 
 export default async function handler(req, res) {
