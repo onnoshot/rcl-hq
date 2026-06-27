@@ -1165,9 +1165,20 @@ JS = r"""
     return (safe?Promise.resolve(null):loadImg(hu)).then(function(im){
       var W=1080,H=1920,cv=document.createElement("canvas");cv.width=W;cv.height=H;var x=cv.getContext("2d");
       var S=D.share,CX=W/2;
-      var AC=(getComputedStyle(root).getPropertyValue("--ac")||"").trim()||"#ff3b3b",INK="#15110d",MUT="#8c857b";
-      function hex2rgb(h){h=h.replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
-      var ar=hex2rgb(AC),rgba=function(a){return "rgba("+ar[0]+","+ar[1]+","+ar[2]+","+a+")";};
+      var INK="#15110d",MUT="#8c857b";
+      // @property --ac (color) yuzunden getComputedStyle HEX yerine "rgb(...)" dondurebilir;
+      // her iki formati da guvenle ayristir (yoksa addColorStop gecersiz renkte patlar -> "olusturulamadi").
+      function parseColor(s){s=String(s==null?"":s).trim();
+        var m=s.match(/rgba?\(([^)]+)\)/i);
+        if(m){var p=m[1].split(",");var r=parseInt(p[0],10),g=parseInt(p[1],10),b=parseInt(p[2],10);
+          if(!isNaN(r)&&!isNaN(g)&&!isNaN(b))return [r,g,b];}
+        var h=s.replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+        var n=[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];
+        if(isNaN(n[0])||isNaN(n[1])||isNaN(n[2]))return [255,59,59]; // RCL kirmizi guvenli varsayilan
+        return n;}
+      var ar=parseColor(getComputedStyle(root).getPropertyValue("--ac")),
+          AC="rgb("+ar[0]+","+ar[1]+","+ar[2]+")",
+          rgba=function(a){return "rgba("+ar[0]+","+ar[1]+","+ar[2]+","+a+")";};
       // arka plan + yumusak vurgu isiklari
       x.fillStyle="#f7f4ef";x.fillRect(0,0,W,H);
       var g1=x.createRadialGradient(CX,-60,40,CX,-60,920);g1.addColorStop(0,rgba(.16));g1.addColorStop(1,rgba(0));x.fillStyle=g1;x.fillRect(0,0,W,760);
@@ -1261,7 +1272,11 @@ JS = r"""
         add(S.dl,SICN.dl,dl);
       },"image/png");
     }
-    buildShareImage(picks).then(function(cv){render(cv,false);}).catch(function(){var b=mask.querySelector(".shbody");if(b)b.innerHTML='<div class="shload">'+esc(S.fail)+'</div>';});
+    // cizim/olusturma hatasinda da (sadece toDataURL degil) guvenli fotosuz surume dus
+    buildShareImage(picks).then(function(cv){render(cv,false);},function(){
+      buildShareImage(picks,true).then(function(cv2){render(cv2,true);},function(){
+        var b=mask.querySelector(".shbody");if(b)b.innerHTML='<div class="shload">'+esc(S.fail)+'</div>';});
+    });
   }
 
   root.querySelectorAll(".seo .item").forEach(function(it){
