@@ -17,10 +17,15 @@ v3:
 JS code itself contains NO Turkish literals -> all UI strings live in the DATA
 object (json.dumps ensure_ascii). Static HTML Turkish goes through E().
 """
-import json, os, re
+import json, os, re, base64
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 SITE = "https://retrocameraland.com"
+
+# Gercek RetroCameraLand logosu (RCL05) -> paylasim gorseline base64 data URI olarak gomulur.
+# data URI canvas'i kirletmez (CORS yok) -> toDataURL guvenle calisir.
+with open(os.path.join(HERE, "rcl-logo-share.png"), "rb") as _lf:
+    SHARE_LOGO = "data:image/png;base64," + base64.b64encode(_lf.read()).decode()
 
 def E(s):
     s = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
@@ -1163,78 +1168,90 @@ JS = r"""
     // tekil sorgu ekleyerek Shopify CDN'den taze, ACAO'lu yanit cekiyoruz (toDataURL patlamaz).
     // safe=true -> fotograf hic cizilmez (taint riski sifir, garanti disa aktarilir).
     var hu=img(hero.image,720); hu+=(hu.indexOf("?")>=0?"&":"?")+"rclshare="+SID;
-    return (safe?Promise.resolve(null):loadImg(hu)).then(function(im){
+    var photoP=safe?Promise.resolve(null):loadImg(hu);
+    var logoP=D.share_logo?loadImg(D.share_logo):Promise.resolve(null); // data URI -> taint yok
+    return Promise.all([photoP,logoP]).then(function(ims){
+      var im=ims[0], logo=ims[1];
       var W=1080,H=1920,cv=document.createElement("canvas");cv.width=W;cv.height=H;var x=cv.getContext("2d");
-      var S=D.share,CX=W/2;
-      var INK="#15110d",MUT="#8c857b";
+      var S=D.share,CX=W/2,WHITE="#ffffff",MUT="rgba(255,255,255,.52)",BG="#0b0b0d";
       // @property --ac (color) yuzunden getComputedStyle HEX yerine "rgb(...)" dondurebilir;
-      // her iki formati da guvenle ayristir (yoksa addColorStop gecersiz renkte patlar -> "olusturulamadi").
+      // her iki formati da guvenle ayristir (yoksa addColorStop gecersiz renkte patlar).
       function parseColor(s){s=String(s==null?"":s).trim();
         var m=s.match(/rgba?\(([^)]+)\)/i);
         if(m){var p=m[1].split(",");var r=parseInt(p[0],10),g=parseInt(p[1],10),b=parseInt(p[2],10);
           if(!isNaN(r)&&!isNaN(g)&&!isNaN(b))return [r,g,b];}
         var h=s.replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
         var n=[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];
-        if(isNaN(n[0])||isNaN(n[1])||isNaN(n[2]))return [255,59,59]; // RCL kirmizi guvenli varsayilan
-        return n;}
+        if(isNaN(n[0])||isNaN(n[1])||isNaN(n[2]))return [255,59,59];return n;}
       var ar=parseColor(getComputedStyle(root).getPropertyValue("--ac")),
           AC="rgb("+ar[0]+","+ar[1]+","+ar[2]+")",
           rgba=function(a){return "rgba("+ar[0]+","+ar[1]+","+ar[2]+","+a+")";};
-      // arka plan + yumusak vurgu isiklari
-      x.fillStyle="#f7f4ef";x.fillRect(0,0,W,H);
-      var g1=x.createRadialGradient(CX,-60,40,CX,-60,920);g1.addColorStop(0,rgba(.16));g1.addColorStop(1,rgba(0));x.fillStyle=g1;x.fillRect(0,0,W,760);
-      var g2=x.createRadialGradient(CX,H+80,40,CX,H+80,820);g2.addColorStop(0,rgba(.12));g2.addColorStop(1,rgba(0));x.fillStyle=g2;x.fillRect(0,H-620,W,620);
       x.textBaseline="alphabetic";
       function cen(t,y,font,col,track){x.font=font;x.fillStyle=col;
         if(track){var ws=0,i;for(i=0;i<t.length;i++)ws+=x.measureText(t[i]).width+track;ws-=track;var sx=CX-ws/2;x.textAlign="left";
           for(i=0;i<t.length;i++){x.fillText(t[i],sx,y);sx+=x.measureText(t[i]).width+track;}x.textAlign="left";}
         else{x.textAlign="center";x.fillText(t,CX,y);x.textAlign="left";}}
       function fit(t,max,start,min,weight){var fs=start;do{x.font=weight+" "+fs+"px "+FONT;}while(x.measureText(t).width>max&&(fs-=2)>min);return fs;}
-      // --- LOGO: kamera lensi marki + wordmark ---
-      var ly=150;
-      x.lineWidth=6;x.strokeStyle=AC;x.beginPath();x.arc(CX,ly,40,0,7);x.stroke();
-      x.lineWidth=5;x.strokeStyle=INK;x.beginPath();x.arc(CX,ly,22,0,7);x.stroke();
-      x.fillStyle=AC;x.beginPath();x.arc(CX,ly,7,0,7);x.fill();
-      x.fillStyle="rgba(255,255,255,.9)";x.beginPath();x.arc(CX-9,ly-9,4,0,7);x.fill();
-      cen(S.brandmark,ly+82,"800 30px "+FONT,INK,8);
-      cen(S.eyebrow,ly+120,"700 19px "+FONT,AC,5);
-      // --- HERO KART: en uyumlu kamera ---
-      var cardS=640,cx=CX-cardS/2,cyc=350;
-      x.save();x.shadowColor="rgba(20,17,13,.20)";x.shadowBlur=80;x.shadowOffsetY=42;
-      x.fillStyle="#ffffff";rr(x,cx,cyc,cardS,cardS,52);x.fill();x.restore();
-      x.strokeStyle="rgba(20,17,13,.06)";x.lineWidth=1.5;rr(x,cx,cyc,cardS,cardS,52);x.stroke();
-      cover(x,im,cx+44,cyc+44,cardS-88,cardS-88,32);
-      // dairesel uyum rozeti (kart sag-ust)
-      var bx=cx+cardS-30,by=cyc+30,br2=82;
-      x.save();x.shadowColor=rgba(.45);x.shadowBlur=34;x.fillStyle=AC;x.beginPath();x.arc(bx,by,br2,0,7);x.fill();x.restore();
-      x.fillStyle="#fff";x.textAlign="center";
-      x.font="800 46px "+FONT;x.fillText("%"+(hero.pct||0),bx,by+6);
-      x.font="700 18px "+FONT;x.fillText(S.match_word,bx,by+34);x.textAlign="left";
-      // --- SONUC METNI ---
-      var ty=cyc+cardS+96;
-      // EN UYUMLU pill (ortali)
+      // ---------- ARKA PLAN: siyah + kirmizi isiklari + ince tarama + kose koseligi ----------
+      x.fillStyle=BG;x.fillRect(0,0,W,H);
+      var g1=x.createRadialGradient(CX,40,40,CX,40,860);g1.addColorStop(0,rgba(.22));g1.addColorStop(1,rgba(0));x.fillStyle=g1;x.fillRect(0,0,W,820);
+      var g2=x.createRadialGradient(CX,1180,40,CX,1180,720);g2.addColorStop(0,rgba(.10));g2.addColorStop(1,rgba(0));x.fillStyle=g2;x.fillRect(0,560,W,1100);
+      x.fillStyle="rgba(255,255,255,.022)";for(var sy=0;sy<H;sy+=4)x.fillRect(0,sy,W,1);            // ince tarama cizgileri
+      (function(){var m=46,L=44;x.strokeStyle=rgba(.55);x.lineWidth=4;x.lineCap="round";          // kose viewfinder koseligi
+        var C=[[m,m,1,1],[W-m,m,-1,1],[m,H-m,1,-1],[W-m,H-m,-1,-1]];
+        C.forEach(function(c){x.beginPath();x.moveTo(c[0]+c[2]*L,c[1]);x.lineTo(c[0],c[1]);x.lineTo(c[0],c[1]+c[3]*L);x.stroke();});x.lineCap="butt";})();
+      // ---------- LOGO (gercek RCL logosu, data URI) ----------
+      var topY=132;
+      if(logo&&logo.width){var lw=420,lh=lw*logo.height/logo.width;x.drawImage(logo,CX-lw/2,topY,lw,lh);topY+=lh+30;}
+      else{cen("RetroCameraLand",topY+40,"800 40px "+FONT,WHITE);topY+=92;}
+      cen(S.eyebrow,topY+14,"700 20px "+FONT,AC,5);
+      // ---------- HERO KART: en uyumlu kamera (beyaz kart, siyah zeminde parlar) ----------
+      var cardS=560,cx=CX-cardS/2,cyc=420;
+      x.save();x.shadowColor=rgba(.35);x.shadowBlur=70;x.shadowOffsetY=20;
+      x.fillStyle=WHITE;rr(x,cx,cyc,cardS,cardS,46);x.fill();x.restore();
+      cover(x,im,cx+38,cyc+38,cardS-76,cardS-76,28);
+      // dairesel uyum rozeti + halka gostergesi (kart sag-ust)
+      var bx=cx+cardS-18,by=cyc+18,br2=80,pct=hero.pct||0;
+      x.lineWidth=8;x.strokeStyle="rgba(255,255,255,.16)";x.beginPath();x.arc(bx,by,br2+9,0,Math.PI*2);x.stroke();
+      x.strokeStyle=AC;x.beginPath();x.arc(bx,by,br2+9,-Math.PI/2,-Math.PI/2+Math.PI*2*(pct/100));x.stroke();
+      x.save();x.shadowColor=rgba(.55);x.shadowBlur=30;x.fillStyle=AC;x.beginPath();x.arc(bx,by,br2,0,Math.PI*2);x.fill();x.restore();
+      x.fillStyle=WHITE;x.textAlign="center";
+      x.font="800 44px "+FONT;x.fillText("%"+pct,bx,by+4);
+      x.font="700 17px "+FONT;x.fillText(S.match_word,bx,by+32);x.textAlign="left";
+      // ---------- SPEC CIPLERI (gercek ozellikler -> elit "veri" hissi) ----------
+      var sp=[];
+      if(hero.mp)sp.push(hero.mp+" MP");
+      if(hero.zoom)sp.push(hero.zoom+"x ZOOM");
+      if(hero.year)sp.push(String(hero.year));
+      if(sp.length){x.font="700 24px "+FONT;var gap=14,tot=0,wid=[];
+        sp.forEach(function(t){var w=x.measureText(t).width+38;wid.push(w);tot+=w;});tot+=gap*(sp.length-1);
+        var sx2=CX-tot/2,cyp=cyc+cardS+44;
+        sp.forEach(function(t,i){x.strokeStyle="rgba(255,255,255,.22)";x.lineWidth=1.5;rr(x,sx2,cyp-30,wid[i],44,22);x.stroke();
+          x.fillStyle="rgba(255,255,255,.92)";x.textAlign="center";x.fillText(t,sx2+wid[i]/2,cyp);x.textAlign="left";sx2+=wid[i]+gap;});}
+      // ---------- EN UYUMLU pill + kamera adi + marka ----------
+      var ty=cyc+cardS+150;
       x.font="800 22px "+FONT;var pbw=x.measureText(S.badge).width+44;
       x.fillStyle=AC;rr(x,CX-pbw/2,ty-34,pbw,46,23);x.fill();
-      x.fillStyle="#fff";x.textAlign="center";x.textBaseline="middle";x.fillText(S.badge,CX,ty-10);x.textBaseline="alphabetic";x.textAlign="left";
-      // kamera adi (gerekirse 2 satir)
-      var name=hero.title||"",fs=fit(name,W-150,60,30,"800");x.font="800 "+fs+"px "+FONT;
+      x.fillStyle=WHITE;x.textAlign="center";x.textBaseline="middle";x.fillText(S.badge,CX,ty-10);x.textBaseline="alphabetic";x.textAlign="left";
+      var name=hero.title||"",fs=fit(name,W-150,58,30,"800");x.font="800 "+fs+"px "+FONT;
       var words=name.split(" "),line="",lines=[];
       words.forEach(function(w){var t=line?line+" "+w:w;if(x.measureText(t).width>W-150&&line){lines.push(line);line=w;}else line=t;});
       if(line)lines.push(line);lines=lines.slice(0,2);
-      var ny=ty+70;lines.forEach(function(l,i){cen(l,ny+i*(fs+10),"800 "+fs+"px "+FONT,INK);});
-      var afterName=ny+(lines.length-1)*(fs+10)+50;
-      cen(String(hero.brand||"").toUpperCase(),afterName,"700 26px "+FONT,AC,3);
-      cen(S.more,afterName+46,"500 27px "+FONT,MUT);
-      // --- ALT CTA: denemeye tesvik ---
-      x.strokeStyle="rgba(20,17,13,.10)";x.lineWidth=2;x.beginPath();x.moveTo(CX-70,1610);x.lineTo(CX+70,1610);x.stroke();
-      cen(S.q1,1690,"800 52px "+FONT,INK);
-      cen(S.q2,1752,"800 52px "+FONT,AC);
-      cen(S.try_sub,1804,"500 28px "+FONT,MUT);
-      // url pill
-      x.font="800 30px "+FONT;var uw=x.measureText(S.try_cta).width+72;
-      x.save();x.shadowColor=rgba(.4);x.shadowBlur=30;x.shadowOffsetY=14;
-      x.fillStyle=INK;rr(x,CX-uw/2,1840,uw,66,33);x.fill();x.restore();
-      x.fillStyle="#fff";x.textAlign="center";x.textBaseline="middle";x.fillText(S.try_cta,CX,1874);x.textBaseline="alphabetic";x.textAlign="left";
+      var ny=ty+66;lines.forEach(function(l,i){cen(l,ny+i*(fs+8),"800 "+fs+"px "+FONT,WHITE);});
+      var afterName=ny+(lines.length-1)*(fs+8)+46;
+      cen(String(hero.brand||"").toUpperCase(),afterName,"700 25px "+FONT,AC,3);
+      // ---------- ALT CTA PANELI (alt bosluk korunur) ----------
+      var pX=110,pW=W-220,pY=1486,pH=300;
+      x.fillStyle="rgba(255,255,255,.045)";rr(x,pX,pY,pW,pH,34);x.fill();
+      x.strokeStyle="rgba(255,255,255,.10)";x.lineWidth=1.5;rr(x,pX,pY,pW,pH,34);x.stroke();
+      x.strokeStyle=rgba(.7);x.lineWidth=3;x.beginPath();x.moveTo(CX-34,pY+40);x.lineTo(CX+34,pY+40);x.stroke();
+      cen(S.q1,pY+108,"800 50px "+FONT,WHITE);
+      cen(S.q2,pY+166,"800 50px "+FONT,AC);
+      cen(S.try_sub,pY+212,"500 26px "+FONT,MUT);
+      x.font="800 30px "+FONT;var uw=x.measureText(S.try_cta).width+76;
+      x.save();x.shadowColor=rgba(.55);x.shadowBlur=34;x.shadowOffsetY=12;
+      x.fillStyle=AC;rr(x,CX-uw/2,pY+236,uw,64,32);x.fill();x.restore();
+      x.fillStyle=WHITE;x.textAlign="center";x.textBaseline="middle";x.fillText(S.try_cta,CX,pY+269);x.textBaseline="alphabetic";x.textAlign="left";
       return cv;
     });
   }
@@ -1309,6 +1326,7 @@ DATA = {
             "feats_dyn":RESULTS["feats_dyn"],"traits":RESULTS["traits"],"friend":RESULTS["friend"]},
  "svg":IC,
  "logo":LOGO_SVG,
+ "share_logo":SHARE_LOGO,
  "fallback":FALLBACK,
  "shop_url":"__SHOP_URL__",
  "products_base":"__PROD_BASE__",
