@@ -1,0 +1,925 @@
+
+{%- style -%}
+#rcl-fnd-{{ section.id }}{
+  --ac: {{ section.settings.accent | default: '#d8472f' }};
+  --ac2: color-mix(in srgb, var(--ac) 40%, #ffffff);
+  --bg: {{ section.settings.bg | default: '#faf8f4' }};
+  --card: {{ section.settings.card | default: '#ffffff' }};
+  --ink: {{ section.settings.ink | default: '#15110d' }};
+  --mut: color-mix(in srgb, var(--ink) 72%, transparent);
+  --stroke: color-mix(in srgb, var(--ink) 14%, transparent);
+  --glass: color-mix(in srgb, var(--card) 74%, transparent);
+  --blur: {{ section.settings.glass_blur | default: 18 }}px;
+  --r: 26px;
+  position:relative; isolation:isolate; overflow:hidden; background:var(--bg); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","Inter",sans-serif;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+@supports (transition: --ac 1s){
+  @property --ac{syntax:'<color>';inherits:true;initial-value:#d8472f;}
+  #rcl-fnd-{{ section.id }}{transition:--ac 1.4s cubic-bezier(.4,0,.2,1);}
+}
+#rcl-fnd-{{ section.id }} *{box-sizing:border-box;}
+#rcl-fnd-{{ section.id }} button{font:inherit;color:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+#rcl-fnd-{{ section.id }} .pad{padding:clamp(40px,6vw,90px) clamp(15px,5vw,40px);}
+#rcl-fnd-{{ section.id }} .wrap{max-width:1080px;margin:0 auto;position:relative;z-index:2;}
+#rcl-fnd-{{ section.id }} a{color:inherit;text-decoration:none;}
+
+/* drifting aurora (slower) */
+#rcl-fnd-{{ section.id }} .aurora{position:absolute;inset:-30% -12% 0 -12%;z-index:0;pointer-events:none;filter:blur(74px);opacity:.55;}
+#rcl-fnd-{{ section.id }} .aurora span{position:absolute;border-radius:50%;display:block;mix-blend-mode:multiply;}
+#rcl-fnd-{{ section.id }} .aurora span:nth-child(1){width:48vw;height:48vw;left:-8%;top:-8%;background:radial-gradient(circle,var(--ac2),transparent 64%);animation:fd1 38s ease-in-out infinite;}
+#rcl-fnd-{{ section.id }} .aurora span:nth-child(2){width:44vw;height:44vw;right:-10%;top:0;background:radial-gradient(circle,color-mix(in srgb,var(--ac) 55%,#fff),transparent 64%);animation:fd2 46s ease-in-out infinite;}
+#rcl-fnd-{{ section.id }} .aurora span:nth-child(3){width:40vw;height:40vw;left:28%;top:46%;background:radial-gradient(circle,color-mix(in srgb,var(--ac2) 85%,#fff),transparent 60%);animation:fd1 52s ease-in-out infinite reverse;}
+@keyframes fd1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(6%,7%) scale(1.12)}}
+@keyframes fd2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-7%,5%) scale(1.16)}}
+#rcl-fnd-{{ section.id }} .grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+#rcl-fnd-{{ section.id }} .glass{background:var(--glass);-webkit-backdrop-filter:blur(var(--blur)) saturate(165%);backdrop-filter:blur(var(--blur)) saturate(165%);border:1px solid var(--stroke);box-shadow:0 1px 0 rgba(255,255,255,.55) inset,0 26px 70px -38px rgba(15,20,25,.5);border-radius:var(--r);}
+
+/* ---------- APP shell ---------- */
+#rcl-fnd-{{ section.id }} .app{position:relative;max-width:880px;margin:0 auto;}
+#rcl-fnd-{{ section.id }} .app::before{content:"";position:absolute;left:50%;top:46%;width:min(120%,820px);aspect-ratio:1;transform:translate(-50%,-50%);z-index:0;border-radius:50%;
+  background:conic-gradient(from 0deg,color-mix(in srgb,var(--ac) 26%,transparent),transparent 30%,color-mix(in srgb,var(--ac2) 60%,transparent) 55%,transparent 75%,color-mix(in srgb,var(--ac) 26%,transparent));
+  filter:blur(72px);opacity:.5;animation:frot 48s linear infinite;pointer-events:none;}
+@keyframes frot{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+#rcl-fnd-{{ section.id }} .prog{position:relative;z-index:2;height:7px;border-radius:100px;background:color-mix(in srgb,var(--ink) 10%,transparent);overflow:hidden;margin:0 auto 30px;max-width:520px;opacity:0;transform:translateY(-6px);transition:opacity .6s,transform .6s;}
+#rcl-fnd-{{ section.id }} .app.started .prog{opacity:1;transform:none;}
+#rcl-fnd-{{ section.id }} .prog i{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--ac2),var(--ac));box-shadow:0 0 16px color-mix(in srgb,var(--ac) 65%,transparent);transition:width 1s cubic-bezier(.3,.8,.3,1);}
+#rcl-fnd-{{ section.id }} .prog i::after{content:"";position:absolute;}
+
+#rcl-fnd-{{ section.id }} .stage{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr);align-items:center;min-height:clamp(460px,66vh,600px);}
+#rcl-fnd-{{ section.id }} .scr{grid-area:1/1;width:100%;min-width:0;transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),filter .7s;}
+#rcl-fnd-{{ section.id }} .scr.enter{opacity:0;transform:translateY(40px) scale(.955);filter:blur(14px);}
+#rcl-fnd-{{ section.id }} .scr.leave{opacity:0;transform:translateY(-30px) scale(.955);filter:blur(14px);pointer-events:none;}
+
+/* ---------- shared pills/buttons ---------- */
+#rcl-fnd-{{ section.id }} .pill{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;font-weight:650;letter-spacing:.16em;color:var(--ac);padding:10px 18px;border-radius:100px;text-transform:uppercase;}
+#rcl-fnd-{{ section.id }} .pill .dot{width:7px;height:7px;border-radius:50%;background:var(--ac);box-shadow:0 0 0 4px color-mix(in srgb,var(--ac) 22%,transparent);animation:fpulse 3s ease-in-out infinite;}
+@keyframes fpulse{0%,100%{box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 30%,transparent)}50%{box-shadow:0 0 0 11px color-mix(in srgb,var(--ac) 0%,transparent)}}
+
+#rcl-fnd-{{ section.id }} .pbtn{position:relative;display:inline-flex;align-items:center;gap:11px;padding:17px 34px;border-radius:100px;background:var(--ink);color:var(--bg);border:0;font-size:clamp(16px,3.6vw,17px);font-weight:600;transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s,opacity .4s;box-shadow:0 20px 44px -20px var(--ink);overflow:hidden;}
+#rcl-fnd-{{ section.id }} .pbtn::after{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);transform:skewX(-18deg);animation:fsheen 4.6s ease-in-out infinite;}
+@keyframes fsheen{0%,55%{left:-120%}100%{left:150%}}
+#rcl-fnd-{{ section.id }} .pbtn:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 30px 60px -22px var(--ink);}
+#rcl-fnd-{{ section.id }} .pbtn:active{transform:translateY(-1px) scale(.99);}
+#rcl-fnd-{{ section.id }} .pbtn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+#rcl-fnd-{{ section.id }} .pbtn[disabled]{opacity:.35;pointer-events:none;box-shadow:none;transform:none;}
+#rcl-fnd-{{ section.id }} .pbtn[disabled]::after{display:none;}
+#rcl-fnd-{{ section.id }} .sbtn{display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:100px;background:var(--card);border:1px solid var(--stroke);font-size:15px;font-weight:560;transition:background .4s,transform .4s,border-color .4s;}
+#rcl-fnd-{{ section.id }} .sbtn:hover{border-color:color-mix(in srgb,var(--ac) 50%,var(--stroke));transform:translateY(-2px);}
+#rcl-fnd-{{ section.id }} .sbtn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* attention-grabbing red, breathing start button (grows/shrinks, glow blinks) */
+#rcl-fnd-{{ section.id }} .startbtn{background:var(--ac);box-shadow:0 18px 44px -16px var(--ac);animation:fbtnpulse 2.2s ease-in-out infinite;}
+@keyframes fbtnpulse{0%,100%{transform:scale(1);box-shadow:0 18px 44px -16px var(--ac),0 0 0 0 color-mix(in srgb,var(--ac) 55%,transparent)}50%{transform:scale(1.05);box-shadow:0 26px 62px -16px var(--ac),0 0 0 18px color-mix(in srgb,var(--ac) 0%,transparent)}}
+#rcl-fnd-{{ section.id }} .startbtn:hover{animation-play-state:paused;transform:scale(1.07);box-shadow:0 30px 66px -16px var(--ac);}
+#rcl-fnd-{{ section.id }} .startbtn::after{animation-duration:3.2s;}
+#rcl-fnd-{{ section.id }} .shareb svg{stroke:currentColor;stroke-width:1.8;fill:none;}
+
+/* social share modal */
+#rcl-fnd-{{ section.id }} .shmask{position:fixed;inset:0;z-index:99999;display:none;place-items:center;padding:18px;background:rgba(12,14,17,.62);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);animation:fmaskin .35s ease;}
+#rcl-fnd-{{ section.id }} .shmask.on{display:grid;}
+@keyframes fmaskin{from{opacity:0}to{opacity:1}}
+#rcl-fnd-{{ section.id }} .shcard{width:100%;max-width:420px;max-height:92vh;overflow:auto;background:var(--card);border-radius:24px;border:1px solid var(--stroke);padding:20px;box-shadow:0 50px 120px -30px rgba(0,0,0,.7);animation:fcardup .4s cubic-bezier(.2,.8,.3,1);}
+@keyframes fcardup{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+#rcl-fnd-{{ section.id }} .shhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+#rcl-fnd-{{ section.id }} .shhead b{font-size:18px;font-weight:740;letter-spacing:-.01em;}
+#rcl-fnd-{{ section.id }} .shx{width:34px;height:34px;border-radius:50%;border:1px solid var(--stroke);background:var(--card);font-size:20px;line-height:1;display:grid;place-items:center;}
+#rcl-fnd-{{ section.id }} .shx:hover{background:color-mix(in srgb,var(--ink) 6%,transparent);}
+#rcl-fnd-{{ section.id }} .shload{display:flex;align-items:center;justify-content:center;gap:10px;min-height:220px;color:var(--mut);font-size:15px;font-weight:540;}
+#rcl-fnd-{{ section.id }} .shload .sp{width:12px;height:12px;border-radius:50%;border:2px solid color-mix(in srgb,var(--ac) 30%,transparent);border-top-color:var(--ac);animation:fspin .8s linear infinite;}
+#rcl-fnd-{{ section.id }} .shimg{width:100%;border-radius:16px;display:block;border:1px solid var(--stroke);}
+#rcl-fnd-{{ section.id }} .shrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(88px,1fr));gap:9px;margin-top:14px;}
+#rcl-fnd-{{ section.id }} .shbtn{display:flex;flex-direction:column;align-items:center;gap:7px;padding:13px 6px;border-radius:14px;border:1px solid var(--stroke);background:var(--card);font-size:12px;font-weight:600;cursor:pointer;transition:transform .25s,border-color .25s,background .25s;}
+#rcl-fnd-{{ section.id }} .shbtn:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--ac) 55%,var(--stroke));background:color-mix(in srgb,var(--ac) 7%,var(--card));}
+#rcl-fnd-{{ section.id }} .shbtn svg{width:24px;height:24px;}
+
+/* ---------- INTRO ---------- */
+#rcl-fnd-{{ section.id }} .intro{position:relative;text-align:center;max-width:680px;margin:0 auto;display:flex;flex-direction:column;align-items:center;}
+#rcl-fnd-{{ section.id }} .sparks{position:absolute;inset:-6% 0 0 0;pointer-events:none;z-index:-1;}
+#rcl-fnd-{{ section.id }} .sparks i{position:absolute;width:7px;height:7px;border-radius:50%;background:var(--ac);opacity:0;filter:blur(.3px);box-shadow:0 0 10px color-mix(in srgb,var(--ac) 70%,transparent);animation:fspark 7s ease-in-out infinite;}
+#rcl-fnd-{{ section.id }} .sparks i:nth-child(1){left:12%;top:18%;animation-delay:.4s}
+#rcl-fnd-{{ section.id }} .sparks i:nth-child(2){left:84%;top:26%;animation-delay:1.8s;width:5px;height:5px}
+#rcl-fnd-{{ section.id }} .sparks i:nth-child(3){left:20%;top:62%;animation-delay:3.1s;width:5px;height:5px}
+#rcl-fnd-{{ section.id }} .sparks i:nth-child(4){left:78%;top:68%;animation-delay:4.6s}
+@keyframes fspark{0%,100%{opacity:0;transform:translateY(8px) scale(.6)}40%,60%{opacity:.7;transform:translateY(-6px) scale(1)}}
+#rcl-fnd-{{ section.id }} .intro .pill{animation:frise 1s .05s both;}
+#rcl-fnd-{{ section.id }} h1.htl{font-size:clamp(34px,8.4vw,68px);line-height:1.04;letter-spacing:-.035em;font-weight:740;margin:18px 0 0;}
+#rcl-fnd-{{ section.id }} h1.htl .w{display:inline-block;animation:fwordrise 1.15s both;}
+#rcl-fnd-{{ section.id }} h1.htl .w:nth-child(1){animation-delay:.12s}
+#rcl-fnd-{{ section.id }} h1.htl .w:nth-child(2){animation-delay:.28s}
+#rcl-fnd-{{ section.id }} h1.htl .w:nth-child(3){animation-delay:.44s}
+#rcl-fnd-{{ section.id }} h1.htl .w:nth-child(4){animation-delay:.60s}
+#rcl-fnd-{{ section.id }} h1.htl .w:nth-child(5){animation-delay:.76s}
+#rcl-fnd-{{ section.id }} h1.htl .w:last-child{background:linear-gradient(100deg,var(--ac),color-mix(in srgb,var(--ac) 42%,var(--ink)));-webkit-background-clip:text;background-clip:text;}
+@keyframes fwordrise{0%{opacity:0;transform:translateY(48%) rotate(2deg);filter:blur(8px)}100%{opacity:1;transform:none;filter:blur(0)}}
+#rcl-fnd-{{ section.id }} .hl{max-width:540px;margin:22px auto 0;font-size:clamp(15.5px,4vw,19px);line-height:1.62;color:var(--mut);animation:frise 1s .7s both;}
+#rcl-fnd-{{ section.id }} .hmeta{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:24px;animation:frise 1s .85s both;}
+#rcl-fnd-{{ section.id }} .hmeta span{font-size:13px;font-weight:560;color:var(--mut);padding:9px 16px;border-radius:100px;border:1px solid var(--stroke);background:var(--glass);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:inline-flex;align-items:center;gap:8px;}
+#rcl-fnd-{{ section.id }} .hmeta span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ac);}
+#rcl-fnd-{{ section.id }} .intro .cta-wrap{margin-top:30px;animation:frise 1s 1s both;}
+#rcl-fnd-{{ section.id }} .strip{position:relative;width:100%;max-width:560px;margin:34px auto 0;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(90deg,transparent,#000 14%,#000 86%,transparent);animation:frise 1s 1.15s both;}
+#rcl-fnd-{{ section.id }} .strip .tr{display:flex;gap:12px;width:max-content;animation:fmq 40s linear infinite;}
+#rcl-fnd-{{ section.id }} .strip:hover .tr{animation-play-state:paused;}
+#rcl-fnd-{{ section.id }} .strip img{width:74px;height:74px;border-radius:14px;object-fit:cover;border:1px solid var(--stroke);background:var(--card);}
+@keyframes fmq{to{transform:translateX(-50%)}}
+@keyframes frise{0%{opacity:0;transform:translateY(26px)}100%{opacity:1;transform:none}}
+
+/* ---------- question heads ---------- */
+#rcl-fnd-{{ section.id }} .qhead{text-align:center;max-width:620px;margin:0 auto 26px;}
+#rcl-fnd-{{ section.id }} .qcount{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--ac);text-transform:uppercase;padding:7px 14px;border-radius:100px;background:color-mix(in srgb,var(--ac) 12%,transparent);}
+#rcl-fnd-{{ section.id }} .qttl{font-size:clamp(23px,6vw,38px);letter-spacing:-.025em;font-weight:720;margin:14px 0 0;line-height:1.12;}
+#rcl-fnd-{{ section.id }} .qsub{margin:10px 0 0;color:var(--mut);font-size:clamp(14.5px,3.6vw,16px);line-height:1.5;}
+#rcl-fnd-{{ section.id }} .qmulti{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-size:12.5px;font-weight:560;color:var(--ac);padding:6px 13px;border-radius:100px;border:1px dashed color-mix(in srgb,var(--ac) 45%,var(--stroke));}
+#rcl-fnd-{{ section.id }} .qmulti::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ac);}
+
+/* ---------- option grid ---------- */
+#rcl-fnd-{{ section.id }} .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:13px;max-width:760px;margin:0 auto;}
+#rcl-fnd-{{ section.id }} .opt{position:relative;text-align:left;padding:20px;border-radius:20px;background:var(--card);border:1.5px solid var(--stroke);overflow:hidden;display:flex;align-items:center;gap:15px;transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.2,1),border-color .45s,box-shadow .45s;animation:foptin .85s both;}
+@keyframes foptin{0%{opacity:0;transform:translateY(26px) scale(.96)}100%{opacity:1;transform:none}}
+#rcl-fnd-{{ section.id }} .opt::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .45s;background:radial-gradient(460px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--oh,var(--ac)) 22%,transparent),transparent 60%);}
+#rcl-fnd-{{ section.id }} .opt::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;border-radius:4px;background:var(--oh,var(--ac));transform:scaleY(0);transform-origin:center;transition:transform .45s cubic-bezier(.2,.7,.2,1);}
+#rcl-fnd-{{ section.id }} .opt:hover{transform:translateY(-5px);border-color:color-mix(in srgb,var(--oh,var(--ac)) 60%,var(--stroke));box-shadow:0 30px 56px -32px color-mix(in srgb,var(--oh,var(--ac)) 60%,#0000);}
+#rcl-fnd-{{ section.id }} .opt:hover::before{opacity:1;}
+#rcl-fnd-{{ section.id }} .opt:hover::after{transform:scaleY(.55);}
+#rcl-fnd-{{ section.id }} .opt.sel{border-color:var(--oh,var(--ac));box-shadow:0 0 0 3px color-mix(in srgb,var(--oh,var(--ac)) 24%,transparent),0 24px 48px -30px color-mix(in srgb,var(--oh,var(--ac)) 70%,#0000);animation:fpop .5s cubic-bezier(.3,1.4,.5,1);}
+@keyframes fpop{0%{transform:scale(1)}45%{transform:scale(1.035)}100%{transform:scale(1)}}
+#rcl-fnd-{{ section.id }} .opt.sel::after{transform:scaleY(.7);}
+#rcl-fnd-{{ section.id }} .opt.sel .oic{background:var(--oh,var(--ac));color:#fff;}
+#rcl-fnd-{{ section.id }} .opt .oic{flex:none;width:52px;height:52px;border-radius:15px;display:grid;place-items:center;background:color-mix(in srgb,var(--oh,var(--ac)) 14%,var(--card));color:var(--oh,var(--ac));transition:background .4s,color .4s,transform .4s;}
+#rcl-fnd-{{ section.id }} .opt:hover .oic{transform:scale(1.07) rotate(-3deg);}
+#rcl-fnd-{{ section.id }} .opt .oic svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;animation:ficon 5s ease-in-out infinite;}
+#rcl-fnd-{{ section.id }} .opt:nth-child(2) .oic svg{animation-delay:.6s}
+#rcl-fnd-{{ section.id }} .opt:nth-child(3) .oic svg{animation-delay:1.2s}
+#rcl-fnd-{{ section.id }} .opt:nth-child(4) .oic svg{animation-delay:1.8s}
+#rcl-fnd-{{ section.id }} .opt:nth-child(5) .oic svg{animation-delay:2.4s}
+@keyframes ficon{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-2.5px) rotate(2deg)}}
+#rcl-fnd-{{ section.id }} .opt.sel .oic svg{animation:ficonpop .55s cubic-bezier(.3,1.5,.5,1);}
+@keyframes ficonpop{0%{transform:scale(1)}40%{transform:scale(1.25) rotate(-8deg)}100%{transform:scale(1)}}
+/* soft animated glow ring on selected option icon */
+#rcl-fnd-{{ section.id }} .opt.sel .oic{box-shadow:0 0 0 0 color-mix(in srgb,var(--oh,var(--ac)) 45%,transparent);animation:ficonglow 1.8s ease-out infinite;}
+@keyframes ficonglow{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--oh,var(--ac)) 50%,transparent)}100%{box-shadow:0 0 0 12px color-mix(in srgb,var(--oh,var(--ac)) 0%,transparent)}}
+#rcl-fnd-{{ section.id }} .opt .ot{display:flex;flex-direction:column;gap:3px;min-width:0;}
+#rcl-fnd-{{ section.id }} .opt .ol{font-size:clamp(16px,4.2vw,17px);font-weight:640;letter-spacing:-.01em;}
+#rcl-fnd-{{ section.id }} .opt .os{font-size:13.5px;color:var(--mut);line-height:1.4;}
+#rcl-fnd-{{ section.id }} .opt .ok{position:absolute;top:13px;right:13px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;background:var(--oh,var(--ac));color:#fff;opacity:0;transform:scale(.4);transition:opacity .4s,transform .45s cubic-bezier(.3,1.5,.5,1);}
+#rcl-fnd-{{ section.id }} .opt.sel .ok{opacity:1;transform:none;}
+#rcl-fnd-{{ section.id }} .opt .ok svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round;}
+#rcl-fnd-{{ section.id }} .qnext{display:flex;justify-content:center;margin-top:24px;animation:frise .8s .25s both;}
+
+/* ---------- profile form ---------- */
+#rcl-fnd-{{ section.id }} .pform{max-width:540px;margin:0 auto;display:grid;gap:20px;}
+#rcl-fnd-{{ section.id }} .field{animation:foptin .75s both;}
+#rcl-fnd-{{ section.id }} .field label{display:block;font-size:14.5px;font-weight:640;margin-bottom:11px;}
+#rcl-fnd-{{ section.id }} .field input{width:100%;padding:16px 18px;border-radius:15px;border:1.5px solid var(--stroke);background:var(--card);font-size:16px;color:var(--ink);transition:border-color .4s,box-shadow .4s;}
+#rcl-fnd-{{ section.id }} .field input::placeholder{color:color-mix(in srgb,var(--ink) 42%,transparent);}
+#rcl-fnd-{{ section.id }} .field input:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 4px color-mix(in srgb,var(--ac) 16%,transparent);}
+#rcl-fnd-{{ section.id }} .chips{display:flex;flex-wrap:wrap;gap:9px;}
+#rcl-fnd-{{ section.id }} .chip{padding:12px 19px;border-radius:100px;border:1.5px solid var(--stroke);background:var(--card);font-size:14.5px;font-weight:540;transition:all .35s cubic-bezier(.2,.7,.2,1);}
+#rcl-fnd-{{ section.id }} .chip:hover{border-color:color-mix(in srgb,var(--ac) 55%,var(--stroke));transform:translateY(-2px);}
+#rcl-fnd-{{ section.id }} .chip.sel{background:var(--ac);color:#fff;border-color:var(--ac);box-shadow:0 14px 28px -14px var(--ac);transform:translateY(-1px);}
+#rcl-fnd-{{ section.id }} .pact{display:flex;flex-direction:column;align-items:center;gap:12px;margin-top:8px;}
+#rcl-fnd-{{ section.id }} .hint{font-size:13px;color:var(--ac);min-height:18px;text-align:center;font-weight:540;}
+
+/* ---------- analyze ---------- */
+#rcl-fnd-{{ section.id }} .anz{text-align:center;max-width:520px;margin:0 auto;display:grid;place-items:center;gap:28px;}
+#rcl-fnd-{{ section.id }} .ringwrap{position:relative;width:clamp(190px,54vw,232px);aspect-ratio:1;display:grid;place-items:center;}
+#rcl-fnd-{{ section.id }} .ringwrap::before,#rcl-fnd-{{ section.id }} .ringwrap::after{content:"";position:absolute;inset:0;border-radius:50%;border:1.5px solid color-mix(in srgb,var(--ac) 32%,transparent);animation:fpulsering 3s ease-out infinite;}
+#rcl-fnd-{{ section.id }} .ringwrap::after{animation-delay:1.5s;}
+@keyframes fpulsering{0%{transform:scale(.82);opacity:.85}100%{transform:scale(1.4);opacity:0}}
+#rcl-fnd-{{ section.id }} .ring{position:relative;width:100%;height:100%;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--ac) calc(var(--p,0)*1%),color-mix(in srgb,var(--ink) 10%,transparent) 0);transition:background .15s linear;animation:fbreath 4s ease-in-out infinite;}
+@keyframes fbreath{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+#rcl-fnd-{{ section.id }} .ring::before{content:"";position:absolute;inset:16px;border-radius:50%;background:var(--bg);box-shadow:inset 0 2px 14px rgba(0,0,0,.06);}
+#rcl-fnd-{{ section.id }} .ring .pv{position:relative;z-index:2;font-size:clamp(42px,13vw,52px);font-weight:760;letter-spacing:-.03em;}
+#rcl-fnd-{{ section.id }} .ring .pv small{font-size:22px;font-weight:640;}
+#rcl-fnd-{{ section.id }} .ring .pl{position:relative;z-index:2;font-size:11px;letter-spacing:.18em;color:var(--mut);text-transform:uppercase;margin-top:2px;}
+#rcl-fnd-{{ section.id }} .ascan{position:absolute;inset:-7px;border-radius:50%;border:2px solid transparent;border-top-color:var(--ac);border-right-color:color-mix(in srgb,var(--ac) 40%,transparent);animation:fspin 1.4s linear infinite;}
+@keyframes fspin{to{transform:rotate(360deg)}}
+#rcl-fnd-{{ section.id }} .orbit{position:absolute;inset:0;animation:fspin 4.4s linear infinite;}
+#rcl-fnd-{{ section.id }} .orbit:nth-of-type(2){animation-duration:6.2s;animation-direction:reverse;}
+#rcl-fnd-{{ section.id }} .orbit:nth-of-type(3){animation-duration:8s;}
+#rcl-fnd-{{ section.id }} .orbit i{position:absolute;top:-5px;left:50%;width:11px;height:11px;margin-left:-5px;border-radius:50%;background:var(--ac);box-shadow:0 0 14px color-mix(in srgb,var(--ac) 80%,transparent);}
+#rcl-fnd-{{ section.id }} .orbit:nth-of-type(2) i{background:var(--ac2);width:8px;height:8px;}
+#rcl-fnd-{{ section.id }} .orbit:nth-of-type(3) i{background:color-mix(in srgb,var(--ac) 60%,#fff);width:6px;height:6px;top:auto;bottom:-4px;}
+#rcl-fnd-{{ section.id }} .astep{font-size:clamp(15px,4vw,16.5px);font-weight:560;min-height:24px;display:flex;align-items:center;gap:10px;justify-content:center;}
+#rcl-fnd-{{ section.id }} .astep .sp{width:8px;height:8px;border-radius:50%;background:var(--ac);animation:fpulse 1.4s ease-in-out infinite;}
+#rcl-fnd-{{ section.id }} .astep .atxt{transition:opacity .35s;}
+#rcl-fnd-{{ section.id }} .athumbs{position:relative;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;overflow:hidden;border-radius:16px;padding:4px;}
+#rcl-fnd-{{ section.id }} .athumbs::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:32%;background:linear-gradient(100deg,transparent,color-mix(in srgb,var(--ac) 38%,transparent),transparent);animation:fsweep 2.4s ease-in-out infinite;}
+@keyframes fsweep{0%{left:-40%}100%{left:120%}}
+#rcl-fnd-{{ section.id }} .athumbs img{width:56px;height:56px;border-radius:12px;object-fit:cover;border:1px solid var(--stroke);opacity:.5;animation:fblink 2s ease-in-out infinite;}
+@keyframes fblink{0%,100%{opacity:.3;transform:scale(.9)}50%{opacity:1;transform:scale(1)}}
+
+/* ---------- results ---------- */
+#rcl-fnd-{{ section.id }} .rhead{text-align:center;max-width:640px;margin:0 auto 30px;}
+#rcl-fnd-{{ section.id }} .rttl{font-size:clamp(24px,6vw,40px);letter-spacing:-.025em;font-weight:740;margin:12px 0 0;line-height:1.1;}
+#rcl-fnd-{{ section.id }} .rsub{margin:12px 0 0;color:var(--mut);font-size:clamp(14.5px,3.6vw,17px);line-height:1.55;}
+#rcl-fnd-{{ section.id }} .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch;}
+#rcl-fnd-{{ section.id }} .rc{position:relative;display:flex;flex-direction:column;border-radius:22px;overflow:hidden;background:var(--card);border:1.5px solid var(--stroke);opacity:0;transform:translateY(36px) scale(.96);animation:fcardin 1s cubic-bezier(.2,.8,.3,1) forwards;transition:box-shadow .5s,transform .45s;}
+@keyframes fcardin{to{opacity:1;transform:none}}
+#rcl-fnd-{{ section.id }} .rc:hover{box-shadow:0 40px 80px -38px rgba(15,20,25,.55);transform:translateY(-6px);}
+#rcl-fnd-{{ section.id }} .rc.best{border-color:color-mix(in srgb,var(--ac) 60%,var(--stroke));box-shadow:0 0 0 3px color-mix(in srgb,var(--ac) 18%,transparent);}
+#rcl-fnd-{{ section.id }} .rc.best::before{content:"";position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.5) 48%,transparent 62%);transform:translateX(-100%);animation:fshimmer 4.5s ease-in-out 1.4s infinite;}
+@keyframes fshimmer{0%{transform:translateX(-100%)}50%,100%{transform:translateX(120%)}}
+#rcl-fnd-{{ section.id }} .rc .rank{position:absolute;top:13px;left:13px;z-index:3;font-size:11px;font-weight:740;letter-spacing:.1em;padding:6px 12px;border-radius:100px;background:var(--ink);color:var(--bg);}
+#rcl-fnd-{{ section.id }} .rc.best .rank{background:var(--ac);color:#fff;}
+#rcl-fnd-{{ section.id }} .rimg{position:relative;aspect-ratio:1;background:linear-gradient(160deg,color-mix(in srgb,var(--ac) 11%,var(--card)),var(--card));overflow:hidden;}
+#rcl-fnd-{{ section.id }} .rimg img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease;}
+#rcl-fnd-{{ section.id }} .rc:hover .rimg img{transform:scale(1.07);}
+#rcl-fnd-{{ section.id }} .mbadge{position:absolute;right:12px;bottom:12px;z:3;z-index:3;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:100px;background:color-mix(in srgb,var(--bg) 86%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border:1px solid var(--stroke);}
+#rcl-fnd-{{ section.id }} .mbadge b{font-size:20px;font-weight:760;letter-spacing:-.02em;color:var(--ac);}
+#rcl-fnd-{{ section.id }} .mbadge span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;}
+#rcl-fnd-{{ section.id }} .rbody{padding:18px;display:flex;flex-direction:column;gap:11px;flex:1;}
+#rcl-fnd-{{ section.id }} .rbrand{font-size:11px;font-weight:740;letter-spacing:.13em;color:var(--ac);text-transform:uppercase;}
+#rcl-fnd-{{ section.id }} .rname{font-size:clamp(17px,4.4vw,19px);font-weight:660;letter-spacing:-.01em;line-height:1.2;}
+#rcl-fnd-{{ section.id }} .rbar{height:7px;border-radius:100px;background:color-mix(in srgb,var(--ink) 10%,transparent);overflow:hidden;}
+#rcl-fnd-{{ section.id }} .rbar i{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--ac2),var(--ac));transition:width 1.4s cubic-bezier(.3,.8,.3,1);}
+#rcl-fnd-{{ section.id }} .rwhy{font-size:14px;line-height:1.56;color:var(--mut);flex:1;}
+#rcl-fnd-{{ section.id }} .rprice{font-size:19px;font-weight:720;letter-spacing:-.01em;}
+#rcl-fnd-{{ section.id }} .rc .vbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:100px;background:var(--ink);color:var(--bg);font-size:15px;font-weight:580;transition:transform .4s,box-shadow .4s;}
+#rcl-fnd-{{ section.id }} .rc.best .vbtn{background:var(--ac);box-shadow:0 16px 32px -16px var(--ac);}
+#rcl-fnd-{{ section.id }} .rc .vbtn:hover{transform:translateY(-2px);}
+#rcl-fnd-{{ section.id }} .rc .vbtn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+#rcl-fnd-{{ section.id }} .ract{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px;animation:frise 1s .8s both;}
+
+/* ---------- SEO block ---------- */
+#rcl-fnd-{{ section.id }} .seo{margin-top:clamp(56px,8vw,100px);}
+#rcl-fnd-{{ section.id }} .seo h2{font-size:clamp(24px,5.4vw,36px);letter-spacing:-.025em;font-weight:720;margin:0;line-height:1.12;}
+#rcl-fnd-{{ section.id }} .seo p.lede{margin:16px 0 0;color:var(--mut);font-size:clamp(15px,3.6vw,17px);line-height:1.66;max-width:780px;}
+#rcl-fnd-{{ section.id }} .sm{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--ac);text-transform:uppercase;}
+#rcl-fnd-{{ section.id }} .cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px;margin-top:20px;}
+#rcl-fnd-{{ section.id }} .cat{padding:22px;border-radius:18px;transition:transform .5s,box-shadow .5s;}
+#rcl-fnd-{{ section.id }} .cat:hover{transform:translateY(-4px);box-shadow:0 28px 54px -32px rgba(15,20,25,.45);}
+#rcl-fnd-{{ section.id }} .cat h3{margin:0;font-size:17px;font-weight:640;letter-spacing:-.01em;}
+#rcl-fnd-{{ section.id }} .cat p{margin:8px 0 0;font-size:14px;color:var(--mut);line-height:1.5;}
+#rcl-fnd-{{ section.id }} .cat .go{margin-top:13px;display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:580;color:var(--ac);}
+#rcl-fnd-{{ section.id }} .cat .go svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s;}
+#rcl-fnd-{{ section.id }} .cat:hover .go svg{transform:translateX(4px);}
+#rcl-fnd-{{ section.id }} .faq{margin-top:18px;display:grid;gap:11px;}
+#rcl-fnd-{{ section.id }} .item .q{width:100%;border:0;background:transparent;text-align:left;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;}
+#rcl-fnd-{{ section.id }} .item .q span{font-size:clamp(15px,4vw,17px);font-weight:580;letter-spacing:-.01em;}
+#rcl-fnd-{{ section.id }} .pm{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:color-mix(in srgb,var(--ac) 12%,var(--card));color:var(--ac);transition:transform .45s cubic-bezier(.2,.7,.2,1);}
+#rcl-fnd-{{ section.id }} .pm svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.4;fill:none;stroke-linecap:round;}
+#rcl-fnd-{{ section.id }} .item[aria-expanded="true"] .pm{transform:rotate(45deg);}
+#rcl-fnd-{{ section.id }} .item .a{overflow:hidden;height:0;transition:height .45s cubic-bezier(.2,.7,.2,1);}
+#rcl-fnd-{{ section.id }} .item .a-in{padding:0 22px 22px;color:var(--mut);font-size:15px;line-height:1.62;}
+
+/* ---------- responsive ---------- */
+@media (max-width:820px){
+  #rcl-fnd-{{ section.id }} .cards{grid-template-columns:1fr;max-width:430px;margin:0 auto;}
+  #rcl-fnd-{{ section.id }} .stage{min-height:540px;}
+}
+@media (max-width:560px){
+  #rcl-fnd-{{ section.id }} .opts{grid-template-columns:1fr;}
+  #rcl-fnd-{{ section.id }} .opt{padding:16px 18px;}
+  #rcl-fnd-{{ section.id }} .opt .oic{width:46px;height:46px;border-radius:13px;}
+  #rcl-fnd-{{ section.id }} .opt .oic svg{width:23px;height:23px;}
+  #rcl-fnd-{{ section.id }} .pad{padding-left:14px;padding-right:14px;}
+  #rcl-fnd-{{ section.id }} .qnext .pbtn,#rcl-fnd-{{ section.id }} .ract .pbtn,#rcl-fnd-{{ section.id }} .ract .sbtn{width:100%;justify-content:center;}
+}
+@media (prefers-reduced-motion:reduce){
+  #rcl-fnd-{{ section.id }} *{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;}
+  #rcl-fnd-{{ section.id }} h1.htl .w,#rcl-fnd-{{ section.id }} .intro .pill,#rcl-fnd-{{ section.id }} .hl,#rcl-fnd-{{ section.id }} .hmeta,#rcl-fnd-{{ section.id }} .intro .cta-wrap,#rcl-fnd-{{ section.id }} .strip,#rcl-fnd-{{ section.id }} .field,#rcl-fnd-{{ section.id }} .opt,#rcl-fnd-{{ section.id }} .rc,#rcl-fnd-{{ section.id }} .qnext,#rcl-fnd-{{ section.id }} .ract{opacity:1!important;transform:none!important;filter:none!important;}
+  #rcl-fnd-{{ section.id }} .app::before,#rcl-fnd-{{ section.id }} .aurora,#rcl-fnd-{{ section.id }} .sparks i{animation:none!important;}
+}
+
+/* ====================================================================
+   COLOR HARDENING - last in source so it wins ties. Every selector is
+   ID-scoped (specificity >= 1,0,1) so it beats any host-theme element/
+   class rule even with !important (themes almost never use IDs). Keeps
+   every RCL text readable no matter how aggressive the theme CSS is.
+   ==================================================================== */
+#rcl-fnd-{{ section.id }} h1,#rcl-fnd-{{ section.id }} h2,#rcl-fnd-{{ section.id }} h3,#rcl-fnd-{{ section.id }} h4,#rcl-fnd-{{ section.id }} h5,#rcl-fnd-{{ section.id }} h6,#rcl-fnd-{{ section.id }} p,#rcl-fnd-{{ section.id }} span,#rcl-fnd-{{ section.id }} a,#rcl-fnd-{{ section.id }} li,#rcl-fnd-{{ section.id }} div,#rcl-fnd-{{ section.id }} label,#rcl-fnd-{{ section.id }} small,#rcl-fnd-{{ section.id }} b,#rcl-fnd-{{ section.id }} strong,#rcl-fnd-{{ section.id }} em,#rcl-fnd-{{ section.id }} button,#rcl-fnd-{{ section.id }} input{-webkit-text-fill-color:currentColor!important;}
+/* ink (primary) broad default */
+#rcl-fnd-{{ section.id }} h1,#rcl-fnd-{{ section.id }} h2,#rcl-fnd-{{ section.id }} h3,#rcl-fnd-{{ section.id }} h4,#rcl-fnd-{{ section.id }} h5,#rcl-fnd-{{ section.id }} h6,#rcl-fnd-{{ section.id }} p,#rcl-fnd-{{ section.id }} span,#rcl-fnd-{{ section.id }} a,#rcl-fnd-{{ section.id }} li,#rcl-fnd-{{ section.id }} div,#rcl-fnd-{{ section.id }} label,#rcl-fnd-{{ section.id }} small,#rcl-fnd-{{ section.id }} b,#rcl-fnd-{{ section.id }} strong,#rcl-fnd-{{ section.id }} em,#rcl-fnd-{{ section.id }} button,#rcl-fnd-{{ section.id }} input{color:var(--ink)!important;}
+#rcl-fnd-{{ section.id }} .field input::placeholder{color:color-mix(in srgb,var(--ink) 42%,transparent)!important;-webkit-text-fill-color:color-mix(in srgb,var(--ink) 42%,transparent)!important;}
+/* muted */
+#rcl-fnd-{{ section.id }} .hl,#rcl-fnd-{{ section.id }} .qsub,#rcl-fnd-{{ section.id }} .rsub,#rcl-fnd-{{ section.id }} .lede,#rcl-fnd-{{ section.id }} .opt .os,#rcl-fnd-{{ section.id }} .rwhy,#rcl-fnd-{{ section.id }} .cat p,#rcl-fnd-{{ section.id }} .item .a-in,#rcl-fnd-{{ section.id }} .ring .pl,#rcl-fnd-{{ section.id }} .mbadge span,#rcl-fnd-{{ section.id }} .hmeta span{color:var(--mut)!important;}
+/* accent */
+#rcl-fnd-{{ section.id }} .pill,#rcl-fnd-{{ section.id }} .qcount,#rcl-fnd-{{ section.id }} .qmulti,#rcl-fnd-{{ section.id }} .sm,#rcl-fnd-{{ section.id }} .rbrand,#rcl-fnd-{{ section.id }} .cat .go,#rcl-fnd-{{ section.id }} .hint,#rcl-fnd-{{ section.id }} .mbadge b,#rcl-fnd-{{ section.id }} .pm{color:var(--ac)!important;}
+/* option icon uses its per-answer hue */
+#rcl-fnd-{{ section.id }} .opt .oic{color:var(--oh,var(--ac))!important;}
+/* text on filled (dark/accent) backgrounds */
+#rcl-fnd-{{ section.id }} .pbtn,#rcl-fnd-{{ section.id }} .rc .vbtn,#rcl-fnd-{{ section.id }} .rank{color:var(--bg)!important;}
+#rcl-fnd-{{ section.id }} .startbtn{color:#fff!important;}
+#rcl-fnd-{{ section.id }} .sbtn{color:var(--ink)!important;}
+#rcl-fnd-{{ section.id }} .rc.best .rank,#rcl-fnd-{{ section.id }} .chip.sel,#rcl-fnd-{{ section.id }} .opt.sel .oic,#rcl-fnd-{{ section.id }} .opt .ok{color:#fff!important;}
+/* Kill any host-theme gradient-heading effect: themes that do
+   `h2{background:<gradient>;-webkit-background-clip:text;-webkit-text-fill-color:transparent}`
+   make our titles invisible. Force solid ink fill on every heading. */
+#rcl-fnd-{{ section.id }} h1,#rcl-fnd-{{ section.id }} h2,#rcl-fnd-{{ section.id }} h3,#rcl-fnd-{{ section.id }} h4,#rcl-fnd-{{ section.id }} h5,#rcl-fnd-{{ section.id }} h6{background:none!important;background-image:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;-webkit-text-fill-color:var(--ink)!important;}
+/* Re-establish OUR gradient on the last hero word only (higher specificity beats the reset). */
+#rcl-fnd-{{ section.id }} h1.htl .w:last-child{background:linear-gradient(100deg,var(--ac),color-mix(in srgb,var(--ac) 42%,var(--ink)))!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;}
+{%- endstyle -%}
+<section id="rcl-fnd-{{ section.id }}"><div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div><div class="grain" aria-hidden="true"></div><div class="pad"><div class="wrap"><div class="app"><div class="prog"><i></i></div><div class="stage"><div class="scr intro"><div class="sparks" aria-hidden="true"><i></i><i></i><i></i><i></i></div><span class="pill glass"><span class="dot"></span>AI KAMERA E&#350;LE&#350;T&#304;R&#304;C&#304;</span><h1 class="htl"><span class="w">Sana</span> <span class="w">&#246;zel</span> <span class="w">kameran&#305;</span> <span class="w">birlikte</span> <span class="w">bulal&#305;m.</span> </h1><p class="hl">Birka&#231; k&#305;sa soru cevapla; tarz&#305;n&#305;, b&#252;t&#231;eni ve ihtiyac&#305;n&#305; anlay&#305;p &#351;u an stokta olan retro dijital kameralar aras&#305;ndan sana en uygun &#252;&#231; modeli y&#252;zdesel uyum skoruyla &#246;nereyim. Tamamen &#252;cretsiz, &#252;yelik yok.</p><div class="hmeta"><span>~1 dakika</span><span>6 soru</span><span>Sana &#246;zel sonu&#231;</span><span>Stoktan ger&#231;ek &#246;neri</span></div><div class="cta-wrap"><button type="button" class="pbtn startbtn">Teste ba&#351;la<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l1.9 5.6L19.5 9.5 13.9 11.4 12 17l-1.9-5.6L4.5 9.5 10.1 7.6 12 2z"/><path d="M19 14l.8 2.3L22 17l-2.2.7L19 20l-.8-2.3L16 17l2.2-.7L19 14z"/></svg></button></div><div class="strip" aria-hidden="true"><div class="tr"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Sony_Cybershot_DSC-W150_a22d220f-24c2-40d1-b3b9-225938451637.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon_ixus_i.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Fujifilm_Finepix_Z90_8c8d60c4-60e6-4122-9bad-9224cae2f990.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus_retrocamera_6c48f30e-b083-4fa4-bc6c-dd2d837ffc05.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumiz_tz91_retrocameraland.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/a_0161_ONN04962.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Sony_Cybershot_DSC-W150_a22d220f-24c2-40d1-b3b9-225938451637.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon_ixus_i.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Fujifilm_Finepix_Z90_8c8d60c4-60e6-4122-9bad-9224cae2f990.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus_retrocamera_6c48f30e-b083-4fa4-bc6c-dd2d837ffc05.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumiz_tz91_retrocameraland.jpg?width=160"><img loading="lazy" width="74" height="74" alt="" src="https://cdn.shopify.com/s/files/1/0686/3198/6315/files/a_0161_ONN04962.jpg?width=160"></div></div></div></div></div><div class="seo"><span class="sm">KAMERA REHBER&#304;</span><h2>Hangi retro dijital kamera sana uygun?</h2><p class="lede">RetroCameraLand AI Kamera E&#351;le&#351;tirici, sana birka&#231; k&#305;sa soru sorar; kullan&#305;m amac&#305;n&#305;, b&#252;t&#231;eni, estetik tercihini, &#231;ekim ortam&#305;n&#305; ve deneyim seviyeni anlay&#305;p &#351;u an stokta bulunan, test edilmi&#351; 2000'ler CCD dijital kameralar&#305; aras&#305;ndan profiline en uygun &#252;&#231; modeli y&#252;zdesel uyum skoruyla &#246;nerir. G&#252;nl&#252;k sokak foto&#287;raf&#231;&#305;l&#305;&#287;&#305;ndan gece parti esteti&#287;ine, Y2K fla&#351; dokusundan sinematik film tonlar&#305;na kadar tarz&#305;n&#305; anlar ve sadece b&#252;t&#231;ene oturan, ger&#231;ekten uyumlu modelleri g&#246;sterir. T&#252;m kameralar sat&#305;&#351;tan &#246;nce fonksiyon testinden ge&#231;er ve kondisyonu &#351;effaf bi&#231;imde payla&#351;&#305;l&#305;r.</p><div style="margin-top:30px"><span class="sm">Pop&#252;ler kullan&#305;m senaryolar&#305;</span><div class="cats"><a class="cat glass" href="/collections/all"><h3>G&#252;nl&#252;k &amp; sokak i&#231;in kamera</h3><p>Spontane anlar ve sokak foto&#287;raf&#231;&#305;l&#305;&#287;&#305; i&#231;in hafif, h&#305;zl&#305; CCD kompaktlar.</p><span class="go">Ke&#351;fet<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="cat glass" href="/collections/all"><h3>Seyahat kameras&#305;</h3><p>&#199;antada yer kaplamayan, her ortama uyum sa&#287;layan gezi kameralar&#305;.</p><span class="go">Ke&#351;fet<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="cat glass" href="/collections/all"><h3>Gece &amp; parti esteti&#287;i</h3><p>Fla&#351;l&#305; gece karakteri ve Y2K dokusu i&#231;in ideal modeller.</p><span class="go">Ke&#351;fet<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a><a class="cat glass" href="/collections/all"><h3>&#304;&#231;erik &amp; vlog</h3><p>Sosyal medya ve video i&#231;erik &#252;retimi i&#231;in pratik se&#231;imler.</p><span class="go">Ke&#351;fet<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div></div><div style="margin-top:34px"><h2 style="font-size:clamp(22px,5vw,30px)">S&#305;k&#231;a sorulan sorular</h2><div class="faq"><div class="item glass" aria-expanded="false"><button type="button" class="q"><span>AI Kamera E&#351;le&#351;tirici nas&#305;l &#231;al&#305;&#351;&#305;r?</span><span class="pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><div class="a-in">Birka&#231; k&#305;sa soruyla kullan&#305;m amac&#305;n&#305;, b&#252;t&#231;eni, estetik tercihini, &#231;ekim ortam&#305;n&#305;, deneyim seviyeni ve kameran&#305;n kimin i&#231;in oldu&#287;unu anlar; ard&#305;ndan &#351;u an stokta olan kameralar&#305;n marka, model ve &#246;zelliklerini analiz ederek profiline ger&#231;ekten uyan &#252;&#231; modeli y&#252;zdesel uyum skoruyla s&#305;ralar. &#214;nerilen modeller b&#252;t&#231;ene g&#246;re filtrelenir.</div></div></div><div class="item glass" aria-expanded="false"><button type="button" class="q"><span>&#214;nerilen kameralar ger&#231;ekten stokta m&#305;?</span><span class="pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><div class="a-in">Evet. E&#351;le&#351;tirici, ma&#287;azan&#305;n canl&#305; &#252;r&#252;n listesinden yaln&#305;zca &#351;u an sat&#305;n al&#305;nabilir, stokta olan kameralar&#305; de&#287;erlendirir; &#246;nerilen her modele tek t&#305;kla ula&#351;abilirsin.</div></div></div><div class="item glass" aria-expanded="false"><button type="button" class="q"><span>Hangi retro kamera yeni ba&#351;layanlar i&#231;in uygundur?</span><span class="pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><div class="a-in">Yeni ba&#351;layanlar i&#231;in otomatik modlar&#305; g&#252;&#231;l&#252;, cebe s&#305;&#287;an ve kullan&#305;m&#305; kolay CCD kompaktlar idealdir. E&#351;le&#351;tirici, profiline g&#246;re bu modelleri &#246;ncelikle &#246;nerir.</div></div></div><div class="item glass" aria-expanded="false"><button type="button" class="q"><span>CCD kamera nedir ve neden tercih edilir?</span><span class="pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><div class="a-in">CCD sens&#246;rl&#252; 2000'ler kompakt kameralar&#305;; fla&#351;l&#305; gece esteti&#287;i, filmsi renkler ve h&#305;zl&#305; point-and-shoot pratikli&#287;iyle Y2K dokusunu birebir yakalar. Bu nostaljik g&#246;r&#252;nt&#252; karakteri modern telefon kameralar&#305;ndan belirgin &#351;ekilde farkl&#305;d&#305;r.</div></div></div><div class="item glass" aria-expanded="false"><button type="button" class="q"><span>Test &#252;cretsiz mi ve &#252;ye olmam gerekir mi?</span><span class="pm"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></span></button><div class="a"><div class="a-in">Tamamen &#252;cretsizdir ve &#252;yelik gerektirmez. Sorulara saniyeler i&#231;inde cevap verir, an&#305;nda ki&#351;iselle&#351;tirilmi&#351; kamera &#246;nerini al&#305;rs&#305;n.</div></div></div></div></div></div></div></div><script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"RetroCameraLand","url":"https://retrocameraland.com","logo":"https://retrocameraland.com/cdn/shop/files/retrocameraland_banner.jpg","slogan":"Ge\u00e7mi\u015f h\u00e2l\u00e2 ya\u015f\u0131yor."}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"RetroCameraLand AI Kamera E\u015fle\u015ftirici","applicationCategory":"ShoppingApplication","operatingSystem":"Web","url":"https://retrocameraland.com/pages/hangi-kamera-bana-uygun","offers":{"@type":"Offer","price":"0","priceCurrency":"TRY"},"description":"\u00dccretsiz test ile kullan\u0131m amac\u0131n\u0131, b\u00fct\u00e7eni ve tarz\u0131n\u0131 anlay\u0131p \u015fu an stokta olan retro dijital CCD kameralar aras\u0131ndan sana en uygun \u00fc\u00e7 modeli y\u00fczdesel uyum skoruyla \u00f6neren ak\u0131ll\u0131 kamera e\u015fle\u015ftirici.","provider":{"@type":"Organization","name":"RetroCameraLand","url":"https://retrocameraland.com"}}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"AI Kamera E\u015fle\u015ftirici ile sana uygun retro kameray\u0131 bul","totalTime":"PT1M","step":[{"@type":"HowToStep","position":1,"name":"Profilini gir","text":"Ad\u0131n\u0131, ya\u015f\u0131n\u0131, cinsiyetini ve \u015fehrini gir."},{"@type":"HowToStep","position":2,"name":"Kullan\u0131m amac\u0131n\u0131 se\u00e7","text":"Kameray\u0131 ne i\u00e7in kullanaca\u011f\u0131n\u0131 se\u00e7: g\u00fcnl\u00fck, seyahat, portre, gece veya i\u00e7erik."},{"@type":"HowToStep","position":3,"name":"Tarz\u0131n\u0131 ve b\u00fct\u00e7eni belirle","text":"B\u00fct\u00e7eni, estetik tercihini, \u00e7ekim ortam\u0131n\u0131, deneyim seviyeni ve kameran\u0131n kimin i\u00e7in oldu\u011funu se\u00e7."},{"@type":"HowToStep","position":4,"name":"\u00d6nerini al","text":"Stoktaki kameralar aras\u0131ndan b\u00fct\u00e7ene oturan ve profiline en uygun \u00fc\u00e7 model y\u00fczdesel uyum skoruyla listelenir."}]}</script><script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"AI Kamera E\u015fle\u015ftirici nas\u0131l \u00e7al\u0131\u015f\u0131r?","acceptedAnswer":{"@type":"Answer","text":"Birka\u00e7 k\u0131sa soruyla kullan\u0131m amac\u0131n\u0131, b\u00fct\u00e7eni, estetik tercihini, \u00e7ekim ortam\u0131n\u0131, deneyim seviyeni ve kameran\u0131n kimin i\u00e7in oldu\u011funu anlar; ard\u0131ndan \u015fu an stokta olan kameralar\u0131n marka, model ve \u00f6zelliklerini analiz ederek profiline ger\u00e7ekten uyan \u00fc\u00e7 modeli y\u00fczdesel uyum skoruyla s\u0131ralar. \u00d6nerilen modeller b\u00fct\u00e7ene g\u00f6re filtrelenir."}},{"@type":"Question","name":"\u00d6nerilen kameralar ger\u00e7ekten stokta m\u0131?","acceptedAnswer":{"@type":"Answer","text":"Evet. E\u015fle\u015ftirici, ma\u011fazan\u0131n canl\u0131 \u00fcr\u00fcn listesinden yaln\u0131zca \u015fu an sat\u0131n al\u0131nabilir, stokta olan kameralar\u0131 de\u011ferlendirir; \u00f6nerilen her modele tek t\u0131kla ula\u015fabilirsin."}},{"@type":"Question","name":"Hangi retro kamera yeni ba\u015flayanlar i\u00e7in uygundur?","acceptedAnswer":{"@type":"Answer","text":"Yeni ba\u015flayanlar i\u00e7in otomatik modlar\u0131 g\u00fc\u00e7l\u00fc, cebe s\u0131\u011fan ve kullan\u0131m\u0131 kolay CCD kompaktlar idealdir. E\u015fle\u015ftirici, profiline g\u00f6re bu modelleri \u00f6ncelikle \u00f6nerir."}},{"@type":"Question","name":"CCD kamera nedir ve neden tercih edilir?","acceptedAnswer":{"@type":"Answer","text":"CCD sens\u00f6rl\u00fc 2000'ler kompakt kameralar\u0131; fla\u015fl\u0131 gece esteti\u011fi, filmsi renkler ve h\u0131zl\u0131 point-and-shoot pratikli\u011fiyle Y2K dokusunu birebir yakalar. Bu nostaljik g\u00f6r\u00fcnt\u00fc karakteri modern telefon kameralar\u0131ndan belirgin \u015fekilde farkl\u0131d\u0131r."}},{"@type":"Question","name":"Test \u00fccretsiz mi ve \u00fcye olmam gerekir mi?","acceptedAnswer":{"@type":"Answer","text":"Tamamen \u00fccretsizdir ve \u00fcyelik gerektirmez. Sorulara saniyeler i\u00e7inde cevap verir, an\u0131nda ki\u015fiselle\u015ftirilmi\u015f kamera \u00f6nerini al\u0131rs\u0131n."}}]}</script>{%- if section.settings.show_breadcrumb -%}<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ana Sayfa","item":"https://retrocameraland.com/"},{"@type":"ListItem","position":2,"name":"Hangi Kamera Bana Uygun?","item":"https://retrocameraland.com/pages/hangi-kamera-bana-uygun"}]}</script>{%- endif -%}</section>
+<script>
+(function(){
+  var root=document.getElementById("rcl-fnd-{{ section.id }}");
+  if(!root||root.dataset.init)return; root.dataset.init="1";
+  var D={"t":{"step":"ADIM","friend":"Sevgili dost","next":"Devam et","see_results":"Sonu\u00e7lar\u0131 g\u00f6r","multi":"Sana en \u00e7ok uyan 1-2 tanesini se\u00e7","pers_fb":"kendine has tarz\u0131n"},"share":{"btn":"Sonucu payla\u015f","title":"Sonucunu payla\u015f","making":"G\u00f6rsel haz\u0131rlan\u0131yor...","fail":"G\u00f6rsel olu\u015fturulamad\u0131.","img_title1":"Bana en uygun","img_title2":"retro kameralar","cta_line":"Sen de testini yap","site":"retrocameraland.com","hashtags":"#retrocamera #retrokamera #ccdkamera","brandmark":"RETROCAMERALAND","badge":"EN UYUMLU","match_word":"uyum","eyebrow":"AI KAMERA E\u015eLE\u015eT\u0130R\u0130C\u0130","more":"+ sana \u00f6zel 2 \u00f6neri daha","q1":"Peki senin","q2":"kameran hangisi?","try_cta":"retrocameraland.com","try_sub":"\u00dccretsiz teste ba\u015fla, saniyeler i\u00e7inde \u00f6\u011fren","dl":"G\u00f6rseli indir","native":"Payla\u015f","ig_note":"G\u00f6rsel indirildi. Instagram uygulamas\u0131ndan hikaye/g\u00f6nderi olarak payla\u015fabilirsin.","feats":{"sony":"Canl\u0131, net renkler","canon":"Yumu\u015fak s\u0131cak ten tonlar\u0131","fujifilm":"Efsane film renkleri","fuji":"Efsane film renkleri","olympus":"Keskin, kontrastl\u0131 netlik","panasonic":"Geni\u015f a\u00e7\u0131, y\u00fcksek detay","lumix":"Geni\u015f a\u00e7\u0131, y\u00fcksek detay","kodak":"Nostaljik s\u0131cak tonlar","nikon":"Do\u011fal renk ge\u00e7i\u015fleri","casio":"H\u0131zl\u0131, pratik g\u00fcnl\u00fck","sanyo":"Ger\u00e7ek retro CCD dokusu","hp":"Kompakt, pratik kullan\u0131m","traveler":"Saf CCD karakteri","_default":"Filmsi CCD karakteri"}},"profile":{"title":"\u00d6nce biraz tan\u0131\u015fal\u0131m","sub":"Sana ger\u00e7ekten uyan kameray\u0131 bulabilmem i\u00e7in seni biraz tan\u0131mam gerek. Bu k\u00fc\u00e7\u00fck bilgiler, \u00f6nerini ki\u015fiselle\u015ftirmemi sa\u011fl\u0131yor.","name_label":"Sana nas\u0131l hitap edeyim?","name_ph":"Ad\u0131n\u0131 yaz...","age_label":"Ya\u015f aral\u0131\u011f\u0131n","ages":["18 alt\u0131","18-24","25-34","35-44","45+"],"gender_label":"Cinsiyetin","genders":["Kad\u0131n","Erkek","Belirtmek istemiyorum"],"city_label":"Hangi \u015fehirde ya\u015f\u0131yorsun?","city_ph":"\u015eehrini yaz...","cities":["\u0130stanbul","Ankara","\u0130zmir","Bursa","Antalya","Adana","Konya","Gaziantep","Eski\u015fehir","Mu\u011fla","Trabzon","Samsun","Kayseri","Denizli","Mersin","Sakarya"],"cta":"Teste ba\u015fla","need_more":"Devam etmek i\u00e7in ad\u0131n\u0131, ya\u015f aral\u0131\u011f\u0131n\u0131 ve cinsiyetini se\u00e7."},"questions":[{"k":"use","q":"Kameran en \u00e7ok ne i\u00e7in yan\u0131nda olacak?","sub":"Bu kameran\u0131n hayat\u0131nda nerede yer alaca\u011f\u0131n\u0131 anlamak istiyorum. Sana en \u00e7ok uyan 1-2 tanesini se\u00e7.","opts":[{"v":"daily","label":"G\u00fcnl\u00fck & sokak","sub":"\u015eehirde gezerken yakalad\u0131\u011f\u0131n spontane, filtresiz anlar","hue":"#d8472f","icon":"street","why":"g\u00fcnl\u00fck sokak anlar\u0131n\u0131 \u00f6zg\u00fcrce yakalamak"},{"v":"travel","label":"Seyahat & gezi","sub":"\u00c7antanda yer kaplamayan, her yere gelen hafif yol arkada\u015f\u0131","hue":"#2c766b","icon":"travel","why":"seyahatlerini hafif ve \u015f\u0131k bir kameraya emanet etmek"},{"v":"portrait","label":"Portre & sevdiklerin","sub":"\u0130nsan y\u00fczleri, s\u0131cak ten tonlar\u0131, samimi bak\u0131\u015flar","hue":"#d6447f","icon":"portrait","why":"portre ve insan \u00e7ekiminde s\u0131cakl\u0131k aramak"},{"v":"night","label":"Gece & parti","sub":"Fla\u015f\u0131n patlad\u0131\u011f\u0131, enerjinin tavan yapt\u0131\u011f\u0131 gece kareleri","hue":"#6f4ff0","icon":"night","why":"gece ve parti an\u0131n\u0131n enerjisini dondurmak"},{"v":"content","label":"\u0130\u00e7erik & vlog","sub":"Instagram, TikTok ve video i\u00e7in akan, dikkat \u00e7eken i\u00e7erik","hue":"#cf7a1e","icon":"vlog","why":"akan i\u00e7erik ve vlog \u00fcretmek"}]},{"k":"budget","q":"Akl\u0131ndaki b\u00fct\u00e7e ne civar\u0131nda?","sub":"Sana sadece \u015fu an stokta olan ve b\u00fct\u00e7ene oturan modelleri \u00f6nerece\u011fim. Net de\u011filse en uygununu se\u00e7.","opts":[{"v":"b1","label":"8.000 TL'ye kadar","sub":"\u0130lk ad\u0131m\u0131 atmak i\u00e7in uygun fiyatl\u0131, sa\u011flam ba\u015flang\u0131\u00e7","hue":"#15915f","icon":"coins","why":"uygun b\u00fct\u00e7eyle do\u011fru ba\u015flang\u0131\u00e7"},{"v":"b2","label":"8.000 - 13.000 TL","sub":"Fiyat ve karakter dengesi en iyi olan orta segment","hue":"#2c766b","icon":"wallet","why":"fiyat-karakter dengesi"},{"v":"b3","label":"13.000 - 20.000 TL","sub":"Daha y\u00fcksek \u00e7\u00f6z\u00fcn\u00fcrl\u00fck ve daha zengin \u00f6zellikler","hue":"#1593b0","icon":"budget","why":"daha zengin \u00f6zellik beklentin"},{"v":"b4","label":"20.000 TL ve \u00fczeri","sub":"En \u00fcst seviye, koleksiyonluk ve \u00f6zellikli modeller","hue":"#6f4ff0","icon":"premium","why":"en \u00fcst seviye bir model iste\u011fin"},{"v":"b5","label":"Net de\u011fil, en uygununu \u00f6ner","sub":"Sen tarz\u0131ma g\u00f6re en mant\u0131kl\u0131s\u0131n\u0131 se\u00e7","hue":"#cf7a1e","icon":"balance","why":"tarz\u0131na en uygun fiyat"}]},{"k":"aes","q":"Hangi g\u00f6r\u00fcnt\u00fc esteti\u011fi seni \u00e7ekiyor?","sub":"Karelerinin ruhu nas\u0131l olsun? Bu, kameran\u0131n renk karakterini belirliyor.","opts":[{"v":"y2k","label":"Y2K fla\u015f & grain","sub":"2000'lerin o dijital, hafif grenli, fla\u015fl\u0131 nostaljisi","hue":"#6f4ff0","icon":"y2k","why":"o fla\u015fl\u0131 Y2K grain dokusu"},{"v":"cine","label":"Sinematik film tonu","sub":"Bir film karesinden \u00e7\u0131km\u0131\u015f gibi yumu\u015fak, dramatik tonlar","hue":"#2c766b","icon":"cine","why":"sinematik film tonlar\u0131"},{"v":"sharp","label":"Temiz & keskin","sub":"Net, canl\u0131, her detay\u0131n okundu\u011fu modern berrakl\u0131k","hue":"#1593b0","icon":"sharp","why":"temiz ve net kareler"},{"v":"dreamy","label":"R\u00fcya gibi & soft","sub":"Hayal gibi, yumu\u015fak \u0131\u015f\u0131kl\u0131, masals\u0131 bir hava","hue":"#d6447f","icon":"dreamy","why":"r\u00fcya gibi yumu\u015fak \u0131\u015f\u0131k"},{"v":"warm","label":"S\u0131cak retro renkler","sub":"Solmu\u015f bir foto\u011fraf alb\u00fcm\u00fcn\u00fcn s\u0131cakl\u0131\u011f\u0131ndaki tonlar","hue":"#cf7a1e","icon":"warm","why":"s\u0131cak retro renk paleti"}]},{"k":"env","q":"\u00c7o\u011funlukla nas\u0131l bir \u0131\u015f\u0131kta \u00e7ekeceksin?","sub":"I\u015f\u0131k, bir kameran\u0131n karakterini belirleyen en \u00f6nemli \u015fey. Fla\u015f ve sens\u00f6r se\u00e7imini buna g\u00f6re yap\u0131yorum.","opts":[{"v":"day","label":"G\u00fcnd\u00fcz d\u0131\u015far\u0131s\u0131","sub":"G\u00fcne\u015f alt\u0131nda, bol \u0131\u015f\u0131kl\u0131 sokaklar ve a\u00e7\u0131k hava","hue":"#1593b0","icon":"sun","why":"g\u00fcnd\u00fcz \u0131\u015f\u0131\u011f\u0131nda canl\u0131 renkler"},{"v":"indoor","label":"Lo\u015f i\u00e7 mekan","sub":"Kafe k\u00f6\u015feleri, ev s\u0131cakl\u0131\u011f\u0131, at\u00f6lye lo\u015flu\u011fu","hue":"#cf7a1e","icon":"indoor","why":"lo\u015f mekanlarda atmosfer"},{"v":"citynight","label":"Gece \u015fehir \u0131\u015f\u0131klar\u0131","sub":"Neon tabelalar, gece hayat\u0131, par\u0131ldayan \u015fehir","hue":"#6f4ff0","icon":"citynight","why":"gece \u015fehir \u0131\u015f\u0131klar\u0131nda parlama"},{"v":"mixed","label":"Kar\u0131\u015f\u0131k / her yer","sub":"Belli bir yer yok; \u0131\u015f\u0131k nereye giderse oraya","hue":"#2c766b","icon":"mixed","why":"her ortama uyum sa\u011flama"}]},{"k":"level","q":"Foto\u011frafla aran nas\u0131l?","sub":"Deneyim seviyene g\u00f6re, kullan\u0131m\u0131 sana en oturacak kameray\u0131 se\u00e7iyorum.","opts":[{"v":"first","label":"\u0130lk ciddi kameram olacak","sub":"Basit, otomatik, eline al\u0131r almaz \u00e7ekebilece\u011fin bir kamera isterim","hue":"#15915f","icon":"seed","why":"kolay ve otomatik kullan\u0131m"},{"v":"casual","label":"Arada bir \u00e7ekerim","sub":"Temel ayarlar\u0131 bilirim, pratik ama karakterli olsun yeter","hue":"#2c766b","icon":"mid","why":"pratik ama karakterli kullan\u0131m"},{"v":"pro","label":"Deneyimliyim, kontrol isterim","sub":"Manuel ayarlar, zoom ve detay benim i\u00e7in \u00f6nemli","hue":"#3f51c9","icon":"sliders","why":"kontrol ve detaya verdi\u011fin \u00f6nem"}]},{"k":"occasion","q":"Bu kamera kimin i\u00e7in?","sub":"Son bir \u015fey: bu kameray\u0131 neden ald\u0131\u011f\u0131n\u0131 bilmek, \u00f6neriyi tam yerine oturtmam\u0131 sa\u011fl\u0131yor.","opts":[{"v":"self","label":"Kendim i\u00e7in","sub":"Kendime g\u00fczel bir kamera al\u0131yorum","hue":"#d8472f","icon":"selfie","why":"kendine de\u011fer vermen"},{"v":"gift","label":"Hediye edece\u011fim","sub":"Sevdi\u011fim birini mutlu edecek bir hediye ar\u0131yorum","hue":"#d6447f","icon":"gift","why":"sevdi\u011fin birine \u00f6zel bir hediye"},{"v":"couple","label":"Sevgilim / e\u015fim i\u00e7in","sub":"\u0130kimizin an\u0131lar\u0131n\u0131 biriktirece\u011fimiz bir kamera","hue":"#d6447f","icon":"heart","why":"birlikte an\u0131 biriktirme iste\u011fin"},{"v":"work","label":"\u0130\u00e7erik / i\u015fim i\u00e7in","sub":"Sosyal medya, sat\u0131\u015f veya i\u015fim i\u00e7in \u00fcretece\u011fim","hue":"#cf7a1e","icon":"work","why":"i\u00e7erik ve i\u015f \u00fcretimi"},{"v":"collection","label":"Koleksiyon / merak","sub":"Retro kameralara merakl\u0131y\u0131m, ar\u015fivime kataca\u011f\u0131m","hue":"#6f4ff0","icon":"y2k","why":"retro kameralara olan tutkun"}]}],"analyze":{"label":"ANAL\u0130Z","steps":["Canl\u0131 stok veritaban\u0131na ba\u011flan\u0131l\u0131yor","\u015eu an sat\u0131\u015fta olan {n} kamera taran\u0131yor","{name} i\u00e7in ki\u015fisel kamera profili olu\u015fturuluyor","{use} kullan\u0131m\u0131na g\u00f6re modeller filtreleniyor","B\u00fct\u00e7e ve deneyim seviyen e\u015fle\u015ftiriliyor","Renk karakteri ve sens\u00f6r dokusu hizalan\u0131yor","Marka ve \u00f6zellik e\u015fle\u015fme skorlar\u0131 hesaplan\u0131yor","Sana en uygun \u00fc\u00e7 model se\u00e7iliyor"],"use_short":{"daily":"g\u00fcnl\u00fck","travel":"seyahat","portrait":"portre","night":"gece","content":"i\u00e7erik"}},"results":{"eyebrow":"E\u015eLE\u015eME TAMAMLANDI","title":"{name}, senin i\u00e7in 3 m\u00fckemmel e\u015fle\u015fme buldum","sub":"\u015eu an stokta olan kameralar aras\u0131ndan, verdi\u011fin cevaplara g\u00f6re en uyumlu \u00fc\u00e7 tanesi:","best_badge":"EN UYUMLU","match":"uyum","view":"\u0130ncele","all_cta":"T\u00fcm kameralar\u0131 g\u00f6r","redo":"Testi tekrarla","reasons":["En y\u00fcksek uyum burada {name}! {cam}, {trait} ile \u00f6ne \u00e7\u0131k\u0131yor. {use} iste\u011finle birebir \u00f6rt\u00fc\u015f\u00fcyor ve {feat} tam senin i\u00e7in. Bence arad\u0131\u011f\u0131n kamera bu.","{cam} \u00e7ok g\u00fc\u00e7l\u00fc bir e\u015fle\u015fme {name}. {trait} sayesinde {aes} hissini zahmetsizce yakalars\u0131n; \u00fcstelik {feat}. Tarz\u0131n\u0131 her karede yans\u0131tacak bir model.","Farkl\u0131 bir karakter ama tam isabet: {cam}. {trait} ve {feat} ile {use} senin i\u00e7in \u00e7ok daha keyifli olacak. Listeden \u00e7\u0131karmadan \u00f6nce bir kez daha bak."],"feats_dyn":{"zoom":"{z}x optik zoomuyla uzaktaki kareleri bile yakalaman","water":"suya ve darbeye dayan\u0131kl\u0131 g\u00f6vdesiyle her yere gelebilmesi","flash":"g\u00fc\u00e7l\u00fc fla\u015f\u0131yla gece ve lo\u015f ortamda parlamas\u0131","video":"video kayd\u0131 deste\u011fiyle i\u00e7erik \u00fcretimine uygun olmas\u0131","touch":"dokunmatik ekran\u0131yla ilk dakikadan pratik kullan\u0131m\u0131","slim":"cebe giren ince g\u00f6vdesiyle hep yan\u0131nda olabilmesi","mp":"{mp} megapiksellik sens\u00f6r\u00fcyle net ve detayl\u0131 kareler vermesi","ccd":"{y} model ger\u00e7ek CCD sens\u00f6r dokusu","macro":"makro yetene\u011fiyle yak\u0131n detaylar\u0131 ortaya \u00e7\u0131karmas\u0131","mp_default":"{mp} megapiksellik CCD sens\u00f6r\u00fc","default":"o ger\u00e7ek 2000'ler CCD karakteri"},"traits":{"sony":"Sony'nin canl\u0131 ve net renk karakteri","canon":"Canon'un yumu\u015fak, s\u0131cak ten tonlar\u0131","fujifilm":"Fujifilm'in efsane film sim\u00fclasyonu renkleri","fuji":"Fujifilm'in efsane film sim\u00fclasyonu renkleri","olympus":"Olympus'un keskin, kontrastl\u0131 netli\u011fi","panasonic":"Lumix'in geni\u015f a\u00e7\u0131s\u0131 ve y\u00fcksek detay netli\u011fi","lumix":"Lumix'in geni\u015f a\u00e7\u0131s\u0131 ve y\u00fcksek detay netli\u011fi","kodak":"Kodak'\u0131n nostaljik, s\u0131cak film tonlar\u0131","nikon":"Nikon'un do\u011fal ve dengeli renk ge\u00e7i\u015fleri","casio":"Casio'nun h\u0131zl\u0131, pratik g\u00fcnl\u00fck karakteri","sanyo":"Sanyo'nun ger\u00e7ek retro CCD dokusu","hp":"kompakt g\u00f6vdesindeki pratik g\u00fcnl\u00fck kullan\u0131m rahatl\u0131\u011f\u0131","traveler":"sade g\u00f6vdesindeki saf CCD karakteri","_default":"kendine has o filmsi CCD karakteri"},"friend":"Sevgili dost"},"svg":{"spark":"<path d=\"M12 2l1.9 5.6L19.5 9.5 13.9 11.4 12 17l-1.9-5.6L4.5 9.5 10.1 7.6 12 2z\"/><path d=\"M19 14l.8 2.3L22 17l-2.2.7L19 20l-.8-2.3L16 17l2.2-.7L19 14z\"/>","street":"<path d=\"M3 21h18\"/><path d=\"M6 21V8l6-4 6 4v13\"/><path d=\"M10 21v-5h4v5\"/><circle cx=\"12\" cy=\"10\" r=\"1.3\"/>","travel":"<path d=\"M2 16l8-2 4-9 2 1-2 8 6-1 1 2-19 5z\"/>","portrait":"<circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21c0-4 4-6 8-6s8 2 8 6\"/>","night":"<path d=\"M21 12.8A8.5 8.5 0 1111.2 3a6.6 6.6 0 009.8 9.8z\"/><path d=\"M18 4l.6 1.6L20 6l-1.4.4L18 8l-.6-1.6L16 6l1.4-.4L18 4z\"/>","vlog":"<rect x=\"3\" y=\"6\" width=\"13\" height=\"12\" rx=\"2\"/><path d=\"M16 10l5-3v10l-5-3z\"/><circle cx=\"8\" cy=\"12\" r=\"2.2\"/>","y2k":"<rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"3\"/><path d=\"M7 12h10M12 7v10\"/><circle cx=\"8\" cy=\"8\" r=\"1\"/><circle cx=\"16\" cy=\"16\" r=\"1\"/>","cine":"<rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"2\"/><path d=\"M3 9h18M7 5v14M17 5v14\"/>","sharp":"<path d=\"M9 3H4v5M15 3h5v5M9 21H4v-5M15 21h5v-5\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/>","dreamy":"<path d=\"M6 16a4 4 0 010-8 5 5 0 019.6-1.3A4 4 0 1117 16H6z\"/>","warm":"<circle cx=\"12\" cy=\"12\" r=\"4.5\"/><path d=\"M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2\"/>","sun":"<circle cx=\"12\" cy=\"12\" r=\"4.5\"/><path d=\"M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2\"/>","indoor":"<path d=\"M3 11l9-7 9 7\"/><path d=\"M5 10v10h14V10\"/><path d=\"M10 20v-6h4v6\"/>","citynight":"<path d=\"M3 21V9l5-3v4l5-4v6l8-3v12z\"/><path d=\"M7 13v0M11 13v0M16 14v0\"/>","mixed":"<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 3a9 9 0 010 18M3 12h18\"/>","pocket":"<rect x=\"6\" y=\"3\" width=\"12\" height=\"18\" rx=\"3\"/><path d=\"M9 3v4h6V3\"/>","balance":"<path d=\"M12 3v18M5 7h14M5 7l-2 6h4zM19 7l-2 6h4z\"/>","quality":"<path d=\"M12 2l2.6 6.3L21 9l-5 4.4L17.5 21 12 17l-5.5 4L8 13.4 3 9l6.4-.7z\"/>","budget":"<rect x=\"3\" y=\"6\" width=\"18\" height=\"12\" rx=\"2\"/><circle cx=\"12\" cy=\"12\" r=\"2.5\"/><path d=\"M7 12h0M17 12h0\"/>","mid":"<path d=\"M4 18V9M10 18V5M16 18v-6M20 18v-9\"/>","premium":"<path d=\"M5 7l3 3 4-6 4 6 3-3-2 12H7z\"/>","best":"<circle cx=\"12\" cy=\"9\" r=\"5\"/><path d=\"M9 13l-1 8 4-2 4 2-1-8\"/>","check":"<path d=\"M5 13l4 4L19 7\"/>","arrow":"<path d=\"M5 12h14M13 6l6 6-6 6\"/>","cam":"<path d=\"M4 8h3l1.5-2h7L17 8h3a1 1 0 011 1v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9a1 1 0 011-1z\"/><circle cx=\"12\" cy=\"13\" r=\"3.4\"/>","redo":"<path d=\"M21 12a9 9 0 11-3-6.7M21 4v5h-5\"/>","sharei":"<circle cx=\"18\" cy=\"5\" r=\"3\"/><circle cx=\"6\" cy=\"12\" r=\"3\"/><circle cx=\"18\" cy=\"19\" r=\"3\"/><path d=\"M8.6 13.5l6.8 4M15.4 6.5l-6.8 4\"/>","gift":"<rect x=\"3\" y=\"9\" width=\"18\" height=\"12\" rx=\"1.5\"/><path d=\"M3 13h18M12 9v12M12 9S9.5 4 7 5.4 8 9 12 9zM12 9s2.5-5 5-3.6S16 9 12 9z\"/>","heart":"<path d=\"M12 21s-7.5-5-9.5-9.6C1 8 3 4.5 6.4 5A4.3 4.3 0 0112 7a4.3 4.3 0 015.6-2c3.4-.5 5.4 3 3.9 6.4C19.5 16 12 21 12 21z\"/>","wallet":"<path d=\"M3 7a2 2 0 012-2h12a2 2 0 012 2\"/><rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M16 12.5h4M16 12.5a1.6 1.6 0 000 3H21v-3z\"/>","coins":"<ellipse cx=\"9\" cy=\"6.5\" rx=\"6\" ry=\"3\"/><path d=\"M3 6.5v5c0 1.7 2.7 3 6 3M3 11.5v5c0 1.7 2.7 3 6 3\"/><circle cx=\"16\" cy=\"15\" r=\"5.5\"/>","sliders":"<path d=\"M4 7h10M18 7h2M4 17h2M10 17h10\"/><circle cx=\"16\" cy=\"7\" r=\"2.2\"/><circle cx=\"8\" cy=\"17\" r=\"2.2\"/>","seed":"<path d=\"M12 22V11\"/><path d=\"M12 11C12 7 9 4 4 4c0 5 3 7 8 7z\"/><path d=\"M12 13c0-3 3-6 8-6 0 4-3 6-8 6z\"/>","work":"<rect x=\"3\" y=\"7\" width=\"18\" height=\"13\" rx=\"2\"/><path d=\"M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2\"/>","selfie":"<circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M5 21a7 7 0 0114 0\"/><circle cx=\"12\" cy=\"8\" r=\"1.4\"/>"},"fallback":[{"title":"Sony Cybershot DSC-W150","handle":"sony-cybershot-dsc-w150","brand":"Sony","price":"13.490 TL","year":2008,"mp":8.1,"zoom":5,"flash":true,"video":true,"water":false,"touch":false,"image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Sony_Cybershot_DSC-W150_a22d220f-24c2-40d1-b3b9-225938451637.jpg"},{"title":"Canon IXUS i","handle":"canon-ixus-i","brand":"Canon","price":"11.490 TL","year":2003,"mp":4.0,"zoom":0,"flash":true,"video":true,"water":false,"touch":false,"slim":true,"image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon_ixus_i.jpg"},{"title":"Fujifilm Finepix Z90","handle":"fujifilm-finepix-z90-digicam","brand":"Fujifilm","price":"16.490 TL","year":2011,"mp":14.0,"zoom":5,"flash":true,"video":true,"water":false,"touch":true,"slim":true,"image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Fujifilm_Finepix_Z90_8c8d60c4-60e6-4122-9bad-9224cae2f990.jpg"},{"title":"Olympus VR-340","handle":"olympus-vr-340","brand":"Olympus","price":"17.990 TL","year":2012,"mp":16.0,"zoom":10,"flash":true,"video":true,"water":false,"touch":false,"wide":true,"image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus_retrocamera_6c48f30e-b083-4fa4-bc6c-dd2d837ffc05.jpg"},{"title":"Panasonic Lumix DC-TZ91","handle":"panasonic-lumix-dc-tz91","brand":"Lumix","price":"28.490 TL","year":2017,"mp":20.3,"zoom":30,"flash":false,"video":true,"water":false,"touch":true,"wide":true,"image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumiz_tz91_retrocameraland.jpg"},{"title":"Kodak EasyShare V603","handle":"kodak-easyshare-v603","brand":"Kodak","price":"10.490 TL","year":2006,"mp":6.1,"zoom":3,"flash":true,"video":true,"water":false,"touch":false,"image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/a_0161_ONN04962.jpg"}],"shop_url":"{{ section.settings.shop_url | default: '/collections/all' }}","products_base":"{{ section.settings.products_base | default: '/products/' }}","log_url":"{{ section.settings.log_endpoint | default: 'https://rclhq.vercel.app/api/finder-log' }}"};
+  var rm=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+  var hov=window.matchMedia&&matchMedia("(hover:hover)").matches;
+  var SVG=D.svg;
+  function svg(k,cls){return '<svg class="'+(cls||"")+'" viewBox="0 0 24 24" aria-hidden="true">'+(SVG[k]||"")+'</svg>';}
+  function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+
+  var app=root.querySelector(".app");
+  var stage=root.querySelector(".stage");
+  var bar=root.querySelector(".prog i");
+  var state={name:"",age:"",gender:"",city:"",ans:[]};
+  var stock=[];
+  var SID=(Math.random().toString(36).slice(2)+Date.now().toString(36)); // tarayici oturum id'si
+
+  // Tamamlanan testi HQ dashboard'a (Vercel Blob) kaydet - engellemez, hatasi yutulur.
+  function logSubmission(picks){
+    if(!D.log_url)return;
+    try{
+      var lab=function(qi){return (state.ans[qi]||[]).map(function(o){return o.label;});};
+      var top=(picks&&picks[0])||{};
+      var payload={sid:SID,name:state.name,age:state.age,gender:state.gender,city:state.city,
+        use:lab(0),budget:lab(1),aes:lab(2),env:lab(3),level:lab(4),occasion:lab(5),
+        top_brand:top.brand||"",top_price:(top.priceN||priceOf(top||{})||0),
+        recommended:(picks||[]).map(function(c){return {title:c.title,brand:c.brand,pct:c.pct,handle:c.handle};}),
+        source:"shopify",page:(window.location&&window.location.pathname)||""};
+      fetch(D.log_url,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload),keepalive:true}).catch(function(){});
+    }catch(e){}
+  }
+
+  function fmtPrice(raw,cents){var n=parseFloat(raw);if(isNaN(n))return"";if(cents)n=n/100;n=Math.round(n);return n.toLocaleString("tr-TR")+" TL";}
+  function fnum(s){var n=parseFloat(String(s==null?"":s).replace(",","."));return isNaN(n)?0:n;}
+  // Canli urunun aciklama/etiket/basligindan gercek ozellikleri cikar (eslestirme bunlara dayanir).
+  function parseFeat(p){
+    var txt=(String(p.description||p.body_html||"")+" "+String(p.title||"")+" "+[].concat(p.tags||[]).join(" ")).toLowerCase();
+    var f={};
+    var ym=txt.match(/\b(19|20)\d{2}\b/); f.year=ym?+ym[0]:0;
+    var mp=txt.match(/(\d{1,2}(?:[.,]\d)?)\s*(?:mp|megapiksel|mega\s?pixel)/); f.mp=mp?fnum(mp[1]):0;
+    var zm=txt.match(/(\d{1,3})\s*x\s*(?:optik|optical|leica|zoom)/); f.zoom=zm?+zm[1]:0;
+    f.flash=/fla[s\u015F]|flash/.test(txt);
+    f.water=/su ge[c\u00E7]irmez|waterproof|weather|dayan[\u0131i]kl/.test(txt);
+    f.video=/vlog|video|720p|1080p|film\s?kayd/.test(txt);
+    f.touch=/dokunmatik|touch/.test(txt);
+    f.macro=/makro|macro/.test(txt);
+    f.wide=/geni[s\u015F] a[c\u00E7][\u0131i]|wide|ultra geni/.test(txt);
+    f.slim=/ince|slim|cep boy|kompakt|ultra-ince|ultra ince/.test(txt);
+    return f;
+  }
+  function norm(arr,cents){
+    var out=[];
+    (arr||[]).forEach(function(p){
+      var type=String(p.type||p.product_type||"").toLowerCase();
+      var title=String(p.title||"");
+      if(type.indexOf("aksesuar")>=0)return;
+      if(/hediye|gift|\u00E7anta|kart|pil|adapt|temizli/i.test(title))return;
+      var avail=("available" in p)? !!p.available : (p.variants||[]).some(function(v){return v.available;});
+      if(!avail)return;
+      var im=p.featured_image||p.image||(p.images&&p.images[0]&&(p.images[0].src||p.images[0]))||"";
+      if(im&&typeof im==="object")im=im.src||"";
+      if(im&&im.indexOf("//")===0)im="https:"+im;
+      if(!im)return;
+      var priceRaw=(p.price!=null)?p.price:(p.variants&&p.variants[0]&&p.variants[0].price);
+      var priceN=cents?(fnum(priceRaw)/100):fnum(priceRaw);
+      var price=(typeof p.price==="string"&&/TL/.test(p.price))?p.price:fmtPrice(priceRaw,cents);
+      var tags=p.tags||[];
+      var brand=p.brand||(Array.isArray(tags)&&tags[0])||p.vendor||"RetroCameraLand";
+      var f=parseFeat(p);
+      out.push({title:title,handle:p.handle||"",image:im,price:price,priceN:priceN,brand:brand,
+        year:f.year,mp:f.mp,zoom:f.zoom,flash:f.flash,water:f.water,video:f.video,touch:f.touch,macro:f.macro,wide:f.wide,slim:f.slim});
+    });
+    return out;
+  }
+  function img(u,w){if(!u)return u;return u+((u.indexOf("?")>=0)?"&":"?")+"width="+w;}
+  // Canli stok: SADECE su an stokta (available) olan kameralar. Onerilen 3 model bundan secilir.
+  // 1) /products.js (fiyat kurus) -> bos/hatali ise 2) /products.json (fiyat ondalik) yedek kaynak.
+  // Ikisi de cokerse statik FALLBACK (build aninda dogrulanmis, stokta olan modeller).
+  function fetchJs(){
+    return fetch("/products.js?limit=250",{headers:{"Accept":"application/json"},cache:"no-store"})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(d){ if(d) stock=norm(d.products||d,true); }).catch(function(){});
+  }
+  function fetchJson(){
+    return fetch("/products.json?limit=250",{headers:{"Accept":"application/json"},cache:"no-store"})
+      .then(function(r){return r.ok?r.json():null;})
+      .then(function(d){ if(d) stock=norm(d.products||d,false); }).catch(function(){});
+  }
+  var stockReady=(window.__RCL_STOCK__)
+    ? Promise.resolve(stock=norm(window.__RCL_STOCK__,false))
+    : fetchJs().then(function(){ return (stock&&stock.length)?null:fetchJson(); });
+
+  function swap(el){
+    var old=stage.firstElementChild;
+    el.classList.add("scr","enter");
+    stage.appendChild(el);
+    void el.offsetWidth;
+    el.classList.remove("enter");
+    if(old){old.classList.add("leave");setTimeout(function(){if(old.parentNode)old.parentNode.removeChild(old);},760);}
+    try{var top=app.getBoundingClientRect().top;if(top<-30||top>160)app.scrollIntoView({behavior:rm?"auto":"smooth",block:"start"});}catch(e){}
+  }
+  function setProg(p){bar.style.width=Math.round(p*100)+"%";}
+  function setAccent(hue){if(hue)root.style.setProperty("--ac",hue);}
+  var STEPS=D.questions.length+1;          // profil + sorular (qcount gosterimi)
+  var TOTAL=D.questions.length+2;          // + sonuc (ilerleme cubugu paydasi)
+
+  var sb=root.querySelector(".startbtn");
+  if(sb)sb.addEventListener("click",function(){app.classList.add("started");state.ans=[];showProfile();});
+
+  function showProfile(){
+    setProg(1/TOTAL);
+    var P=D.profile;
+    var el=document.createElement("div");
+    var ages=P.ages.map(function(a){return '<button type="button" class="chip" data-g="age" data-v="'+esc(a)+'">'+esc(a)+'</button>';}).join("");
+    var gens=P.genders.map(function(a){return '<button type="button" class="chip" data-g="gender" data-v="'+esc(a)+'">'+esc(a)+'</button>';}).join("");
+    var dl=P.cities.map(function(c){return '<option value="'+esc(c)+'">';}).join("");
+    function f(i){return 'style="animation-delay:'+(i*90)+'ms"';}
+    el.innerHTML=''
+      +'<div class="qhead"><span class="qcount">'+esc(D.t.step)+' 1 / '+STEPS+'</span>'
+      +'<h2 class="qttl">'+esc(P.title)+'</h2><p class="qsub">'+esc(P.sub)+'</p></div>'
+      +'<div class="pform">'
+      +'<div class="field" '+f(0)+'><label>'+esc(P.name_label)+'</label><input type="text" autocomplete="given-name" maxlength="40" placeholder="'+esc(P.name_ph)+'" data-f="name"></div>'
+      +'<div class="field" '+f(1)+'><label>'+esc(P.age_label)+'</label><div class="chips">'+ages+'</div></div>'
+      +'<div class="field" '+f(2)+'><label>'+esc(P.gender_label)+'</label><div class="chips">'+gens+'</div></div>'
+      +'<div class="field" '+f(3)+'><label>'+esc(P.city_label)+'</label><input type="text" list="rclcities-{{ section.id }}" maxlength="40" placeholder="'+esc(P.city_ph)+'" data-f="city"><datalist id="rclcities-{{ section.id }}">'+dl+'</datalist></div>'
+      +'<div class="pact" '+f(4)+'><button type="button" class="pbtn" data-cont disabled>'+esc(P.cta)+svg("arrow")+'</button>'
+      +'<div class="hint"></div></div></div>';
+    swap(el);
+    var nameI=el.querySelector('[data-f="name"]'),cityI=el.querySelector('[data-f="city"]');
+    var cont=el.querySelector("[data-cont]"),hint=el.querySelector(".hint");
+    function refresh(){state.name=nameI.value.trim();state.city=cityI.value.trim();cont.disabled=!(state.name&&state.age&&state.gender);if(!cont.disabled)hint.textContent="";}
+    nameI.addEventListener("input",refresh);cityI.addEventListener("input",refresh);
+    el.querySelectorAll(".chip").forEach(function(c){
+      c.addEventListener("click",function(){var g=c.getAttribute("data-g");
+        el.querySelectorAll('.chip[data-g="'+g+'"]').forEach(function(x){x.classList.remove("sel");});
+        c.classList.add("sel");state[g]=c.getAttribute("data-v");refresh();});
+    });
+    cont.addEventListener("click",function(){if(cont.disabled){hint.textContent=P.need_more;return;}state.ans=[];showQuestion(0);});
+    if(!rm)setTimeout(function(){try{nameI.focus({preventScroll:true});}catch(e){}},560);
+  }
+
+  function tilt(b){
+    if(rm||!hov)return;
+    b.addEventListener("pointermove",function(ev){var r=b.getBoundingClientRect();
+      var px=(ev.clientX-r.left)/r.width,py=(ev.clientY-r.top)/r.height;
+      b.style.setProperty("--mx",(px*100)+"%");b.style.setProperty("--my",(py*100)+"%");
+      b.style.transform="translateY(-5px) perspective(720px) rotateX("+((py-.5)*-6)+"deg) rotateY("+((px-.5)*7)+"deg)";});
+    b.addEventListener("pointerleave",function(){b.style.transform="";});
+  }
+  // MULTI-SELECT question: toggle options, continue button advances.
+  function showQuestion(qi){
+    setProg((qi+2)/TOTAL);
+    var Q=D.questions[qi];
+    var last=qi===D.questions.length-1;
+    var el=document.createElement("div");
+    var opts=Q.opts.map(function(o,i){
+      return '<button type="button" class="opt" style="--oh:'+o.hue+';animation-delay:'+(i*95)+'ms" data-i="'+i+'" aria-pressed="false">'
+        +'<span class="oic">'+svg(o.icon)+'</span>'
+        +'<span class="ot"><span class="ol">'+esc(o.label)+'</span><span class="os">'+esc(o.sub)+'</span></span>'
+        +'<span class="ok">'+svg("check")+'</span></button>';
+    }).join("");
+    el.innerHTML=''
+      +'<div class="qhead"><span class="qcount">'+esc(D.t.step)+' '+(qi+2)+' / '+STEPS+'</span>'
+      +'<h2 class="qttl">'+esc(Q.q)+'</h2><p class="qsub">'+esc(Q.sub)+'</p>'
+      +'<span class="qmulti">'+esc(D.t.multi)+'</span></div>'
+      +'<div class="opts">'+opts+'</div>'
+      +'<div class="qnext"><button type="button" class="pbtn qcont" disabled>'+esc(last?D.t.see_results:D.t.next)+svg("arrow")+'</button></div>';
+    swap(el);
+    var sel=[];
+    var cont=el.querySelector(".qcont");
+    el.querySelectorAll(".opt").forEach(function(b){
+      tilt(b);
+      b.addEventListener("click",function(){
+        var i=+b.getAttribute("data-i");
+        var at=sel.indexOf(i);
+        if(at>=0){sel.splice(at,1);b.classList.remove("sel");b.setAttribute("aria-pressed","false");}
+        else{sel.push(i);b.classList.add("sel");b.setAttribute("aria-pressed","true");setAccent(Q.opts[i].hue);}
+        cont.disabled=sel.length===0;
+      });
+    });
+    cont.addEventListener("click",function(){
+      if(!sel.length)return;
+      state.ans[qi]=sel.map(function(i){return Q.opts[i];});
+      if(last)showAnalyze();else showQuestion(qi+1);
+    });
+  }
+
+  function firstOf(qi){var a=state.ans[qi];return (a&&a[0])||{};}
+  function vals(qi){return (state.ans[qi]||[]).map(function(o){return o.v;});}
+  function has(qi,v){return vals(qi).indexOf(v)>=0;}
+
+  // ---- GERCEK ESLESTIRME MOTORU ----
+  // Soru sirasi: 0=use 1=budget 2=aes 3=env 4=level 5=occasion
+  // Marka karakter vektoru (estetik egilimi + kullanim egilimi) - sayisal, dile bagimsiz.
+  var BRAND={
+    sony:{aes:{sharp:3,y2k:2,cine:1},use:{daily:2,night:2,travel:1,content:1}},
+    canon:{aes:{warm:2,dreamy:1,y2k:1,sharp:1},use:{portrait:3,daily:2}},
+    fujifilm:{aes:{cine:3,dreamy:2,warm:2},use:{portrait:2,travel:1,daily:1}},
+    fuji:{aes:{cine:3,dreamy:2,warm:2},use:{portrait:2,travel:1,daily:1}},
+    olympus:{aes:{sharp:2,cine:1,warm:1},use:{travel:2,daily:1,portrait:1}},
+    lumix:{aes:{sharp:2,cine:1},use:{travel:3,content:2,daily:1}},
+    panasonic:{aes:{sharp:2,cine:1},use:{travel:3,content:2,daily:1}},
+    kodak:{aes:{warm:3,dreamy:2,y2k:2},use:{daily:1,content:1,travel:1}},
+    nikon:{aes:{sharp:1,y2k:2,warm:1},use:{daily:2,night:1,portrait:1}},
+    casio:{aes:{y2k:3,sharp:1},use:{daily:3,night:1}},
+    sanyo:{aes:{y2k:1,sharp:1},use:{content:3,night:1,travel:1}},
+    konica:{aes:{warm:2,y2k:1},use:{daily:1,portrait:1}},
+    jvc:{aes:{y2k:1},use:{content:2}},
+    hp:{aes:{y2k:1},use:{daily:1}},
+    traveler:{aes:{y2k:2,warm:1},use:{daily:1,travel:1}},
+    minton:{aes:{y2k:1},use:{daily:1}},
+    rollei:{aes:{cine:1,warm:1},use:{daily:1}},
+    pentax:{aes:{sharp:1},use:{travel:1,daily:1}},
+    samsung:{aes:{sharp:1,y2k:1},use:{daily:1,content:1}},
+    agfa:{aes:{warm:2,dreamy:1},use:{daily:1}}
+  };
+  function brandKey(b){b=String(b||"").toLowerCase();for(var k in BRAND){if(b.indexOf(k)>=0)return k;}return "";}
+  function budgetRange(){
+    if(has(1,"b1"))return [0,8000];
+    if(has(1,"b2"))return [8000,13000];
+    if(has(1,"b3"))return [13000,20000];
+    if(has(1,"b4"))return [20000,1e9];
+    return null; // b5 / bos -> sinir yok
+  }
+  function priceOf(c){if(c.priceN)return c.priceN;var m=String(c.price||"").replace(/[^\d]/g,"");return m?+m:0;}
+
+  function scoreCam(c){
+    var s=0, bk=brandKey(c.brand), bp=BRAND[bk]||{aes:{},use:{}};
+    var uses=vals(0), aes=vals(2), envs=vals(3);
+    aes.forEach(function(a){ s+=(bp.aes[a]||0)*2.2; });          // marka x estetik
+    uses.forEach(function(u){ s+=(bp.use[u]||0)*1.6; });          // marka x kullanim
+    uses.forEach(function(u){                                     // kullanim x ozellik
+      if(u==="travel"){ if(c.zoom>=10)s+=4; else if(c.zoom>=5)s+=2.5; if(c.water)s+=3; if(c.slim)s+=1; }
+      else if(u==="daily"){ if(c.slim)s+=3; if(c.zoom&&c.zoom<=5)s+=1.5; if(c.flash)s+=1; }
+      else if(u==="night"){ if(c.flash)s+=4; if(c.year&&c.year<=2009)s+=1.5; }
+      else if(u==="portrait"){ if(c.macro)s+=2; if(bk==="canon"||bk==="fujifilm"||bk==="fuji"||bk==="kodak")s+=2.5; if(c.mp>=10)s+=1; }
+      else if(u==="content"){ if(c.video)s+=3; if(c.touch)s+=2; if(c.wide)s+=2; if(c.zoom>=10)s+=1.5; }
+    });
+    aes.forEach(function(a){                                      // estetik x ozellik
+      if(a==="y2k"){ if(c.year&&c.year<=2008)s+=3; if(c.flash)s+=1.5; if(c.mp&&c.mp<=8)s+=1; }
+      else if(a==="sharp"){ if(c.mp>=12)s+=3; else if(c.mp>=8)s+=1.5; }
+      else if(a==="dreamy"){ if(c.mp&&c.mp<=8)s+=2; if(c.year&&c.year<=2007)s+=1.5; }
+      else if(a==="cine"){ if(bk==="fujifilm"||bk==="fuji"||bk==="olympus"||bk==="kodak")s+=2.5; }
+      else if(a==="warm"){ if(bk==="kodak"||bk==="canon"||bk==="fujifilm"||bk==="fuji")s+=2.5; }
+    });
+    envs.forEach(function(e){                                     // ortam x ozellik
+      if(e==="citynight"||e==="indoor"){ if(c.flash)s+=3; }
+      else if(e==="day"){ if(c.mp>=10)s+=1.5; }
+      else if(e==="mixed"){ if(c.zoom>=5)s+=1.5; if(c.water)s+=1; }
+    });
+    if(has(4,"first")){ if(c.touch)s+=2; if(c.zoom>=20)s-=2.5; if(c.mp&&c.mp<=12)s+=1; }  // deneyim
+    else if(has(4,"pro")){ if(c.zoom>=10)s+=2; if(c.mp>=14)s+=1.5; }
+    else if(has(4,"casual")){ s+=0.5; }
+    if(has(5,"work")){ if(c.video)s+=2; if(c.wide)s+=1; }         // vesile (hafif)
+    if(has(5,"collection")){ if(c.year&&c.year<=2008)s+=1.5; }
+    if(has(5,"gift")||has(5,"couple")){ if(c.slim)s+=1; }
+    var br=budgetRange(), pr=priceOf(c);                          // butce
+    if(br&&pr){
+      if(pr>=br[0]&&pr<=br[1]) s+=6;
+      else if(pr<br[0]) s+=2;
+      else { var over=(pr-br[1])/Math.max(1,br[1]); s-=Math.min(8,over*14); }
+    }
+    return s;
+  }
+  function pickCameras(){
+    // SADECE canli stoktaki kameralar; fallback yalniz canli cekim tamamen basarisiz olursa.
+    var pool=(stock&&stock.length)?stock.slice():D.fallback.slice();
+    if(pool.length<=3){var pk=pool.slice(0,3);pk.forEach(function(c,i){c.r=i;c.pct=[96,90,85][i]||82;});return pk;}
+    // skor + kucuk jitter (ayni profil her seferinde birebir ayni dizilmesin)
+    var scored=pool.map(function(c){return {c:c,s:scoreCam(c)+Math.random()*1.2};});
+    scored.sort(function(a,b){return b.s-a.s;});
+    var top=scoreCam(scored[0].c)||1;
+    // #1 en iyi; #2/#3 farkli marka ama yine yuksek skor (uyumlu fakat farkli)
+    var picks=[scored[0].c], used={}; used[brandKey(scored[0].c.brand)||scored[0].c.title]=1;
+    for(var i=1;i<scored.length&&picks.length<3;i++){var bk=brandKey(scored[i].c.brand)||scored[i].c.title;if(used[bk])continue;used[bk]=1;picks.push(scored[i].c);}
+    for(var j=1;j<scored.length&&picks.length<3;j++){if(picks.indexOf(scored[j].c)<0)picks.push(scored[j].c);}
+    picks.forEach(function(c,i){
+      var f=Math.max(0,Math.min(1,scoreCam(c)/(top||1)));
+      var base=[[93,99],[86,93],[80,89]][i]||[78,86];
+      c.r=i; c.pct=Math.round(base[0]+(base[1]-base[0])*f);
+    });
+    if(picks[1]&&picks[1].pct>=picks[0].pct)picks[1].pct=picks[0].pct-2;
+    if(picks[2]&&picks[2].pct>=picks[1].pct)picks[2].pct=picks[1].pct-2;
+    picks.forEach(function(c){if(c.pct<70)c.pct=70;});
+    return picks;
+  }
+  function brandTrait(brand){
+    var b=String(brand||"").toLowerCase(),tr=D.results.traits;
+    for(var k in tr){ if(k!=="_default"&&b.indexOf(k)>=0) return tr[k]; }
+    return tr._default;
+  }
+  // kameranin somut eslesen ozelligini, kullanim/estetik baglamina gore sec (metinler DATA'dan)
+  function featOf(c){
+    var FD=D.results.feats_dyn,uses=vals(0),aes=vals(2),envs=vals(3),F=[];
+    var travel=uses.indexOf("travel")>=0,daily=uses.indexOf("daily")>=0,night=uses.indexOf("night")>=0,
+        content=uses.indexOf("content")>=0,portrait=uses.indexOf("portrait")>=0;
+    if((travel||envs.indexOf("mixed")>=0)&&c.zoom>=5)F.push(FD.zoom.replace("{z}",c.zoom));
+    if(travel&&c.water)F.push(FD.water);
+    if((night||envs.indexOf("citynight")>=0||envs.indexOf("indoor")>=0)&&c.flash)F.push(FD.flash);
+    if(content&&c.video)F.push(FD.video);
+    if(content&&c.touch)F.push(FD.touch);
+    if(daily&&c.slim)F.push(FD.slim);
+    if(aes.indexOf("sharp")>=0&&c.mp>=12)F.push(FD.mp.replace("{mp}",c.mp));
+    if(aes.indexOf("y2k")>=0&&c.year&&c.year<=2008)F.push(FD.ccd.replace("{y}",c.year));
+    if(portrait&&c.macro)F.push(FD.macro);
+    if(!F.length)F.push(c.mp?FD.mp_default.replace("{mp}",c.mp):FD["default"]);
+    return F[c.r%F.length]||F[0];
+  }
+  function reasonFor(c){
+    var name=state.name||D.results.friend;
+    var u=firstOf(0),a=firstOf(2);
+    var t=D.results.reasons[c.r%D.results.reasons.length];
+    return t.replace(/\{name\}/g,name).replace(/\{use\}/g,u.why||"tarzin").replace(/\{aes\}/g,a.why||"estetik tercihin").replace(/\{feat\}/g,featOf(c)).replace(/\{trait\}/g,brandTrait(c.brand)).replace(/\{cam\}/g,c.title||"bu model").replace(/\{brand\}/g,c.brand||"bu model");
+  }
+  function showAnalyze(){
+    setProg(.97);
+    var uh=firstOf(0).hue; if(uh)setAccent(uh);
+    var A=D.analyze;
+    var el=document.createElement("div");
+    el.innerHTML=''
+      +'<div class="anz">'
+      +'<div class="ringwrap"><div class="orbit"><i></i></div><div class="orbit"><i></i></div><div class="orbit"><i></i></div>'
+      +'<div class="ring"><div class="ascan"></div><div><div class="pv">0<small>%</small></div><div class="pl">'+esc(A.label)+'</div></div></div></div>'
+      +'<div class="astep"><span class="sp"></span><span class="atxt">'+esc(A.steps[0])+'</span></div>'
+      +'<div class="athumbs"></div></div>';
+    swap(el);
+    var ring=el.querySelector(".ring"),pv=el.querySelector(".pv"),atxt=el.querySelector(".atxt"),thumbs=el.querySelector(".athumbs");
+    var pool=(stock&&stock.length)?stock:D.fallback;
+    var tj=pool.slice();for(var i=tj.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=tj[i];tj[i]=tj[j];tj[j]=t;}
+    thumbs.innerHTML=tj.slice(0,5).map(function(c,i){return '<img alt="" loading="lazy" style="animation-delay:'+(i*220)+'ms" src="'+esc(img(c.image,130))+'">';}).join("");
+    var n=(stock&&stock.length)||"40+";
+    var useShort=(A.use_short&&firstOf(0).v&&A.use_short[firstOf(0).v])||"";
+    var steps=A.steps.map(function(s){return s.replace("{n}",n).replace("{name}",state.name||D.results.friend).replace("{use}",useShort);});
+    var dur=rm?600:6500,t0=null,si=-1;
+    var animDone=new Promise(function(res){
+      function frame(ts){
+        if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,2.2),pct=Math.round(e*100);
+        ring.style.setProperty("--p",pct);pv.innerHTML=pct+'<small>%</small>';
+        var idx=Math.min(steps.length-1,Math.floor(p*steps.length));
+        if(idx!==si){si=idx;atxt.style.opacity="0";setTimeout(function(){atxt.textContent=steps[idx];atxt.style.opacity="1";},180);}
+        if(p<1)requestAnimationFrame(frame);else res();
+      }
+      requestAnimationFrame(frame);
+    });
+    // wait for BOTH the animation and the live stock before showing results
+    Promise.all([animDone,stockReady]).then(function(){setTimeout(showResults,300);});
+  }
+
+  function showResults(){
+    setProg(1);
+    var R=D.results;
+    var picks=pickCameras();
+    logSubmission(picks);
+    var name=state.name||R.friend;
+    var el=document.createElement("div");
+    var cards=picks.map(function(c,i){
+      var best=i===0,url=c.handle?(D.products_base+c.handle):D.shop_url;
+      return '<article class="rc'+(best?' best':'')+'" style="animation-delay:'+(i*200)+'ms">'
+        +'<div class="rank">'+(best?esc(R.best_badge):("#"+(i+1)))+'</div>'
+        +'<div class="rimg"><img alt="'+esc(c.title)+'" loading="lazy" src="'+esc(img(c.image,640))+'">'
+        +'<div class="mbadge"><b data-pct="'+c.pct+'">%0</b><span>'+esc(R.match)+'</span></div></div>'
+        +'<div class="rbody"><div class="rbrand">'+esc(c.brand)+'</div>'
+        +'<div class="rname">'+esc(c.title)+'</div>'
+        +'<div class="rbar"><i data-w="'+c.pct+'"></i></div>'
+        +'<p class="rwhy">'+esc(reasonFor(c))+'</p>'
+        +(c.price?('<div class="rprice">'+esc(c.price)+'</div>'):'')
+        +'<a class="vbtn" href="'+esc(url)+'">'+esc(R.view)+svg("arrow")+'</a></div></article>';
+    }).join("");
+    el.innerHTML=''
+      +'<div class="rhead"><span class="qcount">'+esc(R.eyebrow)+'</span>'
+      +'<h2 class="rttl">'+esc(R.title.replace("{name}",name))+'</h2>'
+      +'<p class="rsub">'+esc(R.sub)+'</p></div>'
+      +'<div class="cards">'+cards+'</div>'
+      +'<div class="ract"><a class="pbtn" href="'+esc(D.shop_url)+'">'+esc(R.all_cta)+svg("arrow")+'</a>'
+      +'<button type="button" class="sbtn shareb" data-share>'+svg("sharei")+esc(D.share.btn)+'</button>'
+      +'<button type="button" class="sbtn" data-redo>'+svg("redo")+esc(R.redo)+'</button></div>';
+    swap(el);
+    var shareBtn=el.querySelector("[data-share]");
+    if(shareBtn)shareBtn.addEventListener("click",function(){openShare(picks);});
+    setTimeout(function(){
+      el.querySelectorAll(".rbar i").forEach(function(b){b.style.width=b.getAttribute("data-w")+"%";});
+      el.querySelectorAll(".mbadge b").forEach(function(bd){
+        var t=+bd.getAttribute("data-pct"),s=null,du=1500;
+        function st(ts){if(!s)s=ts;var p=Math.min((ts-s)/du,1),e=1-Math.pow(1-p,3);bd.textContent="%"+Math.round(t*e);if(p<1)requestAnimationFrame(st);}
+        requestAnimationFrame(st);
+      });
+    },560);
+    el.querySelector("[data-redo]").addEventListener("click",function(){state.ans=[];root.style.removeProperty("--ac");showProfile();});
+  }
+
+  // ---------- PAYLASIM: 3 kameranin sosyal medya gorseli + paylas butonlari ----------
+  var SICN={
+    share:'<path d="M18 8a3 3 0 10-2.83-4H15a3 3 0 00.18 1.06L8.7 8.8a3 3 0 100 6.4l6.48 3.74A3 3 0 1018 17a2.96 2.96 0 00-1.78.6l-6.48-3.74a3 3 0 000-1.72l6.48-3.74A2.99 2.99 0 0018 8z"/>',
+    wa:'<path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.715zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>',
+    x:'<path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>',
+    fb:'<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>',
+    th:'<path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.36-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.85 13.85 0 013.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32l-1.696-1.164c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.323.146 1.51.71 2.616 1.793 3.199 3.13.81 1.868.886 4.943-1.622 7.485-1.918 1.94-4.252 2.95-7.247 2.97z"/>',
+    ig:'<path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.334 3.608 1.31.975.975 1.247 2.242 1.31 3.608.058 1.266.069 1.646.069 4.85s-.012 3.584-.07 4.85c-.062 1.366-.334 2.633-1.31 3.608-.975.975-2.242 1.247-3.608 1.31-1.266.058-1.646.069-4.85.069s-3.584-.012-4.85-.07c-1.366-.062-2.633-.334-3.608-1.31-.975-.975-1.247-2.242-1.31-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.334-2.633 1.31-3.608.975-.975 2.242-1.247 3.608-1.31C8.416 2.175 8.796 2.163 12 2.163zm0 1.802c-3.146 0-3.519.012-4.76.069-1.024.047-1.58.218-1.95.362-.49.19-.84.418-1.207.785-.367.367-.595.717-.785 1.207-.144.37-.315.926-.362 1.95-.057 1.241-.069 1.614-.069 4.76s.012 3.519.069 4.76c.047 1.024.218 1.58.362 1.95.19.49.418.84.785 1.207.367.367.717.595 1.207.785.37.144.926.315 1.95.362 1.241.057 1.614.069 4.76.069s3.519-.012 4.76-.069c1.024-.047 1.58-.218 1.95-.362.49-.19.84-.418 1.207-.785.367-.367.595-.717.785-1.207.144-.37.315-.926.362-1.95.057-1.241.069-1.614.069-4.76s-.012-3.519-.069-4.76c-.047-1.024-.218-1.58-.362-1.95-.19-.49-.418-.84-.785-1.207-.367-.367-.717-.595-1.207-.785-.37-.144-.926-.315-1.95-.362-1.241-.057-1.614-.069-4.76-.069zm0 3.063A4.972 4.972 0 1012 16.97a4.972 4.972 0 000-9.943zm0 8.2A3.23 3.23 0 1112 8.77a3.23 3.23 0 010 6.458zm6.323-8.392a1.162 1.162 0 11-2.324 0 1.162 1.162 0 012.324 0z"/>',
+    dl:'<path d="M12 3a1 1 0 011 1v9.585l3.293-3.292a1 1 0 111.414 1.414l-5 5a1 1 0 01-1.414 0l-5-5a1 1 0 111.414-1.414L11 13.585V4a1 1 0 011-1zM5 19a1 1 0 100 2h14a1 1 0 100-2H5z"/>'
+  };
+  function shareFeat(brand){var b=String(brand||"").toLowerCase(),f=D.share.feats;for(var k in f){if(k!=="_default"&&b.indexOf(k)>=0)return f[k];}return f._default;}
+  function loadImg(src){return new Promise(function(res){var im=new Image();im.crossOrigin="anonymous";im.onload=function(){res(im);};im.onerror=function(){res(null);};im.src=src;});}
+  function rr(c,x,y,w,h,r){c.beginPath();c.moveTo(x+r,y);c.arcTo(x+w,y,x+w,y+h,r);c.arcTo(x+w,y+h,x,y+h,r);c.arcTo(x,y+h,x,y,r);c.arcTo(x,y,x+w,y,r);c.closePath();}
+  function cover(c,im,x,y,w,h,r){if(!im){c.save();rr(c,x,y,w,h,r);c.clip();c.fillStyle="#eceae4";c.fillRect(x,y,w,h);c.restore();return;}var ir=im.width/im.height,tr=w/h,sw,sh,sx,sy;if(ir>tr){sh=im.height;sw=sh*tr;sx=(im.width-sw)/2;sy=0;}else{sw=im.width;sh=sw/tr;sx=0;sy=(im.height-sh)/2;}c.save();rr(c,x,y,w,h,r);c.clip();c.drawImage(im,sx,sy,sw,sh,x,y,w,h);c.restore();}
+  var FONT="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
+  // 9:16 (1080x1920) minimalist, ortalanmis hikaye gorseli: RCL logo + en uyumlu kamera + teste tesvik.
+  function buildShareImage(picks){
+    var hero=picks[0]||{};
+    return loadImg(img(hero.image,720)).then(function(im){
+      var W=1080,H=1920,cv=document.createElement("canvas");cv.width=W;cv.height=H;var x=cv.getContext("2d");
+      var S=D.share,CX=W/2;
+      var AC=(getComputedStyle(root).getPropertyValue("--ac")||"").trim()||"#d8472f",INK="#15110d",MUT="#8c857b";
+      function hex2rgb(h){h=h.replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
+      var ar=hex2rgb(AC),rgba=function(a){return "rgba("+ar[0]+","+ar[1]+","+ar[2]+","+a+")";};
+      // arka plan + yumusak vurgu isiklari
+      x.fillStyle="#f7f4ef";x.fillRect(0,0,W,H);
+      var g1=x.createRadialGradient(CX,-60,40,CX,-60,920);g1.addColorStop(0,rgba(.16));g1.addColorStop(1,rgba(0));x.fillStyle=g1;x.fillRect(0,0,W,760);
+      var g2=x.createRadialGradient(CX,H+80,40,CX,H+80,820);g2.addColorStop(0,rgba(.12));g2.addColorStop(1,rgba(0));x.fillStyle=g2;x.fillRect(0,H-620,W,620);
+      x.textBaseline="alphabetic";
+      function cen(t,y,font,col,track){x.font=font;x.fillStyle=col;
+        if(track){var ws=0,i;for(i=0;i<t.length;i++)ws+=x.measureText(t[i]).width+track;ws-=track;var sx=CX-ws/2;x.textAlign="left";
+          for(i=0;i<t.length;i++){x.fillText(t[i],sx,y);sx+=x.measureText(t[i]).width+track;}x.textAlign="left";}
+        else{x.textAlign="center";x.fillText(t,CX,y);x.textAlign="left";}}
+      function fit(t,max,start,min,weight){var fs=start;do{x.font=weight+" "+fs+"px "+FONT;}while(x.measureText(t).width>max&&(fs-=2)>min);return fs;}
+      // --- LOGO: kamera lensi marki + wordmark ---
+      var ly=150;
+      x.lineWidth=6;x.strokeStyle=AC;x.beginPath();x.arc(CX,ly,40,0,7);x.stroke();
+      x.lineWidth=5;x.strokeStyle=INK;x.beginPath();x.arc(CX,ly,22,0,7);x.stroke();
+      x.fillStyle=AC;x.beginPath();x.arc(CX,ly,7,0,7);x.fill();
+      x.fillStyle="rgba(255,255,255,.9)";x.beginPath();x.arc(CX-9,ly-9,4,0,7);x.fill();
+      cen(S.brandmark,ly+82,"800 30px "+FONT,INK,8);
+      cen(S.eyebrow,ly+120,"700 19px "+FONT,AC,5);
+      // --- HERO KART: en uyumlu kamera ---
+      var cardS=640,cx=CX-cardS/2,cyc=350;
+      x.save();x.shadowColor="rgba(20,17,13,.20)";x.shadowBlur=80;x.shadowOffsetY=42;
+      x.fillStyle="#ffffff";rr(x,cx,cyc,cardS,cardS,52);x.fill();x.restore();
+      x.strokeStyle="rgba(20,17,13,.06)";x.lineWidth=1.5;rr(x,cx,cyc,cardS,cardS,52);x.stroke();
+      cover(x,im,cx+44,cyc+44,cardS-88,cardS-88,32);
+      // dairesel uyum rozeti (kart sag-ust)
+      var bx=cx+cardS-30,by=cyc+30,br2=82;
+      x.save();x.shadowColor=rgba(.45);x.shadowBlur=34;x.fillStyle=AC;x.beginPath();x.arc(bx,by,br2,0,7);x.fill();x.restore();
+      x.fillStyle="#fff";x.textAlign="center";
+      x.font="800 46px "+FONT;x.fillText("%"+(hero.pct||0),bx,by+6);
+      x.font="700 18px "+FONT;x.fillText(S.match_word,bx,by+34);x.textAlign="left";
+      // --- SONUC METNI ---
+      var ty=cyc+cardS+96;
+      // EN UYUMLU pill (ortali)
+      x.font="800 22px "+FONT;var pbw=x.measureText(S.badge).width+44;
+      x.fillStyle=AC;rr(x,CX-pbw/2,ty-34,pbw,46,23);x.fill();
+      x.fillStyle="#fff";x.textAlign="center";x.textBaseline="middle";x.fillText(S.badge,CX,ty-10);x.textBaseline="alphabetic";x.textAlign="left";
+      // kamera adi (gerekirse 2 satir)
+      var name=hero.title||"",fs=fit(name,W-150,60,30,"800");x.font="800 "+fs+"px "+FONT;
+      var words=name.split(" "),line="",lines=[];
+      words.forEach(function(w){var t=line?line+" "+w:w;if(x.measureText(t).width>W-150&&line){lines.push(line);line=w;}else line=t;});
+      if(line)lines.push(line);lines=lines.slice(0,2);
+      var ny=ty+70;lines.forEach(function(l,i){cen(l,ny+i*(fs+10),"800 "+fs+"px "+FONT,INK);});
+      var afterName=ny+(lines.length-1)*(fs+10)+50;
+      cen(String(hero.brand||"").toUpperCase(),afterName,"700 26px "+FONT,AC,3);
+      cen(S.more,afterName+46,"500 27px "+FONT,MUT);
+      // --- ALT CTA: denemeye tesvik ---
+      x.strokeStyle="rgba(20,17,13,.10)";x.lineWidth=2;x.beginPath();x.moveTo(CX-70,1610);x.lineTo(CX+70,1610);x.stroke();
+      cen(S.q1,1690,"800 52px "+FONT,INK);
+      cen(S.q2,1752,"800 52px "+FONT,AC);
+      cen(S.try_sub,1804,"500 28px "+FONT,MUT);
+      // url pill
+      x.font="800 30px "+FONT;var uw=x.measureText(S.try_cta).width+72;
+      x.save();x.shadowColor=rgba(.4);x.shadowBlur=30;x.shadowOffsetY=14;
+      x.fillStyle=INK;rr(x,CX-uw/2,1840,uw,66,33);x.fill();x.restore();
+      x.fillStyle="#fff";x.textAlign="center";x.textBaseline="middle";x.fillText(S.try_cta,CX,1874);x.textBaseline="alphabetic";x.textAlign="left";
+      return cv;
+    });
+  }
+  function openShare(picks){
+    var S=D.share,mask=root.querySelector(".shmask");
+    if(!mask){mask=document.createElement("div");mask.className="shmask";root.appendChild(mask);
+      mask.addEventListener("click",function(e){if(e.target===mask)close();});}
+    function close(){mask.classList.remove("on");document.body.style.overflow="";}
+    mask.innerHTML='<div class="shcard"><div class="shhead"><b>'+esc(S.title)+'</b><button class="shx" type="button" aria-label="Kapat">&#215;</button></div><div class="shbody"><div class="shload"><span class="sp"></span>'+esc(S.making)+'</div></div></div>';
+    mask.classList.add("on");document.body.style.overflow="hidden";
+    mask.querySelector(".shx").addEventListener("click",close);
+    buildShareImage(picks).then(function(cv){
+      var url=cv.toDataURL("image/png");
+      cv.toBlob(function(blob){
+        var pageUrl=(window.location&&window.location.href)||"https://retrocameraland.com/pages/hangi-kamera-bana-uygun";
+        var names=picks.map(function(c){return c.title+" %"+c.pct;}).join(", ");
+        var text="RetroCameraLand AI testine gore bana en uygun retro kameralar: "+names+". Sen de ogren:";
+        var body=mask.querySelector(".shbody");
+        if(!body)return;
+        body.innerHTML='<img class="shimg" alt="" src="'+url+'"><div class="shrow"></div>';
+        var rowEl=body.querySelector(".shrow"),enc=encodeURIComponent;
+        function add(label,path,fn){var b=document.createElement("button");b.type="button";b.className="shbtn";b.innerHTML='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+path+'</svg><span>'+esc(label)+'</span>';b.addEventListener("click",fn);rowEl.appendChild(b);}
+        function dl(){var a=document.createElement("a");a.href=url;a.download="retrocameraland-kamera.png";document.body.appendChild(a);a.click();a.remove();}
+        var file=blob?new File([blob],"retrocameraland-kamera.png",{type:"image/png"}):null;
+        var canFiles=!!(file&&navigator.canShare&&navigator.canShare({files:[file]}));
+        if(canFiles)add(S.native,SICN.share,function(){navigator.share({files:[file],text:text+" "+pageUrl}).catch(function(){});});
+        add("WhatsApp",SICN.wa,function(){window.open("https://wa.me/?text="+enc(text+" "+pageUrl),"_blank","noopener");});
+        add("X",SICN.x,function(){window.open("https://twitter.com/intent/tweet?text="+enc(text)+"&url="+enc(pageUrl),"_blank","noopener");});
+        add("Facebook",SICN.fb,function(){window.open("https://www.facebook.com/sharer/sharer.php?u="+enc(pageUrl),"_blank","noopener");});
+        add("Threads",SICN.th,function(){window.open("https://www.threads.net/intent/post?text="+enc(text+" "+pageUrl),"_blank","noopener");});
+        add("Instagram",SICN.ig,function(){if(canFiles){navigator.share({files:[file]}).catch(function(){});}else{dl();setTimeout(function(){alert(S.ig_note);},120);}});
+        add(S.dl,SICN.dl,dl);
+      },"image/png");
+    }).catch(function(){var b=mask.querySelector(".shbody");if(b)b.innerHTML='<div class="shload">'+esc(S.fail)+'</div>';});
+  }
+
+  root.querySelectorAll(".seo .item").forEach(function(it){
+    var b=it.querySelector(".q"),p=it.querySelector(".a");
+    b.addEventListener("click",function(){var o=it.getAttribute("aria-expanded")==="true";
+      it.setAttribute("aria-expanded",o?"false":"true");
+      p.style.height=o?"0px":(p.firstElementChild.offsetHeight+"px");});
+  });
+  window.addEventListener("resize",function(){
+    root.querySelectorAll('.seo .item[aria-expanded="true"] .a').forEach(function(p){p.style.height=p.firstElementChild.offsetHeight+"px";});});
+})();
+</script>
+
+{% schema %}
+{
+  "name": "RCL Kamera Bulucu",
+  "tag": "section",
+  "class": "rcl-finder-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Renkler"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Vurgu (baslangic)",
+      "default": "#d8472f"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Arka plan",
+      "default": "#faf8f4"
+    },
+    {
+      "type": "color",
+      "id": "card",
+      "label": "Kart",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "ink",
+      "label": "Metin",
+      "default": "#15110d"
+    },
+    {
+      "type": "header",
+      "content": "Cam efekti"
+    },
+    {
+      "type": "range",
+      "id": "glass_blur",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Cam bulanikligi",
+      "default": 18
+    },
+    {
+      "type": "header",
+      "content": "Baglantilar"
+    },
+    {
+      "type": "url",
+      "id": "shop_url",
+      "label": "Tum kameralar (koleksiyon)"
+    },
+    {
+      "type": "text",
+      "id": "products_base",
+      "label": "Urun yolu",
+      "default": "/products/"
+    },
+    {
+      "type": "header",
+      "content": "Veri toplama (HQ dashboard)"
+    },
+    {
+      "type": "text",
+      "id": "log_endpoint",
+      "label": "Kayit API adresi",
+      "default": "https://rclhq.vercel.app/api/finder-log",
+      "info": "Bos birakirsan test sonuclari kaydedilmez."
+    },
+    {
+      "type": "header",
+      "content": "SEO"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_breadcrumb",
+      "label": "Breadcrumb schema ciktisi",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "RCL Kamera Bulucu"
+    }
+  ]
+}
+{% endschema %}
