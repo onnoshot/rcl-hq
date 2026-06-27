@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Time Capsule — Yönetim Paneli</title>
+<style>
+:root{--bg:#0a0b10;--bg2:#12141c;--card:#161922;--bd:#252936;--bd2:#323748;--ink:#f4f6fb;--mut:#8b93a7;--acc:#6ea8ff;--red:#ff4d4f;--grn:#34c759;--amb:#ffb020;
+ --sab:env(safe-area-inset-bottom,0px);--sat:env(safe-area-inset-top,0px);
+ font-family:-apple-system,'SF Pro Display','SF Pro Text','Segoe UI',system-ui,sans-serif}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(120% 70% at 50% -10%,#1a1f2e,#0a0b10 60%);color:var(--ink);-webkit-font-smoothing:antialiased;min-height:100vh}
+button{font-family:inherit;cursor:pointer;color:inherit}
+input,select,textarea{font-family:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:calc(16px + var(--sat)) 16px calc(40px + var(--sab))}
+/* login */
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.login .box{width:100%;max-width:380px;background:var(--card);border:1px solid var(--bd);border-radius:22px;padding:30px 24px;box-shadow:0 30px 80px -30px #000}
+.login .lg{width:54px;height:54px;border-radius:16px;background:linear-gradient(160deg,#2a3350,#161922);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;border:1px solid var(--bd2)}
+.login .lg svg{width:30px;height:30px;stroke:var(--ink);fill:none;stroke-width:1.6}
+.login h1{font-size:19px;font-weight:800;text-align:center;margin:0 0 4px;letter-spacing:-.02em}
+.login p{color:var(--mut);font-size:13px;text-align:center;margin:0 0 20px}
+.login input{width:100%;background:var(--bg2);border:1px solid var(--bd2);border-radius:13px;color:var(--ink);font-size:16px;padding:13px 14px;outline:none;margin-bottom:10px}
+.login input:focus{border-color:var(--acc)}
+.login button{width:100%;background:var(--ink);color:#0a0b10;border:0;border-radius:13px;font-size:15px;font-weight:800;padding:14px;margin-top:4px}
+.login .err{color:var(--red);font-size:13px;text-align:center;min-height:18px;margin-top:8px}
+/* header */
+.top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.top .lg{width:40px;height:40px;border-radius:12px;background:var(--card);border:1px solid var(--bd2);display:flex;align-items:center;justify-content:center;flex:none}
+.top .lg svg{width:23px;height:23px;stroke:var(--ink);fill:none;stroke-width:1.6}
+.top h1{font-size:18px;font-weight:800;margin:0;letter-spacing:-.02em}.top h1 b{font-weight:800}.top h1 span{font-weight:500;opacity:.7}
+.top .sp{flex:1}
+.top .out{background:var(--card);border:1px solid var(--bd2);border-radius:999px;color:var(--mut);font-size:12px;font-weight:700;padding:8px 13px}
+.top .rf{background:var(--acc);border:0;border-radius:999px;color:#06122b;font-size:12px;font-weight:800;padding:8px 14px}
+/* tabs */
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:14px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:none;background:var(--card);border:1px solid var(--bd);border-radius:999px;color:var(--mut);font-size:13.5px;font-weight:700;padding:9px 16px;transition:.15s}
+.tabs button.on{background:var(--ink);color:#0a0b10;border-color:var(--ink)}
+/* cards / grid */
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:18px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:15px}
+.kpi .k{font-size:12px;color:var(--mut);font-weight:600;display:flex;align-items:center;gap:6px}.kpi .k svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8}
+.kpi b{font-size:25px;font-weight:800;letter-spacing:-.02em;display:block;margin-top:5px;font-variant-numeric:tabular-nums}
+.kpi.warn b{color:var(--amb)}
+.sec{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:16px;margin-bottom:14px}
+.sec h2{font-size:15px;font-weight:800;margin:0 0 12px;letter-spacing:-.01em}
+.row{display:flex;align-items:center;gap:11px;padding:9px 0;border-top:1px solid var(--bd)}
+.row:first-of-type{border-top:0}
+.row img{width:38px;height:38px;border-radius:9px;object-fit:cover;background:var(--bg2);flex:none}
+.row img.av{border-radius:50%}
+.row .g{flex:1;min-width:0}
+.row .g b{font-size:13.5px;font-weight:700;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .g span{font-size:11.5px;color:var(--mut)}
+.row .n{font-size:13px;font-weight:800;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.row .n s{display:block;font-size:10px;color:var(--mut);font-weight:600;text-decoration:none}
+.bar{height:6px;background:var(--bg2);border-radius:4px;overflow:hidden;margin-top:5px}.bar i{display:block;height:100%;background:var(--acc);border-radius:4px}
+.tag{font-size:10px;font-weight:700;border-radius:6px;padding:2px 7px;display:inline-block}
+.tag.seed{background:#2a2335;color:#c9a8ff}.tag.real{background:#10271a;color:#5fd98a}
+.tag.pub{background:#10271a;color:#5fd98a}.tag.priv{background:#2a1a1a;color:#ff8a8a}
+.tag.app{background:#10271a;color:#5fd98a}.tag.pend{background:#2c2510;color:#ffd479}.tag.rej{background:#2a1a1a;color:#ff8a8a}
+.muted{color:var(--mut);font-size:13px;text-align:center;padding:24px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.miniav{display:inline-flex;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--bd2);border-radius:999px;padding:4px 10px 4px 4px;font-size:11.5px;font-weight:600}
+.miniav img{width:22px;height:22px;border-radius:50%;object-fit:cover;background:var(--card)}
+/* photo moderation */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.pcard{background:var(--card);border:1px solid var(--bd);border-radius:15px;overflow:hidden}
+.pcard .im{aspect-ratio:1;background:var(--bg2);position:relative}.pcard .im img{width:100%;height:100%;object-fit:cover}
+.pcard .im .badges{position:absolute;top:7px;left:7px;display:flex;gap:5px}
+.pcard .bd{padding:10px 11px 11px}
+.pcard .au{font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcard .cm{font-size:11px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.pcard .nt{font-size:11.5px;color:var(--ink);opacity:.85;margin-top:6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;line-height:1.35}
+.pcard .acts{display:flex;gap:6px;margin-top:9px}
+.pcard .acts button{flex:1;border:1px solid var(--bd2);background:var(--bg2);border-radius:9px;color:var(--ink);font-size:11.5px;font-weight:700;padding:8px 4px}
+.pcard .acts .del{color:var(--red);border-color:#3a2226}
+.more{display:block;margin:16px auto 0;background:var(--card);border:1px solid var(--bd2);border-radius:999px;color:var(--ink);font-size:13px;font-weight:700;padding:11px 22px}
+/* edit modal */
+.ov{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;padding:18px}
+.ov.show{display:flex}
+.ov .m{width:100%;max-width:420px;background:var(--card);border:1px solid var(--bd2);border-radius:20px;padding:18px;max-height:90vh;overflow:auto}
+.ov h3{font-size:16px;font-weight:800;margin:0 0 12px}
+.ov label{font-size:12px;color:var(--mut);font-weight:600;display:block;margin:11px 0 6px}
+.ov input,.ov textarea,.ov select{width:100%;background:var(--bg2);border:1px solid var(--bd2);border-radius:11px;color:var(--ink);font-size:15px;padding:11px 12px;outline:none}
+.ov input:focus,.ov textarea:focus{border-color:var(--acc)}
+.ov .mb{display:flex;gap:8px;margin-top:16px}
+.ov .mb button{flex:1;border:0;border-radius:11px;font-size:14px;font-weight:800;padding:13px}
+.ov .mb .save{background:var(--ink);color:#0a0b10}.ov .mb .cancel{background:var(--bg2);color:var(--ink);border:1px solid var(--bd2)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120%);background:var(--ink);color:#0a0b10;font-size:13px;font-weight:800;padding:11px 18px;border-radius:12px;z-index:90;transition:.3s}
+.toast.show{transform:translateX(-50%) translateY(0)}
+@media(max-width:560px){.kpi b{font-size:22px}}
+</style>
+</head>
+<body>
+<div id="login" class="login">
+  <div class="box">
+    <div class="lg"><svg viewBox="0 0 24 24"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="6.2"/><circle cx="12" cy="12" r="6.2"/><path d="M13.43 9.52 16.99 15.68M10.57 9.52H17.69M9.14 12 12.69 5.84M10.57 14.48 7.01 8.32M13.43 14.48H6.31M14.86 12 11.31 18.16"/><circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none"/></svg></div>
+    <h1>Time Capsule Yönetim</h1>
+    <p>Devam etmek için yönetici anahtarını gir</p>
+    <input id="key" type="password" placeholder="Yönetici anahtarı (RCL_ALIM_KEY)" autocomplete="off">
+    <button id="enter">Bağlan</button>
+    <div class="err" id="lerr"></div>
+  </div>
+</div>
+
+<div id="app" style="display:none"><div class="wrap">
+  <div class="top">
+    <div class="lg"><svg viewBox="0 0 24 24"><rect x="2.6" y="2.6" width="18.8" height="18.8" rx="6.2"/><circle cx="12" cy="12" r="6.2"/><path d="M13.43 9.52 16.99 15.68M10.57 9.52H17.69M9.14 12 12.69 5.84M10.57 14.48 7.01 8.32M13.43 14.48H6.31M14.86 12 11.31 18.16"/><circle cx="12" cy="12" r="1.25" fill="currentColor" stroke="none"/></svg></div>
+    <h1><b>Time</b>Capsule <span>Yönetim</span></h1>
+    <div class="sp"></div>
+    <button class="rf" id="refresh">Yenile</button>
+    <button class="out" id="logout">Çıkış</button>
+  </div>
+  <div class="tabs" id="tabs">
+    <button data-tab="overview" class="on">Genel Bakış</button>
+    <button data-tab="users">Kullanıcılar</button>
+    <button data-tab="waitlist">Bekleme Listesi</button>
+    <button data-tab="photos">Anılar</button>
+  </div>
+  <div id="view"></div>
+</div></div>
+
+<div class="ov" id="edit"><div class="m">
+  <h3>Anıyı düzenle</h3>
+  <label>Düşünce / not</label><textarea id="e-note" rows="3"></textarea>
+  <label>Çekildiği yer</label><input id="e-loc">
+  <label>Durum</label><select id="e-status"><option value="approved">Onaylı (görünür)</option><option value="pending">Beklemede</option><option value="rejected">Reddedildi (gizli)</option></select>
+  <label>Görünürlük</label><select id="e-vis"><option value="public">Herkese açık</option><option value="private">Sadece sahibi</option></select>
+  <div class="mb"><button class="cancel" id="e-cancel">Vazgeç</button><button class="save" id="e-save">Kaydet</button></div>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+var BASE='https://rclhq.vercel.app/api/community';
+var KEY=localStorage.getItem('tc_admin_key')||localStorage.getItem('rcl_alim_key')||'';
+// dashboard iframe'inden anahtar gec (hash) -> giris ekranini atla
+try{var _hk=(location.hash.match(/key=([^&]+)/)||[])[1];if(_hk){KEY=decodeURIComponent(_hk);localStorage.setItem('tc_admin_key',KEY);}}catch(e){}
+var tab='overview',cache={},photoCursor=0,photoStatus='',editId=null;
+var $=function(s){return document.querySelector(s)};
+function esc(s){var d=document.createElement('div');d.textContent=s==null?'':String(s);return d.innerHTML}
+function nf(n){return (n==null?0:n).toLocaleString('tr-TR')}
+function fd(s){if(!s)return '';try{return new Date(s).toLocaleDateString('tr-TR',{day:'numeric',month:'short',year:'numeric'})}catch(e){return ''}}
+var toEl=$('#toast');function toast(m){toEl.textContent=m;toEl.classList.add('show');clearTimeout(toEl._t);toEl._t=setTimeout(function(){toEl.classList.remove('show')},2200)}
+async function api(path,opts){opts=opts||{};var url=BASE+path+(path.indexOf('?')>-1?'&':'?')+'key='+encodeURIComponent(KEY);
+  opts.headers=Object.assign({'x-admin-key':KEY},opts.headers||{});
+  if(opts.body){opts.headers['Content-Type']='application/json';opts.body=JSON.stringify(opts.body)}
+  var r=await fetch(url,opts);return r.json()}
+
+// ---- login ----
+$('#enter').addEventListener('click',doLogin);
+$('#key').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin()});
+async function doLogin(){KEY=$('#key').value.trim();if(!KEY){return}
+  $('#lerr').textContent='Bağlanıyor...';
+  var r=await api('/admin');
+  if(r&&r.ok){localStorage.setItem('tc_admin_key',KEY);$('#login').style.display='none';$('#app').style.display='';cache.overview=r;render()}
+  else{$('#lerr').textContent='Anahtar geçersiz. Tekrar dene.'}}
+$('#logout').addEventListener('click',function(){localStorage.removeItem('tc_admin_key');location.reload()});
+$('#refresh').addEventListener('click',function(){cache={};photoCursor=0;load(tab,true)});
+
+// ---- tabs ----
+document.querySelectorAll('#tabs button').forEach(function(b){b.addEventListener('click',function(){
+  tab=b.dataset.tab;document.querySelectorAll('#tabs button').forEach(function(x){x.classList.toggle('on',x===b)});render()})});
+
+function render(){load(tab,false)}
+async function load(t,force){var v=$('#view');
+  if(t==='overview'){if(!cache.overview||force)cache.overview=await api('/admin');return renderOverview(cache.overview)}
+  if(t==='users'){v.innerHTML='<div class="muted">Yükleniyor...</div>';if(!cache.users||force)cache.users=await api('/admin-users');return renderUsers(cache.users)}
+  if(t==='waitlist'){v.innerHTML='<div class="muted">Yükleniyor...</div>';if(!cache.waitlist||force)cache.waitlist=await api('/admin-waitlist');return renderWaitlist(cache.waitlist)}
+  if(t==='photos'){if(force){photoCursor=0;cache.photos=null}return renderPhotos(force)}
+}
+
+function ic(p){return '<svg viewBox="0 0 24 24">'+p+'</svg>'}
+var IC={users:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M15 14a6 6 0 0 1 6 6"/>',cam:'<path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',heart:'<path d="M12 21s-8-5.3-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.7-8 11-8 11z"/>',photo:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m5 18 5-4 3 2 3-3 4 3"/>',chat:'<path d="M21 11.5a8.4 8.4 0 0 1-11.9 7.6L3 21l1.9-6.1A8.4 8.4 0 1 1 21 11.5z"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',star:'<path d="m12 3 2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 17l-5.2 2.1 1-5.8L3.5 9.2l5.9-.9z"/>',eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>',lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>'};
+
+function renderOverview(d){if(!d||!d.ok){$('#view').innerHTML='<div class="muted">Veri alınamadı.</div>';return}
+  var t=d.totals;
+  var kp=[['users','Üye',t.users],['cam','Kamera',t.cameras],['heart','Oy',t.votes],['photo','Anı',t.photos],['heart','Beğeni',t.likes],['chat','Yorum',t.comments],['clock','Bekleme',t.waitlist],['star','Geri bildirim',t.feedback]];
+  var h='<div class="kpis">'+kp.map(function(k){return '<div class="kpi"><div class="k">'+ic(IC[k[0]])+esc(k[1])+'</div><b>'+nf(k[2])+'</b></div>'}).join('')+
+   '<div class="kpi warn"><div class="k">'+ic(IC['eye'])+'Onay bekleyen</div><b>'+nf(t.pending)+'</b></div>'+
+   '<div class="kpi"><div class="k">'+ic(IC['lock'])+'Gizli anı</div><b>'+nf(t.private)+'</b></div></div>';
+  // top cameras (gercek oy vs seed)
+  var max=Math.max.apply(null,(d.topCameras||[{score:1}]).map(function(c){return c.score||1}));
+  h+='<div class="sec"><h2>En çok oylanan kameralar (gerçek oy / seed)</h2>'+(d.topCameras||[]).slice(0,15).map(function(c){
+    return '<div class="row"><img src="'+esc(c.image_url||'')+'"><div class="g"><b>'+esc(c.brand+' '+c.model)+'</b><div class="bar"><i style="width:'+Math.round((c.score/max)*100)+'%"></i></div></div><div class="n">'+nf(c.score)+'<s>gerçek '+nf(c.real)+' • seed '+nf(c.seed)+'</s></div></div>'}).join('')+'</div>';
+  // brands
+  h+='<div class="sec"><h2>Marka dağılımı (oy)</h2>'+(d.brands||[]).slice(0,12).map(function(b){
+    return '<div class="row"><div class="g"><b>'+esc(b.brand)+'</b><span>'+nf(b.cameras)+' kamera • '+nf(b.photos)+' anı</span></div><div class="n">'+nf(b.votes)+'<s>oy</s></div></div>'}).join('')+'</div>';
+  // feedback
+  var f=d.feedback||{};
+  h+='<div class="sec"><h2>Geri bildirim'+(f.avg?' • ortalama '+f.avg+' ★':'')+'</h2>'+((f.recent||[]).length?(f.recent||[]).slice(0,12).map(function(r){
+    return '<div class="row"><div class="g"><b>'+esc(r.author)+(r.rating?' • '+r.rating+'★':'')+'</b><span>'+esc(r.category||'')+' • '+fd(r.created_at)+'</span>'+(r.message?'<div class="nt" style="font-size:12px;color:var(--mut);margin-top:4px">'+esc(r.message)+'</div>':'')+'</div></div>'}).join(''):'<div class="muted">Henüz geri bildirim yok.</div>')+'</div>';
+  $('#view').innerHTML=h}
+
+function renderUsers(d){if(!d||!d.ok){$('#view').innerHTML='<div class="muted">Veri alınamadı.</div>';return}
+  var u=d.users||[];
+  var h='<div class="sec"><h2>Kullanıcılar ('+nf(u.length)+')</h2>'+u.map(function(p){
+    return '<div class="row"><img class="av" src="'+esc(p.avatar_url||'')+'"><div class="g"><b>'+esc(p.display_name||p.handle)+(p.seed?' <span class="tag seed">seed</span>':'')+'</b><span>@'+esc(p.handle)+(p.city?' • '+esc(p.city):'')+' • '+fd(p.member_since)+'</span></div><div class="n">'+nf(p.photos)+' anı<s>'+nf(p.votes)+' oy • '+nf(p.comments)+' yorum • '+nf(p.waitlist)+' bekleme</s></div></div>'}).join('')+'</div>';
+  $('#view').innerHTML=h}
+
+function renderWaitlist(d){if(!d||!d.ok){$('#view').innerHTML='<div class="muted">Veri alınamadı.</div>';return}
+  var g=d.groups||[];
+  var h='<div class="sec"><h2>Bekleme listesi • '+nf(d.total)+' kayıt • '+nf(g.length)+' kamera</h2>'+(g.length?g.map(function(c){
+    return '<div class="row" style="align-items:flex-start"><img src="'+esc(c.image_url||'')+'"><div class="g"><b>'+esc(c.camera)+' <span class="tag real">'+c.people.length+' kişi</span></b><div class="chips">'+c.people.slice(0,40).map(function(p){return '<span class="miniav"><img src="'+esc(p.avatar_url||'')+'">'+esc(p.display_name||p.handle||'üye')+'</span>'}).join('')+'</div></div></div>'}).join(''):'<div class="muted">Bekleme listesi boş.</div>')+'</div>';
+  $('#view').innerHTML=h}
+
+async function renderPhotos(force){
+  if(!cache.photos){$('#view').innerHTML='<div class="muted">Yükleniyor...</div>';var r=await api('/admin-photos?cursor=0'+(photoStatus?'&status='+photoStatus:''));cache.photos={items:r.items||[],next:r.next}}
+  var d=cache.photos;
+  var filt='<div class="tabs" style="margin-bottom:12px"><button class="on" data-pf="">Tümü</button><button data-pf="pending">Bekleyen</button><button data-pf="approved">Onaylı</button><button data-pf="rejected">Reddedilen</button></div>';
+  var h=filt+'<div class="pgrid">'+d.items.map(photoCard).join('')+'</div>'+(d.next?'<button class="more" id="pmore">Daha fazla</button>':'');
+  if(!d.items.length)h=filt+'<div class="muted">Anı bulunamadı.</div>';
+  $('#view').innerHTML=h;
+  document.querySelectorAll('[data-pf]').forEach(function(b){b.classList.toggle('on',b.dataset.pf===photoStatus);b.addEventListener('click',function(){photoStatus=b.dataset.pf;cache.photos=null;renderPhotos()})});
+  var pm=$('#pmore');if(pm)pm.addEventListener('click',async function(){pm.textContent='...';var r=await api('/admin-photos?cursor='+d.next+(photoStatus?'&status='+photoStatus:''));cache.photos.items=d.items.concat(r.items||[]);cache.photos.next=r.next;renderPhotos()});
+  bindPhotoActs()}
+function photoCard(p){return '<div class="pcard" data-id="'+p.id+'"><div class="im"><div class="badges"><span class="tag '+(p.status==='approved'?'app':p.status==='pending'?'pend':'rej')+'">'+(p.status==='approved'?'onaylı':p.status==='pending'?'bekliyor':'red')+'</span><span class="tag '+(p.visibility==='private'?'priv':'pub')+'">'+(p.visibility==='private'?'gizli':'açık')+'</span></div><img loading="lazy" src="'+esc(p.image_url)+'"></div><div class="bd"><div class="au">'+esc(p.author)+(p.seed?' <span class="tag seed">seed</span>':'')+'</div><div class="cm">'+esc(p.camera||'')+' • '+nf(p.like_count)+' ♥ • '+nf(p.comment_count)+' 💬</div>'+(p.note?'<div class="nt">'+esc(p.note)+'</div>':'')+'<div class="acts"><button class="ed" data-ed="'+p.id+'">Düzenle</button><button class="del" data-del="'+p.id+'">Sil</button></div></div></div>'}
+function bindPhotoActs(){
+  document.querySelectorAll('[data-del]').forEach(function(b){b.addEventListener('click',async function(){if(!confirm('Bu anıyı kalıcı olarak silmek istediğine emin misin?'))return;var r=await api('/admin-photo',{method:'POST',body:{action:'delete',id:b.dataset.del}});if(r&&r.ok){toast('Anı silindi');var el=document.querySelector('.pcard[data-id="'+b.dataset.del+'"]');if(el)el.remove();cache.photos.items=cache.photos.items.filter(function(x){return x.id!==b.dataset.del})}else toast('Hata')})});
+  document.querySelectorAll('[data-ed]').forEach(function(b){b.addEventListener('click',function(){openEdit(b.dataset.ed)})})}
+function openEdit(id){var p=(cache.photos.items||[]).filter(function(x){return x.id===id})[0];if(!p)return;editId=id;
+  $('#e-note').value=p.note||'';$('#e-loc').value=p.location||'';$('#e-status').value=p.status;$('#e-vis').value=p.visibility;$('#edit').classList.add('show')}
+$('#e-cancel').addEventListener('click',function(){$('#edit').classList.remove('show')});
+$('#e-save').addEventListener('click',async function(){if(!editId)return;
+  var body={action:'edit',id:editId,note:$('#e-note').value,location:$('#e-loc').value,status:$('#e-status').value,visibility:$('#e-vis').value};
+  var r=await api('/admin-photo',{method:'POST',body:body});
+  if(r&&r.ok){toast('Kaydedildi');var p=(cache.photos.items||[]).filter(function(x){return x.id===editId})[0];if(p){p.note=body.note;p.location=body.location;p.status=body.status;p.visibility=body.visibility}$('#edit').classList.remove('show');renderPhotos()}else toast('Hata')});
+$('#edit').addEventListener('click',function(e){if(e.target.id==='edit')$('#edit').classList.remove('show')});
+
+// auto-login
+if(KEY){$('#key').value=KEY;doLogin()}
+</script>
+</body>
+</html>
