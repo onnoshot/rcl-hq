@@ -70,7 +70,7 @@ IC = {
 
 # ============================================================ QUIZ DATA (proper Turkish)
 PALETTE = {
- "vermilion":"#d8472f","teal":"#2c766b","violet":"#6f4ff0","rose":"#d6447f",
+ "vermilion":"#ff3b3b","teal":"#2c766b","violet":"#6f4ff0","rose":"#d6447f",
  "amber":"#cf7a1e","cyan":"#1593b0","indigo":"#3f51c9","emerald":"#15915f",
 }
 def P(k): return PALETTE[k]
@@ -157,34 +157,25 @@ QUESTIONS = [
     {"v":"pro","label":"Deneyimliyim, kontrol isterim","sub":"Manuel ayarlar, zoom ve detay benim için önemli","hue":P("indigo"),"icon":"sliders",
      "why":"kontrol ve detaya verdiğin önem"},
   ]},
- {"k":"occasion","q":"Bu kamera kimin için?",
-  "sub":"Son bir şey: bu kamerayı neden aldığını bilmek, öneriyi tam yerine oturtmamı sağlıyor.",
-  "opts":[
-    {"v":"self","label":"Kendim için","sub":"Kendime güzel bir kamera alıyorum","hue":P("vermilion"),"icon":"selfie",
-     "why":"kendine değer vermen"},
-    {"v":"gift","label":"Hediye edeceğim","sub":"Sevdiğim birini mutlu edecek bir hediye arıyorum","hue":P("rose"),"icon":"gift",
-     "why":"sevdiğin birine özel bir hediye"},
-    {"v":"couple","label":"Sevgilim / eşim için","sub":"İkimizin anılarını biriktireceğimiz bir kamera","hue":P("rose"),"icon":"heart",
-     "why":"birlikte anı biriktirme isteğin"},
-    {"v":"work","label":"İçerik / işim için","sub":"Sosyal medya, satış veya işim için üreteceğim","hue":P("amber"),"icon":"work",
-     "why":"içerik ve iş üretimi"},
-    {"v":"collection","label":"Koleksiyon / merak","sub":"Retro kameralara meraklıyım, arşivime katacağım","hue":P("violet"),"icon":"y2k",
-     "why":"retro kameralara olan tutkun"},
-  ]},
 ]
 
 ANALYZE = {
  "label":"ANALİZ",
+ # {n}=stok sayisi, {name}=ad, {use}=kullanim kisa, {usel}=kullanim etiketi, {bud}=butce etiketi,
+ # {lev}=deneyim etiketi, {brand}=kazanan marka (stok hazir olunca enjekte edilir)
  "steps":[
-   "Canlı stok veritabanına bağlanılıyor",
-   "Şu an satışta olan {n} kamera taranıyor",
+   "Canlı stok veritabanına bağlanılıyor...",
+   "Şu an satışta olan {n} kamera tek tek taranıyor",
    "{name} için kişisel kamera profili oluşturuluyor",
-   "{use} kullanımına göre modeller filtreleniyor",
-   "Bütçe ve deneyim seviyen eşleştiriliyor",
-   "Renk karakteri ve sensör dokusu hizalanıyor",
+   "“{usel}” kullanımına uygun modeller süzülüyor",
+   "Bütçen ({bud}) ile eşleşen modeller ayıklanıyor",
+   "{lev} profiline göre kullanım kolaylığı puanlanıyor",
+   "Renk karakteri ve CCD sensör dokusu hizalanıyor",
    "Marka ve özellik eşleşme skorları hesaplanıyor",
-   "Sana en uygun üç model seçiliyor",
+   "{brand} en güçlü eşleşme olarak öne çıkıyor",
+   "Sana en uygun üç model belirleniyor",
  ],
+ "scan_label":"{c} / {n} model değerlendirildi",
  "use_short":{"daily":"günlük","travel":"seyahat","portrait":"portre","night":"gece","content":"içerik"},
 }
 
@@ -302,13 +293,35 @@ SHARE = {
 }
 
 HERO = {
- "pill":"AI KAMERA EŞLEŞTİRİCİ",
- "words":["Sana","özel","kameranı","birlikte","bulalım."],
- "lead":("Birkaç kısa soru cevapla; tarzını, bütçeni ve ihtiyacını anlayıp şu an stokta olan retro "
-         "dijital kameralar arasından sana en uygun üç modeli yüzdesel uyum skoruyla önereyim. "
-         "Tamamen ücretsiz, üyelik yok."),
+ "eyebrow":"YAPAY ZEKÂ DESTEKLİ KAMERA EŞLEŞTİRİCİ",
+ "words":["Sana","uygun","kamerayı","yapay zekâ","seçsin."],
+ "lead":("Stoktaki her kamerayı en küçük özelliğine kadar analiz eden akıllı sistem, 5 kısa soruyla "
+         "tam sana uygun modeli saniyeler içinde bulur. Doğru kamera, sıfır pişmanlık."),
  "cta":"Teste başla",
- "meta":["~1 dakika","6 soru","Sana özel sonuç","Stoktan gerçek öneri"],
+ "meta":[
+   {"icon":"clock","label":"~1 dakika"},
+   {"icon":"steps","label":"5 soru"},
+   {"icon":"target","label":"Sana özel sonuç"},
+   {"icon":"stock","label":"Stoktan gerçek öneri"},
+ ],
+}
+
+# Kamera Bulucu AI - tek, kompakt, animasyonlu SVG logo marki (metinsiz). Onboarding + analiz ekraninda kullanilir.
+LOGO_SVG = ('<svg class="ailogo" viewBox="0 0 64 64" aria-hidden="true">'
+ '<circle class="al-scan" cx="32" cy="32" r="27"/>'
+ '<circle class="al-lens" cx="32" cy="32" r="18"/>'
+ '<path class="al-iris" d="M32 22 L40.7 27 L40.7 37 L32 42 L23.3 37 L23.3 27 Z"/>'
+ '<circle class="al-pupil" cx="32" cy="32" r="6"/>'
+ '<g class="al-rot"><circle class="al-orb" cx="32" cy="5" r="3"/></g>'
+ '<g class="al-spark"><path d="M50 10 l1.6 4.2 4.2 1.6 -4.2 1.6 -1.6 4.2 -1.6-4.2 -4.2-1.6 4.2-1.6 z"/></g>'
+ '</svg>')
+
+# Animasyonlu meta cip ikonlari (her biri kendi animasyon class'iyla)
+META_ICONS = {
+ "clock":'<svg class="mi mi-clock" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><line class="mh" x1="12" y1="12" x2="12" y2="6.5"/><line class="mm" x1="12" y1="12" x2="15.5" y2="13"/></svg>',
+ "steps":'<svg class="mi mi-steps" viewBox="0 0 24 24" aria-hidden="true"><circle class="d1" cx="5" cy="6" r="1.7"/><circle class="d2" cx="5" cy="12" r="1.7"/><circle class="d3" cx="5" cy="18" r="1.7"/><path d="M10 6h10M10 12h10M10 18h7"/></svg>',
+ "target":'<svg class="mi mi-target" viewBox="0 0 24 24" aria-hidden="true"><circle class="t1" cx="12" cy="12" r="9"/><circle class="t2" cx="12" cy="12" r="5"/><circle class="tdot" cx="12" cy="12" r="1.9"/></svg>',
+ "stock":'<svg class="mi mi-stock" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l9-4 9 4-9 4-9-4z"/><path d="M3 8v8l9 4 9-4V8"/><path class="bk" d="M8.5 12.8l2.4 2.4 4.6-5"/></svg>',
 }
 
 # Son care: canli /products.js VE /products.json ikisi de basarisiz olursa kullanilir.
@@ -353,7 +366,7 @@ BREAD = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListEleme
 CSS = r"""
 {%- style -%}
 #rcl-fnd-__SID__{
-  --ac: {{ section.settings.accent | default: '#d8472f' }};
+  --ac: {{ section.settings.accent | default: '#ff3b3b' }};
   --ac2: color-mix(in srgb, var(--ac) 40%, #ffffff);
   --bg: {{ section.settings.bg | default: '#faf8f4' }};
   --card: {{ section.settings.card | default: '#ffffff' }};
@@ -368,7 +381,7 @@ CSS = r"""
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
 }
 @supports (transition: --ac 1s){
-  @property --ac{syntax:'<color>';inherits:true;initial-value:#d8472f;}
+  @property --ac{syntax:'<color>';inherits:true;initial-value:#ff3b3b;}
   #rcl-fnd-__SID__{transition:--ac 1.4s cubic-bezier(.4,0,.2,1);}
 }
 #rcl-fnd-__SID__ *{box-sizing:border-box;}
@@ -558,6 +571,7 @@ CSS = r"""
 #rcl-fnd-__SID__ .astep{font-size:clamp(15px,4vw,16.5px);font-weight:560;min-height:24px;display:flex;align-items:center;gap:10px;justify-content:center;}
 #rcl-fnd-__SID__ .astep .sp{width:8px;height:8px;border-radius:50%;background:var(--ac);animation:fpulse 1.4s ease-in-out infinite;}
 #rcl-fnd-__SID__ .astep .atxt{transition:opacity .35s;}
+#rcl-fnd-__SID__ .ascanl{font-size:13px;font-weight:560;color:var(--mut);letter-spacing:.04em;font-variant-numeric:tabular-nums;margin-top:-14px;min-height:18px;}
 #rcl-fnd-__SID__ .athumbs{position:relative;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;overflow:hidden;border-radius:16px;padding:4px;}
 #rcl-fnd-__SID__ .athumbs::after{content:"";position:absolute;top:0;bottom:0;left:-40%;width:32%;background:linear-gradient(100deg,transparent,color-mix(in srgb,var(--ac) 38%,transparent),transparent);animation:fsweep 2.4s ease-in-out infinite;}
 @keyframes fsweep{0%{left:-40%}100%{left:120%}}
@@ -635,6 +649,65 @@ CSS = r"""
   #rcl-fnd-__SID__ *{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important;}
   #rcl-fnd-__SID__ h1.htl .w,#rcl-fnd-__SID__ .intro .pill,#rcl-fnd-__SID__ .hl,#rcl-fnd-__SID__ .hmeta,#rcl-fnd-__SID__ .intro .cta-wrap,#rcl-fnd-__SID__ .strip,#rcl-fnd-__SID__ .field,#rcl-fnd-__SID__ .opt,#rcl-fnd-__SID__ .rc,#rcl-fnd-__SID__ .qnext,#rcl-fnd-__SID__ .ract{opacity:1!important;transform:none!important;filter:none!important;}
   #rcl-fnd-__SID__ .app::before,#rcl-fnd-__SID__ .aurora,#rcl-fnd-__SID__ .sparks i{animation:none!important;}
+  #rcl-fnd-__SID__ .ailogo *,#rcl-fnd-__SID__ .mchip .mi *{animation:none!important;}
+}
+
+/* ==================== KAMERA BULUCU AI - logo + animasyonlu meta cipleri + kompakt intro ==================== */
+/* Kompakt intro: daha kucuk baslik, dar bosluk -> az yer kaplar, minimalist */
+#rcl-fnd-__SID__ h1.htl{font-size:clamp(28px,6.2vw,50px)!important;margin:14px 0 0!important;}
+#rcl-fnd-__SID__ .intro .hl{max-width:500px;margin-top:16px;font-size:clamp(14.5px,3.6vw,17px);}
+#rcl-fnd-__SID__ .intro .cta-wrap{margin-top:24px;}
+/* AI logo marki */
+#rcl-fnd-__SID__ .ailogo-wrap{display:flex;justify-content:center;margin:0 auto;animation:frise 1s .02s both;}
+#rcl-fnd-__SID__ .ailogo{width:clamp(64px,16vw,82px);height:auto;overflow:visible;}
+#rcl-fnd-__SID__ .anz-logo{margin-bottom:2px;animation:frise .7s both;}
+#rcl-fnd-__SID__ .anz-logo .ailogo{width:52px;}
+#rcl-fnd-__SID__ .ailogo circle,#rcl-fnd-__SID__ .ailogo path{fill:none;stroke:var(--ink);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round;}
+#rcl-fnd-__SID__ .ailogo .al-scan{stroke:var(--ac);stroke-width:2.6;stroke-dasharray:7 11;transform-origin:32px 32px;animation:alscan 9s linear infinite;}
+#rcl-fnd-__SID__ .ailogo .al-lens{stroke:var(--ink);}
+#rcl-fnd-__SID__ .ailogo .al-iris{stroke:var(--ac);stroke-width:2;opacity:.85;transform-origin:32px 32px;animation:aliris 16s linear infinite;}
+#rcl-fnd-__SID__ .ailogo .al-pupil{fill:var(--ac);stroke:none;transform-origin:32px 32px;animation:alpupil 2.6s ease-in-out infinite;}
+#rcl-fnd-__SID__ .ailogo .al-rot{transform-origin:32px 32px;animation:alscan 4.2s linear infinite;}
+#rcl-fnd-__SID__ .ailogo .al-orb{fill:var(--ac);stroke:none;}
+#rcl-fnd-__SID__ .ailogo .al-spark{fill:var(--ac);stroke:none;transform-origin:50px 16px;animation:alspark 2.8s ease-in-out infinite;}
+#rcl-fnd-__SID__ .ailogo .al-spark path{fill:var(--ac);stroke:none;}
+@keyframes alscan{to{transform:rotate(360deg)}}
+@keyframes aliris{to{transform:rotate(-360deg)}}
+@keyframes alpupil{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.28);opacity:.7}}
+@keyframes alspark{0%,100%{opacity:0;transform:scale(.4)}45%,60%{opacity:1;transform:scale(1)}}
+/* eyebrow (kucuk ust etiket) */
+#rcl-fnd-__SID__ .eyebrow{display:inline-block;margin-top:14px;font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);animation:frise 1s .12s both;}
+/* animasyonlu meta cipleri */
+#rcl-fnd-__SID__ .hmeta{gap:10px;margin-top:20px;}
+#rcl-fnd-__SID__ .mchip{display:inline-flex;align-items:center;gap:8px;padding:9px 15px 9px 11px;border-radius:100px;border:1px solid var(--stroke);background:var(--glass);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:13px;font-weight:600;animation:fchipin .7s both;}
+#rcl-fnd-__SID__ .mchip:nth-child(1){animation-delay:.5s}
+#rcl-fnd-__SID__ .mchip:nth-child(2){animation-delay:.62s}
+#rcl-fnd-__SID__ .mchip:nth-child(3){animation-delay:.74s}
+#rcl-fnd-__SID__ .mchip:nth-child(4){animation-delay:.86s}
+@keyframes fchipin{0%{opacity:0;transform:translateY(12px) scale(.92)}100%{opacity:1;transform:none}}
+#rcl-fnd-__SID__ .mchip .mi{width:18px;height:18px;flex:none;fill:none;stroke:var(--ac);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;overflow:visible;}
+#rcl-fnd-__SID__ .mchip .mi circle,#rcl-fnd-__SID__ .mchip .mi line,#rcl-fnd-__SID__ .mchip .mi path{fill:none;stroke:var(--ac);}
+/* clock: akrep doner */
+#rcl-fnd-__SID__ .mi-clock .mh{transform-origin:12px 12px;animation:mclk 3s linear infinite;}
+#rcl-fnd-__SID__ .mi-clock .mm{transform-origin:12px 12px;animation:mclk 9s linear infinite;}
+@keyframes mclk{to{transform:rotate(360deg)}}
+/* steps: noktalar sirayla dolar */
+#rcl-fnd-__SID__ .mi-steps circle{fill:var(--ac);stroke:none;opacity:.3;}
+#rcl-fnd-__SID__ .mi-steps .d1{animation:mdot 2.4s ease-in-out infinite}
+#rcl-fnd-__SID__ .mi-steps .d2{animation:mdot 2.4s ease-in-out .35s infinite}
+#rcl-fnd-__SID__ .mi-steps .d3{animation:mdot 2.4s ease-in-out .7s infinite}
+@keyframes mdot{0%,70%,100%{opacity:.3}20%,45%{opacity:1}}
+/* target: halkalar nefes alir, merkez parlar */
+#rcl-fnd-__SID__ .mi-target .t1{transform-origin:12px 12px;animation:mtr 3s ease-in-out infinite}
+#rcl-fnd-__SID__ .mi-target .t2{transform-origin:12px 12px;animation:mtr 3s ease-in-out .4s infinite}
+#rcl-fnd-__SID__ .mi-target .tdot{fill:var(--ac);stroke:none;transform-origin:12px 12px;animation:alpupil 2s ease-in-out infinite}
+@keyframes mtr{0%,100%{transform:scale(.9);opacity:.6}50%{transform:scale(1.06);opacity:1}}
+/* stock: kutu onay isareti cizilir */
+#rcl-fnd-__SID__ .mi-stock .bk{stroke-dasharray:14;stroke-dashoffset:14;animation:mbk 3s ease-in-out infinite}
+@keyframes mbk{0%,15%{stroke-dashoffset:14}45%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@media (max-width:560px){
+  #rcl-fnd-__SID__ .hmeta{gap:7px}
+  #rcl-fnd-__SID__ .mchip{font-size:12px;padding:8px 12px 8px 9px}
 }
 
 /* ====================================================================
@@ -648,9 +721,9 @@ CSS = r"""
 #rcl-fnd-__SID__ h1,#rcl-fnd-__SID__ h2,#rcl-fnd-__SID__ h3,#rcl-fnd-__SID__ h4,#rcl-fnd-__SID__ h5,#rcl-fnd-__SID__ h6,#rcl-fnd-__SID__ p,#rcl-fnd-__SID__ span,#rcl-fnd-__SID__ a,#rcl-fnd-__SID__ li,#rcl-fnd-__SID__ div,#rcl-fnd-__SID__ label,#rcl-fnd-__SID__ small,#rcl-fnd-__SID__ b,#rcl-fnd-__SID__ strong,#rcl-fnd-__SID__ em,#rcl-fnd-__SID__ button,#rcl-fnd-__SID__ input{color:var(--ink)!important;}
 #rcl-fnd-__SID__ .field input::placeholder{color:color-mix(in srgb,var(--ink) 42%,transparent)!important;-webkit-text-fill-color:color-mix(in srgb,var(--ink) 42%,transparent)!important;}
 /* muted */
-#rcl-fnd-__SID__ .hl,#rcl-fnd-__SID__ .qsub,#rcl-fnd-__SID__ .rsub,#rcl-fnd-__SID__ .lede,#rcl-fnd-__SID__ .opt .os,#rcl-fnd-__SID__ .rwhy,#rcl-fnd-__SID__ .cat p,#rcl-fnd-__SID__ .item .a-in,#rcl-fnd-__SID__ .ring .pl,#rcl-fnd-__SID__ .mbadge span,#rcl-fnd-__SID__ .hmeta span{color:var(--mut)!important;}
+#rcl-fnd-__SID__ .hl,#rcl-fnd-__SID__ .qsub,#rcl-fnd-__SID__ .rsub,#rcl-fnd-__SID__ .lede,#rcl-fnd-__SID__ .opt .os,#rcl-fnd-__SID__ .rwhy,#rcl-fnd-__SID__ .cat p,#rcl-fnd-__SID__ .item .a-in,#rcl-fnd-__SID__ .ring .pl,#rcl-fnd-__SID__ .mbadge span,#rcl-fnd-__SID__ .hmeta span,#rcl-fnd-__SID__ .ascanl{color:var(--mut)!important;}
 /* accent */
-#rcl-fnd-__SID__ .pill,#rcl-fnd-__SID__ .qcount,#rcl-fnd-__SID__ .qmulti,#rcl-fnd-__SID__ .sm,#rcl-fnd-__SID__ .rbrand,#rcl-fnd-__SID__ .cat .go,#rcl-fnd-__SID__ .hint,#rcl-fnd-__SID__ .mbadge b,#rcl-fnd-__SID__ .pm{color:var(--ac)!important;}
+#rcl-fnd-__SID__ .pill,#rcl-fnd-__SID__ .qcount,#rcl-fnd-__SID__ .qmulti,#rcl-fnd-__SID__ .sm,#rcl-fnd-__SID__ .rbrand,#rcl-fnd-__SID__ .cat .go,#rcl-fnd-__SID__ .hint,#rcl-fnd-__SID__ .mbadge b,#rcl-fnd-__SID__ .pm,#rcl-fnd-__SID__ .eyebrow{color:var(--ac)!important;}
 /* option icon uses its per-answer hue */
 #rcl-fnd-__SID__ .opt .oic{color:var(--oh,var(--ac))!important;}
 /* text on filled (dark/accent) backgrounds */
@@ -694,7 +767,7 @@ JS = r"""
       var lab=function(qi){return (state.ans[qi]||[]).map(function(o){return o.label;});};
       var top=(picks&&picks[0])||{};
       var payload={sid:SID,name:state.name,age:state.age,gender:state.gender,city:state.city,
-        use:lab(0),budget:lab(1),aes:lab(2),env:lab(3),level:lab(4),occasion:lab(5),
+        use:lab(0),budget:lab(1),aes:lab(2),env:lab(3),level:lab(4),
         top_brand:top.brand||"",top_price:(top.priceN||priceOf(top||{})||0),
         recommended:(picks||[]).map(function(c){return {title:c.title,brand:c.brand,pct:c.pct,handle:c.handle};}),
         source:"shopify",page:(window.location&&window.location.pathname)||""};
@@ -862,7 +935,7 @@ JS = r"""
   function has(qi,v){return vals(qi).indexOf(v)>=0;}
 
   // ---- GERCEK ESLESTIRME MOTORU ----
-  // Soru sirasi: 0=use 1=budget 2=aes 3=env 4=level 5=occasion
+  // Soru sirasi: 0=use 1=budget 2=aes 3=env 4=level
   // Marka karakter vektoru (estetik egilimi + kullanim egilimi) - sayisal, dile bagimsiz.
   var BRAND={
     sony:{aes:{sharp:3,y2k:2,cine:1},use:{daily:2,night:2,travel:1,content:1}},
@@ -923,9 +996,6 @@ JS = r"""
     if(has(4,"first")){ if(c.touch)s+=2; if(c.zoom>=20)s-=2.5; if(c.mp&&c.mp<=12)s+=1; }  // deneyim
     else if(has(4,"pro")){ if(c.zoom>=10)s+=2; if(c.mp>=14)s+=1.5; }
     else if(has(4,"casual")){ s+=0.5; }
-    if(has(5,"work")){ if(c.video)s+=2; if(c.wide)s+=1; }         // vesile (hafif)
-    if(has(5,"collection")){ if(c.year&&c.year<=2008)s+=1.5; }
-    if(has(5,"gift")||has(5,"couple")){ if(c.slim)s+=1; }
     var br=budgetRange(), pr=priceOf(c);                          // butce
     if(br&&pr){
       if(pr>=br[0]&&pr<=br[1]) s+=6;
@@ -991,37 +1061,47 @@ JS = r"""
     var el=document.createElement("div");
     el.innerHTML=''
       +'<div class="anz">'
+      +'<div class="ailogo-wrap anz-logo">'+D.logo+'</div>'
       +'<div class="ringwrap"><div class="orbit"><i></i></div><div class="orbit"><i></i></div><div class="orbit"><i></i></div>'
       +'<div class="ring"><div class="ascan"></div><div><div class="pv">0<small>%</small></div><div class="pl">'+esc(A.label)+'</div></div></div></div>'
       +'<div class="astep"><span class="sp"></span><span class="atxt">'+esc(A.steps[0])+'</span></div>'
+      +'<div class="ascanl"></div>'
       +'<div class="athumbs"></div></div>';
     swap(el);
-    var ring=el.querySelector(".ring"),pv=el.querySelector(".pv"),atxt=el.querySelector(".atxt"),thumbs=el.querySelector(".athumbs");
+    var ring=el.querySelector(".ring"),pv=el.querySelector(".pv"),atxt=el.querySelector(".atxt"),thumbs=el.querySelector(".athumbs"),scanl=el.querySelector(".ascanl");
     var pool=(stock&&stock.length)?stock:D.fallback;
     var tj=pool.slice();for(var i=tj.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=tj[i];tj[i]=tj[j];tj[j]=t;}
-    thumbs.innerHTML=tj.slice(0,5).map(function(c,i){return '<img alt="" loading="lazy" style="animation-delay:'+(i*220)+'ms" src="'+esc(img(c.image,130))+'">';}).join("");
-    var n=(stock&&stock.length)||"40+";
+    thumbs.innerHTML=tj.slice(0,6).map(function(c,i){return '<img alt="" loading="lazy" style="animation-delay:'+(i*220)+'ms" src="'+esc(img(c.image,130))+'">';}).join("");
+    // cevaplara dayali kisisellestirilmis adim metinleri (gercekten analiz ediyor hissi)
+    var nNum=(stock&&stock.length)||21, n=nNum;
     var useShort=(A.use_short&&firstOf(0).v&&A.use_short[firstOf(0).v])||"";
-    var steps=A.steps.map(function(s){return s.replace("{n}",n).replace("{name}",state.name||D.results.friend).replace("{use}",useShort);});
-    var dur=rm?600:6500,t0=null,si=-1;
+    var usel=(firstOf(0).label)||useShort||"tarzin", bud=(firstOf(1).label)||"en uygun", lev=(firstOf(4).label)||"";
+    function fillStep(s,brand){return s.replace("{n}",n).replace("{name}",state.name||D.results.friend).replace("{use}",useShort).replace("{usel}",usel).replace("{bud}",bud).replace("{lev}",lev).replace("{brand}",brand||"En uygun marka");}
+    var steps=A.steps.map(function(s){return fillStep(s,null);});
+    // stok hazir olunca: picks'i BIR KEZ hesapla (sonuc ile bire bir ayni) + kazanan markayi adimlara isle
+    stockReady.then(function(){ try{ state.picks=pickCameras(); }catch(e){} n=(stock&&stock.length)||nNum;
+      var br=state.picks&&state.picks[0]&&state.picks[0].brand; steps=A.steps.map(function(s){return fillStep(s,br);}); });
+    var dur=rm?600:7200,t0=null,si=-1;
     var animDone=new Promise(function(res){
       function frame(ts){
         if(!t0)t0=ts;var p=Math.min((ts-t0)/dur,1),e=1-Math.pow(1-p,2.2),pct=Math.round(e*100);
         ring.style.setProperty("--p",pct);pv.innerHTML=pct+'<small>%</small>';
+        if(scanl)scanl.textContent=A.scan_label.replace("{c}",Math.round(e*(typeof n==="number"?n:21))).replace("{n}",n);
         var idx=Math.min(steps.length-1,Math.floor(p*steps.length));
         if(idx!==si){si=idx;atxt.style.opacity="0";setTimeout(function(){atxt.textContent=steps[idx];atxt.style.opacity="1";},180);}
         if(p<1)requestAnimationFrame(frame);else res();
       }
       requestAnimationFrame(frame);
     });
-    // wait for BOTH the animation and the live stock before showing results
+    // hem animasyon hem canli stok hazir olunca sonuclari goster
     Promise.all([animDone,stockReady]).then(function(){setTimeout(showResults,300);});
   }
 
   function showResults(){
     setProg(1);
     var R=D.results;
-    var picks=pickCameras();
+    // analiz sirasinda hesaplanan picks'i kullan (analizde gosterilen marka ile bire bir tutarli)
+    var picks=(state.picks&&state.picks.length)?state.picks:pickCameras();
     logSubmission(picks);
     var name=state.name||R.friend;
     var el=document.createElement("div");
@@ -1076,12 +1156,16 @@ JS = r"""
   function cover(c,im,x,y,w,h,r){if(!im){c.save();rr(c,x,y,w,h,r);c.clip();c.fillStyle="#eceae4";c.fillRect(x,y,w,h);c.restore();return;}var ir=im.width/im.height,tr=w/h,sw,sh,sx,sy;if(ir>tr){sh=im.height;sw=sh*tr;sx=(im.width-sw)/2;sy=0;}else{sw=im.width;sh=sw/tr;sx=0;sy=(im.height-sh)/2;}c.save();rr(c,x,y,w,h,r);c.clip();c.drawImage(im,sx,sy,sw,sh,x,y,w,h);c.restore();}
   var FONT="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif";
   // 9:16 (1080x1920) minimalist, ortalanmis hikaye gorseli: RCL logo + en uyumlu kamera + teste tesvik.
-  function buildShareImage(picks){
+  function buildShareImage(picks,safe){
     var hero=picks[0]||{};
-    return loadImg(img(hero.image,720)).then(function(im){
+    // CORS cache-bust: sayfada ayni gorsel crossorigin'siz cache'lendiyse tuvali kirletir ->
+    // tekil sorgu ekleyerek Shopify CDN'den taze, ACAO'lu yanit cekiyoruz (toDataURL patlamaz).
+    // safe=true -> fotograf hic cizilmez (taint riski sifir, garanti disa aktarilir).
+    var hu=img(hero.image,720); hu+=(hu.indexOf("?")>=0?"&":"?")+"rclshare="+SID;
+    return (safe?Promise.resolve(null):loadImg(hu)).then(function(im){
       var W=1080,H=1920,cv=document.createElement("canvas");cv.width=W;cv.height=H;var x=cv.getContext("2d");
       var S=D.share,CX=W/2;
-      var AC=(getComputedStyle(root).getPropertyValue("--ac")||"").trim()||"#d8472f",INK="#15110d",MUT="#8c857b";
+      var AC=(getComputedStyle(root).getPropertyValue("--ac")||"").trim()||"#ff3b3b",INK="#15110d",MUT="#8c857b";
       function hex2rgb(h){h=h.replace("#","");if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)];}
       var ar=hex2rgb(AC),rgba=function(a){return "rgba("+ar[0]+","+ar[1]+","+ar[2]+","+a+")";};
       // arka plan + yumusak vurgu isiklari
@@ -1150,8 +1234,12 @@ JS = r"""
     mask.innerHTML='<div class="shcard"><div class="shhead"><b>'+esc(S.title)+'</b><button class="shx" type="button" aria-label="Kapat">&#215;</button></div><div class="shbody"><div class="shload"><span class="sp"></span>'+esc(S.making)+'</div></div></div>';
     mask.classList.add("on");document.body.style.overflow="hidden";
     mask.querySelector(".shx").addEventListener("click",close);
-    buildShareImage(picks).then(function(cv){
-      var url=cv.toDataURL("image/png");
+    function render(cv,safe){
+      var url;
+      try{ url=cv.toDataURL("image/png"); }
+      catch(e){ // tuval kirlendi (CORS) -> fotografsiz guvenli surumle bir kez daha dene
+        if(!safe){ buildShareImage(picks,true).then(function(cv2){render(cv2,true);}).catch(function(){var b=mask.querySelector(".shbody");if(b)b.innerHTML='<div class="shload">'+esc(S.fail)+'</div>';}); return; }
+        var bb=mask.querySelector(".shbody");if(bb)bb.innerHTML='<div class="shload">'+esc(S.fail)+'</div>'; return; }
       cv.toBlob(function(blob){
         var pageUrl=(window.location&&window.location.href)||"https://retrocameraland.com/pages/hangi-kamera-bana-uygun";
         var names=picks.map(function(c){return c.title+" %"+c.pct;}).join(", ");
@@ -1172,7 +1260,8 @@ JS = r"""
         add("Instagram",SICN.ig,function(){if(canFiles){navigator.share({files:[file]}).catch(function(){});}else{dl();setTimeout(function(){alert(S.ig_note);},120);}});
         add(S.dl,SICN.dl,dl);
       },"image/png");
-    }).catch(function(){var b=mask.querySelector(".shbody");if(b)b.innerHTML='<div class="shload">'+esc(S.fail)+'</div>';});
+    }
+    buildShareImage(picks).then(function(cv){render(cv,false);}).catch(function(){var b=mask.querySelector(".shbody");if(b)b.innerHTML='<div class="shload">'+esc(S.fail)+'</div>';});
   }
 
   root.querySelectorAll(".seo .item").forEach(function(it){
@@ -1197,12 +1286,13 @@ DATA = {
  "share":SHARE,
  "profile":PROFILE,
  "questions":[{"k":q["k"],"q":q["q"],"sub":q["sub"],"opts":[opt_clean(o) for o in q["opts"]]} for q in QUESTIONS],
- "analyze":{"label":ANALYZE["label"],"steps":ANALYZE["steps"],"use_short":ANALYZE["use_short"]},
+ "analyze":{"label":ANALYZE["label"],"steps":ANALYZE["steps"],"scan_label":ANALYZE["scan_label"],"use_short":ANALYZE["use_short"]},
  "results":{"eyebrow":RESULTS["eyebrow"],"title":RESULTS["title"],"sub":RESULTS["sub"],
             "best_badge":RESULTS["best_badge"],"match":RESULTS["match"],"view":RESULTS["view"],
             "all_cta":RESULTS["all_cta"],"redo":RESULTS["redo"],"reasons":RESULTS["reasons"],
             "feats_dyn":RESULTS["feats_dyn"],"traits":RESULTS["traits"],"friend":RESULTS["friend"]},
  "svg":IC,
+ "logo":LOGO_SVG,
  "fallback":FALLBACK,
  "shop_url":"__SHOP_URL__",
  "products_base":"__PROD_BASE__",
@@ -1223,15 +1313,14 @@ def build_html():
     H.append('<div class="stage">')
     H.append('<div class="scr intro">')
     H.append('<div class="sparks" aria-hidden="true"><i></i><i></i><i></i><i></i></div>')
-    H.append('<span class="pill glass"><span class="dot"></span>%s</span>' % E(HERO["pill"]))
+    H.append('<div class="ailogo-wrap">%s</div>' % LOGO_SVG)
+    H.append('<span class="eyebrow">%s</span>' % E(HERO["eyebrow"]))
     H.append('<h1 class="htl">%s</h1>' % "".join('<span class="w">%s</span> ' % E(w) for w in HERO["words"]))
     H.append('<p class="hl">%s</p>' % E(HERO["lead"]))
-    H.append('<div class="hmeta">%s</div>' % "".join('<span>%s</span>' % E(m) for m in HERO["meta"]))
+    chips = "".join('<span class="mchip">%s<b>%s</b></span>' % (META_ICONS.get(m["icon"], ""), E(m["label"])) for m in HERO["meta"])
+    H.append('<div class="hmeta">%s</div>' % chips)
     H.append('<div class="cta-wrap"><button type="button" class="pbtn startbtn">%s'
              '<svg viewBox="0 0 24 24" aria-hidden="true">%s</svg></button></div>' % (E(HERO["cta"]), IC["spark"]))
-    strip = "".join('<img loading="lazy" width="74" height="74" alt="" src="%s">'
-                    % (c["image"] + "?width=160") for c in FALLBACK)
-    H.append('<div class="strip" aria-hidden="true"><div class="tr">%s%s</div></div>' % (strip, strip))
     H.append('</div>')  # intro
     H.append('</div>')  # stage
     H.append('</div>')  # app
@@ -1275,7 +1364,7 @@ CORE = build_html()
 # ============================================================ LIQUID OUTPUT
 SCHEMA = {"name":"RCL Kamera Bulucu","tag":"section","class":"rcl-finder-section","settings":[
  {"type":"header","content":"Renkler"},
- {"type":"color","id":"accent","label":"Vurgu (baslangic)","default":"#d8472f"},
+ {"type":"color","id":"accent","label":"Vurgu (baslangic)","default":"#ff3b3b"},
  {"type":"color","id":"bg","label":"Arka plan","default":"#faf8f4"},
  {"type":"color","id":"card","label":"Kart","default":"#ffffff"},
  {"type":"color","id":"ink","label":"Metin","default":"#15110d"},
@@ -1319,7 +1408,7 @@ def to_preview(core):
     s = s.replace("__SHOP_URL__", SITE + "/collections/all")
     s = s.replace("__PROD_BASE__", SITE + "/products/")
     s = s.replace("__LOG_URL__", "")  # onizlemede kayit gonderme
-    prev_vals = {"accent":"#d8472f","bg":"#faf8f4","card":"#ffffff","ink":"#15110d","glass_blur":"18"}
+    prev_vals = {"accent":"#ff3b3b","bg":"#faf8f4","card":"#ffffff","ink":"#15110d","glass_blur":"18"}
     for sid, val in prev_vals.items():
         s = re.sub(r"\{\{\s*section\.settings\." + sid + r"\b[^}]*\}\}", val, s)
     s = s.replace("__BREADCRUMB__", '<script type="application/ld+json">' + ld(BREAD) + "</script>")
