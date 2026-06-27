@@ -294,9 +294,9 @@ SHARE = {
 
 HERO = {
  "eyebrow":"YAPAY ZEKÂ DESTEKLİ KAMERA EŞLEŞTİRİCİ",
- "words":["Sana","uygun","kamerayı","yapay zekâ","seçsin."],
+ "words":["Senin","için","en uygun","kamerayı","bulalım."],
  "lead":("Stoktaki her kamerayı en küçük özelliğine kadar analiz eden akıllı sistem, 5 kısa soruyla "
-         "tam sana uygun modeli saniyeler içinde bulur. Doğru kamera, sıfır pişmanlık."),
+         "tam sana uygun modeli saniyeler içinde seçer. Doğru kamerayı birlikte bulalım."),
  "cta":"Teste başla",
  "meta":[
    {"icon":"clock","label":"~1 dakika"},
@@ -679,7 +679,8 @@ CSS = r"""
 #rcl-fnd-__SID__ .eyebrow{display:inline-block;margin-top:14px;font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ac);animation:frise 1s .12s both;}
 /* animasyonlu meta cipleri */
 #rcl-fnd-__SID__ .hmeta{gap:10px;margin-top:20px;}
-#rcl-fnd-__SID__ .mchip{display:inline-flex;align-items:center;gap:8px;padding:9px 15px 9px 11px;border-radius:100px;border:1px solid var(--stroke);background:var(--glass);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:13px;font-weight:600;animation:fchipin .7s both;}
+#rcl-fnd-__SID__ .mchip{display:inline-flex;align-items:center;gap:8px;padding:9px 15px 9px 11px;border-radius:100px;border:1px solid var(--stroke);background:var(--glass);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:13px;font-weight:400;animation:fchipin .7s both;}
+#rcl-fnd-__SID__ .mchip i{font-style:normal;font-weight:400;letter-spacing:.005em;color:var(--ink)!important;-webkit-text-fill-color:var(--ink)!important;}
 #rcl-fnd-__SID__ .mchip:nth-child(1){animation-delay:.5s}
 #rcl-fnd-__SID__ .mchip:nth-child(2){animation-delay:.62s}
 #rcl-fnd-__SID__ .mchip:nth-child(3){animation-delay:.74s}
@@ -1332,7 +1333,7 @@ def build_html():
     H.append('<span class="eyebrow">%s</span>' % E(HERO["eyebrow"]))
     H.append('<h1 class="htl">%s</h1>' % "".join('<span class="w">%s</span> ' % E(w) for w in HERO["words"]))
     H.append('<p class="hl">%s</p>' % E(HERO["lead"]))
-    chips = "".join('<span class="mchip">%s<b>%s</b></span>' % (META_ICONS.get(m["icon"], ""), E(m["label"])) for m in HERO["meta"])
+    chips = "".join('<span class="mchip">%s<i>%s</i></span>' % (META_ICONS.get(m["icon"], ""), E(m["label"])) for m in HERO["meta"])
     H.append('<div class="hmeta">%s</div>' % chips)
     H.append('<div class="cta-wrap"><button type="button" class="pbtn startbtn">%s'
              '<svg viewBox="0 0 24 24" aria-hidden="true">%s</svg></button></div>' % (E(HERO["cta"]), IC["spark"]))
