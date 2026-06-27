@@ -27,6 +27,17 @@ SITE = "https://retrocameraland.com"
 with open(os.path.join(HERE, "rcl-logo-share.png"), "rb") as _lf:
     SHARE_LOGO = "data:image/png;base64," + base64.b64encode(_lf.read()).decode()
 
+# Marka logolari (opsiyonel): brand-logos/<key>.png (or. sony.png, canon.png, fujifilm.png, lumix.png...)
+# Bulunan her PNG base64 data URI olarak gomulur; sonuc kartlarinda + paylasim gorselinde kullanilir.
+# Dosya yoksa otomatik olarak sik metin marka adina doner (mevcut davranis). Kazima YOK - resmi varlik kullan.
+BRAND_LOGOS = {}
+_bl_dir = os.path.join(HERE, "brand-logos")
+if os.path.isdir(_bl_dir):
+    for _fn in sorted(os.listdir(_bl_dir)):
+        if _fn.lower().endswith(".png"):
+            with open(os.path.join(_bl_dir, _fn), "rb") as _bf:
+                BRAND_LOGOS[_fn.lower()[:-4]] = "data:image/png;base64," + base64.b64encode(_bf.read()).decode()
+
 def E(s):
     s = s.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
     return "".join(ch if ord(ch) < 128 else "&#%d;" % ord(ch) for ch in s)
@@ -603,7 +614,8 @@ CSS = r"""
 #rcl-fnd-__SID__ .mbadge b{font-size:20px;font-weight:760;letter-spacing:-.02em;color:var(--ac);}
 #rcl-fnd-__SID__ .mbadge span{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;}
 #rcl-fnd-__SID__ .rbody{padding:18px;display:flex;flex-direction:column;gap:11px;flex:1;}
-#rcl-fnd-__SID__ .rbrand{font-size:11px;font-weight:740;letter-spacing:.13em;color:var(--ac);text-transform:uppercase;}
+#rcl-fnd-__SID__ .rbrand{font-size:11px;font-weight:740;letter-spacing:.13em;color:var(--ac);text-transform:uppercase;min-height:18px;}
+#rcl-fnd-__SID__ .rbrand .blogo{height:20px;width:auto;max-width:130px;display:inline-block;vertical-align:middle;object-fit:contain;}
 #rcl-fnd-__SID__ .rname{font-size:clamp(17px,4.4vw,19px);font-weight:660;letter-spacing:-.01em;line-height:1.2;}
 #rcl-fnd-__SID__ .rbar{height:7px;border-radius:100px;background:color-mix(in srgb,var(--ink) 10%,transparent);overflow:hidden;}
 #rcl-fnd-__SID__ .rbar i{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--ac2),var(--ac));transition:width 1.4s cubic-bezier(.3,.8,.3,1);}
@@ -966,6 +978,8 @@ JS = r"""
     agfa:{aes:{warm:2,dreamy:1},use:{daily:1}}
   };
   function brandKey(b){b=String(b||"").toLowerCase();for(var k in BRAND){if(b.indexOf(k)>=0)return k;}return "";}
+  // marka logosu (opsiyonel, brand-logos/<key>.png -> data URI). Yoksa "" doner.
+  function blogoOf(brand){var b=String(brand||"").toLowerCase(),L=D.blogos||{};for(var k in L){if(k&&b.indexOf(k)>=0)return L[k];}return "";}
   function budgetRange(){
     if(has(1,"b1"))return [0,8000];
     if(has(1,"b2"))return [8000,13000];
@@ -1013,7 +1027,7 @@ JS = r"""
   function pickCameras(){
     // SADECE canli stoktaki kameralar; fallback yalniz canli cekim tamamen basarisiz olursa.
     var pool=(stock&&stock.length)?stock.slice():D.fallback.slice();
-    if(pool.length<=3){var pk=pool.slice(0,3);pk.forEach(function(c,i){c.r=i;c.pct=[96,90,85][i]||82;});return pk;}
+    if(pool.length<=3){var pk=pool.slice(0,3);pk.forEach(function(c,i){c.r=i;c.pct=[89,82,75][i]||70;});return pk;}
     // skor + kucuk jitter (ayni profil her seferinde birebir ayni dizilmesin)
     var scored=pool.map(function(c){return {c:c,s:scoreCam(c)+Math.random()*1.2};});
     scored.sort(function(a,b){return b.s-a.s;});
@@ -1024,12 +1038,12 @@ JS = r"""
     for(var j=1;j<scored.length&&picks.length<3;j++){if(picks.indexOf(scored[j].c)<0)picks.push(scored[j].c);}
     picks.forEach(function(c,i){
       var f=Math.max(0,Math.min(1,scoreCam(c)/(top||1)));
-      var base=[[93,99],[86,93],[80,89]][i]||[78,86];
+      var base=[[82,89],[74,85],[66,80]][i]||[60,74];
       c.r=i; c.pct=Math.round(base[0]+(base[1]-base[0])*f);
     });
-    if(picks[1]&&picks[1].pct>=picks[0].pct)picks[1].pct=picks[0].pct-2;
-    if(picks[2]&&picks[2].pct>=picks[1].pct)picks[2].pct=picks[1].pct-2;
-    picks.forEach(function(c){if(c.pct<70)c.pct=70;});
+    if(picks[1]&&picks[1].pct>=picks[0].pct)picks[1].pct=picks[0].pct-3;
+    if(picks[2]&&picks[2].pct>=picks[1].pct)picks[2].pct=picks[1].pct-3;
+    picks.forEach(function(c){if(c.pct<62)c.pct=62;if(c.pct>89)c.pct=89;});
     return picks;
   }
   function brandTrait(brand){
@@ -1117,7 +1131,7 @@ JS = r"""
         +'<div class="rank">'+(best?esc(R.best_badge):("#"+(i+1)))+'</div>'
         +'<div class="rimg"><img alt="'+esc(c.title)+'" loading="lazy" src="'+esc(img(c.image,640))+'">'
         +'<div class="mbadge"><b data-pct="'+c.pct+'">%0</b><span>'+esc(R.match)+'</span></div></div>'
-        +'<div class="rbody"><div class="rbrand">'+esc(c.brand)+'</div>'
+        +'<div class="rbody"><div class="rbrand">'+(blogoOf(c.brand)?'<img class="blogo" alt="'+esc(c.brand)+'" src="'+esc(blogoOf(c.brand))+'">':esc(c.brand))+'</div>'
         +'<div class="rname">'+esc(c.title)+'</div>'
         +'<div class="rbar"><i data-w="'+c.pct+'"></i></div>'
         +'<p class="rwhy">'+esc(reasonFor(c))+'</p>'
@@ -1170,8 +1184,9 @@ JS = r"""
     var hu=img(hero.image,720); hu+=(hu.indexOf("?")>=0?"&":"?")+"rclshare="+SID;
     var photoP=safe?Promise.resolve(null):loadImg(hu);
     var logoP=D.share_logo?loadImg(D.share_logo):Promise.resolve(null); // data URI -> taint yok
-    return Promise.all([photoP,logoP]).then(function(ims){
-      var im=ims[0], logo=ims[1];
+    var bl=blogoOf(hero.brand), brandP=bl?loadImg(bl):Promise.resolve(null);
+    return Promise.all([photoP,logoP,brandP]).then(function(ims){
+      var im=ims[0], logo=ims[1], blogo=ims[2];
       var W=1080,H=1920,cv=document.createElement("canvas");cv.width=W;cv.height=H;var x=cv.getContext("2d");
       var S=D.share,CX=W/2,WHITE="#ffffff",MUT="rgba(255,255,255,.52)",BG="#0b0b0d";
       // @property --ac (color) yuzunden getComputedStyle HEX yerine "rgb(...)" dondurebilir;
@@ -1239,9 +1254,13 @@ JS = r"""
       if(line)lines.push(line);lines=lines.slice(0,2);
       var ny=ty+66;lines.forEach(function(l,i){cen(l,ny+i*(fs+8),"800 "+fs+"px "+FONT,WHITE);});
       var afterName=ny+(lines.length-1)*(fs+8)+46;
-      cen(String(hero.brand||"").toUpperCase(),afterName,"700 25px "+FONT,AC,3);
+      if(blogo&&blogo.width){ // marka logosu beyaz cip icinde (siyah zeminde her renk gorunur)
+        var blh=34,blw=blh*blogo.width/blogo.height,chw=blw+52,chh=58,ccy=afterName-10;
+        x.fillStyle="#ffffff";rr(x,CX-chw/2,ccy-chh/2,chw,chh,chh/2);x.fill();
+        x.drawImage(blogo,CX-blw/2,ccy-blh/2,blw,blh);
+      }else{ cen(String(hero.brand||"").toUpperCase(),afterName,"700 25px "+FONT,AC,3); }
       // ---------- ALT CTA PANELI (alt bosluk korunur) ----------
-      var pX=110,pW=W-220,pY=1486,pH=300;
+      var pX=110,pW=W-220,pY=1372,pH=300;
       x.fillStyle="rgba(255,255,255,.045)";rr(x,pX,pY,pW,pH,34);x.fill();
       x.strokeStyle="rgba(255,255,255,.10)";x.lineWidth=1.5;rr(x,pX,pY,pW,pH,34);x.stroke();
       x.strokeStyle=rgba(.7);x.lineWidth=3;x.beginPath();x.moveTo(CX-34,pY+40);x.lineTo(CX+34,pY+40);x.stroke();
@@ -1327,6 +1346,7 @@ DATA = {
  "svg":IC,
  "logo":LOGO_SVG,
  "share_logo":SHARE_LOGO,
+ "blogos":BRAND_LOGOS,
  "fallback":FALLBACK,
  "shop_url":"__SHOP_URL__",
  "products_base":"__PROD_BASE__",
