@@ -353,7 +353,7 @@
     "name": "Haftanın Seçkisi",
     "subject": "Koleksiyonluk retro kameralar, tek adet",
     "preview_text": "Üretimi durmuş, değeri artan parçalar. Koleksiyona ve hediyeye değer.",
-    "created": "2026-06-28T05:03:40.748007",
+    "created": "2026-06-28T05:44:30.112977",
     "products": [
       "Panasonic Lumix DC-TZ91",
       "Olympus PEN E-PL1",
@@ -371,7 +371,94 @@
     "name": "Hediye Rehberi",
     "subject": "Sıradan değil, koleksiyonluk bir hediye",
     "preview_text": "Değeri olan, hatırlanan, koleksiyonluk bir hediye.",
-    "created": "2026-06-28T05:03:46.436857",
+    "created": "2026-06-28T05:44:36.066188",
+    "products": [
+      "Panasonic Lumix DC-TZ91",
+      "Olympus PEN E-PL1",
+      "Olympus VR-340",
+      "Canon Powershot ELPH 300 HS"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260628-timecapsule",
+    "theme": "timecapsule",
+    "name": "TimeCapsule Topluluk",
+    "subject": "Fotoğraflarını paylaş, her ay hediye çeki kazan",
+    "preview_text": "Topluluğumuza katıl; anılarını paylaş, oyla, ödül kazan.",
+    "created": "2026-06-28T05:44:41.893747",
+    "products": [
+      "Panasonic Lumix DC-TZ91"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260628-yeni-urunler",
+    "theme": "yeni-urunler",
+    "name": "Yeni Ürünler",
+    "subject": "Yeni geldi: kaçırmadan göz at, hepsi tek adet",
+    "preview_text": "Stoğa yeni kameralar eklendi. Hızlı tükenir, beğendiğini kaçırma.",
+    "created": "2026-06-28T05:44:48.090438",
+    "products": [
+      "Panasonic Lumix DC-TZ91",
+      "Olympus PEN E-PL1",
+      "Olympus VR-340",
+      "Canon Powershot ELPH 300 HS"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260628-ucretsiz-kargo",
+    "theme": "ucretsiz-kargo",
+    "name": "Ücretsiz Kargo",
+    "subject": "Sınırlı süre: tüm kameralarda ücretsiz kargo",
+    "preview_text": "Kısa süreliğine ücretsiz kargo. Almak için tam zamanı.",
+    "created": "2026-06-28T05:44:54.520061",
+    "products": [
+      "Panasonic Lumix DC-TZ91",
+      "Olympus PEN E-PL1",
+      "Olympus VR-340",
+      "Canon Powershot ELPH 300 HS"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260628-stok-azaliyor",
+    "theme": "stok-azaliyor",
+    "name": "Stok Azalıyor",
+    "subject": "Bu kameralar tükenmek üzere",
+    "preview_text": "Son adetler. Tek adet oldukları için bir daha gelmeyebilir.",
+    "created": "2026-06-28T05:45:00.706691",
+    "products": [
+      "Panasonic Lumix DC-TZ91",
+      "Olympus PEN E-PL1",
+      "Olympus VR-340",
+      "Canon Powershot ELPH 300 HS"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260628-editor-secimi",
+    "theme": "editor-secimi",
+    "name": "Editörün Seçimi",
+    "subject": "Editörün seçimi: en sevdiğimiz kameralar",
+    "preview_text": "Ekibimizin bu ay en beğendiği, koleksiyonluk parçalar.",
+    "created": "2026-06-28T05:45:07.093569",
     "products": [
       "Panasonic Lumix DC-TZ91",
       "Olympus PEN E-PL1",
@@ -389,62 +476,11 @@
     "name": "Kamera Bulucu",
     "subject": "Hangi retro kamera sana uygun? 30 saniyede bul",
     "preview_text": "Birkaç soru, sana özel kamera önerisi. Kararsızsan tam sana göre.",
-    "created": "2026-06-28T05:03:52.416098",
+    "created": "2026-06-28T05:45:13.463939",
     "products": [
       "Panasonic Lumix DC-TZ91",
       "Olympus PEN E-PL1",
       "Olympus VR-340"
-    ],
-    "discount": null,
-    "discount_spec": null,
-    "sent": 0,
-    "status": "draft"
-  },
-  {
-    "id": "20260628-timecapsule",
-    "theme": "timecapsule",
-    "name": "TimeCapsule Topluluk",
-    "subject": "Anilarini paylas, her ay hediye ceki kazan",
-    "preview_text": "Toplulugumuza katil; fotograflarini paylas, oyla, odul kazan.",
-    "created": "2026-06-28T05:09:06.839742",
-    "products": [
-      "Panasonic Lumix DC-TZ91"
-    ],
-    "discount": null,
-    "discount_spec": null,
-    "sent": 0,
-    "status": "draft"
-  },
-  {
-    "id": "20260628-yeni-urunler",
-    "theme": "yeni-urunler",
-    "name": "Yeni Urunler",
-    "subject": "Yeni kameralar stokta, her biri tek adet",
-    "preview_text": "Yeni geldi, hizli tukenir. Koleksiyona katilmadan once goz at.",
-    "created": "2026-06-28T05:09:12.932227",
-    "products": [
-      "Panasonic Lumix DC-TZ91",
-      "Olympus PEN E-PL1",
-      "Olympus VR-340",
-      "Canon Powershot ELPH 300 HS"
-    ],
-    "discount": null,
-    "discount_spec": null,
-    "sent": 0,
-    "status": "draft"
-  },
-  {
-    "id": "20260628-ucretsiz-kargo",
-    "theme": "ucretsiz-kargo",
-    "name": "Ucretsiz Kargo",
-    "subject": "Sinirli sure: tum kameralarda ucretsiz kargo",
-    "preview_text": "Kisa sureligine ucretsiz kargo. Almak icin tam zamani.",
-    "created": "2026-06-28T05:09:19.401661",
-    "products": [
-      "Panasonic Lumix DC-TZ91",
-      "Olympus PEN E-PL1",
-      "Olympus VR-340",
-      "Canon Powershot ELPH 300 HS"
     ],
     "discount": null,
     "discount_spec": null,

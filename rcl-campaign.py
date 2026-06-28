@@ -69,22 +69,34 @@ THEMES = {
     "timecapsule": {
         "name": "TimeCapsule Topluluk",
         "n": 0,
-        "brief": ("Time Capsule topluluk + aylik foto yarismasinin tanitimi. ASIL VURGU: anilarini "
-                  "paylas, kameralari oyla, rozet kazan, her ay hediye ceki kazanma sansi. Topluluga "
-                  "ait olma, eglence, oduller. Davetkar ve sicak ton."),
+        "brief": ("TimeCapsule topluluk + aylık foto yarışmasının tanıtımı. ASIL VURGU: anılarını "
+                  "paylaş, kameraları oyla, rozet kazan, her ay hediye çeki kazanma şansı. Topluluğa "
+                  "ait olma, eğlence, ödüller. Davetkâr ve sıcak ton."),
     },
     "yeni-urunler": {
-        "name": "Yeni Urunler",
+        "name": "Yeni Ürünler",
         "n": 4,
         "brief": ("Stoga yeni eklenen retro kameralar. ASIL VURGU: yeni geldi, her biri tek adet, "
                   "hizli tukenir. Aciliyet + koleksiyon heyecani. Premium, taze, kacirma hissi."),
     },
     "ucretsiz-kargo": {
-        "name": "Ucretsiz Kargo",
+        "name": "Ücretsiz Kargo",
         "n": 4,
         "brief": ("Ucretsiz kargo firsati kampanyasi. ASIL VURGU: sinirli sureli ucretsiz kargo, "
                   "simdi almak icin guzel firsat. Stoktaki one cikan kameralar + net firsat vurgusu. "
                   "Premium ama net teklif odakli."),
+    },
+    "stok-azaliyor": {
+        "name": "Stok Azalıyor",
+        "n": 4,
+        "brief": ("Stoğu azalan kameralar, aciliyet/kıtlık teması. ASIL VURGU: son adetler, her biri "
+                  "tek adet, tükenince bir daha gelmeyebilir. Premium ama net aciliyet."),
+    },
+    "editor-secimi": {
+        "name": "Editörün Seçimi",
+        "n": 4,
+        "brief": ("Ekibin en beğendiği koleksiyonluk kameralar. ASIL VURGU: küratörlük, karakter, "
+                  "değer. Premium, güven veren, seçkin ton."),
     },
     "kamera-bulucu": {
         "name": "Kamera Bulucu",
@@ -126,19 +138,28 @@ STATIC_COPY = {
         "preview": "Üretimi durmuş, değeri artan parçalar. Koleksiyona ve hediyeye değer.",
         "heading": "Koleksiyonluk değeri olan kameralar",
         "intro": "Sattığımız her retro kamera, üretimi çoktan durmuş ve bulunması her geçen gün zorlaşan bir parça. Bu yüzden sadece fotoğraf çekmek için değil, koleksiyon değeri ve hediye anlamı için de özel. Aşağıdaki seçkinin her biri tek adet; gerçek değerini bilen biri için, ister kendine ister sevdiğin birine."},
-    "timecapsule": {"subject": "Anilarini paylas, her ay hediye ceki kazan",
-        "preview": "Toplulugumuza katil; fotograflarini paylas, oyla, odul kazan.",
-        "heading": "Anilarinin yeri: TimeCapsule",
-        "intro": "Retro kameralarla cektigin anilari paylasabilecegin, begendigin kameralari oylayabilecegin ve her ay hediye ceki kazanma sansi yakalayabilecegin toplulugumuz TimeCapsule seni bekliyor. Katilmak ucretsiz, anilarin kalici."},
-    "yeni-urunler": {"subject": "Yeni kameralar stokta, her biri tek adet",
-        "preview": "Yeni geldi, hizli tukenir. Koleksiyona katilmadan once goz at.",
-        "heading": "Stoga yeni kameralar eklendi",
-        "intro": "Bulunmasi gun gectikce zorlasan retro dijital kameralardan yenilerini stoga ekledik. Her biri tek adet; gercek degerini bilen biri onlari hizla kapiyor. Begendigini gormeden kacirmamak icin asagiya goz at."},
-    "ucretsiz-kargo": {"subject": "Sinirli sure: tum kameralarda ucretsiz kargo",
-        "preview": "Kisa sureligine ucretsiz kargo. Almak icin tam zamani.",
-        "heading": "Sinirli sure ucretsiz kargo",
-        "intro": "Uzun zamandir goz koydugun o retro kamera icin tam zamani: kisa sureligine secili kameralarda kargo bizden. Her biri tek adet oldugu icin, beklemeden goz atmani oneririz.",
-        "offer": {"headline": "Sinirli sure firsati", "big": "UCRETSIZ KARGO", "sub": "Secili kameralarda kargo bizden"}},
+    "timecapsule": {"subject": "Fotoğraflarını paylaş, her ay hediye çeki kazan",
+        "preview": "Topluluğumuza katıl; anılarını paylaş, oyla, ödül kazan.",
+        "heading": "Anılarının yeri: TimeCapsule",
+        "intro": "Retro kameralarla çektiğin anıları paylaşabileceğin, beğendiğin kameraları oylayabileceğin ve her ay hediye çeki kazanma şansı yakalayabileceğin topluluğumuz TimeCapsule seni bekliyor. Katılmak ücretsiz, anıların kalıcı."},
+    "yeni-urunler": {"subject": "Yeni geldi: kaçırmadan göz at, hepsi tek adet",
+        "preview": "Stoğa yeni kameralar eklendi. Hızlı tükenir, beğendiğini kaçırma.",
+        "heading": "Stoğa yeni kameralar eklendi",
+        "intro": "Bulunması gün geçtikçe zorlaşan retro dijital kameralardan yenilerini stoğa ekledik. Her biri tek adet; gerçek değerini bilen biri onları hızla kapıyor. Beğendiğini görmeden kaçırmamak için aşağıya göz at."},
+    "ucretsiz-kargo": {"subject": "Sınırlı süre: tüm kameralarda ücretsiz kargo",
+        "preview": "Kısa süreliğine ücretsiz kargo. Almak için tam zamanı.",
+        "heading": "Sınırlı süre ücretsiz kargo",
+        "intro": "Uzun zamandır göz koyduğun o retro kamera için tam zamanı: kısa süreliğine seçili kameralarda kargo bizden. Her biri tek adet olduğu için beklemeden göz atmanı öneririz.",
+        "offer": {"headline": "Sınırlı süre fırsatı", "big": "ÜCRETSİZ KARGO", "sub": "Seçili kameralarda kargo bizden"}},
+    "stok-azaliyor": {"subject": "Bu kameralar tükenmek üzere",
+        "preview": "Son adetler. Tek adet oldukları için bir daha gelmeyebilir.",
+        "heading": "Son adetler: tükenmeden",
+        "intro": "Aşağıdaki kameraların stoğu azalıyor. Her biri tek adet olduğu için tükendiğinde aynısını bulmak çoğu zaman mümkün olmuyor. Gözüne kestirdiğin varsa beklememeni öneririz.",
+        "offer": {"headline": "Acele et", "big": "SON ADETLER", "sub": "Tükendiğinde bir daha gelmeyebilir"}},
+    "editor-secimi": {"subject": "Editörün seçimi: en sevdiğimiz kameralar",
+        "preview": "Ekibimizin bu ay en beğendiği, koleksiyonluk parçalar.",
+        "heading": "Editörün seçimi",
+        "intro": "Stoğumuzdaki kameralar arasından ekibimizin bu ay en sevdiği, karakteri ve değeri en yüksek parçaları seçtik. Hepsi tek adet; iyi bir retro kamerayı arayan biri için tam isabet."},
     "kamera-bulucu": {"subject": "Hangi retro kamera sana uygun? 30 saniyede bul",
         "preview": "Birkaç soru, sana özel kamera önerisi. Kararsızsan tam sana göre.",
         "heading": "Hangi retro kamera tam sana göre?",
@@ -443,21 +464,21 @@ def render_community_email(copy, products, campaign_id=""):
   <p style="font-size:16px;line-height:1.7;color:#3a352f;margin:0 0 22px;text-align:center;">{html.escape(copy['intro'])}</p>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;"><tr>
     <td style="background:linear-gradient(150deg,#15120e,#2b2b30);border-radius:18px;padding:30px 24px;text-align:center;">
-      <p style="margin:0 0 6px;color:#bdbac4;font-size:12.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;">Katilmak ucretsiz</p>
-      <p style="margin:0 0 18px;color:#fff;font-size:20px;font-weight:800;line-height:1.3;">Anilarini paylas, oyla,<br>her ay hediye ceki kazan</p>
-      <a href="{cta}" class="rcl-cta" style="background:{ACCENT};color:#fff;padding:16px 40px;border-radius:11px;text-decoration:none;font-weight:800;font-size:17px;display:inline-block;">Topluluga Katil &rsaquo;</a>
+      <p style="margin:0 0 6px;color:#bdbac4;font-size:12.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;">Katılmak ücretsiz</p>
+      <p style="margin:0 0 18px;color:#fff;font-size:20px;font-weight:800;line-height:1.3;">Anılarını paylaş, oyla,<br>her ay hediye çeki kazan</p>
+      <a href="{cta}" class="rcl-cta" style="background:{ACCENT};color:#fff;padding:16px 40px;border-radius:11px;text-decoration:none;font-weight:800;font-size:17px;display:inline-block;">Topluluğa Katıl &rsaquo;</a>
     </td></tr></table>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 26px;"><tr>
-    {step('1','Paylas','Kameranla cektigin anilari yukle')}
-    {step('2','Oyla','Begendigin kameralari one cikar')}
-    {step('3','Kazan','Her ay hediye ceki cekilisi')}
+    {step('1','Paylaş','Kameranla çektiğin anıları yükle')}
+    {step('2','Oyla','Beğendiğin kameraları öne çıkar')}
+    {step('3','Kazan','Her ay hediye çeki çekilişi')}
   </tr></table>
   {ig}
   <div style="height:1px;background:#e5e0d8;margin:28px 0 0;"></div>
   {social}
   <p style="font-size:12.5px;color:#a8a39a;line-height:1.7;margin:14px 0 0;text-align:center;">
     Retrocameraland · <a href="{STORE}" style="color:#a8a39a;">retrocameraland.com</a><br>
-    Bu e-postayi abonemiz oldugun icin aldin · <a href="mailto:{REPLYTO}?subject=Abonelikten%20cikmak%20istiyorum" style="color:#bbb;">Abonelikten cik</a></p>
+    Bu e-postayı abonemiz olduğun için aldın · <a href="mailto:{REPLYTO}?subject=Abonelikten%20çıkmak%20istiyorum" style="color:#bbb;">Abonelikten çık</a></p>
 </div></body></html>"""
 
 # ── Kampanya kaydı ───────────────────────────────────────────────────────────
