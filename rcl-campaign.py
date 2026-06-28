@@ -66,6 +66,26 @@ THEMES = {
                   "verebileceğin en özel hediyelerden biri olduğu için değerli. Duygusal ama "
                   "değer-odaklı, premium ton."),
     },
+    "timecapsule": {
+        "name": "TimeCapsule Topluluk",
+        "n": 0,
+        "brief": ("Time Capsule topluluk + aylik foto yarismasinin tanitimi. ASIL VURGU: anilarini "
+                  "paylas, kameralari oyla, rozet kazan, her ay hediye ceki kazanma sansi. Topluluga "
+                  "ait olma, eglence, oduller. Davetkar ve sicak ton."),
+    },
+    "yeni-urunler": {
+        "name": "Yeni Urunler",
+        "n": 4,
+        "brief": ("Stoga yeni eklenen retro kameralar. ASIL VURGU: yeni geldi, her biri tek adet, "
+                  "hizli tukenir. Aciliyet + koleksiyon heyecani. Premium, taze, kacirma hissi."),
+    },
+    "ucretsiz-kargo": {
+        "name": "Ucretsiz Kargo",
+        "n": 4,
+        "brief": ("Ucretsiz kargo firsati kampanyasi. ASIL VURGU: sinirli sureli ucretsiz kargo, "
+                  "simdi almak icin guzel firsat. Stoktaki one cikan kameralar + net firsat vurgusu. "
+                  "Premium ama net teklif odakli."),
+    },
     "kamera-bulucu": {
         "name": "Kamera Bulucu",
         "n": 3,
@@ -78,6 +98,8 @@ THEMES = {
 
 # Kamera Bulucu (interaktif test) sayfası
 FINDER_URL = f"{STORE}/pages/hangi-kamera-bana-uygun"
+COMMUNITY_URL = f"{STORE}/pages/timecapsule"
+COLLECTION_URL = f"{STORE}/collections/dijital-fotograf-makinesi"
 
 # ── Claude ───────────────────────────────────────────────────────────────────
 GEMINI = _env("GEMINI_API_KEY")
@@ -104,6 +126,19 @@ STATIC_COPY = {
         "preview": "Üretimi durmuş, değeri artan parçalar. Koleksiyona ve hediyeye değer.",
         "heading": "Koleksiyonluk değeri olan kameralar",
         "intro": "Sattığımız her retro kamera, üretimi çoktan durmuş ve bulunması her geçen gün zorlaşan bir parça. Bu yüzden sadece fotoğraf çekmek için değil, koleksiyon değeri ve hediye anlamı için de özel. Aşağıdaki seçkinin her biri tek adet; gerçek değerini bilen biri için, ister kendine ister sevdiğin birine."},
+    "timecapsule": {"subject": "Anilarini paylas, her ay hediye ceki kazan",
+        "preview": "Toplulugumuza katil; fotograflarini paylas, oyla, odul kazan.",
+        "heading": "Anilarinin yeri: TimeCapsule",
+        "intro": "Retro kameralarla cektigin anilari paylasabilecegin, begendigin kameralari oylayabilecegin ve her ay hediye ceki kazanma sansi yakalayabilecegin toplulugumuz TimeCapsule seni bekliyor. Katilmak ucretsiz, anilarin kalici."},
+    "yeni-urunler": {"subject": "Yeni kameralar stokta, her biri tek adet",
+        "preview": "Yeni geldi, hizli tukenir. Koleksiyona katilmadan once goz at.",
+        "heading": "Stoga yeni kameralar eklendi",
+        "intro": "Bulunmasi gun gectikce zorlasan retro dijital kameralardan yenilerini stoga ekledik. Her biri tek adet; gercek degerini bilen biri onlari hizla kapiyor. Begendigini gormeden kacirmamak icin asagiya goz at."},
+    "ucretsiz-kargo": {"subject": "Sinirli sure: tum kameralarda ucretsiz kargo",
+        "preview": "Kisa sureligine ucretsiz kargo. Almak icin tam zamani.",
+        "heading": "Sinirli sure ucretsiz kargo",
+        "intro": "Uzun zamandir goz koydugun o retro kamera icin tam zamani: kisa sureligine secili kameralarda kargo bizden. Her biri tek adet oldugu icin, beklemeden goz atmani oneririz.",
+        "offer": {"headline": "Sinirli sure firsati", "big": "UCRETSIZ KARGO", "sub": "Secili kameralarda kargo bizden"}},
     "kamera-bulucu": {"subject": "Hangi retro kamera sana uygun? 30 saniyede bul",
         "preview": "Birkaç soru, sana özel kamera önerisi. Kararsızsan tam sana göre.",
         "heading": "Hangi retro kamera tam sana göre?",
@@ -275,7 +310,14 @@ def render_email(copy, products, discount=None, campaign_id=""):
           <p style="margin:0 0 5px;color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.92;">{discount['headline']}</p>
           <p style="margin:0 0 5px;color:#fff;font-size:30px;font-weight:800;letter-spacing:3px;">{discount['code']}</p>
           <p style="margin:0;color:#fff;font-size:12px;opacity:.85;">{discount['sub']} · Ödeme sepetinde kodu ekle · {discount['days']} gün geçerli</p></td></tr></table>"""
-    film = ('<table role="presentation" width="100%"><tr><td style="text-align:center;padding:4px 0 22px;">'
+    elif copy.get('offer'):
+        o = copy['offer']
+        disc_html = f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:22px 0;"><tr>
+          <td style="text-align:center;background:linear-gradient(135deg,#15120e,#2b2b30);border-radius:16px;padding:22px;">
+          <p style="margin:0 0 6px;color:{ACCENT};font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;">{html.escape(o['headline'])}</p>
+          <p style="margin:0 0 6px;color:#fff;font-size:26px;font-weight:800;letter-spacing:1px;">{html.escape(o['big'])}</p>
+          <p style="margin:0;color:#cfcad4;font-size:12.5px;">{html.escape(o['sub'])}</p></td></tr></table>"""
+    film =('<table role="presentation" width="100%"><tr><td style="text-align:center;padding:4px 0 22px;">'
             f'<span style="display:inline-block;width:46px;height:3px;border-radius:3px;background:{ACCENT};"></span></td></tr></table>')
     ig = instagram_section(campaign_id)
     social = social_footer()
@@ -375,6 +417,49 @@ def render_finder_email(copy, products, campaign_id=""):
     Bu e-postayı abonemiz olduğun için aldın · <a href="mailto:{REPLYTO}?subject=Abonelikten%20çıkmak%20istiyorum" style="color:#bbb;">Abonelikten çık</a></p>
 </div></body></html>"""
 
+# ── TimeCapsule topluluk e-postası ───────────────────────────────────────────
+def render_community_email(copy, products, campaign_id=""):
+    cta = f"{COMMUNITY_URL}?{UTM}{campaign_id}"
+    step = lambda ic, t, d: f"""<td width="33%" valign="top" style="padding:8px;text-align:center;">
+        <div style="width:40px;height:40px;line-height:40px;margin:0 auto 8px;border-radius:11px;background:#15120e;color:#fff;font-weight:800;font-size:17px;">{ic}</div>
+        <p style="margin:0 0 3px;font-size:14px;font-weight:700;color:#15120e;">{t}</p>
+        <p style="margin:0;font-size:12.5px;color:#7a756d;line-height:1.45;">{d}</p></td>"""
+    film = ('<table role="presentation" width="100%"><tr><td style="text-align:center;padding:4px 0 22px;">'
+            f'<span style="display:inline-block;width:46px;height:3px;border-radius:3px;background:{ACCENT};"></span></td></tr></table>')
+    ig = instagram_section(campaign_id); social = social_footer()
+    return f"""<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  @keyframes rclFade{{from{{opacity:0;transform:translateY(12px)}}to{{opacity:1;transform:none}}}}
+  @keyframes rclPulse{{0%,100%{{box-shadow:0 6px 22px rgba(255,59,59,.30)}}50%{{box-shadow:0 12px 36px rgba(255,59,59,.52)}}}}
+  .rcl-wrap{{animation:rclFade .7s ease both}} .rcl-cta{{animation:rclPulse 2.4s ease-in-out infinite}}
+  @media (prefers-reduced-motion:reduce){{*{{animation:none!important}}}}
+</style></head>
+<body style="margin:0;background:{PAGE_BG};font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;">
+<div class="rcl-wrap" style="max-width:580px;margin:0 auto;padding:30px 22px;">
+  <p style="text-align:center;margin:0 0 20px;"><a href="{STORE}?{UTM}{campaign_id}"><img src="{LOGO_URL}" alt="Retrocameraland" height="48" style="height:48px;width:auto;display:inline-block;border:0;"></a></p>
+  {film}
+  <p style="text-align:center;margin:0 0 10px;"><span style="display:inline-block;background:#ffe9e9;color:{ACCENT};font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;">TimeCapsule Topluluk</span></p>
+  <h1 style="font-size:27px;line-height:1.22;margin:0 0 14px;color:#15120e;letter-spacing:-.02em;text-align:center;">{html.escape(copy['heading'])}</h1>
+  <p style="font-size:16px;line-height:1.7;color:#3a352f;margin:0 0 22px;text-align:center;">{html.escape(copy['intro'])}</p>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 24px;"><tr>
+    <td style="background:linear-gradient(150deg,#15120e,#2b2b30);border-radius:18px;padding:30px 24px;text-align:center;">
+      <p style="margin:0 0 6px;color:#bdbac4;font-size:12.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;">Katilmak ucretsiz</p>
+      <p style="margin:0 0 18px;color:#fff;font-size:20px;font-weight:800;line-height:1.3;">Anilarini paylas, oyla,<br>her ay hediye ceki kazan</p>
+      <a href="{cta}" class="rcl-cta" style="background:{ACCENT};color:#fff;padding:16px 40px;border-radius:11px;text-decoration:none;font-weight:800;font-size:17px;display:inline-block;">Topluluga Katil &rsaquo;</a>
+    </td></tr></table>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 26px;"><tr>
+    {step('1','Paylas','Kameranla cektigin anilari yukle')}
+    {step('2','Oyla','Begendigin kameralari one cikar')}
+    {step('3','Kazan','Her ay hediye ceki cekilisi')}
+  </tr></table>
+  {ig}
+  <div style="height:1px;background:#e5e0d8;margin:28px 0 0;"></div>
+  {social}
+  <p style="font-size:12.5px;color:#a8a39a;line-height:1.7;margin:14px 0 0;text-align:center;">
+    Retrocameraland · <a href="{STORE}" style="color:#a8a39a;">retrocameraland.com</a><br>
+    Bu e-postayi abonemiz oldugun icin aldin · <a href="mailto:{REPLYTO}?subject=Abonelikten%20cikmak%20istiyorum" style="color:#bbb;">Abonelikten cik</a></p>
+</div></body></html>"""
+
 # ── Kampanya kaydı ───────────────────────────────────────────────────────────
 def load_db():
     try: return json.load(open(CAMPAIGN_DB))
@@ -390,6 +475,8 @@ def preview(theme_key, discount_key=None):
     copy = get_copy(theme_key, products, disc)
     if theme_key == "kamera-bulucu":
         html_out = render_finder_email(copy, products, cid)
+    elif theme_key == "timecapsule":
+        html_out = render_community_email(copy, products, cid)
     else:
         html_out = render_email(copy, products, disc, cid)
     os.makedirs(PREVIEW_DIR, exist_ok=True)

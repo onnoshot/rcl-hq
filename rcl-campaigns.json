@@ -399,5 +399,56 @@
     "discount_spec": null,
     "sent": 0,
     "status": "draft"
+  },
+  {
+    "id": "20260628-timecapsule",
+    "theme": "timecapsule",
+    "name": "TimeCapsule Topluluk",
+    "subject": "Anilarini paylas, her ay hediye ceki kazan",
+    "preview_text": "Toplulugumuza katil; fotograflarini paylas, oyla, odul kazan.",
+    "created": "2026-06-28T05:09:06.839742",
+    "products": [
+      "Panasonic Lumix DC-TZ91"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260628-yeni-urunler",
+    "theme": "yeni-urunler",
+    "name": "Yeni Urunler",
+    "subject": "Yeni kameralar stokta, her biri tek adet",
+    "preview_text": "Yeni geldi, hizli tukenir. Koleksiyona katilmadan once goz at.",
+    "created": "2026-06-28T05:09:12.932227",
+    "products": [
+      "Panasonic Lumix DC-TZ91",
+      "Olympus PEN E-PL1",
+      "Olympus VR-340",
+      "Canon Powershot ELPH 300 HS"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260628-ucretsiz-kargo",
+    "theme": "ucretsiz-kargo",
+    "name": "Ucretsiz Kargo",
+    "subject": "Sinirli sure: tum kameralarda ucretsiz kargo",
+    "preview_text": "Kisa sureligine ucretsiz kargo. Almak icin tam zamani.",
+    "created": "2026-06-28T05:09:19.401661",
+    "products": [
+      "Panasonic Lumix DC-TZ91",
+      "Olympus PEN E-PL1",
+      "Olympus VR-340",
+      "Canon Powershot ELPH 300 HS"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
   }
 ]
