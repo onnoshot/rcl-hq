@@ -348,16 +348,17 @@
     "discount_created": true
   },
   {
-    "id": "20260628-kamera-bulucu",
-    "theme": "kamera-bulucu",
-    "name": "Kamera Bulucu",
-    "subject": "Hangi retro kamera sana uygun? 30 saniyede bul",
-    "preview_text": "Birkaç soru, sana özel kamera önerisi. Kararsızsan tam sana göre.",
-    "created": "2026-06-28T04:48:18.448489",
+    "id": "20260628-haftanin-seckisi",
+    "theme": "haftanin-seckisi",
+    "name": "Haftanın Seçkisi",
+    "subject": "Koleksiyonluk retro kameralar, tek adet",
+    "preview_text": "Üretimi durmuş, değeri artan parçalar. Koleksiyona ve hediyeye değer.",
+    "created": "2026-06-28T05:03:40.748007",
     "products": [
       "Panasonic Lumix DC-TZ91",
       "Olympus PEN E-PL1",
-      "Olympus VR-340"
+      "Olympus VR-340",
+      "Canon Powershot ELPH 300 HS"
     ],
     "discount": null,
     "discount_spec": null,
@@ -365,17 +366,34 @@
     "status": "draft"
   },
   {
-    "id": "20260628-haftanin-seckisi",
-    "theme": "haftanin-seckisi",
-    "name": "Haftanın Seçkisi",
-    "subject": "Koleksiyonluk retro kameralar, tek adet",
-    "preview_text": "Üretimi durmuş, değeri artan parçalar. Koleksiyona ve hediyeye değer.",
-    "created": "2026-06-28T04:53:43.203500",
+    "id": "20260628-hediye-rehberi",
+    "theme": "hediye-rehberi",
+    "name": "Hediye Rehberi",
+    "subject": "Sıradan değil, koleksiyonluk bir hediye",
+    "preview_text": "Değeri olan, hatırlanan, koleksiyonluk bir hediye.",
+    "created": "2026-06-28T05:03:46.436857",
     "products": [
       "Panasonic Lumix DC-TZ91",
       "Olympus PEN E-PL1",
       "Olympus VR-340",
       "Canon Powershot ELPH 300 HS"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260628-kamera-bulucu",
+    "theme": "kamera-bulucu",
+    "name": "Kamera Bulucu",
+    "subject": "Hangi retro kamera sana uygun? 30 saniyede bul",
+    "preview_text": "Birkaç soru, sana özel kamera önerisi. Kararsızsan tam sana göre.",
+    "created": "2026-06-28T05:03:52.416098",
+    "products": [
+      "Panasonic Lumix DC-TZ91",
+      "Olympus PEN E-PL1",
+      "Olympus VR-340"
     ],
     "discount": null,
     "discount_spec": null,

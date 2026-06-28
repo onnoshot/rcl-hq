@@ -275,8 +275,8 @@ def render_email(copy, products, discount=None, campaign_id=""):
           <p style="margin:0 0 5px;color:#fff;font-size:13px;font-weight:700;letter-spacing:1px;text-transform:uppercase;opacity:.92;">{discount['headline']}</p>
           <p style="margin:0 0 5px;color:#fff;font-size:30px;font-weight:800;letter-spacing:3px;">{discount['code']}</p>
           <p style="margin:0;color:#fff;font-size:12px;opacity:.85;">{discount['sub']} · Ödeme sepetinde kodu ekle · {discount['days']} gün geçerli</p></td></tr></table>"""
-    film = ('<div style="height:14px;background:#1a1a1a;border-radius:6px;margin:0 0 22px;'
-            'background-image:repeating-linear-gradient(90deg,#1a1a1a 0,#1a1a1a 9px,#f4f1ec 9px,#f4f1ec 15px);"></div>')
+    film = ('<table role="presentation" width="100%"><tr><td style="text-align:center;padding:4px 0 22px;">'
+            f'<span style="display:inline-block;width:46px;height:3px;border-radius:3px;background:{ACCENT};"></span></td></tr></table>')
     ig = instagram_section(campaign_id)
     social = social_footer()
     return f"""<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -327,8 +327,8 @@ def render_finder_email(copy, products, campaign_id=""):
         <div style="width:38px;height:38px;line-height:38px;margin:0 auto 8px;border-radius:50%;background:#1a1a1a;color:#fff;font-weight:800;font-size:16px;">{n}</div>
         <p style="margin:0 0 3px;font-size:14px;font-weight:700;color:#1a1a1a;">{t}</p>
         <p style="margin:0;font-size:12.5px;color:#7a756d;line-height:1.45;">{d}</p></td>"""
-    film = ('<div style="height:14px;background:#1a1a1a;border-radius:6px;margin:0 0 22px;'
-            'background-image:repeating-linear-gradient(90deg,#1a1a1a 0,#1a1a1a 9px,#f4f1ec 9px,#f4f1ec 15px);"></div>')
+    film = ('<table role="presentation" width="100%"><tr><td style="text-align:center;padding:4px 0 22px;">'
+            f'<span style="display:inline-block;width:46px;height:3px;border-radius:3px;background:{ACCENT};"></span></td></tr></table>')
     ig = instagram_section(campaign_id)
     social = social_footer()
     return f"""<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
