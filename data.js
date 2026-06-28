@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-28T03:10:16",
+  "updated_at": "2026-06-28T04:02:13",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4070,
+    "subscribers": 4060,
     "total_views": 1219583,
     "video_count": 384
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1772,
+      "views": 1773,
       "likes": 18,
       "comments": 1,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 896,
+      "views": 898,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 434,
+      "views": 435,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2530,
+      "views": 2531,
       "likes": 37,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 2005,
+      "views": 2003,
       "likes": 33,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
