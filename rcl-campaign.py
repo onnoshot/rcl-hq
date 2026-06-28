@@ -581,6 +581,130 @@ def stats(cid):
     print(json.dumps(agg, ensure_ascii=False, indent=2))
     return agg
 
+# ── Segmentler (Shopify) + Brevo zamanlı kampanya ────────────────────────────
+def brevo_api(method, path, body=None):
+    req = urllib.request.Request("https://api.brevo.com/v3/" + path,
+                                 data=json.dumps(body).encode() if body is not None else None, method=method)
+    req.add_header("api-key", BREVO_KEY); req.add_header("content-type", "application/json"); req.add_header("accept", "application/json")
+    try:
+        with urllib.request.urlopen(req, timeout=45) as r:
+            t = r.read(); return json.loads(t) if t else {}
+    except urllib.error.HTTPError as e:
+        return {"_error": e.code, "_msg": e.read().decode()[:200]}
+    except Exception as e:
+        return {"_error": 0, "_msg": str(e)[:200]}
+
+
+SEGMENT_LABELS = {"all": "Tüm aboneler", "customers": "Müşteriler (alışveriş yapmış)",
+                  "non_customers": "Hiç almamış", "recent": "Son 30 günde aktif"}
+
+
+def segments():
+    """Shopify'dan abone segmentleri (email_marketing_consent=subscribed tabanı)."""
+    subs = [e.lower() for e in subscribers() if e]
+    cust = {}
+    since = 0
+    while True:
+        r = shopify("GET", f"customers.json?limit=250&since_id={since}&fields=id,email,orders_count")
+        cs = r.get("customers", [])
+        if not cs:
+            break
+        for c in cs:
+            if c.get("email"):
+                cust[c["email"].lower()] = c.get("orders_count", 0) or 0
+        since = cs[-1]["id"]
+        if len(cs) < 250:
+            break
+    recent = set()
+    try:
+        d30 = (datetime.now(timezone.utc) - timedelta(days=30)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        r = shopify("GET", f"orders.json?status=any&created_at_min={d30}&limit=250&fields=email")
+        for o in r.get("orders", []):
+            if o.get("email"):
+                recent.add(o["email"].lower())
+    except Exception:
+        pass
+    seg = {"all": [], "customers": [], "non_customers": [], "recent": []}
+    for e in subs:
+        seg["all"].append(e)
+        (seg["customers"] if cust.get(e, 0) > 0 else seg["non_customers"]).append(e)
+        if e in recent:
+            seg["recent"].append(e)
+    return seg
+
+
+def brevo_sync_list(name, emails):
+    """Brevo listesi oluştur/bul + e-postaları import et (mevcut kişiler güncellenir). list_id döndür."""
+    lists = brevo_api("GET", "contacts/lists?limit=50")
+    lid = next((l["id"] for l in (lists.get("lists") or []) if l.get("name") == name), None)
+    if not lid:
+        r = brevo_api("POST", "contacts/lists", {"name": name, "folderId": 1})
+        lid = r.get("id")
+    if lid and emails:
+        brevo_api("POST", "contacts/import", {"listIds": [lid], "updateExistingContacts": True,
+                                              "jsonBody": [{"email": e} for e in emails]})
+    return lid
+
+
+def _shift_day(iso, days):
+    """ISO (tz'li) tarihe gün ekle."""
+    try:
+        d = datetime.fromisoformat(iso)
+        d = d + timedelta(days=days)
+        return d.isoformat()
+    except Exception:
+        return iso
+
+
+def render_for(theme, products, disc, cid):
+    if theme == "kamera-bulucu":
+        return render_finder_email(get_copy(theme, products, disc), products, cid)
+    if theme == "timecapsule":
+        return render_community_email(get_copy(theme, products, disc), products, cid)
+    return render_email(get_copy(theme, products, disc), products, disc, cid)
+
+
+def schedule_campaign(theme, segment="all", at_iso=None, test=None):
+    """Bir şablonu bir segmente Brevo üzerinden gönder/zamanla. 300'lük parça, ardışık gün.
+    at_iso None ise hemen gönder. test verilirse SADECE o e-postaya tek kampanya."""
+    if theme not in THEMES:
+        return {"ok": False, "error": "bilinmeyen şablon: " + theme}
+    cid = f"{datetime.now().strftime('%Y%m%d%H%M')}-{theme}-{segment}"
+    th = THEMES[theme]
+    products = instock_products(th["n"])
+    copy = get_copy(theme, products, None)
+    htmlb = render_for(theme, products, None, cid)
+    DAILY = 290
+    if test:
+        chunks = [[test]]
+    else:
+        seg = segments().get(segment, [])
+        if not seg:
+            return {"ok": False, "error": f"{segment} segmentinde abone yok"}
+        chunks = [seg[i:i + DAILY] for i in range(0, len(seg), DAILY)]
+    out = []
+    total = sum(len(c) for c in chunks)
+    for idx, chunk in enumerate(chunks):
+        name = f"RCL-{cid}" + (f"-{idx+1}" if len(chunks) > 1 else "")
+        lid = brevo_sync_list(name, chunk)
+        if not lid:
+            out.append({"chunk": idx + 1, "error": "liste oluşturulamadı"}); continue
+        body = {"name": name, "subject": copy["subject"],
+                "sender": {"name": SENDER_NAME, "email": SENDER_EMAIL},
+                "type": "classic", "htmlContent": htmlb,
+                "recipients": {"listIds": [lid]}, "replyTo": REPLYTO}
+        if at_iso:
+            body["scheduledAt"] = _shift_day(at_iso, idx)
+        r = brevo_api("POST", "emailCampaigns", body)
+        camp_id = r.get("id")
+        if camp_id and not at_iso:
+            brevo_api("POST", f"emailCampaigns/{camp_id}/sendNow", {})
+        out.append({"chunk": idx + 1, "size": len(chunk), "campaign_id": camp_id,
+                    "at": body.get("scheduledAt", "şimdi"), "error": r.get("_msg")})
+    return {"ok": True, "cid": cid, "theme": theme, "segment": segment, "total": total,
+            "scheduled": bool(at_iso), "test": test, "chunks": out}
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else "list"
     if cmd == "preview":
@@ -592,6 +716,19 @@ if __name__ == "__main__":
         send(sys.argv[2], t)
     elif cmd == "stats":
         stats(sys.argv[2])
+    elif cmd == "segments":
+        seg = segments()
+        for k in ["all", "customers", "non_customers", "recent"]:
+            print(f"  {k:14s} {SEGMENT_LABELS[k]:30s} {len(seg.get(k, []))}")
+    elif cmd == "schedule":
+        # schedule <theme> --segment <seg> [--at <ISO> | --now] [--test EMAIL]
+        theme = sys.argv[2]
+        get = lambda f, d=None: sys.argv[sys.argv.index(f) + 1] if f in sys.argv else d
+        seg = get("--segment", "all")
+        at = None if "--now" in sys.argv else get("--at")
+        test = get("--test")
+        res = schedule_campaign(theme, seg, at, test)
+        print(json.dumps(res, ensure_ascii=False, indent=2))
     elif cmd == "list":
         for c in load_db():
             print(f"  {c['id']} · {c['name']} · {c['status']} · gönderilen:{c.get('sent',0)} · {c['subject']}")
