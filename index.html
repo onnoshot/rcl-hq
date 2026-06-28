@@ -3741,7 +3741,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 15, "at": "2026-06-28T04:55:58" };
+const BUILD = { "no": 16, "at": "2026-06-28T04:58:23" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
@@ -5005,9 +5005,11 @@ function renderEmail() {
         : c.status === 'partial' ? pill('rgba(255,159,10,.14)', 'var(--warn)', 'Kısmi')
         : pill('rgba(255,255,255,.08)', 'var(--t3)', 'Taslak');
       const code = c.discount ? '<span style="font-family:var(--mono);color:var(--red)">' + c.discount + '</span>' : '—';
+      const deliv=+c.delivered||0, opn=+c.opens||0, clk=+c.clicks||0, nonopen=Math.max(deliv-opn,0);
+      const detail = (c.sent>0) ? `<div style="font-size:.58rem;color:var(--t3);margin-left:19px;margin-top:2px">${deliv} teslim · <b style="color:var(--green)">${opn}</b> açan · <b style="color:var(--t2)">${nonopen}</b> açmayan · <b style="color:var(--warn)">${clk}</b> tıklayan</div>` : '';
       return `<tr onclick="emailPreview(${i})" title="Önizlemeyi aç" style="cursor:pointer">
         <td>${c.date || '—'}</td>
-        <td><span style="display:inline-flex;align-items:center;gap:6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" style="flex:none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>${c.name || ''}</span><div style="font-size:.6rem;color:var(--t3);margin-left:19px">${(c.subject || '').slice(0,42)}</div></td>
+        <td><span style="display:inline-flex;align-items:center;gap:6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" style="flex:none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>${c.name || ''}</span><div style="font-size:.6rem;color:var(--t3);margin-left:19px">${(c.subject || '').slice(0,42)}</div>${detail}</td>
         <td>${st}</td><td>${c.sent || 0}</td><td>%${c.open_rate || 0}</td><td>%${c.click_rate || 0}</td><td>${code}</td></tr>`;
     }).join('');
     tb.innerHTML = rows || '<tr><td colspan="7" style="text-align:center;color:var(--t3);padding:24px">Henüz kampanya gönderilmedi</td></tr>';
