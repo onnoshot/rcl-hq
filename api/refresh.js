@@ -15,10 +15,13 @@ export default async function handler(req, res) {
   const sb = db();
 
   if (req.method === 'GET') {
-    const { data } = await sb.from('ops_refresh')
+    const { data, error } = await sb.from('ops_refresh')
       .select('requested_at,processed_at,build_no').eq('id', 1).maybeSingle();
     return res.status(200).json({
       ok: true,
+      table_ready: !error,                 // teşhis: ops_refresh tablosu kurulu mu
+      row_exists: !!data,                  // teşhis: id=1 satırı var mı
+      error: error ? error.message : null,
       requested_at: (data && data.requested_at) || null,
       processed_at: (data && data.processed_at) || null,
       build_no: (data && data.build_no) || null,
