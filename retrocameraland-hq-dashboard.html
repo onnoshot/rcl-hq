@@ -765,6 +765,37 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 .hx-hint{font-size:0.62rem;color:var(--t3);margin-top:9px;line-height:1.5;}
 @media(prefers-reduced-motion:reduce){.hermes-hero::after{animation:none;}.hh-fill{transition:none;}}
 
+/* ─── E-posta yönetim arayüzü ─── */
+.em-tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0 4px;}
+.em-tpl{padding:14px;border-radius:14px;background:rgba(255,255,255,0.035);border:1px solid rgba(255,255,255,0.08);cursor:pointer;transition:all .2s cubic-bezier(.16,1,.3,1);position:relative;}
+.em-tpl:hover{background:rgba(255,255,255,0.06);transform:translateY(-2px);}
+.em-tpl.sel{border-color:rgba(255,59,58,0.5);background:rgba(255,59,58,0.06);box-shadow:0 0 0 1px rgba(255,59,58,0.3);}
+.em-tpl-name{font-size:0.82rem;font-weight:700;margin-bottom:3px;display:flex;align-items:center;gap:6px;}
+.em-tpl-sub{font-size:0.66rem;color:var(--t3);line-height:1.4;margin-bottom:10px;min-height:2.5em;}
+.em-tpl-actions{display:flex;gap:6px;}
+.em-tpl-btn{font-size:0.58rem;font-weight:700;padding:5px 10px;border-radius:7px;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:var(--t2);cursor:pointer;transition:all .18s;}
+.em-tpl-btn:hover{background:rgba(255,255,255,0.1);color:var(--t1);}
+.em-tpl-btn.sel{background:rgba(255,59,58,0.18);border-color:rgba(255,59,58,0.5);color:#fff;}
+.em-tpl-check{position:absolute;top:10px;right:10px;width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;font-size:11px;line-height:18px;text-align:center;display:none;}
+.em-tpl.sel .em-tpl-check{display:block;}
+.em-controls{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;margin-top:14px;}
+.em-ctrl{display:flex;flex-direction:column;gap:6px;}
+.em-ctrl label{font-size:0.6rem;font-weight:600;color:var(--t3);letter-spacing:0.04em;text-transform:uppercase;}
+.em-input{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:11px;padding:11px 13px;color:var(--t1);font-family:var(--sans);font-size:0.8rem;outline:none;min-width:200px;}
+.em-input:focus{border-color:rgba(255,59,58,0.4);}
+.em-when{display:flex;gap:14px;padding:9px 0;}
+.em-radio{display:flex;align-items:center;gap:6px;font-size:0.8rem;cursor:pointer;color:var(--t2);}
+.em-radio input{accent-color:var(--red);}
+.em-ctrl-action{margin-left:auto;}
+.em-ctrl-action .hx-send{border-color:rgba(255,59,58,0.45);background:linear-gradient(180deg,rgba(255,59,58,0.22),rgba(255,59,58,0.1));}
+.em-ctrl-action .hx-send[disabled]{opacity:.5;cursor:default;background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);}
+.em-queue{display:flex;flex-direction:column;gap:8px;margin-top:10px;}
+.em-q{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:11px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);font-size:0.76rem;flex-wrap:wrap;}
+.em-q-status{font-size:0.56rem;font-weight:800;letter-spacing:0.05em;padding:3px 9px;border-radius:7px;text-transform:uppercase;flex-shrink:0;}
+.eq-pending{background:rgba(255,159,10,0.14);color:var(--warn);} .eq-done{background:rgba(48,209,88,0.14);color:var(--green);} .eq-error{background:rgba(255,69,58,0.14);color:var(--danger);}
+.em-q-meta{color:var(--t3);font-size:0.66rem;margin-left:auto;}
+@media(max-width:820px){.em-tpl-grid{grid-template-columns:1fr;}.em-input{min-width:0;width:100%;}.em-ctrl-action{margin-left:0;width:100%;}}
+
 /* ─── STATS ─── */
 .stat-city-row,.stat-age-row{display:flex;flex-direction:column;gap:5px;padding:4px 0;}
 .stat-city-head,.stat-age-head{display:flex;justify-content:space-between;align-items:center;}
@@ -3022,6 +3053,30 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
     <div class="pt-left"><div class="pt-title" style="color:var(--red)">E-posta Pazarlama</div><div class="pt-sub">Kampanyalar · Açılma · Tıklama</div></div>
     <div class="pt-right"><div class="live-pill"><div class="sb-live-dot"></div>BREVO</div><span class="upd-time" id="email-upd">—</span></div>
   </div>
+
+  <!-- ═══ E-POSTA YÖNETİM: gönder / zamanla ═══ -->
+  <div class="sec fi" style="transition-delay:.03s">
+    <div class="card p" style="padding:24px">
+      <div class="hsec-title" style="color:var(--red)">E-posta Gönder / Zamanla</div>
+      <div class="hsec-desc">Şablon seç, kitleni belirle, hemen gönder veya tarih/saat ayarla. "Önizle" ile müşteriye gidecek son hali gör.</div>
+      <div id="em-templates" class="em-tpl-grid"></div>
+      <div class="em-controls">
+        <div class="em-ctrl"><label>Kitle (segment)</label><select id="em-segment" class="em-input"></select></div>
+        <div class="em-ctrl"><label>Zamanlama</label>
+          <div class="em-when">
+            <label class="em-radio"><input type="radio" name="em-when" value="now" checked onchange="emWhenChange()"> Hemen</label>
+            <label class="em-radio"><input type="radio" name="em-when" value="sched" onchange="emWhenChange()"> Zamanla</label>
+          </div>
+        </div>
+        <div class="em-ctrl" id="em-datetime" style="display:none"><label>Tarih / Saat</label><input type="datetime-local" id="em-at" class="em-input"></div>
+        <div class="em-ctrl em-ctrl-action"><button class="hx-send" id="em-send-btn" onclick="emSend()" disabled>Önce şablon seç</button></div>
+      </div>
+      <div class="hx-hint" id="em-send-hint">Free plan günde ~300; daha büyük kitleler otomatik 300'lük parçalara bölünüp ardışık günlere zamanlanır.</div>
+      <div class="hsec-title" style="font-size:.92rem;margin-top:20px">Gönderim Kuyruğu</div>
+      <div id="em-queue" class="em-queue"></div>
+    </div>
+  </div>
+
   <div class="sec fi" style="transition-delay:.05s">
     <div class="g g4">
       <div class="card p card-gold">
@@ -3741,7 +3796,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 18, "at": "2026-06-28T05:09:59" };
+const BUILD = { "no": 21, "at": "2026-06-28T05:29:34" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
@@ -4112,7 +4167,7 @@ const EMAIL = {
 
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-28T04:10:20",
+  "updated_at": "2026-06-28T05:10:30",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -4184,7 +4239,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 168,
+      "views": 166,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -4229,7 +4284,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 3016,
+      "views": 3013,
       "likes": 45,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -4238,7 +4293,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1724,
+      "views": 1723,
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/LHg76IQG7aw"
@@ -4256,7 +4311,7 @@ const YOUTUBE = {
       "id": "VnLTp2ufa6A",
       "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
       "date": "7 May 2026",
-      "views": 2006,
+      "views": 2005,
       "likes": 33,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
@@ -4268,7 +4323,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-28T04:11:42",
+  "updated_at": "2026-06-28T05:11:48",
   "period_30d": {
     "revenue": 90629,
     "orders": 7,
@@ -5047,8 +5102,69 @@ function closeEmailPreview() {
 }
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeEmailPreview(); });
 
+// ── E-posta yönetim (gönder / zamanla) ──
+const EM_ENDPOINT='https://rclhq.vercel.app/api/email-send';
+const EM_THEMES=[
+  {key:'kamera-bulucu',name:'Kamera Bulucu'},{key:'timecapsule',name:'TimeCapsule Topluluk'},
+  {key:'yeni-urunler',name:'Yeni Ürünler'},{key:'ucretsiz-kargo',name:'Ücretsiz Kargo'},
+  {key:'haftanin-seckisi',name:'Haftanın Seçkisi'},{key:'hediye-rehberi',name:'Hediye Rehberi'},
+];
+const EM_SEGS=[['all','Tüm aboneler'],['customers','Müşteriler'],['non_customers','Hiç almamış'],['recent','Son 30 günde aktif']];
+let emSelected=null;
+function emSegLbl(k){return (EM_SEGS.find(s=>s[0]===k)||[null,k])[1];}
+function renderEmailManager(){
+  const E=(typeof EMAIL!=='undefined')?EMAIL:{}; const camps=E.campaigns||[]; const esc=hxEsc;
+  const tplIndex={};
+  EM_THEMES.forEach(t=>{let best=-1;camps.forEach((c,i)=>{if((c.id||'').endsWith('-'+t.key))best=i;});tplIndex[t.key]=best;});
+  const grid=document.getElementById('em-templates');
+  if(grid) grid.innerHTML=EM_THEMES.map(t=>{
+    const i=tplIndex[t.key]; const c=i>=0?camps[i]:null; const subj=c?(c.subject||''):''; const sel=emSelected===t.key;
+    const prev=i>=0?`<span class="em-tpl-btn" onclick="event.stopPropagation();emailPreview(${i})">Önizle</span>`:'<span class="em-tpl-btn" style="opacity:.4">Önizleme yok</span>';
+    return `<div class="em-tpl ${sel?'sel':''}" onclick="emSelect('${t.key}')"><div class="em-tpl-check">✓</div>
+      <div class="em-tpl-name">${esc(t.name)}</div><div class="em-tpl-sub">${esc(subj)}</div>
+      <div class="em-tpl-actions">${prev}<span class="em-tpl-btn ${sel?'sel':''}" onclick="event.stopPropagation();emSelect('${t.key}')">${sel?'Seçili':'Seç'}</span></div></div>`;
+  }).join('');
+  const seg=document.getElementById('em-segment');
+  if(seg && !seg.dataset.built){const counts=E.segments||{};seg.innerHTML=EM_SEGS.map(([k,l])=>`<option value="${k}">${l}${counts[k]!=null?' ('+counts[k]+')':''}</option>`).join('');seg.dataset.built='1';}
+  renderEmQueue();
+}
+function emSelect(key){emSelected=key;renderEmailManager();emUpdateBtn();}
+function emWhenChange(){const s=document.querySelector('input[name="em-when"]:checked').value;document.getElementById('em-datetime').style.display=s==='sched'?'flex':'none';emUpdateBtn();}
+function emUpdateBtn(){const b=document.getElementById('em-send-btn');if(!b)return;if(!emSelected){b.textContent='Önce şablon seç';b.disabled=true;return;}const sched=document.querySelector('input[name="em-when"]:checked').value==='sched';b.disabled=false;b.textContent=sched?'Zamanla':'Şimdi Gönder';}
+function emSend(){
+  if(!emSelected)return;
+  const key=localStorage.getItem('rcl_alim_key')||'';
+  if(!key){alert('Gönderim için yönetici anahtarı gerekli. Time Capsule paneline anahtarınla bir kez giriş yap.');return;}
+  const seg=document.getElementById('em-segment').value;
+  const sched=document.querySelector('input[name="em-when"]:checked').value==='sched';
+  let at=null;
+  if(sched){const v=document.getElementById('em-at').value;if(!v){alert('Tarih/saat seç');return;}at=new Date(v).toISOString();}
+  if(!confirm((sched?'ZAMANLA':'ŞİMDİ GÖNDER')+': '+emSelected+' -> '+emSegLbl(seg)+(sched?(' ('+new Date(at).toLocaleString('tr-TR')+')'):'')+'\n\nOnaylıyor musun?'))return;
+  const b=document.getElementById('em-send-btn');b.disabled=true;b.textContent='Sıraya alınıyor...';
+  fetch(EM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key,action:'enqueue',theme:emSelected,segment:seg,at})})
+    .then(r=>r.json()).then(j=>{
+      if(j&&j.ok){b.textContent='Sıraya alındı ✓';document.getElementById('em-send-hint').textContent='Mac dinleyici ~60sn içinde işleyip Brevo kampanyasını kuracak. Durumu aşağıdaki kuyruktan izle.';setTimeout(()=>{renderEmQueue();emUpdateBtn();},2500);}
+      else{b.textContent='Hata';alert('Hata: '+((j&&j.error)||'bilinmeyen'));setTimeout(emUpdateBtn,2500);}
+    }).catch(()=>{b.textContent='Bağlanılamadı';setTimeout(emUpdateBtn,2500);});
+}
+function renderEmQueue(){
+  const el=document.getElementById('em-queue');if(!el)return;
+  fetch(EM_ENDPOINT,{cache:'no-store'}).then(r=>r.json()).then(j=>{
+    const q=(j&&j.queue)||[];
+    if(!q.length){el.innerHTML='<div class="h-item-d" style="padding:8px">Kuyruk boş.</div>';return;}
+    el.innerHTML=q.slice(0,12).map(it=>{
+      const st=it.status==='done'?'eq-done':it.status==='error'?'eq-error':'eq-pending';
+      const stt=it.status==='done'?'Tamam':it.status==='error'?'Hata':'Sırada';
+      const when=it.scheduled_at?('zamanlı '+new Date(it.scheduled_at).toLocaleString('tr-TR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})):'hemen';
+      const total=(it.result&&it.result.total!=null)?(' · '+it.result.total+' kişi'):'';
+      return `<div class="em-q"><span class="em-q-status ${st}">${stt}</span><b>${hxEsc(it.theme||'')}</b> <span style="color:var(--t2)">${hxEsc(emSegLbl(it.segment))}</span> <span style="color:var(--t3)">· ${when}${total}</span><span class="em-q-meta">${it.created_at?new Date(it.created_at).toLocaleString('tr-TR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):''}</span></div>`;
+    }).join('');
+  }).catch(()=>{el.innerHTML='<div class="h-item-d" style="padding:8px">Kuyruk yüklenemedi (tablo henüz kurulmamış olabilir).</div>';});
+}
+
 function renderEmail() {
   if (typeof EMAIL === 'undefined') return;
+  renderEmailManager();
   const t = EMAIL.totals || {};
   const setT = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   const cs = document.getElementById('em-sent'); if (cs) counter(cs, t.sent || 0);
