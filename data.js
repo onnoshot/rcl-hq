@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-29T01:02:07",
+  "updated_at": "2026-06-29T02:02:12",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1790,
+      "views": 1791,
       "likes": 18,
       "comments": 1,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 902,
+      "views": 904,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
