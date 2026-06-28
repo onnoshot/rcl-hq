@@ -3796,7 +3796,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 21, "at": "2026-06-28T05:29:34" };
+const BUILD = { "no": 22, "at": "2026-06-28T05:39:44" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
@@ -5122,14 +5122,16 @@ function renderEmailManager(){
     const prev=i>=0?`<span class="em-tpl-btn" onclick="event.stopPropagation();emailPreview(${i})">Önizle</span>`:'<span class="em-tpl-btn" style="opacity:.4">Önizleme yok</span>';
     return `<div class="em-tpl ${sel?'sel':''}" onclick="emSelect('${t.key}')"><div class="em-tpl-check">✓</div>
       <div class="em-tpl-name">${esc(t.name)}</div><div class="em-tpl-sub">${esc(subj)}</div>
-      <div class="em-tpl-actions">${prev}<span class="em-tpl-btn ${sel?'sel':''}" onclick="event.stopPropagation();emSelect('${t.key}')">${sel?'Seçili':'Seç'}</span></div></div>`;
+      <div class="em-tpl-actions">${prev}<span class="em-tpl-btn ${sel?'sel':''}" onclick="event.stopPropagation();emSelect('${t.key}')" title="${sel?'Seçimi kaldırmak için tıkla':'Seçmek için tıkla'}">${sel?'Seçildi · kaldır':'Seç'}</span></div></div>`;
   }).join('');
   const seg=document.getElementById('em-segment');
   if(seg && !seg.dataset.built){const counts=E.segments||{};seg.innerHTML=EM_SEGS.map(([k,l])=>`<option value="${k}">${l}${counts[k]!=null?' ('+counts[k]+')':''}</option>`).join('');seg.dataset.built='1';}
   renderEmQueue();
 }
-function emSelect(key){emSelected=key;renderEmailManager();emUpdateBtn();}
-function emWhenChange(){const s=document.querySelector('input[name="em-when"]:checked').value;document.getElementById('em-datetime').style.display=s==='sched'?'flex':'none';emUpdateBtn();}
+function emSelect(key){emSelected=(emSelected===key)?null:key;renderEmailManager();emUpdateBtn();}  // tekrar tıkla = seçimi kaldır
+function emWhenChange(){const s=document.querySelector('input[name="em-when"]:checked').value;const dt=document.getElementById('em-datetime');dt.style.display=s==='sched'?'flex':'none';
+  if(s==='sched'){const at=document.getElementById('em-at');const now=new Date(Date.now()-new Date().getTimezoneOffset()*60000);at.min=now.toISOString().slice(0,16);if(!at.value){const def=new Date(Date.now()+3600000-new Date().getTimezoneOffset()*60000);at.value=def.toISOString().slice(0,16);}}
+  emUpdateBtn();}
 function emUpdateBtn(){const b=document.getElementById('em-send-btn');if(!b)return;if(!emSelected){b.textContent='Önce şablon seç';b.disabled=true;return;}const sched=document.querySelector('input[name="em-when"]:checked').value==='sched';b.disabled=false;b.textContent=sched?'Zamanla':'Şimdi Gönder';}
 function emSend(){
   if(!emSelected)return;
