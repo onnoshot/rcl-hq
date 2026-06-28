@@ -4,6 +4,7 @@ Retrocameraland — Instagram Veri Çekici
 Saatlik çalışır: profil istatistikleri + son gönderiler → dashboard günceller.
 """
 
+import fcntl
 import json
 import os
 import time
@@ -13,10 +14,7 @@ from datetime import datetime
 
 SCRIPT_DIR    = os.path.dirname(os.path.abspath(__file__))
 TOKEN_FILE    = os.path.join(SCRIPT_DIR, "ig_token.json")
-DASHBOARD_HTML = os.path.join(SCRIPT_DIR, "retrocameraland-hq-dashboard.html")
-DATA_JS        = "/Users/onnoshot/Downloads/rcl-dashboard/data.js"
-START_MARKER  = "/* ─── INSTAGRAM DATA START ─── */"
-END_MARKER    = "/* ─── INSTAGRAM DATA END ─── */"
+from rcl_config import write_block, publish   # yol / marker / push hepsi rcl_config.py'de (tek yer)
 
 MONTH_TR = {
     "01":"Oca","02":"Şub","03":"Mar","04":"Nis","05":"May","06":"Haz",
@@ -57,7 +55,7 @@ def fetch_profile(ig_id, token):
 
 def fetch_recent_posts(ig_id, token, n=12):
     data = ig_get(
-        f"{ig_id}/media?fields=id,timestamp,like_count,comments_count,media_type,permalink&limit={n}",
+        f"{ig_id}/media?fields=id,timestamp,like_count,comments_count,media_type,permalink,media_url,thumbnail_url,caption&limit={n}",
         token
     )
     posts = []
@@ -65,6 +63,7 @@ def fetch_recent_posts(ig_id, token, n=12):
         ts  = p["timestamp"][:10]
         dt  = datetime.strptime(ts, "%Y-%m-%d")
         mon = MONTH_TR[dt.strftime("%m")]
+        img = p.get("thumbnail_url") if p.get("media_type") == "VIDEO" else p.get("media_url")
         posts.append({
             "id":        p["id"],
             "date":      f"{dt.day} {mon} {dt.year}",
@@ -72,6 +71,8 @@ def fetch_recent_posts(ig_id, token, n=12):
             "likes":     p.get("like_count", 0),
             "comments":  p.get("comments_count", 0),
             "url":       p["permalink"],
+            "image":     img or "",
+            "caption":   (p.get("caption") or "")[:200],
         })
     return posts
 
@@ -98,44 +99,11 @@ def build_data(profile, posts):
     }
 
 
-def update_file(path, block):
-    if not os.path.exists(path):
-        return False
-    with open(path, "r", encoding="utf-8") as f:
-        content = f.read()
-    si = content.find(START_MARKER)
-    ei = content.find(END_MARKER)
-    if si == -1 or ei == -1:
-        return False
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(content[:si] + block + content[ei + len(END_MARKER):])
-    log(f"Güncellendi: {path}")
-    return True
-
-
 def update_dashboard(data):
-    block = f"{START_MARKER}\nconst INSTAGRAM = {json.dumps(data, ensure_ascii=False, indent=2)};\n{END_MARKER}"
-    update_file(DASHBOARD_HTML, block)
-    update_file(DATA_JS, block)
+    # ANA KAYNAGA yaz; data.js publish() icinde ANA KAYNAKTAN turetilir
+    write_block("INSTAGRAM", f"const INSTAGRAM = {json.dumps(data, ensure_ascii=False, indent=2)};")
+    log("ANA KAYNAK guncellendi (INSTAGRAM)")
     return True
-
-
-def git_push():
-    import subprocess, shutil
-    dash_dir = "/Users/onnoshot/Downloads/rcl-dashboard"
-    shutil.copy(DASHBOARD_HTML, f"{dash_dir}/index.html")
-    git = ["git", "-c", "credential.helper=osxkeychain"]
-    try:
-        subprocess.run(git + ["add", "data.js", "index.html"], cwd=dash_dir, check=True, capture_output=True)
-        r = subprocess.run(git + ["commit", "-m", f"data: instagram {datetime.now().strftime('%Y-%m-%dT%H:%M')}"],
-                           cwd=dash_dir, capture_output=True)
-        if r.returncode != 0:
-            log("Git commit: değişiklik yok, push atlandı")
-            return
-        subprocess.run(git + ["push"], cwd=dash_dir, check=True, capture_output=True)
-        log("Git push tamamlandı")
-    except subprocess.CalledProcessError as e:
-        log(f"Git push hatası: {e.stderr.decode().strip()}")
 
 
 def main():
@@ -154,7 +122,7 @@ def main():
 
     data = build_data(profile, posts)
     update_dashboard(data)
-    git_push()
+    publish("instagram", log)
     log("=== Tamamlandı ✓ ===")
 
 

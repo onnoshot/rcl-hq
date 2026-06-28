@@ -1,0 +1,45 @@
+{
+  "brand_profile": {
+    "isim": "Retrocameraland",
+    "ne_satar": "Üretimi durmuş retro/Y2K dijital kameralar (digicam) ve aksesuar; her kamera çoğunlukla tek adet",
+    "pazar": "Türkiye; site retrocameraland.com (Shopify)",
+    "konumlandirma": "Koleksiyon değeri + nostalji + anlamlı hediye; sıradan değil koleksiyonluk",
+    "kanallar": "Organik SEO (300+ blog), Instagram @retrocameraland, YouTube, Pinterest, TikTok, Brevo e-posta",
+    "topluluk": "Time Capsule — oyunlaştırılmış üye topluluğu, foto yarışması, kamera oylama",
+    "marka_tonu": "Sıcak ama elit; emoji/em-dash yok; lacivert-beyaz lüks + vermilyon vurgu",
+    "para_birimi": "TL"
+  },
+  "learnings": [
+    {
+      "date": "2026-06-28",
+      "insight": "RCL'nin asıl darboğazı trafik değil dönüşüm: ~7.000 ziyaret/ay ama ~7 sipariş; büyüme kaldıracı huni optimizasyonunda."
+    },
+    {
+      "date": "2026-06-28",
+      "insight": "Marj %58 ve ciro yıllık aylık ortalamanın üstünde — fiyatlama sağlam, indirim gerekmiyor; büyüme dönüşüm ve reaktivasyondan gelmeli."
+    },
+    {
+      "date": "2026-06-28",
+      "insight": "Organik trafik bileşik büyüyor (Haziran zirve 2.107); 302 blog markanın en değerli, ücretsiz varlığı."
+    },
+    {
+      "date": "2026-06-28",
+      "insight": "880 müşteri tabanı reaktive edilmiyor; en ucuz ciro burada duruyor."
+    },
+    {
+      "date": "2026-06-28",
+      "insight": "E-posta ölçümü kopuk (Brevo teslim/açılma 0) — kanal kör; her CEO analizinde bunun düzelip düzelmediğini kontrol et."
+    },
+    {
+      "date": "2026-06-28",
+      "insight": "YouTube (58k izlenme) ve Instagram kitlesi siteye/siparişe verimli akmıyor; içerik-satış köprüsü zayıf nokta."
+    }
+  ],
+  "history": [
+    {
+      "date": "2026-06-28",
+      "health_score": 72,
+      "headline": "Trafik ve SEO motoru güçlü çalışıyor; tek gerçek darboğaz ziyareti siparişe çevirmek."
+    }
+  ]
+}

@@ -7,6 +7,7 @@ Kullanım:
     python3 retrocameraland-shopify-fetch.py
 """
 
+import fcntl
 import json
 import os
 import sys
@@ -17,14 +18,10 @@ from datetime import datetime, timedelta, timezone
 from collections import defaultdict
 
 # ─── AYARLAR ───────────────────────────────────────────────────────────────
-SHOPIFY_TOKEN  = "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"
+from rcl_config import SHOPIFY_TOKEN, write_block, publish   # token / yol / push tek yer: rcl_config.py
 SHOPIFY_STORE  = "retrocameraland.myshopify.com"
 
 SCRIPT_DIR     = os.path.dirname(os.path.abspath(__file__))
-DASHBOARD_HTML = os.path.join(SCRIPT_DIR, "retrocameraland-hq-dashboard.html")
-DATA_JS        = "/Users/onnoshot/Downloads/rcl-dashboard/data.js"
-START_MARKER   = "/* ─── SHOPIFY DATA START ─── */"
-END_MARKER     = "/* ─── SHOPIFY DATA END ─── */"
 
 MONTH_TR = {
     "01":"Oca","02":"Şub","03":"Mar","04":"Nis","05":"May","06":"Haz",
@@ -77,22 +74,64 @@ def fetch_customers_count():
     return shopify_get("customers/count.json").get("count", 0)
 
 
+def fetch_inventory_costs(inventory_item_ids):
+    """Shopify inventory_items API'den ürün maliyetlerini çek."""
+    costs = {}
+    if not inventory_item_ids:
+        return costs
+    # Batch: max 250 per request. ÖNEMLİ: &limit=250 şart — yoksa Shopify varsayılan 50 döner
+    # ve batch'in geri kalanı sessizce düşer (maliyetler eksik gelir).
+    for i in range(0, len(inventory_item_ids), 250):
+        batch = inventory_item_ids[i:i+250]
+        ids_str = ",".join(str(x) for x in batch)
+        try:
+            data = shopify_get(f"inventory_items.json?ids={ids_str}&limit=250")
+            for item in data.get("inventory_items", []):
+                raw_cost = item.get("cost")
+                if raw_cost:
+                    costs[item["id"]] = float(raw_cost)
+        except Exception as e:
+            log(f"  Maliyet çekme hatası: {e}")
+    return costs
+
+
 def fetch_inventory():
     data = shopify_get("products.json?limit=250&fields=id,title,variants")
     cameras, accessories, out_of_stock = [], [], 0
+    inv_item_ids = []
+
+    # Önce tüm ürünleri topla ve inventory_item_id'leri biriktir
+    raw_items = []
     for p in data.get("products", []):
         for v in p["variants"]:
             qty   = v.get("inventory_quantity", 0)
             price = float(v.get("price", 0))
             name  = p["title"]
+            inv_id = v.get("inventory_item_id")
+            if inv_id:
+                inv_item_ids.append(inv_id)
             if qty <= 0:
                 out_of_stock += 1
                 continue
             is_acc = any(kw in name.lower() for kw in ACC_KEYWORDS)
-            item = {"name": name, "price": price, "qty": qty}
-            (accessories if is_acc else cameras).append(item)
+            item = {"name": name, "price": price, "qty": qty, "inv_item_id": inv_id}
+            raw_items.append((is_acc, item))
+
+    # Maliyetleri çek
+    log("  Ürün maliyetleri Shopify'dan çekiliyor...")
+    costs = fetch_inventory_costs(inv_item_ids)
+
+    for is_acc, item in raw_items:
+        inv_id = item.pop("inv_item_id", None)
+        cost = costs.get(inv_id)
+        if cost is not None:
+            item["cost"] = int(cost)
+        (accessories if is_acc else cameras).append(item)
+
     cameras.sort(key=lambda x: -x["price"])
     accessories.sort(key=lambda x: -(x["price"] * x["qty"]))
+    cost_count = sum(1 for c in cameras if c.get("cost"))
+    log(f"  {len(cameras)} kamera, {cost_count} tanesinde maliyet bulundu")
     return cameras, accessories, out_of_stock
 
 
@@ -171,8 +210,12 @@ def calc_monthly(orders):
 
     months = []
     for i in range(11, -1, -1):
-        d   = now.replace(day=1) - timedelta(days=30 * i)
-        key = d.strftime("%Y-%m")
+        year  = now.year
+        month = now.month - i
+        while month <= 0:
+            month += 12
+            year  -= 1
+        key = f"{year:04d}-{month:02d}"
         months.append(key)
 
     labels  = [f"{MONTH_TR[k[5:7]]} {k[2:4]}" for k in months]
@@ -192,7 +235,10 @@ def calc_recent_orders(orders, n=10):
 
 
 def cam_only(item):
-    return {"name": item["name"], "price": int(item["price"])}
+    r = {"name": item["name"], "price": int(item["price"])}
+    if item.get("cost"):
+        r["cost"] = int(item["cost"])
+    return r
 
 
 def acc_only(item):
@@ -218,49 +264,15 @@ def build_data_block(orders, customers, cameras, accessories, out_of_stock):
         "out_of_stock":    out_of_stock,
     }
     js = json.dumps(data, ensure_ascii=False, indent=2)
-    return f"{START_MARKER}\nconst SHOPIFY = {js};\n{END_MARKER}"
+    return f"const SHOPIFY = {js};"
 
 
-def update_file(path, data_block):
-    if not os.path.exists(path):
-        log(f"HATA: Dosya bulunamadı: {path}")
-        return False
-    with open(path, "r", encoding="utf-8") as f:
-        content = f.read()
-    si = content.find(START_MARKER)
-    ei = content.find(END_MARKER)
-    if si == -1 or ei == -1:
-        log(f"HATA: Marker bulunamadı: {path}")
-        return False
-    new_content = content[:si] + data_block + content[ei + len(END_MARKER):]
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(new_content)
-    log(f"Güncellendi: {path}")
+def update_dashboard(payload):
+    # ANA KAYNAGA yaz; data.js publish() icinde ANA KAYNAKTAN turetilir
+    write_block("SHOPIFY", payload)
+    log("ANA KAYNAK guncellendi (SHOPIFY)")
     return True
 
-
-def update_dashboard(data_block):
-    update_file(DASHBOARD_HTML, data_block)
-    update_file(DATA_JS, data_block)
-    return True
-
-
-def git_push():
-    import subprocess, shutil
-    dash_dir = "/Users/onnoshot/Downloads/rcl-dashboard"
-    git = ["git", "-c", "credential.helper=osxkeychain"]
-    try:
-        shutil.copy(DASHBOARD_HTML, f"{dash_dir}/index.html")
-        subprocess.run(git + ["add", "data.js", "index.html"], cwd=dash_dir, check=True, capture_output=True)
-        r = subprocess.run(git + ["commit", "-m", f"data: shopify {datetime.now().strftime('%Y-%m-%dT%H:%M')}"],
-                           cwd=dash_dir, capture_output=True)
-        if r.returncode != 0:
-            log("Git commit: değişiklik yok, push atlandı")
-            return
-        result = subprocess.run(git + ["push"], cwd=dash_dir, check=True, capture_output=True)
-        log("Git push tamamlandı")
-    except subprocess.CalledProcessError as e:
-        log(f"Git push hatası: {e.stderr.decode().strip()}")
 
 
 def main():
@@ -289,9 +301,8 @@ def main():
 
     log("Dashboard güncelleniyor...")
     data_block = build_data_block(orders, customers, cameras, accessories, out_of_stock)
-    ok = update_dashboard(data_block)
-
-    git_push()
+    update_dashboard(data_block)
+    publish("shopify", log)
     log("=== Tamamlandı ✓ ===")
 
 

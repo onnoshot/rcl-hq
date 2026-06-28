@@ -7,6 +7,7 @@ Kullanım:
     python3 retrocameraland-youtube-fetch.py
 """
 
+import fcntl
 import json
 import os
 import sys
@@ -21,11 +22,7 @@ from googleapiclient.errors import HttpError
 SCRIPT_DIR    = os.path.dirname(os.path.abspath(__file__))
 TOKEN_FILE    = os.path.join(SCRIPT_DIR, "yt_token.json")
 CLIENT_SECRET = os.path.join(SCRIPT_DIR, "yt_client_secret.json")
-DASHBOARD_HTML = os.path.join(SCRIPT_DIR, "retrocameraland-hq-dashboard.html")
-DATA_JS        = "/Users/onnoshot/Downloads/rcl-dashboard/data.js"
-
-START_MARKER  = "/* ─── YOUTUBE DATA START ─── */"
-END_MARKER    = "/* ─── YOUTUBE DATA END ─── */"
+from rcl_config import write_block, publish   # yol / marker / push hepsi rcl_config.py'de (tek yer)
 
 CHANNEL_ID    = "UCq0jJ7knS1MDtNgx8DtJCvw"
 SCOPES        = [
@@ -223,45 +220,11 @@ def build_yt_data():
     }
 
 
-def update_file(path, block):
-    if not os.path.exists(path):
-        log(f"HATA: Dosya bulunamadı: {path}")
-        return False
-    with open(path, "r", encoding="utf-8") as f:
-        content = f.read()
-    si = content.find(START_MARKER)
-    ei = content.find(END_MARKER)
-    if si == -1 or ei == -1:
-        return False
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(content[:si] + block + content[ei + len(END_MARKER):])
-    log(f"Güncellendi: {path}")
-    return True
-
-
 def update_dashboard(data):
-    block = f"{START_MARKER}\nconst YOUTUBE = {json.dumps(data, ensure_ascii=False, indent=2)};\n{END_MARKER}"
-    update_file(DASHBOARD_HTML, block)
-    update_file(DATA_JS, block)
+    # ANA KAYNAGA yaz; data.js publish() icinde ANA KAYNAKTAN turetilir
+    write_block("YOUTUBE", f"const YOUTUBE = {json.dumps(data, ensure_ascii=False, indent=2)};")
+    log("ANA KAYNAK guncellendi (YOUTUBE)")
     return True
-
-
-def git_push():
-    import subprocess, shutil
-    dash_dir = "/Users/onnoshot/Downloads/rcl-dashboard"
-    git = ["git", "-c", "credential.helper=osxkeychain"]
-    try:
-        shutil.copy(DASHBOARD_HTML, f"{dash_dir}/index.html")
-        subprocess.run(git + ["add", "data.js", "index.html"], cwd=dash_dir, check=True, capture_output=True)
-        r = subprocess.run(git + ["commit", "-m", f"data: youtube {datetime.now().strftime('%Y-%m-%dT%H:%M')}"],
-                           cwd=dash_dir, capture_output=True)
-        if r.returncode != 0:
-            log("Git commit: değişiklik yok, push atlandı")
-            return
-        subprocess.run(git + ["push"], cwd=dash_dir, check=True, capture_output=True)
-        log("Git push tamamlandı")
-    except subprocess.CalledProcessError as e:
-        log(f"Git push hatası: {e.stderr.decode().strip()}")
 
 
 def main():
@@ -269,7 +232,7 @@ def main():
     wait_for_network()
     data = build_yt_data()
     update_dashboard(data)
-    git_push()
+    publish("youtube", log)
     log("=== Tamamlandı ✓ ===")
 
 
