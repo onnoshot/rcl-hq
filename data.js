@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-28T03:02:02",
+  "updated_at": "2026-06-28T03:07:55",
   "period_30d": {
     "revenue": 90629,
     "orders": 7,
@@ -342,7 +342,8 @@ const SHOPIFY = {
     },
     {
       "name": "Samsung NX2000",
-      "price": 15490
+      "price": 15490,
+      "cost": 8000
     },
     {
       "name": "Sony Cybershot DSC-T300",
@@ -426,7 +427,8 @@ const SHOPIFY = {
     },
     {
       "name": "Nikon Coolpix 885",
-      "price": 8900
+      "price": 8900,
+      "cost": 3500
     },
     {
       "name": "Traveler DC-830",
