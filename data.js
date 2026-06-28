@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-29T00:02:02",
+  "updated_at": "2026-06-29T01:02:07",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,7 +10,7 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 58013,
+      "views": 58028,
       "watch_hours": 126.1,
       "subs_gained": 66,
       "subs_lost": 30,
@@ -46,14 +46,14 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 107377,
+        "views": 107373,
         "watch_min": 19087,
         "subs_gained": 456
       },
       {
         "label": "Haz 26",
-        "views": 53162,
-        "watch_min": 6906,
+        "views": 53132,
+        "watch_min": 6905,
         "subs_gained": 57
       }
     ]
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1788,
+      "views": 1790,
       "likes": 18,
       "comments": 1,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -87,10 +87,37 @@ const YOUTUBE = {
       "url": "https://youtu.be/HnGR92gHNDY"
     },
     {
+      "id": "2r7TMYA4kTw",
+      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
+      "date": "22 May 2026",
+      "views": 438,
+      "likes": 5,
+      "comments": 1,
+      "url": "https://youtu.be/2r7TMYA4kTw"
+    },
+    {
+      "id": "GULk4atiPqo",
+      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
+      "date": "17 May 2026",
+      "views": 722,
+      "likes": 8,
+      "comments": 1,
+      "url": "https://youtu.be/GULk4atiPqo"
+    },
+    {
+      "id": "4mX8PsRNBOs",
+      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
+      "date": "15 May 2026",
+      "views": 2534,
+      "likes": 37,
+      "comments": 1,
+      "url": "https://youtu.be/4mX8PsRNBOs"
+    },
+    {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 3021,
+      "views": 3020,
       "likes": 45,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -121,33 +148,6 @@ const YOUTUBE = {
       "likes": 33,
       "comments": 1,
       "url": "https://youtu.be/VnLTp2ufa6A"
-    },
-    {
-      "id": "yIrL45HroS8",
-      "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
-      "date": "6 May 2026",
-      "views": 1617,
-      "likes": 11,
-      "comments": 0,
-      "url": "https://youtu.be/yIrL45HroS8"
-    },
-    {
-      "id": "3qQFPZtOHf0",
-      "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
-      "date": "30 Nis 2026",
-      "views": 4963,
-      "likes": 104,
-      "comments": 0,
-      "url": "https://youtu.be/3qQFPZtOHf0"
-    },
-    {
-      "id": "UcdfytnpKEA",
-      "title": "Fujifilm Dijital Kamera ile Günlük Fotoğraflar Çek 😍📸 #fujif",
-      "date": "29 Nis 2026",
-      "views": 3873,
-      "likes": 27,
-      "comments": 0,
-      "url": "https://youtu.be/UcdfytnpKEA"
     }
   ],
   "sub_goal": 10000
