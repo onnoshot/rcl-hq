@@ -3695,7 +3695,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-28T03:11:38",
+  "updated_at": "2026-06-28T03:22:23",
   "period_30d": {
     "revenue": 90629,
     "orders": 7,
@@ -4237,13 +4237,6 @@ function mkChart(id, cfg) {
   _charts[id] = new Chart(ctx, cfg);
 }
 
-function setPeriod(p, btn) {
-  period = p;
-  document.querySelectorAll('.period-tab').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  renderFinanceKPIs();
-  renderProfit();
-}
 
 // ─── ROUTER ──────────────────────────────────────────────
 const PAGES = ['overview','finance','inventory','youtube','instagram','email','stats','seo','blog','urun','blog-detay','alim','bulucu','timecapsule'];
@@ -4545,19 +4538,6 @@ function renderOverviewProfit(){
 }
 
 // ─── FINANCE KPIs ─────────────────────────────────────────
-function renderFinanceKPIs() {
-  const d = SHOPIFY[`period_${period}`] || SHOPIFY.period_30d;
-  const lbl = {'30d':'Son 30 gün','90d':'Son 90 gün','year':'Son 12 ay'};
-  counter(document.getElementById('f-rev'), d.revenue, '₺');
-  counter(document.getElementById('f-ord'), d.orders);
-  counter(document.getElementById('f-aov'), d.aov, '₺');
-  const fRevSub = document.getElementById('f-rev-sub'); if(fRevSub) fRevSub.textContent=lbl[period]+' toplam';
-  const fOrdSub = document.getElementById('f-ord-sub'); if(fOrdSub) fOrdSub.textContent=d.orders+' sipariş tamamlandı';
-  const kdv=kdvOf(d.revenue);
-  const fKdv=document.getElementById('f-kdv'); if(fKdv) fKdv.textContent='₺'+fmt(kdv);
-  const fKdvSub=document.getElementById('f-kdv-sub'); if(fKdvSub) fKdvSub.textContent=lbl[period]+' · gelirin 1/6\'sı';
-  renderProfit();
-}
 
 // ─── REVENUE CHART ────────────────────────────────────────
 function renderRevenueChart() {
@@ -4598,15 +4578,15 @@ function renderChannels() {
 
 // ─── CAMERA COSTS ─────────────────────────────────────────
 function loadCamCosts(){
-  // Shopify'dan gelen otomatik maliyetler (cost alanı)
+  // Shopify maliyeti (cost alanı) KESİN kaynaktır — siteye girdiğin maliyet her zaman kazanır.
   const shopifyCosts = {};
   if (SHOPIFY.cameras) {
     SHOPIFY.cameras.forEach(c => { if (c.cost) shopifyCosts[c.name] = c.cost; });
   }
-  // Kullanıcının manuel girdiği değerler (localStorage) override eder
+  // localStorage manuel değerler YALNIZCA Shopify'da maliyeti olmayan kameraları doldurur (boşluk doldurur, ezmez).
   try {
-    const manual = localStorage.getItem('rcl_cam_costs');
-    if (manual) return {...shopifyCosts, ...JSON.parse(manual)};
+    const manual = JSON.parse(localStorage.getItem('rcl_cam_costs')||'{}');
+    return {...manual, ...shopifyCosts};   // shopifyCosts üste yazar = Shopify otoritedir
   } catch(e){}
   return shopifyCosts;
 }
@@ -4687,40 +4667,8 @@ function renderInventory() {
   setTimeout(()=>{const gr=document.getElementById('goalRev');if(gr)gr.style.width=revPct+'%';const go=document.getElementById('goalOos');if(go)go.style.width=oosPct+'%';},400);
 }
 
-// ─── PROFIT ───────────────────────────────────────────────
-const COST_DEFAULTS={kargo_tl:300,kutu_tl:100,iyzico_pct:2.35,shopify_pct:2.0};
-function loadCostCfg(){try{const s=localStorage.getItem('rcl_cost_cfg');return s?{...COST_DEFAULTS,...JSON.parse(s)}:{...COST_DEFAULTS};}catch{return{...COST_DEFAULTS};}}
-function saveCostCfg(){localStorage.setItem('rcl_cost_cfg',JSON.stringify({kargo_tl:parseFloat(document.getElementById('cfg-kargo')?.value)||0,kutu_tl:parseFloat(document.getElementById('cfg-kutu')?.value)||0,iyzico_pct:parseFloat(document.getElementById('cfg-iyzico')?.value)||0,shopify_pct:parseFloat(document.getElementById('cfg-shopify')?.value)||0}));}
-function initCostCfg(){const c=loadCostCfg();const set=(id,v)=>{const el=document.getElementById(id);if(el)el.value=v;};set('cfg-kargo',c.kargo_tl);set('cfg-kutu',c.kutu_tl);set('cfg-iyzico',c.iyzico_pct);set('cfg-shopify',c.shopify_pct);}
-
-function renderProfit() {
-  const kargo_tl = parseFloat(document.getElementById('cfg-kargo')?.value)||0;
-  const kutu_tl  = parseFloat(document.getElementById('cfg-kutu')?.value)||0;
-  const iyzico_pct = parseFloat(document.getElementById('cfg-iyzico')?.value)||0;
-  const shopify_pct = parseFloat(document.getElementById('cfg-shopify')?.value)||0;
-  const d = SHOPIFY[`period_${period}`]||SHOPIFY.period_30d;
-  const rev=d.revenue, orders=d.orders;
-  const periodLbl={'30d':'Son 30 gün','90d':'Son 90 gün','year':'Son 12 ay'};
-  const ppl=document.getElementById('profit-period-lbl'); if(ppl) ppl.textContent=periodLbl[period]+' · '+orders+' sipariş';
-  const kdv=kdvOf(rev), iyzico=Math.round(rev*iyzico_pct/100), shopifyFee=Math.round(rev*shopify_pct/100), kargo=orders*kargo_tl, kutu=orders*kutu_tl;
-  const camCosts=loadCamCosts();
-  const camsWC=(SHOPIFY.cameras||[]).filter(c=>camCosts[c.name]>0);
-  const totStCost=camsWC.reduce((s,c)=>s+camCosts[c.name],0);
-  const totStPrice=camsWC.reduce((s,c)=>s+c.price,0);
-  const cRatio=totStPrice>0?totStCost/totStPrice:0;
-  const cogs=camsWC.length>0?Math.round(rev*cRatio):0;
-  const totalCost=kdv+iyzico+shopifyFee+kargo+kutu+cogs, net=rev-totalCost, margin=rev>0?(net/rev*100).toFixed(1):0;
-  const netEl=document.getElementById('profit-net'); if(netEl){netEl.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));netEl.style.color=net>=0?'var(--green)':'var(--danger)';}
-  const margEl=document.getElementById('profit-margin'); if(margEl){margEl.textContent='%'+margin;margEl.style.color=margin>=30?'var(--green)':margin>=15?'var(--warn)':'var(--danger)';}
-  const rows=[{lbl:'Brüt Gelir',val:rev,color:'var(--gold)',sign:'+'},{lbl:'KDV %20 (dahil)',val:-kdv,color:'var(--danger)',sign:'-'},{lbl:`Iyzico %${iyzico_pct}`,val:-iyzico,color:'var(--warn)',sign:'-'},{lbl:`Shopify %${shopify_pct}`,val:-shopifyFee,color:'var(--warn)',sign:'-'},{lbl:`Kargo (${orders}×₺${kargo_tl})`,val:-kargo,color:'var(--t2)',sign:'-'},{lbl:`Kutu (${orders}×₺${kutu_tl})`,val:-kutu,color:'var(--t2)',sign:'-'},{lbl:camsWC.length>0?`COGS (%${(cRatio*100).toFixed(0)} ağırlıklı)`:'Ürün (maliyet girilmedi)',val:-cogs,color:camsWC.length>0?'var(--purple)':'var(--t3)',sign:'-'}];
-  const pb=document.getElementById('profit-breakdown');
-  const netColor = perfColorMoney(net);
-  if(pb) pb.innerHTML=rows.map(r=>`<div class="profit-row"><span style="font-size:0.72rem;color:var(--t2);font-family:var(--mono)">${r.lbl}</span><span style="font-family:var(--mono);font-size:0.82rem;font-weight:600;color:${r.color}">${r.sign}₺${fmt(Math.abs(r.val))}</span></div>`).join('')+`<div class="profit-row profit-total"><span style="font-size:0.72rem;color:var(--t1);font-family:var(--mono);font-weight:600">Net Kâr</span><span style="font-family:var(--mono);font-size:0.9rem;font-weight:700;color:${netColor}">${net>=0?'+':'-'}₺${fmt(Math.abs(net))}</span></div>`;
-  const pills=[{lbl:'KDV',val:kdv,c:'var(--danger)'},{lbl:'Iyzico',val:iyzico,c:'var(--warn)'},{lbl:'Shopify',val:shopifyFee,c:'var(--warn)'},{lbl:'Kargo',val:kargo,c:'var(--t2)'},{lbl:'Kutu',val:kutu,c:'var(--t2)'},{lbl:'COGS',val:cogs,c:camsWC.length>0?'var(--purple)':'var(--t3)'}];
-  const pcs=document.getElementById('profit-cost-summary');
-  if(pcs) pcs.innerHTML=pills.map(p=>`<div style="padding:6px 12px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.07)"><div style="font-size:0.59rem;font-family:var(--mono);color:var(--t3);letter-spacing:0.1em;text-transform:uppercase">${p.lbl}</div><div style="font-size:0.82rem;font-family:var(--mono);font-weight:600;color:${p.c};margin-top:2px">₺${fmt(p.val)}</div></div>`).join('');
-  const pn=document.getElementById('profit-note'); if(pn) pn.textContent='₺'+fmt(totalCost)+' toplam maliyet';
-}
+// ─── PROFIT ───  ESKİ sistem (renderProfit + COST_DEFAULTS + loadCostCfg) KALDIRILDI.
+// Canlı tek kâr hesabı: getCfg() + periodProfit() + renderFinancePage().
 
 // ─── GA4 ──────────────────────────────────────────────────
 function renderGA4Traffic() {
@@ -6932,9 +6880,7 @@ renderRevenueChart();
 renderOrders();
 renderChannels();
 renderInventory();
-initCostCfg();
 initFinanceCosts();   // maliyet config input'larını tek kaynaktan doldur
-renderProfit();
 recalcAll();          // tüm sayfalar yüklemede senkron başlasın (Stok/Finans/COGS aynı değer)
 renderYouTube();
 renderInstagram();
