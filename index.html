@@ -795,6 +795,9 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 .em-q{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:11px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);font-size:0.76rem;flex-wrap:wrap;}
 .em-q-status{font-size:0.56rem;font-weight:800;letter-spacing:0.05em;padding:3px 9px;border-radius:7px;text-transform:uppercase;flex-shrink:0;}
 .eq-pending{background:rgba(255,159,10,0.14);color:var(--warn);} .eq-done{background:rgba(48,209,88,0.14);color:var(--green);} .eq-error{background:rgba(255,69,58,0.14);color:var(--danger);}
+.eq-sched{background:rgba(100,210,255,0.14);color:#64D2FF;} .eq-sending{background:rgba(94,132,255,0.16);color:#7E9BFF;}
+.em-q-prog{height:4px;border-radius:3px;background:rgba(255,255,255,0.08);overflow:hidden;flex:0 0 60px;}
+.em-q-prog>i{display:block;height:100%;background:var(--green);border-radius:3px;}
 .em-q-meta{color:var(--t3);font-size:0.66rem;margin-left:auto;}
 @media(max-width:820px){.em-tpl-grid{grid-template-columns:1fr;}.em-input{min-width:0;width:100%;}.em-ctrl-action{margin-left:0;width:100%;}}
 /* SVG ikonlar + zengin kontroller */
@@ -3830,7 +3833,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 35, "at": "2026-06-28T13:32:30" };
+const BUILD = { "no": 36, "at": "2026-06-28T13:52:08" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
@@ -5247,12 +5250,26 @@ function renderEmQueue(){
   fetch(EM_ENDPOINT,{cache:'no-store'}).then(r=>r.json()).then(j=>{
     const q=(j&&j.queue)||[];
     if(!q.length){el.innerHTML='<div class="h-item-d" style="padding:8px">Kuyruk boş.</div>';return;}
+    const fmt=(d)=>d?new Date(d).toLocaleString('tr-TR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):'';
+    const MAP={
+      sent:{c:'eq-done',t:'Gönderildi'}, done:{c:'eq-done',t:'Gönderildi'},
+      sending:{c:'eq-sending',t:'Gönderiliyor'}, scheduled:{c:'eq-sched',t:'Zamanlı'},
+      error:{c:'eq-error',t:'Hata'}, pending:{c:'eq-pending',t:'Sırada'}
+    };
     el.innerHTML=q.slice(0,12).map(it=>{
-      const st=it.status==='done'?'eq-done':it.status==='error'?'eq-error':'eq-pending';
-      const stt=it.status==='done'?'Tamam':it.status==='error'?'Hata':'Sırada';
-      const when=it.scheduled_at?('zamanlı '+new Date(it.scheduled_at).toLocaleString('tr-TR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})):'hemen';
-      const total=(it.result&&it.result.total!=null)?(' · '+it.result.total+' kişi'):'';
-      return `<div class="em-q"><span class="em-q-status ${st}">${stt}</span><b>${hxEsc(it.theme||'')}</b> <span style="color:var(--t2)">${hxEsc(emSegLbl(it.segment))}</span> <span style="color:var(--t3)">· ${when}${total}</span><span class="em-q-meta">${it.created_at?new Date(it.created_at).toLocaleString('tr-TR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}):''}</span></div>`;
+      const m=MAP[it.status]||MAP.pending; const bv=it.brevo||null;
+      // Detay satırı: Brevo varsa gerçek ilerleme, yoksa planlanan zaman
+      let detail;
+      if(bv){
+        if(it.status==='sent') detail='tüm parçalar gönderildi'+(bv.last_sent?(' · '+fmt(bv.last_sent)):'');
+        else if(it.status==='sending') detail=bv.sent+'/'+bv.total+' parça gönderildi'+(bv.next_at?(' · sıradaki '+fmt(bv.next_at)):'');
+        else if(it.status==='scheduled') detail=bv.total+' parça zamanlı'+(bv.next_at?(' · ilk '+fmt(bv.next_at)):'');
+        else detail=bv.sent+'/'+bv.total+' parça';
+      } else {
+        detail=it.scheduled_at?('zamanlı '+fmt(it.scheduled_at)):'hemen';
+      }
+      const prog=bv?`<span class="em-q-prog" title="${bv.sent}/${bv.total}"><i style="width:${bv.total?Math.round(bv.sent/bv.total*100):0}%"></i></span>`:'';
+      return `<div class="em-q"><span class="em-q-status ${m.c}">${m.t}</span><b>${hxEsc(it.theme||'')}</b> <span style="color:var(--t2)">${hxEsc(emSegLbl(it.segment))}</span>${prog}<span style="color:var(--t3)">· ${detail}</span><span class="em-q-meta">${fmt(it.created_at)}</span></div>`;
     }).join('');
   }).catch(()=>{el.innerHTML='<div class="h-item-d" style="padding:8px">Kuyruk yüklenemedi (tablo henüz kurulmamış olabilir).</div>';});
 }
