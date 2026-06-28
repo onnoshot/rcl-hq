@@ -192,22 +192,41 @@ def get_copy(theme_key, products, disc):
     return dict(STATIC_COPY[theme_key])
 
 # ── Stoktaki ürünler ─────────────────────────────────────────────────────────
-def instock_products(n):
-    r = shopify("GET", "products.json?limit=250&fields=id,title,handle,image,images,variants,status")
+# Tema -> kamera secim modu (cesitlilik + temaya uygunluk)
+THEME_MODE = {"yeni-urunler": "newest", "stok-azaliyor": "low_stock", "editor-secimi": "premium"}
+
+
+def instock_products(n, mode="random", seed=None):
+    """Stoktaki aktif kameralardan n tanesini sec. Mod ile cesitlenir:
+    random (varsayilan, her uretimde farkli) - newest (en yeni) - low_stock (en az kalan) - premium (en pahali)."""
+    import random
+    r = shopify("GET", "products.json?limit=250&fields=id,title,handle,image,images,variants,status,created_at")
     out = []
     for p in r.get("products", []):
         if p.get("status") != "active":
             continue
         img = (p.get("image") or {}).get("src") or (p.get("images") or [{}])[0].get("src", "")
         for v in p.get("variants", []):
-            if (v.get("inventory_quantity") or 0) > 0:
+            qty = v.get("inventory_quantity") or 0
+            if qty > 0:
+                tl = p["title"].lower()
+                if any(k in tl for k in ("kart okuyucu","okuyucu","tripod","şarj","sarj","batarya"," pil ",
+                        "aktarıcı","aktarici","adaptör","adaptor","kılıf","kilif","çanta","canta","kayış","kayis",
+                        "temizleme","usb","microsd"," sd ","lens","filtre","askı","aski","stand","selfie","kablo")):
+                    break  # aksesuar, atla
                 out.append({"title": p["title"], "handle": p["handle"],
                             "price": f"{float(v.get('price', 0)):,.0f}".replace(",", ".") + " ₺",
-                            "image": img,
-                            "url": f"{STORE}/products/{p['handle']}"})
+                            "image": img, "url": f"{STORE}/products/{p['handle']}",
+                            "_id": p.get("id", 0), "_qty": qty, "_price": float(v.get("price", 0))})
                 break
-    # çeşitlilik için fiyatı yüksekten düşüğe sırala, ilk n
-    out.sort(key=lambda x: -float(x["price"].replace(".", "").replace(" ₺", "")))
+    if mode == "newest":
+        out.sort(key=lambda x: -x["_id"])
+    elif mode == "low_stock":
+        out.sort(key=lambda x: x["_qty"])
+    elif mode == "premium":
+        out.sort(key=lambda x: -x["_price"])
+    else:
+        random.Random(seed).shuffle(out)
     return out[:max(n, 1)]
 
 # ── İndirim önayarları ───────────────────────────────────────────────────────
@@ -491,7 +510,7 @@ def save_db(db): json.dump(db, open(CAMPAIGN_DB, "w"), ensure_ascii=False, inden
 def preview(theme_key, discount_key=None):
     th = THEMES[theme_key]
     cid = f"{datetime.now().strftime('%Y%m%d')}-{theme_key}"
-    products = instock_products(th["n"])
+    products = instock_products(th["n"], THEME_MODE.get(theme_key, "random"))
     disc = discount_spec(discount_key)
     copy = get_copy(theme_key, products, disc)
     if theme_key == "kamera-bulucu":
@@ -691,10 +710,20 @@ def schedule_campaign(theme, segment="all", at_iso=None, test=None):
     if theme not in THEMES:
         return {"ok": False, "error": "bilinmeyen şablon: " + theme}
     cid = f"{datetime.now().strftime('%Y%m%d%H%M')}-{theme}-{segment}"
-    th = THEMES[theme]
-    products = instock_products(th["n"])
-    copy = get_copy(theme, products, None)
-    htmlb = render_for(theme, products, None, cid)
+    # Panelde onizlenen maili kullan -> onizleme == gonderilen. Yoksa taze uret (tema moduyla).
+    import glob
+    pvs = sorted(glob.glob(os.path.join(PREVIEW_DIR, f"*-{theme}_preview.html")))
+    subject = None
+    for c in load_db():
+        if c["id"].endswith("-" + theme):
+            subject = c.get("subject")
+    if pvs and subject:
+        htmlb = open(pvs[-1], encoding="utf-8").read()
+    else:
+        th = THEMES[theme]
+        products = instock_products(th["n"], THEME_MODE.get(theme, "random"))
+        htmlb = render_for(theme, products, None, cid)
+        subject = get_copy(theme, products, None)["subject"]
     DAILY = 290
     if test:
         chunks = [[test]]
@@ -710,7 +739,7 @@ def schedule_campaign(theme, segment="all", at_iso=None, test=None):
         lid = brevo_sync_list(name, chunk)
         if not lid:
             out.append({"chunk": idx + 1, "error": "liste oluşturulamadı"}); continue
-        body = {"name": name, "subject": copy["subject"],
+        body = {"name": name, "subject": subject,
                 "sender": {"name": SENDER_NAME, "email": SENDER_EMAIL},
                 "type": "classic", "htmlContent": htmlb,
                 "recipients": {"listIds": [lid]}, "replyTo": REPLYTO}

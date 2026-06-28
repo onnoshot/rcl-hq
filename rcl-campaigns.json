@@ -348,42 +348,6 @@
     "discount_created": true
   },
   {
-    "id": "20260628-haftanin-seckisi",
-    "theme": "haftanin-seckisi",
-    "name": "Haftanın Seçkisi",
-    "subject": "Koleksiyonluk retro kameralar, tek adet",
-    "preview_text": "Üretimi durmuş, değeri artan parçalar. Koleksiyona ve hediyeye değer.",
-    "created": "2026-06-28T05:44:30.112977",
-    "products": [
-      "Panasonic Lumix DC-TZ91",
-      "Olympus PEN E-PL1",
-      "Olympus VR-340",
-      "Canon Powershot ELPH 300 HS"
-    ],
-    "discount": null,
-    "discount_spec": null,
-    "sent": 0,
-    "status": "draft"
-  },
-  {
-    "id": "20260628-hediye-rehberi",
-    "theme": "hediye-rehberi",
-    "name": "Hediye Rehberi",
-    "subject": "Sıradan değil, koleksiyonluk bir hediye",
-    "preview_text": "Değeri olan, hatırlanan, koleksiyonluk bir hediye.",
-    "created": "2026-06-28T05:44:36.066188",
-    "products": [
-      "Panasonic Lumix DC-TZ91",
-      "Olympus PEN E-PL1",
-      "Olympus VR-340",
-      "Canon Powershot ELPH 300 HS"
-    ],
-    "discount": null,
-    "discount_spec": null,
-    "sent": 0,
-    "status": "draft"
-  },
-  {
     "id": "20260628-timecapsule",
     "theme": "timecapsule",
     "name": "TimeCapsule Topluluk",
@@ -399,16 +363,52 @@
     "status": "draft"
   },
   {
+    "id": "20260628-haftanin-seckisi",
+    "theme": "haftanin-seckisi",
+    "name": "Haftanın Seçkisi",
+    "subject": "Koleksiyonluk retro kameralar, tek adet",
+    "preview_text": "Üretimi durmuş, değeri artan parçalar. Koleksiyona ve hediyeye değer.",
+    "created": "2026-06-28T06:00:45.321271",
+    "products": [
+      "Fujifilm FinePix 4700 Zoom",
+      "Sony Cybershot DSC-T20",
+      "Olympus VR-340",
+      "Nikon Coolpix 885"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260628-hediye-rehberi",
+    "theme": "hediye-rehberi",
+    "name": "Hediye Rehberi",
+    "subject": "Sıradan değil, koleksiyonluk bir hediye",
+    "preview_text": "Değeri olan, hatırlanan, koleksiyonluk bir hediye.",
+    "created": "2026-06-28T06:00:51.303810",
+    "products": [
+      "Traveler DC-830",
+      "Fujifilm FinePix Z700 EXR",
+      "Fujifilm Finepix Z90",
+      "Sanyo Xacti CG20"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
     "id": "20260628-yeni-urunler",
     "theme": "yeni-urunler",
     "name": "Yeni Ürünler",
     "subject": "Yeni geldi: kaçırmadan göz at, hepsi tek adet",
     "preview_text": "Stoğa yeni kameralar eklendi. Hızlı tükenir, beğendiğini kaçırma.",
-    "created": "2026-06-28T05:44:48.090438",
+    "created": "2026-06-28T06:00:57.054109",
     "products": [
-      "Panasonic Lumix DC-TZ91",
-      "Olympus PEN E-PL1",
-      "Olympus VR-340",
+      "Sony Cybershot DSC-T20",
+      "Samsung NX2000",
+      "Fujifilm FinePix Z700EXR",
       "Canon Powershot ELPH 300 HS"
     ],
     "discount": null,
@@ -422,12 +422,12 @@
     "name": "Ücretsiz Kargo",
     "subject": "Sınırlı süre: tüm kameralarda ücretsiz kargo",
     "preview_text": "Kısa süreliğine ücretsiz kargo. Almak için tam zamanı.",
-    "created": "2026-06-28T05:44:54.520061",
+    "created": "2026-06-28T06:01:04.182064",
     "products": [
-      "Panasonic Lumix DC-TZ91",
-      "Olympus PEN E-PL1",
+      "Panasonic DMC LS70",
       "Olympus VR-340",
-      "Canon Powershot ELPH 300 HS"
+      "Samsung NX2000",
+      "Kodak ZX1 “Weather-Resistant”"
     ],
     "discount": null,
     "discount_spec": null,
@@ -440,12 +440,12 @@
     "name": "Stok Azalıyor",
     "subject": "Bu kameralar tükenmek üzere",
     "preview_text": "Son adetler. Tek adet oldukları için bir daha gelmeyebilir.",
-    "created": "2026-06-28T05:45:00.706691",
+    "created": "2026-06-28T06:01:11.755482",
     "products": [
-      "Panasonic Lumix DC-TZ91",
-      "Olympus PEN E-PL1",
-      "Olympus VR-340",
-      "Canon Powershot ELPH 300 HS"
+      "Canon IXUS i",
+      "Canon Powershot ELPH 300 HS",
+      "Casio Exilim EX-Z110",
+      "Casio Exilim EX-Z4"
     ],
     "discount": null,
     "discount_spec": null,
@@ -458,7 +458,7 @@
     "name": "Editörün Seçimi",
     "subject": "Editörün seçimi: en sevdiğimiz kameralar",
     "preview_text": "Ekibimizin bu ay en beğendiği, koleksiyonluk parçalar.",
-    "created": "2026-06-28T05:45:07.093569",
+    "created": "2026-06-28T06:01:18.862568",
     "products": [
       "Panasonic Lumix DC-TZ91",
       "Olympus PEN E-PL1",
@@ -476,11 +476,11 @@
     "name": "Kamera Bulucu",
     "subject": "Hangi retro kamera sana uygun? 30 saniyede bul",
     "preview_text": "Birkaç soru, sana özel kamera önerisi. Kararsızsan tam sana göre.",
-    "created": "2026-06-28T05:45:13.463939",
+    "created": "2026-06-28T06:01:26.098565",
     "products": [
-      "Panasonic Lumix DC-TZ91",
-      "Olympus PEN E-PL1",
-      "Olympus VR-340"
+      "Casio Exilim EX-Z4",
+      "Olympus SP-320",
+      "Sanyo Xacti CG20"
     ],
     "discount": null,
     "discount_spec": null,
