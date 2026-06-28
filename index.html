@@ -701,6 +701,70 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 .t-yukari{color:var(--green);} .t-asagi{color:var(--danger);} .t-duragan{color:var(--t3);}
 @media(max-width:980px){.hermes-grid3{grid-template-columns:1fr;}.hermes-grid2{grid-template-columns:1fr;}}
 
+/* ─── HERMES v2: ileri grafik + etkileşim ─── */
+/* Aurora mesh hero zemini (AI canlı hissi) */
+.hermes-hero{position:relative;overflow:hidden;}
+.hermes-hero::after{content:'';position:absolute;inset:-40%;z-index:0;pointer-events:none;
+  background:radial-gradient(40% 50% at 18% 30%,rgba(191,90,242,0.16),transparent 70%),
+             radial-gradient(36% 46% at 82% 70%,rgba(100,210,255,0.13),transparent 70%),
+             radial-gradient(30% 40% at 60% 20%,rgba(10,132,255,0.10),transparent 70%);
+  filter:blur(14px);animation:hx-aurora 18s ease-in-out infinite;}
+@keyframes hx-aurora{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(3%,-2%) scale(1.06);}66%{transform:translate(-2%,3%) scale(0.97);}}
+.hermes-hero>*{position:relative;z-index:1;}
+.hh-delta{font-size:0.62rem;font-weight:700;margin-top:6px;font-variant-numeric:tabular-nums;}
+.hh-delta.up{color:var(--green);} .hh-delta.down{color:var(--danger);} .hh-delta.flat{color:var(--t3);}
+.hh-spark{margin-top:14px;}
+.hh-spark svg{width:100%;height:38px;display:block;overflow:visible;}
+.hh-spark-lbl{font-size:0.56rem;color:var(--t3);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;}
+.hh-mood-pill{display:inline-flex;align-items:center;gap:6px;font-size:0.6rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 11px;border-radius:100px;margin-bottom:10px;}
+.mp-guclu{background:rgba(48,209,88,0.14);color:var(--green);} .mp-stabil{background:rgba(100,210,255,0.14);color:var(--teal);}
+.mp-dikkat{background:rgba(255,159,10,0.14);color:var(--warn);} .mp-riskli{background:rgba(255,69,58,0.14);color:var(--danger);}
+
+/* Etkileşim: kategori filtresi */
+.hx-filterbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;align-items:center;}
+.hx-fchip{font-size:0.64rem;font-weight:600;padding:6px 13px;border-radius:100px;cursor:pointer;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);color:var(--t2);transition:all .2s cubic-bezier(.16,1,.3,1);user-select:none;}
+.hx-fchip:hover{background:rgba(255,255,255,0.08);color:var(--t1);}
+.hx-fchip.active{background:rgba(191,90,242,0.16);border-color:rgba(191,90,242,0.4);color:#fff;}
+.hx-fchip b{font-variant-numeric:tabular-nums;opacity:.7;margin-left:4px;}
+/* Etkileşim: aksiyon kartı */
+.h-rec{transition:opacity .3s,background .3s;border-radius:12px;padding:14px 12px;margin:0 -12px;}
+.h-rec.st-yapildi{opacity:.6;background:rgba(48,209,88,0.04);}
+.h-rec.st-reddedildi{opacity:.4;}
+.h-rec.st-reddedildi .h-rec-act{text-decoration:line-through;}
+.h-rec.st-ertelendi{opacity:.78;}
+.h-rec-actions{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;align-items:center;}
+.hx-btn{font-size:0.58rem;font-weight:700;letter-spacing:0.02em;padding:6px 12px;border-radius:9px;cursor:pointer;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);color:var(--t2);transition:all .18s cubic-bezier(.16,1,.3,1);user-select:none;min-height:30px;}
+.hx-btn:hover{background:rgba(255,255,255,0.09);color:var(--t1);transform:translateY(-1px);}
+.hx-btn:active{transform:translateY(0) scale(.96);}
+.hx-btn.on-yapildi{background:rgba(48,209,88,0.18);border-color:rgba(48,209,88,0.55);color:var(--green);}
+.hx-btn.on-yapiliyor{background:rgba(10,132,255,0.18);border-color:rgba(10,132,255,0.55);color:var(--blue);}
+.hx-btn.on-ertelendi{background:rgba(255,159,10,0.18);border-color:rgba(255,159,10,0.55);color:var(--warn);}
+.hx-btn.on-reddedildi{background:rgba(255,69,58,0.18);border-color:rgba(255,69,58,0.55);color:var(--danger);}
+.hx-note-toggle{font-size:0.58rem;color:var(--t3);cursor:pointer;margin-left:auto;display:inline-flex;align-items:center;gap:4px;}
+.hx-note-toggle:hover{color:var(--purple);}
+.hx-note{margin-top:9px;display:none;}
+.hx-note.open{display:block;animation:hx-slide .25s ease;}
+@keyframes hx-slide{from{opacity:0;transform:translateY(-4px);}to{opacity:1;transform:none;}}
+.hx-note textarea,.hx-composer textarea{width:100%;resize:vertical;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:11px;padding:10px 13px;color:var(--t1);font-family:var(--sans);font-size:0.78rem;outline:none;transition:border-color .2s;}
+.hx-note textarea{min-height:52px;}
+.hx-note textarea:focus,.hx-composer textarea:focus{border-color:rgba(191,90,242,0.45);}
+.hx-note-saved{font-size:0.56rem;color:var(--green);margin-top:5px;opacity:0;transition:opacity .2s;}
+.hx-note-saved.show{opacity:1;}
+/* Diyalog */
+.hx-msglist{display:flex;flex-direction:column;gap:10px;max-height:340px;overflow-y:auto;margin-bottom:14px;scrollbar-width:thin;padding-right:4px;}
+.hx-msg{padding:11px 14px;border-radius:14px;font-size:0.8rem;line-height:1.55;max-width:90%;animation:hx-slide .3s ease;}
+.hx-msg-user{align-self:flex-end;background:rgba(10,132,255,0.13);border:1px solid rgba(10,132,255,0.22);border-bottom-right-radius:4px;}
+.hx-msg-hermes{align-self:flex-start;background:linear-gradient(180deg,rgba(191,90,242,0.13),rgba(191,90,242,0.05));border:1px solid rgba(191,90,242,0.22);border-bottom-left-radius:4px;}
+.hx-msg-meta{font-size:0.52rem;color:var(--t3);margin-bottom:3px;letter-spacing:0.06em;text-transform:uppercase;}
+.hx-msg.pending{opacity:.6;}
+.hx-composer{display:flex;gap:9px;align-items:flex-end;}
+.hx-composer textarea{min-height:46px;max-height:150px;}
+.hx-send{padding:13px 22px;border-radius:13px;border:1px solid rgba(191,90,242,0.45);background:linear-gradient(180deg,rgba(191,90,242,0.24),rgba(191,90,242,0.1));color:#fff;font-weight:700;font-size:0.78rem;cursor:pointer;transition:all .2s cubic-bezier(.16,1,.3,1);flex-shrink:0;min-height:46px;}
+.hx-send:hover{transform:translateY(-1px);box-shadow:0 10px 28px -8px rgba(191,90,242,0.55);}
+.hx-send:active{transform:translateY(0) scale(.97);}
+.hx-hint{font-size:0.62rem;color:var(--t3);margin-top:9px;line-height:1.5;}
+@media(prefers-reduced-motion:reduce){.hermes-hero::after{animation:none;}.hh-fill{transition:none;}}
+
 /* ─── STATS ─── */
 .stat-city-row,.stat-age-row{display:flex;flex-direction:column;gap:5px;padding:4px 0;}
 .stat-city-head,.stat-age-head{display:flex;justify-content:space-between;align-items:center;}
@@ -1540,12 +1604,15 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
     <div class="hermes-hero card fi">
       <div class="hh-gauge">
         <svg viewBox="0 0 120 120"><defs><linearGradient id="hgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BF5AF2"/><stop offset="1" stop-color="#64D2FF"/></linearGradient></defs><circle class="hh-track" cx="60" cy="60" r="52"/><circle class="hh-fill" id="hh-ring" cx="60" cy="60" r="52"/></svg>
-        <div class="hh-score"><b id="hh-score">—</b><s id="hh-mood">—</s></div>
+        <div class="hh-score"><b id="hh-score">—</b><s id="hh-mood-s">SAĞLIK</s></div>
+        <div class="hh-delta flat" id="hh-delta"></div>
       </div>
       <div class="hh-text">
+        <span class="hh-mood-pill mp-stabil" id="hh-mood-pill">—</span>
         <div class="hh-headline" id="hh-headline">—</div>
         <div class="hh-summary" id="hh-summary">—</div>
         <div class="hh-focus"><span class="hh-focus-tag">BUGÜNÜN ODAĞI</span><span id="hh-focus">—</span></div>
+        <div class="hh-spark"><svg id="hh-spark-svg" viewBox="0 0 300 38" preserveAspectRatio="none"></svg><div class="hh-spark-lbl">Sağlık skoru trendi</div></div>
       </div>
     </div>
 
@@ -1556,10 +1623,24 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
       <div class="card fi hermes-col"><div class="hc-head hc-opp">Fırsatlar <b id="h-opps-n">0</b></div><div id="h-opps"></div></div>
     </div>
 
-    <!-- Oncelikli aksiyonlar -->
+    <!-- Oncelikli aksiyonlar — etkilesimli -->
     <div class="card fi" style="padding:24px;margin-bottom:var(--gap)">
-      <div class="hsec-title">Öncelikli Aksiyonlar</div>
+      <div class="hsec-title">Öncelikli Aksiyonlar <span class="hsec-count" id="h-recs-n">0</span></div>
+      <div class="hsec-desc">Her aksiyonu işaretle, not bırak; Hermes bir sonraki analizde yaptıklarını dikkate alır.</div>
+      <div class="hx-filterbar" id="h-recfilter"></div>
       <div id="h-recs"></div>
+    </div>
+
+    <!-- Hermes ile diyalog — cift yonlu feedback -->
+    <div class="card fi" style="padding:24px;margin-bottom:var(--gap)">
+      <div class="hsec-title">Hermes ile Diyalog</div>
+      <div class="hsec-desc">Hermes'e mesaj yaz, geri bildirim ver, soru sor. Mesajların bir sonraki analizde yanıtlanır ve önerilerini şekillendirir.</div>
+      <div class="hx-msglist" id="h-msglist"></div>
+      <div class="hx-composer">
+        <textarea id="h-msg-input" placeholder="Hermes'e bir şey söyle: ne yaptın, ne düşünüyorsun, neyi farklı istiyorsun..." rows="1"></textarea>
+        <button class="hx-send" onclick="hxSendMessage()">Gönder</button>
+      </div>
+      <div class="hx-hint" id="h-msg-hint">Mesajların kaydedilir; Hermes yanıtı kredi yüklü olduğunda bir sonraki analizde gelir.</div>
     </div>
 
     <div class="hermes-grid2">
@@ -3660,7 +3741,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 10, "at": "2026-06-28T04:18:46" };
+const BUILD = { "no": 11, "at": "2026-06-28T04:35:36" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
@@ -4678,50 +4759,178 @@ function navigate(page, navEl) {
   if (page === 'hermes') renderHermesPage();
 }
 
+// ── Hermes etkileşim durumu (localStorage + sunucu sync) ──
+const HX_KEY='rcl_hermes_state';
+const HERMES_ENDPOINT='https://rclhq.vercel.app/api/hermes';
+function hxEsc(s){return String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+function hxState(){try{const s=JSON.parse(localStorage.getItem(HX_KEY)||'{}');s.actions=s.actions||{};s.messages=s.messages||[];s.filter=s.filter||'all';return s;}catch(e){return{actions:{},messages:[],filter:'all'};}}
+function hxSave(s){localStorage.setItem(HX_KEY,JSON.stringify(s));}
+function hxRecKey(t){return String(t||'').toLowerCase().replace(/[^a-z0-9çğıöşü ]/g,'').trim().slice(0,64);}
+function hxScoreColor(s){return s>=75?'#30D158':s>=60?'#64D2FF':s>=40?'#FF9F0A':'#FF453A';}
+function hxFmtTime(iso){if(!iso)return'';try{const d=new Date(iso.length<=19?iso+'Z':iso);return d.toLocaleString('tr-TR',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});}catch(e){return'';}}
+
+function hxSync(extra){
+  // En iyi cihaz-uyumu: durumu sunucuya yaz (Mac'teki Hermes okur). Kredi/tablo yoksa sessiz.
+  const s=hxState(); const key=localStorage.getItem('rcl_alim_key')||'';
+  const payload={actions:s.actions,messages:s.messages};
+  if(extra) Object.assign(payload,extra);
+  fetch(HERMES_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:key,state:payload})}).catch(()=>{});
+}
+function hxPullServer(cb){
+  fetch(HERMES_ENDPOINT,{cache:'no-store'}).then(r=>r.json()).then(j=>{
+    if(j&&j.ok&&j.state){
+      const s=hxState();
+      // Sunucudaki Hermes yanıtlarını birleştir (from:'hermes')
+      const serverMsgs=(j.state.messages||[]).filter(m=>m&&m.from==='hermes');
+      const have=new Set(s.messages.map(m=>m.ts+'|'+m.from));
+      serverMsgs.forEach(m=>{if(!have.has(m.ts+'|'+m.from)){s.messages.push(m);} });
+      // Sunucu "addressed" işaretlerini uygula (pending kaldır)
+      s.messages.forEach(m=>{if(m.from==='user'&&m.pending&&(j.state.addressed||[]).includes(m.ts)) m.pending=false;});
+      s.messages.sort((a,b)=>(a.ts||'').localeCompare(b.ts||''));
+      hxSave(s);
+    }
+  }).catch(()=>{}).finally(()=>{if(cb)cb();});
+}
+
 function renderHermesPage(){
   const H = (typeof HERMES !== 'undefined') ? HERMES : null;
   const a = H && H.analiz;
   const empty = document.getElementById('hermes-empty');
   const body = document.getElementById('hermes-body');
-  if(!a){ if(empty) empty.style.display='block'; if(body) body.style.display='none'; return; }
+  if(!a){ if(empty) empty.style.display='block'; if(body) body.style.display='none'; renderHxDialog(); return; }
   if(empty) empty.style.display='none'; if(body) body.style.display='block';
 
-  const esc = s => String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const esc = hxEsc;
   const set = (id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
   const html = (id,v)=>{const e=document.getElementById(id);if(e)e.innerHTML=v;};
   const badge = lvl => `<span class="h-badge bg-${esc(lvl)}">${esc(lvl)}</span>`;
 
-  // Hero
-  const score = +a.health_score||0;
-  set('hh-score', score); set('hh-mood', a.mood||'');
+  // ── Hero: skor-renkli gauge + count-up + delta + sparkline ──
+  const score = Math.min(Math.max(+a.health_score||0,0),100);
+  const col = hxScoreColor(score);
+  const hist = (H.gecmis||[]).map(h=>+h.health_score||0);
+  const prev = hist.length>=2 ? hist[hist.length-2] : null;
+  set('hh-mood-s','SAĞLIK');
+  const sEl=document.getElementById('hh-score'); if(sEl){sEl.style.color=col;}
+  const ring=document.getElementById('hh-ring'); if(ring) ring.style.stroke=col;
+  // count-up
+  if(sEl){let st=null;const dur=900;const step=t=>{if(!st)st=t;const p=Math.min((t-st)/dur,1);sEl.textContent=Math.round(score*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);}
+  setTimeout(()=>{if(ring){const C=326.7;ring.style.strokeDashoffset=C*(1-score/100);}},220);
+  // delta
+  const dEl=document.getElementById('hh-delta');
+  if(dEl){ if(prev==null){dEl.textContent='';dEl.className='hh-delta flat';} else {const d=score-prev;dEl.textContent=(d>0?'▲ +':d<0?'▼ ':'■ ')+(d===0?'değişim yok':Math.abs(d)+' puan');dEl.className='hh-delta '+(d>0?'up':d<0?'down':'flat');} }
+  // mood pill
+  const mp=document.getElementById('hh-mood-pill'); if(mp){mp.textContent=a.mood||'';mp.className='hh-mood-pill mp-'+(a.mood||'stabil').replace(/[^a-z]/g,'');}
   set('hh-headline', a.headline||''); set('hh-summary', a.executive_summary||'');
   set('hh-focus', a.today_focus||'');
+  // sparkline
+  drawSpark(hist, col);
+
   const upd = H.generated_at ? new Date(H.generated_at.length<=19?H.generated_at+'Z':H.generated_at).toLocaleString('tr-TR',{day:'numeric',month:'long',hour:'2-digit',minute:'2-digit'}) : '—';
   set('hermes-upd', upd);
   set('hermes-sub', 'Yapay zeka CEO analizi · '+(H.ogrenilen_sayisi||0)+' içgörü birikimi');
-  setTimeout(()=>{const r=document.getElementById('hh-ring');if(r){const C=326.7;r.style.strokeDashoffset=C*(1-Math.min(Math.max(score,0),100)/100);}},250);
 
-  // Kazanim / Risk / Firsat
+  // ── Kazanim / Risk / Firsat ──
   const wins=a.wins||[], risks=a.risks||[], opps=a.opportunities||[];
   set('h-wins-n',wins.length); set('h-risks-n',risks.length); set('h-opps-n',opps.length);
   html('h-wins', wins.map(w=>`<div class="h-item"><div class="h-item-t">${esc(w.baslik)}</div><div class="h-item-d">${esc(w.detay)}</div></div>`).join('')||'<div class="h-item-d">—</div>');
   html('h-risks', risks.map(r=>`<div class="h-item"><div class="h-item-t">${esc(r.baslik)} ${badge(r.onem)}</div><div class="h-item-d">${esc(r.detay)}</div></div>`).join('')||'<div class="h-item-d">—</div>');
   html('h-opps', opps.map(o=>`<div class="h-item"><div class="h-item-t">${esc(o.baslik)} ${badge(o.etki)}</div><div class="h-item-d">${esc(o.detay)}</div></div>`).join('')||'<div class="h-item-d">—</div>');
 
-  // Aksiyonlar (oncelige gore sirali)
-  const ord={yuksek:0,orta:1,dusuk:2};
-  const recs=(a.recommendations||[]).slice().sort((x,y)=>(ord[x.oncelik]??9)-(ord[y.oncelik]??9));
-  html('h-recs', recs.map((r,i)=>`<div class="h-rec"><div class="h-rec-num">${i+1}</div><div class="h-rec-body"><div class="h-rec-act">${esc(r.aksiyon)}</div><div class="h-rec-why">${esc(r.neden)}</div><div class="h-rec-meta">${badge(r.oncelik)} <span style="font-size:.56rem;color:var(--t3)">efor</span> ${badge(r.efor)} <span class="lens">${esc(r.lens)}</span></div></div></div>`).join('')||'<div class="h-item-d">—</div>');
+  // ── Etkileşimli aksiyonlar ──
+  renderHxRecs();
 
-  // Bilgi birikimi
+  // ── Bilgi birikimi ──
   const learn=H.bilgi_birikimi||[];
   set('h-learn-n', H.ogrenilen_sayisi||learn.length);
   html('h-learnings', learn.slice().reverse().map(l=>`<div class="h-learn">${esc(l)}</div>`).join('')||'<div class="h-item-d">Henüz birikmedi.</div>');
 
-  // Kullandigi veriler + yetkinlikler
+  // ── Kullandigi veriler + yetkinlikler ──
   html('h-sources', (H.kullanilan_kaynaklar||[]).map(s=>`<span class="h-chip">${esc(s)}</span>`).join(''));
   html('h-kpis', (a.kpis_read||[]).map(k=>`<div class="h-kpi"><span class="h-kpi-src">${esc(k.kaynak)}</span><span class="h-kpi-v">${esc(k.deger)}</span><span class="h-kpi-r">${esc(k.metrik)}: ${esc(k.okuma)}</span><span class="h-trend t-${esc(k.trend)}">${k.trend==='yukari'?'▲':k.trend==='asagi'?'▼':'■'}</span></div>`).join(''));
   html('h-lenses', (H.yetkinlikler||[]).map(c=>`<span class="h-chip">${esc(c)}</span>`).join(''));
+
+  // ── Diyalog: yayınlanan HERMES yanıtını birleştir + sunucu senkron ──
+  hxMergeHermesReply(H);
+  renderHxDialog();
+  hxPullServer(()=>{renderHxDialog();});
+}
+
+function hxMergeHermesReply(H){
+  // Hermes'in cevabı yayınlanan HERMES bloğuyla gelir (son_yanit); diyaloğa ekle, yanıtlananları işaretle
+  const sy = H && H.son_yanit; if(!sy || !sy.text) return;
+  const s=hxState(); const k=sy.ts+'|hermes';
+  if(!s.messages.some(m=>m.ts===sy.ts && m.from==='hermes')){
+    s.messages.push({ts:sy.ts,from:'hermes',text:sy.text});
+  }
+  (sy.addressed||[]).forEach(ts=>{const m=s.messages.find(x=>x.ts===ts&&x.from==='user');if(m)m.pending=false;});
+  s.messages.sort((a,b)=>(a.ts||'').localeCompare(b.ts||''));
+  hxSave(s);
+}
+
+function drawSpark(vals, col){
+  const svg=document.getElementById('hh-spark-svg'); if(!svg) return;
+  const v=(vals||[]).slice(-14); if(v.length<2){svg.innerHTML='<text x="0" y="24" fill="#555" font-size="9">trend için en az 2 analiz gerekir</text>';return;}
+  const W=300,Hh=38,P=3, mn=Math.min(...v,0), mx=Math.max(...v,100);
+  const x=i=>i*(W/(v.length-1)), y=val=>Hh-P-((val-mn)/((mx-mn)||1))*(Hh-2*P);
+  let d='',area='';
+  v.forEach((val,i)=>{const px=x(i),py=y(val);d+=(i?'L':'M')+px.toFixed(1)+' '+py.toFixed(1)+' ';});
+  area=`M0 ${Hh} L`+v.map((val,i)=>x(i).toFixed(1)+' '+y(val).toFixed(1)).join(' L')+` L${W} ${Hh} Z`;
+  const lx=x(v.length-1),ly=y(v[v.length-1]);
+  svg.innerHTML=`<defs><linearGradient id="sparkg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity="0.28"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs>`+
+    `<path d="${area}" fill="url(#sparkg)"/><path d="${d}" fill="none" stroke="${col}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`+
+    `<circle cx="${lx.toFixed(1)}" cy="${ly.toFixed(1)}" r="3" fill="${col}"/>`;
+}
+
+function renderHxRecs(){
+  const H=(typeof HERMES!=='undefined')?HERMES:null; const a=H&&H.analiz; if(!a)return;
+  const st=hxState(); const esc=hxEsc;
+  const ord={yuksek:0,orta:1,dusuk:2};
+  const recs=(a.recommendations||[]).slice().sort((x,y)=>(ord[x.oncelik]??9)-(ord[y.oncelik]??9))
+    .map(r=>({r,key:hxRecKey(r.aksiyon),status:(st.actions[hxRecKey(r.aksiyon)]||{}).status||'yapilacak'}));
+  const cnt={all:recs.length,yapilacak:0,yapiliyor:0,yapildi:0,ertelendi:0,reddedildi:0};
+  recs.forEach(x=>{cnt[x.status]=(cnt[x.status]||0)+1;});
+  const fdef=[['all','Tümü'],['yapilacak','Yapılacak'],['yapiliyor','Yapılıyor'],['yapildi','Yapıldı'],['ertelendi','Ertelendi'],['reddedildi','Reddedildi']];
+  document.getElementById('h-recs-n').textContent=recs.length;
+  document.getElementById('h-recfilter').innerHTML=fdef.map(([k,l])=>`<span class="hx-fchip ${st.filter===k?'active':''}" onclick="hxFilter('${k}')">${l}<b>${cnt[k]||0}</b></span>`).join('');
+  const shown=recs.filter(x=>st.filter==='all'||x.status===st.filter);
+  const sbtn=(key,status,on,lbl)=>`<span class="hx-btn ${on===status?'on-'+status:''}" onclick="hxStatus('${key}','${status}')">${lbl}</span>`;
+  document.getElementById('h-recs').innerHTML = shown.map((x,i)=>{
+    const r=x.r,key=x.key,on=x.status,note=(st.actions[key]||{}).note||'';
+    const badge=lvl=>`<span class="h-badge bg-${esc(lvl)}">${esc(lvl)}</span>`;
+    return `<div class="h-rec st-${on}"><div class="h-rec-num">${i+1}</div><div class="h-rec-body">
+      <div class="h-rec-act">${esc(r.aksiyon)}</div>
+      <div class="h-rec-why">${esc(r.neden)}</div>
+      <div class="h-rec-meta">${badge(r.oncelik)} <span style="font-size:.56rem;color:var(--t3)">efor</span> ${badge(r.efor)} <span class="lens">${esc(r.lens)}</span></div>
+      <div class="h-rec-actions">
+        ${sbtn(key,'yapildi',on,'Yapıldı')}${sbtn(key,'yapiliyor',on,'Yapılıyor')}${sbtn(key,'ertelendi',on,'Ertele')}${sbtn(key,'reddedildi',on,'Reddet')}
+        <span class="hx-note-toggle" onclick="hxToggleNote('${key}')">Not / geri bildirim</span>
+      </div>
+      <div class="hx-note ${note?'open':''}" id="hxn-${key}">
+        <textarea placeholder="Bu aksiyon hakkında Hermes'e not bırak..." oninput="hxNote('${key}',this.value)">${esc(note)}</textarea>
+        <div class="hx-note-saved" id="hxs-${key}">Kaydedildi ✓</div>
+      </div>
+    </div></div>`;
+  }).join('')||'<div class="h-item-d">Bu filtrede aksiyon yok.</div>';
+}
+
+function hxFilter(f){const s=hxState();s.filter=f;hxSave(s);renderHxRecs();}
+function hxStatus(key,status){const s=hxState();s.actions[key]=s.actions[key]||{};s.actions[key].status=(s.actions[key].status===status?'yapilacak':status);s.actions[key].ts=new Date().toISOString();hxSave(s);renderHxRecs();hxSync();}
+function hxToggleNote(key){const e=document.getElementById('hxn-'+key);if(e)e.classList.toggle('open');}
+let _hxNoteTimer={};
+function hxNote(key,val){const s=hxState();s.actions[key]=s.actions[key]||{};s.actions[key].note=val;hxSave(s);const sv=document.getElementById('hxs-'+key);if(sv){sv.classList.add('show');clearTimeout(_hxNoteTimer[key]);_hxNoteTimer[key]=setTimeout(()=>{sv.classList.remove('show');hxSync();},900);} }
+
+function renderHxDialog(){
+  const list=document.getElementById('h-msglist'); if(!list)return;
+  const s=hxState();
+  if(!s.messages.length){list.innerHTML='<div class="h-item-d" style="text-align:center;padding:14px">Henüz mesaj yok. Hermes\'e ilk mesajını yaz.</div>';return;}
+  list.innerHTML=s.messages.map(m=>`<div class="hx-msg hx-msg-${m.from==='hermes'?'hermes':'user'} ${m.pending?'pending':''}"><div class="hx-msg-meta">${m.from==='hermes'?'HERMES':'SEN'}${m.pending?' · yanıt bekleniyor':''} ${m.ts?'· '+hxFmtTime(m.ts):''}</div>${hxEsc(m.text)}</div>`).join('');
+  list.scrollTop=list.scrollHeight;
+}
+function hxSendMessage(){
+  const inp=document.getElementById('h-msg-input'); if(!inp)return; const t=(inp.value||'').trim(); if(!t)return;
+  const s=hxState(); s.messages.push({ts:new Date().toISOString(),from:'user',text:t,pending:true}); hxSave(s);
+  inp.value=''; renderHxDialog(); hxSync();
 }
 
 function initTcAdmin(){
