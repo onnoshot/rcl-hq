@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-29T02:02:12",
+  "updated_at": "2026-06-29T03:02:17",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4060,
     "total_views": 1222697,
-    "video_count": 384
+    "video_count": 386
   },
   "analytics": {
     "last_30d": {
@@ -60,10 +60,19 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "LLXSMuhZAko",
+      "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
+      "date": "28 Haz 2026",
+      "views": 12,
+      "likes": 2,
+      "comments": 0,
+      "url": "https://youtu.be/LLXSMuhZAko"
+    },
+    {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1791,
+      "views": 1790,
       "likes": 18,
       "comments": 1,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -72,7 +81,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 179,
+      "views": 180,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -81,7 +90,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 904,
+      "views": 902,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -90,7 +99,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 438,
+      "views": 439,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -117,7 +126,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 3020,
+      "views": 3022,
       "likes": 45,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -139,15 +148,6 @@ const YOUTUBE = {
       "likes": 29,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
-    },
-    {
-      "id": "VnLTp2ufa6A",
-      "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
-      "date": "7 May 2026",
-      "views": 2008,
-      "likes": 33,
-      "comments": 1,
-      "url": "https://youtu.be/VnLTp2ufa6A"
     }
   ],
   "sub_goal": 10000
