@@ -344,16 +344,22 @@ META_ICONS = {
 # Yalniz olarak gercek, o anda stokta olan modellerden olusur (build aninda dogrulandi).
 FALLBACK = [
  {"title":"Sony Cybershot DSC-W150","handle":"sony-cybershot-dsc-w150","brand":"Sony","price":"13.490 TL","year":2008,"mp":8.1,"zoom":5,"flash":True,"video":True,"water":False,"touch":False,
+  "desc":"8.1 MP Super HAD CCD sensör, Carl Zeiss 5x optik zoom ve flaşıyla günlük ve gece kareleri için dengeli bir 2008 kompaktı.",
   "image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Sony_Cybershot_DSC-W150_a22d220f-24c2-40d1-b3b9-225938451637.jpg"},
  {"title":"Canon IXUS i","handle":"canon-ixus-i","brand":"Canon","price":"11.490 TL","year":2003,"mp":4.0,"zoom":0,"flash":True,"video":True,"water":False,"touch":False,"slim":True,
+  "desc":"Cebe giren ultra-ince metal gövdesiyle 2003'ün ikonik Canon kompaktı; günlük, spontane sokak kareleri için pratik bir CCD klasiği.",
   "image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon_ixus_i.jpg"},
  {"title":"Fujifilm Finepix Z90","handle":"fujifilm-finepix-z90-digicam","brand":"Fujifilm","price":"16.490 TL","year":2011,"mp":14.0,"zoom":5,"flash":True,"video":True,"water":False,"touch":True,"slim":True,
+  "desc":"14 MP CCD, dokunmatik ekran ve kayar lens kapaklı ince gövde; Fujifilm renk karakteriyle şık, günlük taşınabilir bir model.",
   "image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Fujifilm_Finepix_Z90_8c8d60c4-60e6-4122-9bad-9224cae2f990.jpg"},
  {"title":"Olympus VR-340","handle":"olympus-vr-340","brand":"Olympus","price":"17.990 TL","year":2012,"mp":16.0,"zoom":10,"flash":True,"video":True,"water":False,"touch":False,"wide":True,
+  "desc":"16 MP sensör ve 10x süper geniş açı zoomuyla seyahat ve çok yönlü çekim için ideal; Olympus'un keskin renk netliğini taşır.",
   "image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus_retrocamera_6c48f30e-b083-4fa4-bc6c-dd2d837ffc05.jpg"},
  {"title":"Panasonic Lumix DC-TZ91","handle":"panasonic-lumix-dc-tz91","brand":"Lumix","price":"28.490 TL","year":2017,"mp":20.3,"zoom":30,"flash":False,"video":True,"water":False,"touch":True,"wide":True,
+  "desc":"20.3 MP, 30x Leica seyahat zoomu, dokunmatik ekran ve 4K video; içerik ve gezi için en üst seviye, özellikli bir kompakt.",
   "image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumiz_tz91_retrocameraland.jpg"},
  {"title":"Kodak EasyShare V603","handle":"kodak-easyshare-v603","brand":"Kodak","price":"10.490 TL","year":2006,"mp":6.1,"zoom":3,"flash":True,"video":True,"water":False,"touch":False,
+  "desc":"6.1 MP CCD ve flaşıyla Kodak'ın nostaljik sıcak tonlarını veren, günlük kullanım için sade ve pratik bir 2006 kompaktı.",
   "image":"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/a_0161_ONN04962.jpg"},
 ]
 
@@ -619,7 +625,11 @@ CSS = r"""
 #rcl-fnd-__SID__ .rname{font-size:clamp(17px,4.4vw,19px);font-weight:660;letter-spacing:-.01em;line-height:1.2;}
 #rcl-fnd-__SID__ .rbar{height:7px;border-radius:100px;background:color-mix(in srgb,var(--ink) 10%,transparent);overflow:hidden;}
 #rcl-fnd-__SID__ .rbar i{display:block;height:100%;width:0;border-radius:100px;background:linear-gradient(90deg,var(--ac2),var(--ac));transition:width 1.4s cubic-bezier(.3,.8,.3,1);}
-#rcl-fnd-__SID__ .rwhy{font-size:14px;line-height:1.56;color:var(--mut);flex:1;}
+/* eslesen kriter cipleri (musteri cevaplariyla ortusen ozellikler) */
+#rcl-fnd-__SID__ .rmatch{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 2px;}
+#rcl-fnd-__SID__ .rmchip{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:640;color:var(--ac);background:color-mix(in srgb,var(--ac) 11%,transparent);border:1px solid color-mix(in srgb,var(--ac) 26%,transparent);padding:4px 10px 4px 7px;border-radius:100px;line-height:1;}
+#rcl-fnd-__SID__ .rmchip svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;flex:none;}
+#rcl-fnd-__SID__ .rwhy{font-size:13.5px;line-height:1.55;color:var(--mut);flex:1;}
 #rcl-fnd-__SID__ .rprice{font-size:19px;font-weight:720;letter-spacing:-.01em;}
 #rcl-fnd-__SID__ .rc .vbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:100px;background:var(--ink);color:var(--bg);font-size:15px;font-weight:580;transition:transform .4s,box-shadow .4s;}
 #rcl-fnd-__SID__ .rc.best .vbtn{background:var(--ac);box-shadow:0 16px 32px -16px var(--ac);}
@@ -741,7 +751,7 @@ CSS = r"""
 /* muted */
 #rcl-fnd-__SID__ .hl,#rcl-fnd-__SID__ .qsub,#rcl-fnd-__SID__ .rsub,#rcl-fnd-__SID__ .lede,#rcl-fnd-__SID__ .opt .os,#rcl-fnd-__SID__ .rwhy,#rcl-fnd-__SID__ .cat p,#rcl-fnd-__SID__ .item .a-in,#rcl-fnd-__SID__ .ring .pl,#rcl-fnd-__SID__ .mbadge span,#rcl-fnd-__SID__ .hmeta span,#rcl-fnd-__SID__ .ascanl{color:var(--mut)!important;}
 /* accent */
-#rcl-fnd-__SID__ .pill,#rcl-fnd-__SID__ .qcount,#rcl-fnd-__SID__ .qmulti,#rcl-fnd-__SID__ .sm,#rcl-fnd-__SID__ .rbrand,#rcl-fnd-__SID__ .cat .go,#rcl-fnd-__SID__ .hint,#rcl-fnd-__SID__ .mbadge b,#rcl-fnd-__SID__ .pm,#rcl-fnd-__SID__ .eyebrow{color:var(--ac)!important;}
+#rcl-fnd-__SID__ .pill,#rcl-fnd-__SID__ .qcount,#rcl-fnd-__SID__ .qmulti,#rcl-fnd-__SID__ .sm,#rcl-fnd-__SID__ .rbrand,#rcl-fnd-__SID__ .cat .go,#rcl-fnd-__SID__ .hint,#rcl-fnd-__SID__ .mbadge b,#rcl-fnd-__SID__ .pm,#rcl-fnd-__SID__ .eyebrow,#rcl-fnd-__SID__ .rmchip{color:var(--ac)!important;}
 /* option icon uses its per-answer hue */
 #rcl-fnd-__SID__ .opt .oic{color:var(--oh,var(--ac))!important;}
 /* text on filled (dark/accent) backgrounds */
@@ -795,6 +805,20 @@ JS = r"""
 
   function fmtPrice(raw,cents){var n=parseFloat(raw);if(isNaN(n))return"";if(cents)n=n/100;n=Math.round(n);return n.toLocaleString("tr-TR")+" TL";}
   function fnum(s){var n=parseFloat(String(s==null?"":s).replace(",","."));return isNaN(n)?0:n;}
+  // urun govdesini (HTML/CSS) temizle -> sade metin
+  function cleanDesc(s){s=String(s||"");
+    s=s.replace(/<style[\s\S]*?<\/style>/gi," ").replace(/<script[\s\S]*?<\/script>/gi," ");
+    s=s.replace(/[^{}<>]*\{[^{}]*\}/g," ");   // CSS kurallari (selector + blok)
+    s=s.replace(/<[^>]+>/g," ");               // etiketler
+    s=s.replace(/&[a-z#0-9]+;/gi," ");         // html varliklari
+    s=s.replace(/[#.][a-zA-Z][\w-]*/g," ");    // kalan css selector / .uzanti artiklari
+    s=s.replace(/\s+/g," ").trim();return s;}
+  // ilk anlamli 1-2 cumlelik snippet (urun aciklamasindan)
+  function descSnippet(p){var s=cleanDesc(p.description||p.body_html||p.desc||"");if(!s)return "";
+    var max=180; if(s.length<=max)return s;
+    var cut=s.slice(0,max),dot=cut.lastIndexOf(". ");
+    if(dot>70)return cut.slice(0,dot+1);
+    var sp=cut.lastIndexOf(" ");return (sp>0?cut.slice(0,sp):cut)+"...";}
   // Canli urunun aciklama/etiket/basligindan gercek ozellikleri cikar (eslestirme bunlara dayanir).
   function parseFeat(p){
     var txt=(String(p.description||p.body_html||"")+" "+String(p.title||"")+" "+[].concat(p.tags||[]).join(" ")).toLowerCase();
@@ -830,7 +854,7 @@ JS = r"""
       var tags=p.tags||[];
       var brand=p.brand||(Array.isArray(tags)&&tags[0])||p.vendor||"RetroCameraLand";
       var f=parseFeat(p);
-      out.push({title:title,handle:p.handle||"",image:im,price:price,priceN:priceN,brand:brand,
+      out.push({title:title,handle:p.handle||"",image:im,price:price,priceN:priceN,brand:brand,desc:descSnippet(p),
         year:f.year,mp:f.mp,zoom:f.zoom,flash:f.flash,water:f.water,video:f.video,touch:f.touch,macro:f.macro,wide:f.wide,slim:f.slim});
     });
     return out;
@@ -1024,27 +1048,69 @@ JS = r"""
     }
     return s;
   }
+  // ---- KRITER SISTEMI: musterinin cevaplarindan dogan kriterler ----
+  // Her secilen cevap, kamerada GERCEKTEN aranan bir ozellige (boolean test) donusur.
+  // Uyum % = kameranin karsiladigi kriter sayisi / toplam kriter (gercek ortusme).
+  function criteria(){
+    var CR=D.crit||{}, C=[], uses=vals(0), aes=vals(2), envs=vals(3);
+    function add(key,test){ if(CR[key]) C.push([key,CR[key],test]); }
+    uses.forEach(function(u){
+      if(u==="daily") add("daily",function(c){return c.slim||(c.zoom&&c.zoom<=5);});
+      else if(u==="travel") add("travel",function(c){return c.zoom>=5||c.water;});
+      else if(u==="portrait") add("portrait",function(c){var k=brandKey(c.brand);return c.macro||k==="canon"||k==="fujifilm"||k==="fuji"||k==="kodak"||k==="nikon";});
+      else if(u==="night") add("night",function(c){return c.flash;});
+      else if(u==="content") add("content",function(c){return c.video||c.touch||c.wide;});
+    });
+    if(budgetRange()) add("budget",function(c){var br=budgetRange(),p=priceOf(c);return !!(p&&p<=br[1]*1.06);});
+    aes.forEach(function(a){
+      if(a==="y2k") add("y2k",function(c){return (c.year&&c.year<=2008)||c.flash;});
+      else if(a==="cine") add("cine",function(c){var k=brandKey(c.brand);return k==="fujifilm"||k==="fuji"||k==="olympus"||k==="kodak";});
+      else if(a==="sharp") add("sharp",function(c){return c.mp>=12;});
+      else if(a==="dreamy") add("dreamy",function(c){return (c.mp&&c.mp<=8)||(c.year&&c.year<=2007);});
+      else if(a==="warm") add("warm",function(c){var k=brandKey(c.brand);return k==="kodak"||k==="canon"||k==="fujifilm"||k==="fuji";});
+    });
+    envs.forEach(function(e){
+      if(e==="indoor") add("indoor",function(c){return c.flash;});
+      else if(e==="citynight") add("citynight",function(c){return c.flash;});
+      else if(e==="mixed") add("mixed",function(c){return c.zoom>=5||c.water;});
+      else if(e==="day") add("day",function(c){return c.mp>=8;});
+    });
+    if(has(4,"first")) add("first",function(c){return c.touch||c.zoom<20;});
+    else if(has(4,"pro")) add("pro",function(c){return c.zoom>=10||c.mp>=14;});
+    return C;
+  }
+  function matchInfo(c,C){
+    C=C||criteria(); var labels=[];
+    C.forEach(function(cr){ try{ if(cr[2](c)) labels.push(cr[1]); }catch(e){} });
+    return { labels:labels, matched:labels.length, tot:C.length, frac:C.length?labels.length/C.length:0 };
+  }
   function pickCameras(){
     // SADECE canli stoktaki kameralar; fallback yalniz canli cekim tamamen basarisiz olursa.
     var pool=(stock&&stock.length)?stock.slice():D.fallback.slice();
-    if(pool.length<=3){var pk=pool.slice(0,3);pk.forEach(function(c,i){c.r=i;c.pct=[89,82,75][i]||70;});return pk;}
-    // skor + kucuk jitter (ayni profil her seferinde birebir ayni dizilmesin)
-    var scored=pool.map(function(c){return {c:c,s:scoreCam(c)+Math.random()*1.2};});
-    scored.sort(function(a,b){return b.s-a.s;});
-    var top=scoreCam(scored[0].c)||1;
-    // #1 en iyi; #2/#3 farkli marka ama yine yuksek skor (uyumlu fakat farkli)
-    var picks=[scored[0].c], used={}; used[brandKey(scored[0].c.brand)||scored[0].c.title]=1;
-    for(var i=1;i<scored.length&&picks.length<3;i++){var bk=brandKey(scored[i].c.brand)||scored[i].c.title;if(used[bk])continue;used[bk]=1;picks.push(scored[i].c);}
-    for(var j=1;j<scored.length&&picks.length<3;j++){if(picks.indexOf(scored[j].c)<0)picks.push(scored[j].c);}
+    var C=criteria();
+    // her kamera: karsilanan kriter sayisi (birincil) + ince skor (ikincil esitlik bozucu) + jitter
+    var scored=pool.map(function(c){ var mi=matchInfo(c,C);
+      return {c:c,mi:mi,rank:mi.matched*1000+scoreCam(c)+Math.random()*1.5}; });
+    scored.sort(function(a,b){ return b.rank-a.rank; });
+    // #1 en iyi; #2/#3 FARKLI marka (uyumlu ama cesitli)
+    var picks=[], used={};
+    scored.forEach(function(o){ if(picks.length>=3)return; var bk=brandKey(o.c.brand)||o.c.title; if(used[bk])return;
+      used[bk]=1; o.c._mi=o.mi; picks.push(o.c); });
+    for(var j=0;j<scored.length&&picks.length<3;j++){ if(picks.indexOf(scored[j].c)<0){ scored[j].c._mi=scored[j].mi; picks.push(scored[j].c); } }
+    // uyum % = karsilanan/toplam kriter (gercek); 48..89 araliga yayilir, kriter yoksa skora dus
     picks.forEach(function(c,i){
-      var f=Math.max(0,Math.min(1,scoreCam(c)/(top||1)));
-      var base=[[82,89],[74,85],[66,80]][i]||[60,74];
-      c.r=i; c.pct=Math.round(base[0]+(base[1]-base[0])*f);
+      var mi=c._mi||matchInfo(c,C), f= C.length? mi.frac : Math.max(0,Math.min(1,scoreCam(c)/16));
+      c.r=i; c.pct=Math.round(48+f*41);
     });
     if(picks[1]&&picks[1].pct>=picks[0].pct)picks[1].pct=picks[0].pct-3;
     if(picks[2]&&picks[2].pct>=picks[1].pct)picks[2].pct=picks[1].pct-3;
-    picks.forEach(function(c){if(c.pct<62)c.pct=62;if(c.pct>89)c.pct=89;});
+    picks.forEach(function(c){ if(c.pct<55)c.pct=55; if(c.pct>89)c.pct=89; });
     return picks;
+  }
+  // sonuc kartinda: kameranin musteri cevaplariyla eslesen kriter cipleri
+  function matchChips(c){
+    var mi=c._mi||matchInfo(c); if(!mi.labels.length) return '';
+    return '<div class="rmatch">'+mi.labels.slice(0,5).map(function(l){return '<span class="rmchip">'+svg("check")+esc(l)+'</span>';}).join('')+'</div>';
   }
   function brandTrait(brand){
     var b=String(brand||"").toLowerCase(),tr=D.results.traits;
@@ -1134,7 +1200,8 @@ JS = r"""
         +'<div class="rbody"><div class="rbrand">'+(blogoOf(c.brand)?'<img class="blogo" alt="'+esc(c.brand)+'" src="'+esc(blogoOf(c.brand))+'">':esc(c.brand))+'</div>'
         +'<div class="rname">'+esc(c.title)+'</div>'
         +'<div class="rbar"><i data-w="'+c.pct+'"></i></div>'
-        +'<p class="rwhy">'+esc(reasonFor(c))+'</p>'
+        +matchChips(c)
+        +'<p class="rwhy">'+esc(c.desc||D.no_desc)+'</p>'
         +(c.price?('<div class="rprice">'+esc(c.price)+'</div>'):'')
         +'<a class="vbtn" href="'+esc(url)+'">'+esc(R.view)+svg("arrow")+'</a></div></article>';
     }).join("");
@@ -1343,6 +1410,15 @@ DATA = {
             "best_badge":RESULTS["best_badge"],"match":RESULTS["match"],"view":RESULTS["view"],
             "all_cta":RESULTS["all_cta"],"redo":RESULTS["redo"],"reasons":RESULTS["reasons"],
             "feats_dyn":RESULTS["feats_dyn"],"traits":RESULTS["traits"],"friend":RESULTS["friend"]},
+ # kriter etiketleri (cevaplardan dogan; kameranin karsiladigi her biri = eslesme cipi + % payi)
+ "crit":{
+   "daily":"Günlük & sokak","travel":"Seyahat & zoom","portrait":"Portre / sıcak ton",
+   "night":"Gece & flaş","content":"İçerik / video","budget":"Bütçene uygun",
+   "y2k":"Y2K dokusu","cine":"Sinematik renk","sharp":"Yüksek netlik","dreamy":"Yumuşak ton","warm":"Sıcak renk",
+   "indoor":"Loş mekan / flaş","citynight":"Gece şehir / flaş","mixed":"Her ortama uyum","day":"Gündüz netliği",
+   "first":"Yeni başlayana uygun","pro":"İleri kontrol",
+ },
+ "no_desc":"Bu model, satıştan önce fonksiyon testinden geçmiş, kondisyonu şeffaf paylaşılan bir 2000'ler CCD dijital kamerasıdır.",
  "svg":IC,
  "logo":LOGO_SVG,
  "share_logo":SHARE_LOGO,
