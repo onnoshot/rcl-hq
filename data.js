@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-29T14:46:33",
+  "updated_at": "2026-06-29T15:46:37",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 84,
-      "likes": 7,
+      "views": 99,
+      "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
     },
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1730,
+      "views": 1731,
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/LHg76IQG7aw"
