@@ -3088,13 +3088,14 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 .em-mini .s{font-size:.62rem;color:var(--t2);margin-top:5px}
 .em-2col{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
 /* Funnel */
-.em-funnel{display:flex;flex-direction:column;gap:9px;margin-top:14px}
+.em-funnel{display:flex;flex-direction:column;gap:11px;margin-top:14px}
 .em-fn-row{position:relative}
-.em-fn-bar{height:46px;border-radius:11px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;color:#fff;font-weight:700;overflow:hidden;transition:width 1s cubic-bezier(.22,1,.36,1)}
-.em-fn-bar .nm{display:flex;align-items:center;gap:9px;font-size:.78rem;z-index:1}
-.em-fn-bar .vl{font-size:.92rem;font-variant-numeric:tabular-nums;z-index:1}
-.em-fn-pc{position:absolute;right:-2px;top:50%;transform:translateY(-50%);font-size:.6rem;color:var(--t3);font-weight:700}
-.em-fn-step{font-size:.56rem;color:var(--t3);text-align:center;margin:1px 0}
+.em-fn-track{position:relative;height:46px;border-radius:11px;background:rgba(255,255,255,.045);overflow:hidden}
+.em-fn-fill{position:absolute;left:0;top:0;height:100%;border-radius:11px;transition:width 1s cubic-bezier(.22,1,.36,1)}
+.em-fn-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:1;color:#fff;font-weight:700}
+.em-fn-txt .nm{display:flex;align-items:center;gap:9px;font-size:.78rem;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.em-fn-txt .vl{font-size:.92rem;font-variant-numeric:tabular-nums;text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.em-fn-step{font-size:.56rem;color:var(--t3);text-align:center;margin-top:3px}
 /* Health rings */
 .em-rings{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
 .em-ring{display:flex;align-items:center;gap:12px}
@@ -3925,7 +3926,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 132, "at": "2026-06-30T02:36:27" };
+const BUILD = { "no": 133, "at": "2026-06-30T02:38:59" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
@@ -4160,7 +4161,7 @@ const HERMES = {
 /* ─── HERMES CEO DATA END ─── */
 /* ─── EMAIL DATA START ─── */
 const EMAIL = {
-  "updated_at": "2026-06-30T02:36:27",
+  "updated_at": "2026-06-30T02:38:59",
   "account": {
     "email": "retrocameraland@gmail.com",
     "plan": "free",
@@ -5479,13 +5480,15 @@ function renderEmail() {
       {k:'Tıklandı',v:fn.clicked||0,c:'#FF453A',ic:'<path d="M9 11.5 4 6.5 9 4l11 6-5 2 3 5-3 1-3-5-2 5z"/>'},
     ];
     fel.innerHTML=steps.map((s,i)=>{
-      const w=base?Math.max(s.v/base*100,9):(i===0?100:9);
+      const w=base?Math.max(s.v/base*100,4):(i===0?100:4);
       const pc=base?Math.round(s.v/base*100):0;
       const stepPc=i>0&&steps[i-1].v?Math.round(s.v/steps[i-1].v*100):100;
       return `<div class="em-fn-row">
-        <div class="em-fn-bar" style="width:${w}%;background:linear-gradient(90deg,${s.c},${s.c}cc)">
-          <span class="nm"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2">${s.ic}</svg>${s.k}</span>
+        <div class="em-fn-track">
+          <div class="em-fn-fill" style="width:${w}%;background:linear-gradient(90deg,${s.c},${s.c}cc)"></div>
+          <div class="em-fn-txt"><span class="nm"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#fff" stroke-width="2">${s.ic}</svg>${s.k}</span>
           <span class="vl">${emFmt(s.v)}</span></div>
+        </div>
         <div class="em-fn-step">${i===0?('toplam · %'+pc):('önceki adımın %'+stepPc+'’i · toplam %'+pc)}</div></div>`;
     }).join('');
   }
