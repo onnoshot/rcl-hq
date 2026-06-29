@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-29T17:46:52",
+  "updated_at": "2026-06-29T18:46:58",
   "period_30d": {
     "revenue": 90629,
     "orders": 7,
@@ -326,11 +326,6 @@ const SHOPIFY = {
       "cost": 10000
     },
     {
-      "name": "Fujifilm Finepix Z90",
-      "price": 16490,
-      "cost": 7900
-    },
-    {
       "name": "Sony Cybershot DSC-T20",
       "price": 16490,
       "cost": 7000
@@ -473,7 +468,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 90
+  "out_of_stock": 91
 };
 /* ─── SHOPIFY DATA END ─── */
 
