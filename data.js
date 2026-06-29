@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-06-29T05:02:26",
+  "updated_at": "2026-06-29T11:46:18",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4060,
-    "total_views": 1222697,
+    "total_views": 1223728,
     "video_count": 386
   },
   "analytics": {
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 15,
-      "likes": 2,
+      "views": 37,
+      "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1792,
+      "views": 1793,
       "likes": 18,
       "comments": 1,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 181,
+      "views": 183,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -90,37 +90,10 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 904,
+      "views": 906,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
-    },
-    {
-      "id": "2r7TMYA4kTw",
-      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
-      "date": "22 May 2026",
-      "views": 440,
-      "likes": 5,
-      "comments": 1,
-      "url": "https://youtu.be/2r7TMYA4kTw"
-    },
-    {
-      "id": "GULk4atiPqo",
-      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
-      "date": "17 May 2026",
-      "views": 723,
-      "likes": 8,
-      "comments": 1,
-      "url": "https://youtu.be/GULk4atiPqo"
-    },
-    {
-      "id": "4mX8PsRNBOs",
-      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
-      "date": "15 May 2026",
-      "views": 2534,
-      "likes": 37,
-      "comments": 1,
-      "url": "https://youtu.be/4mX8PsRNBOs"
     },
     {
       "id": "TvPGsbRhSmQ",
@@ -148,6 +121,33 @@ const YOUTUBE = {
       "likes": 29,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
+    },
+    {
+      "id": "VnLTp2ufa6A",
+      "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
+      "date": "7 May 2026",
+      "views": 2008,
+      "likes": 33,
+      "comments": 1,
+      "url": "https://youtu.be/VnLTp2ufa6A"
+    },
+    {
+      "id": "yIrL45HroS8",
+      "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
+      "date": "6 May 2026",
+      "views": 1617,
+      "likes": 11,
+      "comments": 0,
+      "url": "https://youtu.be/yIrL45HroS8"
+    },
+    {
+      "id": "3qQFPZtOHf0",
+      "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
+      "date": "30 Nis 2026",
+      "views": 4975,
+      "likes": 104,
+      "comments": 0,
+      "url": "https://youtu.be/3qQFPZtOHf0"
     }
   ],
   "sub_goal": 10000
