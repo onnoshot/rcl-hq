@@ -1647,7 +1647,141 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
   <span id="build-stamp-text">Güncelleme #— · —</span>
 </div>
 
-<!-- ═══════════════════ HERMES CEO ═══════════════════ -->
+<div class="page active" id="page-overview">
+  <div class="page-topbar fi">
+    <div class="pt-left">
+      <div class="pt-title" id="ov-greeting"></div>
+      <div class="pt-sub" id="ov-date"></div>
+    </div>
+    <div class="pt-right">
+      <div class="live-pill"><div class="sb-live-dot"></div>LIVE</div>
+      <span class="upd-time" id="updateTime">—</span>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.05s">
+    <div class="sec-label">Satış Özeti</div>
+    <div class="g g4">
+      <div class="card p card-gold">
+        <div class="kpi-lbl">Gelir (30 gün)</div>
+        <div class="kpi-big gold" id="s-rev">—</div>
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <div class="delta dn" id="s-rev-delta">30 gün</div>
+          <div class="kpi-sub" id="s-rev-sub">—</div>
+        </div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(212,175,55,0.12);display:flex;flex-direction:column;gap:8px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:0.1em" id="s-kdv-lbl">KDV</span>
+            <span style="font-family:var(--mono);font-size:0.88rem;font-weight:600;color:var(--warn)" id="s-kdv">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:0.62rem;font-family:var(--mono);color:var(--t3);text-transform:uppercase;letter-spacing:0.1em">Net Kâr</span>
+            <span style="font-family:var(--mono);font-size:0.95rem;font-weight:800;color:var(--green)" id="s-net">—</span>
+          </div>
+        </div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Sipariş (30 gün)</div>
+        <div class="kpi-big" id="s-ord">—</div>
+        <div class="kpi-sub" id="s-ord-sub">tamamlanan sipariş</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Ort. Sipariş (AOV)</div>
+        <div class="kpi-big" id="s-aov">—</div>
+        <div class="kpi-sub">sipariş başına</div>
+      </div>
+      <div class="card p">
+        <div class="kpi-lbl">Toplam Müşteri</div>
+        <div class="kpi-big" id="s-cust">—</div>
+        <div class="kpi-sub">kayıtlı</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 30 GÜNLÜK KÂRLILIK -->
+  <div class="sec fi" style="transition-delay:.07s">
+    <div class="sec-label">30 Günlük Kârlılık</div>
+    <div class="card p" style="position:relative;overflow:hidden">
+      <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(48,209,88,.4),transparent)"></div>
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:18px">
+        <div>
+          <div class="kpi-lbl">Net Kâr (Son 30 Gün)</div>
+          <div class="kpi-big" id="ov-net" style="font-size:2.1rem">—</div>
+          <div class="kpi-sub" id="ov-net-sub">KDV, komisyon, kargo/kutu ve ürün maliyeti düşülmüş</div>
+        </div>
+        <div style="display:flex;gap:22px;flex-wrap:wrap" id="ov-net-kpis"></div>
+      </div>
+      <div style="margin-top:18px">
+        <div style="display:flex;justify-content:space-between;font-size:0.6rem;font-family:var(--mono);color:var(--t3);margin-bottom:6px">
+          <span>Gelirin dağılımı (gider + kâr)</span><span id="ov-net-marj">—</span>
+        </div>
+        <div style="display:flex;height:16px;border-radius:8px;overflow:hidden;background:rgba(255,255,255,0.04);gap:2px" id="ov-net-bar"></div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:10px;font-size:0.6rem;font-family:var(--mono);color:var(--t3)" id="ov-net-legend"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec fi" style="transition-delay:.10s">
+    <div class="sec-label">Platform Özeti</div>
+    <div class="g g3">
+      <div class="qlink" onclick="navigate('youtube',document.querySelector('[data-page=youtube]'))">
+        <div class="qlink-icon" style="background:rgba(255,69,58,0.1)">▶</div>
+        <div class="qlink-info">
+          <div class="qlink-name">YouTube</div>
+          <div class="qlink-val" id="ov-yt-val">—</div>
+        </div>
+        <div class="qlink-arrow">›</div>
+      </div>
+      <div class="qlink" onclick="navigate('instagram',document.querySelector('[data-page=instagram]'))">
+        <div class="qlink-icon" style="background:rgba(191,90,242,0.1);color:rgba(191,90,242,0.85)"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <div class="qlink-info">
+          <div class="qlink-name">Instagram</div>
+          <div class="qlink-val" id="ov-ig-val">—</div>
+        </div>
+        <div class="qlink-arrow">›</div>
+      </div>
+      <div class="qlink" onclick="navigate('inventory',document.querySelector('[data-page=inventory]'))">
+        <div class="qlink-icon" style="background:rgba(212,175,55,0.1);color:rgba(212,175,55,0.85)"><svg viewBox="0 0 24 24"><path d="M16.5 9.4l-9-5.19"/><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <div class="qlink-info">
+          <div class="qlink-name">Stok</div>
+          <div class="qlink-val" id="ov-inv-val">—</div>
+        </div>
+        <div class="qlink-arrow">›</div>
+      </div>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.15s">
+    <div class="g g8-4">
+      <div class="card p">
+        <div class="chart-title">Aylık Gelir Trendi</div>
+        <div class="chart-sub">Son 12 ay · Shopify verisi</div>
+        <div style="height:240px"><canvas id="revenueChart"></canvas></div>
+      </div>
+      <div class="card tcard">
+        <div class="thead"><span class="ttitle">Son Siparişler</span></div>
+        <table><tbody id="ordersBody"></tbody></table>
+      </div>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.20s">
+    <div class="g g6-6">
+      <div class="card p">
+        <div class="chart-title">Kanal Dağılımı</div>
+        <div class="chart-sub" id="ov-donut-sub">Tüm siparişler</div>
+        <div style="display:grid;grid-template-columns:160px 1fr;gap:20px;align-items:center;margin-top:8px">
+          <div style="position:relative;height:160px"><canvas id="channelDonut"></canvas><div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center"><div style="font-size:1.4rem;font-weight:700;font-family:var(--mono);color:var(--t1)" id="donutTotal">—</div><div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono)">toplam</div></div></div>
+          <div style="display:flex;flex-direction:column;gap:8px" id="channelLegend"></div>
+        </div>
+      </div>
+      <div class="card p">
+        <div class="chart-title">Kanal Performansı</div>
+        <div class="chart-sub">Sipariş ve gelir dağılımı</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px" id="channelCards"></div>
+      </div>
+    </div>
+  </div>
+  <footer class="fi"><span>Retrocameraland HQ · retrocameraland.myshopify.com</span></footer>
+</div>
+
 <!-- ═══════════════════ FİNANS ═══════════════════ -->
 <div class="page" id="page-finance">
   <div class="page-topbar fi">
@@ -3570,7 +3704,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 146, "at": "2026-06-30T04:20:33" };
+const BUILD = { "no": 147, "at": "2026-06-30T04:28:24" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
