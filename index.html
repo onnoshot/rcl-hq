@@ -3728,7 +3728,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 149, "at": "2026-06-30T04:36:30" };
+const BUILD = { "no": 150, "at": "2026-06-30T04:39:38" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {};  /* Hermes kaldirildi - global referans hatasi olmasin diye bos stub */
@@ -7178,7 +7178,7 @@ function renderStatsPage() {
   renderBlogSEO();
   if (typeof renderSEOHealthStrip === "function") renderSEOHealthStrip();
   if (typeof renderCameraCards === "function") renderCameraCards();
-  setTimeout(statsEnhanceGA4, 300);
+  setTimeout(function(){ if (typeof statsEnhanceGA4 === "function") statsEnhanceGA4(); }, 300);
 
   // Şehir dağılımı
   const cities = [
