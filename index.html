@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Retrocameraland HQ</title>
 <link rel="icon" type="image/png" href="rcl-logo.png">
 <link rel="apple-touch-icon" href="rcl-logo.png">
@@ -189,6 +189,7 @@ function renderSEOHealthStrip() {
   --ease-snappy:cubic-bezier(0.32,0.72,0,1);
   --dur-hover:140ms;--dur-press:90ms;--dur-tab:260ms;--dur-sidebar:340ms;
   --accent-soft:rgba(255,69,58,0.15);--accent-glow:rgba(255,69,58,0.45);
+  --sa-t:env(safe-area-inset-top,0px);--sa-b:env(safe-area-inset-bottom,0px);--sa-l:env(safe-area-inset-left,0px);--sa-r:env(safe-area-inset-right,0px);
   /* ── Obsidian Surfaces ── */
   --bg:#000000;--s1:#0a0a0a;--s2:#111111;--s3:#1a1a1a;
   /* ── Glass Borders ── */
@@ -226,7 +227,7 @@ function renderSEOHealthStrip() {
 /* ─── RESET ─── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:'tnum' 1,'ss01' 1,'cv01' 1;letter-spacing:-0.011em;text-rendering:optimizeLegibility;}
+body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-feature-settings:'tnum' 1,'ss01' 1,'cv01' 1;letter-spacing:-0.011em;text-rendering:optimizeLegibility;}
 
 /* ─── AMBIENT NOISE ─── */
 .orb{position:fixed;border-radius:50%;filter:blur(160px);pointer-events:none;z-index:0;will-change:transform,opacity;}
@@ -236,8 +237,8 @@ body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100
 @keyframes orb-drift2{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(80px,-60px) scale(1.12);}}
 
 /* ─── LAYOUT ─── */
-.sidebar{position:fixed;top:0;left:0;width:var(--sidebar);height:100vh;background:rgba(0,0,0,0.92);border-right:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;z-index:200;backdrop-filter:blur(80px) saturate(200%);-webkit-backdrop-filter:blur(80px) saturate(200%);transition:width var(--dur-sidebar) var(--ease-snappy);}
-.main{margin-left:var(--sidebar);min-height:100vh;position:relative;transition:margin-left var(--dur-sidebar) var(--ease-snappy);}
+.sidebar{position:fixed;top:0;left:0;width:var(--sidebar);height:100dvh;background:rgba(0,0,0,0.92);border-right:1px solid rgba(255,255,255,0.06);display:flex;flex-direction:column;z-index:200;backdrop-filter:blur(80px) saturate(200%);-webkit-backdrop-filter:blur(80px) saturate(200%);transition:width var(--dur-sidebar) var(--ease-snappy);}
+.main{margin-left:var(--sidebar);min-height:100vh;min-height:100dvh;position:relative;transition:margin-left var(--dur-sidebar) var(--ease-snappy);}
 .page{display:none;padding:var(--page-pad);padding-bottom:100px;max-width:100%;overflow-x:hidden;}
 .page.active{display:block;animation:page-enter 0.45s cubic-bezier(0.16,1,0.3,1) both;}
 
@@ -986,11 +987,12 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 .bottom-nav {
   display: none;
   position: fixed;
-  bottom: 14px; left: 10px; right: 10px;
+  bottom: calc(14px + var(--sa-b,0px)); left: calc(10px + var(--sa-l,0px)); right: calc(10px + var(--sa-r,0px));
   height: 64px;
   background: rgba(0,0,0,0.92);
-  backdrop-filter: blur(60px) saturate(220%);
-  -webkit-backdrop-filter: blur(60px) saturate(220%);
+  backdrop-filter: blur(22px) saturate(200%);
+  -webkit-backdrop-filter: blur(22px) saturate(200%);
+  will-change: transform;
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 24px;
   box-shadow: 0 12px 40px rgba(0,0,0,0.6), 0 2px 8px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
@@ -1468,7 +1470,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
 /* ====== CherryGlow v8 AI Assistant ====== */
-#page-cherry{padding:0 !important;display:none;flex-direction:column;height:calc(100vh - 0px);overflow:hidden;box-sizing:border-box}
+#page-cherry{padding:0 !important;display:none;flex-direction:column;height:calc(100dvh - 0px);overflow:hidden;box-sizing:border-box}
 #page-cherry.active{display:flex}
 .cgv8-page-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(0,0,0,.45);border-bottom:1px solid rgba(255,255,255,.06);flex-shrink:0;backdrop-filter:blur(12px)}
 .cgv8-ptabs{display:flex;gap:3px;background:rgba(255,255,255,.04);border-radius:10px;padding:3px}
@@ -1581,6 +1583,28 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 
 <div class="orb orb1"></div><div class="orb orb2"></div>
 
+<style>
+/* ═══ MOBİL İYİLEŞTİRMELER (DESIGN_SYSTEM > Mobile) ═══ */
+html{ -webkit-text-size-adjust:100%; }
+body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
+/* Dokunma geri bildirimi (haptik hissi) — yalnız transform, layout'u etkilemez */
+@media (hover:none){
+  .card:active{ transform:scale(.985); transition:transform .1s var(--ease-out); }
+  button:active, .hx-send:active, .refresh-all-btn:active, .cam-seg:active, .em-seg:active,
+  .cam-card:active, .em-q-btn:active, .bn-item:active, .bn-more-item:active{ transform:scale(.96); }
+}
+/* Mobilde ağır blur'u azalt (iOS scroll jank) — yalnız bilinen ağır yüzeyler */
+@media (max-width:768px){
+  .sidebar{ backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); }
+  .bn-more-overlay{ backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); }
+  .em-2col{ grid-template-columns:1fr; }            /* e-posta çift kolon -> tek */
+}
+/* Dokunma hedefi min 48px */
+@media (max-width:900px){ .bn-item{ min-height:48px; } }
+/* Modal yüksekliği dvh (klavye/adres çubuğu uyumu) */
+#email-modal>div{ max-height:88dvh; }
+@media (prefers-reduced-motion:reduce){ .card:active,button:active,.cam-card:active,.bn-item:active{ transform:none !important; } }
+</style>
 <aside class="sidebar" id="sidebar">
   <div class="sb-logo"><img src="rcl-logo.png" alt="RCL"></div>
   <nav class="sb-nav">
@@ -3704,7 +3728,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 147, "at": "2026-06-30T04:28:24" };
+const BUILD = { "no": 148, "at": "2026-06-30T04:34:31" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
@@ -10155,7 +10179,7 @@ function finAnimateKPIs() {
     var page = document.getElementById('page-cherry');
     if (!page || !page.classList.contains('active')) return;
     // Force flex layout
-    page.style.cssText = 'display:flex!important;flex-direction:column;height:calc(100vh);overflow:hidden;padding:0!important';
+    page.style.cssText = 'display:flex!important;flex-direction:column;height:calc(100dvh);overflow:hidden;padding:0!important';
     // Force view height
     var view = document.getElementById('cgv8-view-yaz');
     if (view && view.classList.contains('active')) {
