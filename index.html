@@ -799,6 +799,10 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 .em-q-prog{height:4px;border-radius:3px;background:rgba(255,255,255,0.08);overflow:hidden;flex:0 0 60px;}
 .em-q-prog>i{display:block;height:100%;background:var(--green);border-radius:3px;}
 .em-q-meta{color:var(--t3);font-size:0.66rem;margin-left:auto;}
+.em-q-acts{display:inline-flex;gap:6px;}
+.em-q-btn{display:inline-flex;align-items:center;gap:4px;font-size:0.62rem;font-weight:700;padding:4px 9px;border-radius:8px;border:1px solid rgba(255,255,255,0.14);background:rgba(255,255,255,0.04);color:var(--t2);cursor:pointer;transition:all .15s;}
+.em-q-btn:hover{background:rgba(255,255,255,0.1);color:var(--t1);}
+.em-q-btn-x:hover{background:rgba(255,69,58,0.16);color:var(--red);border-color:rgba(255,69,58,0.4);}
 @media(max-width:820px){.em-tpl-grid{grid-template-columns:1fr;}.em-input{min-width:0;width:100%;}.em-ctrl-action{margin-left:0;width:100%;}}
 /* SVG ikonlar + zengin kontroller */
 .em-i{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;vertical-align:-2px;}
@@ -3122,6 +3126,23 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 .em-lrow .lb-fill{height:100%;border-radius:5px;background:linear-gradient(90deg,var(--red),var(--warn));transition:width .9s cubic-bezier(.22,1,.36,1)}
 .em-lrow .lb-c{font-size:.72rem;font-weight:700;font-variant-numeric:tabular-nums}
 @media(max-width:760px){.em-strip{grid-template-columns:1fr 1fr}.em-2col{grid-template-columns:1fr}}
+/* Uyarı banner */
+.em-alerts{display:flex;flex-direction:column;gap:8px;margin:0 0 4px}
+.em-alert{display:flex;align-items:center;gap:10px;padding:11px 15px;border-radius:12px;font-size:.76rem;font-weight:600}
+.em-alert svg{flex:none}
+.em-alert.warn{background:rgba(255,159,10,.12);border:1px solid rgba(255,159,10,.3);color:var(--warn)}
+.em-alert.critical{background:rgba(255,69,58,.12);border:1px solid rgba(255,69,58,.35);color:var(--red)}
+.em-alert.ok{background:rgba(48,209,88,.1);border:1px solid rgba(48,209,88,.28);color:var(--green)}
+/* Kota göstergesi */
+.em-quota{margin-top:12px}
+.em-quota .q-top{display:flex;justify-content:space-between;font-size:.66rem;color:var(--t2);margin-bottom:5px;font-weight:600}
+.em-quota .q-track{height:8px;border-radius:5px;background:rgba(255,255,255,.06);overflow:hidden}
+.em-quota .q-fill{height:100%;border-radius:5px;transition:width .9s cubic-bezier(.22,1,.36,1)}
+/* Suppression */
+.em-supp{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.em-supp .sp{background:var(--gold-dim);border:1px solid rgba(255,255,255,.06);border-radius:11px;padding:10px 6px;text-align:center}
+.em-supp .sp .v{font-size:1.05rem;font-weight:800;line-height:1}
+.em-supp .sp .l{font-size:.54rem;color:var(--t3);margin-top:4px;text-transform:uppercase;letter-spacing:.04em;font-weight:700}
 </style>
 
 <!-- ═══════════════════ E-POSTA PAZARLAMA ═══════════════════ -->
@@ -3130,6 +3151,9 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
     <div class="pt-left"><div class="pt-title" style="color:var(--red)">E-posta Pazarlama</div><div class="pt-sub">Kampanyalar · Açılma · Tıklama</div></div>
     <div class="pt-right"><div class="live-pill"><div class="sb-live-dot"></div>BREVO</div><span class="upd-time" id="email-upd">—</span></div>
   </div>
+
+  <!-- ═══ UYARILAR (deliverability / kota) ═══ -->
+  <div id="em-alerts" class="em-alerts"></div>
 
   <!-- ═══ E-POSTA YÖNETİM: gönder / zamanla ═══ -->
   <div class="sec fi" style="transition-delay:.03s">
@@ -3154,6 +3178,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
         <div class="em-ctrl em-ctrl-action"><button class="hx-send em-send" id="em-send-btn" onclick="emSend()" disabled><svg class="em-i" id="em-send-i" viewBox="0 0 24 24"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg> <span id="em-send-lbl">Önce şablon seç</span></button></div>
       </div>
       <div class="hx-hint" id="em-send-hint">Free plan günde ~300; daha büyük kitleler otomatik 300'lük parçalara bölünüp ardışık günlere zamanlanır.</div>
+      <div class="em-quota" id="em-quota"></div>
       <div class="hsec-title" style="font-size:.92rem;margin-top:20px">Gönderim Kuyruğu</div>
       <div id="em-queue" class="em-queue"></div>
     </div>
@@ -3206,6 +3231,23 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
         <div class="chart-title">Liste Envanteri</div>
         <div class="chart-sub">Brevo'daki segment listeleri ve abone sayıları</div>
         <div class="em-lists" id="em-lists"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ ETKİLEŞİM TRENDİ + LİSTE SAĞLIĞI ═══ -->
+  <div class="sec fi" style="transition-delay:.155s">
+    <div class="em-2col">
+      <div class="card p">
+        <div class="chart-title">Etkileşim Trendi</div>
+        <div class="chart-sub">Son 30 gün — günlük gönderim, teslim, açılma, tıklama</div>
+        <div style="height:230px;margin-top:10px"><canvas id="emailTrend"></canvas></div>
+      </div>
+      <div class="card p">
+        <div class="chart-title">Liste Sağlığı & Büyüme</div>
+        <div class="chart-sub">Abone artışı + bastırılan (bounce/abonelikten çıkan) kişiler</div>
+        <div style="height:120px;margin-top:8px"><canvas id="emailGrowth"></canvas></div>
+        <div class="em-supp" id="em-supp"></div>
       </div>
     </div>
   </div>
@@ -3926,7 +3968,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 137, "at": "2026-06-30T02:49:20" };
+const BUILD = { "no": 138, "at": "2026-06-30T03:19:16" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
@@ -4161,7 +4203,7 @@ const HERMES = {
 /* ─── HERMES CEO DATA END ─── */
 /* ─── EMAIL DATA START ─── */
 const EMAIL = {
-  "updated_at": "2026-06-30T02:49:20",
+  "updated_at": "2026-06-30T03:19:16",
   "account": {
     "email": "retrocameraland@gmail.com",
     "plan": "free",
@@ -4308,14 +4350,99 @@ const EMAIL = {
     }
   ],
   "totals": {
-    "campaigns": 0,
-    "sent": 0,
-    "delivered": 0,
-    "open_rate": 0.0,
-    "click_rate": 0.0,
+    "campaigns": 4,
+    "sent": 292,
+    "delivered": 265,
+    "open_rate": 18.1,
+    "click_rate": 1.1,
     "subscribers_target": 682
   },
-  "campaigns": [],
+  "campaigns": [
+    {
+      "id": "202606280605-haftanin-seckisi-all",
+      "theme": "haftanin-seckisi",
+      "segment": "all",
+      "name": "Haftanin Seckisi",
+      "subject": "Koleksiyonluk retro kameralar, tek adet",
+      "date": "2026-07-07",
+      "chunks": 3,
+      "scheduled_at": "2026-07-05T12:09:00.000+03:00",
+      "sent": 0,
+      "delivered": 0,
+      "opens": 0,
+      "clicks": 0,
+      "soft_bounces": 0,
+      "hard_bounces": 0,
+      "unsubs": 0,
+      "status": "scheduled",
+      "open_rate": 0.0,
+      "click_rate": 0.0,
+      "discount": "NEW250"
+    },
+    {
+      "id": "202606280605-stok-azaliyor-all",
+      "theme": "stok-azaliyor",
+      "segment": "all",
+      "name": "Stok Azaliyor",
+      "subject": "Bu kameralar tükenmek üzere",
+      "date": "2026-07-03",
+      "chunks": 3,
+      "scheduled_at": "2026-07-01T12:09:00.000+03:00",
+      "sent": 0,
+      "delivered": 0,
+      "opens": 0,
+      "clicks": 0,
+      "soft_bounces": 0,
+      "hard_bounces": 0,
+      "unsubs": 0,
+      "status": "scheduled",
+      "open_rate": 0.0,
+      "click_rate": 0.0,
+      "discount": null
+    },
+    {
+      "id": "202606280604-kamera-bulucu-all",
+      "theme": "kamera-bulucu",
+      "segment": "all",
+      "name": "Kamera Bulucu",
+      "subject": "Hangi retro kamera sana uygun? 30 saniyede bul",
+      "date": "2026-06-28",
+      "chunks": 2,
+      "scheduled_at": "2026-06-30T12:09:00.000+03:00",
+      "sent": 290,
+      "delivered": 263,
+      "opens": 46,
+      "clicks": 3,
+      "soft_bounces": 10,
+      "hard_bounces": 17,
+      "unsubs": 0,
+      "status": "sending",
+      "open_rate": 17.5,
+      "click_rate": 1.1,
+      "discount": null
+    },
+    {
+      "id": "202606280521-kamera-bulucu-all",
+      "theme": "kamera-bulucu",
+      "segment": "all",
+      "name": "Kamera Bulucu",
+      "subject": "Hangi retro kamera sana uygun? 30 saniyede bul",
+      "date": "2026-06-28",
+      "chunks": 2,
+      "scheduled_at": null,
+      "sent": 2,
+      "delivered": 2,
+      "opens": 2,
+      "clicks": 0,
+      "soft_bounces": 0,
+      "hard_bounces": 0,
+      "unsubs": 0,
+      "status": "sent",
+      "open_rate": 100.0,
+      "click_rate": 0.0,
+      "discount": null
+    }
+  ],
   "segments": {
     "all": 682
   },
@@ -4328,7 +4455,140 @@ const EMAIL = {
     "timecapsule": "<!DOCTYPE html><html lang=\"tr\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style>\n  @keyframes rclFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}\n  @keyframes rclPulse{0%,100%{box-shadow:0 6px 22px rgba(255,59,59,.30)}50%{box-shadow:0 12px 36px rgba(255,59,59,.52)}}\n  .rcl-wrap{animation:rclFade .7s ease both} .rcl-cta{animation:rclPulse 2.4s ease-in-out infinite}\n  @media (prefers-reduced-motion:reduce){*{animation:none!important}}\n<\/style><\/head>\n<body style=\"margin:0;background:#f2f1ee;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;\">\n<div class=\"rcl-wrap\" style=\"max-width:580px;margin:0 auto;padding:30px 22px;\">\n  <p style=\"text-align:center;margin:0 0 20px;\"><a href=\"https://retrocameraland.com?utm_source=email&utm_medium=brevo&utm_campaign=20260628-timecapsule\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/RetroCameraLand_photo1.png?v=1750024064\" alt=\"Retrocameraland\" height=\"48\" style=\"height:48px;width:auto;display:inline-block;border:0;\"><\/a><\/p>\n  <table role=\"presentation\" width=\"100%\"><tr><td style=\"text-align:center;padding:4px 0 22px;\"><span style=\"display:inline-block;width:46px;height:3px;border-radius:3px;background:#ff3b3b;\"><\/span><\/td><\/tr><\/table>\n  <p style=\"text-align:center;margin:0 0 10px;\"><span style=\"display:inline-block;background:#ffe9e9;color:#ff3b3b;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;\">TimeCapsule Topluluk<\/span><\/p>\n  <h1 style=\"font-size:27px;line-height:1.22;margin:0 0 14px;color:#15120e;letter-spacing:-.02em;text-align:center;\">Anılarının yeri: TimeCapsule<\/h1>\n  <p style=\"font-size:16px;line-height:1.7;color:#3a352f;margin:0 0 22px;text-align:center;\">Retro kameralarla çektiğin anıları paylaşabileceğin, beğendiğin kameraları oylayabileceğin ve her ay hediye çeki kazanma şansı yakalayabileceğin topluluğumuz TimeCapsule seni bekliyor. Katılmak ücretsiz, anıların kalıcı.<\/p>\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:0 0 24px;\"><tr>\n    <td style=\"background:linear-gradient(150deg,#15120e,#2b2b30);border-radius:18px;padding:30px 24px;text-align:center;\">\n      <p style=\"margin:0 0 6px;color:#bdbac4;font-size:12.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;\">Katılmak ücretsiz<\/p>\n      <p style=\"margin:0 0 18px;color:#fff;font-size:20px;font-weight:800;line-height:1.3;\">Anılarını paylaş, oyla,<br>her ay hediye çeki kazan<\/p>\n      <a href=\"https://retrocameraland.com/pages/timecapsule?utm_source=email&utm_medium=brevo&utm_campaign=20260628-timecapsule\" class=\"rcl-cta\" style=\"background:#ff3b3b;color:#fff;padding:16px 40px;border-radius:11px;text-decoration:none;font-weight:800;font-size:17px;display:inline-block;\">Topluluğa Katıl &rsaquo;<\/a>\n    <\/td><\/tr><\/table>\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:0 0 26px;\"><tr>\n    <td width=\"33%\" valign=\"top\" style=\"padding:8px;text-align:center;\">\n        <div style=\"width:40px;height:40px;line-height:40px;margin:0 auto 8px;border-radius:11px;background:#15120e;color:#fff;font-weight:800;font-size:17px;\">1<\/div>\n        <p style=\"margin:0 0 3px;font-size:14px;font-weight:700;color:#15120e;\">Paylaş<\/p>\n        <p style=\"margin:0;font-size:12.5px;color:#7a756d;line-height:1.45;\">Kameranla çektiğin anıları yükle<\/p><\/td>\n    <td width=\"33%\" valign=\"top\" style=\"padding:8px;text-align:center;\">\n        <div style=\"width:40px;height:40px;line-height:40px;margin:0 auto 8px;border-radius:11px;background:#15120e;color:#fff;font-weight:800;font-size:17px;\">2<\/div>\n        <p style=\"margin:0 0 3px;font-size:14px;font-weight:700;color:#15120e;\">Oyla<\/p>\n        <p style=\"margin:0;font-size:12.5px;color:#7a756d;line-height:1.45;\">Beğendiğin kameraları öne çıkar<\/p><\/td>\n    <td width=\"33%\" valign=\"top\" style=\"padding:8px;text-align:center;\">\n        <div style=\"width:40px;height:40px;line-height:40px;margin:0 auto 8px;border-radius:11px;background:#15120e;color:#fff;font-weight:800;font-size:17px;\">3<\/div>\n        <p style=\"margin:0 0 3px;font-size:14px;font-weight:700;color:#15120e;\">Kazan<\/p>\n        <p style=\"margin:0;font-size:12.5px;color:#7a756d;line-height:1.45;\">Her ay hediye çeki çekilişi<\/p><\/td>\n  <\/tr><\/table>\n  <div style=\"margin:34px 0 8px;text-align:center;\">\n      <p style=\"margin:0 0 3px;font-size:15px;font-weight:700;color:#1a1a1a;\">Bizi Instagram'da takip et<\/p>\n      <p style=\"margin:0 0 12px;font-size:13px;color:#999;\">@retrocameraland · 6.961 takipçi<\/p>\n      <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/reel/DYSX0DmIHwf/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-timecapsule\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-1.jpg?v=1782611292\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DYu1jKZiNVD/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-timecapsule\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-2.jpg?v=1782611294\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DZS7i4wCCLW/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-timecapsule\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-3.jpg?v=1782611296\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/reel/DYXlpS6IXnV/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-timecapsule\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-4.jpg?v=1782611298\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><\/tr><\/table><\/div>\n  <div style=\"height:1px;background:#e5e0d8;margin:28px 0 0;\"><\/div>\n  <div style=\"text-align:center;margin:26px 0 6px;\"><a href=\"https://www.instagram.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Instagram\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Instagram<\/a><a href=\"https://www.youtube.com/@RetroCameraLand?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Youtube\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">YouTube<\/a><a href=\"https://www.tiktok.com/@retrocameraland?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Tiktok\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">TikTok<\/a><a href=\"https://pinterest.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Pinterest\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Pinterest<\/a><a href=\"https://www.linkedin.com/company/retro-camera-land/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=linkedin\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">LinkedIn<\/a><\/div>\n  <p style=\"font-size:12.5px;color:#a8a39a;line-height:1.7;margin:14px 0 0;text-align:center;\">\n    Retrocameraland · <a href=\"https://retrocameraland.com\" style=\"color:#a8a39a;\">retrocameraland.com<\/a><br>\n    Bu e-postayı abonemiz olduğun için aldın · <a href=\"mailto:retrocameraland@gmail.com?subject=Abonelikten%20çıkmak%20istiyorum\" style=\"color:#bbb;\">Abonelikten çık<\/a><\/p>\n<\/div><\/body><\/html>",
     "ucretsiz-kargo": "<!DOCTYPE html><html lang=\"tr\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style>\n  @keyframes rclFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}\n  @keyframes rclPulse{0%,100%{box-shadow:0 6px 20px rgba(255,59,59,.28)}50%{box-shadow:0 10px 32px rgba(255,59,59,.50)}}\n  @keyframes rclShimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}\n  .rcl-wrap{animation:rclFade .7s ease both}\n  .rcl-cta{animation:rclPulse 2.4s ease-in-out infinite}\n  .rcl-card{transition:transform .2s ease} .rcl-card:hover{transform:translateY(-2px)}\n  .rcl-btn-sm{transition:opacity .2s} .rcl-btn-sm:hover{opacity:.82}\n  .rcl-brand{background:linear-gradient(90deg,#ff3b3b,#e9c07e,#ff3b3b);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rclShimmer 4s linear infinite}\n  @media (prefers-reduced-motion:reduce){*{animation:none!important}}\n<\/style><\/head>\n<body style=\"margin:0;background:#f2f1ee;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;\">\n<div class=\"rcl-wrap\" style=\"max-width:580px;margin:0 auto;padding:30px 22px;\">\n  <p style=\"text-align:center;margin:0 0 20px;\"><a href=\"https://retrocameraland.com?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/RetroCameraLand_photo1.png?v=1750024064\" alt=\"Retrocameraland\" height=\"48\" style=\"height:48px;width:auto;display:inline-block;border:0;\"><\/a><\/p>\n  <table role=\"presentation\" width=\"100%\"><tr><td style=\"text-align:center;padding:4px 0 22px;\"><span style=\"display:inline-block;width:46px;height:3px;border-radius:3px;background:#ff3b3b;\"><\/span><\/td><\/tr><\/table>\n  <h1 style=\"font-size:27px;line-height:1.22;margin:0 0 14px;color:#1a1a1a;letter-spacing:-.02em;\">Sınırlı süre ücretsiz kargo<\/h1>\n  <p style=\"font-size:16px;line-height:1.7;color:#54504a;margin:0 0 8px;\">Uzun zamandır göz koyduğun o retro kamera için tam zamanı: kısa süreliğine seçili kameralarda kargo bizden. Her biri tek adet olduğu için beklemeden göz atmanı öneririz.<\/p>\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"margin:22px 0;\"><tr>\n          <td style=\"text-align:center;background:linear-gradient(135deg,#15120e,#2b2b30);border-radius:16px;padding:22px;\">\n          <p style=\"margin:0 0 6px;color:#ff3b3b;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;\">Sınırlı süre fırsatı<\/p>\n          <p style=\"margin:0 0 6px;color:#fff;font-size:26px;font-weight:800;letter-spacing:1px;\">ÜCRETSİZ KARGO<\/p>\n          <p style=\"margin:0;color:#cfcad4;font-size:12.5px;\">Seçili kameralarda kargo bizden<\/p><\/td><\/tr><\/table>\n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #eadfce;border-radius:18px;padding:16px;box-shadow:0 6px 22px rgba(40,30,15,.07);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"162\" valign=\"top\"><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\"><tr><td style=\"position:relative;padding:6px;border:1.5px solid #e7e1d6;border-radius:14px;background:#faf8f4;\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-dmc-ls70-vitrin.jpg?v=1782612126\" alt=\"Panasonic DMC LS70\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:12px;display:block;\">\n          <div style=\"position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:3px 0 0 0;\"><\/div>\n          <div style=\"position:absolute;top:2px;right:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 3px 0 0;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;left:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:0 0 0 3px;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 0 3px 0;\"><\/div><\/td><\/tr><\/table><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ff3b3b;color:#ffffff;font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:9px;\">● Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:800;color:#15120e;line-height:1.25;letter-spacing:-.01em;\">Panasonic DMC LS70<\/p>\n                <p style=\"margin:0 0 13px;font-size:19px;color:#ff3b3b;font-weight:800;\">11.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/panasonic-dmc-ls70?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\" class=\"rcl-btn-sm\" style=\"background:#15120e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 22px;border-radius:9px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #eadfce;border-radius:18px;padding:16px;box-shadow:0 6px 22px rgba(40,30,15,.07);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"162\" valign=\"top\"><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\"><tr><td style=\"position:relative;padding:6px;border:1.5px solid #e7e1d6;border-radius:14px;background:#faf8f4;\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-340-vitrin.jpg?v=1782612122\" alt=\"Olympus VR-340\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:12px;display:block;\">\n          <div style=\"position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:3px 0 0 0;\"><\/div>\n          <div style=\"position:absolute;top:2px;right:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 3px 0 0;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;left:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:0 0 0 3px;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 0 3px 0;\"><\/div><\/td><\/tr><\/table><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ff3b3b;color:#ffffff;font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:9px;\">● Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:800;color:#15120e;line-height:1.25;letter-spacing:-.01em;\">Olympus VR-340<\/p>\n                <p style=\"margin:0 0 13px;font-size:19px;color:#ff3b3b;font-weight:800;\">17.990 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/olympus-vr-340?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\" class=\"rcl-btn-sm\" style=\"background:#15120e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 22px;border-radius:9px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #eadfce;border-radius:18px;padding:16px;box-shadow:0 6px 22px rgba(40,30,15,.07);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"162\" valign=\"top\"><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\"><tr><td style=\"position:relative;padding:6px;border:1.5px solid #e7e1d6;border-radius:14px;background:#faf8f4;\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-nx2000-vitrin.jpg?v=1782612861\" alt=\"Samsung NX2000\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:12px;display:block;\">\n          <div style=\"position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:3px 0 0 0;\"><\/div>\n          <div style=\"position:absolute;top:2px;right:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 3px 0 0;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;left:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:0 0 0 3px;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 0 3px 0;\"><\/div><\/td><\/tr><\/table><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ff3b3b;color:#ffffff;font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:9px;\">● Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:800;color:#15120e;line-height:1.25;letter-spacing:-.01em;\">Samsung NX2000<\/p>\n                <p style=\"margin:0 0 13px;font-size:19px;color:#ff3b3b;font-weight:800;\">15.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/samsung-nx2000?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\" class=\"rcl-btn-sm\" style=\"background:#15120e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 22px;border-radius:9px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #eadfce;border-radius:18px;padding:16px;box-shadow:0 6px 22px rgba(40,30,15,.07);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"162\" valign=\"top\"><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\"><tr><td style=\"position:relative;padding:6px;border:1.5px solid #e7e1d6;border-radius:14px;background:#faf8f4;\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-zx1-weather-resistant-vitrin.jpg?v=1782612020\" alt=\"Kodak ZX1 “Weather-Resistant”\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:12px;display:block;\">\n          <div style=\"position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:3px 0 0 0;\"><\/div>\n          <div style=\"position:absolute;top:2px;right:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 3px 0 0;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;left:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:0 0 0 3px;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 0 3px 0;\"><\/div><\/td><\/tr><\/table><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ff3b3b;color:#ffffff;font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:9px;\">● Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:800;color:#15120e;line-height:1.25;letter-spacing:-.01em;\">Kodak ZX1 “Weather-Resistant”<\/p>\n                <p style=\"margin:0 0 13px;font-size:19px;color:#ff3b3b;font-weight:800;\">4.900 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/kodak-zx1-weather-resistant?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\" class=\"rcl-btn-sm\" style=\"background:#15120e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 22px;border-radius:9px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table>\n  <table role=\"presentation\" width=\"100%\"><tr><td style=\"text-align:center;padding:20px 0 6px;\">\n    <a href=\"https://retrocameraland.com/collections/dijital-fotograf-makinesi?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\" class=\"rcl-cta\" style=\"background:#1a1a1a;color:#fff;padding:16px 38px;border-radius:10px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;\">Tüm Koleksiyonu Gör &rsaquo;<\/a>\n  <\/td><\/tr><\/table>\n  <div style=\"margin:34px 0 8px;text-align:center;\">\n      <p style=\"margin:0 0 3px;font-size:15px;font-weight:700;color:#1a1a1a;\">Bizi Instagram'da takip et<\/p>\n      <p style=\"margin:0 0 12px;font-size:13px;color:#999;\">@retrocameraland · 6.961 takipçi<\/p>\n      <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/reel/DYSX0DmIHwf/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-1.jpg?v=1782611292\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DYu1jKZiNVD/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-2.jpg?v=1782611294\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DZS7i4wCCLW/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-3.jpg?v=1782611296\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/reel/DYXlpS6IXnV/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-ucretsiz-kargo\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-4.jpg?v=1782611298\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><\/tr><\/table><\/div>\n  <div style=\"height:1px;background:#e5e0d8;margin:28px 0 0;\"><\/div>\n  <div style=\"text-align:center;margin:26px 0 6px;\"><a href=\"https://www.instagram.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Instagram\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Instagram<\/a><a href=\"https://www.youtube.com/@RetroCameraLand?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Youtube\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">YouTube<\/a><a href=\"https://www.tiktok.com/@retrocameraland?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Tiktok\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">TikTok<\/a><a href=\"https://pinterest.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Pinterest\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Pinterest<\/a><a href=\"https://www.linkedin.com/company/retro-camera-land/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=linkedin\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">LinkedIn<\/a><\/div>\n  <p style=\"font-size:12.5px;color:#a8a39a;line-height:1.7;margin:14px 0 0;text-align:center;\">\n    Retrocameraland · <a href=\"https://retrocameraland.com\" style=\"color:#a8a39a;\">retrocameraland.com<\/a><br>\n    Bu e-postayı abonemiz olduğun için aldın · <a href=\"mailto:retrocameraland@gmail.com?subject=Abonelikten%20çıkmak%20istiyorum\" style=\"color:#bbb;\">Abonelikten çık<\/a><\/p>\n<\/div><\/body><\/html>",
     "yeni-urunler": "<!DOCTYPE html><html lang=\"tr\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<style>\n  @keyframes rclFade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}\n  @keyframes rclPulse{0%,100%{box-shadow:0 6px 20px rgba(255,59,59,.28)}50%{box-shadow:0 10px 32px rgba(255,59,59,.50)}}\n  @keyframes rclShimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}\n  .rcl-wrap{animation:rclFade .7s ease both}\n  .rcl-cta{animation:rclPulse 2.4s ease-in-out infinite}\n  .rcl-card{transition:transform .2s ease} .rcl-card:hover{transform:translateY(-2px)}\n  .rcl-btn-sm{transition:opacity .2s} .rcl-btn-sm:hover{opacity:.82}\n  .rcl-brand{background:linear-gradient(90deg,#ff3b3b,#e9c07e,#ff3b3b);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:rclShimmer 4s linear infinite}\n  @media (prefers-reduced-motion:reduce){*{animation:none!important}}\n<\/style><\/head>\n<body style=\"margin:0;background:#f2f1ee;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;\">\n<div class=\"rcl-wrap\" style=\"max-width:580px;margin:0 auto;padding:30px 22px;\">\n  <p style=\"text-align:center;margin:0 0 20px;\"><a href=\"https://retrocameraland.com?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/RetroCameraLand_photo1.png?v=1750024064\" alt=\"Retrocameraland\" height=\"48\" style=\"height:48px;width:auto;display:inline-block;border:0;\"><\/a><\/p>\n  <table role=\"presentation\" width=\"100%\"><tr><td style=\"text-align:center;padding:4px 0 22px;\"><span style=\"display:inline-block;width:46px;height:3px;border-radius:3px;background:#ff3b3b;\"><\/span><\/td><\/tr><\/table>\n  <h1 style=\"font-size:27px;line-height:1.22;margin:0 0 14px;color:#1a1a1a;letter-spacing:-.02em;\">Stoğa yeni kameralar eklendi<\/h1>\n  <p style=\"font-size:16px;line-height:1.7;color:#54504a;margin:0 0 8px;\">Bulunması gün geçtikçe zorlaşan retro dijital kameralardan yenilerini stoğa ekledik. Her biri tek adet; gerçek değerini bilen biri onları hızla kapıyor. Beğendiğini görmeden kaçırmamak için aşağıya göz at.<\/p>\n  \n  <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #eadfce;border-radius:18px;padding:16px;box-shadow:0 6px 22px rgba(40,30,15,.07);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"162\" valign=\"top\"><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\"><tr><td style=\"position:relative;padding:6px;border:1.5px solid #e7e1d6;border-radius:14px;background:#faf8f4;\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t20-vitrin.jpg?v=1782612869\" alt=\"Sony Cybershot DSC-T20\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:12px;display:block;\">\n          <div style=\"position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:3px 0 0 0;\"><\/div>\n          <div style=\"position:absolute;top:2px;right:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 3px 0 0;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;left:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:0 0 0 3px;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 0 3px 0;\"><\/div><\/td><\/tr><\/table><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ff3b3b;color:#ffffff;font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:9px;\">● Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:800;color:#15120e;line-height:1.25;letter-spacing:-.01em;\">Sony Cybershot DSC-T20<\/p>\n                <p style=\"margin:0 0 13px;font-size:19px;color:#ff3b3b;font-weight:800;\">16.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/sony-cybershot-dsc-t20?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\" class=\"rcl-btn-sm\" style=\"background:#15120e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 22px;border-radius:9px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #eadfce;border-radius:18px;padding:16px;box-shadow:0 6px 22px rgba(40,30,15,.07);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"162\" valign=\"top\"><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\"><tr><td style=\"position:relative;padding:6px;border:1.5px solid #e7e1d6;border-radius:14px;background:#faf8f4;\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-nx2000-vitrin.jpg?v=1782612861\" alt=\"Samsung NX2000\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:12px;display:block;\">\n          <div style=\"position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:3px 0 0 0;\"><\/div>\n          <div style=\"position:absolute;top:2px;right:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 3px 0 0;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;left:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:0 0 0 3px;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 0 3px 0;\"><\/div><\/td><\/tr><\/table><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ff3b3b;color:#ffffff;font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:9px;\">● Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:800;color:#15120e;line-height:1.25;letter-spacing:-.01em;\">Samsung NX2000<\/p>\n                <p style=\"margin:0 0 13px;font-size:19px;color:#ff3b3b;font-weight:800;\">15.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/samsung-nx2000?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\" class=\"rcl-btn-sm\" style=\"background:#15120e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 22px;border-radius:9px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #eadfce;border-radius:18px;padding:16px;box-shadow:0 6px 22px rgba(40,30,15,.07);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"162\" valign=\"top\"><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\"><tr><td style=\"position:relative;padding:6px;border:1.5px solid #e7e1d6;border-radius:14px;background:#faf8f4;\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z700exr-vitrin.jpg?v=1782612853\" alt=\"Fujifilm FinePix Z700EXR\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:12px;display:block;\">\n          <div style=\"position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:3px 0 0 0;\"><\/div>\n          <div style=\"position:absolute;top:2px;right:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 3px 0 0;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;left:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:0 0 0 3px;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 0 3px 0;\"><\/div><\/td><\/tr><\/table><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ff3b3b;color:#ffffff;font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:9px;\">● Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:800;color:#15120e;line-height:1.25;letter-spacing:-.01em;\">Fujifilm FinePix Z700EXR<\/p>\n                <p style=\"margin:0 0 13px;font-size:19px;color:#ff3b3b;font-weight:800;\">14.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/fujifilm-finepix-z700exr?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\" class=\"rcl-btn-sm\" style=\"background:#15120e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 22px;border-radius:9px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table><table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"rcl-card\" style=\"margin:0 0 16px;\"><tr>\n          <td style=\"background:#ffffff;border:1px solid #eadfce;border-radius:18px;padding:16px;box-shadow:0 6px 22px rgba(40,30,15,.07);\">\n            <table role=\"presentation\" width=\"100%\"><tr>\n              <td width=\"162\" valign=\"top\"><table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\"><tr><td style=\"position:relative;padding:6px;border:1.5px solid #e7e1d6;border-radius:14px;background:#faf8f4;\"><img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-elph-300-hs-vitrin.jpg?v=1782612849\" alt=\"Canon Powershot ELPH 300 HS\" width=\"150\" style=\"width:150px;max-width:150px;border-radius:12px;display:block;\">\n          <div style=\"position:absolute;top:2px;left:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:3px 0 0 0;\"><\/div>\n          <div style=\"position:absolute;top:2px;right:2px;width:13px;height:13px;border-top:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 3px 0 0;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;left:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-left:2px solid #ff3b3b;border-radius:0 0 0 3px;\"><\/div>\n          <div style=\"position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:2px solid #ff3b3b;border-right:2px solid #ff3b3b;border-radius:0 0 3px 0;\"><\/div><\/td><\/tr><\/table><\/td>\n              <td valign=\"top\" style=\"padding-left:16px;\">\n                <span style=\"display:inline-block;background:#ff3b3b;color:#ffffff;font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:9px;\">● Tek Adet<\/span>\n                <p style=\"margin:0 0 4px;font-size:17px;font-weight:800;color:#15120e;line-height:1.25;letter-spacing:-.01em;\">Canon Powershot ELPH 300 HS<\/p>\n                <p style=\"margin:0 0 13px;font-size:19px;color:#ff3b3b;font-weight:800;\">17.490 ₺<\/p>\n                <a href=\"https://retrocameraland.com/products/canon-powershot-elph-300-hs?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\" class=\"rcl-btn-sm\" style=\"background:#15120e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 22px;border-radius:9px;display:inline-block;\">İncele &rsaquo;<\/a>\n              <\/td><\/tr><\/table><\/td><\/tr><\/table>\n  <table role=\"presentation\" width=\"100%\"><tr><td style=\"text-align:center;padding:20px 0 6px;\">\n    <a href=\"https://retrocameraland.com/collections/dijital-fotograf-makinesi?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\" class=\"rcl-cta\" style=\"background:#1a1a1a;color:#fff;padding:16px 38px;border-radius:10px;text-decoration:none;font-weight:700;font-size:16px;display:inline-block;\">Tüm Koleksiyonu Gör &rsaquo;<\/a>\n  <\/td><\/tr><\/table>\n  <div style=\"margin:34px 0 8px;text-align:center;\">\n      <p style=\"margin:0 0 3px;font-size:15px;font-weight:700;color:#1a1a1a;\">Bizi Instagram'da takip et<\/p>\n      <p style=\"margin:0 0 12px;font-size:13px;color:#999;\">@retrocameraland · 6.961 takipçi<\/p>\n      <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\"><tr><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/reel/DYSX0DmIHwf/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-1.jpg?v=1782611292\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DYu1jKZiNVD/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-2.jpg?v=1782611294\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/p/DZS7i4wCCLW/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-3.jpg?v=1782611296\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><td width=\"25%\" style=\"padding:3px;\"><a href=\"https://www.instagram.com/reel/DYXlpS6IXnV/?utm_source=email&utm_medium=brevo&utm_campaign=20260628-yeni-urunler\">\n          <img src=\"https://cdn.shopify.com/s/files/1/0686/3198/6315/t/6/assets/rcl-ig-4.jpg?v=1782611298\" width=\"124\" alt=\"Instagram gönderisi\" style=\"width:100%;border-radius:8px;display:block;\"><\/a><\/td><\/tr><\/table><\/div>\n  <div style=\"height:1px;background:#e5e0d8;margin:28px 0 0;\"><\/div>\n  <div style=\"text-align:center;margin:26px 0 6px;\"><a href=\"https://www.instagram.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Instagram\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Instagram<\/a><a href=\"https://www.youtube.com/@RetroCameraLand?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Youtube\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">YouTube<\/a><a href=\"https://www.tiktok.com/@retrocameraland?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Tiktok\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">TikTok<\/a><a href=\"https://pinterest.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Pinterest\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">Pinterest<\/a><a href=\"https://www.linkedin.com/company/retro-camera-land/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=linkedin\" style=\"display:inline-block;margin:4px;padding:9px 15px;border:1px solid #ddd;border-radius:20px;text-decoration:none;font-size:12.5px;font-weight:600;color:#555;\">LinkedIn<\/a><\/div>\n  <p style=\"font-size:12.5px;color:#a8a39a;line-height:1.7;margin:14px 0 0;text-align:center;\">\n    Retrocameraland · <a href=\"https://retrocameraland.com\" style=\"color:#a8a39a;\">retrocameraland.com<\/a><br>\n    Bu e-postayı abonemiz olduğun için aldın · <a href=\"mailto:retrocameraland@gmail.com?subject=Abonelikten%20çıkmak%20istiyorum\" style=\"color:#bbb;\">Abonelikten çık<\/a><\/p>\n<\/div><\/body><\/html>"
-  }
+  },
+  "quota": {
+    "limit": 300,
+    "used": 0,
+    "remaining": 300,
+    "pct": 0.0
+  },
+  "suppression": {
+    "blocked": 24,
+    "hard_bounces": 23,
+    "soft_bounces": 12,
+    "unsubscribed": 1,
+    "spam": 0,
+    "sample": [
+      {
+        "email": "seraybihan@gmail.com",
+        "reason": "unsubscribedViaEmail"
+      },
+      {
+        "email": "kubratugcraykun@icloud.com",
+        "reason": "hardBounce"
+      },
+      {
+        "email": "ademyildiz@outlook.com",
+        "reason": "hardBounce"
+      },
+      {
+        "email": "gulsimaakman@gmail.com",
+        "reason": "hardBounce"
+      },
+      {
+        "email": "minelkaplan1390@gmail.com",
+        "reason": "hardBounce"
+      },
+      {
+        "email": "maggiekeburia@gmail.com",
+        "reason": "hardBounce"
+      },
+      {
+        "email": "bilgi@retrocameraland.com",
+        "reason": "hardBounce"
+      },
+      {
+        "email": "cdldlldflk@gmail.com",
+        "reason": "hardBounce"
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "date": "2026-06-20",
+      "requests": 301,
+      "delivered": 273,
+      "opens": 8,
+      "clicks": 1
+    },
+    {
+      "date": "2026-06-21",
+      "requests": 2,
+      "delivered": 2,
+      "opens": 0,
+      "clicks": 0
+    },
+    {
+      "date": "2026-06-22",
+      "requests": 0,
+      "delivered": 0,
+      "opens": 1,
+      "clicks": 0
+    },
+    {
+      "date": "2026-06-23",
+      "requests": 0,
+      "delivered": 0,
+      "opens": 2,
+      "clicks": 0
+    },
+    {
+      "date": "2026-06-24",
+      "requests": 0,
+      "delivered": 0,
+      "opens": 1,
+      "clicks": 0
+    },
+    {
+      "date": "2026-06-25",
+      "requests": 5,
+      "delivered": 2,
+      "opens": 2,
+      "clicks": 2
+    },
+    {
+      "date": "2026-06-26",
+      "requests": 0,
+      "delivered": 0,
+      "opens": 1,
+      "clicks": 0
+    },
+    {
+      "date": "2026-06-27",
+      "requests": 0,
+      "delivered": 0,
+      "opens": 2,
+      "clicks": 0
+    },
+    {
+      "date": "2026-06-28",
+      "requests": 9,
+      "delivered": 7,
+      "opens": 2,
+      "clicks": 1
+    },
+    {
+      "date": "2026-06-29",
+      "requests": 294,
+      "delivered": 288,
+      "opens": 9,
+      "clicks": 1
+    }
+  ],
+  "growth": [
+    {
+      "date": "2026-06-30",
+      "subscribers": 682,
+      "brevo_contacts": 687,
+      "blocked": 24
+    }
+  ],
+  "alerts": [
+    {
+      "level": "critical",
+      "msg": "Geri donme orani cok yuksek (%5.7) — liste temizligi sart."
+    }
+  ]
 };
 /* ─── EMAIL DATA END ─── */
 
@@ -5371,9 +5631,37 @@ function renderEmQueue(){
         detail=it.scheduled_at?('zamanlı '+fmt(it.scheduled_at)):'hemen';
       }
       const prog=bv?`<span class="em-q-prog" title="${bv.sent}/${bv.total}"><i style="width:${bv.total?Math.round(bv.sent/bv.total*100):0}%"></i></span>`:'';
-      return `<div class="em-q"><span class="em-q-status ${m.c}">${m.t}</span><b>${hxEsc(it.theme||'')}</b> <span style="color:var(--t2)">${hxEsc(emSegLbl(it.segment))}</span>${prog}<span style="color:var(--t3)">· ${detail}</span><span class="em-q-meta">${fmt(it.created_at)}</span></div>`;
+      // Henüz gönderilmemiş (zamanlı/sırada) -> düzenle/iptal aksiyonları
+      const editable=(it.status==='scheduled'||it.status==='pending'||it.status==='sending');
+      const acts=editable?`<span class="em-q-acts">
+        <button class="em-q-btn" onclick="emReschedule(${it.id},'${hxEsc(it.theme||'')}')" title="Yeniden zamanla"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2.5"/><path d="M16 2v4M8 2v4M3 10h18M8 15h3"/></svg> Düzenle</button>
+        <button class="em-q-btn em-q-btn-x" onclick="emCancel(${it.id},'${hxEsc(it.theme||'')}')" title="İptal et"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg> İptal</button>
+      </span>`:'';
+      return `<div class="em-q"><span class="em-q-status ${m.c}">${m.t}</span><b>${hxEsc(it.theme||'')}</b> <span style="color:var(--t2)">${hxEsc(emSegLbl(it.segment))}</span>${prog}<span style="color:var(--t3)">· ${detail}</span>${acts}<span class="em-q-meta">${fmt(it.created_at)}</span></div>`;
     }).join('');
   }).catch(()=>{el.innerHTML='<div class="h-item-d" style="padding:8px">Kuyruk yüklenemedi (tablo henüz kurulmamış olabilir).</div>';});
+}
+// ── Planlı kampanya: iptal / yeniden zamanla ──
+function emPostAction(payload, okMsg){
+  const key=localStorage.getItem('rcl_alim_key')||'';
+  if(!key){alert('Yönetici anahtarı gerekli. Time Capsule paneline anahtarınla bir kez giriş yap.');return;}
+  fetch(EM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key,...payload})})
+    .then(r=>r.json()).then(j=>{
+      if(j&&j.ok){alert(okMsg+' ('+(j.count||0)+' parça)');renderEmQueue();}
+      else alert('Hata: '+((j&&j.error)||'bilinmeyen'));
+    }).catch(()=>alert('Bağlanılamadı'));
+}
+function emCancel(id,theme){
+  if(!confirm('İPTAL: "'+theme+'" kampanyasının gönderilmemiş tüm parçaları durdurulacak.\n\nOnaylıyor musun?'))return;
+  emPostAction({action:'cancel',id},'Kampanya iptal edildi');
+}
+function emReschedule(id,theme){
+  const def=new Date(Date.now()+86400000-new Date().getTimezoneOffset()*60000).toISOString().slice(0,16);
+  const v=prompt('"'+theme+'" için yeni tarih/saat (YYYY-MM-DD HH:MM):\n(Çok parçalıysa ilk parça bu tarihte, sonrakiler ardışık günlerde.)', def.replace('T',' '));
+  if(!v)return;
+  const at=new Date(v.replace(' ','T')).toISOString();
+  if(isNaN(Date.parse(at))){alert('Geçersiz tarih');return;}
+  emPostAction({action:'reschedule',id,at},'Yeniden zamanlandı');
 }
 
 function emFmt(n){ n=+n||0; return n>=1000?(n/1000).toFixed(n>=10000?0:1).replace('.0','')+'B':String(n); }
@@ -5492,6 +5780,58 @@ function renderEmail() {
       ]},
       options:{plugins:{legend:{display:true,labels:{color:'rgba(255,255,255,0.6)',boxWidth:12}}},scales:{y:{beginAtZero:true,ticks:{color:'rgba(255,255,255,0.35)'},grid:{color:'rgba(255,255,255,0.05)'}},x:{ticks:{color:'rgba(255,255,255,0.35)'},grid:{display:false}}}}
     });
+  }
+
+  // ── uyarılar ──
+  const ael=document.getElementById('em-alerts');
+  if(ael){
+    const al=EMAIL.alerts||[];
+    const ic={critical:'<path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/>',warn:'<path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/>',ok:'<path d="M20 6 9 17l-5-5"/>'};
+    ael.innerHTML=al.length?al.map(a=>`<div class="em-alert ${a.level}"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2">${ic[a.level]||ic.warn}</svg>${esc(a.msg)}</div>`).join('')
+      :`<div class="em-alert ok"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2">${ic.ok}</svg>Tüm metrikler sağlıklı — geri dönme ve şikayet eşik altında.</div>`;
+  }
+
+  // ── günlük kota ──
+  const qel=document.getElementById('em-quota');
+  if(qel){
+    const q=EMAIL.quota||{limit:300,used:0,remaining:300,pct:0};
+    const col=q.pct>=90?'var(--red)':q.pct>=60?'var(--warn)':'var(--green)';
+    qel.innerHTML=`<div class="q-top"><span>Bugünkü gönderim kotası (devir yok)</span><span><b style="color:${col}">${q.used}</b> / ${q.limit} · ${q.remaining} kaldı</span></div>
+      <div class="q-track"><div class="q-fill" style="width:${Math.min(q.pct,100)}%;background:${col}"></div></div>`;
+  }
+
+  // ── etkileşim trendi (30 gün) ──
+  if(typeof mkChart==='function'){
+    const tl=EMAIL.timeline||[];
+    const lab=tl.map(r=>{const d=new Date(r.date);return isNaN(d)?r.date:d.toLocaleDateString('tr-TR',{day:'numeric',month:'short'});});
+    mkChart('emailTrend',{
+      type:'line',
+      data:{labels:lab,datasets:[
+        {label:'Gönderim',data:tl.map(r=>r.requests),borderColor:'#0A84FF',backgroundColor:'rgba(10,132,255,.08)',fill:true,tension:.35,pointRadius:0,borderWidth:2},
+        {label:'Teslim',data:tl.map(r=>r.delivered),borderColor:'#30D158',fill:false,tension:.35,pointRadius:0,borderWidth:2},
+        {label:'Açılma',data:tl.map(r=>r.opens),borderColor:'#FF9F0A',fill:false,tension:.35,pointRadius:0,borderWidth:2},
+        {label:'Tıklama',data:tl.map(r=>r.clicks),borderColor:'#FF453A',fill:false,tension:.35,pointRadius:0,borderWidth:2}
+      ]},
+      options:{plugins:{legend:{display:true,labels:{color:'rgba(255,255,255,0.55)',boxWidth:10,font:{size:10}}}},scales:{y:{beginAtZero:true,ticks:{color:'rgba(255,255,255,0.3)'},grid:{color:'rgba(255,255,255,0.05)'}},x:{ticks:{color:'rgba(255,255,255,0.3)',maxTicksLimit:8},grid:{display:false}}}}
+    });
+    // liste büyüme
+    const gr=EMAIL.growth||[];
+    const glab=gr.map(r=>{const d=new Date(r.date);return isNaN(d)?r.date:d.toLocaleDateString('tr-TR',{day:'numeric',month:'short'});});
+    mkChart('emailGrowth',{
+      type:'line',
+      data:{labels:glab,datasets:[
+        {label:'Abone',data:gr.map(r=>r.subscribers),borderColor:'#FF453A',backgroundColor:'rgba(255,69,58,.1)',fill:true,tension:.3,pointRadius:0,borderWidth:2}
+      ]},
+      options:{plugins:{legend:{display:false}},scales:{y:{ticks:{color:'rgba(255,255,255,0.3)',maxTicksLimit:4},grid:{color:'rgba(255,255,255,0.05)'}},x:{ticks:{color:'rgba(255,255,255,0.3)',maxTicksLimit:5},grid:{display:false}}}}
+    });
+  }
+
+  // ── bastırma (suppression) ──
+  const sel=document.getElementById('em-supp');
+  if(sel){
+    const sp=EMAIL.suppression||{};
+    const cell=(v,l,c)=>`<div class="sp"><div class="v" style="color:${c}">${v||0}</div><div class="l">${l}</div></div>`;
+    sel.innerHTML=cell(sp.blocked,'Bloklu','var(--red)')+cell(sp.hard_bounces,'Sert Bounce','var(--warn)')+cell(sp.unsubscribed,'Çıkan','var(--t2)')+cell(sp.spam,'Şikayet','var(--purple)');
   }
 }
 
