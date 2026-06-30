@@ -2415,6 +2415,40 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
   </div>
 </div>
 
+<style>
+/* ═══ KAMERA PERFORMANS KARTLARI ═══ */
+.cam-sum{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:14px}
+.cam-sum .cs{background:var(--gold-dim);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:14px 16px}
+.cam-sum .cs .l{font-size:.58rem;color:var(--t3);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:7px}
+.cam-sum .cs .v{font-size:1.5rem;font-weight:800;letter-spacing:-.02em;line-height:1}
+.cam-ctrl{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.cam-segs,.cam-sort{display:flex;gap:6px;flex-wrap:wrap}
+.cam-seg{font-size:.66rem;font-weight:700;padding:6px 12px;border-radius:9px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.03);color:var(--t2);cursor:pointer;transition:all .15s}
+.cam-seg:hover{color:var(--t1)}
+.cam-seg.on{background:var(--red);border-color:var(--red);color:#fff}
+.cam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(208px,1fr));gap:16px}
+.cam-card{background:var(--gold-dim);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:12px;transition:transform .25s cubic-bezier(.22,1,.36,1),border-color .25s;animation:camIn .5s ease both}
+.cam-card:hover{transform:translateY(-4px);border-color:rgba(255,69,58,.4)}
+@keyframes camIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.cam-frame{position:relative;aspect-ratio:4/3;border-radius:11px;overflow:hidden;background:#0c0d12;border:1px solid rgba(255,255,255,.08)}
+.cam-frame img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+.cam-card:hover .cam-frame img{transform:scale(1.06)}
+.cam-frame::before,.cam-frame::after{content:'';position:absolute;width:15px;height:15px;z-index:2;pointer-events:none}
+.cam-frame::before{top:8px;left:8px;border-top:2px solid rgba(255,255,255,.6);border-left:2px solid rgba(255,255,255,.6);border-top-left-radius:3px}
+.cam-frame::after{bottom:8px;right:8px;border-bottom:2px solid rgba(255,255,255,.6);border-right:2px solid rgba(255,255,255,.6);border-bottom-right-radius:3px}
+.cam-rec{position:absolute;top:7px;right:9px;z-index:3;display:flex;align-items:center;gap:4px;font-size:.5rem;font-weight:800;color:#fff;font-family:var(--mono);letter-spacing:.05em;text-shadow:0 1px 3px rgba(0,0,0,.6)}
+.cam-rec i{width:6px;height:6px;border-radius:50%;background:var(--red);box-shadow:0 0 6px var(--red);animation:camrec 1.6s infinite}
+@keyframes camrec{50%{opacity:.25}}
+.cam-stock{position:absolute;bottom:8px;left:8px;z-index:3;font-size:.5rem;font-weight:800;padding:3px 7px;border-radius:6px;text-transform:uppercase;letter-spacing:.03em}
+.cam-stock.in{background:rgba(48,209,88,.92);color:#04210f}
+.cam-stock.out{background:rgba(120,120,130,.85);color:#fff}
+.cam-title{font-size:.78rem;font-weight:700;margin:10px 2px 9px;line-height:1.25;min-height:2.05em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.cam-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.cam-st{text-align:center;background:rgba(255,255,255,.03);border-radius:9px;padding:7px 2px}
+.cam-st .v{font-size:.9rem;font-weight:800;font-variant-numeric:tabular-nums;line-height:1}
+.cam-st .l{font-size:.5rem;color:var(--t3);text-transform:uppercase;letter-spacing:.03em;margin-top:3px;font-weight:700}
+@media(max-width:760px){.cam-sum{grid-template-columns:1fr 1fr}.cam-grid{grid-template-columns:1fr 1fr}}
+</style>
 <!-- ═══════════════════ İSTATİSTİKLER ═══════════════════ -->
 <div class="page" id="page-stats">
   <div class="page-topbar fi">
@@ -2555,6 +2589,25 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- ═══ KAMERA PERFORMANSI (her kameranın gösterim/çıkma/süre + görsel çerçevede) ═══ -->
+  <div class="sec fi" style="transition-delay:.10s">
+    <div class="sec-label">Kamera Performansı <span style="color:var(--t3);font-weight:500;font-size:.7rem">· her kameranın son 30 gün gösterimi · hemen çıkma · oturum süresi</span></div>
+    <div class="cam-sum" id="cam-sum"></div>
+    <div class="cam-ctrl">
+      <div class="cam-segs" id="cam-segs">
+        <button class="cam-seg on" data-f="all" onclick="camSetFilter('all',this)">Tümü</button>
+        <button class="cam-seg" data-f="instock" onclick="camSetFilter('instock',this)">Stokta</button>
+        <button class="cam-seg" data-f="oos" onclick="camSetFilter('oos',this)">Tükendi</button>
+      </div>
+      <div class="cam-sort" id="cam-sort">
+        <button class="cam-seg on" data-s="views" onclick="camSetSort('views',this)">En çok görüntülenen</button>
+        <button class="cam-seg" data-s="bounce" onclick="camSetSort('bounce',this)">En düşük çıkma</button>
+        <button class="cam-seg" data-s="dur" onclick="camSetSort('dur',this)">En uzun süre</button>
+      </div>
+    </div>
+    <div class="cam-grid" id="cam-cards"></div>
   </div>
 
   <!-- Traffic Source Detail Infographic -->
@@ -3736,7 +3789,7 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 144, "at": "2026-06-30T03:54:45" };
+const BUILD = { "no": 145, "at": "2026-06-30T03:58:45" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {
@@ -7297,10 +7350,57 @@ function renderMonthlyProfit() {
 }
 
 // ─── İSTATİSTİKLER SAYFASI ───────────────────────────────
+// ── KAMERA PERFORMANS KARTLARI (SHOPIFY.catalog × GA4_TRAFFIC.products, handle ile) ──
+let camFilter='all', camSort='views';
+function camCsCell(v,l,c){return `<div class="cs"><div class="l">${l}</div><div class="v" style="color:${c}">${v}</div></div>`;}
+function camSetFilter(f,btn){camFilter=f;document.querySelectorAll('#cam-segs .cam-seg').forEach(b=>b.classList.toggle('on',b===btn));renderCameraCards();}
+function camSetSort(s,btn){camSort=s;document.querySelectorAll('#cam-sort .cam-seg').forEach(b=>b.classList.toggle('on',b===btn));renderCameraCards();}
+function renderCameraCards(){
+  const S=(typeof SHOPIFY!=='undefined')?SHOPIFY:{}, G=(typeof GA4_TRAFFIC!=='undefined')?GA4_TRAFFIC:{};
+  const pm=G.products||{};
+  const esc=(typeof hxEsc==='function')?hxEsc:(s=>s);
+  let cams=(S.catalog||[]).filter(c=>c.type==='camera').map(c=>{
+    const m=pm[c.handle]||{};
+    return {...c, views:m.views||0, bounce:(m.bounce!=null?m.bounce:null), dur:m.avg_dur_sec||0, organic:m.organic||0};
+  });
+  // özet şerit
+  const sum=document.getElementById('cam-sum');
+  if(sum){
+    const tv=cams.reduce((a,c)=>a+c.views,0);
+    const wb=cams.filter(c=>c.views>0&&c.bounce!=null);
+    const avgb=wb.length?(wb.reduce((a,c)=>a+c.bounce,0)/wb.length):0;
+    const instock=cams.filter(c=>c.in_stock).length;
+    sum.innerHTML=camCsCell(cams.length,'Kamera (katalog)','var(--t1)')
+      +camCsCell(fmt(tv),'Toplam gösterim · 30g','var(--red)')
+      +camCsCell('%'+avgb.toFixed(1),'Ort. hemen çıkma','var(--warn)')
+      +camCsCell(instock,'Stokta','var(--green)');
+  }
+  if(camFilter==='instock')cams=cams.filter(c=>c.in_stock);
+  else if(camFilter==='oos')cams=cams.filter(c=>!c.in_stock);
+  cams.sort((a,b)=> camSort==='bounce'?((a.bounce==null?999:a.bounce)-(b.bounce==null?999:b.bounce)) : camSort==='dur'?(b.dur-a.dur) : (b.views-a.views));
+  const el=document.getElementById('cam-cards'); if(!el)return;
+  el.innerHTML=cams.map((c,i)=>{
+    const dur=c.dur?Math.floor(c.dur/60)+':'+String(c.dur%60).padStart(2,'0'):'—';
+    const bounce=(c.views>0&&c.bounce!=null)?'%'+c.bounce:'—';
+    const views=c.views?fmt(c.views):'0';
+    const img=c.image?`<img src="${esc(c.image)}" alt="${esc(c.title)}" loading="lazy" referrerpolicy="no-referrer">`:'';
+    return `<div class="cam-card" style="animation-delay:${Math.min(i*25,500)}ms">
+      <div class="cam-frame">${img}<span class="cam-rec"><i></i>REC</span><span class="cam-stock ${c.in_stock?'in':'out'}">${c.in_stock?'Stokta':'Tükendi'}</span></div>
+      <div class="cam-title">${esc(c.title)}</div>
+      <div class="cam-row">
+        <div class="cam-st"><div class="v" style="color:var(--red)">${views}</div><div class="l">Gösterim</div></div>
+        <div class="cam-st"><div class="v" style="color:var(--warn)">${bounce}</div><div class="l">Çıkma</div></div>
+        <div class="cam-st"><div class="v" style="color:var(--blue)">${dur}</div><div class="l">Süre</div></div>
+      </div>
+    </div>`;
+  }).join('')||'<div style="color:var(--t3);padding:24px;text-align:center">Kamera bulunamadı.</div>';
+}
+
 function renderStatsPage() {
   renderGA4Traffic();
   renderBlogSEO();
   if (typeof renderSEOHealthStrip === "function") renderSEOHealthStrip();
+  if (typeof renderCameraCards === "function") renderCameraCards();
   setTimeout(statsEnhanceGA4, 300);
 
   // Şehir dağılımı
