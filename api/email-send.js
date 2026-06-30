@@ -41,20 +41,23 @@ async function fetchBrevoCampaigns() {
 }
 
 // Bir kuyruk satırını Brevo kampanyalarıyla eşle ve gerçek durumu çıkar
-function reconcile(item, camps) {
+// Bir kuyruk satırını Brevo kampanya "parti"siyle eşle -> batch dizisi (cancel/reschedule de kullanır)
+function matchBatch(item, camps) {
   const rowT = Date.parse(item.created_at);
-  // Aynı tema+segment olan kampanyaları, satıra zaman olarak en yakın "parti"ye göre seç
   const same = camps.filter(c => c.parsed.theme === item.theme && c.parsed.segment === (item.segment || 'all'));
-  if (!same.length) return null;
-  // En yakın parti zaman damgasını bul (listener enqueue'dan kısa süre sonra kurar)
+  if (!same.length) return [];
   let bestTs = null, bestDelta = Infinity;
   for (const c of same) {
     const d = Math.abs(c.parsed.t - rowT);
     if (d < bestDelta) { bestDelta = d; bestTs = c.parsed.ts; }
   }
-  // 24 saatten uzak eşleşme şüpheli -> eşleşme yok say
-  if (bestDelta > 24 * 3600 * 1000) return null;
-  const batch = same.filter(c => c.parsed.ts === bestTs);
+  if (bestDelta > 24 * 3600 * 1000) return [];  // 24 saatten uzak eşleşme şüpheli
+  return same.filter(c => c.parsed.ts === bestTs);
+}
+
+function reconcile(item, camps) {
+  const batch = matchBatch(item, camps);
+  if (!batch.length) return null;
   const total = batch.length;
   const sent = batch.filter(c => c.status === 'sent').length;
   const errored = batch.filter(c => c.status === 'suspended' || c.status === 'archive').length;
@@ -123,6 +126,43 @@ export default async function handler(req, res) {
         .update({ status: body.status || 'done', result: body.result || null }).eq('id', body.id);
       if (error) return res.status(500).json({ ok: false, error: error.message });
       return res.status(200).json({ ok: true });
+    }
+    // ── PLANLI KAMPANYAYI İPTAL ET / YENİDEN ZAMANLA (yalnız gönderilmemiş parçalar) ──
+    if (action === 'cancel' || action === 'reschedule') {
+      const { data: item } = await sb.from('email_queue').select('*').eq('id', body.id).maybeSingle();
+      if (!item) return res.status(404).json({ ok: false, error: 'kuyruk ögesi bulunamadı' });
+      const bkey = process.env.BREVO_API_KEY;
+      if (!bkey) return res.status(500).json({ ok: false, error: 'BREVO_API_KEY yok' });
+      const camps = await fetchBrevoCampaigns();
+      if (!camps) return res.status(502).json({ ok: false, error: 'Brevo erişilemedi' });
+      const batch = matchBatch(item, camps);
+      // yalnız henüz gönderilmemiş (zamanlı/sırada/taslak) parçalar düzenlenebilir
+      const editable = batch.filter(c => c.status === 'queued' || c.status === 'inProcess' || c.status === 'draft')
+        .sort((a, b) => (a.parsed.chunk || 0) - (b.parsed.chunk || 0));
+      if (!editable.length) return res.status(409).json({ ok: false, error: 'Düzenlenebilir parça yok (gönderilmiş veya eşleşmedi).' });
+      const bh = { 'api-key': bkey, 'content-type': 'application/json', accept: 'application/json' };
+      const affected = [];
+      if (action === 'cancel') {
+        for (const c of editable) {
+          const r = await fetch(`https://api.brevo.com/v3/emailCampaigns/${c.id}/status`,
+            { method: 'PUT', headers: bh, body: JSON.stringify({ status: 'suspended' }) });
+          affected.push({ id: c.id, ok: r.ok });
+        }
+        await sb.from('email_queue').update({ status: 'canceled' }).eq('id', body.id);
+        return res.status(200).json({ ok: true, action: 'cancel', count: affected.length, affected });
+      }
+      // reschedule: chunk sırasına göre ardışık gün (orijinal _shift_day mantığı)
+      if (!body.at) return res.status(400).json({ ok: false, error: 'tarih (at) gerekli' });
+      const baseT = Date.parse(body.at);
+      if (isNaN(baseT)) return res.status(400).json({ ok: false, error: 'geçersiz tarih' });
+      for (let i = 0; i < editable.length; i++) {
+        const when = new Date(baseT + i * 86400000).toISOString();
+        const r = await fetch(`https://api.brevo.com/v3/emailCampaigns/${editable[i].id}`,
+          { method: 'PUT', headers: bh, body: JSON.stringify({ scheduledAt: when }) });
+        affected.push({ id: editable[i].id, at: when, ok: r.ok });
+      }
+      await sb.from('email_queue').update({ scheduled_at: body.at }).eq('id', body.id);
+      return res.status(200).json({ ok: true, action: 'reschedule', count: affected.length, affected });
     }
     return res.status(400).json({ ok: false, error: 'bilinmeyen action' });
   }
