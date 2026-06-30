@@ -156,7 +156,921 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-06-30T03:42:36",
+  "updated_at": "2026-06-30T03:54:33",
+  "catalog": [
+    {
+      "handle": "agfa-optima-104",
+      "title": "Agfa Optima 104",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/agfa-optima-104-vitrin.jpg?v=1782611833",
+      "in_stock": false,
+      "price": 7990,
+      "type": "camera"
+    },
+    {
+      "handle": "boona-profesyonel-kamera-cantasi-waterproof",
+      "title": "Boona Profesyonel Kamera Çantası 'Waterproof'",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/boona-profesyonel-kamera-cantasi-waterproof-vitrin.jpg?v=1782611839",
+      "in_stock": false,
+      "price": 2690,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-g7x-mark-iii",
+      "title": "Canon G7X Mark III",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-g7x-mark-iii-vitrin.jpg?v=1782611844",
+      "in_stock": false,
+      "price": 54490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-ixus-160",
+      "title": "Canon IXUS 160",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-160-vitrin.jpg?v=1782611848",
+      "in_stock": false,
+      "price": 14490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-ixus-285-hs",
+      "title": "Canon IXUS 285 HS",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-285-hs-vitrin.jpg?v=1782611852",
+      "in_stock": false,
+      "price": 22490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-ixus-i",
+      "title": "Canon IXUS i",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-i-vitrin.jpg?v=1782611856",
+      "in_stock": true,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-ixy-1000",
+      "title": "Canon IXY 1000",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixy-1000-vitrin.jpg?v=1782611860",
+      "in_stock": false,
+      "price": 12490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-ixy-ixus-digital-pc1060",
+      "title": "Canon Ixy IXUS Digital PC1060",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixy-ixus-digital-pc1060-vitrin.jpg?v=1782611864",
+      "in_stock": false,
+      "price": 5490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-powershot-a20-dijital-fotograf-makinesi",
+      "title": "Canon PowerShot A20",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-a20-dijital-fotograf-makinesi-vitrin.jpg?v=1782611868",
+      "in_stock": false,
+      "price": 9490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-powershot-a480",
+      "title": "Canon PowerShot A480",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-a480-vitrin.jpg?v=1782611872",
+      "in_stock": false,
+      "price": 9490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-powershot-elph-300-hs",
+      "title": "Canon Powershot ELPH 300 HS",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-elph-300-hs-vitrin.jpg?v=1782612849",
+      "in_stock": true,
+      "price": 17490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-powershot-g7",
+      "title": "Canon PowerShot G7",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-g7-vitrin.jpg?v=1782611876",
+      "in_stock": false,
+      "price": 16490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-powershot-sd400",
+      "title": "Canon PowerShot SD400",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-sd400-vitrin.jpg?v=1782611880",
+      "in_stock": false,
+      "price": 12490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-powershot-sx160-is",
+      "title": "Canon PowerShot SX160 IS",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-sx160-is-vitrin.jpg?v=1782611885",
+      "in_stock": false,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-powershot-v1",
+      "title": "Canon PowerShot V1",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-v1-vitrin.jpg?v=1782611888",
+      "in_stock": false,
+      "price": 47490,
+      "type": "camera"
+    },
+    {
+      "handle": "canon-powershot-xt1-dijital-fotograf-makinesi",
+      "title": "Canon PowerShot XT1",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-xt1-dijital-fotograf-makinesi-vitrin.jpg?v=1782611893",
+      "in_stock": false,
+      "price": 10900,
+      "type": "camera"
+    },
+    {
+      "handle": "casio-exilim-ex-fr100ct",
+      "title": "Casio Exilim EX-FR100CT",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-fr100ct-vitrin.jpg?v=1782611897",
+      "in_stock": false,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "casio-exilim-ex-h10",
+      "title": "Casio Exilim EX-H10",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-h10-vitrin.jpg?v=1782611900",
+      "in_stock": false,
+      "price": 12490,
+      "type": "camera"
+    },
+    {
+      "handle": "casio-exilim-ex-n10-gold",
+      "title": "Casio Exilim EX-N10 Gold Edition",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-n10-gold-vitrin.jpg?v=1782611905",
+      "in_stock": false,
+      "price": 11990,
+      "type": "camera"
+    },
+    {
+      "handle": "casio-exilim-ex-z110",
+      "title": "Casio Exilim EX-Z110",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z110-vitrin.jpg?v=1782611909",
+      "in_stock": true,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "casio-exilim-ex-z4",
+      "title": "Casio Exilim EX-Z4",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z4-vitrin.jpg?v=1782611913",
+      "in_stock": true,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "casio-exilim-ex-z50",
+      "title": "Casio Exilim EX-Z50",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z50-vitrin.jpg?v=1782611917",
+      "in_stock": false,
+      "price": 12900,
+      "type": "camera"
+    },
+    {
+      "handle": "casio-exilim-ex-z85",
+      "title": "Casio Exilim EX-Z85",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z85-vitrin.jpg?v=1782611922",
+      "in_stock": false,
+      "price": 9490,
+      "type": "camera"
+    },
+    {
+      "handle": "casio-qv-r300",
+      "title": "Casio QV-R300",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-qv-r300-vitrin.jpg?v=1782611926",
+      "in_stock": false,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-1700z-dijital-fotograf-makinesi",
+      "title": "Fujifilm FinePix 1700Z",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-1700z-dijital-fotograf-makinesi-vitrin.jpg?v=1782611930",
+      "in_stock": false,
+      "price": 8490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-4700-zoom",
+      "title": "Fujifilm FinePix 4700 Zoom",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-4700-zoom-vitrin.jpg?v=1782611934",
+      "in_stock": true,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-f80",
+      "title": "Fujifilm FinePix F80",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-f80-vitrin.jpg?v=1782611938",
+      "in_stock": false,
+      "price": 12900,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-t200",
+      "title": "Fujifilm FinePix T200",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-t200-vitrin.jpg?v=1782611942",
+      "in_stock": false,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-v10",
+      "title": "Fujifilm FinePix V10",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-v10-vitrin.jpg?v=1782611946",
+      "in_stock": false,
+      "price": 16490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-xp60-waterproof",
+      "title": "Fujifilm Finepix XP60 ''Waterproof''",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-xp60-waterproof-vitrin.jpg?v=1782611950",
+      "in_stock": false,
+      "price": 8990,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-z10fd",
+      "title": "Fujifilm FinePix Z10FD",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z10fd-vitrin.jpg?v=1782611954",
+      "in_stock": false,
+      "price": 9990,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-z110",
+      "title": "Fujifilm Finepix Z110",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z110-vitrin.jpg?v=1782611958",
+      "in_stock": false,
+      "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-z70",
+      "title": "Fujifilm FinePix Z70",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z70-vitrin.jpg?v=1782611962",
+      "in_stock": false,
+      "price": 13490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-z700-exr",
+      "title": "Fujifilm FinePix Z700 EXR",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z700-exr-vitrin.jpg?v=1782611966",
+      "in_stock": true,
+      "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-z700exr",
+      "title": "Fujifilm FinePix Z700EXR",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z700exr-vitrin.jpg?v=1782612853",
+      "in_stock": true,
+      "price": 14490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-z90",
+      "title": "Fujifilm FinePix Z90",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z90-vitrin.jpg?v=1782611974",
+      "in_stock": false,
+      "price": 18490,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-z90-digicam",
+      "title": "Fujifilm Finepix Z90",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z90-digicam-vitrin.jpg?v=1782611970",
+      "in_stock": false,
+      "price": 16490,
+      "type": "camera"
+    },
+    {
+      "handle": "hd-vlog-kamera",
+      "title": "Generic VLOG Camera HD 1080P",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hd-vlog-kamera-vitrin.jpg?v=1782611978",
+      "in_stock": false,
+      "price": 4490,
+      "type": "camera"
+    },
+    {
+      "handle": "retro-camera-land-hediye-kartlari",
+      "title": "Hediye Kartları",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hediyekart.jpg?v=1750202246",
+      "in_stock": false,
+      "price": 3000,
+      "type": "camera"
+    },
+    {
+      "handle": "hp-photosmart-m525",
+      "title": "HP Photosmart M525",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hp-photosmart-m525-vitrin.jpg?v=1782611982",
+      "in_stock": false,
+      "price": 6490,
+      "type": "camera"
+    },
+    {
+      "handle": "hp-photosmart-r827",
+      "title": "HP Photosmart R827",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hp-photosmart-r827-vitrin.jpg?v=1782611986",
+      "in_stock": true,
+      "price": 8900,
+      "type": "camera"
+    },
+    {
+      "handle": "jvc-gz-e108-full-hd-camcorder",
+      "title": "JVC GZ-E108 Full HD Camcorder",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/jvc-gz-e108-full-hd-camcorder-vitrin.jpg?v=1782611990",
+      "in_stock": false,
+      "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "jvc-gz-mc200e",
+      "title": "JVC GZ-MC200E",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/jvc-gz-mc200e-vitrin.jpg?v=1782611995",
+      "in_stock": false,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "kodak-easyshare-m1063",
+      "title": "Kodak EasyShare M1063",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-m1063-vitrin.jpg?v=1782611999",
+      "in_stock": false,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "kodak-easyshare-v603",
+      "title": "Kodak EasyShare V603",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-v603-vitrin.jpg?v=1782612003",
+      "in_stock": true,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "kodak-easyshare-z950",
+      "title": "Kodak EasyShare Z950",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-z950-vitrin.jpg?v=1782612007",
+      "in_stock": false,
+      "price": 8990,
+      "type": "camera"
+    },
+    {
+      "handle": "kodak-pixpro-fz55-dijital-fotograf-makinesi-siyah",
+      "title": "Kodak Pixpro FZ55",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-pixpro-fz55-dijital-fotograf-makinesi-siyah-vitrin.jpg?v=1782612011",
+      "in_stock": false,
+      "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "kodak-slice-r502",
+      "title": "Kodak Slice R502",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-slice-r502-vitrin.jpg?v=1782612015",
+      "in_stock": true,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "kodak-zx1-weather-resistant",
+      "title": "Kodak ZX1 “Weather-Resistant”",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-zx1-weather-resistant-vitrin.jpg?v=1782612020",
+      "in_stock": true,
+      "price": 4900,
+      "type": "camera"
+    },
+    {
+      "handle": "konica-minolta-dimage-x50-red",
+      "title": "Konica Minolta DiMAGE X50",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/konica-minolta-dimage-x50-red-vitrin.jpg?v=1782612028",
+      "in_stock": false,
+      "price": 12490,
+      "type": "camera"
+    },
+    {
+      "handle": "konica-minolta-dimage-x50-dijital-fotograf-makinesi",
+      "title": "Konica Minolta DiMAGE X50",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/konica-minolta-dimage-x50-dijital-fotograf-makinesi-vitrin.jpg?v=1782612024",
+      "in_stock": false,
+      "price": 10990,
+      "type": "camera"
+    },
+    {
+      "handle": "lumix-dmc-ft10",
+      "title": "Lumix DMC-FT10",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumix-dmc-ft10-vitrin.jpg?v=1782612032",
+      "in_stock": true,
+      "price": 11990,
+      "type": "camera"
+    },
+    {
+      "handle": "lumix-dmc-ft3-waterproof",
+      "title": "Lumix DMC-FT3 ''Waterproof''",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumix-dmc-ft3-waterproof-vitrin.jpg?v=1782612036",
+      "in_stock": false,
+      "price": 8490,
+      "type": "camera"
+    },
+    {
+      "handle": "minton-mdc1506",
+      "title": "Minton MDC1506",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/minton-mdc1506-vitrin.jpg?v=1782612044",
+      "in_stock": false,
+      "price": 3490,
+      "type": "camera"
+    },
+    {
+      "handle": "minton-mdc3000",
+      "title": "Minton MDC3000",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/minton-mdc3000-vitrin.jpg?v=1782612048",
+      "in_stock": false,
+      "price": 3990,
+      "type": "camera"
+    },
+    {
+      "handle": "mvtv-usb-3-0-type-c-sd-kart-okuyucu",
+      "title": "MVTV USB 3.0 + Type-C | SD Kart Okuyucu",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sdkartokuyucu5.jpg?v=1753716865",
+      "in_stock": false,
+      "price": 2290,
+      "type": "accessory"
+    },
+    {
+      "handle": "nikon-coolpix-2500",
+      "title": "Nikon Coolpix 2500",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-2500-vitrin.jpg?v=1782612052",
+      "in_stock": false,
+      "price": 16490,
+      "type": "camera"
+    },
+    {
+      "handle": "nikon-coolpix-885",
+      "title": "Nikon Coolpix 885",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-885-vitrin.jpg?v=1782612056",
+      "in_stock": true,
+      "price": 8900,
+      "type": "camera"
+    },
+    {
+      "handle": "nikon-coolpix-p5100",
+      "title": "Nikon Coolpix P5100",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/snikon1.jpg?v=1757813691",
+      "in_stock": false,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "nikon-coolpix-s100",
+      "title": "Nikon Coolpix S100",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s100-vitrin.jpg?v=1782612060",
+      "in_stock": false,
+      "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "nikon-coolpix-s3200",
+      "title": "Nikon Coolpix S3100",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s3200-vitrin.jpg?v=1782612064",
+      "in_stock": false,
+      "price": 9490,
+      "type": "camera"
+    },
+    {
+      "handle": "nikon-coolpix-s4000",
+      "title": "Nikon Coolpix S4000",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s4000-vitrin.jpg?v=1782612068",
+      "in_stock": false,
+      "price": 7990,
+      "type": "camera"
+    },
+    {
+      "handle": "nikon-coolpix-s52c",
+      "title": "Nikon Coolpix S52c",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s52c-vitrin.jpg?v=1782612072",
+      "in_stock": false,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "nikon-coolpix-s60",
+      "title": "Nikon Coolpix S60",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s60-vitrin.jpg?v=1782612076",
+      "in_stock": false,
+      "price": 13490,
+      "type": "camera"
+    },
+    {
+      "handle": "nikon-coolpix-s9",
+      "title": "Nikon Coolpix S9",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s9-vitrin.jpg?v=1782612080",
+      "in_stock": false,
+      "price": 6990,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-pen-e-pl1-25mm",
+      "title": "Olympus PEN E-PL1",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-pen-e-pl1-25mm-vitrin.jpg?v=1782612857",
+      "in_stock": true,
+      "price": 18490,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-sp-320",
+      "title": "Olympus SP-320",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sp-320-vitrin.jpg?v=1782612085",
+      "in_stock": true,
+      "price": 9490,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-sp-700",
+      "title": "Olympus SP-700",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sp-700-vitrin.jpg?v=1782612088",
+      "in_stock": true,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-stylus-790-sw",
+      "title": "Olympus Stylus 790 SW",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-stylus-790-sw-vitrin.jpg?v=1782612092",
+      "in_stock": false,
+      "price": 9490,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-sz-10",
+      "title": "Olympus SZ-10",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sz-10-vitrin.jpg?v=1782612097",
+      "in_stock": false,
+      "price": 9490,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-sz-14",
+      "title": "Olympus SZ-14",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sz-14-vitrin.jpg?v=1782612101",
+      "in_stock": false,
+      "price": 9990,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-tough-tg-820",
+      "title": "Olympus Tough TG-820 Waterproof",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-tough-tg-820-vitrin.jpg?v=1782612106",
+      "in_stock": false,
+      "price": 13490,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-vg-110",
+      "title": "Olympus VG-110",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-110-vitrin.jpg?v=1782612110",
+      "in_stock": false,
+      "price": 9990,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-vg-130",
+      "title": "Olympus VG-130",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-130-vitrin.jpg?v=1782612114",
+      "in_stock": false,
+      "price": 13490,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-vr-310",
+      "title": "Olympus VR-310",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-310-vitrin.jpg?v=1782612118",
+      "in_stock": false,
+      "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "olympus-vr-340",
+      "title": "Olympus VR-340",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-340-vitrin.jpg?v=1782612122",
+      "in_stock": true,
+      "price": 17990,
+      "type": "camera"
+    },
+    {
+      "handle": "panasonic-dmc-ls70",
+      "title": "Panasonic DMC LS70",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-dmc-ls70-vitrin.jpg?v=1782612126",
+      "in_stock": true,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "panasonic-lumix-dc-tz91",
+      "title": "Panasonic Lumix DC-TZ91",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dc-tz91-vitrin.jpg?v=1782612130",
+      "in_stock": true,
+      "price": 28490,
+      "type": "camera"
+    },
+    {
+      "handle": "panasonic-lumix-dc-tz99",
+      "title": "Panasonic LUMIX DC-TZ99",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dc-tz99-vitrin.jpg?v=1782612134",
+      "in_stock": false,
+      "price": 37990,
+      "type": "camera"
+    },
+    {
+      "handle": "panasonic-lumix-dmc-fx10",
+      "title": "Panasonic Lumix DMC FX10",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-fx10-vitrin.jpg?v=1782612143",
+      "in_stock": false,
+      "price": 11900,
+      "type": "camera"
+    },
+    {
+      "handle": "panasonic-lumix-dmc-f3",
+      "title": "Panasonic Lumix DMC-F3",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-f3-vitrin.jpg?v=1782612139",
+      "in_stock": false,
+      "price": 13490,
+      "type": "camera"
+    },
+    {
+      "handle": "panasonic-lumix-dmc-ls75",
+      "title": "Panasonic Lumix DMC-LS75",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-ls75-vitrin.jpg?v=1782612147",
+      "in_stock": false,
+      "price": 9990,
+      "type": "camera"
+    },
+    {
+      "handle": "panasonic-lumix-dmc-lz7",
+      "title": "Panasonic Lumix DMC-LZ7",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-lz7-vitrin.jpg?v=1782612151",
+      "in_stock": false,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "pentax-optio-s7",
+      "title": "Pentax Optio S7",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/pentax-optio-s7-vitrin.jpg?v=1782612155",
+      "in_stock": false,
+      "price": 7990,
+      "type": "camera"
+    },
+    {
+      "handle": "polaroid-i634",
+      "title": "Polaroid i634",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/polaroid-i634-vitrin.jpg?v=1782612159",
+      "in_stock": false,
+      "price": 6990,
+      "type": "camera"
+    },
+    {
+      "handle": "premier-ds5090s-digital-camera",
+      "title": "Premier DS5090S",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/premier-ds5090s-digital-camera-vitrin.jpg?v=1782612163",
+      "in_stock": false,
+      "price": 3990,
+      "type": "camera"
+    },
+    {
+      "handle": "retro-kamera-desenli-bez-canta",
+      "title": "Retro Kamera Desenli Bez Çanta",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/retro-kamera-desenli-bez-canta-vitrin.jpg?v=1782612167",
+      "in_stock": false,
+      "price": 799,
+      "type": "camera"
+    },
+    {
+      "handle": "rollei-flexline-140",
+      "title": "Rollei Flexline 140",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/rollei-flexline-140-vitrin.jpg?v=1782612171",
+      "in_stock": false,
+      "price": 10940,
+      "type": "camera"
+    },
+    {
+      "handle": "samsung-es65",
+      "title": "Samsung ES65",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-es65-vitrin.jpg?v=1782612175",
+      "in_stock": false,
+      "price": 9990,
+      "type": "camera"
+    },
+    {
+      "handle": "samsung-nx2000",
+      "title": "Samsung NX2000",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-nx2000-vitrin.jpg?v=1782612861",
+      "in_stock": true,
+      "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "sandisk-8gb-sdhc-class4-hafiza-karti",
+      "title": "SanDisk 8GB SDHC Class4 Hafıza Kartı",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sandisk-8gb-sdhc-class4-hafiza-karti-vitrin.jpg?v=1782612179",
+      "in_stock": false,
+      "price": 699,
+      "type": "camera"
+    },
+    {
+      "handle": "sanyo-xacti-cg-10",
+      "title": "Sanyo Xacti CG-10",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg-10-vitrin.jpg?v=1782612183",
+      "in_stock": false,
+      "price": 8490,
+      "type": "camera"
+    },
+    {
+      "handle": "sanyo-xacti-cg100-ex",
+      "title": "Sanyo Xacti CG100 EX",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg100-ex-vitrin.jpg?v=1782612186",
+      "in_stock": false,
+      "price": 9490,
+      "type": "camera"
+    },
+    {
+      "handle": "sanyo-xacti-cg20",
+      "title": "Sanyo Xacti CG20",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg20-vitrin.jpg?v=1782612865",
+      "in_stock": true,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "sanyo-xacti-vpc-e6ex",
+      "title": "Sanyo Xacti VPC-E6EX",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-e6ex-vitrin.jpg?v=1782612190",
+      "in_stock": false,
+      "price": 8490,
+      "type": "camera"
+    },
+    {
+      "handle": "sanyo-xacti-vpc-hd1",
+      "title": "Sanyo Xacti VPC-HD1",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-hd1-vitrin.jpg?v=1782612194",
+      "in_stock": true,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cyber-shot-dsc-t500",
+      "title": "Sony Cyber-shot DSC-T500",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t500-vitrin.jpg?v=1782612198",
+      "in_stock": false,
+      "price": 11490,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cyber-shot-dsc-t70",
+      "title": "Sony Cyber-shot DSC-T70",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t70-vitrin.jpg?v=1782612203",
+      "in_stock": false,
+      "price": 14490,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cyber-shot-dsc-t9",
+      "title": "Sony Cyber-shot DSC-T9",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t9-vitrin.jpg?v=1782612207",
+      "in_stock": false,
+      "price": 12490,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cyber-shot-dsc-tx9",
+      "title": "Sony Cyber-shot DSC-TX9",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-tx9-vitrin.jpg?v=1782612211",
+      "in_stock": false,
+      "price": 14490,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cyber-shot-dsc-w110",
+      "title": "Sony Cyber-shot DSC-W110",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-w110-vitrin.jpg?v=1782612215",
+      "in_stock": false,
+      "price": 10490,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cybershot-dsc-s600",
+      "title": "Sony Cybershot DSC-S600",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s600-vitrin.jpg?v=1782612219",
+      "in_stock": false,
+      "price": 8990,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cybershot-dsc-s85",
+      "title": "Sony Cybershot DSC-S85",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s85-vitrin.jpg?v=1782612223",
+      "in_stock": true,
+      "price": 7990,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cybershot-dsc-t20",
+      "title": "Sony Cybershot DSC-T20",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t20-vitrin.jpg?v=1782612869",
+      "in_stock": true,
+      "price": 16490,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cybershot-dsc-t300",
+      "title": "Sony Cybershot DSC-T300",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t300-vitrin.jpg?v=1782612227",
+      "in_stock": true,
+      "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cybershot-dsc-w150",
+      "title": "Sony Cybershot DSC-W150",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w150-vitrin.jpg?v=1782611664",
+      "in_stock": true,
+      "price": 13490,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-cybershot-dsc-w200",
+      "title": "Sony Cybershot DSC-W200",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w200-vitrin.jpg?v=1782612232",
+      "in_stock": false,
+      "price": 12900,
+      "type": "camera"
+    },
+    {
+      "handle": "sony-x200-camcoder",
+      "title": "Sony VLOG Camcoder",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Untitled-2_0015_ONN01435.jpg?v=1757178676",
+      "in_stock": false,
+      "price": 3900,
+      "type": "camera"
+    },
+    {
+      "handle": "traveler-dc-830",
+      "title": "Traveler DC-830",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/traveler-dc-830-vitrin.jpg?v=1782612236",
+      "in_stock": true,
+      "price": 8490,
+      "type": "camera"
+    },
+    {
+      "handle": "microsd-sd-kart-okuyucu-yuksek-hizli-tasinabilir-kart-okuma-adaptoru",
+      "title": "Type-C ve USB 2.0 SD-MicroSD TF Kart Okuyucu",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/microsd-sd-kart-okuyucu-yuksek-hizli-tasinabilir-kart-okuma-adaptoru-vitrin.jpg?v=1782612039",
+      "in_stock": true,
+      "price": 1490,
+      "type": "accessory"
+    },
+    {
+      "handle": "ulanzi-vlog-tripod",
+      "title": "Ulanzi VLOG Tripod",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Ulanzi_MT-17_1.jpg?v=1753713768",
+      "in_stock": true,
+      "price": 990,
+      "type": "accessory"
+    },
+    {
+      "handle": "universal-kamera-batarya-sarj-cihaz",
+      "title": "Universal Kamera Batarya Şarj Cihazı",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/akrepsarj.jpg?v=1757005458",
+      "in_stock": true,
+      "price": 590,
+      "type": "accessory"
+    },
+    {
+      "handle": "usb-c-3-in-1-kart-okuyucu-sd-microsd",
+      "title": "USB-C 3'ü 1 Arada Kart Okuyucu — SD / MicroSD / USB",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sd_kart_okuyucu.jpg?v=1775047519",
+      "in_stock": true,
+      "price": 690,
+      "type": "accessory"
+    },
+    {
+      "handle": "y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu",
+      "title": "Y2K Digicam Fotoğraf/Video Aktarıcı - xD, CF, SD, MS Destekli All-in-One Kart Okuyucu",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu-vitrin.jpg?v=1782612240",
+      "in_stock": true,
+      "price": 790,
+      "type": "accessory"
+    }
+  ],
   "period_30d": {
     "revenue": 90629,
     "orders": 7,
