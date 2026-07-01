@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-02T00:20:44",
+  "updated_at": "2026-07-02T01:20:49",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -93,10 +93,37 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 921,
+      "views": 922,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
+    },
+    {
+      "id": "2r7TMYA4kTw",
+      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
+      "date": "22 May 2026",
+      "views": 451,
+      "likes": 5,
+      "comments": 1,
+      "url": "https://youtu.be/2r7TMYA4kTw"
+    },
+    {
+      "id": "GULk4atiPqo",
+      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
+      "date": "17 May 2026",
+      "views": 735,
+      "likes": 8,
+      "comments": 1,
+      "url": "https://youtu.be/GULk4atiPqo"
+    },
+    {
+      "id": "4mX8PsRNBOs",
+      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
+      "date": "15 May 2026",
+      "views": 2543,
+      "likes": 36,
+      "comments": 1,
+      "url": "https://youtu.be/4mX8PsRNBOs"
     },
     {
       "id": "TvPGsbRhSmQ",
@@ -111,37 +138,10 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1783,
+      "views": 1784,
       "likes": 28,
       "comments": 1,
       "url": "https://youtu.be/LHg76IQG7aw"
-    },
-    {
-      "id": "-Ig3lgUcm8c",
-      "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
-      "date": "8 May 2026",
-      "views": 2398,
-      "likes": 46,
-      "comments": 6,
-      "url": "https://youtu.be/-Ig3lgUcm8c"
-    },
-    {
-      "id": "VnLTp2ufa6A",
-      "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
-      "date": "7 May 2026",
-      "views": 2018,
-      "likes": 33,
-      "comments": 1,
-      "url": "https://youtu.be/VnLTp2ufa6A"
-    },
-    {
-      "id": "yIrL45HroS8",
-      "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
-      "date": "6 May 2026",
-      "views": 1620,
-      "likes": 11,
-      "comments": 0,
-      "url": "https://youtu.be/yIrL45HroS8"
     }
   ],
   "sub_goal": 10000
