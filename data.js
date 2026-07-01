@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-01T23:20:36",
+  "updated_at": "2026-07-02T00:20:44",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 60710,
-      "watch_hours": 133.7,
-      "subs_gained": 64,
-      "subs_lost": 29,
+      "views": 58956,
+      "watch_hours": 129.2,
+      "subs_gained": 61,
+      "subs_lost": 28,
       "avg_view_sec": 16
     },
-    "watch_hours_year": 3346.2,
-    "watch_hours_year_long": 1785.3,
-    "watch_hours_year_shorts": 1560.9,
+    "watch_hours_year": 3344.5,
+    "watch_hours_year_long": 1784.5,
+    "watch_hours_year_shorts": 1560.0,
     "monthly": [
       {
         "label": "Şub 26",
@@ -66,7 +66,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 508,
+      "views": 511,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -75,7 +75,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1808,
+      "views": 1810,
       "likes": 19,
       "comments": 2,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -84,7 +84,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 195,
+      "views": 197,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -99,37 +99,10 @@ const YOUTUBE = {
       "url": "https://youtu.be/HnGR92gHNDY"
     },
     {
-      "id": "2r7TMYA4kTw",
-      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
-      "date": "22 May 2026",
-      "views": 450,
-      "likes": 5,
-      "comments": 1,
-      "url": "https://youtu.be/2r7TMYA4kTw"
-    },
-    {
-      "id": "GULk4atiPqo",
-      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
-      "date": "17 May 2026",
-      "views": 734,
-      "likes": 8,
-      "comments": 1,
-      "url": "https://youtu.be/GULk4atiPqo"
-    },
-    {
-      "id": "4mX8PsRNBOs",
-      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
-      "date": "15 May 2026",
-      "views": 2541,
-      "likes": 36,
-      "comments": 1,
-      "url": "https://youtu.be/4mX8PsRNBOs"
-    },
-    {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 3039,
+      "views": 3043,
       "likes": 45,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -138,10 +111,37 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1780,
+      "views": 1783,
       "likes": 28,
       "comments": 1,
       "url": "https://youtu.be/LHg76IQG7aw"
+    },
+    {
+      "id": "-Ig3lgUcm8c",
+      "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
+      "date": "8 May 2026",
+      "views": 2398,
+      "likes": 46,
+      "comments": 6,
+      "url": "https://youtu.be/-Ig3lgUcm8c"
+    },
+    {
+      "id": "VnLTp2ufa6A",
+      "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
+      "date": "7 May 2026",
+      "views": 2018,
+      "likes": 33,
+      "comments": 1,
+      "url": "https://youtu.be/VnLTp2ufa6A"
+    },
+    {
+      "id": "yIrL45HroS8",
+      "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
+      "date": "6 May 2026",
+      "views": 1620,
+      "likes": 11,
+      "comments": 0,
+      "url": "https://youtu.be/yIrL45HroS8"
     }
   ],
   "sub_goal": 10000
