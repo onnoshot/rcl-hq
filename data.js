@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-02T02:20:54",
+  "updated_at": "2026-07-02T03:20:59",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "obdMfiigTY4",
       "title": "Panasonic Lumix TZ91 | 30x ZOOM | Leica Lens!?",
       "date": "29 Haz 2026",
-      "views": 159,
+      "views": 162,
       "likes": 2,
       "comments": 0,
       "url": "https://youtu.be/obdMfiigTY4"
@@ -66,7 +66,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 511,
+      "views": 562,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -84,7 +84,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 197,
+      "views": 199,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -93,7 +93,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 922,
+      "views": 923,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -138,8 +138,8 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1785,
-      "likes": 29,
+      "views": 1782,
+      "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/LHg76IQG7aw"
     }
