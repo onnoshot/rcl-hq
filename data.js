@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-02T05:21:10",
+  "updated_at": "2026-07-02T06:21:19",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "obdMfiigTY4",
       "title": "Panasonic Lumix TZ91 | 30x ZOOM | Leica Lens!?",
       "date": "29 Haz 2026",
-      "views": 162,
+      "views": 163,
       "likes": 2,
       "comments": 0,
       "url": "https://youtu.be/obdMfiigTY4"
@@ -66,7 +66,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 574,
+      "views": 661,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -93,7 +93,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 924,
+      "views": 925,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -102,7 +102,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 459,
+      "views": 460,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -138,7 +138,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1782,
+      "views": 1784,
       "likes": 30,
       "comments": 1,
       "url": "https://youtu.be/LHg76IQG7aw"
