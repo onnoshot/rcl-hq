@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-03T14:04:59",
+  "updated_at": "2026-07-06T15:46:17",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -242,7 +242,7 @@ const SHOPIFY = {
       "handle": "canon-powershot-elph-300-hs",
       "title": "Canon Powershot ELPH 300 HS",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-elph-300-hs-vitrin.jpg?v=1782612849",
-      "in_stock": true,
+      "in_stock": false,
       "price": 17490,
       "type": "camera"
     },
@@ -986,7 +986,7 @@ const SHOPIFY = {
       "handle": "sony-cybershot-dsc-t20",
       "title": "Sony Cybershot DSC-T20",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t20-vitrin.jpg?v=1782612869",
-      "in_stock": true,
+      "in_stock": false,
       "price": 16490,
       "type": "camera"
     },
@@ -1072,21 +1072,21 @@ const SHOPIFY = {
     }
   ],
   "period_30d": {
-    "revenue": 79639,
-    "orders": 6,
-    "aov": 13273
+    "revenue": 98769,
+    "orders": 7,
+    "aov": 14110
   },
   "period_90d": {
-    "revenue": 272379,
-    "orders": 23,
-    "aov": 11843
+    "revenue": 307999,
+    "orders": 25,
+    "aov": 12320
   },
   "period_year": {
-    "revenue": 920064,
-    "orders": 77,
-    "aov": 11949
+    "revenue": 955684,
+    "orders": 79,
+    "aov": 12097
   },
-  "customers_total": 896,
+  "customers_total": 907,
   "monthly_labels": [
     "Ağu 25",
     "Eyl 25",
@@ -1113,7 +1113,7 @@ const SHOPIFY = {
     65320,
     139290,
     79639,
-    0
+    35620
   ],
   "monthly_orders": [
     6,
@@ -1127,17 +1127,17 @@ const SHOPIFY = {
     6,
     12,
     6,
-    0
+    2
   ],
   "channels": [
     {
       "name": "Direkt",
       "icon": "🔗",
       "color": "#F5A623",
-      "orders": 31,
-      "rev": 407050,
-      "order_pct": 40.3,
-      "rev_pct": 44.2
+      "orders": 32,
+      "rev": 424690,
+      "order_pct": 40.5,
+      "rev_pct": 44.4
     },
     {
       "name": "Google",
@@ -1145,8 +1145,8 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 24,
       "rev": 261025,
-      "order_pct": 31.2,
-      "rev_pct": 28.4
+      "order_pct": 30.4,
+      "rev_pct": 27.3
     },
     {
       "name": "Instagram",
@@ -1154,17 +1154,17 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 20,
       "rev": 232759,
-      "order_pct": 26.0,
-      "rev_pct": 25.3
+      "order_pct": 25.3,
+      "rev_pct": 24.4
     },
     {
       "name": "YouTube",
       "icon": "▶",
       "color": "#FF453A",
-      "orders": 1,
-      "rev": 9990,
-      "order_pct": 1.3,
-      "rev_pct": 1.1
+      "orders": 2,
+      "rev": 27970,
+      "order_pct": 2.5,
+      "rev_pct": 2.9
     },
     {
       "name": "AI / Arama",
@@ -1177,6 +1177,14 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "5 Tem 2026",
+      "amount": 17980
+    },
+    {
+      "date": "3 Tem 2026",
+      "amount": 17640
+    },
     {
       "date": "19 Haz 2026",
       "amount": 12490
@@ -1208,14 +1216,6 @@ const SHOPIFY = {
     {
       "date": "21 May 2026",
       "amount": 11240
-    },
-    {
-      "date": "21 May 2026",
-      "amount": 0
-    },
-    {
-      "date": "20 May 2026",
-      "amount": 9490
     }
   ],
   "cameras": [
@@ -1232,16 +1232,6 @@ const SHOPIFY = {
     {
       "name": "Olympus VR-340",
       "price": 17990,
-      "cost": 7000
-    },
-    {
-      "name": "Canon Powershot ELPH 300 HS",
-      "price": 17490,
-      "cost": 10000
-    },
-    {
-      "name": "Sony Cybershot DSC-T20",
-      "price": 16490,
       "cost": 7000
     },
     {
@@ -1359,7 +1349,7 @@ const SHOPIFY = {
     {
       "name": "Type-C ve USB 2.0 SD-MicroSD TF Kart Okuyucu",
       "price": 1490,
-      "qty": 3
+      "qty": 2
     },
     {
       "name": "USB-C 3'ü 1 Arada Kart Okuyucu — SD / MicroSD / USB",
@@ -1382,7 +1372,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 91
+  "out_of_stock": 93
 };
 /* ─── SHOPIFY DATA END ─── */
 
