@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-07T00:01:36",
+  "updated_at": "2026-07-07T01:01:41",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 1287,
+      "views": 1290,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1858,
+      "views": 1859,
       "likes": 19,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 477,
+      "views": 478,
       "likes": 5,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 756,
+      "views": 758,
       "likes": 8,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -144,8 +144,8 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2643,
-      "likes": 62,
+      "views": 2650,
+      "likes": 60,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
     }
