@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-08T19:58:41",
+  "updated_at": "2026-07-08T20:41:50",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -135,8 +135,8 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 2035,
-      "likes": 55,
+      "views": 2032,
+      "likes": 56,
       "comments": 3,
       "url": "https://youtu.be/LHg76IQG7aw"
     },
