@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-08T14:58:15",
+  "updated_at": "2026-07-08T15:58:20",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4140,
+    "subscribers": 4150,
     "total_views": 1247521,
     "video_count": 387
   },
@@ -96,6 +96,33 @@ const YOUTUBE = {
       "url": "https://youtu.be/HnGR92gHNDY"
     },
     {
+      "id": "2r7TMYA4kTw",
+      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
+      "date": "22 May 2026",
+      "views": 485,
+      "likes": 6,
+      "comments": 1,
+      "url": "https://youtu.be/2r7TMYA4kTw"
+    },
+    {
+      "id": "GULk4atiPqo",
+      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
+      "date": "17 May 2026",
+      "views": 765,
+      "likes": 8,
+      "comments": 1,
+      "url": "https://youtu.be/GULk4atiPqo"
+    },
+    {
+      "id": "4mX8PsRNBOs",
+      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
+      "date": "15 May 2026",
+      "views": 2573,
+      "likes": 36,
+      "comments": 1,
+      "url": "https://youtu.be/4mX8PsRNBOs"
+    },
+    {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
@@ -117,37 +144,10 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2792,
-      "likes": 62,
+      "views": 2799,
+      "likes": 66,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
-    },
-    {
-      "id": "VnLTp2ufa6A",
-      "title": "Canon IXUS (2001) Muhteşem Fotoğraflar 📸",
-      "date": "7 May 2026",
-      "views": 2031,
-      "likes": 33,
-      "comments": 1,
-      "url": "https://youtu.be/VnLTp2ufa6A"
-    },
-    {
-      "id": "yIrL45HroS8",
-      "title": "Canon IXUS (2001) Küçük Retro  ile Vapur Turu 📸",
-      "date": "6 May 2026",
-      "views": 1631,
-      "likes": 11,
-      "comments": 0,
-      "url": "https://youtu.be/yIrL45HroS8"
-    },
-    {
-      "id": "3qQFPZtOHf0",
-      "title": "VAPURDA CANIN SIKILIRSA… Kameranla Anlar Yakala 📸 #dijitalka",
-      "date": "30 Nis 2026",
-      "views": 9510,
-      "likes": 105,
-      "comments": 0,
-      "url": "https://youtu.be/3qQFPZtOHf0"
     }
   ],
   "sub_goal": 10000
