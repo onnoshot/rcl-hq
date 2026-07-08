@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-07T15:37:24",
+  "updated_at": "2026-07-08T13:58:09",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4130,
-    "total_views": 1245089,
+    "subscribers": 4140,
+    "total_views": 1247521,
     "video_count": 387
   },
   "analytics": {
     "last_30d": {
-      "views": 61211,
-      "watch_hours": 154.7,
-      "subs_gained": 140,
-      "subs_lost": 69,
+      "views": 61245,
+      "watch_hours": 155.8,
+      "subs_gained": 155,
+      "subs_lost": 76,
       "avg_view_sec": 19
     },
-    "watch_hours_year": 3333.8,
-    "watch_hours_year_long": 1772.4,
-    "watch_hours_year_shorts": 1561.3,
+    "watch_hours_year": 3339.9,
+    "watch_hours_year_long": 1775.3,
+    "watch_hours_year_shorts": 1564.7,
     "monthly": [
       {
         "label": "Şub 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 10263,
-        "watch_min": 2155,
-        "subs_gained": 77
+        "views": 12902,
+        "watch_min": 2575,
+        "subs_gained": 96
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 1449,
+      "views": 1645,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1862,
+      "views": 1868,
       "likes": 19,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 231,
+      "views": 240,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 955,
+      "views": 962,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -99,8 +99,8 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 481,
-      "likes": 5,
+      "views": 485,
+      "likes": 6,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
     },
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 758,
+      "views": 765,
       "likes": 8,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2566,
+      "views": 2573,
       "likes": 36,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 3067,
+      "views": 3072,
       "likes": 45,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -135,8 +135,8 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 1964,
-      "likes": 50,
+      "views": 2013,
+      "likes": 52,
       "comments": 3,
       "url": "https://youtu.be/LHg76IQG7aw"
     },
@@ -144,8 +144,8 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 2675,
-      "likes": 57,
+      "views": 2788,
+      "likes": 60,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
     }
