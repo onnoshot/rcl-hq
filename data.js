@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-09T03:59:41",
+  "updated_at": "2026-07-09T10:36:17",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -618,7 +618,7 @@ const SHOPIFY = {
       "handle": "nikon-coolpix-885",
       "title": "Nikon Coolpix 885",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-885-vitrin.jpg?v=1782612056",
-      "in_stock": true,
+      "in_stock": false,
       "price": 8900,
       "type": "camera"
     },
@@ -1072,19 +1072,19 @@ const SHOPIFY = {
     }
   ],
   "period_30d": {
-    "revenue": 58639,
-    "orders": 5,
-    "aov": 11728
+    "revenue": 67689,
+    "orders": 6,
+    "aov": 11282
   },
   "period_90d": {
-    "revenue": 307999,
-    "orders": 25,
-    "aov": 12320
+    "revenue": 317049,
+    "orders": 26,
+    "aov": 12194
   },
   "period_year": {
-    "revenue": 955684,
-    "orders": 79,
-    "aov": 12097
+    "revenue": 964734,
+    "orders": 80,
+    "aov": 12059
   },
   "customers_total": 913,
   "monthly_labels": [
@@ -1113,7 +1113,7 @@ const SHOPIFY = {
     65320,
     139290,
     79639,
-    35620
+    44670
   ],
   "monthly_orders": [
     6,
@@ -1127,7 +1127,7 @@ const SHOPIFY = {
     6,
     12,
     6,
-    2
+    3
   ],
   "channels": [
     {
@@ -1136,17 +1136,17 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 32,
       "rev": 424690,
-      "order_pct": 40.5,
-      "rev_pct": 44.4
+      "order_pct": 40.0,
+      "rev_pct": 44.0
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 24,
-      "rev": 261025,
-      "order_pct": 30.4,
-      "rev_pct": 27.3
+      "orders": 25,
+      "rev": 270075,
+      "order_pct": 31.2,
+      "rev_pct": 28.0
     },
     {
       "name": "Instagram",
@@ -1154,8 +1154,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 20,
       "rev": 232759,
-      "order_pct": 25.3,
-      "rev_pct": 24.4
+      "order_pct": 25.0,
+      "rev_pct": 24.1
     },
     {
       "name": "YouTube",
@@ -1172,11 +1172,15 @@ const SHOPIFY = {
       "color": "#5AC8FA",
       "orders": 1,
       "rev": 9240,
-      "order_pct": 1.3,
+      "order_pct": 1.2,
       "rev_pct": 1.0
     }
   ],
   "recent_orders": [
+    {
+      "date": "9 Tem 2026",
+      "amount": 9050
+    },
     {
       "date": "5 Tem 2026",
       "amount": 17980
@@ -1212,10 +1216,6 @@ const SHOPIFY = {
     {
       "date": "31 May 2026",
       "amount": 10990
-    },
-    {
-      "date": "21 May 2026",
-      "amount": 11240
     }
   ],
   "cameras": [
@@ -1325,11 +1325,6 @@ const SHOPIFY = {
       "cost": 3500
     },
     {
-      "name": "Nikon Coolpix 885",
-      "price": 8900,
-      "cost": 3500
-    },
-    {
       "name": "Traveler DC-830",
       "price": 8490,
       "cost": 3100
@@ -1372,7 +1367,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 93
+  "out_of_stock": 94
 };
 /* ─── SHOPIFY DATA END ─── */
 
