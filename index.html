@@ -1581,6 +1581,53 @@ footer{border-top:1px solid rgba(255,255,255,0.04);padding:22px 0 0;font-size:0.
 </head>
 <body>
 
+<div id="rcl-lock-gate" style="position:fixed;inset:0;z-index:999999;background:#0a0a0c;display:flex;align-items:center;justify-content:center;padding:24px;">
+  <div style="width:100%;max-width:340px;text-align:center;">
+    <div style="font-size:1.3rem;font-weight:800;color:#ff4d2e;margin-bottom:6px;letter-spacing:-.02em;">RCL HQ</div>
+    <div style="font-size:.82rem;color:rgba(255,255,255,.5);margin-bottom:22px;">Devam etmek için şifre girin</div>
+    <form id="rcl-lock-form" onsubmit="return window.RCL_LOCK.submit(event)" autocomplete="off">
+      <input id="rcl-lock-input" type="password" placeholder="Şifre" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
+        style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:12px;color:#fff;font-size:1rem;padding:14px 16px;outline:none;text-align:center;">
+      <div id="rcl-lock-err" style="color:#ff4d4d;font-size:.76rem;margin-top:10px;min-height:1em;"></div>
+      <button type="submit" style="margin-top:14px;width:100%;background:linear-gradient(180deg,#ff5a3c,#e31f1f);border:none;border-radius:12px;color:#fff;font-weight:700;font-size:.92rem;padding:13px;cursor:pointer;">Giriş</button>
+    </form>
+  </div>
+</div>
+<script>
+(function(){
+  var PASS='Enaz8karakter?';
+  var STORE_KEY='rcl_hq_unlocked';
+  function unlock(){
+    var g=document.getElementById('rcl-lock-gate'); if(g) g.remove();
+    document.documentElement.style.overflow='';
+  }
+  var already=false;
+  try{ already = localStorage.getItem(STORE_KEY)==='1'; }catch(e){}
+  if(already){ unlock(); }
+  else{
+    document.documentElement.style.overflow='hidden';
+    window.RCL_LOCK={
+      submit:function(ev){
+        if(ev) ev.preventDefault();
+        var inp=document.getElementById('rcl-lock-input');
+        var v=inp?inp.value:'';
+        if(v===PASS){
+          try{ localStorage.setItem(STORE_KEY,'1'); }catch(e){}
+          unlock();
+        } else {
+          var e=document.getElementById('rcl-lock-err'); if(e) e.textContent='Yanlış şifre';
+          if(inp){ inp.value=''; inp.focus(); }
+        }
+        return false;
+      }
+    };
+    document.addEventListener('DOMContentLoaded', function(){
+      var inp=document.getElementById('rcl-lock-input'); if(inp) inp.focus();
+    });
+  }
+})();
+</script>
+
 <div class="orb orb1"></div><div class="orb orb2"></div>
 
 <style>
@@ -3732,7 +3779,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 394, "at": "2026-07-11T02:21:46" };
+const BUILD = { "no": 395, "at": "2026-07-11T02:39:33" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {};  /* Hermes kaldirildi - global referans hatasi olmasin diye bos stub */
