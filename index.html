@@ -3402,7 +3402,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
   <div class="sec fi" style="transition-delay:.17s">
     <div class="card tcard">
       <div class="thead"><span class="ttitle">Kampanyalar</span><span class="tsub" id="em-camps-sub"></span></div>
-      <table><thead><tr><th>Tarih</th><th>Kampanya</th><th>Durum</th><th>Gönderilen</th><th>Teslim</th><th>Açılma</th><th>Tıklama</th><th>Kod</th></tr></thead><tbody id="emailBody"></tbody></table>
+      <div class="table-scroll"><table><thead><tr><th>Tarih</th><th>Kampanya</th><th>Durum</th><th>Gönderilen</th><th>Teslim</th><th>Açılma</th><th>Tıklama</th><th>Kod</th></tr></thead><tbody id="emailBody"></tbody></table></div>
     </div>
   </div>
 
@@ -3732,7 +3732,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 393, "at": "2026-07-11T02:20:02" };
+const BUILD = { "no": 394, "at": "2026-07-11T02:21:46" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {};  /* Hermes kaldirildi - global referans hatasi olmasin diye bos stub */
@@ -10664,14 +10664,25 @@ function finAnimateKPIs() {
       tg.setAttribute('aria-expanded', open?'true':'false');
     });
   }
+  function showLocked(){
+    var msg='<div class="alim-empty">Erişim anahtarı gerekli. <button type="button" class="alim-fbtn" onclick="window.BUL_unlock()">Anahtarı Gir</button></div>';
+    ['bul-donuts','bul-trend','bul-ranks','bul-bars','bul-list'].forEach(function(id){
+      var el=document.getElementById(id); if(el) el.innerHTML=msg;
+    });
+    ['bul-k-total','bul-k-uniq','bul-k-match','bul-k-aprice','bul-k-satisf','bul-k-email'].forEach(function(id){
+      var el=document.getElementById(id); if(el) el.textContent='🔒';
+    });
+  }
+  window.BUL_unlock=function(){
+    var k=prompt('HQ erişim anahtarı (RCL_ALIM_KEY):');
+    if(k){ setKey(k); loadBul(true); }
+  };
   function loadBul(force){
     var list=document.getElementById('bul-list');
     if(list && (!window.BUL.loaded||force)) list.innerHTML='<div class="alim-empty">Yükleniyor…</div>';
     fetch(ENDPOINT,{ headers:hdr(), cache:'no-store' }).then(function(r){
       if(r.status===401){
-        var k=prompt('HQ erişim anahtarı (RCL_ALIM_KEY):');
-        if(k){ setKey(k); return loadBul(true); }
-        if(list) list.innerHTML='<div class="alim-empty">Erişim anahtarı gerekli.</div>';
+        showLocked();
         return null;
       }
       if(r.status===404){
