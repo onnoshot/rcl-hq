@@ -19,13 +19,13 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/hesabim/community/profil/(.*)",  "destination": "/api/community/page?type=profil&seg=$1" },
-    { "source": "/api/hesabim/community/foto/(.*)",    "destination": "/api/community/page?type=foto&seg=$1" },
-    { "source": "/api/hesabim/community/yarisma/(.*)", "destination": "/api/community/page?type=yarisma&seg=$1" },
-    { "source": "/api/hesabim/community/(.*)",         "destination": "/api/community/$1" },
-    { "source": "/api/community/profil/(.*)",  "destination": "/api/community/page?type=profil&seg=$1" },
-    { "source": "/api/community/foto/(.*)",    "destination": "/api/community/page?type=foto&seg=$1" },
-    { "source": "/api/community/yarisma/(.*)", "destination": "/api/community/page?type=yarisma&seg=$1" }
+    { "source": "/api/community/stats", "destination": "/api/community/index?action=stats" },
+    { "source": "/api/community/sync", "destination": "/api/community/index?action=sync" },
+    { "source": "/api/community/(admin[a-z-]*)", "destination": "/api/community/index?action=$1" },
+    { "source": "/api/hesabim/community/(.*)", "destination": "/api/community/index?action=$1" }
+  ],
+  "crons": [
+    { "path": "/api/community/sync", "schedule": "0 6 * * *" }
   ],
   "functions": {
     "api/chat.js": {
@@ -34,7 +34,7 @@
     "api/shopify-publish.js": {
       "maxDuration": 15
     },
-    "api/community/upload.js": {
+    "api/community/index.js": {
       "maxDuration": 30
     }
   }
