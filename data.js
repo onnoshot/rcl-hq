@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-10T18:48:31",
+  "updated_at": "2026-07-10T19:48:36",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4170,
+    "subscribers": 4160,
     "total_views": 1253003,
     "video_count": 387
   },
@@ -16,9 +16,9 @@ const YOUTUBE = {
       "subs_lost": 92,
       "avg_view_sec": 20
     },
-    "watch_hours_year": 3349.6,
-    "watch_hours_year_long": 1786.5,
-    "watch_hours_year_shorts": 1563.1,
+    "watch_hours_year": 3349.5,
+    "watch_hours_year_long": 1786.4,
+    "watch_hours_year_shorts": 1563.0,
     "monthly": [
       {
         "label": "Şub 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 1935,
+      "views": 1938,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2591,
+      "views": 2592,
       "likes": 37,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
@@ -144,8 +144,8 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 3155,
-      "likes": 83,
+      "views": 3179,
+      "likes": 82,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
     }
