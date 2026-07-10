@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-10T23:19:45",
+  "updated_at": "2026-07-10T23:59:48",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -911,6 +911,14 @@ const SHOPIFY = {
       "type": "camera"
     },
     {
+      "handle": "sanyo-xacti-vpc-c5",
+      "title": "Sanyo Xacti VPC-C5",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/anyo_xaxti_c5.jpg?v=1783716653",
+      "in_stock": true,
+      "price": 13490,
+      "type": "camera"
+    },
+    {
       "handle": "sanyo-xacti-vpc-e6ex",
       "title": "Sanyo Xacti VPC-E6EX",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-e6ex-vitrin.jpg?v=1782612190",
@@ -1253,6 +1261,11 @@ const SHOPIFY = {
       "name": "Fujifilm FinePix Z700EXR",
       "price": 14490,
       "cost": 7000
+    },
+    {
+      "name": "Sanyo Xacti VPC-C5",
+      "price": 13490,
+      "cost": 2500
     },
     {
       "name": "Sony Cybershot DSC-W150",
