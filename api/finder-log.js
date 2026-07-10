@@ -66,10 +66,29 @@ async function saveRecord(rec) {
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') { cors(res); return res.status(204).end(); }
 
-  // ---- POST: yeni test tamamlama (public) ----
+  // ---- POST: yeni test tamamlama (public) VEYA mevcut kaydi guncelleme (begen/begenme, e-posta) ----
   if (req.method === 'POST') {
     let b;
     try { b = await readJson(req); } catch (e) { return send(res, 400, { error: 'Gecersiz istek' }); }
+
+    // ---- UPDATE: sonuc ekranindaki begen/begenmedim veya e-posta opt-in, ayni teste islenir ----
+    if (b.id && !b.name) {
+      const fid = s(b.id, 40);
+      if (!fid) return send(res, 400, { error: 'Eksik alan: id' });
+      try {
+        const path = PREFIX + fid + '.json';
+        const r = await list({ prefix: path, limit: 1 });
+        const blob = r.blobs.find((x) => x.pathname === path);
+        if (!blob) return send(res, 404, { error: 'Kayit bulunamadi' });
+        const existing = await (await fetch(bust(blob.url), { cache: 'no-store' })).json();
+        if (b.feedback === 'like' || b.feedback === 'dislike') existing.feedback = b.feedback;
+        if (b.email) existing.email = s(b.email, 120);
+        existing.updatedAt = new Date().toISOString();
+        await saveRecord(existing);
+        return send(res, 200, { ok: true });
+      } catch (e) { return send(res, 500, { error: 'Guncellenemedi: ' + (e.message || e) }); }
+    }
+
     if (!b.name || !String(b.name).trim()) return send(res, 400, { error: 'Eksik alan: name' });
 
     const id = makeId();
@@ -87,15 +106,15 @@ export default async function handler(req, res) {
       gender: s(b.gender, 30),
       city: s(b.city, 60),
       // cevap secimleri (her soru icin secilen etiketler - coklu secim)
-      // YENI sema: use, budget, aes, env, level, occasion (reklam hedefleme sinyalleri)
+      // sema: use, budget, aes, level (4 soru); env/occasion/size/pers eski surumlerden geriye-donuk
       answers: {
         use: arr(b.use, 5),
-        budget: arr(b.budget, 3),
-        aes: arr(b.aes, 5),
-        env: arr(b.env, 4),
+        budget: arr(b.budget, 4),
+        aes: arr(b.aes, 3),
         level: arr(b.level, 3),
-        occasion: arr(b.occasion, 3),
         // geriye donuk uyumluluk (eski testler)
+        env: arr(b.env, 4),
+        occasion: arr(b.occasion, 3),
         size: arr(b.size, 3),
         pers: arr(b.pers, 5),
       },
@@ -103,6 +122,9 @@ export default async function handler(req, res) {
       top_brand: s(b.top_brand, 60),
       top_price: Number(b.top_price) || 0,
       recommended: recs,
+      // sonuc ekranindaki begen/begenmedim + "haber ver" e-posta opt-in (sonradan logUpdate ile islenir)
+      feedback: '',
+      email: '',
       source: s(b.source, 60), page: s(b.page, 160),
       ua: s(req.headers['user-agent'], 200),
     };
