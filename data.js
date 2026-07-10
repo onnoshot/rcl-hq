@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-11T00:19:16",
+  "updated_at": "2026-07-11T01:19:21",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4170,
+    "subscribers": 4160,
     "total_views": 1254276,
     "video_count": 388
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 226,
+      "views": 238,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 979,
+      "views": 981,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "TvPGsbRhSmQ",
       "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
       "date": "14 May 2026",
-      "views": 3100,
+      "views": 3102,
       "likes": 47,
       "comments": 0,
       "url": "https://youtu.be/TvPGsbRhSmQ"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 2343,
+      "views": 2342,
       "likes": 68,
       "comments": 3,
       "url": "https://youtu.be/LHg76IQG7aw"
