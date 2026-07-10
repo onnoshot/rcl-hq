@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-10T22:19:06",
+  "updated_at": "2026-07-10T23:19:11",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 1938,
+      "views": 1941,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1891,
+      "views": 1892,
       "likes": 19,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -135,8 +135,8 @@ const YOUTUBE = {
       "id": "LHg76IQG7aw",
       "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
       "date": "13 May 2026",
-      "views": 2329,
-      "likes": 69,
+      "views": 2335,
+      "likes": 68,
       "comments": 3,
       "url": "https://youtu.be/LHg76IQG7aw"
     },
@@ -144,8 +144,8 @@ const YOUTUBE = {
       "id": "-Ig3lgUcm8c",
       "title": "TÜRKİYE’NİN EN BÜYÜK SAVAŞ GEMİSİ L400 | RETRO FOTOĞRAFLAR 🇹",
       "date": "8 May 2026",
-      "views": 3201,
-      "likes": 85,
+      "views": 3208,
+      "likes": 83,
       "comments": 6,
       "url": "https://youtu.be/-Ig3lgUcm8c"
     }
