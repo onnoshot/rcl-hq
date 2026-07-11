@@ -1,16 +1,16 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-11T18:34:40",
+  "updated_at": "2026-07-11T21:36:10",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4170,
     "total_views": 1257191,
-    "video_count": 389
+    "video_count": 390
   },
   "analytics": {
     "last_30d": {
-      "views": 63779,
+      "views": 63693,
       "watch_hours": 168.6,
       "subs_gained": 198,
       "subs_lost": 98,
@@ -60,11 +60,20 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "fiWC7WOtCtk",
+      "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
+      "date": "11 Tem 2026",
+      "views": 38,
+      "likes": 0,
+      "comments": 0,
+      "url": "https://youtu.be/fiWC7WOtCtk"
+    },
+    {
       "id": "mIkwWsed8Fg",
       "title": "Canon Powershot Dijital Kamera ile Vapurda Fotoğraf Çekimi #",
       "date": "11 Tem 2026",
-      "views": 1910,
-      "likes": 2,
+      "views": 1971,
+      "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/mIkwWsed8Fg"
     },
@@ -72,7 +81,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 312,
+      "views": 316,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -81,7 +90,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 2106,
+      "views": 2108,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -90,7 +99,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 2399,
+      "views": 2401,
       "likes": 19,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -117,7 +126,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 512,
+      "views": 513,
       "likes": 7,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -135,19 +144,10 @@ const YOUTUBE = {
       "id": "4mX8PsRNBOs",
       "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
       "date": "15 May 2026",
-      "views": 2604,
+      "views": 2605,
       "likes": 37,
       "comments": 1,
       "url": "https://youtu.be/4mX8PsRNBOs"
-    },
-    {
-      "id": "TvPGsbRhSmQ",
-      "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
-      "date": "14 May 2026",
-      "views": 3109,
-      "likes": 47,
-      "comments": 0,
-      "url": "https://youtu.be/TvPGsbRhSmQ"
     }
   ],
   "sub_goal": 10000
