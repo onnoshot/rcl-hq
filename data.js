@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-11T22:36:14",
+  "updated_at": "2026-07-12T01:41:35",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 66594,
-      "watch_hours": 178.4,
-      "subs_gained": 212,
-      "subs_lost": 108,
+      "views": 64773,
+      "watch_hours": 174.5,
+      "subs_gained": 208,
+      "subs_lost": 107,
       "avg_view_sec": 20
     },
-    "watch_hours_year": 3357.9,
-    "watch_hours_year_long": 1794.6,
-    "watch_hours_year_shorts": 1563.3,
+    "watch_hours_year": 3356.1,
+    "watch_hours_year_long": 1794.5,
+    "watch_hours_year_shorts": 1561.6,
     "monthly": [
       {
         "label": "Şub 26",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 72,
-      "likes": 1,
+      "views": 372,
+      "likes": 2,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "mIkwWsed8Fg",
       "title": "Canon Powershot Dijital Kamera ile Vapurda Fotoğraf Çekimi #",
       "date": "11 Tem 2026",
-      "views": 1974,
+      "views": 2006,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/mIkwWsed8Fg"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 317,
+      "views": 320,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 2112,
+      "views": 2118,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 2401,
+      "views": 2446,
       "likes": 19,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
