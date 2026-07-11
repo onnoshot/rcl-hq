@@ -3243,12 +3243,13 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 .em-htile::before{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--em-sheen);pointer-events:none;}
 .em-htile:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.18);box-shadow:0 1px 0 rgba(255,255,255,.15) inset,0 22px 48px -20px rgba(0,0,0,.7);}
 .em-htile:nth-child(1){animation-delay:.04s}.em-htile:nth-child(2){animation-delay:.11s}.em-htile:nth-child(3){animation-delay:.18s}.em-htile:nth-child(4){animation-delay:.25s}
-.ht-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px;}
+.ht-top{display:flex;align-items:center;margin-bottom:15px;}
 .ht-ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);flex-shrink:0;}
 .ht-ic svg{width:17px;height:17px;stroke:currentColor;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
-.ht-bench{display:inline-flex;align-items:center;gap:4px;font-size:.56rem;font-weight:800;padding:3px 8px;border-radius:100px;letter-spacing:.02em;}
+/* referans "Tasko" kart köşesindeki yüzen rozet stili — mutlak konum, hafif gölge */
+.ht-bench{position:absolute;top:16px;right:16px;display:inline-flex;align-items:center;gap:4px;font-size:.56rem;font-weight:800;padding:4px 9px;border-radius:100px;letter-spacing:.02em;box-shadow:0 6px 14px -6px rgba(0,0,0,.5);}
 .ht-bench svg{width:10px;height:10px;stroke-width:2.6;fill:none;}
-.ht-bench.good{background:rgba(48,209,88,.14);color:var(--green);}.ht-bench.watch{background:rgba(255,159,10,.14);color:var(--warn);}.ht-bench.bad{background:rgba(255,69,58,.14);color:var(--red);}
+.ht-bench.good{background:rgba(48,209,88,.92);color:#04150a;}.ht-bench.watch{background:rgba(255,159,10,.92);color:#1a1000;}.ht-bench.bad{background:rgba(255,69,58,.92);color:#1a0402;}
 .ht-val{font-size:2.15rem;font-weight:800;letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums;}
 .ht-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.11em;color:var(--t3);font-weight:700;margin-top:9px;}
 .ht-sub{font-size:.62rem;color:var(--t2);margin-top:4px;}
@@ -3785,7 +3786,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 397, "at": "2026-07-11T03:19:30" };
+const BUILD = { "no": 398, "at": "2026-07-11T03:20:04" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {};  /* Hermes kaldirildi - global referans hatasi olmasin diye bos stub */
