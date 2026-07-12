@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-13T01:48:13",
+  "updated_at": "2026-07-13T02:48:17",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 514,
+      "views": 517,
       "likes": 7,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
