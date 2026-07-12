@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-12T23:48:12",
+  "updated_at": "2026-07-13T00:48:08",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 67807,
-      "watch_hours": 183.6,
-      "subs_gained": 233,
-      "subs_lost": 121,
+      "views": 65644,
+      "watch_hours": 179.0,
+      "subs_gained": 232,
+      "subs_lost": 115,
       "avg_view_sec": 20
     },
-    "watch_hours_year": 3365.2,
+    "watch_hours_year": 3361.0,
     "watch_hours_year_long": 1799.3,
-    "watch_hours_year_shorts": 1565.9,
+    "watch_hours_year_shorts": 1561.7,
     "monthly": [
       {
         "label": "Şub 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 167,
+      "views": 166,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 604,
-      "likes": 5,
+      "views": 631,
+      "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
     },
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "mIkwWsed8Fg",
       "title": "Canon Powershot Dijital Kamera ile Vapurda Fotoğraf Çekimi #",
       "date": "11 Tem 2026",
-      "views": 2098,
+      "views": 2127,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/mIkwWsed8Fg"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 3199,
+      "views": 3218,
       "likes": 20,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 273,
+      "views": 274,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 997,
+      "views": 998,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 799,
+      "views": 800,
       "likes": 9,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
