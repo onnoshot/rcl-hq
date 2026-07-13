@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-14T00:34:44",
+  "updated_at": "2026-07-14T01:34:50",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -639,6 +639,14 @@ const SHOPIFY = {
       "type": "camera"
     },
     {
+      "handle": "nikon-coolpix-s3000",
+      "title": "Nikon Coolpix S3000",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon_coolpix_s3000.jpg?v=1783981455",
+      "in_stock": true,
+      "price": 17490,
+      "type": "camera"
+    },
+    {
       "handle": "nikon-coolpix-s3200",
       "title": "Nikon Coolpix S3100",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s3200-vitrin.jpg?v=1782612064",
@@ -876,6 +884,14 @@ const SHOPIFY = {
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-nx2000-vitrin.jpg?v=1782612861",
       "in_stock": true,
       "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "samsung-wb350f",
+      "title": "Samsung WB350F",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/SAMSUNG_WB350F.jpg?v=1783981777",
+      "in_stock": true,
+      "price": 19490,
       "type": "camera"
     },
     {
@@ -1233,6 +1249,11 @@ const SHOPIFY = {
       "cost": 17000
     },
     {
+      "name": "Samsung WB350F",
+      "price": 19490,
+      "cost": 6000
+    },
+    {
       "name": "Olympus PEN E-PL1",
       "price": 18490,
       "cost": 4500
@@ -1241,6 +1262,11 @@ const SHOPIFY = {
       "name": "Olympus VR-340",
       "price": 17990,
       "cost": 7000
+    },
+    {
+      "name": "Nikon Coolpix S3000",
+      "price": 17490,
+      "cost": 6000
     },
     {
       "name": "Fujifilm FinePix Z700 EXR",
