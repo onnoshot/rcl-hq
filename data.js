@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-13T23:34:18",
+  "updated_at": "2026-07-14T00:34:23",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 71981,
-      "watch_hours": 190.7,
-      "subs_gained": 260,
-      "subs_lost": 131,
+      "views": 69796,
+      "watch_hours": 186.0,
+      "subs_gained": 258,
+      "subs_lost": 129,
       "avg_view_sec": 20
     },
-    "watch_hours_year": 3372.7,
+    "watch_hours_year": 3369.3,
     "watch_hours_year_long": 1802.5,
-    "watch_hours_year_shorts": 1570.1,
+    "watch_hours_year_shorts": 1566.8,
     "monthly": [
       {
         "label": "Şub 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 227,
+      "views": 230,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1133,
-      "likes": 12,
+      "views": 1138,
+      "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
     },
@@ -81,8 +81,8 @@ const YOUTUBE = {
       "id": "mIkwWsed8Fg",
       "title": "Canon Powershot Dijital Kamera ile Vapurda Fotoğraf Çekimi #",
       "date": "11 Tem 2026",
-      "views": 2276,
-      "likes": 7,
+      "views": 2288,
+      "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/mIkwWsed8Fg"
     },
@@ -90,8 +90,8 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 354,
-      "likes": 4,
+      "views": 355,
+      "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
     },
@@ -99,55 +99,55 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 2435,
+      "views": 2436,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
     },
     {
-      "id": "8XWAJXORa9c",
-      "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
-      "date": "20 Haz 2026",
-      "views": 3993,
-      "likes": 20,
+      "id": "dFixvsNLQ_k",
+      "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
+      "date": "29 Nis 2026",
+      "views": 442,
+      "likes": 25,
       "comments": 4,
-      "url": "https://youtu.be/8XWAJXORa9c"
+      "url": "https://youtu.be/dFixvsNLQ_k"
     },
     {
-      "id": "lh4DVJUz1QY",
-      "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
-      "date": "12 Haz 2026",
-      "views": 279,
-      "likes": 3,
+      "id": "bY4UWZ-wEwY",
+      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
+      "date": "26 Nis 2026",
+      "views": 1081,
+      "likes": 10,
       "comments": 0,
-      "url": "https://youtu.be/lh4DVJUz1QY"
+      "url": "https://youtu.be/bY4UWZ-wEwY"
     },
     {
-      "id": "HnGR92gHNDY",
-      "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
-      "date": "4 Haz 2026",
-      "views": 1005,
-      "likes": 14,
+      "id": "8oUm3q_y6rQ",
+      "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
+      "date": "18 Nis 2026",
+      "views": 27646,
+      "likes": 144,
+      "comments": 2,
+      "url": "https://youtu.be/8oUm3q_y6rQ"
+    },
+    {
+      "id": "u_2gTtXlJ4g",
+      "title": "Udaipur'un Ruhu: Y2K Dijital Kamera Günlüğü | Canon PowerSho",
+      "date": "26 Mar 2026",
+      "views": 115,
+      "likes": 5,
+      "comments": 1,
+      "url": "https://youtu.be/u_2gTtXlJ4g"
+    },
+    {
+      "id": "TFYAi9S9wTo",
+      "title": "Canon Ixus 160 Dijital Fotoğraf Makinesi 📸 Stoklar yenilendi",
+      "date": "25 Mar 2026",
+      "views": 15091,
+      "likes": 8,
       "comments": 0,
-      "url": "https://youtu.be/HnGR92gHNDY"
-    },
-    {
-      "id": "2r7TMYA4kTw",
-      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
-      "date": "22 May 2026",
-      "views": 521,
-      "likes": 7,
-      "comments": 1,
-      "url": "https://youtu.be/2r7TMYA4kTw"
-    },
-    {
-      "id": "GULk4atiPqo",
-      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
-      "date": "17 May 2026",
-      "views": 805,
-      "likes": 9,
-      "comments": 1,
-      "url": "https://youtu.be/GULk4atiPqo"
+      "url": "https://youtu.be/TFYAi9S9wTo"
     }
   ],
   "sub_goal": 10000
