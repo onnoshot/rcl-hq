@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-14T01:34:50",
+  "updated_at": "2026-07-14T02:34:55",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -641,7 +641,7 @@ const SHOPIFY = {
     {
       "handle": "nikon-coolpix-s3000",
       "title": "Nikon Coolpix S3000",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon_coolpix_s3000.jpg?v=1783981455",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon_coolpix_s3000_950b04ba-0fdb-443d-9dfd-11e4ab479f8b.jpg?v=1783982585",
       "in_stock": true,
       "price": 17490,
       "type": "camera"
@@ -929,7 +929,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-vpc-c5",
       "title": "Sanyo Xacti VPC-C5",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/anyo_xaxti_c5.jpg?v=1783716653",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo_xacti_c5.jpg?v=1783982194",
       "in_stock": true,
       "price": 13490,
       "type": "camera"
