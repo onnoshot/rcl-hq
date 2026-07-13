@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-13T18:33:54",
+  "updated_at": "2026-07-13T19:33:59",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4190,
-    "total_views": 1267960,
+    "total_views": 1266148,
     "video_count": 391
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 216,
+      "views": 220,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 736,
-      "likes": 8,
+      "views": 750,
+      "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
     },
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "mIkwWsed8Fg",
       "title": "Canon Powershot Dijital Kamera ile Vapurda Fotoğraf Çekimi #",
       "date": "11 Tem 2026",
-      "views": 2240,
+      "views": 2257,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/mIkwWsed8Fg"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 352,
+      "views": 354,
       "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 3764,
+      "views": 3773,
       "likes": 20,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
