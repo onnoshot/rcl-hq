@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-13T22:34:13",
+  "updated_at": "2026-07-13T23:34:18",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 222,
+      "views": 227,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1067,
+      "views": 1133,
       "likes": 12,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 3888,
+      "views": 3993,
       "likes": 20,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
