@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-13T19:33:59",
+  "updated_at": "2026-07-13T20:34:03",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4190,
-    "total_views": 1266148,
+    "total_views": 1267960,
     "video_count": 391
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 220,
+      "views": 222,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 750,
-      "likes": 9,
+      "views": 842,
+      "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
     },
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 354,
+      "views": 352,
       "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 3773,
+      "views": 3888,
       "likes": 20,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 1004,
+      "views": 1005,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -141,13 +141,13 @@ const YOUTUBE = {
       "url": "https://youtu.be/2r7TMYA4kTw"
     },
     {
-      "id": "GULk4atiPqo",
-      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
-      "date": "17 May 2026",
-      "views": 805,
-      "likes": 9,
+      "id": "4mX8PsRNBOs",
+      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
+      "date": "15 May 2026",
+      "views": 2612,
+      "likes": 37,
       "comments": 1,
-      "url": "https://youtu.be/GULk4atiPqo"
+      "url": "https://youtu.be/4mX8PsRNBOs"
     }
   ],
   "sub_goal": 10000
