@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-14T03:34:38",
+  "updated_at": "2026-07-14T04:34:42",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 235,
+      "views": 230,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1138,
+      "views": 1149,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "mIkwWsed8Fg",
       "title": "Canon Powershot Dijital Kamera ile Vapurda Fotoğraf Çekimi #",
       "date": "11 Tem 2026",
-      "views": 2302,
+      "views": 2309,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/mIkwWsed8Fg"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 2440,
+      "views": 2481,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 4199,
+      "views": 4183,
       "likes": 20,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 281,
+      "views": 280,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
