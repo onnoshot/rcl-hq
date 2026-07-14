@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-14T23:22:28",
+  "updated_at": "2026-07-15T00:22:32",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 74209,
-      "watch_hours": 198.7,
-      "subs_gained": 275,
+      "views": 72160,
+      "watch_hours": 194.6,
+      "subs_gained": 274,
       "subs_lost": 141,
-      "avg_view_sec": 20
+      "avg_view_sec": 21
     },
-    "watch_hours_year": 3382.0,
-    "watch_hours_year_long": 1808.7,
-    "watch_hours_year_shorts": 1573.3,
+    "watch_hours_year": 3381.3,
+    "watch_hours_year_long": 1808.6,
+    "watch_hours_year_shorts": 1572.7,
     "monthly": [
       {
         "label": "Şub 26",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1161,
+      "views": 1164,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
