@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-14T04:34:42",
+  "updated_at": "2026-07-14T05:34:47",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 230,
+      "views": 235,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "mIkwWsed8Fg",
       "title": "Canon Powershot Dijital Kamera ile Vapurda Fotoğraf Çekimi #",
       "date": "11 Tem 2026",
-      "views": 2309,
+      "views": 2304,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/mIkwWsed8Fg"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 280,
+      "views": 281,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
