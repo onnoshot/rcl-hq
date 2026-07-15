@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-15T21:12:04",
+  "updated_at": "2026-07-15T22:12:09",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 72160,
-      "watch_hours": 194.6,
-      "subs_gained": 274,
-      "subs_lost": 141,
+      "views": 76250,
+      "watch_hours": 204.9,
+      "subs_gained": 296,
+      "subs_lost": 151,
       "avg_view_sec": 21
     },
-    "watch_hours_year": 3381.3,
-    "watch_hours_year_long": 1808.6,
-    "watch_hours_year_shorts": 1572.7,
+    "watch_hours_year": 3391.8,
+    "watch_hours_year_long": 1812.6,
+    "watch_hours_year_shorts": 1579.2,
     "monthly": [
       {
         "label": "Şub 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 37506,
-        "watch_min": 6703,
-        "subs_gained": 229
+        "views": 41596,
+        "watch_min": 7327,
+        "subs_gained": 251
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 852,
+      "views": 904,
       "likes": 12,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 272,
+      "views": 266,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1180,
+      "views": 1177,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 374,
+      "views": 378,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 2686,
+      "views": 2689,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 5621,
+      "views": 5595,
       "likes": 22,
       "comments": 4,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 1011,
+      "views": 1018,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 524,
+      "views": 528,
       "likes": 7,
       "comments": 1,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 811,
+      "views": 812,
       "likes": 9,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
