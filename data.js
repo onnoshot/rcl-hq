@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-15T19:12:54",
+  "updated_at": "2026-07-15T20:13:00",
   "catalog": [
     {
       "handle": "agfa-optima-104",
