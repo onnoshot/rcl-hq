@@ -1,16 +1,16 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-16T01:29:51",
+  "updated_at": "2026-07-16T02:29:56",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4210,
+    "subscribers": 4220,
     "total_views": 1275515,
     "video_count": 392
   },
   "analytics": {
     "last_30d": {
-      "views": 74321,
+      "views": 74414,
       "watch_hours": 201.1,
       "subs_gained": 295,
       "subs_lost": 151,
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 273,
+      "views": 278,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -108,16 +108,16 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 5745,
+      "views": 5937,
       "likes": 22,
-      "comments": 4,
+      "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
     },
     {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 290,
+      "views": 292,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
@@ -135,9 +135,9 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 530,
+      "views": 532,
       "likes": 7,
-      "comments": 1,
+      "comments": 2,
       "url": "https://youtu.be/2r7TMYA4kTw"
     },
     {
