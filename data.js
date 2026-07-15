@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-15T18:11:49",
+  "updated_at": "2026-07-15T19:11:54",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4210,
     "total_views": 1275515,
-    "video_count": 391
+    "video_count": 392
   },
   "analytics": {
     "last_30d": {
@@ -60,6 +60,15 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "PKyCBGst1r8",
+      "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
+      "date": "15 Tem 2026",
+      "views": 179,
+      "likes": 0,
+      "comments": 0,
+      "url": "https://youtu.be/PKyCBGst1r8"
+    },
+    {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
@@ -90,7 +99,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 2684,
+      "views": 2686,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -117,7 +126,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 1010,
+      "views": 1011,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -135,19 +144,10 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 810,
+      "views": 811,
       "likes": 9,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
-    },
-    {
-      "id": "4mX8PsRNBOs",
-      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
-      "date": "15 May 2026",
-      "views": 2618,
-      "likes": 37,
-      "comments": 1,
-      "url": "https://youtu.be/4mX8PsRNBOs"
     }
   ],
   "sub_goal": 10000
