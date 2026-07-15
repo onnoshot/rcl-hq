@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-15T12:39:51",
+  "updated_at": "2026-07-15T15:51:53",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -546,7 +546,7 @@ const SHOPIFY = {
       "handle": "kodak-zx1-weather-resistant",
       "title": "Kodak ZX1 “Weather-Resistant”",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-zx1-weather-resistant-vitrin.jpg?v=1782612020",
-      "in_stock": true,
+      "in_stock": false,
       "price": 4900,
       "type": "camera"
     },
@@ -1096,21 +1096,21 @@ const SHOPIFY = {
     }
   ],
   "period_30d": {
-    "revenue": 78290,
-    "orders": 6,
-    "aov": 13048
+    "revenue": 82690,
+    "orders": 7,
+    "aov": 11813
   },
   "period_90d": {
-    "revenue": 316049,
-    "orders": 26,
-    "aov": 12156
+    "revenue": 320449,
+    "orders": 27,
+    "aov": 11868
   },
   "period_year": {
-    "revenue": 976224,
-    "orders": 81,
-    "aov": 12052
+    "revenue": 980624,
+    "orders": 82,
+    "aov": 11959
   },
-  "customers_total": 929,
+  "customers_total": 930,
   "monthly_labels": [
     "Ağu 25",
     "Eyl 25",
@@ -1137,7 +1137,7 @@ const SHOPIFY = {
     65320,
     139290,
     79639,
-    56160
+    60560
   ],
   "monthly_orders": [
     6,
@@ -1151,7 +1151,7 @@ const SHOPIFY = {
     6,
     12,
     6,
-    4
+    5
   ],
   "channels": [
     {
@@ -1160,17 +1160,17 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 32,
       "rev": 424690,
-      "order_pct": 39.5,
-      "rev_pct": 43.5
+      "order_pct": 39.0,
+      "rev_pct": 43.3
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 25,
-      "rev": 270075,
-      "order_pct": 30.9,
-      "rev_pct": 27.7
+      "orders": 26,
+      "rev": 274475,
+      "order_pct": 31.7,
+      "rev_pct": 28.0
     },
     {
       "name": "Instagram",
@@ -1178,8 +1178,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 20,
       "rev": 232759,
-      "order_pct": 24.7,
-      "rev_pct": 23.8
+      "order_pct": 24.4,
+      "rev_pct": 23.7
     },
     {
       "name": "YouTube",
@@ -1201,6 +1201,10 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "15 Tem 2026",
+      "amount": 4400
+    },
     {
       "date": "14 Tem 2026",
       "amount": 11490
@@ -1236,10 +1240,6 @@ const SHOPIFY = {
     {
       "date": "7 Haz 2026",
       "amount": 11490
-    },
-    {
-      "date": "4 Haz 2026",
-      "amount": 16490
     }
   ],
   "cameras": [
@@ -1367,11 +1367,6 @@ const SHOPIFY = {
       "name": "Sony Cybershot DSC-S85",
       "price": 7990,
       "cost": 3932
-    },
-    {
-      "name": "Kodak ZX1 “Weather-Resistant”",
-      "price": 4900,
-      "cost": 1680
     }
   ],
   "accessories": [
@@ -1401,7 +1396,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 95
+  "out_of_stock": 96
 };
 /* ─── SHOPIFY DATA END ─── */
 
