@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-16T06:30:37",
+  "updated_at": "2026-07-16T07:30:42",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4230,
-    "total_views": 1275515,
+    "total_views": 1278101,
     "video_count": 392
   },
   "analytics": {
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1188,
+      "views": 1189,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 2719,
+      "views": 2742,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 5964,
+      "views": 5965,
       "likes": 22,
       "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "HnGR92gHNDY",
       "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
       "date": "4 Haz 2026",
-      "views": 1025,
+      "views": 1026,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/HnGR92gHNDY"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "2r7TMYA4kTw",
       "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
       "date": "22 May 2026",
-      "views": 534,
+      "views": 535,
       "likes": 7,
       "comments": 2,
       "url": "https://youtu.be/2r7TMYA4kTw"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "GULk4atiPqo",
       "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
       "date": "17 May 2026",
-      "views": 817,
+      "views": 818,
       "likes": 9,
       "comments": 1,
       "url": "https://youtu.be/GULk4atiPqo"
