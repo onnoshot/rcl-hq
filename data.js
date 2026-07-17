@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-17T17:20:27",
+  "updated_at": "2026-07-17T18:20:32",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4270,
-    "total_views": 1284487,
-    "video_count": 394
+    "total_views": 1287716,
+    "video_count": 395
   },
   "analytics": {
     "last_30d": {
@@ -60,6 +60,15 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "ggvi-pLhCEI",
+      "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
+      "date": "17 Tem 2026",
+      "views": 42,
+      "likes": 1,
+      "comments": 0,
+      "url": "https://youtu.be/ggvi-pLhCEI"
+    },
+    {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
@@ -81,7 +90,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1276,
+      "views": 1277,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -90,7 +99,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 297,
+      "views": 298,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -108,7 +117,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 398,
+      "views": 396,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -117,7 +126,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 3034,
+      "views": 3037,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -126,7 +135,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 7174,
+      "views": 7188,
       "likes": 22,
       "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
@@ -139,15 +148,6 @@ const YOUTUBE = {
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
-    },
-    {
-      "id": "HnGR92gHNDY",
-      "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
-      "date": "4 Haz 2026",
-      "views": 1033,
-      "likes": 14,
-      "comments": 0,
-      "url": "https://youtu.be/HnGR92gHNDY"
     }
   ],
   "sub_goal": 10000
