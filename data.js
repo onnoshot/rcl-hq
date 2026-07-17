@@ -1,10 +1,10 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-17T15:20:14",
+  "updated_at": "2026-07-17T16:20:20",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4260,
+    "subscribers": 4270,
     "total_views": 1284487,
     "video_count": 394
   },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1534,
+      "views": 1538,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1275,
+      "views": 1277,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 7057,
+      "views": 7075,
       "likes": 22,
       "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
