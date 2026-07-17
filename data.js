@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-18T00:09:29",
+  "updated_at": "2026-07-18T01:09:37",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -425,7 +425,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-z700-exr",
       "title": "Fujifilm FinePix Z700 EXR",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z700-exr-vitrin.jpg?v=1782611966",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0003_UretkenDolgu.jpg?v=1784323009",
       "in_stock": true,
       "price": 15490,
       "type": "camera"
@@ -641,7 +641,7 @@ const SHOPIFY = {
     {
       "handle": "nikon-coolpix-s3000",
       "title": "Nikon Coolpix S3000",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon_coolpix_s3000_950b04ba-0fdb-443d-9dfd-11e4ab479f8b.jpg?v=1783982585",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0002_UretkenDolgu2.jpg?v=1784324375",
       "in_stock": true,
       "price": 17490,
       "type": "camera"
@@ -769,7 +769,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-vr-340",
       "title": "Olympus VR-340",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-340-vitrin.jpg?v=1782612122",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0000_UretkenDolgu3.jpg?v=1784322980",
       "in_stock": true,
       "price": 17990,
       "type": "camera"
@@ -889,7 +889,7 @@ const SHOPIFY = {
     {
       "handle": "samsung-wb350f",
       "title": "Samsung WB350F",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/SAMSUNG_WB350F.jpg?v=1783981777",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0004_Katman1.jpg?v=1784324438",
       "in_stock": true,
       "price": 19490,
       "type": "camera"
@@ -929,7 +929,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-vpc-c5",
       "title": "Sanyo Xacti VPC-C5",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo_xacti_c5.jpg?v=1783982194",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0001_IMG_1015.jpg?v=1784324475",
       "in_stock": true,
       "price": 13490,
       "type": "camera"
@@ -1110,7 +1110,7 @@ const SHOPIFY = {
     "orders": 81,
     "aov": 12074
   },
-  "customers_total": 939,
+  "customers_total": 940,
   "monthly_labels": [
     "Ağu 25",
     "Eyl 25",
