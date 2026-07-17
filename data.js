@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-17T16:20:20",
+  "updated_at": "2026-07-17T17:20:27",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1277,
+      "views": 1276,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 296,
+      "views": 297,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1206,
+      "views": 1208,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 396,
+      "views": 398,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 3029,
+      "views": 3034,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 7075,
+      "views": 7174,
       "likes": 22,
       "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
