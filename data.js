@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-17T23:09:33",
+  "updated_at": "2026-07-18T00:09:38",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,14 +10,14 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 82088,
-      "watch_hours": 219.8,
-      "subs_gained": 347,
+      "views": 80340,
+      "watch_hours": 216.0,
+      "subs_gained": 346,
       "subs_lost": 169,
       "avg_view_sec": 21
     },
-    "watch_hours_year": 3411.6,
-    "watch_hours_year_long": 1820.9,
+    "watch_hours_year": 3411.5,
+    "watch_hours_year_long": 1820.8,
     "watch_hours_year_shorts": 1590.7,
     "monthly": [
       {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 1153,
+      "views": 1197,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 43,
+      "views": 48,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 298,
+      "views": 299,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 7352,
+      "views": 7559,
       "likes": 22,
       "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
