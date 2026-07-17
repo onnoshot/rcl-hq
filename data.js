@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-17T21:20:58",
+  "updated_at": "2026-07-17T23:09:33",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 75945,
-      "watch_hours": 206.1,
-      "subs_gained": 309,
-      "subs_lost": 160,
+      "views": 82088,
+      "watch_hours": 219.8,
+      "subs_gained": 347,
+      "subs_lost": 169,
       "avg_view_sec": 21
     },
-    "watch_hours_year": 3397.9,
-    "watch_hours_year_long": 1816.7,
-    "watch_hours_year_shorts": 1581.2,
+    "watch_hours_year": 3411.6,
+    "watch_hours_year_long": 1820.9,
+    "watch_hours_year_shorts": 1590.7,
     "monthly": [
       {
         "label": "Şub 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 45147,
-        "watch_min": 7865,
-        "subs_gained": 267
+        "views": 51290,
+        "watch_min": 8686,
+        "subs_gained": 305
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 889,
+      "views": 1153,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 29,
+      "views": 43,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1550,
+      "views": 1557,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1280,
+      "views": 1285,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 3038,
+      "views": 3040,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 7270,
+      "views": 7352,
       "likes": 22,
       "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
