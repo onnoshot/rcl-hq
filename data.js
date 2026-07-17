@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-17T07:19:31",
+  "updated_at": "2026-07-17T08:19:36",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1518,
-      "likes": 10,
+      "views": 1526,
+      "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/4mC6-c_-JYc"
     },
@@ -82,7 +82,7 @@ const YOUTUBE = {
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
       "views": 1271,
-      "likes": 13,
+      "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
     },
@@ -91,7 +91,7 @@ const YOUTUBE = {
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
       "views": 295,
-      "likes": 4,
+      "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
     },
@@ -100,7 +100,7 @@ const YOUTUBE = {
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
       "views": 1205,
-      "likes": 15,
+      "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
     },
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 2935,
+      "views": 2977,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
