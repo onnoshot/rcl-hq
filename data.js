@@ -1,19 +1,19 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-17T20:20:51",
+  "updated_at": "2026-07-17T21:20:58",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4270,
+    "subscribers": 4280,
     "total_views": 1287716,
     "video_count": 395
   },
   "analytics": {
     "last_30d": {
-      "views": 76035,
+      "views": 75945,
       "watch_hours": 206.1,
       "subs_gained": 309,
-      "subs_lost": 161,
+      "subs_lost": 160,
       "avg_view_sec": 21
     },
     "watch_hours_year": 3397.9,
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 366,
-      "likes": 7,
+      "views": 889,
+      "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 28,
+      "views": 29,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
