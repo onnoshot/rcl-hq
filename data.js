@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-18T04:10:00",
+  "updated_at": "2026-07-18T05:10:07",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -372,6 +372,14 @@ const SHOPIFY = {
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-f80-vitrin.jpg?v=1782611938",
       "in_stock": false,
       "price": 12900,
+      "type": "camera"
+    },
+    {
+      "handle": "fujifilm-finepix-jv310",
+      "title": "Fujifilm FinePix JV310",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0032_ONN09825.jpg?v=1784340241",
+      "in_stock": true,
+      "price": 10990,
       "type": "camera"
     },
     {
@@ -887,6 +895,14 @@ const SHOPIFY = {
       "type": "camera"
     },
     {
+      "handle": "samsung-style-st66",
+      "title": "Samsung Style ST66",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung_st66.jpg?v=1784340559",
+      "in_stock": true,
+      "price": 10990,
+      "type": "camera"
+    },
+    {
       "handle": "samsung-wb350f",
       "title": "Samsung WB350F",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0004_Katman1.jpg?v=1784324438",
@@ -969,9 +985,9 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-t9",
       "title": "Sony Cyber-shot DSC-T9",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t9-vitrin.jpg?v=1782612207",
-      "in_stock": false,
-      "price": 12490,
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0006_ONN09851.jpg?v=1784338935",
+      "in_stock": true,
+      "price": 11490,
       "type": "camera"
     },
     {
@@ -1324,6 +1340,21 @@ const SHOPIFY = {
       "cost": 4000
     },
     {
+      "name": "Sony Cyber-shot DSC-T9",
+      "price": 11490,
+      "cost": 3800
+    },
+    {
+      "name": "Fujifilm FinePix JV310",
+      "price": 10990,
+      "cost": 3800
+    },
+    {
+      "name": "Samsung Style ST66",
+      "price": 10990,
+      "cost": 3800
+    },
+    {
       "name": "Casio Exilim EX-Z4",
       "price": 10490,
       "cost": 4000
@@ -1396,7 +1427,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 96
+  "out_of_stock": 95
 };
 /* ─── SHOPIFY DATA END ─── */
 
