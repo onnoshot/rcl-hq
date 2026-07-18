@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-18T06:10:15",
+  "updated_at": "2026-07-18T07:10:23",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -745,7 +745,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-tough-tg-820",
       "title": "Olympus Tough TG-820 Waterproof",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-tough-tg-820-vitrin.jpg?v=1782612106",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-tough-tg-820-vitrin.jpg?v=1784344246",
       "in_stock": false,
       "price": 13490,
       "type": "camera"
@@ -753,7 +753,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-vg-110",
       "title": "Olympus VG-110",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-110-vitrin.jpg?v=1782612110",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-110-vitrin.jpg?v=1784344293",
       "in_stock": false,
       "price": 9990,
       "type": "camera"
@@ -761,7 +761,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-vg-130",
       "title": "Olympus VG-130",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-130-vitrin.jpg?v=1782612114",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-130-vitrin.jpg?v=1784344408",
       "in_stock": false,
       "price": 13490,
       "type": "camera"
@@ -769,7 +769,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-vr-310",
       "title": "Olympus VR-310",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-310-vitrin.jpg?v=1782612118",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-310-vitrin.jpg?v=1784344464",
       "in_stock": false,
       "price": 15490,
       "type": "camera"
@@ -777,7 +777,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-vr-340",
       "title": "Olympus VR-340",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0000_UretkenDolgu3.jpg?v=1784322980",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-340-vitrin_6e55197d-da90-4a38-8c53-db419c5f012f.jpg?v=1784344509",
       "in_stock": true,
       "price": 17990,
       "type": "camera"
@@ -785,7 +785,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-dmc-ls70",
       "title": "Panasonic DMC LS70",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-dmc-ls70-vitrin.jpg?v=1782612126",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-dmc-ls70-vitrin.jpg?v=1784344553",
       "in_stock": false,
       "price": 11490,
       "type": "camera"
@@ -793,7 +793,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-lumix-dc-tz91",
       "title": "Panasonic Lumix DC-TZ91",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dc-tz91-vitrin.jpg?v=1782612130",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dc-tz91-vitrin.jpg?v=1784344628",
       "in_stock": true,
       "price": 28490,
       "type": "camera"
@@ -809,7 +809,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-lumix-dmc-fx10",
       "title": "Panasonic Lumix DMC FX10",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-fx10-vitrin.jpg?v=1782612143",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-fx10-vitrin.jpg?v=1784344749",
       "in_stock": false,
       "price": 11900,
       "type": "camera"
@@ -817,7 +817,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-lumix-dmc-f3",
       "title": "Panasonic Lumix DMC-F3",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-f3-vitrin.jpg?v=1782612139",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-f3-vitrin.jpg?v=1784344820",
       "in_stock": false,
       "price": 13490,
       "type": "camera"
@@ -825,7 +825,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-lumix-dmc-ls75",
       "title": "Panasonic Lumix DMC-LS75",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-ls75-vitrin.jpg?v=1782612147",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-ls75-vitrin.jpg?v=1784344864",
       "in_stock": false,
       "price": 9990,
       "type": "camera"
@@ -833,7 +833,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-lumix-dmc-lz7",
       "title": "Panasonic Lumix DMC-LZ7",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-lz7-vitrin.jpg?v=1782612151",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-lz7-vitrin.jpg?v=1784344891",
       "in_stock": false,
       "price": 10490,
       "type": "camera"
@@ -849,7 +849,7 @@ const SHOPIFY = {
     {
       "handle": "polaroid-i634",
       "title": "Polaroid i634",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/polaroid-i634-vitrin.jpg?v=1782612159",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/polaroid-i634-vitrin.jpg?v=1784344975",
       "in_stock": false,
       "price": 6990,
       "type": "camera"
@@ -873,7 +873,7 @@ const SHOPIFY = {
     {
       "handle": "rollei-flexline-140",
       "title": "Rollei Flexline 140",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/rollei-flexline-140-vitrin.jpg?v=1782612171",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/rollei-flexline-140-vitrin.jpg?v=1784345092",
       "in_stock": false,
       "price": 10940,
       "type": "camera"
@@ -881,7 +881,7 @@ const SHOPIFY = {
     {
       "handle": "samsung-es65",
       "title": "Samsung ES65",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-es65-vitrin.jpg?v=1782612175",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-es65-vitrin.jpg?v=1784345155",
       "in_stock": false,
       "price": 9990,
       "type": "camera"
@@ -889,7 +889,7 @@ const SHOPIFY = {
     {
       "handle": "samsung-nx2000",
       "title": "Samsung NX2000",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-nx2000-vitrin.jpg?v=1782612861",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-nx2000-vitrin.jpg?v=1784345214",
       "in_stock": true,
       "price": 15490,
       "type": "camera"
@@ -897,7 +897,7 @@ const SHOPIFY = {
     {
       "handle": "samsung-style-st66",
       "title": "Samsung Style ST66",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung_st66.jpg?v=1784340559",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-style-st66-vitrin.jpg?v=1784345287",
       "in_stock": true,
       "price": 9990,
       "type": "camera"
@@ -905,7 +905,7 @@ const SHOPIFY = {
     {
       "handle": "samsung-wb350f",
       "title": "Samsung WB350F",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0004_Katman1.jpg?v=1784324438",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-wb350f-vitrin.jpg?v=1784345321",
       "in_stock": true,
       "price": 19490,
       "type": "camera"
@@ -921,7 +921,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-cg-10",
       "title": "Sanyo Xacti CG-10",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg-10-vitrin.jpg?v=1782612183",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg-10-vitrin.jpg?v=1784345361",
       "in_stock": false,
       "price": 8490,
       "type": "camera"
@@ -929,7 +929,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-cg100-ex",
       "title": "Sanyo Xacti CG100 EX",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg100-ex-vitrin.jpg?v=1782612186",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg100-ex-vitrin.jpg?v=1784345402",
       "in_stock": false,
       "price": 9490,
       "type": "camera"
@@ -937,7 +937,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-cg20",
       "title": "Sanyo Xacti CG20",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg20-vitrin.jpg?v=1782612865",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg20-vitrin.jpg?v=1784345423",
       "in_stock": true,
       "price": 11490,
       "type": "camera"
@@ -945,7 +945,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-vpc-c5",
       "title": "Sanyo Xacti VPC-C5",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0001_IMG_1015.jpg?v=1784324475",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-c5-vitrin.jpg?v=1784345459",
       "in_stock": true,
       "price": 13490,
       "type": "camera"
@@ -953,7 +953,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-vpc-e6ex",
       "title": "Sanyo Xacti VPC-E6EX",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-e6ex-vitrin.jpg?v=1782612190",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-e6ex-vitrin.jpg?v=1784345511",
       "in_stock": false,
       "price": 8490,
       "type": "camera"
@@ -961,7 +961,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-vpc-hd1",
       "title": "Sanyo Xacti VPC-HD1",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-hd1-vitrin.jpg?v=1782612194",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-hd1-vitrin.jpg?v=1784345560",
       "in_stock": true,
       "price": 10490,
       "type": "camera"
@@ -969,7 +969,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-t500",
       "title": "Sony Cyber-shot DSC-T500",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t500-vitrin.jpg?v=1782612198",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t500-vitrin.jpg?v=1784345592",
       "in_stock": false,
       "price": 11490,
       "type": "camera"
@@ -977,7 +977,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-t70",
       "title": "Sony Cyber-shot DSC-T70",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t70-vitrin.jpg?v=1782612203",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t70-vitrin.jpg?v=1784345686",
       "in_stock": false,
       "price": 14490,
       "type": "camera"
@@ -985,7 +985,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-t9",
       "title": "Sony Cyber-shot DSC-T9",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony_cybershot_t9.jpg?v=1784340607",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t9-vitrin_1711dc62-9dcf-49ad-8f77-a47665034de3.jpg?v=1784345730",
       "in_stock": true,
       "price": 11490,
       "type": "camera"
@@ -993,7 +993,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-tx9",
       "title": "Sony Cyber-shot DSC-TX9",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-tx9-vitrin.jpg?v=1782612211",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-tx9-vitrin.jpg?v=1784345765",
       "in_stock": false,
       "price": 14490,
       "type": "camera"
@@ -1001,7 +1001,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-w110",
       "title": "Sony Cyber-shot DSC-W110",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-w110-vitrin.jpg?v=1782612215",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-w110-vitrin.jpg?v=1784345807",
       "in_stock": false,
       "price": 10490,
       "type": "camera"
@@ -1009,7 +1009,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-s600",
       "title": "Sony Cybershot DSC-S600",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s600-vitrin.jpg?v=1782612219",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s600-vitrin.jpg?v=1784345848",
       "in_stock": false,
       "price": 8990,
       "type": "camera"
@@ -1017,7 +1017,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-s85",
       "title": "Sony Cybershot DSC-S85",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s85-vitrin.jpg?v=1782612223",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s85-vitrin.jpg?v=1784345911",
       "in_stock": true,
       "price": 7990,
       "type": "camera"
@@ -1025,7 +1025,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-t20",
       "title": "Sony Cybershot DSC-T20",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t20-vitrin.jpg?v=1782612869",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t20-vitrin.jpg?v=1784345952",
       "in_stock": false,
       "price": 16490,
       "type": "camera"
@@ -1033,7 +1033,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-t300",
       "title": "Sony Cybershot DSC-T300",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t300-vitrin.jpg?v=1782612227",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t300-vitrin.jpg?v=1784346007",
       "in_stock": true,
       "price": 15490,
       "type": "camera"
@@ -1041,7 +1041,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-w150",
       "title": "Sony Cybershot DSC-W150",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w150-vitrin.jpg?v=1782611664",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w150-vitrin.jpg?v=1784346064",
       "in_stock": true,
       "price": 13490,
       "type": "camera"
@@ -1049,7 +1049,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-w200",
       "title": "Sony Cybershot DSC-W200",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w200-vitrin.jpg?v=1782612232",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w200-vitrin.jpg?v=1784346121",
       "in_stock": false,
       "price": 12900,
       "type": "camera"
@@ -1065,7 +1065,7 @@ const SHOPIFY = {
     {
       "handle": "traveler-dc-830",
       "title": "Traveler DC-830",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/traveler-dc-830-vitrin.jpg?v=1782612236",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/traveler-dc-830-vitrin.jpg?v=1784346208",
       "in_stock": true,
       "price": 8490,
       "type": "camera"
@@ -1081,7 +1081,7 @@ const SHOPIFY = {
     {
       "handle": "ulanzi-vlog-tripod",
       "title": "Ulanzi VLOG Tripod",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Ulanzi_MT-17_1.jpg?v=1753713768",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/ulanzi-vlog-tripod-vitrin.jpg?v=1784346300",
       "in_stock": true,
       "price": 990,
       "type": "accessory"
@@ -1089,7 +1089,7 @@ const SHOPIFY = {
     {
       "handle": "universal-kamera-batarya-sarj-cihaz",
       "title": "Universal Kamera Batarya Şarj Cihazı",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/akrepsarj.jpg?v=1757005458",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/universal-kamera-batarya-sarj-cihaz-vitrin.jpg?v=1784346305",
       "in_stock": true,
       "price": 590,
       "type": "accessory"
@@ -1097,7 +1097,7 @@ const SHOPIFY = {
     {
       "handle": "usb-c-3-in-1-kart-okuyucu-sd-microsd",
       "title": "USB-C 3'ü 1 Arada Kart Okuyucu — SD / MicroSD / USB",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sd_kart_okuyucu.jpg?v=1775047519",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/usb-c-3-in-1-kart-okuyucu-sd-microsd-vitrin.jpg?v=1784346325",
       "in_stock": true,
       "price": 690,
       "type": "accessory"
@@ -1105,7 +1105,7 @@ const SHOPIFY = {
     {
       "handle": "y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu",
       "title": "Y2K Digicam Fotoğraf/Video Aktarıcı - xD, CF, SD, MS Destekli All-in-One Kart Okuyucu",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu-vitrin.jpg?v=1782612240",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu-vitrin.jpg?v=1784346347",
       "in_stock": true,
       "price": 790,
       "type": "accessory"
