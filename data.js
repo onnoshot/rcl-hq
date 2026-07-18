@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-18T05:10:07",
+  "updated_at": "2026-07-18T05:12:35",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -377,7 +377,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-jv310",
       "title": "Fujifilm FinePix JV310",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0032_ONN09825.jpg?v=1784340241",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm_finepix_jv310.jpg?v=1784340618",
       "in_stock": true,
       "price": 10990,
       "type": "camera"
@@ -985,7 +985,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-t9",
       "title": "Sony Cyber-shot DSC-T9",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/0006_ONN09851.jpg?v=1784338935",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony_cybershot_t9.jpg?v=1784340607",
       "in_stock": true,
       "price": 11490,
       "type": "camera"
