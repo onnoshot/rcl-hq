@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-18T14:11:24",
+  "updated_at": "2026-07-20T01:35:53",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4300,
-    "total_views": 1290844,
+    "subscribers": 4360,
+    "total_views": 1298623,
     "video_count": 395
   },
   "analytics": {
     "last_30d": {
-      "views": 80424,
-      "watch_hours": 216.0,
-      "subs_gained": 346,
-      "subs_lost": 170,
-      "avg_view_sec": 21
+      "views": 88874,
+      "watch_hours": 241.0,
+      "subs_gained": 435,
+      "subs_lost": 200,
+      "avg_view_sec": 22
     },
-    "watch_hours_year": 3411.5,
-    "watch_hours_year_long": 1820.8,
-    "watch_hours_year_shorts": 1590.7,
+    "watch_hours_year": 3440.6,
+    "watch_hours_year_long": 1836.5,
+    "watch_hours_year_shorts": 1603.9,
     "monthly": [
       {
         "label": "Şub 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 51284,
-        "watch_min": 8686,
-        "subs_gained": 305
+        "views": 63290,
+        "watch_min": 10718,
+        "subs_gained": 396
       }
     ]
   },
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 1253,
-      "likes": 17,
+      "views": 1351,
+      "likes": 21,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 78,
+      "views": 293,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -81,8 +81,8 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1566,
-      "likes": 11,
+      "views": 1604,
+      "likes": 12,
       "comments": 0,
       "url": "https://youtu.be/4mC6-c_-JYc"
     },
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1296,
+      "views": 1314,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 304,
+      "views": 313,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1214,
+      "views": 1233,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 401,
+      "views": 407,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 3159,
+      "views": 3333,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -135,8 +135,8 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 7923,
-      "likes": 22,
+      "views": 9329,
+      "likes": 23,
       "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
     },
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 308,
+      "views": 314,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
