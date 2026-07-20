@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-11T02:19:25",
+  "updated_at": "2026-07-20T23:22:56",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4160,
-    "total_views": 1254276,
-    "video_count": 388
+    "subscribers": 4370,
+    "total_views": 1303292,
+    "video_count": 393
   },
   "analytics": {
     "last_30d": {
-      "views": 63779,
-      "watch_hours": 168.6,
-      "subs_gained": 198,
-      "subs_lost": 98,
-      "avg_view_sec": 20
+      "views": 93803,
+      "watch_hours": 255.7,
+      "subs_gained": 477,
+      "subs_lost": 208,
+      "avg_view_sec": 22
     },
-    "watch_hours_year": 3348.1,
-    "watch_hours_year_long": 1789.2,
-    "watch_hours_year_shorts": 1558.9,
+    "watch_hours_year": 3455.2,
+    "watch_hours_year_long": 1844.7,
+    "watch_hours_year_shorts": 1610.4,
     "monthly": [
       {
         "label": "Şub 26",
@@ -40,8 +40,8 @@ const YOUTUBE = {
       },
       {
         "label": "May 26",
-        "views": 107347,
-        "watch_min": 19085,
+        "views": 107333,
+        "watch_min": 19084,
         "subs_gained": 456
       },
       {
@@ -52,19 +52,73 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 20728,
-        "watch_min": 4102,
-        "subs_gained": 145
+        "views": 68219,
+        "watch_min": 11600,
+        "subs_gained": 438
       }
     ]
   },
   "videos": [
     {
+      "id": "ggvi-pLhCEI",
+      "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
+      "date": "17 Tem 2026",
+      "views": 1442,
+      "likes": 24,
+      "comments": 0,
+      "url": "https://youtu.be/ggvi-pLhCEI"
+    },
+    {
+      "id": "pZJB6mBWYRg",
+      "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
+      "date": "16 Tem 2026",
+      "views": 498,
+      "likes": 5,
+      "comments": 0,
+      "url": "https://youtu.be/pZJB6mBWYRg"
+    },
+    {
+      "id": "4mC6-c_-JYc",
+      "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
+      "date": "16 Tem 2026",
+      "views": 1620,
+      "likes": 12,
+      "comments": 0,
+      "url": "https://youtu.be/4mC6-c_-JYc"
+    },
+    {
+      "id": "PKyCBGst1r8",
+      "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
+      "date": "15 Tem 2026",
+      "views": 1318,
+      "likes": 14,
+      "comments": 0,
+      "url": "https://youtu.be/PKyCBGst1r8"
+    },
+    {
+      "id": "LjyZRaLNGcc",
+      "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
+      "date": "12 Tem 2026",
+      "views": 319,
+      "likes": 5,
+      "comments": 0,
+      "url": "https://youtu.be/LjyZRaLNGcc"
+    },
+    {
+      "id": "fiWC7WOtCtk",
+      "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
+      "date": "11 Tem 2026",
+      "views": 1240,
+      "likes": 15,
+      "comments": 0,
+      "url": "https://youtu.be/fiWC7WOtCtk"
+    },
+    {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 240,
-      "likes": 1,
+      "views": 412,
+      "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
     },
@@ -72,7 +126,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 1944,
+      "views": 3455,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -81,73 +135,19 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 1892,
-      "likes": 19,
-      "comments": 4,
+      "views": 10040,
+      "likes": 23,
+      "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
     },
     {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 259,
+      "views": 317,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
-    },
-    {
-      "id": "HnGR92gHNDY",
-      "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
-      "date": "4 Haz 2026",
-      "views": 981,
-      "likes": 14,
-      "comments": 0,
-      "url": "https://youtu.be/HnGR92gHNDY"
-    },
-    {
-      "id": "2r7TMYA4kTw",
-      "title": "Renklerin peşinde bir yolculuk 📸 #fujifilm #retro #digitalca",
-      "date": "22 May 2026",
-      "views": 504,
-      "likes": 7,
-      "comments": 1,
-      "url": "https://youtu.be/2r7TMYA4kTw"
-    },
-    {
-      "id": "GULk4atiPqo",
-      "title": "kaydet. sakla. hatırla 💌#digitalcamera #y2k #retroaesthetic",
-      "date": "17 May 2026",
-      "views": 788,
-      "likes": 9,
-      "comments": 1,
-      "url": "https://youtu.be/GULk4atiPqo"
-    },
-    {
-      "id": "4mX8PsRNBOs",
-      "title": "Vapurda Dijital Kameraya Poz Veren Martı 🕊️📸  #fujifilm #fin",
-      "date": "15 May 2026",
-      "views": 2594,
-      "likes": 37,
-      "comments": 1,
-      "url": "https://youtu.be/4mX8PsRNBOs"
-    },
-    {
-      "id": "TvPGsbRhSmQ",
-      "title": "Fujifilm Finepix Z700 EXR | Muhteşem Retro Kamera #y2k #digi",
-      "date": "14 May 2026",
-      "views": 3102,
-      "likes": 47,
-      "comments": 0,
-      "url": "https://youtu.be/TvPGsbRhSmQ"
-    },
-    {
-      "id": "LHg76IQG7aw",
-      "title": "Fujifilm Finepix Z90 | İKONİK PEMBE DİJİTAL KAMERAYA AŞIK OL",
-      "date": "13 May 2026",
-      "views": 2343,
-      "likes": 68,
-      "comments": 3,
-      "url": "https://youtu.be/LHg76IQG7aw"
     }
   ],
   "sub_goal": 10000
@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-11T02:20:02",
+  "updated_at": "2026-07-20T23:22:52",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -177,7 +177,7 @@ const SHOPIFY = {
     {
       "handle": "canon-g7x-mark-iii",
       "title": "Canon G7X Mark III",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-g7x-mark-iii-vitrin.jpg?v=1782611844",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-g7x-mark-iii-vitrin.jpg?v=1784341197",
       "in_stock": false,
       "price": 54490,
       "type": "camera"
@@ -185,7 +185,7 @@ const SHOPIFY = {
     {
       "handle": "canon-ixus-160",
       "title": "Canon IXUS 160",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-160-vitrin.jpg?v=1782611848",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-160-vitrin.jpg?v=1784341248",
       "in_stock": false,
       "price": 14490,
       "type": "camera"
@@ -201,7 +201,7 @@ const SHOPIFY = {
     {
       "handle": "canon-ixus-i",
       "title": "Canon IXUS i",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-i-vitrin.jpg?v=1782611856",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-i-vitrin.jpg?v=1784341306",
       "in_stock": true,
       "price": 11490,
       "type": "camera"
@@ -209,7 +209,7 @@ const SHOPIFY = {
     {
       "handle": "canon-ixy-1000",
       "title": "Canon IXY 1000",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixy-1000-vitrin.jpg?v=1782611860",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixy-1000-vitrin.jpg?v=1784341343",
       "in_stock": false,
       "price": 12490,
       "type": "camera"
@@ -233,7 +233,7 @@ const SHOPIFY = {
     {
       "handle": "canon-powershot-a480",
       "title": "Canon PowerShot A480",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-a480-vitrin.jpg?v=1782611872",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-a480-vitrin.jpg?v=1784341429",
       "in_stock": false,
       "price": 9490,
       "type": "camera"
@@ -241,7 +241,7 @@ const SHOPIFY = {
     {
       "handle": "canon-powershot-elph-300-hs",
       "title": "Canon Powershot ELPH 300 HS",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-elph-300-hs-vitrin.jpg?v=1782612849",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-elph-300-hs-vitrin.jpg?v=1784341488",
       "in_stock": false,
       "price": 17490,
       "type": "camera"
@@ -249,7 +249,7 @@ const SHOPIFY = {
     {
       "handle": "canon-powershot-g7",
       "title": "Canon PowerShot G7",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-g7-vitrin.jpg?v=1782611876",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-g7-vitrin.jpg?v=1784341556",
       "in_stock": false,
       "price": 16490,
       "type": "camera"
@@ -257,7 +257,7 @@ const SHOPIFY = {
     {
       "handle": "canon-powershot-sd400",
       "title": "Canon PowerShot SD400",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-sd400-vitrin.jpg?v=1782611880",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-sd400-vitrin.jpg?v=1784341605",
       "in_stock": false,
       "price": 12490,
       "type": "camera"
@@ -265,7 +265,7 @@ const SHOPIFY = {
     {
       "handle": "canon-powershot-sx160-is",
       "title": "Canon PowerShot SX160 IS",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-sx160-is-vitrin.jpg?v=1782611885",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-sx160-is-vitrin.jpg?v=1784341659",
       "in_stock": false,
       "price": 11490,
       "type": "camera"
@@ -281,7 +281,7 @@ const SHOPIFY = {
     {
       "handle": "canon-powershot-xt1-dijital-fotograf-makinesi",
       "title": "Canon PowerShot XT1",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-xt1-dijital-fotograf-makinesi-vitrin.jpg?v=1782611893",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-xt1-dijital-fotograf-makinesi-vitrin.jpg?v=1784341765",
       "in_stock": false,
       "price": 10900,
       "type": "camera"
@@ -297,7 +297,7 @@ const SHOPIFY = {
     {
       "handle": "casio-exilim-ex-h10",
       "title": "Casio Exilim EX-H10",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-h10-vitrin.jpg?v=1782611900",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-h10-vitrin.jpg?v=1784341829",
       "in_stock": false,
       "price": 12490,
       "type": "camera"
@@ -305,7 +305,7 @@ const SHOPIFY = {
     {
       "handle": "casio-exilim-ex-n10-gold",
       "title": "Casio Exilim EX-N10 Gold Edition",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-n10-gold-vitrin.jpg?v=1782611905",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-n10-gold-vitrin.jpg?v=1784341936",
       "in_stock": false,
       "price": 11990,
       "type": "camera"
@@ -313,7 +313,7 @@ const SHOPIFY = {
     {
       "handle": "casio-exilim-ex-z110",
       "title": "Casio Exilim EX-Z110",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z110-vitrin.jpg?v=1782611909",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z110-vitrin.jpg?v=1784341988",
       "in_stock": true,
       "price": 11490,
       "type": "camera"
@@ -321,7 +321,7 @@ const SHOPIFY = {
     {
       "handle": "casio-exilim-ex-z4",
       "title": "Casio Exilim EX-Z4",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z4-vitrin.jpg?v=1782611913",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z4-vitrin.jpg?v=1784342021",
       "in_stock": true,
       "price": 10490,
       "type": "camera"
@@ -329,7 +329,7 @@ const SHOPIFY = {
     {
       "handle": "casio-exilim-ex-z50",
       "title": "Casio Exilim EX-Z50",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z50-vitrin.jpg?v=1782611917",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z50-vitrin.jpg?v=1784342075",
       "in_stock": false,
       "price": 12900,
       "type": "camera"
@@ -337,7 +337,7 @@ const SHOPIFY = {
     {
       "handle": "casio-exilim-ex-z85",
       "title": "Casio Exilim EX-Z85",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z85-vitrin.jpg?v=1782611922",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z85-vitrin.jpg?v=1784342156",
       "in_stock": false,
       "price": 9490,
       "type": "camera"
@@ -345,7 +345,7 @@ const SHOPIFY = {
     {
       "handle": "casio-qv-r300",
       "title": "Casio QV-R300",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-qv-r300-vitrin.jpg?v=1782611926",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-qv-r300-vitrin.jpg?v=1784342204",
       "in_stock": false,
       "price": 10490,
       "type": "camera"
@@ -353,7 +353,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-1700z-dijital-fotograf-makinesi",
       "title": "Fujifilm FinePix 1700Z",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-1700z-dijital-fotograf-makinesi-vitrin.jpg?v=1782611930",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-1700z-dijital-fotograf-makinesi-vitrin.jpg?v=1784342231",
       "in_stock": false,
       "price": 8490,
       "type": "camera"
@@ -361,7 +361,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-4700-zoom",
       "title": "Fujifilm FinePix 4700 Zoom",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-4700-zoom-vitrin.jpg?v=1782611934",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-4700-zoom-vitrin.jpg?v=1784342252",
       "in_stock": true,
       "price": 11490,
       "type": "camera"
@@ -369,15 +369,23 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-f80",
       "title": "Fujifilm FinePix F80",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-f80-vitrin.jpg?v=1782611938",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-f80-vitrin.jpg?v=1784342318",
       "in_stock": false,
       "price": 12900,
       "type": "camera"
     },
     {
+      "handle": "fujifilm-finepix-jv310",
+      "title": "Fujifilm FinePix JV310",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-jv310-vitrin.jpg?v=1784342402",
+      "in_stock": true,
+      "price": 10990,
+      "type": "camera"
+    },
+    {
       "handle": "fujifilm-finepix-t200",
       "title": "Fujifilm FinePix T200",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-t200-vitrin.jpg?v=1782611942",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-t200-vitrin.jpg?v=1784342454",
       "in_stock": false,
       "price": 11490,
       "type": "camera"
@@ -385,7 +393,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-v10",
       "title": "Fujifilm FinePix V10",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-v10-vitrin.jpg?v=1782611946",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-v10-vitrin.jpg?v=1784342515",
       "in_stock": false,
       "price": 16490,
       "type": "camera"
@@ -401,7 +409,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-z10fd",
       "title": "Fujifilm FinePix Z10FD",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z10fd-vitrin.jpg?v=1782611954",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z10fd-vitrin.jpg?v=1784342626",
       "in_stock": false,
       "price": 9990,
       "type": "camera"
@@ -409,7 +417,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-z110",
       "title": "Fujifilm Finepix Z110",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z110-vitrin.jpg?v=1782611958",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z110-vitrin.jpg?v=1784342683",
       "in_stock": false,
       "price": 15490,
       "type": "camera"
@@ -417,7 +425,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-z70",
       "title": "Fujifilm FinePix Z70",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z70-vitrin.jpg?v=1782611962",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z70-vitrin.jpg?v=1784342749",
       "in_stock": false,
       "price": 13490,
       "type": "camera"
@@ -425,7 +433,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-z700-exr",
       "title": "Fujifilm FinePix Z700 EXR",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z700-exr-vitrin.jpg?v=1782611966",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z700-exr-vitrin_eb8fca84-30e5-4144-a2cb-6fb3a4baa298.jpg?v=1784342800",
       "in_stock": true,
       "price": 15490,
       "type": "camera"
@@ -433,7 +441,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-z700exr",
       "title": "Fujifilm FinePix Z700EXR",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z700exr-vitrin.jpg?v=1782612853",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z700exr-vitrin.jpg?v=1784342845",
       "in_stock": true,
       "price": 14490,
       "type": "camera"
@@ -441,7 +449,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-z90",
       "title": "Fujifilm FinePix Z90",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z90-vitrin.jpg?v=1782611974",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z90-vitrin.jpg?v=1784342889",
       "in_stock": false,
       "price": 18490,
       "type": "camera"
@@ -449,7 +457,7 @@ const SHOPIFY = {
     {
       "handle": "fujifilm-finepix-z90-digicam",
       "title": "Fujifilm Finepix Z90",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z90-digicam-vitrin.jpg?v=1782611970",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z90-digicam-vitrin.jpg?v=1784342938",
       "in_stock": false,
       "price": 16490,
       "type": "camera"
@@ -465,7 +473,7 @@ const SHOPIFY = {
     {
       "handle": "retro-camera-land-hediye-kartlari",
       "title": "Hediye Kartları",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hediyekart.jpg?v=1750202246",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/retro-camera-land-hediye-kartlari-vitrin.jpg?v=1784343023",
       "in_stock": false,
       "price": 3000,
       "type": "camera"
@@ -481,7 +489,7 @@ const SHOPIFY = {
     {
       "handle": "hp-photosmart-r827",
       "title": "HP Photosmart R827",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hp-photosmart-r827-vitrin.jpg?v=1782611986",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hp-photosmart-r827-vitrin.jpg?v=1784343028",
       "in_stock": true,
       "price": 8900,
       "type": "camera"
@@ -497,7 +505,7 @@ const SHOPIFY = {
     {
       "handle": "jvc-gz-mc200e",
       "title": "JVC GZ-MC200E",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/jvc-gz-mc200e-vitrin.jpg?v=1782611995",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/jvc-gz-mc200e-vitrin.jpg?v=1784343066",
       "in_stock": false,
       "price": 10490,
       "type": "camera"
@@ -505,7 +513,7 @@ const SHOPIFY = {
     {
       "handle": "kodak-easyshare-m1063",
       "title": "Kodak EasyShare M1063",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-m1063-vitrin.jpg?v=1782611999",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-m1063-vitrin.jpg?v=1784343121",
       "in_stock": false,
       "price": 11490,
       "type": "camera"
@@ -513,7 +521,7 @@ const SHOPIFY = {
     {
       "handle": "kodak-easyshare-v603",
       "title": "Kodak EasyShare V603",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-v603-vitrin.jpg?v=1782612003",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-v603-vitrin.jpg?v=1784343179",
       "in_stock": true,
       "price": 10490,
       "type": "camera"
@@ -537,7 +545,7 @@ const SHOPIFY = {
     {
       "handle": "kodak-slice-r502",
       "title": "Kodak Slice R502",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-slice-r502-vitrin.jpg?v=1782612015",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-slice-r502-vitrin.jpg?v=1784343250",
       "in_stock": true,
       "price": 10490,
       "type": "camera"
@@ -545,8 +553,8 @@ const SHOPIFY = {
     {
       "handle": "kodak-zx1-weather-resistant",
       "title": "Kodak ZX1 “Weather-Resistant”",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-zx1-weather-resistant-vitrin.jpg?v=1782612020",
-      "in_stock": true,
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-zx1-weather-resistant-vitrin.jpg?v=1784343355",
+      "in_stock": false,
       "price": 4900,
       "type": "camera"
     },
@@ -561,7 +569,7 @@ const SHOPIFY = {
     {
       "handle": "konica-minolta-dimage-x50-dijital-fotograf-makinesi",
       "title": "Konica Minolta DiMAGE X50",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/konica-minolta-dimage-x50-dijital-fotograf-makinesi-vitrin.jpg?v=1782612024",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/konica-minolta-dimage-x50-dijital-fotograf-makinesi-vitrin.jpg?v=1784343391",
       "in_stock": false,
       "price": 10990,
       "type": "camera"
@@ -569,7 +577,7 @@ const SHOPIFY = {
     {
       "handle": "lumix-dmc-ft10",
       "title": "Lumix DMC-FT10",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumix-dmc-ft10-vitrin.jpg?v=1782612032",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumix-dmc-ft10-vitrin.jpg?v=1784343440",
       "in_stock": true,
       "price": 11990,
       "type": "camera"
@@ -609,7 +617,7 @@ const SHOPIFY = {
     {
       "handle": "nikon-coolpix-2500",
       "title": "Nikon Coolpix 2500",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-2500-vitrin.jpg?v=1782612052",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-2500-vitrin.jpg?v=1784343578",
       "in_stock": false,
       "price": 16490,
       "type": "camera"
@@ -617,7 +625,7 @@ const SHOPIFY = {
     {
       "handle": "nikon-coolpix-885",
       "title": "Nikon Coolpix 885",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-885-vitrin.jpg?v=1782612056",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-885-vitrin.jpg?v=1784343605",
       "in_stock": false,
       "price": 8900,
       "type": "camera"
@@ -625,7 +633,7 @@ const SHOPIFY = {
     {
       "handle": "nikon-coolpix-p5100",
       "title": "Nikon Coolpix P5100",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/snikon1.jpg?v=1757813691",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-p5100-vitrin.jpg?v=1784343622",
       "in_stock": false,
       "price": 10490,
       "type": "camera"
@@ -633,15 +641,23 @@ const SHOPIFY = {
     {
       "handle": "nikon-coolpix-s100",
       "title": "Nikon Coolpix S100",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s100-vitrin.jpg?v=1782612060",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s100-vitrin.jpg?v=1784343651",
       "in_stock": false,
       "price": 15490,
       "type": "camera"
     },
     {
+      "handle": "nikon-coolpix-s3000",
+      "title": "Nikon Coolpix S3000",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s3000-vitrin.jpg?v=1784343701",
+      "in_stock": true,
+      "price": 17490,
+      "type": "camera"
+    },
+    {
       "handle": "nikon-coolpix-s3200",
       "title": "Nikon Coolpix S3100",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s3200-vitrin.jpg?v=1782612064",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s3200-vitrin.jpg?v=1784343768",
       "in_stock": false,
       "price": 9490,
       "type": "camera"
@@ -657,7 +673,7 @@ const SHOPIFY = {
     {
       "handle": "nikon-coolpix-s52c",
       "title": "Nikon Coolpix S52c",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s52c-vitrin.jpg?v=1782612072",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s52c-vitrin.jpg?v=1784343850",
       "in_stock": false,
       "price": 11490,
       "type": "camera"
@@ -665,7 +681,7 @@ const SHOPIFY = {
     {
       "handle": "nikon-coolpix-s60",
       "title": "Nikon Coolpix S60",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s60-vitrin.jpg?v=1782612076",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s60-vitrin.jpg?v=1784343887",
       "in_stock": false,
       "price": 13490,
       "type": "camera"
@@ -681,7 +697,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-pen-e-pl1-25mm",
       "title": "Olympus PEN E-PL1",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-pen-e-pl1-25mm-vitrin.jpg?v=1782612857",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-pen-e-pl1-25mm-vitrin.jpg?v=1784343981",
       "in_stock": true,
       "price": 18490,
       "type": "camera"
@@ -689,7 +705,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-sp-320",
       "title": "Olympus SP-320",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sp-320-vitrin.jpg?v=1782612085",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sp-320-vitrin.jpg?v=1784344047",
       "in_stock": true,
       "price": 9490,
       "type": "camera"
@@ -697,7 +713,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-sp-700",
       "title": "Olympus SP-700",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sp-700-vitrin.jpg?v=1782612088",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sp-700-vitrin.jpg?v=1784344076",
       "in_stock": true,
       "price": 10490,
       "type": "camera"
@@ -705,7 +721,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-stylus-790-sw",
       "title": "Olympus Stylus 790 SW",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-stylus-790-sw-vitrin.jpg?v=1782612092",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-stylus-790-sw-vitrin.jpg?v=1784344108",
       "in_stock": false,
       "price": 9490,
       "type": "camera"
@@ -713,7 +729,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-sz-10",
       "title": "Olympus SZ-10",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sz-10-vitrin.jpg?v=1782612097",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sz-10-vitrin.jpg?v=1784344154",
       "in_stock": false,
       "price": 9490,
       "type": "camera"
@@ -721,7 +737,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-sz-14",
       "title": "Olympus SZ-14",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sz-14-vitrin.jpg?v=1782612101",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sz-14-vitrin.jpg?v=1784344193",
       "in_stock": false,
       "price": 9990,
       "type": "camera"
@@ -729,7 +745,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-tough-tg-820",
       "title": "Olympus Tough TG-820 Waterproof",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-tough-tg-820-vitrin.jpg?v=1782612106",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-tough-tg-820-vitrin.jpg?v=1784344246",
       "in_stock": false,
       "price": 13490,
       "type": "camera"
@@ -737,7 +753,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-vg-110",
       "title": "Olympus VG-110",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-110-vitrin.jpg?v=1782612110",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-110-vitrin.jpg?v=1784344293",
       "in_stock": false,
       "price": 9990,
       "type": "camera"
@@ -745,7 +761,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-vg-130",
       "title": "Olympus VG-130",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-130-vitrin.jpg?v=1782612114",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-130-vitrin.jpg?v=1784344408",
       "in_stock": false,
       "price": 13490,
       "type": "camera"
@@ -753,7 +769,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-vr-310",
       "title": "Olympus VR-310",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-310-vitrin.jpg?v=1782612118",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-310-vitrin.jpg?v=1784344464",
       "in_stock": false,
       "price": 15490,
       "type": "camera"
@@ -761,7 +777,7 @@ const SHOPIFY = {
     {
       "handle": "olympus-vr-340",
       "title": "Olympus VR-340",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-340-vitrin.jpg?v=1782612122",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-340-vitrin_6e55197d-da90-4a38-8c53-db419c5f012f.jpg?v=1784344509",
       "in_stock": true,
       "price": 17990,
       "type": "camera"
@@ -769,15 +785,15 @@ const SHOPIFY = {
     {
       "handle": "panasonic-dmc-ls70",
       "title": "Panasonic DMC LS70",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-dmc-ls70-vitrin.jpg?v=1782612126",
-      "in_stock": true,
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-dmc-ls70-vitrin.jpg?v=1784344553",
+      "in_stock": false,
       "price": 11490,
       "type": "camera"
     },
     {
       "handle": "panasonic-lumix-dc-tz91",
       "title": "Panasonic Lumix DC-TZ91",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dc-tz91-vitrin.jpg?v=1782612130",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dc-tz91-vitrin.jpg?v=1784344628",
       "in_stock": true,
       "price": 28490,
       "type": "camera"
@@ -793,7 +809,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-lumix-dmc-fx10",
       "title": "Panasonic Lumix DMC FX10",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-fx10-vitrin.jpg?v=1782612143",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-fx10-vitrin.jpg?v=1784344749",
       "in_stock": false,
       "price": 11900,
       "type": "camera"
@@ -801,7 +817,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-lumix-dmc-f3",
       "title": "Panasonic Lumix DMC-F3",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-f3-vitrin.jpg?v=1782612139",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-f3-vitrin.jpg?v=1784344820",
       "in_stock": false,
       "price": 13490,
       "type": "camera"
@@ -809,7 +825,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-lumix-dmc-ls75",
       "title": "Panasonic Lumix DMC-LS75",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-ls75-vitrin.jpg?v=1782612147",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-ls75-vitrin.jpg?v=1784344864",
       "in_stock": false,
       "price": 9990,
       "type": "camera"
@@ -817,7 +833,7 @@ const SHOPIFY = {
     {
       "handle": "panasonic-lumix-dmc-lz7",
       "title": "Panasonic Lumix DMC-LZ7",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-lz7-vitrin.jpg?v=1782612151",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-lz7-vitrin.jpg?v=1784344891",
       "in_stock": false,
       "price": 10490,
       "type": "camera"
@@ -833,7 +849,7 @@ const SHOPIFY = {
     {
       "handle": "polaroid-i634",
       "title": "Polaroid i634",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/polaroid-i634-vitrin.jpg?v=1782612159",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/polaroid-i634-vitrin.jpg?v=1784344975",
       "in_stock": false,
       "price": 6990,
       "type": "camera"
@@ -857,7 +873,7 @@ const SHOPIFY = {
     {
       "handle": "rollei-flexline-140",
       "title": "Rollei Flexline 140",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/rollei-flexline-140-vitrin.jpg?v=1782612171",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/rollei-flexline-140-vitrin.jpg?v=1784345092",
       "in_stock": false,
       "price": 10940,
       "type": "camera"
@@ -865,7 +881,7 @@ const SHOPIFY = {
     {
       "handle": "samsung-es65",
       "title": "Samsung ES65",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-es65-vitrin.jpg?v=1782612175",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-es65-vitrin.jpg?v=1784345155",
       "in_stock": false,
       "price": 9990,
       "type": "camera"
@@ -873,9 +889,25 @@ const SHOPIFY = {
     {
       "handle": "samsung-nx2000",
       "title": "Samsung NX2000",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-nx2000-vitrin.jpg?v=1782612861",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-nx2000-vitrin.jpg?v=1784345214",
       "in_stock": true,
       "price": 15490,
+      "type": "camera"
+    },
+    {
+      "handle": "samsung-style-st66",
+      "title": "Samsung Style ST66",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-style-st66-vitrin.jpg?v=1784345287",
+      "in_stock": true,
+      "price": 9990,
+      "type": "camera"
+    },
+    {
+      "handle": "samsung-wb350f",
+      "title": "Samsung WB350F",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-wb350f-vitrin.jpg?v=1784345321",
+      "in_stock": true,
+      "price": 19490,
       "type": "camera"
     },
     {
@@ -889,7 +921,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-cg-10",
       "title": "Sanyo Xacti CG-10",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg-10-vitrin.jpg?v=1782612183",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg-10-vitrin.jpg?v=1784345361",
       "in_stock": false,
       "price": 8490,
       "type": "camera"
@@ -897,7 +929,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-cg100-ex",
       "title": "Sanyo Xacti CG100 EX",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg100-ex-vitrin.jpg?v=1782612186",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg100-ex-vitrin.jpg?v=1784345402",
       "in_stock": false,
       "price": 9490,
       "type": "camera"
@@ -905,7 +937,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-cg20",
       "title": "Sanyo Xacti CG20",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg20-vitrin.jpg?v=1782612865",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg20-vitrin.jpg?v=1784345423",
       "in_stock": true,
       "price": 11490,
       "type": "camera"
@@ -913,7 +945,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-vpc-c5",
       "title": "Sanyo Xacti VPC-C5",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/anyo_xaxti_c5.jpg?v=1783716653",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-c5-vitrin.jpg?v=1784345459",
       "in_stock": true,
       "price": 13490,
       "type": "camera"
@@ -921,7 +953,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-vpc-e6ex",
       "title": "Sanyo Xacti VPC-E6EX",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-e6ex-vitrin.jpg?v=1782612190",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-e6ex-vitrin.jpg?v=1784345511",
       "in_stock": false,
       "price": 8490,
       "type": "camera"
@@ -929,7 +961,7 @@ const SHOPIFY = {
     {
       "handle": "sanyo-xacti-vpc-hd1",
       "title": "Sanyo Xacti VPC-HD1",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-hd1-vitrin.jpg?v=1782612194",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-hd1-vitrin.jpg?v=1784345560",
       "in_stock": true,
       "price": 10490,
       "type": "camera"
@@ -937,7 +969,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-t500",
       "title": "Sony Cyber-shot DSC-T500",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t500-vitrin.jpg?v=1782612198",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t500-vitrin.jpg?v=1784345592",
       "in_stock": false,
       "price": 11490,
       "type": "camera"
@@ -945,7 +977,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-t70",
       "title": "Sony Cyber-shot DSC-T70",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t70-vitrin.jpg?v=1782612203",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t70-vitrin.jpg?v=1784345686",
       "in_stock": false,
       "price": 14490,
       "type": "camera"
@@ -953,15 +985,15 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-t9",
       "title": "Sony Cyber-shot DSC-T9",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t9-vitrin.jpg?v=1782612207",
-      "in_stock": false,
-      "price": 12490,
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t9-vitrin_1711dc62-9dcf-49ad-8f77-a47665034de3.jpg?v=1784345730",
+      "in_stock": true,
+      "price": 11490,
       "type": "camera"
     },
     {
       "handle": "sony-cyber-shot-dsc-tx9",
       "title": "Sony Cyber-shot DSC-TX9",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-tx9-vitrin.jpg?v=1782612211",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-tx9-vitrin.jpg?v=1784345765",
       "in_stock": false,
       "price": 14490,
       "type": "camera"
@@ -969,7 +1001,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cyber-shot-dsc-w110",
       "title": "Sony Cyber-shot DSC-W110",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-w110-vitrin.jpg?v=1782612215",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-w110-vitrin.jpg?v=1784345807",
       "in_stock": false,
       "price": 10490,
       "type": "camera"
@@ -977,7 +1009,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-s600",
       "title": "Sony Cybershot DSC-S600",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s600-vitrin.jpg?v=1782612219",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s600-vitrin.jpg?v=1784345848",
       "in_stock": false,
       "price": 8990,
       "type": "camera"
@@ -985,7 +1017,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-s85",
       "title": "Sony Cybershot DSC-S85",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s85-vitrin.jpg?v=1782612223",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s85-vitrin.jpg?v=1784345911",
       "in_stock": true,
       "price": 7990,
       "type": "camera"
@@ -993,7 +1025,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-t20",
       "title": "Sony Cybershot DSC-T20",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t20-vitrin.jpg?v=1782612869",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t20-vitrin.jpg?v=1784345952",
       "in_stock": false,
       "price": 16490,
       "type": "camera"
@@ -1001,7 +1033,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-t300",
       "title": "Sony Cybershot DSC-T300",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t300-vitrin.jpg?v=1782612227",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t300-vitrin.jpg?v=1784346007",
       "in_stock": true,
       "price": 15490,
       "type": "camera"
@@ -1009,7 +1041,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-w150",
       "title": "Sony Cybershot DSC-W150",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w150-vitrin.jpg?v=1782611664",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w150-vitrin.jpg?v=1784346064",
       "in_stock": true,
       "price": 13490,
       "type": "camera"
@@ -1017,7 +1049,7 @@ const SHOPIFY = {
     {
       "handle": "sony-cybershot-dsc-w200",
       "title": "Sony Cybershot DSC-W200",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w200-vitrin.jpg?v=1782612232",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w200-vitrin.jpg?v=1784346121",
       "in_stock": false,
       "price": 12900,
       "type": "camera"
@@ -1033,7 +1065,7 @@ const SHOPIFY = {
     {
       "handle": "traveler-dc-830",
       "title": "Traveler DC-830",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/traveler-dc-830-vitrin.jpg?v=1782612236",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/traveler-dc-830-vitrin.jpg?v=1784346208",
       "in_stock": true,
       "price": 8490,
       "type": "camera"
@@ -1049,7 +1081,7 @@ const SHOPIFY = {
     {
       "handle": "ulanzi-vlog-tripod",
       "title": "Ulanzi VLOG Tripod",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/Ulanzi_MT-17_1.jpg?v=1753713768",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/ulanzi-vlog-tripod-vitrin.jpg?v=1784346300",
       "in_stock": true,
       "price": 990,
       "type": "accessory"
@@ -1057,7 +1089,7 @@ const SHOPIFY = {
     {
       "handle": "universal-kamera-batarya-sarj-cihaz",
       "title": "Universal Kamera Batarya Şarj Cihazı",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/akrepsarj.jpg?v=1757005458",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/universal-kamera-batarya-sarj-cihaz-vitrin.jpg?v=1784346305",
       "in_stock": true,
       "price": 590,
       "type": "accessory"
@@ -1065,7 +1097,7 @@ const SHOPIFY = {
     {
       "handle": "usb-c-3-in-1-kart-okuyucu-sd-microsd",
       "title": "USB-C 3'ü 1 Arada Kart Okuyucu — SD / MicroSD / USB",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sd_kart_okuyucu.jpg?v=1775047519",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/usb-c-3-in-1-kart-okuyucu-sd-microsd-vitrin.jpg?v=1784346325",
       "in_stock": true,
       "price": 690,
       "type": "accessory"
@@ -1073,28 +1105,28 @@ const SHOPIFY = {
     {
       "handle": "y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu",
       "title": "Y2K Digicam Fotoğraf/Video Aktarıcı - xD, CF, SD, MS Destekli All-in-One Kart Okuyucu",
-      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu-vitrin.jpg?v=1782612240",
+      "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu-vitrin.jpg?v=1784346347",
       "in_stock": true,
       "price": 790,
       "type": "accessory"
     }
   ],
   "period_30d": {
-    "revenue": 67689,
-    "orders": 6,
-    "aov": 11282
+    "revenue": 60560,
+    "orders": 5,
+    "aov": 12112
   },
   "period_90d": {
-    "revenue": 304559,
+    "revenue": 297469,
     "orders": 25,
-    "aov": 12182
+    "aov": 11899
   },
   "period_year": {
-    "revenue": 964734,
-    "orders": 80,
-    "aov": 12059
+    "revenue": 978034,
+    "orders": 81,
+    "aov": 12074
   },
-  "customers_total": 915,
+  "customers_total": 947,
   "monthly_labels": [
     "Ağu 25",
     "Eyl 25",
@@ -1121,7 +1153,7 @@ const SHOPIFY = {
     65320,
     139290,
     79639,
-    44670
+    60560
   ],
   "monthly_orders": [
     6,
@@ -1135,7 +1167,7 @@ const SHOPIFY = {
     6,
     12,
     6,
-    3
+    5
   ],
   "channels": [
     {
@@ -1144,16 +1176,16 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 32,
       "rev": 424690,
-      "order_pct": 40.0,
-      "rev_pct": 44.0
+      "order_pct": 39.0,
+      "rev_pct": 43.3
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 25,
-      "rev": 270075,
-      "order_pct": 31.2,
+      "orders": 26,
+      "rev": 274475,
+      "order_pct": 31.7,
       "rev_pct": 28.0
     },
     {
@@ -1162,17 +1194,17 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 20,
       "rev": 232759,
-      "order_pct": 25.0,
-      "rev_pct": 24.1
+      "order_pct": 24.4,
+      "rev_pct": 23.7
     },
     {
       "name": "YouTube",
       "icon": "▶",
       "color": "#FF453A",
-      "orders": 2,
-      "rev": 27970,
-      "order_pct": 2.5,
-      "rev_pct": 2.9
+      "orders": 3,
+      "rev": 39460,
+      "order_pct": 3.7,
+      "rev_pct": 4.0
     },
     {
       "name": "AI / Arama",
@@ -1181,10 +1213,18 @@ const SHOPIFY = {
       "orders": 1,
       "rev": 9240,
       "order_pct": 1.2,
-      "rev_pct": 1.0
+      "rev_pct": 0.9
     }
   ],
   "recent_orders": [
+    {
+      "date": "15 Tem 2026",
+      "amount": 4400
+    },
+    {
+      "date": "14 Tem 2026",
+      "amount": 11490
+    },
     {
       "date": "9 Tem 2026",
       "amount": 9050
@@ -1216,14 +1256,6 @@ const SHOPIFY = {
     {
       "date": "7 Haz 2026",
       "amount": 11490
-    },
-    {
-      "date": "4 Haz 2026",
-      "amount": 16490
-    },
-    {
-      "date": "31 May 2026",
-      "amount": 10990
     }
   ],
   "cameras": [
@@ -1231,6 +1263,11 @@ const SHOPIFY = {
       "name": "Panasonic Lumix DC-TZ91",
       "price": 28490,
       "cost": 17000
+    },
+    {
+      "name": "Samsung WB350F",
+      "price": 19490,
+      "cost": 6000
     },
     {
       "name": "Olympus PEN E-PL1",
@@ -1241,6 +1278,11 @@ const SHOPIFY = {
       "name": "Olympus VR-340",
       "price": 17990,
       "cost": 7000
+    },
+    {
+      "name": "Nikon Coolpix S3000",
+      "price": 17490,
+      "cost": 6000
     },
     {
       "name": "Fujifilm FinePix Z700 EXR",
@@ -1293,14 +1335,19 @@ const SHOPIFY = {
       "cost": 5500
     },
     {
-      "name": "Panasonic DMC LS70",
-      "price": 11490,
-      "cost": 3497
-    },
-    {
       "name": "Sanyo Xacti CG20",
       "price": 11490,
       "cost": 4000
+    },
+    {
+      "name": "Sony Cyber-shot DSC-T9",
+      "price": 11490,
+      "cost": 3800
+    },
+    {
+      "name": "Fujifilm FinePix JV310",
+      "price": 10990,
+      "cost": 3800
     },
     {
       "name": "Casio Exilim EX-Z4",
@@ -1328,6 +1375,11 @@ const SHOPIFY = {
       "cost": 2200
     },
     {
+      "name": "Samsung Style ST66",
+      "price": 9990,
+      "cost": 3800
+    },
+    {
       "name": "Olympus SP-320",
       "price": 9490,
       "cost": 5500
@@ -1346,11 +1398,6 @@ const SHOPIFY = {
       "name": "Sony Cybershot DSC-S85",
       "price": 7990,
       "cost": 3932
-    },
-    {
-      "name": "Kodak ZX1 “Weather-Resistant”",
-      "price": 4900,
-      "cost": 1680
     }
   ],
   "accessories": [
@@ -1380,143 +1427,143 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 94
+  "out_of_stock": 95
 };
 /* ─── SHOPIFY DATA END ─── */
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-07-11T02:16:52",
+  "updated_at": "2026-07-20T23:23:00",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 7283,
-  "media_count": 288,
+  "followers": 7687,
+  "media_count": 290,
   "avg_likes": 46,
-  "total_engagement": 560,
+  "total_engagement": 554,
   "type_counts": {
-    "VIDEO": 5,
-    "CAROUSEL_ALBUM": 7
+    "VIDEO": 6,
+    "CAROUSEL_ALBUM": 6
   },
   "posts": [
+    {
+      "id": "18199709770323756",
+      "date": "17 Tem 2026",
+      "type": "VIDEO",
+      "likes": 18,
+      "comments": 0,
+      "url": "https://www.instagram.com/reel/Da5pd8lI3NB/",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/747333865_17900778828496139_7704101476775556230_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=1YwaRAkd5nYQ7kNvwEQF_SY&_nc_oc=AdrR2FVOhfM0VPIUZmxG-_uHvj6gPJsAs1EQHiqoEwmKx6qCckhT86Ou_GwGP29z2EY&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&_nc_tpa=Q5bMBQGVGzxlHB0jEZMnO8FqSahO3n4YnBZAGS8_N_KitJkzc3ex0l6Hs6CrlGy4KK9-MxBMOhN0AhRe&oh=00_AQAcj326IIuETkZjBIjVawLB0DZEJlJQ8Qv-uVc7MPaB6Q&oe=6A6467C8",
+      "caption": "21x Optik Zoom Cepte! Samsung WB350F 📸 Retrocameraland.com’da ✨ \n\n#digicam #sunset #photo #vintagecamera #dijitalkamera"
+    },
+    {
+      "id": "18099482018241253",
+      "date": "14 Tem 2026",
+      "type": "CAROUSEL_ALBUM",
+      "likes": 25,
+      "comments": 0,
+      "url": "https://www.instagram.com/p/DaxINNPiP4p/",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/747086823_17900291616496139_884981265621498938_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=-IJxBx4FiQEQ7kNvwEo2U5H&_nc_oc=AdrngcYZPMosHUAMuHOd2NdbhT34lsTLcA_TzbNeg8EeQbkDykhnP4mxYCgQ-eKzPs4&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&oh=00_AQBW9AFoWhKZ3TJBlP9D4nDdX1LrpFgIw9f9nj6GpnOmgg&oe=6A6452B3",
+      "caption": "nothing hits like the Y2K era 📼 \nikonik dijital kameralar retrocameraland.com’da! \n\n#y2k #digicam #y2kaesthetic #camcore #2000s"
+    },
     {
       "id": "17946402855036679",
       "date": "10 Tem 2026",
       "type": "VIDEO",
-      "likes": 5,
-      "comments": 0,
+      "likes": 23,
+      "comments": 3,
       "url": "https://www.instagram.com/reel/DaoIC-CoY-E/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/731580375_1419566446892941_6659456838857054074_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=YpCBLvPlC_AQ7kNvwHo3O0u&_nc_oc=AdrVDsjpgDlaA5mzYdRpEDnLOrw5l-9jJDo6ELHECwEbeomelL489gEYonbxxE9ODxI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&_nc_tpa=Q5bMBQGBTWV9VzznHXNUZADJD1IQo6l6StutPdJAtPuAGdj4cQLdlw1Ei5HKUD2ai6_ciYS0LoyrHEwX&oh=00_AQB8WB6ZvpXM6UDmRxyMgHi1LIgdVH4T5iMuiUAnuwkqGQ&oe=6A574439",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/731580375_1419566446892941_6659456838857054074_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=qLlAK6ued0cQ7kNvwFne_RY&_nc_oc=AdqfCqldIyYXJ-CUdCGCMk7O8SNEbJzEYczUOJZKiTtt2s3qrbJO8lo5oEuasx_SM1k&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&_nc_tpa=Q5bMBQEgx3iomBSgMJJ6valg0MSJ5JdHTHD1ubol-m-8dL_h_1HlOHVS96c1jQDR2Z5X42lwrTraHPNP&oh=00_AQBhE0bxt5z17ULprMU5qpOClpwoTMHpG8tTPIu24G7FsA&oe=6A643AF9",
       "caption": "Pure aesthetic, pure nostalgia. 📼\n\nSanyo Xacti VPC C5. Dünyanın en ince CCD sensörlü hibrit kamerası. Türkiye’de tek stok RetroCameraLand.com’da 🌍\n\n#y2kdigitalcamera #sanyoxacti #retrocamera #vintagec"
     },
     {
       "id": "17944057185248869",
       "date": "8 Tem 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 29,
+      "likes": 47,
       "comments": 0,
       "url": "https://www.instagram.com/p/Daib3cgiL4Z/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/740967654_17899403565496139_2279664008123169271_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=zEuxMd4Y00UQ7kNvwHtEkcw&_nc_oc=AdqIqNPOVSWwvl3GnyeBOQ0YHGmmWh9zqlMWdd3SG8UPH7qMOz2eTE8tUoN50mzai-4&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&oh=00_AQC0R5GJ4GkG-EkNajo1lWssapyV6ALmqX4poUaiJLCf_w&oe=6A575800",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/740967654_17899403565496139_2279664008123169271_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=3XG9WLqzHXAQ7kNvwFn9EKi&_nc_oc=Adr8BI2MzQMZyKvXZs_bd1g6JQp6eS_D1x-c-n3pb-OsHoNsX33IAFfS9Qy--VNNNCM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&oh=00_AQBs0VVOqwHi_YTTma6aCg2C6DzSR_wD7_Dk4KL7MWf7-g&oe=6A644EC0",
       "caption": "The 2000s didn’t come back. They never left.\nCCD sensor, retro soul, today’s aesthetic. Find yours at retrocameraland.com 🌍📸\n\n#CCDcamera #retrocameraland #digitalcamera #Y2Kaesthetic"
     },
     {
       "id": "17876463876680867",
       "date": "4 Tem 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 79,
+      "likes": 91,
       "comments": 0,
       "url": "https://www.instagram.com/p/DaXevgACC6K/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/733974994_17898693909496139_1902947164401550096_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=-M4pEegiIwAQ7kNvwEJjPTd&_nc_oc=Ado95mAaN2-VT3WUwCFFAey16jmbQ-9-L4kCvvmrElSFqB69iBhuSh0a51iAV_V5ZNw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&oh=00_AQAAsMU5ubZOiJ-BdknOEwfWLEW1Wp-9hGDQOZ9WCIeOYQ&oe=6A5766F1",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/733974994_17898693909496139_1902947164401550096_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=DIpccA7PYUAQ7kNvwFoR0uC&_nc_oc=AdoMYebXeeLhFzpU_FDWmOVEwOR6dgGVjeszFJOtpcXfqJ8414THJzFha5hyA85Sk8c&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&oh=00_AQCoopEpkaRDHx8UQKIQAYdRRMvuO3lhBT4o4uX-q40FEQ&oe=6A645DB1",
       "caption": "memories are forever ❣️ | Discover your digicam at retrocameraland.com 📸\n\n#digitalcamera #y2k #aesthetic #retro #couple"
     },
     {
       "id": "18054203423767538",
       "date": "29 Haz 2026",
       "type": "VIDEO",
-      "likes": 36,
+      "likes": 39,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DaLTL9SoX4l/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/729629492_17897836044496139_7280176905282824167_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Tid40PadDn0Q7kNvwEwp2ZS&_nc_oc=AdokzMGfPAPt35MsHibYeyawXTMcX2dAfEL7dvpPdZ6TNnEy9v0Z6L92VzltWXA2X-I&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&_nc_tpa=Q5bMBQE86ZWJxH_wGfFTZ2UhRsrOR_51YNidaeBZ5-CYZj01NV5BEJFYCKOSgwSZzzQtjZVxfcd9P84f&oh=00_AQD0PfjL5XInYymLoQr5r_67FnuA3cb4O5JhlUfIQb5PaA&oe=6A575222",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/729629492_17897836044496139_7280176905282824167_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=MwrzLAtkcSwQ7kNvwGIiSAz&_nc_oc=AdqBqmlRzUIUT__e9k1hf68MID5PRzf-PFBpdLhn9BQCXi0FgV-aA55OtQMeuvWqk3w&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&_nc_tpa=Q5bMBQE8Sk_52SBljUs61Ri5vYcu1KkjqYRQDJj481Py---KId8CkGBzE9xCdwJzFFuisvkxq7azGRAY&oh=00_AQBtkIy-a2_XnaGVJTPtmn_6rWtynCDqP6UBpcnNxVchHw&oe=6A6448E2",
       "caption": "Panasonic Lumix TZ91 | Leica lens, 30x zoom, 4K video ve dönebilen ekranıyla RetroCameraLand’de 📸 \n\n#digicam #lumix #pointandshoot #digitalcamera #leica"
     },
     {
       "id": "17921560605167868",
       "date": "27 Haz 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 95,
+      "likes": 98,
       "comments": 0,
       "url": "https://www.instagram.com/p/DaFyzLnCOyR/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/729644224_17897576652496139_3070927825817893537_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=w54RkbmCP_QQ7kNvwH5zKMe&_nc_oc=AdrScT46xq6bIDykH9ECXjrB2WcVp0s0gUpzhs4k9aM3dEygbHTRXtMynJA6-WwWtTs&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&oh=00_AQCJb-10zuyTGSHXCpvxOIVj3pVfjJaFq7H3Qtcf2x6kRA&oe=6A57424B",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/729644224_17897576652496139_3070927825817893537_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=hj20q21qblwQ7kNvwGf9bHU&_nc_oc=Adr5cCjnCIM8nnY7KBFRQ2aGUtSvV4o6uc2AsQJrcdY9klVx03Z_kXcQR2T0kDC4r_Y&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&oh=00_AQCtzwhACRaZ2TEs-_p6lDLf7g07dL3E0EQWwVaxea9Oog&oe=6A64714B",
       "caption": "The digital camera that’s always by your side, for your most special moments ✨\n\nDiscover yours at RetroCameraLand.com 🌍\n\n#digicamaesthetic #y2kcamera #couple #love #style"
     },
     {
       "id": "18078858860658094",
       "date": "20 Haz 2026",
       "type": "VIDEO",
-      "likes": 19,
+      "likes": 22,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DZzz0ATId3D/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/726782685_4537360086585918_7097184926040454410_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=gpBDn328niIQ7kNvwEsb4L1&_nc_oc=AdqIwht2Ra-7dO4kqQnsQfJsWDkWLHCyjF0TOvVzeA8q8FYPG1NDPIYB5z9A3PM-K08&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&_nc_tpa=Q5bMBQFLutQMNwN5I1k6QSsgYXj2WXuEAb0ADJV9CvB8LxHlRZy_iHBpGa4QsHwyHp4QD5zeOPUK00GO&oh=00_AQChb_CeiM1-DFPiDne3yXqbSuYNnh7lmlrTwY7M0RuX8A&oe=6A5736B9",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/726782685_4537360086585918_7097184926040454410_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=aD5FBPHQPH4Q7kNvwE3MQkq&_nc_oc=AdpSOUFs5QAu4EnnTU7XEuqRbYxahh-Qx51cGlXPNuTt7aGsWeIQ0LhYbKW1Z-OlzYc&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&_nc_tpa=Q5bMBQFm8W27Ige36ggjgPH2C2AiusYPiMsQUtnpRyI5I5k3hbx1wBkjbgj7L57xSvsSJ1lbJv7J1BXG&oh=00_AQD6gQQWJVbMO2JaDrTo7tIO1OZ_9Py_Ocnu70OhO66iuw&oe=6A6465B9",
       "caption": "Fotoğraf çekmek hiç bu kadar tatlı olmamıştı 🍊\nDijital kameranı RetroCameraLand.com’da keşfet 📸\n\n⁠#retrocamera #vintagevibes #aestheticvideos #digicam #summervibes"
     },
     {
       "id": "18377955547161206",
       "date": "12 Haz 2026",
       "type": "VIDEO",
-      "likes": 16,
+      "likes": 19,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DZfr1SMo64B/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/721736574_1372629674729819_532175160998543556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=eh2gPoZcEY0Q7kNvwHWI4G_&_nc_oc=Adr-HYviJ4nq1yOLxXiQW33sNzJjJWi3V-kU6xB896lHGnAcPCQVgQtW7TlLK0_aJHA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&_nc_tpa=Q5bMBQFg_JrFDW4YJrnoc-lisN1xXoNEd3ABfRH_UjVcAfSevvi9J-XcNDwSj0a3yn5gBCcvPhKxyprQ&oh=00_AQC6LcjusE3kc8V8uSXYJetw0t9arQa_SyfwQPNsBw-WqA&oe=6A575878",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/721736574_1372629674729819_532175160998543556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=3KrBAIro2fsQ7kNvwHZ8YeV&_nc_oc=AdpGmeE6lbXEfnqqnVmiJbZ3QeUK5V9_6eVHSy37PZtMuO-eNySuJgSWxYdBlarg2hY&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&_nc_tpa=Q5bMBQGgnnPrOErjTNhA6ao3HvaqqWqYcJm4EJHW8ji0fqux4ujJ9OUEeJwIjaWWuJfeXe7XyrB8lw5R&oh=00_AQCK96ZlTwfRRPZc67rDRQV4T04fhsLnwNNrhotZiP6Vdg&oe=6A644F38",
       "caption": "Küçük anların büyük hisleri 🎞️🤍 Lumix TZ91 Retrocameraland.com’da 📸\n\n#littlebaby #Digicam #VintageVibes #digitalcamera #Y2KStyle"
     },
     {
       "id": "18122119132656671",
       "date": "11 Haz 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 43,
+      "likes": 47,
       "comments": 1,
       "url": "https://www.instagram.com/p/DZck6zXiDag/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/721297008_17895044379496139_2773788616356448899_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_EBWyyK0dukQ7kNvwGE6lPa&_nc_oc=AdpWP3zFS_jfGMEPQHYbk8iznAhGDqq-OXX3gKYGVD8bw9oRqYx8NsPNXyBU8Iv8HpA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&oh=00_AQDJBtW_EcjaDuNkQfHZi13_NhBqJd0SS3iBY-1Yq_ocgg&oe=6A576862",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/721297008_17895044379496139_2773788616356448899_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=fKUKVNs_3hwQ7kNvwG5Dgvt&_nc_oc=AdqV1l5JEonLDwrW2zYG0KCK8S3nIv8Ow_biTRWBSwUURJ_3YqWZgWg0P4XRV7Q2244&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&oh=00_AQDKOxi_kcGCxY4CvLcmFPvVGPICSdgQJdRRdK0k0N6uVA&oe=6A645F22",
       "caption": "Own a piece of Y2K 📸 İkonik kameralar, zamanla daha da değerli❣️ Where Y2K lives on Retrocameraland.com 🌍\n\n#digicam #retrolove #aesthetic #compactcamera #colorful"
     },
     {
       "id": "18092303108367363",
       "date": "7 Haz 2026",
       "type": "CAROUSEL_ALBUM",
-      "likes": 77,
+      "likes": 79,
       "comments": 0,
       "url": "https://www.instagram.com/p/DZS7i4wCCLW/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/718935543_17894504454496139_5750535782999794384_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=EOY8rx3elsYQ7kNvwEaVZFz&_nc_oc=Adpkx3mtxVFhKYAgn9_cW64BzbxqdN1y-I5n9UFXuwyhCF53JP1wTZ6OLxnOyZ0fdpM&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&oh=00_AQCBOH4Iz_NpJCqdEsEjBdOuhCfm1lUeNDa8437nfhg4gw&oe=6A573991",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/718935543_17894504454496139_5750535782999794384_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=qO7orAWkeD8Q7kNvwHlYEKD&_nc_oc=AdqjUwGsa9_lxub6x6zE6if4PHJxGW9hoIqkRqsZS2-62Jeg6n93_xseW2l12GkEwo8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&oh=00_AQBaPdQl4saqbJEkfpSdCb-0MLb8VRu32qXus9BbDTa6Eg&oe=6A646891",
       "caption": "Carry your aesthetic, shoot your moments. | Retrocameraland.com 📸 \n\n#digicam #retrocamera #style #aestethic #moment"
     },
     {
       "id": "18130050901538120",
       "date": "4 Haz 2026",
       "type": "VIDEO",
-      "likes": 40,
+      "likes": 42,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DZKqrlfoERu/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/714830428_26982014394791047_8426920815930901021_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=UXp8AUI-vQ0Q7kNvwEPkE3g&_nc_oc=Adrplkprcy89Wy1GAAuZUnMrrImKeTnklpG-91TFsmDEgV1pTIsc7FGP-qYpBt-stYA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&_nc_tpa=Q5bMBQFOPOdVzOVMm7JB2YyBVRCL4iWaC-nWEcrwH2yylhPmLD2wolqjAtOUB2hF4oPNrxL6tVW_et5_&oh=00_AQAbE8D_ZnykfJsakR0VrsYiVJn7vHW7Nug52sigSk026A&oe=6A573843",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/714830428_26982014394791047_8426920815930901021_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=mfnnwZtZvLYQ7kNvwFT2q4p&_nc_oc=AdoXzw3Sd1ANLUGbK20KFutsLPArBA6-tw47AYZvrtZebhQeogpWtjVzHw02DJXlRzo&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=9hFvSvpeR02xrfwFXJeEJg&_nc_tpa=Q5bMBQFpnHO7tFHLbLUmS667ViGOUcWQHRdfxSLZPLuYDHQsPF1zhIWtzr3aHdZI5CLN46vratJIR3m7&oh=00_AQDSe-hxFRWH-4ZYZUzsEbRKhMmb8N-hSLwF_NaY2Hnf9w&oe=6A646743",
       "caption": "she loves taking photographs 🥂📸\n\n🚩 Discover your digital camera at retrocameraland.com 🗺️ #dijitalkamera #y2k #ccd #lumix #photography"
-    },
-    {
-      "id": "18082362938161796",
-      "date": "1 Haz 2026",
-      "type": "CAROUSEL_ALBUM",
-      "likes": 36,
-      "comments": 0,
-      "url": "https://www.instagram.com/p/DZCPI_ZiJFT/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/710432369_17893527531496139_4424889210621117233_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=OT5vxlM9zDYQ7kNvwFkVuga&_nc_oc=Ado9P80t0zcMr6GK_VCDsSbpKVqAbFYCSnRdMx0I1CFNcMARuPNV-gFJTuXct86plnE&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&oh=00_AQDfA-6tFdaQvn7_Q1Fw6DeA70Vurr5dvyeWry68z-Wztg&oe=6A574C48",
-      "caption": "shoot first, think never ✨\n\nno rules, no retouching. just you and your camera living its best life 📸\n\n🚩 retrocameraland.com #digitalcamera #y2k #aesthetic"
-    },
-    {
-      "id": "18006381323860691",
-      "date": "24 May 2026",
-      "type": "CAROUSEL_ALBUM",
-      "likes": 83,
-      "comments": 1,
-      "url": "https://www.instagram.com/p/DYu1jKZiNVD/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/705988677_17892343674496139_2707241804962707527_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=102&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=iw7fPtU2hRYQ7kNvwGgtccf&_nc_oc=AdpfDxKN7DNXZCiXNfHUh-CnV_0VGVd4MHL3Jwt93-Z-BKROtGp9m_rGjksVIpIrxJw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=S2-8Pwr7pm4_oznkqR7TUA&oh=00_AQC0VVpL8qBJrpGy3syttR-bOxyzfbNQPJDprcuuCBnlAQ&oe=6A574F5A",
-      "caption": "basic starter kit 🏁 \nretrocameraland x benessocoffee \n\nfujifilm dijital kameran, Ethiopia kahvesi, ray-ban gözlük, kablosuz kulaklık ve deri ceket.\n\n#digicam #coffee #y2k #balat #style"
     }
   ],
   "follower_goal": 10000
