@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-20T18:06:27",
+  "updated_at": "2026-07-20T19:06:34",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -114,19 +114,10 @@ const YOUTUBE = {
       "url": "https://youtu.be/fiWC7WOtCtk"
     },
     {
-      "id": "ZRzvt8SJEG8",
-      "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
-      "date": "10 Tem 2026",
-      "views": 412,
-      "likes": 5,
-      "comments": 0,
-      "url": "https://youtu.be/ZRzvt8SJEG8"
-    },
-    {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 3451,
+      "views": 3450,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -148,6 +139,15 @@ const YOUTUBE = {
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
+    },
+    {
+      "id": "HnGR92gHNDY",
+      "title": "MUHTEŞEM ANLARI DİJİTAL KAMERAN İLE KAYDET 📸🥂",
+      "date": "4 Haz 2026",
+      "views": 1042,
+      "likes": 14,
+      "comments": 0,
+      "url": "https://youtu.be/HnGR92gHNDY"
     }
   ],
   "sub_goal": 10000
