@@ -6710,13 +6710,6 @@ function renderRevenueChart() {
   mkChart('revenueChart',{type:'line',data:{labels:SHOPIFY.monthly_labels,datasets:[{data:SHOPIFY.monthly_revenue,borderColor:'#FF3B30',borderWidth:2,fill:true,backgroundColor:grad,tension:0.4,pointRadius:0,pointHoverRadius:5,pointHoverBackgroundColor:'#FF3B30',pointHoverBorderColor:'#000',pointHoverBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>[`  Gelir: ${fmtTL(ctx.parsed.y)}`,`  Sipariş: ${SHOPIFY.monthly_orders[ctx.dataIndex]}`]},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,59,48,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:14,titleFont:{family:'-apple-system',size:11},bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1200,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
 }
 
-function renderFinanceCharts() {
-  const grad2 = document.getElementById('revenueChartF')?.getContext('2d')?.createLinearGradient(0,0,0,240);
-  if (!grad2) return;
-  grad2.addColorStop(0,'rgba(212,175,55,0.28)'); grad2.addColorStop(1,'rgba(212,175,55,0)');
-  mkChart('revenueChartF',{type:'line',data:{labels:SHOPIFY.monthly_labels,datasets:[{data:SHOPIFY.monthly_revenue,borderColor:'#D4AF37',borderWidth:2,fill:true,backgroundColor:grad2,tension:0.4,pointRadius:0,pointHoverRadius:5,pointHoverBackgroundColor:'#D4AF37',pointHoverBorderColor:'#000',pointHoverBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>[`  Gelir: ${fmtTL(ctx.parsed.y)}`]},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:14,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1200,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
-}
-
 // ─── ORDERS ───────────────────────────────────────────────
 function renderOrders() {
   const el = document.getElementById('ordersBody');
@@ -6850,21 +6843,6 @@ function renderGA4Traffic() {
   const gdt=document.getElementById('ga4DonutTotal'); if(gdt) gdt.textContent=fmt(srcTotal);
   mkChart('ga4SourceDonut',{type:'doughnut',data:{labels:src.map(s=>s.name),datasets:[{data:src.map(s=>s.sessions),backgroundColor:src.map(s=>s.color+'BB'),borderColor:src.map(s=>s.color),borderWidth:2,hoverOffset:6}]},options:{responsive:true,maintainAspectRatio:false,cutout:'72%',plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>` ${ctx.label}: ${fmt(ctx.parsed)} oturum (%${src[ctx.dataIndex].pct})`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(48,209,88,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},animation:{duration:1200,easing:'easeOutQuart'}}});
   const gsl=document.getElementById('ga4SourceLegend'); if(gsl) gsl.innerHTML=src.map(s=>`<div class="leg"><div class="leg-dot" style="background:${s.color}"></div><span class="leg-name">${s.name}</span><span class="leg-pct">%${s.pct}</span></div>`).join('');
-}
-
-// ─── BLOG SEO ─────────────────────────────────────────────
-function renderBlogSEO() {
-  counter(document.getElementById('blog-total'),BLOG_SEO.total_posts);
-  counter(document.getElementById('blog-organic'),BLOG_SEO.monthly_organic);
-  const sorted=[...BLOG_SEO.posts].sort((a,b)=>b.views-a.views), top=sorted[0];
-  counter(document.getElementById('blog-top-views'),top.views);
-  const tnEl=document.getElementById('blog-top-name'); if(tnEl) tnEl.textContent=top.title.length>26?top.title.slice(0,26)+'…':top.title;
-  const avgSeo=Math.round(BLOG_SEO.posts.reduce((s,p)=>s+p.seo,0)/BLOG_SEO.posts.length);
-  const asEl=document.getElementById('blog-avg-seo'); if(asEl) asEl.textContent=avgSeo;
-  const btEl=document.getElementById('blogTableBody');
-  if(btEl) btEl.innerHTML=sorted.map((p,i)=>{const sc=p.seo>=90?'var(--green)':p.seo>=75?'var(--warn)':'var(--danger)';return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.70rem;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${p.title}">${p.title}</td><td class="cg">${fmt(p.views)}</td><td style="color:var(--green);font-family:var(--mono)">${fmt(p.organic)}</td><td class="cd">${p.orders}</td><td style="font-family:var(--mono);font-size:0.76rem;font-weight:600;color:${sc}">${p.seo}</td></tr>`;}).join('');
-  const bm=BLOG_SEO.monthly;
-  mkChart('blogTrendChart',{type:'bar',data:{labels:bm.map(m=>m.label),datasets:[{label:'Blog Yazısı',data:bm.map(m=>m.posts),backgroundColor:'rgba(255,255,255,0.18)',borderColor:'rgba(255,255,255,0.5)',borderWidth:1,borderRadius:5,yAxisID:'y1'},{label:'Trafik',data:bm.map(m=>m.traffic),backgroundColor:'rgba(48,209,88,0.18)',borderColor:'rgba(48,209,88,0.65)',borderWidth:1.5,borderRadius:5,yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`  ${ctx.dataset.label}: ${fmt(ctx.parsed.y)}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y1:{position:'left',ticks:{font:{family:'-apple-system',size:9},color:'#D4AF37',stepSize:1},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y2:{position:'right',ticks:{font:{family:'-apple-system',size:9},color:'#30D158',callback:v=>v>=1000?fmt(v/1000)+'K':v},grid:{display:false},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*60}}});
 }
 
 // ─── YOUTUBE ──────────────────────────────────────────────
@@ -7161,12 +7139,6 @@ function renderFinancePage() {
   const fob = document.getElementById('finOrdersBody');
   if(fob) fob.innerHTML=SHOPIFY.recent_orders.map(o=>`<tr><td class="cd">${o.date}</td><td class="cg">${fmtTL(o.amount)}</td></tr>`).join('');
 
-  // ── Kanal Chart ──
-  if (document.getElementById('finChannelChart')) {
-    const ch = SHOPIFY.channels;
-    mkChart('finChannelChart',{type:'bar',data:{labels:ch.map(c=>c.name),datasets:[{label:'Gelir',data:ch.map(c=>c.rev),backgroundColor:ch.map(c=>c.color+'55'),borderColor:ch.map(c=>c.color),borderWidth:2,borderRadius:8,yAxisID:'y1'},{label:'Sipariş',data:ch.map(c=>c.orders),backgroundColor:ch.map(c=>c.color+'33'),borderColor:ch.map(c=>c.color+'88'),borderWidth:1,borderRadius:6,type:'bar',yAxisID:'y2'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>ctx.dataset.label==='Gelir'?`  Gelir: ${fmtTL(ctx.parsed.y)}`:`  Sipariş: ${ctx.parsed.y}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y1:{position:'left',ticks:{font:{family:'-apple-system',size:9},color:'#D4AF37',callback:v=>v>=1000?'₺'+fmt(v/1000)+'K':'₺'+v},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y2:{position:'right',ticks:{font:{family:'-apple-system',size:9},color:'#A1A1A6'},grid:{display:false},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*80}}});
-  }
-
   renderMonthlyProfit(); // aylık kâr analizi (tek kaynaktan, aynı net-kâr formülü)
 }
 
@@ -7323,7 +7295,6 @@ function renderCameraCards(){
 
 function renderStatsPage() {
   renderGA4Traffic();
-  renderBlogSEO();
   if (typeof renderSEOHealthStrip === "function") renderSEOHealthStrip();
   if (typeof renderCameraCards === "function") renderCameraCards();
   setTimeout(function(){ if (typeof statsEnhanceGA4 === "function") statsEnhanceGA4(); }, 300);
@@ -7383,14 +7354,6 @@ function renderStatsPage() {
   const cityRevData = {cities:['İstanbul','Ankara','İzmir','Bursa','Antalya'], aov:[13200,11800,12400,10900,11500]};
   mkChart('statsCityRevChart',{type:'bar',data:{labels:cityRevData.cities,datasets:[{label:'AOV (₺)',data:cityRevData.aov,backgroundColor:['#D4AF3766','#5AC8FA66','#BF5AF266','#30D15866','#FF9F0A66'],borderColor:['#D4AF37','#5AC8FA','#BF5AF2','#30D158','#FF9F0A'],borderWidth:2,borderRadius:10}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:ctx=>`  AOV: ₺${fmt(ctx.parsed.y)}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(255,255,255,0.1)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{display:false},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73',callback:v=>'₺'+fmt(v/1000)+'K'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:900,easing:'easeOutQuart',delay:ctx=>ctx.dataIndex*70}}});
 
-  // Aylık sipariş trendi
-  const mo = SHOPIFY.monthly_orders||[], ml = SHOPIFY.monthly_labels||[];
-  const custCanvas = document.getElementById('statsNewCustChart');
-  if (custCanvas) {
-    const grad2 = custCanvas.getContext('2d').createLinearGradient(0,0,0,220);
-    grad2.addColorStop(0,'rgba(212,175,55,0.28)'); grad2.addColorStop(1,'rgba(212,175,55,0)');
-    mkChart('statsNewCustChart',{type:'line',data:{labels:ml,datasets:[{label:'Sipariş',data:mo,borderColor:'#D4AF37',borderWidth:2,fill:true,backgroundColor:grad2,tension:0.4,pointRadius:0,pointHoverRadius:5,pointHoverBackgroundColor:'#D4AF37',pointHoverBorderColor:'#000',pointHoverBorderWidth:2}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:ctx=>`  Sipariş: ${ctx.parsed.y}`},backgroundColor:'rgba(0,0,0,0.96)',borderColor:'rgba(212,175,55,0.3)',borderWidth:1,titleColor:'#F5F5F7',bodyColor:'rgba(245,245,247,0.6)',padding:12,bodyFont:{family:'-apple-system',size:11}}},scales:{x:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}},y:{ticks:{font:{family:'-apple-system',size:9},color:'#6E6E73'},grid:{color:'rgba(255,255,255,0.04)'},border:{display:false}}},animation:{duration:1100,easing:'easeOutQuart'},interaction:{mode:'index',intersect:false}}});
-  }
 }
 
 // ─── SEO PANELİ ──────────────────────────────────────────
@@ -8029,333 +7992,6 @@ function embedYouTubeInBlog(videoId, videoTitle) {
   if (btn) { btn.textContent = '✓ Eklendi'; btn.classList.add('done'); btn.disabled = true; }
 }
 
-// ─── ÜRÜN OLUŞTURUCU ──────────────────────────────────────
-let lastUrunMd = '';
-
-const COND_LABELS = {
-  10:'Kullanılmamış — fabrika çıkışı gibi',
-  9:'Neredeyse yeni — mağaza teşhir düzeyi',
-  8:'Çok az kullanılmış — iz yok',
-  7:'Az kullanılmış — çok küçük izler',
-  6:'Normal kullanım izleri',
-  5:'Belirgin kullanım izleri',
-  4:'Yoğun kullanım, kozmetik hasarlar',
-  3:'Belirgin hasar, işlevsel',
-  2:'Ağır hasar',
-  1:'Parça/çalışır durumda değil',
-};
-
-function updateCondBadge(val) {
-  val = parseInt(val);
-  const badge = document.getElementById('urun-cond-badge');
-  const desc = document.getElementById('urun-cond-desc');
-  if (!badge) return;
-  badge.textContent = val;
-  const color = val >= 9 ? 'var(--gold)' : val >= 7 ? 'var(--green)' : val >= 5 ? 'var(--warn)' : 'var(--danger)';
-  const rgb   = val >= 9 ? '212,175,55' : val >= 7 ? '48,209,88' : val >= 5 ? '255,159,10' : '255,69,58';
-  badge.style.color = color;
-  badge.style.borderColor = color;
-  badge.style.background = `rgba(${rgb},0.1)`;
-  if (desc) desc.textContent = COND_LABELS[val] || '';
-}
-
-function toggleInclude(el) {
-  el.classList.toggle('on');
-}
-
-function toggleAllIncludes(state) {
-  document.querySelectorAll('.include-chip').forEach(c => {
-    if (state) c.classList.add('on'); else c.classList.remove('on');
-  });
-}
-
-function getSelectedIncludes() {
-  return [...document.querySelectorAll('.include-chip.on')].map(c => c.dataset.item);
-}
-
-function setUrunTab(tab) {
-  const mdTab = document.getElementById('urun-tab-md');
-  const htmlTab = document.getElementById('urun-tab-html');
-  const mdEl = document.getElementById('urun-output-md');
-  const htmlEl = document.getElementById('urun-output-html');
-  if (mdTab) mdTab.classList.toggle('active', tab === 'md');
-  if (htmlTab) htmlTab.classList.toggle('active', tab === 'html');
-  if (mdEl) mdEl.style.display = tab === 'md' ? 'block' : 'none';
-  if (htmlEl) {
-    htmlEl.style.display = tab === 'html' ? 'block' : 'none';
-    if (tab === 'html' && lastUrunMd) htmlEl.innerHTML = simpleMarkdownToHTML(lastUrunMd);
-  }
-}
-
-function renderUrunPage() {
-  updateCondBadge(document.getElementById('urun-kondisyon')?.value || 10);
-  urunProfitCalc();
-}
-
-async function generateUrunContent() {
-  const model = document.getElementById('urun-model')?.value?.trim();
-  const renk = document.getElementById('urun-renk')?.value?.trim();
-  const yil = document.getElementById('urun-yil')?.value?.trim();
-  const kondisyon = document.getElementById('urun-kondisyon')?.value || '10';
-  const condNot = document.getElementById('urun-cond-not')?.value?.trim();
-  const extra = document.getElementById('urun-extra')?.value?.trim();
-
-  if (!model) { alert('Lütfen model adını girin.'); return; }
-
-  const vurgu = document.querySelector('.b-chip.active[data-group="urun-vurgu"]')?.textContent?.trim() || 'Y2K / Nostalji';
-  const kitle = document.querySelector('.b-chip.active[data-group="urun-kitle"]')?.textContent?.trim() || 'Genel';
-  const includes = getSelectedIncludes();
-  const condLabel = COND_LABELS[parseInt(kondisyon)] || '';
-
-  const btn = document.getElementById('urun-gen-btn');
-  const lbl = document.getElementById('urun-gen-label');
-  const streamBar = document.getElementById('urun-stream-bar');
-  const streamLabel = document.getElementById('urun-stream-label');
-  const wordCountEl = document.getElementById('urun-word-count');
-  const outputMd = document.getElementById('urun-output-md');
-  const actionBtns = document.getElementById('urun-action-btns');
-  const seoBar = document.getElementById('urun-seo-bar');
-
-  if (btn) btn.disabled = true;
-  if (lbl) lbl.textContent = 'Oluşturuluyor…';
-  if (streamBar) streamBar.style.display = 'flex';
-  if (actionBtns) actionBtns.style.visibility = 'hidden';
-  if (seoBar) seoBar.style.display = 'none';
-  setUrunTab('md');
-
-  lastUrunMd = '';
-  if (outputMd) outputMd.textContent = '';
-
-  const productName = `${model}${renk ? ' (' + renk + ')' : ''}`;
-  const includeList = includes.length > 0 ? includes.join(', ') : 'Kamera gövdesi';
-
-  const systemPrompt = `Sen Retrocameraland'ın (retrocameraland.com.tr) baş editörüsün. Türkiye'nin en premium Y2K ve retro dijital kamera mağazası için ürün açıklaması yazıyorsun.
-
-RETROCAMERALAND YAZIM TARZI:
-- Editöryal, müze küratörü tonu — sanki bir kültür/tasarım dergisi için yazılmış
-- Her ürün bir kültürel nesne, bir zaman kapsülü
-- Teknik bilgi ile duygusal hikaye dengelenmeli
-- Akıcı Türkçe, asla çeviri kokusu olmamalı
-- Her ürün sayfası FARKLI açılış, FARKLI metaforlar — kalıp cümleler kesinlikle yok
-- Kısa, güçlü cümleler tercih edilir
-- Marka adı: "RetroCameraLand" (R ve C ve L büyük)
-
-YAPI (bu sırayla yaz, başlıkları aynen kullan):
-1. Sayfa başlığı (ürünün en üstü): "[Model Adı (Renk)] | [Yaratıcı, SEO güçlü slogan — max 70 karakter]"
-   Slogan örnekleri (bunları kopyalama, ilham al): "Türkiye'de Tek Kusursuz Kondisyonda" / "2000'lerin En İyi Stilini Taşıyor" / "Koleksiyonun Yeni Yıldızı"
-2. Açılış paragrafı: Kameranın üretildiği dönem, o dönemin bağlamı, bu modelin neden özel olduğu. 2-3 cümle. Tarihe, teknoloji mirasına veya kültürel anlara referans.
-3. "📦 Kutu İçeriği" başlığı altında liste
-4. "✅ Kondisyon Bilgisi" başlığı altında: Kondisyon: X/10. Fiziksel durumun detaylı, canlı anlatımı.
-5. "✨ Neden Bu Kamera" başlığı altında: neden özel + teknik özellikler (emojili bullet points: megapiksel, sensör tipi, zoom, ekran, pil, video, özel özellik)
-6. "👀 Kimler İçin, Nerelerde" başlığı altında: hedef kitle + kullanım senaryoları (konser, tatil, günlük, hediye vs)
-7. "🔥 RetroCameraLand Yorumu" başlığı altında: Kişisel, özgün, biraz cesur yorum. Bu kamerayı sen seviyorsun veya sevmiyorsun, neden? Dürüst ama satışa yönelik.
-8. "🇹🇷 Türkiye'de Tek" başlığı (sadece gerçekten nadir modeller için — kondisyon 9-10 ise ekle)
-9. Son güven paragrafı: RCL kalite kontrolü ve müşteri desteği (2 cümle, her seferinde farklı)
-
-SEO KURALLARI:
-- Sayfa başlığı 60-70 karakter, model adı içermeli
-- İlk paragraf model adını ve yılı içermeli
-- "retrocameraland.com.tr", "Türkiye", "2026" ve kondisyon bilgisi mutlaka geçmeli
-- Teknik specs: model adı, yıl, megapiksel, sensör tipi (CCD/CMOS), zoom mutlaka
-- Başlıklar H2 (##) formatında
-- Min 400 kelime
-- "—" (em dash) karakterini ASLA kullanma; virgül veya tire (-) kullan`;
-
-  const userMsg = `Ürün: ${productName}
-${yil ? 'Tahmini Yıl: ' + yil : ''}
-Kondisyon: ${kondisyon}/10, ${condLabel}
-${condNot ? 'Kondisyon Notu: ' + condNot : ''}
-Kutu İçeriği: ${includeList}
-Vurgu: ${vurgu}
-Hedef Kitle: ${kitle}
-${extra ? 'Ekstra Bilgi: ' + extra : ''}
-
-Bu ürün için yukarıdaki yapıya ve RCL editöryal stiline uygun, SEO skoru 90+ hedefleyen Türkçe ürün sayfası içeriği oluştur. Cümle yapısı, metafor ve açılış önceki ürünlerden farklı olsun.`;
-
-  try {
-    const res = await fetch('/api/chat', {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-6',
-        max_tokens: 3000,
-        stream: true,
-        system: systemPrompt,
-        messages: [{role:'user', content: userMsg}]
-      })
-    });
-
-    if (!res.ok || !res.body) throw new Error('API hatası: ' + (await res.text()).slice(0,200));
-
-    const reader = res.body.getReader();
-    const decoder = new TextDecoder();
-    let buffer = '';
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buffer += decoder.decode(value, { stream: true });
-      const lines = buffer.split('\n');
-      buffer = lines.pop() || '';
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const data = line.slice(6).trim();
-        if (data === '[DONE]') continue;
-        try {
-          const evt = JSON.parse(data);
-          if (evt.type === 'content_block_delta' && evt.delta?.type === 'text_delta') {
-            lastUrunMd += evt.delta.text;
-            if (outputMd) outputMd.textContent = lastUrunMd;
-            const wc = lastUrunMd.trim().split(/\s+/).length;
-            if (wordCountEl) wordCountEl.textContent = wc;
-            if (streamLabel) streamLabel.textContent = 'Yazıyor…';
-          }
-        } catch {}
-      }
-    }
-
-    if (streamBar) streamBar.style.display = 'none';
-    if (actionBtns) actionBtns.style.visibility = 'visible';
-    lastUrunMd = lastUrunMd.replace(/\u2014/g, ',').replace(/ — /g, ', ');
-    renderUrunSEOScore(lastUrunMd, model);
-
-  } catch(err) {
-    if (outputMd) outputMd.textContent = 'Hata: ' + err.message;
-    if (streamBar) streamBar.style.display = 'none';
-    if (actionBtns) actionBtns.style.visibility = 'visible';
-  }
-
-  if (btn) btn.disabled = false;
-  if (lbl) lbl.textContent = 'Ürün İçeriği Oluştur';
-}
-
-function renderUrunSEOScore(text, model) {
-  const seoBar = document.getElementById('urun-seo-bar');
-  if (!seoBar) return;
-  const modelWords = (model || '').split(' ').filter(w => w.length > 2);
-  const checks = [
-    {label:'Model adı başlıkta', pass: modelWords.length > 0 && new RegExp(modelWords[0], 'i').test(text.split('\n')[0] || '')},
-    {label:'H2 bölümler (4+)',   pass: (text.match(/^## /gm)||[]).length >= 4},
-    {label:'Kutu içeriği',       pass: /kutu içeriği|📦/i.test(text)},
-    {label:'Kondisyon bilgisi',  pass: /kondisyon|✅/i.test(text)},
-    {label:'Teknik özellikler',  pass: /megapiksel|sensör|zoom|mp|ccd|cmos/i.test(text)},
-    {label:'RCL Yorumu',         pass: /retrocameraland yorumu|🔥/i.test(text)},
-    {label:'"retrocameraland"',  pass: /retrocameraland/i.test(text)},
-    {label:'Türkiye referansı',  pass: /türkiye/i.test(text)},
-    {label:'Hedef kitle',        pass: /👀|kimler için/i.test(text)},
-    {label:'400+ kelime',        pass: text.split(/\s+/).length >= 400},
-  ];
-  const passed = checks.filter(c=>c.pass).length;
-  const score = Math.round(60 + (passed/checks.length)*40);
-  const color = score>=90?'var(--green)':score>=75?'var(--warn)':'var(--danger)';
-  const rgb = score>=90?'48,209,88':score>=75?'255,159,10':'255,69,58';
-  const scoreEl = document.getElementById('urun-seo-score');
-  const ringEl = document.getElementById('urun-seo-ring');
-  const verdictEl = document.getElementById('urun-seo-verdict');
-  const checksEl = document.getElementById('urun-seo-checks');
-  if (scoreEl) { scoreEl.textContent = score; scoreEl.style.color = color; }
-  if (ringEl) { ringEl.style.borderColor = color; ringEl.style.background = `rgba(${rgb},0.07)`; }
-  if (verdictEl) verdictEl.textContent = score>=90?'Mükemmel — yayına hazır':score>=75?'İyi':'Geliştirme gerekiyor';
-  if (checksEl) checksEl.innerHTML = checks.map(c=>
-    `<span style="display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:10px;font-size:0.6rem;font-family:var(--mono);background:${c.pass?'rgba(48,209,88,0.08)':'rgba(255,255,255,0.03)'};border:1px solid ${c.pass?'rgba(48,209,88,0.2)':'rgba(255,255,255,0.06)'};color:${c.pass?'var(--green)':'var(--t3)'}">${c.pass?'✓':'○'} ${c.label}</span>`
-  ).join('');
-  seoBar.style.display = 'flex';
-}
-
-function copyUrunContent(format) {
-  if (!lastUrunMd) return;
-  const content = format === 'html' ? simpleMarkdownToHTML(lastUrunMd) : lastUrunMd;
-  navigator.clipboard.writeText(content).then(() => {
-    const btn = document.querySelector(`[onclick="copyUrunContent('${format}')"]`);
-    if (btn) { const o = btn.textContent.trim(); btn.textContent='✓'; setTimeout(()=>btn.textContent=o,2000); }
-  });
-}
-
-function publishUrunToShopify() {
-  if (!lastUrunMd) return;
-  const model = document.getElementById('urun-model')?.value?.trim() || 'Ürün';
-  navigator.clipboard.writeText(simpleMarkdownToHTML(lastUrunMd)).then(() => {
-    window.open('https://admin.shopify.com/store/retrocameraland/products/new','_blank');
-    const t = document.createElement('div');
-    t.style.cssText = 'position:fixed;bottom:28px;right:28px;background:rgba(48,209,88,0.12);border:1px solid rgba(48,209,88,0.3);color:var(--green);font-family:var(--mono);font-size:0.76rem;padding:11px 16px;border-radius:12px;z-index:9999;backdrop-filter:blur(12px);pointer-events:none';
-    t.textContent = '✓ HTML kopyalandı — Shopify ürün paneli açıldı';
-    document.body.appendChild(t); setTimeout(()=>t.remove(),3500);
-  }).catch(()=>window.open('https://admin.shopify.com/store/retrocameraland/products/new','_blank'));
-}
-
-function urunProfitCalc() {
-  const alis    = parseFloat(document.getElementById('p-alis')?.value) || 0;
-  const kdvPct  = parseFloat(document.getElementById('p-kdv')?.value) || 0;
-  const iyzico  = parseFloat(document.getElementById('p-iyzico')?.value) || 2.65;
-  const kargo   = parseFloat(document.getElementById('p-kargo')?.value) || 0;
-  const ambalaj = parseFloat(document.getElementById('p-ambalaj')?.value) || 0;
-  const marjPct = parseFloat(document.getElementById('p-marj')?.value) || 40;
-
-  const emptyEl = document.getElementById('p-empty');
-  const resultEl = document.getElementById('p-result');
-
-  if (alis <= 0) {
-    if (emptyEl) emptyEl.style.display = 'block';
-    if (resultEl) resultEl.style.display = 'none';
-    return;
-  }
-  if (emptyEl) emptyEl.style.display = 'none';
-  if (resultEl) resultEl.style.display = 'block';
-
-  const totalCost = alis + kargo + ambalaj;
-  // Satış fiyatından elimize NET kalan oran:
-  //   satış KDV dahil → içindeki KDV düşülür (×100/(100+kdv)) → iyzico komisyonu düşülür (−iyzico%)
-  const factor = 100/(100+kdvPct) - iyzico/100;
-
-  // Başabaş: net gelir = maliyet  →  fiyat = maliyet / factor (sıfır kâr)
-  const pMin = totalCost / factor;
-
-  // "Hedef Kâr Marjı" = SATIŞ fiyatı üzerinden net kâr oranı (net kâr / satış).
-  //   net kâr = fiyat×factor − maliyet ;  net kâr / fiyat = m  →  fiyat = maliyet / (factor − m/100)
-  // Bu tanım, aşağıdaki "Beklenen Net Kâr" önizlemesiyle birebir tutarlıdır.
-  const mFrac = Math.min(marjPct, factor*100 - 1) / 100; // güvenlik: marj, net orandan büyük olamaz
-  const denom = factor - mFrac;
-  const pSuggested = denom > 0.01 ? totalCost / denom : pMin * 2;
-
-  const kdvAmount = pSuggested * kdvPct / (100 + kdvPct);
-  const iyzicoAmount = pSuggested * iyzico / 100;
-  const netGelir = pSuggested - kdvAmount - iyzicoAmount;
-  const netKar = netGelir - totalCost;
-  const satisMarj = pSuggested > 0 ? Math.round(netKar / pSuggested * 100) : 0; // satış üzerinden
-  const maliyetUstu = totalCost > 0 ? Math.round(netKar / totalCost * 100) : 0;  // maliyet üzerinden (markup)
-
-  const fmt = n => n.toLocaleString('tr-TR', {minimumFractionDigits:0, maximumFractionDigits:0}) + ' ₺';
-
-  const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-
-  set('p-basbas', fmt(Math.ceil(pMin / 10) * 10));
-  set('p-oneri', fmt(Math.ceil(pSuggested / 10) * 10));
-  set('p-marj-label', '%' + satisMarj + ' satış marjı · %' + maliyetUstu + ' maliyet üstü');
-  set('p-total-maliyet', fmt(totalCost));
-  set('p-kdv-amount', '-' + fmt(kdvAmount));
-  set('p-iyzico-amount', '-' + fmt(iyzicoAmount));
-  set('p-net-gelir', fmt(netGelir));
-  set('p-net-kar', '+' + fmt(netKar));
-
-  // Price range: suggest -5%, suggested, +10%
-  const aralikEl = document.getElementById('p-fiyat-aralik');
-  if (aralikEl) {
-    const base = Math.ceil(pSuggested / 10) * 10;
-    const prices = [
-      {label:'Hızlı Satış', price: Math.ceil(base * 0.92 / 10) * 10, note:'−8%'},
-      {label:'Önerilen', price: base, note:'hedef'},
-      {label:'Premium', price: Math.ceil(base * 1.12 / 10) * 10, note:'+12%'},
-    ];
-    aralikEl.innerHTML = prices.map(p =>
-      `<div style="background:rgba(255,255,255,0.02);border:1px solid var(--b0);border-radius:10px;padding:10px;text-align:center">
-        <div style="font-size:0.58rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--t3);font-family:var(--mono);margin-bottom:4px">${p.label}</div>
-        <div style="font-size:0.9rem;font-weight:700;font-family:var(--mono);color:var(--t1)">${p.price.toLocaleString('tr-TR')} ₺</div>
-        <div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono);margin-top:2px">${p.note}</div>
-      </div>`
-    ).join('');
-  }
-}
-
 
 // ─── CHERRYGLOW v6 — Button-driven, no chat, no freeze ────────────────────────
 const CG_VERSION = 'v6.1.' + new Date().toISOString().slice(0,10).replace(/-/g,'.');
@@ -8555,7 +8191,6 @@ function cgUpdateStats() {
   s('cg-stat-today', today);
   var wv = document.getElementById('cg-w-ver');
   if (wv) wv.textContent = CG_VERSION;
-  cgUpdateWidget(_cgSt.status);
 }
 
 // ── Tabs ───────────────────────────────────────────────────────────────────────
@@ -9075,34 +8710,6 @@ function cgToggleAutoPub(checked) {
   cgLog('Oto-yayın: '+(checked?'AÇIK':'KAPALI'),'info');
 }
 
-// ── Widget (overview sidebar) ──────────────────────────────────────────────────
-function cgUpdateWidget(state) {
-  var dot = document.getElementById('cw-state-dot');
-  var txt = document.getElementById('cw-state-text');
-  var sub = document.getElementById('cw-state-sub');
-  var cols  = {idle:'rgba(52,199,89,.7)', writing:'rgba(212,175,55,.8)', done:'rgba(52,199,89,.9)', error:'rgba(255,69,58,.7)', publishing:'rgba(90,200,250,.7)'};
-  var lbls  = {idle:'Bekliyor', writing:'Blog yazıyor...', done:'Tamamlandı!', error:'Hata oluştu', publishing:'Yayınlanıyor...'};
-  var subs  = {idle:'Blog yazmaya hazır', writing:'Yapay zeka yazıyor', done:'Blog tamamlandı', error:'Bir sorun oluştu', publishing:'Shopify\'a gönderiliyor'};
-  var col = cols[state] || 'rgba(150,150,150,.5)';
-  if (dot) { dot.style.background = col; dot.style.boxShadow = '0 0 8px '+col; }
-  if (txt) txt.textContent = lbls[state] || state;
-  if (sub) sub.textContent = subs[state] || '';
-  document.querySelectorAll('.cw-wb').forEach(function(b){
-    b.classList.toggle('active', state==='writing'||state==='publishing');
-  });
-}
-
-function cgInitWidget() {
-  var wv = document.getElementById('cg-w-ver');
-  if (wv) wv.textContent = CG_VERSION;
-  cgUpdateWidget('idle');
-}
-
-function cgWidgetQuickWrite() {
-  navigate('cherry', document.querySelector('[data-page=cherry]'));
-  setTimeout(cgNextPending, 400);
-}
-
 // ── Page init ──────────────────────────────────────────────────────────────────
 function renderCherryPage() {
   var verEl = document.getElementById('cg-version');
@@ -9308,7 +8915,6 @@ function roiSort(key, btn) {
 
 
 initRouter();
-cgInitWidget();
 window.speechSynthesis && window.speechSynthesis.getVoices();
 
 
@@ -9993,45 +9599,6 @@ function invUpdateMarginCard() {
   updateCamTotals();
 }
 
-/* ---- Urun Page: Sales Price Integration ---- */
-(function() {
-  var _origUrunProfit = typeof urunProfitCalc === 'function' ? urunProfitCalc : null;
-  if (_origUrunProfit) {
-    window.urunProfitCalc = function() {
-      _origUrunProfit();
-      urunSatisFiyatiCalc();
-    };
-  }
-})();
-
-function urunSatisFiyatiCalc() {
-  var satisEl = document.getElementById('p-satis');
-  var previewEl = document.getElementById('p-preview-kar');
-  if (!satisEl || !previewEl) return;
-
-  var satis = parseFloat(satisEl.value) || 0;
-  if (satis <= 0) { previewEl.textContent = '—'; previewEl.style.color = 'rgba(48,209,88,.85)'; return; }
-
-  var alis = parseFloat((document.getElementById('p-alis') || {}).value) || 0;
-  var kargo = parseFloat((document.getElementById('p-kargo') || {}).value) || 0;
-  var ambalaj = parseFloat((document.getElementById('p-ambalaj') || {}).value) || 0;
-  var kdvRate = parseFloat((document.getElementById('p-kdv') || {}).value) || 20;
-  var iyzicoRate = parseFloat((document.getElementById('p-iyzico') || {}).value) || 2.65;
-
-  var totalCost = alis + kargo + ambalaj;
-  var kdvAmount = satis * (kdvRate / (100 + kdvRate));
-  var iyzicoAmount = satis * (iyzicoRate / 100);
-  var netGelir = satis - kdvAmount - iyzicoAmount;
-  var netKar = netGelir - totalCost;
-  var marj = satis > 0 ? Math.round(netKar / satis * 100) : 0;             // satış marjı
-  var maliyetUstu = totalCost > 0 ? Math.round(netKar / totalCost * 100) : 0; // maliyet üstü
-
-  var col = netKar > 0 ? 'rgba(48,209,88,.85)' : 'rgba(255,69,58,.85)';
-  previewEl.style.color = col;
-  previewEl.innerHTML = '<span style="font-size:1.1rem">' + (netKar >= 0 ? '+' : '') + Math.round(netKar).toLocaleString('tr-TR') + ' ₺</span> <span style="font-size:.65rem;opacity:.6">(%' + marj + ' satış marjı · %' + maliyetUstu + ' maliyet üstü)</span>';
-}
-
-
 /* ---- Finance: Expense Summary Sync ---- */
 function finSyncExpenseSummary() {
   // sum-* elemanları artık renderFinancePage() içinde doğrudan hesaplanan değerlerle dolduruluyor.
@@ -10643,7 +10210,7 @@ function finAnimateKPIs() {
     });
     return '<div class="bul-chart"><div class="bul-ch-h">'+esc(title)+'</div><div class="dn-wrap">'+
       '<svg class="dn-svg" viewBox="0 0 120 120">'+segs+
-      '<text x="60" y="58" class="dn-ctr">'+sum+'</text><text x="60" y="74" class="dn-ctrl">test</text></svg>'+
+      '<text x="60" y="58" class="dn-ctr">'+sum+'</text><text x="60" y="74" class="dn-ctrl">TOPLAM</text></svg>'+
       '<div class="dn-leg">'+leg+'</div></div></div>';
   }
   // ---- siralanmis BAR listesi ----
