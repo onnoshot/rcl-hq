@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-21T18:10:18",
+  "updated_at": "2026-07-21T19:10:24",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4400,
-    "total_views": 1306611,
+    "total_views": 1308940,
     "video_count": 395
   },
   "analytics": {
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1339,
+      "views": 1340,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 3593,
+      "views": 3597,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 10520,
+      "views": 10561,
       "likes": 23,
       "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
