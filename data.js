@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-21T23:00:52",
+  "updated_at": "2026-07-22T00:00:58",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 95163,
-      "watch_hours": 267.8,
-      "subs_gained": 525,
-      "subs_lost": 222,
-      "avg_view_sec": 22
+      "views": 93068,
+      "watch_hours": 263.0,
+      "subs_gained": 523,
+      "subs_lost": 221,
+      "avg_view_sec": 23
     },
-    "watch_hours_year": 3469.9,
-    "watch_hours_year_long": 1856.0,
-    "watch_hours_year_shorts": 1613.8,
+    "watch_hours_year": 3469.6,
+    "watch_hours_year_long": 1855.9,
+    "watch_hours_year_shorts": 1613.5,
     "monthly": [
       {
         "label": "Şub 26",
@@ -83,7 +83,7 @@ const YOUTUBE = {
       "date": "16 Tem 2026",
       "views": 1643,
       "likes": 12,
-      "comments": 0,
+      "comments": 1,
       "url": "https://youtu.be/4mC6-c_-JYc"
     },
     {
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 3601,
+      "views": 3603,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "8XWAJXORa9c",
       "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
       "date": "20 Haz 2026",
-      "views": 10844,
+      "views": 10890,
       "likes": 24,
       "comments": 5,
       "url": "https://youtu.be/8XWAJXORa9c"
