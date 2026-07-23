@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-23T23:12:21",
+  "updated_at": "2026-07-24T00:12:26",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 102525,
-      "watch_hours": 298.7,
-      "subs_gained": 599,
+      "views": 100648,
+      "watch_hours": 294.6,
+      "subs_gained": 597,
       "subs_lost": 251,
       "avg_view_sec": 24
     },
-    "watch_hours_year": 3509.4,
-    "watch_hours_year_long": 1880.4,
-    "watch_hours_year_shorts": 1628.8,
+    "watch_hours_year": 3509.2,
+    "watch_hours_year_long": 1880.3,
+    "watch_hours_year_shorts": 1628.6,
     "monthly": [
       {
         "label": "Şub 26",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 1006,
+      "views": 1041,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 342,
+      "views": 343,
       "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
