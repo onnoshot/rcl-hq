@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-23T21:12:11",
+  "updated_at": "2026-07-23T22:12:16",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 96860,
-      "watch_hours": 278.3,
-      "subs_gained": 559,
-      "subs_lost": 237,
-      "avg_view_sec": 23
+      "views": 102525,
+      "watch_hours": 298.7,
+      "subs_gained": 599,
+      "subs_lost": 251,
+      "avg_view_sec": 24
     },
-    "watch_hours_year": 3489.0,
-    "watch_hours_year_long": 1868.2,
-    "watch_hours_year_shorts": 1620.5,
+    "watch_hours_year": 3509.4,
+    "watch_hours_year_long": 1880.4,
+    "watch_hours_year_shorts": 1628.8,
     "monthly": [
       {
         "label": "Şub 26",
@@ -52,22 +52,13 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 78808,
-        "watch_min": 13848,
-        "subs_gained": 529
+        "views": 84473,
+        "watch_min": 15073,
+        "subs_gained": 569
       }
     ]
   },
   "videos": [
-    {
-      "id": "ggvi-pLhCEI",
-      "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
-      "date": "17 Tem 2026",
-      "views": 1583,
-      "likes": 29,
-      "comments": 0,
-      "url": "https://youtu.be/ggvi-pLhCEI"
-    },
     {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
@@ -76,24 +67,6 @@ const YOUTUBE = {
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
-    },
-    {
-      "id": "4mC6-c_-JYc",
-      "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
-      "date": "16 Tem 2026",
-      "views": 1667,
-      "likes": 12,
-      "comments": 1,
-      "url": "https://youtu.be/4mC6-c_-JYc"
-    },
-    {
-      "id": "PKyCBGst1r8",
-      "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
-      "date": "15 Tem 2026",
-      "views": 1365,
-      "likes": 14,
-      "comments": 0,
-      "url": "https://youtu.be/PKyCBGst1r8"
     },
     {
       "id": "LjyZRaLNGcc",
@@ -105,49 +78,76 @@ const YOUTUBE = {
       "url": "https://youtu.be/LjyZRaLNGcc"
     },
     {
-      "id": "fiWC7WOtCtk",
-      "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
-      "date": "11 Tem 2026",
-      "views": 1266,
-      "likes": 15,
-      "comments": 0,
-      "url": "https://youtu.be/fiWC7WOtCtk"
-    },
-    {
-      "id": "ZRzvt8SJEG8",
-      "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
-      "date": "10 Tem 2026",
-      "views": 424,
-      "likes": 5,
-      "comments": 0,
-      "url": "https://youtu.be/ZRzvt8SJEG8"
-    },
-    {
-      "id": "LLXSMuhZAko",
-      "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
-      "date": "28 Haz 2026",
-      "views": 3972,
-      "likes": 67,
-      "comments": 0,
-      "url": "https://youtu.be/LLXSMuhZAko"
-    },
-    {
-      "id": "8XWAJXORa9c",
-      "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
-      "date": "20 Haz 2026",
-      "views": 12473,
+      "id": "dFixvsNLQ_k",
+      "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
+      "date": "29 Nis 2026",
+      "views": 1160,
       "likes": 24,
-      "comments": 5,
-      "url": "https://youtu.be/8XWAJXORa9c"
+      "comments": 4,
+      "url": "https://youtu.be/dFixvsNLQ_k"
     },
     {
-      "id": "lh4DVJUz1QY",
-      "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
-      "date": "12 Haz 2026",
-      "views": 324,
-      "likes": 3,
+      "id": "bY4UWZ-wEwY",
+      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
+      "date": "26 Nis 2026",
+      "views": 1113,
+      "likes": 11,
       "comments": 0,
-      "url": "https://youtu.be/lh4DVJUz1QY"
+      "url": "https://youtu.be/bY4UWZ-wEwY"
+    },
+    {
+      "id": "8oUm3q_y6rQ",
+      "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
+      "date": "18 Nis 2026",
+      "views": 27991,
+      "likes": 152,
+      "comments": 2,
+      "url": "https://youtu.be/8oUm3q_y6rQ"
+    },
+    {
+      "id": "u_2gTtXlJ4g",
+      "title": "Udaipur'un Ruhu: Y2K Dijital Kamera Günlüğü | Canon PowerSho",
+      "date": "26 Mar 2026",
+      "views": 118,
+      "likes": 5,
+      "comments": 1,
+      "url": "https://youtu.be/u_2gTtXlJ4g"
+    },
+    {
+      "id": "TFYAi9S9wTo",
+      "title": "Canon Ixus 160 Dijital Fotoğraf Makinesi 📸 Stoklar yenilendi",
+      "date": "25 Mar 2026",
+      "views": 15115,
+      "likes": 8,
+      "comments": 0,
+      "url": "https://youtu.be/TFYAi9S9wTo"
+    },
+    {
+      "id": "aoCqpg3l-Zs",
+      "title": "22 Yıllık İkonik CASIO Exilim Fotoğraf Makinesi #digitalcame",
+      "date": "7 Mar 2026",
+      "views": 868,
+      "likes": 12,
+      "comments": 3,
+      "url": "https://youtu.be/aoCqpg3l-Zs"
+    },
+    {
+      "id": "b6MfXb0bltc",
+      "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
+      "date": "23 Şub 2026",
+      "views": 791,
+      "likes": 4,
+      "comments": 0,
+      "url": "https://youtu.be/b6MfXb0bltc"
+    },
+    {
+      "id": "2-XdDjHscqs",
+      "title": "Küçük Kamerayla Büyük Hatıralar 📸 #kodak #digitalcamera",
+      "date": "20 Şub 2026",
+      "views": 794,
+      "likes": 13,
+      "comments": 0,
+      "url": "https://youtu.be/2-XdDjHscqs"
     }
   ],
   "sub_goal": 10000
