@@ -1,2 +1,8 @@
 .DS_Store
 .vercel
+node_modules
+.venv
+agents/video-clipper/outputs/*.mp4
+agents/video-clipper/.cache
+.env
+.env.*

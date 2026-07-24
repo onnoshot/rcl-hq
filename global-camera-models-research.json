@@ -1,0 +1,285 @@
+{
+  "fetched_at": 1784937142.7676969,
+  "models": [
+    {
+      "model": "PowerShot A95",
+      "brand": "Canon",
+      "era": "2004-2005",
+      "why": "Y2K estetiğinin sembolü haline gelen döner LCD ekranı ve karakteristik CCD renk bilimiyle tanınır.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "PowerShot G9",
+      "brand": "Canon",
+      "era": "2007",
+      "why": "Manuel kontrolleri ve gelişmiş CCD sensörüyle ileri düzey kompakt kamera arayanların gözdesi olmuştur.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "PowerShot A410",
+      "brand": "Canon",
+      "era": "2005-2006",
+      "why": "Ucuz, dayanıklı ve basit kullanımıyla dijifoto (digicam) trendinin başlangıç noktalarından biri olmuştur.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "IXUS 70 (SD1000)",
+      "brand": "Canon",
+      "era": "2007",
+      "why": "İnce metal gövdesi ve şık tasarımıyla dönemin en popüler cep kamerlarından biri olmuştur.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "Cyber-shot DSC-T1",
+      "brand": "Sony",
+      "era": "2003",
+      "why": "Kayan lens kapağı ve titanyum gövdesiyle dönemin en zarif ultra-ince kamerası olarak öne çıkmıştır.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "Cyber-shot DSC-F717",
+      "brand": "Sony",
+      "era": "2002",
+      "why": "Karl Zeiss lensi ve döner tasarımıyla 'siber-punk' estetiğin ikonu olmuştur.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "Cyber-shot DSC-P200",
+      "brand": "Sony",
+      "era": "2005",
+      "why": "Kompakt boyutu ve yüksek çözünürlüklü CCD sensörüyle dönemin en çok satan modellerinden biridir.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "Mavica MVC-FD73",
+      "brand": "Sony",
+      "era": "1998-1999",
+      "why": "Floppy disk'e kayıt yapabilen ilginç mekanizmasıyla dijital kamera tarihinin kült objelerinden biri olmuştur.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "Coolpix 995",
+      "brand": "Nikon",
+      "era": "2001",
+      "why": "Döner gövde tasarımı ve üstün makro yetenekleriyle amatör fotoğrafçılar arasında efsaneleşmiştir.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "Coolpix 4500",
+      "brand": "Nikon",
+      "era": "2002",
+      "why": "Döner lens tasarımı ve manuel kontrolleriyle prosumer segmentte kült statü kazanmıştır.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "Coolpix L1",
+      "brand": "Nikon",
+      "era": "2006",
+      "why": "Basit ve ekonomik yapısıyla dönemin gündelik dijifoto kamerası olarak hafızalarda yer etmiştir.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "Exilim EX-Z3",
+      "brand": "Casio",
+      "era": "2004",
+      "why": "Ultra ince gövdesi ve hızlı açılışıyla Y2K dönemi cep kameralarının simgesi olmuştur.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "Exilim EX-S600",
+      "brand": "Casio",
+      "era": "2006",
+      "why": "Şık tasarımı ve kolay taşınabilirliğiyle sosyal medya öncesi 'parti kamerası' kimliği kazanmıştır.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "QV-10",
+      "brand": "Casio",
+      "era": "1995",
+      "why": "Dünyanın ilk LCD ekranlı tüketici dijital kamerası olarak teknoloji tarihinde devrim yaratmıştır.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "EasyShare C875",
+      "brand": "Kodak",
+      "era": "2007",
+      "why": "Kullanıcı dostu arayüzü ve ekonomik fiyatıyla aile fotoğrafçılığının sembolü olmuştur.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "DC210",
+      "brand": "Kodak",
+      "era": "1997",
+      "why": "Dönemin öncü tüketici dijital kameralarından biri olarak erken dijital fotoğrafçılığı popülerleştirmiştir.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "DC240",
+      "brand": "Kodak",
+      "era": "1999",
+      "why": "Kompakt tasarımı ve makul çözünürlüğüyle geç 90'ların temsilcisi kamera modelidir.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "Camedia C-2000Z",
+      "brand": "Olympus",
+      "era": "1999",
+      "why": "Yüksek çözünürlüklü CCD sensörü ve manuel kontrolleriyle döneminin en gelişmiş prosumer kameralarından biri olmuştur.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "Stylus Epic (mju II)",
+      "brand": "Olympus",
+      "era": "1997 (film ama dijital versiyonlarına ilham)",
+      "why": "Su geçirmez ve kompakt gövdesiyle sonraki dijital 'mju' serisine temel oluşturmuştur.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "Stylus 720 SW",
+      "brand": "Olympus",
+      "era": "2006",
+      "why": "Darbeye ve suya dayanıklı gövdesiyle macera fotoğrafçılığında popüler olmuştur.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "Lumix DMC-FX01",
+      "brand": "Panasonic",
+      "era": "2005",
+      "why": "Leica lensi ve zarif tasarımıyla kompakt kamera pazarında öne çıkmıştır.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "Lumix DMC-LC5",
+      "brand": "Panasonic",
+      "era": "2002",
+      "why": "Retro tasarımı ve Leica optik ortaklığıyla dönemin şık kompakt kameralarından biri olmuştur.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "FinePix F30",
+      "brand": "Fujifilm",
+      "era": "2006",
+      "why": "Süper CCD sensörüyle düşük ışıkta üstün performans sunarak fotoğraf tutkunları arasında efsaneleşmiştir.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "FinePix 4700 Zoom",
+      "brand": "Fujifilm",
+      "era": "1999-2000",
+      "why": "Benzersiz Süper CCD teknolojisiyle dönemin en yüksek çözünürlüklü kameralarından biri olmuştur.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "FinePix Z2",
+      "brand": "Fujifilm",
+      "era": "2006",
+      "why": "Renkli, şık gövdesiyle genç kullanıcılar arasında popüler bir 'moda aksesuarı' kamera olmuştur.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "Digimax V4",
+      "brand": "Samsung",
+      "era": "2004",
+      "why": "Zarif tasarımı ve yüksek çözünürlüğüyle dönemin ilgi çeken kompakt modellerinden biri olmuştur.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "Digimax i5",
+      "brand": "Samsung",
+      "era": "2005",
+      "why": "Cep telefonu benzeri ince tasarımıyla mobil-öncesi dönemin trend kamerası olmuştur.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "Optio S",
+      "brand": "Pentax",
+      "era": "2003",
+      "why": "Metal gövdesi ve cep boyutlarıyla ultra-kompakt kamera segmentinde öncü olmuştur.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "Optio W20",
+      "brand": "Pentax",
+      "era": "2007",
+      "why": "Su geçirmez tasarımıyla açık hava ve tatil fotoğrafçılığında tercih edilmiştir.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "DiMAGE X",
+      "brand": "Konica Minolta",
+      "era": "2002",
+      "why": "Katlanmış optik zoom tasarımıyla ince gövdeli kameraların öncüsü olmuştur.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "DiMAGE Xt",
+      "brand": "Konica Minolta",
+      "era": "2004",
+      "why": "Ultra ince yapısı ve şık görünümüyle dönemin dikkat çeken modellerinden biri olmuştur.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "Caplio GX100",
+      "brand": "Ricoh",
+      "era": "2007",
+      "why": "Geniş açılı lensi ve manuel kontrolleriyle sokak fotoğrafçıları arasında kült statü kazanmıştır.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "Caplio R1",
+      "brand": "Ricoh",
+      "era": "2004",
+      "why": "Kompakt gövdesi ve geniş açı yeteneğiyle amatör fotoğrafçılar arasında popülerlik kazanmıştır.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "Xacti VPC-C4",
+      "brand": "Sanyo",
+      "era": "2004",
+      "why": "Hem foto hem video çekebilen hibrit tasarımıyla dönemine göre yenilikçi olmuştur.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "PhotoSmart 620",
+      "brand": "HP",
+      "era": "2003",
+      "why": "Kolay kullanım arayüzüyle ev kullanıcıları arasında yaygınlaşan bir modeldir.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "ViviCam 3705",
+      "brand": "Vivitar",
+      "era": "2004",
+      "why": "Ekonomik fiyatı ve basit yapısıyla giriş seviyesi dijital fotoğrafçılığın sembolü olmuştur.",
+      "audience": "Y2K içerik üreticisi"
+    },
+    {
+      "model": "PDC 2300",
+      "brand": "Polaroid",
+      "era": "1998",
+      "why": "Polaroid markasının dijital dönüşümünün ilk örneklerinden biri olarak nostaljik değer taşır.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "DP1",
+      "brand": "Sigma",
+      "era": "2008",
+      "why": "Foveon X3 sensörüyle benzersiz renk derinliği sunarak kült bir sokak fotoğrafçılığı kamerası olmuştur.",
+      "audience": "vintage fotoğrafçı"
+    },
+    {
+      "model": "Digilux 2",
+      "brand": "Leica",
+      "era": "2003",
+      "why": "Retro tasarımı ve üstün optik kalitesiyle lüks dijital kompakt kameraların öncüsü olmuştur.",
+      "audience": "koleksiyoncu"
+    },
+    {
+      "model": "C-Lux 1",
+      "brand": "Leica",
+      "era": "2006",
+      "why": "Şık ve minimalist gövdesiyle premium kompakt kamera pazarında iz bırakmıştır.",
+      "audience": "koleksiyoncu"
+    }
+  ]
+}
