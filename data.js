@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-24T17:32:19",
+  "updated_at": "2026-07-24T18:32:25",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4470,
-    "total_views": 1325052,
+    "total_views": 1328480,
     "video_count": 395
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 1612,
+      "views": 1613,
       "likes": 32,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 1117,
+      "views": 1136,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "lh4DVJUz1QY",
       "title": "Küçük anların büyük hisleri 🤍 Lumix TZ91 #digicam #y2kstyle ",
       "date": "12 Haz 2026",
-      "views": 326,
+      "views": 328,
       "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/lh4DVJUz1QY"
