@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-24T22:32:46",
+  "updated_at": "2026-07-24T23:32:51",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4480,
     "total_views": 1328480,
-    "video_count": 395
+    "video_count": 396
   },
   "analytics": {
     "last_30d": {
@@ -60,10 +60,19 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "lCyA6p7SfDs",
+      "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
+      "date": "24 Tem 2026",
+      "views": 217,
+      "likes": 2,
+      "comments": 1,
+      "url": "https://youtu.be/lCyA6p7SfDs"
+    },
+    {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 1180,
+      "views": 1198,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -82,8 +91,8 @@ const YOUTUBE = {
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
       "views": 1330,
-      "likes": 0,
-      "comments": 0,
+      "likes": 24,
+      "comments": 4,
       "url": "https://youtu.be/dFixvsNLQ_k"
     },
     {
@@ -99,8 +108,8 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 28051,
-      "likes": 154,
+      "views": 28067,
+      "likes": 155,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
     },
@@ -139,15 +148,6 @@ const YOUTUBE = {
       "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
-    },
-    {
-      "id": "2-XdDjHscqs",
-      "title": "Küçük Kamerayla Büyük Hatıralar 📸 #kodak #digitalcamera",
-      "date": "20 Şub 2026",
-      "views": 794,
-      "likes": 13,
-      "comments": 0,
-      "url": "https://youtu.be/2-XdDjHscqs"
     }
   ],
   "sub_goal": 10000
