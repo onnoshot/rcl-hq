@@ -43,6 +43,7 @@ MARKERS = {
     "EMAIL":       ("/* ─── EMAIL DATA START ─── */",       "/* ─── EMAIL DATA END ─── */"),
     "GA4_TRAFFIC": ("/* ─── GA4 TRAFFIC DATA START ─── */", "/* ─── GA4 TRAFFIC DATA END ─── */"),
     "BLOG_SEO":    ("/* ─── BLOG SEO DATA START ─── */",    "/* ─── BLOG SEO DATA END ─── */"),
+    "BLOGGER_BEYZ":("/* ─── BLOGGER BEYZ DATA START ─── */","/* ─── BLOGGER BEYZ DATA END ─── */"),
     "BUILD":       ("/* ─── BUILD INFO DATA START ─── */",  "/* ─── BUILD INFO DATA END ─── */"),
 }
 
