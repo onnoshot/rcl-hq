@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-25T17:57:00",
+  "updated_at": "2026-07-25T18:57:06",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 0,
-      "likes": 0,
+      "views": 422,
+      "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/nJ92afbw02g"
     },
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 1508,
-      "likes": 15,
+      "views": 1519,
+      "likes": 16,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
     },
@@ -81,8 +81,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 2124,
-      "likes": 37,
+      "views": 2152,
+      "likes": 38,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -99,8 +99,8 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1703,
-      "likes": 14,
+      "views": 1705,
+      "likes": 15,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
     },
@@ -108,8 +108,8 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1408,
-      "likes": 16,
+      "views": 1410,
+      "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
     },
@@ -117,8 +117,8 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 365,
-      "likes": 7,
+      "views": 364,
+      "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
     },
