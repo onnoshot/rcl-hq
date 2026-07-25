@@ -1,19 +1,19 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-25T16:56:54",
+  "updated_at": "2026-07-25T21:57:20",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4500,
-    "total_views": 1333900,
-    "video_count": 396
+    "total_views": 1338088,
+    "video_count": 397
   },
   "analytics": {
     "last_30d": {
-      "views": 104963,
+      "views": 105023,
       "watch_hours": 310.3,
       "subs_gained": 647,
-      "subs_lost": 258,
+      "subs_lost": 259,
       "avg_view_sec": 24
     },
     "watch_hours_year": 3528.4,
@@ -60,11 +60,20 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "nJ92afbw02g",
+      "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
+      "date": "25 Tem 2026",
+      "views": 923,
+      "likes": 18,
+      "comments": 0,
+      "url": "https://youtu.be/nJ92afbw02g"
+    },
+    {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 1508,
-      "likes": 15,
+      "views": 1541,
+      "likes": 17,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
     },
@@ -72,8 +81,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 2131,
-      "likes": 37,
+      "views": 2184,
+      "likes": 40,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -81,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 1277,
+      "views": 1315,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -90,8 +99,8 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1700,
-      "likes": 14,
+      "views": 1708,
+      "likes": 15,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
     },
@@ -99,8 +108,8 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1401,
-      "likes": 16,
+      "views": 1413,
+      "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
     },
@@ -108,8 +117,8 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 363,
-      "likes": 7,
+      "views": 371,
+      "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
     },
@@ -117,7 +126,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1295,
+      "views": 1305,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -126,7 +135,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 438,
+      "views": 442,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -135,19 +144,10 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 4192,
+      "views": 4201,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
-    },
-    {
-      "id": "8XWAJXORa9c",
-      "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
-      "date": "20 Haz 2026",
-      "views": 14594,
-      "likes": 25,
-      "comments": 5,
-      "url": "https://youtu.be/8XWAJXORa9c"
     }
   ],
   "sub_goal": 10000
@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-07-25T16:57:41",
+  "updated_at": "2026-07-25T21:58:09",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -1433,18 +1433,28 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-07-25T16:54:27",
+  "updated_at": "2026-07-25T21:54:46",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
   "followers": 7713,
-  "media_count": 291,
-  "avg_likes": 49,
-  "total_engagement": 593,
+  "media_count": 292,
+  "avg_likes": 45,
+  "total_engagement": 548,
   "type_counts": {
-    "CAROUSEL_ALBUM": 7,
-    "VIDEO": 5
+    "VIDEO": 6,
+    "CAROUSEL_ALBUM": 6
   },
   "posts": [
+    {
+      "id": "18419147065149117",
+      "date": "25 Tem 2026",
+      "type": "VIDEO",
+      "likes": 34,
+      "comments": 0,
+      "url": "https://www.instagram.com/reel/DbOHz0RotkG/",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/754536583_17902169151496139_3458749424390485382_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=nGiWnjX7GKAQ7kNvwGbZhvn&_nc_oc=Adqe8d-SWv9hlT4IZVQK6kvoeyW2sAc7S6lYcLbTHmLjchUGM_SlZflfOuG7khXeyjQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&_nc_tpa=Q5bMBQE17wse5n8gSv9gqc0lHlvPFrqmFsMyOEJAXozi4ybzto8gvheAP6l7UfU1SZvF-WYEdXyWgoUG&oh=00_AQA1_Oa-i4WocsFVACDPDDAwKzr_kxNzW1QMQwGVAvqQYQ&oe=6A6AD8C3",
+      "caption": "İstanbul gün batımı x Canon IXUS. O eşsiz 2000’ler dokusunu yakalamak isteyenler için harika bir parça 📸🌇 retrocameraland.com’da indirimler başladı ✨\n\n#digitalcamera #y2k #vintagecamera #canon #ixus"
+    },
     {
       "id": "18080231519671780",
       "date": "23 Tem 2026",
@@ -1452,7 +1462,7 @@ const INSTAGRAM = {
       "likes": 73,
       "comments": 0,
       "url": "https://www.instagram.com/p/DbIYK7hCKR2/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/752534107_17901802998496139_3783230509102420839_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=datu0__xVJIQ7kNvwEU0DWh&_nc_oc=AdookENv8_OJKgO00MGvi9i9aDbETztLOncn32I7tZnmWxQ602fi0ugnPisnEyS_5ng&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&oh=00_AQBTCkRfUwROpA-t_L5R9GvRJpvamOVlniBW-XvbeoC_og&oe=6A6A9581",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/752534107_17901802998496139_3783230509102420839_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=datu0__xVJIQ7kNvwEU0DWh&_nc_oc=AdookENv8_OJKgO00MGvi9i9aDbETztLOncn32I7tZnmWxQ602fi0ugnPisnEyS_5ng&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&oh=00_AQA8Kmojjc8I-d7WleTagi5M-FWPKnRlQbZlGsg4L1cz8g&oe=6A6ACDC1",
       "caption": "Urban aesthetics on point 📸 It’s a lifestyle, not just a click | Explore Y2K Legends: retrocameraland.com"
     },
     {
@@ -1462,7 +1472,7 @@ const INSTAGRAM = {
       "likes": 21,
       "comments": 0,
       "url": "https://www.instagram.com/reel/Da5pd8lI3NB/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/747333865_17900778828496139_7704101476775556230_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=T3eyRsEgr1MQ7kNvwFQcI8W&_nc_oc=AdqJ2eTvvh0Gz_WRzseoOKMcU5p3AOpcmdYmW-dIHuuxun3Yh5Osuz9X5lyH-PMXEsw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&_nc_tpa=Q5bMBQGG90YX_Dhn3DvPLnrqekR4yxSCwWpNxyUKIYmQ36S6jbWMa3ihhRwgltF2aosT6BJvvLp1h51_&oh=00_AQDWoIEEamjgi1ZRdEQh7ggTcx4yIkTqKIoiTzmrr1StSw&oe=6A6A8EC8",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/747333865_17900778828496139_7704101476775556230_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=T3eyRsEgr1MQ7kNvwFQcI8W&_nc_oc=AdqJ2eTvvh0Gz_WRzseoOKMcU5p3AOpcmdYmW-dIHuuxun3Yh5Osuz9X5lyH-PMXEsw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&_nc_tpa=Q5bMBQFtb9MpqhWd5koMuK4J-HDbHJQkcidAXuBdxHFLTGCNGvUhFK-dtHQ4BMFCjzoAsLJLbx2hbYbb&oh=00_AQAn2zakbt1C8XOW2jh5IF6sGCdak8Fxr5j5v6HOyWTvJw&oe=6A6AC708",
       "caption": "21x Optik Zoom Cepte! Samsung WB350F 📸 Retrocameraland.com’da ✨ \n\n#digicam #sunset #photo #vintagecamera #dijitalkamera"
     },
     {
@@ -1472,7 +1482,7 @@ const INSTAGRAM = {
       "likes": 27,
       "comments": 0,
       "url": "https://www.instagram.com/p/DaxINNPiP4p/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/747086823_17900291616496139_884981265621498938_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=J82ZcvnWFd0Q7kNvwHqMD8o&_nc_oc=AdozDRHZ72G2SwAqxxVJR1GMGs84NwWnlmxmJczc6idriMc2Lby_OekiqETUDaYjNm8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&oh=00_AQBNg2QNWm6N_M7kRkT7nSi9aajnPxfr9fsWPmwCKvhdwg&oe=6A6A79B3",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/747086823_17900291616496139_884981265621498938_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=J82ZcvnWFd0Q7kNvwHqMD8o&_nc_oc=AdozDRHZ72G2SwAqxxVJR1GMGs84NwWnlmxmJczc6idriMc2Lby_OekiqETUDaYjNm8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&oh=00_AQCcFJABmJUi7jNnHRWzheiTZ9vr8D4S063wXPWsFNkmvQ&oe=6A6AEA33",
       "caption": "nothing hits like the Y2K era 📼 \nikonik dijital kameralar retrocameraland.com’da! \n\n#y2k #digicam #y2kaesthetic #camcore #2000s"
     },
     {
@@ -1482,7 +1492,7 @@ const INSTAGRAM = {
       "likes": 24,
       "comments": 3,
       "url": "https://www.instagram.com/reel/DaoIC-CoY-E/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/731580375_1419566446892941_6659456838857054074_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Sp3g80-XlXIQ7kNvwEZ7dub&_nc_oc=AdqMXLnIZTBsOtzFswN07NQPuGJwMWg3xvNNk7b6A9knCUR2MLNrDDeQh20EaKTW35U&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&_nc_tpa=Q5bMBQFCnKihCOvtGu4iC0YbJbfzc6eEH0M6sRDHMHvx5PJjpI1bjmDyXjm2Uihd9t6uHiMl_zb2JOr4&oh=00_AQAugRPhgAn7T9e-m3vjT-5Ho4utmydGBiQoLYxyLySKlg&oe=6A6A9A39",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/731580375_1419566446892941_6659456838857054074_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=Sp3g80-XlXIQ7kNvwEZ7dub&_nc_oc=AdqMXLnIZTBsOtzFswN07NQPuGJwMWg3xvNNk7b6A9knCUR2MLNrDDeQh20EaKTW35U&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&_nc_tpa=Q5bMBQFAAq9Ve0VMOjFhQx02st4Z_21-AdDlQfQU9z3IIAl6ir6Hh6tKiK3njQskDO4fyu5S2_0pjME2&oh=00_AQChGXAc7rIy7Qs5TjI88oTKiK5RadWgaxvGpwmrmh8ZoQ&oe=6A6AD279",
       "caption": "Pure aesthetic, pure nostalgia. 📼\n\nSanyo Xacti VPC C5. Dünyanın en ince CCD sensörlü hibrit kamerası. Türkiye’de tek stok RetroCameraLand.com’da 🌍\n\n#y2kdigitalcamera #sanyoxacti #retrocamera #vintagec"
     },
     {
@@ -1492,7 +1502,7 @@ const INSTAGRAM = {
       "likes": 48,
       "comments": 0,
       "url": "https://www.instagram.com/p/Daib3cgiL4Z/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/740967654_17899403565496139_2279664008123169271_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=zo2p6qOJd1MQ7kNvwGOS7dA&_nc_oc=AdpjGJCTOpc8ix1q3vitx-Xt-9UhCat1KcmZrlZl1B25zpyLAjyKK8sNQF8f1LmJqFI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&oh=00_AQBjo7eqLNDk-R2M5iTlgjEY-vgjrzAH2-XpnIlRaLNpTA&oe=6A6AAE00",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/740967654_17899403565496139_2279664008123169271_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=zo2p6qOJd1MQ7kNvwGOS7dA&_nc_oc=AdpjGJCTOpc8ix1q3vitx-Xt-9UhCat1KcmZrlZl1B25zpyLAjyKK8sNQF8f1LmJqFI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&oh=00_AQAphNAy2bJIkQv5JGFix1COg6mYip51EXF-jDfnmLB1fg&oe=6A6AE640",
       "caption": "The 2000s didn’t come back. They never left.\nCCD sensor, retro soul, today’s aesthetic. Find yours at retrocameraland.com 🌍📸\n\n#CCDcamera #retrocameraland #digitalcamera #Y2Kaesthetic"
     },
     {
@@ -1502,7 +1512,7 @@ const INSTAGRAM = {
       "likes": 91,
       "comments": 0,
       "url": "https://www.instagram.com/p/DaXevgACC6K/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/733974994_17898693909496139_1902947164401550096_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=B1jDT0PM1M4Q7kNvwEO9JfK&_nc_oc=Adp5_8-_Yj1zA8GGS5Mg_hOfDys7sIsoNz7kLVfS693ePSxdGETuG5HrYgBIeR_GcYk&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&oh=00_AQCFU7w1lUgHgzpX88IFga4tssHA1z2vBsj3jm-G0i-E-g&oe=6A6A84B1",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/733974994_17898693909496139_1902947164401550096_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=B1jDT0PM1M4Q7kNvwEO9JfK&_nc_oc=Adp5_8-_Yj1zA8GGS5Mg_hOfDys7sIsoNz7kLVfS693ePSxdGETuG5HrYgBIeR_GcYk&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&oh=00_AQBnrhbmOfmkGS_QxUvsP7TwASs_yxSx5X5zc1dwDjsypw&oe=6A6AF531",
       "caption": "memories are forever ❣️ | Discover your digicam at retrocameraland.com 📸\n\n#digitalcamera #y2k #aesthetic #retro #couple"
     },
     {
@@ -1512,7 +1522,7 @@ const INSTAGRAM = {
       "likes": 40,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DaLTL9SoX4l/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/729629492_17897836044496139_7280176905282824167_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=ItLggZ1IKt0Q7kNvwFNOM4u&_nc_oc=AdrGrJkXflJdnDsmdvsheoWK7f2zRkHlvGrFboX6SBtqBAOvWsgt9pCdxDRrgsfxuGo&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&_nc_tpa=Q5bMBQGqACCOqrlmW8LO2ImYbKXmmL4YietQX3uvDGY2Ywt8d0eIWcU3sDRenqEH8VMSC4ajDB_-jYbO&oh=00_AQDqI2ZDRngmWJld-ofUimrrEmtNZtLeBjKzq8oCgh9RdA&oe=6A6AA822",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/729629492_17897836044496139_7280176905282824167_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=ItLggZ1IKt0Q7kNvwFNOM4u&_nc_oc=AdrGrJkXflJdnDsmdvsheoWK7f2zRkHlvGrFboX6SBtqBAOvWsgt9pCdxDRrgsfxuGo&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&_nc_tpa=Q5bMBQEpsYSNM2KjZXB2HUSM7bbwkCLsxu782YA_JutlrS2Fu0jeYXhqFrGvve925DqfThwdCpEwguE6&oh=00_AQBGohohjVW1tC7r52mscUy8kUHMS_tuTZHJqcsxkwVNlA&oe=6A6AE062",
       "caption": "Panasonic Lumix TZ91 | Leica lens, 30x zoom, 4K video ve dönebilen ekranıyla RetroCameraLand’de 📸 \n\n#digicam #lumix #pointandshoot #digitalcamera #leica"
     },
     {
@@ -1522,7 +1532,7 @@ const INSTAGRAM = {
       "likes": 98,
       "comments": 0,
       "url": "https://www.instagram.com/p/DaFyzLnCOyR/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/729644224_17897576652496139_3070927825817893537_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=VtTlUunwNV8Q7kNvwHl0xbG&_nc_oc=AdrZyHDE334H1D8YgYllicU8eJPgxovQYdA66jBnEyZqLWINvjsdgp7Xt7ooaL_sS6Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&oh=00_AQASaWNTTFS2TEU3uEZLpKIWhsxaCswoux-A0SWv9alrRw&oe=6A6A984B",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/729644224_17897576652496139_3070927825817893537_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=VtTlUunwNV8Q7kNvwHl0xbG&_nc_oc=AdrZyHDE334H1D8YgYllicU8eJPgxovQYdA66jBnEyZqLWINvjsdgp7Xt7ooaL_sS6Q&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&oh=00_AQDlJhl_tXshzpfZpuObsA75JUa_emV32R6ndGKyTCWFug&oe=6A6AD08B",
       "caption": "The digital camera that’s always by your side, for your most special moments ✨\n\nDiscover yours at RetroCameraLand.com 🌍\n\n#digicamaesthetic #y2kcamera #couple #love #style"
     },
     {
@@ -1532,7 +1542,7 @@ const INSTAGRAM = {
       "likes": 22,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DZzz0ATId3D/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/726782685_4537360086585918_7097184926040454410_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NQ1gZ57ObCIQ7kNvwFWImg7&_nc_oc=AdpKoxvBxn_yhizd9qLSORfTDx1WNYs85U6Nq3zb7LUbX_9IKD9G8fyMmSoXrTYGaCU&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&_nc_tpa=Q5bMBQGSVLUPGawTSAdhegwVK_7ZDM2kaA6n2kFF4GT6IErKJVkerPZKwfnzHOjOCZZggLa-JbBforC6&oh=00_AQD1rEEdZTpHpy2LE9PEs1w2yeHIGuFspKB8gtEp3vataQ&oe=6A6A8CB9",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/726782685_4537360086585918_7097184926040454410_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=NQ1gZ57ObCIQ7kNvwFWImg7&_nc_oc=AdpKoxvBxn_yhizd9qLSORfTDx1WNYs85U6Nq3zb7LUbX_9IKD9G8fyMmSoXrTYGaCU&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&_nc_tpa=Q5bMBQGVw-N8GvITVEgeGbjMrurEE9TNzlJVCDzaKu-l7X-5e8YrCQ9jNQ_HOfZua2QpwfkWAiZjps89&oh=00_AQBn5kpwWXIu8Tj2vArbBlSpiEXyG4E6dV4nJsZygNxibg&oe=6A6AC4F9",
       "caption": "Fotoğraf çekmek hiç bu kadar tatlı olmamıştı 🍊\nDijital kameranı RetroCameraLand.com’da keşfet 📸\n\n⁠#retrocamera #vintagevibes #aestheticvideos #digicam #summervibes"
     },
     {
@@ -1542,7 +1552,7 @@ const INSTAGRAM = {
       "likes": 19,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DZfr1SMo64B/",
-      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/721736574_1372629674729819_532175160998543556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=RZZGmgzqDIYQ7kNvwHFXFVz&_nc_oc=Adqx1dxdxzo91Fra_tvMtpw9j8F7cjffyodPohVzpdAhS3R5HCCr9_AFtCYO6HseC1s&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&_nc_tpa=Q5bMBQFZe_t4NzZWlXIdFp50L08Zf6AlJ8USl8RTHDnPONVODCKjzY2IU5DoRxFTAC43v8wpY2KHhnqk&oh=00_AQC-cAZRpDqb9Kl3OEtEN-5xFu01qtlOz79N8WMqhwxybw&oe=6A6AAE78",
+      "image": "https://scontent.cdninstagram.com/v/t51.71878-15/721736574_1372629674729819_532175160998543556_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=RZZGmgzqDIYQ7kNvwHFXFVz&_nc_oc=Adqx1dxdxzo91Fra_tvMtpw9j8F7cjffyodPohVzpdAhS3R5HCCr9_AFtCYO6HseC1s&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&_nc_tpa=Q5bMBQF0fynKlwW2lrzCoCHOqU_k4dF8wWengjR3f0SDn4yjO3IaySeu-ss7rcx_wPBSyEW8YZnP5aKB&oh=00_AQCUUGoDQv7wHYIYPa_Yvv5wSirNjXzlvb3Xeev97hj-sw&oe=6A6AE6B8",
       "caption": "Küçük anların büyük hisleri 🎞️🤍 Lumix TZ91 Retrocameraland.com’da 📸\n\n#littlebaby #Digicam #VintageVibes #digitalcamera #Y2KStyle"
     },
     {
@@ -1552,18 +1562,8 @@ const INSTAGRAM = {
       "likes": 47,
       "comments": 1,
       "url": "https://www.instagram.com/p/DZck6zXiDag/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/721297008_17895044379496139_2773788616356448899_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=mhzBYedCP9UQ7kNvwGIj0kv&_nc_oc=AdootXE1mPqStOQLP5rfcjtA3b-rK3pthDx_mY2OWgzG1-VjksXgMG1hAQnFkYfj9mA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&oh=00_AQA44lutQEO-ST1syK0O91i8mzpMcX2UDD75Dokr6I81Zg&oe=6A6A8622",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/721297008_17895044379496139_2773788616356448899_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=103&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=mhzBYedCP9UQ7kNvwGIj0kv&_nc_oc=AdootXE1mPqStOQLP5rfcjtA3b-rK3pthDx_mY2OWgzG1-VjksXgMG1hAQnFkYfj9mA&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=GDfsT6qh3a5vE971Dd6wxQ&oh=00_AQB5VbwkQ5vgUCBFQivcDJf6ZFo7NV5hdIlcM2iN4fiv1w&oe=6A6ABE62",
       "caption": "Own a piece of Y2K 📸 İkonik kameralar, zamanla daha da değerli❣️ Where Y2K lives on Retrocameraland.com 🌍\n\n#digicam #retrolove #aesthetic #compactcamera #colorful"
-    },
-    {
-      "id": "18092303108367363",
-      "date": "7 Haz 2026",
-      "type": "CAROUSEL_ALBUM",
-      "likes": 79,
-      "comments": 0,
-      "url": "https://www.instagram.com/p/DZS7i4wCCLW/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/718935543_17894504454496139_5750535782999794384_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=S80QBMFdt_8Q7kNvwFo8m3r&_nc_oc=AdoFpDutnGgcCf96F4rERibNNUmxAfoYM-LIQzXU0XtkorNGmKfFVNYQ78DjA0wd9no&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=HURgaS1RxOXFIt9Jc3mlmg&oh=00_AQC2_7DZWw8hqSirYLZhyPW4mJMzlevx2S9BweDwMGv3Ew&oe=6A6A8F91",
-      "caption": "Carry your aesthetic, shoot your moments. | Retrocameraland.com 📸 \n\n#digicam #retrocamera #style #aestethic #moment"
     }
   ],
   "follower_goal": 10000
