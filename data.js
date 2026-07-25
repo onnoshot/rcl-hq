@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-25T22:57:25",
+  "updated_at": "2026-07-25T23:57:30",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 1158,
-      "likes": 18,
+      "views": 1184,
+      "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/nJ92afbw02g"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 1562,
+      "views": 1564,
       "likes": 18,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 2189,
+      "views": 2229,
       "likes": 42,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1415,
+      "views": 1413,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1306,
+      "views": 1305,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 442,
+      "views": 447,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 4204,
+      "views": 4201,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
