@@ -71,5 +71,52 @@
       "t200"
     ],
     "date": "2026-07-25"
+  },
+  {
+    "entities": [
+      "2300",
+      "polaroid"
+    ],
+    "date": "2026-07-25"
+  },
+  {
+    "entities": [
+      "2300",
+      "polaroid"
+    ],
+    "date": "2026-07-25"
+  },
+  {
+    "entities": [
+      "canon",
+      "ixus"
+    ],
+    "date": "2026-07-25"
+  },
+  {
+    "entities": [
+      "fujifilm",
+      "sony"
+    ],
+    "date": "2026-07-25"
+  },
+  {
+    "entities": [
+      "3000"
+    ],
+    "date": "2026-07-25"
+  },
+  {
+    "entities": [
+      "2000"
+    ],
+    "date": "2026-07-25"
+  },
+  {
+    "entities": [
+      "canon",
+      "fujifilm"
+    ],
+    "date": "2026-07-25"
   }
 ]
