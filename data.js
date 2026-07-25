@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-25T21:57:20",
+  "updated_at": "2026-07-25T22:57:25",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 105023,
-      "watch_hours": 310.3,
-      "subs_gained": 647,
-      "subs_lost": 259,
-      "avg_view_sec": 24
+      "views": 112727,
+      "watch_hours": 343.6,
+      "subs_gained": 667,
+      "subs_lost": 266,
+      "avg_view_sec": 25
     },
-    "watch_hours_year": 3528.4,
-    "watch_hours_year_long": 1892.0,
-    "watch_hours_year_shorts": 1636.1,
+    "watch_hours_year": 3561.7,
+    "watch_hours_year_long": 1917.6,
+    "watch_hours_year_shorts": 1643.8,
     "monthly": [
       {
         "label": "Şub 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 90704,
-        "watch_min": 16253,
-        "subs_gained": 622
+        "views": 98408,
+        "watch_min": 18252,
+        "subs_gained": 642
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 923,
+      "views": 1158,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 1541,
-      "likes": 17,
+      "views": 1562,
+      "likes": 18,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
     },
@@ -81,8 +81,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 2184,
-      "likes": 40,
+      "views": 2189,
+      "likes": 42,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 1315,
+      "views": 1345,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1413,
+      "views": 1415,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1305,
+      "views": 1306,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 4201,
+      "views": 4204,
       "likes": 67,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
