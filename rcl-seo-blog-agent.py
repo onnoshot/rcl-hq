@@ -179,7 +179,7 @@ def save_keyword_history(keywords):
             hist[nk] = today
     json.dump(hist, open(KEYWORD_STATE_FILE, 'w', encoding='utf-8'), ensure_ascii=False, indent=2)
 
-def keyword_on_cooldown(kw, hist):
+def keyword_on_cooldown(kw, hist, days=None):
     nk = _normalize_kw(kw)
     if nk not in hist:
         return False
@@ -187,7 +187,7 @@ def keyword_on_cooldown(kw, hist):
         last = datetime.strptime(hist[nk], '%Y-%m-%d')
     except Exception:
         return False
-    return (datetime.now() - last).days < KEYWORD_COOLDOWN_DAYS
+    return (datetime.now() - last).days < (days if days is not None else KEYWORD_COOLDOWN_DAYS)
 
 # ── Marka+model varlık (entity) bazlı tekrar kontrolü ───────────────────────
 # keyword_on_cooldown() literal keyword string'ini karşılaştırır; LLM aynı ürüne
@@ -280,20 +280,21 @@ def _strip_title_suffix(title):
     t = re.sub(r"\s+(2025|2026)$", "", t)
     return t.strip().rstrip(".…")
 
-def entity_on_cooldown(topic_entities, hist):
+def entity_on_cooldown(topic_entities, hist, days=None):
     """topic_entities, cooldown penceresi içinde yayınlanmış bir kayıtla en az 2 varlığı
     (tek marka+model varsa 1) paylaşıyorsa True — aynı ürün(ler) hakkında yeni bir 'açı'
     ile tekrar yazılmasını engeller."""
     if not topic_entities:
         return False
     now = datetime.now()
+    window = days if days is not None else ENTITY_COOLDOWN_DAYS
     required = 2 if len(topic_entities) >= 2 else 1
     for rec in hist:
         try:
             last = datetime.strptime(rec.get("date", ""), '%Y-%m-%d')
         except Exception:
             continue
-        if (now - last).days >= ENTITY_COOLDOWN_DAYS:
+        if (now - last).days >= window:
             continue
         shared = topic_entities & set(rec.get("entities", []))
         if len(shared) >= required:
@@ -694,7 +695,10 @@ def gemini_write(system_prompt, user_prompt, max_tokens=8000):
         except Exception as e:
             msg = str(e)
             if '429' in msg or 'RESOURCE_EXHAUSTED' in msg:
-                wait = 60 if attempt == 0 else 120
+                # ESKİDEN 60s/120s/120s (blog başına ~15dk boşa gidiyordu — 2026-07-25/26
+                # loglarında HER çağrı rate-limit yiyordu, tek blog 51dk sürdü). Kota
+                # gerçekten tükendiyse uzun beklemek yardımcı olmaz — hızlı Groq'a düş.
+                wait = 8 if attempt == 0 else 15
                 log(f"  Gemini rate limit — {wait}s bekleniyor...")
                 time.sleep(wait)
             elif '401' in msg or 'API_KEY' in msg or 'PERMISSION_DENIED' in msg:
@@ -727,7 +731,11 @@ def _groq_call(model, system_prompt, user_prompt, max_tokens=4000, temperature=0
         except Exception as e:
             msg = str(e)
             if '429' in msg or 'rate_limit' in msg.lower():
-                wait = 180 if attempt == 0 else 300
+                # ESKİDEN 180s/300s — Groq bu bölümde SON çare (Gemini zaten başarısız oldu),
+                # uzun beklemek sadece toplam süreyi şişiriyor; kota gerçekten tükendiyse
+                # kısa beklemek de değişmez, hızlı başarısız olup dış döngüye (yeni deneme/
+                # başka konu) bırakmak daha iyi.
+                wait = 15 if attempt == 0 else 25
                 log(f"  Groq rate limit — {wait}s bekleniyor...")
                 time.sleep(wait)
             else:
@@ -746,6 +754,36 @@ def _clean(raw):
     raw = re.sub(r'^```html?\s*', '', raw.strip(), flags=re.I)
     raw = re.sub(r'\s*```$', '', raw.strip())
     return raw
+
+def _extract_json_array(raw):
+    """LLM'in döndürdüğü metinden JSON dizisini çıkarır. Eski kod `re.search(r'\\[.*\\]')`
+    kullanıyordu — LLM JSON'dan sonra açıklama/yorum eklerse (ör. 'Not: ...') ve o metinde
+    başka bir ']' geçerse greedy regex fazla metni yakalayıp 'Extra data' hatası veriyordu
+    (2026-07-26 00:00 koşusunda konu seçimi tamamen başarısız oldu). Parantez derinliği
+    sayarak İLK dengeli [...] bloğunu bulur — daha güvenilir."""
+    start = raw.find('[')
+    if start == -1:
+        return None
+    depth = 0
+    for i in range(start, len(raw)):
+        if raw[i] == '[':
+            depth += 1
+        elif raw[i] == ']':
+            depth -= 1
+            if depth == 0:
+                candidate = raw[start:i + 1]
+                try:
+                    return json.loads(candidate)
+                except json.JSONDecodeError:
+                    break
+    # yedek: eski greedy davranış (bulamazsak hiç değilse eskisi kadar dener)
+    m = re.search(r'\[.*\]', raw, re.DOTALL)
+    if m:
+        try:
+            return json.loads(m.group(0))
+        except json.JSONDecodeError:
+            return None
+    return None
 
 def _write(system_prompt, user_prompt, max_tokens=4000):
     """Gemini birincil, Groq fallback."""
@@ -1136,9 +1174,13 @@ SADECE JSON döndür."""
 
     try:
         raw = groq_write(system, user, max_tokens=2000, temperature=0.8)
-        m   = re.search(r'\[.*\]', raw, re.DOTALL)
-        if m:
-            topics = json.loads(m.group(0))
+        topics = _extract_json_array(raw)
+        if topics:
+            # Groq bazen istenen şemaya tam uymuyor (ör. birden fazla ayrı [...] bloğu +
+            # aralarında düz metin döndürüyor — 2026-07-26'da tespit edildi). dict OLMAYAN
+            # öğeleri sessizce ele, tek bozuk madde tüm batch'i çökertmesin.
+            topics = [t for t in topics if isinstance(t, dict)]
+        if topics:
             # Fix title/meta/keyword alignment ÖNCE, tazelik kontrolü SONRA yapılmalı —
             # aksi halde _fix_topic_lengths'in değiştirdiği başlık tekrar kontrolünden kaçabilir
             for t in topics:
@@ -1174,8 +1216,50 @@ SADECE JSON döndür."""
         pool = pool + variants
 
     if not pool:
-        log("⚠ Konu havuzu tamamen tükendi — bu döngüde yeni konu üretilemedi")
-        return []
+        # ACİL SON ÇARE — 2 kademe. FALLBACK_POOL sadece ~26 konudan oluşuyor; tam 45-60
+        # günlük cooldown'lar bu havuzu tamamen tıkayıp SIFIR YAYIN'a yol açabiliyor
+        # (2026-07-26 00:00 koşusunda tam olarak bu oldu — 26/26 konu bloklandı, hiçbir
+        # şey yayınlanmadı). AMA cooldown'u TÜMDEN yok saymak da yanlış — ilk denemede
+        # öyle yapılınca, birkaç saat önce birleştirilmiş bir konunun neredeyse-aynısı
+        # tekrar üretildi (2026-07-26, canlı testte tespit edildi). Bu yüzden önce KISA
+        # bir pencereyle (6 gün) dene — hem sıfır-yayını önler hem yakın zamanda
+        # birleştirilmiş/yayınlanmış konuları tekrar üretmez.
+        month_tr = trends.get('month', '')
+        def _variants(base):
+            return [base] + [
+                {**base, 'title': (base['title'].rstrip('.') + sfx)[:70]}
+                for sfx in (f" — {datetime.now().year}", f" ({month_tr})" if month_tr else "")
+                if sfx
+            ]
+
+        for short_days, ignore_cooldown in ((6, False), (0, True)):
+            emergency, seen = [], set()
+            for base in FALLBACK_POOL:
+                for v in _variants(base):
+                    tl = v['title'].lower()
+                    if tl in all_titles or tl in seen:
+                        continue
+                    if _strip_title_suffix(v['title']) in title_prefixes_seen:
+                        continue
+                    if not ignore_cooldown:
+                        ents = extract_entities(v.get('title', ''), v.get('keyword', ''))
+                        if entity_on_cooldown(ents, ent_hist, days=short_days):
+                            continue
+                        if keyword_on_cooldown(v.get('keyword', ''), kw_hist, days=short_days):
+                            continue
+                    emergency.append(v)
+                    seen.add(tl)
+                    break
+            if emergency:
+                tier = f"{short_days} günlük kısa cooldown ile" if not ignore_cooldown else "cooldown tamamen göz ardı edilerek (son çare)"
+                log(f"⚠ Havuz normal cooldown'la tamamen bloklandı — acil son çare: {len(emergency)} "
+                    f"konu {tier} kullanılabilir hale getirildi")
+                pool = emergency
+                break
+
+        if not pool:
+            log("⚠ Konu havuzu tamamen tükendi (tam-aynı-başlıklar bile tükendi) — bu döngüde yeni konu üretilemedi")
+            return []
     random.shuffle(pool)
     selected = dedupe_by_keyword(pool, count)
     for t in selected:
