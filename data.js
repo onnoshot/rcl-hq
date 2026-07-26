@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-26T21:31:07",
+  "updated_at": "2026-07-26T22:31:12",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 110768,
-      "watch_hours": 339.0,
-      "subs_gained": 666,
-      "subs_lost": 266,
-      "avg_view_sec": 25
+      "views": 122080,
+      "watch_hours": 379.2,
+      "subs_gained": 698,
+      "subs_lost": 277,
+      "avg_view_sec": 26
     },
-    "watch_hours_year": 3561.2,
-    "watch_hours_year_long": 1917.5,
-    "watch_hours_year_shorts": 1643.5,
+    "watch_hours_year": 3601.4,
+    "watch_hours_year_long": 1940.0,
+    "watch_hours_year_shorts": 1661.2,
     "monthly": [
       {
         "label": "Şub 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 98407,
-        "watch_min": 18248,
-        "subs_gained": 642
+        "views": 109719,
+        "watch_min": 20659,
+        "subs_gained": 674
       }
     ]
   },
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 1758,
-      "likes": 22,
+      "views": 1759,
+      "likes": 21,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
     },
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 1593,
+      "views": 1594,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1423,
+      "views": 1424,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
