@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-25T23:57:30",
+  "updated_at": "2026-07-26T15:30:34",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4500,
-    "total_views": 1338088,
+    "subscribers": 4520,
+    "total_views": 1347412,
     "video_count": 397
   },
   "analytics": {
     "last_30d": {
-      "views": 112727,
-      "watch_hours": 343.6,
-      "subs_gained": 667,
+      "views": 110768,
+      "watch_hours": 339.0,
+      "subs_gained": 666,
       "subs_lost": 266,
       "avg_view_sec": 25
     },
-    "watch_hours_year": 3561.7,
-    "watch_hours_year_long": 1917.6,
-    "watch_hours_year_shorts": 1643.8,
+    "watch_hours_year": 3561.2,
+    "watch_hours_year_long": 1917.5,
+    "watch_hours_year_shorts": 1643.5,
     "monthly": [
       {
         "label": "Şub 26",
@@ -52,8 +52,8 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 98408,
-        "watch_min": 18252,
+        "views": 98407,
+        "watch_min": 18248,
         "subs_gained": 642
       }
     ]
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 1184,
-      "likes": 19,
+      "views": 1260,
+      "likes": 21,
       "comments": 0,
       "url": "https://youtu.be/nJ92afbw02g"
     },
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 1564,
-      "likes": 18,
+      "views": 1695,
+      "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
     },
@@ -81,8 +81,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 2229,
-      "likes": 42,
+      "views": 2379,
+      "likes": 50,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 1345,
+      "views": 1588,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1708,
+      "views": 1720,
       "likes": 15,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1413,
+      "views": 1420,
       "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 371,
+      "views": 374,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1305,
+      "views": 1308,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 447,
+      "views": 449,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -144,8 +144,8 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 4201,
-      "likes": 67,
+      "views": 4263,
+      "likes": 68,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
     }
