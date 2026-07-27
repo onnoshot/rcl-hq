@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-28T00:52:23",
+  "updated_at": "2026-07-28T01:52:30",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 1337,
+      "views": 1349,
       "likes": 24,
       "comments": 0,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -81,8 +81,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 2895,
-      "likes": 75,
+      "views": 2903,
+      "likes": 74,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
