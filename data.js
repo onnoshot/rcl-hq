@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-28T23:39:02",
+  "updated_at": "2026-07-29T00:39:07",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4580,
+    "subscribers": 4590,
     "total_views": 1369313,
     "video_count": 395
   },
   "analytics": {
     "last_30d": {
-      "views": 140387,
-      "watch_hours": 448.7,
-      "subs_gained": 781,
-      "subs_lost": 310,
+      "views": 138039,
+      "watch_hours": 442.3,
+      "subs_gained": 780,
+      "subs_lost": 308,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3676.2,
+    "watch_hours_year": 3667.2,
     "watch_hours_year_long": 1990.0,
-    "watch_hours_year_shorts": 1685.9,
+    "watch_hours_year_shorts": 1676.9,
     "monthly": [
       {
         "label": "Şub 26",
@@ -63,9 +63,9 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 1388,
+      "views": 1391,
       "likes": 25,
-      "comments": 1,
+      "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
     },
     {
@@ -81,8 +81,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 3267,
-      "likes": 85,
+      "views": 3316,
+      "likes": 88,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 4363,
+      "views": 4361,
       "likes": 69,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
