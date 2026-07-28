@@ -678,8 +678,14 @@ def claude_write(system_prompt, user_prompt, max_tokens=4000):
 # ── Gemini API (birincil yazar) ────────────────────────────────────────────────
 GEMINI_MODEL = "gemini-2.5-flash"
 
+_GEMINI_QUOTA_DEAD = False  # bu süreç boyunca kalıcı — günlük kota bir kez tükendi mi bir daha denenmez
+
 def gemini_write(system_prompt, user_prompt, max_tokens=8000):
     """Blog yazımı — Gemini 2.5 Flash (birincil)."""
+    global _GEMINI_QUOTA_DEAD
+    if _GEMINI_QUOTA_DEAD:
+        raise RuntimeError("Gemini günlük kota tükenmiş (bu koşuda tekrar denenmiyor)")
+
     from google import genai
     from google.genai import types
     client = genai.Client(api_key=GEMINI_KEY, http_options=types.HttpOptions(timeout=120000))
@@ -694,6 +700,15 @@ def gemini_write(system_prompt, user_prompt, max_tokens=8000):
             return resp.text
         except Exception as e:
             msg = str(e)
+            # "free_tier_requests" + düşük "limit" = GÜNLÜK kota duvarı, dakikalık rate
+            # limit değil (2026-07-28'de tespit edildi: limit 20/gün, her çağrı anında
+            # 429 veriyordu). Buna karşı 3x tekrar denemek saf zaman kaybı — Groq zaten
+            # TÜM yükü tek başına taşımak zorunda kalıyor, gereksiz Gemini denemeleri onu
+            # daha da geciktiriyor. Böyle bir hata görünce süreç boyunca Gemini'yi kapat.
+            if 'free_tier_requests' in msg or ('RESOURCE_EXHAUSTED' in msg and 'quota' in msg.lower()):
+                _GEMINI_QUOTA_DEAD = True
+                log(f"  ⚠ Gemini günlük kota tükenmiş — bu koşu boyunca atlanacak: {msg[:100]}")
+                raise RuntimeError("Gemini günlük kota tükenmiş")
             if '429' in msg or 'RESOURCE_EXHAUSTED' in msg:
                 # ESKİDEN 60s/120s/120s (blog başına ~15dk boşa gidiyordu — 2026-07-25/26
                 # loglarında HER çağrı rate-limit yiyordu, tek blog 51dk sürdü). Kota
