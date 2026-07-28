@@ -2283,6 +2283,18 @@ def run(batch_count=BATCH_COUNT):
                 # Yeniden denemek anlamsız — aynı başlık aynı handle'ı üretir, tekrar çakışır.
                 err_msg = str(e)[:200]
                 log(f"  ⚠ Atlandı (zaten yayınlanmış): {err_msg}")
+                # KENDİNİ ONAR: bu başlık published-topics.json'da kayıtlı DEĞİLDİ (eski
+                # non-incremental-save döneminden kalma bir boşluk) — Shopify'ın kendisi
+                # "zaten var" dediğine göre artık kayda geç. Yoksa aynı konu (ve varyant
+                # ekleri) sonraki koşularda tekrar tekrar denenip her seferinde birkaç
+                # dakika boşa gider (2026-07-28/29'da gözlemlendi — aynı 2 konu defalarca
+                # "içerik üret → çakışma → atla" döngüsüne girdi).
+                try:
+                    save_published([topic['title']])
+                    save_keyword_history([topic.get('keyword', '')])
+                    save_entity_history([extract_entities(topic['title'], topic.get('keyword', ''))])
+                except Exception:
+                    pass
                 was_duplicate = True
                 duplicate_skips += 1
                 break

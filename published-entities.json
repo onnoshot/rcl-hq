@@ -160,5 +160,783 @@
       "xacti"
     ],
     "date": "2026-07-27"
+  },
+  {
+    "entities": [
+      "2000"
+    ],
+    "date": "2025-07-18"
+  },
+  {
+    "entities": [
+      "canon",
+      "powershot"
+    ],
+    "date": "2025-07-18"
+  },
+  {
+    "entities": [
+      "sanyo",
+      "xacti"
+    ],
+    "date": "2025-09-24"
+  },
+  {
+    "entities": [
+      "2500",
+      "coolpix",
+      "nikon"
+    ],
+    "date": "2025-12-15"
+  },
+  {
+    "entities": [
+      "sanyo",
+      "xacti"
+    ],
+    "date": "2025-12-15"
+  },
+  {
+    "entities": [
+      "cyber",
+      "sony"
+    ],
+    "date": "2025-12-15"
+  },
+  {
+    "entities": [
+      "820",
+      "olympus",
+      "tough"
+    ],
+    "date": "2026-01-08"
+  },
+  {
+    "entities": [
+      "finepix",
+      "fujifilm",
+      "instax"
+    ],
+    "date": "2026-01-18"
+  },
+  {
+    "entities": [
+      "samsung"
+    ],
+    "date": "2026-01-18"
+  },
+  {
+    "entities": [
+      "canon",
+      "g7x"
+    ],
+    "date": "2026-01-18"
+  },
+  {
+    "entities": [
+      "2010",
+      "es65",
+      "samsung"
+    ],
+    "date": "2026-01-18"
+  },
+  {
+    "entities": [
+      "fujifilm",
+      "instax"
+    ],
+    "date": "2026-01-18"
+  },
+  {
+    "entities": [
+      "cybershot",
+      "sony",
+      "t9"
+    ],
+    "date": "2026-01-24"
+  },
+  {
+    "entities": [
+      "dimage",
+      "konica",
+      "minolta",
+      "x50"
+    ],
+    "date": "2026-01-27"
+  },
+  {
+    "entities": [
+      "cyber",
+      "sony",
+      "t500"
+    ],
+    "date": "2026-01-28"
+  },
+  {
+    "entities": [
+      "casio",
+      "exilim"
+    ],
+    "date": "2026-02-20"
+  },
+  {
+    "entities": [
+      "easyshare",
+      "kodak",
+      "v603"
+    ],
+    "date": "2026-02-20"
+  },
+  {
+    "entities": [
+      "2000"
+    ],
+    "date": "2026-03-06"
+  },
+  {
+    "entities": [
+      "160",
+      "canon",
+      "ixus"
+    ],
+    "date": "2026-03-25"
+  },
+  {
+    "entities": [
+      "canon",
+      "ixus"
+    ],
+    "date": "2026-03-26"
+  },
+  {
+    "entities": [
+      "2000",
+      "canon"
+    ],
+    "date": "2026-04-19"
+  },
+  {
+    "entities": [
+      "olympus",
+      "stylus"
+    ],
+    "date": "2026-04-23"
+  },
+  {
+    "entities": [
+      "casio",
+      "exilim"
+    ],
+    "date": "2026-04-23"
+  },
+  {
+    "entities": [
+      "10",
+      "sanyo",
+      "xacti"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "finepix",
+      "fujifilm",
+      "t200"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "2008",
+      "coolpix",
+      "nikon",
+      "s60"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "ft10",
+      "lumix",
+      "panasonic"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "olympus",
+      "pl1"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "dimage",
+      "x50"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "830",
+      "traveler"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "f3",
+      "lumix",
+      "panasonic"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "3d",
+      "cyber",
+      "sony",
+      "tx9"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "12mp",
+      "sony",
+      "w200"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "sony"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "canon",
+      "powershot",
+      "v1"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "a480",
+      "canon",
+      "powershot"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "2001",
+      "a20",
+      "canon",
+      "powershot"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "16x",
+      "canon",
+      "powershot",
+      "sx160"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "canon",
+      "ixus",
+      "pc1060"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "885",
+      "coolpix",
+      "nikon"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "coolpix",
+      "nikon",
+      "p5100"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "coolpix",
+      "nikon",
+      "s100"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "coolpix",
+      "s3100"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "12mp",
+      "coolpix",
+      "nikon",
+      "s4000"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "casio",
+      "exilim",
+      "z85"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "casio",
+      "exilim",
+      "z4"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "26mm",
+      "casio",
+      "exilim",
+      "z110"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "1000",
+      "casio",
+      "exilim",
+      "h10"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "2005",
+      "casio",
+      "exilim",
+      "z50"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "casio",
+      "r300"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "casio",
+      "exilim",
+      "fr100ct"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "finepix",
+      "z70"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "2001",
+      "4700",
+      "4mp",
+      "finepix",
+      "fujifilm"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "10x",
+      "f80",
+      "finepix",
+      "fujifilm"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "2007",
+      "finepix",
+      "z10fd"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "1700z",
+      "1999",
+      "finepix",
+      "fujifilm"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "finepix",
+      "fujifilm",
+      "xp60"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "130",
+      "olympus"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "320",
+      "olympus"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "10",
+      "18x",
+      "olympus"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "14",
+      "24x",
+      "olympus"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "28mm",
+      "700",
+      "olympus"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "leica",
+      "lumix",
+      "lz7",
+      "panasonic"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "ls75",
+      "lumix",
+      "panasonic"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "30x",
+      "lumix",
+      "panasonic",
+      "tz99"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "ft3",
+      "lumix",
+      "panasonic"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "cg100",
+      "sanyo",
+      "xacti"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "2006",
+      "hd1",
+      "sanyo",
+      "xacti"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "easyshare",
+      "kodak",
+      "m1063"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "kodak",
+      "zx1"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "kodak",
+      "r502"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "10x",
+      "easyshare",
+      "kodak",
+      "z950"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "5x",
+      "fz55",
+      "kodak",
+      "pixpro"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "8mp",
+      "hp",
+      "r827"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "5mp",
+      "hp",
+      "m525"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "104"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "optio",
+      "pentax",
+      "s7"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "i634",
+      "polaroid"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "140"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "3mp",
+      "mdc3000"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "ds5090s"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "40x",
+      "e108"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "canon",
+      "powershot",
+      "xt1"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "8gb"
+    ],
+    "date": "2026-04-26"
+  },
+  {
+    "entities": [
+      "finepix",
+      "fujifilm",
+      "z110"
+    ],
+    "date": "2026-04-29"
+  },
+  {
+    "entities": [
+      "finepix",
+      "fujifilm",
+      "z110"
+    ],
+    "date": "2026-04-29"
+  },
+  {
+    "entities": [
+      "cybershot",
+      "sony"
+    ],
+    "date": "2026-05-17"
+  },
+  {
+    "entities": [
+      "cyber",
+      "finepix",
+      "t200",
+      "t9"
+    ],
+    "date": "2026-05-17"
+  },
+  {
+    "entities": [
+      "2000"
+    ],
+    "date": "2026-05-19"
+  },
+  {
+    "entities": [
+      "finepix",
+      "t200"
+    ],
+    "date": "2026-05-26"
+  },
+  {
+    "entities": [
+      "fujifilm",
+      "sony"
+    ],
+    "date": "2026-06-02"
+  },
+  {
+    "entities": [
+      "3000"
+    ],
+    "date": "2026-06-02"
+  },
+  {
+    "entities": [
+      "canon",
+      "powershot",
+      "sd400"
+    ],
+    "date": "2026-06-04"
+  },
+  {
+    "entities": [
+      "000",
+      "10"
+    ],
+    "date": "2026-06-25"
+  },
+  {
+    "entities": [
+      "20mp",
+      "30x",
+      "4k",
+      "lumix",
+      "panasonic",
+      "tz91"
+    ],
+    "date": "2026-06-29"
+  },
+  {
+    "entities": [
+      "15"
+    ],
+    "date": "2026-06-29"
+  },
+  {
+    "entities": [
+      "cyber",
+      "sony",
+      "t20",
+      "t300",
+      "w150"
+    ],
+    "date": "2026-06-29"
+  },
+  {
+    "entities": [
+      "finepix",
+      "fujifilm",
+      "v10",
+      "z700exr",
+      "z90"
+    ],
+    "date": "2026-06-29"
+  },
+  {
+    "entities": [
+      "1000",
+      "300",
+      "canon",
+      "g7",
+      "ixus",
+      "powershot"
+    ],
+    "date": "2026-06-29"
+  },
+  {
+    "entities": [
+      "nx2000",
+      "samsung"
+    ],
+    "date": "2026-06-29"
   }
 ]
