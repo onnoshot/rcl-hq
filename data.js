@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-29T15:45:07",
+  "updated_at": "2026-07-29T16:45:13",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 2500,
+      "views": 2403,
       "likes": 27,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 4399,
+      "views": 4401,
       "likes": 69,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
