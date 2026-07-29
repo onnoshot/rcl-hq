@@ -801,13 +801,21 @@ def _extract_json_array(raw):
     return None
 
 def _write(system_prompt, user_prompt, max_tokens=4000):
-    """Gemini birincil, Groq fallback."""
+    """Gemini birincil (ücretsiz ama günde 20 istekle sınırlı) → Groq (ücretsiz ama
+    paylaşımlı/sıkışabiliyor) → Claude (ücretli, güvenilir — SON çare, sadece ikisi de
+    başarısız olursa). 2026-07-29: Gemini+Groq'un ikisi de aynı anda tıkanınca eklendi."""
     if GEMINI_KEY:
         try:
             return _clean(gemini_write(system_prompt, user_prompt, max_tokens))
         except Exception as e:
             log(f"  ⚠ Gemini başarısız, Groq fallback: {str(e)[:80]}")
-    return _clean(groq_write(system_prompt, user_prompt, max_tokens))
+    try:
+        return _clean(groq_write(system_prompt, user_prompt, max_tokens))
+    except Exception as e:
+        if not ANTHROPIC_KEY:
+            raise
+        log(f"  ⚠ Groq da başarısız, Claude'a düşülüyor (son çare): {str(e)[:80]}")
+        return _clean(claude_write(system_prompt, user_prompt, max_tokens))
 
 
 # ── Topic Selection ────────────────────────────────────────────────────────────
