@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-29T02:39:17",
+  "updated_at": "2026-07-29T03:39:22",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 1954,
+      "views": 1953,
       "likes": 29,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 3367,
+      "views": 3368,
       "likes": 86,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 1965,
+      "views": 1950,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1461,
+      "views": 1459,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 407,
+      "views": 405,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
