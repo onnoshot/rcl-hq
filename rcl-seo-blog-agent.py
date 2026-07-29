@@ -800,22 +800,38 @@ def _extract_json_array(raw):
             return None
     return None
 
+_GROQ_DEAD_THIS_RUN = False  # bir bölümde 3 deneme de başarısız olursa, bu SÜREÇ boyunca
+                             # bir daha denenmez — Groq süreç-başı sıfırlanır (Gemini'nin
+                             # aksine kalıcı günlük kota değil, geçici yoğunluk)
+
 def _write(system_prompt, user_prompt, max_tokens=4000):
     """Gemini birincil (ücretsiz ama günde 20 istekle sınırlı) → Groq (ücretsiz ama
     paylaşımlı/sıkışabiliyor) → Claude (ücretli, güvenilir — SON çare, sadece ikisi de
     başarısız olursa). 2026-07-29: Gemini+Groq'un ikisi de aynı anda tıkanınca eklendi."""
+    global _GROQ_DEAD_THIS_RUN
     if GEMINI_KEY:
         try:
             return _clean(gemini_write(system_prompt, user_prompt, max_tokens))
         except Exception as e:
             log(f"  ⚠ Gemini başarısız, Groq fallback: {str(e)[:80]}")
-    try:
-        return _clean(groq_write(system_prompt, user_prompt, max_tokens))
-    except Exception as e:
-        if not ANTHROPIC_KEY:
-            raise
-        log(f"  ⚠ Groq da başarısız, Claude'a düşülüyor (son çare): {str(e)[:80]}")
-        return _clean(claude_write(system_prompt, user_prompt, max_tokens))
+
+    if not _GROQ_DEAD_THIS_RUN:
+        try:
+            return _clean(groq_write(system_prompt, user_prompt, max_tokens))
+        except Exception as e:
+            groq_err = e
+            # Bu koşuda Groq bir kez 3-deneme başarısız olduysa muhtemelen o an tamamen
+            # tıkanmış (2026-07-29'da 5/5 bölüm art arda başarısız oldu) — sonraki
+            # bölümlerde tekrar 65sn boşa harcamak yerine direkt Claude'a geç.
+            _GROQ_DEAD_THIS_RUN = True
+            log(f"  ⚠ Groq bu koşuda tıkandı, bir daha denenmeyecek: {str(groq_err)[:80]}")
+    else:
+        groq_err = RuntimeError("Groq bu koşuda zaten tıkanmıştı")
+
+    if not ANTHROPIC_KEY:
+        raise groq_err
+    log(f"  → Claude'a düşülüyor (son çare)")
+    return _clean(claude_write(system_prompt, user_prompt, max_tokens))
 
 
 # ── Topic Selection ────────────────────────────────────────────────────────────
