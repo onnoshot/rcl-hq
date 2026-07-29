@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-29T21:45:41",
+  "updated_at": "2026-07-29T22:45:46",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 138021,
-      "watch_hours": 442.3,
-      "subs_gained": 780,
-      "subs_lost": 308,
-      "avg_view_sec": 27
+      "views": 148252,
+      "watch_hours": 481.4,
+      "subs_gained": 820,
+      "subs_lost": 321,
+      "avg_view_sec": 28
     },
-    "watch_hours_year": 3667.1,
-    "watch_hours_year_long": 1990.0,
-    "watch_hours_year_shorts": 1676.9,
+    "watch_hours_year": 3706.2,
+    "watch_hours_year_long": 2017.4,
+    "watch_hours_year_shorts": 1688.6,
     "monthly": [
       {
         "label": "Şub 26",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 2535,
-      "likes": 27,
+      "views": 2578,
+      "likes": 28,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 1968,
+      "views": 1972,
       "likes": 33,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
@@ -81,8 +81,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 3655,
-      "likes": 97,
+      "views": 3683,
+      "likes": 100,
       "comments": 0,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1783,
+      "views": 1784,
       "likes": 15,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1344,
+      "views": 1346,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 474,
+      "views": 475,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
