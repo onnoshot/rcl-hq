@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-07-30T20:39:26",
+  "updated_at": "2026-07-31T00:01:51",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4640,
+    "subscribers": 4650,
     "total_views": 1396127,
     "video_count": 397
   },
   "analytics": {
     "last_30d": {
-      "views": 145432,
-      "watch_hours": 473.9,
-      "subs_gained": 817,
+      "views": 154165,
+      "watch_hours": 500.7,
+      "subs_gained": 841,
       "subs_lost": 321,
       "avg_view_sec": 28
     },
-    "watch_hours_year": 3703.3,
-    "watch_hours_year_long": 2017.4,
-    "watch_hours_year_shorts": 1685.7,
+    "watch_hours_year": 3740.0,
+    "watch_hours_year_long": 2042.6,
+    "watch_hours_year_shorts": 1697.2,
     "monthly": [
       {
         "label": "Şub 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 142663,
-        "watch_min": 27733,
-        "subs_gained": 802
+        "views": 154165,
+        "watch_min": 30040,
+        "subs_gained": 841
       }
     ]
   },
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 3695,
-      "likes": 29,
+      "views": 3902,
+      "likes": 30,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 1992,
+      "views": 1996,
       "likes": 34,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 4290,
+      "views": 4400,
       "likes": 114,
       "comments": 1,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2269,
+      "views": 2288,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1794,
+      "views": 1802,
       "likes": 15,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1486,
+      "views": 1487,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 427,
+      "views": 428,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1351,
+      "views": 1353,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "ZRzvt8SJEG8",
       "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
       "date": "10 Tem 2026",
-      "views": 481,
+      "views": 482,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/ZRzvt8SJEG8"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "LLXSMuhZAko",
       "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
       "date": "28 Haz 2026",
-      "views": 4485,
+      "views": 4494,
       "likes": 70,
       "comments": 0,
       "url": "https://youtu.be/LLXSMuhZAko"
