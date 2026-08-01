@@ -150,7 +150,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-08-02T00:05:11",
+  "updated_at": "2026-08-02T01:05:17",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -570,7 +570,7 @@ const SHOPIFY = {
     },
     {
       "handle": "lumix-dmc-ft10",
-      "title": "Lumix DMC-FT10",
+      "title": "Lumix DMC-FT10 (Waterproof)",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumix-dmc-ft10-vitrin.jpg?v=1784343440",
       "in_stock": true,
       "price": 11990,
@@ -1304,7 +1304,7 @@ const SHOPIFY = {
       "cost": 5000
     },
     {
-      "name": "Lumix DMC-FT10",
+      "name": "Lumix DMC-FT10 (Waterproof)",
       "price": 11990,
       "cost": 4800
     },
