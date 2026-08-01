@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-01T22:03:01",
+  "updated_at": "2026-08-01T23:03:06",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 213,
+      "views": 222,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -66,7 +66,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 5834,
+      "views": 5940,
       "likes": 31,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -84,8 +84,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 5939,
-      "likes": 138,
+      "views": 5988,
+      "likes": 140,
       "comments": 2,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
