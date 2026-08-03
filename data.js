@@ -150,7 +150,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-08-02T19:33:35",
+  "updated_at": "2026-08-03T18:42:40",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -644,7 +644,7 @@ const SHOPIFY = {
       "handle": "nikon-coolpix-s3000",
       "title": "Nikon Coolpix S3000",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s3000-vitrin.jpg?v=1784343701",
-      "in_stock": true,
+      "in_stock": false,
       "price": 17490,
       "type": "camera"
     },
@@ -1120,7 +1120,7 @@ const SHOPIFY = {
     "orders": 83,
     "aov": 12092
   },
-  "customers_total": 1004,
+  "customers_total": 1006,
   "monthly_labels": [
     "Eyl 25",
     "Eki 25",
@@ -1274,11 +1274,6 @@ const SHOPIFY = {
       "cost": 7000
     },
     {
-      "name": "Nikon Coolpix S3000",
-      "price": 17490,
-      "cost": 6000
-    },
-    {
       "name": "Fujifilm FinePix Z700 EXR",
       "price": 15490,
       "cost": 5700
@@ -1406,7 +1401,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 98
+  "out_of_stock": 99
 };
 /* ─── SHOPIFY DATA END ─── */
 
