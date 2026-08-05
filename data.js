@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-08-06T01:58:34",
+  "updated_at": "2026-08-06T02:58:44",
   "catalog": [
     {
       "handle": "agfa-optima-104",
@@ -522,7 +522,7 @@ const SHOPIFY = {
       "handle": "kodak-easyshare-v603",
       "title": "Kodak EasyShare V603",
       "image": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-v603-vitrin.jpg?v=1784343179",
-      "in_stock": true,
+      "in_stock": false,
       "price": 10490,
       "type": "camera"
     },
@@ -1112,21 +1112,21 @@ const SHOPIFY = {
     }
   ],
   "period_30d": {
-    "revenue": 50570,
-    "orders": 5,
-    "aov": 10114
+    "revenue": 61210,
+    "orders": 6,
+    "aov": 10202
   },
   "period_90d": {
-    "revenue": 279139,
-    "orders": 23,
-    "aov": 12136
+    "revenue": 289779,
+    "orders": 24,
+    "aov": 12074
   },
   "period_year": {
-    "revenue": 994685,
-    "orders": 81,
-    "aov": 12280
+    "revenue": 1005325,
+    "orders": 82,
+    "aov": 12260
   },
-  "customers_total": 1008,
+  "customers_total": 1009,
   "monthly_labels": [
     "Eyl 25",
     "Eki 25",
@@ -1153,7 +1153,7 @@ const SHOPIFY = {
     139290,
     79639,
     76200,
-    9990
+    20630
   ],
   "monthly_orders": [
     9,
@@ -1167,7 +1167,7 @@ const SHOPIFY = {
     12,
     6,
     6,
-    1
+    2
   ],
   "channels": [
     {
@@ -1176,8 +1176,8 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 32,
       "rev": 424690,
-      "order_pct": 38.1,
-      "rev_pct": 42.2
+      "order_pct": 37.6,
+      "rev_pct": 41.8
     },
     {
       "name": "Google",
@@ -1185,17 +1185,17 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 27,
       "rev": 290115,
-      "order_pct": 32.1,
-      "rev_pct": 28.8
+      "order_pct": 31.8,
+      "rev_pct": 28.5
     },
     {
       "name": "Instagram",
       "icon": "📸",
       "color": "#BF5AF2",
-      "orders": 21,
-      "rev": 242749,
-      "order_pct": 25.0,
-      "rev_pct": 24.1
+      "orders": 22,
+      "rev": 253389,
+      "order_pct": 25.9,
+      "rev_pct": 24.9
     },
     {
       "name": "YouTube",
@@ -1203,7 +1203,7 @@ const SHOPIFY = {
       "color": "#FF453A",
       "orders": 3,
       "rev": 39460,
-      "order_pct": 3.6,
+      "order_pct": 3.5,
       "rev_pct": 3.9
     },
     {
@@ -1217,6 +1217,10 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "6 Ağu 2026",
+      "amount": 10640
+    },
     {
       "date": "1 Ağu 2026",
       "amount": 9990
@@ -1252,10 +1256,6 @@ const SHOPIFY = {
     {
       "date": "16 Haz 2026",
       "amount": 9640
-    },
-    {
-      "date": "12 Haz 2026",
-      "amount": 889
     }
   ],
   "cameras": [
@@ -1340,11 +1340,6 @@ const SHOPIFY = {
       "cost": 4000
     },
     {
-      "name": "Kodak EasyShare V603",
-      "price": 10490,
-      "cost": 3750
-    },
-    {
       "name": "Kodak Slice R502",
       "price": 10490,
       "cost": 5000
@@ -1407,7 +1402,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 99
+  "out_of_stock": 100
 };
 /* ─── SHOPIFY DATA END ─── */
 
