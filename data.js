@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-05T23:55:04",
+  "updated_at": "2026-08-06T00:55:09",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 196184,
-      "watch_hours": 614.3,
-      "subs_gained": 907,
-      "subs_lost": 342,
+      "views": 193630,
+      "watch_hours": 605.5,
+      "subs_gained": 893,
+      "subs_lost": 336,
       "avg_view_sec": 29
     },
-    "watch_hours_year": 3880.9,
-    "watch_hours_year_long": 2124.8,
-    "watch_hours_year_shorts": 1755.9,
+    "watch_hours_year": 3869.8,
+    "watch_hours_year_long": 2124.6,
+    "watch_hours_year_shorts": 1744.9,
     "monthly": [
       {
         "label": "Mar 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 10316,
+      "views": 10383,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2652,
+      "views": 2653,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 43097,
+      "views": 43190,
       "likes": 165,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "b6MfXb0bltc",
       "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
       "date": "23 Şub 2026",
-      "views": 813,
+      "views": 815,
       "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
