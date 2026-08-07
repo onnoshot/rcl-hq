@@ -50,19 +50,7 @@ def main():
             fail.append(name); log(f"  ✗ {name} zaman aşımı")
         except Exception as e:
             fail.append(name); log(f"  ✗ {name} hata: {e}")
-    # Son adım: HERMES CEO — taze veriyi analiz et + canlıya yayınla (kredi yoksa zarif atla)
-    hermes = os.path.join(ROOT, "rcl-hermes-ceo.py")
-    if os.path.exists(hermes):
-        log("  → Hermes CEO analiz ediyor...")
-        try:
-            r = subprocess.run([PY, hermes, "--publish"], cwd=ROOT, capture_output=True, text=True, timeout=300)
-            if r.returncode == 0:
-                ok.append("Hermes"); log("  ✓ Hermes tamam")
-            else:
-                tail = (r.stderr or r.stdout or "").strip().splitlines()[-1:] or [""]
-                log(f"  ~ Hermes atlandı: {tail[0][:160]}")
-        except Exception as e:
-            log(f"  ~ Hermes atlandı: {e}")
+    # NOT: Hermes CEO kaldırıldı (dashboard'dan çıkarıldı, kredi de bitiyordu).
 
     log(f"=== Bitti — başarılı: {', '.join(ok) or '-'} | hatalı: {', '.join(fail) or '-'} ===")
     return 0 if not fail else 1
