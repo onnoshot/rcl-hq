@@ -175,10 +175,21 @@ def get_copy(theme_key, products, disc):
     sys_p = ("Sen Retrocameraland'in e-posta editörüsün. Türkçe, sıcak, AI-klişesinden uzak yaz. "
              "ÖNEMLİ: Asla '—' (uzun tire / em dash) kullanma; cümleleri uzun tire olmadan, "
              "virgül veya nokta ile kur. Markdown YOK. Sadece JSON döndür: "
-             "{\"subject\":..,\"preview\":..,\"heading\":..,\"intro\":..} "
-             "subject<=55 karakter, preview<=90, heading kısa vurucu, intro 2-3 cümle.")
+             "{\"subject\":..,\"preview\":..,\"heading\":..,\"intro\":..,\"product_tags\":[..]} "
+             "\n\nDİKKAT ÇEKİCİ BAŞLIK KURALLARI (subject): "
+             "Posta kutusunda diğer maillerin arasında öne çıkmalı. Merak uyandır, somut bir fayda ya da "
+             "sayı kullan, gerekiyorsa 1 emoji ile aç ama abartma. Tıklama isteği yarat, tıklama tuzağı olma. "
+             "'Yeni ürünler geldi' gibi düz/jenerik başlıklardan kesinlikle kaçın; yerine spesifik ve "
+             "merak/aciliyet/değer odaklı bir başlık kur (örn. somut sayı, koleksiyon değeri, kıtlık, veya "
+             "'sana özel' hissi). subject<=55 karakter, preview<=90 (subject'i tekrar etme, tamamlayıcı olsun). "
+             "heading kısa ve vurucu (sayfayı açtığında gözüne çarpsın). "
+             "intro 3-4 cümle: canlı, duyusal, spesifik detaylarla zengin olsun (jenerik pazarlama diline düşme). "
+             "product_tags: products listesindeki her ürün için, AYNI SIRADA, o kameraya özel 3-6 kelimelik "
+             "vurucu bir alt başlık (örn. 'Nadir bulunan 2000'ler klasiği', 'Koleksiyonun yıldızı', "
+             "'Son adet, bir daha gelmeyebilir'). Ürün başına farklı ve o modele özgü bir açı bul, tekrar etme.")
     usr = (f"Tema: {th['name']}. Brief: {th['brief']}\n"
-           f"Öne çıkan ürünler: {', '.join(p['title']+' ('+p['price']+')' for p in products)}\n"
+           f"Öne çıkan ürünler (bu sırayla product_tags üret): "
+           f"{', '.join(p['title']+' ('+p['price']+')' for p in products)}\n"
            f"{('İlk alışverişe özel bir indirim kodu da var, introda nazikçe ima et.' if disc else '')}")
     for engine_fn, name in [(claude, "Claude"), (gemini, "Gemini")]:
         try:
@@ -323,7 +334,8 @@ def social_footer():
 
 # ── E-posta HTML şablonu (mail-uyumlu, inline stil) ──────────────────────────
 def render_email(copy, products, discount=None, campaign_id=""):
-    def card(p):
+    tags = copy.get("product_tags") or []
+    def card(p, tag):
         link = f'{p["url"]}?{UTM}{campaign_id}'
         img = f'<img src="{p["image"]}" alt="{html.escape(p["title"])}" width="150" style="width:150px;max-width:150px;border-radius:12px;display:block;">' if p["image"] else ""
         # Vizör köşeli (retro kamera) çerçeveli görsel
@@ -332,6 +344,7 @@ def render_email(copy, products, discount=None, campaign_id=""):
           <div style="position:absolute;top:2px;right:2px;width:13px;height:13px;border-top:2px solid {ACCENT};border-right:2px solid {ACCENT};border-radius:0 3px 0 0;"></div>
           <div style="position:absolute;bottom:2px;left:2px;width:13px;height:13px;border-bottom:2px solid {ACCENT};border-left:2px solid {ACCENT};border-radius:0 0 0 3px;"></div>
           <div style="position:absolute;bottom:2px;right:2px;width:13px;height:13px;border-bottom:2px solid {ACCENT};border-right:2px solid {ACCENT};border-radius:0 0 3px 0;"></div></td></tr></table>"""
+        tag_html = f'<p style="margin:0 0 7px;font-size:12.5px;color:#8a6f4a;font-weight:600;font-style:italic;">{html.escape(tag)}</p>' if tag else ""
         return f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="rcl-card" style="margin:0 0 16px;"><tr>
           <td style="background:#ffffff;border:1px solid #eadfce;border-radius:18px;padding:16px;box-shadow:0 6px 22px rgba(40,30,15,.07);">
             <table role="presentation" width="100%"><tr>
@@ -339,10 +352,11 @@ def render_email(copy, products, discount=None, campaign_id=""):
               <td valign="top" style="padding-left:16px;">
                 <span style="display:inline-block;background:{ACCENT};color:#ffffff;font-size:10.5px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 10px;border-radius:6px;margin-bottom:9px;">● Tek Adet</span>
                 <p style="margin:0 0 4px;font-size:17px;font-weight:800;color:#15120e;line-height:1.25;letter-spacing:-.01em;">{html.escape(p['title'])}</p>
+                {tag_html}
                 <p style="margin:0 0 13px;font-size:19px;color:{ACCENT};font-weight:800;">{p['price']}</p>
                 <a href="{link}" class="rcl-btn-sm" style="background:#15120e;color:#ffffff;text-decoration:none;font-size:13px;font-weight:700;padding:12px 22px;border-radius:9px;display:inline-block;">İncele &rsaquo;</a>
               </td></tr></table></td></tr></table>"""
-    cards = "".join(card(p) for p in products)
+    cards = "".join(card(p, tags[i] if i < len(tags) else "") for i, p in enumerate(products))
     disc_html = ""
     if discount:
         disc_html = f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:22px 0;"><tr>

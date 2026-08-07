@@ -486,5 +486,113 @@
     "discount_spec": null,
     "sent": 0,
     "status": "draft"
+  },
+  {
+    "id": "20260808-haftanin-seckisi",
+    "theme": "haftanin-seckisi",
+    "name": "Haftanın Seçkisi",
+    "subject": "Sayılı kaldı, bitince bir daha yok",
+    "preview_text": "Üretimi durmuş, koleksiyon değeri yüksek 4 retro kamera seni bekliyor",
+    "created": "2026-08-08T02:36:21.131907",
+    "products": [
+      "Olympus PEN E-PL1",
+      "Olympus SP-320",
+      "Sony Cybershot DSC-S85",
+      "Casio Exilim EX-Z4"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260808-hediye-rehberi",
+    "theme": "hediye-rehberi",
+    "name": "Hediye Rehberi",
+    "subject": "Sevdiğine 'unutulmaz' demenin yolu",
+    "preview_text": "Su geçirmezden şıka, her bütçeye koleksiyonluk bir hediye kamerası",
+    "created": "2026-08-08T02:36:26.580311",
+    "products": [
+      "Lumix DMC-FT10 (Waterproof)",
+      "Traveler DC-830",
+      "HP Photosmart R827",
+      "Sony Cybershot DSC-W150"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260808-yeni-urunler",
+    "theme": "yeni-urunler",
+    "name": "Yeni Ürünler",
+    "subject": "Az önce stoğa düştü, ilk gören alır",
+    "preview_text": "4 yeni retro kamera stokta, her biri tek adet, hızlı tükeniyor",
+    "created": "2026-08-08T02:36:32.083988",
+    "products": [
+      "Sanyo Xacti VPC-J4EX",
+      "Samsung ST10",
+      "Fujifilm FinePix JV310",
+      "Samsung WB350F"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260808-ucretsiz-kargo",
+    "theme": "ucretsiz-kargo",
+    "name": "Ücretsiz Kargo",
+    "subject": "Bu hafta kargo bizden",
+    "preview_text": "Sınırlı süreli ücretsiz kargo fırsatı, seçili retro kameralarda geçerli",
+    "created": "2026-08-08T02:36:37.745922",
+    "products": [
+      "Canon IXUS i",
+      "Olympus SP-700",
+      "Panasonic Lumix DC-TZ91",
+      "Samsung WB350F"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260808-stok-azaliyor",
+    "theme": "stok-azaliyor",
+    "name": "Stok Azalıyor",
+    "subject": "Sayılı kaldı, sonra bulunmaz",
+    "preview_text": "4 model son adetlerinde, tükenince bir daha gelmeyebilir",
+    "created": "2026-08-08T02:36:43.309540",
+    "products": [
+      "Canon IXUS i",
+      "Casio Exilim EX-Z110",
+      "Casio Exilim EX-Z4",
+      "Fujifilm FinePix 4700 Zoom"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
+  },
+  {
+    "id": "20260808-editor-secimi",
+    "theme": "editor-secimi",
+    "name": "Editörün Seçimi",
+    "subject": "Ekibin en çok sevdiği 4 kamera",
+    "preview_text": "Karakteri ve kalitesiyle öne çıkan, ekibimizin seçtiği dört model",
+    "created": "2026-08-08T02:36:48.742647",
+    "products": [
+      "Panasonic Lumix DC-TZ91",
+      "Samsung WB350F",
+      "Olympus PEN E-PL1",
+      "Olympus VR-340"
+    ],
+    "discount": null,
+    "discount_spec": null,
+    "sent": 0,
+    "status": "draft"
   }
 ]
