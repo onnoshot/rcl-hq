@@ -169,9 +169,9 @@ function renderSEOHealthStrip() {
   const bd = {ok:'rgba(48,209,88,.15)',warn:'rgba(255,159,10,.15)',bad:'rgba(255,69,58,.15)'};
   el.innerHTML = items.map(it => `
     <div style="padding:12px 14px;background:${bg[it.status]};border:1px solid ${bd[it.status]};border-radius:12px">
-      <div style="font-size:.58rem;color:rgba(0,0,0,.3);font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">${it.label}</div>
+      <div style="font-size:.58rem;color:rgba(0,0,0,0.6);font-family:var(--mono);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">${it.label}</div>
       <div style="font-size:1.2rem;font-weight:700;font-family:var(--mono);color:${sc[it.status]};line-height:1">${it.value}</div>
-      <div style="font-size:.6rem;color:rgba(0,0,0,.3);font-family:var(--mono);margin-top:4px">${it.note}</div>
+      <div style="font-size:.6rem;color:rgba(0,0,0,0.6);font-family:var(--mono);margin-top:4px">${it.note}</div>
     </div>`).join('');
 }
 
@@ -193,12 +193,12 @@ function renderSEOHealthStrip() {
   /* ── Apple Light Surfaces ── */
   --bg:#F5F5F7;--s1:#FFFFFF;--s2:#FFFFFF;--s3:#F0F0F2;
   /* ── Glass Borders (koyu üstünde ince gri çizgiler) ── */
-  --b0:rgba(0,0,0,0.06);--b1:rgba(0,0,0,0.10);--b2:rgba(0,0,0,0.16);
+  --b0:rgba(0,0,0,0.09);--b1:rgba(0,0,0,0.14);--b2:rgba(0,0,0,0.22);
   /* ── UI Accent: Grafit/Nötr (artık kırmızı değil) ── */
-  --gold:rgba(0,0,0,0.86);--gold-h:#1D1D1F;--gold-dim:rgba(0,0,0,0.05);
-  --gold-glow:0 8px 28px rgba(0,0,0,0.10);
-  /* ── Ink Text (Apple label renkleri) ── */
-  --t1:#1D1D1F;--t2:rgba(28,28,30,0.62);--t3:rgba(28,28,30,0.42);
+  --gold:rgba(0,0,0,0.90);--gold-h:#000000;--gold-dim:rgba(0,0,0,0.06);
+  --gold-glow:0 8px 28px rgba(0,0,0,0.12);
+  /* ── Ink Text (Apple label renkleri, yüksek kontrast) ── */
+  --t1:#1D1D1F;--t2:rgba(28,28,30,0.76);--t3:rgba(28,28,30,0.56);
   /* ── Performans Renkleri: yeşil → sarı → turuncu → kırmızı (Apple light-mode) ── */
   --perf-great:#248A3D;   /* >25% marj / harika */
   --perf-good:#34C759;    /* 15–25% */
@@ -249,7 +249,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100
 .sb-nav::-webkit-scrollbar{display:none;}
 .nav-item{display:flex;align-items:center;gap:11px;padding:9px 12px;border-radius:10px;cursor:pointer;color:rgba(0,0,0,0.60);font-size:0.84rem;font-weight:500;letter-spacing:-0.01em;margin-bottom:2px;position:relative;user-select:none;white-space:nowrap;overflow:hidden;min-width:0;-webkit-tap-highlight-color:transparent;
   transition:background-color var(--dur-hover) var(--ease-out),color var(--dur-hover) var(--ease-out),transform var(--dur-press) var(--ease-out);}
-.nav-item svg{width:18px;height:18px;flex:0 0 auto;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;color:rgba(0,0,0,0.38);
+.nav-item svg{width:18px;height:18px;flex:0 0 auto;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;color:rgba(0,0,0,0.65);
   transition:color var(--dur-hover) var(--ease-out),transform 220ms var(--ease-spring);}
 .nav-item:hover{background:rgba(0,0,0,0.06);color:rgba(0,0,0,0.95);}
 .nav-item:hover svg{color:rgba(0,0,0,0.95);transform:scale(1.09);}
@@ -316,7 +316,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100
 .gch{grid-template-columns:270px 1fr;}
 
 /* ─── CARD: Liquid Glass ─── */
-.card{background:linear-gradient(180deg,rgba(255,255,255,0.82),rgba(255,255,255,0.55));border:1px solid rgba(0,0,0,0.07);border-radius:var(--r);position:relative;overflow:hidden;transition:transform 0.32s cubic-bezier(.16,1,.3,1),border-color 0.32s,box-shadow 0.32s;backdrop-filter:blur(44px) saturate(185%);-webkit-backdrop-filter:blur(44px) saturate(185%);box-shadow:0 2px 10px -4px rgba(0,0,0,0.08),0 12px 32px -18px rgba(0,0,0,0.14),0 1px 0 0 rgba(255,255,255,0.6) inset;}
+.card{background:linear-gradient(180deg,rgba(255,255,255,0.97),rgba(255,255,255,0.88));border:1px solid rgba(0,0,0,0.10);border-radius:var(--r);position:relative;overflow:hidden;transition:transform 0.32s cubic-bezier(.16,1,.3,1),border-color 0.32s,box-shadow 0.32s;backdrop-filter:blur(44px) saturate(185%);-webkit-backdrop-filter:blur(44px) saturate(185%);box-shadow:0 2px 10px -4px rgba(0,0,0,0.07),0 12px 28px -18px rgba(0,0,0,0.12),0 1px 0 0 rgba(255,255,255,0.8) inset;}
 /* Liquid Glass specular kenar ışığı — üstte parlak, aşağı sönen maskelenmiş gradyan çerçeve */
 .card::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.25) 26%,transparent 52%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:1;pointer-events:none;}
 .card:hover{transform:translateY(-3px);border-color:rgba(0,0,0,0.12);box-shadow:0 4px 16px -6px rgba(0,0,0,0.10),0 20px 44px -20px rgba(0,0,0,0.18),0 0 0 1px rgba(0,0,0,0.04);}
@@ -968,7 +968,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .bn-item {
   display: flex; flex-direction: column; align-items: center;
   gap: 3px; padding: 9px 7px; cursor: pointer;
-  color: rgba(0,0,0,0.32);
+  color:rgba(0,0,0,0.6);
   border-radius: 12px; transition: color 0.2s, background 0.2s, transform 0.2s;
   min-width: 44px; flex: 1; max-width: 72px;
   -webkit-tap-highlight-color: transparent;
@@ -1034,8 +1034,8 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cg-pulse:nth-child(2){width:190px;height:190px;margin:-95px 0 0 -95px;animation-delay:2s;}
 .cg-pulse:nth-child(3){width:240px;height:240px;margin:-120px 0 0 -120px;animation-delay:4s;}
 @keyframes cg-neural{0%{opacity:.36;transform:scale(.82);}100%{opacity:0;transform:scale(1.12);}}
-.cg-figure.analyzing ~ .cg-pulses .cg-pulse,.cg-figure.writing ~ .cg-pulses .cg-pulse{border-color:rgba(212,175,55,.4);animation-duration:2s;}
-.cg-figure.think ~ .cg-pulses .cg-pulse{border-color:rgba(90,200,250,.3);animation-duration:3s;}
+.cg-figure.analyzing ~ .cg-pulses .cg-pulse,.cg-figure.writing ~ .cg-pulses .cg-pulse{border-color:rgba(212,175,55,0.8);animation-duration:2s;}
+.cg-figure.think ~ .cg-pulses .cg-pulse{border-color:rgba(90,200,250,0.74);animation-duration:3s;}
 
 /* Char wrap + SEO ring */
 .cg-char-wrap{position:relative;width:160px;height:200px;margin:0 auto;z-index:2;}
@@ -1128,11 +1128,11 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cg-oh-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
 .cg-oh-actions button{font-size:.65rem;padding:5px 12px;border-radius:10px;border:1px solid rgba(0,0,0,.12);background:rgba(0,0,0,.06);color:rgba(0,0,0,.7);cursor:pointer;transition:all .2s;}
 .cg-oh-actions button:hover{background:rgba(0,0,0,.12);color:white;}
-.cg-publish-btn{background:linear-gradient(135deg,rgba(212,175,55,.25),rgba(255,183,197,.15)) !important;border-color:rgba(212,175,55,.4) !important;color:#D4AF37 !important;}
+.cg-publish-btn{background:linear-gradient(135deg,rgba(212,175,55,.25),rgba(255,183,197,.15)) !important;border-color:rgba(212,175,55,0.8) !important;color:#D4AF37 !important;}
 .cg-publish-btn:hover{background:linear-gradient(135deg,rgba(212,175,55,.4),rgba(255,183,197,.25)) !important;}
 .cg-tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap;}
-.cg-tab{padding:6px 14px;border-radius:10px;font-size:.68rem;cursor:pointer;border:1px solid rgba(0,0,0,.07);color:rgba(0,0,0,.45);background:rgba(0,0,0,.03);transition:all .2s;letter-spacing:.06em;}
-.cg-tab.active{background:rgba(212,175,55,.15);border-color:rgba(212,175,55,.35);color:#D4AF37;}
+.cg-tab{padding:6px 14px;border-radius:10px;font-size:.68rem;cursor:pointer;border:1px solid rgba(0,0,0,.07);color:rgba(0,0,0,0.7);background:rgba(0,0,0,.03);transition:all .2s;letter-spacing:.06em;}
+.cg-tab.active{background:rgba(212,175,55,.15);border-color:rgba(212,175,55,0.8);color:#D4AF37;}
 .cg-output-body{min-height:220px;max-height:460px;overflow-y:auto;font-size:.82rem;line-height:1.75;color:rgba(0,0,0,.78);padding:4px 2px;}
 .cg-output-body h1{font-size:1.1rem;font-weight:700;color:white;margin:0 0 8px;}
 .cg-output-body h2{font-size:.92rem;font-weight:600;color:rgba(0,0,0,.88);margin:14px 0 6px;}
@@ -1164,7 +1164,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 
 /* Thought stream */
 .cg-thought-stream{background:rgba(0,0,0,.25);border-radius:10px;padding:10px 14px;margin-bottom:10px;min-height:40px;border:1px solid rgba(0,0,0,.04);}
-.cg-ts-line{color:rgba(0,0,0,.38);font-size:.67rem;line-height:1.7;font-family:var(--mono);}
+.cg-ts-line{color:rgba(0,0,0,0.65);font-size:.67rem;line-height:1.7;font-family:var(--mono);}
 .cg-ts-line.ok{color:rgba(52,199,89,.65);}
 .cg-ts-line.err{color:rgba(255,69,58,.6);}
 .cg-ts-line.warn{color:rgba(255,149,0,.65);}
@@ -1172,10 +1172,10 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cg-ts-line.think{color:rgba(212,175,55,.55);}
 
 /* Agenda */
-.cg-agenda-wrap{display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.08) transparent;}
+.cg-agenda-wrap{display:flex;flex-direction:column;gap:6px;max-height:340px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(0,0,0,0.5) transparent;}
 .cg-panel-title{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.38;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;}
 .cg-agenda-item{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:10px;background:rgba(0,0,0,.025);border:1px solid rgba(0,0,0,.055);cursor:pointer;transition:all .18s;}
-.cg-agenda-item:hover{background:rgba(212,175,55,.07);border-color:rgba(212,175,55,.2);transform:translateX(2px);}
+.cg-agenda-item:hover{background:rgba(212,175,55,.07);border-color:rgba(212,175,55,0.68);transform:translateX(2px);}
 .cg-ai-cat{font-size:.56rem;padding:2px 7px;border-radius:6px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.18);color:rgba(212,175,55,.65);flex-shrink:0;letter-spacing:.04em;}
 .cg-ai-topic{font-size:.77rem;flex:1;color:rgba(0,0,0,.78);line-height:1.4;}
 .cg-ai-status{font-size:.58rem;opacity:.35;flex-shrink:0;}
@@ -1199,7 +1199,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
   border-radius:10px;padding:10px 6px;text-align:center;
   transition:border-color .2s;
 }
-.cg-ana-card:hover{border-color:rgba(0,0,0,.12);}
+.cg-ana-card:hover{border-color:rgba(0,0,0,0.5);}
 .cg-ana-roi{
   background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.14);
   border-radius:12px;padding:12px 14px;margin-top:4px;
@@ -1220,7 +1220,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cg-hist-item{padding:10px 12px;border-radius:10px;background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.05);margin-bottom:6px;cursor:pointer;transition:all .2s;}
 .cg-hist-item:hover{background:rgba(0,0,0,.06);}
 .cg-hist-title{font-size:.78rem;color:rgba(0,0,0,.8);margin-bottom:4px;}
-.cg-hist-meta{display:flex;gap:8px;font-size:.62rem;color:rgba(0,0,0,.35);flex-wrap:wrap;align-items:center;}
+.cg-hist-meta{display:flex;gap:8px;font-size:.62rem;color:rgba(0,0,0,0.65);flex-wrap:wrap;align-items:center;}
 .cg-hist-seo{padding:2px 7px;border-radius:6px;font-size:.6rem;}
 .cg-hist-pub{padding:2px 7px;border-radius:6px;font-size:.6rem;background:rgba(52,199,89,.12);color:rgba(52,199,89,.75);border:1px solid rgba(52,199,89,.2);}
 
@@ -1228,7 +1228,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cg-ctrl-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;}
 .cg-ctrl-btn{flex:1;padding:9px 10px;border-radius:10px;border:1px solid rgba(0,0,0,.1);background:rgba(0,0,0,.04);color:rgba(0,0,0,.65);font-size:.72rem;cursor:pointer;transition:all .2s;}
 .cg-ctrl-btn:hover{background:rgba(0,0,0,.1);color:white;}
-.cg-ctrl-btn.primary{background:linear-gradient(135deg,rgba(212,175,55,.2),rgba(255,183,197,.1));border-color:rgba(212,175,55,.35);color:#D4AF37;}
+.cg-ctrl-btn.primary{background:linear-gradient(135deg,rgba(212,175,55,.2),rgba(255,183,197,.1));border-color:rgba(212,175,55,0.8);color:#D4AF37;}
 .cg-ctrl-btn.primary:hover{background:linear-gradient(135deg,rgba(212,175,55,.35),rgba(255,183,197,.2));}
 
 /* Toggle switch */
@@ -1252,7 +1252,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cw-wb.active{animation:cg-wb-active .55s ease-in-out var(--d,0s) infinite;background:rgba(212,175,55,.65);}
 .cw-info{flex:1;}
 .cw-state-text{font-size:.85rem;font-weight:600;color:rgba(0,0,0,.85);margin-bottom:3px;}
-.cw-state-sub{font-size:.65rem;color:rgba(0,0,0,.35);margin-bottom:8px;}
+.cw-state-sub{font-size:.65rem;color:rgba(0,0,0,0.65);margin-bottom:8px;}
 .cw-stats{display:flex;gap:14px;}
 .cw-s{text-align:center;}
 .cw-s b{display:block;font-size:.95rem;font-weight:700;color:var(--gold);}
@@ -1262,7 +1262,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cw-btn-main:hover{background:rgba(212,175,55,.25);}
 .cw-btn-sec{padding:7px 16px;border-radius:10px;border:1px solid rgba(0,0,0,.1);background:rgba(0,0,0,.04);color:rgba(0,0,0,.65);font-size:.72rem;cursor:pointer;transition:all .2s;white-space:nowrap;}
 .cw-btn-sec:hover{background:rgba(0,0,0,.1);color:white;}
-.cw-auto-row{display:flex;align-items:center;gap:6px;font-size:.62rem;color:rgba(0,0,0,.4);}
+.cw-auto-row{display:flex;align-items:center;gap:6px;font-size:.62rem;color:rgba(0,0,0,0.65);}
 .cg-w-version{font-size:.6rem;opacity:.35;font-weight:400;margin-left:6px;}
 
 
@@ -1308,7 +1308,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cg-chat-messages{
   flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:10px;
   padding:14px 14px 8px;max-height:320px;
-  scrollbar-width:thin;scrollbar-color:rgba(0,0,0,.08) transparent;
+  scrollbar-width:thin;scrollbar-color:rgba(0,0,0,0.5) transparent;
 }
 .cg-chat-messages::-webkit-scrollbar{width:3px;}
 .cg-chat-messages::-webkit-scrollbar-thumb{background:rgba(0,0,0,.1);border-radius:4px;}
@@ -1332,11 +1332,11 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
   background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);
   color:rgba(0,0,0,.9);border-bottom-right-radius:4px;
 }
-.cg-msg-bbl.insight{background:rgba(90,200,250,.07);border-color:rgba(90,200,250,.18);}
-.cg-msg-bbl.question{background:rgba(191,90,242,.07);border-color:rgba(191,90,242,.16);}
-.cg-msg-bbl.done{background:rgba(52,199,89,.07);border-color:rgba(52,199,89,.18);}
-.cg-msg-bbl.report{background:rgba(212,175,55,.09);border-color:rgba(212,175,55,.22);}
-.cg-msg-bbl.task{background:rgba(255,149,0,.07);border-color:rgba(255,149,0,.18);}
+.cg-msg-bbl.insight{background:rgba(90,200,250,.07);border-color:rgba(90,200,250,0.68);}
+.cg-msg-bbl.question{background:rgba(191,90,242,.07);border-color:rgba(191,90,242,0.68);}
+.cg-msg-bbl.done{background:rgba(52,199,89,.07);border-color:rgba(52,199,89,0.68);}
+.cg-msg-bbl.report{background:rgba(212,175,55,.09);border-color:rgba(212,175,55,0.68);}
+.cg-msg-bbl.task{background:rgba(255,149,0,.07);border-color:rgba(255,149,0,0.68);}
 .cg-msg-time{font-size:.54rem;opacity:.25;margin-top:4px;text-align:right;}
 
 /* Typing indicator */
@@ -1361,14 +1361,14 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cg-chip{
   padding:6px 13px;border-radius:20px;font-size:.66rem;letter-spacing:.02em;
   border:1px solid rgba(0,0,0,.07);background:transparent;
-  color:rgba(0,0,0,.42);cursor:pointer;transition:all .18s;white-space:nowrap;
+  color:rgba(0,0,0,0.65);cursor:pointer;transition:all .18s;white-space:nowrap;
 }
 .cg-chip:hover{
-  background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.28);
+  background:rgba(212,175,55,.1);border-color:rgba(212,175,55,0.74);
   color:rgba(212,175,55,.88);transform:translateY(-1px);
 }
 .cg-chip.hot{
-  background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.3);
+  background:rgba(212,175,55,.1);border-color:rgba(212,175,55,0.74);
   color:rgba(212,175,55,.85);
 }
 
@@ -1383,8 +1383,8 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
   border-radius:12px 0 0 12px;padding:10px 14px;
   color:rgba(0,0,0,.88);font-size:.8rem;outline:none;transition:border-color .2s;
 }
-.cg-chat-input:focus{border-color:rgba(212,175,55,.38);}
-.cg-chat-input::placeholder{color:rgba(0,0,0,.2);}
+.cg-chat-input:focus{border-color:rgba(212,175,55,0.8);}
+.cg-chat-input::placeholder{color:rgba(0,0,0,0.55);}
 .cg-chat-send{
   padding:10px 16px;border-radius:0 12px 12px 0;
   border:1px solid rgba(212,175,55,.28);border-left:none;
@@ -1411,8 +1411,8 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cg-roi-note{font-size:.58rem;opacity:.22;margin-top:10px;font-style:italic;line-height:1.5;}
 .cg-roi-refresh{float:right;padding:3px 8px;border-radius:7px;
   border:1px solid rgba(0,0,0,.08);background:rgba(0,0,0,.04);
-  color:rgba(0,0,0,.4);font-size:.62rem;cursor:pointer;transition:all .2s;}
-.cg-roi-refresh:hover{border-color:rgba(212,175,55,.25);color:rgba(212,175,55,.7);}
+  color:rgba(0,0,0,0.65);font-size:.62rem;cursor:pointer;transition:all .2s;}
+.cg-roi-refresh:hover{border-color:rgba(212,175,55,0.74);color:rgba(212,175,55,.7);}
 
 /* ── Insight engine ─────────────────────────────────────────────────────── */
 .cg-insight-card{background:linear-gradient(135deg,rgba(212,175,55,.04),rgba(191,90,242,.02));}
@@ -1438,16 +1438,16 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 #page-cherry.active{display:flex}
 .cgv8-page-nav{display:flex;align-items:center;justify-content:space-between;padding:10px 20px;background:rgba(255,255,255,.72);border-bottom:1px solid rgba(0,0,0,.07);flex-shrink:0;backdrop-filter:blur(12px)}
 .cgv8-ptabs{display:flex;gap:3px;background:rgba(0,0,0,.04);border-radius:10px;padding:3px}
-.cgv8-ptab{padding:6px 16px;border-radius:8px;font-size:.7rem;font-weight:600;letter-spacing:.03em;cursor:pointer;color:rgba(0,0,0,.4);transition:all .2s;border:1px solid transparent}
+.cgv8-ptab{padding:6px 16px;border-radius:8px;font-size:.7rem;font-weight:600;letter-spacing:.03em;cursor:pointer;color:rgba(0,0,0,0.65);transition:all .2s;border:1px solid transparent}
 .cgv8-ptab:hover{color:rgba(0,0,0,.7)}
-.cgv8-ptab.active{background:linear-gradient(135deg,rgba(212,175,55,.22),rgba(255,183,197,.12));color:rgba(212,175,55,.95);border-color:rgba(212,175,55,.28)}
+.cgv8-ptab.active{background:linear-gradient(135deg,rgba(212,175,55,.22),rgba(255,183,197,.12));color:rgba(212,175,55,.95);border-color:rgba(212,175,55,0.74)}
 .cgv8-stats-ribbon{display:flex;gap:8px;padding:10px 16px;flex-shrink:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .cgv8-stat-card{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.06);border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;min-width:140px;flex:1;position:relative;overflow:hidden}
 .cgv8-stat-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,var(--accent,rgba(212,175,55,.07)),transparent 60%);pointer-events:none}
 .cgv8-stat-ico{font-size:1.2rem;flex-shrink:0}
 .cgv8-stat-info{flex:1;min-width:0}
 .cgv8-stat-val{font-size:1.05rem;font-weight:800;font-family:var(--mono);color:rgba(0,0,0,.9);letter-spacing:-.02em}
-.cgv8-stat-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.28);margin-top:1px}
+.cgv8-stat-lbl{font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6);margin-top:1px}
 .cgv8-seo-meter{width:36px;height:36px;flex-shrink:0}
 .cgv8-seo-meter svg{width:36px;height:36px}
 .cgv8-view{display:none;flex:1;min-height:0;overflow:hidden;height:0}
@@ -1460,9 +1460,9 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cgv8-hero-av{width:72px;height:72px;margin:0 auto 8px;position:relative;z-index:1;animation:cgv8-float 4s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(212,175,55,.45))}
 .cgv8-hero-av svg{width:72px;height:72px}
 .cgv8-hero-name{font-size:.82rem;font-weight:700;color:rgba(212,175,55,.9);position:relative;z-index:1}
-.cgv8-hero-mood{font-size:.6rem;color:rgba(0,0,0,.38);margin-top:3px;font-style:italic;position:relative;z-index:1;min-height:1em}
+.cgv8-hero-mood{font-size:.6rem;color:rgba(0,0,0,0.65);margin-top:3px;font-style:italic;position:relative;z-index:1;min-height:1em}
 .cgv8-hero-stats{display:flex;justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap;position:relative;z-index:1}
-.cgv8-hero-stat{font-size:.58rem;color:rgba(0,0,0,.28);font-family:var(--mono);background:rgba(0,0,0,.04);padding:2px 7px;border-radius:6px}
+.cgv8-hero-stat{font-size:.58rem;color:rgba(0,0,0,0.6);font-family:var(--mono);background:rgba(0,0,0,.04);padding:2px 7px;border-radius:6px}
 .cgv8-chat-area{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin}
 .cgv8-chat-msg{display:flex;gap:10px;align-items:flex-end;max-width:90%;animation:cgv8-msg-in .25s ease}
 @keyframes cgv8-msg-in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
@@ -1470,7 +1470,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cgv8-chat-av{width:28px;height:28px;border-radius:50%;flex-shrink:0;overflow:hidden;border:1px solid rgba(212,175,55,.3)}
 .cgv8-chat-av svg{width:28px;height:28px}
 .cgv8-chat-bubble{background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.09);border-radius:14px 14px 14px 4px;padding:10px 14px;font-size:.74rem;line-height:1.6;color:rgba(0,0,0,.82);max-width:100%;word-break:break-word}
-.cgv8-chat-msg.user .cgv8-chat-bubble{background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.22);border-radius:14px 14px 4px 14px}
+.cgv8-chat-msg.user .cgv8-chat-bubble{background:rgba(212,175,55,.1);border-color:rgba(212,175,55,0.68);border-radius:14px 14px 4px 14px}
 .cgv8-chat-bubble.streaming::after{content:'|';animation:cgv8-cursor .6s step-end infinite;color:rgba(212,175,55,.7);margin-left:2px}
 @keyframes cgv8-cursor{0%,100%{opacity:1}50%{opacity:0}}
 .cgv8-typing{display:flex;gap:4px;padding:10px 14px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.07);border-radius:14px 14px 14px 4px;width:fit-content}
@@ -1482,13 +1482,13 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cgv8-blog-out.hidden{max-height:0 !important;border-top:none}
 .cgv8-chat-input-wrap{display:flex;gap:8px;padding:10px 14px;border-top:1px solid rgba(0,0,0,.06);background:rgba(0,0,0,.2);flex-shrink:0}
 .cgv8-chat-input{flex:1;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:22px;padding:9px 16px;color:rgba(0,0,0,.85);font-size:.76rem;outline:none;transition:border-color .2s;font-family:inherit}
-.cgv8-chat-input:focus{border-color:rgba(212,175,55,.4)}
+.cgv8-chat-input:focus{border-color:rgba(212,175,55,0.8)}
 .cgv8-chat-send{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#D4AF37,#FFB7C5);border:none;cursor:pointer;font-size:1.1rem;color:#1a1a2e;font-weight:700;transition:opacity .2s;flex-shrink:0}
 .cgv8-chat-send:hover{opacity:.85}
 .cgv8-chat-send:disabled{opacity:.35;cursor:default}
 .cgv8-hist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
 .cgv8-hist-card{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.07);border-radius:14px;padding:14px 16px;cursor:pointer;transition:transform .2s,border-color .2s}
-.cgv8-hist-card:hover{transform:translateY(-3px);border-color:rgba(212,175,55,.25)}
+.cgv8-hist-card:hover{transform:translateY(-3px);border-color:rgba(212,175,55,0.74)}
 .cgv8-hist-card-title{font-size:.78rem;font-weight:700;color:rgba(0,0,0,.85);margin-bottom:8px;line-height:1.4}
 .cgv8-hist-seo-bar{height:3px;border-radius:3px;background:rgba(0,0,0,.06);margin-bottom:8px;overflow:hidden}
 .cgv8-hist-seo-fill{height:100%;border-radius:3px;transition:width .8s ease}
@@ -1497,34 +1497,34 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 .cgv8-perf-kpi{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.07);border-radius:14px;padding:16px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px}
 .cgv8-perf-kpi-ico{font-size:1.5rem}
 .cgv8-perf-kpi-val{font-size:1.45rem;font-weight:800;font-family:var(--mono)}
-.cgv8-perf-kpi-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.3)}
+.cgv8-perf-kpi-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6)}
 .cgv8-improve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin-top:12px}
 .cgv8-improve-btn{background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.1);border-radius:10px;padding:10px 14px;cursor:pointer;font-size:.68rem;color:rgba(0,0,0,.65);transition:all .2s;text-align:left}
-.cgv8-improve-btn:hover{background:rgba(212,175,55,.1);border-color:rgba(212,175,55,.3);color:rgba(212,175,55,.9)}
+.cgv8-improve-btn:hover{background:rgba(212,175,55,.1);border-color:rgba(212,175,55,0.74);color:rgba(212,175,55,.9)}
 .cgv8-improve-btn .ib-ico{font-size:1rem;margin-bottom:4px;display:block}
 .cgv8-improve-btn .ib-title{font-weight:600;display:block;margin-bottom:2px}
-.cgv8-improve-btn .ib-desc{font-size:.58rem;color:rgba(0,0,0,.3);display:block}
+.cgv8-improve-btn .ib-desc{font-size:.58rem;color:rgba(0,0,0,0.6);display:block}
 .cgv8-src-row{display:flex;align-items:center;gap:8px}
-.cgv8-src-lbl{font-size:.6rem;font-family:var(--mono);color:rgba(0,0,0,.4);width:58px;flex-shrink:0}
+.cgv8-src-lbl{font-size:.6rem;font-family:var(--mono);color:rgba(0,0,0,0.65);width:58px;flex-shrink:0}
 .cgv8-src-bar{flex:1;height:7px;background:rgba(0,0,0,.06);border-radius:4px;overflow:hidden}
 .cgv8-src-fill{height:100%;border-radius:4px;transition:width .9s ease}
-.cgv8-src-pct{font-size:.6rem;font-family:var(--mono);color:rgba(0,0,0,.3);width:32px;text-align:right}
+.cgv8-src-pct{font-size:.6rem;font-family:var(--mono);color:rgba(0,0,0,0.6);width:32px;text-align:right}
 .cgv8-bar-col{display:flex;flex-direction:column;align-items:center;gap:3px;flex:1}
 .cgv8-bar{width:100%;border-radius:4px 4px 0 0;min-height:2px;transition:height .8s cubic-bezier(.34,1.56,.64,1)}
-.cgv8-bar-lbl{font-size:.52rem;font-family:var(--mono);color:rgba(0,0,0,.25);white-space:nowrap}
+.cgv8-bar-lbl{font-size:.52rem;font-family:var(--mono);color:rgba(0,0,0,0.6);white-space:nowrap}
 .cgv8-bar-val{font-size:.55rem;font-family:var(--mono);color:rgba(212,175,55,.7);font-weight:600}
 .cgv8-blog-perf-card{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.07);border-radius:12px;padding:12px 14px;transition:border-color .2s}
-.cgv8-blog-perf-card:hover{border-color:rgba(212,175,55,.2)}
+.cgv8-blog-perf-card:hover{border-color:rgba(212,175,55,0.68)}
 .cgv8-mini-bar{height:3px;background:rgba(0,0,0,.06);border-radius:3px;margin:4px 0 8px;overflow:hidden}
 .cgv8-mini-fill{height:100%;border-radius:3px;transition:width .9s ease}
 .cgv8-boss-kpi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
 .cgv8-bkpi{background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.07);border-radius:12px;padding:14px;text-align:center}
 .cgv8-bkpi-val{font-size:1.4rem;font-weight:800;font-family:var(--mono);margin-bottom:3px}
-.cgv8-bkpi-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.3)}
+.cgv8-bkpi-lbl{font-size:.6rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6)}
 .cgv8-roadmap{display:flex;align-items:center;gap:6px;margin-bottom:16px;padding:14px;background:rgba(0,0,0,.02);border-radius:12px;border:1px solid rgba(0,0,0,.06);flex-wrap:wrap}
-.cgv8-rm-step{padding:6px 12px;border-radius:8px;font-size:.65rem;font-weight:600;border:1px solid rgba(0,0,0,.1);color:rgba(0,0,0,.3)}
-.cgv8-rm-step.done{background:rgba(52,199,89,.1);border-color:rgba(52,199,89,.3);color:rgba(52,199,89,.8)}
-.cgv8-rm-step.active{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,.35);color:rgba(212,175,55,.9);animation:cgv8-pulse 2s ease-in-out infinite}
+.cgv8-rm-step{padding:6px 12px;border-radius:8px;font-size:.65rem;font-weight:600;border:1px solid rgba(0,0,0,.1);color:rgba(0,0,0,0.6)}
+.cgv8-rm-step.done{background:rgba(52,199,89,.1);border-color:rgba(52,199,89,0.74);color:rgba(52,199,89,.8)}
+.cgv8-rm-step.active{background:rgba(212,175,55,.12);border-color:rgba(212,175,55,0.8);color:rgba(212,175,55,.9);animation:cgv8-pulse 2s ease-in-out infinite}
 @keyframes cgv8-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @keyframes cgv8-pulse{0%,100%{box-shadow:0 0 0 0 rgba(212,175,55,.2)}50%{box-shadow:0 0 0 6px rgba(212,175,55,0)}}
 
@@ -1533,13 +1533,13 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 @keyframes stat-count-in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .cgv8-bar-col{display:flex;flex-direction:column;align-items:center;flex:1}
 .cgv8-bar{flex:1;width:100%;border-radius:4px 4px 0 0;transition:height 0.9s ease;min-height:2px}
-.cgv8-bar-val{font-size:.55rem;font-family:var(--mono);color:rgba(0,0,0,.4);margin-bottom:3px}
-.cgv8-bar-lbl{font-size:.55rem;font-family:var(--mono);color:rgba(0,0,0,.3);text-align:center}
+.cgv8-bar-val{font-size:.55rem;font-family:var(--mono);color:rgba(0,0,0,0.65);margin-bottom:3px}
+.cgv8-bar-lbl{font-size:.55rem;font-family:var(--mono);color:rgba(0,0,0,0.6);text-align:center}
 .cgv8-src-row{display:flex;align-items:center;gap:8px;padding:5px 0}
-.cgv8-src-lbl{width:80px;font-size:.62rem;color:rgba(0,0,0,.45);flex-shrink:0}
+.cgv8-src-lbl{width:80px;font-size:.62rem;color:rgba(0,0,0,0.7);flex-shrink:0}
 .cgv8-src-bar{flex:1;height:6px;background:rgba(0,0,0,.05);border-radius:3px;overflow:hidden}
 .cgv8-src-fill{height:100%;border-radius:3px;transition:width 0.8s ease}
-.cgv8-src-pct{width:32px;font-size:.6rem;font-family:var(--mono);color:rgba(0,0,0,.4);text-align:right}
+.cgv8-src-pct{width:32px;font-size:.6rem;font-family:var(--mono);color:rgba(0,0,0,0.65);text-align:right}
 
 </style>
 </head>
@@ -1548,7 +1548,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 <div id="rcl-lock-gate" style="position:fixed;inset:0;z-index:999999;background:#F5F5F7;display:flex;align-items:center;justify-content:center;padding:24px;">
   <div style="width:100%;max-width:340px;text-align:center;">
     <div style="font-size:1.3rem;font-weight:800;color:#ff4d2e;margin-bottom:6px;letter-spacing:-.02em;">RCL HQ</div>
-    <div style="font-size:.82rem;color:rgba(0,0,0,.5);margin-bottom:22px;">Devam etmek için şifre girin</div>
+    <div style="font-size:.82rem;color:rgba(0,0,0,0.7);margin-bottom:22px;">Devam etmek için şifre girin</div>
     <form id="rcl-lock-form" onsubmit="return window.RCL_LOCK.submit(event)" autocomplete="off">
       <input id="rcl-lock-input" type="password" placeholder="Şifre" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
         style="width:100%;box-sizing:border-box;background:#FFFFFF;border:1px solid rgba(0,0,0,.14);border-radius:12px;color:#1D1D1F;font-size:1rem;padding:14px 16px;outline:none;text-align:center;">
@@ -1668,7 +1668,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
     <div class="sb-live" style="margin-bottom:8px"><div class="sb-live-dot"></div><span style="font-size:0.62rem;color:rgba(0,0,0,0.55);font-weight:500">Canlı Veri</span></div>
     <div id="sb-sources-list" style="display:flex;flex-direction:column;gap:5px;"></div>
     <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,0,0,0.05)">
-      <div style="font-size:0.55rem;color:rgba(0,0,0,0.2);letter-spacing:0.05em">Son Güncelleme</div>
+      <div style="font-size:0.55rem;color:rgba(0,0,0,0.55);letter-spacing:0.05em">Son Güncelleme</div>
       <div id="sb-upd-time" style="font-size:0.64rem;color:rgba(0,0,0,0.55);font-weight:500;margin-top:2px;">—</div>
     </div>
   </div>
@@ -2050,7 +2050,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
             <div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono);margin-top:3px" id="fin-breakeven-sub">—</div>
           </div>
           <div style="padding:8px 12px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.15);border-radius:9px">
-            <div style="font-size:0.58rem;color:rgba(212,175,55,.5);font-family:var(--mono);margin-bottom:3px">Ortalama Stok Maliyet Oranı</div>
+            <div style="font-size:0.58rem;color:rgba(212,175,55,0.85);font-family:var(--mono);margin-bottom:3px">Ortalama Stok Maliyet Oranı</div>
             <div style="font-size:0.82rem;font-family:var(--mono);font-weight:700;color:var(--gold)" id="fin-avg-margin-pct">—</div>
           </div>
         </div>
@@ -2100,32 +2100,32 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
           </tfoot>
         </table>
       </div>
-      <div style="font-size:.58rem;color:rgba(0,0,0,.18);font-family:var(--mono);margin-top:8px">Maliyetler tarayıcı belleğine (localStorage) kaydedilir. COGS hesaplaması tüm aktif siparişlere bölünür.</div>
+      <div style="font-size:.58rem;color:rgba(0,0,0,0.55);font-family:var(--mono);margin-top:8px">Maliyetler tarayıcı belleğine (localStorage) kaydedilir. COGS hesaplaması tüm aktif siparişlere bölünür.</div>
     </div>
 
     <!-- Gider Özeti Çubuğu -->
-    <div style="margin-top:14px;padding:14px 18px;background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.07);border-radius:14px">
-      <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,.25);margin-bottom:10px;font-family:var(--mono)">Gider Özeti — Anlık</div>
+    <div style="margin-top:14px;padding:14px 18px;background:rgba(0,0,0,.025);border:1px solid rgba(0,0,0,.08);border-radius:14px">
+      <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,0.7);margin-bottom:10px;font-family:var(--mono)">Gider Özeti — Anlık</div>
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px" id="fin-expense-summary">
-        <div style="background:rgba(255,69,58,.06);border:1px solid rgba(255,69,58,.15);border-radius:10px;padding:10px 12px">
-          <div style="font-size:.58rem;color:rgba(255,69,58,.5);font-family:var(--mono);margin-bottom:4px">KDV</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(255,69,58,.8)" id="sum-kdv">—</div>
+        <div style="background:#FFFFFF;border:1px solid rgba(0,0,0,.09);border-left:3px solid #FF3B30;border-radius:10px;padding:10px 12px">
+          <div style="font-size:.58rem;color:rgba(0,0,0,.55);font-family:var(--mono);margin-bottom:4px">KDV</div>
+          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:#D82D22" id="sum-kdv">—</div>
         </div>
-        <div style="background:rgba(255,159,10,.06);border:1px solid rgba(255,159,10,.15);border-radius:10px;padding:10px 12px">
-          <div style="font-size:.58rem;color:rgba(255,159,10,.5);font-family:var(--mono);margin-bottom:4px">Ödeme Komisyon</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(255,159,10,.8)" id="sum-iyzico">—</div>
+        <div style="background:#FFFFFF;border:1px solid rgba(0,0,0,.09);border-left:3px solid #FF9500;border-radius:10px;padding:10px 12px">
+          <div style="font-size:.58rem;color:rgba(0,0,0,.55);font-family:var(--mono);margin-bottom:4px">Ödeme Komisyon</div>
+          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:#C9760A" id="sum-iyzico">—</div>
         </div>
-        <div style="background:rgba(191,90,242,.06);border:1px solid rgba(191,90,242,.15);border-radius:10px;padding:10px 12px">
-          <div style="font-size:.58rem;color:rgba(191,90,242,.5);font-family:var(--mono);margin-bottom:4px">Kargo + Ambalaj</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(191,90,242,.8)" id="sum-kargo">—</div>
+        <div style="background:#FFFFFF;border:1px solid rgba(0,0,0,.09);border-left:3px solid #AF52DE;border-radius:10px;padding:10px 12px">
+          <div style="font-size:.58rem;color:rgba(0,0,0,.55);font-family:var(--mono);margin-bottom:4px">Kargo + Ambalaj</div>
+          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:#9333B8" id="sum-kargo">—</div>
         </div>
-        <div style="background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.15);border-radius:10px;padding:10px 12px">
-          <div style="font-size:.58rem;color:rgba(90,200,250,.5);font-family:var(--mono);margin-bottom:4px">Toplam Kesinti</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(90,200,250,.8)" id="sum-total">—</div>
+        <div style="background:#FFFFFF;border:1px solid rgba(0,0,0,.09);border-left:3px solid #007AFF;border-radius:10px;padding:10px 12px">
+          <div style="font-size:.58rem;color:rgba(0,0,0,.55);font-family:var(--mono);margin-bottom:4px">Toplam Kesinti</div>
+          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:#0A5CC2" id="sum-total">—</div>
         </div>
-        <div style="background:rgba(48,209,88,.06);border:1px solid rgba(48,209,88,.15);border-radius:10px;padding:10px 12px;grid-column:span 1">
-          <div style="font-size:.58rem;color:rgba(48,209,88,.5);font-family:var(--mono);margin-bottom:4px">Tahmini Net Kâr</div>
-          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:rgba(48,209,88,.8)" id="sum-net">—</div>
+        <div style="background:#FFFFFF;border:1px solid rgba(0,0,0,.09);border-left:3px solid #248A3D;border-radius:10px;padding:10px 12px;grid-column:span 1">
+          <div style="font-size:.58rem;color:rgba(0,0,0,.55);font-family:var(--mono);margin-bottom:4px">Tahmini Net Kâr</div>
+          <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:#1C7A3E" id="sum-net">—</div>
         </div>
       </div>
     </div>
@@ -2285,9 +2285,9 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
         <div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap">
           <span style="font-size:.58rem;color:var(--t3);font-family:var(--mono)">Sırala:</span>
           <button class="roi-sort-btn active" data-sort="roi" onclick="roiSort('roi',this)" style="font-size:.6rem;padding:3px 10px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);border-radius:6px;color:rgba(212,175,55,.8);cursor:pointer;transition:all .18s">ROI</button>
-          <button class="roi-sort-btn" data-sort="orders" onclick="roiSort('orders',this)" style="font-size:.6rem;padding:3px 10px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:6px;color:rgba(0,0,0,.4);cursor:pointer;transition:all .18s">Sipariş</button>
-          <button class="roi-sort-btn" data-sort="views" onclick="roiSort('views',this)" style="font-size:.6rem;padding:3px 10px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:6px;color:rgba(0,0,0,.4);cursor:pointer;transition:all .18s">Görüntülenme</button>
-          <button class="roi-sort-btn" data-sort="seo" onclick="roiSort('seo',this)" style="font-size:.6rem;padding:3px 10px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:6px;color:rgba(0,0,0,.4);cursor:pointer;transition:all .18s">SEO</button>
+          <button class="roi-sort-btn" data-sort="orders" onclick="roiSort('orders',this)" style="font-size:.6rem;padding:3px 10px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:6px;color:rgba(0,0,0,0.65);cursor:pointer;transition:all .18s">Sipariş</button>
+          <button class="roi-sort-btn" data-sort="views" onclick="roiSort('views',this)" style="font-size:.6rem;padding:3px 10px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:6px;color:rgba(0,0,0,0.65);cursor:pointer;transition:all .18s">Görüntülenme</button>
+          <button class="roi-sort-btn" data-sort="seo" onclick="roiSort('seo',this)" style="font-size:.6rem;padding:3px 10px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:6px;color:rgba(0,0,0,0.65);cursor:pointer;transition:all .18s">SEO</button>
         </div>
       </div>
       <div class="table-scroll">
@@ -2312,9 +2312,9 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <!-- Formula note -->
       <div style="padding:10px 18px;border-top:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;flex-wrap:wrap">
         <div style="font-size:.6rem;color:var(--t3);font-family:var(--mono)">
-          <span style="color:rgba(212,175,55,.5)">ROI =</span> (Sipariş × AOV) ÷ Yazım Süresi
-          &nbsp;·&nbsp; <span style="color:rgba(212,175,55,.5)">AOV =</span> <span id="roi-aov-display">—</span>
-          &nbsp;·&nbsp; Süre varsayılan: <span style="color:rgba(0,0,0,.4)">3 saat</span>
+          <span style="color:rgba(212,175,55,0.85)">ROI =</span> (Sipariş × AOV) ÷ Yazım Süresi
+          &nbsp;·&nbsp; <span style="color:rgba(212,175,55,0.85)">AOV =</span> <span id="roi-aov-display">—</span>
+          &nbsp;·&nbsp; Süre varsayılan: <span style="color:rgba(0,0,0,0.65)">3 saat</span>
         </div>
       </div>
     </div>
@@ -2616,7 +2616,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 .cam-seg.on{background:var(--red);border-color:var(--red);color:#fff}
 .cam-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(208px,1fr));gap:16px}
 .cam-card{background:var(--gold-dim);border:1px solid rgba(0,0,0,.07);border-radius:16px;padding:12px;transition:transform .25s cubic-bezier(.22,1,.36,1),border-color .25s;animation:camIn .5s ease both}
-.cam-card:hover{transform:translateY(-4px);border-color:rgba(255,69,58,.4)}
+.cam-card:hover{transform:translateY(-4px);border-color:rgba(255,69,58,0.8)}
 @keyframes camIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .cam-frame{position:relative;aspect-ratio:4/3;border-radius:11px;overflow:hidden;background:#0c0d12;border:1px solid rgba(0,0,0,.08)}
 .cam-frame img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
@@ -2697,8 +2697,8 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
           </div>
         </div>
         <div style="margin-top:8px;display:flex;gap:8px">
-          <div style="font-size:.6rem;color:rgba(0,0,0,.3);font-family:var(--mono)">Organik: <span style="color:rgba(48,209,88,.7)" id="ga4-organic-abs">—</span></div>
-          <div style="font-size:.6rem;color:rgba(0,0,0,.3);font-family:var(--mono)">Diğer: <span style="color:rgba(0,0,0,.5)" id="ga4-other-abs">—</span></div>
+          <div style="font-size:.6rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">Organik: <span style="color:rgba(48,209,88,.7)" id="ga4-organic-abs">—</span></div>
+          <div style="font-size:.6rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">Diğer: <span style="color:rgba(0,0,0,0.7)" id="ga4-other-abs">—</span></div>
         </div>
       </div>
 
@@ -2720,7 +2720,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
               <path d="M 10 40 A 30 30 0 0 1 70 40" fill="none" stroke="rgba(0,0,0,.06)" stroke-width="7" stroke-linecap="round"/>
               <path d="M 10 40 A 30 30 0 0 1 70 40" fill="none" stroke="rgba(255,159,10,.65)" stroke-width="7" stroke-linecap="round" stroke-dasharray="94.2" stroke-dashoffset="94.2" id="ga4-bounce-arc" style="transition:stroke-dashoffset 1.2s ease .6s"/>
             </svg>
-            <div style="position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:.55rem;color:rgba(0,0,0,.3);font-family:var(--mono)" id="ga4-bounce-lbl">—</div>
+            <div style="position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:.55rem;color:rgba(0,0,0,0.6);font-family:var(--mono)" id="ga4-bounce-lbl">—</div>
           </div>
         </div>
         <div style="height:3px;background:rgba(0,0,0,.06);border-radius:2px;margin-top:12px;overflow:hidden">
@@ -2741,7 +2741,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
             <div class="kpi-sub">dakika:saniye</div>
           </div>
           <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;margin-top:4px">
-            <div style="font-size:.58rem;color:rgba(0,0,0,.25);font-family:var(--mono)">kalite</div>
+            <div style="font-size:.58rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">kalite</div>
             <div id="ga4-session-quality" style="font-size:.68rem;padding:2px 8px;border-radius:6px;background:rgba(90,200,250,.1);border:1px solid rgba(90,200,250,.2);color:rgba(90,200,250,.8);font-family:var(--mono)">—</div>
             <div id="ga4-session-stars" style="font-size:.9rem"></div>
           </div>
@@ -2893,7 +2893,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <!-- Karlılık -->
       <div class="card p" style="position:relative;overflow:hidden">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.4),transparent)"></div>
-        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,.3);margin-bottom:10px;font-family:var(--mono)">Karlılık Özeti</div>
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,0.6);margin-bottom:10px;font-family:var(--mono)">Karlılık Özeti</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
           <div>
             <div class="qs-lbl">Maliyet Toplamı</div>
@@ -2907,19 +2907,19 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
         <!-- Profit meter -->
         <div style="margin-bottom:8px">
           <div style="display:flex;justify-content:space-between;margin-bottom:4px">
-            <span style="font-size:.6rem;color:rgba(0,0,0,.3);font-family:var(--mono)">Brüt Kâr Marjı</span>
+            <span style="font-size:.6rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">Brüt Kâr Marjı</span>
             <span style="font-size:.65rem;font-family:var(--mono);font-weight:700" id="inv-margin-pct" style="color:rgba(212,175,55,.8)">—</span>
           </div>
           <div style="height:6px;background:rgba(0,0,0,.06);border-radius:3px;overflow:hidden">
             <div id="inv-margin-bar" style="height:100%;border-radius:3px;background:linear-gradient(90deg,rgba(212,175,55,.7),rgba(48,209,88,.6));width:0;transition:width 1s ease .3s"></div>
           </div>
         </div>
-        <div style="font-size:0.6rem;color:rgba(0,0,0,.2);font-family:var(--mono);margin-top:6px">Diğer giderler (kargo, ambalaj, komisyon) dahil değil. Tam kar için Finans sayfasını kullan.</div>
+        <div style="font-size:0.6rem;color:rgba(0,0,0,0.55);font-family:var(--mono);margin-top:6px">Diğer giderler (kargo, ambalaj, komisyon) dahil değil. Tam kar için Finans sayfasını kullan.</div>
       </div>
 
       <!-- Hedefler -->
       <div class="card p" style="grid-column: span 2">
-        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,.3);margin-bottom:10px;font-family:var(--mono)">Hedef Takibi</div>
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,0.6);margin-bottom:10px;font-family:var(--mono)">Hedef Takibi</div>
         <div style="display:flex;flex-direction:column;gap:12px">
           <div class="goal-row">
             <div class="goal-head">
@@ -2946,7 +2946,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
     <div class="card tcard" style="overflow:hidden">
       <div class="thead">
         <span class="ttitle" id="camTitle">Kameralar</span>
-        <span style="font-size:.6rem;color:rgba(0,0,0,.25);font-family:var(--mono)">Satış fiyatı · Maliyet · Kâr & Marj</span>
+        <span style="font-size:.6rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">Satış fiyatı · Maliyet · Kâr & Marj</span>
       </div>
       <div class="table-scroll"><table>
         <thead>
@@ -3123,8 +3123,8 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 /* Pipeline flow */
 .em-flow{display:flex;align-items:stretch;gap:0;margin-top:16px;flex-wrap:wrap}
 .em-node{flex:1;min-width:115px;background:var(--gold-dim);border:1px solid rgba(0,0,0,.07);border-radius:14px;padding:13px 12px;text-align:center;position:relative}
-.em-node.ok{border-color:rgba(48,209,88,.35)}
-.em-node.bad{border-color:rgba(255,69,58,.4)}
+.em-node.ok{border-color:rgba(48,209,88,0.8)}
+.em-node.bad{border-color:rgba(255,69,58,0.8)}
 .em-node .nd-dot{width:9px;height:9px;border-radius:50%;margin:0 auto 8px;background:var(--t3)}
 .em-node.ok .nd-dot{background:var(--green);box-shadow:0 0 10px rgba(48,209,88,.6)}
 .em-node.bad .nd-dot{background:var(--red);box-shadow:0 0 10px rgba(255,69,58,.6)}
@@ -3196,9 +3196,9 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 .es-chips{display:flex;gap:7px;flex-wrap:wrap;flex-shrink:0;}
 .es-chip{display:inline-flex;align-items:center;gap:5px;font-size:.6rem;font-weight:800;padding:5px 10px;border-radius:100px;letter-spacing:.02em;border:1px solid transparent;}
 .es-chip b{font-variant-numeric:tabular-nums;}
-.es-chip.good{background:rgba(48,209,88,.13);color:var(--green);border-color:rgba(48,209,88,.22);}
-.es-chip.watch{background:rgba(255,159,10,.13);color:var(--warn);border-color:rgba(255,159,10,.22);}
-.es-chip.bad{background:rgba(255,69,58,.13);color:var(--red);border-color:rgba(255,69,58,.24);}
+.es-chip.good{background:rgba(48,209,88,.13);color:var(--green);border-color:rgba(48,209,88,0.68);}
+.es-chip.watch{background:rgba(255,159,10,.13);color:var(--warn);border-color:rgba(255,159,10,0.68);}
+.es-chip.bad{background:rgba(255,69,58,.13);color:var(--red);border-color:rgba(255,69,58,0.68);}
 @media(max-width:820px){.em-summary{flex-direction:column;align-items:flex-start}.es-chips{width:100%}}
 
 /* ── HERO KPI tile şeridi ── */
@@ -3209,7 +3209,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
   box-shadow:0 1px 0 rgba(0,0,0,.11) inset,0 -1px 0 var(--em-rim-b) inset,0 14px 34px -18px rgba(0,0,0,.6);
   opacity:0;animation:emRise .62s var(--em-soft) forwards;transition:transform .42s var(--em-ease),border-color .42s,box-shadow .42s;}
 .em-htile::before{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--em-sheen);pointer-events:none;}
-.em-htile:hover{transform:translateY(-3px);border-color:rgba(0,0,0,.18);box-shadow:0 1px 0 rgba(0,0,0,.15) inset,0 22px 48px -20px rgba(0,0,0,.7);}
+.em-htile:hover{transform:translateY(-3px);border-color:rgba(0,0,0,0.55);box-shadow:0 1px 0 rgba(0,0,0,.15) inset,0 22px 48px -20px rgba(0,0,0,.7);}
 .em-htile:nth-child(1){animation-delay:.04s}.em-htile:nth-child(2){animation-delay:.11s}.em-htile:nth-child(3){animation-delay:.18s}.em-htile:nth-child(4){animation-delay:.25s}
 .ht-top{display:flex;align-items:center;margin-bottom:15px;}
 .ht-ic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.1);flex-shrink:0;}
@@ -3231,7 +3231,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
   box-shadow:0 1px 0 rgba(0,0,0,.09) inset,0 10px 28px -18px rgba(0,0,0,.6);
   transition:transform .4s var(--em-ease),border-color .4s,box-shadow .4s;opacity:0;animation:emRise .58s var(--em-soft) forwards;}
 .em-mini::before{content:'';position:absolute;inset:0;border-radius:inherit;background:var(--em-sheen);pointer-events:none;}
-.em-mini:hover{transform:translateY(-2px);border-color:rgba(0,0,0,.16);}
+.em-mini:hover{transform:translateY(-2px);border-color:rgba(0,0,0,0.55);}
 .em-mini .v{font-variant-numeric:tabular-nums;}
 .em-strip .em-mini:nth-child(1){animation-delay:.04s}.em-strip .em-mini:nth-child(2){animation-delay:.1s}.em-strip .em-mini:nth-child(3){animation-delay:.16s}.em-strip .em-mini:nth-child(4){animation-delay:.22s}
 
@@ -3262,7 +3262,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 .em-send,.hx-send.em-send{border:1px solid rgba(0,0,0,.2)!important;background:linear-gradient(180deg,var(--em-accent-2),var(--em-accent))!important;color:#fff;border-radius:100px;padding:13px 24px;letter-spacing:.01em;
   box-shadow:0 1px 0 rgba(0,0,0,.34) inset,0 8px 22px -6px rgba(255,69,58,.5);}
 .em-send:not([disabled]):hover{transform:translateY(-1px);filter:brightness(1.05);box-shadow:0 1px 0 rgba(0,0,0,.44) inset,0 13px 30px -6px rgba(255,69,58,.62);}
-.em-send[disabled]{background:rgba(0,0,0,.05)!important;border-color:rgba(0,0,0,.1)!important;box-shadow:none;color:var(--t3);}
+.em-send[disabled]{background:rgba(0,0,0,.05)!important;border-color:rgba(0,0,0,0.5)!important;box-shadow:none;color:var(--t3);}
 
 /* ── Teslimat hunisi (animasyonlu cam çubuklar) ── */
 .em-fn-track{background:rgba(0,0,0,.05);box-shadow:0 1px 0 rgba(0,0,0,.05) inset,0 2px 5px rgba(0,0,0,.3) inset;}
@@ -3454,8 +3454,8 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
     <div class="cgv8-ptab" id="cgv8-ptab-patron" onclick="cgV8Page('patron',this)">&#128081; Patron</div>
   </div>
   <div style="display:flex;align-items:center;gap:10px">
-    <span id="cgv8-status" style="font-size:.62rem;padding:3px 12px;border-radius:8px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);color:rgba(0,0,0,.4);letter-spacing:.06em">HAZIR</span>
-    <span style="font-size:.62rem;color:rgba(212,175,55,.5);font-family:var(--mono)" id="cg-version">v8</span>
+    <span id="cgv8-status" style="font-size:.62rem;padding:3px 12px;border-radius:8px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);color:rgba(0,0,0,0.65);letter-spacing:.06em">HAZIR</span>
+    <span style="font-size:.62rem;color:rgba(212,175,55,0.85);font-family:var(--mono)" id="cg-version">v8</span>
   </div>
 </div>
 
@@ -3528,18 +3528,18 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       </div>
 
       <!-- Quick Commands -->
-      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,.2);padding:4px 4px 0">Hizli Komutlar</div>
+      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,0.55);padding:4px 4px 0">Hizli Komutlar</div>
       <div style="display:flex;flex-direction:column;gap:4px">
         <button onclick="cgQuickCmd('bir blog yaz')" style="background:rgba(212,175,55,.08);border:1px solid rgba(212,175,55,.18);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(212,175,55,.75);text-align:left;cursor:pointer;transition:all .2s">&#9997;&#65039; Siradaki konuyu yaz</button>
-        <button onclick="cgQuickCmd('konu listele')" style="background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(0,0,0,.4);text-align:left;cursor:pointer;transition:all .2s">&#128203; Konu listesini goster</button>
-        <button onclick="cgQuickCmd('rapor')" style="background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(0,0,0,.4);text-align:left;cursor:pointer;transition:all .2s">&#128202; Performans raporu</button>
-        <button onclick="cgQuickCmd('neler ogrendin')" style="background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(0,0,0,.4);text-align:left;cursor:pointer;transition:all .2s">&#129504; Neler ogrendin?</button>
+        <button onclick="cgQuickCmd('konu listele')" style="background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(0,0,0,0.65);text-align:left;cursor:pointer;transition:all .2s">&#128203; Konu listesini goster</button>
+        <button onclick="cgQuickCmd('rapor')" style="background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(0,0,0,0.65);text-align:left;cursor:pointer;transition:all .2s">&#128202; Performans raporu</button>
+        <button onclick="cgQuickCmd('neler ogrendin')" style="background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.08);border-radius:8px;padding:7px 10px;font-size:.67rem;color:rgba(0,0,0,0.65);text-align:left;cursor:pointer;transition:all .2s">&#129504; Neler ogrendin?</button>
       </div>
 
       <!-- Learnings -->
-      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,.2);padding:4px 4px 0;margin-top:4px">Son Ogrenmeler</div>
+      <div style="font-size:.6rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,0.55);padding:4px 4px 0;margin-top:4px">Son Ogrenmeler</div>
       <div id="cgv8-learnings-list" style="display:flex;flex-direction:column;gap:3px">
-        <div style="font-size:.62rem;color:rgba(0,0,0,.2);font-style:italic;padding:4px">Henuz ogrenme yok...</div>
+        <div style="font-size:.62rem;color:rgba(0,0,0,0.55);font-style:italic;padding:4px">Henuz ogrenme yok...</div>
       </div>
     </div>
 
@@ -3553,7 +3553,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
           <span style="font-size:.65rem;color:rgba(212,175,55,.7);font-weight:600">&#128221; Blog Ciktisi</span>
           <div style="display:flex;gap:6px">
             <button onclick="cgCopyBlog()" style="font-size:.62rem;padding:3px 10px;background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);border-radius:6px;color:rgba(212,175,55,.8);cursor:pointer">Kopyala</button>
-            <button onclick="cgCloseBlogOut()" style="font-size:.62rem;padding:3px 10px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:6px;color:rgba(0,0,0,.4);cursor:pointer">Kapat X</button>
+            <button onclick="cgCloseBlogOut()" style="font-size:.62rem;padding:3px 10px;background:rgba(0,0,0,.05);border:1px solid rgba(0,0,0,.1);border-radius:6px;color:rgba(0,0,0,0.65);cursor:pointer">Kapat X</button>
           </div>
         </div>
         <div id="cgv8-blog-content" style="flex:1;overflow-y:auto;padding:12px 16px;font-size:.7rem;line-height:1.8;color:rgba(0,0,0,.7);white-space:pre-wrap;font-family:var(--mono);scrollbar-width:thin"></div>
@@ -3575,7 +3575,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
       <div style="font-size:.78rem;font-weight:700;color:rgba(0,0,0,.7)">Yazilan Bloglar</div>
     </div>
-    <div id="cgv8-hist-empty" style="text-align:center;color:rgba(0,0,0,.2);font-size:.72rem;padding:40px">
+    <div id="cgv8-hist-empty" style="text-align:center;color:rgba(0,0,0,0.55);font-size:.72rem;padding:40px">
       Henuz blog yazilmadi.<br><br>Cherry'ye "bir blog yaz" de basla!
     </div>
     <div id="cg-history-list" class="cgv8-hist-grid"></div>
@@ -3591,37 +3591,37 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px">
       <div style="background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.18);border-radius:12px;padding:14px;text-align:center">
         <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(90,200,250,.9)" id="cgbp-views">0</div>
-        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.28);margin-top:4px">Goruntulenme</div>
+        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6);margin-top:4px">Goruntulenme</div>
       </div>
       <div style="background:rgba(48,209,88,.06);border:1px solid rgba(48,209,88,.18);border-radius:12px;padding:14px;text-align:center">
         <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(48,209,88,.9)" id="cgbp-organic">0</div>
-        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.28);margin-top:4px">Organik</div>
+        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6);margin-top:4px">Organik</div>
       </div>
       <div style="background:rgba(255,159,10,.06);border:1px solid rgba(255,159,10,.18);border-radius:12px;padding:14px;text-align:center">
         <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(255,159,10,.9)" id="cgbp-orders">0</div>
-        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.28);margin-top:4px">Siparis</div>
+        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6);margin-top:4px">Siparis</div>
       </div>
       <div style="background:rgba(212,175,55,.06);border:1px solid rgba(212,175,55,.18);border-radius:12px;padding:14px;text-align:center">
         <div style="font-size:1.3rem;font-weight:800;font-family:var(--mono);color:rgba(212,175,55,.9)" id="cgbp-revenue">0</div>
-        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.28);margin-top:4px">Gelir (TL)</div>
+        <div style="font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6);margin-top:4px">Gelir (TL)</div>
       </div>
     </div>
 
     <!-- Monthly Chart -->
     <div style="background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.06);border-radius:12px;padding:14px;margin-bottom:12px">
-      <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.28);margin-bottom:10px">Aylik Trafik</div>
+      <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6);margin-bottom:10px">Aylik Trafik</div>
       <div id="cgbp-chart" style="display:flex;align-items:flex-end;gap:4px;height:80px;margin-bottom:4px"></div>
       <div id="cgbp-labels" style="display:flex;gap:4px;padding-top:4px"></div>
     </div>
 
     <!-- Traffic Sources -->
     <div style="background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.06);border-radius:12px;padding:14px;margin-bottom:12px">
-      <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.28);margin-bottom:10px">Trafik Kaynaklari</div>
+      <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6);margin-bottom:10px">Trafik Kaynaklari</div>
       <div id="cgbp-sources"></div>
     </div>
 
     <!-- Blog Cards -->
-    <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.28);margin-bottom:10px">Blog Performansi</div>
+    <div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.6);margin-bottom:10px">Blog Performansi</div>
     <div id="cgbp-cards" style="display:flex;flex-direction:column;gap:8px"></div>
   </div>
 </div>
@@ -3629,7 +3629,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 <!-- PATRON VIEW -->
 <div class="cgv8-view" id="cgv8-view-patron">
   <div id="cgv8-boss-panel-content" style="padding:16px;overflow-y:auto;flex:1">
-    <div style="text-align:center;color:rgba(0,0,0,.2);font-size:.72rem;padding:40px">Yukleniyor...</div>
+    <div style="text-align:center;color:rgba(0,0,0,0.55);font-size:.72rem;padding:40px">Yukleniyor...</div>
   </div>
 </div>
 
@@ -6895,7 +6895,7 @@ function renderHeader() {
       <div style="display:flex;align-items:center;justify-content:space-between;gap:6px;">
         <div style="display:flex;align-items:center;gap:5px;">
           <div style="width:5px;height:5px;border-radius:50%;background:${s.color};flex-shrink:0;box-shadow:0 0 5px ${s.color}66;"></div>
-          <span style="font-size:0.58rem;color:rgba(0,0,0,0.4);">${s.label}</span>
+          <span style="font-size:0.58rem;color:rgba(0,0,0,0.65);">${s.label}</span>
         </div>
         <span style="font-size:0.58rem;color:rgba(0,0,0,0.55);font-variant-numeric:tabular-nums;">${fmtUpd(s.iso)}</span>
       </div>`).join('');
@@ -8439,7 +8439,7 @@ function cgRenderActions() {
   var st = _cgSt;
 
   if (st.status === 'idle') {
-    sEl.innerHTML = '<div style="font-size:.82rem;color:rgba(0,0,0,.4);padding:6px 0">Sol taraftaki listeden bir konu seç ve <strong style="color:rgba(212,175,55,.75)">Yaz</strong> butonuna tıkla &mdash; ya da tümünü sırayla yaz.</div>';
+    sEl.innerHTML = '<div style="font-size:.82rem;color:rgba(0,0,0,0.65);padding:6px 0">Sol taraftaki listeden bir konu seç ve <strong style="color:rgba(212,175,55,.75)">Yaz</strong> butonuna tıkla &mdash; ya da tümünü sırayla yaz.</div>';
     bEl.innerHTML = '';
 
   } else if (st.status === 'writing') {
@@ -8449,7 +8449,7 @@ function cgRenderActions() {
         + [st.intel.primary_kw].concat((st.intel.secondary_kws||[]).slice(0,3)).join(' · ')
         + '</div>' : '';
     var h1Line = (st.brief && st.brief.h1)
-      ? '<div style="font-size:.7rem;color:rgba(0,0,0,.38);margin-top:3px">Başlık: ' + st.brief.h1.slice(0,60) + '</div>' : '';
+      ? '<div style="font-size:.7rem;color:rgba(0,0,0,0.65);margin-top:3px">Başlık: ' + st.brief.h1.slice(0,60) + '</div>' : '';
     var prog = st.progress || 10;
     sEl.innerHTML =
       '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(212,175,55,.55);margin-bottom:5px">' + (st.phase || 'Hazırlanıyor') + '</div>' +
@@ -8458,7 +8458,7 @@ function cgRenderActions() {
       '<div style="margin-top:10px;height:3px;background:rgba(0,0,0,.06);border-radius:4px;overflow:hidden">' +
         '<div id="cg-prog-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:'+prog+'%;transition:width .6s"></div>' +
       '</div>';
-    bEl.innerHTML = '<button class="cg-ctrl-btn" onclick="cgAbortWrite()" style="color:rgba(255,69,58,.75);border-color:rgba(255,69,58,.2)">Durdur</button>';
+    bEl.innerHTML = '<button class="cg-ctrl-btn" onclick="cgAbortWrite()" style="color:rgba(255,69,58,.75);border-color:rgba(255,69,58,0.68)">Durdur</button>';
 
   } else if (st.status === 'done') {
     var wc  = st.scoreObj ? st.scoreObj.wc    : 0;
@@ -8467,10 +8467,10 @@ function cgRenderActions() {
     sEl.innerHTML =
       '<div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(52,199,89,.7);margin-bottom:5px">✓ TAMAMLANDI</div>' +
       '<div style="font-size:.88rem;color:rgba(0,0,0,.88);font-weight:600;line-height:1.3">' + title.slice(0,65) + '</div>' +
-      '<div style="font-size:.72rem;color:rgba(0,0,0,.38);margin-top:4px">' + wc + ' kelime · SEO: ' + seo + '/100</div>';
+      '<div style="font-size:.72rem;color:rgba(0,0,0,0.65);margin-top:4px">' + wc + ' kelime · SEO: ' + seo + '/100</div>';
     bEl.innerHTML =
       (st.published
-        ? '<button class="cg-ctrl-btn" style="color:rgba(52,199,89,.75);border-color:rgba(52,199,89,.25);cursor:default">✓ Shopify’da Yayınlandı</button>'
+        ? '<button class="cg-ctrl-btn" style="color:rgba(52,199,89,.75);border-color:rgba(52,199,89,0.74);cursor:default">✓ Shopify’da Yayınlandı</button>'
         : '<button class="cg-ctrl-btn primary" onclick="cgPublish()">✓ Onayla ve Yayınla</button>') +
       '<button class="cg-ctrl-btn" onclick="cgNextPending()">Sıradaki Konuyu Yaz</button>' +
       '<button class="cg-ctrl-btn" onclick="cgTab(\'seo\',document.getElementById(\'cg-tab-seo\'))" style="font-size:.65rem">SEO</button>' +
@@ -8795,7 +8795,7 @@ async function cgWrite(idx) {
       '<div style="text-align:center;padding:60px 0 24px" id="cgsp-loading">' +
         '<div style="font-size:2.2rem;margin-bottom:14px">&#x270D;&#xFE0F;</div>' +
         '<div id="cgsp-elapsed" style="font-size:1rem;font-weight:600;color:rgba(212,175,55,.85)">Yazılıyor...</div>' +
-        '<div style="font-size:.7rem;color:rgba(0,0,0,.28);margin-top:6px">Blog hazırlanıyor, lütfen bekleyin...</div>' +
+        '<div style="font-size:.7rem;color:rgba(0,0,0,0.6);margin-top:6px">Blog hazırlanıyor, lütfen bekleyin...</div>' +
         '<div style="margin:16px auto 0;width:220px;height:3px;background:rgba(0,0,0,.06);border-radius:4px;overflow:hidden">' +
           '<div id="cgsp-bar" style="height:100%;border-radius:4px;background:linear-gradient(90deg,#D4AF37,#FFB7C5);width:5%"></div>' +
         '</div>' +
@@ -9173,8 +9173,8 @@ function renderROISection() {
     if (p.orders === 0 && p.views >= 15)   oneri = '<span style="color:#FF9F0A;font-size:.62rem">CTA Ekle</span>';
     else if (p.seo < 70 && p.views >= 10)  oneri = '<span style="color:#5AC8FA;font-size:.62rem">SEO İyileştir</span>';
     else if (p.orders >= 1)                 oneri = '<span style="color:#30D158;font-size:.62rem">Genişlet</span>';
-    else if (p.views >= 5)                  oneri = '<span style="color:rgba(0,0,0,.5);font-size:.62rem">Büyüyor</span>';
-    else                                    oneri = '<span style="color:rgba(0,0,0,.25);font-size:.62rem">İzle</span>';
+    else if (p.views >= 5)                  oneri = '<span style="color:rgba(0,0,0,0.7);font-size:.62rem">Büyüyor</span>';
+    else                                    oneri = '<span style="color:rgba(0,0,0,0.6);font-size:.62rem">İzle</span>';
     return Object.assign({}, p, { i:i, hours:hours, orgPct:orgPct, revenue:revenue, roi:roi, roiPuan:roiPuan, oneri:oneri });
   });
   var sorted = enriched.slice().sort(function(a,b){
@@ -9343,7 +9343,7 @@ function renderBlogDetayPage() {
     ].map(function(d) {
       var pct = Math.round(d.count/maxCnt*100);
       return '<div>'
-        +'<div style="display:flex;justify-content:space-between;font-size:.62rem;color:rgba(0,0,0,.5);margin-bottom:4px"><span>'+d.label+'</span><span style="color:'+d.color+';font-weight:700">'+d.count+' blog</span></div>'
+        +'<div style="display:flex;justify-content:space-between;font-size:.62rem;color:rgba(0,0,0,0.7);margin-bottom:4px"><span>'+d.label+'</span><span style="color:'+d.color+';font-weight:700">'+d.count+' blog</span></div>'
         +'<div style="height:8px;background:rgba(0,0,0,.06);border-radius:4px;overflow:hidden"><div style="width:0;height:100%;background:'+d.color+';border-radius:4px;transition:width .7s ease" data-w="'+pct+'%"></div></div>'
         +'</div>';
     }).join('');
@@ -9357,15 +9357,15 @@ function renderBlogDetayPage() {
     chartEl.innerHTML = monthly.map(function(m) {
       var h = maxT ? Math.round((m.traffic/maxT)*100) : 0;
       return '<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">'
-        +'<div style="font-size:.55rem;font-family:var(--mono);color:rgba(0,0,0,.5)">'+fmt(m.traffic)+'</div>'
+        +'<div style="font-size:.55rem;font-family:var(--mono);color:rgba(0,0,0,0.7)">'+fmt(m.traffic)+'</div>'
         +'<div style="width:100%;background:rgba(0,0,0,.06);border-radius:4px;height:80px;position:relative;overflow:hidden">'
         +'<div style="position:absolute;bottom:0;width:100%;height:0;background:linear-gradient(180deg,rgba(0,0,0,.7),rgba(0,0,0,.12));border-radius:4px;transition:height .7s ease" data-h="'+h+'%"></div>'
         +'</div>'
-        +'<div style="font-size:.55rem;color:rgba(0,0,0,.35);white-space:nowrap">'+m.posts+' blog</div>'
+        +'<div style="font-size:.55rem;color:rgba(0,0,0,0.65);white-space:nowrap">'+m.posts+' blog</div>'
         +'</div>';
     }).join('');
     if(labelsEl) labelsEl.innerHTML = monthly.map(function(m){
-      return '<div style="flex:1;font-size:.55rem;color:rgba(0,0,0,.3);text-align:center;font-family:var(--mono)">'+m.label+'</div>';
+      return '<div style="flex:1;font-size:.55rem;color:rgba(0,0,0,0.6);text-align:center;font-family:var(--mono)">'+m.label+'</div>';
     }).join('');
   }
 
@@ -9381,7 +9381,7 @@ function renderBlogDetayPage() {
       var durSec = p.avg_dur_sec || 0;
       var durCol = durSec===0?'var(--t3)':durSec>=180?'var(--perf-great)':durSec>=90?'var(--perf-ok)':durSec>=45?'var(--perf-warn)':'var(--perf-bad)';
       return '<tr style="border-top:1px solid rgba(0,0,0,.05)">'
-        +'<td style="padding:8px;color:rgba(0,0,0,.3);font-family:var(--mono);font-size:.6rem">'+( i+1)+'</td>'
+        +'<td style="padding:8px;color:rgba(0,0,0,0.6);font-family:var(--mono);font-size:.6rem">'+( i+1)+'</td>'
         +'<td style="padding:8px;max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--t1)" title="'+p.title+'">'+p.title+'</td>'
         +'<td style="padding:8px;text-align:right;font-family:var(--mono);color:var(--t1)">'+fmt(p.views)+'</td>'
         +'<td style="padding:8px;text-align:right;font-family:var(--mono);color:var(--perf-great)">'+fmt(p.organic)+'</td>'
@@ -9707,12 +9707,12 @@ function cgRenderBossPanel(){
       '<div style="opacity:.2;font-size:.8rem">→</div>'+
       '<div class="cgv8-rm-step">🏆 #1 Google</div>'+
     '</div>'+
-    (learnings.length?'<div style="margin-bottom:14px"><div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,.22);margin-bottom:8px">Cherry\'nin Ogrendikleri</div>'+learnings.map(function(l){return '<div style="font-size:.68rem;color:rgba(0,0,0,.48);padding:5px 0;border-bottom:1px solid rgba(0,0,0,.05)">✓ '+l.insight+'</div>';}).join('')+'</div>':'')+
+    (learnings.length?'<div style="margin-bottom:14px"><div style="font-size:.62rem;text-transform:uppercase;letter-spacing:.08em;color:rgba(0,0,0,0.55);margin-bottom:8px">Cherry\'nin Ogrendikleri</div>'+learnings.map(function(l){return '<div style="font-size:.68rem;color:rgba(0,0,0,0.7);padding:5px 0;border-bottom:1px solid rgba(0,0,0,.05)">✓ '+l.insight+'</div>';}).join('')+'</div>':'')+
     '<div style="font-size:.7rem;font-weight:600;color:rgba(0,0,0,.55);margin-bottom:4px">Cherry\'yi Gelistir</div>'+
-    '<div style="font-size:.6rem;color:rgba(0,0,0,.22);margin-bottom:10px">Begenmedigin alani tikla, bir sonraki blogda odaklansin:</div>'+
+    '<div style="font-size:.6rem;color:rgba(0,0,0,0.55);margin-bottom:10px">Begenmedigin alani tikla, bir sonraki blogda odaklansin:</div>'+
     '<div class="cgv8-improve-grid">'+
       _cgImproveAreas.map(function(a){
-        var act=prefs[a.key]?' style="border-color:rgba(212,175,55,.4);background:rgba(212,175,55,.07)"':'';
+        var act=prefs[a.key]?' style="border-color:rgba(212,175,55,0.8);background:rgba(212,175,55,.07)"':'';
         return '<div class="cgv8-improve-btn"'+act+' onclick="cgPatronImprove(\''+a.key+'\')"><span class="ib-ico">'+a.ico+'</span><span class="ib-title">'+a.title+'</span><span class="ib-desc">'+a.desc+'</span></div>';
       }).join('')+
     '</div>'+
@@ -9733,8 +9733,8 @@ function cgRenderHistoryPage(){
       '<div class="cgv8-hist-card-title">'+(item.title||item.topic||'Basliksiz').slice(0,80)+'</div>'+
       '<div class="cgv8-hist-seo-bar"><div class="cgv8-hist-seo-fill" style="width:'+Math.min(100,seo)+'%;background:'+col+'"></div></div>'+
       '<div class="cgv8-hist-meta">'+
-        '<span style="font-size:.58rem;color:rgba(0,0,0,.28);font-family:var(--mono)">'+d+'</span>'+
-        '<span style="font-size:.58rem;color:rgba(0,0,0,.28);font-family:var(--mono)">'+(item.wc||0)+' kelime</span>'+
+        '<span style="font-size:.58rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">'+d+'</span>'+
+        '<span style="font-size:.58rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">'+(item.wc||0)+' kelime</span>'+
         '<span class="cgv8-hist-badge" style="color:'+col+';background:'+col.replace(')',',0.12)').replace('rgb(','rgba(')+'">SEO '+seo+'</span>'+
         (item.published?'<span class="cgv8-hist-badge" style="color:#34C759;background:rgba(52,199,89,.1)">Yayinda</span>':'')+
       '</div>'+
@@ -9769,7 +9769,7 @@ function cgRenderBlogPerf(){
   if(srcEl&&sources.length){var maxS=Math.max.apply(null,sources.map(function(s){return s.sessions||0;}))||1;srcEl.innerHTML=sources.map(function(s){return '<div class="cgv8-src-row"><div class="cgv8-src-lbl">'+s.name+'</div><div class="cgv8-src-bar"><div class="cgv8-src-fill" style="width:0;background:'+s.color+'" data-w="'+Math.round((s.sessions||0)/maxS*100)+'%"></div></div><div class="cgv8-src-pct">%'+s.pct+'</div></div>';}).join('');setTimeout(function(){srcEl.querySelectorAll('.cgv8-src-fill').forEach(function(b){b.style.width=b.getAttribute('data-w');});},200);}
   var cardsEl=document.getElementById('cgbp-cards'); if(!cardsEl) return;
   var maxVP=Math.max.apply(null,posts.map(function(p){return p.views||1;}))||1;
-  cardsEl.innerHTML=posts.map(function(p){var sc=p.seo>=90?'#34C759':p.seo>=75?'#D4AF37':'#FF453A';var vp=Math.round((p.views||0)/maxVP*100);var op=p.views?Math.round((p.organic||0)/(p.views||1)*100):0;return '<div class="cgv8-blog-perf-card"><div style="font-size:.7rem;font-weight:700;color:rgba(0,0,0,.8);margin-bottom:8px;line-height:1.3">'+(p.title||'').slice(0,70)+(p.cherry?'<span style="font-size:.5rem;color:rgba(212,175,55,.55);background:rgba(212,175,55,.08);padding:1px 5px;border-radius:5px;margin-left:4px">Cherry</span>':'')+'</div><div style="display:flex;justify-content:space-between;font-size:.58rem;color:rgba(0,0,0,.3);font-family:var(--mono);margin-bottom:2px"><span>Goruntulenme</span><span style="color:#5AC8FA">'+(p.views||0).toLocaleString('tr-TR')+'</span></div><div class="cgv8-mini-bar"><div class="cgv8-mini-fill" style="width:0;background:#5AC8FA" data-w="'+vp+'%"></div></div><div style="display:flex;justify-content:space-between;font-size:.58rem;color:rgba(0,0,0,.3);font-family:var(--mono);margin-bottom:2px"><span>Organik (%'+op+')</span><span style="color:#30D158">'+(p.organic||0).toLocaleString('tr-TR')+'</span></div><div class="cgv8-mini-bar"><div class="cgv8-mini-fill" style="width:0;background:#30D158" data-w="'+Math.round((p.organic||0)/maxVP*100)+'%"></div></div><div style="display:flex;justify-content:space-between;font-size:.58rem;font-family:var(--mono)"><span style="color:rgba(0,0,0,.3)">Siparis: <b style="color:#FF9F0A">'+(p.orders||0)+'</b></span><span style="color:'+sc+';font-weight:700">SEO '+(p.seo||0)+'</span></div></div>';}).join('');
+  cardsEl.innerHTML=posts.map(function(p){var sc=p.seo>=90?'#34C759':p.seo>=75?'#D4AF37':'#FF453A';var vp=Math.round((p.views||0)/maxVP*100);var op=p.views?Math.round((p.organic||0)/(p.views||1)*100):0;return '<div class="cgv8-blog-perf-card"><div style="font-size:.7rem;font-weight:700;color:rgba(0,0,0,.8);margin-bottom:8px;line-height:1.3">'+(p.title||'').slice(0,70)+(p.cherry?'<span style="font-size:.5rem;color:rgba(212,175,55,.55);background:rgba(212,175,55,.08);padding:1px 5px;border-radius:5px;margin-left:4px">Cherry</span>':'')+'</div><div style="display:flex;justify-content:space-between;font-size:.58rem;color:rgba(0,0,0,0.6);font-family:var(--mono);margin-bottom:2px"><span>Goruntulenme</span><span style="color:#5AC8FA">'+(p.views||0).toLocaleString('tr-TR')+'</span></div><div class="cgv8-mini-bar"><div class="cgv8-mini-fill" style="width:0;background:#5AC8FA" data-w="'+vp+'%"></div></div><div style="display:flex;justify-content:space-between;font-size:.58rem;color:rgba(0,0,0,0.6);font-family:var(--mono);margin-bottom:2px"><span>Organik (%'+op+')</span><span style="color:#30D158">'+(p.organic||0).toLocaleString('tr-TR')+'</span></div><div class="cgv8-mini-bar"><div class="cgv8-mini-fill" style="width:0;background:#30D158" data-w="'+Math.round((p.organic||0)/maxVP*100)+'%"></div></div><div style="display:flex;justify-content:space-between;font-size:.58rem;font-family:var(--mono)"><span style="color:rgba(0,0,0,0.6)">Siparis: <b style="color:#FF9F0A">'+(p.orders||0)+'</b></span><span style="color:'+sc+';font-weight:700">SEO '+(p.seo||0)+'</span></div></div>';}).join('');
   setTimeout(function(){cardsEl.querySelectorAll('.cgv8-mini-fill').forEach(function(b){b.style.width=b.getAttribute('data-w');});},250);
 }
 
@@ -9825,8 +9825,8 @@ function cgCloseBlogOut(){
 function cgUpdateLearnings(){
   var el=document.getElementById('cgv8-learnings-list'); if(!el) return;
   var brain=cgGetBrain(),ll=brain.learnings||[];
-  if(!ll.length){el.innerHTML='<div style="font-size:.62rem;color:rgba(0,0,0,.2);font-style:italic;padding:4px">Henuz ogrenme yok...</div>';return;}
-  el.innerHTML=ll.slice(-5).reverse().map(function(l){return '<div style="font-size:.6rem;color:rgba(0,0,0,.38);padding:3px 6px;background:rgba(0,0,0,.03);border-radius:6px;line-height:1.4">&#10003; '+l.insight+'</div>';}).join('');
+  if(!ll.length){el.innerHTML='<div style="font-size:.62rem;color:rgba(0,0,0,0.55);font-style:italic;padding:4px">Henuz ogrenme yok...</div>';return;}
+  el.innerHTML=ll.slice(-5).reverse().map(function(l){return '<div style="font-size:.6rem;color:rgba(0,0,0,0.65);padding:3px 6px;background:rgba(0,0,0,.03);border-radius:6px;line-height:1.4">&#10003; '+l.insight+'</div>';}).join('');
 }
 function cgUpdateHeroStats(){
   var brain=cgGetBrain(),h=brain.history||[],s=(brain.seo_scores||[]).filter(function(x){return typeof x==='number';});
@@ -9904,11 +9904,11 @@ function statsEnhanceGA4() {
     chEl.innerHTML = d.sources.map(function(s) {
       var pct = Math.round((s.sessions || 0) / maxS * 100);
       return '<div style="display:flex;align-items:center;gap:10px">' +
-        '<div style="width:90px;font-size:.65rem;color:rgba(0,0,0,.5);text-align:right;flex-shrink:0">' + (s.name || '') + '</div>' +
+        '<div style="width:90px;font-size:.65rem;color:rgba(0,0,0,0.7);text-align:right;flex-shrink:0">' + (s.name || '') + '</div>' +
         '<div style="flex:1;height:8px;background:rgba(0,0,0,.05);border-radius:4px;overflow:hidden">' +
           '<div style="height:100%;border-radius:4px;background:' + (s.color || 'rgba(212,175,55,.5)') + ';width:0;transition:width 0.9s ease 0.2s" data-w="' + pct + '%"></div>' +
         '</div>' +
-        '<div style="width:60px;font-size:.62rem;font-family:var(--mono);color:rgba(0,0,0,.4)">' + (s.sessions || 0).toLocaleString('tr-TR') + ' (%' + (s.pct || 0) + ')</div>' +
+        '<div style="width:60px;font-size:.62rem;font-family:var(--mono);color:rgba(0,0,0,0.65)">' + (s.sessions || 0).toLocaleString('tr-TR') + ' (%' + (s.pct || 0) + ')</div>' +
       '</div>';
     }).join('');
     // Animate after render
@@ -10118,7 +10118,7 @@ function finAnimateKPIs() {
 <!-- More menu overlay -->
 <div class="bn-more-backdrop" id="bn-more-backdrop" onclick="closeMoreMenu()"></div>
 <div class="bn-more-overlay" id="bn-more-overlay">
-  <div style="font-size:.55rem;color:rgba(0,0,0,.25);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;text-align:center">Diğer Sayfalar</div>
+  <div style="font-size:.55rem;color:rgba(0,0,0,0.6);font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;text-align:center">Diğer Sayfalar</div>
   <div class="bn-more-grid">
     <div class="bn-more-item" data-page="instagram" onclick="navigate('instagram');closeMoreMenu()">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
@@ -10162,12 +10162,12 @@ function finAnimateKPIs() {
 #page-alim .alim-search{border:1px solid rgba(0,0,0,.12);background:#FFFFFF;color:var(--t1);border-radius:10px;padding:8px 13px;font-size:.8rem;font-family:inherit;min-width:200px;outline:none}
 #page-alim .alim-search:focus{border-color:var(--red)}
 #page-alim .alim-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
-#page-alim .alim-empty{grid-column:1/-1;text-align:center;color:rgba(0,0,0,.4);padding:48px 10px;font-size:.9rem}
+#page-alim .alim-empty{grid-column:1/-1;text-align:center;color:rgba(0,0,0,0.65);padding:48px 10px;font-size:.9rem}
 #page-alim .alim-card{border:1px solid rgba(0,0,0,.08);background:#FFFFFF;border-radius:16px;padding:15px;cursor:pointer;transition:.22s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden;box-shadow:0 2px 10px -4px rgba(0,0,0,.06)}
-#page-alim .alim-card:hover{transform:translateY(-3px);border-color:rgba(0,0,0,.16);box-shadow:0 16px 36px -16px rgba(0,0,0,.18)}
+#page-alim .alim-card:hover{transform:translateY(-3px);border-color:rgba(0,0,0,0.55);box-shadow:0 16px 36px -16px rgba(0,0,0,.18)}
 #page-alim .alim-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:11px}
 #page-alim .alim-model{font-size:1rem;font-weight:700;letter-spacing:-.01em;color:var(--t1);line-height:1.25}
-#page-alim .alim-ref{font-size:.62rem;font-family:var(--mono);color:rgba(0,0,0,.35);margin-top:2px}
+#page-alim .alim-ref{font-size:.62rem;font-family:var(--mono);color:rgba(0,0,0,0.65);margin-top:2px}
 #page-alim .alim-price{font-size:.92rem;font-weight:700;color:var(--red);white-space:nowrap}
 #page-alim .alim-thumbs{display:flex;gap:6px;margin-bottom:11px}
 #page-alim .alim-thumbs img{width:54px;height:54px;border-radius:9px;object-fit:cover;border:1px solid rgba(0,0,0,.1)}
@@ -10175,23 +10175,23 @@ function finAnimateKPIs() {
 #page-alim .alim-meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.74rem;color:rgba(0,0,0,.6)}
 #page-alim .alim-meta b{color:rgba(0,0,0,.85);font-weight:600}
 #page-alim .alim-card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding-top:11px;border-top:1px solid rgba(0,0,0,.06)}
-#page-alim .alim-date{font-size:.66rem;color:rgba(0,0,0,.35);font-family:var(--mono)}
+#page-alim .alim-date{font-size:.66rem;color:rgba(0,0,0,0.65);font-family:var(--mono)}
 .alim-pill{font-size:.64rem;font-weight:700;padding:4px 10px;border-radius:99px;letter-spacing:.02em;white-space:nowrap}
 .alim-pill.yeni{background:rgba(255,69,58,.16);color:#ff7a70}
 .alim-pill.inceleniyor{background:rgba(10,132,255,.16);color:#5aa8ff}
 .alim-pill.teklif{background:rgba(212,175,55,.16);color:#e0c050}
-.alim-pill.kapandi{background:rgba(0,0,0,.08);color:rgba(0,0,0,.5)}
+.alim-pill.kapandi{background:rgba(0,0,0,.08);color:rgba(0,0,0,0.7)}
 /* modal */
 #page-alim .alim-modal{display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.8);backdrop-filter:blur(10px);align-items:center;justify-content:center;padding:20px}
 #page-alim .alim-modal.show{display:flex;animation:page-enter .25s ease}
 #page-alim .alim-modal-card{background:#FFFFFF;border:1px solid rgba(0,0,0,.1);border-radius:20px;width:100%;max-width:680px;max-height:90vh;overflow-y:auto;position:relative;padding:26px}
-#page-alim .alim-modal-x{position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(0,0,0,.5);font-size:28px;line-height:1;cursor:pointer;z-index:2}
+#page-alim .alim-modal-x{position:absolute;top:14px;right:16px;background:none;border:none;color:rgba(0,0,0,0.7);font-size:28px;line-height:1;cursor:pointer;z-index:2}
 #page-alim .alim-modal-x:hover{color:var(--t1)}
 #page-alim .alim-mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin:14px 0}
 #page-alim .alim-mgrid img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;cursor:zoom-in;border:1px solid rgba(0,0,0,.1);transition:.2s}
 #page-alim .alim-mgrid img:hover{transform:scale(1.04);border-color:var(--red)}
 #page-alim .alim-drow{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid rgba(0,0,0,.06);font-size:.84rem}
-#page-alim .alim-drow .k{color:rgba(0,0,0,.5)}
+#page-alim .alim-drow .k{color:rgba(0,0,0,0.7)}
 #page-alim .alim-drow .v{color:var(--t1);font-weight:500;text-align:right}
 #page-alim .alim-drow .v a{color:#5aa8ff;text-decoration:none}
 #page-alim .alim-statusrow{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 10px}
@@ -10210,7 +10210,7 @@ function finAnimateKPIs() {
 #page-alim .alim-offer-amt{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.04);border:1px solid rgba(0,0,0,.12);border-radius:11px;padding:4px 14px;transition:.2s}
 #page-alim .alim-offer-amt:focus-within{border-color:var(--red)}
 #page-alim .alim-offer-amt input{flex:1;background:none;border:none;outline:none;color:var(--t1);font-size:1.35rem;font-weight:800;font-family:inherit;padding:8px 0;min-width:0}
-#page-alim .alim-offer-amt .cur{color:rgba(0,0,0,.5);font-weight:700;font-size:.9rem}
+#page-alim .alim-offer-amt .cur{color:rgba(0,0,0,0.7);font-weight:700;font-size:.9rem}
 #page-alim .alim-offer-msg{width:100%;background:rgba(0,0,0,.03);border:1px solid rgba(0,0,0,.12);border-radius:11px;color:var(--t1);padding:11px;font-size:.84rem;font-family:inherit;min-height:62px;resize:vertical;outline:none;margin-top:10px}
 #page-alim .alim-offer-msg:focus{border-color:var(--red)}
 #page-alim .alim-offer-send{margin-top:11px;width:100%;border:none;background:var(--red);color:#fff;border-radius:11px;padding:12px;font-size:.86rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.2s}
@@ -10374,7 +10374,7 @@ function finAnimateKPIs() {
 
     var body=
       '<div style="font-size:1.3rem;font-weight:800;letter-spacing:-.02em;color:#1D1D1F;padding-right:30px">'+esc(x.model||'—')+'</div>'+
-      '<div style="font-size:.7rem;font-family:var(--mono);color:rgba(0,0,0,.4);margin-top:3px">'+esc(x.ref||'')+' · '+fmtDate(x.createdAt)+'</div>'+
+      '<div style="font-size:.7rem;font-family:var(--mono);color:rgba(0,0,0,0.65);margin-top:3px">'+esc(x.ref||'')+' · '+fmtDate(x.createdAt)+'</div>'+
       (photos?'<div class="alim-mgrid">'+photos+'</div>':'')+
       row('Fiyat Beklentisi','<b style="color:var(--red)">'+esc(x.price||'—')+' TL</b>')+
       row('Ad Soyad',esc(x.name))+

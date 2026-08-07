@@ -27,7 +27,7 @@ SCRIPT_DIR     = os.path.dirname(os.path.abspath(__file__))
 
 # ─── YOLLAR (repoyu tasirsan SADECE burayi degistir) ───────────────────────
 DASHBOARD_HTML = os.path.join(SCRIPT_DIR, "retrocameraland-hq-dashboard.html")  # ANA KAYNAK
-REPO_DIR       = "/Users/onnoshot/Downloads/rcl-dashboard"                       # Vercel'e giden git repo
+REPO_DIR       = SCRIPT_DIR                                                      # Vercel'e giden git repo
 INDEX_HTML     = os.path.join(REPO_DIR, "index.html")                            # canli panel (ANA KAYNAKTAN kopyalanir)
 DATA_JS        = os.path.join(REPO_DIR, "data.js")                               # ANA KAYNAKTAN turetilir
 LOCK_FILE      = "/tmp/rcl-dashboard.lock"

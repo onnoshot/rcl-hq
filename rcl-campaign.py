@@ -268,7 +268,7 @@ SOCIAL = [
     ("Pinterest", "https://pinterest.com/retrocameraland/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=Pinterest"),
     ("LinkedIn",  "https://www.linkedin.com/company/retro-camera-land/?utm_source=email&utm_medium=brevo&utm_campaign=social&utm_content=linkedin"),
 ]
-IG_DATA_JS = "/Users/onnoshot/Downloads/rcl-dashboard/data.js"
+IG_DATA_JS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data.js")
 
 def instagram_posts(n=4):
     """data.js içindeki son IG gönderilerini oku (görsel + link + beğeni)."""

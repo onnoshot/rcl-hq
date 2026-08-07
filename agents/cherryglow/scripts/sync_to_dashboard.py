@@ -12,7 +12,7 @@ from pathlib import Path
 
 BASE = Path(__file__).parent.parent.parent.parent  # Agentlar root
 BRAIN_PATH  = BASE / "agents/cherryglow/data/brain.json"
-DASHBOARD   = BASE.parent / "rcl-dashboard/index.html"
+DASHBOARD   = BASE / "index.html"
 
 
 def load_brain():
