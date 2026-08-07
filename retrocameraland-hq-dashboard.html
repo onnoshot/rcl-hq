@@ -191,7 +191,7 @@ function renderSEOHealthStrip() {
   --accent-soft:rgba(255,59,48,0.08);--accent-glow:rgba(255,59,48,0.35);
   --sa-t:env(safe-area-inset-top,0px);--sa-b:env(safe-area-inset-bottom,0px);--sa-l:env(safe-area-inset-left,0px);--sa-r:env(safe-area-inset-right,0px);
   /* ── Apple Light Surfaces ── */
-  --bg:#F5F5F7;--s1:#FFFFFF;--s2:#FFFFFF;--s3:#F0F0F2;
+  --bg:#FFFFFF;--s1:#FFFFFF;--s2:#FFFFFF;--s3:#FAFAFC;
   /* ── Glass Borders (koyu üstünde ince gri çizgiler) ── */
   --b0:rgba(0,0,0,0.09);--b1:rgba(0,0,0,0.14);--b2:rgba(0,0,0,0.22);
   /* ── UI Accent: Grafit/Nötr (artık kırmızı değil) ── */
@@ -322,7 +322,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--t1);min-height:100
 .card:hover{transform:translateY(-3px);border-color:rgba(0,0,0,0.12);box-shadow:0 4px 16px -6px rgba(0,0,0,0.10),0 20px 44px -20px rgba(0,0,0,0.18),0 0 0 1px rgba(0,0,0,0.04);}
 
 /* ── Kart varyantları: siyah/beyaz dominant, renk sadece ince vurgu ── */
-.card-gold,.card-gradient-gold{background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.12);}
+.card-gold,.card-gradient-gold{background:#FFFFFF;border-color:rgba(0,0,0,0.14);}
 .card-gold::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,0.2),transparent);z-index:2;}
 .card-green,.card-gradient-green,.card-gradient-teal{background:rgba(48,209,88,0.04);border-color:rgba(48,209,88,0.14);}
 .card-green::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(48,209,88,0.3),transparent);z-index:2;}
@@ -462,9 +462,9 @@ tfoot td{border-top:1px solid rgba(255,59,48,0.12);color:var(--gold);font-weight
 .fin-kpi{background:rgba(0,0,0,0.038);border:1px solid rgba(0,0,0,0.075);border-radius:var(--r);padding:26px 28px;position:relative;overflow:hidden;transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);}
 .fin-kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,0.08),transparent);pointer-events:none;}
 .fin-kpi:hover{transform:translateY(-2px);box-shadow:0 14px 52px rgba(0,0,0,0.5);}
-.fin-kpi-gold{background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.12);}
+.fin-kpi-gold{background:#FFFFFF;border-color:rgba(0,0,0,0.14);}
 .fin-kpi-gold::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,0.18),transparent);}
-.fin-kpi-green,.fin-kpi-red{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.09);}
+.fin-kpi-green,.fin-kpi-red{background:#FFFFFF;border-color:rgba(0,0,0,0.10);}
 .fin-kpi-green::after,.fin-kpi-red::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,0.12),transparent);}
 .fin-kpi-label{font-size:0.59rem;text-transform:uppercase;letter-spacing:0.2em;color:var(--t3);margin-bottom:9px;font-weight:600;}
 .fin-kpi-value{font-size:2.9rem;font-weight:700;letter-spacing:-0.05em;line-height:1;margin-bottom:7px;font-variant-numeric:tabular-nums;}
@@ -514,7 +514,7 @@ tfoot td{border-top:1px solid rgba(255,59,48,0.12);color:var(--gold);font-weight
 .period-compare{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;}
 .pc-card{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.07);border-radius:var(--r-sm);padding:16px;transition:all .25s cubic-bezier(.16,1,.3,1);cursor:pointer;}
 .pc-card:hover{border-color:rgba(0,0,0,0.18);transform:translateY(-1px);background:rgba(0,0,0,0.05);}
-.pc-card.selected{border-color:rgba(0,0,0,0.32);background:rgba(0,0,0,0.07);box-shadow:0 0 20px rgba(0,0,0,0.04);}
+.pc-card.selected{border-color:rgba(0,0,0,0.32);background:#FFFFFF;box-shadow:0 4px 16px rgba(0,0,0,0.08);}
 .pc-period{font-size:0.58rem;text-transform:uppercase;letter-spacing:0.13em;color:var(--t3);margin-bottom:8px;}
 .pc-rev{font-size:1.35rem;font-weight:700;color:var(--gold);margin-bottom:3px;font-variant-numeric:tabular-nums;}
 .pc-sub{font-size:0.61rem;color:var(--t3);}
@@ -1545,7 +1545,7 @@ footer{border-top:1px solid rgba(0,0,0,0.04);padding:22px 0 0;font-size:0.62rem;
 </head>
 <body>
 
-<div id="rcl-lock-gate" style="position:fixed;inset:0;z-index:999999;background:#F5F5F7;display:flex;align-items:center;justify-content:center;padding:24px;">
+<div id="rcl-lock-gate" style="position:fixed;inset:0;z-index:999999;background:#FFFFFF;display:flex;align-items:center;justify-content:center;padding:24px;">
   <div style="width:100%;max-width:340px;text-align:center;">
     <div style="font-size:1.3rem;font-weight:800;color:#ff4d2e;margin-bottom:6px;letter-spacing:-.02em;">RCL HQ</div>
     <div style="font-size:.82rem;color:rgba(0,0,0,0.7);margin-bottom:22px;">Devam etmek için şifre girin</div>
@@ -3431,7 +3431,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
   <!-- Mail önizleme modalı -->
   <div id="email-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)closeEmailPreview()">
     <div style="background:#fff;border-radius:18px;overflow:hidden;width:100%;max-width:600px;max-height:90vh;display:flex;flex-direction:column;box-shadow:0 30px 90px rgba(0,0,0,.6);animation:page-enter .3s ease">
-      <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:#F5F5F7;color:#1D1D1F;border-bottom:1px solid rgba(0,0,0,.08);flex:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;padding:13px 18px;background:#FAFAFC;color:#1D1D1F;border-bottom:1px solid rgba(0,0,0,.08);flex:none">
         <span id="email-modal-title" style="font-size:13px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">Önizleme</span>
         <span onclick="closeEmailPreview()" style="cursor:pointer;font-size:24px;line-height:1;padding:2px 8px;color:rgba(0,0,0,.7)">&times;</span>
       </div>
