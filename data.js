@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-07T20:29:02",
+  "updated_at": "2026-08-07T23:10:34",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4710,
+    "subscribers": 4720,
     "total_views": 1458620,
     "video_count": 398
   },
   "analytics": {
     "last_30d": {
-      "views": 197581,
-      "watch_hours": 607.1,
-      "subs_gained": 883,
-      "subs_lost": 331,
+      "views": 204049,
+      "watch_hours": 618.6,
+      "subs_gained": 894,
+      "subs_lost": 336,
       "avg_view_sec": 28
     },
-    "watch_hours_year": 3878.2,
-    "watch_hours_year_long": 2126.3,
-    "watch_hours_year_shorts": 1751.7,
+    "watch_hours_year": 3889.7,
+    "watch_hours_year_long": 2127.7,
+    "watch_hours_year_shorts": 1761.8,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 27501,
-        "watch_min": 2924,
-        "subs_gained": 56
+        "views": 33969,
+        "watch_min": 3611,
+        "subs_gained": 67
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 327,
+      "views": 331,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 12209,
+      "views": 12421,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -90,8 +90,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 11500,
-      "likes": 231,
+      "views": 11680,
+      "likes": 232,
       "comments": 2,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
