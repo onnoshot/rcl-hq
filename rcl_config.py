@@ -113,8 +113,15 @@ def publish(label, log=print, write_data_js=True):
     fcntl.flock(lock_fd, fcntl.LOCK_EX)
     try:
         _bump_build()   # ANA KAYNAK kopyalanmadan ÖNCE sayacı işle
+        # ANA KAYNAK artık REPO_DIR icinde yasiyor (eskiden ayri klasordu) -> asagidaki
+        # reset --hard bu dosyayi da geri alir. Icerigi bellekte tutup reset SONRASI
+        # geri yaziyoruz ki write_block()/_bump_build() guncellemeleri kaybolmasin.
+        with open(DASHBOARD_HTML, "rb") as f:
+            _dashboard_snapshot = f.read()
         subprocess.run(GIT + ["fetch", "origin", "main"], cwd=REPO_DIR, capture_output=True)
         subprocess.run(GIT + ["reset", "--hard", "origin/main"], cwd=REPO_DIR, capture_output=True)
+        with open(DASHBOARD_HTML, "wb") as f:
+            f.write(_dashboard_snapshot)
         shutil.copy(DASHBOARD_HTML, INDEX_HTML)
         add = ["index.html"]
         if write_data_js:
