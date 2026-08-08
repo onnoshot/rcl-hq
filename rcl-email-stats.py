@@ -54,12 +54,23 @@ def build():
         })
         t_sent += sent; t_deliv += deliv; t_open += opens; t_click += clicks
     rows.sort(key=lambda r: r["date"], reverse=True)
+    # Sablon karti "Onizle" butonu icin: her tema anahtarinin EN YENI onizlemesi
+    previews = {}
+    for c in sorted(camps, key=lambda c: c.get("created", ""), reverse=True):
+        th = c.get("theme", "")
+        if not th or th in previews:
+            continue
+        try:
+            previews[th] = open(os.path.join(ROOT, "outputs", c["id"] + "_preview.html"), encoding="utf-8").read()
+        except Exception:
+            pass
     return {
         "updated_at": datetime.now().strftime("%Y-%m-%dT%H:%M:%S"),
         "totals": {"campaigns": len(camps), "sent": t_sent, "delivered": t_deliv,
                    "open_rate": pct(t_open, t_deliv), "click_rate": pct(t_click, t_deliv),
                    "subscribers_target": 0},
         "campaigns": rows,
+        "previews": previews,
     }
 
 def inject(data):
