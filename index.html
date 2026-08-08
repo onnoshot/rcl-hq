@@ -3898,7 +3898,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 1477, "at": "2026-08-08T03:00:37" };
+const BUILD = { "no": 1478, "at": "2026-08-08T03:02:28" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {};  /* Hermes kaldirildi - global referans hatasi olmasin diye bos stub */
@@ -5131,7 +5131,7 @@ function emSegLbl(k){const s=EM_SEGS.find(x=>x.key===k);return s?s.name:k;}
 function renderEmailManager(){
   const E=(typeof EMAIL!=='undefined')?EMAIL:{}; const camps=E.campaigns||[]; const esc=hxEsc;
   const tplIndex={};
-  EM_THEMES.forEach(t=>{let best=-1;camps.forEach((c,i)=>{if((c.theme||'')===t.key||(c.id||'').endsWith('-'+t.key))best=i;});tplIndex[t.key]=best;});
+  EM_THEMES.forEach(t=>{let best=-1;camps.forEach((c,i)=>{if(best===-1&&((c.theme||'')===t.key||(c.id||'').endsWith('-'+t.key)))best=i;});tplIndex[t.key]=best;});
   const pvs=(E.previews)||{};
   const grid=document.getElementById('em-templates');
   const eyeIc='<svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>';
