@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-13T22:27:59",
+  "updated_at": "2026-08-13T23:28:05",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -64,7 +64,7 @@ const YOUTUBE = {
       "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
       "date": "10 Ağu 2026",
       "views": 1221,
-      "likes": 6,
+      "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/v9EaRVvnyEc"
     },
