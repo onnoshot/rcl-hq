@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-13T23:28:05",
+  "updated_at": "2026-08-14T00:12:15",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 215961,
-      "watch_hours": 622.4,
-      "subs_gained": 849,
-      "subs_lost": 305,
+      "views": 212406,
+      "watch_hours": 613.5,
+      "subs_gained": 833,
+      "subs_lost": 295,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3945.2,
-    "watch_hours_year_long": 2135.1,
-    "watch_hours_year_shorts": 1809.9,
+    "watch_hours_year": 3943.0,
+    "watch_hours_year_long": 2135.0,
+    "watch_hours_year_shorts": 1807.8,
     "monthly": [
       {
         "label": "Mar 26",
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14254,
+      "views": 14252,
       "likes": 263,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1568,
+      "views": 1569,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 503,
+      "views": 504,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1437,
+      "views": 1438,
       "likes": 16,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
