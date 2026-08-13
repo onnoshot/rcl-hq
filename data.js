@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-08-08T02:25:26",
+  "updated_at": "2026-08-13T04:09:45",
   "period_30d": {
-    "revenue": 62590,
+    "revenue": 61680,
     "orders": 7,
-    "aov": 8941
+    "aov": 8811
   },
   "period_90d": {
-    "revenue": 265429,
+    "revenue": 258079,
     "orders": 23,
-    "aov": 11540
+    "aov": 11221
   },
   "period_year": {
-    "revenue": 1006705,
+    "revenue": 1011855,
     "orders": 83,
-    "aov": 12129
+    "aov": 12191
   },
-  "customers_total": 1014,
+  "customers_total": 1020,
   "monthly_labels": [
     "Eyl 25",
     "Eki 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     139290,
     79639,
     76200,
-    22010
+    30150
   ],
   "monthly_orders": [
     9,
@@ -213,17 +213,17 @@ const SHOPIFY = {
     12,
     6,
     6,
-    3
+    4
   ],
   "channels": [
     {
       "name": "Direkt",
       "icon": "🔗",
       "color": "#F5A623",
-      "orders": 32,
-      "rev": 424690,
-      "order_pct": 37.2,
-      "rev_pct": 41.7
+      "orders": 33,
+      "rev": 432830,
+      "order_pct": 37.9,
+      "rev_pct": 42.2
     },
     {
       "name": "Google",
@@ -231,8 +231,8 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 27,
       "rev": 290115,
-      "order_pct": 31.4,
-      "rev_pct": 28.5
+      "order_pct": 31.0,
+      "rev_pct": 28.3
     },
     {
       "name": "Instagram",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 23,
       "rev": 254769,
-      "order_pct": 26.7,
-      "rev_pct": 25.0
+      "order_pct": 26.4,
+      "rev_pct": 24.8
     },
     {
       "name": "YouTube",
@@ -249,8 +249,8 @@ const SHOPIFY = {
       "color": "#FF453A",
       "orders": 3,
       "rev": 39460,
-      "order_pct": 3.5,
-      "rev_pct": 3.9
+      "order_pct": 3.4,
+      "rev_pct": 3.8
     },
     {
       "name": "AI / Arama",
@@ -258,11 +258,15 @@ const SHOPIFY = {
       "color": "#5AC8FA",
       "orders": 1,
       "rev": 9240,
-      "order_pct": 1.2,
+      "order_pct": 1.1,
       "rev_pct": 0.9
     }
   ],
   "recent_orders": [
+    {
+      "date": "10 Ağu 2026",
+      "amount": 8140
+    },
     {
       "date": "6 Ağu 2026",
       "amount": 1380
@@ -298,10 +302,6 @@ const SHOPIFY = {
     {
       "date": "3 Tem 2026",
       "amount": 17640
-    },
-    {
-      "date": "19 Haz 2026",
-      "amount": 12490
     }
   ],
   "cameras": [
@@ -314,6 +314,11 @@ const SHOPIFY = {
       "name": "Samsung WB350F",
       "price": 19490,
       "cost": 6000
+    },
+    {
+      "name": "Canon PowerShot G7",
+      "price": 18490,
+      "cost": 13500
     },
     {
       "name": "Olympus PEN E-PL1",
@@ -429,11 +434,6 @@ const SHOPIFY = {
       "name": "Traveler DC-830",
       "price": 8490,
       "cost": 3100
-    },
-    {
-      "name": "Sony Cybershot DSC-S85",
-      "price": 7990,
-      "cost": 3932
     }
   ],
   "accessories": [
