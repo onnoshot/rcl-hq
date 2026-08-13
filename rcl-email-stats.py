@@ -44,7 +44,10 @@ def build_campaigns():
     for c in camps:
         s = brevo_stats(c["id"]) if (BREVO_KEY and c.get("sent")) else {}
         deliv = s.get("delivered", 0); opens = s.get("uniqueOpens", s.get("uniqueViews", 0)); clicks = s.get("uniqueClicks", 0)
-        sent = c.get("sent", 0) or s.get("requests", 0)
+        # Brevo tag'i kampanyalar arasi yeniden kullanilabiliyor (haftalik tekrar) -> Brevo'nun
+        # kendi 'requests' sayisi lokal 'sent' alanindan daha guvenilir (ayni tag/pencereden gelir,
+        # delivered/opens/clicks ile tutarli kalir). Brevo verisi yoksa lokal degere dus.
+        sent = s.get("requests", 0) or c.get("sent", 0)
         prev = ""
         try:
             prev = open(os.path.join(ROOT, "outputs", c["id"] + "_preview.html"), encoding="utf-8").read()
