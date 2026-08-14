@@ -156,21 +156,21 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-08-14T15:10:40",
+  "updated_at": "2026-08-14T16:10:47",
   "period_30d": {
-    "revenue": 45790,
-    "orders": 5,
-    "aov": 9158
+    "revenue": 55430,
+    "orders": 6,
+    "aov": 9238
   },
   "period_90d": {
-    "revenue": 239439,
-    "orders": 22,
-    "aov": 10884
+    "revenue": 249079,
+    "orders": 23,
+    "aov": 10830
   },
   "period_year": {
-    "revenue": 1011855,
-    "orders": 83,
-    "aov": 12191
+    "revenue": 1021495,
+    "orders": 84,
+    "aov": 12161
   },
   "customers_total": 1022,
   "monthly_labels": [
@@ -199,7 +199,7 @@ const SHOPIFY = {
     139290,
     79639,
     76200,
-    30150
+    39790
   ],
   "monthly_orders": [
     9,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     12,
     6,
     6,
-    4
+    5
   ],
   "channels": [
     {
@@ -222,8 +222,8 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 33,
       "rev": 432830,
-      "order_pct": 37.9,
-      "rev_pct": 42.2
+      "order_pct": 37.5,
+      "rev_pct": 41.8
     },
     {
       "name": "Google",
@@ -231,8 +231,8 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 27,
       "rev": 290115,
-      "order_pct": 31.0,
-      "rev_pct": 28.3
+      "order_pct": 30.7,
+      "rev_pct": 28.0
     },
     {
       "name": "Instagram",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 23,
       "rev": 254769,
-      "order_pct": 26.4,
-      "rev_pct": 24.8
+      "order_pct": 26.1,
+      "rev_pct": 24.6
     },
     {
       "name": "YouTube",
@@ -256,13 +256,17 @@ const SHOPIFY = {
       "name": "AI / Arama",
       "icon": "🤖",
       "color": "#5AC8FA",
-      "orders": 1,
-      "rev": 9240,
-      "order_pct": 1.1,
-      "rev_pct": 0.9
+      "orders": 2,
+      "rev": 18880,
+      "order_pct": 2.3,
+      "rev_pct": 1.8
     }
   ],
   "recent_orders": [
+    {
+      "date": "14 Ağu 2026",
+      "amount": 9640
+    },
     {
       "date": "10 Ağu 2026",
       "amount": 8140
@@ -298,10 +302,6 @@ const SHOPIFY = {
     {
       "date": "5 Tem 2026",
       "amount": 17980
-    },
-    {
-      "date": "3 Tem 2026",
-      "amount": 17640
     }
   ],
   "cameras": [
@@ -411,11 +411,6 @@ const SHOPIFY = {
       "cost": 2200
     },
     {
-      "name": "Olympus SP-320",
-      "price": 9490,
-      "cost": 5500
-    },
-    {
       "name": "Samsung ST10",
       "price": 9490,
       "cost": 4500
@@ -463,7 +458,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 99
+  "out_of_stock": 100
 };
 /* ─── SHOPIFY DATA END ─── */
 
