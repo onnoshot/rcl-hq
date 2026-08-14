@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-14T14:10:24",
+  "updated_at": "2026-08-14T15:10:30",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -16,9 +16,9 @@ const YOUTUBE = {
       "subs_lost": 295,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3943.0,
+    "watch_hours_year": 3942.9,
     "watch_hours_year_long": 2135.0,
-    "watch_hours_year_shorts": 1807.8,
+    "watch_hours_year_shorts": 1807.7,
     "monthly": [
       {
         "label": "Mar 26",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 389,
+      "views": 390,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14257,
+      "views": 14258,
       "likes": 263,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2696,
+      "views": 2697,
       "likes": 16,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
