@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-14T19:10:52",
+  "updated_at": "2026-08-14T23:21:40",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 212406,
-      "watch_hours": 613.5,
-      "subs_gained": 833,
-      "subs_lost": 295,
+      "views": 215207,
+      "watch_hours": 619.0,
+      "subs_gained": 835,
+      "subs_lost": 297,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3942.9,
-    "watch_hours_year_long": 2135.0,
-    "watch_hours_year_shorts": 1807.7,
+    "watch_hours_year": 3948.4,
+    "watch_hours_year_long": 2136.2,
+    "watch_hours_year_shorts": 1812.0,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 69474,
-        "watch_min": 7467,
-        "subs_gained": 144
+        "views": 72275,
+        "watch_min": 7798,
+        "subs_gained": 146
       }
     ]
   },
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 508,
+      "views": 511,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 49564,
+      "views": 49567,
       "likes": 171,
       "comments": 1,
       "url": "https://youtu.be/8oUm3q_y6rQ"
