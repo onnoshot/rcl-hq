@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-15T20:53:50",
+  "updated_at": "2026-08-15T23:59:05",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 209027,
-      "watch_hours": 605.2,
-      "subs_gained": 797,
-      "subs_lost": 288,
+      "views": 210772,
+      "watch_hours": 609.2,
+      "subs_gained": 799,
+      "subs_lost": 289,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3947.9,
-    "watch_hours_year_long": 2136.2,
-    "watch_hours_year_shorts": 1811.5,
+    "watch_hours_year": 3951.9,
+    "watch_hours_year_long": 2137.5,
+    "watch_hours_year_shorts": 1814.2,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 72275,
-        "watch_min": 7798,
-        "subs_gained": 146
+        "views": 74020,
+        "watch_min": 8038,
+        "subs_gained": 148
       }
     ]
   },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 401,
+      "views": 402,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -99,8 +99,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14275,
-      "likes": 264,
+      "views": 14279,
+      "likes": 265,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 514,
+      "views": 513,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
