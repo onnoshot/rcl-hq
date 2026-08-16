@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-15T23:59:05",
+  "updated_at": "2026-08-16T05:53:17",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 210772,
-      "watch_hours": 609.2,
-      "subs_gained": 799,
-      "subs_lost": 289,
+      "views": 204710,
+      "watch_hours": 593.0,
+      "subs_gained": 754,
+      "subs_lost": 270,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3951.9,
+    "watch_hours_year": 3951.7,
     "watch_hours_year_long": 2137.5,
-    "watch_hours_year_shorts": 1814.2,
+    "watch_hours_year_shorts": 1814.0,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,18 +52,36 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 74020,
-        "watch_min": 8038,
+        "views": 73942,
+        "watch_min": 8032,
         "subs_gained": 148
       }
     ]
   },
   "videos": [
     {
+      "id": "pZJB6mBWYRg",
+      "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
+      "date": "16 Tem 2026",
+      "views": 2709,
+      "likes": 16,
+      "comments": 1,
+      "url": "https://youtu.be/pZJB6mBWYRg"
+    },
+    {
+      "id": "LLXSMuhZAko",
+      "title": "Panasonic Lumix TZ91: Cebe Sığan 30x Zoom Leica Lensli Dijit",
+      "date": "28 Haz 2026",
+      "views": 4609,
+      "likes": 71,
+      "comments": 0,
+      "url": "https://youtu.be/LLXSMuhZAko"
+    },
+    {
       "id": "v9EaRVvnyEc",
       "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
       "date": "10 Ağu 2026",
-      "views": 1252,
+      "views": 1255,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/v9EaRVvnyEc"
@@ -72,7 +90,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 402,
+      "views": 406,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -81,7 +99,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17206,
+      "views": 17211,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -90,7 +108,7 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 2152,
+      "views": 2154,
       "likes": 35,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
@@ -99,25 +117,16 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14279,
+      "views": 14281,
       "likes": 265,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
     {
-      "id": "pZJB6mBWYRg",
-      "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
-      "date": "16 Tem 2026",
-      "views": 2707,
-      "likes": 16,
-      "comments": 1,
-      "url": "https://youtu.be/pZJB6mBWYRg"
-    },
-    {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1934,
+      "views": 1937,
       "likes": 15,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -135,19 +144,10 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 513,
+      "views": 515,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
-    },
-    {
-      "id": "fiWC7WOtCtk",
-      "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
-      "date": "11 Tem 2026",
-      "views": 1451,
-      "likes": 16,
-      "comments": 0,
-      "url": "https://youtu.be/fiWC7WOtCtk"
     }
   ],
   "sub_goal": 10000
@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-08-15T23:59:19",
+  "updated_at": "2026-08-16T05:53:32",
   "period_30d": {
     "revenue": 55430,
     "orders": 6,
