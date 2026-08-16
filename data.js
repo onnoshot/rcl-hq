@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-16T21:34:57",
+  "updated_at": "2026-08-16T22:35:02",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 204710,
-      "watch_hours": 593.0,
-      "subs_gained": 754,
-      "subs_lost": 270,
+      "views": 206697,
+      "watch_hours": 597.5,
+      "subs_gained": 760,
+      "subs_lost": 271,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3951.7,
-    "watch_hours_year_long": 2137.5,
-    "watch_hours_year_shorts": 1814.0,
+    "watch_hours_year": 3956.2,
+    "watch_hours_year_long": 2138.9,
+    "watch_hours_year_shorts": 1817.1,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 73942,
-        "watch_min": 8032,
-        "subs_gained": 148
+        "views": 75929,
+        "watch_min": 8304,
+        "subs_gained": 154
       }
     ]
   },
@@ -132,22 +132,22 @@ const YOUTUBE = {
       "url": "https://youtu.be/PKyCBGst1r8"
     },
     {
+      "id": "LjyZRaLNGcc",
+      "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
+      "date": "12 Tem 2026",
+      "views": 521,
+      "likes": 10,
+      "comments": 0,
+      "url": "https://youtu.be/LjyZRaLNGcc"
+    },
+    {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1464,
+      "views": 1463,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
-    },
-    {
-      "id": "ZRzvt8SJEG8",
-      "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
-      "date": "10 Tem 2026",
-      "views": 548,
-      "likes": 7,
-      "comments": 0,
-      "url": "https://youtu.be/ZRzvt8SJEG8"
     }
   ],
   "sub_goal": 10000
