@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-17T21:46:43",
+  "updated_at": "2026-08-17T23:17:07",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1497452,
+    "total_views": 1498178,
     "video_count": 399
   },
   "analytics": {
     "last_30d": {
-      "views": 200524,
-      "watch_hours": 579.5,
+      "views": 202344,
+      "watch_hours": 583.5,
       "subs_gained": 714,
-      "subs_lost": 260,
+      "subs_lost": 261,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3955.8,
-    "watch_hours_year_long": 2138.9,
-    "watch_hours_year_shorts": 1816.7,
+    "watch_hours_year": 3959.7,
+    "watch_hours_year_long": 2140.2,
+    "watch_hours_year_shorts": 1819.3,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,8 +52,8 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 75813,
-        "watch_min": 8296,
+        "views": 77633,
+        "watch_min": 8532,
         "subs_gained": 154
       }
     ]
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "v9EaRVvnyEc",
       "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
       "date": "10 Ağu 2026",
-      "views": 1271,
+      "views": 1276,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/v9EaRVvnyEc"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17222,
+      "views": 17221,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1948,
+      "views": 1949,
       "likes": 15,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1469,
+      "views": 1470,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
