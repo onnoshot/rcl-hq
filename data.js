@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-17T09:32:25",
+  "updated_at": "2026-08-17T14:46:06",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 200654,
-      "watch_hours": 579.7,
+      "views": 200524,
+      "watch_hours": 579.5,
       "subs_gained": 714,
       "subs_lost": 260,
       "avg_view_sec": 27
     },
-    "watch_hours_year": 3956.1,
+    "watch_hours_year": 3955.8,
     "watch_hours_year_long": 2138.9,
-    "watch_hours_year_shorts": 1816.9,
+    "watch_hours_year_shorts": 1816.7,
     "monthly": [
       {
         "label": "Mar 26",
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17220,
+      "views": 17221,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 2163,
+      "views": 2164,
       "likes": 35,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14292,
+      "views": 14293,
       "likes": 266,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2713,
+      "views": 2715,
       "likes": 16,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1947,
+      "views": 1948,
       "likes": 15,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1467,
+      "views": 1469,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
