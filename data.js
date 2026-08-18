@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-18T21:15:17",
+  "updated_at": "2026-08-18T22:15:23",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 197497,
-      "watch_hours": 568.9,
-      "subs_gained": 672,
-      "subs_lost": 253,
-      "avg_view_sec": 27
+      "views": 199588,
+      "watch_hours": 573.3,
+      "subs_gained": 674,
+      "subs_lost": 254,
+      "avg_view_sec": 26
     },
-    "watch_hours_year": 3959.4,
-    "watch_hours_year_long": 2140.2,
-    "watch_hours_year_shorts": 1819.0,
+    "watch_hours_year": 3963.9,
+    "watch_hours_year_long": 2141.5,
+    "watch_hours_year_shorts": 1822.1,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 77560,
-        "watch_min": 8527,
-        "subs_gained": 154
+        "views": 79651,
+        "watch_min": 8795,
+        "subs_gained": 156
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "v9EaRVvnyEc",
       "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
       "date": "10 Ağu 2026",
-      "views": 1284,
+      "views": 1285,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/v9EaRVvnyEc"
