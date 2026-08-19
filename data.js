@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-19T04:30:00",
+  "updated_at": "2026-08-19T12:23:37",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1500128,
+    "total_views": 1500932,
     "video_count": 399
   },
   "analytics": {
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14308,
+      "views": 14311,
       "likes": 268,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1957,
+      "views": 1958,
       "likes": 15,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1595,
+      "views": 1596,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1477,
+      "views": 1478,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
