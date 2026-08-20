@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-20T21:38:43",
+  "updated_at": "2026-08-20T22:38:49",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 190918,
-      "watch_hours": 540.1,
-      "subs_gained": 587,
-      "subs_lost": 226,
+      "views": 192787,
+      "watch_hours": 544.5,
+      "subs_gained": 590,
+      "subs_lost": 228,
       "avg_view_sec": 26
     },
-    "watch_hours_year": 3967.7,
-    "watch_hours_year_long": 2142.9,
-    "watch_hours_year_shorts": 1824.5,
+    "watch_hours_year": 3972.1,
+    "watch_hours_year_long": 2144.6,
+    "watch_hours_year_shorts": 1827.3,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 81630,
-        "watch_min": 9048,
-        "subs_gained": 160
+        "views": 83499,
+        "watch_min": 9313,
+        "subs_gained": 163
       }
     ]
   },
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14324,
+      "views": 14326,
       "likes": 268,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2725,
+      "views": 2726,
       "likes": 16,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 529,
+      "views": 530,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
