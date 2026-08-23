@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-21T13:56:10",
+  "updated_at": "2026-08-23T03:25:36",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
-    "subscribers": 4750,
-    "total_views": 1505140,
+    "subscribers": 4740,
+    "total_views": 1508042,
     "video_count": 399
   },
   "analytics": {
     "last_30d": {
-      "views": 187118,
-      "watch_hours": 524.2,
-      "subs_gained": 550,
-      "subs_lost": 214,
-      "avg_view_sec": 26
+      "views": 177284,
+      "watch_hours": 480.1,
+      "subs_gained": 485,
+      "subs_lost": 203,
+      "avg_view_sec": 24
     },
-    "watch_hours_year": 3971.8,
-    "watch_hours_year_long": 2144.6,
-    "watch_hours_year_shorts": 1827.1,
+    "watch_hours_year": 3975.6,
+    "watch_hours_year_long": 2147.3,
+    "watch_hours_year_shorts": 1828.0,
     "monthly": [
       {
         "label": "Mar 26",
@@ -46,15 +46,15 @@ const YOUTUBE = {
       },
       {
         "label": "Tem 26",
-        "views": 188006,
-        "watch_min": 37197,
+        "views": 187992,
+        "watch_min": 37196,
         "subs_gained": 956
       },
       {
         "label": "Ağu 26",
-        "views": 83494,
-        "watch_min": 9313,
-        "subs_gained": 163
+        "views": 87576,
+        "watch_min": 9849,
+        "subs_gained": 171
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "v9EaRVvnyEc",
       "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
       "date": "10 Ağu 2026",
-      "views": 1293,
+      "views": 1302,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/v9EaRVvnyEc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 442,
+      "views": 447,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17238,
+      "views": 17251,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 2181,
+      "views": 2188,
       "likes": 35,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
@@ -99,8 +99,8 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14329,
-      "likes": 268,
+      "views": 14339,
+      "likes": 269,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
     },
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2727,
+      "views": 2733,
       "likes": 16,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -117,8 +117,8 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1972,
-      "likes": 15,
+      "views": 1980,
+      "likes": 16,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
     },
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1603,
+      "views": 1607,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 531,
+      "views": 533,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1488,
+      "views": 1493,
       "likes": 18,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
