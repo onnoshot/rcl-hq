@@ -3,13 +3,14 @@
 rcl-seo-blog-agent.py — Retrocameraland Günlük SEO Blog Ajanı v3
 Görev: Web + X/Twitter trendlerini araştır, retrocameraland odaklı
        min 90 SEO puanlı Türkçe blog yaz, YouTube video göm, yayınla.
-Yazım: Gemini 2.5 Flash (birincil) → Groq fallback
+Yazım: Claude Code CLI (birincil, abonelik) → Gemini → Groq → Claude API (son çare)
 Zamanlama: 00:00, 12:00, 15:00, 19:00, 23:00
 """
 
-import sys, os, json, time, re
+import sys, os, json, time, re, subprocess, shutil
 from datetime import datetime
 
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, '/Users/onnoshot/Downloads/Agentlar')
 from retrocameraland_api import shopify, log, BLOG_ID, SOCIAL_BLOCK, CTA_BLOCK
 
@@ -635,7 +636,46 @@ def score_seo(title, meta_desc, body_html, keyword):
     return score, details
 
 
-# ── Claude API (birincil yazar) ────────────────────────────────────────────────
+# ── Claude Code CLI (birincil yazar — abonelik, API kredisi harcamaz) ──────────
+CLAUDE_CLI = shutil.which("claude") or os.path.expanduser("~/.local/bin/claude")
+_CLAUDE_CODE_DEAD_THIS_RUN = False  # CLI bulunamaz/patlarsa bu süreç boyunca bir daha denenmez
+
+def claude_code_write(system_prompt, user_prompt, max_tokens=4000):
+    """Blog yazımı — Claude Code CLI headless (-p) modu. Kullanıcının Claude Code
+    aboneliğini kullanır, ANTHROPIC_API_KEY'in pay-per-token bakiyesini tüketmez.
+    launchd cron'dan bağımsız bir süreç olarak çalışır; CLAUDECODE ortam değişkenini
+    temizlemezsek CLI "iç içe oturum" sanıp reddediyor, bu yüzden siliniyor."""
+    global _CLAUDE_CODE_DEAD_THIS_RUN
+    if _CLAUDE_CODE_DEAD_THIS_RUN:
+        raise RuntimeError("Claude Code CLI bu koşuda daha önce başarısız oldu")
+    env = os.environ.copy()
+    for k in ("CLAUDECODE", "CLAUDE_CODE_EXECPATH", "CLAUDE_CODE_SSE_PORT", "CLAUDE_CODE_ENTRYPOINT"):
+        env.pop(k, None)
+    try:
+        result = subprocess.run(
+            [CLAUDE_CLI, "-p", user_prompt,
+             "--system-prompt", system_prompt,
+             "--model", "sonnet",
+             "--output-format", "text",
+             "--tools", "",
+             "--no-session-persistence"],
+            capture_output=True, text=True, timeout=240, env=env, cwd=SCRIPT_DIR,
+        )
+    except subprocess.TimeoutExpired:
+        raise RuntimeError("Claude Code CLI zaman aşımı")
+    except FileNotFoundError:
+        _CLAUDE_CODE_DEAD_THIS_RUN = True
+        raise RuntimeError("Claude Code CLI bulunamadı")
+    if result.returncode != 0:
+        _CLAUDE_CODE_DEAD_THIS_RUN = True
+        raise RuntimeError(f"Claude Code CLI hata: {result.stderr.strip()[:200]}")
+    text = result.stdout.strip()
+    if not text:
+        raise RuntimeError("Claude Code CLI boş yanıt döndürdü")
+    return text
+
+
+# ── Claude API (son çare — ücretli, sadece hepsi başarısız olursa) ─────────────
 CLAUDE_MODEL = "claude-sonnet-5"
 
 def _claude_text(resp):
@@ -805,10 +845,18 @@ _GROQ_DEAD_THIS_RUN = False  # bir bölümde 3 deneme de başarısız olursa, bu
                              # aksine kalıcı günlük kota değil, geçici yoğunluk)
 
 def _write(system_prompt, user_prompt, max_tokens=4000):
-    """Gemini birincil (ücretsiz ama günde 20 istekle sınırlı) → Groq (ücretsiz ama
-    paylaşımlı/sıkışabiliyor) → Claude (ücretli, güvenilir — SON çare, sadece ikisi de
-    başarısız olursa). 2026-07-29: Gemini+Groq'un ikisi de aynı anda tıkanınca eklendi."""
+    """Claude Code CLI birincil (abonelik, ücretsiz+kaliteli) → Gemini (ücretsiz ama
+    günde 20 istekle sınırlı) → Groq (ücretsiz ama paylaşımlı/sıkışabiliyor) → Claude API
+    (ücretli, güvenilir — SON çare, sadece üçü de başarısız olursa).
+    2026-08-23: Claude Code CLI eklendi (kullanıcı isteği — abonelik zaten var, API
+    bakiyesi/Gemini kotası bitince bile yazabiliyor)."""
     global _GROQ_DEAD_THIS_RUN
+    if not _CLAUDE_CODE_DEAD_THIS_RUN:
+        try:
+            return _clean(claude_code_write(system_prompt, user_prompt, max_tokens))
+        except Exception as e:
+            log(f"  ⚠ Claude Code CLI başarısız, Gemini'ye geçiliyor: {str(e)[:80]}")
+
     if GEMINI_KEY:
         try:
             return _clean(gemini_write(system_prompt, user_prompt, max_tokens))
