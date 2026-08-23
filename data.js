@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-08-23T11:41:50",
+  "updated_at": "2026-08-23T19:31:13",
   "period_30d": {
     "revenue": 68920,
     "orders": 7,
@@ -331,14 +331,14 @@ const SHOPIFY = {
       "cost": 7000
     },
     {
+      "name": "Samsung NX2000",
+      "price": 16490,
+      "cost": 8000
+    },
+    {
       "name": "Fujifilm FinePix Z700 EXR",
       "price": 15490,
       "cost": 5700
-    },
-    {
-      "name": "Samsung NX2000",
-      "price": 15490,
-      "cost": 8000
     },
     {
       "name": "Fujifilm FinePix Z700EXR",
