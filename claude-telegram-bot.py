@@ -12,7 +12,7 @@ from groq import Groq
 TG_TOKEN   = "8696617266:AAG34_ybLGuchVT2zrni8lUoJBbyPfD6DvQ"
 TG_CHAT_ID = 7904534693
 GROQ_KEY   = "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"
-MODEL      = "llama-3.3-70b-versatile"
+MODEL      = "openai/gpt-oss-120b"
 HISTORY_FILE = os.path.expanduser("~/.config/claude-bot/history.json")
 
 logging.basicConfig(

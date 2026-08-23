@@ -725,8 +725,8 @@ def gemini_write(system_prompt, user_prompt, max_tokens=8000):
 
 
 # ── Groq API (fallback + konu seçimi) ─────────────────────────────────────────
-GROQ_SMART  = "llama-3.3-70b-versatile"
-GROQ_WRITER = "llama-3.1-8b-instant"
+GROQ_SMART  = "openai/gpt-oss-120b"
+GROQ_WRITER = "openai/gpt-oss-20b"
 
 def _groq_call(model, system_prompt, user_prompt, max_tokens=4000, temperature=0.75):
     from groq import Groq
