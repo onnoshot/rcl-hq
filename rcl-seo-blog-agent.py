@@ -660,9 +660,14 @@ def claude_code_write(system_prompt, user_prompt, max_tokens=4000):
              "--tools", "",
              "--strict-mcp-config",
              "--no-session-persistence"],
-            capture_output=True, text=True, timeout=240, env=env, cwd=SCRIPT_DIR,
+            capture_output=True, text=True, timeout=45, env=env, cwd=SCRIPT_DIR,
         )
     except subprocess.TimeoutExpired:
+        # 2026-08-23 canlı koşuda tespit edildi: launchd'nin minimal ortamında (sadece
+        # PATH+HOME) claude -p askıda kalıp defalarca zaman aşımına uğradı — dead flag
+        # işaretlenmediği için HER bölüm ayrı ayrı tam süreyi (eskiden 240s) kaybediyordu.
+        # Artık ilk zaman aşımından sonra bu koşuda bir daha denenmiyor; süre de kısaltıldı.
+        _CLAUDE_CODE_DEAD_THIS_RUN = True
         raise RuntimeError("Claude Code CLI zaman aşımı")
     except FileNotFoundError:
         _CLAUDE_CODE_DEAD_THIS_RUN = True
