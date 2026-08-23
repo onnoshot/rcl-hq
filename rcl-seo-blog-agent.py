@@ -2631,8 +2631,28 @@ def save_report(results, failed, elapsed_s, batch_time, errors=None):
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
+def wait_for_network(max_wait=45, host="8.8.8.8", port=53):
+    """launchd zamanlanmış görevi Mac uykudan çıkarken tetikleyebiliyor — Wi-Fi/DNS henüz
+    oturmadan ilk API çağrıları 'nodename nor servname provided' hatasıyla (veya Claude
+    Code CLI gibi sabırlı istemcilerde sessiz askıda kalmayla) başarısız oluyordu (tüm
+    launchd loglarında 2026-06'dan beri tekrar eden desen — 2026-08-23'te teşhis edildi).
+    DNS/ağ çözülene kadar kısa aralıklarla dener; süre dolarsa yine de devam eder (asla
+    sonsuza kadar bloklamaz — gerçekten offline ise script kendi hata yönetimiyle ilerlesin)."""
+    import socket
+    t0 = time.time()
+    while time.time() - t0 < max_wait:
+        try:
+            socket.create_connection((host, port), timeout=3).close()
+            return True
+        except OSError:
+            time.sleep(2)
+    log(f"⚠ Ağ {max_wait}s içinde hazır olmadı, yine de devam ediliyor")
+    return False
+
+
 def run(batch_count=BATCH_COUNT):
     t0 = time.time()
+    wait_for_network()
     batch_time = datetime.now().strftime('%H:%M')
     log(f"\n{'═'*56}\nRCL SEO Blog Ajanı v2 ─ {batch_time} ─ {batch_count} blog\n{'═'*56}")
 
