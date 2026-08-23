@@ -658,6 +658,7 @@ def claude_code_write(system_prompt, user_prompt, max_tokens=4000):
              "--model", "sonnet",
              "--output-format", "text",
              "--tools", "",
+             "--strict-mcp-config",
              "--no-session-persistence"],
             capture_output=True, text=True, timeout=240, env=env, cwd=SCRIPT_DIR,
         )
