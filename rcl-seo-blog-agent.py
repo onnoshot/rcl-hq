@@ -1196,12 +1196,27 @@ def pick_topics(trends, published, count):
         for m in global_models[:40]
     ) if global_models else ""
 
+    content_types = next_content_types(count)
+    type_plan = "\n".join(
+        f"{i+1}. Konu — ZORUNLU TİP: {t} — {CONTENT_TYPE_INFO[t]}"
+        for i, t in enumerate(content_types)
+    )
+
     system = (
         "Sen retrocameraland.com için uzman bir Türk SEO stratejistisin. "
         "retrocameraland.com Türkiye'nin en büyük retro dijital kamera mağazası. "
-        f"Hedef kitle: {TARGET_AUDIENCE} Sadece retrocameraland ile DOĞRUDAN İLGİLİ konular seç."
+        f"Hedef kitle: {TARGET_AUDIENCE} Konular retrocameraland ile İLGİLİ olmalı, ama "
+        "'brand_comparison' ve 'general_photography' tiplerinde RCL'nin sattığı markalarla/"
+        "modellerle SINIRLI KALMA — dünya çapında bilinen dijital kamera markaları ve genel "
+        "fotoğrafçılık kavramları da kapsam dahilinde (AI aramalarında kapsamı genişletir), "
+        "yeter ki içerikte RCL'ye doğal bir köprü kurulabilsin."
     )
     user = f"""Bugünkü ({trends['date']}) verilere dayanarak {count} SEO blog konusu öner.
+
+## ZORUNLU İÇERİK TİPİ PLANI (her konu için sırayla, DEĞİŞTİRME — konu tipi çeşitliliği
+## AI-arama kapsamını genişletmek için yapısal olarak zorlanıyor)
+{type_plan}
+Her konu nesnesine ait olduğu tipi AYNEN şu alanla belirt: "content_type": "<tip>"
 
 ## Güncel Web Trendleri (retro kamera odaklı)
 {web_ctx}
@@ -1254,6 +1269,7 @@ Her konu için TAM JSON:
     "image_prompt": "English image prompt: retro Y2K camera specific scene",
     "angle": "Benzersiz açı (1 cümle Türkçe)",
     "search_intent": "bilgi|karşılaştırma|satın alma|rehber",
+    "content_type": "model_review|brand_comparison|buying_guide|general_photography — YUKARIDAKİ PLANDAKİ SIRAYLA AYNI",
     "yt_tags": ["ilgili", "etiketler"]
   }}
 ]
@@ -1261,7 +1277,11 @@ Her konu için TAM JSON:
 SADECE JSON döndür."""
 
     try:
-        raw = groq_write(system, user, max_tokens=2000, temperature=0.8)
+        # max_tokens 2000'den 6000'e çıkarıldı: gpt-oss modelleri görünmeyen "reasoning"
+        # tokenları harcıyor, bu prompt (trend+stok+global model+geçmiş listesi) uzun
+        # olunca reasoning tek başına 2000'i tüketip boş yanıt döndürüyordu (2026-08-23
+        # canlı testte tespit edildi — content_type eklenince prompt daha da uzadı).
+        raw = groq_write(system, user, max_tokens=6000, temperature=0.8)
         topics = _extract_json_array(raw)
         if topics:
             # Groq bazen istenen şemaya tam uymuyor (ör. birden fazla ayrı [...] bloğu +
@@ -1275,7 +1295,12 @@ SADECE JSON döndür."""
                 _fix_topic_lengths(t)
             fresh = dedupe_by_keyword([t for t in topics if is_fresh(t)], count)
             if fresh:
-                log(f"✓ Groq: {len(fresh)} konu")
+                # LLM content_type alanını atlarsa/geçersiz yazarsa plandaki tipe geri düş —
+                # generate_blog_html() bu alana bağımlı, boş bırakılamaz.
+                for i, t in enumerate(fresh):
+                    if t.get('content_type') not in CONTENT_TYPE_INFO:
+                        t['content_type'] = content_types[i % len(content_types)]
+                log(f"✓ Groq: {len(fresh)} konu ({', '.join(t['content_type'] for t in fresh)})")
                 return fresh
     except Exception as e:
         log(f"⚠ Konu seçimi hatası: {e}")
@@ -1352,6 +1377,7 @@ SADECE JSON döndür."""
     selected = dedupe_by_keyword(pool, count)
     for t in selected:
         _fix_topic_lengths(t)
+        t.setdefault('content_type', 'model_review')  # FALLBACK_POOL hep tek-model formatında yazılmış
     return selected
 
 def _fix_topic_lengths(t):
@@ -1487,6 +1513,60 @@ def _save_theme_count(n):
         json.dump({'count': n}, open(THEME_STATE_FILE, 'w', encoding='utf-8'))
     except Exception as e:
         log(f"⚠ tema state kaydı: {e}")
+
+
+# ── İçerik Tipi Rotasyonu (GEO/AEO — 2026-08-23) ────────────────────────────────
+# Tek bir "farklı açı" talimatına bırakmak yerine konu TİPİNİ yapısal olarak
+# döndürüyoruz: model_review/buying_guide zaten iyi çalışıyordu; brand_comparison
+# (marka-vs-marka — Türkçede sahibi yok, Haziran GEO planının en yüksek kaldıraçlı
+# maddesi) ve general_photography (RCL'nin sattığı modellerle sınırlı kalmadan
+# genel dijital kamera/fotoğrafçılık konuları — AI aramalarında kapsam genişletir)
+# yeni eklendi. generate_blog_html() bu tipe göre farklı bölüm şablonu kullanır.
+CONTENT_TYPE_ORDER = ["model_review", "brand_comparison", "buying_guide", "general_photography"]
+CONTENT_TYPE_STATE_FILE = '/Users/onnoshot/Downloads/Agentlar/content-type-state.json'
+
+CONTENT_TYPE_INFO = {
+    "model_review": "Tek bir gerçek model/ürün merkezli derinlemesine inceleme (mevcut varsayılan format).",
+    "brand_comparison": (
+        "En az 3 FARKLI markadan gerçek model karşılaştırması (ör. 'Canon mu Sony mu Nikon mu "
+        "hangisi daha iyi', 'Fujifilm vs Olympus vs Kodak'). Türkçe içerikte bu tür karar-odaklı "
+        "karşılaştırma sayfası neredeyse hiç yok — en yüksek AI-arama alıntılanma değeri burada."
+    ),
+    "buying_guide": (
+        "Bütçe veya kullanım senaryosu odaklı satın alma rehberi (ör. '3000 TL altında en iyi "
+        "kamera', 'başlangıç seviyesi için hangi kamera'). Tek modelle sınırlı değil, birden fazla seçenek sunar."
+    ),
+    "general_photography": (
+        "RCL'nin SATTIĞI belirli bir modelle sınırlı olmayan, genel dijital kamera/fotoğrafçılık "
+        "bilgi konusu (ör. 'CCD sensör nedir', 'Y2K fotoğrafçılık teknikleri', 'dijital kamera nasıl "
+        "seçilir', 'film simülasyonu vs CCD'). AI aramalarında kapsamı genişletir; RCL'nin ürünlerine "
+        "içerik içinde doğal bir köprü kurulur ama konunun kendisi tek bir SKU'ya bağlı değildir."
+    ),
+}
+
+
+def _load_content_type_count():
+    try:
+        if os.path.exists(CONTENT_TYPE_STATE_FILE):
+            return int(json.load(open(CONTENT_TYPE_STATE_FILE, encoding='utf-8')).get('count', 0))
+    except Exception:
+        pass
+    return 0
+
+
+def _save_content_type_count(n):
+    try:
+        json.dump({'count': n}, open(CONTENT_TYPE_STATE_FILE, 'w', encoding='utf-8'))
+    except Exception as e:
+        log(f"⚠ içerik tipi state kaydı: {e}")
+
+
+def next_content_types(n):
+    """Sıradaki n konu için CONTENT_TYPE_ORDER'dan döngüsel tip ata, sayacı ilerlet."""
+    base = _load_content_type_count()
+    types = [CONTENT_TYPE_ORDER[(base + i) % len(CONTENT_TYPE_ORDER)] for i in range(n)]
+    _save_content_type_count(base + n)
+    return types
 
 
 def _themed_fallback(theme_key, idx, used):
@@ -1638,13 +1718,285 @@ def generate_blog_html(topic, trends, attempt=0):
         f"{MODEL_SCOPE_RULES} "
         f"AI-ARAMA SAYFA YAPISI (GEO — Princeton/Georgia Tech/IIT Delhi araştırması): Her H2 "
         f"altındaki İLK cümle 'X, ...dır/...bir Y'dir' gibi TANIM-ÖNCE olsun (ChatGPT/Perplexity "
-        f"bu cümleleri doğrudan alıntılıyor, +2.1x alıntılanma). Mümkün olduğunda somut bir "
-        f"istatistik/rakam + kaynak belirt (ör. 'X modeli Y yılında çıktı' — +%40 alıntılanma). "
-        f"En az bir H2'yi soru formunda yaz (kullanıcıların gerçekte aradığı gibi)."
+        f"bu cümleleri doğrudan alıntılıyor, +2.1x alıntılanma). "
+        f"ZORUNLU — İSTATİSTİK/KAYNAK: Yazının TAMAMINDA EN AZ 2 farklı yerde somut bir "
+        f"rakam+bağlam belirt (ör. 'X modeli Y yılında çıktı', 'bu sensör boyutu Z yılından beri "
+        f"kullanılıyor', 'bu segment fiyatları son bir yılda arttı') — Princeton GEO çalışması bunun "
+        f"alıntılanmayı +%32 (istatistik) ve +%30 (kaynak/bağlam) artırdığını gösteriyor. Uydurma "
+        f"KESİN rakam değil — ya bildiğin gerçek bir bilgiyi ya da göreli/bağlamsal bir ifadeyi kullan. "
+        f"En az bir H2'yi soru formunda yaz (kullanıcıların gerçekte aradığı gibi). "
+        f"Yazıda EN AZ bir <table> olsun (spec veya karşılaştırma) — AI motorları tabloyu düz metne "
+        f"göre 2.5-4.2x daha çok alıntılıyor."
     )
 
-    # ── Bölüm 1: Giriş + Temel Bilgi ─────────────────────────────────────────
-    p1 = _write(sys_base, f"""Konu: {topic['title']}
+    content_type = topic.get('content_type', 'model_review')
+
+    # Karşılaştırma/model çeşitliliği için sadece sabit 5 TOP_PRODUCTS değil, o an
+    # stoktaki tüm modellerden geniş bir örneklem ver — aynı 2-3 modelin sürekli
+    # tekrar karşılaştırılmasını önler (RCL'nin Fujifilm T200 vs Sony DSC-T9 sorunu
+    # buradan da besleniyordu: LLM hep aynı dar listeden seçiyordu).
+    stock_models = [p["title"] for p in price_data["in_stock"]]
+    real_models = ", ".join(stock_models[:20]) if stock_models else ", ".join(p['model'] for p in TOP_PRODUCTS)
+
+    if content_type == "brand_comparison":
+        # ── Bölüm 1: Karşılaştırma Girişi + Genel Bakış ──────────────────────
+        p1 = _write(sys_base, f"""Konu: {topic['title']}
+Ana keyword: '{kw}' — bu kelime ilk cümlede MUTLAKA geçmeli.
+Açı: {angle}
+Trend bağlamı: {web_snip[:120]} | Twitter/X: {tw_snip[:80]}
+BU BİR MARKA-VS-MARKA KARŞILAŞTIRMA YAZISI. Şu GERÇEK modellerden FARKLI markalardan 3-4
+tanesini seç (uydurma model/marka YASAK): {real_models}
+
+ŞU BÖLÜMLERI YAZ — her biri EN AZ 350 kelime:
+
+<p>[İLK KELİME OLARAK '{kw}' ile başla veya ilk cümlede '{kw}' geçsin. Bu karar sorusunu
+neden soranların çoğaldığını güncel tarih ({date}) ile bağlamla. {month} ayında bu karşılaştırma
+neden önemli.]</p>
+
+<div class="rcl-quick-answer" style="background:#f7f4ef;border-left:3px solid #1a1a1a;padding:14px 18px;margin:18px 0">
+<strong>Hızlı Cevap:</strong> [55-75 kelimelik KENDİ BAŞINA ANLAMLI cevap: bu karşılaştırmanın
+net bir kısa özeti — hangi markanın hangi senaryoda öne çıktığı, tek cümlelik genel tavsiye.]</div>
+
+<h2>{kw}: Genel Bakış Tablosu</h2>
+<p>[Seçtiğin 3-4 gerçek modeli/markayı tanıt — her birinin öne çıkan tek özelliği]</p>
+<table style="width:100%;border-collapse:collapse;margin:16px 0">
+<thead><tr style="background:#f0ece8">
+<th style="padding:10px;border:1px solid #ddd">Marka / Model</th>
+<th style="padding:10px;border:1px solid #ddd">Öne Çıkan Özellik</th>
+<th style="padding:10px;border:1px solid #ddd">Fiyat Segmenti</th>
+<th style="padding:10px;border:1px solid #ddd">En Uygun Kullanıcı</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:8px;border:1px solid #ddd">[gerçek model 1]</td><td>[özellik]</td><td>[GERÇEK STOK FİYATLARI'ndan varsa TL, yoksa segment]</td><td>[kullanıcı tipi]</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">[gerçek model 2]</td><td>[özellik]</td><td>[fiyat/segment]</td><td>[kullanıcı tipi]</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">[gerçek model 3]</td><td>[özellik]</td><td>[fiyat/segment]</td><td>[kullanıcı tipi]</td></tr>
+</tbody></table>
+
+<h2>Hangi Marka Y2K Estetiği İçin Daha Güçlü?</h2>
+<p>[Marka bazlı renk bilimi/CCD karakteri farkını tartış — somut örnekle]</p>
+
+SADECE HTML. Her bölüm çok detaylı olsun.""")
+
+        # ── Bölüm 2: Kullanım Senaryosu Karşılaştırması ──────────────────────
+        p2 = _write(sys_base, f"""Konu: {topic['title']} — kullanım senaryosuna göre karşılaştırma
+
+ŞU BÖLÜMLERI YAZ — her biri EN AZ 350 kelime:
+
+<h2>Kullanım Senaryosuna Göre {kw}: Hangi Marka Ne İçin İdeal?</h2>
+<p>[Giriş]</p>
+<ul>
+<li><strong>Sosyal Medya İçeriği:</strong> [hangi marka/model neden öne çıkar — 2-3 cümle]</li>
+<li><strong>Gece / Düşük Işık Çekimi:</strong> [karşılaştırma — 2-3 cümle]</li>
+<li><strong>Seyahat / Taşınabilirlik:</strong> [karşılaştırma — 2-3 cümle]</li>
+<li><strong>Portre Çekimi:</strong> [karşılaştırma — 2-3 cümle]</li>
+</ul>
+
+<h2>Türkiye'de Fiyat Karşılaştırması</h2>
+<p>[Fiyat rakamı verirken sistem talimatındaki GERÇEK GÜNCEL STOK FİYATLARI listesini kullan —
+listede olan bir modelden bahsediyorsan GERÇEK fiyatını yaz, yoksa göreli ifade kullan, uydurma.]</p>
+<table style="width:100%;border-collapse:collapse;margin:16px 0">
+<thead><tr style="background:#f0ece8">
+<th style="padding:10px;border:1px solid #ddd;text-align:left">Model</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:left">Fiyat</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:left">Değer Notu</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:9px;border:1px solid #ddd">[gerçek model 1]</td><td style="padding:9px;border:1px solid #ddd">[gerçek TL veya segment]</td><td style="padding:9px;border:1px solid #ddd">[not]</td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd">[gerçek model 2]</td><td style="padding:9px;border:1px solid #ddd">[gerçek TL veya segment]</td><td style="padding:9px;border:1px solid #ddd">[not]</td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd">[gerçek model 3]</td><td style="padding:9px;border:1px solid #ddd">[gerçek TL veya segment]</td><td style="padding:9px;border:1px solid #ddd">[not]</td></tr>
+</tbody></table>
+<p>[3-4 cümle: hangisi fiyat/performans açısından daha mantıklı]</p>
+
+SADECE HTML. Her bölüm çok detaylı olsun.""")
+
+        # ── Bölüm 3: Teknik Karşılaştırma + Uzman Tavsiyesi ──────────────────
+        p3 = _write(sys_base, f"""Konu: {topic['title']} — teknik karşılaştırma ve uzman tavsiyesi
+
+ŞU BÖLÜMLERI YAZ — her biri EN AZ 350 kelime:
+
+<h2>Teknik Karşılaştırma: Sensör, Renk Bilimi, Batarya</h2>
+<p>[Aynı seçtiğin gerçek modelleri teknik açıdan karşılaştır — uydurma spesifik rakam YASAK,
+bilmiyorsan göreli ifade kullan]</p>
+<table style="width:100%;border-collapse:collapse;margin:16px 0">
+<thead><tr style="background:#f0ece8">
+<th style="padding:10px;border:1px solid #ddd">Kriter</th>
+<th style="padding:10px;border:1px solid #ddd">[Model 1]</th>
+<th style="padding:10px;border:1px solid #ddd">[Model 2]</th>
+<th style="padding:10px;border:1px solid #ddd">[Model 3]</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:8px;border:1px solid #ddd">Renk Karakteri</td><td>[açıklama]</td><td>[açıklama]</td><td>[açıklama]</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">Batarya</td><td>[açıklama]</td><td>[açıklama]</td><td>[açıklama]</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">Boyut/Taşınabilirlik</td><td>[açıklama]</td><td>[açıklama]</td><td>[açıklama]</td></tr>
+</tbody></table>
+
+<h2>Uzman Tavsiyesi: Hangisini Seçmelisiniz?</h2>
+<p>[Giriş]</p>
+<ul>
+<li><strong>Bütçe Önceliğiyse:</strong> [tavsiye — 2-3 cümle]</li>
+<li><strong>Y2K Estetiği Önceliğiyse:</strong> [tavsiye]</li>
+<li><strong>Dayanıklılık Önceliğiyse:</strong> [tavsiye]</li>
+<li><strong>İlk Retro Kameran Olacaksa:</strong> [tavsiye]</li>
+<li><strong>Koleksiyon Değeri Önceliğiyse:</strong> [tavsiye]</li>
+</ul>
+
+SADECE HTML. Her bölüm çok detaylı olsun.""")
+
+        # ── Bölüm 4: Persona + SSS ────────────────────────────────────────────
+        p4 = _write(sys_base, f"""Konu: {topic['title']} — kime göre hangi marka + SSS
+
+ŞU BÖLÜMLERI YAZ — her biri EN AZ 300 kelime:
+
+<h2>Kime Göre Hangi Marka? Persona Bazlı Öneri</h2>
+<p>[Giriş]</p>
+<ul>
+<li><strong>Sosyal Medya İçerik Üreticisi:</strong> [öneri + neden — 3 cümle]</li>
+<li><strong>Hobist Fotoğrafçı:</strong> [öneri + neden — 3 cümle]</li>
+<li><strong>Koleksiyoncu:</strong> [öneri + neden — 3 cümle]</li>
+<li><strong>İlk Kez Retro Kamera Alacak:</strong> [öneri + neden — 3 cümle]</li>
+</ul>
+
+<h2>Sık Sorulan Sorular</h2>
+
+<h3>{kw} — hangisi daha iyi?</h3>
+<p>[Net bir görüş belirt, tek cevap yerine senaryoya göre ayır — 4 cümle]</p>
+
+<h3>Hangisi bütçe dostu?</h3>
+<p>[GERÇEK STOK FİYATLARI listesinden karşılaştırmalı yanıt — 4 cümle]</p>
+
+<h3>Hangisi Y2K estetiği için daha uygun?</h3>
+<p>[CCD renk karakteri farkına dayalı yanıt — 3 cümle]</p>
+
+<h3>Hangisi yeni başlayanlar için ideal?</h3>
+<p>[Kullanım kolaylığı açısından yanıt — 3 cümle]</p>
+
+SADECE HTML. Her cevap kapsamlı olsun.""")
+
+    elif content_type == "general_photography":
+        # ── Bölüm 1: Kavram Tanımı + Neden Önemli ────────────────────────────
+        p1 = _write(sys_base, f"""Konu: {topic['title']}
+Ana keyword: '{kw}' — bu kelime ilk cümlede MUTLAKA geçmeli.
+Açı: {angle}
+Trend bağlamı: {web_snip[:120]} | Twitter/X: {tw_snip[:80]}
+BU YAZI TEK BİR MODELE BAĞLI DEĞİL — genel bir dijital kamera/fotoğrafçılık konusu.
+RCL'nin sattığı markalarla sınırlı kalma, ama içerikte doğal bir yerde retrocameraland.com'a köprü kur.
+
+ŞU BÖLÜMLERI YAZ — her biri EN AZ 350 kelime:
+
+<p>[İLK KELİME OLARAK '{kw}' ile başla veya ilk cümlede '{kw}' geçsin. Tanım-önce bir cümleyle
+konuyu açıkla. Güncel tarih ({date}) ile bağlamla. {month} ayında bu konu neden aranıyor.]</p>
+
+<div class="rcl-quick-answer" style="background:#f7f4ef;border-left:3px solid #1a1a1a;padding:14px 18px;margin:18px 0">
+<strong>Hızlı Cevap:</strong> [55-75 kelimelik KENDİ BAŞINA ANLAMLI, tanım-önce cevap:
+'{kw}, ... olan bir ...dır' formatında, somut 1 rakam/bağlam ekle.]</div>
+
+<h2>{kw}: Teknik Açıklama</h2>
+<p>[Konuyu derinlemesine açıkla — teknik ama anlaşılır dilde]</p>
+<ul>
+<li><strong>Nasıl Çalışır:</strong> [açıklama]</li>
+<li><strong>Neden Önemli:</strong> [açıklama]</li>
+<li><strong>Yaygın Yanlış Anlaşılmalar:</strong> [açıklama]</li>
+</ul>
+
+<h2>Bu Neden Y2K/Retro Estetiğinde Önemli?</h2>
+<p>[Konuyu retro/Y2K dijital kamera kültürüyle ilişkilendir — somut örnekle]</p>
+
+SADECE HTML. Her bölüm çok detaylı olsun.""")
+
+        # ── Bölüm 2: Pratik Uygulama + Türkiye'de Erişim ─────────────────────
+        p2 = _write(sys_base, f"""Konu: {topic['title']} — pratik uygulama ve Türkiye'de erişim
+
+ŞU BÖLÜMLERI YAZ — her biri EN AZ 350 kelime:
+
+<h2>{kw}: Pratikte Nasıl Uygulanır? Adım Adım</h2>
+<p>[Kapsamlı pratik rehber]</p>
+<ol>
+<li><strong>Adım 1:</strong> [açıklama]</li>
+<li><strong>Adım 2:</strong> [açıklama]</li>
+<li><strong>Adım 3:</strong> [açıklama]</li>
+<li><strong>Adım 4:</strong> [açıklama]</li>
+<li><strong>Adım 5:</strong> [açıklama]</li>
+</ol>
+
+<h2>Türkiye'de Bu Konuyla İlgili Kameralar</h2>
+<p>[Bu konuyla ilgili RCL'de stokta olan gerçek modelleri öner — şu GERÇEK modellerden seç,
+uydurma model İCAT ETME: {real_models}]</p>
+<table style="width:100%;border-collapse:collapse;margin:16px 0">
+<thead><tr style="background:#f0ece8">
+<th style="padding:10px;border:1px solid #ddd;text-align:left">Model</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:left">Bu Konuyla İlgisi</th>
+<th style="padding:10px;border:1px solid #ddd;text-align:left">Fiyat</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:9px;border:1px solid #ddd">[gerçek model 1]</td><td style="padding:9px;border:1px solid #ddd">[ilgi]</td><td style="padding:9px;border:1px solid #ddd">[GERÇEK STOK FİYATLARI'ndan varsa TL, yoksa segment]</td></tr>
+<tr><td style="padding:9px;border:1px solid #ddd">[gerçek model 2]</td><td style="padding:9px;border:1px solid #ddd">[ilgi]</td><td style="padding:9px;border:1px solid #ddd">[fiyat/segment]</td></tr>
+</tbody></table>
+
+SADECE HTML. Her bölüm çok detaylı olsun.""")
+
+        # ── Bölüm 3: Farklı Yaklaşımlar/Kategoriler + İpuçları ───────────────
+        p3 = _write(sys_base, f"""Konu: {topic['title']} — farklı yaklaşımlar ve uzman ipuçları
+
+ŞU BÖLÜMLERI YAZ — her biri EN AZ 350 kelime:
+
+<h2>Farklı Yaklaşımlar/Kategoriler Karşılaştırması</h2>
+<p>[Konuyla ilgili farklı yaklaşım/kategori/dönem karşılaştırması]</p>
+<table style="width:100%;border-collapse:collapse;margin:16px 0">
+<thead><tr style="background:#f0ece8">
+<th style="padding:10px;border:1px solid #ddd">Yaklaşım/Kategori</th>
+<th style="padding:10px;border:1px solid #ddd">Artıları</th>
+<th style="padding:10px;border:1px solid #ddd">Eksileri</th>
+</tr></thead>
+<tbody>
+<tr><td style="padding:8px;border:1px solid #ddd">[kategori 1]</td><td>[artılar]</td><td>[eksiler]</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">[kategori 2]</td><td>[artılar]</td><td>[eksiler]</td></tr>
+<tr><td style="padding:8px;border:1px solid #ddd">[kategori 3]</td><td>[artılar]</td><td>[eksiler]</td></tr>
+</tbody></table>
+
+<h2>Uzman İpuçları: {kw} ile Daha İyi Sonuçlar</h2>
+<p>[Giriş]</p>
+<ul>
+<li><strong>İpucu 1:</strong> [detaylı açıklama]</li>
+<li><strong>İpucu 2:</strong> [detaylı açıklama]</li>
+<li><strong>İpucu 3:</strong> [detaylı açıklama]</li>
+<li><strong>İpucu 4:</strong> [detaylı açıklama]</li>
+<li><strong>İpucu 5:</strong> [detaylı açıklama]</li>
+</ul>
+
+SADECE HTML. Her bölüm çok detaylı olsun.""")
+
+        # ── Bölüm 4: Kimi İlgilendirir + SSS ─────────────────────────────────
+        p4 = _write(sys_base, f"""Konu: {topic['title']} — kimi ilgilendirir ve SSS
+
+ŞU BÖLÜMLERI YAZ — her biri EN AZ 300 kelime:
+
+<h2>Bu Konu Kimi İlgilendirir?</h2>
+<p>[Geniş hedef kitle analizi]</p>
+<ul>
+<li><strong>Sosyal Medya İçerik Üreticileri:</strong> [3 cümle]</li>
+<li><strong>Fotoğraf Tutkunları:</strong> [3 cümle]</li>
+<li><strong>Yeni Başlayanlar:</strong> [3 cümle]</li>
+</ul>
+
+<h2>Sık Sorulan Sorular</h2>
+
+<h3>{kw} hakkında bilinmesi gereken en önemli şey nedir?</h3>
+<p>[4 cümle]</p>
+
+<h3>RCL'de bu konuyla ilgili hangi modeller var?</h3>
+<p>[retrocameraland.com'daki ilgili gerçek modellerden bahset — 4 cümle]</p>
+
+<h3>Yeni başlayanlar için tavsiye nedir?</h3>
+<p>[3 cümle]</p>
+
+<h3>Bu konu Y2K estetiğiyle nasıl ilişkili?</h3>
+<p>[3 cümle]</p>
+
+SADECE HTML. Her cevap kapsamlı olsun.""")
+
+    else:  # model_review, buying_guide — mevcut varsayılan format
+        # ── Bölüm 1: Giriş + Temel Bilgi ─────────────────────────────────────
+        p1 = _write(sys_base, f"""Konu: {topic['title']}
 Ana keyword: '{kw}' — bu kelime ilk cümlede MUTLAKA geçmeli.
 Açı: {angle}
 Trend bağlamı: {web_snip[:120]} | Twitter/X: {tw_snip[:80]}
@@ -1681,8 +2033,8 @@ Instagram/TikTok'ta nasıl kullanılıyor, hangi filtreler/efektler benzer sonu�
 
 SADECE HTML. Her bölüm çok detaylı olsun.""")
 
-    # ── Bölüm 2: Kullanım + Türkiye Pazarı ───────────────────────────────────
-    p2 = _write(sys_base, f"""Konu: {topic['title']} — kullanım rehberi ve piyasa analizi
+        # ── Bölüm 2: Kullanım + Türkiye Pazarı ───────────────────────────────
+        p2 = _write(sys_base, f"""Konu: {topic['title']} — kullanım rehberi ve piyasa analizi
 
 ŞU BÖLÜMLERI YAZ — her biri EN AZ 350 kelime:
 
@@ -1716,14 +2068,8 @@ modelden bahsediyorsan GERÇEK fiyatını yaz, listede yoksa göreli ifade kulla
 
 SADECE HTML. Her bölüm çok detaylı olsun.""")
 
-    # ── Bölüm 3: Karşılaştırma + İpuçları ────────────────────────────────────
-    # Karşılaştırma çeşitliliği için sadece sabit 5 TOP_PRODUCTS değil, o an stoktaki
-    # tüm modellerden geniş bir örneklem ver — aynı 2-3 modelin sürekli tekrar
-    # karşılaştırılmasını önler (RCL'nin Fujifilm T200 vs Sony DSC-T9 sorunu buradan
-    # da besleniyordu: LLM hep aynı dar listeden seçiyordu).
-    stock_models = [p["title"] for p in price_data["in_stock"]]
-    real_models = ", ".join(stock_models[:20]) if stock_models else ", ".join(p['model'] for p in TOP_PRODUCTS)
-    p3 = _write(sys_base, f"""Konu: {topic['title']} — karşılaştırma ve ipuçları
+        # ── Bölüm 3: Karşılaştırma + İpuçları ────────────────────────────────
+        p3 = _write(sys_base, f"""Konu: {topic['title']} — karşılaştırma ve ipuçları
 
 ŞU BÖLÜMLERI YAZ — her biri EN AZ 350 kelime:
 
@@ -1761,8 +2107,8 @@ an, uydurma özel isim verme.]</p>
 
 SADECE HTML. Her bölüm çok detaylı olsun.""")
 
-    # ── Bölüm 4: Hedef Kitle + SSS ───────────────────────────────────────────
-    p4 = _write(sys_base, f"""Konu: {topic['title']} — hedef kitle analizi ve SSS
+        # ── Bölüm 4: Hedef Kitle + SSS ────────────────────────────────────────
+        p4 = _write(sys_base, f"""Konu: {topic['title']} — hedef kitle analizi ve SSS
 
 ŞU BÖLÜMLERI YAZ — her biri EN AZ 300 kelime:
 
@@ -1798,6 +2144,20 @@ güncel piyasa fiyat aralığını göreli anlat, hangi faktörler fiyatı etkil
 SADECE HTML. Her cevap kapsamlı olsun.""")
 
     # ── Bölüm 5: Sonuç + Uzman Görüşü ───────────────────────────────────────
+    _closing_summary = {
+        "brand_comparison": (
+            f"[Kapsamlı kapanış — 300+ kelime. Karşılaştırmayı özetle: hangi markanın hangi "
+            f"senaryoda kazandığı, genel tavsiye, Y2K estetiğine katkısı, retrocameraland.com'a son çağrı.]"
+        ),
+        "general_photography": (
+            f"[Kapsamlı kapanış — 300+ kelime. Konuyu özetle: en önemli çıkarım, bunun retro/Y2K "
+            f"fotoğrafçılığa katkısı, RCL'nin katalogunda bu konuyla ilgili neler bulunabileceği, son çağrı.]"
+        ),
+    }.get(content_type, (
+        f"[Kapsamlı kapanış — 300+ kelime. Tüm konuyu özetle: {kw}'in artıları/eksileri, "
+        f"kimin alması gerektiği, Y2K estetiğine katkısı, Türkiye'deki retro kamera topluluğunun önemi, "
+        f"gelecekte değer artışı beklentisi, retrocameraland.com'a son çağrı.]"
+    ))
     p5 = _write(sys_base, f"""Konu: {topic['title']} — sonuç ve uzman değerlendirmesi
 
 ŞU BÖLÜMLERI YAZ:
@@ -1806,15 +2166,13 @@ SADECE HTML. Her cevap kapsamlı olsun.""")
 <p>retrocameraland.com, Türkiye'nin en kapsamlı retro dijital kamera koleksiyonunu sunan öncü platformdur.
 <a href="https://retrocameraland.com/collections/all">Tüm koleksiyona göz atmak için tıklayın</a> —
 Sony, Canon, Fujifilm, Olympus ve daha pek çok markadan onlarca model sizleri bekliyor.</p>
-<p>[{kw} modeline özel satın alma tavsiyeleri, hangi aksesuarları birlikte almalı,
+<p>['{kw}' konusuna özel satın alma tavsiyeleri, hangi aksesuarları birlikte almalı,
 garanti ve iade politikaları, müşteri deneyimi — 150+ kelime]</p>
 <p>Yeni ürünler ve özel kampanyalar için
 <a href="https://retrocameraland.com/blogs/retro-dijital-kamera">retrocameraland.com blogunu</a> takip edin.</p>
 
 <h2>Sonuç: {kw} — Son Değerlendirme</h2>
-<p>[Kapsamlı kapanış — 300+ kelime. Tüm konuyu özetle: {kw}'in artıları/eksileri,
-kimin alması gerektiği, Y2K estetiğine katkısı, Türkiye'deki retro kamera topluluğunun önemi,
-gelecekte değer artışı beklentisi, retrocameraland.com'a son çağrı.]</p>
+<p>{_closing_summary}</p>
 <p>Bizi takip et:
 <a href="{SOCIAL_LINKS['instagram']}" target="_blank" rel="noopener">📷 Instagram</a> &nbsp;|&nbsp;
 <a href="{SOCIAL_LINKS['youtube']}" target="_blank" rel="noopener">▶️ YouTube</a> &nbsp;|&nbsp;
