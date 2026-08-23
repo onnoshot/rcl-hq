@@ -156,21 +156,21 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-08-23T03:26:30",
+  "updated_at": "2026-08-23T11:41:50",
   "period_30d": {
-    "revenue": 55430,
-    "orders": 6,
-    "aov": 9238
+    "revenue": 68920,
+    "orders": 7,
+    "aov": 9846
   },
   "period_90d": {
-    "revenue": 206619,
-    "orders": 18,
-    "aov": 11479
+    "revenue": 220109,
+    "orders": 19,
+    "aov": 11585
   },
   "period_year": {
-    "revenue": 1013005,
-    "orders": 83,
-    "aov": 12205
+    "revenue": 1026495,
+    "orders": 84,
+    "aov": 12220
   },
   "customers_total": 1031,
   "monthly_labels": [
@@ -199,7 +199,7 @@ const SHOPIFY = {
     139290,
     79639,
     76200,
-    39790
+    53280
   ],
   "monthly_orders": [
     9,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     12,
     6,
     6,
-    5
+    6
   ],
   "channels": [
     {
@@ -222,17 +222,17 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 33,
       "rev": 432830,
-      "order_pct": 37.5,
-      "rev_pct": 41.8
+      "order_pct": 37.1,
+      "rev_pct": 41.2
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 27,
-      "rev": 290115,
-      "order_pct": 30.7,
-      "rev_pct": 28.0
+      "orders": 28,
+      "rev": 303605,
+      "order_pct": 31.5,
+      "rev_pct": 28.9
     },
     {
       "name": "Instagram",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 23,
       "rev": 254769,
-      "order_pct": 26.1,
-      "rev_pct": 24.6
+      "order_pct": 25.8,
+      "rev_pct": 24.3
     },
     {
       "name": "YouTube",
@@ -258,11 +258,15 @@ const SHOPIFY = {
       "color": "#5AC8FA",
       "orders": 2,
       "rev": 18880,
-      "order_pct": 2.3,
+      "order_pct": 2.2,
       "rev_pct": 1.8
     }
   ],
   "recent_orders": [
+    {
+      "date": "23 Ağu 2026",
+      "amount": 13490
+    },
     {
       "date": "14 Ağu 2026",
       "amount": 9640
@@ -298,10 +302,6 @@ const SHOPIFY = {
     {
       "date": "9 Tem 2026",
       "amount": 9050
-    },
-    {
-      "date": "5 Tem 2026",
-      "amount": 17980
     }
   ],
   "cameras": [
@@ -349,11 +349,6 @@ const SHOPIFY = {
       "name": "Sanyo Xacti VPC-C5",
       "price": 13490,
       "cost": 2500
-    },
-    {
-      "name": "Sony Cybershot DSC-W150",
-      "price": 13490,
-      "cost": 5000
     },
     {
       "name": "Lumix DMC-FT10 (Waterproof)",
@@ -463,7 +458,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 99
+  "out_of_stock": 100
 };
 /* ─── SHOPIFY DATA END ─── */
 
