@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-24T17:57:36",
+  "updated_at": "2026-08-24T21:06:52",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 2198,
+      "views": 2200,
       "likes": 35,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14350,
+      "views": 14352,
       "likes": 271,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1611,
+      "views": 1612,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1497,
+      "views": 1498,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
