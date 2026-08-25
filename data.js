@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-25T23:08:17",
+  "updated_at": "2026-08-26T00:08:22",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 160431,
-      "watch_hours": 415.1,
-      "subs_gained": 416,
-      "subs_lost": 182,
-      "avg_view_sec": 23
+      "views": 149673,
+      "watch_hours": 375.4,
+      "subs_gained": 370,
+      "subs_lost": 164,
+      "avg_view_sec": 22
     },
-    "watch_hours_year": 3985.1,
+    "watch_hours_year": 3981.3,
     "watch_hours_year_long": 2151.7,
-    "watch_hours_year_shorts": 1833.2,
+    "watch_hours_year_shorts": 1829.5,
     "monthly": [
       {
         "label": "Mar 26",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 496,
+      "views": 498,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17280,
+      "views": 17284,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "lCyA6p7SfDs",
       "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
       "date": "24 Tem 2026",
-      "views": 2207,
+      "views": 2209,
       "likes": 35,
       "comments": 1,
       "url": "https://youtu.be/lCyA6p7SfDs"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "PKyCBGst1r8",
       "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
       "date": "15 Tem 2026",
-      "views": 1617,
+      "views": 1619,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/PKyCBGst1r8"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 540,
+      "views": 541,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1505,
+      "views": 1506,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
