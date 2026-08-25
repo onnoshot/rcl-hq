@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-25T21:08:04",
+  "updated_at": "2026-08-25T22:08:12",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 158097,
-      "watch_hours": 409.9,
-      "subs_gained": 413,
-      "subs_lost": 180,
+      "views": 160431,
+      "watch_hours": 415.1,
+      "subs_gained": 416,
+      "subs_lost": 182,
       "avg_view_sec": 23
     },
-    "watch_hours_year": 3979.8,
-    "watch_hours_year_long": 2150.1,
-    "watch_hours_year_shorts": 1829.5,
+    "watch_hours_year": 3985.1,
+    "watch_hours_year_long": 2151.7,
+    "watch_hours_year_shorts": 1833.2,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 91759,
-        "watch_min": 10403,
-        "subs_gained": 173
+        "views": 94093,
+        "watch_min": 10718,
+        "subs_gained": 176
       }
     ]
   },
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1994,
+      "views": 1992,
       "likes": 17,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "fiWC7WOtCtk",
       "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
       "date": "11 Tem 2026",
-      "views": 1504,
+      "views": 1503,
       "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
