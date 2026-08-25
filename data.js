@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-25T02:25:04",
+  "updated_at": "2026-08-25T03:25:10",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14353,
+      "views": 14354,
       "likes": 271,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
