@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-26T23:37:58",
+  "updated_at": "2026-08-27T00:38:03",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 151656,
-      "watch_hours": 379.9,
-      "subs_gained": 371,
-      "subs_lost": 165,
-      "avg_view_sec": 22
+      "views": 141550,
+      "watch_hours": 341.0,
+      "subs_gained": 331,
+      "subs_lost": 152,
+      "avg_view_sec": 21
     },
-    "watch_hours_year": 3985.7,
+    "watch_hours_year": 3985.1,
     "watch_hours_year_long": 2153.4,
-    "watch_hours_year_shorts": 1832.1,
+    "watch_hours_year_shorts": 1831.4,
     "monthly": [
       {
         "label": "Mar 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "v9EaRVvnyEc",
       "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
       "date": "10 Ağu 2026",
-      "views": 1321,
+      "views": 1322,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/v9EaRVvnyEc"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14361,
+      "views": 14364,
       "likes": 271,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 1999,
+      "views": 2002,
       "likes": 17,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
