@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-26T22:37:52",
+  "updated_at": "2026-08-26T23:37:58",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 502,
+      "views": 503,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 541,
+      "views": 542,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
