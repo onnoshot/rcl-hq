@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-28T22:29:07",
+  "updated_at": "2026-08-28T23:29:13",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 547,
+      "views": 548,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -94,15 +94,6 @@ const YOUTUBE = {
       "likes": 25,
       "comments": 4,
       "url": "https://youtu.be/dFixvsNLQ_k"
-    },
-    {
-      "id": "bY4UWZ-wEwY",
-      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
-      "date": "26 Nis 2026",
-      "views": 1192,
-      "likes": 14,
-      "comments": 0,
-      "url": "https://youtu.be/bY4UWZ-wEwY"
     },
     {
       "id": "8oUm3q_y6rQ",
@@ -148,6 +139,15 @@ const YOUTUBE = {
       "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
+    },
+    {
+      "id": "2-XdDjHscqs",
+      "title": "Küçük Kamerayla Büyük Hatıralar 📸 #kodak #digitalcamera",
+      "date": "20 Şub 2026",
+      "views": 815,
+      "likes": 13,
+      "comments": 0,
+      "url": "https://youtu.be/2-XdDjHscqs"
     }
   ],
   "sub_goal": 10000
