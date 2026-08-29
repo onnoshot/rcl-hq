@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-29T19:23:25",
+  "updated_at": "2026-08-29T20:23:29",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1522690,
+    "total_views": 1523605,
     "video_count": 399
   },
   "analytics": {
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 520,
+      "views": 518,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14396,
+      "views": 14393,
       "likes": 272,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "4mC6-c_-JYc",
       "title": "Kompakt Canon Dijital Kamera ile Manzara Fotoğrafçılığı 📸",
       "date": "16 Tem 2026",
-      "views": 2019,
+      "views": 2017,
       "likes": 17,
       "comments": 2,
       "url": "https://youtu.be/4mC6-c_-JYc"
