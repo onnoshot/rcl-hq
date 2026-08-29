@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-29T21:23:34",
+  "updated_at": "2026-08-29T22:23:39",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1522690,
+    "total_views": 1523605,
     "video_count": 399
   },
   "analytics": {
     "last_30d": {
-      "views": 121896,
-      "watch_hours": 268.4,
-      "subs_gained": 247,
-      "subs_lost": 130,
+      "views": 124407,
+      "watch_hours": 273.1,
+      "subs_gained": 248,
+      "subs_lost": 132,
       "avg_view_sec": 18
     },
-    "watch_hours_year": 3990.6,
-    "watch_hours_year_long": 2155.8,
-    "watch_hours_year_shorts": 1834.5,
+    "watch_hours_year": 3995.3,
+    "watch_hours_year_long": 2157.1,
+    "watch_hours_year_shorts": 1838.0,
     "monthly": [
       {
         "label": "Mar 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 99988,
-        "watch_min": 11474,
-        "subs_gained": 179
+        "views": 102499,
+        "watch_min": 11758,
+        "subs_gained": 180
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17299,
+      "views": 17300,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 550,
+      "views": 551,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
