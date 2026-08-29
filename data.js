@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-29T23:23:44",
+  "updated_at": "2026-08-30T00:23:49",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 124385,
-      "watch_hours": 273.1,
-      "subs_gained": 248,
-      "subs_lost": 132,
-      "avg_view_sec": 18
+      "views": 112472,
+      "watch_hours": 232.4,
+      "subs_gained": 209,
+      "subs_lost": 119,
+      "avg_view_sec": 17
     },
-    "watch_hours_year": 3995.3,
+    "watch_hours_year": 3992.3,
     "watch_hours_year_long": 2157.1,
-    "watch_hours_year_shorts": 1838.0,
+    "watch_hours_year_shorts": 1835.0,
     "monthly": [
       {
         "label": "Mar 26",
@@ -108,8 +108,8 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 49996,
-      "likes": 182,
+      "views": 50000,
+      "likes": 183,
       "comments": 1,
       "url": "https://youtu.be/8oUm3q_y6rQ"
     },
