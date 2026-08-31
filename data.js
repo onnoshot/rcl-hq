@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-08-31T16:20:18",
+  "updated_at": "2026-08-31T17:20:24",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "G9ayP-pa1q8",
       "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
       "date": "31 Tem 2026",
-      "views": 529,
+      "views": 530,
       "likes": 11,
       "comments": 0,
       "url": "https://youtu.be/G9ayP-pa1q8"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "ggvi-pLhCEI",
       "title": "21x Zoom Yapan Retro Harika: Samsung WB350F 📸 #digicam #phot",
       "date": "17 Tem 2026",
-      "views": 14420,
+      "views": 14423,
       "likes": 273,
       "comments": 3,
       "url": "https://youtu.be/ggvi-pLhCEI"
@@ -123,15 +123,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/4mC6-c_-JYc"
     },
     {
-      "id": "PKyCBGst1r8",
-      "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
-      "date": "15 Tem 2026",
-      "views": 1633,
-      "likes": 22,
-      "comments": 0,
-      "url": "https://youtu.be/PKyCBGst1r8"
-    },
-    {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
@@ -148,6 +139,15 @@ const YOUTUBE = {
       "likes": 20,
       "comments": 0,
       "url": "https://youtu.be/fiWC7WOtCtk"
+    },
+    {
+      "id": "ZRzvt8SJEG8",
+      "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
+      "date": "10 Tem 2026",
+      "views": 584,
+      "likes": 8,
+      "comments": 0,
+      "url": "https://youtu.be/ZRzvt8SJEG8"
     }
   ],
   "sub_goal": 10000
