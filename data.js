@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-01T14:29:12",
+  "updated_at": "2026-09-01T15:29:18",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -66,7 +66,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2778,
+      "views": 2779,
       "likes": 16,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -102,7 +102,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50107,
+      "views": 50120,
       "likes": 188,
       "comments": 1,
       "url": "https://youtu.be/8oUm3q_y6rQ"
