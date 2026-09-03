@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-03T16:17:34",
+  "updated_at": "2026-09-03T17:17:41",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
     "total_views": 1457761,
-    "video_count": 398
+    "video_count": 399
   },
   "analytics": {
     "last_30d": {
@@ -54,10 +54,19 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "iMemUS86nrc",
+      "title": "Retro Dijital Kompakt Canon G7 📸",
+      "date": "3 Eyl 2026",
+      "views": 100,
+      "likes": 0,
+      "comments": 0,
+      "url": "https://youtu.be/iMemUS86nrc"
+    },
+    {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17336,
+      "views": 17337,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -133,15 +142,6 @@ const YOUTUBE = {
       "likes": 12,
       "comments": 3,
       "url": "https://youtu.be/aoCqpg3l-Zs"
-    },
-    {
-      "id": "b6MfXb0bltc",
-      "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
-      "date": "23 Şub 2026",
-      "views": 851,
-      "likes": 6,
-      "comments": 0,
-      "url": "https://youtu.be/b6MfXb0bltc"
     }
   ],
   "sub_goal": 10000
