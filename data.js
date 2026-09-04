@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-03T23:51:40",
+  "updated_at": "2026-09-04T20:21:40",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 94730,
-      "watch_hours": 182.3,
-      "subs_gained": 143,
-      "subs_lost": 94,
+      "views": 87862,
+      "watch_hours": 170.1,
+      "subs_gained": 134,
+      "subs_lost": 88,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4008.2,
+    "watch_hours_year": 4007.8,
     "watch_hours_year_long": 2163.9,
-    "watch_hours_year_shorts": 1844.2,
+    "watch_hours_year_shorts": 1843.7,
     "monthly": [
       {
         "label": "Nis 26",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 278,
-      "likes": 0,
+      "views": 308,
+      "likes": 2,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17340,
+      "views": 17347,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2795,
+      "views": 2805,
       "likes": 18,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 577,
+      "views": 578,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -117,8 +117,8 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50351,
-      "likes": 202,
+      "views": 50408,
+      "likes": 203,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
     },
