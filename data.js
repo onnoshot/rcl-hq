@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-06T12:23:56",
+  "updated_at": "2026-09-06T14:52:54",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 326,
+      "views": 328,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 583,
+      "views": 584,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50439,
+      "views": 50443,
       "likes": 203,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
