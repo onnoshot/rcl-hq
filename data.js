@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-06T15:52:59",
+  "updated_at": "2026-09-06T16:53:04",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17351,
+      "views": 17352,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50443,
+      "views": 50447,
       "likes": 203,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
