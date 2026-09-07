@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-07T16:30:47",
+  "updated_at": "2026-09-07T17:30:52",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 2332,
+      "views": 2333,
       "likes": 25,
       "comments": 4,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1198,
+      "views": 1199,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
