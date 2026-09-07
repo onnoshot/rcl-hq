@@ -64,8 +64,51 @@ def fetch_brand(pid):
         "orderBys": [{"metric": {"metricName": "eventCount"}, "desc": True}], "limit": 15})
     clicks = [{"name": row["dimensionValues"][0]["value"],
                "count": int(row["metricValues"][0]["value"])} for row in cl_r.get("rows", [])]
-    return {"updatedAt": datetime.datetime.utcnow().isoformat() + "Z",
+    data = {"updatedAt": datetime.datetime.utcnow().isoformat() + "Z",
             "totals": totals, "daily": daily, "channels": channels, "clicks": clicks}
+    data.update(fetch_extra(pid))
+    return data
+
+
+def fetch_extra(pid):
+    # en çok ziyaret edilen sayfalar (giriş sayfası, son 30 gün)
+    pg_r = report(pid, {
+        "dateRanges": [{"startDate": "29daysAgo", "endDate": "today"}],
+        "dimensions": [{"name": "landingPage"}], "metrics": [{"name": "sessions"}],
+        "orderBys": [{"metric": {"metricName": "sessions"}, "desc": True}], "limit": 8})
+    top_pages = [{"path": row["dimensionValues"][0]["value"],
+                  "sessions": int(row["metricValues"][0]["value"])} for row in pg_r.get("rows", [])]
+    # cihaz dağılımı
+    dv_r = report(pid, {
+        "dateRanges": [{"startDate": "29daysAgo", "endDate": "today"}],
+        "dimensions": [{"name": "deviceCategory"}], "metrics": [{"name": "sessions"}],
+        "orderBys": [{"metric": {"metricName": "sessions"}, "desc": True}]})
+    devices = [{"name": row["dimensionValues"][0]["value"],
+                "sessions": int(row["metricValues"][0]["value"])} for row in dv_r.get("rows", [])]
+    # ülke dağılımı
+    ct_r = report(pid, {
+        "dateRanges": [{"startDate": "29daysAgo", "endDate": "today"}],
+        "dimensions": [{"name": "country"}], "metrics": [{"name": "sessions"}],
+        "orderBys": [{"metric": {"metricName": "sessions"}, "desc": True}], "limit": 6})
+    countries = [{"name": row["dimensionValues"][0]["value"],
+                  "sessions": int(row["metricValues"][0]["value"])} for row in ct_r.get("rows", [])]
+    # etkileşim: ort. oturum süresi + hemen çıkma oranı
+    eg_r = report(pid, {
+        "dateRanges": [{"startDate": "29daysAgo", "endDate": "today"}],
+        "metrics": [{"name": "averageSessionDuration"}, {"name": "bounceRate"}]})
+    eg_row = (eg_r.get("rows") or [{}])[0].get("metricValues", [])
+    avg_duration = float(eg_row[0]["value"]) if len(eg_row) > 0 else 0
+    bounce_rate = float(eg_row[1]["value"]) if len(eg_row) > 1 else 0
+    # en az bir CTA'ya tıklayan benzersiz kullanıcı sayısı
+    eu_r = report(pid, {
+        "dateRanges": [{"startDate": "29daysAgo", "endDate": "today"}],
+        "metrics": [{"name": "activeUsers"}],
+        "dimensionFilter": {"filter": {"fieldName": "eventName",
+            "stringFilter": {"matchType": "BEGINS_WITH", "value": "cta_click_"}}}})
+    eu_rows = eu_r.get("rows") or []
+    engaged_users = int(eu_rows[0]["metricValues"][0]["value"]) if eu_rows else 0
+    return {"topPages": top_pages, "devices": devices, "countries": countries,
+            "engagement": {"avgDuration": avg_duration, "bounceRate": bounce_rate, "engagedUsers": engaged_users}}
 
 
 def ingest(brand, data):
