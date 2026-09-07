@@ -1,22 +1,22 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-07T03:10:36",
+  "updated_at": "2026-09-07T11:30:20",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1465428,
+    "total_views": 1466680,
     "video_count": 399
   },
   "analytics": {
     "last_30d": {
       "views": 75418,
-      "watch_hours": 146.1,
+      "watch_hours": 146.2,
       "subs_gained": 95,
       "subs_lost": 74,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4018.9,
+    "watch_hours_year": 4019.0,
     "watch_hours_year_long": 2168.2,
     "watch_hours_year_shorts": 1850.6,
     "monthly": [
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 333,
+      "views": 336,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17358,
+      "views": 17359,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2817,
+      "views": 2819,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
