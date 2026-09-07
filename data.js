@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-07T22:34:25",
+  "updated_at": "2026-09-07T23:34:31",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1466680,
+    "total_views": 1467504,
     "video_count": 399
   },
   "analytics": {
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 338,
+      "views": 342,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2822,
+      "views": 2823,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 585,
+      "views": 586,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50472,
+      "views": 50480,
       "likes": 204,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
