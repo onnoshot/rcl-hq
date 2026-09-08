@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-08T18:36:56",
+  "updated_at": "2026-09-09T02:12:22",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1468717,
+    "total_views": 1469730,
     "video_count": 398
   },
   "analytics": {
     "last_30d": {
-      "views": 71404,
-      "watch_hours": 138.9,
-      "subs_gained": 80,
-      "subs_lost": 65,
+      "views": 66950,
+      "watch_hours": 131.9,
+      "subs_gained": 66,
+      "subs_lost": 57,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4016.9,
-    "watch_hours_year_long": 2169.4,
-    "watch_hours_year_shorts": 1847.3,
+    "watch_hours_year": 4020.0,
+    "watch_hours_year_long": 2170.6,
+    "watch_hours_year_shorts": 1849.2,
     "monthly": [
       {
         "label": "Nis 26",
@@ -46,15 +46,15 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 112728,
+        "views": 112717,
         "watch_min": 12860,
         "subs_gained": 190
       },
       {
         "label": "Eyl 26",
-        "views": 11727,
-        "watch_min": 1265,
-        "subs_gained": 8
+        "views": 13849,
+        "watch_min": 1490,
+        "subs_gained": 10
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 353,
+      "views": 354,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17366,
-      "likes": 34,
+      "views": 17367,
+      "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
     },
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 588,
+      "views": 589,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -117,8 +117,8 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50505,
-      "likes": 205,
+      "views": 50523,
+      "likes": 206,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
     },
