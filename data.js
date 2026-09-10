@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-09T18:40:05",
+  "updated_at": "2026-09-10T23:32:35",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1469730,
+    "total_views": 1474280,
     "video_count": 398
   },
   "analytics": {
     "last_30d": {
-      "views": 66950,
-      "watch_hours": 131.9,
-      "subs_gained": 66,
-      "subs_lost": 57,
+      "views": 64444,
+      "watch_hours": 128.9,
+      "subs_gained": 58,
+      "subs_lost": 58,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4019.9,
-    "watch_hours_year_long": 2170.6,
-    "watch_hours_year_shorts": 1849.2,
+    "watch_hours_year": 4026.6,
+    "watch_hours_year_long": 2173.3,
+    "watch_hours_year_shorts": 1853.0,
     "monthly": [
       {
         "label": "Nis 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 13849,
-        "watch_min": 1490,
-        "subs_gained": 10
+        "views": 18093,
+        "watch_min": 1982,
+        "subs_gained": 11
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 356,
+      "views": 368,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17372,
+      "views": 17379,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2839,
+      "views": 2844,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 589,
+      "views": 597,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "dFixvsNLQ_k",
       "title": "Nikon Coolpix S52c: Y2K Sonu Dönemin En Şık CCD Kamerası",
       "date": "29 Nis 2026",
-      "views": 2336,
+      "views": 2337,
       "likes": 25,
       "comments": 4,
       "url": "https://youtu.be/dFixvsNLQ_k"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1199,
+      "views": 1202,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50580,
+      "views": 50626,
       "likes": 207,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "u_2gTtXlJ4g",
       "title": "Udaipur'un Ruhu: Y2K Dijital Kamera Günlüğü | Canon PowerSho",
       "date": "26 Mar 2026",
-      "views": 127,
+      "views": 130,
       "likes": 6,
       "comments": 1,
       "url": "https://youtu.be/u_2gTtXlJ4g"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "TFYAi9S9wTo",
       "title": "Canon Ixus 160 Dijital Fotoğraf Makinesi 📸 Stoklar yenilendi",
       "date": "25 Mar 2026",
-      "views": 15165,
+      "views": 15166,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/TFYAi9S9wTo"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "aoCqpg3l-Zs",
       "title": "22 Yıllık İkonik CASIO Exilim Fotoğraf Makinesi #digitalcame",
       "date": "7 Mar 2026",
-      "views": 888,
+      "views": 889,
       "likes": 12,
       "comments": 3,
       "url": "https://youtu.be/aoCqpg3l-Zs"
