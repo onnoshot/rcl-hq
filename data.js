@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-10T23:32:35",
+  "updated_at": "2026-09-11T01:05:22",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 64444,
-      "watch_hours": 128.9,
-      "subs_gained": 58,
-      "subs_lost": 58,
+      "views": 61584,
+      "watch_hours": 123.2,
+      "subs_gained": 57,
+      "subs_lost": 56,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4026.6,
+    "watch_hours_year": 4024.9,
     "watch_hours_year_long": 2173.3,
-    "watch_hours_year_shorts": 1853.0,
+    "watch_hours_year_shorts": 1851.4,
     "monthly": [
       {
         "label": "Nis 26",
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2844,
+      "views": 2845,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
