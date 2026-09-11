@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-11T19:47:02",
+  "updated_at": "2026-09-11T20:47:07",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "NwgAvkb8GSg",
       "title": "İstanbul Kahve Festivalinde Y2K Dijital Kamera 📸☕️",
       "date": "11 Eyl 2026",
-      "views": 108,
+      "views": 143,
       "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/NwgAvkb8GSg"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 600,
+      "views": 601,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50643,
+      "views": 50642,
       "likes": 207,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
