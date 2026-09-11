@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-11T21:47:13",
+  "updated_at": "2026-09-11T22:47:18",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 61584,
-      "watch_hours": 123.3,
+      "views": 63939,
+      "watch_hours": 127.8,
       "subs_gained": 57,
       "subs_lost": 56,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4024.9,
-    "watch_hours_year_long": 2173.4,
-    "watch_hours_year_shorts": 1851.4,
+    "watch_hours_year": 4029.4,
+    "watch_hours_year_long": 2174.8,
+    "watch_hours_year_shorts": 1854.4,
     "monthly": [
       {
         "label": "Nis 26",
@@ -52,8 +52,8 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 18093,
-        "watch_min": 1985,
+        "views": 20448,
+        "watch_min": 2254,
         "subs_gained": 11
       }
     ]
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "4-KWG5bSnMA",
       "title": "Istanbul in a retro frame 📸 Olympus E-PL1 Dijital Kamera",
       "date": "11 Eyl 2026",
-      "views": 0,
+      "views": 4,
       "likes": 0,
       "comments": 0,
       "url": "https://youtu.be/4-KWG5bSnMA"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1202,
+      "views": 1203,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
