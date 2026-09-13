@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-13T00:49:42",
+  "updated_at": "2026-09-13T14:33:49",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1479725,
+    "total_views": 1480986,
     "video_count": 402
   },
   "analytics": {
@@ -52,7 +52,7 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 22456,
+        "views": 22399,
         "watch_min": 2479,
         "subs_gained": 12
       }
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "3m-aUuSnQ3A",
       "title": "Mare Gastro Sapanca’da Fujifilm Kamera ile retro anlar 📸❣️",
       "date": "12 Eyl 2026",
-      "views": 52,
-      "likes": 1,
+      "views": 64,
+      "likes": 4,
       "comments": 0,
       "url": "https://youtu.be/3m-aUuSnQ3A"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "4-KWG5bSnMA",
       "title": "Istanbul in a retro frame 📸 Olympus E-PL1 Dijital Kamera",
       "date": "11 Eyl 2026",
-      "views": 1219,
+      "views": 1223,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/4-KWG5bSnMA"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "NwgAvkb8GSg",
       "title": "İstanbul Kahve Festivalinde Y2K Dijital Kamera 📸☕️",
       "date": "11 Eyl 2026",
-      "views": 256,
+      "views": 261,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/NwgAvkb8GSg"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 380,
+      "views": 381,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17395,
+      "views": 17398,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2860,
+      "views": 2862,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50683,
+      "views": 50686,
       "likes": 207,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
