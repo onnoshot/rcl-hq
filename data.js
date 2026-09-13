@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-13T14:33:49",
+  "updated_at": "2026-09-13T15:34:56",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "4-KWG5bSnMA",
       "title": "Istanbul in a retro frame 📸 Olympus E-PL1 Dijital Kamera",
       "date": "11 Eyl 2026",
-      "views": 1223,
+      "views": 1224,
       "likes": 5,
       "comments": 0,
       "url": "https://youtu.be/4-KWG5bSnMA"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "NwgAvkb8GSg",
       "title": "İstanbul Kahve Festivalinde Y2K Dijital Kamera 📸☕️",
       "date": "11 Eyl 2026",
-      "views": 261,
+      "views": 262,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/NwgAvkb8GSg"
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50686,
+      "views": 50688,
       "likes": 207,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
