@@ -7,7 +7,7 @@ Her 5 dakikada bir çalışır. Daha önce bildirilmemiş siparişler varsa Tele
 import json, os, urllib.request, urllib.error
 from datetime import datetime, timezone
 
-SHOPIFY_TOKEN = "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"
+SHOPIFY_TOKEN = "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"
 SHOPIFY_STORE = "retrocameraland.myshopify.com"
 TG_TOKEN      = "8696617266:AAG34_ybLGuchVT2zrni8lUoJBbyPfD6DvQ"
 TG_CHAT_ID    = "7904534693"

@@ -33,7 +33,7 @@ DATA_JS        = os.path.join(REPO_DIR, "data.js")                              
 LOCK_FILE      = "/tmp/rcl-dashboard.lock"
 
 # ─── TOKENLAR (rotasyon olunca SADECE burayi degistir) ─────────────────────
-SHOPIFY_TOKEN  = "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"
+SHOPIFY_TOKEN  = "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"
 
 # ─── VERI BLOK MARKERLARI (her feed'in ANA KAYNAKTAKI blogu) ───────────────
 MARKERS = {
