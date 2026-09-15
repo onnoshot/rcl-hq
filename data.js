@@ -156,25 +156,24 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-08-28T13:49:07",
+  "updated_at": "2026-09-15T18:28:53",
   "period_30d": {
-    "revenue": 68920,
-    "orders": 7,
-    "aov": 9846
+    "revenue": 24480,
+    "orders": 2,
+    "aov": 12240
   },
   "period_90d": {
-    "revenue": 220109,
-    "orders": 19,
-    "aov": 11585
+    "revenue": 79910,
+    "orders": 8,
+    "aov": 9989
   },
   "period_year": {
-    "revenue": 987005,
-    "orders": 83,
-    "aov": 11892
+    "revenue": 79910,
+    "orders": 8,
+    "aov": 9989
   },
-  "customers_total": 1035,
+  "customers_total": 1042,
   "monthly_labels": [
-    "Eyl 25",
     "Eki 25",
     "Kas 25",
     "Ara 25",
@@ -185,84 +184,80 @@ const SHOPIFY = {
     "May 26",
     "Haz 26",
     "Tem 26",
-    "Ağu 26"
+    "Ağu 26",
+    "Eyl 26"
   ],
   "monthly_revenue": [
-    62128,
-    82649,
-    233639,
-    43360,
-    56890,
-    39470,
-    46450,
-    65320,
-    139290,
-    79639,
-    76200,
-    53280
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    15640,
+    53280,
+    10990
   ],
   "monthly_orders": [
-    9,
-    8,
-    12,
-    4,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1,
     6,
-    3,
-    4,
-    6,
-    12,
-    6,
-    6,
-    6
+    1
   ],
   "channels": [
     {
-      "name": "Direkt",
-      "icon": "🔗",
-      "color": "#F5A623",
-      "orders": 33,
-      "rev": 432830,
-      "order_pct": 37.1,
-      "rev_pct": 41.2
+      "name": "Instagram",
+      "icon": "📸",
+      "color": "#BF5AF2",
+      "orders": 4,
+      "rev": 33000,
+      "order_pct": 50.0,
+      "rev_pct": 41.3
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 28,
-      "rev": 303605,
-      "order_pct": 31.5,
-      "rev_pct": 28.9
-    },
-    {
-      "name": "Instagram",
-      "icon": "📸",
-      "color": "#BF5AF2",
-      "orders": 23,
-      "rev": 254769,
-      "order_pct": 25.8,
-      "rev_pct": 24.3
-    },
-    {
-      "name": "YouTube",
-      "icon": "▶",
-      "color": "#FF453A",
-      "orders": 3,
-      "rev": 39460,
-      "order_pct": 3.4,
-      "rev_pct": 3.8
+      "orders": 2,
+      "rev": 29130,
+      "order_pct": 25.0,
+      "rev_pct": 36.5
     },
     {
       "name": "AI / Arama",
       "icon": "🤖",
       "color": "#5AC8FA",
-      "orders": 2,
-      "rev": 18880,
-      "order_pct": 2.2,
-      "rev_pct": 1.8
+      "orders": 1,
+      "rev": 9640,
+      "order_pct": 12.5,
+      "rev_pct": 12.1
+    },
+    {
+      "name": "Direkt",
+      "icon": "🔗",
+      "color": "#F5A623",
+      "orders": 1,
+      "rev": 8140,
+      "order_pct": 12.5,
+      "rev_pct": 10.2
     }
   ],
   "recent_orders": [
+    {
+      "date": "8 Eyl 2026",
+      "amount": 10990
+    },
     {
       "date": "23 Ağu 2026",
       "amount": 13490
@@ -290,145 +285,104 @@ const SHOPIFY = {
     {
       "date": "31 Tem 2026",
       "amount": 15640
-    },
-    {
-      "date": "15 Tem 2026",
-      "amount": 4400
-    },
-    {
-      "date": "14 Tem 2026",
-      "amount": 11490
-    },
-    {
-      "date": "9 Tem 2026",
-      "amount": 9050
     }
   ],
   "cameras": [
     {
       "name": "Panasonic Lumix DC-TZ91",
-      "price": 28490,
-      "cost": 17000
+      "price": 28490
     },
     {
       "name": "Samsung WB350F",
-      "price": 19490,
-      "cost": 6000
+      "price": 19490
     },
     {
       "name": "Canon PowerShot G7",
-      "price": 18490,
-      "cost": 13500
+      "price": 18490
     },
     {
       "name": "Olympus PEN E-PL1",
-      "price": 18490,
-      "cost": 4500
+      "price": 18490
     },
     {
       "name": "Olympus VR-340",
-      "price": 17990,
-      "cost": 7000
+      "price": 17990
     },
     {
       "name": "Samsung NX2000",
-      "price": 16490,
-      "cost": 8000
+      "price": 16490
     },
     {
       "name": "Fujifilm FinePix Z700 EXR",
-      "price": 15490,
-      "cost": 5700
+      "price": 15490
     },
     {
       "name": "Fujifilm FinePix Z700EXR",
-      "price": 14490,
-      "cost": 7000
+      "price": 14490
     },
     {
       "name": "Sanyo Xacti VPC-C5",
-      "price": 13490,
-      "cost": 2500
+      "price": 13490
     },
     {
       "name": "Lumix DMC-FT10 (Waterproof)",
-      "price": 11990,
-      "cost": 4800
+      "price": 11990
     },
     {
       "name": "Canon IXUS i",
-      "price": 11490,
-      "cost": 3500
+      "price": 11490
     },
     {
       "name": "Casio Exilim EX-Z110",
-      "price": 11490,
-      "cost": 3450
+      "price": 11490
     },
     {
       "name": "Fujifilm FinePix 4700 Zoom",
-      "price": 11490,
-      "cost": 5500
+      "price": 11490
     },
     {
       "name": "Sanyo Xacti CG20",
-      "price": 11490,
-      "cost": 4000
+      "price": 11490
     },
     {
       "name": "Sony Cyber-shot DSC-T9",
-      "price": 11490,
-      "cost": 3800
-    },
-    {
-      "name": "Fujifilm FinePix JV310",
-      "price": 10990,
-      "cost": 3800
+      "price": 11490
     },
     {
       "name": "Casio Exilim EX-Z4",
-      "price": 10490,
-      "cost": 4000
+      "price": 10490
     },
     {
       "name": "Kodak Slice R502",
-      "price": 10490,
-      "cost": 5000
+      "price": 10490
     },
     {
       "name": "Olympus SP-700",
-      "price": 10490,
-      "cost": 5000
+      "price": 10490
     },
     {
       "name": "Sanyo Xacti VPC-HD1",
-      "price": 10490,
-      "cost": 2200
+      "price": 10490
     },
     {
       "name": "Samsung ST10",
-      "price": 9490,
-      "cost": 4500
+      "price": 9490
     },
     {
       "name": "Sanyo Xacti VPC-J4EX",
-      "price": 8990,
-      "cost": 3500
+      "price": 8990
     },
     {
       "name": "HP Photosmart R827",
-      "price": 8900,
-      "cost": 3500
+      "price": 8900
     },
     {
       "name": "Traveler DC-830",
-      "price": 8490,
-      "cost": 3100
+      "price": 8490
     },
     {
       "name": "Sony Cybershot DSC-S85",
-      "price": 7990,
-      "cost": 3932
+      "price": 7990
     }
   ],
   "accessories": [
@@ -458,7 +412,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 100
+  "out_of_stock": 101
 };
 /* ─── SHOPIFY DATA END ─── */
 
