@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-15T22:30:33",
+  "updated_at": "2026-09-15T23:30:39",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "3m-aUuSnQ3A",
       "title": "Mare Gastro Sapanca’da Fujifilm Kamera ile retro anlar 📸❣️",
       "date": "12 Eyl 2026",
-      "views": 1102,
+      "views": 1104,
       "likes": 16,
       "comments": 1,
       "url": "https://youtu.be/3m-aUuSnQ3A"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2873,
+      "views": 2874,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
