@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-15T14:46:37",
+  "updated_at": "2026-09-15T15:46:43",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -87,15 +87,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/nJ92afbw02g"
     },
     {
-      "id": "pZJB6mBWYRg",
-      "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
-      "date": "16 Tem 2026",
-      "views": 2873,
-      "likes": 19,
-      "comments": 1,
-      "url": "https://youtu.be/pZJB6mBWYRg"
-    },
-    {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
@@ -148,6 +139,15 @@ const YOUTUBE = {
       "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
+    },
+    {
+      "id": "2-XdDjHscqs",
+      "title": "Küçük Kamerayla Büyük Hatıralar 📸 #kodak #digitalcamera",
+      "date": "20 Şub 2026",
+      "views": 818,
+      "likes": 13,
+      "comments": 0,
+      "url": "https://youtu.be/2-XdDjHscqs"
     }
   ],
   "sub_goal": 10000
