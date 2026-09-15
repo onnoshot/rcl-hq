@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-15T16:46:48",
+  "updated_at": "2026-09-15T17:46:54",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "3m-aUuSnQ3A",
       "title": "Mare Gastro Sapanca’da Fujifilm Kamera ile retro anlar 📸❣️",
       "date": "12 Eyl 2026",
-      "views": 1098,
+      "views": 1099,
       "likes": 15,
       "comments": 1,
       "url": "https://youtu.be/3m-aUuSnQ3A"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50710,
+      "views": 50713,
       "likes": 207,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
