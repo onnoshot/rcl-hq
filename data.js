@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-15T21:30:27",
+  "updated_at": "2026-09-15T22:30:33",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 63252,
-      "watch_hours": 123.4,
-      "subs_gained": 52,
-      "subs_lost": 55,
+      "views": 66319,
+      "watch_hours": 128.2,
+      "subs_gained": 53,
+      "subs_lost": 56,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4031.3,
-    "watch_hours_year_long": 2178.2,
-    "watch_hours_year_shorts": 1852.9,
+    "watch_hours_year": 4036.2,
+    "watch_hours_year_long": 2179.4,
+    "watch_hours_year_shorts": 1856.5,
     "monthly": [
       {
         "label": "Nis 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 28084,
-        "watch_min": 3072,
-        "subs_gained": 16
+        "views": 31151,
+        "watch_min": 3362,
+        "subs_gained": 17
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "3m-aUuSnQ3A",
       "title": "Mare Gastro Sapanca’da Fujifilm Kamera ile retro anlar 📸❣️",
       "date": "12 Eyl 2026",
-      "views": 1101,
+      "views": 1102,
       "likes": 16,
       "comments": 1,
       "url": "https://youtu.be/3m-aUuSnQ3A"
