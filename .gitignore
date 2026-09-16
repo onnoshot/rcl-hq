@@ -6,3 +6,27 @@ agents/video-clipper/outputs/*.mp4
 agents/video-clipper/.cache
 .env
 .env.*
+__pycache__/
+*.pyc
+logs/
+outputs/
+output/
+tmp/
+push.log
+.next/
+supabase/.temp/
+rcl-email-list.json
+
+# Kendi ayrı git reposu olan alt projeler (o repoda commit/push edilir)
+/didi-otel-web/
+/kameraframe-app/
+/kameraframe-web/
+/lobi/
+/mare-gastro-dashboard/
+/mare-gastro-dergi/
+/mekanoner-app/
+/nihat-yildiz-web/
+/otelrotam-web/
+/sponsin-app/
+/taste-skill-repo/
+/uniqbee-dashboard/

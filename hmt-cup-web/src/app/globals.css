@@ -1,0 +1,132 @@
+/* Hallmark · genre: editorial-luxury-sport · theme: custom (brand red anchor)
+ * design-system: design.md · designed-as-app
+ */
+@import "tailwindcss";
+
+:root {
+  --color-ink: #0d0c0b;
+  --color-ink-2: #17140f;
+  --color-ink-3: #1e1a15;
+  --color-line: rgba(247, 245, 242, 0.1);
+  --color-line-soft: rgba(247, 245, 242, 0.06);
+  --color-paper: #f7f5f2;
+  --color-ink-on-paper: #14120f;
+
+  --color-red: #cc0000;
+  --color-red-bright: #e82020;
+  --color-red-dark: #7a0000;
+  --color-gold: #d4a843;
+
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+    "SF Pro Text", var(--font-inter), "Inter", ui-sans-serif, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    var(--font-inter), "Inter", ui-sans-serif, sans-serif;
+
+  --radius-card: 24px;
+  --radius-media: 20px;
+  --radius-pill: 999px;
+  --radius-input: 16px;
+  --radius-chip: 999px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-ink-3: var(--color-ink-3);
+  --color-line: var(--color-line);
+  --color-paper: var(--color-paper);
+  --color-red: var(--color-red);
+  --color-red-bright: var(--color-red-bright);
+  --color-red-dark: var(--color-red-dark);
+  --color-gold: var(--color-gold);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --radius-card: var(--radius-card);
+  --radius-media: var(--radius-media);
+  --radius-pill: var(--radius-pill);
+  --radius-input: var(--radius-input);
+  --radius-chip: var(--radius-chip);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ink);
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+::selection {
+  background: var(--color-red);
+  color: white;
+}
+
+.font-display {
+  letter-spacing: -0.02em;
+}
+
+/* thin scrollbar for a more "app" feel */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-ink);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-red-dark);
+  border-radius: 4px;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 2s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+/* safe-area padding for the mobile bottom tab bar */
+.pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}

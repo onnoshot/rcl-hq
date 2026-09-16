@@ -1,0 +1,25 @@
+<div class="marquee section--tight" data-section-id="{{ section.id }}" aria-hidden="true">
+  <div class="marquee__track">
+    {%- for i in (1..2) -%}
+      <div class="marquee__item">
+        {%- for block in section.blocks -%}{{ block.settings.text }}{% unless forloop.last %}<span style="color:var(--ember)">✦</span>{% endunless %}{%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Kayan Şerit",
+  "blocks": [
+    { "type": "word", "name": "Kelime", "settings": [ { "type": "text", "id": "text", "label": "Metin", "default": "SINGLE ORIGIN" } ] }
+  ],
+  "presets": [{ "name": "Kayan Şerit", "blocks": [
+    { "type": "word", "settings": { "text": "SINGLE ORIGIN" } },
+    { "type": "word", "settings": { "text": "TAZE KAVRUM" } },
+    { "type": "word", "settings": { "text": "DIRECT TRADE" } },
+    { "type": "word", "settings": { "text": "%100 ARABICA" } },
+    { "type": "word", "settings": { "text": "BALAT ROASTERY" } }
+  ] }]
+}
+{% endschema %}

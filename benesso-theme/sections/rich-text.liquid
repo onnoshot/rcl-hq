@@ -1,0 +1,24 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <div class="glass reveal {% if section.settings.center %}center{% endif %}" style="padding:clamp(2rem,5vw,4rem);max-width:{{ section.settings.width }}px;margin-inline:auto">
+    {%- if section.settings.eyebrow != blank -%}<span class="eyebrow" {% if section.settings.center %}style="justify-content:center"{% endif %}>{{ section.settings.eyebrow }}</span>{%- endif -%}
+    {%- if section.settings.title != blank -%}<h2 class="section-title" {% if section.settings.center %}style="margin-inline:auto"{% endif %}>{{ section.settings.title }}</h2>{%- endif -%}
+    {%- if section.settings.text != blank -%}<div class="rte muted" style="margin-top:1rem;font-size:1.1rem">{{ section.settings.text }}</div>{%- endif -%}
+    {%- if section.settings.cta != blank -%}<a href="{{ section.settings.link }}" class="btn" style="margin-top:1.6rem" data-magnetic>{{ section.settings.cta }} {% render 'icon', name: 'arrow' %}</a>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Zengin Metin",
+  "settings": [
+    { "type": "checkbox", "id": "center", "label": "Ortala", "default": true },
+    { "type": "range", "id": "width", "label": "Genişlik", "min": 600, "max": 1200, "step": 40, "unit": "px", "default": 800 },
+    { "type": "text", "id": "eyebrow", "label": "Üst etiket", "default": "HİKAYEMİZ" },
+    { "type": "text", "id": "title", "label": "Başlık", "default": "Tarihî Balat sokaklarında kavruyoruz" },
+    { "type": "richtext", "id": "text", "label": "Metin", "default": "<p>Benesso, dünyanın en iyi çekirdeklerini en doğal işleme yöntemleriyle, küçük partiler halinde kavurarak gerçek bir kahve deneyimi sunar.</p>" },
+    { "type": "text", "id": "cta", "label": "Buton" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ],
+  "presets": [{ "name": "Zengin Metin" }]
+}
+{% endschema %}

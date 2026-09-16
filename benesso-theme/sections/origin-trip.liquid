@@ -1,0 +1,35 @@
+<section class="section" data-section-id="{{ section.id }}">
+  <div class="wrap">
+    <div class="glass reveal-scale" style="position:relative;border-radius:var(--radius-lg);overflow:hidden;min-height:clamp(360px,52vh,560px);display:grid;align-items:end">
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 1800 }}" alt="" width="1800" height="1012" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" data-parallax="0.1" loading="lazy">
+      {%- endif -%}
+      <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(15,10,6,.9), rgba(15,10,6,.25) 60%, transparent)"></div>
+      <div style="position:relative;padding:clamp(1.5rem,5vw,3.5rem);max-width:640px">
+        <span class="eyebrow">{% render 'icon', name: 'mountain' %} {{ section.settings.eyebrow }}</span>
+        <h2 class="section-title flow-text" style="font-size:var(--fs-h1)">{{ section.settings.title }}</h2>
+        <p class="lede" style="margin:1rem 0 1.8rem">{{ section.settings.text }}</p>
+        <div style="display:flex;gap:.9rem;flex-wrap:wrap;align-items:center">
+          {%- if section.settings.link != blank -%}<a href="{{ section.settings.link }}" class="btn" data-magnetic>{{ section.settings.cta }} {% render 'icon', name: 'arrow' %}</a>{%- endif -%}
+          {%- if section.settings.meta != blank -%}<span class="chip">{% render 'icon', name: 'globe' %} {{ section.settings.meta }}</span>{%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Origin Trip",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Arka plan görseli" },
+    { "type": "text", "id": "eyebrow", "label": "Üst etiket", "default": "BENESSO ORIGIN TRIP" },
+    { "type": "text", "id": "title", "label": "Başlık", "default": "Kahvenin doğduğu yere git" },
+    { "type": "textarea", "id": "text", "label": "Metin", "default": "Etiyopya'nın yüksek rakımlı çiftliklerinde hasada katıl, üreticilerle tanış, kavurmayı kaynağında öğren. Bir kahveden çok daha fazlası." },
+    { "type": "text", "id": "cta", "label": "Buton", "default": "Yolculuğu keşfet" },
+    { "type": "url", "id": "link", "label": "Link" },
+    { "type": "text", "id": "meta", "label": "Etiket", "default": "Sınırlı kontenjan · yılda 1 grup" }
+  ],
+  "presets": [{ "name": "Origin Trip" }]
+}
+{% endschema %}

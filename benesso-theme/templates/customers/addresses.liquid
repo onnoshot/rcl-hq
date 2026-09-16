@@ -1,0 +1,26 @@
+<section class="section wrap" style="max-width:680px;margin-inline:auto">
+  <span class="eyebrow">{% render 'icon', name: 'truck' %} ADRESLERİM</span>
+  <h1 class="section-title" style="font-size:var(--fs-h2);margin-bottom:1.5rem">{{ 'customer.account.addresses' | t }}</h1>
+  {%- assign fs = 'width:100%;padding:.8rem 1rem;border-radius:var(--radius-sm);background:var(--glass-bg);border:1px solid var(--glass-border);color:inherit;font:inherit;margin-bottom:.6rem' -%}
+
+  <div class="glass" style="padding:1.5rem;margin-bottom:1.5rem">
+    <h2 style="font-size:1.1rem;margin-bottom:1rem">Yeni adres ekle</h2>
+    {%- form 'customer_address', customer.new_address -%}
+      <input type="text" name="address[first_name]" placeholder="Ad" style="{{ fs }}">
+      <input type="text" name="address[last_name]" placeholder="Soyad" style="{{ fs }}">
+      <input type="text" name="address[address1]" placeholder="Adres" style="{{ fs }}">
+      <input type="text" name="address[city]" placeholder="Şehir" style="{{ fs }}">
+      <input type="text" name="address[zip]" placeholder="Posta kodu" style="{{ fs }}">
+      <input type="tel" name="address[phone]" placeholder="Telefon" style="{{ fs }}">
+      <button type="submit" class="btn" data-magnetic>Kaydet</button>
+    {%- endform -%}
+  </div>
+
+  {%- for address in customer.addresses -%}
+    <div class="glass" style="padding:1.2rem;margin-bottom:1rem;display:flex;justify-content:space-between;gap:1rem">
+      <div>{{ address | format_address }}</div>
+      <form method="post" action="{{ routes.account_addresses_url }}/{{ address.id }}"><input type="hidden" name="_method" value="delete"><button type="submit" class="chip chip--note">{{ 'cart.remove' | t }}</button></form>
+    </div>
+  {%- endfor -%}
+  <a href="{{ routes.account_url }}" class="btn btn--ghost" style="margin-top:1rem">{% render 'icon', name: 'arrow' %} Hesabıma dön</a>
+</section>

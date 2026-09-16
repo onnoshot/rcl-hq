@@ -1,0 +1,522 @@
+{%- comment -%}
+  Benesso &#8212; Toptan Sat&#305;&#351; / Wholesale Inquiry
+  &#199;ok ad&#305;ml&#305;, animasyonlu B2B talep b&#246;l&#252;m&#252;. &#304;&#351;letme tipi se&#231;ilir &#8594; form doldurulur &#8594;
+  WhatsApp'a otomatik mesaj olarak g&#246;nderilir. Renkler Liquid taraf&#305;nda hex/rgba olarak
+  hesaplan&#305;r (runtime color-mix yok) &#8594; her taray&#305;c&#305;da bej zemin + siyah okunur yaz&#305; garanti.
+{%- endcomment -%}
+
+{%- liquid
+  assign sid = section.id
+  assign accent = section.settings.color_accent | default: '#C0541C'
+  assign bg = section.settings.color_bg | default: '#EFE7D8'
+  assign txt = section.settings.color_text | default: '#1A1206'
+  assign wa = section.settings.whatsapp_number | remove: ' ' | remove: '+' | remove: '-' | remove: '(' | remove: ')'
+
+  assign bg_top = bg | color_lighten: 4
+  assign accent_deep = accent | color_darken: 12
+  assign accent_07 = accent | color_modify: 'alpha', 0.07
+  assign accent_12 = accent | color_modify: 'alpha', 0.12
+  assign accent_15 = accent | color_modify: 'alpha', 0.15
+  assign accent_40 = accent | color_modify: 'alpha', 0.40
+  assign accent_50 = accent | color_modify: 'alpha', 0.50
+  assign accent_65 = accent | color_modify: 'alpha', 0.65
+  assign ink82 = txt | color_modify: 'alpha', 0.82
+  assign ink72 = txt | color_modify: 'alpha', 0.72
+  assign ink60 = txt | color_modify: 'alpha', 0.60
+  assign ink50 = txt | color_modify: 'alpha', 0.50
+  assign ink42 = txt | color_modify: 'alpha', 0.42
+  assign ink20 = txt | color_modify: 'alpha', 0.20
+  assign ink12 = txt | color_modify: 'alpha', 0.12
+-%}
+
+<section
+  class="bw"
+  id="bw-{{ sid }}"
+  data-bw
+  data-wa="{{ wa }}"
+  data-brand="{{ section.settings.brand_name | escape | default: 'Benesso' }}"
+  style="
+    --bw-accent:{{ accent }};
+    --bw-accent-deep:{{ accent_deep }};
+    --bw-bg:{{ bg }};
+    --bw-bg-top:{{ bg_top }};
+    --bw-text:{{ txt }};
+    --bw-accent-07:{{ accent_07 }};
+    --bw-accent-12:{{ accent_12 }};
+    --bw-accent-15:{{ accent_15 }};
+    --bw-accent-40:{{ accent_40 }};
+    --bw-accent-50:{{ accent_50 }};
+    --bw-accent-65:{{ accent_65 }};
+    --bw-ink82:{{ ink82 }};
+    --bw-ink72:{{ ink72 }};
+    --bw-ink60:{{ ink60 }};
+    --bw-ink50:{{ ink50 }};
+    --bw-ink42:{{ ink42 }};
+    --bw-ink20:{{ ink20 }};
+    --bw-ink12:{{ ink12 }};
+    {% if section.settings.bg_image %}--bw-hero:url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}
+  ">
+
+  <div class="bw__mesh" aria-hidden="true">
+    <span class="bw__orb bw__orb--1"></span>
+    <span class="bw__orb bw__orb--2"></span>
+    <span class="bw__orb bw__orb--3"></span>
+    <span class="bw__grain"></span>
+  </div>
+
+  <div class="bw__beans" aria-hidden="true">
+    {%- for i in (1..7) -%}
+      <svg class="bw__bean" style="--n:{{ i }}" viewBox="0 0 24 36" fill="none">
+        <path d="M12 1C5 1 1 9 1 18s4 17 11 17 11-8 11-17S19 1 12 1Z" fill="var(--bw-accent)" opacity=".30"/>
+        <path d="M12 2c-3 5-3 27 0 32" stroke="#3a2212" stroke-width="1.6" opacity=".40"/>
+      </svg>
+    {%- endfor -%}
+  </div>
+
+  <div class="bw__inner">
+
+    {%- comment -%} ============ HERO ============ {%- endcomment -%}
+    <header class="bw__hero bw-reveal">
+      <span class="bw__eyebrow">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg>
+        {{ section.settings.eyebrow | default: 'TOPTAN & &#304;&#350; ORTAKLI&#286;I' }}
+      </span>
+      <h2 class="bw__title">{{ section.settings.title | default: '&#220;&#231;&#252;nc&#252; nesil kahveyi <em>i&#351;letmenize</em> ta&#351;&#305;yal&#305;m' }}</h2>
+      <p class="bw__lede">{{ section.settings.subtitle | default: 'Tek origin &#231;ekirdekler, taze kavrum, &#351;effaf tedarik. Ofisinizden kafenize, etkinli&#287;inizden kendi markan&#305;za &#8212; ihtiyac&#305;n&#305;z&#305; se&#231;in, saniyeler i&#231;inde WhatsApp&#8217;tan konu&#351;maya ba&#351;layal&#305;m.' }}</p>
+
+      <div class="bw__trust">
+        <span><b>72 saat</b> i&#231;inde teklif</span>
+        <span class="bw__dot"></span>
+        <span><b>Haftal&#305;k</b> taze kavrum</span>
+        <span class="bw__dot"></span>
+        <span><b>T&#252;rkiye geneli</b> g&#246;nderim</span>
+      </div>
+    </header>
+
+    {%- comment -%} ============ STEP 1 &#8212; choose type ============ {%- endcomment -%}
+    <div class="bw__step bw__step--type is-active" data-step="type">
+      <p class="bw__steplabel bw-reveal">01 &#8212; &#304;&#351;letme tipinizi se&#231;in</p>
+      <div class="bw__grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'option' -%}
+            <button type="button" class="bw-card" data-option
+              data-key="{{ block.settings.key | escape }}"
+              data-label="{{ block.settings.label | escape }}"
+              {{ block.shopify_attributes }}>
+              <span class="bw-card__bg"{% if block.settings.image %} style="background-image:url('{{ block.settings.image | image_url: width: 900 }}')"{% endif %}></span>
+              <span class="bw-card__scrim"></span>
+              <span class="bw-card__glow"></span>
+              <span class="bw-card__ico">
+                {%- case block.settings.icon -%}
+                  {%- when 'office' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V5a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v16M15 21V9h3a1 1 0 0 1 1 1v11M8 8h2M8 12h2M8 16h2"/></svg>
+                  {%- when 'cafe' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 1v2M10 1v2M14 1v2"/></svg>
+                  {%- when 'event' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 5.4L20 8l-4 4 1 6-5-3-5 3 1-6-4-4 5.6-.6Z"/></svg>
+                  {%- when 'label' -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h7l9 9-7 7-9-9V7Z"/><circle cx="8" cy="10" r="1.4"/></svg>
+                  {%- else -%}<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>
+                {%- endcase -%}
+              </span>
+              <span class="bw-card__title">{{ block.settings.label }}</span>
+              <span class="bw-card__desc">{{ block.settings.desc }}</span>
+              <span class="bw-card__cta">Se&#231;
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </span>
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} ============ STEP 2 &#8212; form ============ {%- endcomment -%}
+    <div class="bw__step bw__step--form" data-step="form" hidden>
+      <button type="button" class="bw__back" data-back>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        Geri
+      </button>
+
+      <p class="bw__steplabel">02 &#8212; <span data-chosen>Detaylar</span></p>
+      <h3 class="bw__formtitle">Birka&#231; detay, gerisini WhatsApp&#8217;ta halledelim</h3>
+
+      <form class="bw__form" data-form novalidate>
+        <div class="bw__field">
+          <label>Ad Soyad <i>*</i></label>
+          <input type="text" name="name" autocomplete="name" placeholder="Ad&#305;n&#305;z" required>
+        </div>
+        <div class="bw__field">
+          <label>&#304;&#351;letme / Marka ad&#305;</label>
+          <input type="text" name="company" autocomplete="organization" placeholder="&#214;rn. Mavi Kafe">
+        </div>
+        <div class="bw__field">
+          <label>&#350;ehir</label>
+          <input type="text" name="city" autocomplete="address-level2" placeholder="&#214;rn. &#304;stanbul">
+        </div>
+        <div class="bw__field" data-dynamic>
+          <label data-vol-label>Tahmini ayl&#305;k ihtiya&#231;</label>
+          <select name="volume" data-vol>
+            <option value="">Se&#231;iniz</option>
+          </select>
+        </div>
+        <div class="bw__field bw__field--full">
+          <label>Eklemek istedikleriniz</label>
+          <textarea name="note" rows="3" placeholder="Demleme y&#246;ntemi, kavrum tercihi, teslim s&#305;kl&#305;&#287;&#305;, &#246;zel istekler&#8230;"></textarea>
+        </div>
+
+        <div class="bw__preview">
+          <span class="bw__preview-label">WhatsApp&#8217;a gidecek mesaj</span>
+          <pre class="bw__preview-msg" data-preview></pre>
+        </div>
+
+        <button type="submit" class="bw__send" data-send>
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="currentColor"><path d="M16 2.7C8.6 2.7 2.7 8.6 2.7 16c0 2.4.6 4.6 1.8 6.6L2.7 29.3l6.9-1.8c1.9 1 4.1 1.6 6.4 1.6 7.4 0 13.3-5.9 13.3-13.3S23.4 2.7 16 2.7Zm0 24c-2 0-4-.5-5.7-1.6l-.4-.2-4.1 1 1.1-4-.3-.4A10.6 10.6 0 1 1 16 26.7Zm6-7.9c-.3-.2-1.9-1-2.2-1-.3-.1-.5-.2-.8.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-1.8-.9-3-1.6-4.2-3.6-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-1-2.4c-.3-.7-.5-.6-.8-.6h-.6c-.2 0-.5.1-.8.4-1 1-1.3 2.3-.9 3.7.5 1.8 1.6 3.4 3.4 5 2.4 2.2 4.4 2.9 5.9 3.3 1.4.4 2.5.3 3.4-.2.5-.3 1.9-1.1 2.1-1.7.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.6-.4Z"/></svg>
+          WhatsApp&#8217;tan g&#246;nder
+        </button>
+        <p class="bw__hint">Buton, doldurdu&#287;unuz bilgileri haz&#305;r mesaj olarak WhatsApp&#8217;ta a&#231;ar. G&#246;ndermeden &#246;nce g&#246;r&#252;p d&#252;zenleyebilirsiniz.</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+{%- comment -%} ============ STYLES ============ {%- endcomment -%}
+<style>
+  #bw-{{ sid }}{
+    --bw-radius:22px;
+    --bw-ease:cubic-bezier(.22,1,.36,1);
+    --bw-sans:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;
+    position:relative; overflow:hidden; isolation:isolate;
+    color:var(--bw-text);
+    background:var(--bw-bg);
+    background:
+      radial-gradient(120% 80% at 50% -10%, var(--bw-accent-15), transparent 58%),
+      radial-gradient(95% 70% at 88% 112%, var(--bw-accent-07), transparent 60%),
+      linear-gradient(180deg, var(--bw-bg-top), var(--bw-bg));
+    padding:clamp(48px,8vw,120px) clamp(16px,5vw,64px);
+    font-family:var(--bw-sans);
+    -webkit-font-smoothing:antialiased;
+  }
+  {% if section.settings.bg_image %}
+  #bw-{{ sid }}::before{
+    content:""; position:absolute; inset:0; z-index:-2;
+    background:var(--bw-hero) center/cover no-repeat;
+    opacity:.18; filter:saturate(1.05);
+    -webkit-mask:linear-gradient(180deg,transparent,#000 18%,#000 55%,transparent 92%);
+    mask:linear-gradient(180deg,transparent,#000 18%,#000 55%,transparent 92%);
+  }
+  {% endif %}
+  #bw-{{ sid }} *{box-sizing:border-box}
+  #bw-{{ sid }} .bw__inner{position:relative; z-index:2; max-width:1140px; margin:0 auto}
+
+  /* mesh / orbs */
+  #bw-{{ sid }} .bw__mesh{position:absolute; inset:0; z-index:0; overflow:hidden; pointer-events:none}
+  #bw-{{ sid }} .bw__orb{position:absolute; border-radius:50%; filter:blur(70px); mix-blend-mode:multiply}
+  #bw-{{ sid }} .bw__orb--1{width:46vw; height:46vw; top:-14%; left:-10%; opacity:.22; background:radial-gradient(circle,var(--bw-accent-65),transparent 70%); animation:bw-float 20s var(--bw-ease) infinite}
+  #bw-{{ sid }} .bw__orb--2{width:40vw; height:40vw; bottom:-16%; right:-8%; opacity:.18; background:radial-gradient(circle,#c89a5e,transparent 70%); animation:bw-float 24s var(--bw-ease) infinite reverse}
+  #bw-{{ sid }} .bw__orb--3{width:28vw; height:28vw; top:38%; left:56%; opacity:.14; background:radial-gradient(circle,#9a5a2e,transparent 70%); animation:bw-float 28s var(--bw-ease) infinite}
+  #bw-{{ sid }} .bw__grain{position:absolute; inset:0; opacity:.03; mix-blend-mode:multiply; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
+  @keyframes bw-float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(4%,6%) scale(1.08)}66%{transform:translate(-3%,-4%) scale(.96)}}
+
+  /* beans */
+  #bw-{{ sid }} .bw__beans{position:absolute; inset:0; z-index:1; pointer-events:none; overflow:hidden}
+  #bw-{{ sid }} .bw__bean{position:absolute; width:calc(14px + var(--n) * 2px); top:-40px;
+    left:calc(var(--n) * 13% - 4%); opacity:0;
+    animation:bw-fall calc(15s + var(--n) * 2.5s) linear infinite;
+    animation-delay:calc(var(--n) * -3.2s)}
+  @keyframes bw-fall{0%{transform:translateY(-40px) rotate(0); opacity:0}8%{opacity:.40}92%{opacity:.30}100%{transform:translateY(115vh) rotate(320deg); opacity:0}}
+
+  /* reveal */
+  #bw-{{ sid }} .bw-reveal{opacity:0; transform:translateY(26px); transition:opacity .8s var(--bw-ease), transform .8s var(--bw-ease)}
+  #bw-{{ sid }} .bw-reveal.is-in{opacity:1; transform:none}
+
+  /* hero */
+  #bw-{{ sid }} .bw__hero{text-align:center; max-width:760px; margin:0 auto clamp(34px,6vw,64px)}
+  #bw-{{ sid }} .bw__eyebrow{display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--bw-sans); font-size:.86rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--bw-accent-deep); padding:9px 16px; border:1px solid var(--bw-accent-40);
+    border-radius:100px; background:var(--bw-accent-12)}
+  #bw-{{ sid }} .bw__title{font-family:var(--bw-sans); font-weight:800; color:var(--bw-text);
+    font-size:clamp(2.2rem,5.8vw,4.2rem); line-height:1.04; letter-spacing:-.025em; margin:.55em 0 .32em}
+  #bw-{{ sid }} .bw__title p{margin:0; display:inline}
+  #bw-{{ sid }} .bw__title em{font-style:normal; color:var(--bw-accent);
+    background:linear-gradient(115deg,var(--bw-accent-deep),var(--bw-accent));
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent}
+  #bw-{{ sid }} .bw__lede{font-size:clamp(1.12rem,1.9vw,1.36rem); line-height:1.62; color:var(--bw-ink82); max-width:60ch; margin:0 auto}
+  #bw-{{ sid }} .bw__trust{display:flex; flex-wrap:wrap; gap:10px 18px; justify-content:center; margin-top:26px;
+    font-size:1rem; color:var(--bw-ink72)}
+  #bw-{{ sid }} .bw__trust b{color:var(--bw-text); font-weight:700}
+  #bw-{{ sid }} .bw__dot{width:4px; height:4px; border-radius:50%; background:var(--bw-accent); align-self:center}
+
+  /* step label */
+  #bw-{{ sid }} .bw__steplabel{font-family:var(--bw-sans); font-size:.92rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--bw-ink60); text-align:center; margin:0 0 26px}
+  #bw-{{ sid }} .bw__steplabel span{color:var(--bw-accent-deep); font-weight:700}
+
+  /* steps transition */
+  #bw-{{ sid }} .bw__step{transition:opacity .5s var(--bw-ease), transform .5s var(--bw-ease)}
+  #bw-{{ sid }} .bw__step[hidden]{display:none}
+  #bw-{{ sid }} .bw__step--form{opacity:0; transform:translateY(18px); text-align:center}
+  #bw-{{ sid }} .bw__step--form.is-active{opacity:1; transform:none}
+
+  /* cards grid */
+  #bw-{{ sid }} .bw__grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:18px}
+  #bw-{{ sid }} .bw-card{--cc:var(--bw-accent-deep); --cc-soft:var(--bw-accent-12); --cc-strong:var(--bw-accent-50);
+    position:relative; overflow:hidden; text-align:left; cursor:pointer; touch-action:manipulation;
+    -webkit-tap-highlight-color:transparent; appearance:none; width:100%; font:inherit;
+    border:1px solid var(--bw-ink12); border-top:4px solid var(--cc); border-radius:var(--bw-radius);
+    background:#ffffff;
+    padding:26px 24px 24px; min-height:250px; display:flex; flex-direction:column; color:var(--bw-text);
+    box-shadow:0 14px 32px -22px var(--bw-ink50);
+    transition:transform .5s var(--bw-ease), border-color .5s var(--bw-ease), box-shadow .5s var(--bw-ease);
+    opacity:0; transform:translateY(24px)}
+  #bw-{{ sid }} .bw-card.is-in{opacity:1; transform:none}
+  /* her isletme tipi kendi rengiyle */
+  #bw-{{ sid }} .bw-card[data-key="office"]{--cc:#C0541C; --cc-soft:rgba(192,84,28,.14); --cc-strong:rgba(192,84,28,.55)}
+  #bw-{{ sid }} .bw-card[data-key="cafe"]{--cc:#7A4A22; --cc-soft:rgba(122,74,34,.15); --cc-strong:rgba(122,74,34,.55)}
+  #bw-{{ sid }} .bw-card[data-key="event"]{--cc:#B07A1E; --cc-soft:rgba(176,122,30,.16); --cc-strong:rgba(176,122,30,.55)}
+  #bw-{{ sid }} .bw-card[data-key="label"]{--cc:#A8392B; --cc-soft:rgba(168,57,43,.14); --cc-strong:rgba(168,57,43,.55)}
+  #bw-{{ sid }} .bw-card__bg{position:absolute; inset:0; background-size:cover; background-position:center; opacity:1;
+    transition:transform .8s var(--bw-ease); z-index:0}
+  #bw-{{ sid }} .bw-card__scrim{position:absolute; inset:0; z-index:1; pointer-events:none;
+    background:linear-gradient(180deg, rgba(255,255,255,.30) 0%, rgba(255,255,255,.78) 58%, #fff 100%)}
+  #bw-{{ sid }} .bw-card:not(:has(.bw-card__bg[style])) .bw-card__scrim{display:none}
+  #bw-{{ sid }} .bw-card__glow{position:absolute; inset:0; opacity:0; z-index:1;
+    background:radial-gradient(120% 90% at 30% 0%, var(--cc-soft), transparent 60%); transition:opacity .5s var(--bw-ease)}
+  #bw-{{ sid }} .bw-card > .bw-card__ico,
+  #bw-{{ sid }} .bw-card > .bw-card__title,
+  #bw-{{ sid }} .bw-card > .bw-card__desc,
+  #bw-{{ sid }} .bw-card > .bw-card__cta{position:relative; z-index:2}
+  #bw-{{ sid }} .bw-card::after{content:""; position:absolute; inset:0; z-index:3; pointer-events:none;
+    background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 47%,transparent 64%);
+    transform:translateX(-120%); transition:transform .9s var(--bw-ease)}
+  #bw-{{ sid }} .bw-card:hover::after{transform:translateX(120%)}
+  #bw-{{ sid }} .bw-card:hover{transform:translateY(-8px); border-color:var(--cc-strong);
+    box-shadow:0 34px 60px -28px var(--cc-strong)}
+  #bw-{{ sid }} .bw-card:hover .bw-card__bg{transform:scale(1.06)}
+  #bw-{{ sid }} .bw-card:hover .bw-card__glow{opacity:1}
+  #bw-{{ sid }} .bw-card:focus-visible{outline:3px solid var(--cc); outline-offset:3px}
+  #bw-{{ sid }} .bw-card__ico{width:58px; height:58px; display:grid; place-items:center; border-radius:16px;
+    background:var(--cc-soft); color:var(--cc); margin-bottom:auto; transition:transform .5s var(--bw-ease)}
+  #bw-{{ sid }} .bw-card:hover .bw-card__ico{transform:scale(1.08) rotate(-3deg)}
+  #bw-{{ sid }} .bw-card__ico svg{width:30px; height:30px}
+  #bw-{{ sid }} .bw-card__title{font-family:var(--bw-sans); font-weight:800; font-size:1.5rem; letter-spacing:-.01em; margin-top:22px; color:var(--bw-text)}
+  #bw-{{ sid }} .bw-card__desc{font-size:1.04rem; line-height:1.5; color:var(--bw-ink72); margin-top:8px}
+  #bw-{{ sid }} .bw-card__cta{display:inline-flex; align-items:center; gap:8px; align-self:flex-start; margin-top:20px;
+    font-size:1.02rem; font-weight:700; color:#fff; background:var(--cc); padding:12px 20px; border-radius:100px;
+    box-shadow:0 12px 24px -12px var(--cc); transition:transform .35s var(--bw-ease), box-shadow .35s var(--bw-ease), gap .35s var(--bw-ease)}
+  #bw-{{ sid }} .bw-card__cta svg{transition:transform .35s var(--bw-ease)}
+  #bw-{{ sid }} .bw-card:hover .bw-card__cta{gap:11px; transform:translateY(-2px); box-shadow:0 18px 30px -12px var(--cc)}
+  #bw-{{ sid }} .bw-card:hover .bw-card__cta svg{transform:translateX(3px)}
+
+  /* form */
+  #bw-{{ sid }} .bw__back{display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+    font-family:var(--bw-sans); font-weight:700; font-size:1rem; color:var(--bw-text);
+    background:#fff; border:1.5px solid var(--bw-ink20); border-radius:100px; padding:11px 20px; margin:0 auto 20px;
+    box-shadow:0 8px 20px -14px var(--bw-ink50); transition:transform .3s var(--bw-ease), border-color .3s, color .3s, box-shadow .3s}
+  #bw-{{ sid }} .bw__back:hover{border-color:var(--bw-accent); color:var(--bw-accent-deep); transform:translateX(-4px);
+    box-shadow:0 12px 24px -12px var(--bw-accent-50)}
+  #bw-{{ sid }} .bw__back svg{transition:transform .3s var(--bw-ease)}
+  #bw-{{ sid }} .bw__back:hover svg{transform:translateX(-3px)}
+  #bw-{{ sid }} .bw__formtitle{font-family:var(--bw-sans); font-weight:800; font-size:clamp(1.6rem,3.4vw,2.4rem);
+    letter-spacing:-.015em; margin:0 auto 30px; max-width:22ch; color:var(--bw-text)}
+  #bw-{{ sid }} .bw__form{display:grid; grid-template-columns:1fr 1fr; gap:16px; text-align:left;
+    max-width:720px; margin:0 auto; background:#ffffff;
+    border:1px solid var(--bw-ink12); border-radius:var(--bw-radius);
+    padding:clamp(20px,4vw,38px);
+    box-shadow:0 26px 60px -36px var(--bw-ink50)}
+  #bw-{{ sid }} .bw__field{display:flex; flex-direction:column; gap:7px}
+  #bw-{{ sid }} .bw__field--full{grid-column:1/-1}
+  #bw-{{ sid }} .bw__field label{font-size:.94rem; font-weight:700; letter-spacing:.01em; color:var(--bw-ink82)}
+  #bw-{{ sid }} .bw__field label i{color:var(--bw-accent); font-style:normal}
+  #bw-{{ sid }} .bw__form input, #bw-{{ sid }} .bw__form select, #bw-{{ sid }} .bw__form textarea{
+    width:100%; font:inherit; font-size:1.05rem; color:var(--bw-text);
+    background:#fff; border:1px solid var(--bw-ink20);
+    border-radius:12px; padding:12px 14px; transition:border-color .25s, box-shadow .25s; resize:vertical}
+  #bw-{{ sid }} .bw__form input::placeholder, #bw-{{ sid }} .bw__form textarea::placeholder{color:var(--bw-ink42)}
+  #bw-{{ sid }} .bw__form input:focus, #bw-{{ sid }} .bw__form select:focus, #bw-{{ sid }} .bw__form textarea:focus{
+    outline:none; border-color:var(--bw-accent); box-shadow:0 0 0 3px var(--bw-accent-15)}
+  #bw-{{ sid }} .bw__form select{appearance:none; cursor:pointer;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%231A1206' stroke-width='2'%3E%3Cpath d='M3 5l4 4 4-4'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center}
+  #bw-{{ sid }} .bw__field input:invalid:not(:placeholder-shown){border-color:#d24a30}
+
+  /* preview */
+  #bw-{{ sid }} .bw__preview{grid-column:1/-1; border:1px dashed var(--bw-accent-40);
+    border-radius:14px; padding:14px 16px; background:var(--bw-accent-07)}
+  #bw-{{ sid }} .bw__preview-label{display:block; font-family:var(--bw-sans); font-size:.78rem; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--bw-accent-deep); margin-bottom:8px; font-weight:700}
+  #bw-{{ sid }} .bw__preview-msg{font-family:var(--bw-sans); font-size:.96rem; line-height:1.6; white-space:pre-wrap;
+    color:var(--bw-text); margin:0}
+
+  /* send */
+  #bw-{{ sid }} .bw__send{grid-column:1/-1; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-family:var(--bw-sans); font-weight:700; font-size:1.14rem; cursor:pointer; border:0; color:#fff;
+    background:linear-gradient(135deg,#25D366,#128C7E); border-radius:14px; padding:17px 24px;
+    box-shadow:0 16px 34px -14px rgba(18,140,126,.7); transition:transform .3s var(--bw-ease), box-shadow .3s, filter .3s}
+  #bw-{{ sid }} .bw__send:hover{transform:translateY(-3px); filter:brightness(1.05); box-shadow:0 22px 46px -16px rgba(37,211,102,.7)}
+  #bw-{{ sid }} .bw__send:active{transform:translateY(0)}
+  #bw-{{ sid }} .bw__send svg{flex:none}
+  #bw-{{ sid }} .bw__hint{grid-column:1/-1; text-align:center; font-size:.88rem; margin:2px 0 0; color:var(--bw-ink50)}
+
+  @media (max-width:680px){
+    #bw-{{ sid }} .bw__grid{grid-template-columns:1fr; gap:14px}
+    #bw-{{ sid }} .bw__form{grid-template-columns:1fr}
+    #bw-{{ sid }} .bw-card{min-height:auto; padding:22px 20px}
+    #bw-{{ sid }} .bw-card__ico{margin-bottom:14px}
+    #bw-{{ sid }} .bw__trust{gap:6px 12px; font-size:.8rem}
+    #bw-{{ sid }} .bw__trust .bw__dot{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){
+    #bw-{{ sid }} .bw__orb, #bw-{{ sid }} .bw__bean{animation:none}
+    #bw-{{ sid }} .bw-reveal, #bw-{{ sid }} .bw-card{transition:none; opacity:1; transform:none}
+  }
+</style>
+
+{%- comment -%} ============ SCRIPT ============ {%- endcomment -%}
+<script>
+(function(){
+  var root = document.getElementById('bw-{{ sid }}');
+  if(!root || root.dataset.bwInit) return;
+  root.dataset.bwInit = '1';
+
+  var wa = (root.dataset.wa || '').trim();
+  var brand = root.dataset.brand || 'Benesso';
+
+  var VOL = {
+    office:  {label:'Ekip b\u00fcy\u00fckl\u00fc\u011f\u00fc / ayl\u0131k t\u00fcketim', opts:['1-10 ki\u015fi','11-30 ki\u015fi','31-75 ki\u015fi','75+ ki\u015fi']},
+    cafe:    {label:'Ayl\u0131k \u00e7ekirdek ihtiyac\u0131', opts:['5 kg alt\u0131','5-20 kg','20-50 kg','50 kg+']},
+    event:   {label:'Etkinlik & misafir say\u0131s\u0131', opts:['50 ki\u015fiye kadar','50-150 ki\u015fi','150-500 ki\u015fi','500+ ki\u015fi']},
+    label:   {label:'\u0130lk \u00fcretim adedi', opts:['250-500 adet','500-1.000 adet','1.000-5.000 adet','5.000+ adet']},
+    _default:{label:'Tahmini ihtiya\u00e7', opts:['K\u00fc\u00e7\u00fck','Orta','B\u00fcy\u00fck','Hen\u00fcz net de\u011fil']}
+  };
+
+  // reveal \u2014 with fail-safe so cards never stay invisible
+  function showAll(){ root.querySelectorAll('.bw-reveal, .bw-card').forEach(function(el){ el.classList.add('is-in'); }); }
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target);} });
+    }, {threshold:.1});
+    root.querySelectorAll('.bw-reveal, .bw-card').forEach(function(el,i){
+      el.style.transitionDelay = (i%6 * 70) + 'ms';
+      io.observe(el);
+    });
+    setTimeout(showAll, 1400);
+  } else { showAll(); }
+
+  var stepType = root.querySelector('[data-step="type"]');
+  var stepForm = root.querySelector('[data-step="form"]');
+  var chosenEl = root.querySelector('[data-chosen]');
+  var volLabel = root.querySelector('[data-vol-label]');
+  var volSel   = root.querySelector('[data-vol]');
+  var form     = root.querySelector('[data-form]');
+  var preview  = root.querySelector('[data-preview]');
+  var current  = {key:'', label:''};
+
+  function buildVolume(key){
+    var cfg = VOL[key] || VOL._default;
+    volLabel.textContent = cfg.label;
+    volSel.innerHTML = '<option value="">Se\u00e7iniz</option>' +
+      cfg.opts.map(function(o){return '<option>'+o+'</option>';}).join('');
+  }
+
+  function buildMessage(){
+    var fd = new FormData(form);
+    var L = [];
+    L.push('Merhaba ' + brand + ', toptan / i\u015f ortakl\u0131\u011f\u0131 i\u00e7in yaz\u0131yorum.');
+    L.push('');
+    L.push('\u2022 Talep tipi: ' + (current.label || '-'));
+    if(fd.get('name'))    L.push('\u2022 Ad Soyad: ' + fd.get('name'));
+    if(fd.get('company')) L.push('\u2022 \u0130\u015fletme: ' + fd.get('company'));
+    if(fd.get('city'))    L.push('\u2022 \u015eehir: ' + fd.get('city'));
+    if(fd.get('volume'))  L.push('\u2022 ' + (VOL[current.key]||VOL._default).label + ': ' + fd.get('volume'));
+    if(fd.get('note'))    L.push('\u2022 Not: ' + fd.get('note'));
+    return L.join('\n');
+  }
+
+  function refresh(){ preview.textContent = buildMessage(); }
+
+  function showForm(){
+    stepType.setAttribute('hidden','');
+    stepForm.removeAttribute('hidden');
+    requestAnimationFrame(function(){ stepForm.classList.add('is-active'); });
+    chosenEl.textContent = current.label;
+    buildVolume(current.key);
+    refresh();
+    var y = root.getBoundingClientRect().top + window.pageYOffset - 20;
+    window.scrollTo({top:y, behavior:'smooth'});
+    var first = form.querySelector('input[name="name"]'); if(first) setTimeout(function(){first.focus();},420);
+  }
+
+  function showType(){
+    stepForm.classList.remove('is-active');
+    setTimeout(function(){ stepForm.setAttribute('hidden',''); stepType.removeAttribute('hidden'); }, 240);
+  }
+
+  root.querySelectorAll('[data-option]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      current.key = btn.dataset.key || '';
+      current.label = btn.dataset.label || '';
+      showForm();
+    });
+  });
+  var back = root.querySelector('[data-back]'); if(back) back.addEventListener('click', showType);
+  form.addEventListener('input', refresh);
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = form.querySelector('input[name="name"]');
+    if(!name.value.trim()){ name.focus(); if(name.reportValidity) name.reportValidity(); return; }
+    var msg = encodeURIComponent(buildMessage());
+    var url = wa ? ('https://wa.me/' + wa + '?text=' + msg) : ('https://wa.me/?text=' + msg);
+    window.open(url, '_blank', 'noopener');
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Toptan Sat\u0131\u015f (WhatsApp)",
+  "tag": "section",
+  "class": "section-bw-wholesale",
+  "settings": [
+    { "type": "header", "content": "\u0130\u00e7erik" },
+    { "type": "text", "id": "eyebrow", "label": "\u00dcst etiket", "default": "TOPTAN & \u0130\u015e ORTAKLI\u011eI" },
+    { "type": "richtext", "id": "title", "label": "Ba\u015fl\u0131k (vurgu i\u00e7in <em>kelime</em>)", "default": "<p>\u00dc\u00e7\u00fcnc\u00fc nesil kahveyi <em>i\u015fletmenize</em> ta\u015f\u0131yal\u0131m</p>" },
+    { "type": "textarea", "id": "subtitle", "label": "Alt metin", "default": "Tek origin \u00e7ekirdekler, taze kavrum, \u015feffaf tedarik. Ofisinizden kafenize, etkinli\u011finizden kendi markan\u0131za \u2014 ihtiyac\u0131n\u0131z\u0131 se\u00e7in, saniyeler i\u00e7inde WhatsApp\u2019tan konu\u015fmaya ba\u015flayal\u0131m." },
+    { "type": "header", "content": "WhatsApp" },
+    { "type": "text", "id": "whatsapp_number", "label": "WhatsApp numaras\u0131 (\u00fclke kodlu, \u00f6rn 905XXXXXXXXX)", "info": "Bo\u015f b\u0131rak\u0131l\u0131rsa m\u00fc\u015fteri kendi numaras\u0131n\u0131 se\u00e7er. Ba\u015f\u0131nda + olmadan, \u00fclke kodu ile yaz\u0131n." },
+    { "type": "text", "id": "brand_name", "label": "Marka ad\u0131 (mesajda ge\u00e7er)", "default": "Benesso" },
+    { "type": "header", "content": "G\u00f6rsel & Renk" },
+    { "type": "image_picker", "id": "bg_image", "label": "Arka plan g\u00f6rseli (opsiyonel \u2014 3. nesil kahve atmosferi)" },
+    { "type": "color", "id": "color_accent", "label": "Vurgu rengi", "default": "#C0541C" },
+    { "type": "color", "id": "color_bg", "label": "Arka plan (bej)", "default": "#EFE7D8" },
+    { "type": "color", "id": "color_text", "label": "Metin (koyu)", "default": "#1A1206" }
+  ],
+  "blocks": [
+    {
+      "type": "option",
+      "name": "Se\u00e7enek (i\u015fletme tipi)",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "\u0130kon", "options": [
+          {"value":"office","label":"Ofis"},
+          {"value":"cafe","label":"Kafe / Restoran"},
+          {"value":"event","label":"Etkinlik"},
+          {"value":"label","label":"Private Label"}
+        ], "default": "office" },
+        { "type": "text", "id": "key", "label": "Anahtar (volume e\u015fle\u015fmesi)", "info": "office, cafe, event, label", "default": "office" },
+        { "type": "text", "id": "label", "label": "Ba\u015fl\u0131k", "default": "Ofisim var" },
+        { "type": "textarea", "id": "desc", "label": "A\u00e7\u0131klama", "default": "Ekibinize taze kahve. Makine + abonelik kurulumu." },
+        { "type": "image_picker", "id": "image", "label": "Kart g\u00f6rseli (Higgsfield gpt-image-2 ile \u00fcretti\u011fin g\u00f6rsel)" }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "Toptan Sat\u0131\u015f (WhatsApp)",
+      "blocks": [
+        { "type": "option", "settings": { "icon": "office", "key": "office", "label": "Ofisim var", "desc": "Ekibinize taze kahve. Makine + abonelik kurulumu." } },
+        { "type": "option", "settings": { "icon": "cafe", "key": "cafe", "label": "Kafem / restoran\u0131m var", "desc": "Men\u00fcn\u00fcze yak\u0131\u015fan tek origin \u00e7ekirdek tedari\u011fi." } },
+        { "type": "option", "settings": { "icon": "event", "key": "event", "label": "Etkinlik yapaca\u011f\u0131m", "desc": "Barista stand\u0131, kurumsal ikram, festival kahvesi." } },
+        { "type": "option", "settings": { "icon": "label", "key": "label", "label": "Private label istiyorum", "desc": "Kendi markan\u0131zla kavrum, paket ve tasar\u0131m." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

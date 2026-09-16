@@ -1,0 +1,21 @@
+{%- comment -%} Slide-in glass cart drawer, hydrated by theme.js {%- endcomment -%}
+<div class="cart-drawer" id="CartDrawer" aria-hidden="true">
+  <div class="cart-drawer__overlay" data-cart-close></div>
+  <aside class="cart-drawer__panel glass--strong glass" role="dialog" aria-label="{{ 'cart.title' | t }}">
+    <header class="cart-drawer__head">
+      <h2 style="font-size:1.4rem">{{ 'cart.title' | t }}</h2>
+      <button class="icon-btn" data-cart-close aria-label="{{ 'accessibility.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </header>
+    <div class="cart-drawer__items" data-cart-items>
+      <p class="muted center" style="padding:3rem 0">{{ 'cart.empty' | t }}</p>
+    </div>
+    <footer class="cart-drawer__foot">
+      <div style="display:flex;justify-content:space-between;margin-bottom:1rem;font-family:var(--font-mono)">
+        <span>{{ 'cart.subtotal' | t }}</span>
+        <strong data-cart-total>0,00 ₺</strong>
+      </div>
+      <a href="{{ routes.cart_url }}/checkout" class="btn btn--block" data-magnetic>{{ 'cart.checkout' | t }} {% render 'icon', name: 'arrow' %}</a>
+      <button class="btn btn--ghost btn--block" data-cart-close style="margin-top:.6rem">{{ 'cart.continue' | t }}</button>
+    </footer>
+  </aside>
+</div>

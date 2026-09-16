@@ -1,0 +1,58 @@
+{%- comment -%}
+  Coffee "künye" / spec sheet — reads coffee.* metafields.
+  Usage: {% render 'coffee-spec', product: product %}
+  Metafields (namespace: coffee): country, region, locality, altitude, varietal,
+  process, roast, producer, tasting_notes, acidity, body, sweetness, lat, lng
+{%- endcomment -%}
+{%- liquid
+  assign cf = product.metafields.coffee
+  assign has_spec = false
+  if cf.country.value != blank or cf.region.value != blank or cf.altitude.value != blank or cf.varietal.value != blank or cf.process.value != blank
+    assign has_spec = true
+  endif
+-%}
+{%- if has_spec -%}
+<div class="coffee-spec glass reveal" style="padding:1.6rem 1.7rem">
+  <div class="eyebrow">{% render 'icon', name: 'globe' %} {{ 'products.product.spec_sheet' | t }}</div>
+
+  {%- if cf.tasting_notes.value != blank -%}
+    <div class="pcard__notes" style="margin:.4rem 0 1.4rem">
+      {%- assign notes = cf.tasting_notes.value | split: ',' -%}
+      {%- for n in notes -%}<span class="chip chip--note">{% render 'icon', name: 'drop' %} {{ n | strip }}</span>{%- endfor -%}
+    </div>
+  {%- endif -%}
+
+  <dl class="spec-sheet">
+    {%- if cf.country.value != blank -%}<div class="spec-row"><dt>Ülke</dt><dd>{{ cf.country.value }}</dd></div>{%- endif -%}
+    {%- if cf.region.value != blank -%}<div class="spec-row"><dt>Bölge</dt><dd>{{ cf.region.value }}</dd></div>{%- endif -%}
+    {%- if cf.locality.value != blank -%}<div class="spec-row"><dt>Yöre</dt><dd>{{ cf.locality.value }}</dd></div>{%- endif -%}
+    {%- if cf.producer.value != blank -%}<div class="spec-row"><dt>Üretici</dt><dd>{{ cf.producer.value }}</dd></div>{%- endif -%}
+    {%- if cf.altitude.value != blank -%}<div class="spec-row"><dt>Rakım</dt><dd>{% render 'icon', name: 'mountain' %} {{ cf.altitude.value }}</dd></div>{%- endif -%}
+    {%- if cf.varietal.value != blank -%}<div class="spec-row"><dt>Varyete</dt><dd>{{ cf.varietal.value }}</dd></div>{%- endif -%}
+    {%- if cf.process.value != blank -%}<div class="spec-row"><dt>İşleme</dt><dd><span class="chip chip--process">{% render 'icon', name: 'leaf' %} {{ cf.process.value }}</span></dd></div>{%- endif -%}
+    {%- if cf.roast.value != blank -%}<div class="spec-row"><dt>Kavurma</dt><dd><span class="chip chip--process">{% render 'icon', name: 'flame' %} {{ cf.roast.value }}</span></dd></div>{%- endif -%}
+  </dl>
+
+  {%- assign acidity = cf.acidity.value | default: 0 -%}
+  {%- assign body = cf.body.value | default: 0 -%}
+  {%- assign sweetness = cf.sweetness.value | default: 0 -%}
+  {%- if acidity > 0 or body > 0 or sweetness > 0 -%}
+    <div class="cupping" style="margin-top:1.4rem">
+      {%- if acidity > 0 -%}<div class="cup-bar"><span>Asidite</span><span class="cup-bar__track"><span class="cup-bar__fill" data-level="{{ acidity }}"></span></span><span class="cup-bar__val">{{ acidity }}/5</span></div>{%- endif -%}
+      {%- if body > 0 -%}<div class="cup-bar"><span>Gövde</span><span class="cup-bar__track"><span class="cup-bar__fill" data-level="{{ body }}"></span></span><span class="cup-bar__val">{{ body }}/5</span></div>{%- endif -%}
+      {%- if sweetness > 0 -%}<div class="cup-bar"><span>Tatlılık</span><span class="cup-bar__track"><span class="cup-bar__fill" data-level="{{ sweetness }}"></span></span><span class="cup-bar__val">{{ sweetness }}/5</span></div>{%- endif -%}
+    </div>
+  {%- endif -%}
+
+  {%- if cf.lat.value != blank and cf.lng.value != blank -%}
+    {%- assign px = cf.lng.value | plus: 180 | times: 100 | divided_by: 360 -%}
+    {%- assign py = 90 | minus: cf.lat.value | times: 100 | divided_by: 180 -%}
+    <div class="origin-map" style="margin-top:1.4rem;aspect-ratio:2/1;border-radius:var(--radius-sm);overflow:hidden;background:rgba(255,255,255,.04)">
+      <div class="origin-pin" style="left:{{ px }}%;top:{{ py }}%">
+        <span class="origin-pin__dot"></span>
+        <span class="origin-pin__label glass">{{ cf.country.value }}</span>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+{%- endif -%}

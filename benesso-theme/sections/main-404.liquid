@@ -1,0 +1,12 @@
+<section class="section wrap center" data-section-id="{{ section.id }}" style="min-height:62vh;display:grid;place-content:center">
+  <div class="reveal">
+    <div class="flow-text" style="font-family:var(--font-display);font-size:clamp(5rem,18vw,12rem);font-weight:700;line-height:.9">404</div>
+    <h1 class="section-title" style="margin-inline:auto;margin-top:1rem">{{ 'general.404.title' | t }}</h1>
+    <p class="lede" style="margin:1rem auto 2rem">{{ 'general.404.subtext' | t }}</p>
+    <a href="{{ routes.all_products_collection_url }}" class="btn" data-magnetic>{{ 'general.404.link' | t }} {% render 'icon', name: 'arrow' %}</a>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "404", "settings": [] }
+{% endschema %}

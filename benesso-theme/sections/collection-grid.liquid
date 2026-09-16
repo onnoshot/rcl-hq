@@ -1,0 +1,38 @@
+{%- liquid
+  assign coll = section.settings.collection
+  assign products = coll.products
+-%}
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <header style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem">
+    <div class="reveal">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{% render 'icon', name: 'cup' %} {{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+    </div>
+    {%- if coll != blank -%}<a href="{{ coll.url }}" class="btn btn--ghost reveal">Tümü {% render 'icon', name: 'arrow' %}</a>{%- endif -%}
+  </header>
+
+  <div class="card-grid" data-stagger>
+    {%- if products != blank and products.size > 0 -%}
+      {%- for product in products limit: section.settings.limit -%}
+        {% render 'product-card', product: product %}
+      {%- endfor -%}
+    {%- else -%}
+      {%- for i in (1..4) -%}
+        <article class="pcard glass"><div class="pcard__media">{{ 'product-' | append: i | placeholder_svg_tag }}</div></article>
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ürün Izgarası",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Üst etiket", "default": "EN ÇOK SATANLAR" },
+    { "type": "text", "id": "title", "label": "Başlık", "default": "Bardağa giren favoriler" },
+    { "type": "collection", "id": "collection", "label": "Koleksiyon" },
+    { "type": "range", "id": "limit", "label": "Ürün sayısı", "min": 2, "max": 12, "step": 1, "default": 8 }
+  ],
+  "presets": [{ "name": "Ürün Izgarası" }]
+}
+{% endschema %}

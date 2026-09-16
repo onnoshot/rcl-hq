@@ -1,0 +1,24 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <header class="reveal" style="margin-bottom:2.5rem">
+    <span class="eyebrow">{% render 'icon', name: 'globe' %} TÜM KOLEKSİYONLAR</span>
+    <h1 class="section-title" style="font-size:var(--fs-h1)">{{ page_title | default: 'Koleksiyonlar' }}</h1>
+  </header>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(260px,1fr))" data-stagger>
+    {%- for collection in collections -%}
+      <a href="{{ collection.url }}" class="glass" data-tilt style="display:block;position:relative;aspect-ratio:4/5;border-radius:var(--radius);overflow:hidden">
+        {%- if collection.featured_image != blank -%}
+          <img src="{{ collection.featured_image | image_url: width: 600 }}" alt="" width="600" height="750" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" loading="lazy">
+        {%- endif -%}
+        <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,10,6,.85),transparent 55%)"></span>
+        <div style="position:absolute;bottom:0;padding:1.3rem">
+          <span class="pcard__origin">{{ collection.products_count }} ÜRÜN</span>
+          <h3 style="font-size:1.25rem;margin-top:.3rem">{{ collection.title | replace: ' | Benesso Coffee', '' }}</h3>
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Koleksiyon Listesi", "settings": [] }
+{% endschema %}

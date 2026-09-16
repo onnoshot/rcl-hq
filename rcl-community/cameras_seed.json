@@ -1,0 +1,992 @@
+[
+ {
+  "handle": "sony-cybershot-dsc-w200",
+  "brand": "Sony",
+  "model": "Cybershot DSC-W200",
+  "title": "Sony Cybershot DSC-W200",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w200-vitrin.jpg?v=1782612232",
+  "price": 12900.0,
+  "product_url": "https://retrocameraland.com/products/sony-cybershot-dsc-w200",
+  "base_score": 1219
+ },
+ {
+  "handle": "canon-powershot-v1",
+  "brand": "Canon",
+  "model": "PowerShot V1",
+  "title": "Canon PowerShot V1",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-v1-vitrin.jpg?v=1782611888",
+  "price": 47490.0,
+  "product_url": "https://retrocameraland.com/products/canon-powershot-v1",
+  "base_score": 1218
+ },
+ {
+  "handle": "canon-powershot-a480",
+  "brand": "Canon",
+  "model": "PowerShot A480",
+  "title": "Canon PowerShot A480",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-a480-vitrin.jpg?v=1782611872",
+  "price": 9490.0,
+  "product_url": "https://retrocameraland.com/products/canon-powershot-a480",
+  "base_score": 1165
+ },
+ {
+  "handle": "fujifilm-finepix-z90-digicam",
+  "brand": "Fujifilm",
+  "model": "Finepix Z90",
+  "title": "Fujifilm Finepix Z90",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z90-digicam-vitrin.jpg?v=1782611970",
+  "price": 16490.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-z90-digicam",
+  "base_score": 1119
+ },
+ {
+  "handle": "olympus-pen-e-pl1-25mm",
+  "brand": "Olympus",
+  "model": "PEN E-PL1 + 25mm f/1.7 Lens",
+  "title": "Olympus PEN E-PL1",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-pen-e-pl1-25mm-vitrin.jpg?v=1782612857",
+  "price": 18490.0,
+  "product_url": "https://retrocameraland.com/products/olympus-pen-e-pl1-25mm",
+  "base_score": 1095
+ },
+ {
+  "handle": "fujifilm-finepix-z90",
+  "brand": "Fujifilm",
+  "model": "FinePix Z90",
+  "title": "Fujifilm FinePix Z90",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z90-vitrin.jpg?v=1782611974",
+  "price": 18490.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-z90",
+  "base_score": 1078
+ },
+ {
+  "handle": "fujifilm-finepix-4700-zoom",
+  "brand": "Fujifilm",
+  "model": "FinePix 4700 Zoom",
+  "title": "Fujifilm FinePix 4700 Zoom",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-4700-zoom-vitrin.jpg?v=1782611934",
+  "price": 11490.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-4700-zoom",
+  "base_score": 1077
+ },
+ {
+  "handle": "panasonic-lumix-dc-tz99",
+  "brand": "Panasonic",
+  "model": "LUMIX DC-TZ99",
+  "title": "Panasonic LUMIX DC-TZ99",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dc-tz99-vitrin.jpg?v=1782612134",
+  "price": 37990.0,
+  "product_url": "https://retrocameraland.com/products/panasonic-lumix-dc-tz99",
+  "base_score": 1054
+ },
+ {
+  "handle": "canon-ixy-ixus-digital-pc1060",
+  "brand": "Canon",
+  "model": "Ixy IXUS Digital PC1060",
+  "title": "Canon Ixy IXUS Digital PC1060",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixy-ixus-digital-pc1060-vitrin.jpg?v=1782611864",
+  "price": 5490.0,
+  "product_url": "https://retrocameraland.com/products/canon-ixy-ixus-digital-pc1060",
+  "base_score": 1050
+ },
+ {
+  "handle": "fujifilm-finepix-xp60-waterproof",
+  "brand": "Fujifilm",
+  "model": "Finepix XP60 ''Waterproof''",
+  "title": "Fujifilm Finepix XP60 ''Waterproof''",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-xp60-waterproof-vitrin.jpg?v=1782611950",
+  "price": 8990.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-xp60-waterproof",
+  "base_score": 1039
+ },
+ {
+  "handle": "canon-ixus-i",
+  "brand": "Canon",
+  "model": "IXUS i",
+  "title": "Canon IXUS i",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-i-vitrin.jpg?v=1782611856",
+  "price": 11490.0,
+  "product_url": "https://retrocameraland.com/products/canon-ixus-i",
+  "base_score": 1037
+ },
+ {
+  "handle": "fujifilm-finepix-z10fd",
+  "brand": "Fujifilm",
+  "model": "FinePix Z10FD",
+  "title": "Fujifilm FinePix Z10FD",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z10fd-vitrin.jpg?v=1782611954",
+  "price": 9990.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-z10fd",
+  "base_score": 1037
+ },
+ {
+  "handle": "canon-powershot-sx160-is",
+  "brand": "Canon",
+  "model": "PowerShot SX160 IS",
+  "title": "Canon PowerShot SX160 IS",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-sx160-is-vitrin.jpg?v=1782611885",
+  "price": 11490.0,
+  "product_url": "https://retrocameraland.com/products/canon-powershot-sx160-is",
+  "base_score": 999
+ },
+ {
+  "handle": "olympus-vg-130",
+  "brand": "Olympus",
+  "model": "VG-130",
+  "title": "Olympus VG-130",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-130-vitrin.jpg?v=1782612114",
+  "price": 13490.0,
+  "product_url": "https://retrocameraland.com/products/olympus-vg-130",
+  "base_score": 995
+ },
+ {
+  "handle": "panasonic-lumix-dc-tz91",
+  "brand": "Panasonic",
+  "model": "Lumix DC-TZ91",
+  "title": "Panasonic Lumix DC-TZ91",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dc-tz91-vitrin.jpg?v=1782612130",
+  "price": 28490.0,
+  "product_url": "https://retrocameraland.com/products/panasonic-lumix-dc-tz91",
+  "base_score": 994
+ },
+ {
+  "handle": "canon-ixus-285-hs",
+  "brand": "Canon",
+  "model": "IXUS 285 HS",
+  "title": "Canon IXUS 285 HS",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-285-hs-vitrin.jpg?v=1782611852",
+  "price": 22490.0,
+  "product_url": "https://retrocameraland.com/products/canon-ixus-285-hs",
+  "base_score": 981
+ },
+ {
+  "handle": "sony-cybershot-dsc-t300",
+  "brand": "Sony",
+  "model": "Cybershot DSC-T300",
+  "title": "Sony Cybershot DSC-T300",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-t300-vitrin.jpg?v=1782612227",
+  "price": 15490.0,
+  "product_url": "https://retrocameraland.com/products/sony-cybershot-dsc-t300",
+  "base_score": 970
+ },
+ {
+  "handle": "panasonic-lumix-dmc-f3",
+  "brand": "Panasonic",
+  "model": "Lumix DMC-F3",
+  "title": "Panasonic Lumix DMC-F3",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-f3-vitrin.jpg?v=1782612139",
+  "price": 13490.0,
+  "product_url": "https://retrocameraland.com/products/panasonic-lumix-dmc-f3",
+  "base_score": 967
+ },
+ {
+  "handle": "sony-cyber-shot-dsc-w110",
+  "brand": "Sony",
+  "model": "Cyber-shot DSC-W110",
+  "title": "Sony Cyber-shot DSC-W110",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-w110-vitrin.jpg?v=1782612215",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/sony-cyber-shot-dsc-w110",
+  "base_score": 959
+ },
+ {
+  "handle": "fujifilm-finepix-v10",
+  "brand": "Fujifilm",
+  "model": "FinePix V10",
+  "title": "Fujifilm FinePix V10",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-v10-vitrin.jpg?v=1782611946",
+  "price": 16490.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-v10",
+  "base_score": 955
+ },
+ {
+  "handle": "canon-powershot-xt1-dijital-fotograf-makinesi",
+  "brand": "Canon",
+  "model": "PowerShot XT1",
+  "title": "Canon PowerShot XT1",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-xt1-dijital-fotograf-makinesi-vitrin.jpg?v=1782611893",
+  "price": 10900.0,
+  "product_url": "https://retrocameraland.com/products/canon-powershot-xt1-dijital-fotograf-makinesi",
+  "base_score": 945
+ },
+ {
+  "handle": "fujifilm-finepix-t200",
+  "brand": "Fujifilm",
+  "model": "FinePix T200",
+  "title": "Fujifilm FinePix T200",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-t200-vitrin.jpg?v=1782611942",
+  "price": 11490.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-t200",
+  "base_score": 942
+ },
+ {
+  "handle": "nikon-coolpix-s52c",
+  "brand": "Nikon",
+  "model": "Coolpix S52c",
+  "title": "Nikon Coolpix S52c",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s52c-vitrin.jpg?v=1782612072",
+  "price": 11490.0,
+  "product_url": "https://retrocameraland.com/products/nikon-coolpix-s52c",
+  "base_score": 914
+ },
+ {
+  "handle": "canon-ixy-1000",
+  "brand": "Canon",
+  "model": "IXY 1000",
+  "title": "Canon IXY 1000",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixy-1000-vitrin.jpg?v=1782611860",
+  "price": 12490.0,
+  "product_url": "https://retrocameraland.com/products/canon-ixy-1000",
+  "base_score": 912
+ },
+ {
+  "handle": "fujifilm-finepix-z700-exr",
+  "brand": "Fujifilm",
+  "model": "FinePix Z700 EXR",
+  "title": "Fujifilm FinePix Z700 EXR",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z700-exr-vitrin.jpg?v=1782611966",
+  "price": 15490.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-z700-exr",
+  "base_score": 910
+ },
+ {
+  "handle": "casio-exilim-ex-z4",
+  "brand": "Casio",
+  "model": "Exilim EX-Z4",
+  "title": "Casio Exilim EX-Z4",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z4-vitrin.jpg?v=1782611913",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/casio-exilim-ex-z4",
+  "base_score": 905
+ },
+ {
+  "handle": "sony-cyber-shot-dsc-tx9",
+  "brand": "Sony",
+  "model": "Cyber-shot DSC-TX9",
+  "title": "Sony Cyber-shot DSC-TX9",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-tx9-vitrin.jpg?v=1782612211",
+  "price": 14490.0,
+  "product_url": "https://retrocameraland.com/products/sony-cyber-shot-dsc-tx9",
+  "base_score": 903
+ },
+ {
+  "handle": "canon-ixus-160",
+  "brand": "Canon",
+  "model": "IXUS 160",
+  "title": "Canon IXUS 160",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-ixus-160-vitrin.jpg?v=1782611848",
+  "price": 14490.0,
+  "product_url": "https://retrocameraland.com/products/canon-ixus-160",
+  "base_score": 896
+ },
+ {
+  "handle": "olympus-stylus-790-sw",
+  "brand": "Olympus",
+  "model": "Stylus 790 SW",
+  "title": "Olympus Stylus 790 SW",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-stylus-790-sw-vitrin.jpg?v=1782612092",
+  "price": 9490.0,
+  "product_url": "https://retrocameraland.com/products/olympus-stylus-790-sw",
+  "base_score": 884
+ },
+ {
+  "handle": "nikon-coolpix-s4000",
+  "brand": "Nikon",
+  "model": "Coolpix S4000",
+  "title": "Nikon Coolpix S4000",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s4000-vitrin.jpg?v=1782612068",
+  "price": 7990.0,
+  "product_url": "https://retrocameraland.com/products/nikon-coolpix-s4000",
+  "base_score": 876
+ },
+ {
+  "handle": "olympus-vr-340",
+  "brand": "Olympus",
+  "model": "VR-340",
+  "title": "Olympus VR-340",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-340-vitrin.jpg?v=1782612122",
+  "price": 17990.0,
+  "product_url": "https://retrocameraland.com/products/olympus-vr-340",
+  "base_score": 868
+ },
+ {
+  "handle": "nikon-coolpix-s60",
+  "brand": "Nikon",
+  "model": "Coolpix S60",
+  "title": "Nikon Coolpix S60",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s60-vitrin.jpg?v=1782612076",
+  "price": 13490.0,
+  "product_url": "https://retrocameraland.com/products/nikon-coolpix-s60",
+  "base_score": 867
+ },
+ {
+  "handle": "sony-cybershot-dsc-s85",
+  "brand": "Sony",
+  "model": "Cybershot DSC-S85",
+  "title": "Sony Cybershot DSC-S85",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s85-vitrin.jpg?v=1782612223",
+  "price": 7990.0,
+  "product_url": "https://retrocameraland.com/products/sony-cybershot-dsc-s85",
+  "base_score": 866
+ },
+ {
+  "handle": "sony-cyber-shot-dsc-t70",
+  "brand": "Sony",
+  "model": "Cyber-shot DSC-T70",
+  "title": "Sony Cyber-shot DSC-T70",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t70-vitrin.jpg?v=1782612203",
+  "price": 14490.0,
+  "product_url": "https://retrocameraland.com/products/sony-cyber-shot-dsc-t70",
+  "base_score": 863
+ },
+ {
+  "handle": "nikon-coolpix-s9",
+  "brand": "Nikon",
+  "model": "Coolpix S9",
+  "title": "Nikon Coolpix S9",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s9-vitrin.jpg?v=1782612080",
+  "price": 6990.0,
+  "product_url": "https://retrocameraland.com/products/nikon-coolpix-s9",
+  "base_score": 861
+ },
+ {
+  "handle": "olympus-vr-310",
+  "brand": "Olympus",
+  "model": "VR-310",
+  "title": "Olympus VR-310",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vr-310-vitrin.jpg?v=1782612118",
+  "price": 15490.0,
+  "product_url": "https://retrocameraland.com/products/olympus-vr-310",
+  "base_score": 858
+ },
+ {
+  "handle": "casio-exilim-ex-z110",
+  "brand": "Casio",
+  "model": "Exilim EX-Z110",
+  "title": "Casio Exilim EX-Z110",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z110-vitrin.jpg?v=1782611909",
+  "price": 11490.0,
+  "product_url": "https://retrocameraland.com/products/casio-exilim-ex-z110",
+  "base_score": 856
+ },
+ {
+  "handle": "nikon-coolpix-885",
+  "brand": "Nikon",
+  "model": "Coolpix 885",
+  "title": "Nikon Coolpix 885",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-885-vitrin.jpg?v=1782612056",
+  "price": 8900.0,
+  "product_url": "https://retrocameraland.com/products/nikon-coolpix-885",
+  "base_score": 825
+ },
+ {
+  "handle": "sony-cybershot-dsc-s600",
+  "brand": "Sony",
+  "model": "Cybershot DSC-S600",
+  "title": "Sony Cybershot DSC-S600",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-s600-vitrin.jpg?v=1782612219",
+  "price": 8990.0,
+  "product_url": "https://retrocameraland.com/products/sony-cybershot-dsc-s600",
+  "base_score": 821
+ },
+ {
+  "handle": "casio-exilim-ex-h10",
+  "brand": "Casio",
+  "model": "Exilim EX-H10",
+  "title": "Casio Exilim EX-H10",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-h10-vitrin.jpg?v=1782611900",
+  "price": 12490.0,
+  "product_url": "https://retrocameraland.com/products/casio-exilim-ex-h10",
+  "base_score": 821
+ },
+ {
+  "handle": "olympus-sz-14",
+  "brand": "Olympus",
+  "model": "SZ-14",
+  "title": "Olympus SZ-14",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sz-14-vitrin.jpg?v=1782612101",
+  "price": 9990.0,
+  "product_url": "https://retrocameraland.com/products/olympus-sz-14",
+  "base_score": 816
+ },
+ {
+  "handle": "casio-qv-r300",
+  "brand": "Casio",
+  "model": "QV-R300",
+  "title": "Casio QV-R300",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-qv-r300-vitrin.jpg?v=1782611926",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/casio-qv-r300",
+  "base_score": 814
+ },
+ {
+  "handle": "nikon-coolpix-2500",
+  "brand": "Nikon",
+  "model": "Coolpix 2500",
+  "title": "Nikon Coolpix 2500",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-2500-vitrin.jpg?v=1782612052",
+  "price": 16490.0,
+  "product_url": "https://retrocameraland.com/products/nikon-coolpix-2500",
+  "base_score": 805
+ },
+ {
+  "handle": "panasonic-lumix-dmc-ls75",
+  "brand": "Panasonic",
+  "model": "Lumix DMC-LS75",
+  "title": "Panasonic Lumix DMC-LS75",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-ls75-vitrin.jpg?v=1782612147",
+  "price": 9990.0,
+  "product_url": "https://retrocameraland.com/products/panasonic-lumix-dmc-ls75",
+  "base_score": 803
+ },
+ {
+  "handle": "nikon-coolpix-p5100",
+  "brand": "Nikon",
+  "model": "Coolpix P5100",
+  "title": "Nikon Coolpix P5100",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/snikon1.jpg?v=1757813691",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/nikon-coolpix-p5100",
+  "base_score": 802
+ },
+ {
+  "handle": "casio-exilim-ex-z50",
+  "brand": "Casio",
+  "model": "Exilim EX-Z50",
+  "title": "Casio Exilim EX-Z50",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z50-vitrin.jpg?v=1782611917",
+  "price": 12900.0,
+  "product_url": "https://retrocameraland.com/products/casio-exilim-ex-z50",
+  "base_score": 798
+ },
+ {
+  "handle": "olympus-tough-tg-820",
+  "brand": "Olympus",
+  "model": "Tough TG-820 Waterproof",
+  "title": "Olympus Tough TG-820 Waterproof",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-tough-tg-820-vitrin.jpg?v=1782612106",
+  "price": 13490.0,
+  "product_url": "https://retrocameraland.com/products/olympus-tough-tg-820",
+  "base_score": 795
+ },
+ {
+  "handle": "olympus-vg-110",
+  "brand": "Olympus",
+  "model": "VG-110",
+  "title": "Olympus VG-110",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-vg-110-vitrin.jpg?v=1782612110",
+  "price": 9990.0,
+  "product_url": "https://retrocameraland.com/products/olympus-vg-110",
+  "base_score": 781
+ },
+ {
+  "handle": "casio-exilim-ex-fr100ct",
+  "brand": "Casio",
+  "model": "Exilim EX-FR100CT",
+  "title": "Casio Exilim EX-FR100CT",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-fr100ct-vitrin.jpg?v=1782611897",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/casio-exilim-ex-fr100ct",
+  "base_score": 777
+ },
+ {
+  "handle": "fujifilm-finepix-1700z-dijital-fotograf-makinesi",
+  "brand": "Fujifilm",
+  "model": "FinePix 1700Z",
+  "title": "Fujifilm FinePix 1700Z",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-1700z-dijital-fotograf-makinesi-vitrin.jpg?v=1782611930",
+  "price": 8490.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-1700z-dijital-fotograf-makinesi",
+  "base_score": 775
+ },
+ {
+  "handle": "nikon-coolpix-s100",
+  "brand": "Nikon",
+  "model": "Coolpix S100",
+  "title": "Nikon Coolpix S100",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s100-vitrin.jpg?v=1782612060",
+  "price": 15490.0,
+  "product_url": "https://retrocameraland.com/products/nikon-coolpix-s100",
+  "base_score": 774
+ },
+ {
+  "handle": "canon-powershot-g7",
+  "brand": "Canon",
+  "model": "PowerShot G7",
+  "title": "Canon PowerShot G7",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-g7-vitrin.jpg?v=1782611876",
+  "price": 16490.0,
+  "product_url": "https://retrocameraland.com/products/canon-powershot-g7",
+  "base_score": 766
+ },
+ {
+  "handle": "olympus-sp-700",
+  "brand": "Olympus",
+  "model": "SP-700",
+  "title": "Olympus SP-700",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sp-700-vitrin.jpg?v=1782612088",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/olympus-sp-700",
+  "base_score": 761
+ },
+ {
+  "handle": "canon-g7x-mark-iii",
+  "brand": "Canon",
+  "model": "G7X Mark III",
+  "title": "Canon G7X Mark III",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-g7x-mark-iii-vitrin.jpg?v=1782611844",
+  "price": 54490.0,
+  "product_url": "https://retrocameraland.com/products/canon-g7x-mark-iii",
+  "base_score": 758
+ },
+ {
+  "handle": "casio-exilim-ex-z85",
+  "brand": "Casio",
+  "model": "Exilim EX-Z85",
+  "title": "Casio Exilim EX-Z85",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-z85-vitrin.jpg?v=1782611922",
+  "price": 9490.0,
+  "product_url": "https://retrocameraland.com/products/casio-exilim-ex-z85",
+  "base_score": 754
+ },
+ {
+  "handle": "konica-minolta-dimage-x50-dijital-fotograf-makinesi",
+  "brand": "Konica Minolta",
+  "model": "DiMAGE X50",
+  "title": "Konica Minolta DiMAGE X50",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/konica-minolta-dimage-x50-dijital-fotograf-makinesi-vitrin.jpg?v=1782612024",
+  "price": 10990.0,
+  "product_url": "https://retrocameraland.com/products/konica-minolta-dimage-x50-dijital-fotograf-makinesi",
+  "base_score": 745
+ },
+ {
+  "handle": "olympus-sp-320",
+  "brand": "Olympus",
+  "model": "SP-320",
+  "title": "Olympus SP-320",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sp-320-vitrin.jpg?v=1782612085",
+  "price": 9490.0,
+  "product_url": "https://retrocameraland.com/products/olympus-sp-320",
+  "base_score": 744
+ },
+ {
+  "handle": "kodak-easyshare-z950",
+  "brand": "Kodak",
+  "model": "EasyShare Z950",
+  "title": "Kodak EasyShare Z950",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-z950-vitrin.jpg?v=1782612007",
+  "price": 8990.0,
+  "product_url": "https://retrocameraland.com/products/kodak-easyshare-z950",
+  "base_score": 744
+ },
+ {
+  "handle": "fujifilm-finepix-z70",
+  "brand": "Fujifilm",
+  "model": "FinePix Z70",
+  "title": "Fujifilm FinePix Z70",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z70-vitrin.jpg?v=1782611962",
+  "price": 13490.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-z70",
+  "base_score": 731
+ },
+ {
+  "handle": "kodak-pixpro-fz55-dijital-fotograf-makinesi-siyah",
+  "brand": "Kodak",
+  "model": "Pixpro FZ55",
+  "title": "Kodak Pixpro FZ55",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-pixpro-fz55-dijital-fotograf-makinesi-siyah-vitrin.jpg?v=1782612011",
+  "price": 15490.0,
+  "product_url": "https://retrocameraland.com/products/kodak-pixpro-fz55-dijital-fotograf-makinesi-siyah",
+  "base_score": 731
+ },
+ {
+  "handle": "sony-cyber-shot-dsc-t500",
+  "brand": "Sony",
+  "model": "Cyber-shot DSC-T500",
+  "title": "Sony Cyber-shot DSC-T500",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t500-vitrin.jpg?v=1782612198",
+  "price": 11490.0,
+  "product_url": "https://retrocameraland.com/products/sony-cyber-shot-dsc-t500",
+  "base_score": 728
+ },
+ {
+  "handle": "canon-powershot-a20-dijital-fotograf-makinesi",
+  "brand": "Canon",
+  "model": "PowerShot A20",
+  "title": "Canon PowerShot A20",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-a20-dijital-fotograf-makinesi-vitrin.jpg?v=1782611868",
+  "price": 9490.0,
+  "product_url": "https://retrocameraland.com/products/canon-powershot-a20-dijital-fotograf-makinesi",
+  "base_score": 725
+ },
+ {
+  "handle": "olympus-sz-10",
+  "brand": "Olympus",
+  "model": "SZ-10",
+  "title": "Olympus SZ-10",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-sz-10-vitrin.jpg?v=1782612097",
+  "price": 9490.0,
+  "product_url": "https://retrocameraland.com/products/olympus-sz-10",
+  "base_score": 723
+ },
+ {
+  "handle": "nikon-coolpix-s3200",
+  "brand": "Nikon",
+  "model": "Coolpix S3100",
+  "title": "Nikon Coolpix S3100",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/nikon-coolpix-s3200-vitrin.jpg?v=1782612064",
+  "price": 9490.0,
+  "product_url": "https://retrocameraland.com/products/nikon-coolpix-s3200",
+  "base_score": 720
+ },
+ {
+  "handle": "fujifilm-finepix-z110",
+  "brand": "Fujifilm",
+  "model": "Finepix Z110",
+  "title": "Fujifilm Finepix Z110",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-z110-vitrin.jpg?v=1782611958",
+  "price": 15490.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-z110",
+  "base_score": 718
+ },
+ {
+  "handle": "kodak-easyshare-m1063",
+  "brand": "Kodak",
+  "model": "EasyShare M1063",
+  "title": "Kodak EasyShare M1063",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-m1063-vitrin.jpg?v=1782611999",
+  "price": 11490.0,
+  "product_url": "https://retrocameraland.com/products/kodak-easyshare-m1063",
+  "base_score": 709
+ },
+ {
+  "handle": "kodak-easyshare-v603",
+  "brand": "Kodak",
+  "model": "EasyShare V603",
+  "title": "Kodak EasyShare V603",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-easyshare-v603-vitrin.jpg?v=1782612003",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/kodak-easyshare-v603",
+  "base_score": 709
+ },
+ {
+  "handle": "sony-cybershot-dsc-w150",
+  "brand": "Sony",
+  "model": "Cybershot DSC-W150",
+  "title": "Sony Cybershot DSC-W150",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cybershot-dsc-w150-vitrin.jpg?v=1782611664",
+  "price": 13490.0,
+  "product_url": "https://retrocameraland.com/products/sony-cybershot-dsc-w150",
+  "base_score": 687
+ },
+ {
+  "handle": "kodak-slice-r502",
+  "brand": "Kodak",
+  "model": "Slice R502",
+  "title": "Kodak Slice R502",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-slice-r502-vitrin.jpg?v=1782612015",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/kodak-slice-r502",
+  "base_score": 674
+ },
+ {
+  "handle": "panasonic-lumix-dmc-fx10",
+  "brand": "Panasonic",
+  "model": "Lumix DMC FX10",
+  "title": "Panasonic Lumix DMC FX10",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-fx10-vitrin.jpg?v=1782612143",
+  "price": 11900.0,
+  "product_url": "https://retrocameraland.com/products/panasonic-lumix-dmc-fx10",
+  "base_score": 664
+ },
+ {
+  "handle": "jvc-gz-e108-full-hd-camcorder",
+  "brand": "JVC",
+  "model": "GZ-E108 Full HD Camcorder",
+  "title": "JVC GZ-E108 Full HD Camcorder",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/jvc-gz-e108-full-hd-camcorder-vitrin.jpg?v=1782611990",
+  "price": 15490.0,
+  "product_url": "https://retrocameraland.com/products/jvc-gz-e108-full-hd-camcorder",
+  "base_score": 657
+ },
+ {
+  "handle": "canon-powershot-sd400",
+  "brand": "Canon",
+  "model": "PowerShot SD400",
+  "title": "Canon PowerShot SD400",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/canon-powershot-sd400-vitrin.jpg?v=1782611880",
+  "price": 12490.0,
+  "product_url": "https://retrocameraland.com/products/canon-powershot-sd400",
+  "base_score": 655
+ },
+ {
+  "handle": "casio-exilim-ex-n10-gold",
+  "brand": "Casio",
+  "model": "Exilim EX-N10 Gold Edition",
+  "title": "Casio Exilim EX-N10 Gold Edition",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/casio-exilim-ex-n10-gold-vitrin.jpg?v=1782611905",
+  "price": 11990.0,
+  "product_url": "https://retrocameraland.com/products/casio-exilim-ex-n10-gold",
+  "base_score": 652
+ },
+ {
+  "handle": "sanyo-xacti-cg20",
+  "brand": "Sanyo",
+  "model": "Xacti CG20",
+  "title": "Sanyo Xacti CG20",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg20-vitrin.jpg?v=1782612865",
+  "price": 9900.0,
+  "product_url": "https://retrocameraland.com/products/sanyo-xacti-cg20",
+  "base_score": 624
+ },
+ {
+  "handle": "pentax-optio-s7",
+  "brand": "Pentax",
+  "model": "Optio S7",
+  "title": "Pentax Optio S7",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/pentax-optio-s7-vitrin.jpg?v=1782612155",
+  "price": 7990.0,
+  "product_url": "https://retrocameraland.com/products/pentax-optio-s7",
+  "base_score": 619
+ },
+ {
+  "handle": "sony-cyber-shot-dsc-t9",
+  "brand": "Sony",
+  "model": "Cyber-shot DSC-T9",
+  "title": "Sony Cyber-shot DSC-T9",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sony-cyber-shot-dsc-t9-vitrin.jpg?v=1782612207",
+  "price": 12490.0,
+  "product_url": "https://retrocameraland.com/products/sony-cyber-shot-dsc-t9",
+  "base_score": 616
+ },
+ {
+  "handle": "lumix-dmc-ft3-waterproof",
+  "brand": "Panasonic",
+  "model": "Lumix DMC-FT3 ''Waterproof''",
+  "title": "Lumix DMC-FT3 ''Waterproof''",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumix-dmc-ft3-waterproof-vitrin.jpg?v=1782612036",
+  "price": 8490.0,
+  "product_url": "https://retrocameraland.com/products/lumix-dmc-ft3-waterproof",
+  "base_score": 586
+ },
+ {
+  "handle": "lumix-dmc-ft10",
+  "brand": "Panasonic",
+  "model": "Lumix DMC-FT10",
+  "title": "Lumix DMC-FT10",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/lumix-dmc-ft10-vitrin.jpg?v=1782612032",
+  "price": 11990.0,
+  "product_url": "https://retrocameraland.com/products/lumix-dmc-ft10",
+  "base_score": 583
+ },
+ {
+  "handle": "sanyo-xacti-cg-10",
+  "brand": "Sanyo",
+  "model": "Xacti CG-10",
+  "title": "Sanyo Xacti CG-10",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg-10-vitrin.jpg?v=1782612183",
+  "price": 8490.0,
+  "product_url": "https://retrocameraland.com/products/sanyo-xacti-cg-10",
+  "base_score": 577
+ },
+ {
+  "handle": "fujifilm-finepix-f80",
+  "brand": "Fujifilm",
+  "model": "FinePix F80",
+  "title": "Fujifilm FinePix F80",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/fujifilm-finepix-f80-vitrin.jpg?v=1782611938",
+  "price": 12900.0,
+  "product_url": "https://retrocameraland.com/products/fujifilm-finepix-f80",
+  "base_score": 565
+ },
+ {
+  "handle": "hp-photosmart-r827",
+  "brand": "HP",
+  "model": "Photosmart R827",
+  "title": "HP Photosmart R827",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hp-photosmart-r827-vitrin.jpg?v=1782611986",
+  "price": 8900.0,
+  "product_url": "https://retrocameraland.com/products/hp-photosmart-r827",
+  "base_score": 560
+ },
+ {
+  "handle": "jvc-gz-mc200e",
+  "brand": "JVC",
+  "model": "GZ-MC200E",
+  "title": "JVC GZ-MC200E",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/jvc-gz-mc200e-vitrin.jpg?v=1782611995",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/jvc-gz-mc200e",
+  "base_score": 528
+ },
+ {
+  "handle": "samsung-es65",
+  "brand": "Samsung",
+  "model": "ES65",
+  "title": "Samsung ES65",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/samsung-es65-vitrin.jpg?v=1782612175",
+  "price": 9990.0,
+  "product_url": "https://retrocameraland.com/products/samsung-es65",
+  "base_score": 522
+ },
+ {
+  "handle": "panasonic-dmc-ls70",
+  "brand": "Panasonic",
+  "model": "DMC LS70",
+  "title": "Panasonic DMC LS70",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-dmc-ls70-vitrin.jpg?v=1782612126",
+  "price": 11490.0,
+  "product_url": "https://retrocameraland.com/products/panasonic-dmc-ls70",
+  "base_score": 508
+ },
+ {
+  "handle": "panasonic-lumix-dmc-lz7",
+  "brand": "Panasonic",
+  "model": "Lumix DMC-LZ7",
+  "title": "Panasonic Lumix DMC-LZ7",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/panasonic-lumix-dmc-lz7-vitrin.jpg?v=1782612151",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/panasonic-lumix-dmc-lz7",
+  "base_score": 508
+ },
+ {
+  "handle": "konica-minolta-dimage-x50-red",
+  "brand": "Konica Minolta",
+  "model": "DiMAGE X50",
+  "title": "Konica Minolta DiMAGE X50",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/konica-minolta-dimage-x50-red-vitrin.jpg?v=1782612028",
+  "price": 12490.0,
+  "product_url": "https://retrocameraland.com/products/konica-minolta-dimage-x50-red",
+  "base_score": 508
+ },
+ {
+  "handle": "traveler-dc-830",
+  "brand": "Traveler",
+  "model": "DC-830",
+  "title": "Traveler DC-830",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/traveler-dc-830-vitrin.jpg?v=1782612236",
+  "price": 8490.0,
+  "product_url": "https://retrocameraland.com/products/traveler-dc-830",
+  "base_score": 475
+ },
+ {
+  "handle": "minton-mdc3000",
+  "brand": "Minton",
+  "model": "MDC3000",
+  "title": "Minton MDC3000",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/minton-mdc3000-vitrin.jpg?v=1782612048",
+  "price": 3990.0,
+  "product_url": "https://retrocameraland.com/products/minton-mdc3000",
+  "base_score": 445
+ },
+ {
+  "handle": "rollei-flexline-140",
+  "brand": "Rollei",
+  "model": "Flexline 140",
+  "title": "Rollei Flexline 140",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/rollei-flexline-140-vitrin.jpg?v=1782612171",
+  "price": 10940.0,
+  "product_url": "https://retrocameraland.com/products/rollei-flexline-140",
+  "base_score": 443
+ },
+ {
+  "handle": "agfa-optima-104",
+  "brand": "Agfa",
+  "model": "Optima 104",
+  "title": "Agfa Optima 104",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/agfa-optima-104-vitrin.jpg?v=1782611833",
+  "price": 7990.0,
+  "product_url": "https://retrocameraland.com/products/agfa-optima-104",
+  "base_score": 432
+ },
+ {
+  "handle": "kodak-zx1-weather-resistant",
+  "brand": "Kodak",
+  "model": "ZX1 “Weather-Resistant”",
+  "title": "Kodak ZX1 “Weather-Resistant”",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/kodak-zx1-weather-resistant-vitrin.jpg?v=1782612020",
+  "price": 4900.0,
+  "product_url": "https://retrocameraland.com/products/kodak-zx1-weather-resistant",
+  "base_score": 431
+ },
+ {
+  "handle": "sanyo-xacti-cg100-ex",
+  "brand": "Sanyo",
+  "model": "Xacti CG100 EX",
+  "title": "Sanyo Xacti CG100 EX",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-cg100-ex-vitrin.jpg?v=1782612186",
+  "price": 9490.0,
+  "product_url": "https://retrocameraland.com/products/sanyo-xacti-cg100-ex",
+  "base_score": 409
+ },
+ {
+  "handle": "sanyo-xacti-vpc-hd1",
+  "brand": "Sanyo",
+  "model": "Xacti VPC-HD1",
+  "title": "Sanyo Xacti VPC-HD1",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-hd1-vitrin.jpg?v=1782612194",
+  "price": 10490.0,
+  "product_url": "https://retrocameraland.com/products/sanyo-xacti-vpc-hd1",
+  "base_score": 403
+ },
+ {
+  "handle": "polaroid-i634",
+  "brand": "Polaroid",
+  "model": "i634",
+  "title": "Polaroid i634",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/polaroid-i634-vitrin.jpg?v=1782612159",
+  "price": 6990.0,
+  "product_url": "https://retrocameraland.com/products/polaroid-i634",
+  "base_score": 393
+ },
+ {
+  "handle": "hd-vlog-kamera",
+  "brand": "Diğer",
+  "model": "Generic VLOG Camera HD 1080P",
+  "title": "Generic VLOG Camera HD 1080P",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hd-vlog-kamera-vitrin.jpg?v=1782611978",
+  "price": 4490.0,
+  "product_url": "https://retrocameraland.com/products/hd-vlog-kamera",
+  "base_score": 376
+ },
+ {
+  "handle": "sanyo-xacti-vpc-e6ex",
+  "brand": "Sanyo",
+  "model": "Xacti VPC-E6EX",
+  "title": "Sanyo Xacti VPC-E6EX",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/sanyo-xacti-vpc-e6ex-vitrin.jpg?v=1782612190",
+  "price": 8490.0,
+  "product_url": "https://retrocameraland.com/products/sanyo-xacti-vpc-e6ex",
+  "base_score": 364
+ },
+ {
+  "handle": "hp-photosmart-m525",
+  "brand": "HP",
+  "model": "Photosmart M525",
+  "title": "HP Photosmart M525",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/hp-photosmart-m525-vitrin.jpg?v=1782611982",
+  "price": 6490.0,
+  "product_url": "https://retrocameraland.com/products/hp-photosmart-m525",
+  "base_score": 362
+ },
+ {
+  "handle": "minton-mdc1506",
+  "brand": "Minton",
+  "model": "MDC1506",
+  "title": "Minton MDC1506",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/minton-mdc1506-vitrin.jpg?v=1782612044",
+  "price": 3490.0,
+  "product_url": "https://retrocameraland.com/products/minton-mdc1506",
+  "base_score": 329
+ },
+ {
+  "handle": "premier-ds5090s-digital-camera",
+  "brand": "Premier",
+  "model": "DS5090S",
+  "title": "Premier DS5090S",
+  "image_url": "https://cdn.shopify.com/s/files/1/0686/3198/6315/files/premier-ds5090s-digital-camera-vitrin.jpg?v=1782612163",
+  "price": 3990.0,
+  "product_url": "https://retrocameraland.com/products/premier-ds5090s-digital-camera",
+  "base_score": 283
+ }
+]

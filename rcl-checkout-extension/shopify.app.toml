@@ -1,0 +1,16 @@
+name = "RCL Checkout Fields"
+client_id = "9d09e37f3d0b478b31640808ff1b5fca"
+application_url = "https://retrocameraland.com"
+embedded = false
+
+[access_scopes]
+scopes = ""
+
+[auth]
+redirect_urls = ["https://retrocameraland.com/auth/callback"]
+
+[webhooks]
+api_version = "2024-10"
+
+[pos]
+embedded = false

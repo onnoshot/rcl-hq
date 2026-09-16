@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Antioch: Prova</title>
+<script>document.documentElement.className += ' has-js';</script>
+<style>
+@font-face {
+  font-family: 'Futura Cond';
+  src: url(data:font/ttf;base64,__FONT_DISPLAY__) format('truetype');
+  font-weight: 800; font-display: swap;
+}
+@font-face {
+  font-family: 'Futura Med';
+  src: url(data:font/ttf;base64,__FONT_BODY__) format('truetype');
+  font-weight: 500; font-display: swap;
+}
+
+:root {
+  --bg: #0a0a0a;
+  --bg-2: #161513;
+  --paper: #f2f0ec;
+  --paper-2: #e8e4dc;
+  --fg: #f4f2ee;
+  --fg-dim: #a29c92;
+  --ink: #14110d;
+  --ink-dim: #625b4e;
+  --amber: #e8a23c;
+  --amber-soft: rgba(232,162,60,0.4);
+  --line: rgba(244,242,238,0.16);
+  --line-dark: rgba(20,17,13,0.14);
+  --display: 'Futura Cond', 'Arial Narrow', sans-serif;
+  --body: 'Futura Med', -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg);
+  font-family: var(--body); -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+img { max-width: 100%; display: block; }
+
+/* ---------- HERO ---------- */
+.hero {
+  min-height: 100vh; position: relative; overflow: hidden;
+  display: flex; align-items: flex-end;
+}
+.hero-media {
+  position: absolute; inset: 0; background-size: cover; background-position: center 35%;
+  animation: kb 26s ease-in-out infinite alternate;
+}
+@keyframes kb { from { transform: scale(1); } to { transform: scale(1.06); } }
+.hero-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(8,7,6,0.97) 8%, rgba(8,7,6,0.6) 45%, rgba(8,7,6,0.15) 70%);
+}
+.hero-inner { position: relative; z-index: 2; padding: 0 24px 88px; max-width: 920px; }
+.hero-eyebrow {
+  font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: 0.24em;
+  color: var(--amber); margin: 0 0 14px; text-transform: uppercase;
+}
+.hero h1 {
+  font-family: var(--display); font-weight: 800; letter-spacing: 0.01em;
+  font-size: clamp(56px, 13vw, 148px); line-height: 0.92; margin: 0 0 22px;
+  text-transform: uppercase; color: var(--fg); text-wrap: balance;
+}
+.hero-sub {
+  font-size: 16px; line-height: 1.7; color: var(--fg-dim); max-width: 480px; margin: 0 0 22px;
+}
+.hero-meta {
+  display: flex; gap: 22px; flex-wrap: wrap;
+}
+.hero-meta div {
+  font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-dim);
+}
+.hero-meta strong {
+  display: block; font-family: var(--display); font-weight: 800; font-size: 20px;
+  color: var(--fg); letter-spacing: 0.02em; margin-top: 2px;
+}
+
+/* ---------- INTRO ---------- */
+.intro {
+  background: var(--paper); color: var(--ink); padding: 100px 24px;
+}
+.intro-inner { max-width: 640px; margin: 0 auto; }
+.intro-tag {
+  font-family: var(--display); font-weight: 800; font-size: 12px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--ink-dim); margin: 0 0 20px;
+}
+.intro h2 {
+  font-family: var(--display); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(28px, 4vw, 42px); line-height: 1.08; margin: 0 0 24px; text-wrap: balance;
+}
+.intro p {
+  font-size: 17px; line-height: 1.8; margin: 0 0 18px; color: #2a2419;
+}
+.intro p:last-child { margin-bottom: 0; }
+
+/* ---------- SCENE TRACK LABEL ---------- */
+.track-label {
+  background: var(--bg); padding: 54px 24px 10px; text-align: center;
+}
+.track-label span {
+  font-family: var(--display); font-weight: 800; font-size: 12px; letter-spacing: 0.3em;
+  text-transform: uppercase; color: var(--fg-dim);
+}
+
+/* ---------- SCENES ---------- */
+.scene {
+  border-top: 1px solid var(--line);
+  display: grid; grid-template-columns: 1fr;
+  background: var(--bg);
+}
+@media (min-width: 900px) {
+  .scene { grid-template-columns: 1fr 1fr; min-height: 84vh; }
+  .scene.flip { direction: rtl; }
+  .scene.flip > * { direction: ltr; }
+}
+.scene-media { position: relative; overflow: hidden; min-height: 44vh; background: #050504; }
+.scene-media img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  filter: grayscale(0.15) contrast(1.05);
+  transform: scale(1); transition: transform 1.6s cubic-bezier(.16,.8,.28,1);
+}
+.scene.inview .scene-media img { transform: scale(1.04); }
+.tag-row { position: absolute; top: 14px; left: 14px; right: 14px; display: flex; justify-content: space-between; gap: 8px; }
+.pill {
+  font-family: var(--display); font-weight: 800; font-size: 10px; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 10px; border-radius: 2px;
+  background: rgba(8,7,6,0.55); color: var(--fg); border: 1px solid var(--line);
+  backdrop-filter: blur(3px);
+}
+.pill.ai { color: var(--amber); border-color: var(--amber-soft); }
+.pill.real { color: #9fd3a8; border-color: rgba(159,211,168,0.4); }
+
+.scene-copy { padding: 56px 32px; display: flex; align-items: center; }
+.scene-copy-inner { max-width: 480px; }
+.scene-time {
+  font-family: var(--display); font-weight: 800; font-size: 42px; letter-spacing: 0.02em;
+  color: var(--amber); margin: 0 0 6px; font-variant-numeric: tabular-nums;
+}
+.scene h3 {
+  font-family: var(--display); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(22px, 2.6vw, 30px); line-height: 1.12; margin: 0 0 20px; text-wrap: balance;
+}
+.field { margin: 0 0 18px; }
+.field:last-child { margin-bottom: 0; }
+.field-label {
+  font-family: var(--display); font-weight: 800; font-size: 10.5px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--amber); margin: 0 0 6px;
+}
+.field p { font-size: 15px; line-height: 1.75; color: var(--fg-dim); margin: 0; }
+
+/* ---------- CLOSING ---------- */
+.closing {
+  background: var(--paper); color: var(--ink); text-align: center;
+  padding: 110px 24px 100px;
+}
+.closing img.mark { height: 46px; margin: 0 auto 34px; filter: invert(1); opacity: 0.9; }
+.closing-rule { width: 40px; height: 3px; background: var(--ink); margin: 0 auto 30px; }
+.closing h2 {
+  font-family: var(--display); font-weight: 800; text-transform: uppercase;
+  font-size: clamp(24px, 3vw, 34px); line-height: 1.25; max-width: 620px; margin: 0 auto 28px;
+}
+.reveal { opacity: 1; }
+html.has-js .reveal {
+  opacity: 0; transform: translateY(22px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+html.has-js .scene.inview .reveal, html.has-js .intro.inview .reveal { opacity: 1; transform: translateY(0); }
+
+::selection { background: var(--amber); color: #0a0a0a; }
+
+@media (max-width: 640px) {
+  .hero-inner { padding: 0 20px 64px; }
+  .intro { padding: 72px 20px; }
+  .track-label { padding: 40px 20px 6px; }
+  .scene-copy { padding: 40px 20px 52px; }
+  .scene-media { min-height: 48vh; }
+  .closing { padding: 84px 20px 80px; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-media" style="background-image:url(data:image/jpeg;base64,__IMG_CORRIDOR__)"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Antioch × Soner Sarıkabadayı</p>
+    <h1>Prova</h1>
+    <p class="hero-sub">Kurgulanmamış, sahne arkasında yakalanmış bir an üzerine kurulu 30 saniyelik reklam filmi konsepti. Poz yok, anlatı yok, sadece hazırlığın kendisi.</p>
+    <div class="hero-meta">
+      <div>Sahne Sayısı<strong>6</strong></div>
+      <div>Format<strong>Dikey / Sosyal</strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="intro" data-scene>
+  <div class="intro-inner">
+    <p class="intro-tag reveal">Büyük Fikir</p>
+    <h2 class="reveal">Stil prova edilmez.</h2>
+    <p class="reveal">Önceki konsept bir zanaat metaforu üzerine kuruluydu: bir fikrin, zamanla bir duruşa dönüşmesi. Bu sefer tamamen farklı bir yerden giriyoruz: hiç metafor yok, hiç sahnelenmiş an yok. Kamera, Soner'in sahneye çıkmadan hemen önceki, kimseye gösterilmeyen birkaç saniyesine giriyor.</p>
+    <p class="reveal">Antioch'un kendi sloganı zaten bunu söylüyor: &ldquo;Your style is your signature.&rdquo; Yani stil bir performans değil, zaten orada olan bir şey. Bu filmde de öyle: kimse kameraya bakmıyor, kimse poz vermiyor. Marka burada görünmez ama her karede hissedilir.</p>
+  </div>
+</section>
+
+<div class="track-label"><span>Sahne Sahne</span></div>
+
+<section class="scene" data-scene>
+  <div class="scene-media">
+    <img src="data:image/jpeg;base64,__IMG_CUFFLINK__" alt="Kol düğmesi ilikleme">
+    <div class="tag-row"><span class="pill ai">Yeni Konsept, AI</span></div>
+  </div>
+  <div class="scene-copy">
+    <div class="scene-copy-inner">
+      <p class="scene-time reveal">01</p>
+      <h3 class="reveal">Kol düğmesi</h3>
+      <div class="field reveal">
+        <p class="field-label">Sahnede ne var</p>
+        <p>Elin kol düğmesini iliklediği çok yakın bir kare. Yüz yok, sadece hareket. Arka planda loş bir ampul ve konser kasaları hafifçe bulanık.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Neden böyle açılıyoruz</p>
+        <p>İzleyiciyi ortasından yakalıyoruz, bir hazırlık anının başı değil, zaten süregelen bir andayız. Bu, filmin baştan sona taşıyacağı &ldquo;kurgulanmamışlık&rdquo; hissini ilk saniyede kuruyor.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Antioch bağlantısı</p>
+        <p>Detaya verilen önem, kumaşın ve aksesuarın kalitesi, markanın zaten iyi bildiği bir dil. Logo yok ama zaten Antioch'un dünyası.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene flip" data-scene>
+  <div class="scene-media">
+    <img src="data:image/jpeg;base64,__IMG_MIRROR__" alt="Ayna karşısında kısa bir bakış">
+    <div class="tag-row"><span class="pill real">Gerçek Prodüksiyon Fotoğrafı</span></div>
+  </div>
+  <div class="scene-copy">
+    <div class="scene-copy-inner">
+      <p class="scene-time reveal">02</p>
+      <h3 class="reveal">Aynada, yarım saniyelik bakış</h3>
+      <div class="field reveal">
+        <p class="field-label">Sahnede ne var</p>
+        <p>Soner aynada kendine kısa, sade bir bakış atıyor. Dramatik bir onay anı değil, sadece kontrol. Elimizdeki gerçek çekim planından bu kareyi doğrudan kullanıyoruz.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Neden böyle kullanıyoruz</p>
+        <p>Bu, filmde yüzünün ilk göründüğü an. Bilerek küçük ve sakin tutuyoruz; asıl görünme anını sona saklıyoruz.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Antioch bağlantısı</p>
+        <p>&ldquo;Your style is your signature&rdquo; burada gövdeleniyor: onay aramayan, kendinden emin bir bakış.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-scene>
+  <div class="scene-media">
+    <img src="data:image/jpeg;base64,__IMG_SHOES__" alt="Ayakkabılar ve pantolon paçası, yürüyüş">
+    <div class="tag-row"><span class="pill ai">Yeni Konsept, AI</span></div>
+  </div>
+  <div class="scene-copy">
+    <div class="scene-copy-inner">
+      <p class="scene-time reveal">03</p>
+      <h3 class="reveal">Adım</h3>
+      <div class="field reveal">
+        <p class="field-label">Sahnede ne var</p>
+        <p>Kamera alçak açıdan, yerdeki kablo ve bantların üzerinden geçen ayakkabıları takip ediyor. Yüz yine yok, sadece hareketin kendisi.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Neden böyle geçiyoruz</p>
+        <p>Filmi durağan bir anlatıdan harekete taşıyoruz. İzleyici bir yere gidildiğini hissediyor ama nereye olduğunu henüz bilmiyor.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Antioch bağlantısı</p>
+        <p>Kumaşın düşüşü, ayakkabının işçiliği kadraja giriyor: ürün, anlatının içine reklam gibi değil, doğal bir doku gibi giriyor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene flip" data-scene>
+  <div class="scene-media">
+    <img src="data:image/jpeg;base64,__IMG_CORRIDOR__" alt="Koridorda arkadan silüet, ışığa doğru yürüyüş">
+    <div class="tag-row"><span class="pill ai">Yeni Konsept, AI</span></div>
+  </div>
+  <div class="scene-copy">
+    <div class="scene-copy-inner">
+      <p class="scene-time reveal">04</p>
+      <h3 class="reveal">Koridor</h3>
+      <div class="field reveal">
+        <p class="field-label">Sahnede ne var</p>
+        <p>Geniş bir plan, arkadan, dar bir sahne arkası koridorunda yürüyen bir silüet. Koridorun ucunda sıcak, parlak bir kapı aralığı var.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Neden böyle kuruyoruz</p>
+        <p>Filmin en uzun nefesi burası. İzleyiciye bekleme, merak süresi tanıyoruz; ışığa doğru gidiş, sahneye çıkışın kendisi kadar önemli hale geliyor.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Antioch bağlantısı</p>
+        <p>Karanlıktan aydınlığa geçiş, markanın &ldquo;iç güven, dış duruş&rdquo; fikrini kelime kullanmadan anlatıyor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" data-scene>
+  <div class="scene-media">
+    <img src="data:image/jpeg;base64,__IMG_STAGE__" alt="Sahne performansı">
+    <div class="tag-row"><span class="pill real">Gerçek Prodüksiyon Fotoğrafı</span></div>
+  </div>
+  <div class="scene-copy">
+    <div class="scene-copy-inner">
+      <p class="scene-time reveal">05</p>
+      <h3 class="reveal">Işığın içinde</h3>
+      <div class="field reveal">
+        <p class="field-label">Sahnede ne var</p>
+        <p>Soner artık sahnede, ışığın tam içinde. Filmin tek &ldquo;performans&rdquo; anı, ve yüzünün net göründüğü ilk büyük kare. Yine gerçek prodüksiyon fotoğrafını kullanıyoruz.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Neden burada açıyoruz</p>
+        <p>Koridordaki bekleme burada karşılığını buluyor. İzleyici de onunla birlikte ışığa çıkmış gibi hissediyor.</p>
+      </div>
+      <div class="field reveal">
+        <p class="field-label">Antioch bağlantısı</p>
+        <p>Bu, ürünün en çok göründüğü kare olabilir: sahne ışığında duruşun kendisi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing" data-scene>
+  <img class="mark" src="data:image/png;base64,__IMG_LOGO__" alt="Antioch">
+  <div class="closing-rule"></div>
+  <h2 class="reveal">Your style is your signature.</h2>
+</section>
+
+<script>
+(function(){
+  var items = document.querySelectorAll('[data-scene]');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('inview'); io.unobserve(e.target); }
+      });
+    }, {threshold: 0.08, rootMargin: '0px 0px -10% 0px'});
+    items.forEach(function(el){ io.observe(el); });
+  } else {
+    items.forEach(function(el){ el.classList.add('inview'); });
+  }
+  setTimeout(function(){
+    items.forEach(function(el){ el.classList.add('inview'); });
+  }, 2500);
+})();
+</script>
+</body>
+</html>

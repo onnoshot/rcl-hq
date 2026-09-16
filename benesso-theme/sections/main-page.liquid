@@ -1,0 +1,13 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <div class="glass reveal" style="padding:clamp(2rem,5vw,4rem);max-width:840px;margin-inline:auto">
+    <header style="margin-bottom:1.6rem">
+      <span class="eyebrow">{% render 'icon', name: 'bean' %} BENESSO</span>
+      <h1 class="section-title" style="font-size:var(--fs-h1)">{{ page.title }}</h1>
+    </header>
+    <div class="rte">{{ page.content }}</div>
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Sayfa", "settings": [] }
+{% endschema %}

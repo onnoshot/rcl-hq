@@ -1,0 +1,43 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Benesso Spec Lab",
+    "theme_version": "1.0.0",
+    "theme_author": "Benesso Coffee",
+    "theme_documentation_url": "https://www.benessocoffee.com",
+    "theme_support_url": "https://www.benessocoffee.com"
+  },
+  {
+    "name": "Marka",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo" },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" },
+      { "type": "text", "id": "logo_text", "label": "Logo metni", "default": "Benesso" },
+      { "type": "text", "id": "logo_accent", "label": "Logo vurgu (renkli kısım)", "default": "." }
+    ]
+  },
+  {
+    "name": "Renkler",
+    "settings": [
+      { "type": "color", "id": "color_accent", "label": "Vurgu (turuncu)", "default": "#D4621A" },
+      { "type": "color", "id": "color_bg", "label": "Arka plan", "default": "#17110D" },
+      { "type": "color", "id": "color_text", "label": "Metin", "default": "#F4EDE1" }
+    ]
+  },
+  {
+    "name": "Sosyal Medya",
+    "settings": [
+      { "type": "url", "id": "social_instagram", "label": "Instagram" },
+      { "type": "url", "id": "social_tiktok", "label": "TikTok" },
+      { "type": "url", "id": "social_youtube", "label": "YouTube" },
+      { "type": "url", "id": "social_pinterest", "label": "Pinterest" },
+      { "type": "url", "id": "social_linkedin", "label": "LinkedIn" }
+    ]
+  },
+  {
+    "name": "Ürün Künyesi (metafield eşlemesi)",
+    "settings": [
+      { "type": "paragraph", "content": "Künye, coffee.* namespace'indeki metafield'lardan okunur (country, region, locality, altitude, varietal, process, tasting_notes, acidity, body, sweetness)." }
+    ]
+  }
+]

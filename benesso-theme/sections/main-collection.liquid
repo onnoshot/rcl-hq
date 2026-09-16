@@ -1,0 +1,48 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <header class="reveal" style="margin-bottom:2.5rem;max-width:60ch">
+    <span class="eyebrow">{% render 'icon', name: 'bean' %} KOLEKSİYON · {{ collection.products_count }} ÜRÜN</span>
+    <h1 class="section-title" style="font-size:var(--fs-h1)">{{ collection.title | replace: ' | Benesso Coffee', '' }}</h1>
+    {%- if collection.description != blank -%}<div class="rte muted" style="margin-top:1rem">{{ collection.description }}</div>{%- endif -%}
+  </header>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1.6rem">
+    <div class="tag-rail">
+      {%- for tag in collection.all_tags limit: 8 -%}
+        <a href="{{ collection.url }}/{{ tag | handle }}" class="chip {% if current_tags contains tag %}chip--process{% endif %}">{{ tag }}</a>
+      {%- endfor -%}
+    </div>
+    <form method="get" class="glass" style="padding:.3rem .3rem .3rem 1rem;border-radius:var(--radius-pill);display:flex;align-items:center;gap:.5rem">
+      <label class="opt-group__label" style="margin:0" for="SortBy">{{ 'products.facets.sort_by' | t }}</label>
+      <select name="sort_by" id="SortBy" onchange="this.form.submit()" style="background:none;border:0;color:inherit;font-family:var(--font-mono);font-size:.85rem;padding:.5rem">
+        {%- assign sort = collection.sort_by | default: collection.default_sort_by -%}
+        {%- for opt in collection.sort_options -%}
+          <option value="{{ opt.value }}" {% if opt.value == sort %}selected{% endif %}>{{ opt.name }}</option>
+        {%- endfor -%}
+      </select>
+    </form>
+  </div>
+
+  {%- paginate collection.products by 24 -%}
+    <div class="card-grid" data-stagger>
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product %}
+      {%- else -%}
+        <p class="muted">Bu koleksiyonda henüz ürün yok.</p>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate.pages > 1 -%}
+      <nav class="pagination">
+        {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">←</a>{%- endif -%}
+        {%- for part in paginate.parts -%}
+          {%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- else -%}<span class="current">{{ part.title }}</span>{%- endif -%}
+        {%- endfor -%}
+        {%- if paginate.next -%}<a href="{{ paginate.next.url }}">→</a>{%- endif -%}
+      </nav>
+    {%- endif -%}
+  {%- endpaginate -%}
+</section>
+
+{% schema %}
+{ "name": "Koleksiyon", "settings": [] }
+{% endschema %}

@@ -1,0 +1,58 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <div class="grid" style="grid-template-columns:.85fr 1.15fr;gap:clamp(1.5rem,4vw,3rem);align-items:center">
+    <div class="reveal-left">
+      <span class="eyebrow">{% render 'icon', name: 'globe' %} {{ section.settings.eyebrow }}</span>
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      <p class="lede" style="margin-top:1rem">{{ section.settings.text }}</p>
+      <ul class="tag-rail" style="margin-top:1.4rem">
+        {%- for block in section.blocks -%}
+          <li class="chip">{% render 'icon', name: 'drop' %} {{ block.settings.country }}</li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    <div class="origin-map glass reveal-right" style="aspect-ratio:2/1;padding:1rem;border-radius:var(--radius-lg);background:
+        repeating-linear-gradient(0deg, transparent 0 14.2%, rgba(255,255,255,.05) 14.2% calc(14.2% + 1px)),
+        repeating-linear-gradient(90deg, transparent 0 8.3%, rgba(255,255,255,.05) 8.3% calc(8.3% + 1px)),
+        radial-gradient(120% 140% at 50% 120%, rgba(212,98,26,.12), transparent 60%)">
+      {%- for block in section.blocks -%}
+        {%- assign px = block.settings.lng | plus: 180 | times: 100 | divided_by: 360 -%}
+        {%- assign py = 90 | minus: block.settings.lat | times: 100 | divided_by: 180 -%}
+        <div class="origin-pin" style="left:{{ px }}%;top:{{ py }}%" {{ block.shopify_attributes }}>
+          <span class="origin-pin__dot"></span>
+          <span class="origin-pin__label glass">{{ block.settings.country }}{% if block.settings.note != blank %} · {{ block.settings.note }}{% endif %}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Köken Haritası",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Üst etiket", "default": "KÖKEN AĞI" },
+    { "type": "text", "id": "title", "label": "Başlık", "default": "Ekvator kuşağından Balat'a" },
+    { "type": "textarea", "id": "text", "label": "Metin", "default": "Çekirdeklerimiz dünyanın kahve kuşağındaki en iyi mikrolot çiftliklerinden, doğrudan ticaretle geliyor. Her pin bir terroir, her terroir farklı bir fincan." }
+  ],
+  "blocks": [
+    { "type": "origin", "name": "Köken", "settings": [
+      { "type": "text", "id": "country", "label": "Ülke", "default": "Ethiopia" },
+      { "type": "text", "id": "note", "label": "Not", "default": "çiçeksi" },
+      { "type": "number", "id": "lat", "label": "Enlem", "default": 6 },
+      { "type": "number", "id": "lng", "label": "Boylam", "default": 38 }
+    ]}
+  ],
+  "max_blocks": 12,
+  "presets": [{ "name": "Köken Haritası", "blocks": [
+    { "type": "origin", "settings": { "country": "Ethiopia", "note": "çiçeksi", "lat": 6, "lng": 38 } },
+    { "type": "origin", "settings": { "country": "Kenya", "note": "parlak asidite", "lat": -1, "lng": 37 } },
+    { "type": "origin", "settings": { "country": "Rwanda", "note": "natural", "lat": -2, "lng": 30 } },
+    { "type": "origin", "settings": { "country": "Yemen", "note": "mocha", "lat": 15, "lng": 44 } },
+    { "type": "origin", "settings": { "country": "Colombia", "note": "anaerobik", "lat": 4, "lng": -73 } },
+    { "type": "origin", "settings": { "country": "Costa Rica", "note": "honey", "lat": 10, "lng": -84 } },
+    { "type": "origin", "settings": { "country": "Brazil", "note": "imza blend", "lat": -15, "lng": -47 } },
+    { "type": "origin", "settings": { "country": "Indonesia", "note": "wet-hulled", "lat": -2, "lng": 118 } }
+  ] }]
+}
+{% endschema %}

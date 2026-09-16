@@ -1,0 +1,36 @@
+<header class="site-header" data-section-id="{{ section.id }}">
+  <div class="site-header__inner">
+    <a href="{{ routes.root_url }}" class="site-logo">
+      {%- if settings.logo != blank -%}
+        <img src="{{ settings.logo | image_url: width: 240 }}" alt="{{ shop.name | escape }}" width="120" height="34">
+      {%- else -%}
+        {{ settings.logo_text }}<span>{{ settings.logo_accent }}</span>
+      {%- endif -%}
+    </a>
+
+    <nav class="nav" id="SiteNav" aria-label="{{ 'accessibility.menu' | t }}">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}"{% if link.active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="header-actions">
+      <a href="{{ routes.search_url }}" class="icon-btn" aria-label="{{ 'accessibility.search' | t }}">{% render 'icon', name: 'search' %}</a>
+      <a href="{{ routes.account_url }}" class="icon-btn" aria-label="Hesap">{% render 'icon', name: 'user' %}</a>
+      <button class="icon-btn" data-cart-open aria-label="{{ 'accessibility.cart' | t }}">
+        {% render 'icon', name: 'cart' %}
+        <span class="cart-count" data-cart-count data-count="{{ cart.item_count }}">{{ cart.item_count }}</span>
+      </button>
+      <button class="icon-btn nav-toggle" aria-label="{{ 'accessibility.menu' | t }}" aria-expanded="false" aria-controls="SiteNav">{% render 'icon', name: 'menu' %}</button>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Başlık",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menü", "default": "main-menu" }
+  ]
+}
+{% endschema %}

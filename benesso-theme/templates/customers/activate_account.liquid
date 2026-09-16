@@ -1,0 +1,14 @@
+<section class="section wrap" style="max-width:440px;margin-inline:auto">
+  <div class="glass" style="padding:clamp(1.8rem,4vw,2.6rem)">
+    <span class="eyebrow">{% render 'icon', name: 'user' %} HESABI ETKİNLEŞTİR</span>
+    <h1 class="section-title" style="font-size:var(--fs-h2);margin-bottom:1.4rem">Hesabını aktive et</h1>
+    {%- assign fs = 'width:100%;padding:.85rem 1.1rem;border-radius:var(--radius-sm);background:var(--glass-bg);border:1px solid var(--glass-border);color:inherit;font:inherit;margin-bottom:.6rem' -%}
+    {%- form 'activate_customer_password' -%}
+      {{ form.errors | default_errors }}
+      <input type="password" name="customer[password]" placeholder="Şifre" required style="{{ fs }}">
+      <input type="password" name="customer[password_confirmation]" placeholder="Şifre tekrar" required style="{{ fs }}">
+      <button type="submit" class="btn btn--block" data-magnetic>Etkinleştir</button>
+      <button type="submit" name="decline" class="btn btn--ghost btn--block" style="margin-top:.6rem">Reddet</button>
+    {%- endform -%}
+  </div>
+</section>

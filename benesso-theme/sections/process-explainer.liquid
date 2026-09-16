@@ -1,0 +1,45 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <header class="center reveal" style="max-width:60ch;margin:0 auto 3rem">
+    <span class="eyebrow" style="justify-content:center">{% render 'icon', name: 'leaf' %} {{ section.settings.eyebrow }}</span>
+    <h2 class="section-title" style="margin-inline:auto">{{ section.settings.title }}</h2>
+    <p class="lede" style="margin:1rem auto 0">{{ section.settings.text }}</p>
+  </header>
+
+  <div class="feature-grid" data-stagger>
+    {%- for block in section.blocks -%}
+      <article class="feature glass" {{ block.shopify_attributes }}>
+        <span class="feature__num">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+        <div class="feature__icon">{% render 'icon', name: block.settings.icon %}</div>
+        <h3>{{ block.settings.title }}</h3>
+        <p>{{ block.settings.text }}</p>
+      </article>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "İşleme Yöntemleri",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Üst etiket", "default": "İŞLEME = TAT" },
+    { "type": "text", "id": "title", "label": "Başlık", "default": "Aynı çekirdek, dört farklı karakter" },
+    { "type": "textarea", "id": "text", "label": "Metin", "default": "Çekirdeğin kirazından nasıl ayrıldığı, fincandaki tatlılığı ve gövdeyi belirler. İşte demlemeden önce bilmen gerekenler." }
+  ],
+  "blocks": [
+    { "type": "feature", "name": "Yöntem", "settings": [
+      { "type": "select", "id": "icon", "label": "İkon", "options": [
+        {"value":"drop","label":"Damla"},{"value":"leaf","label":"Yaprak"},{"value":"flame","label":"Alev"},{"value":"mountain","label":"Dağ"},{"value":"cup","label":"Fincan"},{"value":"globe","label":"Dünya"}
+      ], "default": "drop" },
+      { "type": "text", "id": "title", "label": "Başlık", "default": "Washed" },
+      { "type": "textarea", "id": "text", "label": "Metin", "default": "Meyve tamamen ayrılır. Net, parlak ve asiditesi öne çıkan temiz bir fincan." }
+    ]}
+  ],
+  "max_blocks": 6,
+  "presets": [{ "name": "İşleme Yöntemleri", "blocks": [
+    { "type": "feature", "settings": { "icon": "drop", "title": "Washed / Yıkanmış", "text": "Meyve tamamen ayrılır. Net, parlak, asiditesi öne çıkan temiz bir fincan." } },
+    { "type": "feature", "settings": { "icon": "leaf", "title": "Honey", "text": "Mucilage kısmen bırakılır. Dengeli tatlılık, şurupsu gövde, yumuşak asidite." } },
+    { "type": "feature", "settings": { "icon": "flame", "title": "Natural", "text": "Kiraz çekirdekle birlikte kurutulur. Yoğun meyvemsilik, şarabımsı derinlik." } },
+    { "type": "feature", "settings": { "icon": "globe", "title": "Anaerobic", "text": "Oksijensiz fermantasyon. Sıra dışı, kompleks ve katmanlı aromalar." } }
+  ] }]
+}
+{% endschema %}

@@ -1,0 +1,19 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "d6816ea27ab7f3e5f1be30f731e598f1"
+application_url = "http://localhost:3000"
+embedded = true
+name = "bloggerso"
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_content,read_content"
+
+[auth]
+redirect_urls = [ "http://localhost:3000/callback" ]
+
+[webhooks]
+api_version = "2026-07"
+
+[build]
+automatically_update_urls_on_dev = true

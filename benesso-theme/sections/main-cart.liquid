@@ -1,0 +1,45 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <header class="reveal" style="margin-bottom:2rem"><span class="eyebrow">{% render 'icon', name: 'cart' %} SEPET</span><h1 class="section-title" style="font-size:var(--fs-h1)">{{ 'cart.title' | t }}</h1></header>
+
+  {%- if cart.item_count > 0 -%}
+    <form action="{{ routes.cart_url }}" method="post" class="grid" style="grid-template-columns:1.6fr .8fr;gap:2rem;align-items:start">
+      <div class="glass" style="padding:1.5rem">
+        {%- for item in cart.items -%}
+          <div class="cart-line">
+            <img src="{{ item.image | image_url: width: 140 }}" alt="{{ item.product.title | escape }}" width="64" height="64" loading="lazy">
+            <div>
+              <a href="{{ item.url }}" style="font-weight:600">{{ item.product.title | replace: ' - ', ' · ' }}</a>
+              {%- if item.variant.title != 'Default Title' -%}<div class="muted" style="font-size:.85rem">{{ item.variant.title }}</div>{%- endif -%}
+              <div class="qty" style="margin-top:.6rem">
+                <button type="button" data-line-dn="{{ item.key }}">−</button>
+                <span style="padding:0 .6rem;font-family:var(--font-mono)">{{ item.quantity }}</span>
+                <button type="button" data-line-up="{{ item.key }}">+</button>
+              </div>
+            </div>
+            <div style="text-align:right;font-family:var(--font-mono);font-weight:700">{{ item.final_line_price | money }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <aside class="glass--strong glass" style="padding:1.5rem;position:sticky;top:calc(var(--header-h) + 1.5rem)">
+        <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:1.2rem;font-weight:700;margin-bottom:.5rem">
+          <span>{{ 'cart.subtotal' | t }}</span><span data-cart-total>{{ cart.total_price | money }}</span>
+        </div>
+        <p class="muted" style="font-size:.8rem">Kargo ve indirimler ödeme adımında hesaplanır.</p>
+        <label class="opt-group__label" for="CartNote">{{ 'cart.note' | t }}</label>
+        <textarea name="note" id="CartNote" style="width:100%;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-sm);padding:.8rem;color:inherit;font:inherit;margin:.5rem 0 1rem" rows="2">{{ cart.note }}</textarea>
+        <button type="submit" name="checkout" class="btn btn--block" data-magnetic>{{ 'cart.checkout' | t }} {% render 'icon', name: 'arrow' %}</button>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn--ghost btn--block" style="margin-top:.6rem">{{ 'cart.continue' | t }}</a>
+      </aside>
+    </form>
+  {%- else -%}
+    <div class="glass center" style="padding:4rem 2rem">
+      <p class="lede" style="margin-inline:auto">{{ 'cart.empty' | t }}</p>
+      <a href="{{ routes.all_products_collection_url }}" class="btn" style="margin-top:1.5rem" data-magnetic>Kahveleri keşfet {% render 'icon', name: 'arrow' %}</a>
+    </div>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{ "name": "Sepet", "settings": [] }
+{% endschema %}

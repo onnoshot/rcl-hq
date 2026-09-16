@@ -1,0 +1,33 @@
+<article class="section wrap" data-section-id="{{ section.id }}">
+  <div style="max-width:780px;margin-inline:auto">
+    <header class="center reveal" style="margin-bottom:2rem">
+      <span class="eyebrow" style="justify-content:center">{{ article.published_at | date: '%d %B %Y' }}{% if article.tags.size > 0 %} · {{ article.tags.first }}{% endif %}</span>
+      <h1 class="section-title" style="font-size:var(--fs-h1);margin-inline:auto;max-width:20ch">{{ article.title }}</h1>
+      {%- if article.author != blank -%}<p class="muted" style="margin-top:.8rem">{{ 'blogs.article.by_author' | t: author: article.author }}</p>{%- endif -%}
+    </header>
+    {%- if article.image != blank -%}
+      <img src="{{ article.image | image_url: width: 1400 }}" alt="{{ article.title | escape }}" width="1400" height="788" style="border-radius:var(--radius-lg);width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:2rem" class="reveal-scale">
+    {%- endif -%}
+    <div class="rte reveal" style="font-size:1.1rem;line-height:1.8">{{ article.content }}</div>
+
+    <div class="divider"></div>
+    <a href="{{ blog.url }}" class="btn btn--ghost">{% render 'icon', name: 'arrow' %} {{ 'blogs.article.all' | t }}</a>
+
+    {%- if blog.comments_enabled? -%}
+      <div style="margin-top:3rem">
+        {%- if article.comments.size > 0 -%}
+          {%- for comment in article.comments -%}
+            <div class="glass" style="padding:1.2rem;margin-bottom:1rem">
+              <strong>{{ comment.author }}</strong>
+              <div class="rte muted" style="margin-top:.4rem">{{ comment.content }}</div>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</article>
+
+{% schema %}
+{ "name": "Makale", "settings": [] }
+{% endschema %}

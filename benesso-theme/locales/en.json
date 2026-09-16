@@ -1,0 +1,35 @@
+{
+  "general": {
+    "meta": { "tags": "Products tagged \"{{ tags }}\"", "page": "Page {{ page }}" },
+    "search": {
+      "placeholder": "Search coffee, origin, process…",
+      "submit": "Search",
+      "results_with_count": { "one": "{{ count }} result", "other": "{{ count }} results" },
+      "no_results": "No results for “{{ terms }}”.",
+      "title": "Search"
+    },
+    "pagination": { "previous": "Previous", "next": "Next" },
+    "newsletter": { "label": "Your email", "success": "Thanks — welcome aboard.", "submit": "Subscribe" },
+    "404": { "title": "This page hasn't brewed", "subtext": "The page you're looking for can't be found.", "link": "Back to shop" }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content", "close": "Close", "menu": "Menu", "cart": "Cart", "search": "Search", "previous": "Previous", "next": "Next"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to cart", "sold_out": "Sold out", "unavailable": "Unavailable", "notify": "Notify me",
+      "from_price": "From {{ price }}", "quantity": "Quantity", "regular_price": "Price", "sale_price": "Sale price",
+      "spec_sheet": "Coffee Profile", "view": "View"
+    },
+    "facets": { "sort_by": "Sort", "filter": "Filter", "clear": "Clear" }
+  },
+  "cart": {
+    "title": "Cart", "empty": "Your cart is empty.", "subtotal": "Subtotal", "checkout": "Checkout", "continue": "Continue shopping", "remove": "Remove", "note": "Order note"
+  },
+  "blogs": { "article": { "read_more": "Read more", "by_author": "{{ author }}", "all": "All posts" } },
+  "customer": {
+    "login": { "title": "Log in", "email": "Email", "password": "Password", "submit": "Log in", "register": "Create account", "forgot": "Forgot password" },
+    "register": { "title": "Create account", "first": "First name", "last": "Last name", "submit": "Register" },
+    "account": { "title": "My account", "orders": "Orders", "logout": "Log out", "addresses": "Addresses" }
+  }
+}

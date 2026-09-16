@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.benesso.blogwriter</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/onnoshot/Downloads/Agentlar/agents/benesso-blog-writer/scripts/publish.py</string>
+  </array>
+
+  <!-- Günde 3 kez: 12:00, 14:00, 18:00 -->
+  <key>StartCalendarInterval</key>
+  <array>
+    <dict>
+      <key>Hour</key><integer>12</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Hour</key><integer>14</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+    <dict>
+      <key>Hour</key><integer>18</integer>
+      <key>Minute</key><integer>0</integer>
+    </dict>
+  </array>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>SHOPIFY_ACCESS_TOKEN</key>
+    <string>BURAYA_TOKEN_YAZ</string>
+    <key>ANTHROPIC_API_KEY</key>
+    <string>BURAYA_API_KEY_YAZ</string>
+    <key>UNSPLASH_ACCESS_KEY</key>
+    <string>BURAYA_UNSPLASH_KEY_YAZ</string>
+    <key>SHOPIFY_STORE</key>
+    <string>benessocoffee.myshopify.com</string>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/Users/onnoshot/Downloads/Agentlar/outputs/benesso-blog-stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/onnoshot/Downloads/Agentlar/outputs/benesso-blog-stderr.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+</dict>
+</plist>

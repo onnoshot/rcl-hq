@@ -1,0 +1,17 @@
+<section class="section wrap" style="max-width:460px;margin-inline:auto">
+  <div class="glass" style="padding:clamp(1.8rem,4vw,2.6rem)">
+    <span class="eyebrow">{% render 'icon', name: 'user' %} HESAP OLUŞTUR</span>
+    <h1 class="section-title" style="font-size:var(--fs-h2);margin-bottom:1.4rem">{{ 'customer.register.title' | t }}</h1>
+    {%- form 'create_customer', class: 'stack' -%}
+      {{ form.errors | default_errors }}
+      {%- assign fs = 'width:100%;padding:.85rem 1.1rem;border-radius:var(--radius-sm);background:var(--glass-bg);border:1px solid var(--glass-border);color:inherit;font:inherit' -%}
+      <input type="text" name="customer[first_name]" placeholder="{{ 'customer.register.first' | t }}" style="{{ fs }}">
+      <input type="text" name="customer[last_name]" placeholder="{{ 'customer.register.last' | t }}" style="{{ fs }}">
+      <input type="email" name="customer[email]" placeholder="{{ 'customer.login.email' | t }}" required style="{{ fs }}">
+      <input type="password" name="customer[password]" placeholder="{{ 'customer.login.password' | t }}" required style="{{ fs }}">
+      <button type="submit" class="btn btn--block" data-magnetic style="margin-top:.5rem">{{ 'customer.register.submit' | t }}</button>
+    {%- endform -%}
+    <div class="divider"></div>
+    <a href="{{ routes.account_login_url }}" class="btn btn--ghost btn--block">{{ 'customer.login.title' | t }}</a>
+  </div>
+</section>

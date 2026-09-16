@@ -1,0 +1,26 @@
+{% doc %}
+  Renders a price. Pass a product or a variant.
+  @param {object} [product] - Product to price
+  @param {object} [variant] - Variant to price (overrides product)
+  @example
+  {% render 'price', product: product %}
+{% enddoc %}
+{%- liquid
+  if variant
+    assign price = variant.price
+    assign compare = variant.compare_at_price
+  else
+    assign price = product.price
+    assign compare = product.compare_at_price
+  endif
+-%}
+<span class="price">
+  {%- if compare and compare > price -%}
+    <span class="price--compare">{{ compare | money }}</span>
+  {%- endif -%}
+  {%- if product.price_varies and variant == blank -%}
+    {{ 'products.product.from_price' | t: price: product.price_min | money }}
+  {%- else -%}
+    {{ price | money }}
+  {%- endif -%}
+</span>

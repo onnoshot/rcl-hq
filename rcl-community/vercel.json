@@ -1,0 +1,13 @@
+{
+  "_comment": "Community, mevcut /apps/hesabim App Proxy'sinin ALTINA bindirilir (yeni uygulama/proxy gerekmez). Shopify /apps/hesabim/community/* -> .../api/hesabim/community/* iletir; bu rewrite'lar onu gercek fonksiyonlara baglar. Ozel (profil/foto/yarisma) rewrite'lar catch-all'dan ONCE gelmeli.",
+  "rewrites": [
+    { "source": "/api/hesabim/community/profil/(.*)",  "destination": "/api/community/page?type=profil&seg=$1" },
+    { "source": "/api/hesabim/community/foto/(.*)",    "destination": "/api/community/page?type=foto&seg=$1" },
+    { "source": "/api/hesabim/community/yarisma/(.*)", "destination": "/api/community/page?type=yarisma&seg=$1" },
+    { "source": "/api/hesabim/community/(.*)",         "destination": "/api/community/$1" },
+
+    { "source": "/api/community/profil/(.*)",  "destination": "/api/community/page?type=profil&seg=$1" },
+    { "source": "/api/community/foto/(.*)",    "destination": "/api/community/page?type=foto&seg=$1" },
+    { "source": "/api/community/yarisma/(.*)", "destination": "/api/community/page?type=yarisma&seg=$1" }
+  ]
+}

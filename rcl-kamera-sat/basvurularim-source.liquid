@@ -1,0 +1,173 @@
+{%- comment -%}
+  RetroCameraLand — Basvurularim (uye paneli)
+  Giris yapmis Shopify musterisi TUM kamera-alim basvurularini + tekliflerini gorur,
+  bekleyen teklifleri kabul/red eder. Veriler App Proxy ile (imzali) gelir:
+  section.settings.proxy_path (varsayilan /apps/hesabim) -> api/hesabim.js
+  KAYNAK: bu dosyayi duzenle, sonra build ile basvurularim.liquid uret.
+{%- endcomment -%}
+
+{%- assign accent = section.settings.accent | default: '#FF4D2E' -%}
+{%- assign accent2 = section.settings.accent2 | default: '#FF8A3D' -%}
+{%- assign proxy = section.settings.proxy_path | default: '/apps/hesabim' -%}
+
+<style>
+  #rclb-{{ section.id }}{
+    --acc:{{ accent }};--acc2:{{ accent2 }};--bg:#0a0a0b;--card:rgba(255,255,255,.03);
+    --line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--txt:#f4f4f5;--mut:rgba(255,255,255,.46);
+    --ff:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Inter,system-ui,sans-serif;
+    font-family:var(--ff);color:var(--txt);background:var(--bg);display:block;
+    padding:clamp(40px,7vw,90px) clamp(16px,5vw,40px);min-height:60vh;-webkit-font-smoothing:antialiased;
+  }
+  #rclb-{{ section.id }} *{box-sizing:border-box;margin:0;padding:0}
+  #rclb-{{ section.id }} .rclb-wrap{max-width:760px;margin:0 auto}
+  #rclb-{{ section.id }} .rclb-eyebrow{font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);margin-bottom:12px}
+  #rclb-{{ section.id }} h1{font-size:clamp(1.8rem,5vw,2.6rem);font-weight:800;letter-spacing:-.025em;margin-bottom:8px}
+  #rclb-{{ section.id }} .rclb-sub{color:var(--mut);font-size:1rem;margin-bottom:30px}
+  #rclb-{{ section.id }} .rclb-card{border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.01));padding:20px;margin-bottom:14px;animation:rclbUp .5s cubic-bezier(.16,1,.3,1)}
+  @keyframes rclbUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+  #rclb-{{ section.id }} .rclb-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  #rclb-{{ section.id }} .rclb-model{font-size:1.1rem;font-weight:700;color:#fff}
+  #rclb-{{ section.id }} .rclb-ref{font-size:.66rem;font-family:ui-monospace,Menlo,monospace;color:var(--mut);margin-top:3px}
+  #rclb-{{ section.id }} .rclb-pill{font-size:.64rem;font-weight:700;padding:5px 11px;border-radius:99px;white-space:nowrap}
+  #rclb-{{ section.id }} .rclb-pill.bekle{background:rgba(212,175,55,.16);color:#e0c050}
+  #rclb-{{ section.id }} .rclb-pill.ok{background:rgba(61,220,132,.18);color:#3DDC84}
+  #rclb-{{ section.id }} .rclb-pill.no{background:rgba(255,69,58,.16);color:#ff7a70}
+  #rclb-{{ section.id }} .rclb-pill.gri{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+  #rclb-{{ section.id }} .rclb-thumbs{display:flex;gap:6px;margin:12px 0}
+  #rclb-{{ section.id }} .rclb-thumbs img{width:52px;height:52px;border-radius:9px;object-fit:cover;border:1px solid var(--line2)}
+  #rclb-{{ section.id }} .rclb-offer{margin-top:12px;border:1px solid rgba(255,77,46,.28);background:rgba(255,77,46,.07);border-radius:13px;padding:16px}
+  #rclb-{{ section.id }} .rclb-amt{font-size:1.6rem;font-weight:800;background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  #rclb-{{ section.id }} .rclb-omsg{font-size:.86rem;color:rgba(255,255,255,.75);margin-top:6px;white-space:pre-wrap}
+  #rclb-{{ section.id }} .rclb-btns{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  #rclb-{{ section.id }} .rclb-btn{flex:1 1 130px;border:none;border-radius:11px;cursor:pointer;font-family:var(--ff);font-size:.92rem;font-weight:700;padding:13px;transition:.2s cubic-bezier(.16,1,.3,1)}
+  #rclb-{{ section.id }} .rclb-yes{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#fff}
+  #rclb-{{ section.id }} .rclb-yes:hover{transform:translateY(-2px)}
+  #rclb-{{ section.id }} .rclb-no{background:rgba(255,255,255,.05);border:1px solid var(--line2);color:rgba(255,255,255,.8)}
+  #rclb-{{ section.id }} .rclb-btn:disabled{opacity:.5;cursor:default;transform:none}
+  #rclb-{{ section.id }} .rclb-meta{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:.78rem;color:var(--mut);margin-top:10px}
+  #rclb-{{ section.id }} .rclb-meta b{color:rgba(255,255,255,.8)}
+  #rclb-{{ section.id }} .rclb-center{text-align:center;padding:40px 16px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+  #rclb-{{ section.id }} .rclb-spin{width:32px;height:32px;border:3px solid rgba(255,255,255,.15);border-top-color:var(--acc);border-radius:50%;animation:rclbSpin .8s linear infinite;margin:0 auto 12px}
+  @keyframes rclbSpin{to{transform:rotate(360deg)}}
+  #rclb-{{ section.id }} .rclb-link{display:inline-block;margin-top:14px;background:linear-gradient(120deg,var(--acc),var(--acc2));color:#fff;text-decoration:none;font-weight:700;padding:13px 26px;border-radius:12px}
+</style>
+
+<section id="rclb-{{ section.id }}">
+  <div class="rclb-wrap">
+    <div class="rclb-eyebrow">RETROCAMERALAND &#183; UYE PANELI</div>
+    <h1>Basvurularim</h1>
+    <p class="rclb-sub">Kamera alim basvurularinin durumunu ve sana ozel teklifleri buradan takip et.</p>
+
+    {%- if customer -%}
+      <div id="rclb-list"><div class="rclb-center"><div class="rclb-spin"></div><p style="color:var(--mut)">Yukleniyor...</p></div></div>
+    {%- else -%}
+      <div class="rclb-center">
+        <h3 style="font-size:1.2rem;font-weight:700;margin-bottom:8px">Once giris yap</h3>
+        <p style="color:var(--mut)">Basvurularini ve tekliflerini gormek icin uye girisi yapman gerekiyor.</p>
+        <a class="rclb-link" href="/account/login">Giris Yap</a>
+      </div>
+    {%- endif -%}
+  </div>
+
+  {%- if customer -%}
+  <script>
+  (function(){
+    var ROOT=document.getElementById('rclb-' + {{ section.id | json }});
+    if(!ROOT || ROOT.dataset.init) return; ROOT.dataset.init='1';
+    var PROXY={{ proxy | json }};
+    var listEl=ROOT.querySelector('#rclb-list');
+    function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function fmt(iso){ try{ return new Date(iso).toLocaleDateString('tr-TR',{day:'2-digit',month:'short',year:'numeric'}); }catch(e){ return ''; } }
+    var STAT={ yeni:'Inceleniyor', inceleniyor:'Inceleniyor', teklif:'Teklif hazir', kapandi:'Tamamlandi' };
+
+    function load(){
+      fetch(PROXY, { headers:{ 'Accept':'application/json' }, cache:'no-store' })
+        .then(function(r){ return r.json(); })
+        .then(function(j){
+          if(!j || !j.ok){ throw new Error((j&&j.error)||'Hata'); }
+          render(j.items||[]);
+        })
+        .catch(function(e){ listEl.innerHTML='<div class="rclb-center"><p style="color:var(--mut)">Basvurular yuklenemedi: '+esc(e.message||'')+'</p></div>'; });
+    }
+
+    function render(items){
+      if(!items.length){
+        listEl.innerHTML='<div class="rclb-center"><h3 style="font-size:1.15rem;font-weight:700;margin-bottom:8px">Henuz basvurun yok</h3><p style="color:var(--mut)">Kullanmadigin bir kameran mi var?</p><a class="rclb-link" href="/pages/kamerani-sat">Kamerami Sat</a></div>';
+        return;
+      }
+      listEl.innerHTML=items.map(function(x){ return card(x); }).join('');
+      items.forEach(function(x){
+        var of=x.offer;
+        if(of && of.accepted===null){
+          var y=ROOT.querySelector('#yes-'+x.id), n=ROOT.querySelector('#no-'+x.id);
+          if(y) y.addEventListener('click', function(){ answer(x.id,true); });
+          if(n) n.addEventListener('click', function(){ answer(x.id,false); });
+        }
+      });
+    }
+
+    function card(x){
+      var of=x.offer;
+      var pill, offerHtml='';
+      if(!of){ pill='<span class="rclb-pill bekle">'+esc(STAT[x.status]||'Inceleniyor')+'</span>'; }
+      else if(of.accepted===true){ pill='<span class="rclb-pill ok">Kabul ettin</span>'; }
+      else if(of.accepted===false){ pill='<span class="rclb-pill no">Reddettin</span>'; }
+      else { pill='<span class="rclb-pill bekle">Teklif bekliyor</span>'; }
+
+      if(of){
+        if(of.accepted===null){
+          offerHtml='<div class="rclb-offer"><div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700">Sana ozel teklif</div>'+
+            '<div class="rclb-amt">'+esc(of.amount)+' TL</div>'+
+            (of.message?'<div class="rclb-omsg">'+esc(of.message)+'</div>':'')+
+            '<div class="rclb-btns"><button class="rclb-btn rclb-yes" id="yes-'+esc(x.id)+'">Kabul Et</button>'+
+            '<button class="rclb-btn rclb-no" id="no-'+esc(x.id)+'">Reddet</button></div></div>';
+        } else {
+          offerHtml='<div class="rclb-offer" style="border-color:var(--line2);background:rgba(255,255,255,.03)">'+
+            '<div style="font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);font-weight:700">Teklif</div>'+
+            '<div class="rclb-amt" style="'+(of.accepted===false?'-webkit-text-fill-color:rgba(255,255,255,.4);background:none':'')+'">'+esc(of.amount)+' TL</div>'+
+            (of.accepted===true?'<div class="rclb-omsg">Kabul ettin. Ekibimiz kargo ve odeme icin seninle iletisime gececek.</div>':'<div class="rclb-omsg">Bu teklifi reddettin.</div>')+
+            '</div>';
+        }
+      }
+      var thumbs=(x.photos||[]).slice(0,4).map(function(u){ return '<img src="'+esc(u)+'" alt="">'; }).join('');
+      return '<div class="rclb-card">'+
+        '<div class="rclb-top"><div><div class="rclb-model">'+esc(x.model||'Kamera')+'</div><div class="rclb-ref">'+esc(x.ref||'')+' &#183; '+fmt(x.createdAt)+'</div></div>'+pill+'</div>'+
+        (thumbs?'<div class="rclb-thumbs">'+thumbs+'</div>':'')+
+        '<div class="rclb-meta"><span>Beklentin: <b>'+esc(x.price||'-')+' TL</b></span><span>Calisiyor: <b>'+esc(x.working||'-')+'</b></span></div>'+
+        offerHtml+
+      '</div>';
+    }
+
+    function answer(id, accept){
+      var y=ROOT.querySelector('#yes-'+id), n=ROOT.querySelector('#no-'+id);
+      if(y) y.disabled=true; if(n) n.disabled=true;
+      var active=accept?y:n; if(active) active.textContent='Gonderiliyor...';
+      fetch(PROXY, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ id:id, acceptOffer:accept }) })
+        .then(function(r){ return r.json(); })
+        .then(function(j){ if(!j||!j.ok){ throw new Error((j&&j.error)||'Hata'); } load(); })
+        .catch(function(e){
+          if(y) y.disabled=false; if(n) n.disabled=false;
+          if(active) active.textContent = accept?'Kabul Et':'Reddet';
+          alert('Yanitin kaydedilemedi: '+(e.message||'')+'. Tekrar dene.');
+        });
+    }
+
+    load();
+  })();
+  </script>
+  {%- endif -%}
+</section>
+
+{% schema %}
+{
+  "name": "RCL Basvurularim",
+  "tag": "section",
+  "class": "rcl-basvurularim-section",
+  "settings": [
+    { "type": "text", "id": "proxy_path", "label": "App Proxy yolu", "default": "/apps/hesabim", "info": "Shopify App Proxy subpath. api/hesabim.js'e baglanir." },
+    { "type": "color", "id": "accent", "label": "Vurgu rengi", "default": "#FF4D2E" },
+    { "type": "color", "id": "accent2", "label": "Vurgu rengi 2", "default": "#FF8A3D" }
+  ],
+  "presets": [ { "name": "RCL Basvurularim" } ]
+}
+{% endschema %}

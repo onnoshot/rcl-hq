@@ -1,0 +1,30 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <header class="reveal" style="margin-bottom:2.5rem">
+    <span class="eyebrow">{% render 'icon', name: 'cup' %} BENESSO JOURNAL</span>
+    <h1 class="section-title" style="font-size:var(--fs-h1)">{{ blog.title }}</h1>
+  </header>
+  {%- paginate blog.articles by 12 -%}
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))" data-stagger>
+      {%- for article in blog.articles -%}
+        <a href="{{ article.url }}" class="glass" data-tilt style="display:flex;flex-direction:column;border-radius:var(--radius);overflow:hidden">
+          {%- if article.image != blank -%}<img src="{{ article.image | image_url: width: 700 }}" alt="" width="700" height="438" style="aspect-ratio:16/10;object-fit:cover" loading="lazy">{%- endif -%}
+          <div style="padding:1.3rem">
+            <span class="pcard__origin">{{ article.published_at | date: '%d %b %Y' }}{% if article.tags.size > 0 %} · {{ article.tags.first }}{% endif %}</span>
+            <h3 style="font-size:1.25rem;margin:.4rem 0 .6rem">{{ article.title }}</h3>
+            <p class="muted" style="font-size:.9rem">{{ article.excerpt_or_content | strip_html | truncate: 110 }}</p>
+            <span class="eyebrow" style="margin-top:.8rem">{{ 'blogs.article.read_more' | t }} {% render 'icon', name: 'arrow' %}</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+    {%- if paginate.pages > 1 -%}
+      <nav class="pagination">
+        {%- for part in paginate.parts -%}{%- if part.is_link -%}<a href="{{ part.url }}">{{ part.title }}</a>{%- else -%}<span class="current">{{ part.title }}</span>{%- endif -%}{%- endfor -%}
+      </nav>
+    {%- endif -%}
+  {%- endpaginate -%}
+</section>
+
+{% schema %}
+{ "name": "Blog", "settings": [] }
+{% endschema %}

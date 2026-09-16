@@ -1,0 +1,53 @@
+{%- liquid
+  assign product = section.settings.product
+  assign cf = product.metafields.coffee
+-%}
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <div class="glass" style="padding:clamp(1.5rem,4vw,3.5rem);display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center" data-tilt>
+    <div class="reveal-left" style="position:relative">
+      <span class="badge badge--hero" style="top:0;left:0">{{ section.settings.badge }}</span>
+      {%- if product.featured_media != blank -%}
+        <img src="{{ product.featured_media | image_url: width: 800 }}" alt="{{ product.title | escape }}" width="640" height="640" style="border-radius:var(--radius-lg);aspect-ratio:1;object-fit:cover;box-shadow:var(--glass-shadow-lg)" data-parallax="0.06" loading="lazy">
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag }}
+      {%- endif -%}
+    </div>
+    <div class="reveal-right">
+      <span class="eyebrow">{% render 'icon', name: 'flame' %} {{ section.settings.eyebrow }}</span>
+      <h2 class="section-title" style="margin-bottom:.6rem">{{ product.title | default: 'İmza kahvemiz' | replace: ' - ', ' · ' }}</h2>
+      {%- if cf.tasting_notes.value != blank -%}
+        <div class="pcard__notes" style="margin-bottom:1.2rem">
+          {%- assign notes = cf.tasting_notes.value | split: ',' -%}
+          {%- for n in notes limit: 4 -%}<span class="chip chip--note">{{ n | strip }}</span>{%- endfor -%}
+        </div>
+      {%- endif -%}
+      <p class="muted">{{ section.settings.text | default: product.description | strip_html | truncate: 220 }}</p>
+      <div style="font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:var(--gold);margin:1.2rem 0">
+        {% render 'price', product: product %}
+      </div>
+      {%- if product != blank and product.available -%}
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data" style="display:flex;gap:.8rem;flex-wrap:wrap">
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button type="submit" class="btn" data-magnetic>{{ 'products.product.add_to_cart' | t }} {% render 'icon', name: 'cart' %}</button>
+          <a href="{{ product.url }}" class="btn btn--ghost">{{ 'products.product.view' | t }}</a>
+        </form>
+      {%- else -%}
+        <a href="{{ section.settings.fallback_link | default: routes.all_products_collection_url }}" class="btn">{{ section.settings.eyebrow }} {% render 'icon', name: 'arrow' %}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "İmza Ürün",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Ürün (örn. Mogiana)" },
+    { "type": "text", "id": "eyebrow", "label": "Üst etiket", "default": "İMZA BLEND · EN ÇOK SEVİLEN" },
+    { "type": "text", "id": "badge", "label": "Rozet", "default": "BESTSELLER" },
+    { "type": "textarea", "id": "text", "label": "Açıklama (boşsa ürün açıklaması)" },
+    { "type": "url", "id": "fallback_link", "label": "Yedek link" }
+  ],
+  "presets": [{ "name": "İmza Ürün" }]
+}
+{% endschema %}

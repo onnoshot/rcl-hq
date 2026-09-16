@@ -1,0 +1,128 @@
+{%- comment -%}
+  RCL "Stoğa gelince haber ver" — animasyonlu, SVG ikonlu, mobil uyumlu
+  Kurulum: {%- render 'rcl-notify-me', product: product -%}  (sadece OOS'ta görünür)
+{%- endcomment -%}
+{%- assign cv = product.selected_or_first_available_variant -%}
+<div id="rcl-notify" class="rcl-notify" data-variant="{{ cv.id }}" data-instock="{{ cv.available }}"{% unless cv.available == false %} hidden{% endunless %}>
+  <div class="rcl-notify__card">
+    <span class="rcl-notify__glow" aria-hidden="true"></span>
+    <div class="rcl-notify__head">
+      <span class="rcl-notify__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8.5A1.5 1.5 0 0 1 4.5 7H7l1.1-1.7a1 1 0 0 1 .84-.46h6.12a1 1 0 0 1 .84.46L17 7h2.5A1.5 1.5 0 0 1 21 8.5v9A1.5 1.5 0 0 1 19.5 19h-15A1.5 1.5 0 0 1 3 17.5z"/>
+          <circle class="rcl-notify__lens" cx="12" cy="13" r="3.3"/>
+        </svg>
+      </span>
+      <div class="rcl-notify__titles">
+        <p class="rcl-notify__title">Bu kamera şu an tükendi</p>
+        <p class="rcl-notify__sub">Stoğa gelince <b>ilk sen</b> haberdar ol</p>
+      </div>
+      <span class="rcl-notify__live" aria-hidden="true"><i></i></span>
+    </div>
+
+    <form class="rcl-notify__form" id="rcl-notify-form" novalidate>
+      <label class="rcl-notify__field">
+        <svg class="rcl-notify__field-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/>
+        </svg>
+        <input type="email" id="rcl-notify-email" required autocomplete="email" placeholder="e-posta adresin">
+      </label>
+      <button type="submit" class="rcl-notify__btn">
+        <span class="rcl-notify__btn-label">Haber ver</span>
+        <span class="rcl-notify__spinner" aria-hidden="true"></span>
+        <span class="rcl-notify__shine" aria-hidden="true"></span>
+      </button>
+    </form>
+
+    <div class="rcl-notify__done" hidden>
+      <svg class="rcl-notify__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10" class="rcl-notify__check-ring"/>
+        <path d="M7 12.5l3.2 3.2L17 9" class="rcl-notify__check-tick"/>
+      </svg>
+      <p>Harika! Stoğa gelince sana e-posta göndereceğiz.</p>
+    </div>
+    <p class="rcl-notify__msg" id="rcl-notify-msg" role="status" aria-live="polite"></p>
+  </div>
+</div>
+
+<style>
+  #rcl-notify{--rcl-accent:#d8a657;--rcl-accent2:#e9c07e;--rcl-line:rgba(128,128,128,.28);--rcl-surf:rgba(128,128,128,.07);margin-top:18px;color:inherit}
+  #rcl-notify *{box-sizing:border-box}
+  .rcl-notify__card{position:relative;overflow:hidden;border:1px solid var(--rcl-line);background:var(--rcl-surf);border-radius:16px;padding:18px 18px 16px;backdrop-filter:blur(6px);animation:rclIn .55s cubic-bezier(.2,.7,.2,1) both}
+  .rcl-notify__glow{position:absolute;inset:-2px;border-radius:inherit;pointer-events:none;background:radial-gradient(120px 80px at 12% 0%,rgba(216,166,87,.20),transparent 70%);opacity:.9;animation:rclGlow 4.5s ease-in-out infinite}
+  .rcl-notify__head{display:flex;align-items:center;gap:12px;position:relative}
+  .rcl-notify__icon{flex:none;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;border:1px solid var(--rcl-line);background:rgba(216,166,87,.10);color:var(--rcl-accent)}
+  .rcl-notify__icon svg{width:23px;height:23px}
+  .rcl-notify__lens{transform-origin:12px 13px;animation:rclLens 2.6s ease-in-out infinite}
+  .rcl-notify__titles{flex:1;min-width:0}
+  .rcl-notify__title{margin:0;font-weight:700;font-size:15.5px;line-height:1.25;letter-spacing:-.01em}
+  .rcl-notify__sub{margin:2px 0 0;font-size:13px;opacity:.72;line-height:1.3}
+  .rcl-notify__sub b{color:var(--rcl-accent);font-weight:700;opacity:1}
+  .rcl-notify__live{flex:none;width:9px;height:9px;position:relative}
+  .rcl-notify__live i{position:absolute;inset:0;border-radius:50%;background:var(--rcl-accent)}
+  .rcl-notify__live:before{content:"";position:absolute;inset:0;border-radius:50%;background:var(--rcl-accent);animation:rclPing 1.8s cubic-bezier(0,0,.2,1) infinite}
+  .rcl-notify__form{display:flex;gap:10px;margin-top:14px}
+  .rcl-notify__field{flex:1;display:flex;align-items:center;gap:9px;min-width:0;border:1px solid var(--rcl-line);background:rgba(128,128,128,.06);border-radius:11px;padding:0 13px;transition:border-color .2s,box-shadow .2s}
+  .rcl-notify__field:focus-within{border-color:var(--rcl-accent);box-shadow:0 0 0 3px rgba(216,166,87,.20)}
+  .rcl-notify__field-ic{width:18px;height:18px;flex:none;opacity:.55}
+  #rcl-notify-email{flex:1;min-width:0;width:100%;background:transparent;border:0;outline:0;color:inherit;font-size:15px;padding:13px 0;font-family:inherit}
+  #rcl-notify-email::placeholder{color:inherit;opacity:.45}
+  .rcl-notify__btn{position:relative;overflow:hidden;flex:none;border:0;cursor:pointer;border-radius:11px;padding:0 22px;min-height:48px;font-family:inherit;font-weight:700;font-size:15px;color:#1a1208;background:linear-gradient(135deg,var(--rcl-accent2),var(--rcl-accent));box-shadow:0 6px 18px rgba(216,166,87,.28);transition:transform .15s,box-shadow .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+  .rcl-notify__btn:hover{transform:translateY(-1px);box-shadow:0 9px 24px rgba(216,166,87,.40)}
+  .rcl-notify__btn:active{transform:translateY(0) scale(.985)}
+  .rcl-notify__shine{position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-18deg);animation:rclShine 3.4s ease-in-out infinite}
+  .rcl-notify__spinner{display:none;width:17px;height:17px;border-radius:50%;border:2px solid rgba(26,18,8,.35);border-top-color:#1a1208;animation:rclSpin .7s linear infinite}
+  #rcl-notify.is-loading .rcl-notify__btn{pointer-events:none;opacity:.92}
+  #rcl-notify.is-loading .rcl-notify__btn-label{display:none}
+  #rcl-notify.is-loading .rcl-notify__spinner{display:inline-block}
+  .rcl-notify__done{display:none;align-items:center;gap:11px;margin-top:6px;color:var(--rcl-accent)}
+  #rcl-notify.is-done .rcl-notify__form{display:none}
+  #rcl-notify.is-done .rcl-notify__done{display:flex;animation:rclIn .4s ease both}
+  .rcl-notify__done p{margin:0;font-size:14.5px;font-weight:600;color:inherit;line-height:1.35}
+  .rcl-notify__check{width:30px;height:30px;flex:none}
+  .rcl-notify__check-ring{stroke-dasharray:64;stroke-dashoffset:64;animation:rclDraw .5s ease forwards}
+  .rcl-notify__check-tick{stroke-dasharray:20;stroke-dashoffset:20;animation:rclDraw .35s .35s ease forwards}
+  .rcl-notify__msg{margin:10px 0 0;font-size:13.5px;min-height:0}
+  .rcl-notify__msg.is-err{color:#e5644e}
+  @media (max-width:480px){
+    .rcl-notify__form{flex-direction:column}
+    .rcl-notify__btn{width:100%;min-height:50px}
+  }
+  @keyframes rclIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  @keyframes rclGlow{0%,100%{opacity:.55}50%{opacity:1}}
+  @keyframes rclLens{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.82);opacity:.6}}
+  @keyframes rclPing{0%{transform:scale(1);opacity:.7}80%,100%{transform:scale(2.6);opacity:0}}
+  @keyframes rclShine{0%,18%{left:-130%}38%,100%{left:130%}}
+  @keyframes rclSpin{to{transform:rotate(360deg)}}
+  @keyframes rclDraw{to{stroke-dashoffset:0}}
+  @media (prefers-reduced-motion:reduce){
+    #rcl-notify *{animation:none!important;transition:none!important}
+  }
+</style>
+<script>
+(function(){
+  var ENDPOINT="https://rcl-notify-api.vercel.app/api/notify-me";
+  var box=document.getElementById('rcl-notify');
+  if(!box) return;
+  var form=document.getElementById('rcl-notify-form'),
+      msg=document.getElementById('rcl-notify-msg'),
+      input=document.getElementById('rcl-notify-email');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=(input.value||'').trim();
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
+      msg.className='rcl-notify__msg is-err';msg.textContent='Geçerli bir e-posta gir.';return;
+    }
+    msg.textContent='';box.classList.add('is-loading');
+    fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,variant_id:box.getAttribute('data-variant'),product_title:{{ product.title | json }}})})
+    .then(function(r){return r.json();})
+    .then(function(d){
+      box.classList.remove('is-loading');
+      if(d&&d.ok){box.classList.add('is-done');}
+      else{msg.className='rcl-notify__msg is-err';msg.textContent='Bir sorun oldu, tekrar dener misin?';}
+    })
+    .catch(function(){box.classList.remove('is-loading');msg.className='rcl-notify__msg is-err';msg.textContent='Bağlantı hatası, tekrar dene.';});
+  });
+})();
+</script>

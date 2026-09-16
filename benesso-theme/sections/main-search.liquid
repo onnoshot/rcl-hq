@@ -1,0 +1,33 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <header class="reveal" style="margin-bottom:2rem">
+    <span class="eyebrow">{% render 'icon', name: 'search' %} {{ 'general.search.title' | t }}</span>
+    <form action="{{ routes.search_url }}" method="get" role="search" class="glass" style="display:flex;align-items:center;gap:.6rem;padding:.4rem .4rem .4rem 1.2rem;border-radius:var(--radius-pill);max-width:620px;margin-top:1rem">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" style="flex:1;background:none;border:0;color:inherit;font:inherit;padding:.7rem 0" autofocus>
+      <button type="submit" class="btn">{{ 'general.search.submit' | t }}</button>
+    </form>
+  </header>
+
+  {%- if search.performed -%}
+    <p class="muted" style="font-family:var(--font-mono);font-size:.85rem;margin-bottom:1.5rem">{{ 'general.search.results_with_count' | t: count: search.results_count }}</p>
+    {%- if search.results_count > 0 -%}
+      <div class="card-grid" data-stagger>
+        {%- for item in search.results -%}
+          {%- if item.object_type == 'product' -%}{% render 'product-card', product: item %}
+          {%- else -%}
+            <a href="{{ item.url }}" class="glass" style="padding:1.3rem;display:block">
+              <span class="pcard__origin">{{ item.object_type }}</span>
+              <h3 style="font-size:1.15rem;margin:.3rem 0">{{ item.title }}</h3>
+              <p class="muted" style="font-size:.85rem">{{ item.content | strip_html | truncate: 100 }}</p>
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="lede">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+    {%- endif -%}
+  {%- endif -%}
+</section>
+
+{% schema %}
+{ "name": "Arama", "settings": [] }
+{% endschema %}

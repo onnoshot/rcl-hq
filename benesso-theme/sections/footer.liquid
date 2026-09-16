@@ -1,0 +1,71 @@
+<footer class="site-footer" data-section-id="{{ section.id }}">
+  <div class="wrap">
+    <div class="footer__inner glass">
+      <div class="footer__grid">
+        <div class="reveal">
+          <a href="{{ routes.root_url }}" class="site-logo" style="font-size:1.6rem">{{ settings.logo_text }}<span>{{ settings.logo_accent }}</span></a>
+          <p class="muted" style="margin-top:1rem;max-width:32ch">{{ section.settings.tagline }}</p>
+          {%- if section.settings.show_newsletter -%}
+            {%- form 'customer', class: 'newsletter-form' -%}
+              <input type="hidden" name="contact[tags]" value="newsletter">
+              <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter.label' | t }}" required>
+              <button type="submit" class="btn" aria-label="{{ 'general.newsletter.submit' | t }}">{% render 'icon', name: 'arrow' %}</button>
+            {%- endform -%}
+          {%- endif -%}
+          <div class="socials" style="margin-top:1.2rem">
+            {%- if settings.social_instagram != blank -%}<a href="{{ settings.social_instagram }}" class="icon-btn" target="_blank" rel="noopener" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>{%- endif -%}
+            {%- if settings.social_tiktok != blank -%}<a href="{{ settings.social_tiktok }}" class="icon-btn" target="_blank" rel="noopener" aria-label="TikTok">{% render 'icon', name: 'tiktok' %}</a>{%- endif -%}
+            {%- if settings.social_youtube != blank -%}<a href="{{ settings.social_youtube }}" class="icon-btn" target="_blank" rel="noopener" aria-label="YouTube">{% render 'icon', name: 'youtube' %}</a>{%- endif -%}
+            {%- if settings.social_pinterest != blank -%}<a href="{{ settings.social_pinterest }}" class="icon-btn" target="_blank" rel="noopener" aria-label="Pinterest">{% render 'icon', name: 'pinterest' %}</a>{%- endif -%}
+            {%- if settings.social_linkedin != blank -%}<a href="{{ settings.social_linkedin }}" class="icon-btn" target="_blank" rel="noopener" aria-label="LinkedIn">{% render 'icon', name: 'linkedin' %}</a>{%- endif -%}
+          </div>
+        </div>
+
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'menu' and block.settings.menu != blank -%}
+            <div class="reveal" {{ block.shopify_attributes }}>
+              <h4>{{ block.settings.heading }}</h4>
+              {%- for link in block.settings.menu.links -%}
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="footer__bottom">
+        <span>© {{ 'now' | date: '%Y' }} {{ shop.name }} — {{ section.settings.legal }}</span>
+        <span>{{ section.settings.credit }}</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Alt Bilgi",
+  "settings": [
+    { "type": "text", "id": "tagline", "label": "Slogan", "default": "Balat'ta kavrulan, köken şeffaflığıyla teslim edilen 3. nesil specialty kahve." },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Bülten formu", "default": true },
+    { "type": "text", "id": "legal", "label": "Yasal metin", "default": "Bima Kahve San. ve Dış Tic. Ltd. Şti." },
+    { "type": "text", "id": "credit", "label": "Kredi", "default": "Spec Lab teması" }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menü sütunu",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Başlık", "default": "Kahveler" },
+        { "type": "link_list", "id": "menu", "label": "Menü" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "menu", "settings": { "heading": "Kahveler" } },
+      { "type": "menu", "settings": { "heading": "Keşfet" } },
+      { "type": "menu", "settings": { "heading": "Kurumsal" } }
+    ]
+  }
+}
+{% endschema %}

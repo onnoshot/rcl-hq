@@ -1,0 +1,17 @@
+<section class="section wrap">
+  <span class="eyebrow">{% render 'icon', name: 'truck' %} SİPARİŞ {{ order.name }}</span>
+  <h1 class="section-title" style="font-size:var(--fs-h2);margin-bottom:.5rem">{{ order.created_at | date: '%d %B %Y' }}</h1>
+  <p class="muted" style="margin-bottom:1.5rem"><span class="chip">{{ order.financial_status_label }}</span> <span class="chip">{{ order.fulfillment_status_label }}</span></p>
+  <div class="glass" style="padding:1.2rem;overflow-x:auto">
+    <table style="width:100%;border-collapse:collapse;font-size:.9rem">
+      <thead><tr style="font-family:var(--font-mono);font-size:var(--fs-micro);text-transform:uppercase;color:var(--paper-faint);text-align:left"><th style="padding:.6rem">Ürün</th><th>Adet</th><th style="text-align:right">Tutar</th></tr></thead>
+      <tbody>
+      {%- for line in order.line_items -%}
+        <tr style="border-top:1px solid var(--glass-border-dark)"><td style="padding:.7rem .6rem">{{ line.title }}</td><td>{{ line.quantity }}</td><td style="text-align:right;font-family:var(--font-mono)">{{ line.final_line_price | money }}</td></tr>
+      {%- endfor -%}
+      </tbody>
+      <tfoot><tr style="border-top:1px solid var(--glass-border)"><td colspan="2" style="padding:.7rem .6rem;text-align:right">Toplam</td><td style="text-align:right;font-family:var(--font-mono);font-weight:700;color:var(--gold)">{{ order.total_price | money }}</td></tr></tfoot>
+    </table>
+  </div>
+  <a href="{{ routes.account_url }}" class="btn btn--ghost" style="margin-top:1.5rem">{% render 'icon', name: 'arrow' %} Hesabıma dön</a>
+</section>

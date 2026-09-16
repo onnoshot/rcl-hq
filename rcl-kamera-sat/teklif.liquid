@@ -1,0 +1,163 @@
+{%- comment -%}
+  RetroCameraLand &#8212; Teklif Goruntule / Yanitla (musteri portali)
+  E-postadaki guvenli link (?id=...&t=token) ile acilir. Login gerekmez.
+  KAYNAK: bu dosyayi duzenle, sonra build ile teklif.liquid uret.
+{%- endcomment -%}
+
+{%- assign accent = section.settings.accent | default: '#FF4D2E' -%}
+{%- assign accent2 = section.settings.accent2 | default: '#FF8A3D' -%}
+
+<style>
+  #rclt-{{ section.id }}{
+    --acc:{{ accent }};--acc2:{{ accent2 }};--bg:#0a0a0b;--card:rgba(255,255,255,.03);
+    --line:rgba(255,255,255,.09);--line2:rgba(255,255,255,.16);--txt:#f4f4f5;--mut:rgba(255,255,255,.46);
+    --ff:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',Inter,system-ui,sans-serif;
+    font-family:var(--ff);color:var(--txt);background:var(--bg);display:block;
+    padding:clamp(40px,7vw,90px) clamp(16px,5vw,40px);min-height:60vh;-webkit-font-smoothing:antialiased;
+  }
+  #rclt-{{ section.id }} *{box-sizing:border-box;margin:0;padding:0}
+  #rclt-{{ section.id }} .rclt-wrap{max-width:600px;margin:0 auto}
+  #rclt-{{ section.id }} .rclt-eyebrow{font-size:.66rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
+  #rclt-{{ section.id }} .rclt-card{border:1px solid var(--line);border-radius:22px;background:linear-gradient(160deg,rgba(255,255,255,.045),rgba(255,255,255,.01));backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:clamp(24px,5vw,40px);animation:rcltUp .6s cubic-bezier(.16,1,.3,1)}
+  @keyframes rcltUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  #rclt-{{ section.id }} h1{font-size:clamp(1.5rem,4.5vw,2.2rem);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin-bottom:8px}
+  #rclt-{{ section.id }} .rclt-ref{font-size:.72rem;font-family:ui-monospace,Menlo,monospace;color:var(--mut);margin-bottom:22px}
+  #rclt-{{ section.id }} .rclt-thumbs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+  #rclt-{{ section.id }} .rclt-thumbs img{width:64px;height:64px;border-radius:11px;object-fit:cover;border:1px solid var(--line2)}
+  #rclt-{{ section.id }} .rclt-rows{margin:8px 0 4px}
+  #rclt-{{ section.id }} .rclt-row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.92rem}
+  #rclt-{{ section.id }} .rclt-row .k{color:var(--mut)}
+  #rclt-{{ section.id }} .rclt-row .v{font-weight:600;text-align:right}
+  #rclt-{{ section.id }} .rclt-offer{margin-top:22px;border:1px solid rgba(255,77,46,.3);background:rgba(255,77,46,.07);border-radius:16px;padding:22px;text-align:center}
+  #rclt-{{ section.id }} .rclt-offer .lbl{font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:700}
+  #rclt-{{ section.id }} .rclt-amt{font-size:clamp(2.2rem,8vw,3rem);font-weight:800;background:linear-gradient(120deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:6px 0 4px}
+  #rclt-{{ section.id }} .rclt-msg{font-size:.92rem;color:rgba(255,255,255,.78);line-height:1.6;white-space:pre-wrap;margin-top:10px;text-align:left;background:rgba(0,0,0,.2);border-radius:11px;padding:13px}
+  #rclt-{{ section.id }} .rclt-btns{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+  #rclt-{{ section.id }} .rclt-btn{flex:1 1 160px;border:none;border-radius:14px;cursor:pointer;font-family:var(--ff);font-size:1rem;font-weight:700;padding:17px;transition:.22s cubic-bezier(.16,1,.3,1)}
+  #rclt-{{ section.id }} .rclt-accept{background:linear-gradient(120deg,var(--acc),var(--acc2));color:#fff;box-shadow:0 12px 30px -12px rgba(255,77,46,.6)}
+  #rclt-{{ section.id }} .rclt-accept:hover{transform:translateY(-2px)}
+  #rclt-{{ section.id }} .rclt-reject{background:rgba(255,255,255,.05);border:1px solid var(--line2);color:rgba(255,255,255,.8)}
+  #rclt-{{ section.id }} .rclt-reject:hover{background:rgba(255,255,255,.09)}
+  #rclt-{{ section.id }} .rclt-btn:disabled{opacity:.5;cursor:default;transform:none}
+  #rclt-{{ section.id }} .rclt-note{font-size:.78rem;color:rgba(255,255,255,.3);text-align:center;margin-top:16px;line-height:1.5}
+  #rclt-{{ section.id }} .rclt-badge{display:inline-flex;align-items:center;gap:8px;font-size:.86rem;font-weight:700;padding:10px 18px;border-radius:99px;margin-top:6px}
+  #rclt-{{ section.id }} .rclt-badge.ok{background:rgba(61,220,132,.16);color:#3DDC84}
+  #rclt-{{ section.id }} .rclt-badge.no{background:rgba(255,255,255,.08);color:rgba(255,255,255,.55)}
+  #rclt-{{ section.id }} .rclt-badge.wait{background:rgba(212,175,55,.16);color:#e0c050}
+  #rclt-{{ section.id }} .rclt-center{text-align:center;padding:20px 0}
+  #rclt-{{ section.id }} .rclt-spin{width:34px;height:34px;border:3px solid rgba(255,255,255,.15);border-top-color:var(--acc);border-radius:50%;animation:rcltSpin .8s linear infinite;margin:10px auto}
+  @keyframes rcltSpin{to{transform:rotate(360deg)}}
+  #rclt-{{ section.id }} a.rclt-link{color:var(--acc);text-decoration:none;font-weight:600}
+</style>
+
+<section id="rclt-{{ section.id }}">
+  <div class="rclt-wrap">
+    <div class="rclt-eyebrow">RETROCAMERALAND &#183; BASVURU DURUMU</div>
+    <div class="rclt-card" id="rclt-card">
+      <div class="rclt-center"><div class="rclt-spin"></div><p style="color:var(--mut)">Yukleniyor...</p></div>
+    </div>
+  </div>
+
+  <script>
+  (function(){
+    var ROOT=document.getElementById('rclt-' + {{ section.id | json }});
+    if(!ROOT || ROOT.dataset.init) return; ROOT.dataset.init='1';
+    var ENDPOINT={{ section.settings.endpoint | default: 'https://rclhq.vercel.app/api/sell-camera' | json }};
+    var card=ROOT.querySelector('#rclt-card');
+    var q=new URLSearchParams(location.search);
+    var ID=q.get('id'), T=q.get('t');
+    function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function fmt(iso){ try{ return new Date(iso).toLocaleDateString('tr-TR',{day:'2-digit',month:'long',year:'numeric'}); }catch(e){ return ''; } }
+    var STAT={ yeni:'Inceleniyor', inceleniyor:'Inceleniyor', teklif:'Teklif hazir', kapandi:'Tamamlandi' };
+
+    if(!ID || !T){ card.innerHTML='<div class="rclt-center"><h1>Gecersiz baglanti</h1><p style="color:var(--mut);margin-top:10px">Lutfen sana gonderdigimiz e-postadaki baglantiyi kullan.</p></div>'; return; }
+
+    fetch(ENDPOINT + '?id=' + encodeURIComponent(ID) + '&t=' + encodeURIComponent(T), { cache:'no-store' })
+      .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+      .then(function(res){
+        if(!res.ok || !res.j || !res.j.ok){ throw new Error((res.j&&res.j.error)||'Bulunamadi'); }
+        render(res.j.item);
+      })
+      .catch(function(e){ card.innerHTML='<div class="rclt-center"><h1>Basvuru bulunamadi</h1><p style="color:var(--mut);margin-top:10px">'+esc(e.message||'')+'. Baglanti hatali veya suresi dolmus olabilir.</p></div>'; });
+
+    function summary(x){
+      var thumbs=(x.photos||[]).slice(0,5).map(function(u){ return '<img src="'+esc(u)+'" alt="">'; }).join('');
+      return '<h1>'+esc(x.model||'Kameran')+'</h1>'+
+        '<div class="rclt-ref">Ref: '+esc(x.ref||'')+(x.createdAt?' &#183; '+fmt(x.createdAt):'')+'</div>'+
+        (thumbs?'<div class="rclt-thumbs">'+thumbs+'</div>':'')+
+        '<div class="rclt-rows">'+
+          (x.price?'<div class="rclt-row"><span class="k">Senin beklentin</span><span class="v">'+esc(x.price)+' TL</span></div>':'')+
+          (x.working?'<div class="rclt-row"><span class="k">Calisiyor mu</span><span class="v">'+esc(x.working)+'</span></div>':'')+
+          (x.condition?'<div class="rclt-row"><span class="k">Durum</span><span class="v">'+esc(x.condition)+'</span></div>':'')+
+        '</div>';
+    }
+
+    function render(x){
+      var of=x.offer;
+      var html=summary(x);
+      if(!of){
+        html+='<div class="rclt-offer" style="border-color:var(--line2);background:rgba(255,255,255,.03)">'+
+          '<div class="rclt-badge wait">Durum: '+esc(STAT[x.status]||'Inceleniyor')+'</div>'+
+          '<p style="color:var(--mut);margin-top:14px;line-height:1.6">Basvurun bize ulasti. Ekibimiz kameran\u0131 degerlendiriyor; teklifimiz hazir oldugunda burada ve e-postanda gorunecek.</p></div>';
+        card.innerHTML=html; return;
+      }
+      if(of.accepted===true){
+        html+='<div class="rclt-offer"><div class="rclt-badge ok">Teklifi kabul ettin</div>'+
+          '<div class="rclt-amt">'+esc(of.amount)+' TL</div>'+
+          '<p style="color:var(--mut);line-height:1.6">Harika! Ekibimiz kargo ve odeme detaylari icin en kisa surede seninle iletisime gececek.</p></div>';
+        card.innerHTML=html; return;
+      }
+      if(of.accepted===false){
+        html+='<div class="rclt-offer" style="border-color:var(--line2);background:rgba(255,255,255,.03)"><div class="rclt-badge no">Teklifi reddettin</div>'+
+          '<div class="rclt-amt" style="-webkit-text-fill-color:rgba(255,255,255,.35);background:none">'+esc(of.amount)+' TL</div>'+
+          '<p style="color:var(--mut);line-height:1.6">Fikrin degisirse bizimle iletisime gecebilirsin.</p></div>';
+        card.innerHTML=html; return;
+      }
+      // bekleyen teklif
+      html+='<div class="rclt-offer"><div class="lbl">Sana ozel teklifimiz</div>'+
+        '<div class="rclt-amt">'+esc(of.amount)+' TL</div>'+
+        (of.message?'<div class="rclt-msg">'+esc(of.message)+'</div>':'')+
+        '<div class="rclt-btns">'+
+          '<button class="rclt-btn rclt-accept" id="rclt-yes">Teklifi Kabul Et</button>'+
+          '<button class="rclt-btn rclt-reject" id="rclt-no">Reddet</button>'+
+        '</div>'+
+        '<div class="rclt-note">Kabul edersen ekibimiz kargo ve odeme icin seninle iletisime gecer.</div></div>';
+      card.innerHTML=html;
+      ROOT.querySelector('#rclt-yes').addEventListener('click', function(){ answer(true); });
+      ROOT.querySelector('#rclt-no').addEventListener('click', function(){ answer(false); });
+    }
+
+    function answer(accept){
+      var yes=ROOT.querySelector('#rclt-yes'), no=ROOT.querySelector('#rclt-no');
+      if(yes) yes.disabled=true; if(no) no.disabled=true;
+      var active = accept?yes:no; if(active) active.textContent='Gonderiliyor...';
+      fetch(ENDPOINT, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify({ id:ID, token:T, acceptOffer:accept }) })
+        .then(function(r){ return r.json().then(function(j){ return {ok:r.ok, j:j}; }); })
+        .then(function(res){
+          if(!res.ok || !res.j || !res.j.ok){ throw new Error((res.j&&res.j.error)||'Hata'); }
+          render(res.j.item);
+          ROOT.scrollIntoView({ behavior:'smooth', block:'start' });
+        })
+        .catch(function(e){
+          if(yes) yes.disabled=false; if(no) no.disabled=false;
+          if(active) active.textContent = accept?'Teklifi Kabul Et':'Reddet';
+          alert('Yanitin kaydedilemedi: '+(e.message||'baglanti hatasi')+'. Lutfen tekrar dene.');
+        });
+    }
+  })();
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "RCL Teklif Goruntule",
+  "tag": "section",
+  "class": "rcl-teklif-section",
+  "settings": [
+    { "type": "text", "id": "endpoint", "label": "API adresi", "default": "https://rclhq.vercel.app/api/sell-camera" },
+    { "type": "color", "id": "accent", "label": "Vurgu rengi", "default": "#FF4D2E" },
+    { "type": "color", "id": "accent2", "label": "Vurgu rengi 2", "default": "#FF8A3D" }
+  ],
+  "presets": [ { "name": "RCL Teklif Goruntule" } ]
+}
+{% endschema %}

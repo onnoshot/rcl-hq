@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RCL Topluluk - Moderasyon</title>
+<style>
+:root{--bg:#000;--card:#0d0d10;--bd:rgba(255,255,255,.10);--txt:#f3f3f4;--mut:#8a8a91;--acc:#FF4D2E;--ok:#30D158;--no:#FF453A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,'SF Pro Display','SF Pro Text','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 20px 80px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+h1{font-size:22px;font-weight:700;letter-spacing:-.02em;margin:0}
+.sub{color:var(--mut);font-size:13px;margin:2px 0 18px}
+.key{display:flex;gap:8px;margin-bottom:18px}
+.key input{flex:1;background:var(--card);border:1px solid var(--bd);border-radius:12px;color:var(--txt);padding:11px 14px;font-size:14px;outline:none}
+.btn{background:var(--acc);color:#fff;border:0;border-radius:12px;padding:11px 18px;font-weight:600;font-size:14px;cursor:pointer}
+.btn.ghost{background:var(--card);border:1px solid var(--bd);color:var(--txt)}
+.tabs{display:inline-flex;background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:4px;margin-bottom:18px}
+.tabs button{border:0;background:transparent;color:var(--mut);font-weight:600;font-size:13px;padding:8px 16px;border-radius:9px;cursor:pointer}
+.tabs button.on{background:var(--acc);color:#fff}
+.stats{display:flex;gap:10px;margin-bottom:18px}
+.stat{flex:1;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px}
+.stat .n{font-size:26px;font-weight:700;font-variant-numeric:tabular-nums}
+.stat .l{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;overflow:hidden}
+.card img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#111}
+.card .body{padding:12px 14px}
+.card .cam{font-size:14px;font-weight:600}
+.card .loc{font-size:12px;color:var(--mut);margin-top:1px}
+.card .by{font-size:12px;color:var(--mut);margin-top:6px}
+.card .cap{font-size:13px;color:var(--txt);margin:8px 0 0;opacity:.85}
+.card .acts{display:flex;gap:8px;padding:0 14px 14px}
+.card .acts button{flex:1;border:0;border-radius:10px;padding:9px;font-weight:600;font-size:13px;cursor:pointer}
+.ap{background:rgba(48,209,88,.14);color:var(--ok)}
+.rj{background:rgba(255,69,58,.14);color:var(--no)}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;margin-top:6px}
+.b-pending{background:rgba(255,159,10,.16);color:#FF9F0A}
+.b-approved{background:rgba(48,209,88,.16);color:var(--ok)}
+.b-rejected{background:rgba(255,69,58,.16);color:var(--no)}
+.empty{color:var(--mut);text-align:center;padding:60px 0}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1c1c1f;border:1px solid var(--bd);padding:11px 18px;border-radius:12px;font-size:14px;opacity:0;transition:.3s;z-index:9}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header><div><h1>RCL Topluluk &#183; Moderasyon</h1><div class="sub">Bekleyen fotograflari onayla / reddet</div></div>
+    <button class="btn ghost" id="refresh">Yenile</button></header>
+  <div class="key"><input id="apikey" type="password" placeholder="RCL_ALIM_KEY"><button class="btn" id="save">Kaydet</button></div>
+  <div class="stats" id="stats"></div>
+  <div class="tabs" id="tabs">
+    <button data-f="pending" class="on">Bekleyen</button>
+    <button data-f="approved">Onayli</button>
+    <button data-f="rejected">Reddedilen</button>
+    <button data-f="all">Hepsi</button>
+  </div>
+  <div class="grid" id="grid"></div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var BASE = localStorage.getItem('rclCommBase') || 'https://rclhq.vercel.app/api/community';
+var KEY = localStorage.getItem('rclAlimKey') || '';
+var filter = 'pending';
+var $=function(s){return document.querySelector(s)};
+$('#apikey').value = KEY;
+function toast(m){var t=$('#toast');t.textContent=m;t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(function(){t.style.opacity='0'},2000)}
+$('#save').onclick=function(){KEY=$('#apikey').value.trim();localStorage.setItem('rclAlimKey',KEY);toast('Anahtar kaydedildi');load()};
+$('#refresh').onclick=load;
+document.querySelectorAll('#tabs button').forEach(function(b){b.onclick=function(){filter=b.dataset.f;document.querySelectorAll('#tabs button').forEach(function(x){x.classList.toggle('on',x===b)});load()}});
+function badge(s){return '<span class="badge b-'+s+'">'+({pending:'Bekliyor',approved:'Onayli',rejected:'Reddedildi'}[s]||s)+'</span>'}
+async function load(){
+  if(!KEY){$('#grid').innerHTML='<div class="empty">Once RCL_ALIM_KEY gir</div>';return}
+  $('#grid').innerHTML='<div class="empty">Yukleniyor...</div>';
+  try{
+    var r=await fetch(BASE+'/moderate?key='+encodeURIComponent(KEY)+'&filter='+filter);
+    var j=await r.json();
+    if(!j.ok){$('#grid').innerHTML='<div class="empty">Yetki hatasi - anahtari kontrol et</div>';return}
+    var c=j.counts||{};
+    $('#stats').innerHTML=
+      '<div class="stat"><div class="n">'+(c.pending||0)+'</div><div class="l">Bekleyen</div></div>'+
+      '<div class="stat"><div class="n">'+(c.approved||0)+'</div><div class="l">Onayli</div></div>'+
+      '<div class="stat"><div class="n">'+(c.rejected||0)+'</div><div class="l">Reddedilen</div></div>';
+    var items=j.items||[];
+    if(!items.length){$('#grid').innerHTML='<div class="empty">Bu kategoride foto yok</div>';return}
+    $('#grid').innerHTML=items.map(function(p){
+      var pr=p.profiles||{};
+      return '<div class="card" data-id="'+p.id+'"><img src="'+p.image_url+'" alt="">'+
+        '<div class="body"><div class="cam">'+esc(p.camera_model)+'</div><div class="loc">'+esc(p.location)+'</div>'+
+        '<div class="by">@'+esc(pr.handle||'uye')+' &#183; '+p.like_count+' begeni</div>'+
+        (p.caption?'<div class="cap">'+esc(p.caption)+'</div>':'')+badge(p.status)+'</div>'+
+        (p.status==='pending'?'<div class="acts"><button class="ap" data-a="approve">Onayla</button><button class="rj" data-a="reject">Reddet</button></div>':'')+
+        '</div>';
+    }).join('');
+  }catch(e){$('#grid').innerHTML='<div class="empty">Baglanti hatasi</div>'}
+}
+function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML}
+$('#grid').addEventListener('click',async function(e){
+  var btn=e.target.closest('[data-a]');if(!btn)return;
+  var card=btn.closest('.card');var id=card.dataset.id;var action=btn.dataset.a;
+  btn.disabled=true;
+  try{var r=await fetch(BASE+'/moderate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({key:KEY,id:id,action:action})});
+    var j=await r.json();if(j.ok){card.style.opacity='.35';toast(action==='approve'?'Onaylandi':'Reddedildi');setTimeout(load,400)}else toast('Hata')}catch(e){toast('Hata')}
+});
+load();
+</script>
+</body>
+</html>

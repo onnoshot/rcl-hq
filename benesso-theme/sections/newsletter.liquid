@@ -1,0 +1,28 @@
+<section class="section wrap" data-section-id="{{ section.id }}">
+  <div class="glass--strong glass reveal-scale center" style="padding:clamp(2.5rem,6vw,5rem);border-radius:var(--radius-lg);position:relative;overflow:hidden">
+    <span class="eyebrow" style="justify-content:center">{% render 'icon', name: 'cup' %} {{ section.settings.eyebrow }}</span>
+    <h2 class="section-title flow-text" style="margin-inline:auto;font-size:var(--fs-h1)">{{ section.settings.title }}</h2>
+    <p class="lede" style="margin:1rem auto 1.8rem">{{ section.settings.text }}</p>
+    {%- form 'customer', class: 'newsletter-form', style: 'max-width:460px;margin-inline:auto' -%}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      {%- if form.posted_successfully? -%}
+        <p class="chip chip--process" style="margin-inline:auto">{{ 'general.newsletter.success' | t }}</p>
+      {%- else -%}
+        <input type="email" name="contact[email]" placeholder="{{ 'general.newsletter.label' | t }}" required>
+        <button type="submit" class="btn" data-magnetic>{{ 'general.newsletter.submit' | t }} {% render 'icon', name: 'arrow' %}</button>
+      {%- endif -%}
+    {%- endform -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bülten",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Üst etiket", "default": "FRESH DROP" },
+    { "type": "text", "id": "title", "label": "Başlık", "default": "Yeni mikrolotları ilk sen dene" },
+    { "type": "textarea", "id": "text", "label": "Metin", "default": "Sınırlı sayıda gelen taze kavrumlar, demleme rehberleri ve özel indirimler — doğrudan kutuna." }
+  ],
+  "presets": [{ "name": "Bülten" }]
+}
+{% endschema %}

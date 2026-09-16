@@ -1,0 +1,46 @@
+{%- comment -%} Usage: {% render 'product-card', product: product %} {%- endcomment -%}
+{%- liquid
+  assign cf = product.metafields.coffee
+  assign origin = cf.country.value | default: product.type | default: cf.region.value
+  assign notes = cf.tasting_notes.value
+  assign avail = product.available
+  assign first_avail = product.selected_or_first_available_variant
+-%}
+<article class="pcard glass reveal-scale" data-tilt>
+  <a href="{{ product.url }}" class="pcard__media" aria-label="{{ product.title | escape }}">
+    {%- if product.featured_media -%}
+      <img src="{{ product.featured_media | image_url: width: 640 }}"
+           srcset="{{ product.featured_media | image_url: width: 360 }} 360w, {{ product.featured_media | image_url: width: 640 }} 640w"
+           sizes="(max-width:600px) 90vw, 320px" width="640" height="640"
+           alt="{{ product.featured_media.alt | escape }}" loading="lazy">
+    {%- else -%}
+      <div style="display:grid;place-items:center;height:100%;color:var(--paper-faint)">{% render 'icon', name: 'bean' %}</div>
+    {%- endif -%}
+    <span class="pcard__shade"></span>
+    {%- unless avail -%}<span class="badge badge--soon">{{ 'products.product.sold_out' | t }}</span>{%- endunless -%}
+    {%- if product.metafields.coffee.hero.value == true -%}<span class="badge badge--hero">İMZA</span>{%- endif -%}
+  </a>
+  <div class="pcard__body">
+    {%- if origin != blank -%}<span class="pcard__origin">{{ origin }}</span>{%- endif -%}
+    <h3 class="pcard__title"><a href="{{ product.url }}">{{ product.title | replace: ' - ', ' · ' }}</a></h3>
+    {%- if notes != blank -%}
+      <div class="pcard__notes">
+        {%- assign note_list = notes | split: ',' -%}
+        {%- for note in note_list limit: 3 -%}
+          <span class="chip chip--note">{{ note | strip }}</span>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+    <div class="pcard__foot">
+      <span class="pcard__price">{% render 'price', product: product %}</span>
+      {%- if avail -%}
+        <form action="{{ routes.cart_add_url }}" method="post" enctype="multipart/form-data">
+          <input type="hidden" name="id" value="{{ first_avail.id }}">
+          <button type="submit" class="pcard__add" aria-label="{{ 'products.product.add_to_cart' | t }}">{% render 'icon', name: 'plus' %}</button>
+        </form>
+      {%- else -%}
+        <a href="{{ product.url }}" class="pcard__add" aria-label="{{ 'products.product.view' | t }}">{% render 'icon', name: 'arrow' %}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</article>

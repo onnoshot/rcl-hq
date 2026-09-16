@@ -1,0 +1,89 @@
+/* Hallmark · macrostructure: Photographic · genre: atmospheric · theme: custom "Kırmızı Işık"
+ * vibe: gece sahnesi, kırmızı sahne ışığı, analog bant dokusu, canlı ritim
+ * paper oklch(13% 0.02 22) · accent oklch(56% 0.20 25) sahne-kırmızısı · accent-2 oklch(42% 0.15 350) bordo
+ * display: Space Grotesk · body: Switzer · outlier: JetBrains Mono
+ * nav: custom wordmark-chip (transport-bar owns real navigation) · footer: Ft5 Statement
+ * axes: paper-band=dark · display-style=grotesk-sans · accent-hue=red(25)
+ */
+
+:root {
+  /* ---- Colour: paper / ink / neutrals (dark red-graphite anchor, hue 22) ---- */
+  --color-paper:    oklch(13% 0.020 22);
+  --color-paper-2:  oklch(17% 0.022 22);
+  --color-paper-3:  oklch(22% 0.024 22);
+  --color-paper-4:  oklch(27% 0.026 22);
+  --color-rule:     oklch(30% 0.020 22);
+  --color-neutral:  oklch(56% 0.018 22);
+  --color-muted:    oklch(73% 0.014 22);
+  --color-ink:      oklch(95% 0.008 30);
+
+  /* ---- Colour: accent (sahne kırmızısı — kırmızı stage ışığından esinli) ---- */
+  --color-accent:      oklch(56% 0.20 25);
+  --color-accent-soft: oklch(56% 0.20 25 / 0.14);
+  --color-accent-2:    oklch(42% 0.15 350); /* rare use — live/rec marker, bordo */
+  --color-focus:       oklch(62% 0.20 25);
+  --color-accent-hover: oklch(62% 0.20 25);
+
+  /* ---- Alpha variants (chrome overlays — scrim, glass backdrops, hairlines) ---- */
+  --color-paper-a55: oklch(13% 0.020 22 / 0.55);
+  --color-paper-a72: oklch(17% 0.022 22 / 0.72);
+  --color-paper-a78: oklch(13% 0.020 22 / 0.78);
+  --color-paper-a0:  oklch(13% 0.020 22 / 0);
+  --color-ink-a08:   oklch(95% 0.008 30 / 0.08);
+
+  /* ---- Duotone filter endpoints (approx sRGB of paper/accent, for SVG feFuncR/G/B) ---- */
+  --duo-shadow-r: 0.100; --duo-shadow-g: 0.055; --duo-shadow-b: 0.055;
+  --duo-light-r:  0.850; --duo-light-g:  0.180; --duo-light-b:  0.150;
+
+  /* ---- Type families ---- */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  /* ---- Type scale (1.25 ratio, 16px base) ---- */
+  --text-xs:   0.64rem;
+  --text-sm:   0.8rem;
+  --text-base: 1rem;
+  --text-md:   1.25rem;
+  --text-lg:   1.5625rem;
+  --text-xl:   1.9531rem;
+  --text-2xl:  2.4414rem;
+  --text-3xl:  3.0518rem;
+  --text-4xl:  3.8147rem;
+  --text-display:   clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --text-display-l: clamp(3rem, 6vw + 1rem, 6rem);
+
+  /* ---- Spacing (4pt scale) ---- */
+  --space-3xs: 0.125rem;
+  --space-2xs: 0.25rem;
+  --space-xs:  0.5rem;
+  --space-sm:  0.75rem;
+  --space-md:  1rem;
+  --space-lg:  1.5rem;
+  --space-xl:  2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --space-4xl: 9rem;
+
+  /* ---- Motion ---- */
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:     cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 108ms; /* 0.9x — Midnight-adjacent snappy scale */
+  --dur-short: 198ms;
+  --dur-long:  378ms;
+
+  /* ---- Z-scale ---- */
+  --z-base:     1;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+
+  /* ---- Radius ---- */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-full: 999px;
+}

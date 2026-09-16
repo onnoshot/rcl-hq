@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benesso Coffee — Spec Lab Teması · TASLAK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/base.css">
+  <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('reduce-motion');</script>
+  <style>
+    /* preview-only: küçük taslak rozeti */
+    .draft-flag{position:fixed;bottom:1rem;left:1rem;z-index:500;font-family:var(--font-mono);font-size:var(--fs-micro);letter-spacing:.12em;text-transform:uppercase;padding:.5rem .9rem;border-radius:var(--radius-pill);background:rgba(178,58,72,.9);color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+  </style>
+</head>
+<body class="template-index">
+  <a class="skip-link" href="#MainContent">İçeriğe geç</a>
+  <div class="liquid-bg" aria-hidden="true">
+    <span class="liquid-blob liquid-blob--1"></span><span class="liquid-blob liquid-blob--2"></span><span class="liquid-blob liquid-blob--3"></span><span class="liquid-grain"></span>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="#" class="site-logo">Benesso<span>.</span></a>
+      <nav class="nav" id="SiteNav">
+        <a href="#bestsellers">Kahveler</a><a href="#origin">Köken</a><a href="#process">İşleme</a><a href="product.html">Künye</a><a href="#trip">Origin Trip</a><a href="#story">Hikaye</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" aria-label="Ara"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></button>
+        <button class="icon-btn" aria-label="Hesap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6 8-6s8 2 8 6"/></svg></button>
+        <button class="icon-btn" data-cart-open aria-label="Sepet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2.2l2.3 12.3a1.6 1.6 0 0 0 1.6 1.3h8.9a1.6 1.6 0 0 0 1.6-1.2L21.5 7H5.4"/></svg><span class="cart-count" data-count="2">2</span></button>
+        <button class="icon-btn nav-toggle" aria-label="Menü"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="MainContent">
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="hero__grid">
+        <div>
+          <span class="eyebrow reveal">BALAT · İSTANBUL · EST. 2022</span>
+          <h1 class="hero__title reveal">Köken belli.<em class="flow-text">Fincan net.</em></h1>
+          <p class="hero__lede reveal">Her çekirdeğin künyesi açık: rakım, varyete, işleme. Balat'ta küçük partiler halinde kavuruyor, tazeyken kapına yolluyoruz.</p>
+          <div class="hero__cta reveal">
+            <a href="#bestsellers" class="btn" data-magnetic>Kahveleri keşfet <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a href="#story" class="btn btn--ghost">Hikayemiz</a>
+          </div>
+          <div class="hero__stats" data-stagger>
+            <div class="stat"><div class="stat__num"><span data-count-to="12" data-count-suffix="+">0</span></div><div class="stat__label">single-origin köken</div></div>
+            <div class="stat"><div class="stat__num"><span data-count-to="100" data-count-suffix="%">0</span></div><div class="stat__label">arabica</div></div>
+            <div class="stat"><div class="stat__num"><span data-count-to="48" data-count-suffix="sa">0</span></div><div class="stat__label">kavurma → kargo</div></div>
+          </div>
+        </div>
+        <div class="hero__visual reveal-scale">
+          <span class="hero__ring"></span>
+          <img src="https://cdn.shopify.com/s/files/1/0690/8985/3720/files/0004_hf_20260515_114402_bd687890-dee6-4f97-babf-a8c775f5970f.jpg?v=1778847412" alt="Benesso kahve" width="720" height="900" data-parallax="0.08">
+          <div class="hero__card glass--light glass">
+            <div class="stat__num" style="color:var(--orange)">1610m</div>
+            <div class="stat__label" style="color:var(--ink-soft)">ortalama rakım · Kirinyaga</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee section--tight" aria-hidden="true">
+      <div class="marquee__track">
+        <div class="marquee__item">SINGLE ORIGIN<span style="color:var(--ember)">✦</span>TAZE KAVRUM<span style="color:var(--ember)">✦</span>DIRECT TRADE<span style="color:var(--ember)">✦</span>%100 ARABICA<span style="color:var(--ember)">✦</span>BALAT ROASTERY<span style="color:var(--ember)">✦</span></div>
+        <div class="marquee__item">SINGLE ORIGIN<span style="color:var(--ember)">✦</span>TAZE KAVRUM<span style="color:var(--ember)">✦</span>DIRECT TRADE<span style="color:var(--ember)">✦</span>%100 ARABICA<span style="color:var(--ember)">✦</span>BALAT ROASTERY<span style="color:var(--ember)">✦</span></div>
+      </div>
+    </div>
+
+    <!-- SIGNATURE PRODUCT (Mogiana) -->
+    <section class="section wrap">
+      <div class="glass" style="padding:clamp(1.5rem,4vw,3.5rem);display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center" data-tilt>
+        <div class="reveal-left" style="position:relative">
+          <span class="badge badge--hero" style="top:0;left:0">BESTSELLER</span>
+          <img src="https://cdn.shopify.com/s/files/1/0690/8985/3720/files/Benesso_Mogiana_1000gr_1.jpg?v=1738007004" alt="Mogiana" width="640" height="640" style="border-radius:var(--radius-lg);aspect-ratio:1;object-fit:cover;box-shadow:var(--glass-shadow-lg)" data-parallax="0.06">
+        </div>
+        <div class="reveal-right">
+          <span class="eyebrow">İMZA BLEND · EN ÇOK SEVİLEN</span>
+          <h2 class="section-title" style="margin-bottom:.6rem">Brazil · Mogiana by Alfonso Fraga</h2>
+          <div class="pcard__notes" style="margin-bottom:1.2rem">
+            <span class="chip chip--note">Çikolata</span><span class="chip chip--note">Fındık</span><span class="chip chip--note">Karamel</span><span class="chip chip--note">Yumuşak gövde</span>
+          </div>
+          <p class="muted">Benesso'nun imza blendi. Her gün içilecek dengeli, tatlı ve gövdeli bir fincan; espresso ve filtre için ayrı kavrumlarla. Mağazanın en çok satan ürünü.</p>
+          <div style="font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:var(--gold);margin:1.2rem 0">450,00 ₺<span style="font-size:1rem;color:var(--paper-faint)"> 'dan başlayan</span></div>
+          <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+            <button class="btn" data-magnetic data-cart-open>Sepete ekle <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h2.2l2.3 12.3a1.6 1.6 0 0 0 1.6 1.3h8.9a1.6 1.6 0 0 0 1.6-1.2L21.5 7H5.4"/></svg></button>
+            <a href="product.html" class="btn btn--ghost">İncele</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BESTSELLERS GRID -->
+    <section class="section wrap" id="bestsellers">
+      <header style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem">
+        <div class="reveal"><span class="eyebrow">EN ÇOK SATANLAR</span><h2 class="section-title">Bardağa giren favoriler</h2></div>
+        <a href="#" class="btn btn--ghost reveal">Tümü <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </header>
+      <div class="card-grid" data-stagger id="cardGrid"></div>
+    </section>
+
+    <!-- ORIGIN MAP -->
+    <section class="section wrap" id="origin">
+      <div class="grid" style="grid-template-columns:.85fr 1.15fr;gap:clamp(1.5rem,4vw,3rem);align-items:center">
+        <div class="reveal-left">
+          <span class="eyebrow">KÖKEN AĞI</span>
+          <h2 class="section-title">Ekvator kuşağından Balat'a</h2>
+          <p class="lede" style="margin-top:1rem">Çekirdeklerimiz dünyanın kahve kuşağındaki en iyi mikrolot çiftliklerinden, doğrudan ticaretle geliyor. Her pin bir terroir, her terroir farklı bir fincan.</p>
+          <ul class="tag-rail" style="margin-top:1.4rem">
+            <li class="chip">Ethiopia</li><li class="chip">Kenya</li><li class="chip">Rwanda</li><li class="chip">Yemen</li><li class="chip">Colombia</li><li class="chip">Costa Rica</li><li class="chip">Brazil</li>
+          </ul>
+        </div>
+        <div class="origin-map glass reveal-right" id="originMap" style="aspect-ratio:2/1;padding:1rem;border-radius:var(--radius-lg);background:repeating-linear-gradient(0deg,transparent 0 14.2%,rgba(255,255,255,.05) 14.2% calc(14.2% + 1px)),repeating-linear-gradient(90deg,transparent 0 8.3%,rgba(255,255,255,.05) 8.3% calc(8.3% + 1px)),radial-gradient(120% 140% at 50% 120%,rgba(212,98,26,.12),transparent 60%)"></div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section wrap" id="process">
+      <header class="center reveal" style="max-width:60ch;margin:0 auto 3rem">
+        <span class="eyebrow" style="justify-content:center">İŞLEME = TAT</span>
+        <h2 class="section-title" style="margin-inline:auto">Aynı çekirdek, dört farklı karakter</h2>
+        <p class="lede" style="margin:1rem auto 0">Çekirdeğin kirazından nasıl ayrıldığı, fincandaki tatlılığı ve gövdeyi belirler.</p>
+      </header>
+      <div class="feature-grid" data-stagger>
+        <article class="feature glass"><span class="feature__num">01</span><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5z"/></svg></div><h3>Washed</h3><p>Meyve tamamen ayrılır. Net, parlak, asiditesi öne çıkan temiz bir fincan.</p></article>
+        <article class="feature glass"><span class="feature__num">02</span><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20C4 9 12 4 20 4c0 11-8 16-16 16z"/><path d="M9 15c2-3 5-5 9-6"/></svg></div><h3>Honey</h3><p>Mucilage kısmen bırakılır. Dengeli tatlılık, şurupsu gövde, yumuşak asidite.</p></article>
+        <article class="feature glass"><span class="feature__num">03</span><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 4-3 5-3 9a4 4 0 0 0 8 0c0-2-1-3-2-4 .5 2-1 3-1 3 .5-3-2-5-2-8z"/></svg></div><h3>Natural</h3><p>Kiraz çekirdekle birlikte kurutulur. Yoğun meyvemsilik, şarabımsı derinlik.</p></article>
+        <article class="feature glass"><span class="feature__num">04</span><div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Anaerobic</h3><p>Oksijensiz fermantasyon. Sıra dışı, kompleks ve katmanlı aromalar.</p></article>
+      </div>
+    </section>
+
+    <!-- TASTING FLIGHT -->
+    <section class="section wrap">
+      <div class="glass" style="padding:clamp(1.5rem,4vw,3rem);border-radius:var(--radius-lg)">
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center">
+          <div class="reveal-left">
+            <span class="eyebrow">NEREDEN BAŞLAMALI</span>
+            <h2 class="section-title">Önce keşfet, sonra favorini seç</h2>
+            <p class="lede" style="margin:1rem 0 1.6rem">Tek bir kökene bağlanmadan önce farklı terroir'ları yan yana dene. Tadım setleri specialty dünyasına en doğru giriş.</p>
+            <ul class="stack" style="margin-bottom:1.8rem">
+              <li class="reveal" style="display:flex;gap:.8rem"><span style="color:var(--ember);flex:none;width:22px">→</span><span><strong>3–5 farklı köken</strong> — <span class="muted">tek pakette yan yana</span></span></li>
+              <li class="reveal" style="display:flex;gap:.8rem"><span style="color:var(--ember);flex:none;width:22px">→</span><span><strong>100'er gram</strong> — <span class="muted">denemek için ideal porsiyon</span></span></li>
+              <li class="reveal" style="display:flex;gap:.8rem"><span style="color:var(--ember);flex:none;width:22px">→</span><span><strong>Künye kartları</strong> — <span class="muted">her kahvenin rakım/işleme bilgisi</span></span></li>
+            </ul>
+            <a href="product.html" class="btn" data-magnetic>Tadım setini incele →</a>
+          </div>
+          <div class="reveal-right" style="position:relative">
+            <img src="https://cdn.shopify.com/s/files/1/0690/8985/3720/files/3lu.jpg?v=1778847770" alt="Tadım seti" width="640" height="640" style="border-radius:var(--radius);aspect-ratio:1;object-fit:cover">
+            <div class="hero__card glass--light glass" style="position:absolute;bottom:-1rem;right:-1rem;animation:floatY 5s var(--ease-glass) infinite">
+              <div class="stat__num" style="color:var(--orange)">650 ₺</div><div class="stat__label" style="color:var(--ink-soft)">başlangıç seti</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STORY -->
+    <section class="section wrap" id="story">
+      <div class="glass reveal center" style="padding:clamp(2rem,5vw,4rem);max-width:820px;margin-inline:auto">
+        <span class="eyebrow" style="justify-content:center">HİKAYEMİZ</span>
+        <h2 class="section-title" style="margin-inline:auto">Tarihî Balat sokaklarında kavuruyoruz</h2>
+        <div class="rte muted" style="margin-top:1rem;font-size:1.1rem"><p>Benesso, dünyanın en iyi çekirdeklerini en doğal işleme yöntemleriyle, küçük partiler halinde kavurarak gerçek bir kahve deneyimi sunar. İstanbul'un en karakterli semtinden, şeffaflık ve özenle.</p></div>
+        <a href="#" class="btn" style="margin-top:1.6rem" data-magnetic>Atölyeleri keşfet →</a>
+      </div>
+    </section>
+
+    <!-- ORIGIN TRIP -->
+    <section class="section" id="trip">
+      <div class="wrap">
+        <div class="glass reveal-scale" style="position:relative;border-radius:var(--radius-lg);overflow:hidden;min-height:clamp(360px,52vh,560px);display:grid;align-items:end">
+          <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=1800&q=80" alt="" width="1800" height="1012" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover" data-parallax="0.1">
+          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(15,10,6,.9),rgba(15,10,6,.25) 60%,transparent)"></div>
+          <div style="position:relative;padding:clamp(1.5rem,5vw,3.5rem);max-width:640px">
+            <span class="eyebrow">BENESSO ORIGIN TRIP</span>
+            <h2 class="section-title flow-text" style="font-size:var(--fs-h1)">Kahvenin doğduğu yere git</h2>
+            <p class="lede" style="margin:1rem 0 1.8rem">Etiyopya'nın yüksek rakımlı çiftliklerinde hasada katıl, üreticilerle tanış, kavurmayı kaynağında öğren. Bir kahveden çok daha fazlası.</p>
+            <div style="display:flex;gap:.9rem;flex-wrap:wrap;align-items:center">
+              <a href="#" class="btn" data-magnetic>Yolculuğu keşfet →</a>
+              <span class="chip">Sınırlı kontenjan · yılda 1 grup</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="section wrap">
+      <div class="glass--strong glass reveal-scale center" style="padding:clamp(2.5rem,6vw,5rem);border-radius:var(--radius-lg)">
+        <span class="eyebrow" style="justify-content:center">FRESH DROP</span>
+        <h2 class="section-title flow-text" style="margin-inline:auto;font-size:var(--fs-h1)">Yeni mikrolotları ilk sen dene</h2>
+        <p class="lede" style="margin:1rem auto 1.8rem">Sınırlı sayıda gelen taze kavrumlar, demleme rehberleri ve özel indirimler — doğrudan kutuna.</p>
+        <form class="newsletter-form" style="max-width:460px;margin-inline:auto" onsubmit="return false">
+          <input type="email" placeholder="E-posta adresin" required>
+          <button type="submit" class="btn" data-magnetic>Abone ol →</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer__inner glass">
+        <div class="footer__grid">
+          <div class="reveal">
+            <a href="#" class="site-logo" style="font-size:1.6rem">Benesso<span>.</span></a>
+            <p class="muted" style="margin-top:1rem;max-width:32ch">Balat'ta kavrulan, köken şeffaflığıyla teslim edilen 3. nesil specialty kahve.</p>
+            <div class="socials" style="margin-top:1.2rem">
+              <a href="#" class="icon-btn" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+              <a href="#" class="icon-btn" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 3c.3 2.1 1.6 3.7 3.8 3.9v2.6c-1.4.1-2.7-.3-3.8-1v5.9a5.7 5.7 0 1 1-5.7-5.7c.3 0 .6 0 .9.1v2.7a3 3 0 1 0 2.1 2.9V3z"/></svg></a>
+              <a href="#" class="icon-btn" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3-.4-4.4a2.8 2.8 0 0 0-2-2C18.8 5.2 12 5.2 12 5.2s-6.8 0-8.6.4a2.8 2.8 0 0 0-2 2C1 9 1 12 1 12s0 3 .4 4.4a2.8 2.8 0 0 0 2 2c1.8.4 8.6.4 8.6.4s6.8 0 8.6-.4a2.8 2.8 0 0 0 2-2C23 15 23 12 23 12zM10 15.5v-7l6 3.5z"/></svg></a>
+            </div>
+          </div>
+          <div class="reveal"><h4>Kahveler</h4><a href="#">Yöresel Single-Origin</a><a href="#">İmza Blendler</a><a href="#">Türk Kahvesi</a><a href="#">Tadım Setleri</a></div>
+          <div class="reveal"><h4>Keşfet</h4><a href="#">Origin Trip</a><a href="#">Atölyeler</a><a href="#">Demleme Rehberleri</a><a href="#">Journal</a></div>
+          <div class="reveal"><h4>Kurumsal</h4><a href="#">Hakkımızda</a><a href="#">İletişim</a><a href="#">Kargo & İade</a><a href="#">Toptan</a></div>
+        </div>
+        <div class="footer__bottom">
+          <span>© 2026 Benesso Coffee — Bima Kahve San. ve Dış Tic. Ltd. Şti.</span>
+          <span>Spec Lab teması</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="cart-drawer" id="CartDrawer" aria-hidden="true">
+    <div class="cart-drawer__overlay" data-cart-close></div>
+    <aside class="cart-drawer__panel glass--strong glass" role="dialog">
+      <header class="cart-drawer__head"><h2 style="font-size:1.4rem">Sepet</h2><button class="icon-btn" data-cart-close aria-label="Kapat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
+      <div class="cart-drawer__items">
+        <div class="cart-line"><img src="https://cdn.shopify.com/s/files/1/0690/8985/3720/files/Benesso_Mogiana_1000gr_1.jpg?v=1738007004" alt="" width="64" height="64"><div><div style="font-weight:600">Mogiana Classic Espresso</div><div class="muted" style="font-size:.8rem">250 gr / Çekirdek</div></div><div style="font-family:var(--font-mono);font-weight:700">450,00 ₺</div></div>
+        <div class="cart-line"><img src="https://cdn.shopify.com/s/files/1/0690/8985/3720/files/3lu.jpg?v=1778847770" alt="" width="64" height="64"><div><div style="font-weight:600">3'lü Tadım Seti</div><div class="muted" style="font-size:.8rem">3 × 100 gr</div></div><div style="font-family:var(--font-mono);font-weight:700">650,00 ₺</div></div>
+      </div>
+      <footer class="cart-drawer__foot">
+        <div style="display:flex;justify-content:space-between;margin-bottom:1rem;font-family:var(--font-mono)"><span>Ara toplam</span><strong>1.100,00 ₺</strong></div>
+        <a href="#" class="btn btn--block" data-magnetic>Ödemeye geç →</a>
+        <button class="btn btn--ghost btn--block" data-cart-close style="margin-top:.6rem">Alışverişe devam</button>
+      </footer>
+    </aside>
+  </div>
+
+  <span class="draft-flag">● TASLAK — Shopify'a yüklenmedi</span>
+
+  <!-- Sample product data → cards + origin pins -->
+  <script>
+    var CDN='https://cdn.shopify.com/s/files/1/0690/8985/3720/files/';
+    var products=[
+      {t:'Brazil · Mogiana Espresso',o:'BRAZIL · İMZA',img:'Benesso_Mogiana_1000gr_1.jpg?v=1738007004',p:'450,00 ₺',notes:['Çikolata','Fındık','Karamel'],hero:true},
+      {t:'Kenya · Kathakwa Washed',o:'KENYA · KIRINYAGA',img:'0003_hf_20260515_114322_e283a91b-9c8a-468e-a3fb-11897d62fc7a.jpg?v=1778847434',p:'580,00 ₺',notes:['Kuşburnu','Frenk üzümü','Ayva']},
+      {t:'Costa Rica · La Isla Honey',o:'COSTA RICA · HONEY',img:'0001_hf_20260515_114901_a37784f9-339b-4a10-b209-8f56c32bd149.jpg?v=1778847527',p:'600,00 ₺',notes:['Bal','Kayısı','Kahverengi şeker']},
+      {t:'Ethiopia · Guji Washed',o:'ETHIOPIA · GUJI',img:'0004_hf_20260515_114402_bd687890-dee6-4f97-babf-a8c775f5970f.jpg?v=1778847412',p:'550,00 ₺',notes:['Kayısı','Ceviz','Şeker kamışı']},
+      {t:'Colombia · El Paraiso Anaerobic',o:'COLOMBIA · NARIÑO',img:'0000_Katman_1.jpg?v=1778847643',p:'1.050,00 ₺',notes:['Anjelik erik','Malt','Kırmızı meyve']},
+      {t:'Akagera · Rwanda Natural',o:'RWANDA · NATURAL',img:'Benesso_AKAGERA_web_2000px.jpg?v=1734073567',p:'560,00 ₺',notes:['Çilek','Tropik','Şarabımsı']},
+      {t:'Omqah · Yemen',o:'YEMEN · MOCHA',img:'9.jpg?v=1759572495',p:'1.500,00 ₺',notes:['Bitter çikolata','Kuru meyve','Baharat']},
+      {t:'3’lü Tadım Seti',o:'BAŞLANGIÇ SETİ',img:'3lu.jpg?v=1778847770',p:'650,00 ₺',notes:['3 köken','Künye kartı']}
+    ];
+    var arrow='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+    var plus='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
+    var drop='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5S5 10 5 14.5a7 7 0 0 0 14 0C19 10 12 2.5 12 2.5z"/></svg>';
+    document.getElementById('cardGrid').innerHTML = products.map(function(p){
+      return '<article class="pcard glass reveal-scale" data-tilt><a href="product.html" class="pcard__media">'+
+        '<img src="'+CDN+p.img+'" alt="'+p.t+'" width="640" height="640" loading="lazy">'+
+        '<span class="pcard__shade"></span>'+(p.hero?'<span class="badge badge--hero">İMZA</span>':'')+'</a>'+
+        '<div class="pcard__body"><span class="pcard__origin">'+p.o+'</span>'+
+        '<h3 class="pcard__title"><a href="product.html">'+p.t+'</a></h3>'+
+        '<div class="pcard__notes">'+p.notes.map(function(n){return '<span class="chip chip--note">'+n+'</span>';}).join('')+'</div>'+
+        '<div class="pcard__foot"><span class="pcard__price">'+p.p+'</span>'+
+        '<button class="pcard__add" data-cart-open aria-label="Sepete ekle">'+plus+'</button></div></div></article>';
+    }).join('');
+
+    var origins=[{c:'Ethiopia',n:'çiçeksi',lat:6,lng:38},{c:'Kenya',n:'parlak asidite',lat:-1,lng:37},{c:'Rwanda',n:'natural',lat:-2,lng:30},{c:'Yemen',n:'mocha',lat:15,lng:44},{c:'Colombia',n:'anaerobik',lat:4,lng:-73},{c:'Costa Rica',n:'honey',lat:10,lng:-84},{c:'Brazil',n:'imza',lat:-15,lng:-47},{c:'Indonesia',n:'wet-hulled',lat:-2,lng:118}];
+    document.getElementById('originMap').innerHTML = origins.map(function(o){
+      var px=(o.lng+180)*100/360, py=(90-o.lat)*100/180;
+      return '<div class="origin-pin" style="left:'+px+'%;top:'+py+'%"><span class="origin-pin__dot"></span><span class="origin-pin__label glass">'+o.c+' · '+o.n+'</span></div>';
+    }).join('');
+  </script>
+  <script src="../assets/theme.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "b56a33ef0a793be85e4f82f5b5931f5d"
+name = "Ajan"
+application_url = "https://retrocameraland.com"
+embedded = false
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_products,read_orders,read_customers,read_content"
+optional_scopes = [ ]
+use_legacy_install_flow = false
+
+[auth]
+redirect_urls = [ "https://retrocameraland.com/callback" ]
+
+[webhooks]
+api_version = "2026-04"

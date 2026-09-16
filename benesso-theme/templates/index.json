@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "hero": { "type": "hero" },
+    "marquee": { "type": "marquee" },
+    "signature": {
+      "type": "featured-product",
+      "settings": {
+        "eyebrow": "İMZA BLEND · EN ÇOK SEVİLEN",
+        "badge": "BESTSELLER"
+      }
+    },
+    "bestsellers": {
+      "type": "collection-grid",
+      "settings": {
+        "eyebrow": "EN ÇOK SATANLAR",
+        "title": "Bardağa giren favoriler",
+        "limit": 8
+      }
+    },
+    "origin_map": { "type": "origin-map" },
+    "process": { "type": "process-explainer" },
+    "tasting": { "type": "tasting-flight" },
+    "collections": { "type": "featured-collections" },
+    "story": { "type": "rich-text" },
+    "trip": { "type": "origin-trip" },
+    "newsletter": { "type": "newsletter" }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "signature",
+    "bestsellers",
+    "origin_map",
+    "process",
+    "tasting",
+    "collections",
+    "story",
+    "trip",
+    "newsletter"
+  ]
+}

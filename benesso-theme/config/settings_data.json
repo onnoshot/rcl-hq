@@ -1,0 +1,19 @@
+{
+  "current": {
+    "logo_text": "Benesso",
+    "logo_accent": ".",
+    "color_accent": "#D4621A",
+    "color_bg": "#17110D",
+    "color_text": "#F4EDE1",
+    "social_instagram": "https://www.instagram.com/benessocoffee"
+  },
+  "presets": {
+    "Benesso Spec Lab": {
+      "logo_text": "Benesso",
+      "logo_accent": ".",
+      "color_accent": "#D4621A",
+      "color_bg": "#17110D",
+      "color_text": "#F4EDE1"
+    }
+  }
+}

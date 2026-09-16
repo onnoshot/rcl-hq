@@ -1,0 +1,72 @@
+<section class="hero wrap" data-section-id="{{ section.id }}">
+  <div class="hero__grid">
+    <div class="hero__copy">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow reveal">{% render 'icon', name: 'bean' %} {{ section.settings.eyebrow }}</span>{%- endif -%}
+      <h1 class="hero__title reveal">
+        {{ section.settings.title }}
+        {%- if section.settings.title_accent != blank -%}<em class="flow-text">{{ section.settings.title_accent }}</em>{%- endif -%}
+      </h1>
+      <p class="hero__lede reveal">{{ section.settings.text }}</p>
+      <div class="hero__cta reveal">
+        {%- if section.settings.cta_label != blank -%}<a href="{{ section.settings.cta_link }}" class="btn" data-magnetic>{{ section.settings.cta_label }} {% render 'icon', name: 'arrow' %}</a>{%- endif -%}
+        {%- if section.settings.cta2_label != blank -%}<a href="{{ section.settings.cta2_link }}" class="btn btn--ghost">{{ section.settings.cta2_label }}</a>{%- endif -%}
+      </div>
+      <div class="hero__stats" data-stagger>
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'stat' -%}
+            <div class="stat" {{ block.shopify_attributes }}>
+              <div class="stat__num"><span data-count-to="{{ block.settings.number }}" data-count-suffix="{{ block.settings.suffix }}">0</span></div>
+              <div class="stat__label">{{ block.settings.label }}</div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <div class="hero__visual reveal-scale">
+      <span class="hero__ring"></span>
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 900 }}" alt="" width="720" height="900" data-parallax="0.08" fetchpriority="high">
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder' }}
+      {%- endif -%}
+      {%- if section.settings.card_text != blank -%}
+        <div class="hero__card glass--light glass">
+          <div class="stat__num" style="color:var(--orange)">{{ section.settings.card_number }}</div>
+          <div class="stat__label" style="color:var(--ink-soft)">{{ section.settings.card_text }}</div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Üst etiket", "default": "BALAT · İSTANBUL · EST. 2022" },
+    { "type": "text", "id": "title", "label": "Başlık", "default": "Köken belli." },
+    { "type": "text", "id": "title_accent", "label": "Vurgulu başlık satırı", "default": "Fincan net." },
+    { "type": "textarea", "id": "text", "label": "Metin", "default": "Her çekirdeğin künyesi açık: rakım, varyete, işleme. Balat'ta küçük partiler halinde kavruyor, tazeyken kapına yolluyoruz." },
+    { "type": "text", "id": "cta_label", "label": "Birincil buton", "default": "Kahveleri keşfet" },
+    { "type": "url", "id": "cta_link", "label": "Birincil link" },
+    { "type": "text", "id": "cta2_label", "label": "İkincil buton", "default": "Hikayemiz" },
+    { "type": "url", "id": "cta2_link", "label": "İkincil link" },
+    { "type": "image_picker", "id": "image", "label": "Görsel" },
+    { "type": "text", "id": "card_number", "label": "Kart sayısı", "default": "1610m" },
+    { "type": "text", "id": "card_text", "label": "Kart metni", "default": "ortalama rakım · Kirinyaga" }
+  ],
+  "blocks": [
+    { "type": "stat", "name": "İstatistik", "settings": [
+      { "type": "number", "id": "number", "label": "Sayı", "default": 12 },
+      { "type": "text", "id": "suffix", "label": "Sonek", "default": "+" },
+      { "type": "text", "id": "label", "label": "Etiket", "default": "single-origin" }
+    ]}
+  ],
+  "presets": [{ "name": "Hero", "blocks": [
+    { "type": "stat", "settings": { "number": 12, "suffix": "+", "label": "single-origin köken" } },
+    { "type": "stat", "settings": { "number": 100, "suffix": "%", "label": "arabica" } },
+    { "type": "stat", "settings": { "number": 48, "suffix": "sa", "label": "kavurma → kargo" } }
+  ] }]
+}
+{% endschema %}

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="tr" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benesso — Görsel Slider · TASLAK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/base.css">
+  <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');if(matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('reduce-motion');</script>
+  <style>
+    .draft-flag{position:fixed;bottom:1rem;left:1rem;z-index:500;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;padding:.5rem .9rem;border-radius:var(--radius-pill);background:rgba(178,58,72,.9);color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+
+    /* ====== image-slider.liquid ile birebir aynı CSS ====== */
+    .slider-sec { padding-block: clamp(2rem, 5vw, 4rem); }
+    .slider-sec__head { margin-bottom: 1.8rem; }
+    .slider { position: relative; border-radius: var(--slider-radius, var(--radius-lg)); overflow: hidden; box-shadow: var(--glass-shadow-lg); }
+    .slider__track { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .slider__track::-webkit-scrollbar { display: none; }
+    .slide { position: relative; flex: 0 0 100%; width: 100%; scroll-snap-align: center; scroll-snap-stop: always; aspect-ratio: 16 / 9; }
+    .slide__link { display: block; width: 100%; height: 100%; }
+    .slide__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+    .slide__overlay { position: absolute; inset: 0; display: flex; padding: clamp(1.2rem, 4vw, 3rem); background: linear-gradient(to top, rgba(15,10,6,.78), rgba(15,10,6,.10) 55%, transparent 80%); }
+    .slide__overlay--left   { align-items: flex-end;  justify-content: flex-start; text-align: left; }
+    .slide__overlay--center { align-items: center;    justify-content: center;     text-align: center; background: linear-gradient(to top, rgba(15,10,6,.55), rgba(15,10,6,.30)); }
+    .slide__overlay--right  { align-items: flex-end;  justify-content: flex-end;   text-align: right; }
+    .slide__caption { max-width: 46ch; color: var(--crema, #fff); }
+    .slide__tag { display: inline-block; font-family: var(--font-mono, monospace); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: #fff; padding: .35rem .8rem; margin-bottom: .8rem; border: 1px solid var(--glass-border); border-radius: var(--radius-pill); background: var(--glass-dark); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+    .slide__title { font-size: clamp(1.5rem, 4vw, 2.8rem); line-height: 1.05; color: #fff; }
+    .slide__text  { margin-top: .6rem; font-size: clamp(.95rem, 1.6vw, 1.15rem); color: rgba(255,255,255,.82); }
+    .slider__dots { position: absolute; left: 0; right: 0; bottom: clamp(.9rem, 2vw, 1.4rem); display: flex; justify-content: center; gap: .5rem; z-index: 2; }
+    .slider__dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 999px; cursor: pointer; background: rgba(255,255,255,.45); transition: width var(--dur-s, .3s) var(--ease-glass), background var(--dur-s, .3s) var(--ease-glass); }
+    .slider__dot.is-active { width: 26px; background: var(--orange); }
+    @media (prefers-reduced-motion: reduce) { .slider__track { scroll-behavior: auto; } }
+  </style>
+</head>
+<body class="template-index">
+  <div class="liquid-bg" aria-hidden="true">
+    <span class="liquid-blob liquid-blob--1"></span><span class="liquid-blob liquid-blob--2"></span><span class="liquid-blob liquid-blob--3"></span><span class="liquid-grain"></span>
+  </div>
+
+  <main class="slider-sec wrap" style="padding-top:3rem">
+    <header class="slider-sec__head reveal">
+      <span class="eyebrow">Görsel Slider</span>
+      <h2 class="section-title">Parmağınla kaydır →</h2>
+    </header>
+
+    <div class="slider reveal-scale" data-slider data-autoplay="true" data-interval="5000" style="--slider-radius:var(--radius-lg)">
+      <div class="slider__track" data-slider-track>
+
+        <div class="slide" data-slide>
+          <img class="slide__img" src="https://cdn.shopify.com/s/files/1/0690/8985/3720/files/0004_hf_20260515_114402_bd687890-dee6-4f97-babf-a8c775f5970f.jpg?v=1778847412" alt="Brazil Mogiana" width="1600" height="900" loading="eager" fetchpriority="high">
+          <div class="slide__overlay slide__overlay--left">
+            <div class="slide__caption">
+              <span class="slide__tag">HOUSE BLEND</span>
+              <h3 class="slide__title">Brazil Mogiana</h3>
+              <p class="slide__text">Çikolata · fındık · yumuşak gövde. Günlük demin imza tadı.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide" data-slide>
+          <img class="slide__img" src="https://cdn.shopify.com/s/files/1/0690/8985/3720/files/0003_hf_20260515_114322_e283a91b-9c8a-468e-a3fb-11897d62fc7a.jpg?v=1778847434" alt="Köken" width="1600" height="900" loading="lazy">
+          <div class="slide__overlay slide__overlay--center">
+            <div class="slide__caption">
+              <span class="slide__tag">SINGLE ORIGIN</span>
+              <h3 class="slide__title">Köken belli, fincan net</h3>
+              <p class="slide__text">Rakım · varyete · işleme — her çekirdeğin künyesi açık.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide" data-slide>
+          <img class="slide__img" src="https://cdn.shopify.com/s/files/1/0690/8985/3720/files/3lu.jpg?v=1778847770" alt="Demleme" width="1600" height="900" loading="lazy">
+          <div class="slide__overlay slide__overlay--right">
+            <div class="slide__caption">
+              <span class="slide__tag">FRESH ROAST</span>
+              <h3 class="slide__title">Kavurmadan kargoya 48 saat</h3>
+              <p class="slide__text">Balat'ta küçük partiler — tazeyken kapına.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide" data-slide>
+          <img class="slide__img" src="https://cdn.shopify.com/s/files/1/0690/8985/3720/files/Benesso_Mogiana_1000gr_1.jpg?v=1738007004" alt="Ürün" width="1600" height="900" loading="lazy">
+        </div>
+
+      </div>
+
+      <div class="slider__dots" data-slider-dots role="tablist" aria-label="Slaytlar">
+        <button class="slider__dot is-active" data-slider-dot="0" type="button" aria-label="Slayt 1"></button>
+        <button class="slider__dot" data-slider-dot="1" type="button" aria-label="Slayt 2"></button>
+        <button class="slider__dot" data-slider-dot="2" type="button" aria-label="Slayt 3"></button>
+        <button class="slider__dot" data-slider-dot="3" type="button" aria-label="Slayt 4"></button>
+      </div>
+    </div>
+
+    <p style="margin-top:1.2rem;color:var(--ink-soft);font-size:.9rem">Otomatik geçiş açık · üzerine gelince / dokununca durur · noktalara tıkla ya da kaydır. Mobil görünüm için pencereyi daralt.</p>
+  </main>
+
+  <div class="draft-flag">Taslak — Siteye yüklenmedi</div>
+
+  <script>
+  (function () {
+    function initSlider(root) {
+      if (root.dataset.sliderReady) return;
+      root.dataset.sliderReady = '1';
+      var track = root.querySelector('[data-slider-track]');
+      var slides = root.querySelectorAll('[data-slide]');
+      var dots = root.querySelectorAll('[data-slider-dot]');
+      if (!track || slides.length < 2) return;
+      var current = 0;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function setActive(i) { current = i; dots.forEach(function (d, di) { d.classList.toggle('is-active', di === i); }); }
+      function goTo(i) { var s = slides[i]; if (s) track.scrollTo({ left: s.offsetLeft, behavior: reduce ? 'auto' : 'smooth' }); }
+      var raf;
+      track.addEventListener('scroll', function () {
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(function () {
+          var i = Math.round(track.scrollLeft / track.clientWidth);
+          if (i !== current) setActive(Math.max(0, Math.min(slides.length - 1, i)));
+        });
+      }, { passive: true });
+      dots.forEach(function (d) { d.addEventListener('click', function () { goTo(parseInt(d.dataset.sliderDot, 10)); }); });
+      if (root.dataset.autoplay === 'true' && !reduce) {
+        var interval = parseInt(root.dataset.interval, 10) || 5000;
+        var timer = null;
+        function start() { stop(); timer = setInterval(function () { goTo((current + 1) % slides.length); }, interval); }
+        function stop() { if (timer) { clearInterval(timer); timer = null; } }
+        root.addEventListener('mouseenter', stop);
+        root.addEventListener('mouseleave', start);
+        track.addEventListener('touchstart', stop, { passive: true });
+        document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+        start();
+      }
+    }
+    function boot() { document.querySelectorAll('[data-slider]').forEach(initSlider); }
+    document.readyState !== 'loading' ? boot() : document.addEventListener('DOMContentLoaded', boot);
+  })();
+  </script>
+  <script src="../assets/theme.js"></script>
+</body>
+</html>

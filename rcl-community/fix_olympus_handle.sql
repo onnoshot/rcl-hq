@@ -1,0 +1,2 @@
+-- Olympus seed handle duzeltme (id/begeniler korunur)
+update cameras set handle='olympus-pen-e-pl1-25mm', image_url='https://cdn.shopify.com/s/files/1/0686/3198/6315/files/olympus-pen-e-pl1-25mm-vitrin.jpg?v=1782612857', title='Olympus PEN E-PL1', model='PEN E-PL1 + 25mm f/1.7 Lens', product_url='https://retrocameraland.com/products/olympus-pen-e-pl1-25mm', price=18490.0 where handle='olympus-pen-e-pl1-14-42mm-lens';

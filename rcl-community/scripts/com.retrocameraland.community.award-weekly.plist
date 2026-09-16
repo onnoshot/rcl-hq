@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Her PAZARTESI 10:00 -> haftalik kazanan adayini Telegram'a yolla.
+     Kur: cp ...plist ~/Library/LaunchAgents/ && launchctl load ~/Library/LaunchAgents/com.retrocameraland.community.award-weekly.plist
+     <PATH> kismini gercek mutlak yola guncelle. -->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key><string>com.retrocameraland.community.award-weekly</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/onnoshot/Downloads/Agentlar/rcl-community/scripts/award-cron.sh</string>
+    <string>week</string>
+  </array>
+  <key>EnvironmentVariables</key>
+  <dict><key>RCL_COMMUNITY_BASE</key><string>https://rclhq.vercel.app</string></dict>
+  <key>StartCalendarInterval</key>
+  <dict><key>Weekday</key><integer>1</integer><key>Hour</key><integer>10</integer><key>Minute</key><integer>0</integer></dict>
+  <key>StandardOutPath</key><string>/Users/onnoshot/Downloads/Agentlar/outputs/community-award.log</string>
+  <key>StandardErrorPath</key><string>/Users/onnoshot/Downloads/Agentlar/outputs/community-award-stderr.log</string>
+</dict>
+</plist>
