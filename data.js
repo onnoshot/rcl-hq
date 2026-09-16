@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-16T19:52:26",
+  "updated_at": "2026-09-16T20:52:32",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "3m-aUuSnQ3A",
       "title": "Mare Gastro Sapanca’da Fujifilm Kamera ile retro anlar 📸❣️",
       "date": "12 Eyl 2026",
-      "views": 1110,
+      "views": 1112,
       "likes": 16,
       "comments": 2,
       "url": "https://youtu.be/3m-aUuSnQ3A"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 387,
+      "views": 388,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
