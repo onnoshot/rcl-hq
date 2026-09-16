@@ -1,16 +1,16 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-16T01:30:49",
+  "updated_at": "2026-09-16T13:31:38",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1485626,
+    "total_views": 1486779,
     "video_count": 402
   },
   "analytics": {
     "last_30d": {
-      "views": 64233,
+      "views": 64303,
       "watch_hours": 123.8,
       "subs_gained": 51,
       "subs_lost": 55,
@@ -46,15 +46,15 @@ const YOUTUBE = {
       },
       {
         "label": "Ağu 26",
-        "views": 112648,
-        "watch_min": 12855,
+        "views": 112717,
+        "watch_min": 12860,
         "subs_gained": 190
       },
       {
         "label": "Eyl 26",
-        "views": 31151,
-        "watch_min": 3362,
-        "subs_gained": 17
+        "views": 28100,
+        "watch_min": 3071,
+        "subs_gained": 16
       }
     ]
   },
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "3m-aUuSnQ3A",
       "title": "Mare Gastro Sapanca’da Fujifilm Kamera ile retro anlar 📸❣️",
       "date": "12 Eyl 2026",
-      "views": 1103,
+      "views": 1109,
       "likes": 16,
       "comments": 1,
       "url": "https://youtu.be/3m-aUuSnQ3A"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 385,
+      "views": 387,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2874,
+      "views": 2877,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1206,
+      "views": 1208,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50714,
+      "views": 50717,
       "likes": 207,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
