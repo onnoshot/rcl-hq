@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-16T20:52:32",
+  "updated_at": "2026-09-17T22:32:32",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1486779,
+    "total_views": 1488927,
     "video_count": 402
   },
   "analytics": {
     "last_30d": {
-      "views": 64303,
-      "watch_hours": 123.8,
-      "subs_gained": 51,
-      "subs_lost": 55,
+      "views": 64831,
+      "watch_hours": 125.2,
+      "subs_gained": 49,
+      "subs_lost": 54,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4031.7,
-    "watch_hours_year_long": 2178.7,
-    "watch_hours_year_shorts": 1852.8,
+    "watch_hours_year": 4034.9,
+    "watch_hours_year_long": 2180.4,
+    "watch_hours_year_shorts": 1854.3,
     "monthly": [
       {
         "label": "Nis 26",
@@ -52,27 +52,18 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 28100,
-        "watch_min": 3071,
-        "subs_gained": 16
+        "views": 33731,
+        "watch_min": 3700,
+        "subs_gained": 19
       }
     ]
   },
   "videos": [
     {
-      "id": "3m-aUuSnQ3A",
-      "title": "Mare Gastro Sapanca’da Fujifilm Kamera ile retro anlar 📸❣️",
-      "date": "12 Eyl 2026",
-      "views": 1112,
-      "likes": 16,
-      "comments": 2,
-      "url": "https://youtu.be/3m-aUuSnQ3A"
-    },
-    {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 388,
+      "views": 390,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -81,7 +72,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17407,
+      "views": 17408,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -90,7 +81,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2877,
+      "views": 2886,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -108,7 +99,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1208,
+      "views": 1210,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -117,7 +108,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50717,
+      "views": 50729,
       "likes": 207,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -148,6 +139,15 @@ const YOUTUBE = {
       "likes": 6,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
+    },
+    {
+      "id": "2-XdDjHscqs",
+      "title": "Küçük Kamerayla Büyük Hatıralar 📸 #kodak #digitalcamera",
+      "date": "20 Şub 2026",
+      "views": 818,
+      "likes": 13,
+      "comments": 0,
+      "url": "https://youtu.be/2-XdDjHscqs"
     }
   ],
   "sub_goal": 10000
