@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-18T00:32:44",
+  "updated_at": "2026-09-18T01:32:50",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2887,
+      "views": 2888,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
