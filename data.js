@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-17T23:32:38",
+  "updated_at": "2026-09-18T00:32:44",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 64831,
-      "watch_hours": 125.2,
-      "subs_gained": 49,
-      "subs_lost": 54,
+      "views": 62964,
+      "watch_hours": 120.8,
+      "subs_gained": 46,
+      "subs_lost": 52,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4034.9,
-    "watch_hours_year_long": 2180.4,
-    "watch_hours_year_shorts": 1854.3,
+    "watch_hours_year": 4032.9,
+    "watch_hours_year_long": 2179.7,
+    "watch_hours_year_shorts": 1852.9,
     "monthly": [
       {
         "label": "Nis 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 390,
+      "views": 391,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2886,
+      "views": 2887,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
