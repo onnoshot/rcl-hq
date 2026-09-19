@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-18T22:21:57",
+  "updated_at": "2026-09-19T17:58:00",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1490311,
+    "total_views": 1491668,
     "video_count": 402
   },
   "analytics": {
     "last_30d": {
-      "views": 64306,
-      "watch_hours": 123.1,
-      "subs_gained": 46,
-      "subs_lost": 52,
+      "views": 62249,
+      "watch_hours": 118.7,
+      "subs_gained": 44,
+      "subs_lost": 51,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 4035.1,
-    "watch_hours_year_long": 2180.4,
-    "watch_hours_year_shorts": 1854.4,
+    "watch_hours_year": 4029.4,
+    "watch_hours_year_long": 2179.9,
+    "watch_hours_year_shorts": 1849.3,
     "monthly": [
       {
         "label": "Nis 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 395,
+      "views": 398,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17409,
+      "views": 17414,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2888,
+      "views": 2892,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 614,
+      "views": 615,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1210,
+      "views": 1211,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50736,
+      "views": 50742,
       "likes": 207,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "aoCqpg3l-Zs",
       "title": "22 Yıllık İkonik CASIO Exilim Fotoğraf Makinesi #digitalcame",
       "date": "7 Mar 2026",
-      "views": 891,
+      "views": 892,
       "likes": 12,
       "comments": 3,
       "url": "https://youtu.be/aoCqpg3l-Zs"
