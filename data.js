@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-22T00:08:56",
+  "updated_at": "2026-09-22T01:09:01",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "FHPUPrwo9QI",
       "title": "Olympus TG-7 Dijital Kamera | Waterproof",
       "date": "21 Eyl 2026",
-      "views": 239,
-      "likes": 0,
+      "views": 277,
+      "likes": 1,
       "comments": 0,
       "url": "https://youtu.be/FHPUPrwo9QI"
     },
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 405,
+      "views": 407,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
