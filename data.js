@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-21T21:08:38",
+  "updated_at": "2026-09-21T22:08:43",
   "period_30d": {
-    "revenue": 24480,
-    "orders": 2,
-    "aov": 12240
+    "revenue": 25279,
+    "orders": 3,
+    "aov": 8426
   },
   "period_90d": {
-    "revenue": 79910,
-    "orders": 8,
-    "aov": 9989
+    "revenue": 80709,
+    "orders": 9,
+    "aov": 8968
   },
   "period_year": {
-    "revenue": 79910,
-    "orders": 8,
-    "aov": 9989
+    "revenue": 80709,
+    "orders": 9,
+    "aov": 8968
   },
-  "customers_total": 1044,
+  "customers_total": 1045,
   "monthly_labels": [
     "Eki 25",
     "Kas 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     0,
     15640,
     53280,
-    10990
+    11789
   ],
   "monthly_orders": [
     0,
@@ -213,17 +213,17 @@ const SHOPIFY = {
     0,
     1,
     6,
-    1
+    2
   ],
   "channels": [
     {
       "name": "Instagram",
       "icon": "📸",
       "color": "#BF5AF2",
-      "orders": 4,
-      "rev": 33000,
-      "order_pct": 50.0,
-      "rev_pct": 41.3
+      "orders": 5,
+      "rev": 33799,
+      "order_pct": 55.6,
+      "rev_pct": 41.9
     },
     {
       "name": "Google",
@@ -231,8 +231,8 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 2,
       "rev": 29130,
-      "order_pct": 25.0,
-      "rev_pct": 36.5
+      "order_pct": 22.2,
+      "rev_pct": 36.1
     },
     {
       "name": "AI / Arama",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#5AC8FA",
       "orders": 1,
       "rev": 9640,
-      "order_pct": 12.5,
-      "rev_pct": 12.1
+      "order_pct": 11.1,
+      "rev_pct": 11.9
     },
     {
       "name": "Direkt",
@@ -249,11 +249,15 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 1,
       "rev": 8140,
-      "order_pct": 12.5,
-      "rev_pct": 10.2
+      "order_pct": 11.1,
+      "rev_pct": 10.1
     }
   ],
   "recent_orders": [
+    {
+      "date": "21 Eyl 2026",
+      "amount": 799
+    },
     {
       "date": "8 Eyl 2026",
       "amount": 10990
@@ -387,14 +391,14 @@ const SHOPIFY = {
   ],
   "accessories": [
     {
-      "name": "Universal Kamera Batarya Şarj Cihazı",
-      "price": 649,
-      "qty": 5
-    },
-    {
       "name": "Type-C ve USB 2.0 SD-MicroSD TF Kart Okuyucu",
       "price": 1490,
       "qty": 2
+    },
+    {
+      "name": "Universal Kamera Batarya Şarj Cihazı",
+      "price": 649,
+      "qty": 4
     },
     {
       "name": "Y2K Digicam Fotoğraf/Video Aktarıcı - xD, CF, SD, MS Destekli All-in-One Kart Okuyucu",
