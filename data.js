@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-22T08:09:35",
+  "updated_at": "2026-09-22T17:16:35",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1495984,
+    "total_views": 1497385,
     "video_count": 403
   },
   "analytics": {
@@ -52,8 +52,8 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 39966,
-        "watch_min": 4436,
+        "views": 39900,
+        "watch_min": 4434,
         "subs_gained": 25
       }
     ]
@@ -63,9 +63,9 @@ const YOUTUBE = {
       "id": "FHPUPrwo9QI",
       "title": "Olympus TG-7 Dijital Kamera | Waterproof",
       "date": "21 Eyl 2026",
-      "views": 361,
-      "likes": 1,
-      "comments": 0,
+      "views": 369,
+      "likes": 2,
+      "comments": 1,
       "url": "https://youtu.be/FHPUPrwo9QI"
     },
     {
@@ -82,7 +82,7 @@ const YOUTUBE = {
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
       "views": 17420,
-      "likes": 32,
+      "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
     },
@@ -90,8 +90,8 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2901,
-      "likes": 14,
+      "views": 2905,
+      "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
     },
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1215,
+      "views": 1216,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50788,
+      "views": 50789,
       "likes": 204,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "TFYAi9S9wTo",
       "title": "Canon Ixus 160 Dijital Fotoğraf Makinesi 📸 Stoklar yenilendi",
       "date": "25 Mar 2026",
-      "views": 15174,
+      "views": 15176,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/TFYAi9S9wTo"
@@ -144,7 +144,7 @@ const YOUTUBE = {
       "id": "b6MfXb0bltc",
       "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
       "date": "23 Şub 2026",
-      "views": 879,
+      "views": 883,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
