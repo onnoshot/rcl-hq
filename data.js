@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-24T09:04:09",
+  "updated_at": "2026-09-24T19:07:15",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -16,9 +16,9 @@ const YOUTUBE = {
       "subs_lost": 43,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 3987.8,
-    "watch_hours_year_long": 2174.5,
-    "watch_hours_year_shorts": 1813.1,
+    "watch_hours_year": 3987.7,
+    "watch_hours_year_long": 2174.4,
+    "watch_hours_year_shorts": 1813.0,
     "monthly": [
       {
         "label": "Nis 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "FHPUPrwo9QI",
       "title": "Olympus TG-7 Dijital Kamera | Waterproof",
       "date": "21 Eyl 2026",
-      "views": 427,
+      "views": 430,
       "likes": 4,
       "comments": 1,
       "url": "https://youtu.be/FHPUPrwo9QI"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
-      "views": 408,
+      "views": 410,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/iMemUS86nrc"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17420,
+      "views": 17421,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2924,
+      "views": 2926,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50806,
+      "views": 50812,
       "likes": 207,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
