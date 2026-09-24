@@ -678,7 +678,11 @@ def claude_code_write(system_prompt, user_prompt, max_tokens=4000):
         raise RuntimeError("Claude Code CLI bulunamadı")
     if result.returncode != 0:
         _CLAUDE_CODE_DEAD_THIS_RUN = True
-        raise RuntimeError(f"Claude Code CLI hata: {result.stderr.strip()[:200]}")
+        # 2026-09-24: rc!=0 ile stderr TAMAMEN BOŞ gelen vakalar görüldü ("Claude Code CLI
+        # hata: " diye boş loglanıyordu) — CLI bazı hatalarını (ör. kullanım limiti) stderr
+        # yerine stdout'a yazıyor olabilir; artık ikisi de loglanıyor ki gerçek sebep görünsün.
+        detail = result.stderr.strip() or result.stdout.strip() or "(rc=%d, stdout ve stderr boş)" % result.returncode
+        raise RuntimeError(f"Claude Code CLI hata: {detail[:300]}")
     text = result.stdout.strip()
     if not text:
         raise RuntimeError("Claude Code CLI boş yanıt döndürdü")
