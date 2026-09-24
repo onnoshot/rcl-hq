@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-24T20:07:22",
+  "updated_at": "2026-09-24T21:07:27",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "FHPUPrwo9QI",
       "title": "Olympus TG-7 Dijital Kamera | Waterproof",
       "date": "21 Eyl 2026",
-      "views": 430,
+      "views": 431,
       "likes": 4,
       "comments": 1,
       "url": "https://youtu.be/FHPUPrwo9QI"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2926,
+      "views": 2929,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
