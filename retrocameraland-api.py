@@ -7,7 +7,10 @@ Usage:
 
 import urllib.request, urllib.error, json, time, sys
 
-SHOPIFY_TOKEN = "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"
+SHOPIFY_TOKEN = "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"
+# 2026-09-24: eski token'da write_content scope'u yoktu (blog yayını 403 veriyordu).
+# BLOGGERSON custom app'i (OAuth ile) read_content+write_content+read_products+
+# read_orders+read_customers scope'larıyla yenisi alındı.
 SHOPIFY_STORE = "retrocameraland.myshopify.com"
 BLOG_ID       = "91197866123"
 FAL_KEY       = "65067257-e286-49f2-aa12-4318001c2999:8c8bf90fa5a185945f52f4cb1f978580"
