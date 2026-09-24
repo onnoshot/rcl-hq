@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-24T09:03:56",
+  "updated_at": "2026-09-24T19:07:02",
   "period_30d": {
     "revenue": 11789,
     "orders": 2,
@@ -383,10 +383,6 @@ const SHOPIFY = {
     {
       "name": "Traveler DC-830",
       "price": 8490
-    },
-    {
-      "name": "Sony Cybershot DSC-S85",
-      "price": 7990
     }
   ],
   "accessories": [
@@ -416,7 +412,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 101
+  "out_of_stock": 102
 };
 /* ─── SHOPIFY DATA END ─── */
 
