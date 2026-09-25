@@ -1,24 +1,24 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-25T02:07:56",
+  "updated_at": "2026-09-25T22:32:19",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
-    "total_views": 1500671,
-    "video_count": 402
+    "total_views": 1502061,
+    "video_count": 405
   },
   "analytics": {
     "last_30d": {
-      "views": 59983,
-      "watch_hours": 111.5,
+      "views": 61453,
+      "watch_hours": 114.3,
       "subs_gained": 40,
-      "subs_lost": 44,
+      "subs_lost": 46,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 3986.6,
-    "watch_hours_year_long": 2174.7,
-    "watch_hours_year_shorts": 1811.7,
+    "watch_hours_year": 3989.4,
+    "watch_hours_year_long": 2175.8,
+    "watch_hours_year_shorts": 1813.3,
     "monthly": [
       {
         "label": "Nis 26",
@@ -52,27 +52,36 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 45213,
-        "watch_min": 5073,
+        "views": 46683,
+        "watch_min": 5241,
         "subs_gained": 28
       }
     ]
   },
   "videos": [
     {
-      "id": "iMemUS86nrc",
-      "title": "Retro Dijital Kompakt Canon G7 📸",
-      "date": "3 Eyl 2026",
-      "views": 411,
-      "likes": 3,
+      "id": "9Z6lsTkLNoc",
+      "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
+      "date": "25 Eyl 2026",
+      "views": 1351,
+      "likes": 9,
       "comments": 0,
-      "url": "https://youtu.be/iMemUS86nrc"
+      "url": "https://youtu.be/9Z6lsTkLNoc"
+    },
+    {
+      "id": "w0BnnWHsFqE",
+      "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
+      "date": "25 Eyl 2026",
+      "views": 1283,
+      "likes": 14,
+      "comments": 0,
+      "url": "https://youtu.be/w0BnnWHsFqE"
     },
     {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17421,
+      "views": 17423,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -81,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2929,
+      "views": 2931,
       "likes": 19,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -108,8 +117,8 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50826,
-      "likes": 207,
+      "views": 50834,
+      "likes": 208,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
     },
@@ -135,19 +144,10 @@ const YOUTUBE = {
       "id": "b6MfXb0bltc",
       "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
       "date": "23 Şub 2026",
-      "views": 884,
+      "views": 885,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
-    },
-    {
-      "id": "2-XdDjHscqs",
-      "title": "Küçük Kamerayla Büyük Hatıralar 📸 #kodak #digitalcamera",
-      "date": "20 Şub 2026",
-      "views": 819,
-      "likes": 13,
-      "comments": 0,
-      "url": "https://youtu.be/2-XdDjHscqs"
     }
   ],
   "sub_goal": 10000
