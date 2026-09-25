@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-26T01:32:39",
+  "updated_at": "2026-09-26T02:32:45",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "aoCqpg3l-Zs",
       "title": "22 Yıllık İkonik CASIO Exilim Fotoğraf Makinesi #digitalcame",
       "date": "7 Mar 2026",
-      "views": 893,
+      "views": 892,
       "likes": 12,
       "comments": 3,
       "url": "https://youtu.be/aoCqpg3l-Zs"
