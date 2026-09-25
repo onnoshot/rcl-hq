@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-25T23:32:26",
+  "updated_at": "2026-09-26T00:32:32",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 61453,
-      "watch_hours": 114.3,
-      "subs_gained": 40,
-      "subs_lost": 46,
+      "views": 59426,
+      "watch_hours": 110.5,
+      "subs_gained": 39,
+      "subs_lost": 43,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 3989.4,
-    "watch_hours_year_long": 2175.8,
-    "watch_hours_year_shorts": 1813.3,
+    "watch_hours_year": 3987.7,
+    "watch_hours_year_long": 2175.0,
+    "watch_hours_year_shorts": 1812.5,
     "monthly": [
       {
         "label": "Nis 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1363,
+      "views": 1364,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "w0BnnWHsFqE",
       "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
       "date": "25 Eyl 2026",
-      "views": 1283,
+      "views": 1290,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/w0BnnWHsFqE"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1217,
+      "views": 1219,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
