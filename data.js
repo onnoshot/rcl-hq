@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-27T01:31:34",
+  "updated_at": "2026-09-27T02:31:39",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1443,
-      "likes": 14,
+      "views": 1437,
+      "likes": 13,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
     },
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "w0BnnWHsFqE",
       "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
       "date": "25 Eyl 2026",
-      "views": 1382,
-      "likes": 18,
+      "views": 1371,
+      "likes": 17,
       "comments": 0,
       "url": "https://youtu.be/w0BnnWHsFqE"
     },
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50846,
+      "views": 50849,
       "likes": 208,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
