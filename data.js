@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-27T21:31:56",
+  "updated_at": "2026-09-27T22:32:01",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 58222,
-      "watch_hours": 108.2,
-      "subs_gained": 39,
+      "views": 62276,
+      "watch_hours": 115.3,
+      "subs_gained": 41,
       "subs_lost": 41,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 3986.5,
-    "watch_hours_year_long": 2174.1,
-    "watch_hours_year_shorts": 1812.2,
+    "watch_hours_year": 3993.6,
+    "watch_hours_year_long": 2175.5,
+    "watch_hours_year_shorts": 1817.9,
     "monthly": [
       {
         "label": "Nis 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 47986,
-        "watch_min": 5392,
-        "subs_gained": 29
+        "views": 52040,
+        "watch_min": 5816,
+        "subs_gained": 31
       }
     ]
   },
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17425,
+      "views": 17426,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -108,8 +108,8 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1222,
-      "likes": 15,
+      "views": 1225,
+      "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
     },
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50863,
+      "views": 50865,
       "likes": 209,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
