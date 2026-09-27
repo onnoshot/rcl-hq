@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-28T00:32:13",
+  "updated_at": "2026-09-28T01:32:18",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,7 +10,7 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 59607,
+      "views": 59602,
       "watch_hours": 110.9,
       "subs_gained": 38,
       "subs_lost": 39,
@@ -52,7 +52,7 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 52040,
+        "views": 52035,
         "watch_min": 5816,
         "subs_gained": 31
       }
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1512,
+      "views": 1519,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "w0BnnWHsFqE",
       "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
       "date": "25 Eyl 2026",
-      "views": 1638,
+      "views": 1627,
       "likes": 20,
       "comments": 0,
       "url": "https://youtu.be/w0BnnWHsFqE"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 623,
+      "views": 624,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1225,
+      "views": 1226,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50865,
+      "views": 50868,
       "likes": 209,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "TFYAi9S9wTo",
       "title": "Canon Ixus 160 Dijital Fotoğraf Makinesi 📸 Stoklar yenilendi",
       "date": "25 Mar 2026",
-      "views": 15180,
+      "views": 15181,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/TFYAi9S9wTo"
