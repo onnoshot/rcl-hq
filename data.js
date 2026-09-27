@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-27T18:31:39",
+  "updated_at": "2026-09-27T19:31:44",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1495,
+      "views": 1487,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "w0BnnWHsFqE",
       "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
       "date": "25 Eyl 2026",
-      "views": 1603,
+      "views": 1580,
       "likes": 20,
       "comments": 0,
       "url": "https://youtu.be/w0BnnWHsFqE"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 619,
+      "views": 620,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -126,7 +126,7 @@ const YOUTUBE = {
       "id": "TFYAi9S9wTo",
       "title": "Canon Ixus 160 Dijital Fotoğraf Makinesi 📸 Stoklar yenilendi",
       "date": "25 Mar 2026",
-      "views": 15179,
+      "views": 15180,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/TFYAi9S9wTo"
