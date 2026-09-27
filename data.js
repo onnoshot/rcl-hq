@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-27T20:31:50",
+  "updated_at": "2026-09-27T21:31:56",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -109,7 +109,7 @@ const YOUTUBE = {
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
       "views": 1222,
-      "likes": 14,
+      "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
     },
