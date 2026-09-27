@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-27T02:31:39",
+  "updated_at": "2026-09-27T03:31:44",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,8 +63,8 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1437,
-      "likes": 13,
+      "views": 1443,
+      "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
     },
@@ -72,8 +72,8 @@ const YOUTUBE = {
       "id": "w0BnnWHsFqE",
       "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
       "date": "25 Eyl 2026",
-      "views": 1371,
-      "likes": 17,
+      "views": 1443,
+      "likes": 19,
       "comments": 0,
       "url": "https://youtu.be/w0BnnWHsFqE"
     },
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2941,
+      "views": 2942,
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50849,
+      "views": 50846,
       "likes": 208,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
