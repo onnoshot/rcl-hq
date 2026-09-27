@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-27T17:31:32",
+  "updated_at": "2026-09-27T18:31:39",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1487,
+      "views": 1495,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "w0BnnWHsFqE",
       "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
       "date": "25 Eyl 2026",
-      "views": 1580,
+      "views": 1603,
       "likes": 20,
       "comments": 0,
       "url": "https://youtu.be/w0BnnWHsFqE"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1221,
+      "views": 1222,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -117,7 +117,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50861,
+      "views": 50863,
       "likes": 209,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
