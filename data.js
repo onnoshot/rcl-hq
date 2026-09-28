@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-28T21:07:19",
+  "updated_at": "2026-09-28T22:07:25",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 59602,
-      "watch_hours": 110.9,
-      "subs_gained": 38,
-      "subs_lost": 39,
+      "views": 61765,
+      "watch_hours": 115.5,
+      "subs_gained": 39,
+      "subs_lost": 40,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 3991.6,
-    "watch_hours_year_long": 2175.4,
-    "watch_hours_year_shorts": 1816.0,
+    "watch_hours_year": 3996.1,
+    "watch_hours_year_long": 2177.1,
+    "watch_hours_year_shorts": 1818.8,
     "monthly": [
       {
         "label": "Nis 26",
@@ -52,9 +52,9 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 52035,
-        "watch_min": 5816,
-        "subs_gained": 31
+        "views": 54198,
+        "watch_min": 6089,
+        "subs_gained": 32
       }
     ]
   },
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "b6MfXb0bltc",
       "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
       "date": "23 Şub 2026",
-      "views": 891,
+      "views": 892,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
