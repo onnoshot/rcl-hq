@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-28T23:07:30",
+  "updated_at": "2026-09-29T00:07:35",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 61765,
-      "watch_hours": 115.5,
-      "subs_gained": 39,
-      "subs_lost": 40,
+      "views": 59311,
+      "watch_hours": 110.8,
+      "subs_gained": 37,
+      "subs_lost": 39,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 3996.1,
-    "watch_hours_year_long": 2177.1,
-    "watch_hours_year_shorts": 1818.8,
+    "watch_hours_year": 3991.5,
+    "watch_hours_year_long": 2173.3,
+    "watch_hours_year_shorts": 1818.0,
     "monthly": [
       {
         "label": "Nis 26",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1559,
+      "views": 1561,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50872,
+      "views": 50873,
       "likes": 209,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
