@@ -18,7 +18,7 @@ FAL_KEY       = "65067257-e286-49f2-aa12-4318001c2999:8c8bf90fa5a185945f52f4cb1f
 SOCIAL_BLOCK = """<div style="background:#f8f4f0;border-left:4px solid #c8a882;padding:20px 24px;margin:40px 0;border-radius:0 8px 8px 0;">
 <p style="margin:0 0 12px 0;font-weight:700;font-size:16px;">📸 Retrocameraland'i Takip Edin</p>
 <p style="margin:0;line-height:2;">
-📷 <a href="https://www.instagram.com/retrocameraland/?utm_source=ajan&amp;utm_medium=ai&amp;utm_campaign=Links&amp;utm_content=Instagram">Instagram</a> &nbsp;|&nbsp;
+📷 <a href="https://instagram.com/retrocameraland?utm_source=ajan&amp;utm_medium=ai&amp;utm_campaign=Links&amp;utm_content=Instagram">Instagram</a> &nbsp;|&nbsp;
 ▶️ <a href="https://www.youtube.com/@RetroCameraLand?utm_source=ajan&amp;utm_medium=ai&amp;utm_campaign=Links&amp;utm_content=Youtube">YouTube</a> &nbsp;|&nbsp;
 🎵 <a href="https://www.tiktok.com/@retrocameraland?utm_source=ajan&amp;utm_medium=ai&amp;utm_campaign=Links&amp;utm_content=Tiktok">TikTok</a> &nbsp;|&nbsp;
 📌 <a href="https://pinterest.com/retrocameraland/?utm_source=ajan&amp;utm_medium=ai&amp;utm_campaign=Links&amp;utm_content=Pinterest">Pinterest</a> &nbsp;|&nbsp;

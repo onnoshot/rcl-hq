@@ -92,7 +92,7 @@ TOP_PRODUCTS = [
 
 # Sosyal medya linkleri (UTM'li)
 SOCIAL_LINKS = {
-    "instagram": "https://www.instagram.com/retrocameraland/?utm_source=ajan&utm_medium=ai&utm_campaign=Links&utm_content=Instagram",
+    "instagram": "https://instagram.com/retrocameraland?utm_source=ajan&utm_medium=ai&utm_campaign=Links&utm_content=Instagram",
     "youtube":   "https://www.youtube.com/@RetroCameraLand?utm_source=ajan&utm_medium=ai&utm_campaign=Links&utm_content=Youtube",
     "tiktok":    "https://www.tiktok.com/@retrocameraland?utm_source=ajan&utm_medium=ai&utm_campaign=Links&utm_content=Tiktok",
     "pinterest": "https://pinterest.com/retrocameraland/?utm_source=ajan&utm_medium=ai&utm_campaign=Links&utm_content=Pinterest",
