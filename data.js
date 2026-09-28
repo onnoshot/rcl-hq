@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-28T03:32:00",
+  "updated_at": "2026-09-28T19:06:40",
   "period_30d": {
-    "revenue": 11789,
-    "orders": 2,
-    "aov": 5894
+    "revenue": 23219,
+    "orders": 3,
+    "aov": 7740
   },
   "period_90d": {
-    "revenue": 80709,
-    "orders": 9,
-    "aov": 8968
+    "revenue": 92139,
+    "orders": 10,
+    "aov": 9214
   },
   "period_year": {
-    "revenue": 80709,
-    "orders": 9,
-    "aov": 8968
+    "revenue": 92139,
+    "orders": 10,
+    "aov": 9214
   },
-  "customers_total": 1046,
+  "customers_total": 1047,
   "monthly_labels": [
     "Eki 25",
     "Kas 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     0,
     15640,
     53280,
-    11789
+    23219
   ],
   "monthly_orders": [
     0,
@@ -213,17 +213,17 @@ const SHOPIFY = {
     0,
     1,
     6,
-    2
+    3
   ],
   "channels": [
     {
       "name": "Instagram",
       "icon": "📸",
       "color": "#BF5AF2",
-      "orders": 5,
-      "rev": 33799,
-      "order_pct": 55.6,
-      "rev_pct": 41.9
+      "orders": 6,
+      "rev": 45229,
+      "order_pct": 60.0,
+      "rev_pct": 49.1
     },
     {
       "name": "Google",
@@ -231,8 +231,8 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 2,
       "rev": 29130,
-      "order_pct": 22.2,
-      "rev_pct": 36.1
+      "order_pct": 20.0,
+      "rev_pct": 31.6
     },
     {
       "name": "AI / Arama",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#5AC8FA",
       "orders": 1,
       "rev": 9640,
-      "order_pct": 11.1,
-      "rev_pct": 11.9
+      "order_pct": 10.0,
+      "rev_pct": 10.5
     },
     {
       "name": "Direkt",
@@ -249,11 +249,15 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 1,
       "rev": 8140,
-      "order_pct": 11.1,
-      "rev_pct": 10.1
+      "order_pct": 10.0,
+      "rev_pct": 8.8
     }
   ],
   "recent_orders": [
+    {
+      "date": "28 Eyl 2026",
+      "amount": 11430
+    },
     {
       "date": "21 Eyl 2026",
       "amount": 799
@@ -361,10 +365,6 @@ const SHOPIFY = {
       "price": 10490
     },
     {
-      "name": "Olympus SP-700",
-      "price": 10490
-    },
-    {
       "name": "Sanyo Xacti VPC-HD1",
       "price": 10490
     },
@@ -399,7 +399,7 @@ const SHOPIFY = {
     {
       "name": "Y2K Digicam Fotoğraf/Video Aktarıcı - xD, CF, SD, MS Destekli All-in-One Kart Okuyucu",
       "price": 790,
-      "qty": 3
+      "qty": 2
     },
     {
       "name": "USB-C 3'ü 1 Arada Kart Okuyucu — SD / MicroSD / USB",
@@ -412,7 +412,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 102
+  "out_of_stock": 103
 };
 /* ─── SHOPIFY DATA END ─── */
 
