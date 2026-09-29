@@ -26,48 +26,41 @@ ACCESSORY = re.compile(r"kart okuyucu|aktarıcı|aktarici|tripod|şarj cihaz|sar
 
 
 def pick_box(doc):
-    """Kutu icerigi maddelerini bulur. Metinler DEGISTIRILMEZ."""
-    for s in doc["sections"]:
-        if s["kind"] != "box":
-            continue
-        for b in s["blocks"]:
+    """Kutu icerigi maddelerini bulur. Metinler DEGISTIRILMEZ.
+
+    Birden fazla aday bolum olabilir: ornegin Casio EX-Z4'te hem
+    "Kozmetik Durum & Paket Icerigi" (aslinda KONDISYON metni) hem de asil
+    "Paket icerigi" bolumu var. Oncekisi once geldigi icin yanlis secilip
+    kutu icerigi 5 madde yerine 2 satir kondisyon metni olarak cikiyordu.
+    Bu yuzden adaylar puanlanir: liste > sade "paket/kutu icerigi" basligi >
+    madde sayisi; kozmetik/durum/kondisyon ile birlesik basliklar geri plana atilir."""
+    def items_of(sec):
+        for b in sec["blocks"]:
             if b["kind"] == "list":
-                return s, b["items"]
-        # Liste yoksa paragraflar kutu icerigidir (bazi urunlerde <ul> kullanilmamis)
-        ps = [b["html"] for b in s["blocks"] if b["kind"] == "p"]
-        if ps:
-            items = []
-            for h in ps:
-                txt = C.strip_tags(h)
-                txt = re.sub(r"^\s*(paket|kutu)\s*i[çc]eri[^:]*:\s*", "", txt, flags=re.I)
-                items += [x.strip(" -•·,") for x in re.split(r"\s{2,}|\u2022|·|,\s(?=[A-ZÇĞİÖŞÜ])", txt)
-                          if 3 < len(x.strip()) < 120]
-            if items:
-                return s, items
-    # "Kondisyon & Kutu Icerigi" gibi birlesik bolumler ya da duz paragrafli yazim
-    for s in doc["sections"]:
-        t = C.tr_lower(s["title"])
-        if not re.search(r"kutu|paket", t):
+                return b["items"], True
+        ps = [b["html"] for b in sec["blocks"] if b["kind"] == "p"]
+        items = []
+        for h in ps:
+            txt = C.strip_tags(h)
+            txt = re.sub(r"^\s*(paket|kutu)\s*i[çc]eri[^:]*:\s*", "", txt, flags=re.I)
+            items += [x.strip(" -•·,") for x in re.split(r"\s{2,}|\u2022|·|,\s(?=[A-ZÇĞİÖŞÜ])", txt)
+                      if 3 < len(x.strip()) < 120]
+        return items, False
+
+    best = None
+    for sec in doc["sections"]:
+        t = C.tr_lower(sec["title"])
+        if not re.search(r"kutu|paket|kutudan", t):
             continue
-        for b in s["blocks"]:
-            if b["kind"] == "list":
-                return s, b["items"]
-        # "Paket Icerigi:" etiketinden sonraki paragraflar
-        hit, items = False, []
-        for b in s["blocks"]:
-            if b["kind"] != "p":
-                continue
-            txt = C.strip_tags(b["html"])
-            if re.search(r"(paket|kutu)\s*i[çc]eri", C.tr_lower(txt)):
-                hit = True
-                rest = re.sub(r"^.*?i[çc]eri[^:]*:\s*", "", txt, flags=re.I)
-                items += [x.strip(" -•·") for x in re.split(r"\s{2,}|•|·", rest) if len(x.strip()) > 3]
-                continue
-            if hit and len(txt) < 90:
-                items.append(txt)
-        if items:
-            return s, items
-    return None, []
+        items, is_list = items_of(sec)
+        if not items:
+            continue
+        # kozmetik/durum/kondisyon ile birlesik baslik: muhtemelen kondisyon metni
+        mixed = bool(re.search(r"kozmetik|durum|kondisyon", t))
+        score = (2 if is_list else 0) + (0 if mixed else 2) + min(len(items), 8) / 10.0
+        if best is None or score > best[0]:
+            best = (score, sec, items)
+    return (best[1], best[2]) if best else (None, [])
 
 
 def build(product, doc, video_id=None):
@@ -101,7 +94,18 @@ def build(product, doc, video_id=None):
     # kalin-paragraf-basligi kuraliyla ayri bir bolume donusuyor ve kondisyon
     # metnini ikiye boluyordu (sayfada "Kondisyon" basligi iki kez cikiyordu).
     cond_txt = T.render_blocks(merged_cond) if merged_cond else ""
-    for cs in [x for x in doc["sections"] if x["kind"] == "cond"]:
+    # "Kozmetik Durum & Paket Icerigi" gibi basliklar box olarak siniflaniyor ama
+    # kutu adayi secilmediyse icerigi KONDISYON metnidir: en alta dusmesin.
+    # box olarak tuketilen bolum burada TEKRAR alinmamali: "Paket / Kondisyon /
+    # Teslimat" gibi basliklar hem kutu hem kondisyon eslesmesi verip ayni
+    # paragraflarin iki kez basilmasina yol aciyordu.
+    cond_secs = [x for x in doc["sections"] if x["kind"] == "cond" and x is not box_sec]
+    for x in doc["sections"]:
+        if x is box_sec or x in cond_secs:
+            continue
+        if re.search(r"kozmetik|durum|kondisyon", C.tr_lower(x["title"])):
+            cond_secs.append(x)
+    for cs in cond_secs:
         used.add(id(cs))
         keep = [b for b in cs["blocks"]
                 if not (b["kind"] == "list" and b["items"] == box_items)]
