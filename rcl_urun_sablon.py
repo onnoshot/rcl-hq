@@ -93,7 +93,16 @@ CSS = """<style>
   transform:translateY(-70%) rotate(45deg);transition:transform .22s;}
 .rcl-p-faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg);}
 .rcl-p-faq p{margin:0 0 17px;font-size:16px;opacity:.72;padding-right:8px;}
-.rcl-p-social{font-size:15px;margin:28px 0 0;opacity:.62;}
+.rcl-p-soc{margin:34px 0 4px;padding-top:22px;border-top:1px solid rgba(128,128,128,.24);
+  display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;}
+.rcl-p-soc__t{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;opacity:.42;}
+.rcl-p-soc__r{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;}
+.rcl-p-soc__i{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border:1px solid rgba(128,128,128,.26);border-radius:50%;color:inherit;opacity:.62;
+  text-decoration:none;transition:opacity .2s,transform .2s,border-color .2s;}
+.rcl-p-soc__i svg{width:18px;height:18px;}
+.rcl-p-soc__i:hover{opacity:1;transform:translateY(-2px);border-color:rgba(128,128,128,.5);}
+@media(prefers-reduced-motion:reduce){.rcl-p-soc__i{transition:none;}.rcl-p-soc__i:hover{transform:none;}}
 
 @media(prefers-reduced-motion:reduce){
   .rcl-p-ring .fg{animation:none;stroke-dashoffset:var(--off);}
@@ -129,11 +138,42 @@ GUVENCE = ('<div class="rcl-p-note"><p><strong>RetroCameraLand güvencesi.</stro
   'tarafından test edilip kondisyon kontrolünden geçirilir: kozmetik durum, lens temizliği ve tüm fonksiyonlar '
   'ayrı ayrı kontrol edilir. Satın alma sürecinden teslimat sonrasına kadar 7/24 destek veriyoruz.</p></div>')
 
-SOCIAL = ('<p class="rcl-p-social">Daha fazla nadir vintage dijital kamera ve örnek çekim için: '
-  '<a href="https://instagram.com/retrocameraland?utm_source=ajan&amp;utm_medium=ai&amp;utm_campaign=Links&amp;utm_content=Instagram" rel="noopener" target="_blank">Instagram</a> · '
-  '<a href="https://www.youtube.com/@RetroCameraLand?utm_source=ajan&amp;utm_medium=ai&amp;utm_campaign=Links&amp;utm_content=Youtube" rel="noopener" target="_blank">YouTube</a> · '
-  '<a href="https://www.tiktok.com/@retrocameraland?utm_source=ajan&amp;utm_medium=ai&amp;utm_campaign=Links&amp;utm_content=Tiktok" rel="noopener" target="_blank">TikTok</a> · '
-  '<a href="https://pinterest.com/retrocameraland/?utm_source=ajan&amp;utm_medium=ai&amp;utm_campaign=Links&amp;utm_content=Pinterest" rel="noopener" target="_blank">Pinterest</a></p>')
+SOCIAL_ICONS = {
+ "instagram": ('https://instagram.com/retrocameraland', 'Instagram',
+   '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/>'
+   '<circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/>'),
+ "youtube": ('https://www.youtube.com/@RetroCameraLand', 'YouTube',
+   '<rect x="2" y="5" width="20" height="14" rx="4.5"/>'
+   '<path d="M10.2 9.3v5.4l4.6-2.7z" fill="currentColor" stroke="none"/>'),
+ "tiktok": ('https://www.tiktok.com/@retrocameraland', 'TikTok',
+   '<path d="M14 3.5v10.9a3.6 3.6 0 1 1-3-3.55"/><path d="M14 3.5c.4 2.4 2 4 4.4 4.2"/>'),
+ "pinterest": ('https://pinterest.com/retrocameraland/', 'Pinterest',
+   '<circle cx="12" cy="12" r="9"/><path d="M10.4 20c-.5-1.7.1-3.6.6-5.4.4-1.6-.5-2.6-.5-3.6 0-1.5 1-2.6 2.2-2.6 1.1 0 1.8.8 1.8 2 0 1.3-.8 3.2-1.2 4.9-.3 1.4.7 2.3 2 2.3 2.2 0 3.7-2.8 3.7-5.6 0-2.5-1.8-4.4-4.7-4.4-3.3 0-5.3 2.3-5.3 4.9 0 1 .3 1.7.8 2.3"/>'),
+ "x": ('https://x.com/retrocameraland', 'X',
+   '<path d="M4 4l16 16M20 4L4 20"/>'),
+ "linkedin": ('https://www.linkedin.com/company/109991351/', 'LinkedIn',
+   '<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7.5 10.5v6"/>'
+   '<circle cx="7.5" cy="7.4" r="1" fill="currentColor" stroke="none"/>'
+   '<path d="M11.5 16.5v-3.2a2.3 2.3 0 0 1 4.6 0v3.2"/><path d="M11.5 16.5v-6"/>'),
+ "facebook": ('https://www.facebook.com/people/Retro-Camera-Land/61577258224362/', 'Facebook',
+   '<circle cx="12" cy="12" r="9"/><path d="M14.8 8.4h-1.5c-.8 0-1.3.5-1.3 1.3V12m-1.7 0h4.2M12 12v7"/>'),
+}
+
+
+def social_strip():
+    """Minimal SVG ikon seridi — tum RCL sosyal hesaplari."""
+    items = []
+    for key, (url, label, path) in SOCIAL_ICONS.items():
+        items.append(
+            f'<a class="rcl-p-soc__i" href="{url}?utm_source=urun&amp;utm_medium=sosyal&amp;utm_campaign=rcl" '
+            f'target="_blank" rel="noopener" aria-label="{label}" title="{label}">'
+            f'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+            f'stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{path}</svg></a>')
+    return ('<div class="rcl-p-soc"><span class="rcl-p-soc__t">Retrocameraland\'i takip edin</span>'
+            '<div class="rcl-p-soc__r">' + "".join(items) + '</div></div>')
+
+
+SOCIAL = social_strip()
 
 FAQ_AKTARIM = ('<details><summary>Çektiğim fotoğrafları telefonuma nasıl aktarırım?</summary>'
   '<p>Hafıza kartını bir kart okuyucuya takıp telefonunuza bağlayarak. Kameranızın kart formatına uygun '
@@ -202,3 +242,86 @@ def render_blocks(blocks):
         elif b["kind"] == "table":
             out.append(b["raw"])
     return "".join(out)
+
+
+# ── SSS uretimi ───────────────────────────────────────────────────────────────
+# Sorularin cevaplari YALNIZCA o urunun kendi verisinden (kondisyon, kutu
+# icerigi, teknik ozellikler) uretilir. Veri yoksa soru hic sorulmaz; boylece
+# musteriyi yaniltacak bir cevap olusmasi imkansiz.
+
+def _spec_find(specs, *keys):
+    for s in specs:
+        low = s.lower()
+        if any(k in low for k in keys):
+            return s.split(":", 1)[1].strip() if ":" in s else s.strip()
+    return None
+
+
+def build_faq(title, score, cond_text, box_items, specs, is_cam):
+    qs = []
+    short = re.sub(r"\s*\(.*?\)\s*", " ", title).strip()
+
+    if score or cond_text:
+        parts = []
+        if score:
+            parts.append(f"Bu ünite {score}/10 kondisyonda.")
+        if cond_text:
+            parts.append(cond_text.strip())
+        parts.append("Her ürün RetroCameraLand ekibi tarafından tek tek test edilip onaylanır.")
+        qs.append((f"{short} çalışır durumda mı, test edildi mi?", " ".join(parts)))
+
+    if box_items:
+        lst = ", ".join(box_items[:-1]) + (" ve " + box_items[-1] if len(box_items) > 1 else box_items[0])
+        qs.append(("Kutudan neler çıkıyor?",
+                   f"{lst}. Ürün RetroCameraLand özel paketlemesiyle gönderilir."))
+
+    card = _spec_find(specs, "hafıza", "kart", "depolama", "memory")
+    if card and is_cam:
+        qs.append(("Hangi hafıza kartını kullanıyor?",
+                   f"{card} Kartınız yoksa uyumlu bir kart için bize yazabilirsiniz."))
+
+    vid = _spec_find(specs, "video")
+    if vid and is_cam:
+        qs.append(("Video çekebiliyor mu?", f"Evet. {vid}"))
+
+    bat = _spec_find(specs, "batarya", "pil", "güç")
+    if bat and is_cam:
+        qs.append(("Bataryası nasıl, şarj aleti dahil mi?",
+                   f"{bat} Şarj için gereken parçalar kutu içeriğinde listelenmiştir."))
+
+    if is_cam:
+        qs.append(("Çektiğim fotoğrafları telefonuma nasıl aktarırım?",
+                   'Hafıza kartını bir kart okuyucuya takıp telefonunuza bağlayarak. '
+                   '<a href="https://retrocameraland.com/products/y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu">Y2K Digicam Aktarıcı</a> '
+                   'xD, CF, SD ve Memory Stick formatlarını birlikte destekliyor; adım adım anlatım için '
+                   '<a href="https://retrocameraland.com/blogs/retro-dijital-kamera/kameradan-telefona-fotograf-aktarma-2026">aktarım rehberimize</a> göz atabilirsiniz.'))
+        qs.append(("Bu model hâlâ üretiliyor mu?",
+                   f"Hayır, {short} üretimden kalktı ve yalnızca ikinci el olarak bulunuyor. "
+                   "Stoğumuzdaki her kamera tek adettir."))
+
+    if not is_cam:
+        # Aksesuarlarda kondisyon/kutu verisi olmayabiliyor: sorular teknik
+        # ozelliklerden uretiliyor, yoksa hic sorulmuyor.
+        comp = _spec_find(specs, "uyum", "destek", "giriş", "kart")
+        if comp:
+            qs.append(("Hangi cihaz ve kartlarla uyumlu?",
+                       f"{comp} Emin değilseniz kameranızın modelini yazın, biz kontrol edelim."))
+        setup = _spec_find(specs, "kurulum", "tak-çalıştır", "plug", "bağlantı")
+        if setup:
+            qs.append(("Kurulum veya yazılım gerekiyor mu?", f"{setup}"))
+        speed = _spec_find(specs, "hız", "gbps", "usb 3", "aktarım")
+        if speed:
+            qs.append(("Aktarım hızı nasıl?", f"{speed}"))
+        qs.append(("Retro kameramla çalışır mı?",
+                   "Retro dijital kameraların büyük çoğunluğuyla uyumludur. Kameranızın kart "
+                   "formatından emin değilseniz "
+                   '<a href="https://retrocameraland.com/blogs/retro-dijital-kamera/kameradan-telefona-fotograf-aktarma-2026">aktarım rehberimizdeki</a> '
+                   "kart formatı tablosuna bakabilir ya da bize yazabilirsiniz."))
+
+    qs.append(("Kargo ve iade nasıl işliyor?",
+               "Siparişler özenli paketlemeyle hazırlanıp hızlı kargoya verilir. İade ve değişim "
+               'koşulları için <a href="https://retrocameraland.com/policies/refund-policy">iade politikamıza</a> '
+               "göz atabilir, aklınıza takılan her konuda bize yazabilirsiniz."))
+
+    items = "".join(f"<details><summary>{q}</summary><p>{a}</p></details>" for q, a in qs)
+    return f'<div class="rcl-p-faq">{items}</div>'

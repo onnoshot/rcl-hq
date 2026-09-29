@@ -110,13 +110,14 @@ def pick_yorum(doc, title, extra):
     return f"<p>{txt}</p>" if txt else ""
 
 
-def pick_faq(doc, is_cam):
+def pick_faq(doc, is_cam, title, score, cond_text, box_items, specs):
+    """Kaynakta dolu bir SSS varsa korunur; yoksa urunun KENDI verisinden uretilir."""
     for s in doc["sections"]:
         if s["kind"] == "faq":
             html = T.faq_from(s["blocks"], is_cam)
-            if html and C.strip_tags(html):
+            if html and len(re.findall(r"<summary>", html)) >= 3:
                 return html
-    return f'<div class="rcl-p-faq">{T.FAQ_AKTARIM}</div>' if is_cam else ""
+    return T.build_faq(title, score, cond_text, box_items, specs, is_cam)
 
 
 def build(product, doc, extra, video_id=None, ov=None):
@@ -141,7 +142,7 @@ def build(product, doc, extra, video_id=None, ov=None):
         lis = "".join(f"<li>{i}</li>" for i in box_items)
         out.append(f'<div class="rcl-p-box"><h3>Kutu İçeriği</h3><ul>{lis}</ul></div>')
 
-    score = C.cond_score(doc)
+    score = C.cond_score(doc) or (ov or {}).get("score", {}).get(title)
     cond_parts = pick_cond(doc, box_sec) or \
         ([f'<p>{(ov or {}).get("cond", {})[title]}</p>'] if title in (ov or {}).get("cond", {}) else [])
     if score or cond_parts:
@@ -166,7 +167,11 @@ def build(product, doc, extra, video_id=None, ov=None):
     if yorum:
         out.append("<h2>RetroCameraLand yorumu</h2>" + yorum)
 
-    faq = pick_faq(doc, is_cam)
+    cond_plain = C.strip_tags(" ".join(cond_parts))[:400]
+    # tile yapisindaki ozellikler de SSS'e beslenir; yoksa ozel sablonlu
+    # urunlerde (Y2K Aktarici gibi) sorular uretilemiyordu
+    faq_specs = specs + [f"{t['k']}: {t['v']}" for t in doc["tiles"]]
+    faq = pick_faq(doc, is_cam, title, score, cond_plain, box_items, faq_specs)
     out.append(T.GUVENCE)
     if faq:
         out.append("<h2>Sık sorulan sorular</h2>" + faq)
@@ -215,7 +220,7 @@ def main():
         doc = C.parse(p["body_html"])
         _, box_items = pick_box(doc)
         box_items = box_items or ov["box"].get(p["title"], [])
-        score = C.cond_score(doc)
+        score = C.cond_score(doc) or ov.get("score", {}).get(p["title"])
         new = build(p, doc, extra, matches.get(p["id"], {}).get("video_id"), ov)
         errs = guard(doc, new, score, box_items)
         if errs:
