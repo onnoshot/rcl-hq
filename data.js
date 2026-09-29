@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-29T16:04:48",
+  "updated_at": "2026-09-29T17:04:53",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,7 +63,7 @@ const YOUTUBE = {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 389,
+      "views": 623,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17428,
+      "views": 17429,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -99,7 +99,7 @@ const YOUTUBE = {
       "id": "LjyZRaLNGcc",
       "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
       "date": "12 Tem 2026",
-      "views": 625,
+      "views": 626,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
@@ -108,7 +108,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1226,
+      "views": 1229,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
