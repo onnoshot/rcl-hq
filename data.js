@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-29T15:04:42",
+  "updated_at": "2026-09-29T16:04:48",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4740,
     "total_views": 1510998,
-    "video_count": 405
+    "video_count": 406
   },
   "analytics": {
     "last_30d": {
@@ -60,10 +60,19 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "AlODfpWU4QI",
+      "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
+      "date": "29 Eyl 2026",
+      "views": 389,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/AlODfpWU4QI"
+    },
+    {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1579,
+      "views": 1583,
       "likes": 14,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -123,6 +132,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/TFYAi9S9wTo"
     },
     {
+      "id": "aoCqpg3l-Zs",
+      "title": "22 Yıllık İkonik CASIO Exilim Fotoğraf Makinesi #digitalcame",
+      "date": "7 Mar 2026",
+      "views": 893,
+      "likes": 12,
+      "comments": 3,
+      "url": "https://youtu.be/aoCqpg3l-Zs"
+    },
+    {
       "id": "b6MfXb0bltc",
       "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
       "date": "23 Şub 2026",
@@ -130,24 +148,6 @@ const YOUTUBE = {
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
-    },
-    {
-      "id": "2-XdDjHscqs",
-      "title": "Küçük Kamerayla Büyük Hatıralar 📸 #kodak #digitalcamera",
-      "date": "20 Şub 2026",
-      "views": 820,
-      "likes": 13,
-      "comments": 0,
-      "url": "https://youtu.be/2-XdDjHscqs"
-    },
-    {
-      "id": "pK3Dc1GAVAU",
-      "title": "Sony Cybershot T500 Dijital Kamera ile her anı kaydet 📸😍 #di",
-      "date": "3 Şub 2026",
-      "views": 2839,
-      "likes": 20,
-      "comments": 4,
-      "url": "https://youtu.be/pK3Dc1GAVAU"
     }
   ],
   "sub_goal": 10000
