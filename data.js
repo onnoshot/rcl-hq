@@ -156,21 +156,21 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-29T14:04:06",
+  "updated_at": "2026-09-29T15:04:11",
   "period_30d": {
     "revenue": 23219,
     "orders": 3,
     "aov": 7740
   },
   "period_90d": {
-    "revenue": 92139,
-    "orders": 10,
-    "aov": 9214
+    "revenue": 76499,
+    "orders": 9,
+    "aov": 8500
   },
   "period_year": {
-    "revenue": 92139,
-    "orders": 10,
-    "aov": 9214
+    "revenue": 76499,
+    "orders": 9,
+    "aov": 8500
   },
   "customers_total": 1050,
   "monthly_labels": [
@@ -197,7 +197,7 @@ const SHOPIFY = {
     0,
     0,
     0,
-    15640,
+    0,
     53280,
     23219
   ],
@@ -211,7 +211,7 @@ const SHOPIFY = {
     0,
     0,
     0,
-    1,
+    0,
     6,
     3
   ],
@@ -222,17 +222,17 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 6,
       "rev": 45229,
-      "order_pct": 60.0,
-      "rev_pct": 49.1
+      "order_pct": 66.7,
+      "rev_pct": 59.1
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 2,
-      "rev": 29130,
-      "order_pct": 20.0,
-      "rev_pct": 31.6
+      "orders": 1,
+      "rev": 13490,
+      "order_pct": 11.1,
+      "rev_pct": 17.6
     },
     {
       "name": "AI / Arama",
@@ -240,8 +240,8 @@ const SHOPIFY = {
       "color": "#5AC8FA",
       "orders": 1,
       "rev": 9640,
-      "order_pct": 10.0,
-      "rev_pct": 10.5
+      "order_pct": 11.1,
+      "rev_pct": 12.6
     },
     {
       "name": "Direkt",
@@ -249,8 +249,8 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 1,
       "rev": 8140,
-      "order_pct": 10.0,
-      "rev_pct": 8.8
+      "order_pct": 11.1,
+      "rev_pct": 10.6
     }
   ],
   "recent_orders": [
@@ -289,10 +289,6 @@ const SHOPIFY = {
     {
       "date": "1 Ağu 2026",
       "amount": 9990
-    },
-    {
-      "date": "31 Tem 2026",
-      "amount": 15640
     }
   ],
   "cameras": [
