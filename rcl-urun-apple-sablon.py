@@ -1,0 +1,264 @@
+#!/usr/bin/env python3
+"""
+rcl-urun-apple-sablon.py
+Stoktaki urun aciklamalarini Apple-vari sablona kurar.
+
+GARANTILER
+  1. Kondisyon puani ve kutu icerigi metinleri harfi harfine tasinir.
+  2. Siniflandirilamayan her blok "leftover" olarak yine basilir (kayipsizlik).
+  3. Uygulamadan once kelime duzeyinde kapsama dogrulanir; esik altinda kalan
+     urun ATLANIR ve canliya dokunulmaz.
+
+Kullanim:
+  python3 rcl-urun-apple-sablon.py --dry-run
+  python3 rcl-urun-apple-sablon.py --only "Samsung ST10"
+  python3 rcl-urun-apple-sablon.py --apply
+"""
+import argparse, html as _html, json, os, re, sys, time
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import rcl_urun_icerik as C
+import rcl_urun_sablon as T
+from retrocameraland_api import shopify
+
+SCRATCH = "/private/tmp/claude-501/-Users-onnoshot-Downloads-Agentlar/7227e27a-4e21-448e-ad28-4066a72ddada/scratchpad"
+ACCESSORY = re.compile(r"kart okuyucu|aktarıcı|aktarici|tripod|şarj cihaz|sarj cihaz|batarya", re.I)
+
+
+def pick_box(doc):
+    """Kutu icerigi maddelerini bulur. Metinler DEGISTIRILMEZ."""
+    for s in doc["sections"]:
+        if s["kind"] != "box":
+            continue
+        for b in s["blocks"]:
+            if b["kind"] == "list":
+                return s, b["items"]
+        # Liste yoksa paragraflar kutu icerigidir (bazi urunlerde <ul> kullanilmamis)
+        ps = [b["html"] for b in s["blocks"] if b["kind"] == "p"]
+        if ps:
+            items = []
+            for h in ps:
+                txt = C.strip_tags(h)
+                txt = re.sub(r"^\s*(paket|kutu)\s*i[çc]eri[^:]*:\s*", "", txt, flags=re.I)
+                items += [x.strip(" -•·,") for x in re.split(r"\s{2,}|\u2022|·|,\s(?=[A-ZÇĞİÖŞÜ])", txt)
+                          if 3 < len(x.strip()) < 120]
+            if items:
+                return s, items
+    # "Kondisyon & Kutu Icerigi" gibi birlesik bolumler ya da duz paragrafli yazim
+    for s in doc["sections"]:
+        t = C.tr_lower(s["title"])
+        if not re.search(r"kutu|paket", t):
+            continue
+        for b in s["blocks"]:
+            if b["kind"] == "list":
+                return s, b["items"]
+        # "Paket Icerigi:" etiketinden sonraki paragraflar
+        hit, items = False, []
+        for b in s["blocks"]:
+            if b["kind"] != "p":
+                continue
+            txt = C.strip_tags(b["html"])
+            if re.search(r"(paket|kutu)\s*i[çc]eri", C.tr_lower(txt)):
+                hit = True
+                rest = re.sub(r"^.*?i[çc]eri[^:]*:\s*", "", txt, flags=re.I)
+                items += [x.strip(" -•·") for x in re.split(r"\s{2,}|•|·", rest) if len(x.strip()) > 3]
+                continue
+            if hit and len(txt) < 90:
+                items.append(txt)
+        if items:
+            return s, items
+    return None, []
+
+
+def build(product, doc, video_id=None):
+    title = product["title"]
+    is_cam = not ACCESSORY.search(title)
+    used = set()                      # tuketilen bolum id'leri -> leftover hesabi
+    merged_cond = []
+    out = [T.CSS, '<div class="rcl-p">']
+
+    # 1) Giris
+    lead = [b for b in doc["lead"] if b["kind"] == "p"]
+    lead_lists = [b for b in doc["lead"] if b["kind"] == "list"]
+    if lead:
+        out.append(f'<p class="rcl-p-lead">{lead[0]["html"]}</p>')
+        out += [f'<p>{b["html"]}</p>' for b in lead[1:]]
+
+    # 2) KUTU ICERIGI — en ustte (kullanici istegi)
+    box_sec, box_items = pick_box(doc)
+    if box_items:
+        # Birlesik "Kondisyon & Kutu Icerigi" bolumunde liste kutu icerigidir,
+        # kalan paragraflar KONDISYON metnidir: bunlari kaybetme.
+        if box_sec and C.tr_lower(box_sec["title"]).find("kondisyon") >= 0:
+            merged_cond = [b for b in box_sec["blocks"] if b["kind"] != "list"]
+        used.add(id(box_sec))
+        lis = "".join(f"<li>{i}</li>" for i in box_items)
+        out.append(f'<div class="rcl-p-box"><h3>Kutu İçeriği</h3><ul>{lis}</ul></div>')
+
+    # 3) KONDISYON — puan animasyonlu halkada, metin aynen
+    score = C.cond_score(doc)
+    # TUM kondisyon bolumleri toplanir: "<p><strong>Kondisyon: 8.7 / 10</strong></p>"
+    # kalin-paragraf-basligi kuraliyla ayri bir bolume donusuyor ve kondisyon
+    # metnini ikiye boluyordu (sayfada "Kondisyon" basligi iki kez cikiyordu).
+    cond_txt = T.render_blocks(merged_cond) if merged_cond else ""
+    for cs in [x for x in doc["sections"] if x["kind"] == "cond"]:
+        used.add(id(cs))
+        keep = [b for b in cs["blocks"]
+                if not (b["kind"] == "list" and b["items"] == box_items)]
+        part = T.render_blocks(keep)
+        if C.strip_tags(part):
+            cond_txt = (cond_txt or "") + part
+        # puan satirini metinden temizleme: METNE DOKUNULMAZ, oldugu gibi kalir
+    if score or cond_txt:
+        out.append("<h2>Kondisyon</h2>")
+        left = T.cond_ring(score) if score else ""
+        tested = f'<span class="rcl-p-tested">{T.TICK_SVG}RetroCameraLand ekibi tarafından test edildi</span>'
+        if not score and cond_txt:
+            left = ""
+        body = tested + (cond_txt or "")
+        out.append(f'<div class="rcl-p-cond">{left}<div class="rcl-p-cond__x">{body}</div></div>')
+
+    # 4) Video
+    if video_id:
+        out.append(f'<div class="rcl-p-vid"><iframe src="https://www.youtube.com/embed/{video_id}" '
+                   f'title="{_html.escape(title)} - Retro Camera Land" loading="lazy" '
+                   f'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+                   f'referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>')
+
+    # 5) Teknik ozellikler (madde listeleri + ozel sablon kutulari)
+    spec_items, spec_prose = [], []
+    for s in doc["sections"]:
+        if s["kind"] != "spec":
+            continue
+        used.add(id(s))
+        for b in s["blocks"]:
+            if b["kind"] == "list":
+                spec_items += b["items"]
+            elif b["kind"] == "p":
+                spec_prose.append(b["html"])
+    spec_items += [b["items"] for b in lead_lists for b in [b]][0] if False else []
+    for b in lead_lists:
+        spec_items += b["items"]
+    rows = T.spec_rows(spec_items, doc["tiles"])
+    if rows:
+        out.append("<h2>Teknik özellikler</h2>" + rows)
+    out += [f"<p>{p}</p>" for p in spec_prose]
+
+    # 6) Kalan bolumler — ORIJINAL SIRASIYLA, basligiyla birlikte
+    faq_html = ""
+    for s in doc["sections"]:
+        if id(s) in used:
+            continue
+        if s["kind"] == "faq":
+            faq_html = T.faq_from(s["blocks"], is_cam)
+            used.add(id(s))
+            if not faq_html or not C.strip_tags(faq_html):
+                # Soru/cevap kalibi taninmadi: bolumu oldugu gibi bas.
+                # (Aksi halde USB-C okuyucunun 4 paragrafli SSS'i tamamen kayboluyordu.)
+                faq_html = ""
+                inner = T.render_blocks(s["blocks"])
+                if C.strip_tags(inner):
+                    out.append(f"<h2>{C.clean_txt(s['title'])}</h2>{inner}")
+            continue
+        if s["kind"] == "drop":
+            used.add(id(s))
+            continue          # guvence/kargo/sosyal: standart bloklarla degistiriliyor
+        inner = T.render_blocks(s["blocks"])
+        if not C.strip_tags(inner):
+            continue
+        head = C.clean_txt(s["title"])
+        out.append(f"<h2>{head}</h2>{inner}" if head else inner)
+        used.add(id(s))
+
+    if not faq_html and is_cam:
+        faq_html = f'<div class="rcl-p-faq">{T.FAQ_AKTARIM}</div>'
+
+    out.append(T.GUVENCE)
+    if faq_html:
+        out.append("<h2>Sık sorulan sorular</h2>" + faq_html)
+    out.append(T.SOCIAL)
+    out.append("</div>")
+    return "\n".join(x for x in out if x)
+
+
+def _words(h):
+    h = re.sub(r"<(style|script|noscript)\b.*?</\1>", " ", h or "", flags=re.S | re.I)
+    t = C.EMOJI.sub("", C.strip_tags(h))
+    t = re.sub(r"[.#@][-\w]+\s*\{[^}]*\}", " ", t)
+    return re.findall(r"[0-9A-Za-zÇĞİÖŞÜçğıöşü./-]{3,}", t)
+
+
+def expected_words(doc):
+    """Ciktida BULUNMASI GEREKEN kelimeler.
+
+    Kasitli olarak standart bloklarla degistirilen bolumler (guvence metni,
+    kargo/teslimat zaman cizelgesi, sosyal medya satiri) olcum disidir; yoksa
+    esik surekli yaniltici sekilde dusuk cikiyor ve saglam urunler de bloklaniyor."""
+    out = []
+    for b in doc["lead"]:
+        out += _words(b.get("html", "") or " ".join(b.get("items", [])))
+    for s in doc["sections"]:
+        if s["kind"] == "drop":
+            continue
+        out += _words(s["title"])
+        for b in s["blocks"]:
+            out += _words(b.get("html", "") or " ".join(b.get("items", [])) or b.get("raw", ""))
+    for t in doc["tiles"]:
+        out += _words(f"{t['k']} {t['v']} {t.get('note','')}")
+    return out
+
+
+def word_coverage(original, rebuilt):
+    """Kelime duzeyinde kapsama.
+
+    Kasitli olarak standart bloklarla DEGISTIRILEN kalip metinler (guvence,
+    kargo/teslimat sureci, sosyal medya, bolum basligi kelimeleri) olcum disi
+    birakilir; yoksa esik hep yaniltici sekilde dusuk cikiyor."""
+    o = original if isinstance(original, list) else _words(original)
+    n = set(_words(rebuilt))
+    missing = [w for w in o if w not in n]
+    return len(o), missing
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--apply", action="store_true")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--only")
+    ap.add_argument("--min-coverage", type=float, default=97.0)
+    a = ap.parse_args()
+
+    prods = json.load(open(f"{SCRATCH}/instock2.json"))
+    matches = {m["pid"]: m for m in json.load(open(f"{SCRATCH}/video_matches.json"))}
+    for p in prods:
+        if "Z700EXR" in p["title"].replace(" ", "") and p["id"] not in matches:
+            src = next((m for m in matches.values() if "Z700 EXR" in m["product"]), None)
+            if src: matches[p["id"]] = {**src, "pid": p["id"]}
+
+    ok = skip = 0
+    for p in prods:
+        if a.only and a.only.lower() not in p["title"].lower():
+            continue
+        doc = C.parse(p["body_html"])
+        new = build(p, doc, matches.get(p["id"], {}).get("video_id"))
+        tot, miss = word_coverage(expected_words(doc), new)
+        cov = (tot - len(miss)) / max(tot, 1) * 100
+        score = C.cond_score(doc)
+        _, box = pick_box(doc)
+        flag = "video" if p["id"] in matches else "     "
+        if cov < a.min_coverage:
+            print(f"  ✗ ATLANDI %{cov:.1f}  {p['title'][:34]:<36} eksik: {sorted(set(miss))[:6]}")
+            skip += 1
+            continue
+        print(f"  ✓ %{cov:.1f}  {p['title'][:34]:<36} kond:{str(score):<5} kutu:{len(box):<2} {flag}")
+        ok += 1
+        if a.apply:
+            shopify("PUT", f"products/{p['id']}.json", {"product": {"id": p["id"], "body_html": new}})
+            time.sleep(0.15)
+        elif a.dry_run:
+            open(f"{SCRATCH}/ap_{p['id']}.html", "w", encoding="utf-8").write(new)
+    print(f"\n{ok} hazir, {skip} atlandi")
+
+
+if __name__ == "__main__":
+    main()
