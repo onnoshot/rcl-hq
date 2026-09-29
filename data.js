@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-29T23:06:07",
+  "updated_at": "2026-09-30T00:06:13",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 61338,
-      "watch_hours": 114.8,
-      "subs_gained": 39,
-      "subs_lost": 40,
+      "views": 58641,
+      "watch_hours": 109.9,
+      "subs_gained": 36,
+      "subs_lost": 39,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 3995.4,
-    "watch_hours_year_long": 2174.6,
-    "watch_hours_year_shorts": 1820.7,
+    "watch_hours_year": 3990.5,
+    "watch_hours_year_long": 2171.6,
+    "watch_hours_year_shorts": 1818.8,
     "monthly": [
       {
         "label": "Nis 26",
@@ -72,7 +72,7 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1592,
+      "views": 1593,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -81,7 +81,7 @@ const YOUTUBE = {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
-      "views": 17429,
+      "views": 17430,
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
@@ -90,7 +90,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2958,
+      "views": 2960,
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
