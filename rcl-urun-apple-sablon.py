@@ -24,6 +24,28 @@ from retrocameraland_api import shopify
 SCRATCH = "/private/tmp/claude-501/-Users-onnoshot-Downloads-Agentlar/7227e27a-4e21-448e-ad28-4066a72ddada/scratchpad"
 ACCESSORY = re.compile(r"kart okuyucu|aktarıcı|aktarici|tripod|şarj cihaz|sarj cihaz|batarya", re.I)
 
+# Tamamen kaldirilan bolumler: link listesi / CTA / guven metni. Hepsinin
+# karsiligi sayfada zaten standart blok olarak var; tekrar ediyorlar, SEO'ya
+# ek katki yapmiyorlar ve sayfayi uzatip kafa karistiriyorlar.
+TRIM = re.compile(
+    r"blog.?dan okuma|rehber *(?:&amp;|&|ve) *blog|topluluğ|toplulug|"
+    r"neden *retro ?camera ?land|ürün bilgisi|urun bilgisi|"
+    r"nereden al[ıi]n[ıi]r|bizi takip", re.I)
+
+
+def _tokens(t):
+    return {w for w in re.findall(r"[0-9A-Za-zÇĞİÖŞÜçğıöşü]{3,}", C.tr_lower(t))}
+
+
+def echoes_title(head, product_title):
+    """Baslik urun adini mi tekrarliyor? H1 ile ayni seyi soyleyen H2'ler
+    anahtar kelime tekrarindan baska bir ise yaramiyor."""
+    ht, pt = _tokens(head), _tokens(product_title)
+    if not ht or not pt:
+        return False
+    model = {w for w in pt if any(ch.isdigit() for ch in w)}
+    return len(ht & pt) / len(pt) >= 0.55 or bool(model and model <= ht)
+
 
 def pick_box(doc):
     """Kutu icerigi maddelerini bulur. Metinler DEGISTIRILMEZ.
@@ -167,12 +189,22 @@ def build(product, doc, video_id=None):
         if s["kind"] == "drop":
             used.add(id(s))
             continue          # guvence/kargo/sosyal: standart bloklarla degistiriliyor
+        head = C.clean_txt(s["title"])
+        used.add(id(s))
+        if TRIM.search(head):
+            continue                                 # link/CTA/guven tekrari: cikar
         inner = T.render_blocks(s["blocks"])
         if not C.strip_tags(inner):
             continue
-        head = C.clean_txt(s["title"])
-        out.append(f"<h2>{head}</h2>{inner}" if head else inner)
-        used.add(id(s))
+        words = len(C.strip_tags(inner).split())
+        if not head:
+            out.append(inner)
+        elif echoes_title(head, title):
+            out.append(inner)                        # basligi at, metni koru
+        elif words < 26:
+            out.append(f"<h3>{head}</h3>{inner}")    # mikro bolum -> alt baslik
+        else:
+            out.append(f"<h2>{head}</h2>{inner}")
 
     if not faq_html and is_cam:
         faq_html = f'<div class="rcl-p-faq">{T.FAQ_AKTARIM}</div>'
@@ -192,7 +224,7 @@ def _words(h):
     return re.findall(r"[0-9A-Za-zÇĞİÖŞÜçğıöşü./-]{3,}", t)
 
 
-def expected_words(doc):
+def expected_words(doc, product_title=""):
     """Ciktida BULUNMASI GEREKEN kelimeler.
 
     Kasitli olarak standart bloklarla degistirilen bolumler (guvence metni,
@@ -202,9 +234,18 @@ def expected_words(doc):
     for b in doc["lead"]:
         out += _words(b.get("html", "") or " ".join(b.get("items", [])))
     for s in doc["sections"]:
-        if s["kind"] == "drop":
+        # "drop" kalip bolumleri ve TRIM ile bilerek kaldirilanlar olcum disidir:
+        # yoksa kasitli temizlik "kayip" gibi gorunup saglam urunleri de bloklar.
+        head = C.clean_txt(s["title"])
+        if s["kind"] == "drop" or TRIM.search(head):
             continue
-        out += _words(s["title"])
+        # Standart bloga donusen bolumlerin BASLIK kelimeleri sayilmaz:
+        # "Urun Kondisyonu" -> "Kondisyon", "One Cikan Ozellikler" -> "Teknik
+        # ozellikler" gibi. Govde metni yine tam olarak beklenir.
+        if s["kind"] in ("box", "cond", "spec", "faq"):
+            pass
+        elif not echoes_title(head, product_title):
+            out += _words(s["title"])
         for b in s["blocks"]:
             out += _words(b.get("html", "") or " ".join(b.get("items", [])) or b.get("raw", ""))
     for t in doc["tiles"]:
@@ -245,7 +286,7 @@ def main():
             continue
         doc = C.parse(p["body_html"])
         new = build(p, doc, matches.get(p["id"], {}).get("video_id"))
-        tot, miss = word_coverage(expected_words(doc), new)
+        tot, miss = word_coverage(expected_words(doc, p["title"]), new)
         cov = (tot - len(miss)) / max(tot, 1) * 100
         score = C.cond_score(doc)
         _, box = pick_box(doc)
