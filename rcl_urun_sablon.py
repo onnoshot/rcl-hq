@@ -39,7 +39,7 @@ CSS = """<style>
   transform:rotate(-45deg);opacity:.55;}
 
 /* --- Kondisyon halkasi (animasyonlu) --- */
-.rcl-p-cond{display:flex;align-items:center;gap:20px;margin:20px 0 22px;flex-wrap:wrap;}
+.rcl-p-cond{display:flex;align-items:flex-start;gap:22px;margin:18px 0 24px;}
 .rcl-p-ring{position:relative;flex:0 0 auto;width:92px;height:92px;}
 .rcl-p-ring svg{width:92px;height:92px;transform:rotate(-90deg);display:block;}
 .rcl-p-ring circle{fill:none;stroke-width:5;stroke-linecap:round;}
@@ -48,11 +48,13 @@ CSS = """<style>
   animation:rcl-ring 1.25s cubic-bezier(.22,.9,.3,1) .2s forwards;}
 @keyframes rcl-ring{to{stroke-dashoffset:var(--off);}}
 .rcl-p-ring b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-  font-size:25px;font-weight:600;letter-spacing:-.02em;
+  font-size:25px;font-weight:600;letter-spacing:-.03em;line-height:1;
   animation:rcl-fade .6s ease-out .75s both;}
-.rcl-p-ring b small{font-size:12px;font-weight:500;opacity:.45;margin-left:1px;}
+.rcl-p-score{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:7px;}
+.rcl-p-scale{font-size:11px;letter-spacing:.07em;text-transform:uppercase;opacity:.4;
+  animation:rcl-fade .6s ease-out .9s both;}
 @keyframes rcl-fade{from{opacity:0;transform:scale(.86);}to{opacity:1;transform:scale(1);}}
-.rcl-p-cond__x{flex:1 1 220px;min-width:200px;}
+.rcl-p-cond__x{flex:1 1 auto;min-width:0;}
 .rcl-p-cond__x p{margin:0 0 9px;}
 .rcl-p-cond__x p:last-child{margin-bottom:0;}
 .rcl-p-tested{display:inline-flex;align-items:center;gap:7px;font-size:13px;opacity:.6;margin-bottom:9px;}
@@ -73,7 +75,9 @@ CSS = """<style>
   padding:13px 2px;border-bottom:1px solid rgba(128,128,128,.28);}
 .rcl-p-specs .k{font-size:15px;opacity:.6;flex:0 0 auto;}
 .rcl-p-specs .v{font-size:15px;font-weight:550;text-align:right;}
-.rcl-p-specs .f{font-size:15px;}
+.rcl-p-specs .f{font-size:15.5px;line-height:1.5;position:relative;padding-left:17px;}
+.rcl-p-specs .f::before{content:"";position:absolute;left:2px;top:.62em;width:4px;height:4px;
+  border-radius:50%;background:currentColor;opacity:.4;}
 .rcl-p-specs .n{display:block;font-size:13.5px;opacity:.55;font-weight:400;margin-top:3px;}
 
 .rcl-p-note{background:rgba(128,128,128,.11);border-radius:14px;padding:20px 22px;margin:26px 0;}
@@ -96,14 +100,28 @@ CSS = """<style>
   .rcl-p-ring b,.rcl-p-badge{animation:none;opacity:1;transform:none;}
   .rcl-p-tested .tick{animation:none;stroke-dashoffset:0;}
 }
-@media(max-width:480px){
-  .rcl-p{font-size:16.5px;}
-  .rcl-p h2{font-size:22px;margin:38px 0 12px;}
-  .rcl-p-lead{font-size:19px;}
-  .rcl-p-specs > div{flex-direction:column;gap:3px;padding:11px 2px;}
-  .rcl-p-specs .v{text-align:left;}
-  .rcl-p-box,.rcl-p-note{padding:18px;}
-  .rcl-p-cond{gap:16px;}
+@media(max-width:560px){
+  .rcl-p{font-size:16px;line-height:1.58;}
+  .rcl-p h2{font-size:21px;line-height:1.26;margin:40px 0 12px;}
+  .rcl-p h3{font-size:16.5px;margin:22px 0 8px;}
+  .rcl-p p{margin:0 0 15px;}
+  .rcl-p-lead{font-size:18.5px;line-height:1.45;margin:0 0 22px;}
+
+  /* Kondisyon: halka ustte, metin TAM GENISLIK (yan yana iken satirlar
+     3 kelimeye dusuyor ve okunmuyordu) */
+  .rcl-p-cond{flex-direction:column;align-items:flex-start;gap:14px;margin:16px 0 22px;}
+  .rcl-p-ring,.rcl-p-ring svg{width:74px;height:74px;}
+  .rcl-p-ring b{font-size:22px;}
+  .rcl-p-cond__x{width:100%;}
+
+  .rcl-p-box{padding:18px 18px;border-radius:14px;}
+  .rcl-p-box li{font-size:15.5px;padding-left:24px;}
+  .rcl-p-note{padding:18px;border-radius:14px;}
+  .rcl-p-specs > div{flex-direction:column;align-items:flex-start;gap:2px;padding:12px 2px;}
+  .rcl-p-specs .v{text-align:left;font-size:15.5px;}
+  .rcl-p-specs .k{font-size:13px;letter-spacing:.02em;opacity:.5;}
+  .rcl-p-faq summary{font-size:16px;padding:15px 30px 15px 2px;}
+  .rcl-p-faq p{font-size:15.5px;}
 }
 </style>"""
 
@@ -134,14 +152,15 @@ CIRC = 2 * 3.14159265 * R
 def cond_ring(score):
     """Kondisyon halkasi. Puan METNI degistirilmez, oldugu gibi basilir."""
     off = CIRC * (1 - float(score) / 10.0)
-    whole, _, frac = str(score).partition(".")
-    num = f"{whole}<small>.{frac}</small>" if frac else whole
-    return (f'<div class="rcl-p-ring" style="--circ:{CIRC:.1f};--off:{off:.1f};" '
+    num = str(score)
+    return (f'<div class="rcl-p-score">'
+            f'<div class="rcl-p-ring" style="--circ:{CIRC:.1f};--off:{off:.1f};" '
             f'role="img" aria-label="Kondisyon {score} / 10">'
             f'<svg viewBox="0 0 92 92" aria-hidden="true">'
             f'<circle class="bg" cx="46" cy="46" r="{R}"/>'
             f'<circle class="fg" cx="46" cy="46" r="{R}"/></svg>'
-            f'<b>{num}</b></div>')
+            f'<b>{num}</b></div>'
+            f'<span class="rcl-p-scale">10 üzerinden</span></div>')
 
 
 def spec_rows(items, tiles):
