@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-29T12:04:25",
+  "updated_at": "2026-09-29T13:04:30",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -135,7 +135,7 @@ const YOUTUBE = {
       "id": "b6MfXb0bltc",
       "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
       "date": "23 Şub 2026",
-      "views": 892,
+      "views": 894,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
