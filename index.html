@@ -84,11 +84,11 @@ function renderCOGSList() {
     return `<tr style="border-bottom:1px solid rgba(0,0,0,.04)">
       <td style="padding:7px 10px;font-size:.7rem;color:var(--t1)">${cam.name}</td>
       <td style="padding:7px 10px;text-align:right;font-size:.68rem;font-family:var(--mono);color:var(--gold)">₺${fmt(sale)}</td>
-      <td style="padding:7px 10px;text-align:right">
-        <input type="number" class="cogs-cost-input" data-cam="${cam.name.replace(/"/g,'&quot;')}"
+      <td style="padding:7px 10px;text-align:right">${cam.cost>0 ? `<span style="font-family:var(--mono);font-size:.7rem;color:rgba(191,90,242,.9)">₺${fmt(cam.cost)}</span> <span title="Shopify ürün maliyetinden otomatik" style="font-size:0.46rem;background:rgba(48,209,88,0.12);color:var(--green);border-radius:4px;padding:1px 4px;vertical-align:middle">SHOPIFY</span>` : `
+        <input type="number" class="cogs-cost-input" data-cam="${cam.name.replace(/"/g,'&quot;')}" data-i="${i}"
           value="${cost}" placeholder="—"
           style="width:90px;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.1);border-radius:6px;color:rgba(191,90,242,.9);font-family:var(--mono);font-size:.7rem;padding:4px 8px;text-align:right;outline:none"
-          oninput="updateCOGSRow(this,'${cam.name.replace(/'/g,"\'")}',${sale})">
+          oninput="updateCOGSRow(this,'${cam.name.replace(/'/g,"\'")}',${sale})">`}
       </td>
       <td style="padding:7px 10px;text-align:right;font-size:.68rem;font-family:var(--mono);color:${marjColor}" id="cogs-marj-${i}">${marj !== null ? '%' + marj : '—'}</td>
     </tr>`;
@@ -100,7 +100,7 @@ function renderCOGSList() {
 function updateCOGSRow(input, camName, salePrice) {
   const cost = parseFloat(input.value) || 0;
   setCamCost(camName, cost); // anlık kaydet → her yere yansır
-  const idx = Array.from(document.querySelectorAll('.cogs-cost-input')).indexOf(input);
+  const idx = input.dataset.i;
   const marjEl = document.getElementById('cogs-marj-' + idx);
   if (marjEl) {
     if (cost > 0 && salePrice > 0) {
@@ -127,7 +127,7 @@ function updateCOGSTotals() {
   setHtml('cogs-avg-margin', has ? '<span style="color:' + mColor + ';font-weight:700">%' + margin + '</span>' : '—');
   setEl('cogs-filled-count', m.count);
   setEl('cogs-total-count', m.total);
-  setEl('fin-avg-margin-pct', has ? '%' + margin + ' ortalama marj' : 'Maliyet girilmedi');
+  setEl('fin-avg-margin-pct', has ? '%' + Math.round(m.costRatio*100) + ' maliyet · %' + margin + ' brüt marj' : 'Maliyet girilmedi');
   const fEl = document.getElementById('fin-avg-margin-pct');
   if (fEl) fEl.style.color = has ? mColor : 'var(--t3)';
 }
@@ -1632,6 +1632,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
       <span class="nav-label">Stok</span>
     </div>
+        <div class="nav-item" data-page="yeniurun" onclick="navigate('yeniurun',this)"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"/><path d="M12 11v5M9.5 13.5h5"/></svg><span class="nav-label">Yeni Ürün</span></div>
     <div class="nav-item" data-page="email" onclick="navigate('email',this)">
       <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
       <span class="nav-label">E-posta</span>
@@ -1949,7 +1950,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
               <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Gelir</th>
               <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">KDV</th>
               <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Komisyon</th>
-              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Kargo+Kutu</th>
+              <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600" title="Kargo + kutu + aylık sabit gider">Operasyon</th>
               <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">COGS</th>
               <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Net Kâr</th>
               <th style="padding:8px 10px;text-align:right;font-size:0.58rem;text-transform:uppercase;letter-spacing:.06em;color:var(--t3);font-weight:600">Marj</th>
@@ -2025,6 +2026,11 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
             <input class="cost-field-input" id="cfg-shopify2" type="number" step="0.01" oninput="cfgFromInputs();recalcAll()">
             <div class="cost-field-hint" id="fin-shopify-total">—</div>
           </div>
+          <div class="cost-field" style="grid-column:1/-1">
+            <div class="cost-field-label">Aylık Sabit Gider (₺/ay) — abonelik, reklam, kira vb.</div>
+            <input class="cost-field-input" id="cfg-sabit2" type="number" min="0" placeholder="0" oninput="cfgFromInputs();recalcAll()">
+            <div class="cost-field-hint" id="fin-sabit-total">—</div>
+          </div>
         </div>
       </div>
 
@@ -2032,7 +2038,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <div class="card p">
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px">
           <div style="width:36px;height:36px;border-radius:10px;background:rgba(191,90,242,0.1);border:1px solid rgba(191,90,242,0.2);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
-          <div><div style="font-size:0.82rem;font-weight:600;color:var(--t1)">COGS Özeti</div><div style="font-size:0.64rem;color:var(--t3);font-family:var(--mono)">Stok kamera maliyetlerinden</div></div>
+          <div><div style="font-size:0.82rem;font-weight:600;color:var(--t1)">COGS Özeti</div><div style="font-size:0.64rem;color:var(--t3);font-family:var(--mono)" id="fin-cogs-src">Satılan ürünlerin Shopify maliyetinden</div></div>
         </div>
         <div style="display:flex;flex-direction:column;gap:8px">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
@@ -2051,7 +2057,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
             <div style="font-size:0.58rem;color:var(--t3);font-family:var(--mono);margin-top:3px" id="fin-breakeven-sub">—</div>
           </div>
           <div style="padding:8px 12px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.15);border-radius:9px">
-            <div style="font-size:0.58rem;color:rgba(212,175,55,0.85);font-family:var(--mono);margin-bottom:3px">Ortalama Stok Maliyet Oranı</div>
+            <div style="font-size:0.58rem;color:rgba(212,175,55,0.85);font-family:var(--mono);margin-bottom:3px">Stok Maliyet Oranı · Brüt Marj</div>
             <div style="font-size:0.82rem;font-family:var(--mono);font-weight:700;color:var(--gold)" id="fin-avg-margin-pct">—</div>
           </div>
         </div>
@@ -2065,7 +2071,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
           <div style="width:36px;height:36px;border-radius:10px;background:rgba(191,90,242,0.1);border:1px solid rgba(191,90,242,0.2);display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(191,90,242,.8)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 002 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
           <div>
             <div style="font-size:0.84rem;font-weight:600;color:var(--t1)">Stok Kamera Maliyetleri</div>
-            <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono)">Her kamera için alış maliyetini gir — COGS otomatik hesaplanır</div>
+            <div style="font-size:0.62rem;color:var(--t3);font-family:var(--mono)">Maliyetler Shopify'daki ürün maliyetinden otomatik gelir — eksik olanı buradan gir</div>
           </div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
@@ -2101,7 +2107,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
           </tfoot>
         </table>
       </div>
-      <div style="font-size:.58rem;color:rgba(0,0,0,0.55);font-family:var(--mono);margin-top:8px">Maliyetler tarayıcı belleğine (localStorage) kaydedilir. COGS hesaplaması tüm aktif siparişlere bölünür.</div>
+      <div style="font-size:.58rem;color:rgba(0,0,0,0.55);font-family:var(--mono);margin-top:8px">Maliyetler Shopify'daki ürün maliyetinden gelir; burada elle girilen değer yalnız Shopify'da maliyeti olmayan ürünler için kullanılır. Dönem COGS'u, siparişlerde satılan ürünlerin gerçek maliyetidir.</div>
     </div>
 
     <!-- Gider Özeti Çubuğu -->
@@ -2117,7 +2123,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
           <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:#C9760A" id="sum-iyzico">—</div>
         </div>
         <div style="background:#FFFFFF;border:1px solid rgba(0,0,0,.09);border-left:3px solid #AF52DE;border-radius:10px;padding:10px 12px">
-          <div style="font-size:.58rem;color:rgba(0,0,0,.55);font-family:var(--mono);margin-bottom:4px">Kargo + Ambalaj</div>
+          <div style="font-size:.58rem;color:rgba(0,0,0,.55);font-family:var(--mono);margin-bottom:4px">Kargo + Ambalaj + Sabit</div>
           <div style="font-size:.88rem;font-weight:700;font-family:var(--mono);color:#9333B8" id="sum-kargo">—</div>
         </div>
         <div style="background:#FFFFFF;border:1px solid rgba(0,0,0,.09);border-left:3px solid #007AFF;border-radius:10px;padding:10px 12px">
@@ -2894,28 +2900,44 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <!-- Karlılık -->
       <div class="card p" style="position:relative;overflow:hidden">
         <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.4),transparent)"></div>
-        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,0.6);margin-bottom:10px;font-family:var(--mono)">Karlılık Özeti</div>
+        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(0,0,0,0.6);margin-bottom:10px;font-family:var(--mono)">Stok Karlılık Özeti</div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
           <div>
-            <div class="qs-lbl">Maliyet Toplamı</div>
+            <div class="qs-lbl">Stok Maliyeti</div>
             <div class="qs-val" id="camCostTotal" style="color:rgba(255,69,58,.8)">—</div>
           </div>
           <div>
-            <div class="qs-lbl">Ham Kâr</div>
+            <div class="qs-lbl">Brüt Kâr</div>
             <div class="qs-val cg" id="camProfitTotal">—</div>
           </div>
+          <div>
+            <div class="qs-lbl">Satış Değeri</div>
+            <div class="qs-val" id="camSaleTotal" style="color:var(--t1)">—</div>
+          </div>
+          <div>
+            <div class="qs-lbl">Net Kâr (tahmini)</div>
+            <div class="qs-val" id="camNetTotal">—</div>
+          </div>
         </div>
-        <!-- Profit meter -->
         <div style="margin-bottom:8px">
           <div style="display:flex;justify-content:space-between;margin-bottom:4px">
             <span style="font-size:.6rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">Brüt Kâr Marjı</span>
-            <span style="font-size:.65rem;font-family:var(--mono);font-weight:700" id="inv-margin-pct" style="color:rgba(212,175,55,.8)">—</span>
+            <span style="font-size:.65rem;font-family:var(--mono);font-weight:700" id="inv-margin-pct">—</span>
           </div>
           <div style="height:6px;background:rgba(0,0,0,.06);border-radius:3px;overflow:hidden">
             <div id="inv-margin-bar" style="height:100%;border-radius:3px;background:linear-gradient(90deg,rgba(212,175,55,.7),rgba(48,209,88,.6));width:0;transition:width 1s ease .3s"></div>
           </div>
         </div>
-        <div style="font-size:0.6rem;color:rgba(0,0,0,0.55);font-family:var(--mono);margin-top:6px">Diğer giderler (kargo, ambalaj, komisyon) dahil değil. Tam kar için Finans sayfasını kullan.</div>
+        <div style="margin-bottom:8px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+            <span style="font-size:.6rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">Net Kâr Marjı</span>
+            <span style="font-size:.65rem;font-family:var(--mono);font-weight:700" id="inv-net-pct">—</span>
+          </div>
+          <div style="height:6px;background:rgba(0,0,0,.06);border-radius:3px;overflow:hidden">
+            <div id="inv-net-bar" style="height:100%;border-radius:3px;background:linear-gradient(90deg,rgba(48,209,88,.5),rgba(48,209,88,.85));width:0;transition:width 1s ease .3s"></div>
+          </div>
+        </div>
+        <div style="font-size:0.6rem;color:rgba(0,0,0,0.55);font-family:var(--mono);margin-top:6px;line-height:1.5" id="inv-profit-note">Kamera + aksesuar, stoktaki tüm ürünler satılırsa.</div>
       </div>
 
       <!-- Hedefler -->
@@ -2947,7 +2969,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
     <div class="card tcard" style="overflow:hidden">
       <div class="thead">
         <span class="ttitle" id="camTitle">Kameralar</span>
-        <span style="font-size:.6rem;color:rgba(0,0,0,0.6);font-family:var(--mono)">Satış fiyatı · Maliyet · Kâr & Marj</span>
+        <span style="font-size:.6rem;color:rgba(0,0,0,0.6);font-family:var(--mono)" id="camTableNote">Satış fiyatı · Maliyet · Brüt & Net kâr</span>
       </div>
       <div class="table-scroll"><table>
         <thead>
@@ -2955,9 +2977,10 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
             <th>#</th>
             <th>Model</th>
             <th>Satış Fiyatı</th>
-            <th>Maliyet (₺)</th>
-            <th>Kâr</th>
-            <th style="text-align:center">Marj %</th>
+            <th>Maliyet</th>
+            <th>Brüt Kâr</th>
+            <th title="KDV, iyzico + Shopify komisyonu, kargo ve kutu düşülmüş">Net Kâr</th>
+            <th style="text-align:center">Net Marj</th>
           </tr>
         </thead>
         <tbody id="camBody"></tbody>
@@ -2967,6 +2990,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
             <td id="camTotal" class="cg"></td>
             <td id="camCostTotalFoot">—</td>
             <td id="camProfitTotalFoot">—</td>
+            <td id="camNetTotalFoot">—</td>
             <td id="camMarjFoot" style="text-align:center;font-family:var(--mono);font-weight:700">—</td>
           </tr>
         </tfoot>
@@ -2986,15 +3010,22 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
             <th>#</th>
             <th>Ürün</th>
             <th>Fiyat</th>
-            <th>Adet</th>
-            <th>Toplam</th>
+            <th>Maliyet</th>
+            <th style="text-align:center">Adet</th>
+            <th>Stok Değeri</th>
+            <th title="Adet başı: KDV ve komisyon düşülmüş (kargo kamerayla ortak)">Net Kâr / adet</th>
+            <th style="text-align:center">Net Marj</th>
           </tr>
         </thead>
         <tbody id="accBody"></tbody>
         <tfoot>
           <tr>
-            <td colspan="4">Toplam</td>
+            <td colspan="3">Toplam</td>
+            <td id="accCostTotal">—</td>
+            <td id="accQtyTotal" style="text-align:center">—</td>
             <td id="accTotal" class="cg"></td>
+            <td id="accNetTotal">—</td>
+            <td id="accMarjFoot" style="text-align:center;font-family:var(--mono);font-weight:700">—</td>
           </tr>
         </tfoot>
       </table></div>
@@ -3002,6 +3033,127 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
   </div>
 </div>
 
+
+<!-- ═══════════════════ YENİ ÜRÜN ═══════════════════ -->
+<div class="page" id="page-yeniurun">
+<div class="page-topbar fi">
+<div class="pt-left">
+<div class="pt-title">Yeni <span>Ürün</span></div>
+<div class="pt-sub">Kamera bilgilerini gir · çıktıyı kopyala · içerik hazır gelsin</div>
+</div>
+</div>
+
+<div class="ny-wrap fi">
+
+<div class="card ny-card">
+<div class="ny-head"><div class="ny-h">Ürün bilgileri</div>
+<div class="ny-hint">Teknik özellikleri sen girme — model adına göre araştırılıp eklenecek.</div></div>
+
+<div class="ny-grid">
+<label class="ny-f ny-span2"><span>Marka ve model <b>*</b></span>
+<input id="nyModel" type="text" placeholder="Canon PowerShot A480" autocomplete="off"></label>
+
+<label class="ny-f"><span>Renk</span>
+<input id="nyColor" type="text" placeholder="Gümüş" autocomplete="off"></label>
+
+<label class="ny-f"><span>Ürün tipi</span>
+<select id="nyType"><option value="kamera">Kamera</option><option value="aksesuar">Aksesuar</option></select></label>
+
+<label class="ny-f"><span>Kondisyon puanı <b>*</b></span>
+<div class="ny-range"><input id="nyScore" type="range" min="1" max="10" step="0.1" value="9.2">
+<output id="nyScoreOut">9.2</output></div></label>
+
+<label class="ny-f"><span>Satış fiyatı (TL)</span>
+<input id="nyPrice" type="number" min="0" step="10" placeholder="11490" autocomplete="off"></label>
+
+<label class="ny-f ny-span2"><span>Kondisyon açıklaması <b>*</b></span>
+<textarea id="nyCond" rows="3" placeholder="Gövdede hafif kullanım izleri var, lens ve tüm fonksiyonlar sorunsuz çalışıyor."></textarea></label>
+
+<label class="ny-f ny-span2"><span>Kutu içeriği <b>*</b> <i>her satıra bir madde</i></span>
+<textarea id="nyBox" rows="5" placeholder="Canon PowerShot A480&#10;Orijinal batarya&#10;Universal şarj aleti&#10;SD kart (hediye)&#10;RetroCameraLand özel kutusunda gönderilir"></textarea></label>
+
+<label class="ny-f ny-span2"><span>Genel değerlendirmen <b>*</b></span>
+<textarea id="nyNote" rows="3" placeholder="Bu modelin AA pille çalışması büyük avantaj. Ünite çok temiz, kutusu tam."></textarea></label>
+</div>
+
+<div class="ny-actions">
+<button class="ny-btn ny-btn-p" onclick="nyBuild()">Çıktıyı oluştur</button>
+<button class="ny-btn" onclick="nyCopy()">Kopyala</button>
+<button class="ny-btn ny-btn-g" onclick="nyClear()">Temizle</button>
+<span class="ny-msg" id="nyMsg"></span>
+</div>
+
+<pre class="ny-out" id="nyOut" hidden></pre>
+</div>
+
+<div class="card ny-card">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+<div style="width:36px;height:36px;border-radius:10px;background:rgba(255,159,10,0.1);border:1px solid rgba(255,159,10,0.2);display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+<div><div style="font-size:0.82rem;font-weight:600;color:var(--t1)">Komisyon &amp; Giderler</div><div style="font-size:0.64rem;color:var(--t3);font-family:var(--mono)">Sipariş başına maliyet</div></div>
+</div>
+
+<div class="cost-grid">
+<div class="cost-field">
+<div class="cost-field-label">Satış Fiyatı (₺, KDV dahil)</div>
+<input class="cost-field-input nyk" id="nyKSale" type="number" min="0" step="10" value="11490">
+<div class="cost-field-hint" id="nyHSale">—</div>
+</div>
+<div class="cost-field">
+<div class="cost-field-label">Ürün Maliyeti (₺/alış)</div>
+<input class="cost-field-input nyk" id="nyKCost" type="number" min="0" step="10" value="6500">
+<div class="cost-field-hint" id="nyHCost">—</div>
+</div>
+<div class="cost-field">
+<div class="cost-field-label">Kargo (₺/sipariş)</div>
+<input class="cost-field-input nyk" id="nyKShip" type="number" min="0" step="5">
+<div class="cost-field-hint" id="nyHShip">—</div>
+</div>
+<div class="cost-field">
+<div class="cost-field-label">Kutu/Paket (₺/sipariş)</div>
+<input class="cost-field-input nyk" id="nyKPack" type="number" min="0" step="5">
+<div class="cost-field-hint" id="nyHPack">—</div>
+</div>
+<div class="cost-field">
+<div class="cost-field-label">Iyzico Komisyon (%)</div>
+<input class="cost-field-input nyk" id="nyKIyz" type="number" min="0" step="0.01">
+<div class="cost-field-hint" id="nyHIyz">—</div>
+</div>
+<div class="cost-field">
+<div class="cost-field-label">Shopify Komisyon (%)</div>
+<input class="cost-field-input nyk" id="nyKShop" type="number" min="0" step="0.01">
+<div class="cost-field-hint" id="nyHShop">—</div>
+</div>
+<div class="cost-field">
+<div class="cost-field-label">KDV Oranı (%)</div>
+<input class="cost-field-input nyk" id="nyKVat" type="number" min="0" step="1">
+<div class="cost-field-hint" id="nyHVat">—</div>
+</div>
+<div class="cost-field">
+<div class="cost-field-label">Bakım / Temizlik (₺)</div>
+<input class="cost-field-input nyk" id="nyKFix" type="number" min="0" step="10" value="0">
+<div class="cost-field-hint">Ürüne özel ek işçilik</div>
+</div>
+</div>
+
+<div class="ny-kpis">
+<div class="ny-kpi"><span>KDV hariç gelir</span><b id="nyRNet">—</b></div>
+<div class="ny-kpi"><span>Toplam gider</span><b id="nyRCost" class="neg">—</b></div>
+<div class="ny-kpi ny-kpi-hi"><span>Net kâr</span><b id="nyRProfit">—</b></div>
+<div class="ny-kpi"><span>Kâr marjı</span><b id="nyRMargin">—</b></div>
+</div>
+
+<div class="ny-bars" id="nyBars"></div>
+<div class="ny-legend">
+<span><i style="background:var(--green)"></i>Net kâr</span>
+<span><i style="background:#8E8E93"></i>Ürün maliyeti</span>
+<span><i style="background:#FF9500"></i>KDV</span>
+<span><i style="background:#007AFF"></i>Kargo + kutu</span>
+<span><i style="background:#AF52DE"></i>Komisyon</span>
+<span><i style="background:#FF3B30"></i>Diğer</span>
+</div>
+
+</div>
+</div>
 
 <!-- ═══════════════════ YOUTUBE ═══════════════════ -->
 <div class="page" id="page-youtube">
@@ -3899,7 +4051,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 2442, "at": "2026-09-30T17:05:03" };
+const BUILD = { "no": 2442, "at": "2026-09-30T17:42:27" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {};  /* Hermes kaldirildi - global referans hatasi olmasin diye bos stub */
@@ -4897,21 +5049,27 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-30T17:04:33",
+  "updated_at": "2026-09-30T17:42:27",
   "period_30d": {
     "revenue": 33709,
     "orders": 4,
-    "aov": 8427
+    "aov": 8427,
+    "cogs": 0,
+    "cogs_unmatched_rev": 33409
   },
   "period_90d": {
     "revenue": 86989,
     "orders": 10,
-    "aov": 8699
+    "aov": 8699,
+    "cogs": 0,
+    "cogs_unmatched_rev": 86239
   },
   "period_year": {
     "revenue": 86989,
     "orders": 10,
-    "aov": 8699
+    "aov": 8699,
+    "cogs": 0,
+    "cogs_unmatched_rev": 86239
   },
   "customers_total": 1052,
   "monthly_labels": [
@@ -4955,6 +5113,34 @@ const SHOPIFY = {
     0,
     6,
     4
+  ],
+  "monthly_cogs": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "monthly_cogs_unmatched_rev": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    52830,
+    33409
   ],
   "channels": [
     {
@@ -5039,117 +5225,207 @@ const SHOPIFY = {
   "cameras": [
     {
       "name": "Panasonic Lumix DC-TZ91",
-      "price": 28490
+      "price": 28490,
+      "qty": 1,
+      "compare_at": 34990,
+      "cost": 17000,
+      "handle": "panasonic-lumix-dc-tz91"
     },
     {
       "name": "Samsung WB350F",
-      "price": 19490
-    },
-    {
-      "name": "Canon PowerShot G7",
-      "price": 18490
+      "price": 19490,
+      "qty": 1,
+      "cost": 6000,
+      "handle": "samsung-wb350f"
     },
     {
       "name": "Olympus PEN E-PL1",
-      "price": 18490
+      "price": 18490,
+      "qty": 1,
+      "compare_at": 23000,
+      "cost": 4500,
+      "handle": "olympus-pen-e-pl1-25mm"
     },
     {
-      "name": "Olympus VR-340",
-      "price": 17990
+      "name": "Canon PowerShot G7",
+      "price": 16490,
+      "qty": 1,
+      "compare_at": 18490,
+      "cost": 13500,
+      "handle": "canon-powershot-g7"
     },
     {
       "name": "Samsung NX2000",
-      "price": 16490
+      "price": 16490,
+      "qty": 1,
+      "cost": 8000,
+      "handle": "samsung-nx2000"
+    },
+    {
+      "name": "Olympus VR-340",
+      "price": 15490,
+      "qty": 1,
+      "compare_at": 17990,
+      "cost": 7000,
+      "handle": "olympus-vr-340"
     },
     {
       "name": "Fujifilm FinePix Z700 EXR",
-      "price": 15490
+      "price": 14490,
+      "qty": 1,
+      "compare_at": 15490,
+      "cost": 5700,
+      "handle": "fujifilm-finepix-z700-exr"
     },
     {
       "name": "Fujifilm FinePix Z700EXR",
-      "price": 14490
-    },
-    {
-      "name": "Sanyo Xacti VPC-C5",
-      "price": 13490
-    },
-    {
-      "name": "Lumix DMC-FT10 (Waterproof)",
-      "price": 11990
-    },
-    {
-      "name": "Canon IXUS i",
-      "price": 11490
-    },
-    {
-      "name": "Casio Exilim EX-Z110",
-      "price": 11490
-    },
-    {
-      "name": "Fujifilm FinePix 4700 Zoom",
-      "price": 11490
-    },
-    {
-      "name": "Sanyo Xacti CG20",
-      "price": 11490
+      "price": 14490,
+      "qty": 1,
+      "cost": 7000,
+      "handle": "fujifilm-finepix-z700exr"
     },
     {
       "name": "Sony Cyber-shot DSC-T9",
-      "price": 11490
+      "price": 12490,
+      "qty": 1,
+      "cost": 3800,
+      "handle": "sony-cyber-shot-dsc-t9"
     },
     {
-      "name": "Casio Exilim EX-Z4",
-      "price": 10490
+      "name": "Lumix DMC-FT10 (Waterproof)",
+      "price": 11990,
+      "qty": 1,
+      "compare_at": 15490,
+      "cost": 4800,
+      "handle": "lumix-dmc-ft10"
+    },
+    {
+      "name": "Canon IXUS i",
+      "price": 11490,
+      "qty": 1,
+      "cost": 3500,
+      "handle": "canon-ixus-i"
+    },
+    {
+      "name": "Casio Exilim EX-Z110",
+      "price": 11490,
+      "qty": 1,
+      "cost": 3450,
+      "handle": "casio-exilim-ex-z110"
+    },
+    {
+      "name": "Fujifilm FinePix 4700 Zoom",
+      "price": 11490,
+      "qty": 1,
+      "compare_at": 16490,
+      "cost": 5500,
+      "handle": "fujifilm-finepix-4700-zoom"
+    },
+    {
+      "name": "Sanyo Xacti CG20",
+      "price": 11490,
+      "qty": 1,
+      "compare_at": 14900,
+      "cost": 4000,
+      "handle": "sanyo-xacti-cg20"
+    },
+    {
+      "name": "Sanyo Xacti VPC-C5",
+      "price": 11490,
+      "qty": 1,
+      "compare_at": 13490,
+      "cost": 2500,
+      "handle": "sanyo-xacti-vpc-c5"
     },
     {
       "name": "Sanyo Xacti VPC-HD1",
-      "price": 10490
+      "price": 10490,
+      "qty": 1,
+      "compare_at": 14900,
+      "cost": 2200,
+      "handle": "sanyo-xacti-vpc-hd1"
+    },
+    {
+      "name": "Casio Exilim EX-Z4",
+      "price": 9990,
+      "qty": 1,
+      "compare_at": 11490,
+      "cost": 4000,
+      "handle": "casio-exilim-ex-z4"
     },
     {
       "name": "Samsung ST10",
-      "price": 9490
-    },
-    {
-      "name": "Sanyo Xacti VPC-J4EX",
-      "price": 8990
+      "price": 9490,
+      "qty": 1,
+      "compare_at": 10490,
+      "cost": 4500,
+      "handle": "samsung-st10-dokunmatik-dijital-kamera-siyah"
     },
     {
       "name": "HP Photosmart R827",
-      "price": 8900
+      "price": 8900,
+      "qty": 1,
+      "compare_at": 9900,
+      "cost": 3500,
+      "handle": "hp-photosmart-r827"
     },
     {
       "name": "Traveler DC-830",
-      "price": 8490
+      "price": 8490,
+      "qty": 1,
+      "compare_at": 12000,
+      "cost": 3100,
+      "handle": "traveler-dc-830"
+    },
+    {
+      "name": "Sanyo Xacti VPC-J4EX",
+      "price": 7490,
+      "qty": 1,
+      "compare_at": 8990,
+      "cost": 3500,
+      "handle": "sanyo-xacti-vpc-j4ex"
     }
   ],
   "accessories": [
     {
       "name": "Type-C ve USB 2.0 SD-MicroSD TF Kart Okuyucu",
       "price": 1490,
-      "qty": 2
+      "qty": 2,
+      "cost": 329,
+      "handle": "microsd-sd-kart-okuyucu-yuksek-hizli-tasinabilir-kart-okuma-adaptoru"
     },
     {
       "name": "Universal Kamera Batarya Şarj Cihazı",
       "price": 649,
-      "qty": 4
+      "qty": 4,
+      "cost": 150,
+      "handle": "universal-kamera-batarya-sarj-cihaz"
     },
     {
       "name": "Y2K Digicam Fotoğraf/Video Aktarıcı - xD, CF, SD, MS Destekli All-in-One Kart Okuyucu",
       "price": 790,
-      "qty": 2
+      "qty": 2,
+      "compare_at": 1249,
+      "cost": 189,
+      "handle": "y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu"
     },
     {
       "name": "USB-C 3'ü 1 Arada Kart Okuyucu — SD / MicroSD / USB",
       "price": 690,
-      "qty": 2
+      "qty": 2,
+      "cost": 150,
+      "handle": "usb-c-3-in-1-kart-okuyucu-sd-microsd"
     },
     {
       "name": "Ulanzi VLOG Tripod",
       "price": 990,
-      "qty": 1
+      "qty": 1,
+      "compare_at": 1100,
+      "cost": 500,
+      "handle": "ulanzi-vlog-tripod"
     }
   ],
-  "out_of_stock": 104
+  "out_of_stock": 102
 };
 /* ─── SHOPIFY DATA END ─── */
 
@@ -5379,7 +5655,7 @@ function mkChart(id, cfg) {
 
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','finance','inventory','youtube','instagram','email','stats','seo','blog','cherry','alim','bulucu','bloggerbeyz'];
+const PAGES = ['overview','finance','inventory','yeniurun','youtube','instagram','email','stats','seo','blog','cherry','alim','bulucu','bloggerbeyz'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -6068,43 +6344,87 @@ function renderHeader() {
 // Tüm sayfalar (anasayfa, stok, finans, ürün) BURADAN okur.
 // Bir yerde değişen değer recalcAll() ile her yere aynı anda yansır.
 // ═══════════════════════════════════════════════════════════
-const COST_CFG_DEFAULTS = { kdv_rate:20, kargo_tl:300, kutu_tl:100, iyzico_pct:2.65, shopify_pct:2.0 };
+const COST_CFG_DEFAULTS = { kdv_rate:20, kargo_tl:300, kutu_tl:100, iyzico_pct:2.65, shopify_pct:2.0, sabit_aylik:0 };
 function getCfg(){ try{ return {...COST_CFG_DEFAULTS, ...JSON.parse(localStorage.getItem('rcl_cost_cfg')||'{}')}; }catch(e){ return {...COST_CFG_DEFAULTS}; } }
 function setCfg(patch){ const c={...getCfg(), ...patch}; localStorage.setItem('rcl_cost_cfg', JSON.stringify(c)); return c; }
 // KDV-DAHİL fiyatın içindeki KDV tutarı (Türk usulü: raf fiyatı zaten KDV dahil).
 // Örn. %20 KDV'de KDV = fiyat × 20/120 = fiyat/6.
 function kdvOf(amount, rate){ rate=(rate==null?getCfg().kdv_rate:rate); return Math.round(amount*rate/(100+rate)); }
 
-// Stok metrikleri — kamera + aksesuar, raf (satış) fiyatı bazlı. TEK kaynak.
+// Stok adedi — eski veride qty yoksa 1 kabul edilir (tek adet kamera).
+function stockQty(x){ return x.qty==null ? 1 : Math.max(0, +x.qty||0); }
+// Stok metrikleri — kamera + aksesuar, raf (satış) fiyatı × adet. TEK kaynak.
 function invMetrics(){
   const cams=SHOPIFY.cameras||[], accs=SHOPIFY.accessories||[];
-  const camValue=cams.reduce((s,c)=>s+(+c.price||0),0);
-  const accValue=accs.reduce((s,a)=>s+(+a.price||0)*(+a.qty||0),0);
-  const accUnits=accs.reduce((s,a)=>s+(+a.qty||0),0);
-  return { camValue, accValue, stockValue:camValue+accValue, camCount:cams.length, accUnits, oos:+SHOPIFY.out_of_stock||0 };
+  const camValue=cams.reduce((s,c)=>s+(+c.price||0)*stockQty(c),0);
+  const accValue=accs.reduce((s,a)=>s+(+a.price||0)*stockQty(a),0);
+  const camUnits=cams.reduce((s,c)=>s+stockQty(c),0);
+  const accUnits=accs.reduce((s,a)=>s+stockQty(a),0);
+  const oos=+SHOPIFY.out_of_stock||0, variants=cams.length+accs.length;
+  return { camValue, accValue, stockValue:camValue+accValue, camCount:cams.length, camUnits, accUnits, oos,
+           oosPct: (oos+variants)>0 ? Math.round(oos/(oos+variants)*100) : 0 };
 }
-// Maliyet metrikleri — YALNIZ maliyeti girilmiş kameralar (kar/marj aynı küme üzerinden).
+// Tek ürün birim ekonomisi — raf fiyatı KDV dahil. Net = fiyat − KDV − iyzico − Shopify − (kamerada kargo+kutu) − maliyet.
+// Aksesuarlar genelde kamerayla aynı pakette gittiği için kargo/kutu kameraya yazılır.
+function unitEcon(price, cost, isCam){
+  const cfg=getCfg(); price=+price||0; cost=+cost||0;
+  const kdv=kdvOf(price,cfg.kdv_rate);
+  const kom=Math.round(price*(cfg.iyzico_pct+cfg.shopify_pct)/100);
+  const ops=isCam?(cfg.kargo_tl+cfg.kutu_tl):0;
+  const gross=price-cost, net=price-kdv-kom-ops-cost;
+  return { price, cost, kdv, kom, ops, gross, net,
+           grossPct: price>0?Math.round(gross/price*100):0, netPct: price>0?Math.round(net/price*100):0 };
+}
+// Aksesuar maliyeti — Shopify cost alanı.
+function accCost(a){ return +a.cost||0; }
+// Maliyet metrikleri — YALNIZ maliyeti girilmiş kameralar, adet ağırlıklı (kar/marj aynı küme üzerinden).
 function costMetrics(){
   const cams=SHOPIFY.cameras||[], costs=loadCamCosts();
   const withCost=cams.filter(c=>costs[c.name]>0);
-  const saleOfCosted=withCost.reduce((s,c)=>s+(+c.price||0),0);
-  const costTotal=withCost.reduce((s,c)=>s+costs[c.name],0);
+  const saleOfCosted=withCost.reduce((s,c)=>s+(+c.price||0)*stockQty(c),0);
+  const costTotal=withCost.reduce((s,c)=>s+costs[c.name]*stockQty(c),0);
   const profit=saleOfCosted-costTotal;
+  const netTotal=withCost.reduce((s,c)=>s+unitEcon(c.price,costs[c.name],true).net*stockQty(c),0);
   return { withCost, count:withCost.length, total:cams.length, costs,
-           saleOfCosted, costTotal, profit,
+           saleOfCosted, costTotal, profit, netTotal,
            marginPct: saleOfCosted>0?Math.round(profit/saleOfCosted*100):0,
+           netPct: saleOfCosted>0?Math.round(netTotal/saleOfCosted*100):0,
            costRatio: saleOfCosted>0?costTotal/saleOfCosted:0 };
 }
+// Tüm stok (kamera + aksesuar) kârlılığı — stok sayfası özeti.
+function stockProfit(){
+  const cm=costMetrics(), accs=(SHOPIFY.accessories||[]).filter(a=>accCost(a)>0);
+  const accSale=accs.reduce((s,a)=>s+(+a.price||0)*stockQty(a),0);
+  const accCostT=accs.reduce((s,a)=>s+accCost(a)*stockQty(a),0);
+  const accNet=accs.reduce((s,a)=>s+unitEcon(a.price,accCost(a),false).net*stockQty(a),0);
+  const sale=cm.saleOfCosted+accSale, cost=cm.costTotal+accCostT, gross=sale-cost, net=cm.netTotal+accNet;
+  const items=cm.count+accs.length, totalItems=cm.total+(SHOPIFY.accessories||[]).length;
+  return { sale, cost, gross, net, items, totalItems,
+           grossPct: sale>0?Math.round(gross/sale*100):0, netPct: sale>0?Math.round(net/sale*100):0 };
+}
+// Dönem COGS — fetch scripti siparişlerdeki GERÇEK satılan ürün maliyetini verir (d.cogs).
+// Maliyeti bilinmeyen satırların cirosu (cogs_unmatched_rev) stok maliyet oranıyla tahmin edilir.
+// Eski veri (d.cogs yok) → gelir × stok maliyet oranı.
+function periodCogs(d, ratio){
+  const rev=+((d&&d.revenue))||0;
+  if(d && d.cogs!=null){
+    const est=Math.round((+d.cogs_unmatched_rev||0)*ratio);
+    return { cogs:Math.round(+d.cogs)+est, real:true, est };
+  }
+  return { cogs: ratio>0?Math.round(rev*ratio):0, real:false, est:0 };
+}
 // Bir dönem için net kâr kırılımı — finans/aylık/anasayfa HEPSİ bunu kullanır (aynı formül = tutarlı marj).
-function periodProfit(d){
+// months: dönemin ay sayısı (aylık sabit gider bununla çarpılır).
+function periodProfit(d, months){
   const cfg=getCfg(), cm=costMetrics();
   const rev=+((d&&d.revenue))||0, orders=+((d&&d.orders))||0;
   const kdv=kdvOf(rev, cfg.kdv_rate);
   const iyzico=Math.round(rev*cfg.iyzico_pct/100), shopify=Math.round(rev*cfg.shopify_pct/100);
   const komisyon=iyzico+shopify, sabit=orders*(cfg.kargo_tl+cfg.kutu_tl);
-  const cogs=cm.count>0?Math.round(rev*cm.costRatio):0;
-  const gider=komisyon+sabit+cogs, net=rev-kdv-gider, marj=rev>0?Math.round(net/rev*100):0;
-  return { rev, orders, kdv, iyzico, shopify, komisyon, sabit, cogs, gider, net, marj };
+  const cogs=periodCogs(d, cm.costRatio).cogs;
+  const sabitGider=Math.round((+cfg.sabit_aylik||0)*(months||1));
+  const gider=komisyon+sabit+cogs+sabitGider, net=rev-kdv-gider, marj=rev>0?Math.round(net/rev*100):0;
+  return { rev, orders, kdv, iyzico, shopify, komisyon, sabit, cogs, sabitGider, gider, net, marj };
 }
 // Kamera maliyetini kalıcı yaz (anlık kaydet) — tüm yüzeyler aynı anahtarı (rcl_cam_costs) kullanır.
 function setCamCost(name, val){
@@ -6122,6 +6442,7 @@ function cfgFromInputs(){
     kutu_tl:     isFinite(g('cfg-kutu2'))?g('cfg-kutu2'):cur.kutu_tl,
     iyzico_pct:  isFinite(g('cfg-iyzico2'))?g('cfg-iyzico2'):cur.iyzico_pct,
     shopify_pct: isFinite(g('cfg-shopify2'))?g('cfg-shopify2'):cur.shopify_pct,
+    sabit_aylik: isFinite(g('cfg-sabit2'))?g('cfg-sabit2'):cur.sabit_aylik,
   });
 }
 // Anasayfa "Stok" kartı — stok/finans ile AYNI değer.
@@ -6168,7 +6489,7 @@ function renderKPIs() {
 // Anasayfa "30 Günlük Kârlılık" — periodProfit ile (finans/aylık ile aynı formül).
 function renderOverviewProfit(){
   if(typeof SHOPIFY==='undefined' || !SHOPIFY.period_30d) return;
-  const pp=periodProfit(SHOPIFY.period_30d), cfg=getCfg();
+  const pp=periodProfit(SHOPIFY.period_30d, 1), cfg=getCfg();
   const netCol=pp.net>=0?'var(--green)':'var(--danger)';
   const set=(id,txt,col)=>{const e=document.getElementById(id);if(e){e.textContent=txt;if(col)e.style.color=col;}};
   set('s-kdv-lbl','KDV %'+cfg.kdv_rate);
@@ -6186,6 +6507,7 @@ function renderOverviewProfit(){
     {l:'Komisyon',v:pp.komisyon,c:'#FF9F0A'},
     {l:'Kargo+Kutu',v:pp.sabit,c:'#8E8E93'},
     {l:'COGS',v:pp.cogs,c:'#BF5AF2'},
+    {l:'Sabit Gider',v:pp.sabitGider,c:'#5E5CE6'},
     {l:'Net Kâr',v:Math.max(pp.net,0),c:'#30D158'},
   ].filter(s=>s.v>0);
   const base=segs.reduce((s,x)=>s+x.v,0)||1;
@@ -6247,79 +6569,110 @@ function loadCamCosts(){
 }
 function saveCamCost(name,val){ setCamCost(name,val); } // tek kaynak: setCamCost
 
+// Marj rengi / rozet — stok sayfası tabloları ortak.
+function marjColor(p){ return p>=40?'var(--perf-great)':p>=25?'var(--perf-good)':p>=12?'var(--perf-ok)':p>=0?'var(--perf-warn)':'var(--perf-bad)'; }
+function marjPill(p){
+  if(p==null) return '<span style="color:var(--t3)">—</span>';
+  const col=p>=25?'rgba(48,209,88,.9)':p>=12?'rgba(212,175,55,.95)':'rgba(255,69,58,.9)';
+  const bg =p>=25?'rgba(48,209,88,.12)':p>=12?'rgba(212,175,55,.14)':'rgba(255,69,58,.12)';
+  return '<span style="color:'+col+';background:'+bg+';padding:2px 10px;border-radius:8px;font-weight:700;font-size:.72rem">'+(p<0?'-%'+Math.abs(p):'%'+p)+'</span>';
+}
+function signedTL(v){ return (v<0?'-':'')+fmtTL(Math.abs(v)); }
+
 function updateCamTotals() {
-  // Maliyet, ham kâr ve brüt marj — HEPSİ aynı küme (maliyeti girilmiş kameralar) üzerinden.
-  const m = costMetrics();
-  const costTot = m.costTotal, has = m.count>0;
-  const setTxt=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  setTxt('camCostTotal', has?fmtTL(costTot):'—');
-  setTxt('camCostTotalFoot', has?fmtTL(costTot):'—');
-  const profEl=document.getElementById('camProfitTotal'), profFoot=document.getElementById('camProfitTotalFoot');
-  if(has){const c=m.profit>=0?'var(--green)':'var(--danger)';if(profEl){profEl.textContent=fmtTL(m.profit);profEl.style.color=c;}if(profFoot){profFoot.textContent=fmtTL(m.profit);profFoot.style.color=c;}}
-  else{if(profEl){profEl.textContent='—';profEl.style.color='';}if(profFoot){profFoot.textContent='—';profFoot.style.color='';}}
-  // Brüt kâr marjı (maliyeti girilmiş kameraların satış toplamı üzerinden)
-  const mp = m.marginPct;
-  const mColor = mp>=40?'rgba(48,209,88,.9)':mp>=25?'rgba(212,175,55,.9)':mp>=12?'rgba(255,159,10,.9)':mp>=0?'rgba(255,159,10,.9)':'rgba(255,69,58,.9)';
-  const pctEl=document.getElementById('inv-margin-pct');
-  if(pctEl){ pctEl.textContent=has?'%'+mp:'—'; pctEl.style.color=has?mColor:'var(--t3)'; }
-  const barEl=document.getElementById('inv-margin-bar'); if(barEl) barEl.style.width=(has?Math.min(100,Math.max(0,mp)):0)+'%';
-  const footEl=document.getElementById('camMarjFoot'); if(footEl) footEl.innerHTML=has?'<span style="color:'+mColor+';font-weight:700">%'+mp+'</span>':'—';
-  // Tablodaki her satırın kâr/marj hücresi (yalnız tablo basılıysa)
+  // Stok sayfası özet + tablo kâr hücreleri. Tablo input'larını yeniden kurmaz (odak kaybı yok).
+  const m = costMetrics(), sp = stockProfit(), cfg = getCfg();
+  const has = m.count>0, hasAll = sp.items>0;
+  const setTxt=(id,v,col)=>{const e=document.getElementById(id);if(e){e.textContent=v;if(col!==undefined)e.style.color=col;}};
+  // Özet kartı — kamera + aksesuar
+  setTxt('camCostTotal', hasAll?fmtTL(sp.cost):'—');
+  setTxt('camSaleTotal', hasAll?fmtTL(sp.sale):'—');
+  setTxt('camProfitTotal', hasAll?signedTL(sp.gross):'—', hasAll?(sp.gross>=0?'var(--green)':'var(--danger)'):'');
+  setTxt('camNetTotal', hasAll?signedTL(sp.net):'—', hasAll?(sp.net>=0?'var(--green)':'var(--danger)'):'');
+  setTxt('inv-margin-pct', hasAll?'%'+sp.grossPct:'—', hasAll?marjColor(sp.grossPct):'var(--t3)');
+  setTxt('inv-net-pct', hasAll?'%'+sp.netPct:'—', hasAll?marjColor(sp.netPct):'var(--t3)');
+  const mb=document.getElementById('inv-margin-bar'); if(mb) mb.style.width=(hasAll?Math.min(100,Math.max(0,sp.grossPct)):0)+'%';
+  const nb=document.getElementById('inv-net-bar'); if(nb) nb.style.width=(hasAll?Math.min(100,Math.max(0,sp.netPct)):0)+'%';
+  setTxt('inv-profit-note', `${sp.items}/${sp.totalItems} üründe maliyet var. Net = raf fiyatı − KDV %${cfg.kdv_rate} − iyzico %${cfg.iyzico_pct} − Shopify %${cfg.shopify_pct} − kamerada kargo ₺${fmt(cfg.kargo_tl)} + kutu ₺${fmt(cfg.kutu_tl)} − maliyet. Oranlar Finans sayfasından değişir.`);
+  // Kamera tablosu altlığı
+  setTxt('camCostTotalFoot', has?fmtTL(m.costTotal):'—');
+  setTxt('camProfitTotalFoot', has?signedTL(m.profit):'—', has?(m.profit>=0?'var(--green)':'var(--danger)'):'');
+  setTxt('camNetTotalFoot', has?signedTL(m.netTotal):'—', has?(m.netTotal>=0?'var(--green)':'var(--danger)'):'');
+  const footEl=document.getElementById('camMarjFoot'); if(footEl) footEl.innerHTML=has?marjPill(m.netPct):'—';
+  // Kamera satırları
   const costs=m.costs;
-  (SHOPIFY.cameras||[]).forEach(c=>{
-    const el=document.getElementById('kar-'+c.name.replace(/\W/g,'_'));
-    if(!el)return;
-    const cost=costs[c.name]||0;
-    const marjEl=document.getElementById('marj-'+c.name.replace(/\W/g,'_'));
+  (SHOPIFY.cameras||[]).forEach((c,i)=>{
+    const cost=costs[c.name]||0, u=unitEcon(c.price,cost,true);
+    const kEl=document.getElementById('inv-c-kar-'+i), nEl=document.getElementById('inv-c-net-'+i), pEl=document.getElementById('inv-c-marj-'+i);
+    if(!kEl) return;
     if(cost>0){
-      const k=c.price-cost, pc=Math.round(k/c.price*100);
-      const kc=pc>=40?'var(--perf-great)':pc>=25?'var(--perf-good)':pc>=12?'var(--perf-ok)':pc>=0?'var(--perf-warn)':'var(--perf-bad)';
-      el.innerHTML=fmtTL(k)+' <small style="font-size:.65em;opacity:.6">%'+pc+'</small>';
-      el.style.color=kc;
-      if(marjEl){
-        const pcol=pc>=40?'rgba(48,209,88,.9)':pc>=25?'rgba(212,175,55,.9)':'rgba(255,69,58,.9)';
-        const pbg=pc>=40?'rgba(48,209,88,.12)':pc>=25?'rgba(212,175,55,.12)':'rgba(255,69,58,.12)';
-        marjEl.innerHTML='<span style="color:'+pcol+';background:'+pbg+';padding:2px 10px;border-radius:8px;font-weight:700;font-size:.72rem">%'+pc+'</span>';
-      }
-    }else{el.textContent='—';el.style.color='var(--t3)';if(marjEl)marjEl.innerHTML='<span style="color:var(--t3)">—</span>';}
+      kEl.innerHTML=signedTL(u.gross)+' <small style="font-size:.65em;opacity:.6">%'+u.grossPct+'</small>'; kEl.style.color=marjColor(u.grossPct);
+      nEl.textContent=signedTL(u.net); nEl.style.color=u.net>=0?'var(--green)':'var(--danger)';
+      nEl.title=`₺${fmt(u.price)} − KDV ₺${fmt(u.kdv)} − komisyon ₺${fmt(u.kom)} − kargo+kutu ₺${fmt(u.ops)} − maliyet ₺${fmt(u.cost)}`;
+      pEl.innerHTML=marjPill(u.netPct);
+    }else{ kEl.textContent='—'; kEl.style.color='var(--t3)'; nEl.textContent='—'; nEl.style.color='var(--t3)'; pEl.innerHTML=marjPill(null); }
+  });
+  // Aksesuar altlığı
+  const accs=SHOPIFY.accessories||[];
+  const accWith=accs.filter(a=>accCost(a)>0);
+  const accCostT=accWith.reduce((s,a)=>s+accCost(a)*stockQty(a),0);
+  const accSale=accWith.reduce((s,a)=>s+(+a.price||0)*stockQty(a),0);
+  const accNet=accWith.reduce((s,a)=>s+unitEcon(a.price,accCost(a),false).net*stockQty(a),0);
+  setTxt('accCostTotal', accWith.length?fmtTL(accCostT):'—');
+  setTxt('accNetTotal', accWith.length?signedTL(accNet)+' toplam':'—', accWith.length?(accNet>=0?'var(--green)':'var(--danger)'):'');
+  const am=document.getElementById('accMarjFoot'); if(am) am.innerHTML=accWith.length?marjPill(accSale>0?Math.round(accNet/accSale*100):0):'—';
+  accs.forEach((a,i)=>{
+    const u=unitEcon(a.price,accCost(a),false);
+    const nEl=document.getElementById('inv-a-net-'+i), pEl=document.getElementById('inv-a-marj-'+i);
+    if(!nEl) return;
+    if(accCost(a)>0){ nEl.textContent=signedTL(u.net); nEl.style.color=u.net>=0?'var(--green)':'var(--danger)'; pEl.innerHTML=marjPill(u.netPct); }
+    else { nEl.textContent='—'; nEl.style.color='var(--t3)'; pEl.innerHTML=marjPill(null); }
   });
 }
 
 // ─── INVENTORY ────────────────────────────────────────────
 function renderInventory() {
-  const cams=SHOPIFY.cameras, accs=SHOPIFY.accessories;
+  const cams=SHOPIFY.cameras||[], accs=SHOPIFY.accessories||[];
   const m=invMetrics(); // TEK kaynak — anasayfa Stok kartı da aynı değeri kullanır
-  const camVal=m.camValue, accVal=m.accValue, accQty=m.accUnits;
   counter(document.getElementById('inv-val'),m.stockValue,'₺');
   const ic=document.getElementById('inv-cam'); if(ic) ic.textContent=m.camCount;
-  const ia=document.getElementById('inv-acc'); if(ia) ia.textContent=accQty;
+  const ia=document.getElementById('inv-acc'); if(ia) ia.textContent=m.accUnits;
   const io=document.getElementById('inv-oos'); if(io) io.textContent=m.oos;
-  const ctEl=document.getElementById('camTitle'); if(ctEl) ctEl.textContent=`Kameralar (${cams.length})`;
-  const atEl=document.getElementById('accTitle'); if(atEl) atEl.textContent=`Aksesuarlar (${accQty} adet)`;
+  const ctEl=document.getElementById('camTitle'); if(ctEl) ctEl.textContent=`Kameralar (${m.camUnits} adet)`;
+  const atEl=document.getElementById('accTitle'); if(atEl) atEl.textContent=`Aksesuarlar (${m.accUnits} adet · ${accs.length} ürün)`;
   const costs=loadCamCosts();
+  const priceCell=x=>{
+    const old=+x.compare_at||0;
+    return `<span style="color:rgba(0,0,0,0.85);font-family:var(--mono)">${fmtTL(x.price)}</span>`+
+      (old>x.price?`<div style="font-size:.6rem;color:var(--t3);font-family:var(--mono)"><s>${fmtTL(old)}</s> · %${Math.round((old-x.price)/old*100)} indirim</div>`:'');
+  };
+  const nameCell=(x,showQty)=>{
+    const qty=showQty?stockQty(x):1, n=x.handle?`<a href="https://retrocameraland.com/products/${x.handle}" target="_blank" rel="noopener" style="color:var(--t1);text-decoration:none">${x.name}</a>`:x.name;
+    return `<td style="color:var(--t1);font-size:0.72rem">${n}${qty>1?` <span style="font-size:.6rem;color:var(--t3);font-family:var(--mono)">×${qty}</span>`:''}</td>`;
+  };
   const cbEl=document.getElementById('camBody');
   if(cbEl) cbEl.innerHTML=cams.map((c,i)=>{
-    const cost=costs[c.name]||0,kar=cost>0?c.price-cost:null,safeId=c.name.replace(/\W/g,'_');
-    const isAuto = c.cost && costs[c.name]===c.cost;
-    const badge = isAuto ? `<span title="Shopify'dan otomatik" style="font-size:0.46rem;background:rgba(48,209,88,0.12);color:var(--green);border-radius:4px;padding:1px 4px;margin-left:4px;vertical-align:middle;">AUTO</span>` : '';
-    const marjPct = cost > 0 ? Math.round((c.price - cost) / c.price * 100) : null;
-    const karColor = marjPct === null ? 'var(--t3)' : marjPct >= 40 ? 'var(--perf-great)' : marjPct >= 25 ? 'var(--perf-good)' : marjPct >= 12 ? 'var(--perf-ok)' : marjPct >= 0 ? 'var(--perf-warn)' : 'var(--perf-bad)';
-    const marjPill = marjPct===null
-      ? '<span style="color:var(--t3)">—</span>'
-      : '<span style="color:'+(marjPct>=40?'rgba(48,209,88,.9)':marjPct>=25?'rgba(212,175,55,.9)':'rgba(255,69,58,.9)')+';background:'+(marjPct>=40?'rgba(48,209,88,.12)':marjPct>=25?'rgba(212,175,55,.12)':'rgba(255,69,58,.12)')+';padding:2px 10px;border-radius:8px;font-weight:700;font-size:.72rem">%'+marjPct+'</span>';
-    return `<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${c.name}</td><td style="color:rgba(0,0,0,0.85);font-family:var(--mono)">${fmtTL(c.price)}</td><td><input class="cam-cost-input" type="number" placeholder="${isAuto?'auto':'gir'}" value="${cost>0?cost:''}" data-name="${c.name.replace(/"/g,'&quot;')}" oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);recalcAll()" style="${isAuto?'color:var(--perf-great);':''}">  ${badge}</td><td id="kar-${safeId}" style="font-family:var(--mono);color:${karColor}">${kar===null?'—':fmtTL(kar)+(marjPct!==null?' <small style="font-size:.65em;opacity:.6">%'+marjPct+'</small>':'')}</td><td id="marj-${safeId}" style="text-align:center;font-family:var(--mono)">${marjPill}</td></tr>`;
+    const cost=costs[c.name]||0;
+    const isAuto = c.cost>0 && costs[c.name]===c.cost;
+    const costCell = isAuto
+      ? `<span style="font-family:var(--mono);color:var(--t1)">${fmtTL(cost)}</span> <span title="Shopify ürün maliyetinden otomatik" style="font-size:0.46rem;background:rgba(48,209,88,0.12);color:var(--green);border-radius:4px;padding:1px 4px;margin-left:4px;vertical-align:middle;">SHOPIFY</span>`
+      : `<input class="cam-cost-input" type="number" placeholder="maliyet gir" value="${cost>0?cost:''}" data-name="${c.name.replace(/"/g,'&quot;')}" oninput="saveCamCost(this.dataset.name,parseFloat(this.value)||0);recalcAll()">`;
+    return `<tr><td class="cd">${i+1}</td>${nameCell(c,true)}<td>${priceCell(c)}</td><td>${costCell}</td><td id="inv-c-kar-${i}" style="font-family:var(--mono)">—</td><td id="inv-c-net-${i}" style="font-family:var(--mono);font-weight:600">—</td><td id="inv-c-marj-${i}" style="text-align:center;font-family:var(--mono)">—</td></tr>`;
   }).join('');
-  const ctTotal=document.getElementById('camTotal'); if(ctTotal) ctTotal.textContent=fmtTL(camVal);
-  updateCamTotals();
+  const ctTotal=document.getElementById('camTotal'); if(ctTotal) ctTotal.textContent=fmtTL(m.camValue);
   const abEl=document.getElementById('accBody');
-  if(abEl) abEl.innerHTML=accs.map((a,i)=>`<tr><td class="cd">${i+1}</td><td style="color:var(--t1);font-size:0.72rem">${a.name}</td><td class="cd">${fmtTL(a.price)}</td><td class="cd" style="text-align:center">${a.qty}</td><td class="cg">${fmtTL(a.price*a.qty)}</td></tr>`).join('');
-  const atTotal=document.getElementById('accTotal'); if(atTotal) atTotal.textContent=fmtTL(accVal);
-  const rev=SHOPIFY.monthly_revenue, lbl=SHOPIFY.monthly_labels;
-  const grn=document.getElementById('goalRevNote'); if(grn) grn.textContent=fmtTL(rev[rev.length-1])+' / ₺80K — '+lbl[lbl.length-1];
-  const gon=document.getElementById('goalOosNote'); if(gon) gon.textContent=SHOPIFY.out_of_stock+' varyant tükendi';
-  const revPct=Math.min(Math.round(rev[rev.length-1]/80000*100),100);
-  const oosPct=Math.min(Math.round(SHOPIFY.out_of_stock/150*100),100);
-  setTimeout(()=>{const gr=document.getElementById('goalRev');if(gr)gr.style.width=revPct+'%';const go=document.getElementById('goalOos');if(go)go.style.width=oosPct+'%';},400);
+  if(abEl) abEl.innerHTML=accs.map((a,i)=>{
+    const cost=accCost(a);
+    return `<tr><td class="cd">${i+1}</td>${nameCell(a,false)}<td>${priceCell(a)}</td><td style="font-family:var(--mono)">${cost>0?fmtTL(cost):'<span style="color:var(--t3)">Shopify\'da yok</span>'}</td><td class="cd" style="text-align:center">${stockQty(a)}</td><td class="cg">${fmtTL((+a.price||0)*stockQty(a))}</td><td id="inv-a-net-${i}" style="font-family:var(--mono);font-weight:600">—</td><td id="inv-a-marj-${i}" style="text-align:center;font-family:var(--mono)">—</td></tr>`;
+  }).join('');
+  const atTotal=document.getElementById('accTotal'); if(atTotal) atTotal.textContent=fmtTL(m.accValue);
+  const aq=document.getElementById('accQtyTotal'); if(aq) aq.textContent=m.accUnits;
+  updateCamTotals();
+  const rev=SHOPIFY.monthly_revenue||[], lbl=SHOPIFY.monthly_labels||[];
+  const grn=document.getElementById('goalRevNote'); if(grn) grn.textContent=fmtTL(rev[rev.length-1]||0)+' / ₺80K — '+(lbl[lbl.length-1]||'');
+  const gon=document.getElementById('goalOosNote'); if(gon) gon.textContent=`%${m.oosPct} · ${m.oos} tükenen / ${m.oos+cams.length+accs.length} varyant`;
+  const revPct=Math.min(Math.round((rev[rev.length-1]||0)/80000*100),100);
+  setTimeout(()=>{const gr=document.getElementById('goalRev');if(gr)gr.style.width=revPct+'%';const go=document.getElementById('goalOos');if(go)go.style.width=m.oosPct+'%';},400);
 }
 
 // ─── PROFIT ───  ESKİ sistem (renderProfit + COST_DEFAULTS + loadCostCfg) KALDIRILDI.
@@ -6425,6 +6778,7 @@ function initFinanceCosts() {
   set('cfg-kdv-rate', c.kdv_rate);
   set('cfg-kargo2', c.kargo_tl); set('cfg-kutu2', c.kutu_tl);
   set('cfg-iyzico2', c.iyzico_pct); set('cfg-shopify2', c.shopify_pct);
+  set('cfg-sabit2', c.sabit_aylik || 0);
 }
 
 function renderFinancePage() {
@@ -6470,14 +6824,18 @@ function renderFinancePage() {
   const totalStockCost  = camsWithCost.reduce((s,c) => s + camCosts[c.name], 0);
   const totalStockPrice = camsWithCost.reduce((s,c) => s + c.price, 0);
   const costRatio = totalStockPrice > 0 ? totalStockCost / totalStockPrice : 0;
-  // COGS = gelir × maliyet oranı (tahmini — sipariş bazlı kırılım olmadığında)
-  const cogs = camsWithCost.length > 0 ? Math.round(rev * costRatio) : 0;
+  // COGS = siparişlerde satılan ürünlerin GERÇEK Shopify maliyeti (+ maliyeti bilinmeyen satırlar için oran tahmini).
+  const cogsInfo = periodCogs(d, costRatio);
+  const cogs = cogsInfo.cogs;
+  // Aylık sabit gider × dönemin ay sayısı
+  const months = {'30d':1,'90d':3,'year':12}[finPeriod] || 1;
+  const sabitAylik = +cfg.sabit_aylik || 0, sabitGider = Math.round(sabitAylik * months);
   // Basit ortalama (gösterim amaçlı)
   const avgCamCost = camsWithCost.length > 0
     ? Math.round(camsWithCost.reduce((s,c) => s + camCosts[c.name], 0) / camsWithCost.length)
     : 0;
 
-  const totalCut = kdv + iyzico + shopifyFee + kargo + kutu + cogs;
+  const totalCut = kdv + iyzico + shopifyFee + kargo + kutu + cogs + sabitGider;
   const net = rev - totalCut;
   const margin = rev > 0 ? (net/rev*100).toFixed(1) : 0;
   const netPerOrd = orders > 0 ? Math.round(net/orders) : 0;
@@ -6493,7 +6851,7 @@ function renderFinancePage() {
   const ftc = document.getElementById('fin-total-cut'); if(ftc) ftc.textContent = '₺'+fmt(totalCut);
   const cutPct = rev>0?(totalCut/rev*100):0;
   const fcp = document.getElementById('fin-cut-pct');
-  if(fcp){fcp.textContent='Gelirin %'+cutPct.toFixed(1)+'i';fcp.style.color=perfColor(100-cutPct);} // kesintiler az = iyi
+  if(fcp){fcp.textContent='Gelirin %'+cutPct.toFixed(1)+' kadarı';fcp.style.color=perfColor(100-cutPct);} // kesintiler az = iyi
 
   // Gauge animasyonu
   setTimeout(() => {
@@ -6522,26 +6880,41 @@ function renderFinancePage() {
     ['fin-iyzico-total', iyzico, `₺${fmt(rev)} × %${iyzico_pct}`],
     ['fin-shopify-total', shopifyFee, `₺${fmt(rev)} × %${shopify_pct}`],
   ];
+  hints.push(['fin-sabit-total', sabitGider, sabitAylik>0 ? `₺${fmt(sabitAylik)} × ${months} ay` : 'Girilmedi — başabaş için gerekli']);
   hints.forEach(([id, val, hint]) => { const el=document.getElementById(id); if(el) el.textContent = val>0 ? `₺${fmt(val)} toplam · ${hint}` : hint; });
 
   // COGS & Başabaş
   const fcogs = document.getElementById('fin-cogs');
   if(fcogs) {
-    if(camsWithCost.length > 0) {
+    if(cogsInfo.real || camsWithCost.length > 0) {
       fcogs.textContent = '₺'+fmt(cogs);
-      fcogs.title = `${camsWithCost.length} kameranın ağırlıklı maliyet oranı %${(costRatio*100).toFixed(1)} × ₺${fmt(rev)} gelir`;
+      fcogs.title = cogsInfo.real
+        ? `Satılan ürünlerin Shopify maliyeti${cogsInfo.est>0?` (₺${fmt(cogsInfo.est)} maliyeti bilinmeyen satırlar için %${(costRatio*100).toFixed(0)} oranla tahmin)`:''}`
+        : `${camsWithCost.length} kameranın ağırlıklı maliyet oranı %${(costRatio*100).toFixed(1)} × ₺${fmt(rev)} gelir (tahmini)`;
     } else { fcogs.textContent = 'Maliyet girilmedi'; }
   }
-  const fgp = document.getElementById('fin-gross-profit'); if(fgp){const gp=rev-cogs-kdv;fgp.textContent='₺'+fmt(Math.max(gp,0));fgp.style.color=gp>=0?'var(--green)':'var(--danger)';}
+  const fcs = document.getElementById('fin-cogs-src');
+  if(fcs) fcs.textContent = cogsInfo.real ? (cogsInfo.est>0 ? 'Satılan ürünlerin Shopify maliyeti + kısmi tahmin' : 'Satılan ürünlerin Shopify maliyetinden') : 'Stok maliyet oranından tahmini';
+  const fgp = document.getElementById('fin-gross-profit'); if(fgp){const gp=rev-cogs-kdv;fgp.textContent=(gp<0?'-₺':'₺')+fmt(Math.abs(gp));fgp.style.color=gp>=0?'var(--green)':'var(--danger)';fgp.title='Gelir − KDV − satılan ürün maliyeti';}
+  // Başabaş: aylık sabit gideri karşılamak için gereken sipariş = sabit gider / sipariş başı katkı payı.
+  // Katkı payı = AOV − KDV − komisyon − kargo − kutu − ortalama ürün maliyeti (dönemin gerçek COGS'u / sipariş).
   const fbe = document.getElementById('fin-breakeven');
   const fbes = document.getElementById('fin-breakeven-sub');
-  if(fbe && avgCamCost>0) {
-    const fixedPerOrd = kargo_tl + kutu_tl + (iyzico_pct+shopify_pct)/100 * (d.aov||12000);
-    const netPerUnitRaw = (d.aov||12000) - avgCamCost - Math.round((d.aov||12000)*kdvRate/(100+kdvRate)) - fixedPerOrd;
-    const beOrders = netPerUnitRaw > 0 ? Math.ceil(500 / netPerUnitRaw) : null;
-    fbe.textContent = beOrders ? beOrders + ' sipariş' : 'Hesaplanamadı';
-    if(fbes) fbes.textContent = beOrders ? `₺${fmt(beOrders*(d.aov||12000))} aylık ciro hedefi` : 'Maliyet verisini gir';
-  } else if(fbe) { fbe.textContent='Maliyet girilmedi'; if(fbes) fbes.textContent='Stok sayfasından kamera maliyetlerini gir'; }
+  if(fbe){
+    const aov = orders>0 ? rev/orders : (d.aov||0);
+    const cogsPerOrd = orders>0 ? cogs/orders : aov*costRatio;
+    const katki = Math.round(aov - aov*kdvRate/(100+kdvRate) - aov*(iyzico_pct+shopify_pct)/100 - kargo_tl - kutu_tl - cogsPerOrd);
+    if(aov<=0){ fbe.textContent='Sipariş yok'; if(fbes) fbes.textContent='Dönemde sipariş olmadığı için hesaplanamadı'; }
+    else if(katki<=0){ fbe.textContent='Zarar'; fbe.style.color='var(--danger)'; if(fbes) fbes.textContent=`Sipariş başı katkı payı -₺${fmt(Math.abs(katki))}`; }
+    else if(sabitAylik>0){
+      const be=Math.ceil(sabitAylik/katki);
+      fbe.textContent=be+' sipariş / ay'; fbe.style.color='var(--gold)';
+      if(fbes) fbes.textContent=`₺${fmt(Math.round(be*aov))} aylık ciro · sipariş başı katkı ₺${fmt(katki)}`;
+    } else {
+      fbe.textContent='Sipariş başı katkı ₺'+fmt(katki); fbe.style.color='var(--gold)';
+      if(fbes) fbes.textContent='Aylık sabit gideri girersen başabaş sipariş sayısı hesaplanır';
+    }
+  }
 
   // Sipariş başına analiz
   counter(document.getElementById('fin-aov'), d.aov, '₺');
@@ -6560,7 +6933,8 @@ function renderFinancePage() {
     {label:`Shopify %${shopify_pct}`, val:-shopifyFee, color:'#FF9F0A', type:'minus'},
     {label:`Kargo (${orders}×₺${kargo_tl})`, val:-kargo, color:'#6E6E73', type:'minus'},
     {label:`Kutu (${orders}×₺${kutu_tl})`, val:-kutu, color:'#6E6E73', type:'minus'},
-    {label:camsWithCost.length>0?`COGS (%${(costRatio*100).toFixed(0)} × gelir)`:'COGS (maliyet girilmedi)', val:-cogs, color:'#BF5AF2', type:'minus'},
+    {label:cogsInfo.real?'COGS (satılan ürün maliyeti)':camsWithCost.length>0?`COGS (%${(costRatio*100).toFixed(0)} × gelir, tahmini)`:'COGS (maliyet girilmedi)', val:-cogs, color:'#BF5AF2', type:'minus'},
+    ...(sabitGider>0?[{label:`Sabit gider (${months} ay)`, val:-sabitGider, color:'#5E5CE6', type:'minus'}]:[]),
     {label:'Net Kâr', val:net, color:net>=0?'#30D158':'#FF453A', type:'total'},
   ];
   const maxVal = rev;
@@ -6587,7 +6961,7 @@ function renderFinancePage() {
 
   // ── Gider Özeti (sum-* kartları doğrudan doldur) ──
   { const s=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent='₺'+fmt(v);};
-    s('sum-kdv',kdv); s('sum-iyzico',iyzico+shopifyFee); s('sum-kargo',kargo+kutu); s('sum-total',totalCut);
+    s('sum-kdv',kdv); s('sum-iyzico',iyzico+shopifyFee); s('sum-kargo',kargo+kutu+sabitGider); s('sum-total',totalCut);
     const sn=document.getElementById('sum-net');
     if(sn){sn.textContent=(net>=0?'₺':'-₺')+fmt(Math.abs(net));sn.style.color=net>=0?'rgba(48,209,88,.85)':'rgba(255,69,58,.85)';}
   }
@@ -6600,6 +6974,7 @@ function renderFinancePage() {
     {label:`Kargo`, val:kargo, color:'#8E8E93'},
     {label:`Kutu`, val:kutu, color:'#6E6E73'},
     {label:`COGS`, val:cogs, color:'#BF5AF2'},
+    {label:`Sabit Gider`, val:sabitGider, color:'#5E5CE6'},
   ].filter(c => c.val > 0);
   const donutTotal = costItems.reduce((s,c)=>s+c.val,0);
   const cdtEl = document.getElementById('finCostDonutTotal'); if(cdtEl) cdtEl.textContent='₺'+fmt(donutTotal);
@@ -6623,7 +6998,7 @@ function renderFinancePage() {
   // ── Kesinti mini-meter ──
   const cutMeterEl = document.getElementById('fin-cut-meter');
   if (cutMeterEl) {
-    const items = [{lbl:'KDV',val:kdv,c:'var(--danger)'},{lbl:'Komisyon',val:iyzico+shopifyFee,c:'var(--warn)'},{lbl:'Operasyon',val:kargo+kutu,c:'var(--t2)'},{lbl:'COGS',val:cogs,c:'var(--purple)'}].filter(i=>i.val>0);
+    const items = [{lbl:'KDV',val:kdv,c:'var(--danger)'},{lbl:'Komisyon',val:iyzico+shopifyFee,c:'var(--warn)'},{lbl:'Operasyon',val:kargo+kutu+sabitGider,c:'var(--t2)'},{lbl:'COGS',val:cogs,c:'var(--purple)'}].filter(i=>i.val>0);
     cutMeterEl.innerHTML = items.map(i=>`<div class="kdv-meter-row"><span class="lbl">${i.lbl}</span><span class="val" style="color:${i.c}">₺${fmt(i.val)}</span></div>`).join('');
   }
 
@@ -6653,12 +7028,14 @@ function monthlyProfitRows() {
     const iyzico = Math.round(rev * cfg.iyzico_pct / 100);
     const shopify = Math.round(rev * cfg.shopify_pct / 100);
     const komisyon = iyzico + shopify;
-    const kargo = orders * cfg.kargo_tl, kutu = orders * cfg.kutu_tl, sabit = kargo + kutu;
-    const cogs = cm.count > 0 ? Math.round(rev * cm.costRatio) : 0;
+    const sabitGider = Math.round(+cfg.sabit_aylik || 0);
+    const kargo = orders * cfg.kargo_tl, kutu = orders * cfg.kutu_tl, sabit = kargo + kutu + sabitGider;
+    const mc = SHOPIFY.monthly_cogs, mu = SHOPIFY.monthly_cogs_unmatched_rev;
+    const cogs = periodCogs(mc ? { revenue: rev, cogs: +mc[i] || 0, cogs_unmatched_rev: mu ? (+mu[i] || 0) : 0 } : { revenue: rev }, cm.costRatio).cogs;
     const gider = komisyon + sabit + cogs;
     const net = rev - kdv - gider;
     const marj = rev > 0 ? Math.round(net / rev * 100) : 0;
-    return { lbl, orders, rev, kdv, iyzico, shopify, komisyon, kargo, kutu, sabit, cogs, gider, net, marj };
+    return { lbl, orders, rev, kdv, iyzico, shopify, komisyon, kargo, kutu, sabitGider, sabit, cogs, gider, net, marj };
   });
 }
 
@@ -9668,6 +10045,71 @@ function finAnimateKPIs() {
   #page-bulucu .bul-toggle .bt-count{font-size:.7rem;font-weight:700;color:var(--t3);background:rgba(0,0,0,0.07);padding:2px 9px;border-radius:100px}
   #page-bulucu .bul-listwrap[hidden]{display:none}
   #page-bulucu .bul-listwrap{margin-top:14px}
+
+/* ── Yeni Ürün sayfası ── */
+.ny-wrap{display:grid;gap:18px;grid-template-columns:1fr;}
+@media(min-width:1100px){.ny-wrap{grid-template-columns:1.15fr .85fr;align-items:start;}}
+.ny-card{padding:22px 24px;}
+.ny-head{margin-bottom:18px;}
+.ny-h{font-size:17px;font-weight:650;letter-spacing:-.01em;}
+.ny-hint{font-size:12.5px;opacity:.5;margin-top:3px;}
+.ny-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.ny-grid-3{grid-template-columns:1fr 1fr;}
+@media(min-width:760px){.ny-grid-3{grid-template-columns:1fr 1fr 1fr 1fr;}}
+@media(max-width:560px){.ny-grid{grid-template-columns:1fr;}.ny-grid-3{grid-template-columns:1fr 1fr;}}
+.ny-span2{grid-column:1/-1;}
+.ny-f{display:flex;flex-direction:column;gap:6px;min-width:0;}
+.ny-f>span{font-size:12px;font-weight:600;letter-spacing:.01em;opacity:.66;}
+.ny-f>span b{color:var(--red);font-weight:700;}
+.ny-f>span i{font-style:normal;font-weight:400;opacity:.6;}
+.ny-f input,.ny-f select,.ny-f textarea{
+  font:inherit;font-size:14.5px;padding:10px 12px;border-radius:var(--r-xs);
+  border:1px solid rgba(0,0,0,.12);background:rgba(255,255,255,.9);color:inherit;
+  outline:none;transition:border-color .16s,box-shadow .16s;width:100%;}
+.ny-f textarea{resize:vertical;line-height:1.5;}
+.ny-f input:focus,.ny-f select:focus,.ny-f textarea:focus{
+  border-color:rgba(255,59,48,.55);box-shadow:0 0 0 3px var(--accent-soft);}
+.ny-range{display:flex;align-items:center;gap:12px;}
+.ny-range input[type=range]{flex:1;accent-color:var(--red);padding:0;border:0;background:none;}
+.ny-range output{font-variant-numeric:tabular-nums;font-size:19px;font-weight:700;min-width:44px;text-align:right;}
+
+.ny-actions{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-top:18px;}
+.ny-btn{font:inherit;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:999px;cursor:pointer;
+  border:1px solid rgba(0,0,0,.14);background:rgba(255,255,255,.92);color:inherit;
+  transition:transform var(--dur-press) var(--ease-spring),background .16s,border-color .16s;}
+.ny-btn:hover{border-color:rgba(0,0,0,.28);}
+.ny-btn:active{transform:scale(.97);}
+.ny-btn-p{background:var(--red);border-color:var(--red);color:#fff;}
+.ny-btn-p:hover{filter:brightness(1.05);border-color:var(--red);}
+.ny-btn-g{opacity:.62;}
+.ny-msg{font-size:12.5px;opacity:0;transition:opacity .25s;color:var(--green);font-weight:600;}
+.ny-msg.on{opacity:1;}
+.ny-out{margin-top:16px;padding:16px 18px;border-radius:var(--r-sm);white-space:pre-wrap;word-break:break-word;
+  background:rgba(0,0,0,.045);border:1px solid rgba(0,0,0,.09);font-size:12.5px;line-height:1.62;
+  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;max-height:340px;overflow:auto;}
+
+.ny-kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0 16px;}
+@media(min-width:760px){.ny-kpis{grid-template-columns:repeat(4,1fr);}}
+.ny-kpi{padding:13px 14px;border-radius:var(--r-xs);background:rgba(0,0,0,.035);border:1px solid rgba(0,0,0,.07);}
+.ny-kpi span{display:block;font-size:11.5px;opacity:.58;margin-bottom:5px;}
+.ny-kpi b{font-size:18px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+.ny-kpi b.neg{color:var(--danger);}
+.ny-kpi-hi{background:linear-gradient(135deg,rgba(52,199,89,.14),rgba(52,199,89,.05));border-color:rgba(52,199,89,.3);}
+.ny-kpi-hi b{color:var(--perf-great);}
+.ny-kpi-hi.loss{background:linear-gradient(135deg,rgba(255,59,48,.14),rgba(255,59,48,.05));border-color:rgba(255,59,48,.3);}
+.ny-kpi-hi.loss b{color:var(--danger);}
+
+.ny-bars{display:flex;height:42px;border-radius:12px;overflow:hidden;background:rgba(0,0,0,.05);}
+.ny-bar{position:relative;height:100%;width:0;transition:width .75s var(--ease-out);
+  display:flex;align-items:center;justify-content:center;}
+.ny-bar span{font-size:11px;font-weight:700;color:#fff;opacity:0;transition:opacity .3s .35s;
+  text-shadow:0 1px 2px rgba(0,0,0,.35);white-space:nowrap;padding:0 4px;}
+.ny-bar.show span{opacity:1;}
+.ny-legend{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;font-size:11.5px;opacity:.62;}
+.ny-legend span{display:inline-flex;align-items:center;gap:6px;}
+.ny-legend i{width:9px;height:9px;border-radius:3px;display:inline-block;}
+@media(prefers-reduced-motion:reduce){.ny-bar{transition:none;}.ny-bar span{transition:none;}}
+
 </style>
 <script>
 (function(){
@@ -10028,6 +10470,125 @@ window.renderBloggerBeyzPage = function(){
     catch(e){}
   }
 };
+
+/* ── Yeni Ürün sayfası ── */
+function nyFmt(n){ return new Intl.NumberFormat('tr-TR',{maximumFractionDigits:0}).format(Math.round(n)) + ' TL'; }
+
+function nyBuild(){
+  var g = function(id){ var e=document.getElementById(id); return e ? e.value.trim() : ''; };
+  var model = g('nyModel');
+  if(!model){ nyFlash('Model adı gerekli'); return; }
+  var box = g('nyBox').split('\n').map(function(s){ return s.trim(); }).filter(Boolean);
+  var lines = [];
+  lines.push('### RCL YENI URUN ###');
+  lines.push('MODEL: ' + model);
+  if(g('nyColor')) lines.push('RENK: ' + g('nyColor'));
+  lines.push('TIP: ' + g('nyType'));
+  lines.push('KONDISYON: ' + g('nyScore'));
+  if(g('nyPrice')) lines.push('FIYAT: ' + g('nyPrice'));
+  lines.push('KONDISYON_NOTU: ' + g('nyCond').replace(/\s*\n\s*/g,' '));
+  lines.push('KUTU_ICERIGI:');
+  box.forEach(function(b){ lines.push('- ' + b); });
+  lines.push('DEGERLENDIRME: ' + g('nyNote').replace(/\s*\n\s*/g,' '));
+  lines.push('### SON ###');
+  var out = document.getElementById('nyOut');
+  out.textContent = lines.join('\n');
+  out.hidden = false;
+  nyFlash('Çıktı hazır');
+}
+
+function nyCopy(){
+  var out = document.getElementById('nyOut');
+  if(out.hidden || !out.textContent){ nyBuild(); }
+  if(!out.textContent) return;
+  var done = function(){ nyFlash('Kopyalandı'); };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(out.textContent).then(done).catch(nyCopyFallback);
+  } else { nyCopyFallback(); }
+  function nyCopyFallback(){
+    var t=document.createElement('textarea'); t.value=out.textContent;
+    document.body.appendChild(t); t.select();
+    try{ document.execCommand('copy'); done(); }catch(e){}
+    document.body.removeChild(t);
+  }
+}
+
+function nyClear(){
+  ['nyModel','nyColor','nyCond','nyBox','nyNote','nyPrice'].forEach(function(id){
+    var e=document.getElementById(id); if(e) e.value='';
+  });
+  var o=document.getElementById('nyOut'); o.hidden=true; o.textContent='';
+  nyFlash('Temizlendi');
+}
+
+function nyFlash(msg){
+  var m=document.getElementById('nyMsg'); if(!m) return;
+  m.textContent=msg; m.classList.add('on');
+  clearTimeout(m._t); m._t=setTimeout(function(){ m.classList.remove('on'); }, 1900);
+}
+
+function nyCalc(){
+  var v = function(id){ var e=document.getElementById(id); return e ? (parseFloat(e.value)||0) : 0; };
+  var sale=v('nyKSale'), cost=v('nyKCost'), ship=v('nyKShip'), pack=v('nyKPack');
+  var feePct=v('nyKFee'), vatPct=v('nyKVat'), misc=v('nyKMisc'), fix=v('nyKFix');
+
+  var vat  = sale - (sale / (1 + vatPct/100));   // KDV dahil fiyattan KDV payı
+  var net  = sale - vat;                          // KDV hariç gelir
+  var fee  = sale * feePct/100;                   // komisyon brüt tutar üzerinden
+  var other = misc + fix;
+  var expense = cost + ship + pack + fee + other;
+  var profit = net - expense;
+  var margin = sale > 0 ? (profit / sale * 100) : 0;
+
+  var set=function(id,txt,cls){ var e=document.getElementById(id); if(!e) return;
+    e.textContent=txt; if(cls!==undefined){ e.className=cls; } };
+  set('nyRNet', nyFmt(net));
+  set('nyRCost', nyFmt(expense + vat), 'neg');
+  set('nyRProfit', nyFmt(profit));
+  set('nyRMargin', (margin>=0?'%':'-%') + Math.abs(margin).toFixed(1));
+
+  var hi=document.querySelector('.ny-kpi-hi');
+  if(hi) hi.classList.toggle('loss', profit < 0);
+
+  // Satış fiyatının nereye gittiği: kâr + giderler + KDV
+  var parts=[
+    {k:'Kâr',      v:Math.max(profit,0), c:'var(--green)'},
+    {k:'Alış',     v:cost,               c:'#8E8E93'},
+    {k:'KDV',      v:vat,                c:'#FF9500'},
+    {k:'Kargo',    v:ship+pack,          c:'#007AFF'},
+    {k:'Komisyon', v:fee,                c:'#AF52DE'},
+    {k:'Diğer',    v:other + Math.max(-profit,0), c:'#FF3B30'}
+  ];
+  var total=parts.reduce(function(a,b){ return a+b.v; },0) || 1;
+  var bars=document.getElementById('nyBars'); if(!bars) return;
+  bars.innerHTML='';
+  parts.forEach(function(p){
+    if(p.v<=0) return;
+    var pct=p.v/total*100;
+    var d=document.createElement('div');
+    d.className='ny-bar'; d.style.background=p.c;
+    d.title=p.k+': '+nyFmt(p.v)+' (%'+pct.toFixed(1)+')';
+    d.innerHTML='<span>'+(pct>11?p.k:'')+'</span>';
+    bars.appendChild(d);
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){ d.style.width=pct+'%'; d.classList.add('show'); });
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  var s=document.getElementById('nyScore'), o=document.getElementById('nyScoreOut');
+  if(s&&o){ s.addEventListener('input', function(){ o.textContent=parseFloat(s.value).toFixed(1); }); }
+  document.querySelectorAll('.nyk').forEach(function(e){ e.addEventListener('input', nyCalc); });
+  // fiyat alanı kârlılık hesabını da beslesin
+  var p=document.getElementById('nyPrice');
+  if(p) p.addEventListener('input', function(){
+    var k=document.getElementById('nyKSale');
+    if(k && p.value){ k.value=p.value; nyCalc(); }
+  });
+  nyCalc();
+});
+
 </script>
 
 </body>

@@ -156,21 +156,27 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-30T17:04:33",
+  "updated_at": "2026-09-30T17:42:27",
   "period_30d": {
     "revenue": 33709,
     "orders": 4,
-    "aov": 8427
+    "aov": 8427,
+    "cogs": 0,
+    "cogs_unmatched_rev": 33409
   },
   "period_90d": {
     "revenue": 86989,
     "orders": 10,
-    "aov": 8699
+    "aov": 8699,
+    "cogs": 0,
+    "cogs_unmatched_rev": 86239
   },
   "period_year": {
     "revenue": 86989,
     "orders": 10,
-    "aov": 8699
+    "aov": 8699,
+    "cogs": 0,
+    "cogs_unmatched_rev": 86239
   },
   "customers_total": 1052,
   "monthly_labels": [
@@ -214,6 +220,34 @@ const SHOPIFY = {
     0,
     6,
     4
+  ],
+  "monthly_cogs": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "monthly_cogs_unmatched_rev": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    52830,
+    33409
   ],
   "channels": [
     {
@@ -298,117 +332,207 @@ const SHOPIFY = {
   "cameras": [
     {
       "name": "Panasonic Lumix DC-TZ91",
-      "price": 28490
+      "price": 28490,
+      "qty": 1,
+      "compare_at": 34990,
+      "cost": 17000,
+      "handle": "panasonic-lumix-dc-tz91"
     },
     {
       "name": "Samsung WB350F",
-      "price": 19490
-    },
-    {
-      "name": "Canon PowerShot G7",
-      "price": 18490
+      "price": 19490,
+      "qty": 1,
+      "cost": 6000,
+      "handle": "samsung-wb350f"
     },
     {
       "name": "Olympus PEN E-PL1",
-      "price": 18490
+      "price": 18490,
+      "qty": 1,
+      "compare_at": 23000,
+      "cost": 4500,
+      "handle": "olympus-pen-e-pl1-25mm"
     },
     {
-      "name": "Olympus VR-340",
-      "price": 17990
+      "name": "Canon PowerShot G7",
+      "price": 16490,
+      "qty": 1,
+      "compare_at": 18490,
+      "cost": 13500,
+      "handle": "canon-powershot-g7"
     },
     {
       "name": "Samsung NX2000",
-      "price": 16490
+      "price": 16490,
+      "qty": 1,
+      "cost": 8000,
+      "handle": "samsung-nx2000"
+    },
+    {
+      "name": "Olympus VR-340",
+      "price": 15490,
+      "qty": 1,
+      "compare_at": 17990,
+      "cost": 7000,
+      "handle": "olympus-vr-340"
     },
     {
       "name": "Fujifilm FinePix Z700 EXR",
-      "price": 15490
+      "price": 14490,
+      "qty": 1,
+      "compare_at": 15490,
+      "cost": 5700,
+      "handle": "fujifilm-finepix-z700-exr"
     },
     {
       "name": "Fujifilm FinePix Z700EXR",
-      "price": 14490
-    },
-    {
-      "name": "Sanyo Xacti VPC-C5",
-      "price": 13490
-    },
-    {
-      "name": "Lumix DMC-FT10 (Waterproof)",
-      "price": 11990
-    },
-    {
-      "name": "Canon IXUS i",
-      "price": 11490
-    },
-    {
-      "name": "Casio Exilim EX-Z110",
-      "price": 11490
-    },
-    {
-      "name": "Fujifilm FinePix 4700 Zoom",
-      "price": 11490
-    },
-    {
-      "name": "Sanyo Xacti CG20",
-      "price": 11490
+      "price": 14490,
+      "qty": 1,
+      "cost": 7000,
+      "handle": "fujifilm-finepix-z700exr"
     },
     {
       "name": "Sony Cyber-shot DSC-T9",
-      "price": 11490
+      "price": 12490,
+      "qty": 1,
+      "cost": 3800,
+      "handle": "sony-cyber-shot-dsc-t9"
     },
     {
-      "name": "Casio Exilim EX-Z4",
-      "price": 10490
+      "name": "Lumix DMC-FT10 (Waterproof)",
+      "price": 11990,
+      "qty": 1,
+      "compare_at": 15490,
+      "cost": 4800,
+      "handle": "lumix-dmc-ft10"
+    },
+    {
+      "name": "Canon IXUS i",
+      "price": 11490,
+      "qty": 1,
+      "cost": 3500,
+      "handle": "canon-ixus-i"
+    },
+    {
+      "name": "Casio Exilim EX-Z110",
+      "price": 11490,
+      "qty": 1,
+      "cost": 3450,
+      "handle": "casio-exilim-ex-z110"
+    },
+    {
+      "name": "Fujifilm FinePix 4700 Zoom",
+      "price": 11490,
+      "qty": 1,
+      "compare_at": 16490,
+      "cost": 5500,
+      "handle": "fujifilm-finepix-4700-zoom"
+    },
+    {
+      "name": "Sanyo Xacti CG20",
+      "price": 11490,
+      "qty": 1,
+      "compare_at": 14900,
+      "cost": 4000,
+      "handle": "sanyo-xacti-cg20"
+    },
+    {
+      "name": "Sanyo Xacti VPC-C5",
+      "price": 11490,
+      "qty": 1,
+      "compare_at": 13490,
+      "cost": 2500,
+      "handle": "sanyo-xacti-vpc-c5"
     },
     {
       "name": "Sanyo Xacti VPC-HD1",
-      "price": 10490
+      "price": 10490,
+      "qty": 1,
+      "compare_at": 14900,
+      "cost": 2200,
+      "handle": "sanyo-xacti-vpc-hd1"
+    },
+    {
+      "name": "Casio Exilim EX-Z4",
+      "price": 9990,
+      "qty": 1,
+      "compare_at": 11490,
+      "cost": 4000,
+      "handle": "casio-exilim-ex-z4"
     },
     {
       "name": "Samsung ST10",
-      "price": 9490
-    },
-    {
-      "name": "Sanyo Xacti VPC-J4EX",
-      "price": 8990
+      "price": 9490,
+      "qty": 1,
+      "compare_at": 10490,
+      "cost": 4500,
+      "handle": "samsung-st10-dokunmatik-dijital-kamera-siyah"
     },
     {
       "name": "HP Photosmart R827",
-      "price": 8900
+      "price": 8900,
+      "qty": 1,
+      "compare_at": 9900,
+      "cost": 3500,
+      "handle": "hp-photosmart-r827"
     },
     {
       "name": "Traveler DC-830",
-      "price": 8490
+      "price": 8490,
+      "qty": 1,
+      "compare_at": 12000,
+      "cost": 3100,
+      "handle": "traveler-dc-830"
+    },
+    {
+      "name": "Sanyo Xacti VPC-J4EX",
+      "price": 7490,
+      "qty": 1,
+      "compare_at": 8990,
+      "cost": 3500,
+      "handle": "sanyo-xacti-vpc-j4ex"
     }
   ],
   "accessories": [
     {
       "name": "Type-C ve USB 2.0 SD-MicroSD TF Kart Okuyucu",
       "price": 1490,
-      "qty": 2
+      "qty": 2,
+      "cost": 329,
+      "handle": "microsd-sd-kart-okuyucu-yuksek-hizli-tasinabilir-kart-okuma-adaptoru"
     },
     {
       "name": "Universal Kamera Batarya Şarj Cihazı",
       "price": 649,
-      "qty": 4
+      "qty": 4,
+      "cost": 150,
+      "handle": "universal-kamera-batarya-sarj-cihaz"
     },
     {
       "name": "Y2K Digicam Fotoğraf/Video Aktarıcı - xD, CF, SD, MS Destekli All-in-One Kart Okuyucu",
       "price": 790,
-      "qty": 2
+      "qty": 2,
+      "compare_at": 1249,
+      "cost": 189,
+      "handle": "y2k-digicam-fotograf-video-aktarici-xd-cf-sd-ms-destekli-all-in-one-kart-okuyucu"
     },
     {
       "name": "USB-C 3'ü 1 Arada Kart Okuyucu — SD / MicroSD / USB",
       "price": 690,
-      "qty": 2
+      "qty": 2,
+      "cost": 150,
+      "handle": "usb-c-3-in-1-kart-okuyucu-sd-microsd"
     },
     {
       "name": "Ulanzi VLOG Tripod",
       "price": 990,
-      "qty": 1
+      "qty": 1,
+      "compare_at": 1100,
+      "cost": 500,
+      "handle": "ulanzi-vlog-tripod"
     }
   ],
-  "out_of_stock": 104
+  "out_of_stock": 102
 };
 /* ─── SHOPIFY DATA END ─── */
 
