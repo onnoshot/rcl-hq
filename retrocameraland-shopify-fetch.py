@@ -96,7 +96,8 @@ def fetch_inventory_costs(inventory_item_ids):
 
 
 def fetch_inventory():
-    data = shopify_get("products.json?limit=250&fields=id,title,variants")
+    # Sadece AKTIF urunler — taslak/arsiv urunler stok degerini sisirmesin.
+    data = shopify_get("products.json?limit=250&status=active&fields=id,title,handle,product_type,variants")
     cameras, accessories, out_of_stock = [], [], 0
     inv_item_ids = []
 
@@ -108,13 +109,18 @@ def fetch_inventory():
             price = float(v.get("price", 0))
             name  = p["title"]
             inv_id = v.get("inventory_item_id")
-            if inv_id:
-                inv_item_ids.append(inv_id)
             if qty <= 0:
                 out_of_stock += 1
                 continue
-            is_acc = any(kw in name.lower() for kw in ACC_KEYWORDS)
-            item = {"name": name, "price": price, "qty": qty, "inv_item_id": inv_id}
+            if inv_id:
+                inv_item_ids.append(inv_id)
+            ptype = (p.get("product_type") or "").lower()
+            is_acc = ptype == "aksesuar" or (ptype != "digital camera" and any(kw in name.lower() for kw in ACC_KEYWORDS))
+            compare = float(v.get("compare_at_price") or 0)
+            item = {"name": name, "price": price, "qty": qty, "inv_item_id": inv_id,
+                    "handle": p.get("handle", "")}
+            if compare > price:
+                item["compare_at"] = compare
             raw_items.append((is_acc, item))
 
     # Maliyetleri çek
@@ -125,14 +131,41 @@ def fetch_inventory():
         inv_id = item.pop("inv_item_id", None)
         cost = costs.get(inv_id)
         if cost is not None:
-            item["cost"] = int(cost)
+            item["cost"] = int(round(cost))
         (accessories if is_acc else cameras).append(item)
 
     cameras.sort(key=lambda x: -x["price"])
     accessories.sort(key=lambda x: -(x["price"] * x["qty"]))
-    cost_count = sum(1 for c in cameras if c.get("cost"))
-    log(f"  {len(cameras)} kamera, {cost_count} tanesinde maliyet bulundu")
+    cost_count = sum(1 for c in cameras + accessories if c.get("cost"))
+    log(f"  {len(cameras)} kamera, {len(accessories)} aksesuar — {cost_count} kalemde maliyet bulundu")
     return cameras, accessories, out_of_stock
+
+
+def fetch_variant_costs():
+    """TUM urunlerin (satilip arsivlenenler dahil) variant_id -> birim maliyet haritasi."""
+    data = shopify_get("products.json?limit=250&fields=id,variants")
+    var_to_inv = {v["id"]: v.get("inventory_item_id") for p in data.get("products", []) for v in p["variants"]}
+    inv_costs = fetch_inventory_costs([i for i in var_to_inv.values() if i])
+    return {vid: inv_costs[iid] for vid, iid in var_to_inv.items() if iid in inv_costs}
+
+
+def annotate_order_cogs(orders, variant_costs):
+    """Her siparise gercek satilan urun maliyeti (_cogs) ve maliyeti bilinmeyen satir cirosu (_unmatched) ekler."""
+    matched = total = 0
+    for o in orders:
+        cogs = unmatched = 0.0
+        for li in o.get("line_items", []):
+            qty = int(li.get("quantity") or 0)
+            line_rev = float(li.get("price") or 0) * qty
+            cost = variant_costs.get(li.get("variant_id"))
+            total += 1
+            if cost is not None:
+                cogs += cost * qty
+                matched += 1
+            else:
+                unmatched += line_rev
+        o["_cogs"], o["_unmatched"] = cogs, unmatched
+    log(f"  Satilan urun maliyeti: {matched}/{total} satirda maliyet bulundu")
 
 
 def classify_channel(referring_site):
@@ -195,18 +228,24 @@ def calc_period(orders, days):
         o["created_at"].replace("Z", "+00:00")) >= cutoff]
     rev = sum(float(o["total_price"]) for o in subset)
     cnt = len(subset)
-    return {"revenue": round(rev), "orders": cnt, "aov": round(rev / cnt) if cnt else 0}
+    return {"revenue": round(rev), "orders": cnt, "aov": round(rev / cnt) if cnt else 0,
+            "cogs": round(sum(o.get("_cogs", 0) for o in subset)),
+            "cogs_unmatched_rev": round(sum(o.get("_unmatched", 0) for o in subset))}
 
 
 def calc_monthly(orders):
     now = datetime.now(timezone.utc)
     monthly_rev = defaultdict(float)
     monthly_cnt = defaultdict(int)
+    monthly_cogs = defaultdict(float)
+    monthly_unm = defaultdict(float)
     for o in orders:
         dt  = datetime.fromisoformat(o["created_at"].replace("Z", "+00:00"))
         key = dt.strftime("%Y-%m")
         monthly_rev[key] += float(o["total_price"])
         monthly_cnt[key] += 1
+        monthly_cogs[key] += o.get("_cogs", 0)
+        monthly_unm[key] += o.get("_unmatched", 0)
 
     months = []
     for i in range(11, -1, -1):
@@ -221,7 +260,9 @@ def calc_monthly(orders):
     labels  = [f"{MONTH_TR[k[5:7]]} {k[2:4]}" for k in months]
     revenue = [round(monthly_rev.get(k, 0)) for k in months]
     cnt     = [monthly_cnt.get(k, 0) for k in months]
-    return labels, revenue, cnt
+    cogs    = [round(monthly_cogs.get(k, 0)) for k in months]
+    unm     = [round(monthly_unm.get(k, 0)) for k in months]
+    return labels, revenue, cnt, cogs, unm
 
 
 def calc_recent_orders(orders, n=10):
@@ -234,20 +275,28 @@ def calc_recent_orders(orders, n=10):
     return result
 
 
-def cam_only(item):
-    r = {"name": item["name"], "price": int(item["price"])}
+def _stock_item(item):
+    r = {"name": item["name"], "price": int(round(item["price"])), "qty": int(item["qty"])}
+    if item.get("compare_at"):
+        r["compare_at"] = int(round(item["compare_at"]))
     if item.get("cost"):
         r["cost"] = int(item["cost"])
+    if item.get("handle"):
+        r["handle"] = item["handle"]
     return r
 
 
+def cam_only(item):
+    return _stock_item(item)
+
+
 def acc_only(item):
-    return {"name": item["name"], "price": int(item["price"]), "qty": item["qty"]}
+    return _stock_item(item)
 
 
 def build_data_block(orders, customers, cameras, accessories, out_of_stock):
     now_iso  = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
-    labels, monthly_rev, monthly_orders = calc_monthly(orders)
+    labels, monthly_rev, monthly_orders, monthly_cogs, monthly_unm = calc_monthly(orders)
     data = {
         "updated_at":      now_iso,
         "period_30d":      calc_period(orders, 30),
@@ -257,6 +306,8 @@ def build_data_block(orders, customers, cameras, accessories, out_of_stock):
         "monthly_labels":  labels,
         "monthly_revenue": monthly_rev,
         "monthly_orders":  monthly_orders,
+        "monthly_cogs":    monthly_cogs,
+        "monthly_cogs_unmatched_rev": monthly_unm,
         "channels":        calc_channels(orders),
         "recent_orders":   calc_recent_orders(orders),
         "cameras":         [cam_only(c) for c in cameras],
@@ -289,10 +340,13 @@ def main():
 
     log("Stok çekiliyor...")
     cameras, accessories, out_of_stock = fetch_inventory()
-    cam_val = sum(c["price"] for c in cameras)
+    cam_val = sum(c["price"] * c["qty"] for c in cameras)
     acc_val = sum(a["price"] * a["qty"] for a in accessories)
     log(f"  {len(cameras)} kamera + {sum(a['qty'] for a in accessories)} aksesuar — ₺{cam_val+acc_val:,.0f}")
     log(f"  {out_of_stock} tükenen varyant")
+
+    log("Satılan ürün maliyetleri (COGS) hesaplanıyor...")
+    annotate_order_cogs(orders, fetch_variant_costs())
 
     log("Kanal dağılımı hesaplanıyor...")
     channels = calc_channels(orders)
