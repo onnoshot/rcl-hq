@@ -156,37 +156,40 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-30T18:04:39",
+  "updated_at": "2026-09-30T18:23:26",
   "period_30d": {
     "revenue": 33709,
     "orders": 4,
     "aov": 8427,
-    "cogs": 0,
-    "cogs_unmatched_rev": 33409
+    "cogs": 14139,
+    "cogs_unmatched_rev": 0
   },
   "period_90d": {
-    "revenue": 86989,
-    "orders": 10,
-    "aov": 8699,
-    "cogs": 0,
-    "cogs_unmatched_rev": 86239
+    "revenue": 163189,
+    "orders": 16,
+    "aov": 10199,
+    "cogs": 67466,
+    "cogs_unmatched_rev": 0
   },
   "period_year": {
-    "revenue": 86989,
-    "orders": 10,
-    "aov": 8699,
-    "cogs": 0,
-    "cogs_unmatched_rev": 86239
+    "revenue": 909766,
+    "orders": 75,
+    "aov": 12130,
+    "cogs": 408950,
+    "cogs_unmatched_rev": 45178
   },
   "period_all": {
-    "revenue": 86989,
-    "orders": 10,
-    "aov": 8699,
-    "cogs": 0,
-    "cogs_unmatched_rev": 86239
+    "revenue": 1043123,
+    "orders": 91,
+    "aov": 11463,
+    "cogs": 470950,
+    "cogs_unmatched_rev": 49265
   },
   "customers_total": 1052,
   "monthly_labels": [
+    "Tem 25",
+    "Ağu 25",
+    "Eyl 25",
     "Eki 25",
     "Kas 25",
     "Ara 25",
@@ -201,37 +204,63 @@ const SHOPIFY = {
     "Eyl 26"
   ],
   "monthly_revenue": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    2590,
+    68639,
+    62128,
+    82649,
+    233639,
+    43360,
+    56890,
+    39470,
+    46450,
+    65320,
+    139290,
+    39509,
+    76200,
     53280,
     33709
   ],
   "monthly_orders": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
+    1,
+    6,
+    9,
+    8,
+    12,
+    4,
+    6,
+    3,
+    4,
+    6,
+    12,
+    4,
+    6,
     6,
     4
   ],
   "monthly_cogs": [
     0,
-    0,
-    0,
+    33750,
+    28250,
+    42608,
+    129608,
+    11079,
+    17675,
+    14125,
+    16739,
+    29371,
+    58215,
+    22064,
+    31006,
+    22321,
+    14139
+  ],
+  "monthly_cogs_unmatched_rev": [
+    2590,
+    499,
+    998,
+    499,
+    33189,
+    11490,
     0,
     0,
     0,
@@ -242,56 +271,51 @@ const SHOPIFY = {
     0,
     0
   ],
-  "monthly_cogs_unmatched_rev": [
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    0,
-    52830,
-    33409
-  ],
   "channels": [
-    {
-      "name": "Instagram",
-      "icon": "📸",
-      "color": "#BF5AF2",
-      "orders": 6,
-      "rev": 45229,
-      "order_pct": 60.0,
-      "rev_pct": 52.0
-    },
     {
       "name": "Direkt",
       "icon": "🔗",
       "color": "#F5A623",
-      "orders": 2,
-      "rev": 18630,
-      "order_pct": 20.0,
-      "rev_pct": 21.4
+      "orders": 32,
+      "rev": 403190,
+      "order_pct": 35.2,
+      "rev_pct": 38.7
     },
     {
       "name": "Google",
       "icon": "🔍",
       "color": "#4285F4",
-      "orders": 1,
-      "rev": 13490,
-      "order_pct": 10.0,
-      "rev_pct": 15.5
+      "orders": 28,
+      "rev": 303605,
+      "order_pct": 30.8,
+      "rev_pct": 29.1
+    },
+    {
+      "name": "Instagram",
+      "icon": "📸",
+      "color": "#BF5AF2",
+      "orders": 26,
+      "rev": 277988,
+      "order_pct": 28.6,
+      "rev_pct": 26.6
+    },
+    {
+      "name": "YouTube",
+      "icon": "▶",
+      "color": "#FF453A",
+      "orders": 3,
+      "rev": 39460,
+      "order_pct": 3.3,
+      "rev_pct": 3.8
     },
     {
       "name": "AI / Arama",
       "icon": "🤖",
       "color": "#5AC8FA",
-      "orders": 1,
-      "rev": 9640,
-      "order_pct": 10.0,
-      "rev_pct": 11.1
+      "orders": 2,
+      "rev": 18880,
+      "order_pct": 2.2,
+      "rev_pct": 1.8
     }
   ],
   "recent_orders": [
