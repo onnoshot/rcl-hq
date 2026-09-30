@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-30T05:06:09",
+  "updated_at": "2026-09-30T12:54:23",
   "period_30d": {
     "revenue": 23219,
     "orders": 3,
