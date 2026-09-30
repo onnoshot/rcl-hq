@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-30T18:23:26",
+  "updated_at": "2026-09-30T18:25:17",
   "period_30d": {
     "revenue": 33709,
     "orders": 4,
@@ -370,19 +370,20 @@ const SHOPIFY = {
       "handle": "panasonic-lumix-dc-tz91"
     },
     {
-      "name": "Samsung WB350F",
-      "price": 19490,
-      "qty": 1,
-      "cost": 6000,
-      "handle": "samsung-wb350f"
-    },
-    {
       "name": "Olympus PEN E-PL1",
       "price": 18490,
       "qty": 1,
       "compare_at": 23000,
       "cost": 4500,
       "handle": "olympus-pen-e-pl1-25mm"
+    },
+    {
+      "name": "Samsung WB350F",
+      "price": 18490,
+      "qty": 1,
+      "compare_at": 19490,
+      "cost": 6000,
+      "handle": "samsung-wb350f"
     },
     {
       "name": "Canon PowerShot G7",

@@ -4052,7 +4052,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 2442, "at": "2026-09-30T18:23:26" };
+const BUILD = { "no": 2442, "at": "2026-09-30T18:25:17" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {};  /* Hermes kaldirildi - global referans hatasi olmasin diye bos stub */
@@ -5050,7 +5050,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-30T18:23:26",
+  "updated_at": "2026-09-30T18:25:17",
   "period_30d": {
     "revenue": 33709,
     "orders": 4,
@@ -5264,19 +5264,20 @@ const SHOPIFY = {
       "handle": "panasonic-lumix-dc-tz91"
     },
     {
-      "name": "Samsung WB350F",
-      "price": 19490,
-      "qty": 1,
-      "cost": 6000,
-      "handle": "samsung-wb350f"
-    },
-    {
       "name": "Olympus PEN E-PL1",
       "price": 18490,
       "qty": 1,
       "compare_at": 23000,
       "cost": 4500,
       "handle": "olympus-pen-e-pl1-25mm"
+    },
+    {
+      "name": "Samsung WB350F",
+      "price": 18490,
+      "qty": 1,
+      "compare_at": 19490,
+      "cost": 6000,
+      "handle": "samsung-wb350f"
     },
     {
       "name": "Canon PowerShot G7",
@@ -9542,17 +9543,21 @@ function finAnimateKPIs() {
   targets.forEach(function(t) {
     var el = document.getElementById(t.id);
     if (!el || el.dataset.animated) return;
-    var raw = el.textContent.replace(/[₺.,\s]/g,'');
+    var final = el.textContent;
+    if (final.trim().charAt(0) === '-') return; // negatif değer animasyonsuz kalsın
+    var raw = final.replace(/[₺.,\s]/g,'');
     var val = parseFloat(raw);
     if (isNaN(val) || val === 0) return;
     el.dataset.animated = '1';
-    var start = 0, duration = 900, startTime = null;
+    var start = 0, duration = 900, startTime = null, last = el.textContent;
     function step(ts) {
+      // Animasyon sürerken değer başka yerden (ör. dönem değişimi) güncellendiyse dur — eski sayıyı üstüne yazma.
+      if (el.textContent !== last) return;
       if (!startTime) startTime = ts;
       var progress = Math.min((ts - startTime) / duration, 1);
       var ease = 1 - Math.pow(1 - progress, 3);
       var cur = Math.round(start + ease * val);
-      el.textContent = t.prefix + cur.toLocaleString('tr-TR');
+      el.textContent = last = (progress < 1 ? t.prefix + cur.toLocaleString('tr-TR') : final);
       if (progress < 1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
