@@ -95,6 +95,21 @@ def fetch_inventory_costs(inventory_item_ids):
     return costs
 
 
+def previous_costs():
+    """Dashboard'daki mevcut SHOPIFY blogundan urun adi -> maliyet (kamera + aksesuar)."""
+    try:
+        from rcl_config import DASHBOARD_HTML, MARKERS
+        start, end = MARKERS["SHOPIFY"]
+        with open(DASHBOARD_HTML, encoding="utf-8") as f:
+            html = f.read()
+        block = html[html.index(start) + len(start):html.index(end)]
+        data = json.loads(block[block.index("{"):block.rindex("}") + 1])
+        return {x["name"]: x["cost"] for x in data.get("cameras", []) + data.get("accessories", []) if x.get("cost")}
+    except Exception as e:
+        log(f"  Onceki maliyetler okunamadi: {e}")
+        return {}
+
+
 def fetch_inventory():
     # Sadece AKTIF urunler — taslak/arsiv urunler stok degerini sisirmesin.
     data = shopify_get("products.json?limit=250&status=active&fields=id,title,handle,product_type,variants")
@@ -127,9 +142,16 @@ def fetch_inventory():
     log("  Ürün maliyetleri Shopify'dan çekiliyor...")
     costs = fetch_inventory_costs(inv_item_ids)
 
+    # Maliyet cekilemezse (or. token'da read_inventory yok → 403) son bilinen maliyetleri koru
+    prev_costs = previous_costs() if not costs else {}
+    if prev_costs:
+        log(f"  UYARI: Shopify maliyeti alinamadi — {len(prev_costs)} urunde son bilinen maliyet kullaniliyor")
+
     for is_acc, item in raw_items:
         inv_id = item.pop("inv_item_id", None)
         cost = costs.get(inv_id)
+        if cost is None:
+            cost = prev_costs.get(item["name"])
         if cost is not None:
             item["cost"] = int(round(cost))
         (accessories if is_acc else cameras).append(item)
