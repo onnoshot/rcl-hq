@@ -33,7 +33,8 @@ DATA_JS        = os.path.join(REPO_DIR, "data.js")                              
 LOCK_FILE      = "/tmp/rcl-dashboard.lock"
 
 # ─── TOKENLAR (rotasyon olunca SADECE burayi degistir) ─────────────────────
-SHOPIFY_TOKEN  = "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"
+# BLOGGERSON OAuth token (read_inventory + read_all_orders) — tek yerde tutulur: retrocameraland_api.py
+from retrocameraland_api import SHOPIFY_TOKEN  # noqa: E402
 
 # ─── VERI BLOK MARKERLARI (her feed'in ANA KAYNAKTAKI blogu) ───────────────
 MARKERS = {

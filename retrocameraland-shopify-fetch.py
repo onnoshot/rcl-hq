@@ -67,7 +67,7 @@ def fetch_orders():
     NOT: token'da read_all_orders yoksa Shopify yalniz son 60 gunu dondurur."""
     import re
     url = (f"https://{SHOPIFY_STORE}/admin/api/2024-01/orders.json?status=any&financial_status=paid&limit=250"
-           "&fields=id,created_at,total_price,line_items,referring_site")
+           "&fields=id,created_at,cancelled_at,total_price,line_items,referring_site")
     orders = []
     while url:
         req = urllib.request.Request(url)
@@ -80,6 +80,10 @@ def fetch_orders():
                 url = m.group(1) if m else None
         except urllib.error.HTTPError as e:
             raise RuntimeError(f"Shopify GET orders → {e.code}: {e.read().decode()[:200]}")
+    cancelled = [o for o in orders if o.get("cancelled_at")]
+    if cancelled:
+        log(f"  {len(cancelled)} iptal edilmis siparis haric tutuldu")
+    orders = [o for o in orders if not o.get("cancelled_at")]
     if orders:
         oldest = min(o["created_at"] for o in orders)[:10]
         log(f"  En eski siparis: {oldest}")
