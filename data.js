@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-30T22:05:31",
+  "updated_at": "2026-09-30T23:05:39",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -78,42 +78,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/9Z6lsTkLNoc"
     },
     {
-      "id": "FHPUPrwo9QI",
-      "title": "Olympus TG-7 Dijital Kamera | Waterproof",
-      "date": "21 Eyl 2026",
-      "views": 505,
-      "likes": 5,
-      "comments": 1,
-      "url": "https://youtu.be/FHPUPrwo9QI"
-    },
-    {
-      "id": "4-KWG5bSnMA",
-      "title": "Istanbul in a retro frame 📸 Olympus E-PL1 Dijital Kamera",
-      "date": "11 Eyl 2026",
-      "views": 1321,
-      "likes": 7,
-      "comments": 0,
-      "url": "https://youtu.be/4-KWG5bSnMA"
-    },
-    {
-      "id": "v9EaRVvnyEc",
-      "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
-      "date": "10 Ağu 2026",
-      "views": 1483,
-      "likes": 12,
-      "comments": 0,
-      "url": "https://youtu.be/v9EaRVvnyEc"
-    },
-    {
-      "id": "G9ayP-pa1q8",
-      "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
-      "date": "31 Tem 2026",
-      "views": 669,
-      "likes": 12,
-      "comments": 0,
-      "url": "https://youtu.be/G9ayP-pa1q8"
-    },
-    {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
@@ -121,15 +85,6 @@ const YOUTUBE = {
       "likes": 33,
       "comments": 2,
       "url": "https://youtu.be/nJ92afbw02g"
-    },
-    {
-      "id": "lCyA6p7SfDs",
-      "title": "Sahilde retro fotoğraflar çek 📸 Efsane Nikon Digicam 😍",
-      "date": "24 Tem 2026",
-      "views": 2357,
-      "likes": 36,
-      "comments": 1,
-      "url": "https://youtu.be/lCyA6p7SfDs"
     },
     {
       "id": "pZJB6mBWYRg",
@@ -141,13 +96,58 @@ const YOUTUBE = {
       "url": "https://youtu.be/pZJB6mBWYRg"
     },
     {
-      "id": "PKyCBGst1r8",
-      "title": "Cumhurbaşkanımız R.T. Erdoğan ve Atatürk 📸🇹🇷 Samsung Dijital",
-      "date": "15 Tem 2026",
-      "views": 1711,
-      "likes": 22,
+      "id": "LjyZRaLNGcc",
+      "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
+      "date": "12 Tem 2026",
+      "views": 629,
+      "likes": 10,
       "comments": 0,
-      "url": "https://youtu.be/PKyCBGst1r8"
+      "url": "https://youtu.be/LjyZRaLNGcc"
+    },
+    {
+      "id": "bY4UWZ-wEwY",
+      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
+      "date": "26 Nis 2026",
+      "views": 1231,
+      "likes": 15,
+      "comments": 0,
+      "url": "https://youtu.be/bY4UWZ-wEwY"
+    },
+    {
+      "id": "8oUm3q_y6rQ",
+      "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
+      "date": "18 Nis 2026",
+      "views": 50888,
+      "likes": 209,
+      "comments": 2,
+      "url": "https://youtu.be/8oUm3q_y6rQ"
+    },
+    {
+      "id": "TFYAi9S9wTo",
+      "title": "Canon Ixus 160 Dijital Fotoğraf Makinesi 📸 Stoklar yenilendi",
+      "date": "25 Mar 2026",
+      "views": 15181,
+      "likes": 8,
+      "comments": 0,
+      "url": "https://youtu.be/TFYAi9S9wTo"
+    },
+    {
+      "id": "aoCqpg3l-Zs",
+      "title": "22 Yıllık İkonik CASIO Exilim Fotoğraf Makinesi #digitalcame",
+      "date": "7 Mar 2026",
+      "views": 893,
+      "likes": 12,
+      "comments": 3,
+      "url": "https://youtu.be/aoCqpg3l-Zs"
+    },
+    {
+      "id": "b6MfXb0bltc",
+      "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
+      "date": "23 Şub 2026",
+      "views": 895,
+      "likes": 7,
+      "comments": 0,
+      "url": "https://youtu.be/b6MfXb0bltc"
     }
   ],
   "sub_goal": 10000
