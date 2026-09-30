@@ -156,23 +156,23 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-30T12:54:23",
+  "updated_at": "2026-09-30T15:04:22",
   "period_30d": {
-    "revenue": 23219,
-    "orders": 3,
-    "aov": 7740
+    "revenue": 33709,
+    "orders": 4,
+    "aov": 8427
   },
   "period_90d": {
-    "revenue": 76499,
-    "orders": 9,
-    "aov": 8500
+    "revenue": 86989,
+    "orders": 10,
+    "aov": 8699
   },
   "period_year": {
-    "revenue": 76499,
-    "orders": 9,
-    "aov": 8500
+    "revenue": 86989,
+    "orders": 10,
+    "aov": 8699
   },
-  "customers_total": 1050,
+  "customers_total": 1052,
   "monthly_labels": [
     "Eki 25",
     "Kas 25",
@@ -199,7 +199,7 @@ const SHOPIFY = {
     0,
     0,
     53280,
-    23219
+    33709
   ],
   "monthly_orders": [
     0,
@@ -213,7 +213,7 @@ const SHOPIFY = {
     0,
     0,
     6,
-    3
+    4
   ],
   "channels": [
     {
@@ -222,8 +222,17 @@ const SHOPIFY = {
       "color": "#BF5AF2",
       "orders": 6,
       "rev": 45229,
-      "order_pct": 66.7,
-      "rev_pct": 59.1
+      "order_pct": 60.0,
+      "rev_pct": 52.0
+    },
+    {
+      "name": "Direkt",
+      "icon": "🔗",
+      "color": "#F5A623",
+      "orders": 2,
+      "rev": 18630,
+      "order_pct": 20.0,
+      "rev_pct": 21.4
     },
     {
       "name": "Google",
@@ -231,8 +240,8 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 1,
       "rev": 13490,
-      "order_pct": 11.1,
-      "rev_pct": 17.6
+      "order_pct": 10.0,
+      "rev_pct": 15.5
     },
     {
       "name": "AI / Arama",
@@ -240,20 +249,15 @@ const SHOPIFY = {
       "color": "#5AC8FA",
       "orders": 1,
       "rev": 9640,
-      "order_pct": 11.1,
-      "rev_pct": 12.6
-    },
-    {
-      "name": "Direkt",
-      "icon": "🔗",
-      "color": "#F5A623",
-      "orders": 1,
-      "rev": 8140,
-      "order_pct": 11.1,
-      "rev_pct": 10.6
+      "order_pct": 10.0,
+      "rev_pct": 11.1
     }
   ],
   "recent_orders": [
+    {
+      "date": "30 Eyl 2026",
+      "amount": 10490
+    },
     {
       "date": "28 Eyl 2026",
       "amount": 11430
@@ -357,10 +361,6 @@ const SHOPIFY = {
       "price": 10490
     },
     {
-      "name": "Kodak Slice R502",
-      "price": 10490
-    },
-    {
       "name": "Sanyo Xacti VPC-HD1",
       "price": 10490
     },
@@ -408,7 +408,7 @@ const SHOPIFY = {
       "qty": 1
     }
   ],
-  "out_of_stock": 103
+  "out_of_stock": 104
 };
 /* ─── SHOPIFY DATA END ─── */
 
