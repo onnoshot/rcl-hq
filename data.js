@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-09-30T23:05:39",
+  "updated_at": "2026-10-01T00:05:44",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,22 +10,16 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 60148,
-      "watch_hours": 113.0,
-      "subs_gained": 38,
-      "subs_lost": 40,
+      "views": 57732,
+      "watch_hours": 108.5,
+      "subs_gained": 36,
+      "subs_lost": 33,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 3993.7,
-    "watch_hours_year_long": 2172.6,
-    "watch_hours_year_shorts": 1820.9,
+    "watch_hours_year": 3989.0,
+    "watch_hours_year_long": 2169.1,
+    "watch_hours_year_shorts": 1819.7,
     "monthly": [
-      {
-        "label": "Nis 26",
-        "views": 103615,
-        "watch_min": 21715,
-        "subs_gained": 136
-      },
       {
         "label": "May 26",
         "views": 107333,
@@ -72,7 +66,7 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1603,
+      "views": 1605,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -108,7 +102,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1231,
+      "views": 1232,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
