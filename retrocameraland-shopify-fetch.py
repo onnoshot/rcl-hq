@@ -63,11 +63,29 @@ def shopify_get(path):
 
 
 def fetch_orders():
-    data = shopify_get(
-        "orders.json?status=any&financial_status=paid&limit=250"
-        "&fields=id,created_at,total_price,line_items,referring_site"
-    )
-    return data.get("orders", [])
+    """Magazanin EN BASTAN beri tum odenmis siparisleri (sayfalamali, 250'lik sayfalar).
+    NOT: token'da read_all_orders yoksa Shopify yalniz son 60 gunu dondurur."""
+    import re
+    url = (f"https://{SHOPIFY_STORE}/admin/api/2024-01/orders.json?status=any&financial_status=paid&limit=250"
+           "&fields=id,created_at,total_price,line_items,referring_site")
+    orders = []
+    while url:
+        req = urllib.request.Request(url)
+        req.add_header("X-Shopify-Access-Token", SHOPIFY_TOKEN)
+        req.add_header("Accept", "application/json")
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                orders += json.loads(r.read()).get("orders", [])
+                m = re.search(r'<([^>]+)>;\s*rel="next"', r.headers.get("Link", "") or "")
+                url = m.group(1) if m else None
+        except urllib.error.HTTPError as e:
+            raise RuntimeError(f"Shopify GET orders → {e.code}: {e.read().decode()[:200]}")
+    if orders:
+        oldest = min(o["created_at"] for o in orders)[:10]
+        log(f"  En eski siparis: {oldest}")
+        if datetime.fromisoformat(oldest) > datetime.now() - timedelta(days=62):
+            log("  UYARI: siparisler yalniz son ~60 gunu kapsiyor — token'da read_all_orders yetkisi yok olabilir")
+    return orders
 
 
 def fetch_customers_count():
@@ -269,8 +287,10 @@ def calc_monthly(orders):
         monthly_cogs[key] += o.get("_cogs", 0)
         monthly_unm[key] += o.get("_unmatched", 0)
 
+    first = min(monthly_rev) if monthly_rev else now.strftime("%Y-%m")
+    span = (now.year - int(first[:4])) * 12 + now.month - int(first[5:7])
     months = []
-    for i in range(11, -1, -1):
+    for i in range(max(11, span), -1, -1):
         year  = now.year
         month = now.month - i
         while month <= 0:
@@ -324,6 +344,7 @@ def build_data_block(orders, customers, cameras, accessories, out_of_stock):
         "period_30d":      calc_period(orders, 30),
         "period_90d":      calc_period(orders, 90),
         "period_year":     calc_period(orders, 365),
+        "period_all":      calc_period(orders, 100000),
         "customers_total": customers,
         "monthly_labels":  labels,
         "monthly_revenue": monthly_rev,
