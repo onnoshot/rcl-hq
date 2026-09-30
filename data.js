@@ -156,7 +156,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-30T18:25:17",
+  "updated_at": "2026-09-30T18:32:18",
   "period_30d": {
     "revenue": 33709,
     "orders": 4,
@@ -386,14 +386,6 @@ const SHOPIFY = {
       "handle": "samsung-wb350f"
     },
     {
-      "name": "Canon PowerShot G7",
-      "price": 16490,
-      "qty": 1,
-      "compare_at": 18490,
-      "cost": 13500,
-      "handle": "canon-powershot-g7"
-    },
-    {
       "name": "Samsung NX2000",
       "price": 16490,
       "qty": 1,
@@ -564,7 +556,7 @@ const SHOPIFY = {
       "handle": "ulanzi-vlog-tripod"
     }
   ],
-  "out_of_stock": 102
+  "out_of_stock": 103
 };
 /* ─── SHOPIFY DATA END ─── */
 
