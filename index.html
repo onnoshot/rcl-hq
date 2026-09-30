@@ -512,6 +512,18 @@ tfoot td{border-top:1px solid rgba(255,59,48,0.12);color:var(--gold);font-weight
 .spark-bar{flex:1;border-radius:3px 3px 0 0;transition:height .6s cubic-bezier(.16,1,.3,1);min-height:3px;}
 
 /* ─── PERIOD COMPARE ─── */
+.mkm-guide{margin-bottom:14px;border:1px solid rgba(0,0,0,0.08);border-radius:14px;background:rgba(0,0,0,0.02);overflow:hidden}
+.mkm-guide>summary{cursor:pointer;list-style:none;padding:12px 16px;font-size:0.78rem;font-weight:600;color:var(--t1);display:flex;align-items:center;gap:8px}
+.mkm-guide>summary::-webkit-details-marker{display:none}
+.mkm-guide>summary::before{content:'+';display:inline-flex;width:18px;height:18px;align-items:center;justify-content:center;border-radius:50%;background:rgba(0,0,0,0.07);font-family:var(--mono);font-size:0.75rem}
+.mkm-guide[open]>summary::before{content:'−'}
+.mkm-guide .mkm-body{padding:4px 18px 18px;font-size:0.74rem;line-height:1.65;color:var(--t2);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px 26px}
+.mkm-guide h4{margin:0 0 4px;font-size:0.72rem;color:var(--t1);text-transform:uppercase;letter-spacing:.06em;font-family:var(--mono)}
+.mkm-guide p{margin:0 0 6px}
+.mkm-guide code{font-family:var(--mono);font-size:0.68rem;background:rgba(0,0,0,0.05);padding:1px 5px;border-radius:4px}
+.mkm-guide .mkm-ex{grid-column:1/-1;background:#fff;border:1px solid rgba(0,0,0,0.07);border-radius:10px;padding:12px 14px;font-family:var(--mono);font-size:0.7rem}
+.mkm-guide .mkm-ex div{display:flex;justify-content:space-between;gap:12px;padding:2px 0}
+.mkm-guide .mkm-ex .tot{border-top:1px solid rgba(0,0,0,0.1);margin-top:4px;padding-top:6px;font-weight:700}
 .period-compare{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:9px;}
 .pc-card{background:rgba(0,0,0,0.03);border:1px solid rgba(0,0,0,0.07);border-radius:var(--r-sm);padding:16px;transition:all .25s cubic-bezier(.16,1,.3,1);cursor:pointer;}
 .pc-card:hover{border-color:rgba(0,0,0,0.18);transform:translateY(-1px);background:rgba(0,0,0,0.05);}
@@ -1967,6 +1979,43 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
   <!-- MALİYET KONTROL PANELİ -->
   <div class="sec fi" style="transition-delay:.15s">
     <div class="sec-label">Maliyet Kontrol Merkezi</div>
+    <details class="mkm-guide">
+      <summary>Maliyet Kontrol Merkezi nasıl çalışır?</summary>
+      <div class="mkm-body">
+        <div>
+          <h4>1 · Veri nereden geliyor?</h4>
+          <p><b>Gelir ve siparişler</b> saatte bir Shopify'dan çekilir: mağazanın ilk siparişinden bugüne kadar tüm ödenmiş siparişler. İptal edilen ve iade edilen siparişler sayılmaz.</p>
+          <p><b>Ürün maliyetleri</b>, Shopify'da her ürünün "Maliyet" alanından gelir. Shopify'da maliyet değişirse panel bir sonraki saatlik güncellemede bunu alır.</p>
+        </div>
+        <div>
+          <h4>2 · KDV Hesaplama</h4>
+          <p>Raf fiyatları KDV dahildir. Fiyatın içindeki KDV: <code>gelir × oran ÷ (100 + oran)</code>. %20'de bu, gelirin 1/6'sıdır.</p>
+          <p>Oran menüden değiştirilebilir (%20 / %10 / %1). Tüm sayfalar (Anasayfa, Stok, Finans) aynı oranı kullanır.</p>
+        </div>
+        <div>
+          <h4>3 · Komisyon &amp; Giderler</h4>
+          <p><b>Iyzico %</b> ve <b>Shopify %</b>: gelirin yüzdesi olarak düşülür. <b>Kargo</b> ve <b>kutu</b>: sipariş başına sabit tutardır, sipariş sayısıyla çarpılır.</p>
+          <p><b>Aylık sabit gider</b> (abonelik, reklam, kira): seçilen dönemin ay sayısıyla çarpılır; 30 gün = 1 ay, 1 yıl = 12 ay. Başabaş noktası da bu değerle hesaplanır.</p>
+          <p>Değiştirdiğin sayı her yere anında yansır. <b>Not:</b> Bu ayarlar bu tarayıcıda saklanır; başka cihazda ayrıca girmen gerekir.</p>
+        </div>
+        <div>
+          <h4>4 · COGS (satılan ürün maliyeti)</h4>
+          <p>Dönemdeki siparişlerde satılan her ürün Shopify maliyetiyle eşleştirilir; <code>adet × maliyet</code> toplanır. Bu tahmin değil, gerçek maliyettir.</p>
+          <p>Maliyeti bulunamayan satırlar (silinmiş ürün vb.) stoktaki kameraların maliyet/fiyat oranıyla tahmin edilir. Kartın alt başlığı "kısmi tahmin" yazıyorsa bu durum var demektir.</p>
+        </div>
+        <div>
+          <h4>5 · Başabaş Noktası</h4>
+          <p><b>Sipariş başı katkı payı</b> = ortalama sepet − KDV − komisyon − kargo − kutu − ortalama ürün maliyeti. Yani her siparişten, sabit giderlerden önce kalan para.</p>
+          <p><b>Başabaş</b> = aylık sabit gider ÷ katkı payı. Sabit gideri karşılamak için ayda kaç sipariş gerektiğini gösterir.</p>
+        </div>
+        <div>
+          <h4>6 · Stok Kamera Maliyetleri tablosu</h4>
+          <p><span style="color:var(--green);font-weight:600">SHOPIFY</span> rozetli maliyetler otomatik gelir ve buradan değiştirilemez; değiştirmek için Shopify'daki ürünü düzenle.</p>
+          <p>Shopify'da maliyeti olmayan ürün için kutu açılır ve elle girebilirsin. "Oran %" ile otomatik doldurma yalnız bu boş ürünleri etkiler.</p>
+        </div>
+        <div class="mkm-ex" id="mkm-example">—</div>
+      </div>
+    </details>
     <div class="g g3">
       <!-- KDV Kontrolü -->
       <div class="card p">
@@ -4052,7 +4101,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 2442, "at": "2026-09-30T19:20:07" };
+const BUILD = { "no": 2442, "at": "2026-09-30T19:47:32" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {};  /* Hermes kaldirildi - global referans hatasi olmasin diye bos stub */
@@ -5050,7 +5099,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-09-30T19:04:46",
+  "updated_at": "2026-09-30T19:47:32",
   "period_30d": {
     "revenue": 33709,
     "orders": 4,
@@ -7045,6 +7094,18 @@ function renderFinancePage() {
   // ── Son Siparişler ──
   const fob = document.getElementById('finOrdersBody');
   if(fob) fob.innerHTML=SHOPIFY.recent_orders.map(o=>`<tr><td class="cd">${o.date}</td><td class="cg">${fmtTL(o.amount)}</td></tr>`).join('');
+
+  // Maliyet Kontrol Merkezi rehberi — seçili dönemin gerçek rakamlarıyla örnek hesap
+  const mkm = document.getElementById('mkm-example');
+  if (mkm) {
+    const ln = (l, v, cls) => `<div${cls ? ' class="' + cls + '"' : ''}><span>${l}</span><span>${v < 0 ? '−' : ''}₺${fmt(Math.abs(v))}</span></div>`;
+    mkm.innerHTML = `<div style="font-weight:700;color:var(--t1);margin-bottom:6px">Örnek: ${periodLbl[finPeriod]} · ${orders} sipariş</div>` +
+      ln('Brüt gelir', rev) + ln(`− KDV %${kdvRate}`, -kdv) + ln(`− Iyzico %${iyzico_pct}`, -iyzico) + ln(`− Shopify %${shopify_pct}`, -shopifyFee) +
+      ln(`− Kargo (${orders} × ₺${fmt(kargo_tl)})`, -kargo) + ln(`− Kutu (${orders} × ₺${fmt(kutu_tl)})`, -kutu) +
+      ln(cogsInfo.real ? '− COGS (satılan ürün maliyeti)' : '− COGS (tahmini)', -cogs) +
+      (sabitGider > 0 ? ln(`− Sabit gider (${months} ay)`, -sabitGider) : '') +
+      ln(`= Net kâr (%${margin} marj)`, net, 'tot');
+  }
 
   renderMonthlyProfit(); // aylık kâr analizi (tek kaynaktan, aynı net-kâr formülü)
 }
