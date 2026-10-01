@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-01T02:05:54",
+  "updated_at": "2026-10-01T03:05:59",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4750,
-    "total_views": 1513890,
+    "total_views": 1514470,
     "video_count": 406
   },
   "analytics": {
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 1350,
+      "views": 1351,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
@@ -102,7 +102,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1235,
+      "views": 1232,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -138,7 +138,7 @@ const YOUTUBE = {
       "id": "b6MfXb0bltc",
       "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
       "date": "23 Şub 2026",
-      "views": 897,
+      "views": 895,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
