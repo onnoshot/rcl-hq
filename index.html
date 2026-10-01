@@ -1665,6 +1665,10 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3.2"/></svg>
       <span class="nav-label">Kamera Alım <span id="alim-nav-badge" style="display:none;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--red);color:#fff;font-size:.58rem;font-weight:700;line-height:16px;text-align:center;margin-left:4px"></span></span>
     </div>
+    <div class="nav-item" data-page="mesajlar" onclick="navigate('mesajlar',this)">
+      <svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1.2-4.6A8 8 0 1 1 21 12z"/></svg>
+      <span class="nav-label">Mesajlar <span id="msg-nav-badge" style="display:none;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--red);color:#fff;font-size:.58rem;font-weight:700;line-height:16px;text-align:center;margin-left:4px"></span></span>
+    </div>
     <div class="nav-item" data-page="bulucu" onclick="navigate('bulucu',this)">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
       <span class="nav-label">Kamera Bulucu</span>
@@ -3885,6 +3889,46 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 
 <!-- ═══════════════════ TIME CAPSULE (Topluluk yönetim) ═══════════════════ -->
 <!-- ═══════════════════ KAMERA BULUCU (AI Kamera Eşleştirici testi) ═══════════════════ -->
+<div class="page" id="page-mesajlar">
+  <div class="page-topbar fi">
+    <div class="pt-left">
+      <div class="pt-title" style="color:var(--red)">Müşteri Mesajları</div>
+      <div class="pt-sub">Sitedeki sohbet penceresinden yazan ziyaretçiler. Yanıtın müşterinin penceresine birkaç saniye içinde düşer.</div>
+    </div>
+    <div class="pt-right">
+      <div class="live-pill"><div class="sb-live-dot"></div>CANLI</div>
+      <span class="upd-time" id="msg-upd">—</span>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.05s">
+    <div class="msg-shell" id="msg-shell">
+      <aside class="msg-side">
+        <div class="msg-side-h">
+          <button class="msg-tab active" data-f="open">Açık <b id="msg-c-open">0</b></button>
+          <button class="msg-tab" data-f="closed">Kapalı</button>
+          <button class="msg-tab" data-f="all">Tümü</button>
+        </div>
+        <div class="msg-list" id="msg-list"><div class="alim-empty">Yükleniyor…</div></div>
+      </aside>
+      <section class="msg-main" id="msg-main">
+        <div class="msg-empty" id="msg-empty">Bir konuşma seç.</div>
+        <div class="msg-thread" id="msg-thread" hidden>
+          <header class="msg-head">
+            <button class="msg-back" id="msg-back" aria-label="Geri">‹</button>
+            <div class="msg-who"><b id="msg-h-name">—</b><span id="msg-h-meta"></span></div>
+            <button class="alim-fbtn" id="msg-close">Kapat</button>
+          </header>
+          <div class="msg-body" id="msg-body"></div>
+          <form class="msg-form" id="msg-form">
+            <textarea id="msg-input" rows="1" maxlength="2000" placeholder="Yanıt yaz… (Enter gönderir, Shift+Enter satır)"></textarea>
+            <button type="submit" class="msg-send" id="msg-send">Gönder</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
 <div class="page" id="page-bulucu">
   <div class="page-topbar fi">
     <div class="pt-left">
@@ -4113,7 +4157,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 </main>
 <script id="data-script">
 /* ─── BUILD INFO DATA START ─── */
-const BUILD = { "no": 2442, "at": "2026-10-01T16:01:45" };
+const BUILD = { "no": 2442, "at": "2026-10-01T16:45:39" };
 /* ─── BUILD INFO DATA END ─── */
 /* ─── HERMES CEO DATA START ─── */
 const HERMES = {};  /* Hermes kaldirildi - global referans hatasi olmasin diye bos stub */
@@ -5504,10 +5548,10 @@ const SHOPIFY = {
 
 /* ─── INSTAGRAM DATA START ─── */
 const INSTAGRAM = {
-  "updated_at": "2026-10-01T16:01:14",
+  "updated_at": "2026-10-01T16:45:39",
   "username": "retrocameraland",
   "name": "Retro Camera Land",
-  "followers": 8572,
+  "followers": 8574,
   "media_count": 303,
   "avg_likes": 66,
   "total_engagement": 797,
@@ -5523,7 +5567,7 @@ const INSTAGRAM = {
       "likes": 9,
       "comments": 0,
       "url": "https://www.instagram.com/p/Dd3qSUPiPQu/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/828840389_17912074860496139_2862131377126370060_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=1Mjl_W8pAJQQ7kNvwGbnDu5&_nc_oc=AdqaPIKLzg06GxloFPKuQvPy_W7_0de4XYkuovWsfY9hbqzwylVfqAtGt363L6xdXZg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&oh=00_AQOH-4JNpjRIjS0qiJE6zLMMsjg0G9w1gwICNfic16b_uQ&oe=6AC4324E",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/828840389_17912074860496139_2862131377126370060_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=107&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=1Mjl_W8pAJQQ7kNvwGbnDu5&_nc_oc=AdqaPIKLzg06GxloFPKuQvPy_W7_0de4XYkuovWsfY9hbqzwylVfqAtGt363L6xdXZg&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&oh=00_AQMj9Q_BBQs6BugnTpbSSAC0wYv4V4NuXNe3XjBEjTrspQ&oe=6AC4324E",
       "caption": "Artistic Department 📍 Discover Your Iconic Camera retrocameraland.com"
     },
     {
@@ -5533,7 +5577,7 @@ const INSTAGRAM = {
       "likes": 27,
       "comments": 0,
       "url": "https://www.instagram.com/p/Dd07SeciKQW/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/825277200_17911923618496139_4596172093825207792_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=cXlsUQvBFs8Q7kNvwFt8L6j&_nc_oc=AdoDFKEo_QdJk18ZdFf504ikKawY2R2eTWKGT3TkJt8y_R6hjt5iez_NwCOgufvh2JI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&oh=00_AQPqUT9SDdY-LW-bXE6n-a6Q_cTsW-3oFe_gRTSpaSDNxw&oe=6AC440AD",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/825277200_17911923618496139_4596172093825207792_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=cXlsUQvBFs8Q7kNvwFt8L6j&_nc_oc=AdoDFKEo_QdJk18ZdFf504ikKawY2R2eTWKGT3TkJt8y_R6hjt5iez_NwCOgufvh2JI&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&oh=00_AQN8jAzbDLLD_KVpV1WIRGx_HScgW-kpKJcYyH1-K2Yt3w&oe=6AC440AD",
       "caption": "Low megapixels, high vibes 👾 retrocameraland.com\n\n#digicam #aesthetics #retro"
     },
     {
@@ -5543,7 +5587,7 @@ const INSTAGRAM = {
       "likes": 20,
       "comments": 0,
       "url": "https://www.instagram.com/p/DdkCkMtCMbb/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/796641222_17910974211496139_2637009827074882629_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_tJDhPM-xJ0Q7kNvwHyahpj&_nc_oc=AdoZ1f8hFXrQTh9LFv1OCM_PAgPFIwgD6nxBKCxKpHf5qq0qUlFwPGNMW4IRvuHWymU&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&oh=00_AQOz_wwnROBDutQDS1by-6uNtiyRdnYXkQ82tjuz1X1aKQ&oe=6AC43F15",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/796641222_17910974211496139_2637009827074882629_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=100&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_tJDhPM-xJ0Q7kNvwHyahpj&_nc_oc=AdoZ1f8hFXrQTh9LFv1OCM_PAgPFIwgD6nxBKCxKpHf5qq0qUlFwPGNMW4IRvuHWymU&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&oh=00_AQN7sCNdamH5QpSIBgIkMvmqKvrjS-zO0a1fY7R9e74jcg&oe=6AC43F15",
       "caption": "Y2K döneminin efsane kompakt dijital kameraları RetroCameraLand.com’da ✨"
     },
     {
@@ -5553,7 +5597,7 @@ const INSTAGRAM = {
       "likes": 56,
       "comments": 2,
       "url": "https://www.instagram.com/reel/DdMfimPI653/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/806415649_17909660169496139_6442616314800946090_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=15YIYiGTF2wQ7kNvwHgb8By&_nc_oc=Adp_0AIgSmEPpC8lnfjLxaNG422GwcMbcqRHoaQw4DT2semsjGlh839nimfhRXrEEpo&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&_nc_tpa=Q5bMBQLDhTEo5jg8_b3Tq3HAjbDgiPxoSFKSWzKWC-TZ_PASfzaf5_CIHGZFZEBeDEdQwwUC7oQIGUZh&oh=00_AQOCgYNhedwFuQy_niTjIJQOkoMPdsuBriMvxj1VRHPP4g&oe=6AC421EA",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/806415649_17909660169496139_6442616314800946090_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=105&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=15YIYiGTF2wQ7kNvwHgb8By&_nc_oc=Adp_0AIgSmEPpC8lnfjLxaNG422GwcMbcqRHoaQw4DT2semsjGlh839nimfhRXrEEpo&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&_nc_tpa=Q5bMBQLI_8pGsvBeOARukCHUbqa7CTA-HyF9AQRjDSQjNuxDo1NhBl7l8eKjheQtNwT2d7UCLYZFvfmo&oh=00_AQOOVgoL2-C5Nb4y_rvUtYyRKi6SI-mFDJIRG9rgVuEuJg&oe=6AC421EA",
       "caption": "Good food, golden hour & retro vibes.🍸✨\n\nmaregastro’nun harika atmosferinde, nostaljik dokusuyla anıları ölümsüzleştiren Fujifilm FinePix Z📸\n\n#digicam #maregastro #dogumgünü #sapanca"
     },
     {
@@ -5563,7 +5607,7 @@ const INSTAGRAM = {
       "likes": 34,
       "comments": 0,
       "url": "https://www.instagram.com/reel/DdJHvycoRLo/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/825277344_17912095164496139_5787671045240403460_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=CmSTjDdhP4UQ7kNvwHUFHhp&_nc_oc=AdpQ1IljnP-dF2VxoKMw2UxzU9UUtVwQCqkJJVSQupyYOcLV31AROTuaF-y9JFZmWD8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&_nc_tpa=Q5bMBQKXcHGbVXWPciVxunSOehArDzLeE8B6L5gmDWYozeotDmOwWadjX8r071zALc8X6-aEfa81dV8Q&oh=00_AQMbbajTzDEZqCWug11zTClf_FWiFK-rc84DkfsbwR2ELQ&oe=6AC42A4E",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/825277344_17912095164496139_5787671045240403460_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=109&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=CmSTjDdhP4UQ7kNvwHUFHhp&_nc_oc=AdpQ1IljnP-dF2VxoKMw2UxzU9UUtVwQCqkJJVSQupyYOcLV31AROTuaF-y9JFZmWD8&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&_nc_tpa=Q5bMBQKCabgXjZ5pdsaJPlTBs9BN3D1S0A1ibYIYE9iHtFMMglviFB0RhwV8IN67Mowhw6Z7c_7myu-v&oh=00_AQOGt-Q6680AvfS2gcNeFDgmQfvZBhs3rkKCjwfojgTmzQ&oe=6AC42A4E",
       "caption": "Y2K memories unlocked with benessocoffee & by_cypher | istanbulcoffeefestival"
     },
     {
@@ -5573,7 +5617,7 @@ const INSTAGRAM = {
       "likes": 95,
       "comments": 0,
       "url": "https://www.instagram.com/p/DctPKS3CNpR/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/790240111_17907937566496139_1201938981720880646_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=izi7kMlPVgoQ7kNvwFAzLoH&_nc_oc=Adr-zhFrm9-WfGOsxjoRlPNYL8qTjyQGuNitKeaQlRqe45-ijueOuDxVectoE9fMido&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&oh=00_AQOSjLGzsCJHaih1jjpYLw3BgNtZCzoP4EIXnZx5eDkyiA&oe=6AC419B5",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/790240111_17907937566496139_1201938981720880646_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=izi7kMlPVgoQ7kNvwFAzLoH&_nc_oc=Adr-zhFrm9-WfGOsxjoRlPNYL8qTjyQGuNitKeaQlRqe45-ijueOuDxVectoE9fMido&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&oh=00_AQPUJ5llwV4Ue-CnNULM6OCrBEscXYBBiwCjetHpWh89sA&oe=6AC451F5",
       "caption": "Summer looks better on a digicam ☀️"
     },
     {
@@ -5583,7 +5627,7 @@ const INSTAGRAM = {
       "likes": 105,
       "comments": 3,
       "url": "https://www.instagram.com/p/Dcbib9OiHlU/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/786433827_17906950554496139_5245860873363562927_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=emWSrrdDPcYQ7kNvwG5PFHk&_nc_oc=AdqVd4-8TmmTu_ww7JRhEa3UDOj-lWjktCjJtDGKJtm2xgheV4Ey3SeOWINMt7SX6d0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&oh=00_AQM_H0ARJACKVxIhM2BK0Dxs4Mf8cyzyBcDrswo7L_DYAA&oe=6AC437FE",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/786433827_17906950554496139_5245860873363562927_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=108&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=emWSrrdDPcYQ7kNvwG5PFHk&_nc_oc=AdqVd4-8TmmTu_ww7JRhEa3UDOj-lWjktCjJtDGKJtm2xgheV4Ey3SeOWINMt7SX6d0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&oh=00_AQMuWrrf6Cn9EKB4o2tYWgLkKrlIx3eOz7YE9ukJYPQXsQ&oe=6AC437FE",
       "caption": "No social media alerts. No checking likes. Just point, shoot, and relive the night later. \n\n🌍retrocameraland.com"
     },
     {
@@ -5593,7 +5637,7 @@ const INSTAGRAM = {
       "likes": 69,
       "comments": 1,
       "url": "https://www.instagram.com/p/DcBlOM2iN55/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/768742511_17905346823496139_3758479193763869766_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Q010Z5Zd-Q8Q7kNvwHjTmRv&_nc_oc=AdrFgEFoJFrua5sAtpm41FnZPLqYo6O_jGDVC-UvMWD2NfxZ0Vc_IW4TnQPGvD69mqE&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&oh=00_AQONMul2c43PPnfRrucS3v4IJWRyqSMo1RLSfoqN0ReSfw&oe=6AC417C3",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/768742511_17905346823496139_3758479193763869766_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=Q010Z5Zd-Q8Q7kNvwHjTmRv&_nc_oc=AdrFgEFoJFrua5sAtpm41FnZPLqYo6O_jGDVC-UvMWD2NfxZ0Vc_IW4TnQPGvD69mqE&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&oh=00_AQPtXPCCI1ox_KXTur6M5TXmCCYJC6MD-89z3S0QTYaPmQ&oe=6AC45003",
       "caption": "this and no stress ✨ \ndigi cam era | retrocameraland.com"
     },
     {
@@ -5603,7 +5647,7 @@ const INSTAGRAM = {
       "likes": 44,
       "comments": 0,
       "url": "https://www.instagram.com/p/DbvnPlTCP-r/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/770139546_17904245655496139_543129596481212238_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=65xCtAvJIFsQ7kNvwFskaqk&_nc_oc=AdocO39G7Ho6Xhhqas1gbYIm_9pZ4KmHpACSV5T_cVmuSFa-2xnmakJITa-bdT-huVQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&oh=00_AQMisO48-hvr5NAtKCT8xzriFMDgvBtHYqoydh-veMH75w&oe=6AC42622",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/770139546_17904245655496139_543129596481212238_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=111&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=65xCtAvJIFsQ7kNvwFskaqk&_nc_oc=AdocO39G7Ho6Xhhqas1gbYIm_9pZ4KmHpACSV5T_cVmuSFa-2xnmakJITa-bdT-huVQ&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&oh=00_AQPUSJwPFHBPvcXYLK6qZDwtBfHmuZXKdSgYrEMJ682AZQ&oe=6AC42622",
       "caption": "dijital kameran her anında yanında. stilinin ikonik parçasını tamamlamak için retrocameraland.com ‘u ziyaret et ✨\n\n#digicam #aestethic #friends #photo"
     },
     {
@@ -5613,7 +5657,7 @@ const INSTAGRAM = {
       "likes": 162,
       "comments": 0,
       "url": "https://www.instagram.com/p/DbiqQosiKyY/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/762998267_17903444592496139_273795266728756418_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_yRaUVi19l8Q7kNvwF6uOxV&_nc_oc=AdosZxMQS4Xh8oQTpfbbhUDjXJaC210e0dxB1GiGj_iUZcR44mlNfx5y7fn1aeYtrYw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&oh=00_AQOn-Cuje0Zs_8ZmWSQd3Po5mhbo2BkGvdYMkPQLp0Uk2Q&oe=6AC415BA",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/762998267_17903444592496139_273795266728756418_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=104&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0FST1VTRUxfSVRFTS5iZXN0X2ltYWdlX3VybGdlbi5DMyJ9&_nc_ohc=_yRaUVi19l8Q7kNvwF6uOxV&_nc_oc=AdosZxMQS4Xh8oQTpfbbhUDjXJaC210e0dxB1GiGj_iUZcR44mlNfx5y7fn1aeYtrYw&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&oh=00_AQOUE-siDFOzOv5iXxVyaSy0S1fOgkymMJitjj5NcHupkA&oe=6AC44DFA",
       "caption": "en güzel anlar plansız gelir… 📸 unutulmaz anılarını retro kameranda sakla ✨\n\n#y2k #retroaesthetic #couple #digicam #love"
     },
     {
@@ -5623,7 +5667,7 @@ const INSTAGRAM = {
       "likes": 32,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DbdC6b0oP-F/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/762660648_17903003199496139_6750346592123488273_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=abZydfA-nb8Q7kNvwGhP0Vw&_nc_oc=AdotZ0Pi8WFUI1-9OWrpV77LI40Zm0vdWmJRxuEpN688CxRh8knFJgu-7c8Fyg153j0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&_nc_tpa=Q5bMBQKMmDV7zEJeGioXWCXelF3QEt3cNIA_AO3yFmjc_gNy5-tktT4LlaOno-zhidMdgLbhWb1g_7F0&oh=00_AQPZiMXsPFEsf5-nXctItozds2rN0BFakl3snDuVxcmjHQ&oe=6AC42421",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/762660648_17903003199496139_6750346592123488273_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=101&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=abZydfA-nb8Q7kNvwGhP0Vw&_nc_oc=AdotZ0Pi8WFUI1-9OWrpV77LI40Zm0vdWmJRxuEpN688CxRh8knFJgu-7c8Fyg153j0&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&_nc_tpa=Q5bMBQI__Z3WRsUEmtF3tKzxQ66NeSkUJQCeUtqcQjYGfyws81gHSiyVkLwPnGJ4hv2UQw9tm6AATMsu&oh=00_AQNRo2B1s3TbgcS_ocihxvSGW9mmOpiMfMojm91guGMlWA&oe=6AC42421",
       "caption": "Nikon Coolpix S3000 💙 İkonik modelleri Retrocameraland.com’da keşfet 💫 \n\n#nikon #y2k #vintagecamera #digitalcamera #pointandshoot"
     },
     {
@@ -5633,7 +5677,7 @@ const INSTAGRAM = {
       "likes": 136,
       "comments": 1,
       "url": "https://www.instagram.com/reel/DbOHz0RotkG/",
-      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/754536583_17902169151496139_3458749424390485382_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=cyu_yQ5YmwQQ7kNvwENFZ7h&_nc_oc=AdpOHI4x8xzcMJKPOCgMGq-BaF42LhiI-NjT4H_9AmtgYiZvR9eBs_1jPxua-SpLZ0E&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=bEZ122jFIGkooz81a0jx8Q&_nc_tpa=Q5bMBQKPzdVkUjyVRmuS8fUPOhXjH4L4LftHI6pW8BrkJKubp2qnLPYGMoYVorGEtcLob3brOm8HphEx&oh=00_AQO63LbM8Ec2zzq-ZbmZMM9w0NnSrQLDgb9gfbmBtzLCZA&oe=6AC44683",
+      "image": "https://scontent.cdninstagram.com/v/t51.82787-15/754536583_17902169151496139_3458749424390485382_n.jpg?stp=dst-jpg_e35_tt6&_nc_cat=110&ccb=7-5&_nc_sid=18de74&efg=eyJlZmdfdGFnIjoiQ0xJUFMuYmVzdF9pbWFnZV91cmxnZW4uQzMifQ%3D%3D&_nc_ohc=cyu_yQ5YmwQQ7kNvwENFZ7h&_nc_oc=AdpOHI4x8xzcMJKPOCgMGq-BaF42LhiI-NjT4H_9AmtgYiZvR9eBs_1jPxua-SpLZ0E&_nc_zt=23&_nc_ht=scontent.cdninstagram.com&edm=AM6HXa8EAAAA&_nc_gid=G98rm5GV5o4b0DEV69QZQA&_nc_tpa=Q5bMBQLnot8U6nEbMnn5bdOKW_jDS68NqbDfHUW7Ty_GHZEk45E3x_j6lU3gF3NiBnyeQ3Q0pZTECogk&oh=00_AQOCcJgoMLZMyx3mzwCAs1zutlkIlZgH--4TCd430D__XQ&oe=6AC44683",
       "caption": "İstanbul gün batımı x Canon IXUS. O eşsiz 2000’ler dokusunu yakalamak isteyenler için harika bir parça 📸🌇 retrocameraland.com’da indirimler başladı ✨\n\n#digitalcamera #y2k #vintagecamera #canon #ixus"
     }
   ],
@@ -5728,7 +5772,7 @@ function mkChart(id, cfg) {
 
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','finance','inventory','yeniurun','youtube','instagram','email','stats','seo','blog','cherry','alim','bulucu','bloggerbeyz'];
+const PAGES = ['overview','finance','inventory','yeniurun','youtube','instagram','email','stats','seo','blog','cherry','alim','bulucu','mesajlar','bloggerbeyz'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -5762,6 +5806,7 @@ function navigate(page, navEl) {
   if (page === 'email') renderEmail();
   if (page === 'alim') renderAlimPage();
   if (page === 'bulucu' && window.renderBulucuPage) renderBulucuPage();
+  if (page === 'mesajlar' && window.renderMesajlarPage) renderMesajlarPage();
   if (page === 'bloggerbeyz' && window.renderBloggerBeyzPage) renderBloggerBeyzPage();
 }
 
@@ -9753,6 +9798,10 @@ function finAnimateKPIs() {
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
       <span class="bn-more-lbl">E-posta</span>
     </div>
+    <div class="bn-more-item" data-page="mesajlar" onclick="navigate('mesajlar');closeMoreMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1.2-4.6A8 8 0 1 1 21 12z"/></svg>
+      <span class="bn-more-lbl">Mesajlar</span>
+    </div>
     <div class="bn-more-item" data-page="bulucu" onclick="navigate('bulucu');closeMoreMenu()">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
       <span class="bn-more-lbl">Kamera Bulucu</span>
@@ -10778,5 +10827,162 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 
+<style>
+  #page-mesajlar .msg-shell{display:grid;grid-template-columns:320px 1fr;height:calc(100vh - 210px);min-height:460px;background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.09);border-radius:18px;overflow:hidden}
+  #page-mesajlar .msg-side{display:flex;flex-direction:column;border-right:1px solid rgba(0,0,0,.08);min-width:0}
+  #page-mesajlar .msg-side-h{display:flex;gap:6px;padding:12px;border-bottom:1px solid rgba(0,0,0,.07)}
+  #page-mesajlar .msg-tab{border:1px solid rgba(0,0,0,.1);background:transparent;color:var(--t2);font:inherit;font-size:.74rem;font-weight:700;padding:6px 11px;border-radius:100px;cursor:pointer}
+  #page-mesajlar .msg-tab.active{background:var(--t1);color:#fff;border-color:var(--t1)}
+  #page-mesajlar .msg-tab b{font-weight:800;margin-left:3px}
+  #page-mesajlar .msg-list{flex:1;overflow-y:auto}
+  #page-mesajlar .msg-item{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid rgba(0,0,0,.06);background:transparent;padding:12px 14px;cursor:pointer;font:inherit;color:var(--t1)}
+  #page-mesajlar .msg-item:hover{background:rgba(0,0,0,.03)}
+  #page-mesajlar .msg-item.active{background:rgba(204,0,0,.06)}
+  #page-mesajlar .mi-top{display:flex;align-items:center;gap:8px}
+  #page-mesajlar .mi-name{font-weight:800;font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #page-mesajlar .mi-time{margin-left:auto;font-size:.64rem;color:var(--t3);white-space:nowrap}
+  #page-mesajlar .mi-prev{margin-top:3px;font-size:.76rem;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #page-mesajlar .mi-badge{min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--red);color:#fff;font-size:.62rem;font-weight:800;line-height:18px;text-align:center}
+  #page-mesajlar .mi-closed{font-size:.6rem;font-weight:700;color:var(--t3);border:1px solid rgba(0,0,0,.12);padding:1px 6px;border-radius:100px}
+  #page-mesajlar .msg-main{display:flex;flex-direction:column;min-width:0;min-height:0}
+  #page-mesajlar .msg-empty{margin:auto;color:var(--t3);font-size:.84rem}
+  #page-mesajlar .msg-thread{display:flex;flex-direction:column;flex:1;min-height:0}
+  #page-mesajlar .msg-thread[hidden]{display:none}
+  #page-mesajlar .msg-head{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid rgba(0,0,0,.07)}
+  #page-mesajlar .msg-who{flex:1;min-width:0;display:flex;flex-direction:column}
+  #page-mesajlar .msg-who b{font-size:.95rem;font-weight:800;color:var(--t1)}
+  #page-mesajlar .msg-who span{font-size:.7rem;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #page-mesajlar .msg-back{display:none;border:0;background:transparent;font-size:1.6rem;line-height:1;color:var(--t1);cursor:pointer;padding:0 6px}
+  #page-mesajlar .msg-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:6px}
+  #page-mesajlar .mb{max-width:72%;padding:9px 13px;border-radius:16px;font-size:.86rem;line-height:1.4;white-space:pre-wrap;word-break:break-word}
+  #page-mesajlar .mb.visitor{align-self:flex-start;background:rgba(0,0,0,.06);color:var(--t1);border-bottom-left-radius:5px}
+  #page-mesajlar .mb.admin{align-self:flex-end;background:#cc0000;color:#fff;border-bottom-right-radius:5px}
+  #page-mesajlar .mb-t{font-size:.6rem;color:var(--t3);margin:0 4px 6px}
+  #page-mesajlar .mb-t.admin{align-self:flex-end}
+  #page-mesajlar .msg-day{align-self:center;font-size:.62rem;font-weight:700;color:var(--t3);margin:8px 0 4px}
+  #page-mesajlar .msg-form{display:flex;gap:8px;align-items:flex-end;padding:12px;border-top:1px solid rgba(0,0,0,.07)}
+  #page-mesajlar .msg-form textarea{flex:1;resize:none;max-height:140px;border:1px solid rgba(0,0,0,.14);border-radius:14px;padding:10px 13px;font:inherit;font-size:.88rem;color:var(--t1);background:#fff;outline:0}
+  #page-mesajlar .msg-form textarea:focus{border-color:var(--t1)}
+  #page-mesajlar .msg-send{border:0;border-radius:100px;background:#cc0000;color:#fff;font:inherit;font-weight:700;font-size:.82rem;padding:11px 18px;cursor:pointer}
+  #page-mesajlar .msg-send[disabled]{opacity:.5;cursor:default}
+  @media(max-width:820px){
+    #page-mesajlar .msg-shell{grid-template-columns:1fr;height:calc(100vh - 250px)}
+    #page-mesajlar .msg-shell.in-thread .msg-side{display:none}
+    #page-mesajlar .msg-shell:not(.in-thread) .msg-main{display:none}
+    #page-mesajlar .msg-back{display:block}
+    #page-mesajlar .mb{max-width:86%}
+  }
+</style>
+<script>
+(function(){
+  var EP='/api/messages';
+  var M={items:[],filter:'open',cur:null,lastId:0,listT:null,thrT:null,sending:false};
+  function key(){ try{ return localStorage.getItem('rcl_alim_key')||''; }catch(e){ return ''; } }
+  function hdr(){ var h={'Content-Type':'application/json'}; var k=key(); if(k) h['x-rcl-key']=k; return h; }
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function $(id){ return document.getElementById(id); }
+  function hm(iso){ try{ return new Date(iso).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'}); }catch(e){ return ''; } }
+  function ago(iso){ try{ var d=new Date(iso), n=new Date(); if(d.toDateString()===n.toDateString()) return hm(iso); return d.toLocaleDateString('tr-TR',{day:'2-digit',month:'short'}); }catch(e){ return ''; } }
+  function active(){ var p=$('page-mesajlar'); return p && p.classList.contains('active'); }
+  function api(action,opt,qs){ return fetch(EP+'?action='+action+(qs||''),Object.assign({headers:hdr(),cache:'no-store'},opt||{})).then(function(r){ return r.json().then(function(j){ j._status=r.status; return j; }); }); }
+
+  function badge(){
+    var n=0; M.items.forEach(function(x){ n+=(x.unread_admin||0); });
+    var b=$('msg-nav-badge'); if(b){ b.style.display=n?'inline-block':'none'; b.textContent=n; }
+    var o=$('msg-c-open'); if(o) o.textContent=M.items.filter(function(x){ return x.status==='open'; }).length;
+  }
+  function drawList(){
+    var el=$('msg-list'); if(!el) return;
+    var rows=M.items.filter(function(x){ return M.filter==='all'||x.status===M.filter; });
+    if(!rows.length){ el.innerHTML='<div class="alim-empty">'+(M.items.length?'Bu filtrede konuşma yok.':'Henüz mesaj yok.')+'</div>'; return; }
+    el.innerHTML=rows.map(function(x){
+      return '<button class="msg-item'+(M.cur&&M.cur.id===x.id?' active':'')+'" data-id="'+esc(x.id)+'">'+
+        '<div class="mi-top"><span class="mi-name">'+esc(x.name||'İsimsiz')+'</span>'+
+        (x.status==='closed'?'<span class="mi-closed">kapalı</span>':'')+
+        (x.unread_admin?'<span class="mi-badge">'+x.unread_admin+'</span>':'')+
+        '<span class="mi-time">'+ago(x.last_message_at)+'</span></div>'+
+        '<div class="mi-prev">'+(x.last_sender==='admin'?'Sen: ':'')+esc(x.last_preview||'')+'</div></button>';
+    }).join('');
+  }
+  function loadList(){
+    return api('list').then(function(j){
+      var el=$('msg-list');
+      if(j._status===401){ if(el) el.innerHTML='<div class="alim-empty">Erişim anahtarı gerekli. <button type="button" class="alim-fbtn" onclick="window.MSG_unlock()">Anahtarı Gir</button></div>'; return; }
+      if(!j.ok){ if(el&&active()) el.innerHTML='<div class="alim-empty">'+esc(j.error||'Liste alınamadı')+'</div>'; return; }
+      M.items=j.items||[]; badge();
+      if(active()){ drawList(); var u=$('msg-upd'); if(u) u.textContent=hm(new Date().toISOString()); }
+      if(M.cur){ var c=M.items.filter(function(x){ return x.id===M.cur.id; })[0]; if(c){ M.cur=c; head(); } }
+    }).catch(function(){});
+  }
+  function head(){
+    var c=M.cur; if(!c) return;
+    $('msg-h-name').textContent=(c.name||'İsimsiz')+'  ·  '+c.code;
+    $('msg-h-meta').textContent=[c.contact,c.page,c.device==='mobile'?'Mobil':(c.device==='desktop'?'Masaüstü':'')].filter(Boolean).join('  ·  ');
+    $('msg-close').textContent=c.status==='closed'?'Yeniden aç':'Kapat';
+  }
+  function addMsgs(msgs){
+    var body=$('msg-body'); if(!body||!msgs.length) return;
+    var stick=body.scrollHeight-body.scrollTop-body.clientHeight<80;
+    msgs.forEach(function(m){
+      if(m.id<=M.lastId) return; M.lastId=m.id;
+      var day=new Date(m.created_at).toLocaleDateString('tr-TR',{day:'2-digit',month:'long'});
+      if(body.getAttribute('data-day')!==day){ body.setAttribute('data-day',day); body.insertAdjacentHTML('beforeend','<div class="msg-day">'+esc(day)+'</div>'); }
+      body.insertAdjacentHTML('beforeend','<div class="mb '+m.sender+'">'+esc(m.body)+'</div><div class="mb-t '+m.sender+'">'+hm(m.created_at)+(m.sender==='admin'&&m.via==='telegram'?' · Telegram':'')+'</div>');
+    });
+    if(stick) body.scrollTop=body.scrollHeight;
+  }
+  function loadThread(){
+    if(!M.cur) return Promise.resolve();
+    var id=M.cur.id;
+    return api('thread',null,'&id='+encodeURIComponent(id)+'&after='+M.lastId).then(function(j){
+      if(!j.ok||!M.cur||M.cur.id!==id) return;
+      addMsgs(j.messages||[]);
+      var it=M.items.filter(function(x){ return x.id===id; })[0]; if(it&&it.unread_admin){ it.unread_admin=0; badge(); drawList(); }
+    }).catch(function(){});
+  }
+  function open(id){
+    var c=M.items.filter(function(x){ return x.id===id; })[0]; if(!c) return;
+    M.cur=c; M.lastId=0;
+    var body=$('msg-body'); body.innerHTML=''; body.removeAttribute('data-day');
+    $('msg-empty').hidden=true; $('msg-thread').hidden=false; $('msg-shell').classList.add('in-thread');
+    head(); drawList();
+    loadThread().then(function(){ body.scrollTop=body.scrollHeight; var i=$('msg-input'); if(i&&window.innerWidth>820) i.focus(); });
+  }
+  function sendReply(){
+    var i=$('msg-input'), v=(i.value||'').trim();
+    if(!v||!M.cur||M.sending) return;
+    M.sending=true; $('msg-send').disabled=true;
+    api('reply',{method:'POST',body:JSON.stringify({id:M.cur.id,body:v})}).then(function(j){
+      if(j.ok){ i.value=''; i.style.height='auto'; addMsgs([j.message]); $('msg-body').scrollTop=$('msg-body').scrollHeight; loadList(); }
+      else alert(j.error||'Gönderilemedi');
+    }).catch(function(){ alert('Bağlantı hatası'); }).then(function(){ M.sending=false; $('msg-send').disabled=false; });
+  }
+  var bound=false;
+  function bind(){
+    if(bound) return; bound=true;
+    $('msg-list').addEventListener('click',function(e){ var b=e.target.closest('.msg-item'); if(b) open(b.getAttribute('data-id')); });
+    document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(t){ t.addEventListener('click',function(){
+      document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active'); M.filter=t.getAttribute('data-f'); drawList(); }); });
+    $('msg-form').addEventListener('submit',function(e){ e.preventDefault(); sendReply(); });
+    $('msg-input').addEventListener('keydown',function(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendReply(); } });
+    $('msg-input').addEventListener('input',function(){ this.style.height='auto'; this.style.height=Math.min(140,this.scrollHeight)+'px'; });
+    $('msg-back').addEventListener('click',function(){ $('msg-shell').classList.remove('in-thread'); M.cur=null; drawList(); });
+    $('msg-close').addEventListener('click',function(){ if(!M.cur) return; var st=M.cur.status==='closed'?'open':'closed';
+      api('status',{method:'POST',body:JSON.stringify({id:M.cur.id,status:st})}).then(function(){ loadList(); }); });
+  }
+  window.MSG_unlock=function(){ var k=prompt('HQ erişim anahtarı (RCL_ALIM_KEY):'); if(k){ try{ localStorage.setItem('rcl_alim_key',k); }catch(e){} loadList(); } };
+  window.renderMesajlarPage=function(){ bind(); drawList(); loadList(); };
+  // sayfa acikken 4 sn'de bir, arka planda 30 sn'de bir (okunmamis rozeti icin)
+  var tick=0;
+  setInterval(function(){
+    tick++;
+    if(document.hidden||!key()) return;
+    if(active()){ if(tick%2===0) loadList(); loadThread(); }
+    else if(tick%15===0) loadList();
+  },2000);
+  setTimeout(function(){ if(key()) loadList(); },2500);
+})();
+</script>
 </body>
 </html>
