@@ -7,6 +7,7 @@
 // Tablolar: rcl-community/supabase/schema_chat.sql
 import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
+import * as club from '../lib/club.js';
 
 const MAX_BODY = 2000;
 const AGENTS = ['Umut', 'Ayb\u00fcke', 'Deniz']; // paneldeki destek ekibi
@@ -17,7 +18,7 @@ const RENOTIFY_MIN = 30; // son mesajdan bu kadar dakika sonra gelen ziyaretci m
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, x-rcl-key, x-rcl-tg');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-rcl-key, x-rcl-tg');
 }
 function send(res, status, body) {
   cors(res);
@@ -107,11 +108,14 @@ async function addAdminMessage(sb, conv, body, via, agent) {
 
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') { cors(res); return res.status(204).end(); }
-  const action = s(req.query && req.query.action, 20);
+  const action = s(req.query && req.query.action, 30);
   if (!SB_URL || !SB_KEY) return send(res, 503, { ok: false, error: 'yapilandirma' });
   const sb = db();
 
   try {
+    // ---- Retro Club: ayni fonksiyon altinda (Vercel fonksiyon siniri) ----
+    if (action.startsWith('club.')) return await club.handle(action, req, res, { sb, send, readJson, isAdmin, tgSend });
+
     // ---- health: tablolar hazir mi? (site penceresi buna gore acilir) ----
     if (action === 'health') {
       const { error } = await sb.from('chat_conversations').select('id').limit(1);
