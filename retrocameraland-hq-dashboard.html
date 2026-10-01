@@ -10990,7 +10990,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(!M.agent){ drawAgents(); alert('Önce soldan kimin yanıtladığını seç (Umut, Aybüke ya da Deniz).'); return; }
     M.sending=true; $('msg-send').disabled=true;
     api('reply',{method:'POST',body:JSON.stringify({key:M.cur.key,body:v,agent:M.agent})}).then(function(j){
-      if(j.ok){ i.value=''; i.style.height='auto'; addMsgs([j.message]); $('msg-body').scrollTop=$('msg-body').scrollHeight; loadList(); }
+      if(j.ok){ i.value=''; i.style.height='auto'; addMsgs([j.joined,j.message].filter(Boolean)); $('msg-body').scrollTop=$('msg-body').scrollHeight; loadList(); }
       else alert(j.error||'Gönderilemedi');
     }).catch(function(){ alert('Bağlantı hatası'); }).then(function(){ M.sending=false; $('msg-send').disabled=false; });
   }

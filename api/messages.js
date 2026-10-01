@@ -78,6 +78,21 @@ async function tgSend(text) {
 }
 const MSG_COLS = 'id, sender, body, via, created_at';
 
+// Musteriye "<Temsilci> sohbete katildi" bildirimi. Ayni temsilci icin en fazla saatte bir; eklendiyse satiri doner.
+async function ensureJoin(sb, conv, agent) {
+  if (!agent) return null;
+  const via = 'system:join:' + agent;
+  const prev = await sb.from('chat_messages').select('created_at').eq('conversation_id', conv.id).eq('via', via)
+    .order('id', { ascending: false }).limit(1);
+  const last = prev.data && prev.data[0];
+  if (last && (Date.now() - new Date(last.created_at).getTime()) / 60000 < JOIN_AGAIN_MIN) return null;
+  const ins = await sb.from('chat_messages').insert({ conversation_id: conv.id, sender: 'admin', via,
+    body: agent + ' sohbete kat\u0131ld\u0131. Ger\u00e7ek bir ki\u015fiyle yaz\u0131\u015f\u0131yorsunuz.' }).select(MSG_COLS).single();
+  if (ins.error) return null;
+  conv.unread_visitor = (conv.unread_visitor || 0) + 1;
+  await sb.from('chat_conversations').update({ unread_visitor: conv.unread_visitor }).eq('id', conv.id);
+  return ins.data;
+}
 async function addAdminMessage(sb, conv, body, via, agent) {
   if (agent) via = via + ':' + agent;
   const { data: msg, error } = await sb.from('chat_messages')
@@ -255,21 +270,7 @@ export default async function handler(req, res) {
       const agent = agentOf(req.query.agent);
       let joined = null;
       // Temsilci okunmamis mesaji actiginda musteriye "X sohbete katildi" bildirimi (ayni temsilci icin saatte en fazla bir)
-      if (agent && unread > 0) {
-        const latest = convs[0];
-        const via = 'system:join:' + agent;
-        const prev = await sb.from('chat_messages').select('created_at').eq('conversation_id', latest.id).eq('via', via)
-          .order('id', { ascending: false }).limit(1);
-        const last = prev.data && prev.data[0];
-        if (!last || (Date.now() - new Date(last.created_at).getTime()) / 60000 >= JOIN_AGAIN_MIN) {
-          const ins = await sb.from('chat_messages').insert({ conversation_id: latest.id, sender: 'admin', via,
-            body: agent + ' sohbete katıldı. Gerçek bir kişiyle yazışıyorsunuz.' }).select(MSG_COLS).single();
-          if (!ins.error) {
-            joined = ins.data;
-            await sb.from('chat_conversations').update({ unread_visitor: (latest.unread_visitor || 0) + 1 }).eq('id', latest.id);
-          }
-        }
-      }
+      if (agent && unread > 0) joined = await ensureJoin(sb, convs[0], agent);
       if (unread > 0) await sb.from('chat_conversations').update({ unread_admin: 0 }).in('id', ids);
       const out = (msgs || []).slice();
       if (joined && !out.some((m) => m.id === joined.id)) out.push(joined);
@@ -283,8 +284,10 @@ export default async function handler(req, res) {
       if (!agent) return send(res, 400, { ok: false, error: 'Temsilci secilmedi' });
       const convs = await groupConvs(sb, b.key);
       if (!convs.length) return send(res, 404, { ok: false, error: 'Konusma bulunamadi' });
+      // Temsilcinin ilk yanitindan ONCE katilma bildirimi gitsin (konusma temsilci secilmeden acilmis olabilir).
+      const joined = await ensureJoin(sb, convs[0], agent);
       const msg = await addAdminMessage(sb, convs[0], body, 'panel', agent); // en son yazilan konusmaya gider
-      return send(res, 200, { ok: true, message: msg });
+      return send(res, 200, { ok: true, message: msg, joined });
     }
     if (action === 'status' && req.method === 'POST') {
       const b = await readJson(req);
