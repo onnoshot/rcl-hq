@@ -1665,6 +1665,10 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3.2"/></svg>
       <span class="nav-label">Kamera Alım <span id="alim-nav-badge" style="display:none;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--red);color:#fff;font-size:.58rem;font-weight:700;line-height:16px;text-align:center;margin-left:4px"></span></span>
     </div>
+    <div class="nav-item" data-page="kulup" onclick="navigate('kulup',this)">
+      <svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="17" cy="10" r="1.2"/><path d="M6.5 14.5h6"/></svg>
+      <span class="nav-label">Retro Club <span id="kl-nav-badge" style="display:none;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--red);color:#fff;font-size:.58rem;font-weight:700;line-height:16px;text-align:center;margin-left:4px"></span></span>
+    </div>
     <div class="nav-item" data-page="mesajlar" onclick="navigate('mesajlar',this)">
       <svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1.2-4.6A8 8 0 1 1 21 12z"/></svg>
       <span class="nav-label">Mesajlar <span id="msg-nav-badge" style="display:none;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--red);color:#fff;font-size:.58rem;font-weight:700;line-height:16px;text-align:center;margin-left:4px"></span></span>
@@ -3889,6 +3893,38 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 
 <!-- ═══════════════════ TIME CAPSULE (Topluluk yönetim) ═══════════════════ -->
 <!-- ═══════════════════ KAMERA BULUCU (AI Kamera Eşleştirici testi) ═══════════════════ -->
+<div class="page" id="page-kulup">
+  <div class="page-topbar fi">
+    <div class="pt-left">
+      <div class="pt-title" style="color:var(--red)">Retro Club</div>
+      <div class="pt-sub">Başvurular, etkinlikler, üyeler, kart numaraları ve üyelerin gördüğü alanın içeriği. Burada yaptığın her değişiklik üyelerin ekranına yansır.</div>
+    </div>
+    <div class="pt-right">
+      <a class="alim-fbtn" href="https://retrocameraland.com/pages/retro-club" target="_blank" rel="noopener">Sayfayı aç ↗</a>
+      <span class="upd-time" id="kl-upd">—</span>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.05s">
+    <div class="g g4">
+      <div class="card p card-gold"><div class="kpi-lbl">Üye</div><div class="kpi-big" id="kl-k-members">—</div></div>
+      <div class="card p"><div class="kpi-lbl">Bekleyen Başvuru</div><div class="kpi-big" id="kl-k-pending">—</div></div>
+      <div class="card p"><div class="kpi-lbl">Boştaki Kart</div><div class="kpi-big" id="kl-k-cards">—</div></div>
+      <div class="card p"><div class="kpi-lbl">Yaklaşan Etkinlik</div><div class="kpi-big" id="kl-k-events">—</div></div>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.08s">
+    <div class="kl-tabs" id="kl-tabs">
+      <button class="kl-tab active" data-t="apps">Başvurular</button>
+      <button class="kl-tab" data-t="events">Etkinlikler</button>
+      <button class="kl-tab" data-t="members">Üyeler</button>
+      <button class="kl-tab" data-t="cards">Kartlar</button>
+      <button class="kl-tab" data-t="photos">Kareler</button>
+      <button class="kl-tab" data-t="settings">Üye Alanı</button>
+    </div>
+    <div id="kl-body" class="kl-body"><div class="alim-empty">Yükleniyor…</div></div>
+  </div>
+</div>
+
 <div class="page" id="page-mesajlar">
   <div class="page-topbar fi">
     <div class="pt-left">
@@ -5791,7 +5827,7 @@ function mkChart(id, cfg) {
 
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','finance','inventory','yeniurun','youtube','instagram','email','stats','seo','blog','cherry','alim','bulucu','mesajlar','bloggerbeyz'];
+const PAGES = ['overview','finance','inventory','yeniurun','youtube','instagram','email','stats','seo','blog','cherry','alim','bulucu','mesajlar','kulup','bloggerbeyz'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -5826,6 +5862,7 @@ function navigate(page, navEl) {
   if (page === 'alim') renderAlimPage();
   if (page === 'bulucu' && window.renderBulucuPage) renderBulucuPage();
   if (page === 'mesajlar' && window.renderMesajlarPage) renderMesajlarPage();
+  if (page === 'kulup' && window.renderKulupPage) renderKulupPage();
   if (page === 'bloggerbeyz' && window.renderBloggerBeyzPage) renderBloggerBeyzPage();
 }
 
@@ -9817,6 +9854,10 @@ function finAnimateKPIs() {
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
       <span class="bn-more-lbl">E-posta</span>
     </div>
+    <div class="bn-more-item" data-page="kulup" onclick="navigate('kulup');closeMoreMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="12" rx="2.5"/><circle cx="17" cy="10" r="1.2"/><path d="M6.5 14.5h6"/></svg>
+      <span class="bn-more-lbl">Retro Club</span>
+    </div>
     <div class="bn-more-item" data-page="mesajlar" onclick="navigate('mesajlar');closeMoreMenu()">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1.2-4.6A8 8 0 1 1 21 12z"/></svg>
       <span class="bn-more-lbl">Mesajlar</span>
@@ -11022,6 +11063,193 @@ document.addEventListener('DOMContentLoaded', function(){
     else if(tick%15===0) loadList();
   },2000);
   setTimeout(function(){ if(key()) loadList(); },2500);
+})();
+</script>
+<style>
+  #page-kulup .kl-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+  #page-kulup .kl-tab{border:1px solid rgba(0,0,0,.1);background:transparent;color:var(--t2);font:inherit;font-size:.78rem;font-weight:700;padding:8px 14px;border-radius:100px;cursor:pointer;transition:all .2s}
+  #page-kulup .kl-tab.active{background:var(--t1);color:#fff;border-color:var(--t1)}
+  #page-kulup .kl-tab b{margin-left:5px;background:var(--red);color:#fff;border-radius:100px;padding:1px 6px;font-size:.62rem}
+  #page-kulup .kl-body>*{animation:klUp .45s cubic-bezier(.2,.85,.25,1) both}
+  @keyframes klUp{from{opacity:0;transform:translateY(12px)}}
+  #page-kulup .kl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  #page-kulup .kl-card{background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.09);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s}
+  #page-kulup .kl-card:hover{transform:translateY(-2px);box-shadow:0 14px 30px -20px rgba(0,0,0,.5)}
+  #page-kulup .kl-selfie{width:100%;aspect-ratio:4/3;object-fit:cover;background:#ddd;cursor:zoom-in}
+  #page-kulup .kl-in{padding:14px 16px;display:flex;flex-direction:column;gap:6px;color:var(--t1)}
+  #page-kulup .kl-nm{font-weight:800;font-size:.98rem}
+  #page-kulup .kl-mt{font-size:.74rem;color:var(--t2);line-height:1.45}
+  #page-kulup .kl-st{align-self:flex-start;font-size:.62rem;font-weight:800;padding:2px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:.06em}
+  #page-kulup .kl-st.pending{background:rgba(255,159,10,.18);color:#b36b00}
+  #page-kulup .kl-st.approved,#page-kulup .kl-st.published,#page-kulup .kl-st.active,#page-kulup .kl-st.unused,#page-kulup .kl-st.visible{background:rgba(48,209,88,.16);color:#1d7a3a}
+  #page-kulup .kl-st.rejected,#page-kulup .kl-st.cancelled,#page-kulup .kl-st.suspended,#page-kulup .kl-st.void,#page-kulup .kl-st.hidden{background:rgba(255,69,58,.14);color:#b3261e}
+  #page-kulup .kl-st.used,#page-kulup .kl-st.draft{background:rgba(0,0,0,.07);color:var(--t2)}
+  #page-kulup .kl-act{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  #page-kulup .kl-btn{border:1px solid rgba(0,0,0,.14);background:#fff;color:var(--t1);font:inherit;font-size:.76rem;font-weight:700;padding:8px 14px;border-radius:100px;cursor:pointer;transition:all .2s}
+  #page-kulup .kl-btn:hover{border-color:var(--t1)}
+  #page-kulup .kl-btn.ok{background:#cc0000;border-color:#cc0000;color:#fff}
+  #page-kulup .kl-btn.dark{background:var(--t1);border-color:var(--t1);color:#fff}
+  #page-kulup .kl-btn[disabled]{opacity:.5;cursor:default}
+  #page-kulup .kl-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding:18px;background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.09);border-radius:18px;margin-bottom:16px}
+  #page-kulup .kl-form label{display:flex;flex-direction:column;gap:5px;font-size:.68rem;font-weight:700;color:var(--t2);text-transform:uppercase;letter-spacing:.06em}
+  #page-kulup .kl-form .wide{grid-column:1/-1}
+  #page-kulup .kl-form input,#page-kulup .kl-form select,#page-kulup .kl-form textarea{font:inherit;font-size:.88rem;text-transform:none;letter-spacing:0;font-weight:500;color:var(--t1);background:#fff;border:1px solid rgba(0,0,0,.14);border-radius:12px;padding:10px 12px;outline:0}
+  #page-kulup .kl-form input:focus,#page-kulup .kl-form select:focus,#page-kulup .kl-form textarea:focus{border-color:var(--t1)}
+  #page-kulup .kl-form .chk{flex-direction:row;align-items:center;gap:8px;text-transform:none;letter-spacing:0;font-size:.82rem;font-weight:600;color:var(--t1)}
+  #page-kulup .kl-h{font-weight:800;font-size:.92rem;color:var(--t1);margin:4px 0 10px}
+  #page-kulup .kl-row{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:11px 14px;border-bottom:1px solid rgba(0,0,0,.06);font-size:.82rem;color:var(--t1)}
+  #page-kulup .kl-list{background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.09);border-radius:18px;overflow:hidden}
+  #page-kulup .kl-row:last-child{border-bottom:0}
+  #page-kulup .kl-ava{width:36px;height:36px;border-radius:50%;object-fit:cover;background:var(--t1);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.8rem}
+  #page-kulup .kl-row small{display:block;color:var(--t3);font-size:.7rem;margin-top:2px}
+  #page-kulup .kl-mono{font-family:ui-monospace,Menlo,monospace;letter-spacing:.06em}
+  #page-kulup .kl-codes{background:#111;color:#f5f5f7;border-radius:14px;padding:14px;font-family:ui-monospace,Menlo,monospace;font-size:.78rem;line-height:1.7;max-height:220px;overflow:auto;white-space:pre;margin-bottom:14px}
+  #page-kulup .kl-ev-date{width:52px;text-align:center;font-weight:800;line-height:1.1}
+  #page-kulup .kl-ev-date small{color:var(--red);text-transform:uppercase;font-weight:800}
+  #page-kulup .kl-att{font-size:.72rem;color:var(--t2);margin-top:4px}
+  #page-kulup .kl-prev{background:#0b0b0c;color:#f5f5f7;border-radius:18px;padding:22px;margin-bottom:16px}
+  #page-kulup .kl-prev small{color:#cc0000;font-weight:700;letter-spacing:.18em;font-size:.62rem;text-transform:uppercase}
+  #page-kulup .kl-prev h4{margin:8px 0 6px;font-size:1.5rem;font-weight:700;letter-spacing:-.02em;color:#fff}
+  #page-kulup .kl-prev p{margin:0;color:rgba(245,245,247,.66);font-size:.86rem}
+  #page-kulup .kl-prev .ann{margin-top:12px;padding:10px 12px;border-radius:12px;background:rgba(204,0,0,.14);border:1px solid rgba(204,0,0,.45);color:#fff;font-size:.82rem}
+  #page-kulup .kl-ph{width:100%;aspect-ratio:1;object-fit:cover}
+</style>
+<script>
+(function(){
+  var EP='/api/messages?action=club.';
+  var K={d:null,tab:'apps',editing:null,codes:null};
+  function key(){ try{ return localStorage.getItem('rcl_alim_key')||''; }catch(e){ return ''; } }
+  function hdr(){ var h={'Content-Type':'application/json'}; var k=key(); if(k) h['x-rcl-key']=k; return h; }
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function $(id){ return document.getElementById(id); }
+  function api(a,body){ return fetch(EP+a,{method:body?'POST':'GET',headers:hdr(),body:body?JSON.stringify(body):undefined,cache:'no-store'}).then(function(r){ return r.json().then(function(j){ j._status=r.status; return j; }); }); }
+  function dt(iso){ try{ return new Date(iso).toLocaleDateString('tr-TR',{day:'2-digit',month:'short',year:'numeric'})+' '+new Date(iso).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'}); }catch(e){ return ''; } }
+  function st(s){ var L={pending:'Bekliyor',approved:'Onaylandı',rejected:'Reddedildi',published:'Yayında',draft:'Taslak',cancelled:'İptal',active:'Aktif',suspended:'Askıda',unused:'Boşta',used:'Kullanıldı',void:'İptal',visible:'Görünür',hidden:'Gizli'}; return '<span class="kl-st '+esc(s)+'">'+(L[s]||esc(s))+'</span>'; }
+  function ava(m){ var n=(m.username||m.name||'?').charAt(0).toUpperCase(); return m.avatar_url?'<img class="kl-ava" src="'+esc(m.avatar_url)+'" alt="">':'<span class="kl-ava">'+esc(n)+'</span>'; }
+  var KIND={bulusma:'Buluşma',kurs:'Kurs',workshop:'Workshop',gezi:'Gezi'};
+  function toLocalInput(iso){ if(!iso) return ''; var d=new Date(iso); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,16); }
+  function fileData(file,max){ return new Promise(function(res,rej){ if(!file) return res(''); var u=URL.createObjectURL(file),im=new Image(); im.onload=function(){ var k=Math.min(1,(max||1600)/Math.max(im.width,im.height)),c=document.createElement('canvas'); c.width=Math.round(im.width*k); c.height=Math.round(im.height*k); c.getContext('2d').drawImage(im,0,0,c.width,c.height); URL.revokeObjectURL(u); res(c.toDataURL('image/jpeg',.85)); }; im.onerror=function(){ rej(new Error('Görsel okunamadı')); }; im.src=u; }); }
+
+  function load(){
+    return api('admin').then(function(j){
+      var body=$('kl-body');
+      if(j._status===401){ body.innerHTML='<div class="alim-empty">Erişim anahtarı gerekli. <button type="button" class="alim-fbtn" onclick="window.KL_unlock()">Anahtarı Gir</button></div>'; return; }
+      if(!j.ok){ body.innerHTML='<div class="alim-empty">'+esc(j.error||'Veri alınamadı. Supabase tabloları kurulu mu?')+'</div>'; return; }
+      K.d=j; var u=$('kl-upd'); if(u) u.textContent=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
+      kpis(); draw();
+    }).catch(function(e){ $('kl-body').innerHTML='<div class="alim-empty">'+esc(e.message||'Bağlantı hatası')+'</div>'; });
+  }
+  function kpis(){
+    var d=K.d, pend=d.applications.filter(function(x){ return x.status==='pending'; }).length;
+    $('kl-k-members').textContent=d.members.length; $('kl-k-pending').textContent=pend;
+    $('kl-k-cards').textContent=d.cards.filter(function(c){ return c.status==='unused'; }).length;
+    $('kl-k-events').textContent=d.events.filter(function(e){ return e.status==='published' && new Date(e.starts_at)>new Date(); }).length;
+    var b=$('kl-nav-badge'); if(b){ b.style.display=pend?'inline-block':'none'; b.textContent=pend; }
+    var tb=document.querySelector('#kl-tabs [data-t="apps"]'); if(tb) tb.innerHTML='Başvurular'+(pend?'<b>'+pend+'</b>':'');
+  }
+  function draw(){
+    var d=K.d, el=$('kl-body'), h='';
+    document.querySelectorAll('#kl-tabs .kl-tab').forEach(function(b){ b.classList.toggle('active',b.getAttribute('data-t')===K.tab); });
+    if(K.tab==='apps'){
+      var a=d.applications.slice().sort(function(x,y){ return (x.status==='pending'?0:1)-(y.status==='pending'?0:1); });
+      h=a.length?'<div class="kl-grid">'+a.map(function(x){
+        return '<div class="kl-card">'+(x.selfie_url?'<img class="kl-selfie" src="'+esc(x.selfie_url)+'" alt="" onclick="window.open(this.src)">':'')+'<div class="kl-in">'+st(x.status)+
+          '<div class="kl-nm">'+esc(x.name)+'</div><div class="kl-mt">'+esc(x.email)+'<br>Kamera: <b>'+esc(x.camera_model)+'</b>'+(x.city?' · '+esc(x.city):'')+(x.instagram?'<br>Instagram: @'+esc(x.instagram):'')+'<br>'+dt(x.created_at)+(x.card_code?'<br>Kart: <span class="kl-mono">'+esc(x.card_code)+'</span>':'')+'</div>'+
+          (x.status==='pending'?'<div class="kl-act"><button class="kl-btn ok" data-app="'+esc(x.id)+'" data-dec="approve">Onayla</button><button class="kl-btn" data-app="'+esc(x.id)+'" data-dec="reject">Reddet</button></div>':'')+'</div></div>';
+      }).join('')+'</div>':'<div class="alim-empty">Henüz başvuru yok.</div>';
+    } else if(K.tab==='events'){
+      var e=K.editing||{};
+      h='<form class="kl-form" id="kl-ev-form"><div class="kl-h wide">'+(e.id?'Etkinliği düzenle':'Yeni etkinlik')+'</div>'+
+        '<label>Tür<select name="kind">'+Object.keys(KIND).map(function(k){ return '<option value="'+k+'"'+(e.kind===k?' selected':'')+'>'+KIND[k]+'</option>'; }).join('')+'</select></label>'+
+        '<label>Başlık<input name="title" maxlength="120" required value="'+esc(e.title||'')+'"></label>'+
+        '<label>Başlangıç<input name="starts_at" type="datetime-local" required value="'+toLocalInput(e.starts_at)+'"></label>'+
+        '<label>Yer<input name="place" maxlength="160" value="'+esc(e.place||'')+'"></label>'+
+        '<label>Şehir<input name="city" maxlength="60" value="'+esc(e.city||'')+'"></label>'+
+        '<label>Kontenjan (0 = sınırsız)<input name="capacity" type="number" min="0" max="5000" value="'+(e.capacity||0)+'"></label>'+
+        '<label>Durum<select name="status"><option value="published"'+(e.status==='published'?' selected':'')+'>Yayında</option><option value="draft"'+(e.status==='draft'?' selected':'')+'>Taslak</option><option value="cancelled"'+(e.status==='cancelled'?' selected':'')+'>İptal</option></select></label>'+
+        '<label>Kapak görseli<input name="cover" type="file" accept="image/*"></label>'+
+        '<label class="wide">Açıklama<textarea name="description" rows="3" maxlength="2000">'+esc(e.description||'')+'</textarea></label>'+
+        '<div class="kl-act wide"><button class="kl-btn ok" type="submit">'+(e.id?'Değişiklikleri kaydet':'Etkinliği yayınla')+'</button>'+(e.id?'<button class="kl-btn" type="button" data-ev-cancel>Vazgeç</button>':'')+'</div></form>'+
+        (d.events.length?'<div class="kl-list">'+d.events.map(function(x){ var dd=new Date(x.starts_at);
+          return '<div class="kl-row"><div class="kl-ev-date">'+dd.getDate()+'<small>'+dd.toLocaleDateString('tr-TR',{month:'short'})+'</small></div><div><b>'+esc(x.title)+'</b> '+st(x.status)+'<small>'+esc(KIND[x.kind]||x.kind)+' · '+dt(x.starts_at)+(x.place||x.city?' · '+esc([x.place,x.city].filter(Boolean).join(', ')):'')+'</small>'+
+            '<div class="kl-att">'+x.attendees.length+(x.capacity?' / '+x.capacity:'')+' katılımcı'+(x.attendees.length?': '+x.attendees.map(function(m){ return '@'+esc(m.username||m.name); }).join(', '):'')+'</div></div>'+
+            '<div class="kl-act"><button class="kl-btn" data-ev-edit="'+esc(x.id)+'">Düzenle</button><button class="kl-btn" data-ev-del="'+esc(x.id)+'">Sil</button></div></div>';
+        }).join('')+'</div>':'<div class="alim-empty">Henüz etkinlik yok. Yukarıdan ilkini oluştur.</div>');
+    } else if(K.tab==='members'){
+      h=d.members.length?'<div class="kl-list">'+d.members.map(function(m){
+        return '<div class="kl-row">'+ava(m)+'<div><b>'+(m.username?'@'+esc(m.username):'<i>kullanıcı adı seçmedi</i>')+'</b> '+st(m.status)+'<small>'+esc([m.name,m.city,m.instagram?'IG @'+m.instagram:'',m.email].filter(Boolean).join(' · '))+'</small><small class="kl-mono">No. '+('0000'+m.member_no).slice(-4)+' · '+esc(m.card_code)+' · '+dt(m.joined_at)+'</small></div>'+
+          '<button class="kl-btn" data-mem="'+esc(m.id)+'" data-s="'+(m.status==='active'?'suspended':'active')+'">'+(m.status==='active'?'Askıya al':'Aktifleştir')+'</button></div>';
+      }).join('')+'</div>':'<div class="alim-empty">Henüz üye yok.</div>';
+    } else if(K.tab==='cards'){
+      h='<form class="kl-form" id="kl-card-form"><div class="kl-h wide">Kart numarası üret</div><label>Adet<input name="count" type="number" min="1" max="500" value="50"></label><label>Parti adı<input name="batch" maxlength="40" placeholder="örn. 2026-10 baskı"></label><label>Not<input name="note" maxlength="80" placeholder="isteğe bağlı"></label><div class="kl-act wide"><button class="kl-btn ok" type="submit">Üret</button>'+(K.codes?'<button class="kl-btn dark" type="button" data-csv>Son üretileni CSV indir</button>':'')+'</div></form>'+
+        (K.codes?'<div class="kl-codes">'+K.codes.join('\n')+'</div>':'')+
+        (d.cards.length?'<div class="kl-list">'+d.cards.slice(0,400).map(function(c){
+          return '<div class="kl-row"><span class="kl-mono"><b>'+esc(c.code)+'</b></span><div>'+st(c.status)+'<small>'+esc([c.batch,c.note].filter(Boolean).join(' · '))+(c.used_at?' · kullanıldı '+dt(c.used_at):'')+'</small></div>'+
+            (c.status==='used'?'<span></span>':'<button class="kl-btn" data-card="'+esc(c.code)+'" data-s="'+(c.status==='void'?'unused':'void')+'">'+(c.status==='void'?'Geri al':'İptal et')+'</button>')+'</div>';
+        }).join('')+'</div>':'<div class="alim-empty">Henüz kart üretilmedi.</div>');
+    } else if(K.tab==='photos'){
+      h=d.photos.length?'<div class="kl-grid">'+d.photos.map(function(p){
+        return '<div class="kl-card"><img class="kl-ph" src="'+esc(p.image_url)+'" alt="" loading="lazy"><div class="kl-in">'+st(p.status)+'<div class="kl-nm">'+esc(p.camera_title)+'</div><div class="kl-mt">@'+esc(p.member)+' · '+dt(p.created_at)+(p.caption?'<br>'+esc(p.caption):'')+' · '+p.like_count+' beğeni</div>'+
+          '<div class="kl-act"><button class="kl-btn" data-ph="'+esc(p.id)+'" data-s="'+(p.status==='visible'?'hidden':'visible')+'">'+(p.status==='visible'?'Gizle':'Göster')+'</button><button class="kl-btn" data-ph-del="'+esc(p.id)+'">Sil</button></div></div></div>';
+      }).join('')+'</div>':'<div class="alim-empty">Henüz paylaşılan kare yok.</div>';
+    } else {
+      var s=d.settings;
+      h='<div class="kl-prev" id="kl-prev"></div><form class="kl-form" id="kl-set-form"><div class="kl-h wide">Üyelerin giriş yapınca gördüğü alan</div>'+
+        '<label>Karşılama başlığı<input name="welcome_title" maxlength="80" value="'+esc(s.welcome_title)+'"></label>'+
+        '<label class="wide">Karşılama metni<input name="welcome_text" maxlength="300" value="'+esc(s.welcome_text)+'"></label>'+
+        '<label class="wide">Duyuru (boşsa gösterilmez)<input name="announcement" maxlength="300" value="'+esc(s.announcement)+'"></label>'+
+        ['show_events:Takvim','show_photos:Kareler','show_soon:Yakında','show_members:Üyeler'].map(function(x){ var p=x.split(':'); return '<label class="chk"><input type="checkbox" name="'+p[0]+'"'+(s[p[0]]?' checked':'')+'>'+p[1]+' sekmesi görünsün</label>'; }).join('')+
+        '<div class="kl-act wide"><button class="kl-btn ok" type="submit">Kaydet ve yayınla</button></div></form>';
+    }
+    el.innerHTML=h;
+    if(K.tab==='settings') preview();
+  }
+  function preview(){
+    var f=$('kl-set-form'), p=$('kl-prev'); if(!f||!p) return;
+    p.innerHTML='<small>'+K.d.members.length+' üye · önizleme</small><h4>'+esc(f.welcome_title.value)+', Deniz.</h4><p>'+esc(f.welcome_text.value)+'</p>'+(f.announcement.value?'<div class="ann">'+esc(f.announcement.value)+'</div>':'')+
+      '<p style="margin-top:12px;font-size:.72rem">Sekmeler: '+['show_events:Takvim','show_photos:Kareler','show_soon:Yakında','show_members:Üyeler'].filter(function(x){ return f[x.split(':')[0]].checked; }).map(function(x){ return x.split(':')[1]; }).concat(['Profil']).join(' · ')+'</p>';
+  }
+  function act(a,body,btn){ if(btn) btn.disabled=true; return api(a,body).then(function(j){ if(!j.ok){ alert(j.error||'İşlem yapılamadı'); if(btn) btn.disabled=false; return null; } return j; }); }
+  var bound=false;
+  function bind(){
+    if(bound) return; bound=true;
+    $('kl-tabs').addEventListener('click',function(e){ var b=e.target.closest('.kl-tab'); if(b){ K.tab=b.getAttribute('data-t'); K.editing=null; if(K.d) draw(); } });
+    var body=$('kl-body');
+    body.addEventListener('input',function(e){ if(e.target.closest('#kl-set-form')) preview(); });
+    body.addEventListener('click',function(e){
+      var t=e.target, b;
+      if((b=t.closest('[data-app]'))){ var dec=b.getAttribute('data-dec');
+        if(!confirm(dec==='approve'?'Başvuru onaylansın mı? Kişiye kart numarası e-postayla gönderilir.':'Başvuru reddedilsin mi? Selfie silinir ve kişiye e-posta gider.')) return;
+        act('admin.application',{id:b.getAttribute('data-app'),decision:dec},b).then(function(j){ if(j){ if(dec==='approve') alert('Onaylandı. Kart: '+j.code+(j.mailed?'\nE-posta gönderildi.':'\nE-posta GÖNDERİLEMEDİ; numarayı kişiye sen ilet.')); load(); } }); return; }
+      if((b=t.closest('[data-ev-edit]'))){ K.editing=K.d.events.filter(function(x){ return x.id===b.getAttribute('data-ev-edit'); })[0]; draw(); window.scrollTo({top:$('kl-tabs').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'}); return; }
+      if(t.closest('[data-ev-cancel]')){ K.editing=null; draw(); return; }
+      if((b=t.closest('[data-ev-del]'))){ if(confirm('Etkinlik silinsin mi? Katılım kayıtları da silinir.')) act('admin.event',{id:b.getAttribute('data-ev-del'),delete:true},b).then(function(j){ if(j) load(); }); return; }
+      if((b=t.closest('[data-mem]'))){ act('admin.member',{id:b.getAttribute('data-mem'),status:b.getAttribute('data-s')},b).then(function(j){ if(j) load(); }); return; }
+      if((b=t.closest('[data-card]'))){ act('admin.card',{code:b.getAttribute('data-card'),status:b.getAttribute('data-s')},b).then(function(j){ if(j) load(); }); return; }
+      if((b=t.closest('[data-ph]'))){ act('admin.photo',{id:b.getAttribute('data-ph'),status:b.getAttribute('data-s')},b).then(function(j){ if(j) load(); }); return; }
+      if((b=t.closest('[data-ph-del]'))){ if(confirm('Kare kalıcı olarak silinsin mi?')) act('admin.photo',{id:b.getAttribute('data-ph-del'),delete:true},b).then(function(j){ if(j) load(); }); return; }
+      if(t.closest('[data-csv]')&&K.codes){ var blob=new Blob(['kart_no\n'+K.codes.join('\n')],{type:'text/csv'}), a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='retro-club-kartlar.csv'; a.click(); }
+    });
+    body.addEventListener('submit',function(e){
+      var f=e.target; e.preventDefault(); var btn=f.querySelector('[type=submit]');
+      if(f.id==='kl-ev-form'){
+        if(!f.title.value.trim()||!f.starts_at.value){ alert('Başlık ve başlangıç zamanı gerekli.'); return; }
+        btn.disabled=true;
+        fileData(f.cover.files[0],1600).then(function(cover){
+          var body={id:K.editing&&K.editing.id,kind:f.kind.value,title:f.title.value,starts_at:new Date(f.starts_at.value).toISOString(),place:f.place.value,city:f.city.value,capacity:f.capacity.value,status:f.status.value,description:f.description.value};
+          if(cover) body.cover=cover;
+          return act('admin.event',body,btn);
+        }).then(function(j){ if(j){ K.editing=null; load(); } }).catch(function(er){ alert(er.message); btn.disabled=false; });
+      } else if(f.id==='kl-card-form'){
+        act('admin.cards',{count:f.count.value,batch:f.batch.value,note:f.note.value},btn).then(function(j){ if(j){ K.codes=j.codes; load(); } });
+      } else if(f.id==='kl-set-form'){
+        act('admin.settings',{welcome_title:f.welcome_title.value,welcome_text:f.welcome_text.value,announcement:f.announcement.value,show_events:f.show_events.checked,show_photos:f.show_photos.checked,show_soon:f.show_soon.checked,show_members:f.show_members.checked},btn).then(function(j){ if(j){ K.d.settings=j.settings; btn.disabled=false; btn.textContent='Kaydedildi ✓'; setTimeout(function(){ btn.textContent='Kaydet ve yayınla'; },1800); } });
+      }
+    });
+  }
+  window.KL_unlock=function(){ var k=prompt('HQ erişim anahtarı (RCL_ALIM_KEY):'); if(k){ try{ localStorage.setItem('rcl_alim_key',k); }catch(e){} load(); } };
+  window.renderKulupPage=function(){ bind(); if(K.d) draw(); load(); };
+  setTimeout(function(){ if(key()) api('admin').then(function(j){ if(j.ok){ K.d=j; kpis(); } }).catch(function(){}); },4000);
 })();
 </script>
 </body>
