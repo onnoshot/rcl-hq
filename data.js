@@ -150,7 +150,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-10-01T02:05:29",
+  "updated_at": "2026-10-01T03:05:35",
   "period_30d": {
     "revenue": 33709,
     "orders": 4,
@@ -195,7 +195,8 @@ const SHOPIFY = {
     "Haz 26",
     "Tem 26",
     "Ağu 26",
-    "Eyl 26"
+    "Eyl 26",
+    "Eki 26"
   ],
   "monthly_revenue": [
     2590,
@@ -212,7 +213,8 @@ const SHOPIFY = {
     39509,
     76200,
     53280,
-    33709
+    33709,
+    0
   ],
   "monthly_orders": [
     1,
@@ -229,7 +231,8 @@ const SHOPIFY = {
     4,
     6,
     6,
-    4
+    4,
+    0
   ],
   "monthly_cogs": [
     0,
@@ -246,7 +249,8 @@ const SHOPIFY = {
     22064,
     31006,
     22321,
-    14139
+    14139,
+    0
   ],
   "monthly_cogs_unmatched_rev": [
     2590,
@@ -255,6 +259,7 @@ const SHOPIFY = {
     499,
     33189,
     11490,
+    0,
     0,
     0,
     0,
