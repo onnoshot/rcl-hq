@@ -44,7 +44,7 @@ function isAdmin(req) {
 }
 // Yerel Telegram botu ayni bot tokenini bilir; ek sir gerekmeden imza olarak kullanilir.
 function tgSecret() {
-  const t = process.env.TG_BOT_TOKEN || '';
+  const t = String(process.env.TG_BOT_TOKEN || '').trim(); // env degerinde satir sonu kalmis olabiliyor
   return t ? crypto.createHash('sha256').update(t + ':rcl-chat-reply').digest('hex') : '';
 }
 function isTelegramBot(req) {
