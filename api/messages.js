@@ -83,7 +83,7 @@ export default async function handler(req, res) {
   try {
     // ---- health: tablolar hazir mi? (site penceresi buna gore acilir) ----
     if (action === 'health') {
-      const { error } = await sb.from('chat_conversations').select('id', { head: true, count: 'exact' }).limit(1);
+      const { error } = await sb.from('chat_conversations').select('id').limit(1);
       return send(res, error ? 503 : 200, { ok: !error });
     }
 
@@ -113,9 +113,9 @@ export default async function handler(req, res) {
       } else {
         // basit sel koruması: 10 dakikada en fazla 30 ziyaretci mesaji
         const since = new Date(Date.now() - 10 * 60000).toISOString();
-        const c = await sb.from('chat_messages').select('id', { head: true, count: 'exact' })
-          .eq('conversation_id', conv.id).eq('sender', 'visitor').gte('created_at', since);
-        if ((c.count || 0) >= 30) return send(res, 429, { ok: false, error: 'Cok fazla mesaj, biraz bekleyin' });
+        const c = await sb.from('chat_messages').select('id')
+          .eq('conversation_id', conv.id).eq('sender', 'visitor').gte('created_at', since).limit(31);
+        if (((c.data || []).length) >= 30) return send(res, 429, { ok: false, error: 'Cok fazla mesaj, biraz bekleyin' });
       }
       const gapMin = (Date.now() - new Date(conv.last_message_at).getTime()) / 60000;
       const { data: msg, error } = await sb.from('chat_messages')
