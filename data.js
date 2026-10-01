@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-01T03:05:59",
+  "updated_at": "2026-10-01T04:06:04",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4750,
-    "total_views": 1514470,
+    "total_views": 1513890,
     "video_count": 406
   },
   "analytics": {
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 1351,
+      "views": 1353,
       "likes": 8,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
@@ -84,7 +84,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2966,
+      "views": 2967,
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -102,7 +102,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1232,
+      "views": 1235,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
@@ -111,7 +111,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50888,
+      "views": 50890,
       "likes": 209,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -138,7 +138,7 @@ const YOUTUBE = {
       "id": "b6MfXb0bltc",
       "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
       "date": "23 Şub 2026",
-      "views": 895,
+      "views": 898,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
