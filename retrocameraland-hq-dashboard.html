@@ -1665,6 +1665,10 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <svg viewBox="0 0 24 24"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3.2"/></svg>
       <span class="nav-label">Kamera Alım <span id="alim-nav-badge" style="display:none;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--red);color:#fff;font-size:.58rem;font-weight:700;line-height:16px;text-align:center;margin-left:4px"></span></span>
     </div>
+    <div class="nav-item" data-page="mesajlar" onclick="navigate('mesajlar',this)">
+      <svg viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1.2-4.6A8 8 0 1 1 21 12z"/></svg>
+      <span class="nav-label">Mesajlar <span id="msg-nav-badge" style="display:none;min-width:16px;height:16px;padding:0 4px;border-radius:8px;background:var(--red);color:#fff;font-size:.58rem;font-weight:700;line-height:16px;text-align:center;margin-left:4px"></span></span>
+    </div>
     <div class="nav-item" data-page="bulucu" onclick="navigate('bulucu',this)">
       <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
       <span class="nav-label">Kamera Bulucu</span>
@@ -3885,6 +3889,46 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
 
 <!-- ═══════════════════ TIME CAPSULE (Topluluk yönetim) ═══════════════════ -->
 <!-- ═══════════════════ KAMERA BULUCU (AI Kamera Eşleştirici testi) ═══════════════════ -->
+<div class="page" id="page-mesajlar">
+  <div class="page-topbar fi">
+    <div class="pt-left">
+      <div class="pt-title" style="color:var(--red)">Müşteri Mesajları</div>
+      <div class="pt-sub">Sitedeki sohbet penceresinden yazan ziyaretçiler. Yanıtın müşterinin penceresine birkaç saniye içinde düşer.</div>
+    </div>
+    <div class="pt-right">
+      <div class="live-pill"><div class="sb-live-dot"></div>CANLI</div>
+      <span class="upd-time" id="msg-upd">—</span>
+    </div>
+  </div>
+  <div class="sec fi" style="transition-delay:.05s">
+    <div class="msg-shell" id="msg-shell">
+      <aside class="msg-side">
+        <div class="msg-side-h">
+          <button class="msg-tab active" data-f="open">Açık <b id="msg-c-open">0</b></button>
+          <button class="msg-tab" data-f="closed">Kapalı</button>
+          <button class="msg-tab" data-f="all">Tümü</button>
+        </div>
+        <div class="msg-list" id="msg-list"><div class="alim-empty">Yükleniyor…</div></div>
+      </aside>
+      <section class="msg-main" id="msg-main">
+        <div class="msg-empty" id="msg-empty">Bir konuşma seç.</div>
+        <div class="msg-thread" id="msg-thread" hidden>
+          <header class="msg-head">
+            <button class="msg-back" id="msg-back" aria-label="Geri">‹</button>
+            <div class="msg-who"><b id="msg-h-name">—</b><span id="msg-h-meta"></span></div>
+            <button class="alim-fbtn" id="msg-close">Kapat</button>
+          </header>
+          <div class="msg-body" id="msg-body"></div>
+          <form class="msg-form" id="msg-form">
+            <textarea id="msg-input" rows="1" maxlength="2000" placeholder="Yanıt yaz… (Enter gönderir, Shift+Enter satır)"></textarea>
+            <button type="submit" class="msg-send" id="msg-send">Gönder</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
 <div class="page" id="page-bulucu">
   <div class="page-topbar fi">
     <div class="pt-left">
@@ -5741,7 +5785,7 @@ function mkChart(id, cfg) {
 
 
 // ─── ROUTER ──────────────────────────────────────────────
-const PAGES = ['overview','finance','inventory','yeniurun','youtube','instagram','email','stats','seo','blog','cherry','alim','bulucu','bloggerbeyz'];
+const PAGES = ['overview','finance','inventory','yeniurun','youtube','instagram','email','stats','seo','blog','cherry','alim','bulucu','mesajlar','bloggerbeyz'];
 
 function navigate(page, navEl) {
   PAGES.forEach(p => {
@@ -5775,6 +5819,7 @@ function navigate(page, navEl) {
   if (page === 'email') renderEmail();
   if (page === 'alim') renderAlimPage();
   if (page === 'bulucu' && window.renderBulucuPage) renderBulucuPage();
+  if (page === 'mesajlar' && window.renderMesajlarPage) renderMesajlarPage();
   if (page === 'bloggerbeyz' && window.renderBloggerBeyzPage) renderBloggerBeyzPage();
 }
 
@@ -9766,6 +9811,10 @@ function finAnimateKPIs() {
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
       <span class="bn-more-lbl">E-posta</span>
     </div>
+    <div class="bn-more-item" data-page="mesajlar" onclick="navigate('mesajlar');closeMoreMenu()">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3 1.2-4.6A8 8 0 1 1 21 12z"/></svg>
+      <span class="bn-more-lbl">Mesajlar</span>
+    </div>
     <div class="bn-more-item" data-page="bulucu" onclick="navigate('bulucu');closeMoreMenu()">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
       <span class="bn-more-lbl">Kamera Bulucu</span>
@@ -10791,5 +10840,162 @@ document.addEventListener('DOMContentLoaded', function(){
 
 </script>
 
+<style>
+  #page-mesajlar .msg-shell{display:grid;grid-template-columns:320px 1fr;height:calc(100vh - 210px);min-height:460px;background:rgba(255,255,255,.6);border:1px solid rgba(0,0,0,.09);border-radius:18px;overflow:hidden}
+  #page-mesajlar .msg-side{display:flex;flex-direction:column;border-right:1px solid rgba(0,0,0,.08);min-width:0}
+  #page-mesajlar .msg-side-h{display:flex;gap:6px;padding:12px;border-bottom:1px solid rgba(0,0,0,.07)}
+  #page-mesajlar .msg-tab{border:1px solid rgba(0,0,0,.1);background:transparent;color:var(--t2);font:inherit;font-size:.74rem;font-weight:700;padding:6px 11px;border-radius:100px;cursor:pointer}
+  #page-mesajlar .msg-tab.active{background:var(--t1);color:#fff;border-color:var(--t1)}
+  #page-mesajlar .msg-tab b{font-weight:800;margin-left:3px}
+  #page-mesajlar .msg-list{flex:1;overflow-y:auto}
+  #page-mesajlar .msg-item{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid rgba(0,0,0,.06);background:transparent;padding:12px 14px;cursor:pointer;font:inherit;color:var(--t1)}
+  #page-mesajlar .msg-item:hover{background:rgba(0,0,0,.03)}
+  #page-mesajlar .msg-item.active{background:rgba(204,0,0,.06)}
+  #page-mesajlar .mi-top{display:flex;align-items:center;gap:8px}
+  #page-mesajlar .mi-name{font-weight:800;font-size:.86rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #page-mesajlar .mi-time{margin-left:auto;font-size:.64rem;color:var(--t3);white-space:nowrap}
+  #page-mesajlar .mi-prev{margin-top:3px;font-size:.76rem;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #page-mesajlar .mi-badge{min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--red);color:#fff;font-size:.62rem;font-weight:800;line-height:18px;text-align:center}
+  #page-mesajlar .mi-closed{font-size:.6rem;font-weight:700;color:var(--t3);border:1px solid rgba(0,0,0,.12);padding:1px 6px;border-radius:100px}
+  #page-mesajlar .msg-main{display:flex;flex-direction:column;min-width:0;min-height:0}
+  #page-mesajlar .msg-empty{margin:auto;color:var(--t3);font-size:.84rem}
+  #page-mesajlar .msg-thread{display:flex;flex-direction:column;flex:1;min-height:0}
+  #page-mesajlar .msg-thread[hidden]{display:none}
+  #page-mesajlar .msg-head{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid rgba(0,0,0,.07)}
+  #page-mesajlar .msg-who{flex:1;min-width:0;display:flex;flex-direction:column}
+  #page-mesajlar .msg-who b{font-size:.95rem;font-weight:800;color:var(--t1)}
+  #page-mesajlar .msg-who span{font-size:.7rem;color:var(--t3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #page-mesajlar .msg-back{display:none;border:0;background:transparent;font-size:1.6rem;line-height:1;color:var(--t1);cursor:pointer;padding:0 6px}
+  #page-mesajlar .msg-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:6px}
+  #page-mesajlar .mb{max-width:72%;padding:9px 13px;border-radius:16px;font-size:.86rem;line-height:1.4;white-space:pre-wrap;word-break:break-word}
+  #page-mesajlar .mb.visitor{align-self:flex-start;background:rgba(0,0,0,.06);color:var(--t1);border-bottom-left-radius:5px}
+  #page-mesajlar .mb.admin{align-self:flex-end;background:#cc0000;color:#fff;border-bottom-right-radius:5px}
+  #page-mesajlar .mb-t{font-size:.6rem;color:var(--t3);margin:0 4px 6px}
+  #page-mesajlar .mb-t.admin{align-self:flex-end}
+  #page-mesajlar .msg-day{align-self:center;font-size:.62rem;font-weight:700;color:var(--t3);margin:8px 0 4px}
+  #page-mesajlar .msg-form{display:flex;gap:8px;align-items:flex-end;padding:12px;border-top:1px solid rgba(0,0,0,.07)}
+  #page-mesajlar .msg-form textarea{flex:1;resize:none;max-height:140px;border:1px solid rgba(0,0,0,.14);border-radius:14px;padding:10px 13px;font:inherit;font-size:.88rem;color:var(--t1);background:#fff;outline:0}
+  #page-mesajlar .msg-form textarea:focus{border-color:var(--t1)}
+  #page-mesajlar .msg-send{border:0;border-radius:100px;background:#cc0000;color:#fff;font:inherit;font-weight:700;font-size:.82rem;padding:11px 18px;cursor:pointer}
+  #page-mesajlar .msg-send[disabled]{opacity:.5;cursor:default}
+  @media(max-width:820px){
+    #page-mesajlar .msg-shell{grid-template-columns:1fr;height:calc(100vh - 250px)}
+    #page-mesajlar .msg-shell.in-thread .msg-side{display:none}
+    #page-mesajlar .msg-shell:not(.in-thread) .msg-main{display:none}
+    #page-mesajlar .msg-back{display:block}
+    #page-mesajlar .mb{max-width:86%}
+  }
+</style>
+<script>
+(function(){
+  var EP='/api/messages';
+  var M={items:[],filter:'open',cur:null,lastId:0,listT:null,thrT:null,sending:false};
+  function key(){ try{ return localStorage.getItem('rcl_alim_key')||''; }catch(e){ return ''; } }
+  function hdr(){ var h={'Content-Type':'application/json'}; var k=key(); if(k) h['x-rcl-key']=k; return h; }
+  function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function $(id){ return document.getElementById(id); }
+  function hm(iso){ try{ return new Date(iso).toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'}); }catch(e){ return ''; } }
+  function ago(iso){ try{ var d=new Date(iso), n=new Date(); if(d.toDateString()===n.toDateString()) return hm(iso); return d.toLocaleDateString('tr-TR',{day:'2-digit',month:'short'}); }catch(e){ return ''; } }
+  function active(){ var p=$('page-mesajlar'); return p && p.classList.contains('active'); }
+  function api(action,opt,qs){ return fetch(EP+'?action='+action+(qs||''),Object.assign({headers:hdr(),cache:'no-store'},opt||{})).then(function(r){ return r.json().then(function(j){ j._status=r.status; return j; }); }); }
+
+  function badge(){
+    var n=0; M.items.forEach(function(x){ n+=(x.unread_admin||0); });
+    var b=$('msg-nav-badge'); if(b){ b.style.display=n?'inline-block':'none'; b.textContent=n; }
+    var o=$('msg-c-open'); if(o) o.textContent=M.items.filter(function(x){ return x.status==='open'; }).length;
+  }
+  function drawList(){
+    var el=$('msg-list'); if(!el) return;
+    var rows=M.items.filter(function(x){ return M.filter==='all'||x.status===M.filter; });
+    if(!rows.length){ el.innerHTML='<div class="alim-empty">'+(M.items.length?'Bu filtrede konuşma yok.':'Henüz mesaj yok.')+'</div>'; return; }
+    el.innerHTML=rows.map(function(x){
+      return '<button class="msg-item'+(M.cur&&M.cur.id===x.id?' active':'')+'" data-id="'+esc(x.id)+'">'+
+        '<div class="mi-top"><span class="mi-name">'+esc(x.name||'İsimsiz')+'</span>'+
+        (x.status==='closed'?'<span class="mi-closed">kapalı</span>':'')+
+        (x.unread_admin?'<span class="mi-badge">'+x.unread_admin+'</span>':'')+
+        '<span class="mi-time">'+ago(x.last_message_at)+'</span></div>'+
+        '<div class="mi-prev">'+(x.last_sender==='admin'?'Sen: ':'')+esc(x.last_preview||'')+'</div></button>';
+    }).join('');
+  }
+  function loadList(){
+    return api('list').then(function(j){
+      var el=$('msg-list');
+      if(j._status===401){ if(el) el.innerHTML='<div class="alim-empty">Erişim anahtarı gerekli. <button type="button" class="alim-fbtn" onclick="window.MSG_unlock()">Anahtarı Gir</button></div>'; return; }
+      if(!j.ok){ if(el&&active()) el.innerHTML='<div class="alim-empty">'+esc(j.error||'Liste alınamadı')+'</div>'; return; }
+      M.items=j.items||[]; badge();
+      if(active()){ drawList(); var u=$('msg-upd'); if(u) u.textContent=hm(new Date().toISOString()); }
+      if(M.cur){ var c=M.items.filter(function(x){ return x.id===M.cur.id; })[0]; if(c){ M.cur=c; head(); } }
+    }).catch(function(){});
+  }
+  function head(){
+    var c=M.cur; if(!c) return;
+    $('msg-h-name').textContent=(c.name||'İsimsiz')+'  ·  '+c.code;
+    $('msg-h-meta').textContent=[c.contact,c.page,c.device==='mobile'?'Mobil':(c.device==='desktop'?'Masaüstü':'')].filter(Boolean).join('  ·  ');
+    $('msg-close').textContent=c.status==='closed'?'Yeniden aç':'Kapat';
+  }
+  function addMsgs(msgs){
+    var body=$('msg-body'); if(!body||!msgs.length) return;
+    var stick=body.scrollHeight-body.scrollTop-body.clientHeight<80;
+    msgs.forEach(function(m){
+      if(m.id<=M.lastId) return; M.lastId=m.id;
+      var day=new Date(m.created_at).toLocaleDateString('tr-TR',{day:'2-digit',month:'long'});
+      if(body.getAttribute('data-day')!==day){ body.setAttribute('data-day',day); body.insertAdjacentHTML('beforeend','<div class="msg-day">'+esc(day)+'</div>'); }
+      body.insertAdjacentHTML('beforeend','<div class="mb '+m.sender+'">'+esc(m.body)+'</div><div class="mb-t '+m.sender+'">'+hm(m.created_at)+(m.sender==='admin'&&m.via==='telegram'?' · Telegram':'')+'</div>');
+    });
+    if(stick) body.scrollTop=body.scrollHeight;
+  }
+  function loadThread(){
+    if(!M.cur) return Promise.resolve();
+    var id=M.cur.id;
+    return api('thread',null,'&id='+encodeURIComponent(id)+'&after='+M.lastId).then(function(j){
+      if(!j.ok||!M.cur||M.cur.id!==id) return;
+      addMsgs(j.messages||[]);
+      var it=M.items.filter(function(x){ return x.id===id; })[0]; if(it&&it.unread_admin){ it.unread_admin=0; badge(); drawList(); }
+    }).catch(function(){});
+  }
+  function open(id){
+    var c=M.items.filter(function(x){ return x.id===id; })[0]; if(!c) return;
+    M.cur=c; M.lastId=0;
+    var body=$('msg-body'); body.innerHTML=''; body.removeAttribute('data-day');
+    $('msg-empty').hidden=true; $('msg-thread').hidden=false; $('msg-shell').classList.add('in-thread');
+    head(); drawList();
+    loadThread().then(function(){ body.scrollTop=body.scrollHeight; var i=$('msg-input'); if(i&&window.innerWidth>820) i.focus(); });
+  }
+  function sendReply(){
+    var i=$('msg-input'), v=(i.value||'').trim();
+    if(!v||!M.cur||M.sending) return;
+    M.sending=true; $('msg-send').disabled=true;
+    api('reply',{method:'POST',body:JSON.stringify({id:M.cur.id,body:v})}).then(function(j){
+      if(j.ok){ i.value=''; i.style.height='auto'; addMsgs([j.message]); $('msg-body').scrollTop=$('msg-body').scrollHeight; loadList(); }
+      else alert(j.error||'Gönderilemedi');
+    }).catch(function(){ alert('Bağlantı hatası'); }).then(function(){ M.sending=false; $('msg-send').disabled=false; });
+  }
+  var bound=false;
+  function bind(){
+    if(bound) return; bound=true;
+    $('msg-list').addEventListener('click',function(e){ var b=e.target.closest('.msg-item'); if(b) open(b.getAttribute('data-id')); });
+    document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(t){ t.addEventListener('click',function(){
+      document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(x){ x.classList.remove('active'); });
+      t.classList.add('active'); M.filter=t.getAttribute('data-f'); drawList(); }); });
+    $('msg-form').addEventListener('submit',function(e){ e.preventDefault(); sendReply(); });
+    $('msg-input').addEventListener('keydown',function(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendReply(); } });
+    $('msg-input').addEventListener('input',function(){ this.style.height='auto'; this.style.height=Math.min(140,this.scrollHeight)+'px'; });
+    $('msg-back').addEventListener('click',function(){ $('msg-shell').classList.remove('in-thread'); M.cur=null; drawList(); });
+    $('msg-close').addEventListener('click',function(){ if(!M.cur) return; var st=M.cur.status==='closed'?'open':'closed';
+      api('status',{method:'POST',body:JSON.stringify({id:M.cur.id,status:st})}).then(function(){ loadList(); }); });
+  }
+  window.MSG_unlock=function(){ var k=prompt('HQ erişim anahtarı (RCL_ALIM_KEY):'); if(k){ try{ localStorage.setItem('rcl_alim_key',k); }catch(e){} loadList(); } };
+  window.renderMesajlarPage=function(){ bind(); drawList(); loadList(); };
+  // sayfa acikken 4 sn'de bir, arka planda 30 sn'de bir (okunmamis rozeti icin)
+  var tick=0;
+  setInterval(function(){
+    tick++;
+    if(document.hidden||!key()) return;
+    if(active()){ if(tick%2===0) loadList(); loadThread(); }
+    else if(tick%15===0) loadList();
+  },2000);
+  setTimeout(function(){ if(key()) loadList(); },2500);
+})();
+</script>
 </body>
 </html>

@@ -5,7 +5,7 @@ Sadece chat ID 7904534693'ten gelen mesajlara yanıt verir.
 Komutlar: /reset — konuşma geçmişini sıfırla
 """
 
-import json, re, time, logging, os
+import hashlib, json, re, time, logging, os
 import requests
 from groq import Groq
 
@@ -61,6 +61,37 @@ SYSTEM_PROMPT = (
     "Liste yaparken • veya 1. 2. 3. kullan; kesinlikle ** # __ gibi markdown işaretleri kullanma. "
     "Başlıkları <b>başlık</b> şeklinde yaz."
 )
+
+CHAT_API = "https://rclhq.vercel.app/api/messages?action=tgreply"
+CHAT_CODE_RE = re.compile(r"#?(M-[0-9A-Fa-f]{6})")
+
+def chat_reply(msg, text):
+    """Musteri mesaji bildirimine verilen yaniti site sohbetine iletir.
+
+    Bildirimi yanitlamak (reply) ya da mesaja "M-4F7A2C merhaba" diye baslamak yeterli.
+    Musteri mesaji degilse None doner; iletildiyse/hata olduysa kullaniciya gosterilecek metni doner.
+    """
+    code, body = None, text
+    replied = (msg.get("reply_to_message") or {}).get("text", "")
+    m = CHAT_CODE_RE.search(replied)
+    if m:
+        code = m.group(1)
+    else:
+        m = re.match(r"\s*#?(M-[0-9A-Fa-f]{6})[\s:,-]+(.+)", text, re.S)
+        if m:
+            code, body = m.group(1), m.group(2).strip()
+    if not code:
+        return None
+    secret = hashlib.sha256((TG_TOKEN + ":rcl-chat-reply").encode()).hexdigest()
+    try:
+        r = requests.post(CHAT_API, json={"code": code.upper(), "body": body},
+                          headers={"x-rcl-tg": secret}, timeout=20)
+        j = r.json()
+    except Exception as e:
+        return f"Yanıt iletilemedi: {_esc(str(e))}"
+    if j.get("ok"):
+        return f"✓ {_esc(j.get('name') or 'Müşteri')} kişisine iletildi ({code.upper()})."
+    return f"Yanıt iletilemedi: {_esc(j.get('error') or r.status_code)}"
 
 def md_to_html(text):
     # ```kod blokları```
@@ -120,6 +151,11 @@ def main():
                 history = []
                 save_history(history)
                 tg_send("Konuşma geçmişi sıfırlandı.")
+                continue
+
+            forwarded = chat_reply(msg, text)
+            if forwarded:
+                tg_send(forwarded)
                 continue
 
             try:
