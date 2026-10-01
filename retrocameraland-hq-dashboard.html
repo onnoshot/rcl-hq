@@ -3908,6 +3908,12 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
           <button class="msg-tab" data-f="closed">Kapalı</button>
           <button class="msg-tab" data-f="all">Tümü</button>
         </div>
+        <div class="msg-agents" id="msg-agents">
+          <span class="msg-agents-l">Yanıtlayan</span>
+          <button class="msg-agent" data-a="Umut"><img src="https://retrocameraland.com/cdn/shop/files/rcl-destek-umut.jpg?width=96" alt="">Umut</button>
+          <button class="msg-agent" data-a="Aybüke"><img src="https://retrocameraland.com/cdn/shop/files/rcl-destek-aybuke.jpg?width=96" alt="">Aybüke</button>
+          <button class="msg-agent" data-a="Deniz"><img src="https://retrocameraland.com/cdn/shop/files/rcl-destek-deniz.jpg?width=96" alt="">Deniz</button>
+        </div>
         <div class="msg-list" id="msg-list"><div class="alim-empty">Yükleniyor…</div></div>
       </aside>
       <section class="msg-main" id="msg-main">
@@ -10847,6 +10853,17 @@ document.addEventListener('DOMContentLoaded', function(){
   #page-mesajlar .msg-tab{border:1px solid rgba(0,0,0,.1);background:transparent;color:var(--t2);font:inherit;font-size:.74rem;font-weight:700;padding:6px 11px;border-radius:100px;cursor:pointer}
   #page-mesajlar .msg-tab.active{background:var(--t1);color:#fff;border-color:var(--t1)}
   #page-mesajlar .msg-tab b{font-weight:800;margin-left:3px}
+  #page-mesajlar .msg-agents{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.07);flex-wrap:wrap}
+  #page-mesajlar .msg-agents-l{font-size:.64rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-right:2px}
+  #page-mesajlar .msg-agent{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(0,0,0,.1);background:transparent;color:var(--t2);font:inherit;font-size:.74rem;font-weight:700;padding:3px 10px 3px 3px;border-radius:100px;cursor:pointer}
+  #page-mesajlar .msg-agent img{width:22px;height:22px;border-radius:50%;object-fit:cover;background:#e8f0f9}
+  #page-mesajlar .msg-agent.active{background:var(--t1);color:#fff;border-color:var(--t1)}
+  #page-mesajlar .msg-agents.need{background:rgba(204,0,0,.06)}
+  #page-mesajlar .msg-item.read{opacity:.55}
+  #page-mesajlar .msg-item.read .mi-name{font-weight:600}
+  #page-mesajlar .msg-item.unread .mi-prev{color:var(--t1);font-weight:700}
+  #page-mesajlar .mi-count{font-size:.6rem;font-weight:700;color:var(--t3)}
+  #page-mesajlar .mb-sys{align-self:center;font-size:.68rem;color:var(--t3);background:rgba(0,0,0,.04);padding:4px 10px;border-radius:100px;margin:6px 0}
   #page-mesajlar .msg-list{flex:1;overflow-y:auto}
   #page-mesajlar .msg-item{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid rgba(0,0,0,.06);background:transparent;padding:12px 14px;cursor:pointer;font:inherit;color:var(--t1)}
   #page-mesajlar .msg-item:hover{background:rgba(0,0,0,.03)}
@@ -10889,7 +10906,9 @@ document.addEventListener('DOMContentLoaded', function(){
 <script>
 (function(){
   var EP='/api/messages';
-  var M={items:[],filter:'open',cur:null,lastId:0,listT:null,thrT:null,sending:false};
+  var M={items:[],filter:'open',cur:null,lastId:0,listT:null,thrT:null,sending:false,agent:''};
+  try{ M.agent=localStorage.getItem('rcl_chat_agent')||''; }catch(e){}
+  function drawAgents(){ document.querySelectorAll('#msg-agents .msg-agent').forEach(function(b){ b.classList.toggle('active',b.getAttribute('data-a')===M.agent); }); var w=$('msg-agents'); if(w) w.classList.toggle('need',!M.agent); }
   function key(){ try{ return localStorage.getItem('rcl_alim_key')||''; }catch(e){ return ''; } }
   function hdr(){ var h={'Content-Type':'application/json'}; var k=key(); if(k) h['x-rcl-key']=k; return h; }
   function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
@@ -10909,8 +10928,9 @@ document.addEventListener('DOMContentLoaded', function(){
     var rows=M.items.filter(function(x){ return M.filter==='all'||x.status===M.filter; });
     if(!rows.length){ el.innerHTML='<div class="alim-empty">'+(M.items.length?'Bu filtrede konuşma yok.':'Henüz mesaj yok.')+'</div>'; return; }
     el.innerHTML=rows.map(function(x){
-      return '<button class="msg-item'+(M.cur&&M.cur.id===x.id?' active':'')+'" data-id="'+esc(x.id)+'">'+
+      return '<button class="msg-item '+(x.unread_admin?'unread':'read')+(M.cur&&M.cur.key===x.key?' active':'')+'" data-id="'+esc(x.key)+'">'+
         '<div class="mi-top"><span class="mi-name">'+esc(x.name||'İsimsiz')+'</span>'+
+        (x.count>1?'<span class="mi-count">'+x.count+' konuşma</span>':'')+
         (x.status==='closed'?'<span class="mi-closed">kapalı</span>':'')+
         (x.unread_admin?'<span class="mi-badge">'+x.unread_admin+'</span>':'')+
         '<span class="mi-time">'+ago(x.last_message_at)+'</span></div>'+
@@ -10924,7 +10944,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(!j.ok){ if(el&&active()) el.innerHTML='<div class="alim-empty">'+esc(j.error||'Liste alınamadı')+'</div>'; return; }
       M.items=j.items||[]; badge();
       if(active()){ drawList(); var u=$('msg-upd'); if(u) u.textContent=hm(new Date().toISOString()); }
-      if(M.cur){ var c=M.items.filter(function(x){ return x.id===M.cur.id; })[0]; if(c){ M.cur=c; head(); } }
+      if(M.cur){ var c=M.items.filter(function(x){ return x.key===M.cur.key; })[0]; if(c){ M.cur=c; head(); } }
     }).catch(function(){});
   }
   function head(){
@@ -10940,21 +10960,24 @@ document.addEventListener('DOMContentLoaded', function(){
       if(m.id<=M.lastId) return; M.lastId=m.id;
       var day=new Date(m.created_at).toLocaleDateString('tr-TR',{day:'2-digit',month:'long'});
       if(body.getAttribute('data-day')!==day){ body.setAttribute('data-day',day); body.insertAdjacentHTML('beforeend','<div class="msg-day">'+esc(day)+'</div>'); }
-      body.insertAdjacentHTML('beforeend','<div class="mb '+m.sender+'">'+esc(m.body)+'</div><div class="mb-t '+m.sender+'">'+hm(m.created_at)+(m.sender==='admin'&&m.via==='telegram'?' · Telegram':'')+'</div>');
+      var via=String(m.via||''), vp=via.split(':');
+      if(vp[0]==='system'){ body.insertAdjacentHTML('beforeend','<div class="mb-sys">'+esc(m.body)+' · '+hm(m.created_at)+'</div>'); return; }
+      var who= m.sender==='admin' ? (vp[0]==='panel'&&vp[1]?' · '+esc(vp[1]):(vp[0]==='telegram'?' · Telegram':'')) : '';
+      body.insertAdjacentHTML('beforeend','<div class="mb '+m.sender+'">'+esc(m.body)+'</div><div class="mb-t '+m.sender+'">'+hm(m.created_at)+who+'</div>');
     });
     if(stick) body.scrollTop=body.scrollHeight;
   }
   function loadThread(){
     if(!M.cur) return Promise.resolve();
-    var id=M.cur.id;
-    return api('thread',null,'&id='+encodeURIComponent(id)+'&after='+M.lastId).then(function(j){
-      if(!j.ok||!M.cur||M.cur.id!==id) return;
+    var id=M.cur.key;
+    return api('thread',null,'&key='+encodeURIComponent(id)+'&after='+M.lastId+(M.agent?'&agent='+encodeURIComponent(M.agent):'')).then(function(j){
+      if(!j.ok||!M.cur||M.cur.key!==id) return;
       addMsgs(j.messages||[]);
-      var it=M.items.filter(function(x){ return x.id===id; })[0]; if(it&&it.unread_admin){ it.unread_admin=0; badge(); drawList(); }
+      var it=M.items.filter(function(x){ return x.key===id; })[0]; if(it&&it.unread_admin){ it.unread_admin=0; badge(); drawList(); }
     }).catch(function(){});
   }
   function open(id){
-    var c=M.items.filter(function(x){ return x.id===id; })[0]; if(!c) return;
+    var c=M.items.filter(function(x){ return x.key===id; })[0]; if(!c) return;
     M.cur=c; M.lastId=0;
     var body=$('msg-body'); body.innerHTML=''; body.removeAttribute('data-day');
     $('msg-empty').hidden=true; $('msg-thread').hidden=false; $('msg-shell').classList.add('in-thread');
@@ -10964,8 +10987,9 @@ document.addEventListener('DOMContentLoaded', function(){
   function sendReply(){
     var i=$('msg-input'), v=(i.value||'').trim();
     if(!v||!M.cur||M.sending) return;
+    if(!M.agent){ drawAgents(); alert('Önce soldan kimin yanıtladığını seç (Umut, Aybüke ya da Deniz).'); return; }
     M.sending=true; $('msg-send').disabled=true;
-    api('reply',{method:'POST',body:JSON.stringify({id:M.cur.id,body:v})}).then(function(j){
+    api('reply',{method:'POST',body:JSON.stringify({key:M.cur.key,body:v,agent:M.agent})}).then(function(j){
       if(j.ok){ i.value=''; i.style.height='auto'; addMsgs([j.message]); $('msg-body').scrollTop=$('msg-body').scrollHeight; loadList(); }
       else alert(j.error||'Gönderilemedi');
     }).catch(function(){ alert('Bağlantı hatası'); }).then(function(){ M.sending=false; $('msg-send').disabled=false; });
@@ -10977,12 +11001,15 @@ document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(t){ t.addEventListener('click',function(){
       document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(x){ x.classList.remove('active'); });
       t.classList.add('active'); M.filter=t.getAttribute('data-f'); drawList(); }); });
+    document.querySelectorAll('#msg-agents .msg-agent').forEach(function(b){ b.addEventListener('click',function(){
+      M.agent=b.getAttribute('data-a'); try{ localStorage.setItem('rcl_chat_agent',M.agent); }catch(e){} drawAgents(); }); });
+    drawAgents();
     $('msg-form').addEventListener('submit',function(e){ e.preventDefault(); sendReply(); });
     $('msg-input').addEventListener('keydown',function(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); sendReply(); } });
     $('msg-input').addEventListener('input',function(){ this.style.height='auto'; this.style.height=Math.min(140,this.scrollHeight)+'px'; });
     $('msg-back').addEventListener('click',function(){ $('msg-shell').classList.remove('in-thread'); M.cur=null; drawList(); });
     $('msg-close').addEventListener('click',function(){ if(!M.cur) return; var st=M.cur.status==='closed'?'open':'closed';
-      api('status',{method:'POST',body:JSON.stringify({id:M.cur.id,status:st})}).then(function(){ loadList(); }); });
+      api('status',{method:'POST',body:JSON.stringify({key:M.cur.key,status:st})}).then(function(){ loadList(); }); });
   }
   window.MSG_unlock=function(){ var k=prompt('HQ erişim anahtarı (RCL_ALIM_KEY):'); if(k){ try{ localStorage.setItem('rcl_alim_key',k); }catch(e){} loadList(); } };
   window.renderMesajlarPage=function(){ bind(); drawList(); loadList(); };

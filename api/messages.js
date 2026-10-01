@@ -9,6 +9,9 @@ import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 
 const MAX_BODY = 2000;
+const AGENTS = ['Umut', 'Ayb\u00fcke', 'Deniz']; // paneldeki destek ekibi
+const JOIN_AGAIN_MIN = 60; // ayni temsilci icin "sohbete katildi" bildirimi en fazla saatte bir
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const RENOTIFY_MIN = 30; // son mesajdan bu kadar dakika sonra gelen ziyaretci mesaji yeniden bildirilir
 
 function cors(res) {
@@ -28,6 +31,15 @@ async function readJson(req) {
   for await (const c of req) chunks.push(c);
   const raw = Buffer.concat(chunks).toString('utf8');
   return raw ? JSON.parse(raw) : {};
+}
+function agentOf(v) { const a = s(v, 20); return AGENTS.indexOf(a) >= 0 ? a : ''; }
+// Panelde ayni e-postadan gelen konusmalar tek pencerede toplanir; anahtar = e-posta (yoksa konusma id'si).
+function groupKey(c) { return c.contact ? c.contact.toLowerCase() : c.id; }
+async function groupConvs(sb, key) {
+  const k = s(key, 120);
+  const q = sb.from('chat_conversations').select('*').order('last_message_at', { ascending: false });
+  const r = k.indexOf('@') > 0 ? await q.eq('contact', k.toLowerCase()) : await q.eq('id', k);
+  return r.data || [];
 }
 function s(v, max) { return String(v == null ? '' : v).trim().slice(0, max || 120); }
 // Mesajlasma kendi Supabase projesini kullanabilir (CHAT_*); tanimli degilse topluluk projesine duser.
@@ -66,7 +78,8 @@ async function tgSend(text) {
 }
 const MSG_COLS = 'id, sender, body, via, created_at';
 
-async function addAdminMessage(sb, conv, body, via) {
+async function addAdminMessage(sb, conv, body, via, agent) {
+  if (agent) via = via + ':' + agent;
   const { data: msg, error } = await sb.from('chat_messages')
     .insert({ conversation_id: conv.id, sender: 'admin', body, via }).select(MSG_COLS).single();
   if (error) throw error;
@@ -106,10 +119,12 @@ export default async function handler(req, res) {
       if (!conv) {
         const name = s(b.name, 60);
         if (!name) return send(res, 400, { ok: false, error: 'Ad gerekli' });
+        const email = s(b.email || b.contact, 120).toLowerCase();
+        if (!EMAIL_RE.test(email)) return send(res, 400, { ok: false, error: 'Ge\u00e7erli bir e-posta adresi gerekli' });
         const ins = await sb.from('chat_conversations').insert({
           token: crypto.randomBytes(24).toString('hex'),
           code: 'M-' + crypto.randomBytes(3).toString('hex').toUpperCase(),
-          name, contact: s(b.contact, 120), page: s(b.page, 200), device: s(b.device, 12),
+          name, contact: email, page: s(b.page, 200), device: s(b.device, 12),
         }).select('*').single();
         if (ins.error) throw ins.error;
         conv = ins.data; isNew = true;
@@ -128,12 +143,11 @@ export default async function handler(req, res) {
         last_message_at: msg.created_at, last_preview: body.slice(0, 140), last_sender: 'visitor',
         unread_admin: (conv.unread_admin || 0) + 1, status: 'open',
       };
-      if (!conv.contact && b.contact) upd.contact = s(b.contact, 120);
       await sb.from('chat_conversations').update(upd).eq('id', conv.id);
       if (isNew || gapMin >= RENOTIFY_MIN) {
         await tgSend(
           '<b>' + (isNew ? 'Yeni musteri mesaji' : 'Musteri tekrar yazdi') + '</b>  #' + esc(conv.code) + '\n' +
-          'Kisi: <b>' + esc(conv.name) + '</b>' + (conv.contact || upd.contact ? '  (' + esc(upd.contact || conv.contact) + ')' : '') + '\n' +
+          'Kisi: <b>' + esc(conv.name) + '</b>' + (conv.contact ? '  (' + esc(conv.contact) + ')' : '') + '\n' +
           'Sayfa: ' + esc(conv.page) + '\n\n' + esc(body.slice(0, 600)) + '\n\n' +
           '<i>Yanitlamak icin bu mesaji yanitla (reply) ya da panelde Mesajlar sekmesini ac.</i>'
         );
@@ -211,32 +225,73 @@ export default async function handler(req, res) {
     if (action === 'list' && req.method === 'GET') {
       const { data, error } = await sb.from('chat_conversations')
         .select('id, code, name, contact, page, device, status, unread_admin, last_preview, last_sender, created_at, last_message_at')
-        .order('last_message_at', { ascending: false }).limit(200);
+        .order('last_message_at', { ascending: false }).limit(400);
       if (error) throw error;
-      return send(res, 200, { ok: true, items: data || [] });
+      const groups = {}, order = [];
+      for (const c of data || []) {
+        const k = groupKey(c);
+        let g = groups[k];
+        if (!g) { // ilk gorulen = en yeni konusma: baslik bilgileri ondan gelir
+          g = groups[k] = { key: k, name: c.name, contact: c.contact, code: c.code, page: c.page, device: c.device,
+            status: 'closed', unread_admin: 0, last_preview: c.last_preview, last_sender: c.last_sender,
+            last_message_at: c.last_message_at, created_at: c.created_at, count: 0 };
+          order.push(g);
+        }
+        g.count++; g.unread_admin += c.unread_admin || 0;
+        if (c.status === 'open') g.status = 'open';
+        if (c.created_at < g.created_at) g.created_at = c.created_at;
+      }
+      return send(res, 200, { ok: true, items: order, agents: AGENTS });
     }
     if (action === 'thread' && req.method === 'GET') {
-      const id = s(req.query.id, 40);
+      const convs = await groupConvs(sb, req.query.key);
+      if (!convs.length) return send(res, 404, { ok: false, error: 'Konusma bulunamadi' });
+      const ids = convs.map((c) => c.id);
       const after = Number(req.query.after) || 0;
       const { data: msgs, error } = await sb.from('chat_messages').select(MSG_COLS)
-        .eq('conversation_id', id).gt('id', after).order('id', { ascending: true }).limit(500);
+        .in('conversation_id', ids).gt('id', after).order('id', { ascending: true }).limit(800);
       if (error) throw error;
-      await sb.from('chat_conversations').update({ unread_admin: 0 }).eq('id', id);
-      return send(res, 200, { ok: true, messages: msgs || [] });
+      const unread = convs.reduce((n, c) => n + (c.unread_admin || 0), 0);
+      const agent = agentOf(req.query.agent);
+      let joined = null;
+      // Temsilci okunmamis mesaji actiginda musteriye "X sohbete katildi" bildirimi (ayni temsilci icin saatte en fazla bir)
+      if (agent && unread > 0) {
+        const latest = convs[0];
+        const via = 'system:join:' + agent;
+        const prev = await sb.from('chat_messages').select('created_at').eq('conversation_id', latest.id).eq('via', via)
+          .order('id', { ascending: false }).limit(1);
+        const last = prev.data && prev.data[0];
+        if (!last || (Date.now() - new Date(last.created_at).getTime()) / 60000 >= JOIN_AGAIN_MIN) {
+          const ins = await sb.from('chat_messages').insert({ conversation_id: latest.id, sender: 'admin', via,
+            body: agent + ' sohbete katıldı. Gerçek bir kişiyle yazışıyorsunuz.' }).select(MSG_COLS).single();
+          if (!ins.error) {
+            joined = ins.data;
+            await sb.from('chat_conversations').update({ unread_visitor: (latest.unread_visitor || 0) + 1 }).eq('id', latest.id);
+          }
+        }
+      }
+      if (unread > 0) await sb.from('chat_conversations').update({ unread_admin: 0 }).in('id', ids);
+      const out = (msgs || []).slice();
+      if (joined && !out.some((m) => m.id === joined.id)) out.push(joined);
+      return send(res, 200, { ok: true, messages: out });
     }
     if (action === 'reply' && req.method === 'POST') {
       const b = await readJson(req);
       const body = s(b.body, MAX_BODY);
       if (!body) return send(res, 400, { ok: false, error: 'Mesaj bos' });
-      const { data: conv } = await sb.from('chat_conversations').select('*').eq('id', s(b.id, 40)).maybeSingle();
-      if (!conv) return send(res, 404, { ok: false, error: 'Konusma bulunamadi' });
-      const msg = await addAdminMessage(sb, conv, body, 'panel');
+      const agent = agentOf(b.agent);
+      if (!agent) return send(res, 400, { ok: false, error: 'Temsilci secilmedi' });
+      const convs = await groupConvs(sb, b.key);
+      if (!convs.length) return send(res, 404, { ok: false, error: 'Konusma bulunamadi' });
+      const msg = await addAdminMessage(sb, convs[0], body, 'panel', agent); // en son yazilan konusmaya gider
       return send(res, 200, { ok: true, message: msg });
     }
     if (action === 'status' && req.method === 'POST') {
       const b = await readJson(req);
       const st = b.status === 'closed' ? 'closed' : 'open';
-      const { error } = await sb.from('chat_conversations').update({ status: st }).eq('id', s(b.id, 40));
+      const convs = await groupConvs(sb, b.key);
+      if (!convs.length) return send(res, 404, { ok: false, error: 'Konusma bulunamadi' });
+      const { error } = await sb.from('chat_conversations').update({ status: st }).in('id', convs.map((c) => c.id));
       if (error) throw error;
       return send(res, 200, { ok: true });
     }
