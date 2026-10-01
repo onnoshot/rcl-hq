@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-01T19:50:07",
+  "updated_at": "2026-10-01T21:01:14",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 1356,
+      "views": 1357,
       "likes": 9,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
@@ -66,7 +66,7 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1607,
+      "views": 1609,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -138,7 +138,7 @@ const YOUTUBE = {
       "id": "b6MfXb0bltc",
       "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
       "date": "23 Şub 2026",
-      "views": 898,
+      "views": 901,
       "likes": 7,
       "comments": 0,
       "url": "https://youtu.be/b6MfXb0bltc"
