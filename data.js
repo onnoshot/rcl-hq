@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-01T19:46:17",
+  "updated_at": "2026-10-01T19:50:03",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4750,
-    "total_views": 1515016,
+    "total_views": 1515712,
     "video_count": 406
   },
   "analytics": {
@@ -102,7 +102,7 @@ const YOUTUBE = {
       "id": "bY4UWZ-wEwY",
       "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
       "date": "26 Nis 2026",
-      "views": 1235,
+      "views": 1236,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/bY4UWZ-wEwY"
