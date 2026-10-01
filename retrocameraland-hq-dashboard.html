@@ -3889,7 +3889,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
   <div class="page-topbar fi">
     <div class="pt-left">
       <div class="pt-title" style="color:var(--red)">Kamera Bulucu Testleri</div>
-      <div class="pt-sub">AI Kamera Eşleştirici testini dolduran ziyaretçiler ve verdikleri cevaplar</div>
+      <div class="pt-sub">Kamera Bulucu'yu açan, başlatan ve tamamlayan ziyaretçiler; verdikleri cevaplar ve sonuç ekranındaki hareketleri</div>
     </div>
     <div class="pt-right">
       <div class="live-pill"><div class="sb-live-dot"></div>CANLI</div>
@@ -3908,6 +3908,18 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <div class="card p"><div class="kpi-lbl">Memnuniyet Oranı</div><div class="kpi-big" id="bul-k-satisf">—</div></div>
       <div class="card p"><div class="kpi-lbl">E-posta Bırakan</div><div class="kpi-big" id="bul-k-email">—</div></div>
     </div>
+  </div>
+
+  <div class="sec fi" style="transition-delay:.08s">
+    <div class="sec-label">Dönüşüm Hunisi &amp; Ziyaretçi Davranışı</div>
+    <div class="g g4">
+      <div class="card p"><div class="kpi-lbl">Teste Başlama Oranı</div><div class="kpi-big" id="bul-k-start">—</div></div>
+      <div class="card p"><div class="kpi-lbl">Tamamlama Oranı</div><div class="kpi-big" id="bul-k-done">—</div></div>
+      <div class="card p"><div class="kpi-lbl">Ürüne Tıklama Oranı</div><div class="kpi-big" id="bul-k-ctr">—</div></div>
+      <div class="card p"><div class="kpi-lbl">Ort. Tamamlama Süresi</div><div class="kpi-big" id="bul-k-dur">—</div></div>
+    </div>
+    <div id="bul-funnel" class="bul-trend-card" style="margin-top:12px"><div class="alim-empty">Yükleniyor…</div></div>
+    <div id="bul-behav" class="bul-bargrid" style="margin-top:14px"></div>
   </div>
 
   <div class="sec fi" style="transition-delay:.1s">
@@ -10132,6 +10144,16 @@ function finAnimateKPIs() {
   #page-bulucu .br-fill{display:block;height:100%;width:0;border-radius:100px;transition:width 1.1s cubic-bezier(.2,.85,.25,1)}
   #page-bulucu .br-vl{font-size:.74rem;font-weight:800;color:var(--t1);min-width:50px;text-align:right;font-variant-numeric:tabular-nums}
   #page-bulucu .br-vl i{font-style:normal;color:var(--t3);font-weight:600;font-size:.64rem;margin-left:4px}
+  #page-bulucu .fn-row{display:grid;grid-template-columns:150px 1fr 150px;align-items:center;gap:12px;margin:9px 0}
+  #page-bulucu .fn-lb{font-size:.78rem;font-weight:700;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #page-bulucu .fn-bar{height:22px;background:rgba(0,0,0,0.05);border-radius:8px;overflow:hidden}
+  #page-bulucu .fn-fill{display:block;height:100%;width:0;border-radius:8px;background:var(--red);transition:width 1.1s cubic-bezier(.2,.85,.25,1)}
+  #page-bulucu .fn-vl{font-size:.76rem;font-weight:800;color:var(--t1);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  #page-bulucu .fn-vl i{font-style:normal;color:var(--t3);font-weight:600;font-size:.66rem;margin-left:6px}
+  #page-bulucu .fn-vl i.drop{color:var(--danger,#ff453a)}
+  #page-bulucu .fn-note{font-size:.7rem;color:var(--t3);margin-top:10px}
+  #page-bulucu .bul-clicked{font-size:.7rem;font-weight:700;color:var(--red)}
+  @media(max-width:720px){ #page-bulucu .fn-row{grid-template-columns:96px 1fr 104px;gap:8px} }
   #page-bulucu .bul-empty2{font-size:.76rem;color:var(--t3);padding:8px 2px}
   @media(max-width:720px){ #page-bulucu .bul-rankgrid{grid-template-columns:1fr} }
   /* katlanir liste */
@@ -10354,7 +10376,7 @@ function finAnimateKPIs() {
     }).then(function(j){
       if(!j) return;
       if(!j.ok){ if(list) list.innerHTML='<div class="alim-empty">Hata: '+esc(j.error||'liste alınamadı')+'</div>'; return; }
-      window.BUL.items=j.items||[]; window.BUL.loaded=true;
+      window.BUL.items=j.items||[]; window.BUL.sessions=j.sessions||[]; window.BUL.loaded=true;
       var u=document.getElementById('bul-upd'); if(u) u.textContent=fmtDate(new Date().toISOString());
       drawBul();
     }).catch(function(e){
@@ -10429,7 +10451,69 @@ function finAnimateKPIs() {
       document.querySelectorAll('#page-bulucu .br-fill').forEach(function(f){ f.style.width=(f.getAttribute('data-w')||0)+'%'; });
     }); });
   }
-  function drawBul(){ kpis(); drawCharts(); drawList(); }
+  // ---- huni + davranis (oturum kayitlari: api/finder-log "sessions") ----
+  var FN_STEPS=[['view','Sayfayı gördü'],['start','Teste başladı'],['profile','Profili doldurdu'],['q1','1. soru: Kullanım'],['q2','2. soru: Bütçe'],['q3','3. soru: Estetik'],['q4','4. soru: Deneyim'],['result','Sonucu gördü']];
+  var FN_CLICK={product:'Ürünü inceledi',all_cameras:'Tüm kameralara gitti',share:'Sonucu paylaştı',redo:'Testi tekrarladı',like:'Beğendi',dislike:'Beğenmedi',email:'E-posta bıraktı'};
+  function countPairs(list,limit){
+    var m={}; list.forEach(function(v){ v=(v==null?'':String(v)).trim(); if(v) m[v]=(m[v]||0)+1; });
+    var a=Object.keys(m).map(function(k){ return [k,m[k]]; }); a.sort(function(p,q){ return q[1]-p[1]; });
+    return limit?a.slice(0,limit):a;
+  }
+  function drawFunnel(){
+    var ss=window.BUL.sessions||[], fn=document.getElementById('bul-funnel'), bh=document.getElementById('bul-behav');
+    var set=function(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; };
+    if(!ss.length){
+      if(fn) fn.innerHTML='<div class="alim-empty">Henüz oturum kaydı yok. Huni, yeni Kamera Bulucu sürümü yayına girdikten sonraki ziyaretlerle dolar.</div>';
+      if(bh) bh.innerHTML=''; ['bul-k-start','bul-k-done','bul-k-ctr','bul-k-dur'].forEach(function(id){ set(id,'—'); });
+      return;
+    }
+    var has=function(x,k){ return x.steps && x.steps[k]!=null; };
+    var counts=FN_STEPS.map(function(s){ return ss.filter(function(x){ return has(x,s[0]); }).length; });
+    // "view" 3 sn sonra yazilir; hemen baslayan kisi view'siz kalabilir -> ust basamak en az alt basamak kadar olsun
+    for(var i=counts.length-2;i>=0;i--){ if(counts[i]<counts[i+1]) counts[i]=counts[i+1]; }
+    var top=counts[0]||1, started=counts[1], done=counts[counts.length-1];
+    var pct=function(a,b){ return b?Math.round(a/b*100):0; };
+    set('bul-k-start', '%'+pct(started,counts[0])+' ('+started+')');
+    set('bul-k-done', started?('%'+pct(done,started)+' ('+done+')'):'—');
+    var doneS=ss.filter(function(x){ return has(x,'result'); });
+    var clicked=doneS.filter(function(x){ return (x.clicks||[]).some(function(c){ return c.t==='product'; }); }).length;
+    set('bul-k-ctr', doneS.length?('%'+pct(clicked,doneS.length)+' ('+clicked+')'):'—');
+    var durs=doneS.map(function(x){ return (x.steps.result||0)-(x.steps.start||0); }).filter(function(v){ return v>0&&v<3600; }).sort(function(a,b){ return a-b; });
+    var med=durs.length?durs[Math.floor(durs.length/2)]:0;
+    set('bul-k-dur', med?(Math.floor(med/60)?(Math.floor(med/60)+' dk '+(med%60)+' sn'):(med+' sn')):'—');
+    if(fn) fn.innerHTML=FN_STEPS.map(function(s,i){
+      var c=counts[i], prev=i?counts[i-1]:c, lost=prev-c;
+      return '<div class="fn-row"><span class="fn-lb" title="'+esc(s[1])+'">'+esc(s[1])+'</span>'+
+        '<span class="fn-bar"><i class="fn-fill" data-w="'+pct(c,top)+'"></i></span>'+
+        '<span class="fn-vl">'+c+'<i>%'+pct(c,top)+'</i>'+(i&&lost>0?'<i class="drop">−'+lost+'</i>':'')+'</span></div>';
+    }).join('')+'<div class="fn-note">Yüzdeler sayfayı gören oturumlara göredir; kırmızı sayı bir önceki adımdan sonra ayrılan kişi sayısıdır. Toplam '+ss.length+' oturum.</div>';
+    // handle -> urun adi (tamamlanan testlerin onerilerinden)
+    var titles={}; window.BUL.items.forEach(function(x){ (x.recommended||[]).forEach(function(r){ if(r.handle) titles[r.handle]=r.title; }); });
+    var prod=[], rank=[], acts=[], left=[], dev=[], src=[];
+    ss.forEach(function(x){
+      (x.clicks||[]).forEach(function(c){
+        acts.push(FN_CLICK[c.t]||c.t);
+        if(c.t==='product'){ prod.push(titles[c.h]||c.h); if(c.r) rank.push(c.r+'. öneri'); }
+      });
+      if(has(x,'start') && !has(x,'result')){ var l=FN_STEPS.filter(function(s){ return s[0]===x.last; })[0]; left.push(l?l[1]:(x.last||'—')); }
+      dev.push(x.device==='mobile'?'Mobil':(x.device==='desktop'?'Masaüstü':''));
+      var u=x.utm||''; if(!u && x.ref){ try{ u=new URL(x.ref).hostname.replace(/^www\./,''); }catch(e){ u=''; } }
+      src.push(u||'Doğrudan / bilinmiyor');
+    });
+    if(bh) bh.innerHTML=[
+      barCard('Sonuçta Tıklanan Kameralar', countPairs(prod,8), prod.length||1, true),
+      barCard('Tıklanan Öneri Sırası', countPairs(rank), rank.length||1),
+      barCard('Sonuç Ekranı Hareketleri', countPairs(acts), acts.length||1),
+      barCard('Yarıda Bırakılan Adım', countPairs(left), left.length||1),
+      barCard('Cihaz', countPairs(dev), ss.length),
+      barCard('Trafik Kaynağı', countPairs(src,8), ss.length, true)
+    ].join('');
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){
+      document.querySelectorAll('#page-bulucu .fn-fill').forEach(function(f){ f.style.width=(f.getAttribute('data-w')||0)+'%'; });
+      document.querySelectorAll('#page-bulucu #bul-behav .br-fill').forEach(function(f){ f.style.width=(f.getAttribute('data-w')||0)+'%'; });
+    }); });
+  }
+  function drawBul(){ kpis(); drawFunnel(); drawCharts(); drawList(); }
   function drawList(){
     var list=document.getElementById('bul-list'); if(!list) return;
     var q=window.BUL.q, g=window.BUL.gender;
@@ -10439,9 +10523,11 @@ function finAnimateKPIs() {
       return true;
     });
     if(!rows.length){ list.innerHTML='<div class="alim-empty">'+(window.BUL.items.length?'Bu filtreye uygun kayıt yok.':'Henüz test kaydı yok.')+'</div>'; return; }
+    var byLog={}; (window.BUL.sessions||[]).forEach(function(s){ if(s.logId) byLog[s.logId]=s; });
     list.innerHTML=rows.map(function(x){
+      var ses=byLog[x.id], hit={}; if(ses) (ses.clicks||[]).forEach(function(c){ if(c.t==='product') hit[c.h]=1; });
       var recs=(x.recommended||[]).map(function(r,i){
-        return '<div class="bul-rec'+(i===0?' best':'')+'"><span class="pct">%'+(r.pct||0)+'</span><span class="nm">'+esc(r.title||'—')+'</span></div>';
+        return '<div class="bul-rec'+(i===0?' best':'')+'"><span class="pct">%'+(r.pct||0)+'</span><span class="nm">'+esc(r.title||'—')+'</span>'+(hit[r.handle]?'<span class="bul-clicked">inceledi</span>':'')+'</div>';
       }).join('');
       var a=x.answers||{};
       var chipArr=[].concat(a.budget||[],a.use||[],a.level||[],a.aes||[],a.env||[]);

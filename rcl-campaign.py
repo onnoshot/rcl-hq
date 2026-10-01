@@ -304,7 +304,7 @@ def rehost_to_shopify(url, key):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     img = urllib.request.urlopen(req, timeout=30).read()
     b64 = base64.b64encode(img).decode()
-    r = shopify("PUT", "themes/147158499467/assets.json",
+    r = shopify("PUT", "themes/167136559243/assets.json",
                 {"asset": {"key": f"assets/{key}.jpg", "attachment": b64}})
     return r.get("asset", {}).get("public_url", "")
 

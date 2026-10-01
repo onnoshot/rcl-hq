@@ -11,7 +11,7 @@ import sys, os
 sys.path.insert(0, '/Users/onnoshot/Downloads/Agentlar')
 from retrocameraland_api import shopify, log
 
-THEME_ID = '147158499467'
+THEME_ID = '167136559243'
 
 def get_asset(key):
     r = shopify('GET', f'themes/{THEME_ID}/assets.json?asset[key]={key}')

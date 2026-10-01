@@ -10,6 +10,8 @@ import { put, list } from '@vercel/blob';
 import crypto from 'node:crypto';
 
 const PREFIX = 'finder/';
+// Oturum (huni) kayitlari: testi baslatan her ziyaretcinin adim adim ilerleyisi + sonuc ekranindaki tiklamalar.
+const SESSION_PREFIX = 'finder-sessions/';
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -70,6 +72,50 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     let b;
     try { b = await readJson(req); } catch (e) { return send(res, 400, { error: 'Gecersiz istek' }); }
+
+    // ---- SESSION: huni/hareket anlik goruntusu (istemci her adimda tum oturumu yollar, sid ile ustune yazilir) ----
+    if (b.type === 'session') {
+      const sid = s(b.sid, 40).replace(/[^a-z0-9]/gi, '');
+      if (!sid) return send(res, 400, { error: 'Eksik alan: sid' });
+      const steps = {};
+      if (b.steps && typeof b.steps === 'object') {
+        for (const k of Object.keys(b.steps).slice(0, 12)) steps[s(k, 20)] = Math.max(0, Math.min(86400, Number(b.steps[k]) || 0));
+      }
+      const answers = {};
+      if (b.answers && typeof b.answers === 'object') {
+        for (const k of ['use', 'budget', 'aes', 'level']) if (b.answers[k]) answers[k] = arr(b.answers[k], 5);
+      }
+      const clicks = Array.isArray(b.clicks) ? b.clicks.slice(0, 40).map((c) => ({
+        t: s(c && c.t, 20), h: s(c && c.h, 160), r: Number(c && c.r) || 0, s: Number(c && c.s) || 0,
+      })) : [];
+      const ses = {
+        sid, seq: Number(b.seq) || 0,
+        startedAt: s(b.startedAt, 30) || new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        steps, last: s(b.last, 20), dur: Math.max(0, Math.min(86400, Number(b.dur) || 0)),
+        clicks, answers,
+        device: s(b.device, 10), ref: s(b.ref, 160), utm: s(b.utm, 120),
+        pname: s(b.pname, 80), age: s(b.age, 30), gender: s(b.gender, 30), city: s(b.city, 60),
+        logId: s(b.logId, 40), top: s(b.top, 120), page: s(b.page, 160),
+      };
+      try {
+        // Gec gelen eski bir istek daha yeni goruntunun ustune yazmasin.
+        const path = SESSION_PREFIX + sid + '.json';
+        const r = await list({ prefix: path, limit: 1 });
+        const blob = r.blobs.find((x) => x.pathname === path);
+        if (blob) {
+          try {
+            const prev = await (await fetch(bust(blob.url), { cache: 'no-store' })).json();
+            if ((Number(prev.seq) || 0) > ses.seq) return send(res, 200, { ok: true, stale: true });
+          } catch (e) { /* bozuk onceki kayit: ustune yaz */ }
+        }
+        await put(path, JSON.stringify(ses), {
+          access: 'public', contentType: 'application/json', addRandomSuffix: false,
+          allowOverwrite: true, cacheControlMaxAge: 0,
+        });
+        return send(res, 200, { ok: true });
+      } catch (e) { return send(res, 500, { error: 'Oturum yazilamadi: ' + (e.message || e) }); }
+    }
 
     // ---- UPDATE: sonuc ekranindaki begen/begenmedim veya e-posta opt-in, ayni teste islenir ----
     if (b.id && !b.name) {
@@ -154,19 +200,28 @@ export default async function handler(req, res) {
   // ---- GET: listele ----
   if (req.method === 'GET') {
     try {
-      const out = [];
-      let cursor;
-      do {
-        const r = await list({ prefix: PREFIX, cursor, limit: 1000 });
-        for (const it of r.blobs) {
-          if (!it.pathname.endsWith('.json')) continue;
-          try { const j = await fetch(bust(it.url), { cache: 'no-store' }); if (j.ok) out.push(await j.json()); }
-          catch (e) { /* bozuk kayit atla */ }
+      const readAll = async (prefix) => {
+        const blobs = [];
+        let cursor;
+        do {
+          const r = await list({ prefix, cursor, limit: 1000 });
+          for (const it of r.blobs) if (it.pathname.endsWith('.json')) blobs.push(it);
+          cursor = r.cursor;
+        } while (cursor);
+        const res = [];
+        for (let i = 0; i < blobs.length; i += 25) {
+          const part = await Promise.all(blobs.slice(i, i + 25).map(async (it) => {
+            try { const j = await fetch(bust(it.url), { cache: 'no-store' }); return j.ok ? await j.json() : null; }
+            catch (e) { return null; } // bozuk kayit atla
+          }));
+          for (const x of part) if (x) res.push(x);
         }
-        cursor = r.cursor;
-      } while (cursor);
+        return res;
+      };
+      const [out, sessions] = await Promise.all([readAll(PREFIX), readAll(SESSION_PREFIX)]);
       out.sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
-      return send(res, 200, { ok: true, items: out });
+      sessions.sort((a, b) => (b.startedAt || '').localeCompare(a.startedAt || ''));
+      return send(res, 200, { ok: true, items: out, sessions });
     } catch (e) {
       return send(res, 500, { error: 'Liste alinamadi: ' + (e.message || e) });
     }

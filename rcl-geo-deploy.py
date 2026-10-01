@@ -11,7 +11,7 @@ import sys
 sys.path.insert(0, '/Users/onnoshot/Downloads/Agentlar')
 from retrocameraland_api import shopify, log
 
-THEME_ID = '147158499467'
+THEME_ID = '167136559243'
 DRY = '--dry' in sys.argv
 
 # AI arama motorlarını besleyen crawler'lar — content'i okumalarına explicit izin,
