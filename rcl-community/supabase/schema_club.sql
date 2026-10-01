@@ -1,6 +1,18 @@
 -- RetroCameraLand - Retro Club (kart ile giris, basvurular, etkinlikler, kareler, panel ayarlari)
 -- "rcl-mesajlar" Supabase projesinde SQL Editor'de BIR KEZ calistir. Idempotent.
 create extension if not exists pgcrypto;
+
+-- Ilk surum tablolari (uyelik Shopify hesabina bagliydi) kurulduysa ve henuz bosken yeni yapiya gecir.
+-- Yalnizca eski yapi tespit edilirse calisir; yeni yapida tekrar calistirmak veri silmez.
+do $$
+begin
+  if to_regclass('public.club_members') is not null
+     and not exists (select 1 from information_schema.columns
+                     where table_schema = 'public' and table_name = 'club_members' and column_name = 'username') then
+    drop table if exists club_event_rsvps, club_photo_likes, club_photos, club_events,
+      club_applications, club_members, club_cards cascade;
+  end if;
+end $$;
 create sequence if not exists club_member_no_seq start 1;
 
 -- Lisans kartlari. Kartin numarasi uyeligin anahtaridir: ilk giriste uyelik olusur, sonraki girislerde ayni uyelik acilir.
