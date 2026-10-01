@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-01T21:19:28",
+  "updated_at": "2026-10-01T22:15:54",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 57690,
-      "watch_hours": 108.5,
-      "subs_gained": 36,
-      "subs_lost": 33,
+      "views": 60404,
+      "watch_hours": 113.1,
+      "subs_gained": 40,
+      "subs_lost": 34,
       "avg_view_sec": 15
     },
-    "watch_hours_year": 3989.0,
-    "watch_hours_year_long": 2169.1,
-    "watch_hours_year_shorts": 1819.7,
+    "watch_hours_year": 3993.5,
+    "watch_hours_year_long": 2170.2,
+    "watch_hours_year_shorts": 1823.1,
     "monthly": [
       {
         "label": "May 26",
@@ -46,9 +46,9 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 57690,
-        "watch_min": 6511,
-        "subs_gained": 36
+        "views": 60404,
+        "watch_min": 6785,
+        "subs_gained": 40
       }
     ]
   },
@@ -57,8 +57,8 @@ const YOUTUBE = {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 1357,
-      "likes": 9,
+      "views": 1358,
+      "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
     },
