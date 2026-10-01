@@ -3,7 +3,7 @@
 // Panel (x-rcl-key):              GET ?action=list    GET ?action=thread POST ?action=reply  POST ?action=status
 // Telegram botu (x-rcl-tg):       POST ?action=tgreply  (bildirime verilen yanit, kisa kod ile)
 //
-// Gerekli env: SUPABASE_URL, SUPABASE_SERVICE_KEY. Opsiyonel: RCL_ALIM_KEY, TG_BOT_TOKEN, TG_CHAT_ID.
+// Gerekli env: CHAT_SUPABASE_URL + CHAT_SUPABASE_SERVICE_KEY (yoksa SUPABASE_URL + SUPABASE_SERVICE_KEY). Opsiyonel: RCL_ALIM_KEY, TG_BOT_TOKEN, TG_CHAT_ID.
 // Tablolar: rcl-community/supabase/schema_chat.sql
 import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
@@ -30,8 +30,11 @@ async function readJson(req) {
   return raw ? JSON.parse(raw) : {};
 }
 function s(v, max) { return String(v == null ? '' : v).trim().slice(0, max || 120); }
+// Mesajlasma kendi Supabase projesini kullanabilir (CHAT_*); tanimli degilse topluluk projesine duser.
+const SB_URL = process.env.CHAT_SUPABASE_URL || process.env.SUPABASE_URL;
+const SB_KEY = process.env.CHAT_SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_KEY;
 function db() {
-  return createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, {
+  return createClient(SB_URL, SB_KEY, {
     auth: { persistSession: false, autoRefreshToken: false },
   });
 }
@@ -77,7 +80,7 @@ async function addAdminMessage(sb, conv, body, via) {
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') { cors(res); return res.status(204).end(); }
   const action = s(req.query && req.query.action, 20);
-  if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_KEY) return send(res, 503, { ok: false, error: 'yapilandirma' });
+  if (!SB_URL || !SB_KEY) return send(res, 503, { ok: false, error: 'yapilandirma' });
   const sb = db();
 
   try {
