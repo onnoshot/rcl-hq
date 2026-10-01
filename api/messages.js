@@ -154,6 +154,45 @@ export default async function handler(req, res) {
       return send(res, 200, { ok: true, messages: msgs || [], unread: conv.unread_visitor || 0 });
     }
 
+    // ================= TELEGRAM WEBHOOK (bildirime verilen yanit dogrudan Telegram'dan gelir) =================
+    if (action === 'tghook' && req.method === 'POST') {
+      if (!tgSecret() || req.headers['x-telegram-bot-api-secret-token'] !== tgSecret()) return send(res, 401, { ok: false });
+      const u = await readJson(req);
+      const m = u && u.message;
+      if (!m || !m.text || String(m.chat && m.chat.id) !== String(process.env.TG_CHAT_ID || '')) return send(res, 200, { ok: true });
+      const CODE = /#?(M-[0-9A-Fa-f]{6})/;
+      let code = null, body = m.text.trim();
+      const rep = (m.reply_to_message && m.reply_to_message.text) || '';
+      const a = CODE.exec(rep);
+      if (a) code = a[1];
+      else { const b2 = /^\s*#?(M-[0-9A-Fa-f]{6})[\s:,-]+([\s\S]+)/.exec(body); if (b2) { code = b2[1]; body = b2[2].trim(); } }
+      if (!code) return send(res, 200, { ok: true });
+      const { data: conv } = await sb.from('chat_conversations').select('*').eq('code', code.toUpperCase()).maybeSingle();
+      if (!conv) { await tgSend('Konusma bulunamadi: ' + esc(code)); return send(res, 200, { ok: true }); }
+      await addAdminMessage(sb, conv, s(body, MAX_BODY), 'telegram');
+      await tgSend('✓ ' + esc(conv.name) + ' kisisine iletildi (' + esc(conv.code) + ').');
+      return send(res, 200, { ok: true });
+    }
+    // Webhook kurulumu / durumu. Yetki: mesajlasma veritabani anahtarindan turetilen imza.
+    if (action === 'tgsetup') {
+      const need = crypto.createHash('sha256').update(String(SB_KEY) + ':tgsetup').digest('hex');
+      if (s(req.query.k, 80) !== need) return send(res, 401, { ok: false, error: 'Yetkisiz' });
+      const token = process.env.TG_BOT_TOKEN;
+      if (!token) return send(res, 503, { ok: false, error: 'TG_BOT_TOKEN yok' });
+      const tg = async (method, payload) => (await fetch('https://api.telegram.org/bot' + token + '/' + method, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload || {}),
+      })).json();
+      const me = await tg('getMe');
+      let info = await tg('getWebhookInfo');
+      let set = null;
+      if (req.query.mode === 'set') {
+        set = await tg('setWebhook', { url: 'https://rclhq.vercel.app/api/messages?action=tghook', secret_token: tgSecret(), allowed_updates: ['message'] });
+        info = await tg('getWebhookInfo');
+      }
+      return send(res, 200, { ok: true, bot: me.result && me.result.username, webhook: (info.result && info.result.url) || '',
+        pending: info.result && info.result.pending_update_count, lastError: (info.result && info.result.last_error_message) || '', set: set && set.ok });
+    }
+
     // ================= TELEGRAM BOTU =================
     if (action === 'tgreply' && req.method === 'POST') {
       if (!isTelegramBot(req)) return send(res, 401, { ok: false, error: 'Yetkisiz' });
