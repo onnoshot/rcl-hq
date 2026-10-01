@@ -150,33 +150,33 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-10-01T13:49:13",
+  "updated_at": "2026-10-01T14:15:19",
   "period_30d": {
-    "revenue": 33709,
-    "orders": 4,
-    "aov": 8427,
-    "cogs": 14139,
+    "revenue": 45199,
+    "orders": 5,
+    "aov": 9040,
+    "cogs": 18139,
     "cogs_unmatched_rev": 0
   },
   "period_90d": {
-    "revenue": 163189,
-    "orders": 16,
-    "aov": 10199,
-    "cogs": 67466,
+    "revenue": 174679,
+    "orders": 17,
+    "aov": 10275,
+    "cogs": 71466,
     "cogs_unmatched_rev": 0
   },
   "period_year": {
-    "revenue": 909766,
-    "orders": 75,
-    "aov": 12130,
-    "cogs": 408950,
+    "revenue": 921256,
+    "orders": 76,
+    "aov": 12122,
+    "cogs": 412950,
     "cogs_unmatched_rev": 45178
   },
   "period_all": {
-    "revenue": 1043123,
-    "orders": 91,
+    "revenue": 1054613,
+    "orders": 92,
     "aov": 11463,
-    "cogs": 470950,
+    "cogs": 474950,
     "cogs_unmatched_rev": 49265
   },
   "customers_total": 1052,
@@ -214,7 +214,7 @@ const SHOPIFY = {
     76200,
     53280,
     33709,
-    0
+    11490
   ],
   "monthly_orders": [
     1,
@@ -232,7 +232,7 @@ const SHOPIFY = {
     6,
     6,
     4,
-    0
+    1
   ],
   "monthly_cogs": [
     0,
@@ -250,7 +250,7 @@ const SHOPIFY = {
     31006,
     22321,
     14139,
-    0
+    4000
   ],
   "monthly_cogs_unmatched_rev": [
     2590,
@@ -277,8 +277,8 @@ const SHOPIFY = {
       "color": "#F5A623",
       "orders": 32,
       "rev": 403190,
-      "order_pct": 35.2,
-      "rev_pct": 38.7
+      "order_pct": 34.8,
+      "rev_pct": 38.2
     },
     {
       "name": "Google",
@@ -286,17 +286,17 @@ const SHOPIFY = {
       "color": "#4285F4",
       "orders": 28,
       "rev": 303605,
-      "order_pct": 30.8,
-      "rev_pct": 29.1
+      "order_pct": 30.4,
+      "rev_pct": 28.8
     },
     {
       "name": "Instagram",
       "icon": "📸",
       "color": "#BF5AF2",
-      "orders": 26,
-      "rev": 277988,
-      "order_pct": 28.6,
-      "rev_pct": 26.6
+      "orders": 27,
+      "rev": 289478,
+      "order_pct": 29.3,
+      "rev_pct": 27.4
     },
     {
       "name": "YouTube",
@@ -305,7 +305,7 @@ const SHOPIFY = {
       "orders": 3,
       "rev": 39460,
       "order_pct": 3.3,
-      "rev_pct": 3.8
+      "rev_pct": 3.7
     },
     {
       "name": "AI / Arama",
@@ -318,6 +318,10 @@ const SHOPIFY = {
     }
   ],
   "recent_orders": [
+    {
+      "date": "1 Eki 2026",
+      "amount": 11490
+    },
     {
       "date": "30 Eyl 2026",
       "amount": 10490
@@ -353,10 +357,6 @@ const SHOPIFY = {
     {
       "date": "6 Ağu 2026",
       "amount": 10640
-    },
-    {
-      "date": "1 Ağu 2026",
-      "amount": 9990
     }
   ],
   "cameras": [
@@ -450,14 +450,6 @@ const SHOPIFY = {
       "compare_at": 16490,
       "cost": 5500,
       "handle": "fujifilm-finepix-4700-zoom"
-    },
-    {
-      "name": "Sanyo Xacti CG20",
-      "price": 11490,
-      "qty": 1,
-      "compare_at": 14900,
-      "cost": 4000,
-      "handle": "sanyo-xacti-cg20"
     },
     {
       "name": "Sanyo Xacti VPC-C5",
@@ -555,7 +547,7 @@ const SHOPIFY = {
       "handle": "ulanzi-vlog-tripod"
     }
   ],
-  "out_of_stock": 103
+  "out_of_stock": 104
 };
 /* ─── SHOPIFY DATA END ─── */
 
