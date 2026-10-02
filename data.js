@@ -150,7 +150,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-10-02T03:20:45",
+  "updated_at": "2026-10-02T04:16:02",
   "period_30d": {
     "revenue": 45199,
     "orders": 5,
@@ -547,7 +547,7 @@ const SHOPIFY = {
       "handle": "ulanzi-vlog-tripod"
     }
   ],
-  "out_of_stock": 104
+  "out_of_stock": 105
 };
 /* ─── SHOPIFY DATA END ─── */
 
