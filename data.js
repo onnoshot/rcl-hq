@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T16:52:16",
+  "updated_at": "2026-10-02T17:01:16",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 1371,
+      "views": 1369,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
