@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T19:53:07",
+  "updated_at": "2026-10-02T20:48:29",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,15 +63,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/28udtye4X0s"
     },
     {
-      "id": "AlODfpWU4QI",
-      "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
-      "date": "29 Eyl 2026",
-      "views": 1371,
-      "likes": 10,
-      "comments": 0,
-      "url": "https://youtu.be/AlODfpWU4QI"
-    },
-    {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
@@ -81,13 +72,13 @@ const YOUTUBE = {
       "url": "https://youtu.be/9Z6lsTkLNoc"
     },
     {
-      "id": "w0BnnWHsFqE",
-      "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
-      "date": "25 Eyl 2026",
-      "views": 1893,
-      "likes": 20,
-      "comments": 0,
-      "url": "https://youtu.be/w0BnnWHsFqE"
+      "id": "3m-aUuSnQ3A",
+      "title": "Mare Gastro Sapanca’da Fujifilm Kamera ile retro anlar 📸❣️",
+      "date": "12 Eyl 2026",
+      "views": 1194,
+      "likes": 16,
+      "comments": 2,
+      "url": "https://youtu.be/3m-aUuSnQ3A"
     },
     {
       "id": "NwgAvkb8GSg",
@@ -97,15 +88,6 @@ const YOUTUBE = {
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/NwgAvkb8GSg"
-    },
-    {
-      "id": "iMemUS86nrc",
-      "title": "Retro Dijital Kompakt Canon G7 📸",
-      "date": "3 Eyl 2026",
-      "views": 422,
-      "likes": 3,
-      "comments": 0,
-      "url": "https://youtu.be/iMemUS86nrc"
     },
     {
       "id": "v9EaRVvnyEc",
@@ -142,6 +124,24 @@ const YOUTUBE = {
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
+    },
+    {
+      "id": "LjyZRaLNGcc",
+      "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
+      "date": "12 Tem 2026",
+      "views": 629,
+      "likes": 10,
+      "comments": 0,
+      "url": "https://youtu.be/LjyZRaLNGcc"
+    },
+    {
+      "id": "obdMfiigTY4",
+      "title": "Panasonic Lumix TZ91 | 30x ZOOM | Leica Lens!?",
+      "date": "29 Haz 2026",
+      "views": 548,
+      "likes": 10,
+      "comments": 0,
+      "url": "https://youtu.be/obdMfiigTY4"
     }
   ],
   "sub_goal": 10000
