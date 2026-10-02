@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T19:20:28",
+  "updated_at": "2026-10-02T19:48:22",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4750,
-    "total_views": 1516245,
+    "total_views": 1516952,
     "video_count": 407
   },
   "analytics": {
@@ -58,18 +58,9 @@ const YOUTUBE = {
       "title": "Canon Ixus 🌅 Efsane retro digicam 📸",
       "date": "2 Eki 2026",
       "views": 407,
-      "likes": 2,
+      "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/28udtye4X0s"
-    },
-    {
-      "id": "AlODfpWU4QI",
-      "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
-      "date": "29 Eyl 2026",
-      "views": 1371,
-      "likes": 10,
-      "comments": 0,
-      "url": "https://youtu.be/AlODfpWU4QI"
     },
     {
       "id": "9Z6lsTkLNoc",
@@ -81,6 +72,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/9Z6lsTkLNoc"
     },
     {
+      "id": "w0BnnWHsFqE",
+      "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
+      "date": "25 Eyl 2026",
+      "views": 1893,
+      "likes": 20,
+      "comments": 0,
+      "url": "https://youtu.be/w0BnnWHsFqE"
+    },
+    {
       "id": "NwgAvkb8GSg",
       "title": "İstanbul Kahve Festivalinde Y2K Dijital Kamera 📸☕️",
       "date": "11 Eyl 2026",
@@ -88,6 +88,15 @@ const YOUTUBE = {
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/NwgAvkb8GSg"
+    },
+    {
+      "id": "iMemUS86nrc",
+      "title": "Retro Dijital Kompakt Canon G7 📸",
+      "date": "3 Eyl 2026",
+      "views": 422,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/iMemUS86nrc"
     },
     {
       "id": "v9EaRVvnyEc",
@@ -133,15 +142,6 @@ const YOUTUBE = {
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/obdMfiigTY4"
-    },
-    {
-      "id": "8XWAJXORa9c",
-      "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
-      "date": "20 Haz 2026",
-      "views": 35897,
-      "likes": 39,
-      "comments": 5,
-      "url": "https://youtu.be/8XWAJXORa9c"
     }
   ],
   "sub_goal": 10000
