@@ -3897,7 +3897,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
   <div class="page-topbar fi">
     <div class="pt-left">
       <div class="pt-title" style="color:var(--red)">Retro Club</div>
-      <div class="pt-sub">Başvurular, etkinlikler, üyeler, kart numaraları ve üyelerin gördüğü alanın içeriği. Burada yaptığın her değişiklik üyelerin ekranına yansır.</div>
+      <div class="pt-sub">Başvurular, etkinlikler, üyeler, rozetler, kart mailleri ve üyelerin gördüğü alanın içeriği. Burada yaptığın her değişiklik üyelerin ekranına yansır.</div>
     </div>
     <div class="pt-right">
       <a class="alim-fbtn" href="https://retrocameraland.com/pages/retro-club" target="_blank" rel="noopener">Sayfayı aç ↗</a>
@@ -3918,7 +3918,6 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
       <button class="kl-tab" data-t="events">Etkinlikler</button>
       <button class="kl-tab" data-t="members">Üyeler</button>
       <button class="kl-tab" data-t="cards">Kartlar</button>
-      <button class="kl-tab" data-t="photos">Kareler</button>
       <button class="kl-tab" data-t="settings">Üye Alanı</button>
     </div>
     <div id="kl-body" class="kl-body"><div class="alim-empty">Yükleniyor…</div></div>
@@ -3944,6 +3943,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
           <button class="msg-tab" data-f="closed">Kapalı</button>
           <button class="msg-tab" data-f="all">Tümü</button>
         </div>
+        <div class="msg-botbar"><span>Asistan (otomatik yanıt)</span><button type="button" class="msg-bot" id="msg-bot-toggle" aria-pressed="false">Kapalı</button></div>
         <div class="msg-agents" id="msg-agents">
           <span class="msg-agents-l">Yanıtlayan</span>
           <button class="msg-agent" data-a="Umut"><img src="https://retrocameraland.com/cdn/shop/files/rcl-destek-umut.jpg?width=96" alt="">Umut</button>
@@ -10881,6 +10881,12 @@ document.addEventListener('DOMContentLoaded', function(){
   #page-mesajlar .msg-tab{border:1px solid rgba(0,0,0,.1);background:transparent;color:var(--t2);font:inherit;font-size:.74rem;font-weight:700;padding:6px 11px;border-radius:100px;cursor:pointer}
   #page-mesajlar .msg-tab.active{background:var(--t1);color:#fff;border-color:var(--t1)}
   #page-mesajlar .msg-tab b{font-weight:800;margin-left:3px}
+  #page-mesajlar .msg-botbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.07);font-size:.74rem;font-weight:700;color:var(--t2)}
+  #page-mesajlar .msg-bot{border:0;border-radius:100px;padding:6px 14px;font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;background:rgba(0,0,0,.1);color:var(--t2);transition:all .2s}
+  #page-mesajlar .msg-bot[aria-pressed="true"]{background:#34c759;color:#fff}
+  #msg-ring{position:fixed;z-index:9999;top:16px;right:16px;display:none;align-items:center;gap:10px;padding:12px 16px;border:0;border-radius:16px;background:#cc0000;color:#fff;font:inherit;font-size:.84rem;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(204,0,0,.35);animation:msgRing 1s ease-in-out infinite}
+  #msg-ring.on{display:flex}
+  @keyframes msgRing{0%,100%{transform:none}50%{transform:scale(1.04)}}
   #page-mesajlar .msg-agents{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.07);flex-wrap:wrap}
   #page-mesajlar .msg-agents-l{font-size:.64rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-right:2px}
   #page-mesajlar .msg-agent{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(0,0,0,.1);background:transparent;color:var(--t2);font:inherit;font-size:.74rem;font-weight:700;padding:3px 10px 3px 3px;border-radius:100px;cursor:pointer}
@@ -10946,6 +10952,24 @@ document.addEventListener('DOMContentLoaded', function(){
   function active(){ var p=$('page-mesajlar'); return p && p.classList.contains('active'); }
   function api(action,opt,qs){ return fetch(EP+'?action='+action+(qs||''),Object.assign({headers:hdr(),cache:'no-store'},opt||{})).then(function(r){ return r.json().then(function(j){ j._status=r.status; return j; }); }); }
 
+  // ---- asistan ac/kapa ----
+  function drawBot(on){ var b=$('msg-bot-toggle'); if(b){ b.setAttribute('aria-pressed',on?'true':'false'); b.textContent=on?'Açık':'Kapalı'; } M.bot=!!on; }
+  // ---- yeni mesaj zili: sen tiklayana kadar calar ----
+  var ctxA=null, ringT=null;
+  function ack(){ try{ return localStorage.getItem('rcl_msg_ack')||''; }catch(e){ return ''; } }
+  function beep(){ try{ ctxA=ctxA||new (window.AudioContext||window.webkitAudioContext)(); if(ctxA.state==='suspended') ctxA.resume();
+    [880,1175].forEach(function(f,i){ var o=ctxA.createOscillator(), g=ctxA.createGain(); o.type='sine'; o.frequency.value=f; o.connect(g); g.connect(ctxA.destination);
+      var t0=ctxA.currentTime+i*0.18; g.gain.setValueAtTime(0.0001,t0); g.gain.exponentialRampToValueAtTime(0.25,t0+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t0+0.16); o.start(t0); o.stop(t0+0.18); }); }catch(e){} }
+  function ringEl(){ var el=$('msg-ring'); if(!el){ el=document.createElement('button'); el.id='msg-ring'; el.type='button'; document.body.appendChild(el);
+    el.addEventListener('click',function(){ stopRing(); if(typeof navigate==='function') navigate('mesajlar'); }); } return el; }
+  function stopRing(){ try{ localStorage.setItem('rcl_msg_ack',new Date().toISOString()); }catch(e){} if(ringT){ clearInterval(ringT); ringT=null; } var el=$('msg-ring'); if(el) el.classList.remove('on'); }
+  function checkRing(){
+    var a=ack(), fresh=M.items.filter(function(x){ return (x.unread_admin||0)>0 && x.last_message_at>a; });
+    if(!fresh.length){ if(ringT){ clearInterval(ringT); ringT=null; } var e0=$('msg-ring'); if(e0) e0.classList.remove('on'); return; }
+    var el=ringEl(); el.textContent='Yeni mesaj: '+(fresh[0].name||'Müşteri')+(fresh.length>1?' (+'+(fresh.length-1)+')':'')+' · sustur'; el.classList.add('on');
+    if(!ringT){ beep(); ringT=setInterval(beep,2500); }
+  }
+  document.addEventListener('click',function(){ if(!ctxA){ try{ ctxA=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } else if(ctxA.state==='suspended') ctxA.resume(); },true);
   function badge(){
     var n=0; M.items.forEach(function(x){ n+=(x.unread_admin||0); });
     var b=$('msg-nav-badge'); if(b){ b.style.display=n?'inline-block':'none'; b.textContent=n; }
@@ -10970,7 +10994,7 @@ document.addEventListener('DOMContentLoaded', function(){
       var el=$('msg-list');
       if(j._status===401){ if(el) el.innerHTML='<div class="alim-empty">Erişim anahtarı gerekli. <button type="button" class="alim-fbtn" onclick="window.MSG_unlock()">Anahtarı Gir</button></div>'; return; }
       if(!j.ok){ if(el&&active()) el.innerHTML='<div class="alim-empty">'+esc(j.error||'Liste alınamadı')+'</div>'; return; }
-      M.items=j.items||[]; badge();
+      M.items=j.items||[]; badge(); drawBot(j.bot); checkRing();
       if(active()){ drawList(); var u=$('msg-upd'); if(u) u.textContent=hm(new Date().toISOString()); }
       if(M.cur){ var c=M.items.filter(function(x){ return x.key===M.cur.key; })[0]; if(c){ M.cur=c; head(); } }
     }).catch(function(){});
@@ -10990,7 +11014,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(body.getAttribute('data-day')!==day){ body.setAttribute('data-day',day); body.insertAdjacentHTML('beforeend','<div class="msg-day">'+esc(day)+'</div>'); }
       var via=String(m.via||''), vp=via.split(':');
       if(vp[0]==='system'){ body.insertAdjacentHTML('beforeend','<div class="mb-sys">'+esc(m.body)+' · '+hm(m.created_at)+'</div>'); return; }
-      var who= m.sender==='admin' ? (vp[0]==='panel'&&vp[1]?' · '+esc(vp[1]):(vp[0]==='telegram'?' · Telegram':'')) : '';
+      var who= m.sender==='admin' ? (vp[0]==='panel'&&vp[1]?' · '+esc(vp[1]):(vp[0]==='telegram'?' · Telegram':(vp[0]==='bot'?' · Asistan':''))) : '';
       body.insertAdjacentHTML('beforeend','<div class="mb '+m.sender+'">'+esc(m.body)+'</div><div class="mb-t '+m.sender+'">'+hm(m.created_at)+who+'</div>');
     });
     if(stick) body.scrollTop=body.scrollHeight;
@@ -11025,7 +11049,8 @@ document.addEventListener('DOMContentLoaded', function(){
   var bound=false;
   function bind(){
     if(bound) return; bound=true;
-    $('msg-list').addEventListener('click',function(e){ var b=e.target.closest('.msg-item'); if(b) open(b.getAttribute('data-id')); });
+    $('msg-list').addEventListener('click',function(e){ var b=e.target.closest('.msg-item'); if(b){ stopRing(); open(b.getAttribute('data-id')); } });
+    $('msg-bot-toggle').addEventListener('click',function(){ var on=!M.bot; drawBot(on); api('botset',{method:'POST',body:JSON.stringify({enabled:on})}).then(function(j){ if(!j.ok){ drawBot(!on); alert(j.error||'Değiştirilemedi'); } }); });
     document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(t){ t.addEventListener('click',function(){
       document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(x){ x.classList.remove('active'); });
       t.classList.add('active'); M.filter=t.getAttribute('data-f'); drawList(); }); });
@@ -11047,7 +11072,7 @@ document.addEventListener('DOMContentLoaded', function(){
     tick++;
     if(document.hidden||!key()) return;
     if(active()){ if(tick%2===0) loadList(); loadThread(); }
-    else if(tick%15===0) loadList();
+    else if(tick%5===0) loadList();
   },2000);
   setTimeout(function(){ if(key()) loadList(); },2500);
 })();
@@ -11100,6 +11125,15 @@ document.addEventListener('DOMContentLoaded', function(){
   #page-kulup .kl-prev p{margin:0;color:rgba(245,245,247,.66);font-size:.86rem}
   #page-kulup .kl-prev .ann{margin-top:12px;padding:10px 12px;border-radius:12px;background:rgba(204,0,0,.14);border:1px solid rgba(204,0,0,.45);color:#fff;font-size:.82rem}
   #page-kulup .kl-ph{width:100%;aspect-ratio:1;object-fit:cover}
+  #page-kulup .kl-bdgs{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+  #page-kulup .kl-bdg{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;background:rgba(204,0,0,.1);border:1px solid rgba(204,0,0,.35);font-size:.68rem;font-weight:700;color:var(--red)}
+  #page-kulup .kl-bdg.auto{background:transparent;border-color:var(--bd,rgba(0,0,0,.14));color:var(--t2)}
+  #page-kulup .kl-bdg button{border:0;background:transparent;color:inherit;font-size:.9rem;line-height:1;cursor:pointer;padding:0}
+  #page-kulup .kl-mact{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:8px}
+  #page-kulup .kl-mact select,#page-kulup .kl-mact input,#page-kulup .kl-q{height:32px;padding:0 9px;border-radius:9px;border:1px solid var(--bd,rgba(0,0,0,.16));background:transparent;color:inherit;font:inherit;font-size:.74rem}
+  #page-kulup .kl-mact input[type=number]{width:86px}
+  #page-kulup .kl-q{width:100%;max-width:340px;height:38px;margin-bottom:12px;font-size:.82rem}
+  #page-kulup .kl-cover{width:54px;height:54px;border-radius:10px;object-fit:cover;flex:none}
 </style>
 <script>
 (function(){
@@ -11115,7 +11149,10 @@ document.addEventListener('DOMContentLoaded', function(){
   function ava(m){ var n=(m.username||m.name||'?').charAt(0).toUpperCase(); return m.avatar_url?'<img class="kl-ava" src="'+esc(m.avatar_url)+'" alt="">':'<span class="kl-ava">'+esc(n)+'</span>'; }
   var KIND={bulusma:'Buluşma',kurs:'Kurs',workshop:'Workshop',gezi:'Gezi'};
   function toLocalInput(iso){ if(!iso) return ''; var d=new Date(iso); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,16); }
-  function fileData(file,max){ return new Promise(function(res,rej){ if(!file) return res(''); var u=URL.createObjectURL(file),im=new Image(); im.onload=function(){ var k=Math.min(1,(max||1600)/Math.max(im.width,im.height)),c=document.createElement('canvas'); c.width=Math.round(im.width*k); c.height=Math.round(im.height*k); c.getContext('2d').drawImage(im,0,0,c.width,c.height); URL.revokeObjectURL(u); res(c.toDataURL('image/jpeg',.85)); }; im.onerror=function(){ rej(new Error('Görsel okunamadı')); }; im.src=u; }); }
+  function fileData(file,max,square){ return new Promise(function(res,rej){ if(!file) return res(''); var u=URL.createObjectURL(file),im=new Image(); im.onload=function(){ var sw=im.width,sh=im.height,sx=0,sy=0; if(square){ var m=Math.min(sw,sh); sx=(sw-m)/2; sy=(sh-m)/2; sw=sh=m; } var k=Math.min(1,(max||1600)/Math.max(sw,sh)),c=document.createElement('canvas'); c.width=Math.round(sw*k); c.height=Math.round(sh*k); c.getContext('2d').drawImage(im,sx,sy,sw,sh,0,0,c.width,c.height); URL.revokeObjectURL(u); res(c.toDataURL('image/jpeg',.85)); }; im.onerror=function(){ rej(new Error('Görsel okunamadı')); }; im.src=u; }); }
+  function bname(id){ var l=(K.d&&K.d.badges)||[]; for(var i=0;i<l.length;i++) if(l[i].id===id) return l[i].name; return id; }
+  function cardOf(code){ var l=(K.d&&K.d.cards)||[]; for(var i=0;i<l.length;i++) if(l[i].code===code) return l[i]; return null; }
+  function cardMail(body,btn){ return act('admin.cardmail',body,btn).then(function(j){ if(j){ alert('Kart: '+j.code+(j.mailed?'\nKart maili gönderildi.':'\nE-posta GÖNDERİLEMEDİ; numarayı kişiye sen ilet.')); load(); } }); }
 
   function load(){
     return api('admin').then(function(j){
@@ -11142,7 +11179,8 @@ document.addEventListener('DOMContentLoaded', function(){
       h=a.length?'<div class="kl-grid">'+a.map(function(x){
         return '<div class="kl-card">'+(x.selfie_url?'<img class="kl-selfie" src="'+esc(x.selfie_url)+'" alt="" onclick="window.open(this.src)">':'')+'<div class="kl-in">'+st(x.status)+
           '<div class="kl-nm">'+esc(x.name)+'</div><div class="kl-mt">'+esc(x.email)+'<br>Kamera: <b>'+esc(x.camera_model)+'</b>'+(x.city?' · '+esc(x.city):'')+(x.instagram?'<br>Instagram: @'+esc(x.instagram):'')+'<br>'+dt(x.created_at)+(x.card_code?'<br>Kart: <span class="kl-mono">'+esc(x.card_code)+'</span>':'')+'</div>'+
-          (x.status==='pending'?'<div class="kl-act"><button class="kl-btn ok" data-app="'+esc(x.id)+'" data-dec="approve">Onayla</button><button class="kl-btn" data-app="'+esc(x.id)+'" data-dec="reject">Reddet</button></div>':'')+'</div></div>';
+          (x.status==='pending'?'<div class="kl-act"><button class="kl-btn ok" data-app="'+esc(x.id)+'" data-dec="approve">Onayla</button><button class="kl-btn" data-app="'+esc(x.id)+'" data-dec="reject">Reddet</button></div>':'')+
+          (x.status==='approved'&&x.card_code?(function(){ var c=cardOf(x.card_code)||{}; return '<div class="kl-mact"><input type="number" min="1" data-cm-no value="'+(c.member_no||d.next_no)+'" title="Üye numarası"><button class="kl-btn ok" data-cm-code="'+esc(x.card_code)+'">'+(c.mailed_at?'Kart mailini yeniden gönder':'Kart maili gönder')+'</button></div>'+(c.mailed_at?'<div class="kl-att">Kart maili gönderildi: '+dt(c.mailed_at)+' · No. '+c.member_no+'</div>':'<div class="kl-att">Kart maili henüz gönderilmedi.</div>'); })():'')+'</div></div>';
       }).join('')+'</div>':'<div class="alim-empty">Henüz başvuru yok.</div>';
     } else if(K.tab==='events'){
       var e=K.editing||{};
@@ -11154,38 +11192,44 @@ document.addEventListener('DOMContentLoaded', function(){
         '<label>Şehir<input name="city" maxlength="60" value="'+esc(e.city||'')+'"></label>'+
         '<label>Kontenjan (0 = sınırsız)<input name="capacity" type="number" min="0" max="5000" value="'+(e.capacity||0)+'"></label>'+
         '<label>Durum<select name="status"><option value="published"'+(e.status==='published'?' selected':'')+'>Yayında</option><option value="draft"'+(e.status==='draft'?' selected':'')+'>Taslak</option><option value="cancelled"'+(e.status==='cancelled'?' selected':'')+'>İptal</option></select></label>'+
-        '<label>Kapak görseli<input name="cover" type="file" accept="image/*"></label>'+
+        '<label>Afiş görseli (kare; ortadan kare kırpılır)<input name="cover" type="file" accept="image/*"></label>'+
         '<label class="wide">Açıklama<textarea name="description" rows="3" maxlength="2000">'+esc(e.description||'')+'</textarea></label>'+
         '<div class="kl-act wide"><button class="kl-btn ok" type="submit">'+(e.id?'Değişiklikleri kaydet':'Etkinliği yayınla')+'</button>'+(e.id?'<button class="kl-btn" type="button" data-ev-cancel>Vazgeç</button>':'')+'</div></form>'+
         (d.events.length?'<div class="kl-list">'+d.events.map(function(x){ var dd=new Date(x.starts_at);
-          return '<div class="kl-row"><div class="kl-ev-date">'+dd.getDate()+'<small>'+dd.toLocaleDateString('tr-TR',{month:'short'})+'</small></div><div><b>'+esc(x.title)+'</b> '+st(x.status)+'<small>'+esc(KIND[x.kind]||x.kind)+' · '+dt(x.starts_at)+(x.place||x.city?' · '+esc([x.place,x.city].filter(Boolean).join(', ')):'')+'</small>'+
+          return '<div class="kl-row">'+(x.cover_url?'<img class="kl-cover" src="'+esc(x.cover_url)+'" alt="">':'')+'<div class="kl-ev-date">'+dd.getDate()+'<small>'+dd.toLocaleDateString('tr-TR',{month:'short'})+'</small></div><div><b>'+esc(x.title)+'</b> '+st(x.status)+(x.proposer?' <span class="kl-bdg">Üye önerisi: @'+esc(x.proposer)+'</span>':'')+'<small>'+esc(KIND[x.kind]||x.kind)+' · '+dt(x.starts_at)+(x.place||x.city?' · '+esc([x.place,x.city].filter(Boolean).join(', ')):'')+'</small>'+
             '<div class="kl-att">'+x.attendees.length+(x.capacity?' / '+x.capacity:'')+' katılımcı'+(x.attendees.length?': '+x.attendees.map(function(m){ return '@'+esc(m.username||m.name); }).join(', '):'')+'</div></div>'+
             '<div class="kl-act"><button class="kl-btn" data-ev-edit="'+esc(x.id)+'">Düzenle</button><button class="kl-btn" data-ev-del="'+esc(x.id)+'">Sil</button></div></div>';
         }).join('')+'</div>':'<div class="alim-empty">Henüz etkinlik yok. Yukarıdan ilkini oluştur.</div>');
     } else if(K.tab==='members'){
-      h=d.members.length?'<div class="kl-list">'+d.members.map(function(m){
-        return '<div class="kl-row">'+ava(m)+'<div><b>'+(m.username?'@'+esc(m.username):'<i>kullanıcı adı seçmedi</i>')+'</b> '+st(m.status)+'<small>'+esc([m.name,m.city,m.instagram?'IG @'+m.instagram:'',m.email].filter(Boolean).join(' · '))+'</small><small class="kl-mono">No. '+('0000'+m.member_no).slice(-4)+' · '+esc(m.card_code)+' · '+dt(m.joined_at)+'</small></div>'+
+      var q=(K.q||'').toLocaleLowerCase('tr'), real=d.members.filter(function(m){ return !m.is_seed; }).length;
+      var ml=d.members.filter(function(m){ return !q||[m.username,m.name,m.city,m.email,m.card_code,String(m.member_no)].join(' ').toLocaleLowerCase('tr').indexOf(q)>=0; });
+      var opts=d.badges.map(function(b){ return '<option value="'+b.id+'">'+esc(b.name)+(b.admin?'':' (katılımla da kazanılır)')+'</option>'; }).join('');
+      h='<input class="kl-q" id="kl-m-q" placeholder="Üye ara: ad, kullanıcı adı, şehir, no" value="'+esc(K.q||'')+'"><div class="kl-att" style="margin:-4px 0 10px">'+d.members.length+' üye · '+real+' gerçek · '+(d.members.length-real)+' açılış hesabı</div>'+
+        (ml.length?'<div class="kl-list">'+ml.slice(0,300).map(function(m){
+        var given={}; (m.awards||[]).forEach(function(a){ given[a.badge+'|'+a.city]=1; });
+        var chips=(m.badges||[]).filter(function(b){ return !given[b.id+'|'+(b.city||'')]; }).map(function(b){ return '<span class="kl-bdg auto">'+esc(bname(b.id))+'</span>'; }).join('')+
+          (m.awards||[]).map(function(a){ return '<span class="kl-bdg">'+esc(bname(a.badge))+(a.city?' · '+esc(a.city):'')+'<button data-bdg-del="'+esc(a.id)+'" title="Rozeti geri al">&times;</button></span>'; }).join('');
+        return '<div class="kl-row" data-row="'+esc(m.id)+'">'+ava(m)+'<div><b>'+(m.username?'@'+esc(m.username):'<i>kullanıcı adı seçmedi</i>')+'</b> '+st(m.status)+(m.is_seed?' <span class="kl-bdg auto">açılış hesabı</span>':'')+'<small>'+esc([m.name,m.city,m.camera_model,m.instagram?'IG @'+m.instagram:'',m.email].filter(Boolean).join(' · '))+'</small><small class="kl-mono">No. '+('0000'+m.member_no).slice(-4)+' · '+esc(m.card_code)+' · '+dt(m.joined_at)+' · '+(m.attended||0)+' etkinlik</small>'+
+          '<div class="kl-bdgs">'+chips+'</div>'+
+          '<div class="kl-mact"><select data-bdg-sel><option value="">Rozet ver…</option>'+opts+'</select><input data-bdg-city placeholder="Şehir (Şehir Başkanı)" style="width:150px"><button class="kl-btn ok" data-bdg-give="'+esc(m.id)+'">Rozeti ver</button>'+
+          (m.is_seed?'':'<input type="number" min="1" data-cm-no value="'+m.member_no+'" title="Üye numarası"><button class="kl-btn" data-cm-code="'+esc(m.card_code)+'" data-cm-email="'+esc(m.email||'')+'">Kart maili gönder</button>')+'</div></div>'+
           '<button class="kl-btn" data-mem="'+esc(m.id)+'" data-s="'+(m.status==='active'?'suspended':'active')+'">'+(m.status==='active'?'Askıya al':'Aktifleştir')+'</button></div>';
-      }).join('')+'</div>':'<div class="alim-empty">Henüz üye yok.</div>';
+      }).join('')+'</div>':'<div class="alim-empty">Üye bulunamadı.</div>');
     } else if(K.tab==='cards'){
-      h='<form class="kl-form" id="kl-card-form"><div class="kl-h wide">Kart numarası üret</div><label>Adet<input name="count" type="number" min="1" max="500" value="50"></label><label>Parti adı<input name="batch" maxlength="40" placeholder="örn. 2026-10 baskı"></label><label>Not<input name="note" maxlength="80" placeholder="isteğe bağlı"></label><div class="kl-act wide"><button class="kl-btn ok" type="submit">Üret</button>'+(K.codes?'<button class="kl-btn dark" type="button" data-csv>Son üretileni CSV indir</button>':'')+'</div></form>'+
+      h='<form class="kl-form" id="kl-cm-form"><div class="kl-h wide">Kart maili gönder (yeni kart üretir, üye numarası karta yazılır)</div><label>E-posta<input name="email" type="email" required maxlength="120"></label><label>Ad<input name="name" maxlength="60"></label><label>Üye numarası<input name="member_no" type="number" min="1" required value="'+d.next_no+'"></label><div class="kl-act wide"><button class="kl-btn ok" type="submit">Kart mailini gönder</button></div></form>'+
+        '<form class="kl-form" id="kl-card-form"><div class="kl-h wide">Kart numarası üret</div><label>Adet<input name="count" type="number" min="1" max="500" value="50"></label><label>Parti adı<input name="batch" maxlength="40" placeholder="örn. 2026-10 baskı"></label><label>Not<input name="note" maxlength="80" placeholder="isteğe bağlı"></label><div class="kl-act wide"><button class="kl-btn ok" type="submit">Üret</button>'+(K.codes?'<button class="kl-btn dark" type="button" data-csv>Son üretileni CSV indir</button>':'')+'</div></form>'+
         (K.codes?'<div class="kl-codes">'+K.codes.join('\n')+'</div>':'')+
         (d.cards.length?'<div class="kl-list">'+d.cards.slice(0,400).map(function(c){
-          return '<div class="kl-row"><span class="kl-mono"><b>'+esc(c.code)+'</b></span><div>'+st(c.status)+'<small>'+esc([c.batch,c.note].filter(Boolean).join(' · '))+(c.used_at?' · kullanıldı '+dt(c.used_at):'')+'</small></div>'+
+          return '<div class="kl-row"><span class="kl-mono"><b>'+esc(c.code)+'</b></span><div>'+st(c.status)+'<small>'+esc([c.batch,c.note,c.member_no?'No. '+c.member_no:'',c.mailed_at?'mail gönderildi':''].filter(Boolean).join(' · '))+(c.used_at?' · kullanıldı '+dt(c.used_at):'')+'</small></div>'+
             (c.status==='used'?'<span></span>':'<button class="kl-btn" data-card="'+esc(c.code)+'" data-s="'+(c.status==='void'?'unused':'void')+'">'+(c.status==='void'?'Geri al':'İptal et')+'</button>')+'</div>';
         }).join('')+'</div>':'<div class="alim-empty">Henüz kart üretilmedi.</div>');
-    } else if(K.tab==='photos'){
-      h=d.photos.length?'<div class="kl-grid">'+d.photos.map(function(p){
-        return '<div class="kl-card"><img class="kl-ph" src="'+esc(p.image_url)+'" alt="" loading="lazy"><div class="kl-in">'+st(p.status)+'<div class="kl-nm">'+esc(p.camera_title)+'</div><div class="kl-mt">@'+esc(p.member)+' · '+dt(p.created_at)+(p.caption?'<br>'+esc(p.caption):'')+' · '+p.like_count+' beğeni</div>'+
-          '<div class="kl-act"><button class="kl-btn" data-ph="'+esc(p.id)+'" data-s="'+(p.status==='visible'?'hidden':'visible')+'">'+(p.status==='visible'?'Gizle':'Göster')+'</button><button class="kl-btn" data-ph-del="'+esc(p.id)+'">Sil</button></div></div></div>';
-      }).join('')+'</div>':'<div class="alim-empty">Henüz paylaşılan kare yok.</div>';
     } else {
       var s=d.settings;
       h='<div class="kl-prev" id="kl-prev"></div><form class="kl-form" id="kl-set-form"><div class="kl-h wide">Üyelerin giriş yapınca gördüğü alan</div>'+
         '<label>Karşılama başlığı<input name="welcome_title" maxlength="80" value="'+esc(s.welcome_title)+'"></label>'+
         '<label class="wide">Karşılama metni<input name="welcome_text" maxlength="300" value="'+esc(s.welcome_text)+'"></label>'+
         '<label class="wide">Duyuru (boşsa gösterilmez)<input name="announcement" maxlength="300" value="'+esc(s.announcement)+'"></label>'+
-        ['show_events:Takvim','show_photos:Kareler','show_soon:Yakında','show_members:Üyeler'].map(function(x){ var p=x.split(':'); return '<label class="chk"><input type="checkbox" name="'+p[0]+'"'+(s[p[0]]?' checked':'')+'>'+p[1]+' sekmesi görünsün</label>'; }).join('')+
+        ['show_events:Takvim','show_soon:Yakında','show_members:Üyeler'].map(function(x){ var p=x.split(':'); return '<label class="chk"><input type="checkbox" name="'+p[0]+'"'+(s[p[0]]?' checked':'')+'>'+p[1]+' sekmesi görünsün</label>'; }).join('')+
         '<div class="kl-act wide"><button class="kl-btn ok" type="submit">Kaydet ve yayınla</button></div></form>';
     }
     el.innerHTML=h;
@@ -11194,7 +11238,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function preview(){
     var f=$('kl-set-form'), p=$('kl-prev'); if(!f||!p) return;
     p.innerHTML='<small>'+K.d.members.length+' üye · önizleme</small><h4>'+esc(f.welcome_title.value)+', Deniz.</h4><p>'+esc(f.welcome_text.value)+'</p>'+(f.announcement.value?'<div class="ann">'+esc(f.announcement.value)+'</div>':'')+
-      '<p style="margin-top:12px;font-size:.72rem">Sekmeler: '+['show_events:Takvim','show_photos:Kareler','show_soon:Yakında','show_members:Üyeler'].filter(function(x){ return f[x.split(':')[0]].checked; }).map(function(x){ return x.split(':')[1]; }).concat(['Profil']).join(' · ')+'</p>';
+      '<p style="margin-top:12px;font-size:.72rem">Sekmeler: '+['show_events:Takvim','show_members:Üyeler','show_soon:Yakında'].filter(function(x){ return f[x.split(':')[0]].checked; }).map(function(x){ return x.split(':')[1]; }).concat(['Rozetler','Profil']).join(' · ')+'</p>';
   }
   function act(a,body,btn){ if(btn) btn.disabled=true; return api(a,body).then(function(j){ if(!j.ok){ alert(j.error||'İşlem yapılamadı'); if(btn) btn.disabled=false; return null; } return j; }); }
   var bound=false;
@@ -11202,19 +11246,23 @@ document.addEventListener('DOMContentLoaded', function(){
     if(bound) return; bound=true;
     $('kl-tabs').addEventListener('click',function(e){ var b=e.target.closest('.kl-tab'); if(b){ K.tab=b.getAttribute('data-t'); K.editing=null; if(K.d) draw(); } });
     var body=$('kl-body');
-    body.addEventListener('input',function(e){ if(e.target.closest('#kl-set-form')) preview(); });
+    body.addEventListener('input',function(e){ if(e.target.closest('#kl-set-form')) preview(); if(e.target.id==='kl-m-q'){ K.q=e.target.value; draw(); var qi=$('kl-m-q'); qi.focus(); qi.setSelectionRange(K.q.length,K.q.length); } });
     body.addEventListener('click',function(e){
       var t=e.target, b;
       if((b=t.closest('[data-app]'))){ var dec=b.getAttribute('data-dec');
-        if(!confirm(dec==='approve'?'Başvuru onaylansın mı? Kişiye kart numarası e-postayla gönderilir.':'Başvuru reddedilsin mi? Selfie silinir ve kişiye e-posta gider.')) return;
-        act('admin.application',{id:b.getAttribute('data-app'),decision:dec},b).then(function(j){ if(j){ if(dec==='approve') alert('Onaylandı. Kart: '+j.code+(j.mailed?'\nE-posta gönderildi.':'\nE-posta GÖNDERİLEMEDİ; numarayı kişiye sen ilet.')); load(); } }); return; }
+        if(!confirm(dec==='approve'?'Başvuru onaylansın mı? Kart numarası üretilir; kart mailini üye numarasını yazarak buradan gönderirsin.':'Başvuru reddedilsin mi? Selfie silinir ve kişiye e-posta gider.')) return;
+        act('admin.application',{id:b.getAttribute('data-app'),decision:dec},b).then(function(j){ if(j){ load(); } }); return; }
+      if((b=t.closest('[data-cm-code]'))){ var wrap=b.closest('.kl-mact'), no=wrap.querySelector('[data-cm-no]').value, bd={code:b.getAttribute('data-cm-code'),member_no:no};
+        if(b.hasAttribute('data-cm-email')&&!b.getAttribute('data-cm-email')){ var em=prompt('Bu üyenin kayıtlı e-postası yok. Kart mailinin gideceği adres:'); if(!em) return; bd.email=em; }
+        if(!confirm('Üye no '+no+' ile kart maili gönderilsin mi?')) return; cardMail(bd,b); return; }
+      if((b=t.closest('[data-bdg-give]'))){ var row=b.closest('.kl-mact'), bg=row.querySelector('[data-bdg-sel]').value; if(!bg){ alert('Önce rozet seç.'); return; }
+        act('admin.badge',{member_id:b.getAttribute('data-bdg-give'),badge:bg,city:row.querySelector('[data-bdg-city]').value},b).then(function(j){ if(j) load(); }); return; }
+      if((b=t.closest('[data-bdg-del]'))){ if(confirm('Bu rozet geri alınsın mı?')) act('admin.badge',{revoke:true,id:b.getAttribute('data-bdg-del')},b).then(function(j){ if(j) load(); }); return; }
       if((b=t.closest('[data-ev-edit]'))){ K.editing=K.d.events.filter(function(x){ return x.id===b.getAttribute('data-ev-edit'); })[0]; draw(); window.scrollTo({top:$('kl-tabs').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'}); return; }
       if(t.closest('[data-ev-cancel]')){ K.editing=null; draw(); return; }
       if((b=t.closest('[data-ev-del]'))){ if(confirm('Etkinlik silinsin mi? Katılım kayıtları da silinir.')) act('admin.event',{id:b.getAttribute('data-ev-del'),delete:true},b).then(function(j){ if(j) load(); }); return; }
       if((b=t.closest('[data-mem]'))){ act('admin.member',{id:b.getAttribute('data-mem'),status:b.getAttribute('data-s')},b).then(function(j){ if(j) load(); }); return; }
       if((b=t.closest('[data-card]'))){ act('admin.card',{code:b.getAttribute('data-card'),status:b.getAttribute('data-s')},b).then(function(j){ if(j) load(); }); return; }
-      if((b=t.closest('[data-ph]'))){ act('admin.photo',{id:b.getAttribute('data-ph'),status:b.getAttribute('data-s')},b).then(function(j){ if(j) load(); }); return; }
-      if((b=t.closest('[data-ph-del]'))){ if(confirm('Kare kalıcı olarak silinsin mi?')) act('admin.photo',{id:b.getAttribute('data-ph-del'),delete:true},b).then(function(j){ if(j) load(); }); return; }
       if(t.closest('[data-csv]')&&K.codes){ var blob=new Blob(['kart_no\n'+K.codes.join('\n')],{type:'text/csv'}), a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='retro-club-kartlar.csv'; a.click(); }
     });
     body.addEventListener('submit',function(e){
@@ -11222,15 +11270,17 @@ document.addEventListener('DOMContentLoaded', function(){
       if(f.id==='kl-ev-form'){
         if(!f.title.value.trim()||!f.starts_at.value){ alert('Başlık ve başlangıç zamanı gerekli.'); return; }
         btn.disabled=true;
-        fileData(f.cover.files[0],1600).then(function(cover){
+        fileData(f.cover.files[0],1400,true).then(function(cover){
           var body={id:K.editing&&K.editing.id,kind:f.kind.value,title:f.title.value,starts_at:new Date(f.starts_at.value).toISOString(),place:f.place.value,city:f.city.value,capacity:f.capacity.value,status:f.status.value,description:f.description.value};
           if(cover) body.cover=cover;
           return act('admin.event',body,btn);
         }).then(function(j){ if(j){ K.editing=null; load(); } }).catch(function(er){ alert(er.message); btn.disabled=false; });
+      } else if(f.id==='kl-cm-form'){
+        cardMail({email:f.email.value,name:f.name.value,member_no:f.member_no.value},btn);
       } else if(f.id==='kl-card-form'){
         act('admin.cards',{count:f.count.value,batch:f.batch.value,note:f.note.value},btn).then(function(j){ if(j){ K.codes=j.codes; load(); } });
       } else if(f.id==='kl-set-form'){
-        act('admin.settings',{welcome_title:f.welcome_title.value,welcome_text:f.welcome_text.value,announcement:f.announcement.value,show_events:f.show_events.checked,show_photos:f.show_photos.checked,show_soon:f.show_soon.checked,show_members:f.show_members.checked},btn).then(function(j){ if(j){ K.d.settings=j.settings; btn.disabled=false; btn.textContent='Kaydedildi ✓'; setTimeout(function(){ btn.textContent='Kaydet ve yayınla'; },1800); } });
+        act('admin.settings',{welcome_title:f.welcome_title.value,welcome_text:f.welcome_text.value,announcement:f.announcement.value,show_events:f.show_events.checked,show_soon:f.show_soon.checked,show_members:f.show_members.checked},btn).then(function(j){ if(j){ K.d.settings=j.settings; btn.disabled=false; btn.textContent='Kaydedildi ✓'; setTimeout(function(){ btn.textContent='Kaydet ve yayınla'; },1800); } });
       }
     });
   }
