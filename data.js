@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T23:48:30",
+  "updated_at": "2026-10-02T23:52:42",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "28udtye4X0s",
       "title": "Canon Ixus 🌅 Efsane retro digicam 📸",
       "date": "2 Eki 2026",
-      "views": 502,
+      "views": 492,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/28udtye4X0s"
