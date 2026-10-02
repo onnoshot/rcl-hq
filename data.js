@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T10:15:53",
+  "updated_at": "2026-10-02T11:39:27",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4750,
-    "total_views": 1515712,
+    "total_views": 1516245,
     "video_count": 406
   },
   "analytics": {
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 1364,
+      "views": 1367,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
@@ -72,13 +72,22 @@ const YOUTUBE = {
       "url": "https://youtu.be/9Z6lsTkLNoc"
     },
     {
-      "id": "w0BnnWHsFqE",
-      "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
-      "date": "25 Eyl 2026",
-      "views": 1891,
-      "likes": 20,
+      "id": "3m-aUuSnQ3A",
+      "title": "Mare Gastro Sapanca’da Fujifilm Kamera ile retro anlar 📸❣️",
+      "date": "12 Eyl 2026",
+      "views": 1194,
+      "likes": 17,
+      "comments": 2,
+      "url": "https://youtu.be/3m-aUuSnQ3A"
+    },
+    {
+      "id": "4-KWG5bSnMA",
+      "title": "Istanbul in a retro frame 📸 Olympus E-PL1 Dijital Kamera",
+      "date": "11 Eyl 2026",
+      "views": 1326,
+      "likes": 7,
       "comments": 0,
-      "url": "https://youtu.be/w0BnnWHsFqE"
+      "url": "https://youtu.be/4-KWG5bSnMA"
     },
     {
       "id": "NwgAvkb8GSg",
@@ -90,15 +99,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/NwgAvkb8GSg"
     },
     {
-      "id": "iMemUS86nrc",
-      "title": "Retro Dijital Kompakt Canon G7 📸",
-      "date": "3 Eyl 2026",
-      "views": 422,
-      "likes": 3,
-      "comments": 0,
-      "url": "https://youtu.be/iMemUS86nrc"
-    },
-    {
       "id": "v9EaRVvnyEc",
       "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
       "date": "10 Ağu 2026",
@@ -106,6 +106,15 @@ const YOUTUBE = {
       "likes": 12,
       "comments": 0,
       "url": "https://youtu.be/v9EaRVvnyEc"
+    },
+    {
+      "id": "G9ayP-pa1q8",
+      "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
+      "date": "31 Tem 2026",
+      "views": 669,
+      "likes": 12,
+      "comments": 0,
+      "url": "https://youtu.be/G9ayP-pa1q8"
     },
     {
       "id": "nJ92afbw02g",
@@ -133,15 +142,6 @@ const YOUTUBE = {
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
-    },
-    {
-      "id": "obdMfiigTY4",
-      "title": "Panasonic Lumix TZ91 | 30x ZOOM | Leica Lens!?",
-      "date": "29 Haz 2026",
-      "views": 548,
-      "likes": 10,
-      "comments": 0,
-      "url": "https://youtu.be/obdMfiigTY4"
     }
   ],
   "sub_goal": 10000
