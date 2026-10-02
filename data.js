@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T19:52:21",
+  "updated_at": "2026-10-02T19:53:07",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -90,6 +90,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/w0BnnWHsFqE"
     },
     {
+      "id": "NwgAvkb8GSg",
+      "title": "İstanbul Kahve Festivalinde Y2K Dijital Kamera 📸☕️",
+      "date": "11 Eyl 2026",
+      "views": 324,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/NwgAvkb8GSg"
+    },
+    {
       "id": "iMemUS86nrc",
       "title": "Retro Dijital Kompakt Canon G7 📸",
       "date": "3 Eyl 2026",
@@ -108,6 +117,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/v9EaRVvnyEc"
     },
     {
+      "id": "G9ayP-pa1q8",
+      "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
+      "date": "31 Tem 2026",
+      "views": 669,
+      "likes": 12,
+      "comments": 0,
+      "url": "https://youtu.be/G9ayP-pa1q8"
+    },
+    {
       "id": "nJ92afbw02g",
       "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
       "date": "25 Tem 2026",
@@ -124,24 +142,6 @@ const YOUTUBE = {
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
-    },
-    {
-      "id": "LjyZRaLNGcc",
-      "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
-      "date": "12 Tem 2026",
-      "views": 629,
-      "likes": 10,
-      "comments": 0,
-      "url": "https://youtu.be/LjyZRaLNGcc"
-    },
-    {
-      "id": "obdMfiigTY4",
-      "title": "Panasonic Lumix TZ91 | 30x ZOOM | Leica Lens!?",
-      "date": "29 Haz 2026",
-      "views": 548,
-      "likes": 10,
-      "comments": 0,
-      "url": "https://youtu.be/obdMfiigTY4"
     }
   ],
   "sub_goal": 10000
