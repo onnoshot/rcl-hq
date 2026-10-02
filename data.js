@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T22:48:42",
+  "updated_at": "2026-10-02T22:52:37",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,6 +63,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/28udtye4X0s"
     },
     {
+      "id": "AlODfpWU4QI",
+      "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
+      "date": "29 Eyl 2026",
+      "views": 1371,
+      "likes": 10,
+      "comments": 0,
+      "url": "https://youtu.be/AlODfpWU4QI"
+    },
+    {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
@@ -70,6 +79,24 @@ const YOUTUBE = {
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
+    },
+    {
+      "id": "w0BnnWHsFqE",
+      "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
+      "date": "25 Eyl 2026",
+      "views": 1893,
+      "likes": 20,
+      "comments": 0,
+      "url": "https://youtu.be/w0BnnWHsFqE"
+    },
+    {
+      "id": "FHPUPrwo9QI",
+      "title": "Olympus TG-7 Dijital Kamera | Waterproof",
+      "date": "21 Eyl 2026",
+      "views": 518,
+      "likes": 5,
+      "comments": 1,
+      "url": "https://youtu.be/FHPUPrwo9QI"
     },
     {
       "id": "3m-aUuSnQ3A",
@@ -99,6 +126,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/NwgAvkb8GSg"
     },
     {
+      "id": "iMemUS86nrc",
+      "title": "Retro Dijital Kompakt Canon G7 📸",
+      "date": "3 Eyl 2026",
+      "views": 422,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/iMemUS86nrc"
+    },
+    {
       "id": "v9EaRVvnyEc",
       "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
       "date": "10 Ağu 2026",
@@ -106,42 +142,6 @@ const YOUTUBE = {
       "likes": 12,
       "comments": 0,
       "url": "https://youtu.be/v9EaRVvnyEc"
-    },
-    {
-      "id": "G9ayP-pa1q8",
-      "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
-      "date": "31 Tem 2026",
-      "views": 669,
-      "likes": 12,
-      "comments": 0,
-      "url": "https://youtu.be/G9ayP-pa1q8"
-    },
-    {
-      "id": "nJ92afbw02g",
-      "title": "Canon Ixus Y2K Digicam ile Üsküdar Sahilinde Fotoğraflar 😍📸",
-      "date": "25 Tem 2026",
-      "views": 17431,
-      "likes": 33,
-      "comments": 2,
-      "url": "https://youtu.be/nJ92afbw02g"
-    },
-    {
-      "id": "pZJB6mBWYRg",
-      "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
-      "date": "16 Tem 2026",
-      "views": 2975,
-      "likes": 20,
-      "comments": 1,
-      "url": "https://youtu.be/pZJB6mBWYRg"
-    },
-    {
-      "id": "LjyZRaLNGcc",
-      "title": "Casio Exilim Dijital Fotoğraf Makinesi (2005) Y2K Fotoğraf Ç",
-      "date": "12 Tem 2026",
-      "views": 629,
-      "likes": 10,
-      "comments": 0,
-      "url": "https://youtu.be/LjyZRaLNGcc"
     }
   ],
   "sub_goal": 10000
