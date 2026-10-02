@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T21:53:04",
+  "updated_at": "2026-10-02T22:48:42",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -10,15 +10,15 @@ const YOUTUBE = {
   },
   "analytics": {
     "last_30d": {
-      "views": 58006,
-      "watch_hours": 108.8,
-      "subs_gained": 40,
+      "views": 59272,
+      "watch_hours": 111.8,
+      "subs_gained": 41,
       "subs_lost": 33,
-      "avg_view_sec": 15
+      "avg_view_sec": 16
     },
-    "watch_hours_year": 3989.9,
-    "watch_hours_year_long": 2167.4,
-    "watch_hours_year_shorts": 1822.3,
+    "watch_hours_year": 3993.0,
+    "watch_hours_year_long": 2168.8,
+    "watch_hours_year_shorts": 1824.0,
     "monthly": [
       {
         "label": "May 26",
@@ -46,9 +46,9 @@ const YOUTUBE = {
       },
       {
         "label": "Eyl 26",
-        "views": 60404,
-        "watch_min": 6785,
-        "subs_gained": 40
+        "views": 61670,
+        "watch_min": 6970,
+        "subs_gained": 41
       }
     ]
   },
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "28udtye4X0s",
       "title": "Canon Ixus 🌅 Efsane retro digicam 📸",
       "date": "2 Eki 2026",
-      "views": 407,
+      "views": 492,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/28udtye4X0s"
