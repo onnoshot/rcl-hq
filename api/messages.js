@@ -217,7 +217,7 @@ export default async function handler(req, res) {
       if (ins.error) throw ins.error;
       await sb.from('chat_conversations').update({ last_message_at: ins.data.created_at, last_preview: text.slice(0, 140), last_sender: 'admin',
         unread_visitor: (conv.unread_visitor || 0) + 1 }).eq('id', conv.id); // unread_admin korunur: panel konusmayi hala "yeni" gorur
-      return send(res, 200, { ok: true, message: ins.data });
+      return send(res, 200, { ok: true, message: ins.data, src: chatbot.source });
     }
 
     // ================= TELEGRAM WEBHOOK (bildirime verilen yanit dogrudan Telegram'dan gelir) =================
