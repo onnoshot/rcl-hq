@@ -3944,6 +3944,7 @@ body{ -webkit-overflow-scrolling:touch; overscroll-behavior-y:none; }
           <button class="msg-tab" data-f="closed">Kapalı</button>
           <button class="msg-tab" data-f="all">Tümü</button>
         </div>
+        <div class="msg-botbar"><span>Asistan (otomatik yanıt)</span><button type="button" class="msg-bot" id="msg-bot-toggle" aria-pressed="false">Kapalı</button></div>
         <div class="msg-agents" id="msg-agents">
           <span class="msg-agents-l">Yanıtlayan</span>
           <button class="msg-agent" data-a="Umut"><img src="https://retrocameraland.com/cdn/shop/files/rcl-destek-umut.jpg?width=96" alt="">Umut</button>
@@ -10894,6 +10895,12 @@ document.addEventListener('DOMContentLoaded', function(){
   #page-mesajlar .msg-tab{border:1px solid rgba(0,0,0,.1);background:transparent;color:var(--t2);font:inherit;font-size:.74rem;font-weight:700;padding:6px 11px;border-radius:100px;cursor:pointer}
   #page-mesajlar .msg-tab.active{background:var(--t1);color:#fff;border-color:var(--t1)}
   #page-mesajlar .msg-tab b{font-weight:800;margin-left:3px}
+  #page-mesajlar .msg-botbar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.07);font-size:.74rem;font-weight:700;color:var(--t2)}
+  #page-mesajlar .msg-bot{border:0;border-radius:100px;padding:6px 14px;font:inherit;font-size:.72rem;font-weight:800;cursor:pointer;background:rgba(0,0,0,.1);color:var(--t2);transition:all .2s}
+  #page-mesajlar .msg-bot[aria-pressed="true"]{background:#34c759;color:#fff}
+  #msg-ring{position:fixed;z-index:9999;top:16px;right:16px;display:none;align-items:center;gap:10px;padding:12px 16px;border:0;border-radius:16px;background:#cc0000;color:#fff;font:inherit;font-size:.84rem;font-weight:700;cursor:pointer;box-shadow:0 10px 30px rgba(204,0,0,.35);animation:msgRing 1s ease-in-out infinite}
+  #msg-ring.on{display:flex}
+  @keyframes msgRing{0%,100%{transform:none}50%{transform:scale(1.04)}}
   #page-mesajlar .msg-agents{display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid rgba(0,0,0,.07);flex-wrap:wrap}
   #page-mesajlar .msg-agents-l{font-size:.64rem;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-right:2px}
   #page-mesajlar .msg-agent{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(0,0,0,.1);background:transparent;color:var(--t2);font:inherit;font-size:.74rem;font-weight:700;padding:3px 10px 3px 3px;border-radius:100px;cursor:pointer}
@@ -10959,6 +10966,24 @@ document.addEventListener('DOMContentLoaded', function(){
   function active(){ var p=$('page-mesajlar'); return p && p.classList.contains('active'); }
   function api(action,opt,qs){ return fetch(EP+'?action='+action+(qs||''),Object.assign({headers:hdr(),cache:'no-store'},opt||{})).then(function(r){ return r.json().then(function(j){ j._status=r.status; return j; }); }); }
 
+  // ---- asistan ac/kapa ----
+  function drawBot(on){ var b=$('msg-bot-toggle'); if(b){ b.setAttribute('aria-pressed',on?'true':'false'); b.textContent=on?'Açık':'Kapalı'; } M.bot=!!on; }
+  // ---- yeni mesaj zili: sen tiklayana kadar calar ----
+  var ctxA=null, ringT=null;
+  function ack(){ try{ return localStorage.getItem('rcl_msg_ack')||''; }catch(e){ return ''; } }
+  function beep(){ try{ ctxA=ctxA||new (window.AudioContext||window.webkitAudioContext)(); if(ctxA.state==='suspended') ctxA.resume();
+    [880,1175].forEach(function(f,i){ var o=ctxA.createOscillator(), g=ctxA.createGain(); o.type='sine'; o.frequency.value=f; o.connect(g); g.connect(ctxA.destination);
+      var t0=ctxA.currentTime+i*0.18; g.gain.setValueAtTime(0.0001,t0); g.gain.exponentialRampToValueAtTime(0.25,t0+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t0+0.16); o.start(t0); o.stop(t0+0.18); }); }catch(e){} }
+  function ringEl(){ var el=$('msg-ring'); if(!el){ el=document.createElement('button'); el.id='msg-ring'; el.type='button'; document.body.appendChild(el);
+    el.addEventListener('click',function(){ stopRing(); if(typeof navigate==='function') navigate('mesajlar'); }); } return el; }
+  function stopRing(){ try{ localStorage.setItem('rcl_msg_ack',new Date().toISOString()); }catch(e){} if(ringT){ clearInterval(ringT); ringT=null; } var el=$('msg-ring'); if(el) el.classList.remove('on'); }
+  function checkRing(){
+    var a=ack(), fresh=M.items.filter(function(x){ return (x.unread_admin||0)>0 && x.last_message_at>a; });
+    if(!fresh.length){ if(ringT){ clearInterval(ringT); ringT=null; } var e0=$('msg-ring'); if(e0) e0.classList.remove('on'); return; }
+    var el=ringEl(); el.textContent='Yeni mesaj: '+(fresh[0].name||'Müşteri')+(fresh.length>1?' (+'+(fresh.length-1)+')':'')+' · sustur'; el.classList.add('on');
+    if(!ringT){ beep(); ringT=setInterval(beep,2500); }
+  }
+  document.addEventListener('click',function(){ if(!ctxA){ try{ ctxA=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } else if(ctxA.state==='suspended') ctxA.resume(); },true);
   function badge(){
     var n=0; M.items.forEach(function(x){ n+=(x.unread_admin||0); });
     var b=$('msg-nav-badge'); if(b){ b.style.display=n?'inline-block':'none'; b.textContent=n; }
@@ -10983,7 +11008,7 @@ document.addEventListener('DOMContentLoaded', function(){
       var el=$('msg-list');
       if(j._status===401){ if(el) el.innerHTML='<div class="alim-empty">Erişim anahtarı gerekli. <button type="button" class="alim-fbtn" onclick="window.MSG_unlock()">Anahtarı Gir</button></div>'; return; }
       if(!j.ok){ if(el&&active()) el.innerHTML='<div class="alim-empty">'+esc(j.error||'Liste alınamadı')+'</div>'; return; }
-      M.items=j.items||[]; badge();
+      M.items=j.items||[]; badge(); drawBot(j.bot); checkRing();
       if(active()){ drawList(); var u=$('msg-upd'); if(u) u.textContent=hm(new Date().toISOString()); }
       if(M.cur){ var c=M.items.filter(function(x){ return x.key===M.cur.key; })[0]; if(c){ M.cur=c; head(); } }
     }).catch(function(){});
@@ -11003,7 +11028,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(body.getAttribute('data-day')!==day){ body.setAttribute('data-day',day); body.insertAdjacentHTML('beforeend','<div class="msg-day">'+esc(day)+'</div>'); }
       var via=String(m.via||''), vp=via.split(':');
       if(vp[0]==='system'){ body.insertAdjacentHTML('beforeend','<div class="mb-sys">'+esc(m.body)+' · '+hm(m.created_at)+'</div>'); return; }
-      var who= m.sender==='admin' ? (vp[0]==='panel'&&vp[1]?' · '+esc(vp[1]):(vp[0]==='telegram'?' · Telegram':'')) : '';
+      var who= m.sender==='admin' ? (vp[0]==='panel'&&vp[1]?' · '+esc(vp[1]):(vp[0]==='telegram'?' · Telegram':(vp[0]==='bot'?' · Asistan':''))) : '';
       body.insertAdjacentHTML('beforeend','<div class="mb '+m.sender+'">'+esc(m.body)+'</div><div class="mb-t '+m.sender+'">'+hm(m.created_at)+who+'</div>');
     });
     if(stick) body.scrollTop=body.scrollHeight;
@@ -11038,7 +11063,8 @@ document.addEventListener('DOMContentLoaded', function(){
   var bound=false;
   function bind(){
     if(bound) return; bound=true;
-    $('msg-list').addEventListener('click',function(e){ var b=e.target.closest('.msg-item'); if(b) open(b.getAttribute('data-id')); });
+    $('msg-list').addEventListener('click',function(e){ var b=e.target.closest('.msg-item'); if(b){ stopRing(); open(b.getAttribute('data-id')); } });
+    $('msg-bot-toggle').addEventListener('click',function(){ var on=!M.bot; drawBot(on); api('botset',{method:'POST',body:JSON.stringify({enabled:on})}).then(function(j){ if(!j.ok){ drawBot(!on); alert(j.error||'Değiştirilemedi'); } }); });
     document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(t){ t.addEventListener('click',function(){
       document.querySelectorAll('#page-mesajlar .msg-tab').forEach(function(x){ x.classList.remove('active'); });
       t.classList.add('active'); M.filter=t.getAttribute('data-f'); drawList(); }); });
@@ -11060,7 +11086,7 @@ document.addEventListener('DOMContentLoaded', function(){
     tick++;
     if(document.hidden||!key()) return;
     if(active()){ if(tick%2===0) loadList(); loadThread(); }
-    else if(tick%15===0) loadList();
+    else if(tick%5===0) loadList();
   },2000);
   setTimeout(function(){ if(key()) loadList(); },2500);
 })();
