@@ -1,12 +1,12 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T17:53:14",
+  "updated_at": "2026-10-02T18:47:43",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4750,
     "total_views": 1516245,
-    "video_count": 406
+    "video_count": 407
   },
   "analytics": {
     "last_30d": {
@@ -54,10 +54,19 @@ const YOUTUBE = {
   },
   "videos": [
     {
+      "id": "28udtye4X0s",
+      "title": "Canon Ixus 🌅 Efsane retro digicam 📸",
+      "date": "2 Eki 2026",
+      "views": 259,
+      "likes": 1,
+      "comments": 0,
+      "url": "https://youtu.be/28udtye4X0s"
+    },
+    {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 1371,
+      "views": 1370,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
@@ -72,13 +81,13 @@ const YOUTUBE = {
       "url": "https://youtu.be/9Z6lsTkLNoc"
     },
     {
-      "id": "4-KWG5bSnMA",
-      "title": "Istanbul in a retro frame 📸 Olympus E-PL1 Dijital Kamera",
-      "date": "11 Eyl 2026",
-      "views": 1326,
-      "likes": 7,
+      "id": "v9EaRVvnyEc",
+      "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
+      "date": "10 Ağu 2026",
+      "views": 1485,
+      "likes": 12,
       "comments": 0,
-      "url": "https://youtu.be/4-KWG5bSnMA"
+      "url": "https://youtu.be/v9EaRVvnyEc"
     },
     {
       "id": "G9ayP-pa1q8",
@@ -133,15 +142,6 @@ const YOUTUBE = {
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/obdMfiigTY4"
-    },
-    {
-      "id": "8XWAJXORa9c",
-      "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
-      "date": "20 Haz 2026",
-      "views": 35897,
-      "likes": 39,
-      "comments": 5,
-      "url": "https://youtu.be/8XWAJXORa9c"
     }
   ],
   "sub_goal": 10000
