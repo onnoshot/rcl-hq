@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T18:52:31",
+  "updated_at": "2026-10-02T19:20:28",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "28udtye4X0s",
       "title": "Canon Ixus 🌅 Efsane retro digicam 📸",
       "date": "2 Eki 2026",
-      "views": 309,
+      "views": 407,
       "likes": 2,
       "comments": 0,
       "url": "https://youtu.be/28udtye4X0s"
@@ -81,6 +81,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/9Z6lsTkLNoc"
     },
     {
+      "id": "NwgAvkb8GSg",
+      "title": "İstanbul Kahve Festivalinde Y2K Dijital Kamera 📸☕️",
+      "date": "11 Eyl 2026",
+      "views": 324,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/NwgAvkb8GSg"
+    },
+    {
       "id": "v9EaRVvnyEc",
       "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
       "date": "10 Ağu 2026",
@@ -88,15 +97,6 @@ const YOUTUBE = {
       "likes": 12,
       "comments": 0,
       "url": "https://youtu.be/v9EaRVvnyEc"
-    },
-    {
-      "id": "G9ayP-pa1q8",
-      "title": "Nikon Coolpix S3000 Dijital Fotoğraf Makinesi 💙#dijitalkamer",
-      "date": "31 Tem 2026",
-      "views": 669,
-      "likes": 12,
-      "comments": 0,
-      "url": "https://youtu.be/G9ayP-pa1q8"
     },
     {
       "id": "nJ92afbw02g",
@@ -126,15 +126,6 @@ const YOUTUBE = {
       "url": "https://youtu.be/LjyZRaLNGcc"
     },
     {
-      "id": "ZRzvt8SJEG8",
-      "title": "Sanyo Xacti Dijital Kamera ile Y2K VLOG (2005)",
-      "date": "10 Tem 2026",
-      "views": 640,
-      "likes": 8,
-      "comments": 0,
-      "url": "https://youtu.be/ZRzvt8SJEG8"
-    },
-    {
       "id": "obdMfiigTY4",
       "title": "Panasonic Lumix TZ91 | 30x ZOOM | Leica Lens!?",
       "date": "29 Haz 2026",
@@ -142,6 +133,15 @@ const YOUTUBE = {
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/obdMfiigTY4"
+    },
+    {
+      "id": "8XWAJXORa9c",
+      "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
+      "date": "20 Haz 2026",
+      "views": 35897,
+      "likes": 39,
+      "comments": 5,
+      "url": "https://youtu.be/8XWAJXORa9c"
     }
   ],
   "sub_goal": 10000
