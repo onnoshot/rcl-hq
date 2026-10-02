@@ -19,13 +19,28 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/community/stats", "destination": "/api/community/index?action=stats" },
-    { "source": "/api/community/sync", "destination": "/api/community/index?action=sync" },
-    { "source": "/api/community/(admin[a-z-]*)", "destination": "/api/community/index?action=$1" },
-    { "source": "/api/hesabim/community/(.*)", "destination": "/api/community/index?action=$1" }
+    {
+      "source": "/api/community/stats",
+      "destination": "/api/community/index?action=stats"
+    },
+    {
+      "source": "/api/community/sync",
+      "destination": "/api/community/index?action=sync"
+    },
+    {
+      "source": "/api/community/(admin[a-z-]*)",
+      "destination": "/api/community/index?action=$1"
+    },
+    {
+      "source": "/api/hesabim/community/(.*)",
+      "destination": "/api/community/index?action=$1"
+    }
   ],
   "crons": [
-    { "path": "/api/community/sync", "schedule": "0 6 * * *" }
+    {
+      "path": "/api/community/sync",
+      "schedule": "0 6 * * *"
+    }
   ],
   "functions": {
     "api/chat.js": {
@@ -36,6 +51,9 @@
     },
     "api/community/index.js": {
       "maxDuration": 30
+    },
+    "api/messages.js": {
+      "maxDuration": 60
     }
   }
 }

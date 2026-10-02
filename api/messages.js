@@ -8,12 +8,14 @@
 import crypto from 'node:crypto';
 import { createClient } from '@supabase/supabase-js';
 import * as club from '../lib/club.js';
+import * as chatbot from '../lib/chatbot.js';
 
 const MAX_BODY = 2000;
 const AGENTS = ['Umut', 'Ayb\u00fcke', 'Deniz']; // paneldeki destek ekibi
 const JOIN_AGAIN_MIN = 60; // ayni temsilci icin "sohbete katildi" bildirimi en fazla saatte bir
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-const RENOTIFY_MIN = 30; // son mesajdan bu kadar dakika sonra gelen ziyaretci mesaji yeniden bildirilir
+const RENOTIFY_MIN = 30;
+const HUMAN_HOLD_MIN = 30; // ekipten biri yazdiysa asistan bu sure boyunca araya girmez // son mesajdan bu kadar dakika sonra gelen ziyaretci mesaji yeniden bildirilir
 
 function cors(res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -32,6 +34,11 @@ async function readJson(req) {
   for await (const c of req) chunks.push(c);
   const raw = Buffer.concat(chunks).toString('utf8');
   return raw ? JSON.parse(raw) : {};
+}
+// Asistan acik/kapali: club_settings tablosunda 'chatbot' anahtari (panelden tek tikla degisir).
+async function botEnabled(sb) {
+  const { data } = await sb.from('club_settings').select('value').eq('key', 'chatbot').maybeSingle();
+  return !!(data && data.value && data.value.enabled);
 }
 function agentOf(v) { const a = s(v, 20); return AGENTS.indexOf(a) >= 0 ? a : ''; }
 // Panelde ayni e-postadan gelen konusmalar tek pencerede toplanir; anahtar = e-posta (yoksa konusma id'si).
@@ -187,6 +194,32 @@ export default async function handler(req, res) {
       return send(res, 200, { ok: true, messages: msgs || [], unread: conv.unread_visitor || 0 });
     }
 
+    // ---- asistan yaniti: ziyaretci mesajindan sonra pencere bu ucu cagirir ----
+    if (action === 'bot' && req.method === 'POST') {
+      const b = await readJson(req);
+      const { data: conv } = await sb.from('chat_conversations').select('*').eq('token', s(b.token, 80)).maybeSingle();
+      if (!conv) return send(res, 404, { ok: false });
+      if (!(await botEnabled(sb))) return send(res, 200, { ok: true, skipped: 'off' });
+      const { data: rows } = await sb.from('chat_messages').select(MSG_COLS).eq('conversation_id', conv.id).order('id', { ascending: false }).limit(30);
+      const msgs = (rows || []).reverse().filter((m) => !String(m.via).startsWith('system'));
+      const last = msgs[msgs.length - 1];
+      if (!last || last.sender !== 'visitor') return send(res, 200, { ok: true, skipped: 'answered' });
+      const human = msgs.filter((m) => m.sender === 'admin' && m.via !== 'bot').pop();
+      if (human && (Date.now() - new Date(human.created_at).getTime()) / 60000 < HUMAN_HOLD_MIN) return send(res, 200, { ok: true, skipped: 'human' });
+      let text = '';
+      try { text = await chatbot.reply(msgs, conv.name); }
+      catch (e) { return send(res, 200, { ok: true, skipped: 'error', detail: String((e && e.message) || e).slice(0, 160) }); }
+      if (!text) return send(res, 200, { ok: true, skipped: 'empty' });
+      // uretim sirasinda ekipten biri yazdiysa asistanin yanitini atla
+      const chk = await sb.from('chat_messages').select('id, sender').eq('conversation_id', conv.id).order('id', { ascending: false }).limit(1);
+      if (chk.data && chk.data[0] && chk.data[0].id !== last.id) return send(res, 200, { ok: true, skipped: 'raced' });
+      const ins = await sb.from('chat_messages').insert({ conversation_id: conv.id, sender: 'admin', body: text, via: 'bot' }).select(MSG_COLS).single();
+      if (ins.error) throw ins.error;
+      await sb.from('chat_conversations').update({ last_message_at: ins.data.created_at, last_preview: text.slice(0, 140), last_sender: 'admin',
+        unread_visitor: (conv.unread_visitor || 0) + 1 }).eq('id', conv.id); // unread_admin korunur: panel konusmayi hala "yeni" gorur
+      return send(res, 200, { ok: true, message: ins.data });
+    }
+
     // ================= TELEGRAM WEBHOOK (bildirime verilen yanit dogrudan Telegram'dan gelir) =================
     if (action === 'tghook' && req.method === 'POST') {
       if (!tgSecret() || req.headers['x-telegram-bot-api-secret-token'] !== tgSecret()) return send(res, 401, { ok: false });
@@ -260,7 +293,13 @@ export default async function handler(req, res) {
         if (c.status === 'open') g.status = 'open';
         if (c.created_at < g.created_at) g.created_at = c.created_at;
       }
-      return send(res, 200, { ok: true, items: order, agents: AGENTS });
+      return send(res, 200, { ok: true, items: order, agents: AGENTS, bot: await botEnabled(sb) });
+    }
+    if (action === 'botset' && req.method === 'POST') {
+      const b = await readJson(req);
+      const u = await sb.from('club_settings').upsert({ key: 'chatbot', value: { enabled: !!b.enabled }, updated_at: new Date().toISOString() });
+      if (u.error) throw u.error;
+      return send(res, 200, { ok: true, bot: !!b.enabled });
     }
     if (action === 'thread' && req.method === 'GET') {
       const convs = await groupConvs(sb, req.query.key);

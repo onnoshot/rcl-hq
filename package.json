@@ -4,9 +4,10 @@
   "private": true,
   "description": "RetroCameraLand HQ dashboard + API functions (Vercel)",
   "dependencies": {
-    "@vercel/blob": "^2.5.0",
+    "@anthropic-ai/sdk": "^0.131.0",
+    "@aws-sdk/client-rekognition": "^3.600.0",
     "@supabase/supabase-js": "^2.45.0",
-    "jsonwebtoken": "^9.0.2",
-    "@aws-sdk/client-rekognition": "^3.600.0"
+    "@vercel/blob": "^2.5.0",
+    "jsonwebtoken": "^9.0.2"
   }
 }
