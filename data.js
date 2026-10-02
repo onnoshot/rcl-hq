@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T19:48:22",
+  "updated_at": "2026-10-02T19:52:21",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -63,6 +63,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/28udtye4X0s"
     },
     {
+      "id": "AlODfpWU4QI",
+      "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
+      "date": "29 Eyl 2026",
+      "views": 1371,
+      "likes": 10,
+      "comments": 0,
+      "url": "https://youtu.be/AlODfpWU4QI"
+    },
+    {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
@@ -79,15 +88,6 @@ const YOUTUBE = {
       "likes": 20,
       "comments": 0,
       "url": "https://youtu.be/w0BnnWHsFqE"
-    },
-    {
-      "id": "NwgAvkb8GSg",
-      "title": "İstanbul Kahve Festivalinde Y2K Dijital Kamera 📸☕️",
-      "date": "11 Eyl 2026",
-      "views": 324,
-      "likes": 3,
-      "comments": 0,
-      "url": "https://youtu.be/NwgAvkb8GSg"
     },
     {
       "id": "iMemUS86nrc",
