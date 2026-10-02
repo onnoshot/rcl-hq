@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T17:52:11",
+  "updated_at": "2026-10-02T17:53:14",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -66,7 +66,7 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1617,
+      "views": 1618,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
@@ -102,7 +102,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2974,
+      "views": 2975,
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -115,15 +115,6 @@ const YOUTUBE = {
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
-    },
-    {
-      "id": "fiWC7WOtCtk",
-      "title": "Kullanımı Kolay Kompakt Dijital Kamera! Lumix DMC LS70",
-      "date": "11 Tem 2026",
-      "views": 1619,
-      "likes": 21,
-      "comments": 0,
-      "url": "https://youtu.be/fiWC7WOtCtk"
     },
     {
       "id": "ZRzvt8SJEG8",
@@ -142,6 +133,15 @@ const YOUTUBE = {
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/obdMfiigTY4"
+    },
+    {
+      "id": "8XWAJXORa9c",
+      "title": "Fujifilm Finepix V60 Retro Dijital Kamera ile tatlı fotoğraf",
+      "date": "20 Haz 2026",
+      "views": 35897,
+      "likes": 39,
+      "comments": 5,
+      "url": "https://youtu.be/8XWAJXORa9c"
     }
   ],
   "sub_goal": 10000
