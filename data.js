@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T21:01:19",
+  "updated_at": "2026-10-02T21:48:21",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -81,6 +81,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/3m-aUuSnQ3A"
     },
     {
+      "id": "4-KWG5bSnMA",
+      "title": "Istanbul in a retro frame 📸 Olympus E-PL1 Dijital Kamera",
+      "date": "11 Eyl 2026",
+      "views": 1326,
+      "likes": 7,
+      "comments": 0,
+      "url": "https://youtu.be/4-KWG5bSnMA"
+    },
+    {
       "id": "NwgAvkb8GSg",
       "title": "İstanbul Kahve Festivalinde Y2K Dijital Kamera 📸☕️",
       "date": "11 Eyl 2026",
@@ -133,15 +142,6 @@ const YOUTUBE = {
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/LjyZRaLNGcc"
-    },
-    {
-      "id": "obdMfiigTY4",
-      "title": "Panasonic Lumix TZ91 | 30x ZOOM | Leica Lens!?",
-      "date": "29 Haz 2026",
-      "views": 548,
-      "likes": 10,
-      "comments": 0,
-      "url": "https://youtu.be/obdMfiigTY4"
     }
   ],
   "sub_goal": 10000
