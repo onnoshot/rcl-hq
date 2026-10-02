@@ -11245,7 +11245,7 @@ document.addEventListener('DOMContentLoaded', function(){
         '<div class="kl-act wide"><button class="kl-btn ok" type="submit">'+(c.id?'Değişiklikleri kaydet':'Listeye ekle')+'</button>'+(c.id?'<button class="kl-btn" type="button" data-soon-cancel>Vazgeç</button>':'')+'</div></form>'+
         '<div class="kl-att" style="margin:-4px 0 10px">'+d.soon.length+' kamera · üyeler yalnızca marka, model ve fotoğrafı görür, fiyat gösterilmez. Kamera satışa çıkınca listeden çıkar.</div>'+
         (d.soon.length?'<div class="kl-list">'+d.soon.map(function(x){
-          return '<div class="kl-row">'+(x.image?'<img class="kl-cover" src="'+esc(x.image)+(x.image.indexOf('?')>=0?'&':'?')+'width=160" alt="">':'<span class="kl-cover" style="background:rgba(0,0,0,.08)"></span>')+'<div><b>'+esc(x.title)+'</b><small>'+esc(x.brand||'marka yok')+(x.image?'':' · fotoğraf yok')+'</small></div>'+
+          return '<div class="kl-row">'+(x.image?'<img class="kl-cover" src="'+esc(x.image)+(x.image.indexOf('data:')===0?'':(x.image.indexOf('?')>=0?'&':'?')+'width=160')+'" alt="">':'<span class="kl-cover" style="background:rgba(0,0,0,.08)"></span>')+'<div><b>'+esc(x.title)+'</b><small>'+esc(x.brand||'marka yok')+(x.image?'':' · fotoğraf yok')+'</small></div>'+
             '<div class="kl-act"><button class="kl-btn" data-soon-edit="'+esc(x.id)+'">Düzenle</button><button class="kl-btn" data-soon-del="'+esc(x.id)+'">Listeden çıkar</button></div></div>';
         }).join('')+'</div>':'<div class="alim-empty">Listede kamera yok. Yukarıdan ilkini ekle.</div>');
     } else {
@@ -11290,7 +11290,7 @@ document.addEventListener('DOMContentLoaded', function(){
       if(t.closest('[data-ev-cancel]')){ K.editing=null; draw(); return; }
       if((b=t.closest('[data-soon-edit]'))){ K.editing=K.d.soon.filter(function(x){ return x.id===b.getAttribute('data-soon-edit'); })[0]; draw(); window.scrollTo({top:$('kl-tabs').getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'}); return; }
       if(t.closest('[data-soon-cancel]')){ K.editing=null; draw(); return; }
-      if((b=t.closest('[data-soon-del]'))){ if(confirm('Bu kamera Yakında listesinden çıkarılsın mı? Shopify\'daki taslak ürün silinmez.')) act('admin.soon',{id:b.getAttribute('data-soon-del'),remove:true},b).then(function(j){ if(j){ K.editing=null; load(); } }); return; }
+      if((b=t.closest('[data-soon-del]'))){ if(confirm('Bu kamera Yakında listesinden çıkarılsın mı? Shopify\'daki taslak ürün silinmez.')) (function(sid){ act('admin.soon',{id:sid,remove:true},b).then(function(j){ if(j){ K.d.soon=K.d.soon.filter(function(x){ return x.id!==sid; }); K.editing=null; draw(); } }); })(b.getAttribute('data-soon-del')); return; }
       if((b=t.closest('[data-ev-del]'))){ if(confirm('Etkinlik silinsin mi? Katılım kayıtları da silinir.')) act('admin.event',{id:b.getAttribute('data-ev-del'),delete:true},b).then(function(j){ if(j) load(); }); return; }
       if((b=t.closest('[data-mem]'))){ act('admin.member',{id:b.getAttribute('data-mem'),status:b.getAttribute('data-s')},b).then(function(j){ if(j) load(); }); return; }
       if((b=t.closest('[data-card]'))){ act('admin.card',{code:b.getAttribute('data-card'),status:b.getAttribute('data-s')},b).then(function(j){ if(j) load(); }); return; }
@@ -11309,11 +11309,17 @@ document.addEventListener('DOMContentLoaded', function(){
       } else if(f.id==='kl-soon-form'){
         if(!f.brand.value.trim()||!f.title.value.trim()){ alert('Marka ve model gerekli.'); return; }
         btn.disabled=true;
+        var sb={id:K.editing&&K.editing.id,brand:f.brand.value.trim(),title:f.title.value.trim()};
         fileData(f.image.files[0],1200,true).then(function(img){
-          var body={id:K.editing&&K.editing.id,brand:f.brand.value.trim(),title:f.title.value.trim()};
-          if(img) body.image=img;
-          return act('admin.soon',body,btn);
-        }).then(function(j){ if(j){ K.editing=null; setTimeout(load,1500); } }).catch(function(er){ alert(er.message); btn.disabled=false; });
+          if(img) sb.image=img;
+          return act('admin.soon',sb,btn);
+        }).then(function(j){ if(!j) return;
+          /* Shopify araması birkaç saniye geriden gelir; liste sunucudan yeniden okunmadan yerinde güncellenir. */
+          var cur=K.d.soon.filter(function(x){ return x.id===j.id; })[0];
+          if(!cur){ cur={id:j.id,image:''}; K.d.soon.unshift(cur); }
+          cur.brand=sb.brand; cur.title=sb.title.toLowerCase().indexOf(sb.brand.toLowerCase()+' ')===0?sb.title.slice(sb.brand.length).trim():sb.title; if(sb.image) cur.image=sb.image;
+          K.editing=null; draw();
+        }).catch(function(er){ alert(er.message); btn.disabled=false; });
       } else if(f.id==='kl-cm-form'){
         cardMail({email:f.email.value,name:f.name.value,member_no:f.member_no.value},btn);
       } else if(f.id==='kl-card-form'){
