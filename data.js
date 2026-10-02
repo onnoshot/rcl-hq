@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T04:20:47",
+  "updated_at": "2026-10-02T10:15:53",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 1359,
+      "views": 1364,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
@@ -66,10 +66,46 @@ const YOUTUBE = {
       "id": "9Z6lsTkLNoc",
       "title": "Fujifilm FinePix Z700 EXR | Compact Y2K Camera",
       "date": "25 Eyl 2026",
-      "views": 1613,
+      "views": 1615,
       "likes": 15,
       "comments": 0,
       "url": "https://youtu.be/9Z6lsTkLNoc"
+    },
+    {
+      "id": "w0BnnWHsFqE",
+      "title": "Casio Exilim Ex-Z4 ile İstanbul Finans Merkezi Manzarası 🌅",
+      "date": "25 Eyl 2026",
+      "views": 1891,
+      "likes": 20,
+      "comments": 0,
+      "url": "https://youtu.be/w0BnnWHsFqE"
+    },
+    {
+      "id": "NwgAvkb8GSg",
+      "title": "İstanbul Kahve Festivalinde Y2K Dijital Kamera 📸☕️",
+      "date": "11 Eyl 2026",
+      "views": 324,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/NwgAvkb8GSg"
+    },
+    {
+      "id": "iMemUS86nrc",
+      "title": "Retro Dijital Kompakt Canon G7 📸",
+      "date": "3 Eyl 2026",
+      "views": 422,
+      "likes": 3,
+      "comments": 0,
+      "url": "https://youtu.be/iMemUS86nrc"
+    },
+    {
+      "id": "v9EaRVvnyEc",
+      "title": "Samsung ST10 Cep Boy Anı Makinesi 📸 Digicam",
+      "date": "10 Ağu 2026",
+      "views": 1485,
+      "likes": 12,
+      "comments": 0,
+      "url": "https://youtu.be/v9EaRVvnyEc"
     },
     {
       "id": "nJ92afbw02g",
@@ -84,7 +120,7 @@ const YOUTUBE = {
       "id": "pZJB6mBWYRg",
       "title": "Samsung WB350F İncelemesi: 21x Zoom Yapan Retro Dijital Kame",
       "date": "16 Tem 2026",
-      "views": 2972,
+      "views": 2973,
       "likes": 20,
       "comments": 1,
       "url": "https://youtu.be/pZJB6mBWYRg"
@@ -99,49 +135,13 @@ const YOUTUBE = {
       "url": "https://youtu.be/LjyZRaLNGcc"
     },
     {
-      "id": "bY4UWZ-wEwY",
-      "title": "Nikon Coolpix S52C (2008) RetroCameraLand’de! #nikon #coolpi",
-      "date": "26 Nis 2026",
-      "views": 1236,
-      "likes": 15,
+      "id": "obdMfiigTY4",
+      "title": "Panasonic Lumix TZ91 | 30x ZOOM | Leica Lens!?",
+      "date": "29 Haz 2026",
+      "views": 548,
+      "likes": 10,
       "comments": 0,
-      "url": "https://youtu.be/bY4UWZ-wEwY"
-    },
-    {
-      "id": "8oUm3q_y6rQ",
-      "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
-      "date": "18 Nis 2026",
-      "views": 50894,
-      "likes": 209,
-      "comments": 2,
-      "url": "https://youtu.be/8oUm3q_y6rQ"
-    },
-    {
-      "id": "mUJq-SQWXX8",
-      "title": "20 yıllık bir kamerayla Amsterdam 📸✨ #Amsterdam #SonyCyberSh",
-      "date": "10 Nis 2026",
-      "views": 2570,
-      "likes": 26,
-      "comments": 2,
-      "url": "https://youtu.be/mUJq-SQWXX8"
-    },
-    {
-      "id": "TFYAi9S9wTo",
-      "title": "Canon Ixus 160 Dijital Fotoğraf Makinesi 📸 Stoklar yenilendi",
-      "date": "25 Mar 2026",
-      "views": 15185,
-      "likes": 8,
-      "comments": 0,
-      "url": "https://youtu.be/TFYAi9S9wTo"
-    },
-    {
-      "id": "D3m5uJHNf8o",
-      "title": "the camera vs. the photos 📸 w/ Sony Cybershot TX9 Digital Ca",
-      "date": "23 Mar 2026",
-      "views": 2501,
-      "likes": 16,
-      "comments": 1,
-      "url": "https://youtu.be/D3m5uJHNf8o"
+      "url": "https://youtu.be/obdMfiigTY4"
     }
   ],
   "sub_goal": 10000
