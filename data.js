@@ -1,6 +1,6 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-02T02:20:44",
+  "updated_at": "2026-10-02T03:16:06",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "AlODfpWU4QI",
       "title": "Olympus SP-700 Dijital Kamera ile Manzara Fotoğrafçılığı",
       "date": "29 Eyl 2026",
-      "views": 1358,
+      "views": 1359,
       "likes": 10,
       "comments": 0,
       "url": "https://youtu.be/AlODfpWU4QI"
@@ -111,7 +111,7 @@ const YOUTUBE = {
       "id": "8oUm3q_y6rQ",
       "title": "Nikon Coolpix S6900 💘 Kolleksiyonluk Y2K Digicam #nikon #coo",
       "date": "18 Nis 2026",
-      "views": 50892,
+      "views": 50893,
       "likes": 209,
       "comments": 2,
       "url": "https://youtu.be/8oUm3q_y6rQ"
@@ -126,6 +126,15 @@ const YOUTUBE = {
       "url": "https://youtu.be/TFYAi9S9wTo"
     },
     {
+      "id": "D3m5uJHNf8o",
+      "title": "the camera vs. the photos 📸 w/ Sony Cybershot TX9 Digital Ca",
+      "date": "23 Mar 2026",
+      "views": 2501,
+      "likes": 16,
+      "comments": 1,
+      "url": "https://youtu.be/D3m5uJHNf8o"
+    },
+    {
       "id": "aoCqpg3l-Zs",
       "title": "22 Yıllık İkonik CASIO Exilim Fotoğraf Makinesi #digitalcame",
       "date": "7 Mar 2026",
@@ -133,15 +142,6 @@ const YOUTUBE = {
       "likes": 12,
       "comments": 3,
       "url": "https://youtu.be/aoCqpg3l-Zs"
-    },
-    {
-      "id": "b6MfXb0bltc",
-      "title": "Full Frame vs CCD Sensor | Sony ZV-E1 vs Cybershot TX9",
-      "date": "23 Şub 2026",
-      "views": 901,
-      "likes": 7,
-      "comments": 0,
-      "url": "https://youtu.be/b6MfXb0bltc"
     }
   ],
   "sub_goal": 10000
