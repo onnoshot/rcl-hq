@@ -11161,7 +11161,7 @@ document.addEventListener('DOMContentLoaded', function(){
   function load(){
     return api('admin').then(function(j){
       var body=$('kl-body');
-      if(j._status===401){ body.innerHTML='<div class="alim-empty">Erişim anahtarı gerekli. <button type="button" class="alim-fbtn" onclick="window.KL_unlock()">Anahtarı Gir</button></div>'; return; }
+      if(j._status===401){ body.innerHTML='<form class="alim-empty" id="kl-key-form" onsubmit="return window.KL_saveKey(this)"><b>'+(key()?'Kayıtlı anahtar kabul edilmedi.':'Bu paneli açmak için HQ erişim anahtarı gerekli.')+'</b><br><small>Anahtar bu tarayıcıya bir kez kaydedilir.</small><br><input class="kl-q" name="k" type="password" autocomplete="off" placeholder="rcl_… ile başlayan anahtar" style="margin:10px auto 8px;display:block"><button type="submit" class="alim-fbtn">Kaydet ve aç</button></form>'; return; }
       if(!j.ok){ body.innerHTML='<div class="alim-empty">'+esc(j.error||'Veri alınamadı. Supabase tabloları kurulu mu?')+' <small>(HTTP '+j._status+')</small><br><button type="button" class="alim-fbtn" onclick="window.renderKulupPage()">Tekrar dene</button></div>'; return; }
       ['applications','members','cards','events','badges'].forEach(function(k){ if(!Array.isArray(j[k])) j[k]=[]; }); j.settings=j.settings||{};
       K.d=j; var u=$('kl-upd'); if(u) u.textContent=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});
@@ -11299,6 +11299,7 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
   }
+  window.KL_saveKey=function(f){ var k=(f.k.value||'').trim(); if(k){ try{ localStorage.setItem('rcl_alim_key',k); }catch(e){} $('kl-body').innerHTML='<div class="alim-empty">Yükleniyor…</div>'; load(); } return false; };
   window.KL_unlock=function(){ var k=prompt('HQ erişim anahtarı (RCL_ALIM_KEY):'); if(k){ try{ localStorage.setItem('rcl_alim_key',k); }catch(e){} load(); } };
   window.renderKulupPage=function(){ bind(); if(K.d) draw(); load(); };
   setTimeout(function(){ if(key()) api('admin').then(function(j){ if(j.ok){ K.d=j; kpis(); } }).catch(function(){}); },4000);
