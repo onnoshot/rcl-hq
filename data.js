@@ -1,11 +1,11 @@
 /* ─── YOUTUBE DATA START ─── */
 const YOUTUBE = {
-  "updated_at": "2026-10-03T09:23:22",
+  "updated_at": "2026-10-03T11:43:29",
   "channel": {
     "title": "Retro Camera Land",
     "channel_id": "UCq0jJ7knS1MDtNgx8DtJCvw",
     "subscribers": 4750,
-    "total_views": 1516952,
+    "total_views": 1517614,
     "video_count": 407
   },
   "analytics": {
@@ -57,7 +57,7 @@ const YOUTUBE = {
       "id": "28udtye4X0s",
       "title": "Canon Ixus 🌅 Efsane retro digicam 📸",
       "date": "2 Eki 2026",
-      "views": 519,
+      "views": 520,
       "likes": 3,
       "comments": 0,
       "url": "https://youtu.be/28udtye4X0s"
@@ -150,7 +150,7 @@ const YOUTUBE = {
 
 /* ─── SHOPIFY DATA START ─── */
 const SHOPIFY = {
-  "updated_at": "2026-10-03T00:52:58",
+  "updated_at": "2026-10-03T11:40:10",
   "period_30d": {
     "revenue": 45199,
     "orders": 5,
